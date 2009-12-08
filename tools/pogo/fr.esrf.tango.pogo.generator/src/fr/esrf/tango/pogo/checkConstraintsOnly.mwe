@@ -1,0 +1,9 @@
+<workflow abstract="true">
+
+  <component class="org.eclipse.xtend.check.CheckComponent">
+       <metaModel id="mm" class="org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel"/>
+       <emfAllChildrenSlot value="theModel"/>
+	   <checkFile value="fr::esrf::tango::pogo::validation::PogoDslFastChecks"/>
+	</component>
+  
+</workflow>

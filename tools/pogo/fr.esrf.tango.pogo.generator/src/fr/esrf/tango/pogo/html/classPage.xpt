@@ -1,0 +1,39 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+«DEFINE htmlFile FOR PogoDeviceClass»
+«IF description.filestogenerate.toLowerCase().contains("html")»
+«FILE classPageFileName()»«htmlHeader()»
+
+<Center> <h1>
+		«name» class<Br>
+	User's Guide <Br> <Br>
+		«description.title»
+</h1> </Center>
+<Br>
+<Br>
+<h2>Introduction:</h2>
+«description»
+«startComment()» «PROTECT CSTART '/*' CEND '*/' ID classPageFileName() » «endComment()»
+
+
+«startComment()» «ENDPROTECT» «endComment()»
+<Br>
+<Br>
+<h2>Description:</h2>
+<ul>
+	<li> <a href=Description.html>      Device description.</a>
+	<li> <a href=Properties.html>       Properties description</a>
+	<li> <a href=TangoDevStates.html>   States description</a>
+	<li> <a href=DevCommandsTable.html> Commands description</a>
+	<li> <a href=Attributes.html>       Attributes description</a>
+</ul>
+<Br>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
+

@@ -1,0 +1,6 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+«DEFINE main FOR PogoDeviceClass»
+	«EXPAND classPage::htmlFile»
+«ENDDEFINE»

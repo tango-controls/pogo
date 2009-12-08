@@ -1,0 +1,82 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//	=========================================================
+//	Define The initialization for device.
+//	=========================================================
+«DEFINE cppFile FOR PogoDeviceClass»
+«EXPAND deviceConstructors»
+«EXPAND deleteDeviceMethod»
+«EXPAND initDeviceMethod»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define The init_device method
+//	=========================================================
+«DEFINE initDeviceMethod FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader("init_device",
+			"//	will be called at device initialization.")-»
+void «name»::init_device()
+{
+	INFO_STREAM << "«name»::init_device() create device " << device_name << endl;
+
+	«IF deviceProperties.size > 0-»
+	//	Get the device properties (if any) from database
+	get_device_property();
+	«ENDIF»
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device", "//	Initialize device")-»
+}
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The delete_device method
+//	=========================================================
+«DEFINE deleteDeviceMethod FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader("delete_device()",
+		"will be called at device destruction or at init command")»void «name»::delete_device()
+{
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		"delete_device",
+		"//	Delete device allocated objects")-»
+}
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The device constructors
+//	=========================================================
+«DEFINE deviceConstructors FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(name,
+ 	"Constructors for a Tango device\n"+
+ 	"implementing the class" + name)»«name»::«name»(Tango::DeviceClass *cl, string &s)«EXPAND inheritanceManagement("cl, s.c_str()")-»
+{
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("constructor_1", "init_device();")-»
+}
+«separator2()»
+«name»::«name»(Tango::DeviceClass *cl, const char *s)«EXPAND inheritanceManagement("cl, s")-»
+{
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("constructor_2", "init_device();")-»
+}
+«separator2()»
+«name»::«name»(Tango::DeviceClass *cl, const char *s, const char *d)«EXPAND inheritanceManagement("cl, s, d")-»
+{
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("constructor_3", "init_device();")-»
+}
+«ENDDEFINE»
+
+
+
+
+//
+//	Define the inheritance added to the constructors
+//
+«DEFINE inheritanceManagement(String params) FOR PogoDeviceClass»
+«IF description.inheritances.size==0»	: Tango::Device_4Impl(«params»)
+«ELSE» «FOREACH  description.inheritances AS inherit»	: «superClassNameConstr(inherit)»(«params»)
+«ENDFOREACH»«ENDIF-»
+«ENDDEFINE»

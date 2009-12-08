@@ -1,0 +1,26 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+//	=========================================================
+//	Define device data members declaration
+//	=========================================================
+«DEFINE headerFile FOR PogoDeviceClass»
+«separator1()»
+«PROTECT CSTART '/*' CEND '*/' ID areaProtectedID("Data Members")»
+
+«ENDPROTECT»
+«separator1()»
+
+//	Device property data members
+public:«FOREACH deviceProperties AS prop»
+	//	«prop.name»:	«prop.description.comments("	//	")»
+	«prop.type.cppPropType()»	«prop.name.dataMemberName()»;«ENDFOREACH»
+
+
+//	Attribute data members
+public:«FOREACH attributes AS att»
+	«att.dataType.cppType().toString()»	*attr_«att.name»_read;«ENDFOREACH»
+
+
+«ENDDEFINE»

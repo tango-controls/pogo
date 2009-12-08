@@ -1,0 +1,80 @@
+import pogoDsl;
+
+
+javaDeviceName( PogoDeviceClass this ): name;
+javaDevicePackage( PogoDeviceClass this ): name.toLowerCase();
+fqJavaDeviceClassName( PogoDeviceClass this ): javaDevicePackage()+"."+javaDeviceName();
+javaDeviceClassFileName( PogoDeviceClass this ): fqJavaDeviceClassName().replaceAll("\\.","/")+".java";
+
+javaDServerClassName( PogoDeviceClass this ): name+"Class";
+fqJavaDServerClassClassName( PogoDeviceClass this ): javaDevicePackage()+"."+javaDServerClassName();
+javaDServerClassClassFileName( PogoDeviceClass this ): fqJavaDServerClassClassName().replaceAll("\\.","/")+".java";
+
+vcsEscaped( String s ): "$"+s+"$";
+
+commandArginGen(Command cmd):
+	javaType(cmd.argin.type).toString() != "void"
+	?javaType(cmd.argin.type).toString()+ " argin"
+	:"";
+	
+attributeSetValueGen(Attribute attr):
+	attr.attType == "Scalar"
+	? attr.name
+	: (attr.attType == "Spectrum"
+		? attr.name +","+ attr.maxX
+		:attr.name +","+ attr.maxX+","+ attr.maxY
+	) ; 
+	
+//	Property Type utilities
+String javaPropType(PropType this):			null;
+String javaPropType(BooleanType this):		"boolean";
+String javaPropType(ShortType this):		"short";
+String javaPropType(IntType this):			"int";
+String javaPropType(UShortType this):		"short";
+String javaPropType(UIntType this):			"int";
+String javaPropType(FloatType this):		"float";
+String javaPropType(DoubleType this):		"double";
+String javaPropType(StringType this):		"String";
+
+String javaPropType(ShortVectorType this):	"short[]";
+String javaPropType(IntVectorType this):	"int[]";
+String javaPropType(FloatVectorType this):	"float[]";
+String javaPropType(DoubleVectorType this):	"double[]";
+String javaPropType(StringVectorType this):	"String[]";
+
+javaExtractorFunctionName( PropType this ): "extract"+javaPropType().toFirstUpper();
+javaExtractorFunctionName( IntType this ): "extractLong";
+javaExtractorFunctionName( VectorType this ): "extract"+javaPropType().toFirstUpper().subString(0,javaPropType().length-2)+"Array";
+
+
+//	Type utilities
+javaType(Type this):					null;
+javaType(VoidType this):				"void";
+javaType(BooleanType this):			"boolean";
+javaType(ShortType this):			"short";
+javaType(IntType this):				"long";
+javaType(FloatType this):			"float";
+javaType(DoubleType this):			"double";
+javaType(UShortType this):			"short";
+javaType(UIntType this):				"long";
+javaType(StringType this):			"string";
+javaType(CharArrayType this):		"char[]";
+javaType(ShortArrayType this):		"short[]";
+javaType(IntArrayType this):			"long[]";
+javaType(FloatArrayType this):		"float[]";
+javaType(DoubleArrayType this):		"double[]";
+javaType(UShortArrayType this):		"short[]";
+javaType(UIntArrayType this):		"int[]";
+javaType(StringArrayType this):		"string[]";
+javaType(LongStringArrayType this):	"DevVarLongStringArray";
+javaType(DoubleStringArrayType this):"DevVarDoubleStringArray";
+javaType(StateType this):			"DevState";
+javaType(ConstStringType this):		"final string";
+javaType(BooleanArrayType this):		"boolean[]";
+javaType(UCharType this):			"chat[]";
+javaType(LongType this):				"long";
+javaType(ULongType this):			"long";
+javaType(LongArrayType this):		"long[]";
+javaType(ULongArrayType this):		"long[]";
+javaType(DevIntType this):			"int";
+javaType(EncodedType this):			"DevEncoded";

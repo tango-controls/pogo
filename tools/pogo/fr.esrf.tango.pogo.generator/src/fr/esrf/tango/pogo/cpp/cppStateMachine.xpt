@@ -1,0 +1,94 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.toLowerCase().contains("source")»
+
+
+«FILE stateMachineFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID stateMachineFileName()»
+static const char *RcsId = "«cvsEscaped("Id:")»";
+«EXPAND Common::fileHeader(stateMachineFileName(),
+	"C++ source for the «name» and its alowed\n" +
+	"methods for commands and attributes")»
+
+
+#include <«deviceHeaderFileName()»>
+#include <«dserverClassHeaderFileName()»>
+
+«ENDPROTECT»
+
+
+/*
+ * «name» states description:
+ *«FOREACH states AS state»
+ * «state.name» :	«state.description» «ENDFOREACH»
+ */
+
+namespace «name»_ns
+{
+
+//=================================================
+//		Attributes Allowed Methods
+//=================================================
+«FOREACH attributes AS att»
+«EXPAND Common::methodHeader("is_" + att.name + "State_allowed",
+		"Execution allowed for " + att.name + " attribute.")»
+bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
+{
+«IF att.excludedStates.size>0-»
+«EXPAND checkExcludedStates(att.excludedStates)-»
+«ELSE-»
+	//	Not any excluded states for «att.name» attribute.
+«ENDIF»
+«EXPAND Common::ProtectedArea(att.stateAllowedMethod())»
+«IF att.excludedStates.size>0-»
+«EXPAND closeCheckExcludedStates(att.excludedStates)-»
+«ENDIF-»
+	return true;
+}
+«ENDFOREACH»
+
+
+//=================================================
+//		Commands Allowed Methods
+//=================================================
+«FOREACH commands AS cmd»«IF cmd.abstract!="true"»
+«EXPAND Common::methodHeader("is_" + cmd.name + "State_allowed",
+		"Execution allowed for " + cmd.name + " command.")»
+bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
+{
+«IF cmd.excludedStates.size>0-»
+«EXPAND checkExcludedStates(cmd.excludedStates)-»
+«ELSE-»
+	//	Not any excluded states for «cmd.name» command.
+«ENDIF»
+«EXPAND Common::ProtectedArea(cmd.stateAllowedMethod())»
+«IF cmd.excludedStates.size>0-»
+«EXPAND closeCheckExcludedStates(cmd.excludedStates)-»
+«ENDIF-»
+	return true;
+}
+«ENDIF»«ENDFOREACH»
+}	// namespace «name»_ns
+«ENDFILE»
+
+«ENDIF»
+«ENDDEFINE»
+
+
+//
+//	Define the code for the state machnine
+//
+«DEFINE checkExcludedStates(List[String] states) FOR PogoDeviceClass-»
+	if (	//	Compare device state with not allowed states. «FOREACH states AS state SEPARATOR '	|| '»
+		get_state() == Tango::«state»«ENDFOREACH»)
+	{
+«ENDDEFINE»
+
+«DEFINE closeCheckExcludedStates(List[String] states) FOR PogoDeviceClass-» 
+		return false;
+	}
+«ENDDEFINE»

@@ -1,0 +1,102 @@
+import pogoDsl;
+
+
+//	File names
+classPageFileName(PogoDeviceClass this):
+	"doc_html/index.html";
+
+
+htmlHeader():
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n" + 
+"<HTML>\n" + 
+"<HEAD>\n" + 
+"<Title> Tango Device Server User's Guide </Title>\n" + 
+"</HEAD>\n" + 
+"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
+"\n" + 
+"<P><!-------TITLE------></P>\n" + 
+"<TABLE BORDER=\"0\" WIDTH=\"100%\">\n" + 
+"    <TR>\n" + 
+"        <TD ALIGN=\"left\">\n" + 
+"                       <A HREF=\"http://www.esrf.fr/\" TARGET=new>\n" + 
+"                       <IMG SRC=\"http://www.esrf.fr/gifs/logo/80.gif\" BORDER=0 Height=\"60\"></A>\n" + 
+"               </Td>\n" + 
+"        <TD ALIGN=\"center\">\n" + 
+"                       <A HREF=\"http://www.elettra.trieste.it/\" TARGET=new>\n" + 
+"                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/elettra_logo.gif\" BORDER=0 Height=\"60\"></A>\n" + 
+"\n" + 
+"               </Td>\n" + 
+"        <TD ALIGN=\"center\">\n" + 
+"                       <A HREF=\"http://www.synchrotron-soleil.fr/\" TARGET=new>\n" + 
+"                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/soleil_logo.gif\" BORDER=0 Height=\"60\"></A>\n" + 
+"               </Td>\n" + 
+"        <TD ALIGN=\"right\">\n" + 
+"                       <A HREF=\"http://www.cells.es/\" TARGET=new>\n" + 
+"                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/alba.jpg\" BORDER=0 Height=\"54\"></A>\n" + 
+"               </Td>\n" + 
+"        <TD ALIGN=\"right\">\n" + 
+"                       <A HREF=\"http://www.desy.de/html/home/index_eng.html\" TARGET=new>\n" + 
+"                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/desy.gif\" BORDER=0 Height=\"60\"></A>\n" + 
+"               </Td>\n" + 
+"        <Td>\n" + 
+"                       <H2><FONT COLOR=\"#7F00FF\">\n" + 
+"                       <Center><A HREF=\"http://www.tango-controls.org/\" TARGET=\"_top\">\n" + 
+"                                        TANGO </a> <Br> Device Server\n" + 
+"                       </Center></FONT>\n" + 
+"               </Td>\n" + 
+"    </TR>\n" + 
+"</TABLE>\n" + 
+"<Br>\n" + 
+"\n";
+
+
+htmlFooter():
+"<!--- html Footer --->\n"+
+"<Center>\n"+
+"<Font size=-1>\n"+
+"<br>\n"+
+"<br>\n"+
+"<TABLE BORDER=\"1\" WIDTH=\"100%\">\n"+
+"    <Tr>\n"+
+"		<!--- Hosted by Sourceforge --->\n"+
+"        <Td Align=\"Center\">\n"+
+"			<Font size=-1>\n"+
+"			<b>TANGO</b> is an open source project hosted by :<br>\n"+
+"			<A href=\"http://sourceforge.net\" Target=\"new\">\n"+
+"					<IMG title=\"Sourceforge logo\"\n"+
+"						alt=\"Sourceforge logo small\"\n"+
+"						src=\"http://www.esrf.fr/computing/cs/tango/sourceforge.gif\"\n"+
+"						border=0> </a>\n"+
+"			</Font>\n"+
+"		</Td>\n"+
+"		<!--- 2 Sourceforge Repositories --->\n"+
+"		<Td Align=\"Center\">\n"+
+"			<Font size=-1>\n"+
+"			Core and Tools :\n"+
+"			<a href=\"http://tango-cs.cvs.sourceforge.net/tango-cs/\" Target=new>\n"+
+"			CVS repository</a> on\n"+
+"			<a href=\"https://sourceforge.net/projects/tango-cs\" Target=new>\n"+
+"			tango-cs project</a>\n"+
+"			<br>\n"+
+"			Device Servers :\n"+
+"			<a href=\"http://tango-ds.cvs.sourceforge.net/tango-ds/\" Target=new>\n"+
+"					CVS repository</a> on\n"+
+"			<a href=\"https://sourceforge.net/projects/tango-ds\" Target=new>\n"+
+"					tango-ds project</a>\n"+
+"			</Font>\n"+
+"		</Td>\n"+
+"    </Tr>\n"+
+"</Table>\n"+
+"</Font>\n"+
+"</Center>\n"+
+"</body>\n"+
+"</html>\n";
+
+
+separator1(PogoDeviceClass this):	"<!--- -------------------------- --->     ";
+
+startComment():	"<!--- ";
+endComment():	" --->";
+
+comments(String this, String tag):	//	Comment a String with more than one line
+	replaceAll("\n", "\n"+tag);

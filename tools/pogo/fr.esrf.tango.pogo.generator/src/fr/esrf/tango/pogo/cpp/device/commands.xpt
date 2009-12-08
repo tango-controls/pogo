@@ -1,0 +1,66 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//	=========================================================
+//	Define commands mnanagement
+//	=========================================================
+«DEFINE cppFile FOR PogoDeviceClass»
+«separator1()»
+//	Command execution methods
+«separator1()»
+«FOREACH commands AS cmd»«IF cmd.abstract!="true"»
+«EXPAND executeCommandHeader(cmd)»
+«EXPAND executeCommandMethod(cmd)»
+«ENDIF»«ENDFOREACH»
+«ENDDEFINE»
+
+//	=========================================================
+//	Define The header for a execute command method
+//	=========================================================
+«DEFINE executeCommandHeader(Command cmd) FOR PogoDeviceClass-»
+«separator2()»
+/**
+ *	Execute the «cmd.name» command:
+ *	«cmd.description.comments(" *	")»
+ *
+ *	@param argin «cmd.argin.description»
+ *	@returns «cmd.argout.description»
+ */
+«separator2()»«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The header for a execute command method for prototype
+//	=========================================================
+«DEFINE executeCommandHeaderProto(Command cmd) FOR PogoDeviceClass-»
+	/**
+	 *	Execute the «cmd.name» command:
+	 *	«cmd.description.comments(" *	")»
+	 *
+	 *	@param argin «cmd.argin.description»
+	 *	@returns «cmd.argout.description»
+	 */«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute command
+//	=========================================================
+«DEFINE executeCommandMethod(Command cmd) FOR PogoDeviceClass-»
+«EXPAND executeCommandSignature(cmd)»
+{
+	INFO_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		cmd.execMethod,
+		"//	Add your own code")»
+}«ENDDEFINE»
+
+
+«DEFINE executeCommandSignature(Command cmd) FOR PogoDeviceClass-»
+«cmd.argout.declareArgumentWithPointer()»«name»::«cmd.execMethod»(«cmd.declareCmdArgin()»)«ENDDEFINE»
+
+
+«DEFINE executeCommandSignatureProto(Command cmd) FOR PogoDeviceClass-»
+	«cmd.argout.declareArgumentWithPointer()»«name»::«cmd.execMethod»(«cmd.declareCmdArgin()»)«ENDDEFINE»
+
