@@ -744,15 +744,17 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTypePropTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cDescriptionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDescriptionSTRINGTerminalRuleCall_2_0 = (RuleCall)cDescriptionAssignment_2.eContents().get(0);
-		private final Keyword cDefaultPropValueKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cDefaultPropValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cDefaultPropValueSTRINGTerminalRuleCall_4_0 = (RuleCall)cDefaultPropValueAssignment_4.eContents().get(0);
+		private final Assignment cStatusAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatusInheritanceStatusParserRuleCall_2_0 = (RuleCall)cStatusAssignment_2.eContents().get(0);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionSTRINGTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final Keyword cDefaultPropValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cDefaultPropValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cDefaultPropValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cDefaultPropValueAssignment_5.eContents().get(0);
 		
 		//Property:
-		//  name=ID type=PropType description=STRING "defaultPropValue:" DefaultPropValue+=
-		//  STRING*; 
+		//  name=ID type=PropType status=InheritanceStatus description=STRING
+		//  "defaultPropValue:" DefaultPropValue+=STRING*; 
 		//
 		////
 		////	Property Definition
@@ -760,6 +762,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//
 		//	           
 		//	           
+		//	         
 		//	    
 		//	
 		//		
@@ -767,8 +770,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		////	types could be one of the types
 		public ParserRule getRule() { return rule; }
 
-		//name=ID type=PropType description=STRING "defaultPropValue:" DefaultPropValue+=
-		//STRING*
+		//name=ID type=PropType status=InheritanceStatus description=STRING
+		//"defaultPropValue:" DefaultPropValue+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -783,20 +786,26 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//PropType
 		public RuleCall getTypePropTypeParserRuleCall_1_0() { return cTypePropTypeParserRuleCall_1_0; }
 
+		//status=InheritanceStatus
+		public Assignment getStatusAssignment_2() { return cStatusAssignment_2; }
+
+		//InheritanceStatus
+		public RuleCall getStatusInheritanceStatusParserRuleCall_2_0() { return cStatusInheritanceStatusParserRuleCall_2_0; }
+
 		//description=STRING
-		public Assignment getDescriptionAssignment_2() { return cDescriptionAssignment_2; }
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
 
 		//STRING
-		public RuleCall getDescriptionSTRINGTerminalRuleCall_2_0() { return cDescriptionSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getDescriptionSTRINGTerminalRuleCall_3_0() { return cDescriptionSTRINGTerminalRuleCall_3_0; }
 
 		//"defaultPropValue:"
-		public Keyword getDefaultPropValueKeyword_3() { return cDefaultPropValueKeyword_3; }
+		public Keyword getDefaultPropValueKeyword_4() { return cDefaultPropValueKeyword_4; }
 
 		//DefaultPropValue+=STRING*
-		public Assignment getDefaultPropValueAssignment_4() { return cDefaultPropValueAssignment_4; }
+		public Assignment getDefaultPropValueAssignment_5() { return cDefaultPropValueAssignment_5; }
 
 		//STRING
-		public RuleCall getDefaultPropValueSTRINGTerminalRuleCall_4_0() { return cDefaultPropValueSTRINGTerminalRuleCall_4_0; }
+		public RuleCall getDefaultPropValueSTRINGTerminalRuleCall_5_0() { return cDefaultPropValueSTRINGTerminalRuleCall_5_0; }
 	}
 
 	public class PropTypeElements implements IParserRuleAccess {
@@ -879,30 +888,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cStringVectorTypeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//VectorType:
-		//  ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType; 
-		//
-		//	
-		//	  
-		//	         
-		//	  
-		//
-		//
-		////
-		////	Command Definition
-		////
+		//  ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType;
 		public ParserRule getRule() { return rule; }
 
-		//ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType 
-		//
-		//	
-		//	  
-		//	         
-		//	  
-		//
-		//
-		////
-		////	Command Definition
-		////
+		//ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ShortVectorType
@@ -921,6 +910,81 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		public RuleCall getStringVectorTypeParserRuleCall_4() { return cStringVectorTypeParserRuleCall_4; }
 	}
 
+	public class InheritanceStatusElements implements IParserRuleAccess {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InheritanceStatus");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAbstractAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAbstractBooleanParserRuleCall_0_0 = (RuleCall)cAbstractAssignment_0.eContents().get(0);
+		private final Assignment cInheritedAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cInheritedBooleanParserRuleCall_1_0 = (RuleCall)cInheritedAssignment_1.eContents().get(0);
+		private final Assignment cConcreteAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cConcreteBooleanParserRuleCall_2_0 = (RuleCall)cConcreteAssignment_2.eContents().get(0);
+		private final Assignment cConcreteHereAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cConcreteHereBooleanParserRuleCall_3_0 = (RuleCall)cConcreteHereAssignment_3.eContents().get(0);
+		private final Assignment cHasChangedAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cHasChangedBooleanParserRuleCall_4_0 = (RuleCall)cHasChangedAssignment_4.eContents().get(0);
+		
+		//InheritanceStatus:
+		//  abstract=Boolean inherited=Boolean concrete=Boolean concreteHere=Boolean hasChanged=
+		//  Boolean; 
+		//
+		//
+		//
+		//	        	 //	is abstract or inherited from abstract
+		//	        	 //	is hinerited
+		//	         	 //	is concrete or overloaded
+		//	     	 //	is concrete or overloaded in this class
+		//	       	 //	the type has changed
+		//	
+		//
+		////
+		////	Command Definition
+		////
+		public ParserRule getRule() { return rule; }
+
+		//abstract=Boolean inherited=Boolean concrete=Boolean concreteHere=Boolean hasChanged=
+		//Boolean 
+		//	        	 //	is abstract or inherited from abstract
+		//	        	 //	is hinerited
+		//	         	 //	is concrete or overloaded
+		//	     	 //	is concrete or overloaded in this class
+		public Group getGroup() { return cGroup; }
+
+		//abstract=Boolean 
+		//	        	 //	is abstract or inherited from abstract
+		public Assignment getAbstractAssignment_0() { return cAbstractAssignment_0; }
+
+		//Boolean   	 //	is abstract or inherited from abstract
+		public RuleCall getAbstractBooleanParserRuleCall_0_0() { return cAbstractBooleanParserRuleCall_0_0; }
+
+		//inherited=Boolean 	 //	is abstract or inherited from abstract
+		//	        	 //	is hinerited
+		public Assignment getInheritedAssignment_1() { return cInheritedAssignment_1; }
+
+		//Boolean   	 //	is hinerited
+		public RuleCall getInheritedBooleanParserRuleCall_1_0() { return cInheritedBooleanParserRuleCall_1_0; }
+
+		//concrete=Boolean 	 //	is hinerited
+		//	         	 //	is concrete or overloaded
+		public Assignment getConcreteAssignment_2() { return cConcreteAssignment_2; }
+
+		//Boolean   	 //	is concrete or overloaded
+		public RuleCall getConcreteBooleanParserRuleCall_2_0() { return cConcreteBooleanParserRuleCall_2_0; }
+
+		//concreteHere=Boolean 	 //	is concrete or overloaded
+		//	     	 //	is concrete or overloaded in this class
+		public Assignment getConcreteHereAssignment_3() { return cConcreteHereAssignment_3; }
+
+		//Boolean   	 //	is concrete or overloaded in this class
+		public RuleCall getConcreteHereBooleanParserRuleCall_3_0() { return cConcreteHereBooleanParserRuleCall_3_0; }
+
+		//hasChanged=Boolean 	 //	is concrete or overloaded in this class
+		public Assignment getHasChangedAssignment_4() { return cHasChangedAssignment_4; }
+
+		//Boolean
+		public RuleCall getHasChangedBooleanParserRuleCall_4_0() { return cHasChangedBooleanParserRuleCall_4_0; }
+	}
+
 	public class CommandElements implements IParserRuleAccess {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Command");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -932,8 +996,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cArgoutArgumentParserRuleCall_2_0 = (RuleCall)cArgoutAssignment_2.eContents().get(0);
 		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cDescriptionSTRINGTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
-		private final Assignment cAbstractAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAbstractBooleanParserRuleCall_4_0 = (RuleCall)cAbstractAssignment_4.eContents().get(0);
+		private final Assignment cStatusAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cStatusInheritanceStatusParserRuleCall_4_0 = (RuleCall)cStatusAssignment_4.eContents().get(0);
 		private final Assignment cExecMethodAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cExecMethodSTRINGTerminalRuleCall_5_0 = (RuleCall)cExecMethodAssignment_5.eContents().get(0);
 		private final Assignment cDisplayLevelAssignment_6 = (Assignment)cGroup.eContents().get(6);
@@ -945,18 +1009,18 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cExcludedStatesSTRINGTerminalRuleCall_9_0 = (RuleCall)cExcludedStatesAssignment_9.eContents().get(0);
 		
 		//Command:
-		//  name=ID argin=Argument argout=Argument description=STRING abstract=Boolean execMethod
-		//  =STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
-		//  excludedStates+=STRING*; 
-		//
+		//  name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus
+		//  execMethod=STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
+		//  excludedStates+=STRING*; 	 //	the type has changed
+		//	
 		//
 		////
 		////	Command Definition
 		////
 		public ParserRule getRule() { return rule; }
 
-		//name=ID argin=Argument argout=Argument description=STRING abstract=Boolean execMethod
-		//=STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
+		//name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus
+		//execMethod=STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
 		//excludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
@@ -984,11 +1048,11 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_3_0() { return cDescriptionSTRINGTerminalRuleCall_3_0; }
 
-		//abstract=Boolean
-		public Assignment getAbstractAssignment_4() { return cAbstractAssignment_4; }
+		//status=InheritanceStatus
+		public Assignment getStatusAssignment_4() { return cStatusAssignment_4; }
 
-		//Boolean
-		public RuleCall getAbstractBooleanParserRuleCall_4_0() { return cAbstractBooleanParserRuleCall_4_0; }
+		//InheritanceStatus
+		public RuleCall getStatusInheritanceStatusParserRuleCall_4_0() { return cStatusInheritanceStatusParserRuleCall_4_0; }
 
 		//execMethod=STRING
 		public Assignment getExecMethodAssignment_5() { return cExecMethodAssignment_5; }
@@ -1062,8 +1126,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cAttTypeAttrTypeParserRuleCall_1_0 = (RuleCall)cAttTypeAssignment_1.eContents().get(0);
 		private final Assignment cDataTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cDataTypeTypeParserRuleCall_2_0 = (RuleCall)cDataTypeAssignment_2.eContents().get(0);
-		private final Assignment cRwTtypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRwTtypeRW_TypeParserRuleCall_3_0 = (RuleCall)cRwTtypeAssignment_3.eContents().get(0);
+		private final Assignment cRwTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRwTypeRW_TypeParserRuleCall_3_0 = (RuleCall)cRwTypeAssignment_3.eContents().get(0);
 		private final Assignment cDisplayLevelAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cDisplayLevelDisplayLevelParserRuleCall_4_0 = (RuleCall)cDisplayLevelAssignment_4.eContents().get(0);
 		private final Assignment cPolledPeriodAssignment_5 = (Assignment)cGroup.eContents().get(5);
@@ -1080,27 +1144,29 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cChangeEventFireEventsParserRuleCall_10_0 = (RuleCall)cChangeEventAssignment_10.eContents().get(0);
 		private final Assignment cArchiveEventAssignment_11 = (Assignment)cGroup.eContents().get(11);
 		private final RuleCall cArchiveEventFireEventsParserRuleCall_11_0 = (RuleCall)cArchiveEventAssignment_11.eContents().get(0);
-		private final Assignment cPropertiesAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cPropertiesAttrPropertiesParserRuleCall_12_0 = (RuleCall)cPropertiesAssignment_12.eContents().get(0);
-		private final Keyword cExcludedStatesKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Assignment cExcludedStatesAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cExcludedStatesSTRINGTerminalRuleCall_14_0 = (RuleCall)cExcludedStatesAssignment_14.eContents().get(0);
+		private final Assignment cStatusAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cStatusInheritanceStatusParserRuleCall_12_0 = (RuleCall)cStatusAssignment_12.eContents().get(0);
+		private final Assignment cPropertiesAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cPropertiesAttrPropertiesParserRuleCall_13_0 = (RuleCall)cPropertiesAssignment_13.eContents().get(0);
+		private final Keyword cExcludedStatesKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Assignment cExcludedStatesAssignment_15 = (Assignment)cGroup.eContents().get(15);
+		private final RuleCall cExcludedStatesSTRINGTerminalRuleCall_15_0 = (RuleCall)cExcludedStatesAssignment_15.eContents().get(0);
 		
 		//Attribute:
-		//  name=ID attType=AttrType dataType=Type rwTtype=RW_Type displayLevel=DisplayLevel
+		//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-		//  Boolean changeEvent=FireEvents archiveEvent=FireEvents properties=AttrProperties
-		//  "excludedStates:" excludedStates+=STRING*;  
+		//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
+		//  properties=AttrProperties "excludedStates:" excludedStates+=STRING*;  
 		//
 		////
 		////	Attribute Definition
 		////
 		public ParserRule getRule() { return rule; }
 
-		//name=ID attType=AttrType dataType=Type rwTtype=RW_Type displayLevel=DisplayLevel
+		//name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-		//Boolean changeEvent=FireEvents archiveEvent=FireEvents properties=AttrProperties
-		//"excludedStates:" excludedStates+=STRING*
+		//Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
+		//properties=AttrProperties "excludedStates:" excludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1121,11 +1187,11 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//Type
 		public RuleCall getDataTypeTypeParserRuleCall_2_0() { return cDataTypeTypeParserRuleCall_2_0; }
 
-		//rwTtype=RW_Type
-		public Assignment getRwTtypeAssignment_3() { return cRwTtypeAssignment_3; }
+		//rwType=RW_Type
+		public Assignment getRwTypeAssignment_3() { return cRwTypeAssignment_3; }
 
 		//RW_Type
-		public RuleCall getRwTtypeRW_TypeParserRuleCall_3_0() { return cRwTtypeRW_TypeParserRuleCall_3_0; }
+		public RuleCall getRwTypeRW_TypeParserRuleCall_3_0() { return cRwTypeRW_TypeParserRuleCall_3_0; }
 
 		//displayLevel=DisplayLevel
 		public Assignment getDisplayLevelAssignment_4() { return cDisplayLevelAssignment_4; }
@@ -1175,20 +1241,26 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//FireEvents
 		public RuleCall getArchiveEventFireEventsParserRuleCall_11_0() { return cArchiveEventFireEventsParserRuleCall_11_0; }
 
+		//status=InheritanceStatus
+		public Assignment getStatusAssignment_12() { return cStatusAssignment_12; }
+
+		//InheritanceStatus
+		public RuleCall getStatusInheritanceStatusParserRuleCall_12_0() { return cStatusInheritanceStatusParserRuleCall_12_0; }
+
 		//properties=AttrProperties
-		public Assignment getPropertiesAssignment_12() { return cPropertiesAssignment_12; }
+		public Assignment getPropertiesAssignment_13() { return cPropertiesAssignment_13; }
 
 		//AttrProperties
-		public RuleCall getPropertiesAttrPropertiesParserRuleCall_12_0() { return cPropertiesAttrPropertiesParserRuleCall_12_0; }
+		public RuleCall getPropertiesAttrPropertiesParserRuleCall_13_0() { return cPropertiesAttrPropertiesParserRuleCall_13_0; }
 
 		//"excludedStates:"
-		public Keyword getExcludedStatesKeyword_13() { return cExcludedStatesKeyword_13; }
+		public Keyword getExcludedStatesKeyword_14() { return cExcludedStatesKeyword_14; }
 
 		//excludedStates+=STRING*
-		public Assignment getExcludedStatesAssignment_14() { return cExcludedStatesAssignment_14; }
+		public Assignment getExcludedStatesAssignment_15() { return cExcludedStatesAssignment_15; }
 
 		//STRING
-		public RuleCall getExcludedStatesSTRINGTerminalRuleCall_14_0() { return cExcludedStatesSTRINGTerminalRuleCall_14_0; }
+		public RuleCall getExcludedStatesSTRINGTerminalRuleCall_15_0() { return cExcludedStatesSTRINGTerminalRuleCall_15_0; }
 	}
 
 	public class FireEventsElements implements IParserRuleAccess {
@@ -2264,6 +2336,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	private PropTypeElements pPropType;
 	private SimpleTypeElements pSimpleType;
 	private VectorTypeElements pVectorType;
+	private InheritanceStatusElements pInheritanceStatus;
 	private CommandElements pCommand;
 	private ArgumentElements pArgument;
 	private AttributeElements pAttribute;
@@ -2575,8 +2648,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	}
 
 	//Property:
-	//  name=ID type=PropType description=STRING "defaultPropValue:" DefaultPropValue+=
-	//  STRING*; 
+	//  name=ID type=PropType status=InheritanceStatus description=STRING
+	//  "defaultPropValue:" DefaultPropValue+=STRING*; 
 	//
 	////
 	////	Property Definition
@@ -2584,6 +2657,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//
 	//	           
 	//	           
+	//	         
 	//	    
 	//	
 	//		
@@ -2621,17 +2695,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	}
 
 	//VectorType:
-	//  ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType; 
-	//
-	//	
-	//	  
-	//	         
-	//	  
-	//
-	//
-	////
-	////	Command Definition
-	////
+	//  ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType;
 	public VectorTypeElements getVectorTypeAccess() {
 		return (pVectorType != null) ? pVectorType : (pVectorType = new VectorTypeElements());
 	}
@@ -2640,11 +2704,35 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		return getVectorTypeAccess().getRule();
 	}
 
-	//Command:
-	//  name=ID argin=Argument argout=Argument description=STRING abstract=Boolean execMethod
-	//  =STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
-	//  excludedStates+=STRING*; 
+	//InheritanceStatus:
+	//  abstract=Boolean inherited=Boolean concrete=Boolean concreteHere=Boolean hasChanged=
+	//  Boolean; 
 	//
+	//
+	//
+	//	        	 //	is abstract or inherited from abstract
+	//	        	 //	is hinerited
+	//	         	 //	is concrete or overloaded
+	//	     	 //	is concrete or overloaded in this class
+	//	       	 //	the type has changed
+	//	
+	//
+	////
+	////	Command Definition
+	////
+	public InheritanceStatusElements getInheritanceStatusAccess() {
+		return (pInheritanceStatus != null) ? pInheritanceStatus : (pInheritanceStatus = new InheritanceStatusElements());
+	}
+	
+	public ParserRule getInheritanceStatusRule() {
+		return getInheritanceStatusAccess().getRule();
+	}
+
+	//Command:
+	//  name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus
+	//  execMethod=STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
+	//  excludedStates+=STRING*; 	 //	the type has changed
+	//	
 	//
 	////
 	////	Command Definition
@@ -2675,10 +2763,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	}
 
 	//Attribute:
-	//  name=ID attType=AttrType dataType=Type rwTtype=RW_Type displayLevel=DisplayLevel
+	//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 	//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-	//  Boolean changeEvent=FireEvents archiveEvent=FireEvents properties=AttrProperties
-	//  "excludedStates:" excludedStates+=STRING*;  
+	//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
+	//  properties=AttrProperties "excludedStates:" excludedStates+=STRING*;  
 	//
 	////
 	////	Attribute Definition

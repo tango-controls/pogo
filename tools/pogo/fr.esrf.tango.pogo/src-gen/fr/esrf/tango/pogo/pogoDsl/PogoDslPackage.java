@@ -537,13 +537,22 @@ public interface PogoDslPackage extends EPackage
   int PROPERTY__TYPE = 1;
 
   /**
+   * The feature id for the '<em><b>Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__STATUS = 2;
+
+  /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__DESCRIPTION = 2;
+  int PROPERTY__DESCRIPTION = 3;
 
   /**
    * The feature id for the '<em><b>Default Prop Value</b></em>' attribute list.
@@ -552,7 +561,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__DEFAULT_PROP_VALUE = 3;
+  int PROPERTY__DEFAULT_PROP_VALUE = 4;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -561,7 +570,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 4;
+  int PROPERTY_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PropTypeImpl <em>Prop Type</em>}' class.
@@ -621,6 +630,70 @@ public interface PogoDslPackage extends EPackage
   int VECTOR_TYPE_FEATURE_COUNT = PROP_TYPE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceStatusImpl <em>Inheritance Status</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.InheritanceStatusImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getInheritanceStatus()
+   * @generated
+   */
+  int INHERITANCE_STATUS = 12;
+
+  /**
+   * The feature id for the '<em><b>Abstract</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE_STATUS__ABSTRACT = 0;
+
+  /**
+   * The feature id for the '<em><b>Inherited</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE_STATUS__INHERITED = 1;
+
+  /**
+   * The feature id for the '<em><b>Concrete</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE_STATUS__CONCRETE = 2;
+
+  /**
+   * The feature id for the '<em><b>Concrete Here</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE_STATUS__CONCRETE_HERE = 3;
+
+  /**
+   * The feature id for the '<em><b>Has Changed</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE_STATUS__HAS_CHANGED = 4;
+
+  /**
+   * The number of structural features of the '<em>Inheritance Status</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE_STATUS_FEATURE_COUNT = 5;
+
+  /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl <em>Command</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -628,7 +701,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 12;
+  int COMMAND = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -667,13 +740,13 @@ public interface PogoDslPackage extends EPackage
   int COMMAND__DESCRIPTION = 3;
 
   /**
-   * The feature id for the '<em><b>Abstract</b></em>' attribute.
+   * The feature id for the '<em><b>Status</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMAND__ABSTRACT = 4;
+  int COMMAND__STATUS = 4;
 
   /**
    * The feature id for the '<em><b>Exec Method</b></em>' attribute.
@@ -728,7 +801,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getArgument()
    * @generated
    */
-  int ARGUMENT = 13;
+  int ARGUMENT = 14;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -765,7 +838,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 14;
+  int ATTRIBUTE = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -795,13 +868,13 @@ public interface PogoDslPackage extends EPackage
   int ATTRIBUTE__DATA_TYPE = 2;
 
   /**
-   * The feature id for the '<em><b>Rw Ttype</b></em>' attribute.
+   * The feature id for the '<em><b>Rw Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__RW_TTYPE = 3;
+  int ATTRIBUTE__RW_TYPE = 3;
 
   /**
    * The feature id for the '<em><b>Display Level</b></em>' attribute.
@@ -876,13 +949,22 @@ public interface PogoDslPackage extends EPackage
   int ATTRIBUTE__ARCHIVE_EVENT = 11;
 
   /**
+   * The feature id for the '<em><b>Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__STATUS = 12;
+
+  /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__PROPERTIES = 12;
+  int ATTRIBUTE__PROPERTIES = 13;
 
   /**
    * The feature id for the '<em><b>Excluded States</b></em>' attribute list.
@@ -891,7 +973,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__EXCLUDED_STATES = 13;
+  int ATTRIBUTE__EXCLUDED_STATES = 14;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -900,7 +982,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = 14;
+  int ATTRIBUTE_FEATURE_COUNT = 15;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FireEventsImpl <em>Fire Events</em>}' class.
@@ -910,7 +992,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFireEvents()
    * @generated
    */
-  int FIRE_EVENTS = 15;
+  int FIRE_EVENTS = 16;
 
   /**
    * The feature id for the '<em><b>Fire</b></em>' attribute.
@@ -947,7 +1029,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getAttrProperties()
    * @generated
    */
-  int ATTR_PROPERTIES = 16;
+  int ATTR_PROPERTIES = 17;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1092,7 +1174,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getType()
    * @generated
    */
-  int TYPE = 17;
+  int TYPE = 18;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -1111,7 +1193,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getVoidType()
    * @generated
    */
-  int VOID_TYPE = 18;
+  int VOID_TYPE = 19;
 
   /**
    * The number of structural features of the '<em>Void Type</em>' class.
@@ -1130,7 +1212,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 19;
+  int BOOLEAN_TYPE = 20;
 
   /**
    * The number of structural features of the '<em>Boolean Type</em>' class.
@@ -1149,7 +1231,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortType()
    * @generated
    */
-  int SHORT_TYPE = 20;
+  int SHORT_TYPE = 21;
 
   /**
    * The number of structural features of the '<em>Short Type</em>' class.
@@ -1168,7 +1250,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUShortType()
    * @generated
    */
-  int USHORT_TYPE = 21;
+  int USHORT_TYPE = 22;
 
   /**
    * The number of structural features of the '<em>UShort Type</em>' class.
@@ -1187,7 +1269,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntType()
    * @generated
    */
-  int INT_TYPE = 22;
+  int INT_TYPE = 23;
 
   /**
    * The number of structural features of the '<em>Int Type</em>' class.
@@ -1206,7 +1288,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUIntType()
    * @generated
    */
-  int UINT_TYPE = 23;
+  int UINT_TYPE = 24;
 
   /**
    * The number of structural features of the '<em>UInt Type</em>' class.
@@ -1225,7 +1307,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatType()
    * @generated
    */
-  int FLOAT_TYPE = 24;
+  int FLOAT_TYPE = 25;
 
   /**
    * The number of structural features of the '<em>Float Type</em>' class.
@@ -1244,7 +1326,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 25;
+  int DOUBLE_TYPE = 26;
 
   /**
    * The number of structural features of the '<em>Double Type</em>' class.
@@ -1263,7 +1345,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 26;
+  int STRING_TYPE = 27;
 
   /**
    * The number of structural features of the '<em>String Type</em>' class.
@@ -1282,7 +1364,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getCharArrayType()
    * @generated
    */
-  int CHAR_ARRAY_TYPE = 27;
+  int CHAR_ARRAY_TYPE = 28;
 
   /**
    * The number of structural features of the '<em>Char Array Type</em>' class.
@@ -1301,7 +1383,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortArrayType()
    * @generated
    */
-  int SHORT_ARRAY_TYPE = 28;
+  int SHORT_ARRAY_TYPE = 29;
 
   /**
    * The number of structural features of the '<em>Short Array Type</em>' class.
@@ -1320,7 +1402,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUShortArrayType()
    * @generated
    */
-  int USHORT_ARRAY_TYPE = 29;
+  int USHORT_ARRAY_TYPE = 30;
 
   /**
    * The number of structural features of the '<em>UShort Array Type</em>' class.
@@ -1339,7 +1421,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntArrayType()
    * @generated
    */
-  int INT_ARRAY_TYPE = 30;
+  int INT_ARRAY_TYPE = 31;
 
   /**
    * The number of structural features of the '<em>Int Array Type</em>' class.
@@ -1358,7 +1440,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUIntArrayType()
    * @generated
    */
-  int UINT_ARRAY_TYPE = 31;
+  int UINT_ARRAY_TYPE = 32;
 
   /**
    * The number of structural features of the '<em>UInt Array Type</em>' class.
@@ -1377,7 +1459,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatArrayType()
    * @generated
    */
-  int FLOAT_ARRAY_TYPE = 32;
+  int FLOAT_ARRAY_TYPE = 33;
 
   /**
    * The number of structural features of the '<em>Float Array Type</em>' class.
@@ -1396,7 +1478,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleArrayType()
    * @generated
    */
-  int DOUBLE_ARRAY_TYPE = 33;
+  int DOUBLE_ARRAY_TYPE = 34;
 
   /**
    * The number of structural features of the '<em>Double Array Type</em>' class.
@@ -1415,7 +1497,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringArrayType()
    * @generated
    */
-  int STRING_ARRAY_TYPE = 34;
+  int STRING_ARRAY_TYPE = 35;
 
   /**
    * The number of structural features of the '<em>String Array Type</em>' class.
@@ -1434,7 +1516,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongStringArrayType()
    * @generated
    */
-  int LONG_STRING_ARRAY_TYPE = 35;
+  int LONG_STRING_ARRAY_TYPE = 36;
 
   /**
    * The number of structural features of the '<em>Long String Array Type</em>' class.
@@ -1453,7 +1535,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleStringArrayType()
    * @generated
    */
-  int DOUBLE_STRING_ARRAY_TYPE = 36;
+  int DOUBLE_STRING_ARRAY_TYPE = 37;
 
   /**
    * The number of structural features of the '<em>Double String Array Type</em>' class.
@@ -1472,7 +1554,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStateType()
    * @generated
    */
-  int STATE_TYPE = 37;
+  int STATE_TYPE = 38;
 
   /**
    * The number of structural features of the '<em>State Type</em>' class.
@@ -1491,7 +1573,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getConstStringType()
    * @generated
    */
-  int CONST_STRING_TYPE = 38;
+  int CONST_STRING_TYPE = 39;
 
   /**
    * The number of structural features of the '<em>Const String Type</em>' class.
@@ -1510,7 +1592,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getBooleanArrayType()
    * @generated
    */
-  int BOOLEAN_ARRAY_TYPE = 39;
+  int BOOLEAN_ARRAY_TYPE = 40;
 
   /**
    * The number of structural features of the '<em>Boolean Array Type</em>' class.
@@ -1529,7 +1611,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUCharType()
    * @generated
    */
-  int UCHAR_TYPE = 40;
+  int UCHAR_TYPE = 41;
 
   /**
    * The number of structural features of the '<em>UChar Type</em>' class.
@@ -1548,7 +1630,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongType()
    * @generated
    */
-  int LONG_TYPE = 41;
+  int LONG_TYPE = 42;
 
   /**
    * The number of structural features of the '<em>Long Type</em>' class.
@@ -1567,7 +1649,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongType()
    * @generated
    */
-  int ULONG_TYPE = 42;
+  int ULONG_TYPE = 43;
 
   /**
    * The number of structural features of the '<em>ULong Type</em>' class.
@@ -1586,7 +1668,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongArrayType()
    * @generated
    */
-  int LONG_ARRAY_TYPE = 43;
+  int LONG_ARRAY_TYPE = 44;
 
   /**
    * The number of structural features of the '<em>Long Array Type</em>' class.
@@ -1605,7 +1687,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongArrayType()
    * @generated
    */
-  int ULONG_ARRAY_TYPE = 44;
+  int ULONG_ARRAY_TYPE = 45;
 
   /**
    * The number of structural features of the '<em>ULong Array Type</em>' class.
@@ -1624,7 +1706,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDevIntType()
    * @generated
    */
-  int DEV_INT_TYPE = 45;
+  int DEV_INT_TYPE = 46;
 
   /**
    * The number of structural features of the '<em>Dev Int Type</em>' class.
@@ -1643,7 +1725,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getEncodedType()
    * @generated
    */
-  int ENCODED_TYPE = 46;
+  int ENCODED_TYPE = 47;
 
   /**
    * The number of structural features of the '<em>Encoded Type</em>' class.
@@ -1662,7 +1744,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortVectorType()
    * @generated
    */
-  int SHORT_VECTOR_TYPE = 47;
+  int SHORT_VECTOR_TYPE = 48;
 
   /**
    * The number of structural features of the '<em>Short Vector Type</em>' class.
@@ -1681,7 +1763,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntVectorType()
    * @generated
    */
-  int INT_VECTOR_TYPE = 48;
+  int INT_VECTOR_TYPE = 49;
 
   /**
    * The number of structural features of the '<em>Int Vector Type</em>' class.
@@ -1700,7 +1782,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatVectorType()
    * @generated
    */
-  int FLOAT_VECTOR_TYPE = 49;
+  int FLOAT_VECTOR_TYPE = 50;
 
   /**
    * The number of structural features of the '<em>Float Vector Type</em>' class.
@@ -1719,7 +1801,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleVectorType()
    * @generated
    */
-  int DOUBLE_VECTOR_TYPE = 50;
+  int DOUBLE_VECTOR_TYPE = 51;
 
   /**
    * The number of structural features of the '<em>Double Vector Type</em>' class.
@@ -1738,7 +1820,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringVectorType()
    * @generated
    */
-  int STRING_VECTOR_TYPE = 51;
+  int STRING_VECTOR_TYPE = 52;
 
   /**
    * The number of structural features of the '<em>String Vector Type</em>' class.
@@ -2226,6 +2308,17 @@ public interface PogoDslPackage extends EPackage
   EReference getProperty_Type();
 
   /**
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.Property#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Status</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Property#getStatus()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_Status();
+
+  /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Property#getDescription <em>Description</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2276,6 +2369,71 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EClass getVectorType();
+
+  /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.InheritanceStatus <em>Inheritance Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Inheritance Status</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.InheritanceStatus
+   * @generated
+   */
+  EClass getInheritanceStatus();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getAbstract <em>Abstract</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Abstract</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getAbstract()
+   * @see #getInheritanceStatus()
+   * @generated
+   */
+  EAttribute getInheritanceStatus_Abstract();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getInherited <em>Inherited</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Inherited</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getInherited()
+   * @see #getInheritanceStatus()
+   * @generated
+   */
+  EAttribute getInheritanceStatus_Inherited();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getConcrete <em>Concrete</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Concrete</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getConcrete()
+   * @see #getInheritanceStatus()
+   * @generated
+   */
+  EAttribute getInheritanceStatus_Concrete();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getConcreteHere <em>Concrete Here</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Concrete Here</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getConcreteHere()
+   * @see #getInheritanceStatus()
+   * @generated
+   */
+  EAttribute getInheritanceStatus_ConcreteHere();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getHasChanged <em>Has Changed</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Changed</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.InheritanceStatus#getHasChanged()
+   * @see #getInheritanceStatus()
+   * @generated
+   */
+  EAttribute getInheritanceStatus_HasChanged();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Command <em>Command</em>}'.
@@ -2332,15 +2490,15 @@ public interface PogoDslPackage extends EPackage
   EAttribute getCommand_Description();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Command#getAbstract <em>Abstract</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.Command#getStatus <em>Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Abstract</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.Command#getAbstract()
+   * @return the meta object for the containment reference '<em>Status</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Command#getStatus()
    * @see #getCommand()
    * @generated
    */
-  EAttribute getCommand_Abstract();
+  EReference getCommand_Status();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Command#getExecMethod <em>Exec Method</em>}'.
@@ -2462,15 +2620,15 @@ public interface PogoDslPackage extends EPackage
   EReference getAttribute_DataType();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getRwTtype <em>Rw Ttype</em>}'.
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getRwType <em>Rw Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Rw Ttype</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getRwTtype()
+   * @return the meta object for the attribute '<em>Rw Type</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getRwType()
    * @see #getAttribute()
    * @generated
    */
-  EAttribute getAttribute_RwTtype();
+  EAttribute getAttribute_RwType();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getDisplayLevel <em>Display Level</em>}'.
@@ -2559,6 +2717,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EReference getAttribute_ArchiveEvent();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Status</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus()
+   * @see #getAttribute()
+   * @generated
+   */
+  EReference getAttribute_Status();
 
   /**
    * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getProperties <em>Properties</em>}'.
@@ -3522,6 +3691,14 @@ public interface PogoDslPackage extends EPackage
     EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
 
     /**
+     * The meta object literal for the '<em><b>Status</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__STATUS = eINSTANCE.getProperty_Status();
+
+    /**
      * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3568,6 +3745,56 @@ public interface PogoDslPackage extends EPackage
     EClass VECTOR_TYPE = eINSTANCE.getVectorType();
 
     /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceStatusImpl <em>Inheritance Status</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.InheritanceStatusImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getInheritanceStatus()
+     * @generated
+     */
+    EClass INHERITANCE_STATUS = eINSTANCE.getInheritanceStatus();
+
+    /**
+     * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INHERITANCE_STATUS__ABSTRACT = eINSTANCE.getInheritanceStatus_Abstract();
+
+    /**
+     * The meta object literal for the '<em><b>Inherited</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INHERITANCE_STATUS__INHERITED = eINSTANCE.getInheritanceStatus_Inherited();
+
+    /**
+     * The meta object literal for the '<em><b>Concrete</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INHERITANCE_STATUS__CONCRETE = eINSTANCE.getInheritanceStatus_Concrete();
+
+    /**
+     * The meta object literal for the '<em><b>Concrete Here</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INHERITANCE_STATUS__CONCRETE_HERE = eINSTANCE.getInheritanceStatus_ConcreteHere();
+
+    /**
+     * The meta object literal for the '<em><b>Has Changed</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INHERITANCE_STATUS__HAS_CHANGED = eINSTANCE.getInheritanceStatus_HasChanged();
+
+    /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl <em>Command</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3610,12 +3837,12 @@ public interface PogoDslPackage extends EPackage
     EAttribute COMMAND__DESCRIPTION = eINSTANCE.getCommand_Description();
 
     /**
-     * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Status</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMAND__ABSTRACT = eINSTANCE.getCommand_Abstract();
+    EReference COMMAND__STATUS = eINSTANCE.getCommand_Status();
 
     /**
      * The meta object literal for the '<em><b>Exec Method</b></em>' attribute feature.
@@ -3710,12 +3937,12 @@ public interface PogoDslPackage extends EPackage
     EReference ATTRIBUTE__DATA_TYPE = eINSTANCE.getAttribute_DataType();
 
     /**
-     * The meta object literal for the '<em><b>Rw Ttype</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Rw Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTRIBUTE__RW_TTYPE = eINSTANCE.getAttribute_RwTtype();
+    EAttribute ATTRIBUTE__RW_TYPE = eINSTANCE.getAttribute_RwType();
 
     /**
      * The meta object literal for the '<em><b>Display Level</b></em>' attribute feature.
@@ -3780,6 +4007,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EReference ATTRIBUTE__ARCHIVE_EVENT = eINSTANCE.getAttribute_ArchiveEvent();
+
+    /**
+     * The meta object literal for the '<em><b>Status</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATTRIBUTE__STATUS = eINSTANCE.getAttribute_Status();
 
     /**
      * The meta object literal for the '<em><b>Properties</b></em>' containment reference feature.

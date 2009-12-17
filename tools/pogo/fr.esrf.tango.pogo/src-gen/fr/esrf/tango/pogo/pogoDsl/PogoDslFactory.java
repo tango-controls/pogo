@@ -134,6 +134,15 @@ public interface PogoDslFactory extends EFactory
   VectorType createVectorType();
 
   /**
+   * Returns a new object of class '<em>Inheritance Status</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inheritance Status</em>'.
+   * @generated
+   */
+  InheritanceStatus createInheritanceStatus();
+
+  /**
    * Returns a new object of class '<em>Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

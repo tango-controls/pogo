@@ -7,6 +7,7 @@ package fr.esrf.tango.pogo.pogoDsl.impl;
 
 import fr.esrf.tango.pogo.pogoDsl.Argument;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 
 import java.util.Collection;
@@ -35,7 +36,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getArgin <em>Argin</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getArgout <em>Argout</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getAbstract <em>Abstract</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getExecMethod <em>Exec Method</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getDisplayLevel <em>Display Level</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getPolledPeriod <em>Polled Period</em>}</li>
@@ -108,24 +109,14 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   protected String description = DESCRIPTION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getAbstract() <em>Abstract</em>}' attribute.
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAbstract()
+   * @see #getStatus()
    * @generated
    * @ordered
    */
-  protected static final String ABSTRACT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getAbstract() <em>Abstract</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAbstract()
-   * @generated
-   * @ordered
-   */
-  protected String abstract_ = ABSTRACT_EDEFAULT;
+  protected InheritanceStatus status;
 
   /**
    * The default value of the '{@link #getExecMethod() <em>Exec Method</em>}' attribute.
@@ -365,9 +356,9 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAbstract()
+  public InheritanceStatus getStatus()
   {
-    return abstract_;
+    return status;
   }
 
   /**
@@ -375,12 +366,37 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAbstract(String newAbstract)
+  public NotificationChain basicSetStatus(InheritanceStatus newStatus, NotificationChain msgs)
   {
-    String oldAbstract = abstract_;
-    abstract_ = newAbstract;
+    InheritanceStatus oldStatus = status;
+    status = newStatus;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.COMMAND__ABSTRACT, oldAbstract, abstract_));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.COMMAND__STATUS, oldStatus, newStatus);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStatus(InheritanceStatus newStatus)
+  {
+    if (newStatus != status)
+    {
+      NotificationChain msgs = null;
+      if (status != null)
+        msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.COMMAND__STATUS, null, msgs);
+      if (newStatus != null)
+        msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.COMMAND__STATUS, null, msgs);
+      msgs = basicSetStatus(newStatus, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.COMMAND__STATUS, newStatus, newStatus));
   }
 
   /**
@@ -480,6 +496,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         return basicSetArgin(null, msgs);
       case PogoDslPackage.COMMAND__ARGOUT:
         return basicSetArgout(null, msgs);
+      case PogoDslPackage.COMMAND__STATUS:
+        return basicSetStatus(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -502,8 +520,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         return getArgout();
       case PogoDslPackage.COMMAND__DESCRIPTION:
         return getDescription();
-      case PogoDslPackage.COMMAND__ABSTRACT:
-        return getAbstract();
+      case PogoDslPackage.COMMAND__STATUS:
+        return getStatus();
       case PogoDslPackage.COMMAND__EXEC_METHOD:
         return getExecMethod();
       case PogoDslPackage.COMMAND__DISPLAY_LEVEL:
@@ -539,8 +557,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
       case PogoDslPackage.COMMAND__DESCRIPTION:
         setDescription((String)newValue);
         return;
-      case PogoDslPackage.COMMAND__ABSTRACT:
-        setAbstract((String)newValue);
+      case PogoDslPackage.COMMAND__STATUS:
+        setStatus((InheritanceStatus)newValue);
         return;
       case PogoDslPackage.COMMAND__EXEC_METHOD:
         setExecMethod((String)newValue);
@@ -581,8 +599,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
       case PogoDslPackage.COMMAND__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
-      case PogoDslPackage.COMMAND__ABSTRACT:
-        setAbstract(ABSTRACT_EDEFAULT);
+      case PogoDslPackage.COMMAND__STATUS:
+        setStatus((InheritanceStatus)null);
         return;
       case PogoDslPackage.COMMAND__EXEC_METHOD:
         setExecMethod(EXEC_METHOD_EDEFAULT);
@@ -618,8 +636,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         return argout != null;
       case PogoDslPackage.COMMAND__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-      case PogoDslPackage.COMMAND__ABSTRACT:
-        return ABSTRACT_EDEFAULT == null ? abstract_ != null : !ABSTRACT_EDEFAULT.equals(abstract_);
+      case PogoDslPackage.COMMAND__STATUS:
+        return status != null;
       case PogoDslPackage.COMMAND__EXEC_METHOD:
         return EXEC_METHOD_EDEFAULT == null ? execMethod != null : !EXEC_METHOD_EDEFAULT.equals(execMethod);
       case PogoDslPackage.COMMAND__DISPLAY_LEVEL:
@@ -647,8 +665,6 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     result.append(name);
     result.append(", description: ");
     result.append(description);
-    result.append(", abstract: ");
-    result.append(abstract_);
     result.append(", execMethod: ");
     result.append(execMethod);
     result.append(", displayLevel: ");

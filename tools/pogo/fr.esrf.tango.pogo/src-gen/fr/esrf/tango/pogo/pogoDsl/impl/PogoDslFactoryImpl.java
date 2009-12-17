@@ -79,6 +79,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.PROP_TYPE: return createPropType();
       case PogoDslPackage.SIMPLE_TYPE: return createSimpleType();
       case PogoDslPackage.VECTOR_TYPE: return createVectorType();
+      case PogoDslPackage.INHERITANCE_STATUS: return createInheritanceStatus();
       case PogoDslPackage.COMMAND: return createCommand();
       case PogoDslPackage.ARGUMENT: return createArgument();
       case PogoDslPackage.ATTRIBUTE: return createAttribute();
@@ -254,6 +255,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     VectorTypeImpl vectorType = new VectorTypeImpl();
     return vectorType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InheritanceStatus createInheritanceStatus()
+  {
+    InheritanceStatusImpl inheritanceStatus = new InheritanceStatusImpl();
+    return inheritanceStatus;
   }
 
   /**

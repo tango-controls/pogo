@@ -96,6 +96,7 @@ State:
 Property:
 	name        = ID
 	type        = PropType
+	status      = InheritanceStatus
 	description = STRING
 	"defaultPropValue:"
 		(DefaultPropValue+=STRING)*;
@@ -115,6 +116,14 @@ VectorType:
 	DoubleVectorType| StringVectorType;
 
 
+InheritanceStatus:
+	abstract     = Boolean	//	is abstract or inherited from abstract
+	inherited    = Boolean	//	is hinerited
+	concrete     = Boolean	//	is concrete or overloaded
+	concreteHere = Boolean	//	is concrete or overloaded in this class
+	hasChanged   = Boolean;	//	the type has changed
+	
+
 //
 //	Command Definition
 //
@@ -123,7 +132,7 @@ Command:
 		argin        = Argument
 		argout       = Argument 
 		description  = STRING
-		abstract     = Boolean
+		status       = InheritanceStatus
 		execMethod   = STRING 
 		displayLevel = DisplayLevel
 		polledPeriod = STRING
@@ -140,7 +149,7 @@ Attribute:
 	name             = ID
 	attType          = AttrType
 	dataType         = Type
-	rwTtype          = RW_Type
+	rwType           = RW_Type
 	displayLevel     = DisplayLevel
 	polledPeriod     = STRING
 	maxX             = STRING
@@ -149,6 +158,7 @@ Attribute:
 	memorizedAtInit  = Boolean
 	changeEvent      = FireEvents
 	archiveEvent     = FireEvents
+	status           = InheritanceStatus
 	properties       = AttrProperties
 	
 	"excludedStates:"

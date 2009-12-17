@@ -181,6 +181,13 @@ public class PogoDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case PogoDslPackage.INHERITANCE_STATUS:
+      {
+        InheritanceStatus inheritanceStatus = (InheritanceStatus)theEObject;
+        T result = caseInheritanceStatus(inheritanceStatus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case PogoDslPackage.COMMAND:
       {
         Command command = (Command)theEObject;
@@ -708,6 +715,22 @@ public class PogoDslSwitch<T>
    * @generated
    */
   public T caseVectorType(VectorType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Inheritance Status</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Inheritance Status</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInheritanceStatus(InheritanceStatus object)
   {
     return null;
   }

@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getArgin <em>Argin</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getArgout <em>Argout</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getAbstract <em>Abstract</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getExecMethod <em>Exec Method</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getDisplayLevel <em>Display Level</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getPolledPeriod <em>Polled Period</em>}</li>
@@ -140,30 +140,30 @@ public interface Command extends EObject
   void setDescription(String value);
 
   /**
-   * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+   * Returns the value of the '<em><b>Status</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
+   * If the meaning of the '<em>Status</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Abstract</em>' attribute.
-   * @see #setAbstract(String)
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getCommand_Abstract()
-   * @model
+   * @return the value of the '<em>Status</em>' containment reference.
+   * @see #setStatus(InheritanceStatus)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getCommand_Status()
+   * @model containment="true"
    * @generated
    */
-  String getAbstract();
+  InheritanceStatus getStatus();
 
   /**
-   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Command#getAbstract <em>Abstract</em>}' attribute.
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Command#getStatus <em>Status</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Abstract</em>' attribute.
-   * @see #getAbstract()
+   * @param value the new value of the '<em>Status</em>' containment reference.
+   * @see #getStatus()
    * @generated
    */
-  void setAbstract(String value);
+  void setStatus(InheritanceStatus value);
 
   /**
    * Returns the value of the '<em><b>Exec Method</b></em>' attribute.

@@ -28,6 +28,7 @@ import fr.esrf.tango.pogo.pogoDsl.FloatType;
 import fr.esrf.tango.pogo.pogoDsl.FloatVectorType;
 import fr.esrf.tango.pogo.pogoDsl.Import;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
+import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.IntArrayType;
 import fr.esrf.tango.pogo.pogoDsl.IntType;
 import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
@@ -158,6 +159,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass vectorTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inheritanceStatusEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -947,9 +955,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getProperty_Status()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getProperty_Description()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -959,7 +977,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    */
   public EAttribute getProperty_DefaultPropValue()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -990,6 +1008,66 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
   public EClass getVectorType()
   {
     return vectorTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getInheritanceStatus()
+  {
+    return inheritanceStatusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInheritanceStatus_Abstract()
+  {
+    return (EAttribute)inheritanceStatusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInheritanceStatus_Inherited()
+  {
+    return (EAttribute)inheritanceStatusEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInheritanceStatus_Concrete()
+  {
+    return (EAttribute)inheritanceStatusEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInheritanceStatus_ConcreteHere()
+  {
+    return (EAttribute)inheritanceStatusEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInheritanceStatus_HasChanged()
+  {
+    return (EAttribute)inheritanceStatusEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1047,9 +1125,9 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_Abstract()
+  public EReference getCommand_Status()
   {
-    return (EAttribute)commandEClass.getEStructuralFeatures().get(4);
+    return (EReference)commandEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1167,7 +1245,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_RwTtype()
+  public EAttribute getAttribute_RwType()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(3);
   }
@@ -1257,7 +1335,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAttribute_Properties()
+  public EReference getAttribute_Status()
   {
     return (EReference)attributeEClass.getEStructuralFeatures().get(12);
   }
@@ -1267,9 +1345,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getAttribute_Properties()
+  {
+    return (EReference)attributeEClass.getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getAttribute_ExcludedStates()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(13);
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(14);
   }
 
   /**
@@ -1884,6 +1972,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     propertyEClass = createEClass(PROPERTY);
     createEAttribute(propertyEClass, PROPERTY__NAME);
     createEReference(propertyEClass, PROPERTY__TYPE);
+    createEReference(propertyEClass, PROPERTY__STATUS);
     createEAttribute(propertyEClass, PROPERTY__DESCRIPTION);
     createEAttribute(propertyEClass, PROPERTY__DEFAULT_PROP_VALUE);
 
@@ -1893,12 +1982,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
 
     vectorTypeEClass = createEClass(VECTOR_TYPE);
 
+    inheritanceStatusEClass = createEClass(INHERITANCE_STATUS);
+    createEAttribute(inheritanceStatusEClass, INHERITANCE_STATUS__ABSTRACT);
+    createEAttribute(inheritanceStatusEClass, INHERITANCE_STATUS__INHERITED);
+    createEAttribute(inheritanceStatusEClass, INHERITANCE_STATUS__CONCRETE);
+    createEAttribute(inheritanceStatusEClass, INHERITANCE_STATUS__CONCRETE_HERE);
+    createEAttribute(inheritanceStatusEClass, INHERITANCE_STATUS__HAS_CHANGED);
+
     commandEClass = createEClass(COMMAND);
     createEAttribute(commandEClass, COMMAND__NAME);
     createEReference(commandEClass, COMMAND__ARGIN);
     createEReference(commandEClass, COMMAND__ARGOUT);
     createEAttribute(commandEClass, COMMAND__DESCRIPTION);
-    createEAttribute(commandEClass, COMMAND__ABSTRACT);
+    createEReference(commandEClass, COMMAND__STATUS);
     createEAttribute(commandEClass, COMMAND__EXEC_METHOD);
     createEAttribute(commandEClass, COMMAND__DISPLAY_LEVEL);
     createEAttribute(commandEClass, COMMAND__POLLED_PERIOD);
@@ -1912,7 +2008,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(attributeEClass, ATTRIBUTE__NAME);
     createEAttribute(attributeEClass, ATTRIBUTE__ATT_TYPE);
     createEReference(attributeEClass, ATTRIBUTE__DATA_TYPE);
-    createEAttribute(attributeEClass, ATTRIBUTE__RW_TTYPE);
+    createEAttribute(attributeEClass, ATTRIBUTE__RW_TYPE);
     createEAttribute(attributeEClass, ATTRIBUTE__DISPLAY_LEVEL);
     createEAttribute(attributeEClass, ATTRIBUTE__POLLED_PERIOD);
     createEAttribute(attributeEClass, ATTRIBUTE__MAX_X);
@@ -1921,6 +2017,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(attributeEClass, ATTRIBUTE__MEMORIZED_AT_INIT);
     createEReference(attributeEClass, ATTRIBUTE__CHANGE_EVENT);
     createEReference(attributeEClass, ATTRIBUTE__ARCHIVE_EVENT);
+    createEReference(attributeEClass, ATTRIBUTE__STATUS);
     createEReference(attributeEClass, ATTRIBUTE__PROPERTIES);
     createEAttribute(attributeEClass, ATTRIBUTE__EXCLUDED_STATES);
 
@@ -2142,6 +2239,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Type(), this.getPropType(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_Status(), this.getInheritanceStatus(), null, "status", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProperty_Description(), ecorePackage.getEString(), "description", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProperty_DefaultPropValue(), ecorePackage.getEString(), "DefaultPropValue", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2151,12 +2249,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
 
     initEClass(vectorTypeEClass, VectorType.class, "VectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(inheritanceStatusEClass, InheritanceStatus.class, "InheritanceStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInheritanceStatus_Abstract(), ecorePackage.getEString(), "abstract", null, 0, 1, InheritanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInheritanceStatus_Inherited(), ecorePackage.getEString(), "inherited", null, 0, 1, InheritanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInheritanceStatus_Concrete(), ecorePackage.getEString(), "concrete", null, 0, 1, InheritanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInheritanceStatus_ConcreteHere(), ecorePackage.getEString(), "concreteHere", null, 0, 1, InheritanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInheritanceStatus_HasChanged(), ecorePackage.getEString(), "hasChanged", null, 0, 1, InheritanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCommand_Name(), ecorePackage.getEString(), "name", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCommand_Argin(), this.getArgument(), null, "argin", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCommand_Argout(), this.getArgument(), null, "argout", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_Description(), ecorePackage.getEString(), "description", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCommand_Abstract(), ecorePackage.getEString(), "abstract", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_Status(), this.getInheritanceStatus(), null, "status", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_ExecMethod(), ecorePackage.getEString(), "execMethod", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_DisplayLevel(), ecorePackage.getEString(), "displayLevel", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_PolledPeriod(), ecorePackage.getEString(), "polledPeriod", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2170,7 +2275,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_AttType(), ecorePackage.getEString(), "attType", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_DataType(), this.getType(), null, "dataType", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttribute_RwTtype(), ecorePackage.getEString(), "rwTtype", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_RwType(), ecorePackage.getEString(), "rwType", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_DisplayLevel(), ecorePackage.getEString(), "displayLevel", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_PolledPeriod(), ecorePackage.getEString(), "polledPeriod", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_MaxX(), ecorePackage.getEString(), "maxX", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2179,6 +2284,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getAttribute_MemorizedAtInit(), ecorePackage.getEString(), "memorizedAtInit", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_ChangeEvent(), this.getFireEvents(), null, "changeEvent", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_ArchiveEvent(), this.getFireEvents(), null, "archiveEvent", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttribute_Status(), this.getInheritanceStatus(), null, "status", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_Properties(), this.getAttrProperties(), null, "properties", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_ExcludedStates(), ecorePackage.getEString(), "excludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getType <em>Type</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getDefaultPropValue <em>Default Prop Value</em>}</li>
  * </ul>
@@ -81,6 +82,32 @@ public interface Property extends EObject
    * @generated
    */
   void setType(PropType value);
+
+  /**
+   * Returns the value of the '<em><b>Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Status</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Status</em>' containment reference.
+   * @see #setStatus(InheritanceStatus)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getProperty_Status()
+   * @model containment="true"
+   * @generated
+   */
+  InheritanceStatus getStatus();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Property#getStatus <em>Status</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Status</em>' containment reference.
+   * @see #getStatus()
+   * @generated
+   */
+  void setStatus(InheritanceStatus value);
 
   /**
    * Returns the value of the '<em><b>Description</b></em>' attribute.

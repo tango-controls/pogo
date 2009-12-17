@@ -60,18 +60,26 @@
     <genClasses ecoreClass="PogoDsl.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Property/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Property/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Property/status"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Property/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Property/DefaultPropValue"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//PropType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//SimpleType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//VectorType"/>
+    <genClasses ecoreClass="PogoDsl.ecore#//InheritanceStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//InheritanceStatus/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//InheritanceStatus/inherited"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//InheritanceStatus/concrete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//InheritanceStatus/concreteHere"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//InheritanceStatus/hasChanged"/>
+    </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Command/argin"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Command/argout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/abstract"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Command/status"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/execMethod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/displayLevel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/polledPeriod"/>
@@ -85,7 +93,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/attType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/dataType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/rwTtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/rwType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/displayLevel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/polledPeriod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/maxX"/>
@@ -94,6 +102,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/memorizedAtInit"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/changeEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/archiveEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/properties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/excludedStates"/>
     </genClasses>

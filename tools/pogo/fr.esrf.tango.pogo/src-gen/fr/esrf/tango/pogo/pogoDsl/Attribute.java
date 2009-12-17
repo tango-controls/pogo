@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAttType <em>Att Type</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getDataType <em>Data Type</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getRwTtype <em>Rw Ttype</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getRwType <em>Rw Type</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getDisplayLevel <em>Display Level</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getPolledPeriod <em>Polled Period</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMaxX <em>Max X</em>}</li>
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMemorizedAtInit <em>Memorized At Init</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getChangeEvent <em>Change Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getArchiveEvent <em>Archive Event</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getProperties <em>Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getExcludedStates <em>Excluded States</em>}</li>
  * </ul>
@@ -119,30 +120,30 @@ public interface Attribute extends EObject
   void setDataType(Type value);
 
   /**
-   * Returns the value of the '<em><b>Rw Ttype</b></em>' attribute.
+   * Returns the value of the '<em><b>Rw Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rw Ttype</em>' attribute isn't clear,
+   * If the meaning of the '<em>Rw Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rw Ttype</em>' attribute.
-   * @see #setRwTtype(String)
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_RwTtype()
+   * @return the value of the '<em>Rw Type</em>' attribute.
+   * @see #setRwType(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_RwType()
    * @model
    * @generated
    */
-  String getRwTtype();
+  String getRwType();
 
   /**
-   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getRwTtype <em>Rw Ttype</em>}' attribute.
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getRwType <em>Rw Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rw Ttype</em>' attribute.
-   * @see #getRwTtype()
+   * @param value the new value of the '<em>Rw Type</em>' attribute.
+   * @see #getRwType()
    * @generated
    */
-  void setRwTtype(String value);
+  void setRwType(String value);
 
   /**
    * Returns the value of the '<em><b>Display Level</b></em>' attribute.
@@ -351,6 +352,32 @@ public interface Attribute extends EObject
    * @generated
    */
   void setArchiveEvent(FireEvents value);
+
+  /**
+   * Returns the value of the '<em><b>Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Status</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Status</em>' containment reference.
+   * @see #setStatus(InheritanceStatus)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_Status()
+   * @model containment="true"
+   * @generated
+   */
+  InheritanceStatus getStatus();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Status</em>' containment reference.
+   * @see #getStatus()
+   * @generated
+   */
+  void setStatus(InheritanceStatus value);
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference.

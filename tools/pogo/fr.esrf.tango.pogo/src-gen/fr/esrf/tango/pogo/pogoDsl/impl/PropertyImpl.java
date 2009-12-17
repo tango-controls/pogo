@@ -5,6 +5,7 @@
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 
+import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 import fr.esrf.tango.pogo.pogoDsl.PropType;
 import fr.esrf.tango.pogo.pogoDsl.Property;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getDefaultPropValue <em>Default Prop Value</em>}</li>
  * </ul>
@@ -71,6 +73,16 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @ordered
    */
   protected PropType type;
+
+  /**
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected InheritanceStatus status;
 
   /**
    * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -199,6 +211,54 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
+  public InheritanceStatus getStatus()
+  {
+    return status;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetStatus(InheritanceStatus newStatus, NotificationChain msgs)
+  {
+    InheritanceStatus oldStatus = status;
+    status = newStatus;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.PROPERTY__STATUS, oldStatus, newStatus);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStatus(InheritanceStatus newStatus)
+  {
+    if (newStatus != status)
+    {
+      NotificationChain msgs = null;
+      if (status != null)
+        msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.PROPERTY__STATUS, null, msgs);
+      if (newStatus != null)
+        msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.PROPERTY__STATUS, null, msgs);
+      msgs = basicSetStatus(newStatus, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.PROPERTY__STATUS, newStatus, newStatus));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getDescription()
   {
     return description;
@@ -243,6 +303,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     {
       case PogoDslPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
+      case PogoDslPackage.PROPERTY__STATUS:
+        return basicSetStatus(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -261,6 +323,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return getName();
       case PogoDslPackage.PROPERTY__TYPE:
         return getType();
+      case PogoDslPackage.PROPERTY__STATUS:
+        return getStatus();
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         return getDescription();
       case PogoDslPackage.PROPERTY__DEFAULT_PROP_VALUE:
@@ -285,6 +349,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return;
       case PogoDslPackage.PROPERTY__TYPE:
         setType((PropType)newValue);
+        return;
+      case PogoDslPackage.PROPERTY__STATUS:
+        setStatus((InheritanceStatus)newValue);
         return;
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         setDescription((String)newValue);
@@ -313,6 +380,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case PogoDslPackage.PROPERTY__TYPE:
         setType((PropType)null);
         return;
+      case PogoDslPackage.PROPERTY__STATUS:
+        setStatus((InheritanceStatus)null);
+        return;
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
@@ -337,6 +407,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case PogoDslPackage.PROPERTY__TYPE:
         return type != null;
+      case PogoDslPackage.PROPERTY__STATUS:
+        return status != null;
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case PogoDslPackage.PROPERTY__DEFAULT_PROP_VALUE:

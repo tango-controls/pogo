@@ -44,46 +44,47 @@ protected class ThisRootNode extends RootToken {
 			case 9: return new PropType_Alternatives(this, this, 9, inst);
 			case 10: return new SimpleType_Alternatives(this, this, 10, inst);
 			case 11: return new VectorType_Alternatives(this, this, 11, inst);
-			case 12: return new Command_Group(this, this, 12, inst);
-			case 13: return new Argument_Group(this, this, 13, inst);
-			case 14: return new Attribute_Group(this, this, 14, inst);
-			case 15: return new FireEvents_Group(this, this, 15, inst);
-			case 16: return new AttrProperties_Group(this, this, 16, inst);
-			case 17: return new Type_Alternatives(this, this, 17, inst);
-			case 18: return new VoidType_Group(this, this, 18, inst);
-			case 19: return new BooleanType_Group(this, this, 19, inst);
-			case 20: return new ShortType_Group(this, this, 20, inst);
-			case 21: return new UShortType_Group(this, this, 21, inst);
-			case 22: return new IntType_Group(this, this, 22, inst);
-			case 23: return new UIntType_Group(this, this, 23, inst);
-			case 24: return new FloatType_Group(this, this, 24, inst);
-			case 25: return new DoubleType_Group(this, this, 25, inst);
-			case 26: return new StringType_Group(this, this, 26, inst);
-			case 27: return new CharArrayType_Group(this, this, 27, inst);
-			case 28: return new ShortArrayType_Group(this, this, 28, inst);
-			case 29: return new UShortArrayType_Group(this, this, 29, inst);
-			case 30: return new IntArrayType_Group(this, this, 30, inst);
-			case 31: return new UIntArrayType_Group(this, this, 31, inst);
-			case 32: return new FloatArrayType_Group(this, this, 32, inst);
-			case 33: return new DoubleArrayType_Group(this, this, 33, inst);
-			case 34: return new StringArrayType_Group(this, this, 34, inst);
-			case 35: return new LongStringArrayType_Group(this, this, 35, inst);
-			case 36: return new DoubleStringArrayType_Group(this, this, 36, inst);
-			case 37: return new StateType_Group(this, this, 37, inst);
-			case 38: return new ConstStringType_Group(this, this, 38, inst);
-			case 39: return new BooleanArrayType_Group(this, this, 39, inst);
-			case 40: return new UCharType_Group(this, this, 40, inst);
-			case 41: return new LongType_Group(this, this, 41, inst);
-			case 42: return new ULongType_Group(this, this, 42, inst);
-			case 43: return new LongArrayType_Group(this, this, 43, inst);
-			case 44: return new ULongArrayType_Group(this, this, 44, inst);
-			case 45: return new DevIntType_Group(this, this, 45, inst);
-			case 46: return new EncodedType_Group(this, this, 46, inst);
-			case 47: return new ShortVectorType_Group(this, this, 47, inst);
-			case 48: return new IntVectorType_Group(this, this, 48, inst);
-			case 49: return new FloatVectorType_Group(this, this, 49, inst);
-			case 50: return new DoubleVectorType_Group(this, this, 50, inst);
-			case 51: return new StringVectorType_Group(this, this, 51, inst);
+			case 12: return new InheritanceStatus_Group(this, this, 12, inst);
+			case 13: return new Command_Group(this, this, 13, inst);
+			case 14: return new Argument_Group(this, this, 14, inst);
+			case 15: return new Attribute_Group(this, this, 15, inst);
+			case 16: return new FireEvents_Group(this, this, 16, inst);
+			case 17: return new AttrProperties_Group(this, this, 17, inst);
+			case 18: return new Type_Alternatives(this, this, 18, inst);
+			case 19: return new VoidType_Group(this, this, 19, inst);
+			case 20: return new BooleanType_Group(this, this, 20, inst);
+			case 21: return new ShortType_Group(this, this, 21, inst);
+			case 22: return new UShortType_Group(this, this, 22, inst);
+			case 23: return new IntType_Group(this, this, 23, inst);
+			case 24: return new UIntType_Group(this, this, 24, inst);
+			case 25: return new FloatType_Group(this, this, 25, inst);
+			case 26: return new DoubleType_Group(this, this, 26, inst);
+			case 27: return new StringType_Group(this, this, 27, inst);
+			case 28: return new CharArrayType_Group(this, this, 28, inst);
+			case 29: return new ShortArrayType_Group(this, this, 29, inst);
+			case 30: return new UShortArrayType_Group(this, this, 30, inst);
+			case 31: return new IntArrayType_Group(this, this, 31, inst);
+			case 32: return new UIntArrayType_Group(this, this, 32, inst);
+			case 33: return new FloatArrayType_Group(this, this, 33, inst);
+			case 34: return new DoubleArrayType_Group(this, this, 34, inst);
+			case 35: return new StringArrayType_Group(this, this, 35, inst);
+			case 36: return new LongStringArrayType_Group(this, this, 36, inst);
+			case 37: return new DoubleStringArrayType_Group(this, this, 37, inst);
+			case 38: return new StateType_Group(this, this, 38, inst);
+			case 39: return new ConstStringType_Group(this, this, 39, inst);
+			case 40: return new BooleanArrayType_Group(this, this, 40, inst);
+			case 41: return new UCharType_Group(this, this, 41, inst);
+			case 42: return new LongType_Group(this, this, 42, inst);
+			case 43: return new ULongType_Group(this, this, 43, inst);
+			case 44: return new LongArrayType_Group(this, this, 44, inst);
+			case 45: return new ULongArrayType_Group(this, this, 45, inst);
+			case 46: return new DevIntType_Group(this, this, 46, inst);
+			case 47: return new EncodedType_Group(this, this, 47, inst);
+			case 48: return new ShortVectorType_Group(this, this, 48, inst);
+			case 49: return new IntVectorType_Group(this, this, 49, inst);
+			case 50: return new FloatVectorType_Group(this, this, 50, inst);
+			case 51: return new DoubleVectorType_Group(this, this, 51, inst);
+			case 52: return new StringVectorType_Group(this, this, 52, inst);
 			default: return null;
 		}	
 	}	
@@ -1947,8 +1948,8 @@ protected class State_DescriptionAssignment_1 extends AssignmentToken  {
 /************ begin Rule Property ****************
  *
  * Property:
- *   name=ID type=PropType description=STRING "defaultPropValue:" DefaultPropValue+=
- *   STRING*; 
+ *   name=ID type=PropType status=InheritanceStatus description=STRING
+ *   "defaultPropValue:" DefaultPropValue+=STRING*; 
  * 
  * //
  * //	Property Definition
@@ -1956,6 +1957,7 @@ protected class State_DescriptionAssignment_1 extends AssignmentToken  {
  * 
  * 	           
  * 	           
+ * 	         
  * 	    
  * 	
  * 		
@@ -1964,8 +1966,8 @@ protected class State_DescriptionAssignment_1 extends AssignmentToken  {
  *
  **/
 
-// name=ID type=PropType description=STRING "defaultPropValue:" DefaultPropValue+=
-// STRING*
+// name=ID type=PropType status=InheritanceStatus description=STRING
+// "defaultPropValue:" DefaultPropValue+=STRING*
 protected class Property_Group extends GroupToken {
 	
 	public Property_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1978,8 +1980,8 @@ protected class Property_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_DefaultPropValueAssignment_4(parent, this, 0, inst);
-			case 1: return new Property_DefaultPropValueKeyword_3(parent, this, 1, inst);
+			case 0: return new Property_DefaultPropValueAssignment_5(parent, this, 0, inst);
+			case 1: return new Property_DefaultPropValueKeyword_4(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -2062,20 +2064,62 @@ protected class Property_TypeAssignment_1 extends AssignmentToken  {
 	}	
 }
 
-// description=STRING
-protected class Property_DescriptionAssignment_2 extends AssignmentToken  {
+// status=InheritanceStatus
+protected class Property_StatusAssignment_2 extends AssignmentToken  {
 	
-	public Property_DescriptionAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Property_StatusAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDescriptionAssignment_2();
+		return grammarAccess.getPropertyAccess().getStatusAssignment_2();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_TypeAssignment_1(parent, this, 0, inst);
+			case 0: return new InheritanceStatus_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("status",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("status");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getInheritanceStatusRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getPropertyAccess().getStatusInheritanceStatusParserRuleCall_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Property_TypeAssignment_1(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// description=STRING
+protected class Property_DescriptionAssignment_3 extends AssignmentToken  {
+	
+	public Property_DescriptionAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPropertyAccess().getDescriptionAssignment_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Property_StatusAssignment_2(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2085,7 +2129,7 @@ protected class Property_DescriptionAssignment_2 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("description");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_2_0();
+			element = grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_3_0();
 			return obj;
 		}
 		return null;
@@ -2094,19 +2138,19 @@ protected class Property_DescriptionAssignment_2 extends AssignmentToken  {
 }
 
 // "defaultPropValue:"
-protected class Property_DefaultPropValueKeyword_3 extends KeywordToken  {
+protected class Property_DefaultPropValueKeyword_4 extends KeywordToken  {
 	
-	public Property_DefaultPropValueKeyword_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Property_DefaultPropValueKeyword_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_3();
+		return grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_4();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_DescriptionAssignment_2(parent, this, 0, inst);
+			case 0: return new Property_DescriptionAssignment_3(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2114,20 +2158,20 @@ protected class Property_DefaultPropValueKeyword_3 extends KeywordToken  {
 }
 
 // DefaultPropValue+=STRING*
-protected class Property_DefaultPropValueAssignment_4 extends AssignmentToken  {
+protected class Property_DefaultPropValueAssignment_5 extends AssignmentToken  {
 	
-	public Property_DefaultPropValueAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Property_DefaultPropValueAssignment_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_4();
+		return grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_5();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_DefaultPropValueAssignment_4(parent, this, 0, inst);
-			case 1: return new Property_DefaultPropValueKeyword_3(parent, this, 1, inst);
+			case 0: return new Property_DefaultPropValueAssignment_5(parent, this, 0, inst);
+			case 1: return new Property_DefaultPropValueKeyword_4(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -2137,7 +2181,7 @@ protected class Property_DefaultPropValueAssignment_4 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("DefaultPropValue");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_4_0();
+			element = grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_5_0();
 			return obj;
 		}
 		return null;
@@ -2546,31 +2590,11 @@ protected class SimpleType_StringTypeParserRuleCall_7 extends RuleCallToken {
 /************ begin Rule VectorType ****************
  *
  * VectorType:
- *   ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType; 
- * 
- * 	
- * 	  
- * 	         
- * 	  
- * 
- * 
- * //
- * //	Command Definition
- * //
+ *   ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType;
  *
  **/
 
-// ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType 
-// 
-// 	
-// 	  
-// 	         
-// 	  
-// 
-// 
-// //
-// //	Command Definition
-// //
+// ShortVectorType|IntVectorType|FloatVectorType|DoubleVectorType|StringVectorType
 protected class VectorType_Alternatives extends AlternativesToken {
 
 	public VectorType_Alternatives(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -2757,13 +2781,20 @@ protected class VectorType_StringVectorTypeParserRuleCall_4 extends RuleCallToke
 /************ end Rule VectorType ****************/
 
 
-/************ begin Rule Command ****************
+/************ begin Rule InheritanceStatus ****************
  *
- * Command:
- *   name=ID argin=Argument argout=Argument description=STRING abstract=Boolean execMethod
- *   =STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
- *   excludedStates+=STRING*; 
+ * InheritanceStatus:
+ *   abstract=Boolean inherited=Boolean concrete=Boolean concreteHere=Boolean hasChanged=
+ *   Boolean; 
  * 
+ * 
+ * 
+ * 	        	 //	is abstract or inherited from abstract
+ * 	        	 //	is hinerited
+ * 	         	 //	is concrete or overloaded
+ * 	     	 //	is concrete or overloaded in this class
+ * 	       	 //	the type has changed
+ * 	
  * 
  * //
  * //	Command Definition
@@ -2771,8 +2802,213 @@ protected class VectorType_StringVectorTypeParserRuleCall_4 extends RuleCallToke
  *
  **/
 
-// name=ID argin=Argument argout=Argument description=STRING abstract=Boolean execMethod
-// =STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
+// abstract=Boolean inherited=Boolean concrete=Boolean concreteHere=Boolean hasChanged=
+// Boolean 
+// 	        	 //	is abstract or inherited from abstract
+// 	        	 //	is hinerited
+// 	         	 //	is concrete or overloaded
+// 	     	 //	is concrete or overloaded in this class
+protected class InheritanceStatus_Group extends GroupToken {
+	
+	public InheritanceStatus_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getInheritanceStatusAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new InheritanceStatus_HasChangedAssignment_4(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getInheritanceStatusRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// abstract=Boolean 
+// 	        	 //	is abstract or inherited from abstract
+protected class InheritanceStatus_AbstractAssignment_0 extends AssignmentToken  {
+	
+	public InheritanceStatus_AbstractAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getInheritanceStatusAccess().getAbstractAssignment_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("abstract",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("abstract");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getInheritanceStatusAccess().getAbstractBooleanParserRuleCall_0_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// inherited=Boolean 	 //	is abstract or inherited from abstract
+// 	        	 //	is hinerited
+protected class InheritanceStatus_InheritedAssignment_1 extends AssignmentToken  {
+	
+	public InheritanceStatus_InheritedAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getInheritanceStatusAccess().getInheritedAssignment_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new InheritanceStatus_AbstractAssignment_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("inherited",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("inherited");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getInheritanceStatusAccess().getInheritedBooleanParserRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// concrete=Boolean 	 //	is hinerited
+// 	         	 //	is concrete or overloaded
+protected class InheritanceStatus_ConcreteAssignment_2 extends AssignmentToken  {
+	
+	public InheritanceStatus_ConcreteAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getInheritanceStatusAccess().getConcreteAssignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new InheritanceStatus_InheritedAssignment_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("concrete",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("concrete");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getInheritanceStatusAccess().getConcreteBooleanParserRuleCall_2_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// concreteHere=Boolean 	 //	is concrete or overloaded
+// 	     	 //	is concrete or overloaded in this class
+protected class InheritanceStatus_ConcreteHereAssignment_3 extends AssignmentToken  {
+	
+	public InheritanceStatus_ConcreteHereAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getInheritanceStatusAccess().getConcreteHereAssignment_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new InheritanceStatus_ConcreteAssignment_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("concreteHere",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("concreteHere");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getInheritanceStatusAccess().getConcreteHereBooleanParserRuleCall_3_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// hasChanged=Boolean 	 //	is concrete or overloaded in this class
+protected class InheritanceStatus_HasChangedAssignment_4 extends AssignmentToken  {
+	
+	public InheritanceStatus_HasChangedAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getInheritanceStatusAccess().getHasChangedAssignment_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new InheritanceStatus_ConcreteHereAssignment_3(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("hasChanged",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("hasChanged");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getInheritanceStatusAccess().getHasChangedBooleanParserRuleCall_4_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule InheritanceStatus ****************/
+
+
+/************ begin Rule Command ****************
+ *
+ * Command:
+ *   name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus
+ *   execMethod=STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
+ *   excludedStates+=STRING*; 	 //	the type has changed
+ * 	
+ * 
+ * //
+ * //	Command Definition
+ * //
+ *
+ **/
+
+// name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus
+// execMethod=STRING displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:"
 // excludedStates+=STRING*
 protected class Command_Group extends GroupToken {
 	
@@ -2943,35 +3179,46 @@ protected class Command_DescriptionAssignment_3 extends AssignmentToken  {
 
 }
 
-// abstract=Boolean
-protected class Command_AbstractAssignment_4 extends AssignmentToken  {
+// status=InheritanceStatus
+protected class Command_StatusAssignment_4 extends AssignmentToken  {
 	
-	public Command_AbstractAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Command_StatusAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getCommandAccess().getAbstractAssignment_4();
+		return grammarAccess.getCommandAccess().getStatusAssignment_4();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Command_DescriptionAssignment_3(parent, this, 0, inst);
+			case 0: return new InheritanceStatus_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if((value = current.getConsumable("abstract",true)) == null) return null;
-		IInstanceDescription obj = current.cloneAndConsume("abstract");
-		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
-			type = AssignmentType.DRC;
-			element = grammarAccess.getCommandAccess().getAbstractBooleanParserRuleCall_4_0();
-			return obj;
+		if((value = current.getConsumable("status",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("status");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getInheritanceStatusRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getCommandAccess().getStatusInheritanceStatusParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Command_DescriptionAssignment_3(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
 }
 
 // execMethod=STRING
@@ -2987,7 +3234,7 @@ protected class Command_ExecMethodAssignment_5 extends AssignmentToken  {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Command_AbstractAssignment_4(parent, this, 0, inst);
+			case 0: return new Command_StatusAssignment_4(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -3240,10 +3487,10 @@ protected class Argument_DescriptionAssignment_1 extends AssignmentToken  {
 /************ begin Rule Attribute ****************
  *
  * Attribute:
- *   name=ID attType=AttrType dataType=Type rwTtype=RW_Type displayLevel=DisplayLevel
+ *   name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
  *   polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
- *   Boolean changeEvent=FireEvents archiveEvent=FireEvents properties=AttrProperties
- *   "excludedStates:" excludedStates+=STRING*;  
+ *   Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
+ *   properties=AttrProperties "excludedStates:" excludedStates+=STRING*;  
  * 
  * //
  * //	Attribute Definition
@@ -3251,10 +3498,10 @@ protected class Argument_DescriptionAssignment_1 extends AssignmentToken  {
  *
  **/
 
-// name=ID attType=AttrType dataType=Type rwTtype=RW_Type displayLevel=DisplayLevel
+// name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 // polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-// Boolean changeEvent=FireEvents archiveEvent=FireEvents properties=AttrProperties
-// "excludedStates:" excludedStates+=STRING*
+// Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
+// properties=AttrProperties "excludedStates:" excludedStates+=STRING*
 protected class Attribute_Group extends GroupToken {
 	
 	public Attribute_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -3267,8 +3514,8 @@ protected class Attribute_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_ExcludedStatesAssignment_14(parent, this, 0, inst);
-			case 1: return new Attribute_ExcludedStatesKeyword_13(parent, this, 1, inst);
+			case 0: return new Attribute_ExcludedStatesAssignment_15(parent, this, 0, inst);
+			case 1: return new Attribute_ExcludedStatesKeyword_14(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -3382,15 +3629,15 @@ protected class Attribute_DataTypeAssignment_2 extends AssignmentToken  {
 	}	
 }
 
-// rwTtype=RW_Type
-protected class Attribute_RwTtypeAssignment_3 extends AssignmentToken  {
+// rwType=RW_Type
+protected class Attribute_RwTypeAssignment_3 extends AssignmentToken  {
 	
-	public Attribute_RwTtypeAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_RwTypeAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getRwTtypeAssignment_3();
+		return grammarAccess.getAttributeAccess().getRwTypeAssignment_3();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -3401,11 +3648,11 @@ protected class Attribute_RwTtypeAssignment_3 extends AssignmentToken  {
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if((value = current.getConsumable("rwTtype",true)) == null) return null;
-		IInstanceDescription obj = current.cloneAndConsume("rwTtype");
+		if((value = current.getConsumable("rwType",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("rwType");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getAttributeAccess().getRwTtypeRW_TypeParserRuleCall_3_0();
+			element = grammarAccess.getAttributeAccess().getRwTypeRW_TypeParserRuleCall_3_0();
 			return obj;
 		}
 		return null;
@@ -3426,7 +3673,7 @@ protected class Attribute_DisplayLevelAssignment_4 extends AssignmentToken  {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_RwTtypeAssignment_3(parent, this, 0, inst);
+			case 0: return new Attribute_RwTypeAssignment_3(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -3683,32 +3930,32 @@ protected class Attribute_ArchiveEventAssignment_11 extends AssignmentToken  {
 	}	
 }
 
-// properties=AttrProperties
-protected class Attribute_PropertiesAssignment_12 extends AssignmentToken  {
+// status=InheritanceStatus
+protected class Attribute_StatusAssignment_12 extends AssignmentToken  {
 	
-	public Attribute_PropertiesAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_StatusAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getPropertiesAssignment_12();
+		return grammarAccess.getAttributeAccess().getStatusAssignment_12();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new AttrProperties_Group(this, this, 0, inst);
+			case 0: return new InheritanceStatus_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if((value = current.getConsumable("properties",true)) == null) return null;
-		IInstanceDescription obj = current.cloneAndConsume("properties");
+		if((value = current.getConsumable("status",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("status");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IInstanceDescription param = getDescr((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getAttrPropertiesRule().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getInheritanceStatusRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getAttributeAccess().getPropertiesAttrPropertiesParserRuleCall_12_0(); 
+				element = grammarAccess.getAttributeAccess().getStatusInheritanceStatusParserRuleCall_12_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -3725,20 +3972,62 @@ protected class Attribute_PropertiesAssignment_12 extends AssignmentToken  {
 	}	
 }
 
-// "excludedStates:"
-protected class Attribute_ExcludedStatesKeyword_13 extends KeywordToken  {
+// properties=AttrProperties
+protected class Attribute_PropertiesAssignment_13 extends AssignmentToken  {
 	
-	public Attribute_ExcludedStatesKeyword_13(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_PropertiesAssignment_13(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
-	public Keyword getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getExcludedStatesKeyword_13();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getAttributeAccess().getPropertiesAssignment_13();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_PropertiesAssignment_12(parent, this, 0, inst);
+			case 0: return new AttrProperties_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("properties",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("properties");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getAttrPropertiesRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getAttributeAccess().getPropertiesAttrPropertiesParserRuleCall_13_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Attribute_StatusAssignment_12(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "excludedStates:"
+protected class Attribute_ExcludedStatesKeyword_14 extends KeywordToken  {
+	
+	public Attribute_ExcludedStatesKeyword_14(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getAttributeAccess().getExcludedStatesKeyword_14();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Attribute_PropertiesAssignment_13(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -3746,20 +4035,20 @@ protected class Attribute_ExcludedStatesKeyword_13 extends KeywordToken  {
 }
 
 // excludedStates+=STRING*
-protected class Attribute_ExcludedStatesAssignment_14 extends AssignmentToken  {
+protected class Attribute_ExcludedStatesAssignment_15 extends AssignmentToken  {
 	
-	public Attribute_ExcludedStatesAssignment_14(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_ExcludedStatesAssignment_15(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getExcludedStatesAssignment_14();
+		return grammarAccess.getAttributeAccess().getExcludedStatesAssignment_15();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_ExcludedStatesAssignment_14(parent, this, 0, inst);
-			case 1: return new Attribute_ExcludedStatesKeyword_13(parent, this, 1, inst);
+			case 0: return new Attribute_ExcludedStatesAssignment_15(parent, this, 0, inst);
+			case 1: return new Attribute_ExcludedStatesKeyword_14(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -3769,7 +4058,7 @@ protected class Attribute_ExcludedStatesAssignment_14 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("excludedStates");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getAttributeAccess().getExcludedStatesSTRINGTerminalRuleCall_14_0();
+			element = grammarAccess.getAttributeAccess().getExcludedStatesSTRINGTerminalRuleCall_15_0();
 			return obj;
 		}
 		return null;

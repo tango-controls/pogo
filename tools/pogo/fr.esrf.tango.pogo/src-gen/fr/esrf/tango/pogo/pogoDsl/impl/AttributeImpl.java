@@ -8,6 +8,7 @@ package fr.esrf.tango.pogo.pogoDsl.impl;
 import fr.esrf.tango.pogo.pogoDsl.AttrProperties;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
+import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 import fr.esrf.tango.pogo.pogoDsl.Type;
 
@@ -36,7 +37,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getAttType <em>Att Type</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getDataType <em>Data Type</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getRwTtype <em>Rw Ttype</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getRwType <em>Rw Type</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getDisplayLevel <em>Display Level</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getPolledPeriod <em>Polled Period</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMaxX <em>Max X</em>}</li>
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMemorizedAtInit <em>Memorized At Init</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getChangeEvent <em>Change Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getArchiveEvent <em>Archive Event</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getExcludedStates <em>Excluded States</em>}</li>
  * </ul>
@@ -105,24 +107,24 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
   protected Type dataType;
 
   /**
-   * The default value of the '{@link #getRwTtype() <em>Rw Ttype</em>}' attribute.
+   * The default value of the '{@link #getRwType() <em>Rw Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRwTtype()
+   * @see #getRwType()
    * @generated
    * @ordered
    */
-  protected static final String RW_TTYPE_EDEFAULT = null;
+  protected static final String RW_TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRwTtype() <em>Rw Ttype</em>}' attribute.
+   * The cached value of the '{@link #getRwType() <em>Rw Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRwTtype()
+   * @see #getRwType()
    * @generated
    * @ordered
    */
-  protected String rwTtype = RW_TTYPE_EDEFAULT;
+  protected String rwType = RW_TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getDisplayLevel() <em>Display Level</em>}' attribute.
@@ -265,6 +267,16 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
   protected FireEvents archiveEvent;
 
   /**
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected InheritanceStatus status;
+
+  /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -404,9 +416,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRwTtype()
+  public String getRwType()
   {
-    return rwTtype;
+    return rwType;
   }
 
   /**
@@ -414,12 +426,12 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRwTtype(String newRwTtype)
+  public void setRwType(String newRwType)
   {
-    String oldRwTtype = rwTtype;
-    rwTtype = newRwTtype;
+    String oldRwType = rwType;
+    rwType = newRwType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__RW_TTYPE, oldRwTtype, rwTtype));
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__RW_TYPE, oldRwType, rwType));
   }
 
   /**
@@ -661,6 +673,54 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
+  public InheritanceStatus getStatus()
+  {
+    return status;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetStatus(InheritanceStatus newStatus, NotificationChain msgs)
+  {
+    InheritanceStatus oldStatus = status;
+    status = newStatus;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__STATUS, oldStatus, newStatus);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStatus(InheritanceStatus newStatus)
+  {
+    if (newStatus != status)
+    {
+      NotificationChain msgs = null;
+      if (status != null)
+        msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__STATUS, null, msgs);
+      if (newStatus != null)
+        msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__STATUS, null, msgs);
+      msgs = basicSetStatus(newStatus, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__STATUS, newStatus, newStatus));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public AttrProperties getProperties()
   {
     return properties;
@@ -734,6 +794,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return basicSetChangeEvent(null, msgs);
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         return basicSetArchiveEvent(null, msgs);
+      case PogoDslPackage.ATTRIBUTE__STATUS:
+        return basicSetStatus(null, msgs);
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return basicSetProperties(null, msgs);
     }
@@ -756,8 +818,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getAttType();
       case PogoDslPackage.ATTRIBUTE__DATA_TYPE:
         return getDataType();
-      case PogoDslPackage.ATTRIBUTE__RW_TTYPE:
-        return getRwTtype();
+      case PogoDslPackage.ATTRIBUTE__RW_TYPE:
+        return getRwType();
       case PogoDslPackage.ATTRIBUTE__DISPLAY_LEVEL:
         return getDisplayLevel();
       case PogoDslPackage.ATTRIBUTE__POLLED_PERIOD:
@@ -774,6 +836,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getChangeEvent();
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         return getArchiveEvent();
+      case PogoDslPackage.ATTRIBUTE__STATUS:
+        return getStatus();
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return getProperties();
       case PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES:
@@ -802,8 +866,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__DATA_TYPE:
         setDataType((Type)newValue);
         return;
-      case PogoDslPackage.ATTRIBUTE__RW_TTYPE:
-        setRwTtype((String)newValue);
+      case PogoDslPackage.ATTRIBUTE__RW_TYPE:
+        setRwType((String)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__DISPLAY_LEVEL:
         setDisplayLevel((String)newValue);
@@ -828,6 +892,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         setArchiveEvent((FireEvents)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__STATUS:
+        setStatus((InheritanceStatus)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         setProperties((AttrProperties)newValue);
@@ -859,8 +926,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__DATA_TYPE:
         setDataType((Type)null);
         return;
-      case PogoDslPackage.ATTRIBUTE__RW_TTYPE:
-        setRwTtype(RW_TTYPE_EDEFAULT);
+      case PogoDslPackage.ATTRIBUTE__RW_TYPE:
+        setRwType(RW_TYPE_EDEFAULT);
         return;
       case PogoDslPackage.ATTRIBUTE__DISPLAY_LEVEL:
         setDisplayLevel(DISPLAY_LEVEL_EDEFAULT);
@@ -885,6 +952,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         setArchiveEvent((FireEvents)null);
+        return;
+      case PogoDslPackage.ATTRIBUTE__STATUS:
+        setStatus((InheritanceStatus)null);
         return;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         setProperties((AttrProperties)null);
@@ -912,8 +982,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return ATT_TYPE_EDEFAULT == null ? attType != null : !ATT_TYPE_EDEFAULT.equals(attType);
       case PogoDslPackage.ATTRIBUTE__DATA_TYPE:
         return dataType != null;
-      case PogoDslPackage.ATTRIBUTE__RW_TTYPE:
-        return RW_TTYPE_EDEFAULT == null ? rwTtype != null : !RW_TTYPE_EDEFAULT.equals(rwTtype);
+      case PogoDslPackage.ATTRIBUTE__RW_TYPE:
+        return RW_TYPE_EDEFAULT == null ? rwType != null : !RW_TYPE_EDEFAULT.equals(rwType);
       case PogoDslPackage.ATTRIBUTE__DISPLAY_LEVEL:
         return DISPLAY_LEVEL_EDEFAULT == null ? displayLevel != null : !DISPLAY_LEVEL_EDEFAULT.equals(displayLevel);
       case PogoDslPackage.ATTRIBUTE__POLLED_PERIOD:
@@ -930,6 +1000,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return changeEvent != null;
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         return archiveEvent != null;
+      case PogoDslPackage.ATTRIBUTE__STATUS:
+        return status != null;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return properties != null;
       case PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES:
@@ -953,8 +1025,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     result.append(name);
     result.append(", attType: ");
     result.append(attType);
-    result.append(", rwTtype: ");
-    result.append(rwTtype);
+    result.append(", rwType: ");
+    result.append(rwType);
     result.append(", displayLevel: ");
     result.append(displayLevel);
     result.append(", polledPeriod: ");
