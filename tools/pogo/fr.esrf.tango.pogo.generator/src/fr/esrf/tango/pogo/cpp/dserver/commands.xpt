@@ -6,7 +6,7 @@
 //===================================================================
 //	Command execution method calls
 //===================================================================
-«FOREACH commands AS cmd»«IF cmd.abstract!="true"»
+«FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
 «separator2()»
 /**
  * method : 		«cmd.name»Class::execute()

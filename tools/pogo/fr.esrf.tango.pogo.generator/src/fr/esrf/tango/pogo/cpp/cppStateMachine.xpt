@@ -55,7 +55,7 @@ bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 //=================================================
 //		Commands Allowed Methods
 //=================================================
-«FOREACH commands AS cmd»«IF cmd.abstract!="true"»
+«FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
 «EXPAND Common::methodHeader("is_" + cmd.name + "State_allowed",
 		"Execution allowed for " + cmd.name + " command.")»
 bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)

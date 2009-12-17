@@ -17,7 +17,7 @@
 «ENDIF»
 «FOREACH attributes AS att»
 «EXPAND readAttributeHeader(att)»
-«EXPAND readAttributeMethod(att)»«IF att.rwTtype.contains("WRITE")»
+«EXPAND readAttributeMethod(att)»«IF att.rwType.contains("WRITE")»
 «EXPAND writeAttributeHeader(att)»
 «EXPAND writeAttributeMethod(att)»
 «ENDIF»«ENDFOREACH»

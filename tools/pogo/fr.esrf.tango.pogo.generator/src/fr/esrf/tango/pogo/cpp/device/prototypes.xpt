@@ -24,7 +24,7 @@ public:
 «ENDIF»
 
 //	Command execution methods
-public: «FOREACH commands AS cmd»«IF cmd.abstract!="true"»
+public: «FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
 «EXPAND executeCommandProto(cmd)»
 «EXPAND isCommandAllowedProto(cmd)»
 «ENDIF»«ENDFOREACH»
@@ -40,7 +40,7 @@ public: «FOREACH commands AS cmd»«IF cmd.abstract!="true"»
 «EXPAND attributes::readAttributeHeaderProto(att)-»
 
 	virtual void read_«att.name»(Tango::Attribute &attr);
-«IF att.rwTtype.contains("WRITE")-»
+«IF att.rwType.contains("WRITE")-»
 	/**
 	 *	Write «att.name» attribute values to hardware.
  	 */

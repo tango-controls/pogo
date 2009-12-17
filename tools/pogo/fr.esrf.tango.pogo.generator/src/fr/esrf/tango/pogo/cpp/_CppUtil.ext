@@ -179,7 +179,7 @@ cppType(ULongType this):			"Tango::DevULong64";
 cppType(LongArrayType this):		"Tango::DevVarLong64Array";
 cppType(ULongArrayType this):		"Tango::DevVarULong64Array";
 cppType(DevIntType this):			"Tango::DevInt";
-cppType(EncodedType this):			"Tango::Encoded";
+cppType(EncodedType this):			"Tango::DevEncoded";
 
 	
 //	Type enum

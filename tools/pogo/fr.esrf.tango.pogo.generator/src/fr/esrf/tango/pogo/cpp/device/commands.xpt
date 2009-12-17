@@ -10,7 +10,7 @@
 «separator1()»
 //	Command execution methods
 «separator1()»
-«FOREACH commands AS cmd»«IF cmd.abstract!="true"»
+«FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
 «EXPAND executeCommandHeader(cmd)»
 «EXPAND executeCommandMethod(cmd)»
 «ENDIF»«ENDFOREACH»
