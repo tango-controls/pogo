@@ -431,22 +431,25 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cTitleSTRINGTerminalRuleCall_1_0 = (RuleCall)cTitleAssignment_1.eContents().get(0);
 		private final Assignment cSourcePathAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cSourcePathSTRINGTerminalRuleCall_2_0 = (RuleCall)cSourcePathAssignment_2.eContents().get(0);
-		private final Keyword cInheritancesKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cInheritancesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cInheritancesInheritanceParserRuleCall_4_0 = (RuleCall)cInheritancesAssignment_4.eContents().get(0);
-		private final Assignment cLanguageAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cLanguageLanguageParserRuleCall_5_0 = (RuleCall)cLanguageAssignment_5.eContents().get(0);
-		private final Assignment cFilestogenerateAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cFilestogenerateSTRINGTerminalRuleCall_6_0 = (RuleCall)cFilestogenerateAssignment_6.eContents().get(0);
-		private final Assignment cIdentificationAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cIdentificationClassIdentificationParserRuleCall_7_0 = (RuleCall)cIdentificationAssignment_7.eContents().get(0);
-		private final Assignment cCommentsAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cCommentsCommentsParserRuleCall_8_0 = (RuleCall)cCommentsAssignment_8.eContents().get(0);
+		private final Assignment cInheritanceAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cInheritanceInheritanceParserRuleCall_3_0 = (RuleCall)cInheritanceAssignment_3.eContents().get(0);
+		private final Assignment cLanguageAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cLanguageLanguageParserRuleCall_4_0 = (RuleCall)cLanguageAssignment_4.eContents().get(0);
+		private final Assignment cFilestogenerateAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cFilestogenerateSTRINGTerminalRuleCall_5_0 = (RuleCall)cFilestogenerateAssignment_5.eContents().get(0);
+		private final Assignment cIdentificationAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cIdentificationClassIdentificationParserRuleCall_6_0 = (RuleCall)cIdentificationAssignment_6.eContents().get(0);
+		private final Assignment cCommentsAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cCommentsCommentsParserRuleCall_7_0 = (RuleCall)cCommentsAssignment_7.eContents().get(0);
+		private final Assignment cHasAbstractCommandAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cHasAbstractCommandBooleanParserRuleCall_8_0 = (RuleCall)cHasAbstractCommandAssignment_8.eContents().get(0);
+		private final Assignment cHasAbstractAttributeAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cHasAbstractAttributeBooleanParserRuleCall_9_0 = (RuleCall)cHasAbstractAttributeAssignment_9.eContents().get(0);
 		
 		//ClassDescription:
-		//  description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
-		//  Inheritance* language=Language filestogenerate=STRING identification=
-		//  ClassIdentification comments=Comments; 
+		//  description=STRING title=STRING sourcePath=STRING inheritance=Inheritance language=
+		//  Language filestogenerate=STRING identification=ClassIdentification comments=
+		//  Comments hasAbstractCommand=Boolean hasAbstractAttribute=Boolean; 
 		//
 		//
 		////
@@ -456,27 +459,28 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//	       	 //	Class description
 		//	              	 //	Short description
 		//	         	 //	Files location
-		//	 
-		//			 //	inheritance class definitions
-		//	           			 //	Language to generate
-		//	   				 //	File(s) to generate (code, makefile,....)
+		//	        	 //	inheritance clas definition
+		//	           		 //	Language to generate
+		//	   			 //	File(s) to generate (code, makefile,....)
 		//	     
 		//	          
+		//	      
+		//	    
+		//	
 		////
 		////	Inheritance Definition
 		////
 		public ParserRule getRule() { return rule; }
 
-		//description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
-		//Inheritance* language=Language filestogenerate=STRING identification=
-		//ClassIdentification comments=Comments 
+		//description=STRING title=STRING sourcePath=STRING inheritance=Inheritance language=
+		//Language filestogenerate=STRING identification=ClassIdentification comments=
+		//Comments hasAbstractCommand=Boolean hasAbstractAttribute=Boolean 
 		//	       	 //	Class description
 		//	              	 //	Short description
 		//	         	 //	Files location
-		//	 
-		//			 //	inheritance class definitions
-		//	           			 //	Language to generate
-		//	   				 //	File(s) to generate (code, makefile,....)
+		//	        	 //	inheritance clas definition
+		//	           		 //	Language to generate
+		//	   			 //	File(s) to generate (code, makefile,....)
 		public Group getGroup() { return cGroup; }
 
 		//description=STRING 
@@ -500,40 +504,50 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//STRING   	 //	Files location
 		public RuleCall getSourcePathSTRINGTerminalRuleCall_2_0() { return cSourcePathSTRINGTerminalRuleCall_2_0; }
 
-		//"inheritances:" 	 //	Files location
-		public Keyword getInheritancesKeyword_3() { return cInheritancesKeyword_3; }
+		//inheritance=Inheritance 	 //	Files location
+		//	        	 //	inheritance clas definition
+		public Assignment getInheritanceAssignment_3() { return cInheritanceAssignment_3; }
 
-		//inheritances+=Inheritance*
-		public Assignment getInheritancesAssignment_4() { return cInheritancesAssignment_4; }
+		//Inheritance   	 //	inheritance clas definition
+		public RuleCall getInheritanceInheritanceParserRuleCall_3_0() { return cInheritanceInheritanceParserRuleCall_3_0; }
 
-		//Inheritance
-		public RuleCall getInheritancesInheritanceParserRuleCall_4_0() { return cInheritancesInheritanceParserRuleCall_4_0; }
+		//language=Language 	 //	inheritance clas definition
+		//	           		 //	Language to generate
+		public Assignment getLanguageAssignment_4() { return cLanguageAssignment_4; }
 
-		//language=Language 	 //	inheritance class definitions
-		//	           			 //	Language to generate
-		public Assignment getLanguageAssignment_5() { return cLanguageAssignment_5; }
+		//Language   		 //	Language to generate
+		public RuleCall getLanguageLanguageParserRuleCall_4_0() { return cLanguageLanguageParserRuleCall_4_0; }
 
-		//Language   			 //	Language to generate
-		public RuleCall getLanguageLanguageParserRuleCall_5_0() { return cLanguageLanguageParserRuleCall_5_0; }
+		//filestogenerate=STRING 		 //	Language to generate
+		//	   			 //	File(s) to generate (code, makefile,....)
+		public Assignment getFilestogenerateAssignment_5() { return cFilestogenerateAssignment_5; }
 
-		//filestogenerate=STRING 			 //	Language to generate
-		//	   				 //	File(s) to generate (code, makefile,....)
-		public Assignment getFilestogenerateAssignment_6() { return cFilestogenerateAssignment_6; }
+		//STRING   			 //	File(s) to generate (code, makefile,....)
+		public RuleCall getFilestogenerateSTRINGTerminalRuleCall_5_0() { return cFilestogenerateSTRINGTerminalRuleCall_5_0; }
 
-		//STRING   				 //	File(s) to generate (code, makefile,....)
-		public RuleCall getFilestogenerateSTRINGTerminalRuleCall_6_0() { return cFilestogenerateSTRINGTerminalRuleCall_6_0; }
-
-		//identification=ClassIdentification 				 //	File(s) to generate (code, makefile,....)
-		public Assignment getIdentificationAssignment_7() { return cIdentificationAssignment_7; }
+		//identification=ClassIdentification 			 //	File(s) to generate (code, makefile,....)
+		public Assignment getIdentificationAssignment_6() { return cIdentificationAssignment_6; }
 
 		//ClassIdentification
-		public RuleCall getIdentificationClassIdentificationParserRuleCall_7_0() { return cIdentificationClassIdentificationParserRuleCall_7_0; }
+		public RuleCall getIdentificationClassIdentificationParserRuleCall_6_0() { return cIdentificationClassIdentificationParserRuleCall_6_0; }
 
 		//comments=Comments
-		public Assignment getCommentsAssignment_8() { return cCommentsAssignment_8; }
+		public Assignment getCommentsAssignment_7() { return cCommentsAssignment_7; }
 
 		//Comments
-		public RuleCall getCommentsCommentsParserRuleCall_8_0() { return cCommentsCommentsParserRuleCall_8_0; }
+		public RuleCall getCommentsCommentsParserRuleCall_7_0() { return cCommentsCommentsParserRuleCall_7_0; }
+
+		//hasAbstractCommand=Boolean
+		public Assignment getHasAbstractCommandAssignment_8() { return cHasAbstractCommandAssignment_8; }
+
+		//Boolean
+		public RuleCall getHasAbstractCommandBooleanParserRuleCall_8_0() { return cHasAbstractCommandBooleanParserRuleCall_8_0; }
+
+		//hasAbstractAttribute=Boolean
+		public Assignment getHasAbstractAttributeAssignment_9() { return cHasAbstractAttributeAssignment_9; }
+
+		//Boolean
+		public RuleCall getHasAbstractAttributeBooleanParserRuleCall_9_0() { return cHasAbstractAttributeBooleanParserRuleCall_9_0; }
 	}
 
 	public class InheritanceElements implements IParserRuleAccess {
@@ -546,6 +560,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		
 		//Inheritance:
 		//  classname=STRING sourcePath=STRING; 
+		//	
 		////
 		////	Inheritance Definition
 		////
@@ -705,9 +720,11 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Assignment cDescriptionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cDescriptionSTRINGTerminalRuleCall_1_0 = (RuleCall)cDescriptionAssignment_1.eContents().get(0);
+		private final Assignment cStatusAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatusInheritanceStatusParserRuleCall_2_0 = (RuleCall)cStatusAssignment_2.eContents().get(0);
 		
 		//State:
-		//  name=ID description=STRING; 
+		//  name=ID description=STRING status=InheritanceStatus; 
 		//
 		////
 		////	State Definition
@@ -715,13 +732,14 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//
 		//	           
 		//	    
+		//	         
 		//
 		////
 		////	Property Definition
 		////
 		public ParserRule getRule() { return rule; }
 
-		//name=ID description=STRING
+		//name=ID description=STRING status=InheritanceStatus
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -735,6 +753,12 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_1_0() { return cDescriptionSTRINGTerminalRuleCall_1_0; }
+
+		//status=InheritanceStatus
+		public Assignment getStatusAssignment_2() { return cStatusAssignment_2; }
+
+		//InheritanceStatus
+		public RuleCall getStatusInheritanceStatusParserRuleCall_2_0() { return cStatusInheritanceStatusParserRuleCall_2_0; }
 	}
 
 	public class PropertyElements implements IParserRuleAccess {
@@ -2530,9 +2554,9 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	}
 
 	//ClassDescription:
-	//  description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
-	//  Inheritance* language=Language filestogenerate=STRING identification=
-	//  ClassIdentification comments=Comments; 
+	//  description=STRING title=STRING sourcePath=STRING inheritance=Inheritance language=
+	//  Language filestogenerate=STRING identification=ClassIdentification comments=
+	//  Comments hasAbstractCommand=Boolean hasAbstractAttribute=Boolean; 
 	//
 	//
 	////
@@ -2542,12 +2566,14 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//	       	 //	Class description
 	//	              	 //	Short description
 	//	         	 //	Files location
-	//	 
-	//			 //	inheritance class definitions
-	//	           			 //	Language to generate
-	//	   				 //	File(s) to generate (code, makefile,....)
+	//	        	 //	inheritance clas definition
+	//	           		 //	Language to generate
+	//	   			 //	File(s) to generate (code, makefile,....)
 	//	     
 	//	          
+	//	      
+	//	    
+	//	
 	////
 	////	Inheritance Definition
 	////
@@ -2561,6 +2587,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 	//Inheritance:
 	//  classname=STRING sourcePath=STRING; 
+	//	
 	////
 	////	Inheritance Definition
 	////
@@ -2627,7 +2654,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	}
 
 	//State:
-	//  name=ID description=STRING; 
+	//  name=ID description=STRING status=InheritanceStatus; 
 	//
 	////
 	////	State Definition
@@ -2635,6 +2662,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//
 	//	           
 	//	    
+	//	         
 	//
 	////
 	////	Property Definition

@@ -52,12 +52,14 @@ ClassDescription:
 	description    = STRING	//	Class description
 	title          = STRING	//	Short description
 	sourcePath     = STRING	//	Files location
-	"inheritances:"
-		(inheritances+=Inheritance)*	//	inheritance class definitions
-	language       = Language			//	Language to generate
-	filestogenerate= STRING				//	File(s) to generate (code, makefile,....)
+	inheritance    = Inheritance	//	inheritance clas definition
+	language       = Language		//	Language to generate
+	filestogenerate= STRING			//	File(s) to generate (code, makefile,....)
 	identification = ClassIdentification
-	comments       = Comments;
+	comments       = Comments
+	hasAbstractCommand   = Boolean
+	hasAbstractAttribute = Boolean;
+	
 //
 //	Inheritance Definition
 //
@@ -88,7 +90,8 @@ Comments:
 //
 State:
 	name        = ID
-	description = STRING;
+	description = STRING
+	status      = InheritanceStatus;
 
 //
 //	Property Definition

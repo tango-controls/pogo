@@ -145,8 +145,7 @@
         <tokens xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
         </tokens>
-        <tokens xsi:type="xtext:Keyword" value="inheritances:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="inheritances" operator="+=">
+        <tokens xsi:type="xtext:Assignment" feature="inheritance" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="language" operator="=">
@@ -160,6 +159,12 @@
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="comments" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="hasAbstractCommand" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="hasAbstractAttribute" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
         </tokens>
       </alternatives>
     </rules>
@@ -222,6 +227,9 @@
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </tokens>
       </alternatives>
     </rules>

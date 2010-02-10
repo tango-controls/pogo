@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.State#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.State#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.State#getStatus <em>Status</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +78,31 @@ public interface State extends EObject
    * @generated
    */
   void setDescription(String value);
+
+  /**
+   * Returns the value of the '<em><b>Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Status</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Status</em>' containment reference.
+   * @see #setStatus(InheritanceStatus)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getState_Status()
+   * @model containment="true"
+   * @generated
+   */
+  InheritanceStatus getStatus();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.State#getStatus <em>Status</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Status</em>' containment reference.
+   * @see #getStatus()
+   * @generated
+   */
+  void setStatus(InheritanceStatus value);
 
 } // State

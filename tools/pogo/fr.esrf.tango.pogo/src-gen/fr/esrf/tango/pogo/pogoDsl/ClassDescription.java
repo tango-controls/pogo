@@ -5,8 +5,6 @@
  */
 package fr.esrf.tango.pogo.pogoDsl;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,11 +18,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getTitle <em>Title</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getSourcePath <em>Source Path</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritances <em>Inheritances</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance <em>Inheritance</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getLanguage <em>Language</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getIdentification <em>Identification</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getComments <em>Comments</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractAttribute <em>Has Abstract Attribute</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,20 +113,30 @@ public interface ClassDescription extends EObject
   void setSourcePath(String value);
 
   /**
-   * Returns the value of the '<em><b>Inheritances</b></em>' containment reference list.
-   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.Inheritance}.
+   * Returns the value of the '<em><b>Inheritance</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inheritances</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Inheritance</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inheritances</em>' containment reference list.
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_Inheritances()
+   * @return the value of the '<em>Inheritance</em>' containment reference.
+   * @see #setInheritance(Inheritance)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_Inheritance()
    * @model containment="true"
    * @generated
    */
-  EList<Inheritance> getInheritances();
+  Inheritance getInheritance();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance <em>Inheritance</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Inheritance</em>' containment reference.
+   * @see #getInheritance()
+   * @generated
+   */
+  void setInheritance(Inheritance value);
 
   /**
    * Returns the value of the '<em><b>Language</b></em>' attribute.
@@ -231,5 +241,57 @@ public interface ClassDescription extends EObject
    * @generated
    */
   void setComments(Comments value);
+
+  /**
+   * Returns the value of the '<em><b>Has Abstract Command</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Abstract Command</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Abstract Command</em>' attribute.
+   * @see #setHasAbstractCommand(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_HasAbstractCommand()
+   * @model
+   * @generated
+   */
+  String getHasAbstractCommand();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Abstract Command</em>' attribute.
+   * @see #getHasAbstractCommand()
+   * @generated
+   */
+  void setHasAbstractCommand(String value);
+
+  /**
+   * Returns the value of the '<em><b>Has Abstract Attribute</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Abstract Attribute</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Abstract Attribute</em>' attribute.
+   * @see #setHasAbstractAttribute(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_HasAbstractAttribute()
+   * @model
+   * @generated
+   */
+  String getHasAbstractAttribute();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractAttribute <em>Has Abstract Attribute</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Abstract Attribute</em>' attribute.
+   * @see #getHasAbstractAttribute()
+   * @generated
+   */
+  void setHasAbstractAttribute(String value);
 
 } // ClassDescription

@@ -31,11 +31,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/sourcePath"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/inheritances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/inheritance"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/language"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/filestogenerate"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/identification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractCommand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractAttribute"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Inheritance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Inheritance/classname"/>
@@ -56,6 +58,7 @@
     <genClasses ecoreClass="PogoDsl.ecore#//State">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//State/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//State/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//State/status"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Property/name"/>

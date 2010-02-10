@@ -271,13 +271,13 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__SOURCE_PATH = 2;
 
   /**
-   * The feature id for the '<em><b>Inheritances</b></em>' containment reference list.
+   * The feature id for the '<em><b>Inheritance</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__INHERITANCES = 3;
+  int CLASS_DESCRIPTION__INHERITANCE = 3;
 
   /**
    * The feature id for the '<em><b>Language</b></em>' attribute.
@@ -316,13 +316,31 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__COMMENTS = 7;
 
   /**
+   * The feature id for the '<em><b>Has Abstract Command</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 8;
+
+  /**
+   * The feature id for the '<em><b>Has Abstract Attribute</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 9;
+
+  /**
    * The number of structural features of the '<em>Class Description</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION_FEATURE_COUNT = 8;
+  int CLASS_DESCRIPTION_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -500,13 +518,22 @@ public interface PogoDslPackage extends EPackage
   int STATE__DESCRIPTION = 1;
 
   /**
+   * The feature id for the '<em><b>Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE__STATUS = 2;
+
+  /**
    * The number of structural features of the '<em>State</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATE_FEATURE_COUNT = 2;
+  int STATE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl <em>Property</em>}' class.
@@ -2049,15 +2076,15 @@ public interface PogoDslPackage extends EPackage
   EAttribute getClassDescription_SourcePath();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritances <em>Inheritances</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance <em>Inheritance</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Inheritances</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritances()
+   * @return the meta object for the containment reference '<em>Inheritance</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance()
    * @see #getClassDescription()
    * @generated
    */
-  EReference getClassDescription_Inheritances();
+  EReference getClassDescription_Inheritance();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getLanguage <em>Language</em>}'.
@@ -2102,6 +2129,28 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EReference getClassDescription_Comments();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Abstract Command</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand()
+   * @see #getClassDescription()
+   * @generated
+   */
+  EAttribute getClassDescription_HasAbstractCommand();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractAttribute <em>Has Abstract Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Abstract Attribute</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractAttribute()
+   * @see #getClassDescription()
+   * @generated
+   */
+  EAttribute getClassDescription_HasAbstractAttribute();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Inheritance <em>Inheritance</em>}'.
@@ -2274,6 +2323,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getState_Description();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.State#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Status</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.State#getStatus()
+   * @see #getState()
+   * @generated
+   */
+  EReference getState_Status();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Property <em>Property</em>}'.
@@ -3489,12 +3549,12 @@ public interface PogoDslPackage extends EPackage
     EAttribute CLASS_DESCRIPTION__SOURCE_PATH = eINSTANCE.getClassDescription_SourcePath();
 
     /**
-     * The meta object literal for the '<em><b>Inheritances</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Inheritance</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLASS_DESCRIPTION__INHERITANCES = eINSTANCE.getClassDescription_Inheritances();
+    EReference CLASS_DESCRIPTION__INHERITANCE = eINSTANCE.getClassDescription_Inheritance();
 
     /**
      * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
@@ -3527,6 +3587,22 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EReference CLASS_DESCRIPTION__COMMENTS = eINSTANCE.getClassDescription_Comments();
+
+    /**
+     * The meta object literal for the '<em><b>Has Abstract Command</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = eINSTANCE.getClassDescription_HasAbstractCommand();
+
+    /**
+     * The meta object literal for the '<em><b>Has Abstract Attribute</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = eINSTANCE.getClassDescription_HasAbstractAttribute();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -3663,6 +3739,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute STATE__DESCRIPTION = eINSTANCE.getState_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Status</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE__STATUS = eINSTANCE.getState_Status();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl <em>Property</em>}' class.

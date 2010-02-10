@@ -1029,9 +1029,9 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_18 extends KeywordToken
 /************ begin Rule ClassDescription ****************
  *
  * ClassDescription:
- *   description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
- *   Inheritance* language=Language filestogenerate=STRING identification=
- *   ClassIdentification comments=Comments; 
+ *   description=STRING title=STRING sourcePath=STRING inheritance=Inheritance language=
+ *   Language filestogenerate=STRING identification=ClassIdentification comments=
+ *   Comments hasAbstractCommand=Boolean hasAbstractAttribute=Boolean; 
  * 
  * 
  * //
@@ -1041,28 +1041,29 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_18 extends KeywordToken
  * 	       	 //	Class description
  * 	              	 //	Short description
  * 	         	 //	Files location
- * 	 
- * 			 //	inheritance class definitions
- * 	           			 //	Language to generate
- * 	   				 //	File(s) to generate (code, makefile,....)
+ * 	        	 //	inheritance clas definition
+ * 	           		 //	Language to generate
+ * 	   			 //	File(s) to generate (code, makefile,....)
  * 	     
  * 	          
+ * 	      
+ * 	    
+ * 	
  * //
  * //	Inheritance Definition
  * //
  *
  **/
 
-// description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
-// Inheritance* language=Language filestogenerate=STRING identification=
-// ClassIdentification comments=Comments 
+// description=STRING title=STRING sourcePath=STRING inheritance=Inheritance language=
+// Language filestogenerate=STRING identification=ClassIdentification comments=
+// Comments hasAbstractCommand=Boolean hasAbstractAttribute=Boolean 
 // 	       	 //	Class description
 // 	              	 //	Short description
 // 	         	 //	Files location
-// 	 
-// 			 //	inheritance class definitions
-// 	           			 //	Language to generate
-// 	   				 //	File(s) to generate (code, makefile,....)
+// 	        	 //	inheritance clas definition
+// 	           		 //	Language to generate
+// 	   			 //	File(s) to generate (code, makefile,....)
 protected class ClassDescription_Group extends GroupToken {
 	
 	public ClassDescription_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1075,7 +1076,7 @@ protected class ClassDescription_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_CommentsAssignment_8(parent, this, 0, inst);
+			case 0: return new ClassDescription_HasAbstractAttributeAssignment_9(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1181,35 +1182,16 @@ protected class ClassDescription_SourcePathAssignment_2 extends AssignmentToken 
 
 }
 
-// "inheritances:" 	 //	Files location
-protected class ClassDescription_InheritancesKeyword_3 extends KeywordToken  {
+// inheritance=Inheritance 	 //	Files location
+// 	        	 //	inheritance clas definition
+protected class ClassDescription_InheritanceAssignment_3 extends AssignmentToken  {
 	
-	public ClassDescription_InheritancesKeyword_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
-		super(parent, next, no, current);
-	}
-	
-	public Keyword getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getInheritancesKeyword_3();
-	}
-
-	public AbstractToken createFollower(int index, IInstanceDescription inst) {
-		switch(index) {
-			case 0: return new ClassDescription_SourcePathAssignment_2(parent, this, 0, inst);
-			default: return null;
-		}	
-	}	
-		
-}
-
-// inheritances+=Inheritance*
-protected class ClassDescription_InheritancesAssignment_4 extends AssignmentToken  {
-	
-	public ClassDescription_InheritancesAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_InheritanceAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getInheritancesAssignment_4();
+		return grammarAccess.getClassDescriptionAccess().getInheritanceAssignment_3();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1220,13 +1202,13 @@ protected class ClassDescription_InheritancesAssignment_4 extends AssignmentToke
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if((value = current.getConsumable("inheritances",false)) == null) return null;
-		IInstanceDescription obj = current.cloneAndConsume("inheritances");
+		if((value = current.getConsumable("inheritance",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("inheritance");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IInstanceDescription param = getDescr((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getInheritanceRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getClassDescriptionAccess().getInheritancesInheritanceParserRuleCall_4_0(); 
+				element = grammarAccess.getClassDescriptionAccess().getInheritanceInheritanceParserRuleCall_3_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1237,29 +1219,27 @@ protected class ClassDescription_InheritancesAssignment_4 extends AssignmentToke
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new ClassDescription_InheritancesAssignment_4(parent, next, actIndex, consumed);
-			case 1: return new ClassDescription_InheritancesKeyword_3(parent, next, actIndex, consumed);
+			case 0: return new ClassDescription_SourcePathAssignment_2(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
-// language=Language 	 //	inheritance class definitions
-// 	           			 //	Language to generate
-protected class ClassDescription_LanguageAssignment_5 extends AssignmentToken  {
+// language=Language 	 //	inheritance clas definition
+// 	           		 //	Language to generate
+protected class ClassDescription_LanguageAssignment_4 extends AssignmentToken  {
 	
-	public ClassDescription_LanguageAssignment_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_LanguageAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getLanguageAssignment_5();
+		return grammarAccess.getClassDescriptionAccess().getLanguageAssignment_4();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_InheritancesAssignment_4(parent, this, 0, inst);
-			case 1: return new ClassDescription_InheritancesKeyword_3(parent, this, 1, inst);
+			case 0: return new ClassDescription_InheritanceAssignment_3(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1269,7 +1249,7 @@ protected class ClassDescription_LanguageAssignment_5 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("language");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getLanguageLanguageParserRuleCall_5_0();
+			element = grammarAccess.getClassDescriptionAccess().getLanguageLanguageParserRuleCall_4_0();
 			return obj;
 		}
 		return null;
@@ -1277,21 +1257,21 @@ protected class ClassDescription_LanguageAssignment_5 extends AssignmentToken  {
 
 }
 
-// filestogenerate=STRING 			 //	Language to generate
-// 	   				 //	File(s) to generate (code, makefile,....)
-protected class ClassDescription_FilestogenerateAssignment_6 extends AssignmentToken  {
+// filestogenerate=STRING 		 //	Language to generate
+// 	   			 //	File(s) to generate (code, makefile,....)
+protected class ClassDescription_FilestogenerateAssignment_5 extends AssignmentToken  {
 	
-	public ClassDescription_FilestogenerateAssignment_6(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_FilestogenerateAssignment_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getFilestogenerateAssignment_6();
+		return grammarAccess.getClassDescriptionAccess().getFilestogenerateAssignment_5();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_LanguageAssignment_5(parent, this, 0, inst);
+			case 0: return new ClassDescription_LanguageAssignment_4(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1301,7 +1281,7 @@ protected class ClassDescription_FilestogenerateAssignment_6 extends AssignmentT
 		IInstanceDescription obj = current.cloneAndConsume("filestogenerate");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getClassDescriptionAccess().getFilestogenerateSTRINGTerminalRuleCall_6_0();
+			element = grammarAccess.getClassDescriptionAccess().getFilestogenerateSTRINGTerminalRuleCall_5_0();
 			return obj;
 		}
 		return null;
@@ -1309,15 +1289,15 @@ protected class ClassDescription_FilestogenerateAssignment_6 extends AssignmentT
 
 }
 
-// identification=ClassIdentification 				 //	File(s) to generate (code, makefile,....)
-protected class ClassDescription_IdentificationAssignment_7 extends AssignmentToken  {
+// identification=ClassIdentification 			 //	File(s) to generate (code, makefile,....)
+protected class ClassDescription_IdentificationAssignment_6 extends AssignmentToken  {
 	
-	public ClassDescription_IdentificationAssignment_7(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_IdentificationAssignment_6(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getIdentificationAssignment_7();
+		return grammarAccess.getClassDescriptionAccess().getIdentificationAssignment_6();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1334,7 +1314,7 @@ protected class ClassDescription_IdentificationAssignment_7 extends AssignmentTo
 			IInstanceDescription param = getDescr((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getClassIdentificationRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getClassDescriptionAccess().getIdentificationClassIdentificationParserRuleCall_7_0(); 
+				element = grammarAccess.getClassDescriptionAccess().getIdentificationClassIdentificationParserRuleCall_6_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1345,21 +1325,21 @@ protected class ClassDescription_IdentificationAssignment_7 extends AssignmentTo
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new ClassDescription_FilestogenerateAssignment_6(parent, next, actIndex, consumed);
+			case 0: return new ClassDescription_FilestogenerateAssignment_5(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // comments=Comments
-protected class ClassDescription_CommentsAssignment_8 extends AssignmentToken  {
+protected class ClassDescription_CommentsAssignment_7 extends AssignmentToken  {
 	
-	public ClassDescription_CommentsAssignment_8(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_CommentsAssignment_7(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getCommentsAssignment_8();
+		return grammarAccess.getClassDescriptionAccess().getCommentsAssignment_7();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1376,7 +1356,7 @@ protected class ClassDescription_CommentsAssignment_8 extends AssignmentToken  {
 			IInstanceDescription param = getDescr((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getCommentsRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getClassDescriptionAccess().getCommentsCommentsParserRuleCall_8_0(); 
+				element = grammarAccess.getClassDescriptionAccess().getCommentsCommentsParserRuleCall_7_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1387,10 +1367,72 @@ protected class ClassDescription_CommentsAssignment_8 extends AssignmentToken  {
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new ClassDescription_IdentificationAssignment_7(parent, next, actIndex, consumed);
+			case 0: return new ClassDescription_IdentificationAssignment_6(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
+}
+
+// hasAbstractCommand=Boolean
+protected class ClassDescription_HasAbstractCommandAssignment_8 extends AssignmentToken  {
+	
+	public ClassDescription_HasAbstractCommandAssignment_8(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_8();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new ClassDescription_CommentsAssignment_7(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("hasAbstractCommand",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("hasAbstractCommand");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_8_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// hasAbstractAttribute=Boolean
+protected class ClassDescription_HasAbstractAttributeAssignment_9 extends AssignmentToken  {
+	
+	public ClassDescription_HasAbstractAttributeAssignment_9(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_9();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new ClassDescription_HasAbstractCommandAssignment_8(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("hasAbstractAttribute",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("hasAbstractAttribute");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_9_0();
+			return obj;
+		}
+		return null;
+	}
+
 }
 
 
@@ -1401,6 +1443,7 @@ protected class ClassDescription_CommentsAssignment_8 extends AssignmentToken  {
  *
  * Inheritance:
  *   classname=STRING sourcePath=STRING; 
+ * 	
  * //
  * //	Inheritance Definition
  * //
@@ -1841,7 +1884,7 @@ protected class Comments_CommandsTableAssignment extends AssignmentToken  {
 /************ begin Rule State ****************
  *
  * State:
- *   name=ID description=STRING; 
+ *   name=ID description=STRING status=InheritanceStatus; 
  * 
  * //
  * //	State Definition
@@ -1849,6 +1892,7 @@ protected class Comments_CommandsTableAssignment extends AssignmentToken  {
  * 
  * 	           
  * 	    
+ * 	         
  * 
  * //
  * //	Property Definition
@@ -1856,7 +1900,7 @@ protected class Comments_CommandsTableAssignment extends AssignmentToken  {
  *
  **/
 
-// name=ID description=STRING
+// name=ID description=STRING status=InheritanceStatus
 protected class State_Group extends GroupToken {
 	
 	public State_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1869,7 +1913,7 @@ protected class State_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new State_DescriptionAssignment_1(parent, this, 0, inst);
+			case 0: return new State_StatusAssignment_2(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1939,6 +1983,48 @@ protected class State_DescriptionAssignment_1 extends AssignmentToken  {
 		return null;
 	}
 
+}
+
+// status=InheritanceStatus
+protected class State_StatusAssignment_2 extends AssignmentToken  {
+	
+	public State_StatusAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getStateAccess().getStatusAssignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new InheritanceStatus_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("status",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("status");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getInheritanceStatusRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getStateAccess().getStatusInheritanceStatusParserRuleCall_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new State_DescriptionAssignment_1(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
 }
 
 
