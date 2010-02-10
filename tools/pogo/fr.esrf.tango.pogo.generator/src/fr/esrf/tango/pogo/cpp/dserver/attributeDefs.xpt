@@ -6,7 +6,9 @@
 //=========================================
 //	Define classes for attributes
 //=========================================
-«FOREACH attributes AS att»
+«FOREACH attributes AS att-»
+«IF att.status.concreteHere=="true"-»
+//	Attribute «att.name» class definition
 class «att.name»Attrib: public Tango::«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr
 {
 public:
@@ -15,12 +17,16 @@ public:
 	~«att.name»Attrib() {};
 	
 	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-	{(static_cast<«name» *>(dev))->read_«att.name»(att);}
+		{(static_cast<«name» *>(dev))->read_«att.name»(att);}
+	«IF att.rwType.contains("WRITE")-»
+	virtual void write(Tango::DeviceImpl *dev,Tango::WAttribute &att)
+		{(static_cast<«name» *>(dev))->write_«att.name»(att);}
+	«ENDIF-»
 	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-	{return (static_cast<«name» *>(dev))->is_«att.name»_allowed(ty);}
+		{return (static_cast<«name» *>(dev))->is_«att.name»_allowed(ty);}
 };
 
-«ENDFOREACH»
+«ENDIF»«ENDFOREACH»
 «ENDDEFINE»
 
 

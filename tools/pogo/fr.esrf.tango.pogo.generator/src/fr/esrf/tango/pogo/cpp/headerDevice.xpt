@@ -15,8 +15,11 @@
 
 
 #include <tango.h>
-
-
+«IF description.inheritance!=null &&
+	description.inheritance.classname.length>0 && 
+	description.inheritance.classname.startsWith("Device_")==false-»
+#include <«description.inheritance.classname».h>
+«ENDIF»
 «ENDPROTECT»
 
 
@@ -30,7 +33,7 @@ namespace «name»_ns
 «EXPAND Common::ProtectedArea("Additional Class Declarations",
 		"	//		Additional Class Declarations")»
 
-class «name» «IF description.inheritances.size==0»: public Tango::Device_4Impl«ELSE»«FOREACH description.inheritances AS inherit»«superClassName(inherit)»«ENDFOREACH»«ENDIF»
+class «name» : «superClassName(description.inheritance)»
 {
 «EXPAND device::dataMembers::headerFile»
 

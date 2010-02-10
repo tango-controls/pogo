@@ -6,7 +6,9 @@
 //=========================================
 //	Define classes for commands
 //=========================================
-«FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
+«FOREACH commands AS cmd-»
+«IF cmd.name!="State" && cmd.name!="Status" &&cmd.status.concreteHere=="true"-»
+//	Command «cmd.name» class definition
 class «cmd.name»Class : public Tango::Command
 {
 public:

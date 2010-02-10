@@ -36,7 +36,11 @@ PROCESSOR  = $(shell uname -p)
 #-----------------------------------------
 
 TANGO_HOME   =  /segfs/tango/release
-
+«IF description.inheritance!=null &&
+	description.inheritance.classname.length>0 && 
+	description.inheritance.classname.startsWith("Device_")==false-»
+«description.inheritance.classname»_HOME=«description.inheritance.sourcePath»
+«ENDIF»
 ifdef no_debug
 	DEBUG = -O
 else
@@ -67,7 +71,8 @@ SL_EXT = so
 VERS_OPT = -Wl,-soname,
 endif
 
-INCLUDE_DIRS =  -I$(TANGO_HOME)/$(BIN_DIR)/include	-I.
+INCLUDE_DIRS =  -I$(TANGO_HOME)/$(BIN_DIR)/include	-I.«IF description.inheritance.classname.length>0-» \
+                -I$(«description.inheritance.classname»_HOME)«ENDIF»
 
 OBJS_DIR    = obj/$(BIN_DIR)
 LIB_DIRS    = -L $(TANGO_HOME)/$(BIN_DIR)/lib
@@ -114,6 +119,12 @@ SVC_OBJS = $(OBJS_DIR)/$(CLASS).o	\
 		$(OBJS_DIR)/ClassFactory.o	\
 		$(OBJS_DIR)/main.o
 
+«IF description.inheritance.classname.length>0-»
+SVC_«description.inheritance.classname»_OBJ =   \
+		$(OBJS_DIR)/«description.inheritance.classname».o      \
+		$(OBJS_DIR)/«description.inheritance.classname»Class.o \
+		$(OBJS_DIR)/«description.inheritance.classname»StateMachine.o
+«ENDIF»
 SHLIB_OBJS = $(OBJS_DIR)/$(CLASS)Class.so.o	\
 		$(OBJS_DIR)/$(CLASS)StateMachine.so.o	\
 		$(OBJS_DIR)/$(CLASS).so.o
@@ -126,15 +137,33 @@ SVC_INC = $(CLASS)Class.h \
 #-----------------------------------------
 #	 Make Entry
 #-----------------------------------------
-all: $(CLASS)
+all: $(CLASS)«IF description.inheritance.classname.length>0-»
+	$(SVC_«description.inheritance.classname»_OBJ)«ENDIF»
 	
+«IF description.inheritance.classname.length==0-»
 $(CLASS):	make_obj_dir make_bin_dir $(SVC_OBJS)
 	$(CC) $(SVC_OBJS) -o $(CLASS) $(LFLAGS)
 	@mv $(CLASS) bin/$(BIN_DIR)/$(CLASS)
+«ELSE-»
+$(CLASS):	make_obj_dir make_bin_dir $(SVC_OBJS) $(SVC_«description.inheritance.classname»_OBJ)
+	$(CC) $(SVC_OBJS) $(SVC_«description.inheritance.classname»_OBJ) -o $(CLASS) $(LFLAGS)
+	@mv $(CLASS) bin/$(BIN_DIR)/$(CLASS)
+«ENDIF-»
 
 $(OBJS_DIR)/%.o: %.cpp $(SVC_INC)
 	$(CC) $(CXXFLAGS) -c $< -o $(OBJS_DIR)/$*.o
-			
+
+«IF description.inheritance.classname.length>0-»
+$(OBJS_DIR)/«description.inheritance.classname».o: $(«description.inheritance.classname»_HOME)/«description.inheritance.classname».cpp
+	$(CC) $(CXXFLAGS) -c -o $(OBJS_DIR)/«description.inheritance.classname».o $<
+
+$(OBJS_DIR)/«description.inheritance.classname»Class.o: $(«description.inheritance.classname»_HOME)/«description.inheritance.classname»Class.cpp
+	$(CC) $(CXXFLAGS) -c -o $(OBJS_DIR)/«description.inheritance.classname»Class.o $<
+
+$(OBJS_DIR)/«description.inheritance.classname»StateMachine.o: $(«description.inheritance.classname»_HOME)/«description.inheritance.classname»StateMachine.cpp
+	$(CC) $(CXXFLAGS) -c -o $(OBJS_DIR)/«description.inheritance.classname»StateMachine.o $<
+«ENDIF-»
+
 $(OBJS_DIR)/%.so.o: %.cpp $(SVC_INC)
 	$(CC_SHLIB) $(CXXFLAGS) -c $< -o $(OBJS_DIR)/$*.so.o
 

@@ -18,6 +18,11 @@
 #define «dserverClassHeaderConstantName()»
 
 #include <tango.h>
+«IF description.inheritance!=null &&
+	description.inheritance.classname.length>0 && 
+	description.inheritance.classname.startsWith("Device_")==false-»
+#include <«description.inheritance.classname»Class.h>
+«ENDIF-»
 #include <«deviceHeaderFileName()»>
 
 «ENDPROTECT»
@@ -36,7 +41,13 @@ class
 #ifdef WIN32
 	__declspec(dllexport)
 #endif
+«IF description.inheritance!=null &&
+	description.inheritance.classname.length>0 && 
+	description.inheritance.classname.startsWith("Device_")==false-»
+	«name»Class : public «description.inheritance.classname»_ns::«description.inheritance.classname»Class
+«ELSE-»
 	«name»Class : public Tango::DeviceClass
+«ENDIF-»
 {
 «EXPAND Common::ProtectedArea("Additionnal DServer data members")»
 

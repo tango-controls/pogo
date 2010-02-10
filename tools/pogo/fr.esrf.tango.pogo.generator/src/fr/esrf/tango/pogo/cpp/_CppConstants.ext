@@ -1,6 +1,9 @@
 import pogoDsl;
 import _CppType;
 
+//	Default device Impl version
+tangoDeviceImpl():
+	"Tango::Device_4Impl";
 
 //	File names
 deviceHeaderFileName(PogoDeviceClass this):
@@ -35,20 +38,20 @@ dserverClassHeaderConstantName(PogoDeviceClass this):
 
 baseClassName(PogoDeviceClass this):
 	baseClass == null 
-		? "Tango::Device_4Impl"
+		? tangoDeviceImpl()
 		: baseClass.name;
 
 
 superClassName(Inheritance this):
 	classname == null
-		? ": public Tango::Device_4Impl"
+		? "public " + tangoDeviceImpl()
 		: (classname.startsWith("Device_")
-			? ": public Tango::Device_4Impl"
-			: ": public virtual "+classname);
+			? "public " + tangoDeviceImpl()
+			: "public " + classname + "_ns::" + classname);
 
 superClassNameConstr(Inheritance this):
 	classname == null
-		? "Tango::Device_4Impl"
+		? tangoDeviceImpl()
 		: classname;
 
 

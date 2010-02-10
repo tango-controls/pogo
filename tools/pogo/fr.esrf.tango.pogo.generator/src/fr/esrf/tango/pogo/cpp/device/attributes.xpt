@@ -15,12 +15,13 @@
 		"read_attr_hardware", "Hardware acquisition for attributes.")-»
 «EXPAND readAttributeHardwareMethod»
 «ENDIF»
-«FOREACH attributes AS att»
+«FOREACH attributes AS att»«IF att.status.concreteHere=="true"»
 «EXPAND readAttributeHeader(att)»
 «EXPAND readAttributeMethod(att)»«IF att.rwType.contains("WRITE")»
 «EXPAND writeAttributeHeader(att)»
 «EXPAND writeAttributeMethod(att)»
-«ENDIF»«ENDFOREACH»
+«ENDIF»«ENDIF-»
+«ENDFOREACH»
 «ENDDEFINE»
 
 
@@ -45,12 +46,13 @@
 //	=========================================================
 «DEFINE readAttributeHeaderProto(Attribute att) FOR PogoDeviceClass-»
 	/**
-	 *	Read «att.name» attribute
+	 *	«att.name» attribute related methods.
 	 *	«att.properties.description.comments(" *	")»
 	 *
 	 *	Data type:	«att.dataType.cppType().toString()»
 	 *	Attr type:	«att.attType» «att.attTypeDimentions()»
-	 */«ENDDEFINE»
+	 */
+«ENDDEFINE»
 
 
 //	=========================================================
@@ -89,7 +91,7 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 	DEBUG_STREAM << "«name»::write_«att.name»(Tango::Attribute &attr) entering... " << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("write_"+att.name,
 			"//	Retreive the writing value\n"+
-			"const «att.dataType.cppType().toString()	*write_value;\n"+
+			"const " + att.dataType.cppType().toString() + "	*write_value;\n"+
 			"attr.get_write_value(write_value);")-»
 }«ENDDEFINE»
 
@@ -103,4 +105,28 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 	DEBUG_STREAM << "«name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("read_attr_hardware", "//	Add your own code")»
 }«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define protypes for a attribute call methods
+//	=========================================================
+«DEFINE attributeCallsProto(Attribute att) FOR PogoDeviceClass»
+«IF att.status.abstract=="true" && att.status.inherited!="true"-»
+	«EXPAND attributes::readAttributeHeaderProto(att)-»
+	virtual void read_«att.name»(Tango::Attribute &attr)=0;
+	«IF att.rwType.contains("WRITE")-»
+	virtual void write_«att.name»(Tango::WAttribute &attr)=0;
+	«ENDIF-»
+«ENDIF-»
+«IF att.status.concreteHere=="true"-»
+	«EXPAND attributes::readAttributeHeaderProto(att)-»
+	virtual void read_«att.name»(Tango::Attribute &attr);
+	«IF att.rwType.contains("WRITE")-»
+	virtual void write_«att.name»(Tango::WAttribute &attr);
+	«ENDIF-»
+«ENDIF-»
+	virtual bool is_«att.name»_allowed(Tango::AttReqType type);
+«ENDDEFINE»
+
 

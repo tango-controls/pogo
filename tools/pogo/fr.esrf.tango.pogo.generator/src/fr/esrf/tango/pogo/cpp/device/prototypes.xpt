@@ -19,56 +19,19 @@ public:
 	"Hardware acquisition for attributes.")-»
 	virtual void read_attr_hardware(vector<long> &attr_list);
 «FOREACH attributes AS att»
-«EXPAND attributeCallsProto(att)»
+«EXPAND attributes::attributeCallsProto(att)»
 «ENDFOREACH»
 «ENDIF»
 
-//	Command execution methods
-public: «FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
-«EXPAND executeCommandProto(cmd)»
-«EXPAND isCommandAllowedProto(cmd)»
-«ENDIF»«ENDFOREACH»
+//	Command related methods
+public: «FOREACH commands AS cmd»
+	«EXPAND commands::executeCommandSignatureProto(cmd)-»
+	«EXPAND commands::allowedCommandSignatureProto(cmd)-»
+«ENDFOREACH»
 «ENDDEFINE»
 
 
 
-
-//	=========================================================
-//	Define protypes for a attribute call methods
-//	=========================================================
-«DEFINE attributeCallsProto(Attribute att) FOR PogoDeviceClass»
-«EXPAND attributes::readAttributeHeaderProto(att)-»
-
-	virtual void read_«att.name»(Tango::Attribute &attr);
-«IF att.rwType.contains("WRITE")-»
-	/**
-	 *	Write «att.name» attribute values to hardware.
- 	 */
-	virtual void write_«att.name»(Tango::WAttribute &attr);
-«ENDIF»
-	 /**
-	 *	Execution allowed for «att.name» attribute.
-	 */
-	virtual bool is_«att.name»_allowed(Tango::AttReqType type);
-«ENDDEFINE»
-
-//	=========================================================
-//	Define the protype for a execute command method
-//	=========================================================
-«DEFINE executeCommandProto(Command cmd) FOR PogoDeviceClass-»
-«EXPAND commands::executeCommandHeaderProto(cmd)»
-«EXPAND commands::executeCommandSignatureProto(cmd)»;
-«ENDDEFINE»
-
-//	=========================================================
-//	Define the protype for a is_allowed command method
-//	=========================================================
-«DEFINE isCommandAllowedProto(Command cmd) FOR PogoDeviceClass»
-	/**
-	 *	Execution allowed for «cmd.name» command.
-	 */
-	virtual bool is_«cmd.name»_allowed(const CORBA::Any &any);
-«ENDDEFINE»
 
 
 //	=========================================================

@@ -55,7 +55,8 @@ bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 //=================================================
 //		Commands Allowed Methods
 //=================================================
-«FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
+«FOREACH commands AS cmd-»
+«IF cmd.name.toLowerCase()!="state" && cmd.name.toLowerCase()!="status"-»
 «EXPAND Common::methodHeader("is_" + cmd.name + "State_allowed",
 		"Execution allowed for " + cmd.name + " command.")»
 bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
@@ -79,9 +80,9 @@ bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
 «ENDDEFINE»
 
 
-//
+//=================================================
 //	Define the code for the state machnine
-//
+//=================================================
 «DEFINE checkExcludedStates(List[String] states) FOR PogoDeviceClass-»
 	if (	//	Compare device state with not allowed states. «FOREACH states AS state SEPARATOR '	|| '»
 		get_state() == Tango::«state»«ENDFOREACH»)

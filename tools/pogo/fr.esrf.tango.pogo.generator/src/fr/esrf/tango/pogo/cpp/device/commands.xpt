@@ -10,7 +10,7 @@
 «separator1()»
 //	Command execution methods
 «separator1()»
-«FOREACH commands AS cmd»«IF cmd.status.abstract!="true"»
+«FOREACH commands AS cmd»«IF cmd.status.concreteHere=="true"»
 «EXPAND executeCommandHeader(cmd)»
 «EXPAND executeCommandMethod(cmd)»
 «ENDIF»«ENDFOREACH»
@@ -61,6 +61,31 @@
 «cmd.argout.declareArgumentWithPointer()»«name»::«cmd.execMethod»(«cmd.declareCmdArgin()»)«ENDDEFINE»
 
 
+//	=========================================================
+//	Define The prototype for the method to execute command
+//	First one is in case of abstrac command, the second is the concrete one
+//	=========================================================
 «DEFINE executeCommandSignatureProto(Command cmd) FOR PogoDeviceClass-»
-	«cmd.argout.declareArgumentWithPointer()»«name»::«cmd.execMethod»(«cmd.declareCmdArgin()»)«ENDDEFINE»
+	«IF cmd.status.abstract=="true" && cmd.status.inherited!="true"-»
+	/**
+	 *	Command «cmd.name» related methods.
+	 */
+	virtual «cmd.argout.declareArgumentWithPointer()»«cmd.execMethod»(«cmd.declareCmdArgin()»)=0;
+	«ENDIF-»
+	«IF cmd.status.concreteHere=="true"-»
+	/**
+	 *	Command «cmd.name» related methods.
+	 */
+	«cmd.argout.declareArgumentWithPointer()»«cmd.execMethod»(«cmd.declareCmdArgin()»);
+	«ENDIF-»
+«ENDDEFINE»
 
+//	=========================================================
+//	Define The prototype for the method for allowed command
+//	It does nothing for state and status (always allowed)
+//	=========================================================
+«DEFINE allowedCommandSignatureProto(Command cmd) FOR PogoDeviceClass-»
+	«IF cmd.name.toLowerCase()!="state" && cmd.name.toLowerCase()!="status"-»
+	virtual bool is_«cmd.name»_allowed(const CORBA::Any &any);
+	«ENDIF-»
+«ENDDEFINE»

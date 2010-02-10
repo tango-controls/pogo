@@ -30,7 +30,13 @@
  * @param s	The class name
  */
 «separator2()»
+«IF description.inheritance!=null &&
+	description.inheritance.classname.length>0 && 
+	description.inheritance.classname.startsWith("Device_")==false-»
+«name»Class::«name»Class(string &s):«description.inheritance.classname»_ns::«description.inheritance.classname»Class(s)
+«ELSE-»
 «name»Class::«name»Class(string &s):DeviceClass(s)
+«ENDIF-»
 {
 	cout2 << "Entering «name»Class constructor" << endl;
 	set_default_property();
