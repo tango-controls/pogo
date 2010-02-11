@@ -38,7 +38,7 @@ namespace «name»_ns
 
 «EXPAND Common::defaultHeader("The TemplateDevServClass singleton definition")»
 class
-#ifdef WIN32
+#ifdef _TG_WINDOWS_
 	__declspec(dllexport)
 #endif
 «IF description.inheritance!=null &&
