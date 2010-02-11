@@ -30,7 +30,7 @@ static const char *HttpServer = "http://www.esrf.eu/computing/cs/tango/tango_doc
  */
 //-------------------------------------------------------------------
 extern "C" {
-#ifdef WIN32
+#ifdef _TG_WINDOWS_
 
 __declspec(dllexport)
 
