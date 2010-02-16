@@ -38,10 +38,10 @@ void «name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
                                     	"TANGO database device server"));
 	export_device(device_list[0],"database");
 «ELSE»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::device_factory_before",
 			"//	Add your own code")»
-	«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 	//	Create all devices.
 	for (unsigned long i=0 ; i < devlist_ptr->length() ; i++)
 	{
@@ -57,10 +57,14 @@ void «name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
 		else
 			export_device(device_list.back(), (*devlist_ptr)[i]);
 	}
-	«ENDIF»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::device_factory_after",
 			"//	Add your own code")»
+	«ELSE»
+
+	//	This class is not concrete and cannot implement devices
+
+	«ENDIF»
 «ENDIF-»
 }
 «ENDDEFINE»
