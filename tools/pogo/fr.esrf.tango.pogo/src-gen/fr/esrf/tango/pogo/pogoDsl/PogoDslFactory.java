@@ -503,6 +503,15 @@ public interface PogoDslFactory extends EFactory
   StringVectorType createStringVectorType();
 
   /**
+   * Returns a new object of class '<em>Miscellaneous</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Miscellaneous</em>'.
+   * @generated
+   */
+  Miscellaneous createMiscellaneous();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

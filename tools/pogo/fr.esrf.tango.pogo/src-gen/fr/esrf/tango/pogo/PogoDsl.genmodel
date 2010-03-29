@@ -26,12 +26,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/commands"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/miscellaneous"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//ClassDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/sourcePath"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/inheritance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/inheritances"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/language"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/filestogenerate"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/identification"/>
@@ -164,5 +165,9 @@
     <genClasses ecoreClass="PogoDsl.ecore#//FloatVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//DoubleVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//StringVectorType"/>
+    <genClasses ecoreClass="PogoDsl.ecore#//Miscellaneous">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Miscellaneous/makefileHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Miscellaneous/installHome"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

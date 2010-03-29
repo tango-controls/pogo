@@ -343,6 +343,11 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
         return createStringVectorTypeAdapter();
       }
       @Override
+      public Adapter caseMiscellaneous(Miscellaneous object)
+      {
+        return createMiscellaneousAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -1155,6 +1160,21 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStringVectorTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous <em>Miscellaneous</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous
+   * @generated
+   */
+  public Adapter createMiscellaneousAdapter()
   {
     return null;
   }

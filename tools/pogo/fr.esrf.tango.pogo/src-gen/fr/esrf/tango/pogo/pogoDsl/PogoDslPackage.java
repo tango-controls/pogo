@@ -225,13 +225,22 @@ public interface PogoDslPackage extends EPackage
   int POGO_DEVICE_CLASS__STATES = 9;
 
   /**
+   * The feature id for the '<em><b>Miscellaneous</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_DEVICE_CLASS__MISCELLANEOUS = 10;
+
+  /**
    * The number of structural features of the '<em>Pogo Device Class</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS_FEATURE_COUNT = 10;
+  int POGO_DEVICE_CLASS_FEATURE_COUNT = 11;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl <em>Class Description</em>}' class.
@@ -271,13 +280,13 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__SOURCE_PATH = 2;
 
   /**
-   * The feature id for the '<em><b>Inheritance</b></em>' containment reference.
+   * The feature id for the '<em><b>Inheritances</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__INHERITANCE = 3;
+  int CLASS_DESCRIPTION__INHERITANCES = 3;
 
   /**
    * The feature id for the '<em><b>Language</b></em>' attribute.
@@ -1858,6 +1867,43 @@ public interface PogoDslPackage extends EPackage
    */
   int STRING_VECTOR_TYPE_FEATURE_COUNT = VECTOR_TYPE_FEATURE_COUNT + 0;
 
+  /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl <em>Miscellaneous</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getMiscellaneous()
+   * @generated
+   */
+  int MISCELLANEOUS = 53;
+
+  /**
+   * The feature id for the '<em><b>Makefile Home</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISCELLANEOUS__MAKEFILE_HOME = 0;
+
+  /**
+   * The feature id for the '<em><b>Install Home</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISCELLANEOUS__INSTALL_HOME = 1;
+
+  /**
+   * The number of structural features of the '<em>Miscellaneous</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISCELLANEOUS_FEATURE_COUNT = 2;
+
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.PogoSystem <em>Pogo System</em>}'.
@@ -2033,6 +2079,17 @@ public interface PogoDslPackage extends EPackage
   EReference getPogoDeviceClass_States();
 
   /**
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous <em>Miscellaneous</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Miscellaneous</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous()
+   * @see #getPogoDeviceClass()
+   * @generated
+   */
+  EReference getPogoDeviceClass_Miscellaneous();
+
+  /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription <em>Class Description</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2076,15 +2133,15 @@ public interface PogoDslPackage extends EPackage
   EAttribute getClassDescription_SourcePath();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance <em>Inheritance</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritances <em>Inheritances</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inheritance</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance()
+   * @return the meta object for the containment reference list '<em>Inheritances</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritances()
    * @see #getClassDescription()
    * @generated
    */
-  EReference getClassDescription_Inheritance();
+  EReference getClassDescription_Inheritances();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getLanguage <em>Language</em>}'.
@@ -3358,6 +3415,38 @@ public interface PogoDslPackage extends EPackage
   EClass getStringVectorType();
 
   /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous <em>Miscellaneous</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Miscellaneous</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous
+   * @generated
+   */
+  EClass getMiscellaneous();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getMakefileHome <em>Makefile Home</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Makefile Home</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getMakefileHome()
+   * @see #getMiscellaneous()
+   * @generated
+   */
+  EAttribute getMiscellaneous_MakefileHome();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getInstallHome <em>Install Home</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Install Home</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getInstallHome()
+   * @see #getMiscellaneous()
+   * @generated
+   */
+  EAttribute getMiscellaneous_InstallHome();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3515,6 +3604,14 @@ public interface PogoDslPackage extends EPackage
     EReference POGO_DEVICE_CLASS__STATES = eINSTANCE.getPogoDeviceClass_States();
 
     /**
+     * The meta object literal for the '<em><b>Miscellaneous</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POGO_DEVICE_CLASS__MISCELLANEOUS = eINSTANCE.getPogoDeviceClass_Miscellaneous();
+
+    /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl <em>Class Description</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3549,12 +3646,12 @@ public interface PogoDslPackage extends EPackage
     EAttribute CLASS_DESCRIPTION__SOURCE_PATH = eINSTANCE.getClassDescription_SourcePath();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Inheritances</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLASS_DESCRIPTION__INHERITANCE = eINSTANCE.getClassDescription_Inheritance();
+    EReference CLASS_DESCRIPTION__INHERITANCES = eINSTANCE.getClassDescription_Inheritances();
 
     /**
      * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
@@ -4613,6 +4710,32 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EClass STRING_VECTOR_TYPE = eINSTANCE.getStringVectorType();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl <em>Miscellaneous</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getMiscellaneous()
+     * @generated
+     */
+    EClass MISCELLANEOUS = eINSTANCE.getMiscellaneous();
+
+    /**
+     * The meta object literal for the '<em><b>Makefile Home</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MISCELLANEOUS__MAKEFILE_HOME = eINSTANCE.getMiscellaneous_MakefileHome();
+
+    /**
+     * The meta object literal for the '<em><b>Install Home</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MISCELLANEOUS__INSTALL_HOME = eINSTANCE.getMiscellaneous_InstallHome();
 
   }
 

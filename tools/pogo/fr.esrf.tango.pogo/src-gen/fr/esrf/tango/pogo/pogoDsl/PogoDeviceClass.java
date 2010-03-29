@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getCommands <em>Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous <em>Miscellaneous</em>}</li>
  * </ul>
  * </p>
  *
@@ -245,5 +246,31 @@ public interface PogoDeviceClass extends EObject
    * @generated
    */
   EList<State> getStates();
+
+  /**
+   * Returns the value of the '<em><b>Miscellaneous</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Miscellaneous</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Miscellaneous</em>' containment reference.
+   * @see #setMiscellaneous(Miscellaneous)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_Miscellaneous()
+   * @model containment="true"
+   * @generated
+   */
+  Miscellaneous getMiscellaneous();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous <em>Miscellaneous</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Miscellaneous</em>' containment reference.
+   * @see #getMiscellaneous()
+   * @generated
+   */
+  void setMiscellaneous(Miscellaneous value);
 
 } // PogoDeviceClass

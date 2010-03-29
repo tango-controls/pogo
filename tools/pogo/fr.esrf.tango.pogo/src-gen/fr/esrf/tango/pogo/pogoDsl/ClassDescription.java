@@ -5,6 +5,8 @@
  */
 package fr.esrf.tango.pogo.pogoDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getTitle <em>Title</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getSourcePath <em>Source Path</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance <em>Inheritance</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritances <em>Inheritances</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getLanguage <em>Language</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getIdentification <em>Identification</em>}</li>
@@ -113,30 +115,20 @@ public interface ClassDescription extends EObject
   void setSourcePath(String value);
 
   /**
-   * Returns the value of the '<em><b>Inheritance</b></em>' containment reference.
+   * Returns the value of the '<em><b>Inheritances</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.Inheritance}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inheritance</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Inheritances</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inheritance</em>' containment reference.
-   * @see #setInheritance(Inheritance)
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_Inheritance()
+   * @return the value of the '<em>Inheritances</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_Inheritances()
    * @model containment="true"
    * @generated
    */
-  Inheritance getInheritance();
-
-  /**
-   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getInheritance <em>Inheritance</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inheritance</em>' containment reference.
-   * @see #getInheritance()
-   * @generated
-   */
-  void setInheritance(Inheritance value);
+  EList<Inheritance> getInheritances();
 
   /**
    * Returns the value of the '<em><b>Language</b></em>' attribute.

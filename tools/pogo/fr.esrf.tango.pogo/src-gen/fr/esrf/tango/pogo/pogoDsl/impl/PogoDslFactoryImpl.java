@@ -120,6 +120,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.FLOAT_VECTOR_TYPE: return createFloatVectorType();
       case PogoDslPackage.DOUBLE_VECTOR_TYPE: return createDoubleVectorType();
       case PogoDslPackage.STRING_VECTOR_TYPE: return createStringVectorType();
+      case PogoDslPackage.MISCELLANEOUS: return createMiscellaneous();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -706,6 +707,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     StringVectorTypeImpl stringVectorType = new StringVectorTypeImpl();
     return stringVectorType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Miscellaneous createMiscellaneous()
+  {
+    MiscellaneousImpl miscellaneous = new MiscellaneousImpl();
+    return miscellaneous;
   }
 
   /**

@@ -35,6 +35,7 @@ import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
 import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
+import fr.esrf.tango.pogo.pogoDsl.Miscellaneous;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslFactory;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
@@ -448,6 +449,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
   private EClass stringVectorTypeEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass miscellaneousEClass = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -675,6 +683,16 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getPogoDeviceClass_Miscellaneous()
+  {
+    return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getClassDescription()
   {
     return classDescriptionEClass;
@@ -715,7 +733,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassDescription_Inheritance()
+  public EReference getClassDescription_Inheritances()
   {
     return (EReference)classDescriptionEClass.getEStructuralFeatures().get(3);
   }
@@ -1925,6 +1943,36 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getMiscellaneous()
+  {
+    return miscellaneousEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMiscellaneous_MakefileHome()
+  {
+    return (EAttribute)miscellaneousEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMiscellaneous_InstallHome()
+  {
+    return (EAttribute)miscellaneousEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PogoDslFactory getPogoDslFactory()
   {
     return (PogoDslFactory)getEFactoryInstance();
@@ -1968,12 +2016,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__COMMANDS);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__STATES);
+    createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__MISCELLANEOUS);
 
     classDescriptionEClass = createEClass(CLASS_DESCRIPTION);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__DESCRIPTION);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__TITLE);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__SOURCE_PATH);
-    createEReference(classDescriptionEClass, CLASS_DESCRIPTION__INHERITANCE);
+    createEReference(classDescriptionEClass, CLASS_DESCRIPTION__INHERITANCES);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__LANGUAGE);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__FILESTOGENERATE);
     createEReference(classDescriptionEClass, CLASS_DESCRIPTION__IDENTIFICATION);
@@ -2143,6 +2192,10 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     doubleVectorTypeEClass = createEClass(DOUBLE_VECTOR_TYPE);
 
     stringVectorTypeEClass = createEClass(STRING_VECTOR_TYPE);
+
+    miscellaneousEClass = createEClass(MISCELLANEOUS);
+    createEAttribute(miscellaneousEClass, MISCELLANEOUS__MAKEFILE_HOME);
+    createEAttribute(miscellaneousEClass, MISCELLANEOUS__INSTALL_HOME);
   }
 
   /**
@@ -2238,12 +2291,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getPogoDeviceClass_Commands(), this.getCommand(), null, "commands", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_States(), this.getState(), null, "states", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPogoDeviceClass_Miscellaneous(), this.getMiscellaneous(), null, "miscellaneous", null, 0, 1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classDescriptionEClass, ClassDescription.class, "ClassDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClassDescription_Description(), ecorePackage.getEString(), "description", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_Title(), ecorePackage.getEString(), "title", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_SourcePath(), ecorePackage.getEString(), "sourcePath", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClassDescription_Inheritance(), this.getInheritance(), null, "inheritance", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassDescription_Inheritances(), this.getInheritance(), null, "inheritances", null, 0, -1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_Language(), ecorePackage.getEString(), "language", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_Filestogenerate(), ecorePackage.getEString(), "filestogenerate", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassDescription_Identification(), this.getClassIdentification(), null, "identification", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2413,6 +2467,10 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEClass(doubleVectorTypeEClass, DoubleVectorType.class, "DoubleVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(stringVectorTypeEClass, StringVectorType.class, "StringVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(miscellaneousEClass, Miscellaneous.class, "Miscellaneous", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMiscellaneous_MakefileHome(), ecorePackage.getEString(), "makefileHome", null, 0, 1, Miscellaneous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMiscellaneous_InstallHome(), ecorePackage.getEString(), "installHome", null, 0, 1, Miscellaneous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

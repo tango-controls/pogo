@@ -79,6 +79,9 @@
         <tokens xsi:type="xtext:Assignment" cardinality="*" feature="states" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
         </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="miscellaneous" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+        </tokens>
         <tokens xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
@@ -145,7 +148,8 @@
         <tokens xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
         </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="inheritance" operator="=">
+        <tokens xsi:type="xtext:Keyword" value="inheritances:"/>
+        <tokens xsi:type="xtext:Assignment" feature="inheritances" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="language" operator="=">
@@ -953,6 +957,19 @@
           </type>
         </tokens>
         <tokens xsi:type="xtext:Keyword" value="vector&lt;string>"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Miscellaneous">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Miscellaneous"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <tokens xsi:type="xtext:Assignment" feature="makefileHome" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="installHome" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </tokens>
       </alternatives>
     </rules>
   </xtext:Grammar>

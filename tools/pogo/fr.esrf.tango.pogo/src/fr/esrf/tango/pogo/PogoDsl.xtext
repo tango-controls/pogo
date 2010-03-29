@@ -33,6 +33,8 @@ PogoDeviceClass:
 
 		"states:"								//	Device state list
 			(states+=State)*
+		
+		miscellaneous = Miscellaneous 
 	"}";
 
 //
@@ -52,7 +54,8 @@ ClassDescription:
 	description    = STRING	//	Class description
 	title          = STRING	//	Short description
 	sourcePath     = STRING	//	Files location
-	inheritance    = Inheritance	//	inheritance clas definition
+	"inheritances:"
+	    (inheritances+=Inheritance)	//	inheritance class definitions
 	language       = Language		//	Language to generate
 	filestogenerate= STRING			//	File(s) to generate (code, makefile,....)
 	identification = ClassIdentification
@@ -250,3 +253,11 @@ IntVectorType:			{IntVectorType} 	"vector<int>";
 FloatVectorType:		{FloatVectorType} 	"vector<float>";
 DoubleVectorType:		{DoubleVectorType} 	"vector<double>";
 StringVectorType:		{StringVectorType} 	"vector<string>";
+
+
+
+
+Miscellaneous:
+	makefileHome  =  STRING
+	installHome   =  STRING
+;
