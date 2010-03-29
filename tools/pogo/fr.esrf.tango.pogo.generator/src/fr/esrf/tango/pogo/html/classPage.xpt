@@ -6,30 +6,61 @@
 «IF description.filestogenerate.toLowerCase().contains("html")»
 «FILE classPageFileName()»«htmlHeader()»
 
-<Center> <h1>
-		«name» class<Br>
-	User's Guide <Br> <Br>
-		«description.title»
-</h1> </Center>
+«htmlPageTitle(description.title)»
+
+<FONT SIZE="-1">
 <Br>
 <Br>
-<h2>Introduction:</h2>
-«description»
+<Br>
+<Br>
+<ul>
+	«htmlLineTitle("Class Identification")»
+	<ul>
+	<TABLE BORDER="0">
+    	<Tr>
+			<td> Contact </td><td> : «description.identification.contact»</td>
+		</tr>
+		<tr>
+			<td> Class Family </td><td> : «description.identification.classFamily» («description.identification.siteSpecific»     Specific) </td>
+		</tr>
+		<tr>
+			<td> Platform </td><td> : «description.identification.platform» </td>
+		</tr>
+		<tr>
+			<td> Bus </td><td> : «description.identification.bus» </td>
+		</tr>
+		<tr>
+			<td> Manufacturer </td><td> : «description.identification.manufacturer» </td>
+		</tr>
+		<tr>
+			<td> Manufacturer ref.</td><td> : «description.identification.reference» </td>
+		</tr>
+	</Table>
+	</ul>
+	<Br>
+	<Br>
+	«htmlLineTitle("Class Inheritance")»
+	<ul>
+		<li> <a href="http://www.esrf.fr/computing/cs/tango/tango_doc/kernel_doc/cpp_doc/"> Tango::Device_4Impl</a></li>
+		<ul>
+			<li> «name»</li>
+		</ul>
+	</ul>
+<Br>
+<Br>
+	«htmlLineTitle("Class Description")»
+	<ul>
+	«description.description»
+	<Br>
 «startComment()» «PROTECT CSTART '/*' CEND '*/' ID classPageFileName() » «endComment()»
 
 
 «startComment()» «ENDPROTECT» «endComment()»
-<Br>
-<Br>
-<h2>Description:</h2>
-<ul>
-	<li> <a href=Description.html>      Device description.</a>
-	<li> <a href=Properties.html>       Properties description</a>
-	<li> <a href=TangoDevStates.html>   States description</a>
-	<li> <a href=DevCommandsTable.html> Commands description</a>
-	<li> <a href=Attributes.html>       Attributes description</a>
+	</ul>
+	<Br>
+	<Br>
 </ul>
-<Br>
+</FONT>
 
 
 «htmlFooter()»

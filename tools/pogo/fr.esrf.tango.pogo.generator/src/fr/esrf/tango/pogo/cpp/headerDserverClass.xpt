@@ -18,10 +18,9 @@
 #define «dserverClassHeaderConstantName()»
 
 #include <tango.h>
-«IF description.inheritance!=null &&
-	description.inheritance.classname.length>0 && 
-	description.inheritance.classname.startsWith("Device_")==false-»
-#include <«description.inheritance.classname»Class.h>
+«IF description.inheritances.size>0 &&
+	description.inheritances.get(0).classname.startsWith("Device_")==false-»
+#include <«description.inheritances.get(0).classname»Class.h>
 «ENDIF-»
 #include <«deviceHeaderFileName()»>
 
@@ -41,10 +40,9 @@ class
 #ifdef _TG_WINDOWS_
 	__declspec(dllexport)
 #endif
-«IF description.inheritance!=null &&
-	description.inheritance.classname.length>0 && 
-	description.inheritance.classname.startsWith("Device_")==false-»
-	«name»Class : public «description.inheritance.classname»_ns::«description.inheritance.classname»Class
+«IF description.inheritances.size>0 &&
+	description.inheritances.get(0).classname.startsWith("Device_")==false-»
+	«name»Class : public «description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class
 «ELSE-»
 	«name»Class : public Tango::DeviceClass
 «ENDIF-»

@@ -84,10 +84,9 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::attribute_factory_before",
 			"//	Add your own code")»
-«IF description.inheritance!=null &&
-	description.inheritance.classname.length>0 && 
-	description.inheritance.classname.startsWith("Device_")==false-»
-	«description.inheritance.classname»_ns::«description.inheritance.classname»Class::attribute_factory(att_list);
+«IF description.inheritances.size>0 &&
+	description.inheritances.get(0).classname.startsWith("Device_")==false-»
+	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::attribute_factory(att_list);
 «ENDIF-»
 «FOREACH attributes AS att»
 	«IF att.status.concreteHere=="true"-»
@@ -136,10 +135,9 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 void «name»Class::command_factory()
 {
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::command_factory_before")»
-«IF description.inheritance!=null &&
-	description.inheritance.classname.length>0 && 
-	description.inheritance.classname.startsWith("Device_")==false-»
-	«description.inheritance.classname»_ns::«description.inheritance.classname»Class::command_factory();
+«IF description.inheritances.size>0 &&
+	description.inheritances.get(0).classname.startsWith("Device_")==false-»
+	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::command_factory();
 «ENDIF-»
 «FOREACH commands AS cmd-»
 	«IF cmd.name!="State" && cmd.name!="Status" && cmd.status.concreteHere=="true"-»

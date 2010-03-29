@@ -76,7 +76,8 @@ void «name»::init_device()
 //	Define the inheritance added to the constructors
 //
 «DEFINE inheritanceManagement(String params) FOR PogoDeviceClass»
-«IF description.inheritance.classname==null»	: Tango::Device_4Impl(«params»)
-«ELSE» : «superClassNameConstr(description.inheritance)»(«params»)
+«IF description.inheritances.size==0»	: «tangoDeviceImpl()»(«params»)
+«ELSEIF description.inheritances.get(0).classname.startsWith("Device")» 	: «tangoDeviceImpl()»(«params»)
+«ELSE» : «superClassNameConstr(description.inheritances.get(0))»(«params»)
 «ENDIF-»
 «ENDDEFINE»

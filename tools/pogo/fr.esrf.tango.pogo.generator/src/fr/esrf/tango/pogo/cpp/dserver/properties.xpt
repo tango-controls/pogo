@@ -327,7 +327,7 @@ void «name»Class::write_class_property()
 	//  Put inheritance
 	Tango::DbDatum	inher_datum("InheritedFrom");
 	vector<string> inheritance;
-	inheritance.push_back("«description.inheritance.classname»");
+	inheritance.push_back("«description.inheritances.get(0).classname»");
 	inher_datum << inheritance;
 	data.push_back(inher_datum);
 

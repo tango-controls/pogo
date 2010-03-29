@@ -30,10 +30,9 @@
  * @param s	The class name
  */
 «separator2()»
-«IF description.inheritance!=null &&
-	description.inheritance.classname.length>0 && 
-	description.inheritance.classname.startsWith("Device_")==false-»
-«name»Class::«name»Class(string &s):«description.inheritance.classname»_ns::«description.inheritance.classname»Class(s)
+«IF description.inheritances.size>0 &&
+	description.inheritances.get(0).classname.startsWith("Device_")==false-»
+«name»Class::«name»Class(string &s):«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class(s)
 «ELSE-»
 «name»Class::«name»Class(string &s):DeviceClass(s)
 «ENDIF-»
