@@ -122,6 +122,8 @@ include $(MAKE_ENV)/tango.opt
 #=============================================================================
 # SVC_OBJS is the list of all objects needed to make the output
 #
+«EXPAND classesDependancyIncludes(description)»
+
 SVC_OBJS =      \
             $(OBJDIR)/$(PACKAGE_NAME).o \
             $(OBJDIR)/$(PACKAGE_NAME)Class.o \
@@ -149,12 +151,12 @@ include $(MAKE_ENV)/common_target.opt
 #	Define the definition for inherited classes
 #=============================================================================
 «DEFINE addInheritanceDefinitions FOR PogoDeviceClass-»
-	«IF description.inheritances.size>0 && description.inheritances.get(0).classname.startsWith("Device_")==false»
+	«IF description.hasInheritanceClass()»
 #=============================================================================
 # Following are names, pathes and files of the abstract classes used by project
 #
 		«FOREACH description.inheritances AS inheritance-»
-			«IF inheritance.classname.startsWith("Device_")==false-»
+			«IF inheritance.isInheritanceClass()-»
 
 #------------  Inheritance from «inheritance.classname» class  ------------
 «inheritance.classname.toUpperCase()»_CLASS = «inheritance.classname»
@@ -171,7 +173,7 @@ include $(MAKE_ENV)/common_target.opt
 #	Add inheritance include files if any
 #=============================================================================
 «DEFINE addInheritancIncludeFiles FOR PogoDeviceClass-»
-«FOREACH description.inheritances AS inheritance-»«IF inheritance.classname.startsWith("Device_")==false-»\
+«FOREACH description.inheritances AS inheritance-»«IF inheritance.isInheritanceClass()-»\
               -I $(«inheritance.classname.toUpperCase()»_HOME)«ENDIF-»
 «ENDFOREACH»
 «ENDDEFINE»
@@ -183,13 +185,13 @@ include $(MAKE_ENV)/common_target.opt
 #	Add inheritance object files if any
 #=============================================================================
 «DEFINE addInheritancObjectFiles FOR PogoDeviceClass-»
-«IF description.inheritances.size>0 && description.inheritances.get(0).classname.startsWith("Device_")==false-»
-	«FOREACH description.inheritances AS inheritance-»«IF inheritance.classname.startsWith("Device_")==false-» \
+«IF description.hasInheritanceClass()-»
+	«FOREACH description.inheritances AS inheritance-»«IF inheritance.isInheritanceClass()-» \
             $(SVC_«inheritance.classname.toUpperCase()»_OBJ)«ENDIF-»
 	«ENDFOREACH-»
 
 	«FOREACH description.inheritances AS inheritance-»
-		«IF inheritance.classname.startsWith("Device_")==false-»
+		«IF inheritance.isInheritanceClass()-»
 
 
 #------------  Object files for «inheritance.classname» class  ------------
@@ -209,19 +211,24 @@ SVC_«inheritance.classname.toUpperCase()»_OBJ = \
 #	Define the dependancies for inherited class object files
 #=============================================================================
 «DEFINE inheritanceDependancies FOR PogoDeviceClass-»
-	«IF description.inheritances.size>0 && description.inheritances.get(0).classname.startsWith("Device_")==false»
+	«IF description.hasInheritanceClass()»
 #=============================================================================
 # Following are dependancies of the abstract classes used by project
 #
 «FOREACH description.inheritances AS inheritance-»
-	«IF inheritance.classname.startsWith("Device_")==false-»
+	«IF inheritance.isInheritanceClass()-»
 
 #------------  Object files dependancies for «inheritance.classname» class  ------------
+«EXPAND inheritanceDependancyIncludes(inheritance)»
+
 «EXPAND inheritanceDependancy(inheritance, "")-»
 «EXPAND inheritanceDependancy(inheritance, "Class")-»
 «EXPAND inheritanceDependancy(inheritance, "StateMachine")-»
 	«ENDIF-»
 «ENDFOREACH»
+
+«EXPAND inheritanceDependancyIncludes(description)»
+	
 	«ENDIF»
 «ENDDEFINE»
 
@@ -231,6 +238,29 @@ SVC_«inheritance.classname.toUpperCase()»_OBJ = \
 #	Define the dependancy for each inherited class object file
 #=============================================================================
 «DEFINE inheritanceDependancy(Inheritance inher, String str) FOR PogoDeviceClass-»
-$(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inher.classname»«str».cpp
+$(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inher.classname»«str».cpp $(«inher.makeVariable("_INCL")»)
 	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
 «ENDDEFINE»
+
+#=============================================================================
+#	Define the dependancy for each inherited class include files
+#=============================================================================
+«DEFINE inheritanceDependancyIncludes(Inheritance inher) FOR PogoDeviceClass-»
+«inher.makeVariable("_INCL")» = $(«inher.makeVariable("_HOME")»)/«inher.classname».h $(«inher.makeVariable("_HOME")»)/«inher.classname»Class.h
+«ENDDEFINE»
+
+#=============================================================================
+#	Define the dependancy for each inherited class include files
+#=============================================================================
+«DEFINE inheritanceDependancyIncludes(ClassDescription desc) FOR PogoDeviceClass-»
+SVC_INHERITANCE_INCL = «FOREACH desc.inheritances AS inher-»«IF inher.isInheritanceClass()» $(«inher.makeVariable("_INCL")») «ENDIF»«ENDFOREACH»
+«ENDDEFINE»
+
+
+#=============================================================================
+#	Define the dependancy for all class include files
+#=============================================================================
+«DEFINE classesDependancyIncludes(ClassDescription desc) FOR PogoDeviceClass-»
+SVC_INCL =  $(PACKAGE_NAME).h $(PACKAGE_NAME)Class.h«IF desc.hasInheritanceClass()» $(SVC_INHERITANCE_INCL)«ENDIF»
+«ENDDEFINE»
+ 			
