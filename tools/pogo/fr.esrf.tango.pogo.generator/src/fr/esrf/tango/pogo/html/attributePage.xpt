@@ -1,0 +1,156 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+//
+//	Define a HTML page for a table containing all attributes
+//
+«DEFINE htmlFile FOR PogoDeviceClass»
+«FILE attributePageFileName()»«htmlHeader()»
+
+«htmlPageTitle("Attributes")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+	«EXPAND _htmlUtil::htmlTableHeader("Device Attributes",
+			 {"Name", "Inherited", "Concrete", "Attr. type", "Data type", "Size", "Level", "Description"})-»
+	«FOREACH attributes AS attr-»
+	<Tr>
+		<Td> <a href=Attr«attr.name».html> «attr.name» </a></Td>
+		<Td> «attr.status.inherited»                   </Td>
+		<Td> «attr.status.concrete»                    </Td>
+		<Td> «attr.attType»                            </Td>
+		<Td> «attr.dataType.stringTypeEnum()»          </Td>
+		<td> «attr.attTypeDimentions()»                </Td>
+		<Td> «attr.displayLevel»                       </Td>
+		<Td> «attr.properties.description»             </Td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+<Br>
+<Br>
+
+
+	<ul>
+«startComment()» «PROTECT CSTART '/*' CEND '*/' ID attributePageFileName() » «endComment()»
+
+«startComment()» «ENDPROTECT» «endComment()»
+	</ul>
+	<Br>
+	<Br>
+</ul>
+</FONT>
+
+
+«htmlFooter()»
+«ENDFILE»
+
+	
+«FOREACH attributes AS attr-»
+	«EXPAND oneAttributeHtmlFile(attr)»
+«ENDFOREACH»
+
+«ENDDEFINE»
+
+
+//
+//	Define a HTML page for each attribute
+//
+«DEFINE oneAttributeHtmlFile(Attribute attr)  FOR PogoDeviceClass»
+«FILE attributePageFileName(attr)»«htmlHeader()»
+«htmlPageTitle(attr.name + " Attribute ")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+	«htmlSectionTitle("Description")»
+	<ul>
+		«attr.properties.description»
+	</ul>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlTableHeader(attr.name+" Attrribute ",{})-»	
+		<!---------- Attribute type ----------->
+		<Tr>
+			<Td> <Font=+1><b> Input Argument  </Font></Td>
+			<Td> <b>«attr.attType»  </b></Td>
+		</Tr>
+	
+		<!---------- Data type ----------->
+		<Tr>
+			<Td> <Font=+1><b> Output Argument  </Font></Td>
+			<Td> <b>«attr.dataType.stringTypeEnum()»  </b> («attr.attTypeDimentions()») </Td>
+		</Tr>
+		
+		<!---------- Allowed State ----------->
+		«IF attr.excludedStates.size>0»
+		<Tr>
+			<Td> <Font=+1><b> Command NOT allowed for   </Font></Td>
+			<Td> 
+				«FOREACH attr.excludedStates AS state»
+					- «state» <Br>
+				«ENDFOREACH»
+			</Td>
+		</Tr>
+		«ENDIF»
+	
+		<!---------- Display Level ----------->
+		<Tr>
+			<Td> <Font=+1><b> Display Level  </Font></Td>
+			<Td> «attr.displayLevel»	</Td>
+		</Tr>
+	
+		<!---------- Inheritance ----------->
+		<Tr>
+			<Td> <Font=+1><b>  Inherited </Font></Td>
+			<Td> «attr.status.inherited»	</Td>
+		</Tr>
+		<Tr>
+			<Td> <Font=+1><b>  Abstract </Font></Td>
+			<Td> «attr.status.abstract»	</Td>
+		</Tr>
+	</Table>
+<Br>
+<Br>
+<Br>
+<Br>
+	«EXPAND _htmlUtil::htmlTableHeader(attr.name+" Attrribute Properties ",{})-»
+		<Tr><Td> <Font=+1><b>  label         </Font></Td>    <Td> «attr.properties.label»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  unit          </Font></Td>    <Td> «attr.properties.unit»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  standard unit </Font></Td>    <Td> «attr.properties.standardUnit»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  display unit  </Font></Td>    <Td> «attr.properties.displayUnit»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  format        </Font></Td>    <Td> «attr.properties.format»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  max_value     </Font></Td>    <Td> «attr.properties.maxValue»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  min_value     </Font></Td>    <Td> «attr.properties.minValue»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  max_alarm     </Font></Td>    <Td> «attr.properties.maxAlarm»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  min_alarm     </Font></Td>    <Td> «attr.properties.minAlarm»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  max_warning   </Font></Td>    <Td> «attr.properties.maxWarning»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  min_warning   </Font></Td>    <Td> «attr.properties.minWarning»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  delta_time    </Font></Td>    <Td> «attr.properties.deltaTime»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  delta_val     </Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
+		<Tr><Td> <Font=+1><b>  description   </Font></Td>    <Td> «attr.properties.description»</Td></Tr>
+	</Table>
+<Br>
+<Br>
+<Br>
+<Br>
+	<ul>
+«startComment()» «PROTECT CSTART '/*' CEND '*/' ID attributePageFileName(attr) » «endComment()»
+
+«startComment()» «ENDPROTECT» «endComment()»
+	</ul>
+	<Br>
+	<Br>
+</ul>
+</FONT>
+<Br>
+<Br>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDDEFINE»
+

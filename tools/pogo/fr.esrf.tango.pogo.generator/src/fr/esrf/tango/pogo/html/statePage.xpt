@@ -1,0 +1,44 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+«DEFINE htmlFile FOR PogoDeviceClass»
+«FILE statePageFileName()»«htmlHeader()»
+
+«htmlPageTitle("States")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+«IF states.size>0-»
+	«EXPAND _htmlUtil::htmlTableHeader("Device States", {"State Name", "Description"})»
+	«FOREACH states AS state-»
+	<Tr>
+		<Td> «state.name»         </Td>
+		<Td> «state.description»  </Td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+«ELSE»
+	<b> There is no state defined.</b>
+«ENDIF»
+<Br>
+<Br>
+
+
+	<ul>
+«startComment()» «PROTECT CSTART '/*' CEND '*/' ID statePageFileName() » «endComment()»
+
+«startComment()» «ENDPROTECT» «endComment()»
+	</ul>
+	<Br>
+	<Br>
+</ul>
+</FONT>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDDEFINE»
+

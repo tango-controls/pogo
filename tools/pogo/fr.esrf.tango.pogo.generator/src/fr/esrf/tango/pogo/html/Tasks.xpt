@@ -2,5 +2,11 @@
 «EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
 
 «DEFINE main FOR PogoDeviceClass»
-	«EXPAND classPage::htmlFile»
+	«IF description.filestogenerate.toLowerCase().contains("html")»
+		«EXPAND classPage::htmlFile»
+		«EXPAND propertyPage::htmlFile»
+		«EXPAND statePage::htmlFile»
+		«EXPAND commandPage::htmlFile»
+		«EXPAND attributePage::htmlFile»
+	«ENDIF»
 «ENDDEFINE»

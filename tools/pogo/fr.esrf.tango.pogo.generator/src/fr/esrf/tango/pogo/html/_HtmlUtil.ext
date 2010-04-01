@@ -1,11 +1,27 @@
 import pogoDsl;
 
 
+//==================================================
 //	File names
+//==================================================
 classPageFileName(PogoDeviceClass this):
 	"doc_html/index.html";
+propertyPageFileName(PogoDeviceClass this):
+	"doc_html/Properties.html";
+statePageFileName(PogoDeviceClass this):
+	"doc_html/States.html";
+commandPageFileName(PogoDeviceClass this):
+	"doc_html/Commands.html";
+commandPageFileName(PogoDeviceClass this, Command cmd):
+	"doc_html/Cmd" + cmd.name + ".html";
+attributePageFileName(PogoDeviceClass this):
+	"doc_html/Attributes.html";
+attributePageFileName(PogoDeviceClass this, Attribute attr):
+	"doc_html/Attr" + attr.name + ".html";
 
-
+//==================================================
+//	HTML page header
+//==================================================
 htmlHeader(PogoDeviceClass this):
 	"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
 	"\n" +
@@ -71,16 +87,16 @@ htmlHeader(PogoDeviceClass this):
 	"\n" +
 	"		<h1 id=\"portal-logo\">\n" +
 	"    		<a href=\"http://www.tango-controls.org\" accesskey=\"1\">The TANGO website</a>	\n" +
-	"			<FONT SIZE=\"+4\"  COLOR=\"#FFBFFF\">  " + name + "Class </Font>\n" +
+	"			<FONT SIZE=\"+4\"  COLOR=\"#FFBFFF\">  " + name + " Class </Font>\n" +
 	"		</h1>\n" +
 	"\n" +
 	"    	<ul id=\"portal-globalnav\">\n" +
 	"			<FONT SIZE=\"-1\">\n" +
-	"        	<li id=\"portaltab-about\" class=\"plain\">     <a href=\"index.html\">            Description</a></li>\n" +
-	"        	<li id=\"portaltab-News\" class=\"plain\">      <a href=\"Properties.html\">       Properties</a></li>\n" +
-	"        	<li id=\"portaltab-Events\" class=\"plain\">    <a href=\"DevCommandsTable.html\"> Commands</a></li>\n" +
-	"        	<li id=\"portaltab-Documents\" class=\"plain\"> <a href=\"Attributes.html\">       Attributes</a></li>\n" +
-	"        	<li id=\"portaltab-tutorials\" class=\"plain\"> <a href=\"States.html\">           States</a></li>\n" +
+	"        	<li id=\"portaltab-about\" class=\"plain\">     <a href=\"index.html\">         Description</a></li>\n" +
+	"        	<li id=\"portaltab-News\" class=\"plain\">      <a href=\"Properties.html\">    Properties</a></li>\n" +
+	"        	<li id=\"portaltab-Events\" class=\"plain\">    <a href=\"Commands.html\">      Commands</a></li>\n" +
+	"        	<li id=\"portaltab-Documents\" class=\"plain\"> <a href=\"Attributes.html\">    Attributes</a></li>\n" +
+	"        	<li id=\"portaltab-tutorials\" class=\"plain\"> <a href=\"States.html\">        States</a></li>\n" +
 	"    		</Font>\n" +
 	"		</ul>\n" +
 	"\n" +
@@ -94,6 +110,9 @@ htmlHeader(PogoDeviceClass this):
 
 
 
+//==================================================
+//	HTML page footer
+//==================================================
 htmlFooter():
 "<!--- html Footer --->\n"+
 "<Center>\n"+
@@ -124,7 +143,7 @@ htmlFooter():
 "			<br>\n"+
 "			Device Servers :\n"+
 "			<a href=\"http://tango-ds.cvs.sourceforge.net/tango-ds/\" Target=new>\n"+
-"					CVS repository</a> on\n"+
+"					CVS repository</cmda> on\n"+
 "			<a href=\"https://sourceforge.net/projects/tango-ds\" Target=new>\n"+
 "					tango-ds project</a>\n"+
 "			</Font>\n"+
@@ -137,24 +156,33 @@ htmlFooter():
 "</html>\n";
 
 
-
-htmlPageTitle(PogoDeviceClass this, String str):
+//==================================================
+//	HTML page title
+//==================================================
+htmlPageTitle(PogoDeviceClass this, String pageTitle):
 "<Br>\n"+
 "<Br>\n"+
 "<FONT SIZE=\"+3\">\n"+
 "<center>\n"+
 "<u>\n"+
-"         " + name + "  <Br>\n"+
-"      Class Description\n"+
-"<Br>\n"+
-"<Br>\n"+
+"         " + name + " Tango Class <Br>\n"+
 "</u> \n"+
 "<FONT SIZE=\"+1\">\n"+
-"            " + str + "\n"+
+"      ( " + description.title + " )\n"+
+"<Br>\n"+
+"<Br>\n"+
+"<FONT SIZE=\"+2\">\n"+
+"            " + pageTitle + "\n"+
 "</Center>\n"+
 "</Font>\n";
 
-htmlLineTitle(String str):
+
+
+
+//==================================================
+//	HTML section title
+//==================================================
+htmlSectionTitle(String str):
 	"<Font SIZE=\"+0\"> <b> " + str + " :</b> </Font>";
 
 
@@ -165,3 +193,111 @@ endComment():	" --->";
 
 comments(String this, String tag):	//	Comment a String with more than one line
 	replaceAll("\n", "\n"+tag);
+
+
+
+attTypeDimentions(Attribute this):
+	attType == "Spectrum"
+	? maxX
+	:	(attType == "Image"
+		?	maxX + " x " + maxY
+		: 1);
+
+
+
+
+//==================================================
+//	Property Type utilities
+//==================================================
+stringPropType(PropType this):			null;
+stringPropType(BooleanType this):		"bool";
+stringPropType(ShortType this):			"short";
+stringPropType(IntType this):			"int";
+stringPropType(UShortType this):		"unsigned short";
+stringPropType(UIntType this):			"unsigned int";
+stringPropType(FloatType this):			"float";
+stringPropType(DoubleType this):		"double";
+stringPropType(StringType this):		"string";
+
+stringPropType(ShortVectorType this):	"vector<short>";
+stringPropType(IntVectorType this):		"vector<int>";
+stringPropType(FloatVectorType this):	"vector<float>";
+stringPropType(DoubleVectorType this):	"vector<double>";
+stringPropType(StringVectorType this):	"vector<string>";
+
+
+//	Type utilities
+stringType(Type this):					null;
+stringType(VoidType this):				"void";
+stringType(BooleanType this):			"Tango::DevBoolean";
+stringType(ShortType this):				"Tango::DevShort";
+stringType(IntType this):				"Tango::DevLong";
+stringType(FloatType this):				"Tango::DevFloat";
+stringType(DoubleType this):			"Tango::DevDouble";
+stringType(UShortType this):			"Tango::DevUShort";
+stringType(UIntType this):				"Tango::DevULong";
+stringType(StringType this):			"Tango::DevString";
+stringType(CharArrayType this):			"Tango::DevVarCharArray";
+stringType(ShortArrayType this):		"Tango::DevVarShortArray";
+stringType(IntArrayType this):			"Tango::DevVarLongArray";
+stringType(FloatArrayType this):		"Tango::DevVarFloatArray";
+stringType(DoubleArrayType this):		"Tango::DevVarDoubleArray";
+stringType(UShortArrayType this):		"Tango::DevVarUShortArray";
+stringType(UIntArrayType this):			"Tango::DevVarULongArray";
+stringType(StringArrayType this):		"Tango::DevVarStringArray";
+stringType(LongStringArrayType this):	"Tango::DevVarLongStringArray";
+stringType(DoubleStringArrayType this):"Tango::DevVarDoubleStringArray";
+stringType(StateType this):				"Tango::DevState";
+stringType(ConstStringType this):		"Tango::ConstDevString";
+stringType(BooleanArrayType this):		"Tango::DevVarBooleanArray";
+stringType(UCharType this):				"Tango::DevUChar";
+stringType(LongType this):				"Tango::DevLong64";
+stringType(ULongType this):				"Tango::DevULong64";
+stringType(LongArrayType this):			"Tango::DevVarLong64Array";
+stringType(ULongArrayType this):		"Tango::DevVarULong64Array";
+stringType(DevIntType this):			"Tango::DevInt";
+stringType(EncodedType this):			"Tango::DevEncoded";
+
+	
+//	Type enum
+stringTypeEnum(Type this):					null;
+stringTypeEnum(VoidType this):				"Tango::DEV_VOID";
+stringTypeEnum(BooleanType this):			"Tango::DEV_BOOLEAN";
+stringTypeEnum(ShortType this):				"Tango::DEV_SHORT";
+stringTypeEnum(IntType this):				"Tango::DEV_LONG";
+stringTypeEnum(FloatType this):				"Tango::DEV_FLOAT";
+stringTypeEnum(DoubleType this):			"Tango::DEV_DOUBLE";
+stringTypeEnum(UShortType this):			"Tango::DEV_USHORT";
+stringTypeEnum(UIntType this):				"Tango::DEV_ULONG";
+stringTypeEnum(StringType this):			"Tango::DEV_STRING";
+stringTypeEnum(CharArrayType this):			"Tango::DEVVAR_CHARARRAY";
+stringTypeEnum(ShortArrayType this):		"Tango::DEVVAR_SHORTARRAY";
+stringTypeEnum(IntArrayType this):			"Tango::DEVVAR_LONGARRAY";
+stringTypeEnum(FloatArrayType this):		"Tango::DEVVAR_FLOATARRAY";
+stringTypeEnum(DoubleArrayType this):		"Tango::DEVVAR_DOUBLEARRAY";
+stringTypeEnum(UShortArrayType this):		"Tango::DEVVAR_USHORTARRAY";
+stringTypeEnum(UIntArrayType this):			"Tango::DEVVAR_ULONGARRAY";
+stringTypeEnum(StringArrayType this):		"Tango::DEVVAR_STRINGARRAY";
+stringTypeEnum(LongStringArrayType this):	"Tango::DEVVAR_LONGSTRINGARRAY";
+stringTypeEnum(DoubleStringArrayType this):	"Tango::DEVVAR_DOUBLESTRINGARRAY";
+stringTypeEnum(StateType this):				"Tango::DEV_STATE";
+stringTypeEnum(ConstStringType this):		"Tango::CONST_DEV_STRING";
+stringTypeEnum(BooleanArrayType this):		"Tango::DEVVAR_BOOLEANARRAY";
+stringTypeEnum(UCharType this):				"Tango::DEV_UCHAR";
+stringTypeEnum(LongType this):				"Tango::DEV_LONG64";
+stringTypeEnum(ULongType this):				"Tango::DEV_ULONG64";
+stringTypeEnum(LongArrayType this):			"Tango::DEVVAR_LONG64ARRAY";
+stringTypeEnum(ULongArrayType this):		"Tango::DEVVAR_ULONG64ARRAY";
+stringTypeEnum(DevIntType this):			"Tango::DEV_INT";
+stringTypeEnum(EncodedType this):			"Tango::DEV_ENCODED";
+
+
+
+
+
+
+
+
+
+
+
