@@ -3,7 +3,7 @@
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
 
 «DEFINE cppFile FOR PogoDeviceClass»
-«IF description.filestogenerate.toLowerCase().contains("source")»
+«IF description.filestogenerate.contains(tagForSourceCode())»
 
 «FILE dserverClassCppFileName()-»
 «PROTECT CSTART '/*----- ' CEND ' -----*/' ID dserverClassCppFileName()»

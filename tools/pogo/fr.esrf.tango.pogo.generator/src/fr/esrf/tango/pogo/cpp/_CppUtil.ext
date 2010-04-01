@@ -132,6 +132,25 @@ cppExculudeStatesClose(Command this):
 	?	null
 	: "return false;\n\t}"; 
 
+//
+//	Inheritance util
+isInheritanceClass(Inheritance inher):
+	inher.classname.startsWith("Device_")==true && inher.classname.endsWith("Impl")==true
+	? false
+	: true;
+
+hasInheritanceClass(ClassDescription desc):
+	desc.inheritances.size>0 && isInheritanceClass(desc.inheritances.get(0))
+	? true
+	: false;
+//
+//	Makefile util
+makeVariable( Inheritance inher, String s ): 
+	inher.classname.toUpperCase() + s;
+
+
+
+
 
 //	Property Type utilities
 cppPropType(PropType this):			null;

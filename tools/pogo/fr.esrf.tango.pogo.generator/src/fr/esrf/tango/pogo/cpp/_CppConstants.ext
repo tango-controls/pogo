@@ -4,6 +4,9 @@ import _CppType;
 //	Default device Impl version
 tangoDeviceImpl():
 	"Tango::Device_4Impl";
+	
+//	Code source file option
+tagForSourceCode(PogoDeviceClass this):	"Code files";
 
 //	File names
 deviceHeaderFileName(PogoDeviceClass this):

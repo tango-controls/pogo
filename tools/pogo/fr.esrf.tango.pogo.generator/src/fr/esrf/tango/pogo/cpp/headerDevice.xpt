@@ -3,7 +3,7 @@
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
 
 «DEFINE headerFile FOR PogoDeviceClass»
-«IF description.filestogenerate.toLowerCase().contains("source")»
+«IF description.filestogenerate.contains(tagForSourceCode())»
 
 «FILE deviceHeaderFileName()-»
 «PROTECT CSTART '/*----- ' CEND ' -----*/' ID deviceHeaderFileName()»

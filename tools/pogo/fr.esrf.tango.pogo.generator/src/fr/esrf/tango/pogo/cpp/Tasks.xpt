@@ -12,6 +12,6 @@
 	«EXPAND cppClassFactory::cppFile»
 	«EXPAND cppMainFile::cppFile»
 	
-	«EXPAND project::cppMakefile::CppProject»
+	«EXPAND project::Tasks::CppProject»
 «ENDDEFINE»
 
