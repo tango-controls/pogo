@@ -4,7 +4,7 @@
 
 
 «DEFINE cppFile FOR PogoDeviceClass»
-«IF description.filestogenerate.toLowerCase().contains("source")»
+«IF description.filestogenerate.contains(tagForSourceCode())»
 «FILE "main.cpp"»«PROTECT CSTART '/*' CEND '*/' ID areaProtectedID("main.cpp") »
 static const char *RcsId = "$Id: $";
 //=============================================================================
