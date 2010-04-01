@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getContact <em>Contact</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getAuthor <em>Author</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getEmailDomain <em>Email Domain</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getClassFamily <em>Class Family</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getSiteSpecific <em>Site Specific</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getPlatform <em>Platform</em>}</li>
@@ -56,6 +58,58 @@ public interface ClassIdentification extends EObject
    * @generated
    */
   void setContact(String value);
+
+  /**
+   * Returns the value of the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Author</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Author</em>' attribute.
+   * @see #setAuthor(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassIdentification_Author()
+   * @model
+   * @generated
+   */
+  String getAuthor();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getAuthor <em>Author</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Author</em>' attribute.
+   * @see #getAuthor()
+   * @generated
+   */
+  void setAuthor(String value);
+
+  /**
+   * Returns the value of the '<em><b>Email Domain</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Email Domain</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Email Domain</em>' attribute.
+   * @see #setEmailDomain(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassIdentification_EmailDomain()
+   * @model
+   * @generated
+   */
+  String getEmailDomain();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getEmailDomain <em>Email Domain</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Email Domain</em>' attribute.
+   * @see #getEmailDomain()
+   * @generated
+   */
+  void setEmailDomain(String value);
 
   /**
    * Returns the value of the '<em><b>Class Family</b></em>' attribute.

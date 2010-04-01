@@ -408,13 +408,31 @@ public interface PogoDslPackage extends EPackage
   int CLASS_IDENTIFICATION__CONTACT = 0;
 
   /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_IDENTIFICATION__AUTHOR = 1;
+
+  /**
+   * The feature id for the '<em><b>Email Domain</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_IDENTIFICATION__EMAIL_DOMAIN = 2;
+
+  /**
    * The feature id for the '<em><b>Class Family</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION__CLASS_FAMILY = 1;
+  int CLASS_IDENTIFICATION__CLASS_FAMILY = 3;
 
   /**
    * The feature id for the '<em><b>Site Specific</b></em>' attribute.
@@ -423,7 +441,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION__SITE_SPECIFIC = 2;
+  int CLASS_IDENTIFICATION__SITE_SPECIFIC = 4;
 
   /**
    * The feature id for the '<em><b>Platform</b></em>' attribute.
@@ -432,7 +450,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION__PLATFORM = 3;
+  int CLASS_IDENTIFICATION__PLATFORM = 5;
 
   /**
    * The feature id for the '<em><b>Bus</b></em>' attribute.
@@ -441,7 +459,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION__BUS = 4;
+  int CLASS_IDENTIFICATION__BUS = 6;
 
   /**
    * The feature id for the '<em><b>Manufacturer</b></em>' attribute.
@@ -450,7 +468,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION__MANUFACTURER = 5;
+  int CLASS_IDENTIFICATION__MANUFACTURER = 7;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -459,7 +477,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION__REFERENCE = 6;
+  int CLASS_IDENTIFICATION__REFERENCE = 8;
 
   /**
    * The number of structural features of the '<em>Class Identification</em>' class.
@@ -468,7 +486,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION_FEATURE_COUNT = 7;
+  int CLASS_IDENTIFICATION_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.CommentsImpl <em>Comments</em>}' class.
@@ -481,13 +499,22 @@ public interface PogoDslPackage extends EPackage
   int COMMENTS = 6;
 
   /**
+   * The feature id for the '<em><b>Html Inheritance</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMENTS__HTML_INHERITANCE = 0;
+
+  /**
    * The feature id for the '<em><b>Commands Table</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMENTS__COMMANDS_TABLE = 0;
+  int COMMENTS__COMMANDS_TABLE = 1;
 
   /**
    * The number of structural features of the '<em>Comments</em>' class.
@@ -496,7 +523,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMENTS_FEATURE_COUNT = 1;
+  int COMMENTS_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.StateImpl <em>State</em>}' class.
@@ -2263,6 +2290,28 @@ public interface PogoDslPackage extends EPackage
   EAttribute getClassIdentification_Contact();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getAuthor <em>Author</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Author</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getAuthor()
+   * @see #getClassIdentification()
+   * @generated
+   */
+  EAttribute getClassIdentification_Author();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getEmailDomain <em>Email Domain</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Email Domain</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getEmailDomain()
+   * @see #getClassIdentification()
+   * @generated
+   */
+  EAttribute getClassIdentification_EmailDomain();
+
+  /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getClassFamily <em>Class Family</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2337,6 +2386,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EClass getComments();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Comments#getHtmlInheritance <em>Html Inheritance</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Html Inheritance</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Comments#getHtmlInheritance()
+   * @see #getComments()
+   * @generated
+   */
+  EAttribute getComments_HtmlInheritance();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Comments#getCommandsTable <em>Commands Table</em>}'.
@@ -3746,6 +3806,22 @@ public interface PogoDslPackage extends EPackage
     EAttribute CLASS_IDENTIFICATION__CONTACT = eINSTANCE.getClassIdentification_Contact();
 
     /**
+     * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_IDENTIFICATION__AUTHOR = eINSTANCE.getClassIdentification_Author();
+
+    /**
+     * The meta object literal for the '<em><b>Email Domain</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_IDENTIFICATION__EMAIL_DOMAIN = eINSTANCE.getClassIdentification_EmailDomain();
+
+    /**
      * The meta object literal for the '<em><b>Class Family</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3802,6 +3878,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EClass COMMENTS = eINSTANCE.getComments();
+
+    /**
+     * The meta object literal for the '<em><b>Html Inheritance</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMENTS__HTML_INHERITANCE = eINSTANCE.getComments_HtmlInheritance();
 
     /**
      * The meta object literal for the '<em><b>Commands Table</b></em>' attribute feature.

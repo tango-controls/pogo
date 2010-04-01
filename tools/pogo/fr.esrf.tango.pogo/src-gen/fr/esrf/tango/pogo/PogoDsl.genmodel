@@ -46,6 +46,8 @@
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//ClassIdentification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/contact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/emailDomain"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/classFamily"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/siteSpecific"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/platform"/>
@@ -54,6 +56,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/reference"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Comments">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Comments/htmlInheritance"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Comments/commandsTable"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//State">

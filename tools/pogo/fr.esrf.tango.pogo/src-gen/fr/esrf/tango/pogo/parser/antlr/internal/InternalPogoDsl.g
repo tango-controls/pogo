@@ -998,9 +998,9 @@ ruleClassIdentification returns [EObject current=null]
 	
 )(	
 	
-	    lv_classFamily_1=	RULE_STRING
+	    lv_author_1=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getClassIdentificationAccess().getClassFamilySTRINGTerminalRuleCall_1_0(), "classFamily"); 
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getAuthorSTRINGTerminalRuleCall_1_0(), "author"); 
 	}
  
 	    {
@@ -1010,7 +1010,7 @@ ruleClassIdentification returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "classFamily", lv_classFamily_1, "STRING", lastConsumedNode);
+	       		set($current, "author", lv_author_1, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1018,9 +1018,9 @@ ruleClassIdentification returns [EObject current=null]
 	
 )(	
 	
-	    lv_siteSpecific_2=	RULE_STRING
+	    lv_emailDomain_2=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getClassIdentificationAccess().getSiteSpecificSTRINGTerminalRuleCall_2_0(), "siteSpecific"); 
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getEmailDomainSTRINGTerminalRuleCall_2_0(), "emailDomain"); 
 	}
  
 	    {
@@ -1030,7 +1030,7 @@ ruleClassIdentification returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "siteSpecific", lv_siteSpecific_2, "STRING", lastConsumedNode);
+	       		set($current, "emailDomain", lv_emailDomain_2, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1038,9 +1038,9 @@ ruleClassIdentification returns [EObject current=null]
 	
 )(	
 	
-	    lv_platform_3=	RULE_STRING
+	    lv_classFamily_3=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getClassIdentificationAccess().getPlatformSTRINGTerminalRuleCall_3_0(), "platform"); 
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getClassFamilySTRINGTerminalRuleCall_3_0(), "classFamily"); 
 	}
  
 	    {
@@ -1050,7 +1050,7 @@ ruleClassIdentification returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "platform", lv_platform_3, "STRING", lastConsumedNode);
+	       		set($current, "classFamily", lv_classFamily_3, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1058,9 +1058,9 @@ ruleClassIdentification returns [EObject current=null]
 	
 )(	
 	
-	    lv_bus_4=	RULE_STRING
+	    lv_siteSpecific_4=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getClassIdentificationAccess().getBusSTRINGTerminalRuleCall_4_0(), "bus"); 
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getSiteSpecificSTRINGTerminalRuleCall_4_0(), "siteSpecific"); 
 	}
  
 	    {
@@ -1070,7 +1070,7 @@ ruleClassIdentification returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "bus", lv_bus_4, "STRING", lastConsumedNode);
+	       		set($current, "siteSpecific", lv_siteSpecific_4, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1078,9 +1078,9 @@ ruleClassIdentification returns [EObject current=null]
 	
 )(	
 	
-	    lv_manufacturer_5=	RULE_STRING
+	    lv_platform_5=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getClassIdentificationAccess().getManufacturerSTRINGTerminalRuleCall_5_0(), "manufacturer"); 
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getPlatformSTRINGTerminalRuleCall_5_0(), "platform"); 
 	}
  
 	    {
@@ -1090,7 +1090,7 @@ ruleClassIdentification returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "manufacturer", lv_manufacturer_5, "STRING", lastConsumedNode);
+	       		set($current, "platform", lv_platform_5, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1098,9 +1098,9 @@ ruleClassIdentification returns [EObject current=null]
 	
 )(	
 	
-	    lv_reference_6=	RULE_STRING
+	    lv_bus_6=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_6_0(), "reference"); 
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getBusSTRINGTerminalRuleCall_6_0(), "bus"); 
 	}
  
 	    {
@@ -1110,7 +1110,47 @@ ruleClassIdentification returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "reference", lv_reference_6, "STRING", lastConsumedNode);
+	       		set($current, "bus", lv_bus_6, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_manufacturer_7=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getManufacturerSTRINGTerminalRuleCall_7_0(), "manufacturer"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getClassIdentificationRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "manufacturer", lv_manufacturer_7, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_reference_8=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_8_0(), "reference"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getClassIdentificationRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "reference", lv_reference_8, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1137,11 +1177,11 @@ ruleComments returns [EObject current=null]
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	
+((	
 	
-	    lv_commandsTable_0=	RULE_STRING
+	    lv_htmlInheritance_0=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getCommentsAccess().getCommandsTableSTRINGTerminalRuleCall_0(), "commandsTable"); 
+		createLeafNode(grammarAccess.getCommentsAccess().getHtmlInheritanceSTRINGTerminalRuleCall_0_0(), "htmlInheritance"); 
 	}
  
 	    {
@@ -1151,13 +1191,33 @@ ruleComments returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "commandsTable", lv_commandsTable_0, "STRING", lastConsumedNode);
+	       		set($current, "htmlInheritance", lv_htmlInheritance_0, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 	
-);
+)(	
+	
+	    lv_commandsTable_1=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getCommentsAccess().getCommandsTableSTRINGTerminalRuleCall_1_0(), "commandsTable"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getCommentsRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "commandsTable", lv_commandsTable_1, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+));
 
 
 

@@ -853,7 +853,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassIdentification_ClassFamily()
+  public EAttribute getClassIdentification_Author()
   {
     return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(1);
   }
@@ -863,7 +863,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassIdentification_SiteSpecific()
+  public EAttribute getClassIdentification_EmailDomain()
   {
     return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(2);
   }
@@ -873,7 +873,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassIdentification_Platform()
+  public EAttribute getClassIdentification_ClassFamily()
   {
     return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(3);
   }
@@ -883,7 +883,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassIdentification_Bus()
+  public EAttribute getClassIdentification_SiteSpecific()
   {
     return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(4);
   }
@@ -893,7 +893,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassIdentification_Manufacturer()
+  public EAttribute getClassIdentification_Platform()
   {
     return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(5);
   }
@@ -903,9 +903,29 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassIdentification_Reference()
+  public EAttribute getClassIdentification_Bus()
   {
     return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getClassIdentification_Manufacturer()
+  {
+    return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getClassIdentification_Reference()
+  {
+    return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -923,9 +943,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getComments_CommandsTable()
+  public EAttribute getComments_HtmlInheritance()
   {
     return (EAttribute)commentsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getComments_CommandsTable()
+  {
+    return (EAttribute)commentsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2036,6 +2066,8 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
 
     classIdentificationEClass = createEClass(CLASS_IDENTIFICATION);
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__CONTACT);
+    createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__AUTHOR);
+    createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__EMAIL_DOMAIN);
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__CLASS_FAMILY);
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__SITE_SPECIFIC);
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__PLATFORM);
@@ -2044,6 +2076,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__REFERENCE);
 
     commentsEClass = createEClass(COMMENTS);
+    createEAttribute(commentsEClass, COMMENTS__HTML_INHERITANCE);
     createEAttribute(commentsEClass, COMMENTS__COMMANDS_TABLE);
 
     stateEClass = createEClass(STATE);
@@ -2311,6 +2344,8 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
 
     initEClass(classIdentificationEClass, ClassIdentification.class, "ClassIdentification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClassIdentification_Contact(), ecorePackage.getEString(), "contact", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getClassIdentification_Author(), ecorePackage.getEString(), "author", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getClassIdentification_EmailDomain(), ecorePackage.getEString(), "emailDomain", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassIdentification_ClassFamily(), ecorePackage.getEString(), "classFamily", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassIdentification_SiteSpecific(), ecorePackage.getEString(), "siteSpecific", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassIdentification_Platform(), ecorePackage.getEString(), "platform", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2319,6 +2354,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getClassIdentification_Reference(), ecorePackage.getEString(), "reference", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commentsEClass, Comments.class, "Comments", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getComments_HtmlInheritance(), ecorePackage.getEString(), "htmlInheritance", null, 0, 1, Comments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getComments_CommandsTable(), ecorePackage.getEString(), "commandsTable", null, 0, 1, Comments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

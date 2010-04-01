@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getContact <em>Contact</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getAuthor <em>Author</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getEmailDomain <em>Email Domain</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getClassFamily <em>Class Family</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getSiteSpecific <em>Site Specific</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getPlatform <em>Platform</em>}</li>
@@ -55,6 +57,46 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected String contact = CONTACT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAuthor()
+   * @generated
+   * @ordered
+   */
+  protected static final String AUTHOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAuthor() <em>Author</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAuthor()
+   * @generated
+   * @ordered
+   */
+  protected String author = AUTHOR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getEmailDomain() <em>Email Domain</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEmailDomain()
+   * @generated
+   * @ordered
+   */
+  protected static final String EMAIL_DOMAIN_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEmailDomain() <em>Email Domain</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEmailDomain()
+   * @generated
+   * @ordered
+   */
+  protected String emailDomain = EMAIL_DOMAIN_EDEFAULT;
 
   /**
    * The default value of the '{@link #getClassFamily() <em>Class Family</em>}' attribute.
@@ -225,6 +267,52 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getAuthor()
+  {
+    return author;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAuthor(String newAuthor)
+  {
+    String oldAuthor = author;
+    author = newAuthor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.CLASS_IDENTIFICATION__AUTHOR, oldAuthor, author));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getEmailDomain()
+  {
+    return emailDomain;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEmailDomain(String newEmailDomain)
+  {
+    String oldEmailDomain = emailDomain;
+    emailDomain = newEmailDomain;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.CLASS_IDENTIFICATION__EMAIL_DOMAIN, oldEmailDomain, emailDomain));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getClassFamily()
   {
     return classFamily;
@@ -370,6 +458,10 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
     {
       case PogoDslPackage.CLASS_IDENTIFICATION__CONTACT:
         return getContact();
+      case PogoDslPackage.CLASS_IDENTIFICATION__AUTHOR:
+        return getAuthor();
+      case PogoDslPackage.CLASS_IDENTIFICATION__EMAIL_DOMAIN:
+        return getEmailDomain();
       case PogoDslPackage.CLASS_IDENTIFICATION__CLASS_FAMILY:
         return getClassFamily();
       case PogoDslPackage.CLASS_IDENTIFICATION__SITE_SPECIFIC:
@@ -398,6 +490,12 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
     {
       case PogoDslPackage.CLASS_IDENTIFICATION__CONTACT:
         setContact((String)newValue);
+        return;
+      case PogoDslPackage.CLASS_IDENTIFICATION__AUTHOR:
+        setAuthor((String)newValue);
+        return;
+      case PogoDslPackage.CLASS_IDENTIFICATION__EMAIL_DOMAIN:
+        setEmailDomain((String)newValue);
         return;
       case PogoDslPackage.CLASS_IDENTIFICATION__CLASS_FAMILY:
         setClassFamily((String)newValue);
@@ -434,6 +532,12 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
       case PogoDslPackage.CLASS_IDENTIFICATION__CONTACT:
         setContact(CONTACT_EDEFAULT);
         return;
+      case PogoDslPackage.CLASS_IDENTIFICATION__AUTHOR:
+        setAuthor(AUTHOR_EDEFAULT);
+        return;
+      case PogoDslPackage.CLASS_IDENTIFICATION__EMAIL_DOMAIN:
+        setEmailDomain(EMAIL_DOMAIN_EDEFAULT);
+        return;
       case PogoDslPackage.CLASS_IDENTIFICATION__CLASS_FAMILY:
         setClassFamily(CLASS_FAMILY_EDEFAULT);
         return;
@@ -468,6 +572,10 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
     {
       case PogoDslPackage.CLASS_IDENTIFICATION__CONTACT:
         return CONTACT_EDEFAULT == null ? contact != null : !CONTACT_EDEFAULT.equals(contact);
+      case PogoDslPackage.CLASS_IDENTIFICATION__AUTHOR:
+        return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
+      case PogoDslPackage.CLASS_IDENTIFICATION__EMAIL_DOMAIN:
+        return EMAIL_DOMAIN_EDEFAULT == null ? emailDomain != null : !EMAIL_DOMAIN_EDEFAULT.equals(emailDomain);
       case PogoDslPackage.CLASS_IDENTIFICATION__CLASS_FAMILY:
         return CLASS_FAMILY_EDEFAULT == null ? classFamily != null : !CLASS_FAMILY_EDEFAULT.equals(classFamily);
       case PogoDslPackage.CLASS_IDENTIFICATION__SITE_SPECIFIC:
@@ -497,6 +605,10 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (contact: ");
     result.append(contact);
+    result.append(", author: ");
+    result.append(author);
+    result.append(", emailDomain: ");
+    result.append(emailDomain);
     result.append(", classFamily: ");
     result.append(classFamily);
     result.append(", siteSpecific: ");
