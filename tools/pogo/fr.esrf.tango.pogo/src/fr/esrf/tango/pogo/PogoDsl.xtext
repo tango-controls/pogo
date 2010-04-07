@@ -34,7 +34,7 @@ PogoDeviceClass:
 		"states:"								//	Device state list
 			(states+=State)*
 		
-		miscellaneous = Miscellaneous
+		preferences = Preferences				//	Preferences (for programer or for site)
 	"}";
 
 //
@@ -91,6 +91,14 @@ ClassIdentification:
 Comments:
 	htmlInheritance = STRING
 	commandsTable   = STRING;
+
+//
+//	Preferences (for programer or for site)
+//
+Preferences:
+	docHome       =  STRING
+	makefileHome  =  STRING
+	installHome   =  STRING;
 
 //
 //	State Definition
@@ -171,8 +179,10 @@ Attribute:
 	status           = InheritanceStatus
 	properties       = AttrProperties
 	
-	"excludedStates:"
-		(excludedStates+=STRING)*;
+	"readExcludedStates:"
+		(readExcludedStates+=STRING)*
+	"writeExcludedStates:"
+		(writeExcludedStates+=STRING)*;
 
 FireEvents:
 	fire             = Boolean
@@ -258,10 +268,3 @@ FloatVectorType:		{FloatVectorType} 	"vector<float>";
 DoubleVectorType:		{DoubleVectorType} 	"vector<double>";
 StringVectorType:		{StringVectorType} 	"vector<string>";
 
-
-
-
-Miscellaneous:
-	makefileHome  =  STRING
-	installHome   =  STRING
-;

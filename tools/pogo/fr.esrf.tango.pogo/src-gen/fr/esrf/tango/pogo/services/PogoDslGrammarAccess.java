@@ -109,8 +109,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final Keyword cStatesKeyword_16 = (Keyword)cGroup.eContents().get(16);
 		private final Assignment cStatesAssignment_17 = (Assignment)cGroup.eContents().get(17);
 		private final RuleCall cStatesStateParserRuleCall_17_0 = (RuleCall)cStatesAssignment_17.eContents().get(0);
-		private final Assignment cMiscellaneousAssignment_18 = (Assignment)cGroup.eContents().get(18);
-		private final RuleCall cMiscellaneousMiscellaneousParserRuleCall_18_0 = (RuleCall)cMiscellaneousAssignment_18.eContents().get(0);
+		private final Assignment cPreferencesAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_18_0 = (RuleCall)cPreferencesAssignment_18.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_19 = (Keyword)cGroup.eContents().get(19);
 		
 		//PogoDeviceClass:
@@ -118,7 +118,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//  )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 		//  classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
 		//  "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-		//  +=State* miscellaneous=Miscellaneous "}"; 
+		//  +=State* preferences=Preferences "}"; 
 		////
 		////	Class definition
 		////
@@ -145,8 +145,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//										 //	Device state list
 		//			 
 		//		
-		//		    
-		//	
+		//		    				 //	Preferences (for programer or for site)
+		//	 
 		//
 		////
 		////	Miscellaneous definitions
@@ -157,7 +157,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//)? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 		//classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
 		//"commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-		//+=State* miscellaneous=Miscellaneous "}" 
+		//+=State* preferences=Preferences "}" 
 		//	        
 		//	
 		//		    							 //	For future specific features 
@@ -178,6 +178,9 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//			 
 		//
 		//										 //	Device state list
+		//			 
+		//		
+		//		    				 //	Preferences (for programer or for site)
 		public Group getGroup() { return cGroup; }
 
 		//"deviceclass"
@@ -286,13 +289,15 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//State
 		public RuleCall getStatesStateParserRuleCall_17_0() { return cStatesStateParserRuleCall_17_0; }
 
-		//miscellaneous=Miscellaneous
-		public Assignment getMiscellaneousAssignment_18() { return cMiscellaneousAssignment_18; }
+		//preferences=Preferences 
+		//		
+		//		    				 //	Preferences (for programer or for site)
+		public Assignment getPreferencesAssignment_18() { return cPreferencesAssignment_18; }
 
-		//Miscellaneous
-		public RuleCall getMiscellaneousMiscellaneousParserRuleCall_18_0() { return cMiscellaneousMiscellaneousParserRuleCall_18_0; }
+		//Preferences   				 //	Preferences (for programer or for site)
+		public RuleCall getPreferencesPreferencesParserRuleCall_18_0() { return cPreferencesPreferencesParserRuleCall_18_0; }
 
-		//"}"
+		//"}" 				 //	Preferences (for programer or for site)
 		public Keyword getRightCurlyBracketKeyword_19() { return cRightCurlyBracketKeyword_19; }
 	}
 
@@ -748,7 +753,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//	      
 		//
 		////
-		////	State Definition
+		////	Preferences (for programer or for site)
 		////
 		public ParserRule getRule() { return rule; }
 
@@ -766,6 +771,54 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 		//STRING
 		public RuleCall getCommandsTableSTRINGTerminalRuleCall_1_0() { return cCommandsTableSTRINGTerminalRuleCall_1_0; }
+	}
+
+	public class PreferencesElements implements IParserRuleAccess {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Preferences");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cDocHomeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cDocHomeSTRINGTerminalRuleCall_0_0 = (RuleCall)cDocHomeAssignment_0.eContents().get(0);
+		private final Assignment cMakefileHomeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMakefileHomeSTRINGTerminalRuleCall_1_0 = (RuleCall)cMakefileHomeAssignment_1.eContents().get(0);
+		private final Assignment cInstallHomeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cInstallHomeSTRINGTerminalRuleCall_2_0 = (RuleCall)cInstallHomeAssignment_2.eContents().get(0);
+		
+		//Preferences:
+		//  docHome=STRING makefileHome=STRING installHome=STRING; 
+		//
+		////
+		////	Preferences (for programer or for site)
+		////
+		//
+		//	           
+		//	      
+		//	       
+		//
+		////
+		////	State Definition
+		////
+		public ParserRule getRule() { return rule; }
+
+		//docHome=STRING makefileHome=STRING installHome=STRING
+		public Group getGroup() { return cGroup; }
+
+		//docHome=STRING
+		public Assignment getDocHomeAssignment_0() { return cDocHomeAssignment_0; }
+
+		//STRING
+		public RuleCall getDocHomeSTRINGTerminalRuleCall_0_0() { return cDocHomeSTRINGTerminalRuleCall_0_0; }
+
+		//makefileHome=STRING
+		public Assignment getMakefileHomeAssignment_1() { return cMakefileHomeAssignment_1; }
+
+		//STRING
+		public RuleCall getMakefileHomeSTRINGTerminalRuleCall_1_0() { return cMakefileHomeSTRINGTerminalRuleCall_1_0; }
+
+		//installHome=STRING
+		public Assignment getInstallHomeAssignment_2() { return cInstallHomeAssignment_2; }
+
+		//STRING
+		public RuleCall getInstallHomeSTRINGTerminalRuleCall_2_0() { return cInstallHomeSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class StateElements implements IParserRuleAccess {
@@ -1227,15 +1280,19 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cStatusInheritanceStatusParserRuleCall_12_0 = (RuleCall)cStatusAssignment_12.eContents().get(0);
 		private final Assignment cPropertiesAssignment_13 = (Assignment)cGroup.eContents().get(13);
 		private final RuleCall cPropertiesAttrPropertiesParserRuleCall_13_0 = (RuleCall)cPropertiesAssignment_13.eContents().get(0);
-		private final Keyword cExcludedStatesKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Assignment cExcludedStatesAssignment_15 = (Assignment)cGroup.eContents().get(15);
-		private final RuleCall cExcludedStatesSTRINGTerminalRuleCall_15_0 = (RuleCall)cExcludedStatesAssignment_15.eContents().get(0);
+		private final Keyword cReadExcludedStatesKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Assignment cReadExcludedStatesAssignment_15 = (Assignment)cGroup.eContents().get(15);
+		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_15_0 = (RuleCall)cReadExcludedStatesAssignment_15.eContents().get(0);
+		private final Keyword cWriteExcludedStatesKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Assignment cWriteExcludedStatesAssignment_17 = (Assignment)cGroup.eContents().get(17);
+		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_17_0 = (RuleCall)cWriteExcludedStatesAssignment_17.eContents().get(0);
 		
 		//Attribute:
 		//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 		//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-		//  properties=AttrProperties "excludedStates:" excludedStates+=STRING*;  
+		//  properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
+		//  "writeExcludedStates:" writeExcludedStates+=STRING*;  
 		//
 		////
 		////	Attribute Definition
@@ -1245,7 +1302,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 		//Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-		//properties=AttrProperties "excludedStates:" excludedStates+=STRING*
+		//properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
+		//"writeExcludedStates:" writeExcludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1332,14 +1390,23 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//AttrProperties
 		public RuleCall getPropertiesAttrPropertiesParserRuleCall_13_0() { return cPropertiesAttrPropertiesParserRuleCall_13_0; }
 
-		//"excludedStates:"
-		public Keyword getExcludedStatesKeyword_14() { return cExcludedStatesKeyword_14; }
+		//"readExcludedStates:"
+		public Keyword getReadExcludedStatesKeyword_14() { return cReadExcludedStatesKeyword_14; }
 
-		//excludedStates+=STRING*
-		public Assignment getExcludedStatesAssignment_15() { return cExcludedStatesAssignment_15; }
+		//readExcludedStates+=STRING*
+		public Assignment getReadExcludedStatesAssignment_15() { return cReadExcludedStatesAssignment_15; }
 
 		//STRING
-		public RuleCall getExcludedStatesSTRINGTerminalRuleCall_15_0() { return cExcludedStatesSTRINGTerminalRuleCall_15_0; }
+		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_15_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_15_0; }
+
+		//"writeExcludedStates:"
+		public Keyword getWriteExcludedStatesKeyword_16() { return cWriteExcludedStatesKeyword_16; }
+
+		//writeExcludedStates+=STRING*
+		public Assignment getWriteExcludedStatesAssignment_17() { return cWriteExcludedStatesAssignment_17; }
+
+		//STRING
+		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_17_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_17_0; }
 	}
 
 	public class FireEventsElements implements IParserRuleAccess {
@@ -2396,34 +2463,6 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//"vector<string>"
 		public Keyword getVectorStringKeyword_1() { return cVectorStringKeyword_1; }
 	}
-
-	public class MiscellaneousElements implements IParserRuleAccess {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Miscellaneous");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cMakefileHomeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cMakefileHomeSTRINGTerminalRuleCall_0_0 = (RuleCall)cMakefileHomeAssignment_0.eContents().get(0);
-		private final Assignment cInstallHomeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cInstallHomeSTRINGTerminalRuleCall_1_0 = (RuleCall)cInstallHomeAssignment_1.eContents().get(0);
-		
-		//Miscellaneous:
-		//  makefileHome=STRING installHome=STRING;
-		public ParserRule getRule() { return rule; }
-
-		//makefileHome=STRING installHome=STRING
-		public Group getGroup() { return cGroup; }
-
-		//makefileHome=STRING
-		public Assignment getMakefileHomeAssignment_0() { return cMakefileHomeAssignment_0; }
-
-		//STRING
-		public RuleCall getMakefileHomeSTRINGTerminalRuleCall_0_0() { return cMakefileHomeSTRINGTerminalRuleCall_0_0; }
-
-		//installHome=STRING
-		public Assignment getInstallHomeAssignment_1() { return cInstallHomeAssignment_1; }
-
-		//STRING
-		public RuleCall getInstallHomeSTRINGTerminalRuleCall_1_0() { return cInstallHomeSTRINGTerminalRuleCall_1_0; }
-	}
 	
 	
 	private PogoSystemElements pPogoSystem;
@@ -2438,6 +2477,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	private InheritanceElements pInheritance;
 	private ClassIdentificationElements pClassIdentification;
 	private CommentsElements pComments;
+	private PreferencesElements pPreferences;
 	private StateElements pState;
 	private PropertyElements pProperty;
 	private PropTypeElements pPropType;
@@ -2484,7 +2524,6 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	private FloatVectorTypeElements pFloatVectorType;
 	private DoubleVectorTypeElements pDoubleVectorType;
 	private StringVectorTypeElements pStringVectorType;
-	private MiscellaneousElements pMiscellaneous;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -2538,7 +2577,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//  )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 	//  classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
 	//  "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-	//  +=State* miscellaneous=Miscellaneous "}"; 
+	//  +=State* preferences=Preferences "}"; 
 	////
 	////	Class definition
 	////
@@ -2565,8 +2604,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//										 //	Device state list
 	//			 
 	//		
-	//		    
-	//	
+	//		    				 //	Preferences (for programer or for site)
+	//	 
 	//
 	////
 	////	Miscellaneous definitions
@@ -2735,7 +2774,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//	      
 	//
 	////
-	////	State Definition
+	////	Preferences (for programer or for site)
 	////
 	public CommentsElements getCommentsAccess() {
 		return (pComments != null) ? pComments : (pComments = new CommentsElements());
@@ -2743,6 +2782,28 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	
 	public ParserRule getCommentsRule() {
 		return getCommentsAccess().getRule();
+	}
+
+	//Preferences:
+	//  docHome=STRING makefileHome=STRING installHome=STRING; 
+	//
+	////
+	////	Preferences (for programer or for site)
+	////
+	//
+	//	           
+	//	      
+	//	       
+	//
+	////
+	////	State Definition
+	////
+	public PreferencesElements getPreferencesAccess() {
+		return (pPreferences != null) ? pPreferences : (pPreferences = new PreferencesElements());
+	}
+	
+	public ParserRule getPreferencesRule() {
+		return getPreferencesAccess().getRule();
 	}
 
 	//State:
@@ -2886,7 +2947,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 	//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 	//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-	//  properties=AttrProperties "excludedStates:" excludedStates+=STRING*;  
+	//  properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
+	//  "writeExcludedStates:" writeExcludedStates+=STRING*;  
 	//
 	////
 	////	Attribute Definition
@@ -3332,16 +3394,6 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	
 	public ParserRule getStringVectorTypeRule() {
 		return getStringVectorTypeAccess().getRule();
-	}
-
-	//Miscellaneous:
-	//  makefileHome=STRING installHome=STRING;
-	public MiscellaneousElements getMiscellaneousAccess() {
-		return (pMiscellaneous != null) ? pMiscellaneous : (pMiscellaneous = new MiscellaneousElements());
-	}
-	
-	public ParserRule getMiscellaneousRule() {
-		return getMiscellaneousAccess().getRule();
 	}
 
 	//terminal ID:

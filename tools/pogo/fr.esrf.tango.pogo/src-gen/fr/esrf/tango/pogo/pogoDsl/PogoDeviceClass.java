@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getCommands <em>Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous <em>Miscellaneous</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}</li>
  * </ul>
  * </p>
  *
@@ -248,29 +248,29 @@ public interface PogoDeviceClass extends EObject
   EList<State> getStates();
 
   /**
-   * Returns the value of the '<em><b>Miscellaneous</b></em>' containment reference.
+   * Returns the value of the '<em><b>Preferences</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Miscellaneous</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Preferences</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Miscellaneous</em>' containment reference.
-   * @see #setMiscellaneous(Miscellaneous)
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_Miscellaneous()
+   * @return the value of the '<em>Preferences</em>' containment reference.
+   * @see #setPreferences(Preferences)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_Preferences()
    * @model containment="true"
    * @generated
    */
-  Miscellaneous getMiscellaneous();
+  Preferences getPreferences();
 
   /**
-   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous <em>Miscellaneous</em>}' containment reference.
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Miscellaneous</em>' containment reference.
-   * @see #getMiscellaneous()
+   * @param value the new value of the '<em>Preferences</em>' containment reference.
+   * @see #getPreferences()
    * @generated
    */
-  void setMiscellaneous(Miscellaneous value);
+  void setPreferences(Preferences value);
 
 } // PogoDeviceClass

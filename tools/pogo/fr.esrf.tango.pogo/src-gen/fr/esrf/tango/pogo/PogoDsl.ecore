@@ -29,7 +29,7 @@
         eType="#//Attribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
         eType="#//State" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="miscellaneous" eType="#//Miscellaneous"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preferences" eType="#//Preferences"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassDescription">
@@ -65,6 +65,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Comments">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="htmlInheritance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="commandsTable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Preferences">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="docHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="makefileHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="installHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -131,7 +136,9 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" eType="#//AttrProperties"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="excludedStates" unique="false"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readExcludedStates" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="writeExcludedStates" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FireEvents">
@@ -189,8 +196,4 @@
   <eClassifiers xsi:type="ecore:EClass" name="FloatVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="DoubleVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="StringVectorType" eSuperTypes="#//VectorType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Miscellaneous">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="makefileHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="installHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
 </ecore:EPackage>

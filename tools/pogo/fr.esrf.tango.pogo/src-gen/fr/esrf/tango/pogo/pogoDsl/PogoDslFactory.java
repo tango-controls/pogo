@@ -89,6 +89,15 @@ public interface PogoDslFactory extends EFactory
   Comments createComments();
 
   /**
+   * Returns a new object of class '<em>Preferences</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Preferences</em>'.
+   * @generated
+   */
+  Preferences createPreferences();
+
+  /**
    * Returns a new object of class '<em>State</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -501,15 +510,6 @@ public interface PogoDslFactory extends EFactory
    * @generated
    */
   StringVectorType createStringVectorType();
-
-  /**
-   * Returns a new object of class '<em>Miscellaneous</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Miscellaneous</em>'.
-   * @generated
-   */
-  Miscellaneous createMiscellaneous();
 
   /**
    * Returns the package supported by this factory.

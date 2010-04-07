@@ -434,9 +434,9 @@ rulePogoDeviceClass returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getMiscellaneousMiscellaneousParserRuleCall_18_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_18_0(), currentNode); 
 	    }
-	    lv_miscellaneous_19=ruleMiscellaneous 
+	    lv_preferences_19=rulePreferences 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getPogoDeviceClassRule().getType().getClassifier());
@@ -444,7 +444,7 @@ rulePogoDeviceClass returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "miscellaneous", lv_miscellaneous_19, "Miscellaneous", currentNode);
+	       		set($current, "preferences", lv_preferences_19, "Preferences", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1212,6 +1212,87 @@ ruleComments returns [EObject current=null]
 	        
 	        try {
 	       		set($current, "commandsTable", lv_commandsTable_1, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+));
+
+
+
+
+
+// Entry rule entryRulePreferences
+entryRulePreferences returns [EObject current=null] :
+	{ currentNode = createCompositeNode(grammarAccess.getPreferencesRule(), currentNode); }
+	 iv_rulePreferences=rulePreferences 
+	 { $current=$iv_rulePreferences.current; } 
+	 EOF 
+;
+
+// Rule Preferences
+rulePreferences returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+((	
+	
+	    lv_docHome_0=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPreferencesAccess().getDocHomeSTRINGTerminalRuleCall_0_0(), "docHome"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPreferencesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "docHome", lv_docHome_0, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_makefileHome_1=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPreferencesAccess().getMakefileHomeSTRINGTerminalRuleCall_1_0(), "makefileHome"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPreferencesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "makefileHome", lv_makefileHome_1, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_installHome_2=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPreferencesAccess().getInstallHomeSTRINGTerminalRuleCall_2_0(), "installHome"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPreferencesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "installHome", lv_installHome_2, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -2344,15 +2425,15 @@ ruleAttribute returns [EObject current=null]
 	        currentNode = currentNode.getParent();
 	    }
 	
-)'excludedStates:' 
+)'readExcludedStates:' 
     {
-        createLeafNode(grammarAccess.getAttributeAccess().getExcludedStatesKeyword_14(), null); 
+        createLeafNode(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_14(), null); 
     }
 (	
 	
-	    lv_excludedStates_15=	RULE_STRING
+	    lv_readExcludedStates_15=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getAttributeAccess().getExcludedStatesSTRINGTerminalRuleCall_15_0(), "excludedStates"); 
+		createLeafNode(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_15_0(), "readExcludedStates"); 
 	}
  
 	    {
@@ -2362,7 +2443,31 @@ ruleAttribute returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "excludedStates", lv_excludedStates_15, "STRING", lastConsumedNode);
+	       		add($current, "readExcludedStates", lv_readExcludedStates_15, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)*'writeExcludedStates:' 
+    {
+        createLeafNode(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_16(), null); 
+    }
+(	
+	
+	    lv_writeExcludedStates_17=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_17_0(), "writeExcludedStates"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getAttributeRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		add($current, "writeExcludedStates", lv_writeExcludedStates_17, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -4267,67 +4372,6 @@ ruleStringVectorType returns [EObject current=null]
         createLeafNode(grammarAccess.getStringVectorTypeAccess().getVectorStringKeyword_1(), null); 
     }
 );
-
-
-
-
-
-// Entry rule entryRuleMiscellaneous
-entryRuleMiscellaneous returns [EObject current=null] :
-	{ currentNode = createCompositeNode(grammarAccess.getMiscellaneousRule(), currentNode); }
-	 iv_ruleMiscellaneous=ruleMiscellaneous 
-	 { $current=$iv_ruleMiscellaneous.current; } 
-	 EOF 
-;
-
-// Rule Miscellaneous
-ruleMiscellaneous returns [EObject current=null] 
-    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-    	lastConsumedNode = currentNode;
-    }:
-((	
-	
-	    lv_makefileHome_0=	RULE_STRING
-	{
-		createLeafNode(grammarAccess.getMiscellaneousAccess().getMakefileHomeSTRINGTerminalRuleCall_0_0(), "makefileHome"); 
-	}
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getMiscellaneousRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		set($current, "makefileHome", lv_makefileHome_0, "STRING", lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-	
-)(	
-	
-	    lv_installHome_1=	RULE_STRING
-	{
-		createLeafNode(grammarAccess.getMiscellaneousAccess().getInstallHomeSTRINGTerminalRuleCall_1_0(), "installHome"); 
-	}
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getMiscellaneousRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		set($current, "installHome", lv_installHome_1, "STRING", lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-	
-));
 
 
 

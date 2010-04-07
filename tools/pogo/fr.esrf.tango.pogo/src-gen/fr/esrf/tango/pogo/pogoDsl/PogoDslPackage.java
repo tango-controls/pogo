@@ -225,13 +225,13 @@ public interface PogoDslPackage extends EPackage
   int POGO_DEVICE_CLASS__STATES = 9;
 
   /**
-   * The feature id for the '<em><b>Miscellaneous</b></em>' containment reference.
+   * The feature id for the '<em><b>Preferences</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__MISCELLANEOUS = 10;
+  int POGO_DEVICE_CLASS__PREFERENCES = 10;
 
   /**
    * The number of structural features of the '<em>Pogo Device Class</em>' class.
@@ -526,6 +526,52 @@ public interface PogoDslPackage extends EPackage
   int COMMENTS_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl <em>Preferences</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPreferences()
+   * @generated
+   */
+  int PREFERENCES = 7;
+
+  /**
+   * The feature id for the '<em><b>Doc Home</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREFERENCES__DOC_HOME = 0;
+
+  /**
+   * The feature id for the '<em><b>Makefile Home</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREFERENCES__MAKEFILE_HOME = 1;
+
+  /**
+   * The feature id for the '<em><b>Install Home</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREFERENCES__INSTALL_HOME = 2;
+
+  /**
+   * The number of structural features of the '<em>Preferences</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREFERENCES_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.StateImpl <em>State</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -533,7 +579,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getState()
    * @generated
    */
-  int STATE = 7;
+  int STATE = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -579,7 +625,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 8;
+  int PROPERTY = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -643,7 +689,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPropType()
    * @generated
    */
-  int PROP_TYPE = 9;
+  int PROP_TYPE = 10;
 
   /**
    * The number of structural features of the '<em>Prop Type</em>' class.
@@ -662,7 +708,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getSimpleType()
    * @generated
    */
-  int SIMPLE_TYPE = 10;
+  int SIMPLE_TYPE = 11;
 
   /**
    * The number of structural features of the '<em>Simple Type</em>' class.
@@ -681,7 +727,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getVectorType()
    * @generated
    */
-  int VECTOR_TYPE = 11;
+  int VECTOR_TYPE = 12;
 
   /**
    * The number of structural features of the '<em>Vector Type</em>' class.
@@ -700,7 +746,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getInheritanceStatus()
    * @generated
    */
-  int INHERITANCE_STATUS = 12;
+  int INHERITANCE_STATUS = 13;
 
   /**
    * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -764,7 +810,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 13;
+  int COMMAND = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -864,7 +910,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getArgument()
    * @generated
    */
-  int ARGUMENT = 14;
+  int ARGUMENT = 15;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -901,7 +947,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 15;
+  int ATTRIBUTE = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1030,13 +1076,22 @@ public interface PogoDslPackage extends EPackage
   int ATTRIBUTE__PROPERTIES = 13;
 
   /**
-   * The feature id for the '<em><b>Excluded States</b></em>' attribute list.
+   * The feature id for the '<em><b>Read Excluded States</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__EXCLUDED_STATES = 14;
+  int ATTRIBUTE__READ_EXCLUDED_STATES = 14;
+
+  /**
+   * The feature id for the '<em><b>Write Excluded States</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 15;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -1045,7 +1100,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = 15;
+  int ATTRIBUTE_FEATURE_COUNT = 16;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FireEventsImpl <em>Fire Events</em>}' class.
@@ -1055,7 +1110,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFireEvents()
    * @generated
    */
-  int FIRE_EVENTS = 16;
+  int FIRE_EVENTS = 17;
 
   /**
    * The feature id for the '<em><b>Fire</b></em>' attribute.
@@ -1092,7 +1147,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getAttrProperties()
    * @generated
    */
-  int ATTR_PROPERTIES = 17;
+  int ATTR_PROPERTIES = 18;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1237,7 +1292,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getType()
    * @generated
    */
-  int TYPE = 18;
+  int TYPE = 19;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -1256,7 +1311,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getVoidType()
    * @generated
    */
-  int VOID_TYPE = 19;
+  int VOID_TYPE = 20;
 
   /**
    * The number of structural features of the '<em>Void Type</em>' class.
@@ -1275,7 +1330,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 20;
+  int BOOLEAN_TYPE = 21;
 
   /**
    * The number of structural features of the '<em>Boolean Type</em>' class.
@@ -1294,7 +1349,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortType()
    * @generated
    */
-  int SHORT_TYPE = 21;
+  int SHORT_TYPE = 22;
 
   /**
    * The number of structural features of the '<em>Short Type</em>' class.
@@ -1313,7 +1368,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUShortType()
    * @generated
    */
-  int USHORT_TYPE = 22;
+  int USHORT_TYPE = 23;
 
   /**
    * The number of structural features of the '<em>UShort Type</em>' class.
@@ -1332,7 +1387,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntType()
    * @generated
    */
-  int INT_TYPE = 23;
+  int INT_TYPE = 24;
 
   /**
    * The number of structural features of the '<em>Int Type</em>' class.
@@ -1351,7 +1406,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUIntType()
    * @generated
    */
-  int UINT_TYPE = 24;
+  int UINT_TYPE = 25;
 
   /**
    * The number of structural features of the '<em>UInt Type</em>' class.
@@ -1370,7 +1425,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatType()
    * @generated
    */
-  int FLOAT_TYPE = 25;
+  int FLOAT_TYPE = 26;
 
   /**
    * The number of structural features of the '<em>Float Type</em>' class.
@@ -1389,7 +1444,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 26;
+  int DOUBLE_TYPE = 27;
 
   /**
    * The number of structural features of the '<em>Double Type</em>' class.
@@ -1408,7 +1463,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 27;
+  int STRING_TYPE = 28;
 
   /**
    * The number of structural features of the '<em>String Type</em>' class.
@@ -1427,7 +1482,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getCharArrayType()
    * @generated
    */
-  int CHAR_ARRAY_TYPE = 28;
+  int CHAR_ARRAY_TYPE = 29;
 
   /**
    * The number of structural features of the '<em>Char Array Type</em>' class.
@@ -1446,7 +1501,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortArrayType()
    * @generated
    */
-  int SHORT_ARRAY_TYPE = 29;
+  int SHORT_ARRAY_TYPE = 30;
 
   /**
    * The number of structural features of the '<em>Short Array Type</em>' class.
@@ -1465,7 +1520,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUShortArrayType()
    * @generated
    */
-  int USHORT_ARRAY_TYPE = 30;
+  int USHORT_ARRAY_TYPE = 31;
 
   /**
    * The number of structural features of the '<em>UShort Array Type</em>' class.
@@ -1484,7 +1539,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntArrayType()
    * @generated
    */
-  int INT_ARRAY_TYPE = 31;
+  int INT_ARRAY_TYPE = 32;
 
   /**
    * The number of structural features of the '<em>Int Array Type</em>' class.
@@ -1503,7 +1558,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUIntArrayType()
    * @generated
    */
-  int UINT_ARRAY_TYPE = 32;
+  int UINT_ARRAY_TYPE = 33;
 
   /**
    * The number of structural features of the '<em>UInt Array Type</em>' class.
@@ -1522,7 +1577,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatArrayType()
    * @generated
    */
-  int FLOAT_ARRAY_TYPE = 33;
+  int FLOAT_ARRAY_TYPE = 34;
 
   /**
    * The number of structural features of the '<em>Float Array Type</em>' class.
@@ -1541,7 +1596,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleArrayType()
    * @generated
    */
-  int DOUBLE_ARRAY_TYPE = 34;
+  int DOUBLE_ARRAY_TYPE = 35;
 
   /**
    * The number of structural features of the '<em>Double Array Type</em>' class.
@@ -1560,7 +1615,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringArrayType()
    * @generated
    */
-  int STRING_ARRAY_TYPE = 35;
+  int STRING_ARRAY_TYPE = 36;
 
   /**
    * The number of structural features of the '<em>String Array Type</em>' class.
@@ -1579,7 +1634,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongStringArrayType()
    * @generated
    */
-  int LONG_STRING_ARRAY_TYPE = 36;
+  int LONG_STRING_ARRAY_TYPE = 37;
 
   /**
    * The number of structural features of the '<em>Long String Array Type</em>' class.
@@ -1598,7 +1653,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleStringArrayType()
    * @generated
    */
-  int DOUBLE_STRING_ARRAY_TYPE = 37;
+  int DOUBLE_STRING_ARRAY_TYPE = 38;
 
   /**
    * The number of structural features of the '<em>Double String Array Type</em>' class.
@@ -1617,7 +1672,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStateType()
    * @generated
    */
-  int STATE_TYPE = 38;
+  int STATE_TYPE = 39;
 
   /**
    * The number of structural features of the '<em>State Type</em>' class.
@@ -1636,7 +1691,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getConstStringType()
    * @generated
    */
-  int CONST_STRING_TYPE = 39;
+  int CONST_STRING_TYPE = 40;
 
   /**
    * The number of structural features of the '<em>Const String Type</em>' class.
@@ -1655,7 +1710,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getBooleanArrayType()
    * @generated
    */
-  int BOOLEAN_ARRAY_TYPE = 40;
+  int BOOLEAN_ARRAY_TYPE = 41;
 
   /**
    * The number of structural features of the '<em>Boolean Array Type</em>' class.
@@ -1674,7 +1729,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUCharType()
    * @generated
    */
-  int UCHAR_TYPE = 41;
+  int UCHAR_TYPE = 42;
 
   /**
    * The number of structural features of the '<em>UChar Type</em>' class.
@@ -1693,7 +1748,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongType()
    * @generated
    */
-  int LONG_TYPE = 42;
+  int LONG_TYPE = 43;
 
   /**
    * The number of structural features of the '<em>Long Type</em>' class.
@@ -1712,7 +1767,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongType()
    * @generated
    */
-  int ULONG_TYPE = 43;
+  int ULONG_TYPE = 44;
 
   /**
    * The number of structural features of the '<em>ULong Type</em>' class.
@@ -1731,7 +1786,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongArrayType()
    * @generated
    */
-  int LONG_ARRAY_TYPE = 44;
+  int LONG_ARRAY_TYPE = 45;
 
   /**
    * The number of structural features of the '<em>Long Array Type</em>' class.
@@ -1750,7 +1805,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongArrayType()
    * @generated
    */
-  int ULONG_ARRAY_TYPE = 45;
+  int ULONG_ARRAY_TYPE = 46;
 
   /**
    * The number of structural features of the '<em>ULong Array Type</em>' class.
@@ -1769,7 +1824,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDevIntType()
    * @generated
    */
-  int DEV_INT_TYPE = 46;
+  int DEV_INT_TYPE = 47;
 
   /**
    * The number of structural features of the '<em>Dev Int Type</em>' class.
@@ -1788,7 +1843,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getEncodedType()
    * @generated
    */
-  int ENCODED_TYPE = 47;
+  int ENCODED_TYPE = 48;
 
   /**
    * The number of structural features of the '<em>Encoded Type</em>' class.
@@ -1807,7 +1862,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortVectorType()
    * @generated
    */
-  int SHORT_VECTOR_TYPE = 48;
+  int SHORT_VECTOR_TYPE = 49;
 
   /**
    * The number of structural features of the '<em>Short Vector Type</em>' class.
@@ -1826,7 +1881,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntVectorType()
    * @generated
    */
-  int INT_VECTOR_TYPE = 49;
+  int INT_VECTOR_TYPE = 50;
 
   /**
    * The number of structural features of the '<em>Int Vector Type</em>' class.
@@ -1845,7 +1900,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatVectorType()
    * @generated
    */
-  int FLOAT_VECTOR_TYPE = 50;
+  int FLOAT_VECTOR_TYPE = 51;
 
   /**
    * The number of structural features of the '<em>Float Vector Type</em>' class.
@@ -1864,7 +1919,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleVectorType()
    * @generated
    */
-  int DOUBLE_VECTOR_TYPE = 51;
+  int DOUBLE_VECTOR_TYPE = 52;
 
   /**
    * The number of structural features of the '<em>Double Vector Type</em>' class.
@@ -1883,7 +1938,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringVectorType()
    * @generated
    */
-  int STRING_VECTOR_TYPE = 52;
+  int STRING_VECTOR_TYPE = 53;
 
   /**
    * The number of structural features of the '<em>String Vector Type</em>' class.
@@ -1893,43 +1948,6 @@ public interface PogoDslPackage extends EPackage
    * @ordered
    */
   int STRING_VECTOR_TYPE_FEATURE_COUNT = VECTOR_TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl <em>Miscellaneous</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl
-   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getMiscellaneous()
-   * @generated
-   */
-  int MISCELLANEOUS = 53;
-
-  /**
-   * The feature id for the '<em><b>Makefile Home</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MISCELLANEOUS__MAKEFILE_HOME = 0;
-
-  /**
-   * The feature id for the '<em><b>Install Home</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MISCELLANEOUS__INSTALL_HOME = 1;
-
-  /**
-   * The number of structural features of the '<em>Miscellaneous</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MISCELLANEOUS_FEATURE_COUNT = 2;
 
 
   /**
@@ -2106,15 +2124,15 @@ public interface PogoDslPackage extends EPackage
   EReference getPogoDeviceClass_States();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous <em>Miscellaneous</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Miscellaneous</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getMiscellaneous()
+   * @return the meta object for the containment reference '<em>Preferences</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences()
    * @see #getPogoDeviceClass()
    * @generated
    */
-  EReference getPogoDeviceClass_Miscellaneous();
+  EReference getPogoDeviceClass_Preferences();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription <em>Class Description</em>}'.
@@ -2408,6 +2426,49 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getComments_CommandsTable();
+
+  /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Preferences <em>Preferences</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Preferences</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Preferences
+   * @generated
+   */
+  EClass getPreferences();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Preferences#getDocHome <em>Doc Home</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Doc Home</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Preferences#getDocHome()
+   * @see #getPreferences()
+   * @generated
+   */
+  EAttribute getPreferences_DocHome();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Preferences#getMakefileHome <em>Makefile Home</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Makefile Home</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Preferences#getMakefileHome()
+   * @see #getPreferences()
+   * @generated
+   */
+  EAttribute getPreferences_MakefileHome();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Preferences#getInstallHome <em>Install Home</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Install Home</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Preferences#getInstallHome()
+   * @see #getPreferences()
+   * @generated
+   */
+  EAttribute getPreferences_InstallHome();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.State <em>State</em>}'.
@@ -2918,15 +2979,26 @@ public interface PogoDslPackage extends EPackage
   EReference getAttribute_Properties();
 
   /**
-   * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getExcludedStates <em>Excluded States</em>}'.
+   * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates <em>Read Excluded States</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Excluded States</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getExcludedStates()
+   * @return the meta object for the attribute list '<em>Read Excluded States</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates()
    * @see #getAttribute()
    * @generated
    */
-  EAttribute getAttribute_ExcludedStates();
+  EAttribute getAttribute_ReadExcludedStates();
+
+  /**
+   * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getWriteExcludedStates <em>Write Excluded States</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Write Excluded States</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getWriteExcludedStates()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_WriteExcludedStates();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.FireEvents <em>Fire Events</em>}'.
@@ -3475,38 +3547,6 @@ public interface PogoDslPackage extends EPackage
   EClass getStringVectorType();
 
   /**
-   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous <em>Miscellaneous</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Miscellaneous</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous
-   * @generated
-   */
-  EClass getMiscellaneous();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getMakefileHome <em>Makefile Home</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Makefile Home</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getMakefileHome()
-   * @see #getMiscellaneous()
-   * @generated
-   */
-  EAttribute getMiscellaneous_MakefileHome();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getInstallHome <em>Install Home</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Install Home</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.Miscellaneous#getInstallHome()
-   * @see #getMiscellaneous()
-   * @generated
-   */
-  EAttribute getMiscellaneous_InstallHome();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3664,12 +3704,12 @@ public interface PogoDslPackage extends EPackage
     EReference POGO_DEVICE_CLASS__STATES = eINSTANCE.getPogoDeviceClass_States();
 
     /**
-     * The meta object literal for the '<em><b>Miscellaneous</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Preferences</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference POGO_DEVICE_CLASS__MISCELLANEOUS = eINSTANCE.getPogoDeviceClass_Miscellaneous();
+    EReference POGO_DEVICE_CLASS__PREFERENCES = eINSTANCE.getPogoDeviceClass_Preferences();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl <em>Class Description</em>}' class.
@@ -3894,6 +3934,40 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute COMMENTS__COMMANDS_TABLE = eINSTANCE.getComments_CommandsTable();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl <em>Preferences</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPreferences()
+     * @generated
+     */
+    EClass PREFERENCES = eINSTANCE.getPreferences();
+
+    /**
+     * The meta object literal for the '<em><b>Doc Home</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PREFERENCES__DOC_HOME = eINSTANCE.getPreferences_DocHome();
+
+    /**
+     * The meta object literal for the '<em><b>Makefile Home</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PREFERENCES__MAKEFILE_HOME = eINSTANCE.getPreferences_MakefileHome();
+
+    /**
+     * The meta object literal for the '<em><b>Install Home</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PREFERENCES__INSTALL_HOME = eINSTANCE.getPreferences_InstallHome();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.StateImpl <em>State</em>}' class.
@@ -4290,12 +4364,20 @@ public interface PogoDslPackage extends EPackage
     EReference ATTRIBUTE__PROPERTIES = eINSTANCE.getAttribute_Properties();
 
     /**
-     * The meta object literal for the '<em><b>Excluded States</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Read Excluded States</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTRIBUTE__EXCLUDED_STATES = eINSTANCE.getAttribute_ExcludedStates();
+    EAttribute ATTRIBUTE__READ_EXCLUDED_STATES = eINSTANCE.getAttribute_ReadExcludedStates();
+
+    /**
+     * The meta object literal for the '<em><b>Write Excluded States</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__WRITE_EXCLUDED_STATES = eINSTANCE.getAttribute_WriteExcludedStates();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FireEventsImpl <em>Fire Events</em>}' class.
@@ -4794,32 +4876,6 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EClass STRING_VECTOR_TYPE = eINSTANCE.getStringVectorType();
-
-    /**
-     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl <em>Miscellaneous</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl
-     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getMiscellaneous()
-     * @generated
-     */
-    EClass MISCELLANEOUS = eINSTANCE.getMiscellaneous();
-
-    /**
-     * The meta object literal for the '<em><b>Makefile Home</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MISCELLANEOUS__MAKEFILE_HOME = eINSTANCE.getMiscellaneous_MakefileHome();
-
-    /**
-     * The meta object literal for the '<em><b>Install Home</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MISCELLANEOUS__INSTALL_HOME = eINSTANCE.getMiscellaneous_InstallHome();
 
   }
 

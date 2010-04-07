@@ -48,7 +48,8 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getArchiveEvent <em>Archive Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getExcludedStates <em>Excluded States</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getReadExcludedStates <em>Read Excluded States</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
  * </p>
  *
@@ -287,14 +288,24 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
   protected AttrProperties properties;
 
   /**
-   * The cached value of the '{@link #getExcludedStates() <em>Excluded States</em>}' attribute list.
+   * The cached value of the '{@link #getReadExcludedStates() <em>Read Excluded States</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExcludedStates()
+   * @see #getReadExcludedStates()
    * @generated
    * @ordered
    */
-  protected EList<String> excludedStates;
+  protected EList<String> readExcludedStates;
+
+  /**
+   * The cached value of the '{@link #getWriteExcludedStates() <em>Write Excluded States</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWriteExcludedStates()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> writeExcludedStates;
 
   /**
    * <!-- begin-user-doc -->
@@ -769,13 +780,27 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getExcludedStates()
+  public EList<String> getReadExcludedStates()
   {
-    if (excludedStates == null)
+    if (readExcludedStates == null)
     {
-      excludedStates = new EDataTypeEList<String>(String.class, this, PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES);
+      readExcludedStates = new EDataTypeEList<String>(String.class, this, PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES);
     }
-    return excludedStates;
+    return readExcludedStates;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<String> getWriteExcludedStates()
+  {
+    if (writeExcludedStates == null)
+    {
+      writeExcludedStates = new EDataTypeEList<String>(String.class, this, PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES);
+    }
+    return writeExcludedStates;
   }
 
   /**
@@ -840,8 +865,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getStatus();
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return getProperties();
-      case PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES:
-        return getExcludedStates();
+      case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
+        return getReadExcludedStates();
+      case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
+        return getWriteExcludedStates();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -899,9 +926,13 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         setProperties((AttrProperties)newValue);
         return;
-      case PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES:
-        getExcludedStates().clear();
-        getExcludedStates().addAll((Collection<? extends String>)newValue);
+      case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
+        getReadExcludedStates().clear();
+        getReadExcludedStates().addAll((Collection<? extends String>)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
+        getWriteExcludedStates().clear();
+        getWriteExcludedStates().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -959,8 +990,11 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         setProperties((AttrProperties)null);
         return;
-      case PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES:
-        getExcludedStates().clear();
+      case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
+        getReadExcludedStates().clear();
+        return;
+      case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
+        getWriteExcludedStates().clear();
         return;
     }
     super.eUnset(featureID);
@@ -1004,8 +1038,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return status != null;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return properties != null;
-      case PogoDslPackage.ATTRIBUTE__EXCLUDED_STATES:
-        return excludedStates != null && !excludedStates.isEmpty();
+      case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
+        return readExcludedStates != null && !readExcludedStates.isEmpty();
+      case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
+        return writeExcludedStates != null && !writeExcludedStates.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -1039,8 +1075,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     result.append(memorized);
     result.append(", memorizedAtInit: ");
     result.append(memorizedAtInit);
-    result.append(", excludedStates: ");
-    result.append(excludedStates);
+    result.append(", readExcludedStates: ");
+    result.append(readExcludedStates);
+    result.append(", writeExcludedStates: ");
+    result.append(writeExcludedStates);
     result.append(')');
     return result.toString();
   }

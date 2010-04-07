@@ -8,9 +8,9 @@ package fr.esrf.tango.pogo.pogoDsl.impl;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.Command;
-import fr.esrf.tango.pogo.pogoDsl.Miscellaneous;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
+import fr.esrf.tango.pogo.pogoDsl.Preferences;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.State;
 
@@ -47,7 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getStates <em>States</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getMiscellaneous <em>Miscellaneous</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getPreferences <em>Preferences</em>}</li>
  * </ul>
  * </p>
  *
@@ -186,14 +186,14 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
   protected EList<State> states;
 
   /**
-   * The cached value of the '{@link #getMiscellaneous() <em>Miscellaneous</em>}' containment reference.
+   * The cached value of the '{@link #getPreferences() <em>Preferences</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMiscellaneous()
+   * @see #getPreferences()
    * @generated
    * @ordered
    */
-  protected Miscellaneous miscellaneous;
+  protected Preferences preferences;
 
   /**
    * <!-- begin-user-doc -->
@@ -451,9 +451,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public Miscellaneous getMiscellaneous()
+  public Preferences getPreferences()
   {
-    return miscellaneous;
+    return preferences;
   }
 
   /**
@@ -461,13 +461,13 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMiscellaneous(Miscellaneous newMiscellaneous, NotificationChain msgs)
+  public NotificationChain basicSetPreferences(Preferences newPreferences, NotificationChain msgs)
   {
-    Miscellaneous oldMiscellaneous = miscellaneous;
-    miscellaneous = newMiscellaneous;
+    Preferences oldPreferences = preferences;
+    preferences = newPreferences;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS, oldMiscellaneous, newMiscellaneous);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES, oldPreferences, newPreferences);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -478,20 +478,20 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMiscellaneous(Miscellaneous newMiscellaneous)
+  public void setPreferences(Preferences newPreferences)
   {
-    if (newMiscellaneous != miscellaneous)
+    if (newPreferences != preferences)
     {
       NotificationChain msgs = null;
-      if (miscellaneous != null)
-        msgs = ((InternalEObject)miscellaneous).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS, null, msgs);
-      if (newMiscellaneous != null)
-        msgs = ((InternalEObject)newMiscellaneous).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS, null, msgs);
-      msgs = basicSetMiscellaneous(newMiscellaneous, msgs);
+      if (preferences != null)
+        msgs = ((InternalEObject)preferences).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES, null, msgs);
+      if (newPreferences != null)
+        msgs = ((InternalEObject)newPreferences).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES, null, msgs);
+      msgs = basicSetPreferences(newPreferences, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS, newMiscellaneous, newMiscellaneous));
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES, newPreferences, newPreferences));
   }
 
   /**
@@ -516,8 +516,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
-      case PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS:
-        return basicSetMiscellaneous(null, msgs);
+      case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
+        return basicSetPreferences(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -553,8 +553,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return getAttributes();
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return getStates();
-      case PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS:
-        return getMiscellaneous();
+      case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
+        return getPreferences();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -605,8 +605,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         getStates().clear();
         getStates().addAll((Collection<? extends State>)newValue);
         return;
-      case PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS:
-        setMiscellaneous((Miscellaneous)newValue);
+      case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
+        setPreferences((Preferences)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -652,8 +652,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         getStates().clear();
         return;
-      case PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS:
-        setMiscellaneous((Miscellaneous)null);
+      case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
+        setPreferences((Preferences)null);
         return;
     }
     super.eUnset(featureID);
@@ -689,8 +689,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return attributes != null && !attributes.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return states != null && !states.isEmpty();
-      case PogoDslPackage.POGO_DEVICE_CLASS__MISCELLANEOUS:
-        return miscellaneous != null;
+      case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
+        return preferences != null;
     }
     return super.eIsSet(featureID);
   }

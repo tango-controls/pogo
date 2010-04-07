@@ -31,7 +31,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getArchiveEvent <em>Archive Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getProperties <em>Properties</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getExcludedStates <em>Excluded States</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates <em>Read Excluded States</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
  * </p>
  *
@@ -406,19 +407,35 @@ public interface Attribute extends EObject
   void setProperties(AttrProperties value);
 
   /**
-   * Returns the value of the '<em><b>Excluded States</b></em>' attribute list.
+   * Returns the value of the '<em><b>Read Excluded States</b></em>' attribute list.
    * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Excluded States</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Read Excluded States</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Excluded States</em>' attribute list.
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_ExcludedStates()
+   * @return the value of the '<em>Read Excluded States</em>' attribute list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_ReadExcludedStates()
    * @model unique="false"
    * @generated
    */
-  EList<String> getExcludedStates();
+  EList<String> getReadExcludedStates();
+
+  /**
+   * Returns the value of the '<em><b>Write Excluded States</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Write Excluded States</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Write Excluded States</em>' attribute list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_WriteExcludedStates()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getWriteExcludedStates();
 
 } // Attribute

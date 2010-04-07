@@ -74,6 +74,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.INHERITANCE: return createInheritance();
       case PogoDslPackage.CLASS_IDENTIFICATION: return createClassIdentification();
       case PogoDslPackage.COMMENTS: return createComments();
+      case PogoDslPackage.PREFERENCES: return createPreferences();
       case PogoDslPackage.STATE: return createState();
       case PogoDslPackage.PROPERTY: return createProperty();
       case PogoDslPackage.PROP_TYPE: return createPropType();
@@ -120,7 +121,6 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.FLOAT_VECTOR_TYPE: return createFloatVectorType();
       case PogoDslPackage.DOUBLE_VECTOR_TYPE: return createDoubleVectorType();
       case PogoDslPackage.STRING_VECTOR_TYPE: return createStringVectorType();
-      case PogoDslPackage.MISCELLANEOUS: return createMiscellaneous();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -201,6 +201,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     CommentsImpl comments = new CommentsImpl();
     return comments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Preferences createPreferences()
+  {
+    PreferencesImpl preferences = new PreferencesImpl();
+    return preferences;
   }
 
   /**
@@ -707,17 +718,6 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     StringVectorTypeImpl stringVectorType = new StringVectorTypeImpl();
     return stringVectorType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Miscellaneous createMiscellaneous()
-  {
-    MiscellaneousImpl miscellaneous = new MiscellaneousImpl();
-    return miscellaneous;
   }
 
   /**

@@ -26,7 +26,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/commands"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/states"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/miscellaneous"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/preferences"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//ClassDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/description"/>
@@ -58,6 +58,11 @@
     <genClasses ecoreClass="PogoDsl.ecore#//Comments">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Comments/htmlInheritance"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Comments/commandsTable"/>
+    </genClasses>
+    <genClasses ecoreClass="PogoDsl.ecore#//Preferences">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Preferences/docHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Preferences/makefileHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Preferences/installHome"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//State">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//State/name"/>
@@ -111,7 +116,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/archiveEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/properties"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/excludedStates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/readExcludedStates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/writeExcludedStates"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//FireEvents">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//FireEvents/fire"/>
@@ -168,9 +174,5 @@
     <genClasses ecoreClass="PogoDsl.ecore#//FloatVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//DoubleVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//StringVectorType"/>
-    <genClasses ecoreClass="PogoDsl.ecore#//Miscellaneous">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Miscellaneous/makefileHome"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Miscellaneous/installHome"/>
-    </genClasses>
   </genPackages>
 </genmodel:GenModel>

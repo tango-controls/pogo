@@ -5,8 +5,8 @@
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 
-import fr.esrf.tango.pogo.pogoDsl.Miscellaneous;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
+import fr.esrf.tango.pogo.pogoDsl.Preferences;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -17,20 +17,41 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Miscellaneous</b></em>'.
+ * An implementation of the model object '<em><b>Preferences</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl#getMakefileHome <em>Makefile Home</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.MiscellaneousImpl#getInstallHome <em>Install Home</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl#getDocHome <em>Doc Home</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl#getMakefileHome <em>Makefile Home</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PreferencesImpl#getInstallHome <em>Install Home</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements Miscellaneous
+public class PreferencesImpl extends MinimalEObjectImpl.Container implements Preferences
 {
+  /**
+   * The default value of the '{@link #getDocHome() <em>Doc Home</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDocHome()
+   * @generated
+   * @ordered
+   */
+  protected static final String DOC_HOME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDocHome() <em>Doc Home</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDocHome()
+   * @generated
+   * @ordered
+   */
+  protected String docHome = DOC_HOME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getMakefileHome() <em>Makefile Home</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -76,7 +97,7 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MiscellaneousImpl()
+  protected PreferencesImpl()
   {
     super();
   }
@@ -89,7 +110,30 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
   @Override
   protected EClass eStaticClass()
   {
-    return PogoDslPackage.Literals.MISCELLANEOUS;
+    return PogoDslPackage.Literals.PREFERENCES;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getDocHome()
+  {
+    return docHome;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDocHome(String newDocHome)
+  {
+    String oldDocHome = docHome;
+    docHome = newDocHome;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.PREFERENCES__DOC_HOME, oldDocHome, docHome));
   }
 
   /**
@@ -112,7 +156,7 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
     String oldMakefileHome = makefileHome;
     makefileHome = newMakefileHome;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.MISCELLANEOUS__MAKEFILE_HOME, oldMakefileHome, makefileHome));
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.PREFERENCES__MAKEFILE_HOME, oldMakefileHome, makefileHome));
   }
 
   /**
@@ -135,7 +179,7 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
     String oldInstallHome = installHome;
     installHome = newInstallHome;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.MISCELLANEOUS__INSTALL_HOME, oldInstallHome, installHome));
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.PREFERENCES__INSTALL_HOME, oldInstallHome, installHome));
   }
 
   /**
@@ -148,9 +192,11 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case PogoDslPackage.MISCELLANEOUS__MAKEFILE_HOME:
+      case PogoDslPackage.PREFERENCES__DOC_HOME:
+        return getDocHome();
+      case PogoDslPackage.PREFERENCES__MAKEFILE_HOME:
         return getMakefileHome();
-      case PogoDslPackage.MISCELLANEOUS__INSTALL_HOME:
+      case PogoDslPackage.PREFERENCES__INSTALL_HOME:
         return getInstallHome();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -166,10 +212,13 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case PogoDslPackage.MISCELLANEOUS__MAKEFILE_HOME:
+      case PogoDslPackage.PREFERENCES__DOC_HOME:
+        setDocHome((String)newValue);
+        return;
+      case PogoDslPackage.PREFERENCES__MAKEFILE_HOME:
         setMakefileHome((String)newValue);
         return;
-      case PogoDslPackage.MISCELLANEOUS__INSTALL_HOME:
+      case PogoDslPackage.PREFERENCES__INSTALL_HOME:
         setInstallHome((String)newValue);
         return;
     }
@@ -186,10 +235,13 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case PogoDslPackage.MISCELLANEOUS__MAKEFILE_HOME:
+      case PogoDslPackage.PREFERENCES__DOC_HOME:
+        setDocHome(DOC_HOME_EDEFAULT);
+        return;
+      case PogoDslPackage.PREFERENCES__MAKEFILE_HOME:
         setMakefileHome(MAKEFILE_HOME_EDEFAULT);
         return;
-      case PogoDslPackage.MISCELLANEOUS__INSTALL_HOME:
+      case PogoDslPackage.PREFERENCES__INSTALL_HOME:
         setInstallHome(INSTALL_HOME_EDEFAULT);
         return;
     }
@@ -206,9 +258,11 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case PogoDslPackage.MISCELLANEOUS__MAKEFILE_HOME:
+      case PogoDslPackage.PREFERENCES__DOC_HOME:
+        return DOC_HOME_EDEFAULT == null ? docHome != null : !DOC_HOME_EDEFAULT.equals(docHome);
+      case PogoDslPackage.PREFERENCES__MAKEFILE_HOME:
         return MAKEFILE_HOME_EDEFAULT == null ? makefileHome != null : !MAKEFILE_HOME_EDEFAULT.equals(makefileHome);
-      case PogoDslPackage.MISCELLANEOUS__INSTALL_HOME:
+      case PogoDslPackage.PREFERENCES__INSTALL_HOME:
         return INSTALL_HOME_EDEFAULT == null ? installHome != null : !INSTALL_HOME_EDEFAULT.equals(installHome);
     }
     return super.eIsSet(featureID);
@@ -225,7 +279,9 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (makefileHome: ");
+    result.append(" (docHome: ");
+    result.append(docHome);
+    result.append(", makefileHome: ");
     result.append(makefileHome);
     result.append(", installHome: ");
     result.append(installHome);
@@ -233,4 +289,4 @@ public class MiscellaneousImpl extends MinimalEObjectImpl.Container implements M
     return result.toString();
   }
 
-} //MiscellaneousImpl
+} //PreferencesImpl
