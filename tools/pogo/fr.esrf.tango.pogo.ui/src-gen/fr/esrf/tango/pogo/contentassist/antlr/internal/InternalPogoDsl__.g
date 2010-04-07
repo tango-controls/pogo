@@ -35,61 +35,63 @@ T35 : 'extends' ;
 T36 : 'inheritances:' ;
 T37 : 'defaultPropValue:' ;
 T38 : 'excludedStates:' ;
-T39 : 'void' ;
-T40 : 'boolean' ;
-T41 : 'short' ;
-T42 : 'ushort' ;
-T43 : 'int' ;
-T44 : 'uint' ;
-T45 : 'float' ;
-T46 : 'double' ;
-T47 : 'string' ;
-T48 : 'DevVarCharArray' ;
-T49 : 'DevVarShortArray' ;
-T50 : 'DevVarUShortArray' ;
-T51 : 'DevVarLongArray' ;
-T52 : 'DevVarULongArray' ;
-T53 : 'DevVarFloatArray' ;
-T54 : 'DevVarDoubleArray' ;
-T55 : 'DevVarStringArray' ;
-T56 : 'DevVarLongStringArray' ;
-T57 : 'DevVarDoubleStringArray' ;
-T58 : 'DevState' ;
-T59 : 'ConstDevString' ;
-T60 : 'DevVarBooleanArray' ;
-T61 : 'DevUChar' ;
-T62 : 'DevLong64' ;
-T63 : 'DevULong64' ;
-T64 : 'DevVarLong64Array' ;
-T65 : 'DevVarULong64Array' ;
-T66 : 'DevInt' ;
-T67 : 'DevEncoded' ;
-T68 : 'vector<short>' ;
-T69 : 'vector<int>' ;
-T70 : 'vector<float>' ;
-T71 : 'vector<double>' ;
-T72 : 'vector<string>' ;
-T73 : 'abstract' ;
+T39 : 'readExcludedStates:' ;
+T40 : 'writeExcludedStates:' ;
+T41 : 'void' ;
+T42 : 'boolean' ;
+T43 : 'short' ;
+T44 : 'ushort' ;
+T45 : 'int' ;
+T46 : 'uint' ;
+T47 : 'float' ;
+T48 : 'double' ;
+T49 : 'string' ;
+T50 : 'DevVarCharArray' ;
+T51 : 'DevVarShortArray' ;
+T52 : 'DevVarUShortArray' ;
+T53 : 'DevVarLongArray' ;
+T54 : 'DevVarULongArray' ;
+T55 : 'DevVarFloatArray' ;
+T56 : 'DevVarDoubleArray' ;
+T57 : 'DevVarStringArray' ;
+T58 : 'DevVarLongStringArray' ;
+T59 : 'DevVarDoubleStringArray' ;
+T60 : 'DevState' ;
+T61 : 'ConstDevString' ;
+T62 : 'DevVarBooleanArray' ;
+T63 : 'DevUChar' ;
+T64 : 'DevLong64' ;
+T65 : 'DevULong64' ;
+T66 : 'DevVarLong64Array' ;
+T67 : 'DevVarULong64Array' ;
+T68 : 'DevInt' ;
+T69 : 'DevEncoded' ;
+T70 : 'vector<short>' ;
+T71 : 'vector<int>' ;
+T72 : 'vector<float>' ;
+T73 : 'vector<double>' ;
+T74 : 'vector<string>' ;
+T75 : 'abstract' ;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7219
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7311
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7221
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7313
 RULE_INT : ('0'..'9')+;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7223
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7315
 RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7225
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7317
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7227
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7319
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7229
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7321
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7231
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 7323
 RULE_ANY_OTHER : .;
 
 
