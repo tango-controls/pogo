@@ -14,7 +14,7 @@
 <Br>
 <Br>
 <ul>
-	«EXPAND _htmlUtil::htmlTableHeader("Device Attributes",
+	«EXPAND _htmlUtil::htmlTableHeader(""+attributes.size+" Device Attributes",
 			 {"Name", "Inherited", "Concrete", "Attr. type", "Data type", "Size", "Level", "Description"})-»
 	«FOREACH attributes AS attr-»
 	<Tr>
@@ -29,15 +29,9 @@
 	</Tr>
 	«ENDFOREACH-»
 	</table>
-<Br>
-<Br>
-
-
-	<ul>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID attributePageFileName() » «endComment()»
-
-«startComment()» «ENDPROTECT» «endComment()»
-	</ul>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(attributePageFileName())»
 	<Br>
 	<Br>
 </ul>
@@ -86,11 +80,11 @@
 		</Tr>
 		
 		<!---------- Allowed State ----------->
-		«IF attr.excludedStates.size>0»
+		«IF attr.readExcludedStates.size>0»
 		<Tr>
 			<Td> <Font=+1><b> Command NOT allowed for   </Font></Td>
 			<Td> 
-				«FOREACH attr.excludedStates AS state»
+				«FOREACH attr.readExcludedStates AS state»
 					- «state» <Br>
 				«ENDFOREACH»
 			</Td>
@@ -133,15 +127,11 @@
 		<Tr><Td> <Font=+1><b>  delta_val     </Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
 		<Tr><Td> <Font=+1><b>  description   </Font></Td>    <Td> «attr.properties.description»</Td></Tr>
 	</Table>
-<Br>
-<Br>
-<Br>
-<Br>
-	<ul>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID attributePageFileName(attr) » «endComment()»
-
-«startComment()» «ENDPROTECT» «endComment()»
-	</ul>
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(attributePageFileName(attr))»
 	<Br>
 	<Br>
 </ul>

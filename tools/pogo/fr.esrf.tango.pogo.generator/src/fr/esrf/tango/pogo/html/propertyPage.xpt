@@ -12,7 +12,7 @@
 <Br>
 <ul>
 «IF classProperties.size>0-»
-	«EXPAND _htmlUtil::htmlTableHeader("Class Properties",
+	«EXPAND _htmlUtil::htmlTableHeader(""+classProperties.size+" Class Properties",
 			{"Property Name", "Description", "Property type", "Default Value"})-»
 	«FOREACH classProperties AS property-»
 	<Tr>
@@ -30,7 +30,7 @@
 <Br>
 
 «IF deviceProperties.size>0-»
-	«EXPAND _htmlUtil::htmlTableHeader("Device Properties",
+	«EXPAND _htmlUtil::htmlTableHeader(""+deviceProperties.size+" Device Properties",
 			{"Property Name", "Description", "Property type", "Default Value"})-»
 	«FOREACH deviceProperties AS property-»
 	<Tr>
@@ -44,14 +44,10 @@
 «ELSE»
 	<b> There is no device property defined.</b>
 «ENDIF»
-<Br>
-<Br>
+	<Br>
+	<Br>
 
-	<ul>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID propertyPageFileName() » «endComment()»
-
-«startComment()» «ENDPROTECT» «endComment()»
-	</ul>
+	«EXPAND _htmlUtil::htmlProtectedArea(propertyPageFileName())»
 	<Br>
 	<Br>
 </ul>

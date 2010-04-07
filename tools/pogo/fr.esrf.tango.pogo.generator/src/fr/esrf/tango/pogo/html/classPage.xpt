@@ -49,17 +49,14 @@
 			«description.comments.htmlInheritance»
 		«ENDIF»
 	</ul>
-<Br>
-<Br>
+	<Br>
+	<Br>
 	«htmlSectionTitle("Class Description")»
 	<ul>
 	«description.description»
 	<Br>
 	<Br>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID classPageFileName() » «endComment()»
-
-
-«startComment()» «ENDPROTECT» «endComment()»
+	«EXPAND _htmlUtil::htmlProtectedArea(classPageFileName())»
 	</ul>
 	<Br>
 	<Br>

@@ -1,4 +1,5 @@
 «IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
 
 
 «DEFINE htmlTableHeader(String title, List list) FOR PogoDeviceClass»
@@ -16,3 +17,10 @@
 	</Tr>
 «ENDDEFINE»
 
+«DEFINE htmlProtectedArea(String name) FOR PogoDeviceClass»
+	<ul>
+«startComment()» «PROTECT CSTART '/*' CEND '*/' ID name » «endComment()»
+
+«startComment()» «ENDPROTECT» «endComment()»
+	</ul>
+«ENDDEFINE»

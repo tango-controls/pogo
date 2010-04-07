@@ -14,7 +14,7 @@
 <Br>
 <Br>
 <ul>
-	«EXPAND _htmlUtil::htmlTableHeader("Device Commands",
+	«EXPAND _htmlUtil::htmlTableHeader(""+commands.size+" Device Commands",
 			 {"Name", "Inherited", "Concrete", "Input type", "Output type", "Level", "Description"})-»
 	«FOREACH commands AS cmd-»
 	<Tr>
@@ -30,13 +30,7 @@
 	</table>
 <Br>
 <Br>
-
-
-	<ul>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID commandPageFileName() » «endComment()»
-
-«startComment()» «ENDPROTECT» «endComment()»
-	</ul>
+«EXPAND _htmlUtil::htmlProtectedArea(commandPageFileName())»
 	<Br>
 	<Br>
 </ul>
@@ -126,16 +120,11 @@
 
 
 	</Table>
-<Br>
-<Br>
-<Br>
-<Br>
-	
-	<ul>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID commandPageFileName(cmd) » «endComment()»
-
-«startComment()» «ENDPROTECT» «endComment()»
-	</ul>
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(commandPageFileName(cmd))»
 	<Br>
 	<Br>
 </ul>

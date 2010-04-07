@@ -12,7 +12,7 @@
 <Br>
 <ul>
 «IF states.size>0-»
-	«EXPAND _htmlUtil::htmlTableHeader("Device States", {"State Name", "Description"})»
+	«EXPAND _htmlUtil::htmlTableHeader(""+states.size+" Device States", {"State Name", "Description"})»
 	«FOREACH states AS state-»
 	<Tr>
 		<Td> «state.name»         </Td>
@@ -23,15 +23,9 @@
 «ELSE»
 	<b> There is no state defined.</b>
 «ENDIF»
-<Br>
-<Br>
-
-
-	<ul>
-«startComment()» «PROTECT CSTART '/*' CEND '*/' ID statePageFileName() » «endComment()»
-
-«startComment()» «ENDPROTECT» «endComment()»
-	</ul>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(statePageFileName())»
 	<Br>
 	<Br>
 </ul>
