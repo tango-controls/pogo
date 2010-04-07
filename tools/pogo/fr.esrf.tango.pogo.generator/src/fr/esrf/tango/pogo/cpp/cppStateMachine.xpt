@@ -3,6 +3,9 @@
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
 
 
+//
+//	Template for State Machine cpp file 
+//
 «DEFINE cppFile FOR PogoDeviceClass»
 «IF description.filestogenerate.contains(tagForSourceCode())»
 
@@ -38,15 +41,31 @@ namespace «name»_ns
 		"Execution allowed for " + att.name + " attribute.")»
 bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 {
-«IF att.excludedStates.size>0-»
-«EXPAND checkExcludedStates(att.excludedStates)-»
-«ELSE-»
-	//	Not any excluded states for «att.name» attribute.
-«ENDIF»
-«EXPAND Common::ProtectedArea(att.stateAllowedMethod())»
-«IF att.excludedStates.size>0-»
-«EXPAND closeCheckExcludedStates(att.excludedStates)-»
-«ENDIF-»
+«IF att.rwType.contains("WRITE")-»
+	//	Check if access type.
+	if ( type!=Tango::READ_REQ )
+	{
+		«IF att.writeExcludedStates.size>0-»
+			«EXPAND checkExcludedStates(att.writeExcludedStates, "WRITE", "\t\t")-»
+		«ELSE-»
+			//	Not any excluded states for «att.name» attribute in WRITE access.
+		«ENDIF»
+		«EXPAND Common::ProtectedArea(att.stateAllowedMethod()+"_WRITE")»
+		«IF att.writeExcludedStates.size>0-»
+			«EXPAND closeCheckExcludedStates(att.writeExcludedStates, "\t\t")-»
+		«ENDIF-»
+		return true;
+	}
+	else
+«ENDIF»«IF att.readExcludedStates.size>0-»
+		«EXPAND checkExcludedStates(att.readExcludedStates, "READ", "\t")-»
+	«ELSE-»
+		//	Not any excluded states for «att.name» attribute in READ access.
+	«ENDIF»
+	«EXPAND Common::ProtectedArea("read_"+att.stateAllowedMethod()+"_READ")»
+	«IF att.readExcludedStates.size>0-»
+		«EXPAND closeCheckExcludedStates(att.readExcludedStates, "\t")-»
+	«ENDIF-»
 	return true;
 }
 «ENDFOREACH»
@@ -62,13 +81,13 @@ bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
 {
 «IF cmd.excludedStates.size>0-»
-«EXPAND checkExcludedStates(cmd.excludedStates)-»
+«EXPAND checkExcludedStates(cmd.excludedStates, "command", "\t")-»
 «ELSE-»
 	//	Not any excluded states for «cmd.name» command.
 «ENDIF»
 «EXPAND Common::ProtectedArea(cmd.stateAllowedMethod())»
 «IF cmd.excludedStates.size>0-»
-«EXPAND closeCheckExcludedStates(cmd.excludedStates)-»
+«EXPAND closeCheckExcludedStates(cmd.excludedStates, "\t")-»
 «ENDIF-»
 	return true;
 }
@@ -83,13 +102,13 @@ bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
 //=================================================
 //	Define the code for the state machnine
 //=================================================
-«DEFINE checkExcludedStates(List[String] states) FOR PogoDeviceClass-»
-	if (	//	Compare device state with not allowed states. «FOREACH states AS state SEPARATOR '	|| '»
-		get_state() == Tango::«state»«ENDFOREACH»)
-	{
+«DEFINE checkExcludedStates(List[String] states, String access, String tabs) FOR PogoDeviceClass-»
+«tabs»if (	//	Compare device state with not allowed states for «access» «FOREACH states AS state SEPARATOR '	|| '»
+«tabs»	get_state() == Tango::«state»«ENDFOREACH»)
+«tabs»{
 «ENDDEFINE»
 
-«DEFINE closeCheckExcludedStates(List[String] states) FOR PogoDeviceClass-» 
-		return false;
-	}
+«DEFINE closeCheckExcludedStates(List[String] states, String tabs) FOR PogoDeviceClass-» 
+«tabs»	return false;
+«tabs»}
 «ENDDEFINE»

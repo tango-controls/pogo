@@ -57,7 +57,7 @@ stateAllowedMethod( Attribute this ):
 	name+"StateAllowed";
 
 cppExcludeStatesClose(Attribute this):
-	excludedStates.size == 0
+	readExcludedStates.size == 0
 	?	null
 	: "return false;\n\t}"; 
 
@@ -133,12 +133,18 @@ cppExculudeStatesClose(Command this):
 	: "return false;\n\t}"; 
 
 //
-//	Inheritance util
+//	Inheritance util (return true if not the TangoDeviceImpl)
+//
 isInheritanceClass(Inheritance inher):
-	inher.classname.startsWith("Device_")==true && inher.classname.endsWith("Impl")==true
+	(inher.classname==null || inher.classname.length==0)
 	? false
-	: true;
+	: ((inher.classname.startsWith("Device_")==true && inher.classname.endsWith("Impl")==true)
+		? false
+		: true);
 
+//
+//	Inheritance util (return true at least the first one is not the TangoDeviceImpl)
+//
 hasInheritanceClass(ClassDescription desc):
 	desc.inheritances.size>0 && isInheritanceClass(desc.inheritances.get(0))
 	? true
