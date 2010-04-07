@@ -27,7 +27,7 @@
 #=============================================================================
 # MAKE_ENV is the path to find common environment to buil project
 #
-MAKE_ENV = «IF miscellaneous.makefileHome=="" || miscellaneous.makefileHome==null»$(TANGO_HOME)«ELSE»«miscellaneous.makefileHome»«ENDIF»
+MAKE_ENV = «IF preferences.makefileHome=="" || preferences.makefileHome==null»$(TANGO_HOME)«ELSE»«preferences.makefileHome»«ENDIF»
 
 #=============================================================================
 # PACKAGE_NAME is the name of the library/device/exe you want to build
@@ -212,6 +212,7 @@ SVC_«inheritance.classname.toUpperCase()»_OBJ = \
 #=============================================================================
 «DEFINE inheritanceDependancies FOR PogoDeviceClass-»
 	«IF description.hasInheritanceClass()»
+
 #=============================================================================
 # Following are dependancies of the abstract classes used by project
 #
