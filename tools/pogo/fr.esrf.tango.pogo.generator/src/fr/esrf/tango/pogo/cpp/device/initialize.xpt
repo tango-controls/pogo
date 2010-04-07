@@ -77,7 +77,7 @@ void «name»::init_device()
 //
 «DEFINE inheritanceManagement(String params) FOR PogoDeviceClass»
 «IF description.inheritances.size==0»	: «tangoDeviceImpl()»(«params»)
-«ELSEIF description.inheritances.get(0).classname.startsWith("Device")» 	: «tangoDeviceImpl()»(«params»)
+«ELSEIF description.hasInheritanceClass()==false» 	: «tangoDeviceImpl()»(«params»)
 «ELSE» : «superClassNameConstr(description.inheritances.get(0))»(«params»)
 «ENDIF-»
 «ENDDEFINE»
