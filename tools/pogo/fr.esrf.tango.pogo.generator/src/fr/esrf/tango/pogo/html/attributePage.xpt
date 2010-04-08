@@ -68,99 +68,108 @@
 	</ul>
 	<Br>
 	<Br>
-	«EXPAND _htmlUtil::htmlTableHeader(attr.name+" Attrribute ",{})-»	
-		<!---------- Attribute type ----------->
-		<Tr>
-			<Td> <Font=+1><b> Attribute Type  </Font></Td>
-			<Td> «attr.attType» «IF attr.attType.toLowerCase()!="scalar"-»
-				(«attr.attTypeDimentions()»)«ENDIF» </Td>
-		</Tr>
 	
-		<!---------- R/W type ----------->
-		<Tr>
-			<Td> <Font=+1><b> R/W Type  </Font></Td>
-			<Td> «attr.rwType» </Td>
-		</Tr>
+	
+	
+	<Table Border=0 Cellpadding=0 CELLSPACING=10>
+	<TR>
+	<TD ALIGN="left" VALIGN=top>
+	
+		«EXPAND _htmlUtil::htmlTableHeader("Attribute Definition ",{})-»	
+			<!---------- Attribute type ----------->
+			<Tr>
+				<Td> <Font=+1><b> Attribute Type  </Font></Td>
+				<Td> «attr.attType» «IF attr.attType.toLowerCase()!="scalar"-»
+					(«attr.attTypeDimentions()»)«ENDIF» </Td>
+			</Tr>
 		
-		<!---------- Data type ----------->
-		<Tr>
-			<Td> <Font=+1><b>   Data Type  </Font></Td>
-			<Td> «attr.dataType.stringTypeEnum()» </Td>
-		</Tr>
+			<!---------- R/W type ----------->
+			<Tr>
+				<Td> <Font=+1><b> R/W Type  </Font></Td>
+				<Td> «attr.rwType» </Td>
+			</Tr>
+			
+			<!---------- Data type ----------->
+			<Tr>
+				<Td> <Font=+1><b>   Data Type  </Font></Td>
+				<Td> «attr.dataType.stringTypeEnum()» </Td>
+			</Tr>
+			
+			<!---------- Allowed State ----------->
+			«EXPAND attrAllowedStates(attr)»
 		
-		<!---------- Allowed State ----------->
-		«EXPAND attrAllowedStates(attr)»
+			<!---------- Display Level ----------->
+			<Tr>
+				<Td> <Font=+1><b> Display Level  </Font></Td>
+				<Td> «attr.displayLevel»	</Td>
+			</Tr>
+		
+			<!---------- Inheritance ----------->
+			<Tr>
+				<Td> <Font=+1><b>  Inherited </Font></Td>
+				<Td> «attr.status.inherited»	</Td>
+			</Tr>
+			<Tr>
+				<Td> <Font=+1><b>  Abstract </Font></Td>
+				<Td> «IF attr.status.concrete==true ||
+					 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+					</Td>
+			</Tr>
 	
-		<!---------- Display Level ----------->
-		<Tr>
-			<Td> <Font=+1><b> Display Level  </Font></Td>
-			<Td> «attr.displayLevel»	</Td>
-		</Tr>
+			<!---------- Polling ----------->
+			«IF attr.polledPeriod.length>0-»
+			<Tr>
+				<Td> <Font=+1><b> Polling Period  </Font></Td>
+				<Td> «attr.polledPeriod» ms </Td>
+			</Tr>
+			«ENDIF-»
+		
+			<!---------- Memorized ----------->
+			«IF attr.memorized=="true"-»
+			<Tr>
+				<Td> <Font=+1><b> Memorized  </Font></Td>
+				<Td> Hardware «IF attr.memorizedAtInit!="true"» NOT «ENDIF» written at init</Td>
+			</Tr>
+			«ENDIF-»
+		
+			<!---------- Change Event ----------->
+			«IF attr.changeEvent.fire=="true"-»
+			<Tr>
+				<Td> <Font=+1><b> Fire Change Event  </Font></Td>
+				<Td> On «IF attr.changeEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
+			</Tr>
+			«ENDIF-»
 	
-		<!---------- Inheritance ----------->
-		<Tr>
-			<Td> <Font=+1><b>  Inherited </Font></Td>
-			<Td> «attr.status.inherited»	</Td>
-		</Tr>
-		<Tr>
-			<Td> <Font=+1><b>  Abstract </Font></Td>
-			<Td> «IF attr.status.concrete==true ||
-				 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
-				</Td>
-		</Tr>
-
-		<!---------- Polling ----------->
-		«IF attr.polledPeriod.length>0-»
-		<Tr>
-			<Td> <Font=+1><b> Polling Period  </Font></Td>
-			<Td> «attr.polledPeriod» ms </Td>
-		</Tr>
-		«ENDIF-»
+			<!---------- Archive Event ----------->
+			«IF attr.archiveEvent.fire=="true"-»
+			<Tr>
+				<Td> <Font=+1><b> Fire Change Event  </Font></Td>
+				<Td> On «IF attr.archiveEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
+			</Tr>
+			«ENDIF-»
+		
+		</Table>
 	
-		<!---------- Memorized ----------->
-		«IF attr.memorized=="true"-»
-		<Tr>
-			<Td> <Font=+1><b> Memorized  </Font></Td>
-			<Td> Hardware «IF attr.memorizedAtInit!="true"» NOT «ENDIF» written at init</Td>
-		</Tr>
-		«ENDIF-»
-	
-		<!---------- Change Event ----------->
-		«IF attr.changeEvent.fire=="true"-»
-		<Tr>
-			<Td> <Font=+1><b> Fire Change Event  </Font></Td>
-			<Td> On «IF attr.changeEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
-		</Tr>
-		«ENDIF-»
-
-		<!---------- Archive Event ----------->
-		«IF attr.archiveEvent.fire=="true"-»
-		<Tr>
-			<Td> <Font=+1><b> Fire Change Event  </Font></Td>
-			<Td> On «IF attr.archiveEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
-		</Tr>
-		«ENDIF-»
-	
-	</Table>
-<Br>
-<Br>
-<Br>
-<Br>
-	«EXPAND _htmlUtil::htmlTableHeader(attr.name+" Attrribute Properties ",{})-»
-		<Tr><Td> <Font=+1><b>  label         </Font></Td>    <Td> «attr.properties.label»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  unit          </Font></Td>    <Td> «attr.properties.unit»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  standard unit </Font></Td>    <Td> «attr.properties.standardUnit»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  display unit  </Font></Td>    <Td> «attr.properties.displayUnit»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  format        </Font></Td>    <Td> «attr.properties.format»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  max_value     </Font></Td>    <Td> «attr.properties.maxValue»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  min_value     </Font></Td>    <Td> «attr.properties.minValue»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  max_alarm     </Font></Td>    <Td> «attr.properties.maxAlarm»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  min_alarm     </Font></Td>    <Td> «attr.properties.minAlarm»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  max_warning   </Font></Td>    <Td> «attr.properties.maxWarning»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  min_warning   </Font></Td>    <Td> «attr.properties.minWarning»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  delta_time    </Font></Td>    <Td> «attr.properties.deltaTime»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  delta_val     </Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
-		<!--- Tr><Td> <Font=+1><b>  description   </Font></Td>    <Td> «attr.properties.description»</Td></Tr--->
+	<Td>
+	<Td ALIGN="left" VALIGN=top>
+		
+		«EXPAND _htmlUtil::htmlTableHeader(" Attrribute Properties ",{})-»
+			<Tr><Td> <Font=+1><b>  label         </Font></Td>    <Td> «attr.properties.label»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  unit          </Font></Td>    <Td> «attr.properties.unit»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  standard unit </Font></Td>    <Td> «attr.properties.standardUnit»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  display unit  </Font></Td>    <Td> «attr.properties.displayUnit»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  format        </Font></Td>    <Td> «attr.properties.format»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  max_value     </Font></Td>    <Td> «attr.properties.maxValue»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  min_value     </Font></Td>    <Td> «attr.properties.minValue»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  max_alarm     </Font></Td>    <Td> «attr.properties.maxAlarm»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  min_alarm     </Font></Td>    <Td> «attr.properties.minAlarm»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  max_warning   </Font></Td>    <Td> «attr.properties.maxWarning»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  min_warning   </Font></Td>    <Td> «attr.properties.minWarning»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  delta_time    </Font></Td>    <Td> «attr.properties.deltaTime»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  delta_val     </Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
+			<!--- Tr><Td> <Font=+1><b>  description   </Font></Td>    <Td> «attr.properties.description»</Td></Tr--->
+		</Table>
+	</Td>
 	</Table>
 	<Br>
 	<Br>
