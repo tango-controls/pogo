@@ -69,7 +69,7 @@
 		<!---------- Input Argument ----------->
 		<Tr>
 			<Td> <Font=+1><b> Input Argument  </Font></Td>
-			<Td> <b>«cmd.argin.type.stringTypeEnum()»  </b>
+			<Td> «cmd.argin.type.stringTypeEnum()»
 				«IF cmd.argin.description.length==0-»
 					(...)
 				 «ELSE-»
@@ -81,7 +81,7 @@
 		<!---------- Output Argument ----------->
 		<Tr>
 			<Td> <Font=+1><b> Output Argument  </Font></Td>
-			<Td> <b>«cmd.argout.type.stringTypeEnum()»  </b>
+			<Td> «cmd.argout.type.stringTypeEnum()»
 				«IF cmd.argout.description.length==0-»
 					(...)
 				 «ELSE-»

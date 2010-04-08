@@ -5,7 +5,7 @@
 «DEFINE htmlFile FOR PogoDeviceClass»
 «FILE classPageFileName()»«htmlHeader()»
 
-«htmlPageTitle("Class Decription")»
+«htmlPageTitle("Class Decription"+htmlCheckIfAbtract())»
 
 <FONT SIZE="-1">
 <Br>

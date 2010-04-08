@@ -15,15 +15,17 @@
 <Br>
 <ul>
 	«EXPAND _htmlUtil::htmlTableHeader(""+attributes.size+" Device Attributes",
-			 {"Name", "Inherited", "Concrete", "Attr. type", "Data type", "Size", "Level", "Description"})-»
+			 {"Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description"})-»
 	«FOREACH attributes AS attr-»
 	<Tr>
 		<Td> <a href=Attr«attr.name».html> «attr.name» </a></Td>
 		<Td> «attr.status.inherited»                   </Td>
-		<Td> «attr.status.concrete»                    </Td>
-		<Td> «attr.attType»                            </Td>
+		<Td> «IF attr.status.concrete==true ||
+				 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+		<Td> «attr.attType»«IF attr.attType.toLowerCase()!="scalar"-»
+				(«attr.attTypeDimentions()»)«ENDIF»    </Td>
+		<Td> «attr.rwType»                             </Td>
 		<Td> «attr.dataType.stringTypeEnum()»          </Td>
-		<td> «attr.attTypeDimentions()»                </Td>
 		<Td> «attr.displayLevel»                       </Td>
 		<Td> «attr.properties.description»             </Td>
 	</Tr>
@@ -69,27 +71,25 @@
 	«EXPAND _htmlUtil::htmlTableHeader(attr.name+" Attrribute ",{})-»	
 		<!---------- Attribute type ----------->
 		<Tr>
-			<Td> <Font=+1><b> Input Argument  </Font></Td>
-			<Td> <b>«attr.attType»  </b></Td>
+			<Td> <Font=+1><b> Attribute Type  </Font></Td>
+			<Td> «attr.attType» «IF attr.attType.toLowerCase()!="scalar"-»
+				(«attr.attTypeDimentions()»)«ENDIF» </Td>
 		</Tr>
 	
+		<!---------- R/W type ----------->
+		<Tr>
+			<Td> <Font=+1><b> R/W Type  </Font></Td>
+			<Td> «attr.rwType» </Td>
+		</Tr>
+		
 		<!---------- Data type ----------->
 		<Tr>
-			<Td> <Font=+1><b> Output Argument  </Font></Td>
-			<Td> <b>«attr.dataType.stringTypeEnum()»  </b> («attr.attTypeDimentions()») </Td>
+			<Td> <Font=+1><b>   Data Type  </Font></Td>
+			<Td> «attr.dataType.stringTypeEnum()» </Td>
 		</Tr>
 		
 		<!---------- Allowed State ----------->
-		«IF attr.readExcludedStates.size>0»
-		<Tr>
-			<Td> <Font=+1><b> Command NOT allowed for   </Font></Td>
-			<Td> 
-				«FOREACH attr.readExcludedStates AS state»
-					- «state» <Br>
-				«ENDFOREACH»
-			</Td>
-		</Tr>
-		«ENDIF»
+		«EXPAND attrAllowedStates(attr)»
 	
 		<!---------- Display Level ----------->
 		<Tr>
@@ -104,8 +104,43 @@
 		</Tr>
 		<Tr>
 			<Td> <Font=+1><b>  Abstract </Font></Td>
-			<Td> «attr.status.abstract»	</Td>
+			<Td> «IF attr.status.concrete==true ||
+				 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+				</Td>
 		</Tr>
+
+		<!---------- Polling ----------->
+		«IF attr.polledPeriod.length>0-»
+		<Tr>
+			<Td> <Font=+1><b> Polling Period  </Font></Td>
+			<Td> «attr.polledPeriod» ms </Td>
+		</Tr>
+		«ENDIF-»
+	
+		<!---------- Memorized ----------->
+		«IF attr.memorized=="true"-»
+		<Tr>
+			<Td> <Font=+1><b> Memorized  </Font></Td>
+			<Td> Hardware «IF attr.memorizedAtInit!="true"» NOT «ENDIF» written at init</Td>
+		</Tr>
+		«ENDIF-»
+	
+		<!---------- Change Event ----------->
+		«IF attr.changeEvent.fire=="true"-»
+		<Tr>
+			<Td> <Font=+1><b> Fire Change Event  </Font></Td>
+			<Td> On «IF attr.changeEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
+		</Tr>
+		«ENDIF-»
+
+		<!---------- Archive Event ----------->
+		«IF attr.archiveEvent.fire=="true"-»
+		<Tr>
+			<Td> <Font=+1><b> Fire Change Event  </Font></Td>
+			<Td> On «IF attr.archiveEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
+		</Tr>
+		«ENDIF-»
+	
 	</Table>
 <Br>
 <Br>
@@ -125,7 +160,7 @@
 		<Tr><Td> <Font=+1><b>  min_warning   </Font></Td>    <Td> «attr.properties.minWarning»</Td></Tr>
 		<Tr><Td> <Font=+1><b>  delta_time    </Font></Td>    <Td> «attr.properties.deltaTime»</Td></Tr>
 		<Tr><Td> <Font=+1><b>  delta_val     </Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
-		<Tr><Td> <Font=+1><b>  description   </Font></Td>    <Td> «attr.properties.description»</Td></Tr>
+		<!--- Tr><Td> <Font=+1><b>  description   </Font></Td>    <Td> «attr.properties.description»</Td></Tr--->
 	</Table>
 	<Br>
 	<Br>
@@ -144,3 +179,37 @@
 «ENDFILE»
 «ENDDEFINE»
 
+
+
+
+«DEFINE attrAllowedStates(Attribute attr)  FOR PogoDeviceClass»
+		<!--- Read access --->
+		<Tr>
+		«IF attr.readExcludedStates.size>0»
+			<Td> <Font=+1><b> Read NOT allowed for   </Font></Td>
+			<Td> 
+				«FOREACH attr.readExcludedStates AS state»
+					- «state» <Br>
+				«ENDFOREACH»
+			</Td>
+		«ELSE»
+			<Td> <Font=+1><b> Read allowed for   </Font></Td>
+			<Td> All states </Td>
+		«ENDIF»
+		</Tr>
+	«IF attr.rwType.contains("WRITE")»
+		«IF attr.writeExcludedStates.size>0»
+			<Td> <Font=+1><b> Write NOT allowed for   </Font></Td>
+			<Td> 
+				«FOREACH attr.writeExcludedStates AS state»
+					- «state» <Br>
+				«ENDFOREACH»
+			</Td>
+		«ELSE»
+			<Td> <Font=+1><b> Write allowed for   </Font></Td>
+			<Td> All states </Td>
+		«ENDIF»
+		</Tr>
+	«ENDIF»
+«ENDDEFINE»
+		

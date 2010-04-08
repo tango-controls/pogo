@@ -197,6 +197,10 @@ attTypeDimentions(Attribute this):
 		: 1);
 
 
+htmlCheckIfAbtract(PogoDeviceClass this):
+	description.hasAbstractAttribute=="true" || description.hasAbstractCommand=="true"
+	? "<Br><Font size=+1> (Abstract class)</Font>"
+	: "";
 
 
 //==================================================
