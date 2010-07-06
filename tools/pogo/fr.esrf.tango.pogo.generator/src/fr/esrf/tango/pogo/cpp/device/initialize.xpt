@@ -25,9 +25,12 @@ void «name»::init_device()
 	INFO_STREAM << "«name»::init_device() create device " << device_name << endl;
 
 	«IF deviceProperties.size > 0-»
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device_before", "//	Initialization before get_device_property() call")-»
+	
 	//	Get the device properties (if any) from database
 	get_device_property();
 	«ENDIF»
+	«EXPAND attributes::allocateReadMembers-»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device", "//	Initialize device")-»
 }
 «ENDDEFINE»
@@ -43,6 +46,7 @@ void «name»::init_device()
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		"delete_device",
 		"//	Delete device allocated objects")-»
+	«EXPAND attributes::deleteReadMembers-»
 }
 «ENDDEFINE»
 

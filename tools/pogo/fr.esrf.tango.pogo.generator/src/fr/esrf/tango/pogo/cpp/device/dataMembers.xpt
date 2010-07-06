@@ -19,10 +19,32 @@ public:«FOREACH deviceProperties AS prop-»
 	
 
 //	Attribute data members
-public:«FOREACH attributes AS att-»
-	«IF att.status.concreteHere=="true"-»
-	«att.dataType.cppType().toString()»	*attr_«att.name»_read;
-	«ENDIF»«ENDFOREACH-»
+public:
+	«FOREACH attributes AS att-»
+	«EXPAND readAttributeMembers(att)»«ENDFOREACH-»
+«ENDDEFINE»
 
 
+
+
+//	=========================================================
+//	Data members declaration for readable attributes
+//	=========================================================
+«DEFINE readAttributeMembers(Attribute attr) FOR PogoDeviceClass-»
+	«IF attr.status.concreteHere=="true"-»
+	«attr.dataType.cppType().toString()»	*attr_«attr.name»_read;«ENDIF»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Data members declaration for writable attributes
+//	=========================================================
+«DEFINE writeAttributeMembers(Attribute attr) FOR PogoDeviceClass-»
+
+//	«FOREACH attributes AS att-»
+//	«EXPAND writeAttributeMembers(att)»«ENDFOREACH-»
+	«IF attr.status.concreteHere=="true" &&
+		attr.rwType.toLowerCase().contains("write")-»
+	«attr.dataType.cppType().toString()»	attr_«attr.name»_write;«ENDIF»
 «ENDDEFINE»

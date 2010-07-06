@@ -45,15 +45,53 @@
 
 
 //	=========================================================
+//	Define The method to execute State command
+//	=========================================================
+«DEFINE executeStateCommandMethod(Command cmd) FOR PogoDeviceClass-»
+	Tango::DevState	argout = DeviceImpl::dev_state();
+	INFO_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		cmd.execMethod, "//	Add your own state management")»
+	set_state(argout);               // Give the state to Tango.
+	return DeviceImpl::dev_state();  // Return it after Tango management.
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute Status command
+//	=========================================================
+«DEFINE executeStatusCommandMethod(Command cmd) FOR PogoDeviceClass-»
+	Tango::ConstDevString	argout = DeviceImpl::dev_status();
+	INFO_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		cmd.execMethod,
+		"//	Add your own status management")»
+	return argout;
+«ENDDEFINE»
+
+
+//	=========================================================
 //	Define The method to execute command
 //	=========================================================
 «DEFINE executeCommandMethod(Command cmd) FOR PogoDeviceClass-»
 «EXPAND executeCommandSignature(cmd)»
 {
+«IF cmd.name.toLowerCase()=="state"-»
+	«EXPAND executeStateCommandMethod(cmd)»
+«ELSEIF cmd.name.toLowerCase()=="status"-»
+	«EXPAND executeStatusCommandMethod(cmd)»
+«ELSE/* Other command */-»
+«IF cmd.argout.type.cppType()!="void"-»
+	«cmd.argout.declareArgumentWithPointer()»argout;
+«ENDIF-»
 	INFO_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		cmd.execMethod,
 		"//	Add your own code")»
+«IF cmd.argout.type.cppType()!="void"-»
+	return argout;
+«ENDIF-»
+«ENDIF-»
 }«ENDDEFINE»
 
 

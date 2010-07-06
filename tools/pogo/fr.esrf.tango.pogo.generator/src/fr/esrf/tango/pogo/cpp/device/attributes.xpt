@@ -89,12 +89,20 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 «DEFINE writeAttributeMethod(Attribute att) FOR PogoDeviceClass»void «name»::write_«att.name»(Tango::WAttribute &attr)
 {
 	DEBUG_STREAM << "«name»::write_«att.name»(Tango::Attribute &attr) entering... " << endl;
-	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("write_"+att.name,
-			"//	Retreive the writing value\n"+
-			"const " + att.dataType.cppType().toString() + "	*write_value;\n"+
-			"attr.get_write_value(write_value);")-»
-}«ENDDEFINE»
+	«IF att.attType.contains("Scalar")»
+	//	Retreive write value
+	«att.dataType.cppType().toString()»	w_val;
+	attr.get_write_value(w_val);
+	«ELSE»
+	//	Retreive number of write values
+	int	w_length = attr.get_write_value_length();
 
+	//	Retreive pointer on write values (Do not delete !)
+	const «att.dataType.cppType().toString()»	*w_val;
+	attr.get_write_value(w_val);
+	«ENDIF»
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("write_"+att.name, "")-»
+}«ENDDEFINE»
 
 
 //	=========================================================
@@ -129,4 +137,27 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 	virtual bool is_«att.name»_allowed(Tango::AttReqType type);
 «ENDDEFINE»
 
+
+//	=========================================================
+//	Allocate the read attribute members if requested
+//	=========================================================
+«DEFINE allocateReadMembers FOR PogoDeviceClass-»
+	«FOREACH attributes AS attr-»
+	«IF attr.status.concreteHere=="true" &&
+		attr.allocReadMember=="true"-»
+	attr_«attr.name»_read = new «attr.dataType.cppType().toString()»[«attr.attAllocSize()»];
+	«ENDIF-»
+	«ENDFOREACH»
+«ENDDEFINE»
+//	=========================================================
+//	delete the read attribute members if requested
+//	=========================================================
+«DEFINE deleteReadMembers FOR PogoDeviceClass-»
+	«FOREACH attributes AS attr-»
+	«IF attr.status.concreteHere=="true" &&
+		attr.allocReadMember=="true"-»
+	delete[] attr_«attr.name»_read;
+	«ENDIF-»
+	«ENDFOREACH»
+«ENDDEFINE»
 
