@@ -23,160 +23,134 @@ attributePageFileName(PogoDeviceClass this, Attribute attr):
 //	HTML page header
 //==================================================
 htmlHeader(PogoDeviceClass this):
-	"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
-	"\n" +
-	"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\"\n" +
-	"      lang=\"en\">\n" +
-	"<head>\n" +
-	"    <meta http-equiv=\"Content-Type\"\n" +
-	"          content=\"text/html;charset=utf-8\" />\n" +
-	"\n" +
-	"    <title>\n" +
-	"        Tango device server documentation\n" +
-	"        &mdash;\n" +
-	"        the TANGO website\n" +
-	"    </title>\n" +
-	"   \n" +
-	"    <!--base href=\"http://www.tango-controls.org/device-servers/index_html\" /-->\n" +
-	"    <meta name=\"generator\" content=\"Plone - http://plone.org\" />\n" +
-	"\n" +
-	"    <!-- Plone ECMAScripts -->\n" +
-	"    <script type=\"text/javascript\"\n" +
-	"        src=\"http://www.tango-controls.org/portal_javascripts/Plone%20Default/ploneScripts5580.js\">\n" +
-	"    </script>\n" +
-	"                \n" +
-	"    <script type=\"text/javascript\"\n" +
-	"            src=\"http://www.tango-controls.org/portal_javascripts/Plone%20Default/ploneScripts9111.js\">\n" +
-	"    </script>\n" +
-	"                \n" +
-	"    <style type=\"text/css\">\n" +
-	"		<!-- @import url(http://www.tango-controls.org/portal_css/Plone%20Default/ploneStyles5093.css); -->\n" +
-	"	</style>\n" +
-	"    <link rel=\"alternate stylesheet\"\n" +
-	"          type=\"text/css\" media=\"screen\"\n" +
-	"          href=\"http://www.tango-controls.org/portal_css/Plone%20Default/ploneStyles1255.css\"\n" +
-	"          title=\"Small Text\" />\n" +
-	"\n" +
-	"    <link rel=\"alternate stylesheet\"\n" +
-	"          type=\"text/css\" media=\"screen\"\n" +
-	"          href=\"http://www.tango-controls.org/portal_css/Plone%20Default/ploneStyles0588.css\"\n" +
-	"          title=\"Large Text\" />\n" +
-	"                    \n" +
-	"    <style type=\"text/css\" media=\"all\">\n" +
-	"		<!-- @import url(http://www.tango-controls.org/portal_css/Plone%20Default/ploneStyles4494.css); -->\n" +
-	"	</style>\n" +
-	"                    \n" +
-	"    <!-- Disable IE6 image toolbar -->\n" +
-	"    <meta http-equiv=\"imagetoolbar\" content=\"no\" />\n" +
-	"</head>\n" +
-	"\n" +
-	"\n" +
-	"<body class=\"section-device-servers\" dir=\"ltr\">\n" +
-	"\n" +
-	"   <div id=\"visual-portal-wrapper\">\n" +
-	"\n" +
-	"     <div id=\"portal-top\">\n" +
-	"\n" +
-	"        <div id=\"portal-header\">\n" +
-	"          <a class=\"hiddenStructure\" accesskey=\"2\"\n" +
-	"             href=\"http://www.tango-controls.org/device-servers#documentContent\">Skip to content.</a>\n" +
-	"\n" +
-	"          <a class=\"hiddenStructure\" accesskey=\"6\"\n" +
-	"             href=\"http://www.tango-controls.org/device-servers#portlet-navigation-tree\">Skip to navigation</a>\n" +
-	"        </div>\n" +
-	"\n" +
-	"		<h1 id=\"portal-logo\">\n" +
-	"    		<a href=\"http://www.tango-controls.org\" accesskey=\"1\">The TANGO website</a>	\n" +
-	"			<FONT SIZE=\"+4\"  COLOR=\"#FFBFFF\">  " + name + " Class </Font>\n" +
-	"		</h1>\n" +
-	"\n" +
-	"    	<ul id=\"portal-globalnav\">\n" +
-	"			<FONT SIZE=\"-1\">\n" +
-	"        	<li id=\"portaltab-about\" class=\"plain\">     <a href=\"index.html\">         Description</a></li>\n" +
-	"        	<li id=\"portaltab-News\" class=\"plain\">      <a href=\"Properties.html\">    Properties</a></li>\n" +
-	"        	<li id=\"portaltab-Events\" class=\"plain\">    <a href=\"Commands.html\">      Commands</a></li>\n" +
-	"        	<li id=\"portaltab-Documents\" class=\"plain\"> <a href=\"Attributes.html\">    Attributes</a></li>\n" +
-	"        	<li id=\"portaltab-tutorials\" class=\"plain\"> <a href=\"States.html\">        States</a></li>\n" +
-	"    		</Font>\n" +
-	"		</ul>\n" +
-	"\n" +
-	"     </div>\n" +
-	"\n" +
-	"	 <ul id=\"portal-personaltools\"> <FONT SIZE=\"+0\"  COLOR=\"#000000\">\n" +
-	"			 <a href=\"http://www.tango-controls.org/device-servers\">	Tango Device Classes </a>\n" +
-	"	 </ul>\n" +
-	"   </div>\n" +
-	"\n"; 
-
+		"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+        "<HTML>\n" +
+        "<HEAD>\n" +
+        "<Title> Tango Device Server User s Guide </Title>\n" +
+        "</HEAD>\n" +
+        "<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" +
+        "\n" +
+        "<P><!-------TITLE------></P>\n" +
+        "<TABLE BORDER=\"0\" WIDTH=\"100%\">\n" +
+        "    <TR>\n" +
+        "        <TD ALIGN=\"left\">\n" +
+        "                       <A HREF=\"http://www.esrf.fr/\" TARGET=new>\n" +
+        "                       <IMG SRC=\"http://www.esrf.fr/gifs/logo/80.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "        </Td>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "                       <A HREF=\"http://www.elettra.trieste.it/\" TARGET=new>\n" +
+        "                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/elettra_logo.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "\n" +
+        "        </Td>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "                       <A HREF=\"http://www.synchrotron-soleil.fr/\" TARGET=new>\n" +
+        "                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/soleil_logo.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "        </Td>\n" +
+        "        <TD ALIGN=\"right\">\n" +
+        "                       <A HREF=\"http://www.cells.es/\" TARGET=new>\n" +
+        "                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/alba.jpg\" BORDER=0 Height=\"54\"></A>\n" +
+        "        </Td>\n" +
+        "        <TD ALIGN=\"right\">\n" +
+        "                       <A HREF=\"http://www.desy.de/html/home/index_eng.html\" TARGET=new>\n" +
+        "                       <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/desy.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "        </Td>\n" +
+        "        <Td>\n" +
+        "                       <H2><FONT COLOR=\"#7F00FF\">\n" +
+        "                       <Center><A HREF=\"http://www.tango-controls.org/\" TARGET=\"_top\">\n" +
+        "                                        TANGO </a> <Br> Device Server\n" +
+        "                       </Center></FONT>\n" +
+        "        </Td>\n" +
+        "    </TR>\n" +
+        "</TABLE>\n" +
+        "\n" +
+        "<HR WIDTH=\"100%\"></H5>\n" +
+        "\n"; 
 
 
 //==================================================
 //	HTML page footer
 //==================================================
 htmlFooter():
-"<!--- html Footer --->\n"+
-"<Center>\n"+
-"<Font size=-1>\n"+
-"<br>\n"+
-"<br>\n"+
-"<TABLE BORDER=\"1\" WIDTH=\"100%\">\n"+
-"    <Tr>\n"+
-"		<!--- Hosted by Sourceforge --->\n"+
-"        <Td Align=\"Center\">\n"+
-"			<Font size=-1>\n"+
-"			<b>TANGO</b> is an open source project hosted by :<br>\n"+
-"			<A href=\"http://sourceforge.net\" Target=\"new\">\n"+
-"					<IMG title=\"Sourceforge logo\"\n"+
-"						alt=\"Sourceforge logo small\"\n"+
-"						src=\"http://www.esrf.fr/computing/cs/tango/sourceforge.gif\"\n"+
-"						border=0> </a>\n"+
-"			</Font>\n"+
-"		</Td>\n"+
-"		<!--- 2 Sourceforge Repositories --->\n"+
-"		<Td Align=\"Center\">\n"+
-"			<Font size=-1>\n"+
-"			Core and Tools :\n"+
-"			<a href=\"http://tango-cs.cvs.sourceforge.net/tango-cs/\" Target=new>\n"+
-"			CVS repository</a> on\n"+
-"			<a href=\"https://sourceforge.net/projects/tango-cs\" Target=new>\n"+
-"			tango-cs project</a>\n"+
-"			<br>\n"+
-"			Device Servers :\n"+
-"			<a href=\"http://tango-ds.cvs.sourceforge.net/tango-ds/\" Target=new>\n"+
-"					CVS repository</cmda> on\n"+
-"			<a href=\"https://sourceforge.net/projects/tango-ds\" Target=new>\n"+
-"					tango-ds project</a>\n"+
-"			</Font>\n"+
-"		</Td>\n"+
-"    </Tr>\n"+
-"</Table>\n"+
-"</Font>\n"+
-"</Center>\n"+
-"</body>\n"+
-"</html>\n";
+		"<!--- html Footer --->\n"+
+		"<Center>\n"+
+		"<Font size=-1>\n"+
+		"<br>\n"+
+		"<br>\n"+
+		"<TABLE BORDER=\"1\" WIDTH=\"100%\">\n"+
+		"    <Tr>\n"+
+		"		<!--- Hosted by Sourceforge --->\n"+
+		"        <Td Align=\"Center\">\n"+
+		"			<Font size=-1>\n"+
+		"			<b>TANGO</b> is an open source project hosted by :<br>\n"+
+		"			<A href=\"http://sourceforge.net\" Target=\"new\">\n"+
+		"					<IMG title=\"Sourceforge logo\"\n"+
+		"						alt=\"Sourceforge logo small\"\n"+
+		"						src=\"http://www.esrf.fr/computing/cs/tango/sourceforge.gif\"\n"+
+		"						border=0> </a>\n"+
+		"			</Font>\n"+
+		"		</Td>\n"+
+		"		<!--- 2 Sourceforge Repositories --->\n"+
+		"		<Td Align=\"Center\">\n"+
+		"			<Font size=-1>\n"+
+		"			Core and Tools :\n"+
+		"			<a href=\"http://tango-cs.cvs.sourceforge.net/tango-cs/\" Target=new>\n"+
+		"			CVS repository</a> on\n"+
+		"			<a href=\"https://sourceforge.net/projects/tango-cs\" Target=new>\n"+
+		"			tango-cs project</a>\n"+
+		"			<br>\n"+
+		"			Device Servers :\n"+
+		"			<a href=\"http://tango-ds.cvs.sourceforge.net/tango-ds/\" Target=new>\n"+
+		"					CVS repository</cmda> on\n"+
+		"			<a href=\"https://sourceforge.net/projects/tango-ds\" Target=new>\n"+
+		"					tango-ds project</a>\n"+
+		"			</Font>\n"+
+		"		</Td>\n"+
+		"    </Tr>\n"+
+		"</Table>\n"+
+		"</Font>\n"+
+		"</Center>\n"+
+		"</body>\n"+
+		"</html>\n";
 
 
 //==================================================
 //	HTML page title
 //==================================================
 htmlPageTitle(PogoDeviceClass this, String pageTitle):
-"<Br>\n"+
-"<Br>\n"+
-"<FONT SIZE=\"+3\">\n"+
-"<center>\n"+
-"<u>\n"+
-"         " + name + " Tango Class <Br>\n"+
-"</u> \n"+
-"<FONT SIZE=\"+1\">\n"+
-"      ( " + description.title + " )\n"+
-"<Br>\n"+
-"<Br>\n"+
-"<FONT SIZE=\"+2\">\n"+
-"            " + pageTitle + "\n"+
-"</Center>\n"+
-"</Font>\n";
-
-
+        "<FONT SIZE=\"+3\">\n" +
+        "<center>\n" +
+        "<u>\n" +
+        "         " + name + " Tango Class <Br>\n" +
+        "</u> \n" +
+        "<FONT SIZE=\"+1\">\n" +
+        "      ( " + description.title + " )\n" +
+        "<Br>\n" +
+        "<Br>\n" +
+        "<TABLE BORDER=\"1\" WIDTH=\"100%\" CELLSPACING=0>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"index.html\">         Description</a>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"Properties.html\">    Properties</a></li>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"Commands.html\">      Commands</a></li>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"Attributes.html\">    Attributes</a></li>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"States.html\">        States</a></li>\n" +
+        "       </Td>\n" +
+        "</TABLE>\n" +
+        "<Br>\n" +
+        "<Br>\n" +
+        "<Br>\n" +
+        "<FONT SIZE=\"+2\"><u>\n" +
+        "            " + pageTitle + "\n" +
+        "</u></Font>\n" +
+        "</Center>\n" +
+        "\n";
 
 
 //==================================================
