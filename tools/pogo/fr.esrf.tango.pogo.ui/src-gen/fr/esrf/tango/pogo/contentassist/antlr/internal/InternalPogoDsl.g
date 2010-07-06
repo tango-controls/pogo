@@ -3970,11 +3970,9 @@ rule__Attribute__Group__14
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_14()); }
-
-	'readExcludedStates:' 
-
-{ after(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_14()); }
+{ before(grammarAccess.getAttributeAccess().getAllocReadMemberAssignment_14()); }
+(rule__Attribute__AllocReadMemberAssignment_14)
+{ after(grammarAccess.getAttributeAccess().getAllocReadMemberAssignment_14()); }
 )
 
 	rule__Attribute__Group__15
@@ -3990,9 +3988,11 @@ rule__Attribute__Group__15
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_15()); }
-(rule__Attribute__ReadExcludedStatesAssignment_15)*
-{ after(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_15()); }
+{ before(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_15()); }
+
+	'readExcludedStates:' 
+
+{ after(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_15()); }
 )
 
 	rule__Attribute__Group__16
@@ -4008,11 +4008,9 @@ rule__Attribute__Group__16
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_16()); }
-
-	'writeExcludedStates:' 
-
-{ after(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_16()); }
+{ before(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_16()); }
+(rule__Attribute__ReadExcludedStatesAssignment_16)*
+{ after(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_16()); }
 )
 
 	rule__Attribute__Group__17
@@ -4028,15 +4026,37 @@ rule__Attribute__Group__17
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_17()); }
-(rule__Attribute__WriteExcludedStatesAssignment_17)*
-{ after(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_17()); }
+{ before(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_17()); }
+
+	'writeExcludedStates:' 
+
+{ after(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_17()); }
+)
+
+	rule__Attribute__Group__18
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Attribute__Group__18
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_18()); }
+(rule__Attribute__WriteExcludedStatesAssignment_18)*
+{ after(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_18()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
 
 
 
@@ -7037,14 +7057,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Attribute__ReadExcludedStatesAssignment_15
+rule__Attribute__AllocReadMemberAssignment_14
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_15_0()); }
-	RULE_STRING{ after(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_15_0()); }
+{ before(grammarAccess.getAttributeAccess().getAllocReadMemberBooleanParserRuleCall_14_0()); }
+	ruleBoolean{ after(grammarAccess.getAttributeAccess().getAllocReadMemberBooleanParserRuleCall_14_0()); }
 )
 
 ;
@@ -7052,14 +7072,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Attribute__WriteExcludedStatesAssignment_17
+rule__Attribute__ReadExcludedStatesAssignment_16
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_17_0()); }
-	RULE_STRING{ after(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_17_0()); }
+{ before(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_16_0()); }
+	RULE_STRING{ after(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_16_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Attribute__WriteExcludedStatesAssignment_18
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_18_0()); }
+	RULE_STRING{ after(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_18_0()); }
 )
 
 ;

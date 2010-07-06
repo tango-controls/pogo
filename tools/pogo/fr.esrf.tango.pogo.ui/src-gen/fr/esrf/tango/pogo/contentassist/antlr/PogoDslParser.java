@@ -180,8 +180,9 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeAccess().getArchiveEventAssignment_11(), "rule__Attribute__ArchiveEventAssignment_11");
 					put(grammarAccess.getAttributeAccess().getStatusAssignment_12(), "rule__Attribute__StatusAssignment_12");
 					put(grammarAccess.getAttributeAccess().getPropertiesAssignment_13(), "rule__Attribute__PropertiesAssignment_13");
-					put(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_15(), "rule__Attribute__ReadExcludedStatesAssignment_15");
-					put(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_17(), "rule__Attribute__WriteExcludedStatesAssignment_17");
+					put(grammarAccess.getAttributeAccess().getAllocReadMemberAssignment_14(), "rule__Attribute__AllocReadMemberAssignment_14");
+					put(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_16(), "rule__Attribute__ReadExcludedStatesAssignment_16");
+					put(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_18(), "rule__Attribute__WriteExcludedStatesAssignment_18");
 					put(grammarAccess.getFireEventsAccess().getFireAssignment_0(), "rule__FireEvents__FireAssignment_0");
 					put(grammarAccess.getFireEventsAccess().getLibCheckCriteriaAssignment_1(), "rule__FireEvents__LibCheckCriteriaAssignment_1");
 					put(grammarAccess.getAttrPropertiesAccess().getDescriptionAssignment_0(), "rule__AttrProperties__DescriptionAssignment_0");
