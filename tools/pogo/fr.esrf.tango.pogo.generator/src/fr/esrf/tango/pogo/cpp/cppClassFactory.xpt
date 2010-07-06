@@ -9,7 +9,7 @@
 «FILE classFactoryFileName()-»
 «PROTECT CSTART '/*----- ' CEND ' -----*/' ID classFactoryFileName()»
 static const char *RcsId = "«cvsEscaped("Id:")»";
-«EXPAND Common::fileHeader(deviceCppFileName(),
+«EXPAND Common::fileHeader(classFactoryFileName(),
 	"C++ source for the class_factory method of the DServer\n" +
 	"device class. This method is responsible for the creation of\n" +
 	"all class singleton for a device server. It is called\n" +

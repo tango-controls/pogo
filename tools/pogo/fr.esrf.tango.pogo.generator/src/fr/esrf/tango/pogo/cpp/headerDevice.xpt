@@ -7,7 +7,7 @@
 
 «FILE deviceHeaderFileName()-»
 «PROTECT CSTART '/*----- ' CEND ' -----*/' ID deviceHeaderFileName()»
-«EXPAND Common::fileHeader(deviceCppFileName(),
+«EXPAND Common::fileHeader(deviceHeaderFileName(),
 	"Include for the "+ name + " class.")»
 
 #ifndef «headerConstantName()»
