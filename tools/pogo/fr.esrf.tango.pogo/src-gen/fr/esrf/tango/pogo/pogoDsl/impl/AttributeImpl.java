@@ -48,6 +48,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getArchiveEvent <em>Archive Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getAllocReadMember <em>Alloc Read Member</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getReadExcludedStates <em>Read Excluded States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
@@ -286,6 +287,26 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * @ordered
    */
   protected AttrProperties properties;
+
+  /**
+   * The default value of the '{@link #getAllocReadMember() <em>Alloc Read Member</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAllocReadMember()
+   * @generated
+   * @ordered
+   */
+  protected static final String ALLOC_READ_MEMBER_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAllocReadMember() <em>Alloc Read Member</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAllocReadMember()
+   * @generated
+   * @ordered
+   */
+  protected String allocReadMember = ALLOC_READ_MEMBER_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getReadExcludedStates() <em>Read Excluded States</em>}' attribute list.
@@ -780,6 +801,29 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getAllocReadMember()
+  {
+    return allocReadMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAllocReadMember(String newAllocReadMember)
+  {
+    String oldAllocReadMember = allocReadMember;
+    allocReadMember = newAllocReadMember;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__ALLOC_READ_MEMBER, oldAllocReadMember, allocReadMember));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getReadExcludedStates()
   {
     if (readExcludedStates == null)
@@ -865,6 +909,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getStatus();
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return getProperties();
+      case PogoDslPackage.ATTRIBUTE__ALLOC_READ_MEMBER:
+        return getAllocReadMember();
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         return getReadExcludedStates();
       case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
@@ -925,6 +971,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         setProperties((AttrProperties)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__ALLOC_READ_MEMBER:
+        setAllocReadMember((String)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         getReadExcludedStates().clear();
@@ -990,6 +1039,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         setProperties((AttrProperties)null);
         return;
+      case PogoDslPackage.ATTRIBUTE__ALLOC_READ_MEMBER:
+        setAllocReadMember(ALLOC_READ_MEMBER_EDEFAULT);
+        return;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         getReadExcludedStates().clear();
         return;
@@ -1038,6 +1090,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return status != null;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return properties != null;
+      case PogoDslPackage.ATTRIBUTE__ALLOC_READ_MEMBER:
+        return ALLOC_READ_MEMBER_EDEFAULT == null ? allocReadMember != null : !ALLOC_READ_MEMBER_EDEFAULT.equals(allocReadMember);
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         return readExcludedStates != null && !readExcludedStates.isEmpty();
       case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
@@ -1075,6 +1129,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     result.append(memorized);
     result.append(", memorizedAtInit: ");
     result.append(memorizedAtInit);
+    result.append(", allocReadMember: ");
+    result.append(allocReadMember);
     result.append(", readExcludedStates: ");
     result.append(readExcludedStates);
     result.append(", writeExcludedStates: ");

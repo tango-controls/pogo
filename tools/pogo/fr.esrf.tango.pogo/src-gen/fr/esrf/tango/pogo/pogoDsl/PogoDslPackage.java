@@ -1076,13 +1076,22 @@ public interface PogoDslPackage extends EPackage
   int ATTRIBUTE__PROPERTIES = 13;
 
   /**
+   * The feature id for the '<em><b>Alloc Read Member</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__ALLOC_READ_MEMBER = 14;
+
+  /**
    * The feature id for the '<em><b>Read Excluded States</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__READ_EXCLUDED_STATES = 14;
+  int ATTRIBUTE__READ_EXCLUDED_STATES = 15;
 
   /**
    * The feature id for the '<em><b>Write Excluded States</b></em>' attribute list.
@@ -1091,7 +1100,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 15;
+  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 16;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -1100,7 +1109,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = 16;
+  int ATTRIBUTE_FEATURE_COUNT = 17;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FireEventsImpl <em>Fire Events</em>}' class.
@@ -2979,6 +2988,17 @@ public interface PogoDslPackage extends EPackage
   EReference getAttribute_Properties();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAllocReadMember <em>Alloc Read Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Alloc Read Member</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getAllocReadMember()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_AllocReadMember();
+
+  /**
    * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates <em>Read Excluded States</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4362,6 +4382,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EReference ATTRIBUTE__PROPERTIES = eINSTANCE.getAttribute_Properties();
+
+    /**
+     * The meta object literal for the '<em><b>Alloc Read Member</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__ALLOC_READ_MEMBER = eINSTANCE.getAttribute_AllocReadMember();
 
     /**
      * The meta object literal for the '<em><b>Read Excluded States</b></em>' attribute list feature.

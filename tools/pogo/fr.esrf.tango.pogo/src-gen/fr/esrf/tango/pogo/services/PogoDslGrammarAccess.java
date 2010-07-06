@@ -1280,19 +1280,21 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cStatusInheritanceStatusParserRuleCall_12_0 = (RuleCall)cStatusAssignment_12.eContents().get(0);
 		private final Assignment cPropertiesAssignment_13 = (Assignment)cGroup.eContents().get(13);
 		private final RuleCall cPropertiesAttrPropertiesParserRuleCall_13_0 = (RuleCall)cPropertiesAssignment_13.eContents().get(0);
-		private final Keyword cReadExcludedStatesKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Assignment cReadExcludedStatesAssignment_15 = (Assignment)cGroup.eContents().get(15);
-		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_15_0 = (RuleCall)cReadExcludedStatesAssignment_15.eContents().get(0);
-		private final Keyword cWriteExcludedStatesKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Assignment cWriteExcludedStatesAssignment_17 = (Assignment)cGroup.eContents().get(17);
-		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_17_0 = (RuleCall)cWriteExcludedStatesAssignment_17.eContents().get(0);
+		private final Assignment cAllocReadMemberAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cAllocReadMemberBooleanParserRuleCall_14_0 = (RuleCall)cAllocReadMemberAssignment_14.eContents().get(0);
+		private final Keyword cReadExcludedStatesKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cReadExcludedStatesAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_16_0 = (RuleCall)cReadExcludedStatesAssignment_16.eContents().get(0);
+		private final Keyword cWriteExcludedStatesKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cWriteExcludedStatesAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_18_0 = (RuleCall)cWriteExcludedStatesAssignment_18.eContents().get(0);
 		
 		//Attribute:
 		//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 		//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-		//  properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
-		//  "writeExcludedStates:" writeExcludedStates+=STRING*;  
+		//  properties=AttrProperties allocReadMember=Boolean "readExcludedStates:"
+		//  readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;  
 		//
 		////
 		////	Attribute Definition
@@ -1302,8 +1304,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 		//Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-		//properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
-		//"writeExcludedStates:" writeExcludedStates+=STRING*
+		//properties=AttrProperties allocReadMember=Boolean "readExcludedStates:"
+		//readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1390,23 +1392,29 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//AttrProperties
 		public RuleCall getPropertiesAttrPropertiesParserRuleCall_13_0() { return cPropertiesAttrPropertiesParserRuleCall_13_0; }
 
+		//allocReadMember=Boolean
+		public Assignment getAllocReadMemberAssignment_14() { return cAllocReadMemberAssignment_14; }
+
+		//Boolean
+		public RuleCall getAllocReadMemberBooleanParserRuleCall_14_0() { return cAllocReadMemberBooleanParserRuleCall_14_0; }
+
 		//"readExcludedStates:"
-		public Keyword getReadExcludedStatesKeyword_14() { return cReadExcludedStatesKeyword_14; }
+		public Keyword getReadExcludedStatesKeyword_15() { return cReadExcludedStatesKeyword_15; }
 
 		//readExcludedStates+=STRING*
-		public Assignment getReadExcludedStatesAssignment_15() { return cReadExcludedStatesAssignment_15; }
+		public Assignment getReadExcludedStatesAssignment_16() { return cReadExcludedStatesAssignment_16; }
 
 		//STRING
-		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_15_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_15_0; }
+		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_16_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_16_0; }
 
 		//"writeExcludedStates:"
-		public Keyword getWriteExcludedStatesKeyword_16() { return cWriteExcludedStatesKeyword_16; }
+		public Keyword getWriteExcludedStatesKeyword_17() { return cWriteExcludedStatesKeyword_17; }
 
 		//writeExcludedStates+=STRING*
-		public Assignment getWriteExcludedStatesAssignment_17() { return cWriteExcludedStatesAssignment_17; }
+		public Assignment getWriteExcludedStatesAssignment_18() { return cWriteExcludedStatesAssignment_18; }
 
 		//STRING
-		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_17_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_17_0; }
+		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_18_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_18_0; }
 	}
 
 	public class FireEventsElements implements IParserRuleAccess {
@@ -2947,8 +2955,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 	//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 	//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-	//  properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
-	//  "writeExcludedStates:" writeExcludedStates+=STRING*;  
+	//  properties=AttrProperties allocReadMember=Boolean "readExcludedStates:"
+	//  readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;  
 	//
 	////
 	////	Attribute Definition

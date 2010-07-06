@@ -1473,7 +1473,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_ReadExcludedStates()
+  public EAttribute getAttribute_AllocReadMember()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(14);
   }
@@ -1483,9 +1483,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_WriteExcludedStates()
+  public EAttribute getAttribute_ReadExcludedStates()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttribute_WriteExcludedStates()
+  {
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(16);
   }
 
   /**
@@ -2159,6 +2169,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(attributeEClass, ATTRIBUTE__ARCHIVE_EVENT);
     createEReference(attributeEClass, ATTRIBUTE__STATUS);
     createEReference(attributeEClass, ATTRIBUTE__PROPERTIES);
+    createEAttribute(attributeEClass, ATTRIBUTE__ALLOC_READ_MEMBER);
     createEAttribute(attributeEClass, ATTRIBUTE__READ_EXCLUDED_STATES);
     createEAttribute(attributeEClass, ATTRIBUTE__WRITE_EXCLUDED_STATES);
 
@@ -2439,6 +2450,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getAttribute_ArchiveEvent(), this.getFireEvents(), null, "archiveEvent", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_Status(), this.getInheritanceStatus(), null, "status", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_Properties(), this.getAttrProperties(), null, "properties", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_AllocReadMember(), ecorePackage.getEString(), "allocReadMember", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_ReadExcludedStates(), ecorePackage.getEString(), "readExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_WriteExcludedStates(), ecorePackage.getEString(), "writeExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

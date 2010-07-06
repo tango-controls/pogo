@@ -178,6 +178,7 @@ Attribute:
 	archiveEvent     = FireEvents
 	status           = InheritanceStatus
 	properties       = AttrProperties
+	allocReadMember  = Boolean
 	
 	"readExcludedStates:"
 		(readExcludedStates+=STRING)*

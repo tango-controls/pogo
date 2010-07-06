@@ -3912,8 +3912,8 @@ protected class Argument_DescriptionAssignment_1 extends AssignmentToken  {
  *   name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
  *   polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
  *   Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
- *   properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
- *   "writeExcludedStates:" writeExcludedStates+=STRING*;  
+ *   properties=AttrProperties allocReadMember=Boolean "readExcludedStates:"
+ *   readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;  
  * 
  * //
  * //	Attribute Definition
@@ -3924,8 +3924,8 @@ protected class Argument_DescriptionAssignment_1 extends AssignmentToken  {
 // name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 // polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
 // Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-// properties=AttrProperties "readExcludedStates:" readExcludedStates+=STRING*
-// "writeExcludedStates:" writeExcludedStates+=STRING*
+// properties=AttrProperties allocReadMember=Boolean "readExcludedStates:"
+// readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*
 protected class Attribute_Group extends GroupToken {
 	
 	public Attribute_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -3938,8 +3938,8 @@ protected class Attribute_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_WriteExcludedStatesAssignment_17(parent, this, 0, inst);
-			case 1: return new Attribute_WriteExcludedStatesKeyword_16(parent, this, 1, inst);
+			case 0: return new Attribute_WriteExcludedStatesAssignment_18(parent, this, 0, inst);
+			case 1: return new Attribute_WriteExcludedStatesKeyword_17(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -4438,15 +4438,15 @@ protected class Attribute_PropertiesAssignment_13 extends AssignmentToken  {
 	}	
 }
 
-// "readExcludedStates:"
-protected class Attribute_ReadExcludedStatesKeyword_14 extends KeywordToken  {
+// allocReadMember=Boolean
+protected class Attribute_AllocReadMemberAssignment_14 extends AssignmentToken  {
 	
-	public Attribute_ReadExcludedStatesKeyword_14(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_AllocReadMemberAssignment_14(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
-	public Keyword getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_14();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getAttributeAccess().getAllocReadMemberAssignment_14();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -4456,23 +4456,54 @@ protected class Attribute_ReadExcludedStatesKeyword_14 extends KeywordToken  {
 		}	
 	}	
 		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("allocReadMember",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("allocReadMember");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getAttributeAccess().getAllocReadMemberBooleanParserRuleCall_14_0();
+			return obj;
+		}
+		return null;
+	}
+
 }
 
-// readExcludedStates+=STRING*
-protected class Attribute_ReadExcludedStatesAssignment_15 extends AssignmentToken  {
+// "readExcludedStates:"
+protected class Attribute_ReadExcludedStatesKeyword_15 extends KeywordToken  {
 	
-	public Attribute_ReadExcludedStatesAssignment_15(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_ReadExcludedStatesKeyword_15(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
-	public Assignment getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_15();
+	public Keyword getGrammarElement() {
+		return grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_15();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_ReadExcludedStatesAssignment_15(parent, this, 0, inst);
-			case 1: return new Attribute_ReadExcludedStatesKeyword_14(parent, this, 1, inst);
+			case 0: return new Attribute_AllocReadMemberAssignment_14(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// readExcludedStates+=STRING*
+protected class Attribute_ReadExcludedStatesAssignment_16 extends AssignmentToken  {
+	
+	public Attribute_ReadExcludedStatesAssignment_16(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_16();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Attribute_ReadExcludedStatesAssignment_16(parent, this, 0, inst);
+			case 1: return new Attribute_ReadExcludedStatesKeyword_15(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -4482,7 +4513,7 @@ protected class Attribute_ReadExcludedStatesAssignment_15 extends AssignmentToke
 		IInstanceDescription obj = current.cloneAndConsume("readExcludedStates");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_15_0();
+			element = grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_16_0();
 			return obj;
 		}
 		return null;
@@ -4491,20 +4522,20 @@ protected class Attribute_ReadExcludedStatesAssignment_15 extends AssignmentToke
 }
 
 // "writeExcludedStates:"
-protected class Attribute_WriteExcludedStatesKeyword_16 extends KeywordToken  {
+protected class Attribute_WriteExcludedStatesKeyword_17 extends KeywordToken  {
 	
-	public Attribute_WriteExcludedStatesKeyword_16(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_WriteExcludedStatesKeyword_17(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_16();
+		return grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_17();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_ReadExcludedStatesAssignment_15(parent, this, 0, inst);
-			case 1: return new Attribute_ReadExcludedStatesKeyword_14(parent, this, 1, inst);
+			case 0: return new Attribute_ReadExcludedStatesAssignment_16(parent, this, 0, inst);
+			case 1: return new Attribute_ReadExcludedStatesKeyword_15(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -4512,20 +4543,20 @@ protected class Attribute_WriteExcludedStatesKeyword_16 extends KeywordToken  {
 }
 
 // writeExcludedStates+=STRING*
-protected class Attribute_WriteExcludedStatesAssignment_17 extends AssignmentToken  {
+protected class Attribute_WriteExcludedStatesAssignment_18 extends AssignmentToken  {
 	
-	public Attribute_WriteExcludedStatesAssignment_17(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_WriteExcludedStatesAssignment_18(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_17();
+		return grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_18();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_WriteExcludedStatesAssignment_17(parent, this, 0, inst);
-			case 1: return new Attribute_WriteExcludedStatesKeyword_16(parent, this, 1, inst);
+			case 0: return new Attribute_WriteExcludedStatesAssignment_18(parent, this, 0, inst);
+			case 1: return new Attribute_WriteExcludedStatesKeyword_17(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -4535,7 +4566,7 @@ protected class Attribute_WriteExcludedStatesAssignment_17 extends AssignmentTok
 		IInstanceDescription obj = current.cloneAndConsume("writeExcludedStates");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_17_0();
+			element = grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_18_0();
 			return obj;
 		}
 		return null;

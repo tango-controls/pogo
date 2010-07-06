@@ -2425,15 +2425,36 @@ ruleAttribute returns [EObject current=null]
 	        currentNode = currentNode.getParent();
 	    }
 	
+)(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getAttributeAccess().getAllocReadMemberBooleanParserRuleCall_14_0(), currentNode); 
+	    }
+	    lv_allocReadMember_14=ruleBoolean 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getAttributeRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		set($current, "allocReadMember", lv_allocReadMember_14, "Boolean", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
 )'readExcludedStates:' 
     {
-        createLeafNode(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_14(), null); 
+        createLeafNode(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_15(), null); 
     }
 (	
 	
-	    lv_readExcludedStates_15=	RULE_STRING
+	    lv_readExcludedStates_16=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_15_0(), "readExcludedStates"); 
+		createLeafNode(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_16_0(), "readExcludedStates"); 
 	}
  
 	    {
@@ -2443,7 +2464,7 @@ ruleAttribute returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "readExcludedStates", lv_readExcludedStates_15, "STRING", lastConsumedNode);
+	       		add($current, "readExcludedStates", lv_readExcludedStates_16, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -2451,13 +2472,13 @@ ruleAttribute returns [EObject current=null]
 	
 )*'writeExcludedStates:' 
     {
-        createLeafNode(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_16(), null); 
+        createLeafNode(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_17(), null); 
     }
 (	
 	
-	    lv_writeExcludedStates_17=	RULE_STRING
+	    lv_writeExcludedStates_18=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_17_0(), "writeExcludedStates"); 
+		createLeafNode(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_18_0(), "writeExcludedStates"); 
 	}
  
 	    {
@@ -2467,7 +2488,7 @@ ruleAttribute returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "writeExcludedStates", lv_writeExcludedStates_17, "STRING", lastConsumedNode);
+	       		add($current, "writeExcludedStates", lv_writeExcludedStates_18, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }

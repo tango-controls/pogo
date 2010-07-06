@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getArchiveEvent <em>Archive Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getProperties <em>Properties</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAllocReadMember <em>Alloc Read Member</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates <em>Read Excluded States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
@@ -405,6 +406,32 @@ public interface Attribute extends EObject
    * @generated
    */
   void setProperties(AttrProperties value);
+
+  /**
+   * Returns the value of the '<em><b>Alloc Read Member</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Alloc Read Member</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Alloc Read Member</em>' attribute.
+   * @see #setAllocReadMember(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_AllocReadMember()
+   * @model
+   * @generated
+   */
+  String getAllocReadMember();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAllocReadMember <em>Alloc Read Member</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Alloc Read Member</em>' attribute.
+   * @see #getAllocReadMember()
+   * @generated
+   */
+  void setAllocReadMember(String value);
 
   /**
    * Returns the value of the '<em><b>Read Excluded States</b></em>' attribute list.

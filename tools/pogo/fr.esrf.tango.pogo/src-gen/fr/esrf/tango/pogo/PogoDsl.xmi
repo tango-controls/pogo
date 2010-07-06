@@ -440,6 +440,9 @@
         <tokens xsi:type="xtext:Assignment" feature="properties" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
         </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="allocReadMember" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        </tokens>
         <tokens xsi:type="xtext:Keyword" value="readExcludedStates:"/>
         <tokens xsi:type="xtext:Assignment" cardinality="*" feature="readExcludedStates" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
