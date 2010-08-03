@@ -57,6 +57,12 @@ setAttributeFireEvent(String att_name, String evtType, FireEvents fe):
 		?	att_name.toLowerCase()+"->set_"+evtType+"_event("+fe.fire+", "+fe.libCheckCriteria+");"
 		:	"//	"+att_name+" does not fire "+evtType+" event";
 
+writeAttrValueDeclaration(Attribute att):
+	att.dataType.cppType().toString()!="Tango::DevString"
+	?	att.dataType.cppType().toString()
+	:	"Tango::ConstDevString";
+
+
 protectedID(PogoDeviceClass this, Attribute att, String str):
 	name + "::"+str+"_"+att.name;
 
