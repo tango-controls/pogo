@@ -22,7 +22,7 @@
 			"//	will be called at device initialization.")-»
 void «name»::init_device()
 {
-	INFO_STREAM << "«name»::init_device() create device " << device_name << endl;
+	DEBUG_STREAM << "«name»::init_device() create device " << device_name << endl;
 
 	«IF deviceProperties.size > 0-»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device_before", "//	Initialization before get_device_property() call")-»
