@@ -53,6 +53,8 @@ namespace «name»_ns
 
 «EXPAND dserver::factories::cppFile»
 
+«EXPAND dserver::dynamicAttributes::cppFile»
+
 «EXPAND Common::ProtectedArea("Class::Additional Methods")»
 } //	namespace
 «ENDFILE»

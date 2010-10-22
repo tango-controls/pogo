@@ -7,6 +7,7 @@
 //	Define get_device_property method
 //	=========================================================
 «DEFINE cppFile FOR PogoDeviceClass»
+«IF deviceProperties.size>0-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
 		"get_device_property",
 		"//	Add your own code to initialize")-»
@@ -25,6 +26,7 @@ void «name»::get_device_property()
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		"get_device_property_after",
 		"//	Check device property data members init")»
+«ENDIF-»
 }
 «ENDDEFINE»
 
@@ -54,7 +56,7 @@ void «name»::get_device_property()
 		«name»Class	*ds_class =
 			(static_cast<«name»Class *>(get_device_class()));
 		int	i = -1;
-	«ENDDEFINE»
+«ENDDEFINE»
 
 
 //	=========================================================

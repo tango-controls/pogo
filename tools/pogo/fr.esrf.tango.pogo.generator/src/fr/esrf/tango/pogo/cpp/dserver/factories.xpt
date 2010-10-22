@@ -42,21 +42,30 @@ void «name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::device_factory_before",
 			"//	Add your own code")»
-	//	Create all devices.
-	for (unsigned long i=0 ; i < devlist_ptr->length() ; i++)
+	//	Create devices and add it into the device list
+	for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
 	{
 		cout4 << "Device name : " << (*devlist_ptr)[i].in() << endl;
-
-		//	Create devices and add it into the device list
 		device_list.push_back(new «name»(this, (*devlist_ptr)[i]));							 
+	}
 
-		//	Export device to the outside world
+	//	Manage dynamic attributes if any
+	erase_dynamic_attributes(devlist_ptr, get_class_attr()->get_attr_list());
+
+	//	Export devices to the outside world
+	for (unsigned long i=1 ; i<=devlist_ptr->length() ; i++)
+	{
+		//	Add dynamic attributes if any
+		«name» *dev = static_cast<«name» *>(device_list[device_list.size()-i]);
+		dev->add_dynamic_attributes();
+
 		//	Check before if database used.
 		if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))
-			export_device(device_list.back());
+			export_device(dev);
 		else
-			export_device(device_list.back(), (*devlist_ptr)[i]);
+			export_device(dev, dev->get_name().c_str());
 	}
+
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::device_factory_after",
 			"//	Add your own code")»
@@ -84,9 +93,8 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::attribute_factory_before",
 			"//	Add your own code")»
-«IF description.inheritances.size>0 &&
-	description.inheritances.get(0).classname.startsWith("Device_")==false-»
-	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::attribute_factory(att_list);
+«IF description.hasInheritanceClass()-»
+	«description.getInheritance().classname»_ns::«description.getInheritance().classname»Class::attribute_factory(att_list);
 «ENDIF-»
 «FOREACH attributes AS att»
 	«IF att.status.concreteHere=="true"-»
@@ -110,18 +118,37 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);
 	«IF att.polledPeriod.length>0 && att.polledPeriod != "0"»«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);«ELSE»//	Not Polled«ENDIF»
 	«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
-	«IF att.memorized == "true"»«att.name.toLowerCase()»->set_memorized();«ELSE»//	Not memorized«ENDIF»
+	«EXPAND manageMemorized(att)»
 	«setAttributeFireEvent(att.name, "change",  att.changeEvent)»
 	«setAttributeFireEvent(att.name, "archive", att.archiveEvent)»
 	att_list.push_back(«att.name.toLowerCase()»);
 	«ENDIF-»
 «ENDFOREACH»
+
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+	//	Create a list of static attributes
+	create_static_attribute_list(get_class_attr()->get_attr_list());
+
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::attribute_factory_after",
 			"//	Add your own code")»
+«ENDIF-»
 }
 «ENDDEFINE»
 
+//	=========================================================
+//	Define the memorized part for attribute_factory
+//	=========================================================
+«DEFINE manageMemorized(Attribute att) FOR PogoDeviceClass-»
+«IF att.memorized == "true"-»
+	«att.name.toLowerCase()»->set_memorized();
+	«IF att.memorizedAtInit == "true"-»
+	«att.name.toLowerCase()»->set_memorized_init(true);«ELSE-»
+	«att.name.toLowerCase()»->set_memorized_init(false);«ENDIF-»
+«ELSE-»
+	//	Not memorized
+«ENDIF-»
+«ENDDEFINE»
 
 
 //	=========================================================
@@ -154,5 +181,4 @@ void «name»Class::command_factory()
 				"Class::command_factory_after")»
 }
 «ENDDEFINE»
-
 

@@ -70,6 +70,8 @@ bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 }
 «ENDFOREACH»
 
+	«EXPAND Common::ProtectedArea("are_dynamic_attributes_allowed",
+			"//	Add your code to check if dynamic attributes are alowed")»
 
 //=================================================
 //		Commands Allowed Methods
@@ -91,7 +93,10 @@ bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
 «ENDIF-»
 	return true;
 }
-«ENDIF»«ENDFOREACH»
+«ENDIF»
+«ENDFOREACH»
+	«EXPAND Common::ProtectedArea("are_dynamic_commands_allowed",
+			"//	Add your code to check if dynamic commands are alowed")»
 }	// namespace «name»_ns
 «ENDFILE»
 

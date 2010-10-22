@@ -22,6 +22,7 @@
 «EXPAND writeAttributeMethod(att)»
 «ENDIF»«ENDIF-»
 «ENDFOREACH»
+«EXPAND addDynamicAttributes»
 «ENDDEFINE»
 
 
@@ -149,6 +150,7 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 	«ENDIF-»
 	«ENDFOREACH»
 «ENDDEFINE»
+
 //	=========================================================
 //	delete the read attribute members if requested
 //	=========================================================
@@ -159,5 +161,24 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 	delete[] attr_«attr.name»_read;
 	«ENDIF-»
 	«ENDFOREACH»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the add_dynamic_attributes method
+//	=========================================================
+«DEFINE addDynamicAttributes FOR PogoDeviceClass»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::add_dynamic_attributes",
+		"Create the dynamic attributes if any\n" +
+		"for specified device.")-»
+void «name»::add_dynamic_attributes()
+{
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::add_dynamic_attributes",
+	"//	Add your own code to create and add dynamic attributes if any")»
+}
+«ENDIF-»
 «ENDDEFINE»
 

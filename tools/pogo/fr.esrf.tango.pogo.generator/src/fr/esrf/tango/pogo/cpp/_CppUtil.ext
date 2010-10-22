@@ -158,8 +158,8 @@ isInheritanceClass(Inheritance inher):
 //
 //	Inheritance util (return true at least the first one is not the TangoDeviceImpl)
 //
-hasInheritanceClass(ClassDescription desc):
-	desc.inheritances.size>0 && isInheritanceClass(desc.inheritances.get(0))
+hasInheritanceClass(ClassDescription this):
+	inheritances.size>0 && isInheritanceClass(inheritances.get(inheritances.size-1))
 	? true
 	: false;
 //

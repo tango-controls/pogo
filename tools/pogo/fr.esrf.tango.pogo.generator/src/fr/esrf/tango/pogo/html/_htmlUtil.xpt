@@ -18,9 +18,10 @@
 «ENDDEFINE»
 
 «DEFINE htmlProtectedArea(String name) FOR PogoDeviceClass»
-	<ul>
 «startComment()» «PROTECT CSTART '/*' CEND '*/' ID name » «endComment()»
+	<!--- Add your own documentation, pictures, links,.... --->
+	<ul>
 
-«startComment()» «ENDPROTECT» «endComment()»
 	</ul>
+«startComment()» «ENDPROTECT» «endComment()»
 «ENDDEFINE»

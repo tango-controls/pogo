@@ -94,6 +94,7 @@ Tango::DbDatum «name»Class::get_default_class_property(string &prop_name)
 		"//	Add your own code to initialize")-»
 void «name»Class::get_class_property()
 {
+«IF classProperties.size>0-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		"Class::get_class_property_before",
 		"//	Initialize class property data members")-»
@@ -131,6 +132,7 @@ void «name»Class::get_class_property()
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		"Class::get_class_property_after",
 		"//	Check class property data members init")»
+«ENDIF-»
 }
 «ENDDEFINE»
 

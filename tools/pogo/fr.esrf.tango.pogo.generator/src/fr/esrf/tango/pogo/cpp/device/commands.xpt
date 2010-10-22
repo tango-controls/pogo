@@ -63,9 +63,10 @@
 «DEFINE executeStatusCommandMethod(Command cmd) FOR PogoDeviceClass-»
 	DEBUG_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
-		cmd.execMethod, "Tango::ConstDevString	argout = DeviceImpl::dev_status();"+
-		"	//	Add your own status management")»
-	return argout;
+		cmd.execMethod, "string	status = \"Device is OK\";\n"+
+				"	//	Add your own status management")»
+	set_status(status);               // Give the status to Tango.
+	return DeviceImpl::dev_status();  // Return it.
 «ENDDEFINE»
 
 
