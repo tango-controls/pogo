@@ -120,6 +120,12 @@ TANGO_REQUIRED = TRUE
 include $(MAKE_ENV)/tango.opt
 
 #=============================================================================
+#	POST_PROCESSING: action to be done after normal make.
+#	e.g.:  change executable file name, .....
+#POST_PROCESSING = \
+#	mv bin/$(BIN_DIR)/$(PACKAGE_NAME) bin/$(BIN_DIR)/$(PACKAGE_NAME)_DS
+
+#=============================================================================
 # SVC_OBJS is the list of all objects needed to make the output
 #
 «EXPAND classesDependancyIncludes(description)»
@@ -129,7 +135,7 @@ SVC_OBJS =      \
             $(OBJDIR)/$(PACKAGE_NAME)Class.o \
             $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
             $(OBJDIR)/ClassFactory.o  \
-            $(OBJDIR)/main.o «EXPAND addInheritancObjectFiles-»
+            $(OBJDIR)/main.o «EXPAND addInheritancObjectFiles»
 
 #=============================================================================
 #	include common targets
@@ -153,7 +159,7 @@ include $(MAKE_ENV)/common_target.opt
 «DEFINE addInheritanceDefinitions FOR PogoDeviceClass-»
 	«IF description.hasInheritanceClass()»
 #=============================================================================
-# Following are names, pathes and files of the abstract classes used by project
+# Following are names, pathes and files of the inherited classes used by project
 #
 		«FOREACH description.inheritances AS inheritance-»
 			«IF inheritance.isInheritanceClass()-»

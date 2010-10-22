@@ -169,11 +169,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\TemplateDevServ.cpp"
+				RelativePath="..\«name».cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\TemplateDevServClass.cpp"
+				RelativePath="..\«name»Class.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -186,7 +186,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\TemplateDevServStateMachine.cpp"
+				RelativePath="..\«name»StateMachine.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -205,11 +205,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\TemplateDevServ.h"
+				RelativePath="..\«name».h"
 				>
 			</File>
 			<File
-				RelativePath="..\TemplateDevServClass.h"
+				RelativePath="..\«name»Class.h"
 				>
 			</File>
 		</Filter>
