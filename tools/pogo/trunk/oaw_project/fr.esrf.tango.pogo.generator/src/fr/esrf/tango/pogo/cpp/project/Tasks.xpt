@@ -1,0 +1,18 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::cppUtil»
+
+
+«DEFINE CppProject FOR PogoDeviceClass»
+«IF description.filestogenerate.toLowerCase().contains("makefile")»
+	«EXPAND Makefile::CppProject»
+«ENDIF»
+
+
+«IF description.filestogenerate.toLowerCase().contains("vc")»
+	«EXPAND WindowsProject::CppProject»
+	«EXPAND WinClassLib::CppProject»
+	«EXPAND WinClassDll::CppProject»
+	«EXPAND WinServerStatic::CppProject»
+	«EXPAND WinServerShared::CppProject»
+«ENDIF»
+«ENDDEFINE»

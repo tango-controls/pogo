@@ -1,0 +1,18 @@
+
+
+
+«IMPORT pogoDsl»
+
+«DEFINE main(String target) FOR PogoSystem»
+	«IF target.toLowerCase() == "cpp"»
+		«EXPAND cpp::Tasks::main FOREACH classes»
+		«EXPAND html::Tasks::main FOREACH classes»
+	«ELSEIF target.toLowerCase() == "java"»
+		«EXPAND html::Tasks::main FOREACH classes»
+	«ELSEIF target.toLowerCase() == "python"»
+		«EXPAND html::Tasks::main FOREACH classes»
+	«ELSE»
+		«ERROR "language identifier "+target+" unknown. Use cpp, java, or python"»
+		«ERROR "=========  Only C++ and Java is supported  =============="»
+	«ENDIF»
+«ENDDEFINE»
