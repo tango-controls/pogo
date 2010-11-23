@@ -1,0 +1,119 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//
+//	Template for State Machine cpp file 
+//
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode())»
+
+
+«FILE stateMachineFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID stateMachineFileName()»
+static const char *RcsId = "«cvsEscaped("Id:")»";
+«EXPAND Common::fileHeader(stateMachineFileName(),
+	"C++ source for the «name» and its alowed\n" +
+	"methods for commands and attributes")»
+
+
+#include <«deviceHeaderFileName()»>
+#include <«dserverClassHeaderFileName()»>
+
+«ENDPROTECT»
+
+
+/*
+ * «name» states description:
+ *«FOREACH states AS state»
+ * «state.name» :	«state.description» «ENDFOREACH»
+ */
+
+namespace «name»_ns
+{
+
+//=================================================
+//		Attributes Allowed Methods
+//=================================================
+«FOREACH attributes AS att»
+«EXPAND Common::methodHeader("is_" + att.name + "State_allowed",
+		"Execution allowed for " + att.name + " attribute.")»
+bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
+{
+«IF att.rwType.contains("WRITE")-»
+	//	Check if access type.
+	if ( type!=Tango::READ_REQ )
+	{
+		«IF att.writeExcludedStates.size>0-»
+			«EXPAND checkExcludedStates(att.writeExcludedStates, "WRITE", "\t\t")-»
+		«ELSE-»
+			//	Not any excluded states for «att.name» attribute in WRITE access.
+		«ENDIF»
+		«EXPAND Common::ProtectedArea(att.stateAllowedMethod()+"_WRITE")»
+		«IF att.writeExcludedStates.size>0-»
+			«EXPAND closeCheckExcludedStates(att.writeExcludedStates, "\t\t")-»
+		«ENDIF-»
+		return true;
+	}
+	else
+«ENDIF»«IF att.readExcludedStates.size>0-»
+		«EXPAND checkExcludedStates(att.readExcludedStates, "READ", "\t")-»
+	«ELSE-»
+		//	Not any excluded states for «att.name» attribute in READ access.
+	«ENDIF»
+	«EXPAND Common::ProtectedArea("read_"+att.stateAllowedMethod()+"_READ")»
+	«IF att.readExcludedStates.size>0-»
+		«EXPAND closeCheckExcludedStates(att.readExcludedStates, "\t")-»
+	«ENDIF-»
+	return true;
+}
+«ENDFOREACH»
+
+	«EXPAND Common::ProtectedArea("are_dynamic_attributes_allowed",
+			"//	Add your code to check if dynamic attributes are alowed")»
+
+//=================================================
+//		Commands Allowed Methods
+//=================================================
+«FOREACH commands AS cmd-»
+«IF cmd.name.toLowerCase()!="state" && cmd.name.toLowerCase()!="status"-»
+«EXPAND Common::methodHeader("is_" + cmd.name + "State_allowed",
+		"Execution allowed for " + cmd.name + " command.")»
+bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
+{
+«IF cmd.excludedStates.size>0-»
+«EXPAND checkExcludedStates(cmd.excludedStates, "command", "\t")-»
+«ELSE-»
+	//	Not any excluded states for «cmd.name» command.
+«ENDIF»
+«EXPAND Common::ProtectedArea(cmd.stateAllowedMethod())»
+«IF cmd.excludedStates.size>0-»
+«EXPAND closeCheckExcludedStates(cmd.excludedStates, "\t")-»
+«ENDIF-»
+	return true;
+}
+«ENDIF»
+«ENDFOREACH»
+	«EXPAND Common::ProtectedArea("are_dynamic_commands_allowed",
+			"//	Add your code to check if dynamic commands are alowed")»
+}	// namespace «name»_ns
+«ENDFILE»
+
+«ENDIF»
+«ENDDEFINE»
+
+
+//=================================================
+//	Define the code for the state machnine
+//=================================================
+«DEFINE checkExcludedStates(List[String] states, String access, String tabs) FOR PogoDeviceClass-»
+«tabs»if (	//	Compare device state with not allowed states for «access» «FOREACH states AS state SEPARATOR '	|| '»
+«tabs»	get_state() == Tango::«state»«ENDFOREACH»)
+«tabs»{
+«ENDDEFINE»
+
+«DEFINE closeCheckExcludedStates(List[String] states, String tabs) FOR PogoDeviceClass-» 
+«tabs»	return false;
+«tabs»}
+«ENDDEFINE»

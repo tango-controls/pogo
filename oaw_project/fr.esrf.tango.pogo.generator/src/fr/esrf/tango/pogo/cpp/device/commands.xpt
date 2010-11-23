@@ -1,0 +1,129 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//	=========================================================
+//	Define commands mnanagement
+//	=========================================================
+«DEFINE cppFile FOR PogoDeviceClass»
+«separator1()»
+//	Command execution methods
+«separator1()»
+«FOREACH commands AS cmd»«IF cmd.status.concreteHere=="true"»
+«EXPAND executeCommandHeader(cmd)»
+«EXPAND executeCommandMethod(cmd)»
+«ENDIF»«ENDFOREACH»
+«ENDDEFINE»
+
+//	=========================================================
+//	Define The header for a execute command method
+//	=========================================================
+«DEFINE executeCommandHeader(Command cmd) FOR PogoDeviceClass-»
+«separator2()»
+/**
+ *	Execute the «cmd.name» command:
+ *	«cmd.description.comments(" *	")»
+ *
+ *	@param argin «cmd.argin.description»
+ *	@returns «cmd.argout.description»
+ */
+«separator2()»«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The header for a execute command method for prototype
+//	=========================================================
+«DEFINE executeCommandHeaderProto(Command cmd) FOR PogoDeviceClass-»
+	/**
+	 *	Execute the «cmd.name» command:
+	 *	«cmd.description.comments(" *	")»
+	 *
+	 *	@param argin «cmd.argin.description»
+	 *	@returns «cmd.argout.description»
+	 */«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute State command
+//	=========================================================
+«DEFINE executeStateCommandMethod(Command cmd) FOR PogoDeviceClass-»
+	DEBUG_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		cmd.execMethod, "Tango::DevState	argout = DeviceImpl::dev_state();\n"+
+						"	//	Add your own state management")»
+	set_state(argout);               // Give the state to Tango.
+	return DeviceImpl::dev_state();  // Return it after Tango management.
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute Status command
+//	=========================================================
+«DEFINE executeStatusCommandMethod(Command cmd) FOR PogoDeviceClass-»
+	DEBUG_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		cmd.execMethod, "string	status = \"Device is OK\";\n"+
+				"	//	Add your own status management")»
+	set_status(status);               // Give the status to Tango.
+	return DeviceImpl::dev_status();  // Return it.
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute command
+//	=========================================================
+«DEFINE executeCommandMethod(Command cmd) FOR PogoDeviceClass-»
+«EXPAND executeCommandSignature(cmd)»
+{
+«IF cmd.name.toLowerCase()=="state"-»
+	«EXPAND executeStateCommandMethod(cmd)»
+«ELSEIF cmd.name.toLowerCase()=="status"-»
+	«EXPAND executeStatusCommandMethod(cmd)»
+«ELSE/* Other command */-»
+«IF cmd.argout.type.cppType()!="void"-»
+	«cmd.argout.declareArgumentWithPointer()»argout;
+«ENDIF-»
+	DEBUG_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		cmd.execMethod,
+		"//	Add your own code")»
+«IF cmd.argout.type.cppType()!="void"-»
+	return argout;
+«ENDIF-»
+«ENDIF-»
+}«ENDDEFINE»
+
+
+«DEFINE executeCommandSignature(Command cmd) FOR PogoDeviceClass-»
+«cmd.argout.declareArgumentWithPointer()»«name»::«cmd.execMethod»(«cmd.declareCmdArgin()»)«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The prototype for the method to execute command
+//	First one is in case of abstrac command, the second is the concrete one
+//	=========================================================
+«DEFINE executeCommandSignatureProto(Command cmd) FOR PogoDeviceClass-»
+	«IF cmd.status.abstract=="true" && cmd.status.inherited!="true"-»
+	/**
+	 *	Command «cmd.name» related methods.
+	 */
+	virtual «cmd.argout.declareArgumentWithPointer()»«cmd.execMethod»(«cmd.declareCmdArgin()»)=0;
+	«ENDIF-»
+	«IF cmd.status.concreteHere=="true"-»
+	/**
+	 *	Command «cmd.name» related methods.
+	 */
+	«cmd.argout.declareArgumentWithPointer()»«cmd.execMethod»(«cmd.declareCmdArgin()»);
+	«ENDIF-»
+«ENDDEFINE»
+
+//	=========================================================
+//	Define The prototype for the method for allowed command
+//	It does nothing for state and status (always allowed)
+//	=========================================================
+«DEFINE allowedCommandSignatureProto(Command cmd) FOR PogoDeviceClass-»
+	«IF cmd.name.toLowerCase()!="state" && cmd.name.toLowerCase()!="status"-»
+	virtual bool is_«cmd.name»_allowed(const CORBA::Any &any);
+	«ENDIF-»
+«ENDDEFINE»

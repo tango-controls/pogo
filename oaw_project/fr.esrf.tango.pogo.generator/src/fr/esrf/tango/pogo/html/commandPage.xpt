@@ -1,0 +1,139 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+//
+//	Define a HTML page for a table containing all commands
+//
+«DEFINE htmlFile FOR PogoDeviceClass»
+«FILE commandPageFileName()»«htmlHeader()»
+
+«htmlPageTitle("Commands")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+	«EXPAND _htmlUtil::htmlTableHeader(""+commands.size+" Device Commands",
+			 {"Name", "Inherited", "Concrete", "Input type", "Output type", "Level", "Description"})-»
+	«FOREACH commands AS cmd-»
+	<Tr>
+		<Td> <a href=Cmd«cmd.name».html> «cmd.name» </a></Td>
+		<Td> «cmd.status.inherited»                 </Td>
+		<Td> «cmd.status.concrete»                  </Td>
+		<Td> «cmd.argin.type.stringTypeEnum()»      </Td>
+		<Td> «cmd.argout.type.stringTypeEnum()»     </Td>
+		<Td> «cmd.displayLevel»                     </Td>
+		<Td> «cmd.description»                      </Td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+<Br>
+<Br>
+«EXPAND _htmlUtil::htmlProtectedArea(commandPageFileName())»
+	<Br>
+	<Br>
+</ul>
+</FONT>
+
+
+«htmlFooter()»
+«ENDFILE»
+
+	
+«FOREACH commands AS cmd-»
+	«EXPAND oneCommandHtmlFile(cmd)»
+«ENDFOREACH»
+
+«ENDDEFINE»
+
+
+//
+//	Define a HTML page for each command
+//
+«DEFINE oneCommandHtmlFile(Command cmd)  FOR PogoDeviceClass»
+«FILE commandPageFileName(cmd)»«htmlHeader()»
+«htmlPageTitle(cmd.name + " Command ")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+	«htmlSectionTitle("Description")»
+	<ul>
+		«cmd.description»
+	</ul>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlTableHeader(cmd.name+" Command ",{})-»
+		<!---------- Input Argument ----------->
+		<Tr>
+			<Td> <Font=+1><b> Input Argument  </Font></Td>
+			<Td> «cmd.argin.type.stringTypeEnum()»
+				«IF cmd.argin.description.length==0-»
+					(...)
+				 «ELSE-»
+				 	(«cmd.argin.description»)
+				 «ENDIF»
+			</Td>
+		</Tr>
+	
+		<!---------- Output Argument ----------->
+		<Tr>
+			<Td> <Font=+1><b> Output Argument  </Font></Td>
+			<Td> «cmd.argout.type.stringTypeEnum()»
+				«IF cmd.argout.description.length==0-»
+					(...)
+				 «ELSE-»
+				 	(«cmd.argout.description»)
+				 «ENDIF»
+			</Td>
+		</Tr>
+		
+		<!---------- Allowed State ----------->
+		«IF cmd.excludedStates.size>0»
+		<Tr>
+			<Td> <Font=+1><b> Command NOT allowed for   </Font></Td>
+			<Td> 
+				«FOREACH cmd.excludedStates AS state»
+					- «state» <Br>
+				«ENDFOREACH»
+			</Td>
+		</Tr>
+		«ENDIF»
+	
+		<!---------- Display Level ----------->
+		<Tr>
+			<Td> <Font=+1><b> Display Level  </Font></Td>
+			<Td> «cmd.displayLevel»	</Td>
+		</Tr>
+	
+		<!---------- Inheritance ----------->
+		<Tr>
+			<Td> <Font=+1><b>  Inherited </Font></Td>
+			<Td> «cmd.status.inherited»	</Td>
+		</Tr>
+		<Tr>
+			<Td> <Font=+1><b>  Abstract </Font></Td>
+			<Td> «cmd.status.abstract»	</Td>
+		</Tr>
+
+
+	</Table>
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(commandPageFileName(cmd))»
+	<Br>
+	<Br>
+</ul>
+</FONT>
+<Br>
+<Br>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDDEFINE»
+
