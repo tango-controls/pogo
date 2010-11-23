@@ -1,0 +1,28 @@
+#+======================================================================
+# $Source: /segfs/tango/cvsroot/tools/pogo_oaw/org/tango/pogo/pogo_gui/ReleaseNote,v $
+#
+# Project:      Tango Code Generator
+#
+# Description:  Pogo revisions
+#
+# $Author: verdier $
+#
+# $Revision: 1.4 $
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+Pogo-7.0.0 - 24/09/2010:
+	First release for Tango distribution.
+
+Pogo-7.0.0_rc3 - 03/09/2010:
+	Multi frame implemented.
+
+Pogo-7.0.0_rc2 - 30/08/2010:
+	Little bugs fixed.
+
+Pogo-7.0.0_rc1 - 28/07/2010:
+	First release candidate for Pogo using oAW technology.
