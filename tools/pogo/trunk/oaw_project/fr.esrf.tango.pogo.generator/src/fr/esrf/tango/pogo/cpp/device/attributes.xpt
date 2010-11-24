@@ -91,14 +91,14 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 {
 	DEBUG_STREAM << "«name»::write_«att.name»(Tango::Attribute &attr) entering... " << endl;
 	«IF att.attType.contains("Scalar")»
-	//	Retreive write value
+	//	Retrieve write value
 	«att.dataType.cppType().toString()»	w_val;
 	attr.get_write_value(w_val);
 	«ELSE»
-	//	Retreive number of write values
+	//	Retrieve number of write values
 	int	w_length = attr.get_write_value_length();
 
-	//	Retreive pointer on write values (Do not delete !)
+	//	Retrieve pointer on write values (Do not delete !)
 	const «att.writeAttrValueDeclaration()»	*w_val;
 	attr.get_write_value(w_val);
 	«ENDIF»
