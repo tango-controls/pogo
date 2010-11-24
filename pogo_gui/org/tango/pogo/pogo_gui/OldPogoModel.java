@@ -103,7 +103,8 @@ public class  OldPogoModel
 		try
 		{
 			System.out.println("Trying to load " + filename);
-			System.setProperty("TEMPL_HOME", "");	//	Cehcked by old classes.
+			if (System.getProperty("TEMPL_HOME")==null)
+				System.setProperty("TEMPL_HOME", "");	//	Cehcked by old classes.
 			old_model = new pogo.gene.PogoClass(filename);
 
 			//	Set the device class description
