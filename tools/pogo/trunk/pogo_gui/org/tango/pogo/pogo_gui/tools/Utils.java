@@ -337,7 +337,7 @@ public class Utils
 	}
 	//===============================================================
 	//===============================================================
-	public static String checkNameSyntax(String name, boolean overload) throws DevFailed
+	public static String checkNameSyntax(String name, boolean isStateStatus) throws DevFailed
 	{
 		if (name==null ||
 			name.length()==0)
@@ -375,7 +375,7 @@ public class Utils
 				"Utils.checkNameSyntax()");
 
 		//	Check for NOT state or Status
-        if (!overload)
+        if (! isStateStatus)
             if (name.equals("State") || name.equals("Status"))
                 Except.throw_exception("SyntaxError",
                     name + "  is reserved",
