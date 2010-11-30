@@ -82,6 +82,7 @@ public class CommandDialog extends JDialog
 
 	private PogoGUI			    pogo_gui;
     private InheritanceStatus   orig_status = null;
+    private boolean             isStateStatus = false;
 	//===============================================================
 	/**
 	 *	Creates new form CommandDialog
@@ -228,6 +229,19 @@ public class CommandDialog extends JDialog
 				polledLbl.setVisible(true);
 				polledTxt.setText(cmd.getPolledPeriod());
 			}
+
+            //  Cannot poll state or status
+            if (cmd.getName().toLowerCase().equals("state") ||
+                cmd.getName().toLowerCase().equals("status")) {
+
+                isStateStatus = true;
+
+                polledBtn.setEnabled(false);
+                polledBtn.setSelected(false);
+
+                levelBtn.setEnabled(false);
+                levelBtn.setSelected(false);
+            }
 		}
 		else
 		{
@@ -301,7 +315,7 @@ public class CommandDialog extends JDialog
 
         centerPanel.setLayout(new java.awt.GridBagLayout());
 
-        descLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        descLbl.setFont(new java.awt.Font("Arial", 1, 12));
         descLbl.setText("Command description:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -349,7 +363,7 @@ public class CommandDialog extends JDialog
         centerPanel.add(arginDescTxt, gridBagConstraints);
 
         argoutDescTxt.setColumns(30);
-        argoutDescTxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        argoutDescTxt.setFont(new java.awt.Font("Arial", 1, 12));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
@@ -359,6 +373,11 @@ public class CommandDialog extends JDialog
         centerPanel.add(argoutDescTxt, gridBagConstraints);
 
         arginComboBox.setFont(new java.awt.Font("Arial", 1, 12));
+        arginComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arginComboBoxActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -366,7 +385,7 @@ public class CommandDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
         centerPanel.add(arginComboBox, gridBagConstraints);
 
-        argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -503,7 +522,8 @@ public class CommandDialog extends JDialog
 			//	Check The inputs first
 			String	name = (String)nameComboBox.getSelectedItem();
             boolean overload = overloadBtn.getSelectedObjects()!=null;
-			name = Utils.checkNameSyntax(name, overload);
+			name = Utils.checkNameSyntax(name, isStateStatus);
+
 
 			if (pogo_gui.itemAlreadyExists(name, PogoConst.COMMANDS))
 				Except.throw_exception("CommandExists",
@@ -588,6 +608,13 @@ public class CommandDialog extends JDialog
     @SuppressWarnings({"UnusedDeclaration"})
 	private void polledBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_polledBtnActionPerformed
 
+        String name = nameComboBox.getSelectedItem().toString();
+        if (name.toLowerCase().equals("state") ||
+            name.toLowerCase().equals("status")) {
+            Utils.popupError(this, name + " Cannot be polled !");
+            polledBtn.setSelected(false);
+            return;
+        }
 		boolean polled = polledBtn.getSelectedObjects()!=null;
 		polledTxt.setEnabled(polled);
 	}//GEN-LAST:event_polledBtnActionPerformed
@@ -610,6 +637,26 @@ public class CommandDialog extends JDialog
 
     }//GEN-LAST:event_overloadBtnActionPerformed
 
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void arginComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arginComboBoxActionPerformed
+
+        //  Only if argin is void, a command can be polled
+        boolean canBePolled = (arginComboBox.getSelectedIndex()==0);
+
+        //  But not for state and status
+        String name = nameComboBox.getSelectedItem().toString();
+        if (name.toLowerCase().equals("state") ||
+            name.toLowerCase().equals("status")) {
+            canBePolled = false;
+        }
+
+        polledBtn.setSelected(canBePolled);
+        polledBtn.setEnabled(canBePolled);
+    }//GEN-LAST:event_arginComboBoxActionPerformed
+
+    /*
 	//===============================================================
 	/**
 	 *	Closes the dialog
