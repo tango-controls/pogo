@@ -45,6 +45,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
+import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import org.tango.pogo.pogo_gui.tools.Utils;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
 
@@ -153,6 +154,11 @@ public class GenerateDialog extends JDialog
         outPathText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okBtnActionPerformed(evt);
+            }
+        });
+        outPathText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                outPathTextKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -387,6 +393,14 @@ public class GenerateDialog extends JDialog
                     "Deteails Window", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_detailsBtnActionPerformed
 
+    //======================================================
+    //======================================================
+    private void outPathTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_outPathTextKeyPressed
+        if (evt.getKeyCode()==27) {  //  Escape
+            doClose(JOptionPane.CANCEL_OPTION);
+        }
+    }//GEN-LAST:event_outPathTextKeyPressed
+
 	//======================================================
 	//======================================================
 	public int showDialog(DeviceClass devclass)
@@ -395,6 +409,9 @@ public class GenerateDialog extends JDialog
 		String	path = devclass.getPogoDeviceClass().getDescription().getSourcePath();
 		if (path==null || ! new File(path).exists())
 			path = PogoGUI.homeDir;
+        outPathText.setText(path);
+        outPathText.setRequestFocusEnabled(true);
+        outPathText.requestFocus();
 
         if (devclass.checkIfAbstractClass())
         {
@@ -418,15 +435,32 @@ public class GenerateDialog extends JDialog
 			break;
 		}
 
-		outPathText.setText(path);
-		outPathText.setRequestFocusEnabled(true);
-		outPathText.requestFocus();
-		
+
 		boolean isAbstract = devclass.checkIfAbstractClass();
         if (isAbstract)
             warningLabel.setText(devclass.getPogoDeviceClass().getName() + warningLabel.getText());
         else
             warningPanel.setVisible(false);
+
+        pack();
+		setVisible(true);
+		return returnStatus;
+	}
+	//======================================================
+	//======================================================
+	public int showDialog(PogoMultiClasses classes)
+	{
+		String	path = classes.getSourcePath();
+		if (path==null || ! new File(path).exists())
+			path = MultiClassesPanel.homeDir;
+        outPathText.setText(path);
+        outPathText.setRequestFocusEnabled(true);
+        outPathText.requestFocus();
+
+        vc8Btn.setVisible(false);
+        htmlBtn.setVisible(false);
+		makefileBtn.setVisible(true);
+        warningPanel.setVisible(false);
 
         pack();
 		setVisible(true);
@@ -443,7 +477,13 @@ public class GenerateDialog extends JDialog
 
 	//======================================================
 	//======================================================
-	private String getGenerated()
+	public String getPath()
+	{
+        return outPathText.getText();
+    }
+	//======================================================
+	//======================================================
+	public String getGenerated()
 	{
 		String	generated = "";
 		for (JRadioButton btn : rBtn)

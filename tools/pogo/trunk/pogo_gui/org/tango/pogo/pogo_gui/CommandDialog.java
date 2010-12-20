@@ -196,11 +196,17 @@ public class CommandDialog extends JDialog
 			}
 
             //  Manage descriptions
-			descTxt.setText(cmd.getDescription());
-            String  desc = Utils.strReplaceSpecialCharToDisplay(cmd.getArgin().getDescription());
-			arginDescTxt.setText(desc);
-            desc = Utils.strReplaceSpecialCharToDisplay(cmd.getArgout().getDescription());
-			argoutDescTxt.setText(desc);
+            String desc = Utils.strReplace(cmd.getDescription(), "\\n", "\n"); // For pb fixed.
+            desc = Utils.strReplaceSpecialCharToDisplay(desc);
+			descText.setText(desc);
+
+            desc = Utils.strReplace(cmd.getArgin().getDescription(), "\\n", "\n"); // For pb fixed.
+            desc = Utils.strReplaceSpecialCharToDisplay(desc);
+			arginDescText.setText(desc);
+
+            desc = Utils.strReplace(cmd.getArgout().getDescription(), "\\n", "\n"); // For pb fixed.
+            desc = Utils.strReplaceSpecialCharToDisplay(desc);
+			argoutDescText.setText(desc);
 
             //  Manage argin / argout
 			String	argin =  OAWutils.pogo2tangoType(
@@ -266,14 +272,15 @@ public class CommandDialog extends JDialog
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel centerPanel = new javax.swing.JPanel();
         javax.swing.JLabel descLbl = new javax.swing.JLabel();
+        javax.swing.JPanel toipPanel = new javax.swing.JPanel();
+        javax.swing.JLabel nameLbl = new javax.swing.JLabel();
+        nameComboBox = new javax.swing.JComboBox();
+        abstractBtn = new javax.swing.JRadioButton();
+        overloadBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel arginLbl = new javax.swing.JLabel();
         javax.swing.JLabel argoutLbl = new javax.swing.JLabel();
-        descTxt = new javax.swing.JTextField();
-        arginDescTxt = new javax.swing.JTextField();
-        argoutDescTxt = new javax.swing.JTextField();
         arginComboBox = new javax.swing.JComboBox();
         argoutComboBox = new javax.swing.JComboBox();
-        cmdDescBtn = new javax.swing.JButton();
         arginDescBtn = new javax.swing.JButton();
         argoutDescBtn = new javax.swing.JButton();
         javax.swing.JPanel polledPanel = new javax.swing.JPanel();
@@ -283,11 +290,12 @@ public class CommandDialog extends JDialog
         javax.swing.JPanel levelPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         levelBtn = new javax.swing.JRadioButton();
-        javax.swing.JPanel toipPanel = new javax.swing.JPanel();
-        javax.swing.JLabel nameLbl = new javax.swing.JLabel();
-        nameComboBox = new javax.swing.JComboBox();
-        abstractBtn = new javax.swing.JRadioButton();
-        overloadBtn = new javax.swing.JRadioButton();
+        javax.swing.JScrollPane descScrollPane = new javax.swing.JScrollPane();
+        descText = new javax.swing.JTextArea();
+        javax.swing.JScrollPane arginScrollPane = new javax.swing.JScrollPane();
+        arginDescText = new javax.swing.JTextArea();
+        javax.swing.JScrollPane argoutScrollPane = new javax.swing.JScrollPane();
+        argoutDescText = new javax.swing.JTextArea();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -324,6 +332,47 @@ public class CommandDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
         centerPanel.add(descLbl, gridBagConstraints);
 
+        nameLbl.setFont(new java.awt.Font("Arial", 1, 12));
+        nameLbl.setText("Command Name:");
+        toipPanel.add(nameLbl);
+
+        nameComboBox.setEditable(true);
+        nameComboBox.setFont(new java.awt.Font("Arial", 1, 12));
+        toipPanel.add(nameComboBox);
+
+        abstractBtn.setFont(new java.awt.Font("Arial", 1, 12));
+        abstractBtn.setText("Abstract");
+        abstractBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        abstractBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        abstractBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
+        abstractBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abstractBtnActionPerformed(evt);
+            }
+        });
+        toipPanel.add(abstractBtn);
+
+        overloadBtn.setFont(new java.awt.Font("Arial", 1, 12));
+        overloadBtn.setText("Overload");
+        overloadBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        overloadBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        overloadBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
+        overloadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                overloadBtnActionPerformed(evt);
+            }
+        });
+        toipPanel.add(overloadBtn);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 15, 20, 20);
+        centerPanel.add(toipPanel, gridBagConstraints);
+
         arginLbl.setFont(new java.awt.Font("Arial", 1, 12));
         arginLbl.setText("Input Argument:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -342,36 +391,6 @@ public class CommandDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 10);
         centerPanel.add(argoutLbl, gridBagConstraints);
 
-        descTxt.setColumns(30);
-        descTxt.setFont(new java.awt.Font("Arial", 1, 12));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
-        centerPanel.add(descTxt, gridBagConstraints);
-
-        arginDescTxt.setColumns(30);
-        arginDescTxt.setFont(new java.awt.Font("Arial", 1, 12));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
-        centerPanel.add(arginDescTxt, gridBagConstraints);
-
-        argoutDescTxt.setColumns(30);
-        argoutDescTxt.setFont(new java.awt.Font("Arial", 1, 12));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
-        centerPanel.add(argoutDescTxt, gridBagConstraints);
-
         arginComboBox.setFont(new java.awt.Font("Arial", 1, 12));
         arginComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,26 +404,13 @@ public class CommandDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
         centerPanel.add(arginComboBox, gridBagConstraints);
 
-        argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12));
+        argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
         centerPanel.add(argoutComboBox, gridBagConstraints);
-
-        cmdDescBtn.setText("...");
-        cmdDescBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        cmdDescBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descBtnActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
-        centerPanel.add(cmdDescBtn, gridBagConstraints);
 
         arginDescBtn.setText("...");
         arginDescBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -473,41 +479,45 @@ public class CommandDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
         centerPanel.add(levelPanel, gridBagConstraints);
 
+        descScrollPane.setPreferredSize(new java.awt.Dimension(326, 100));
+
+        descText.setColumns(35);
+        descText.setRows(1);
+        descScrollPane.setViewportView(descText);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
+        centerPanel.add(descScrollPane, gridBagConstraints);
+
+        arginDescText.setColumns(30);
+        arginDescText.setRows(2);
+        arginScrollPane.setViewportView(arginDescText);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
+        centerPanel.add(arginScrollPane, gridBagConstraints);
+
+        argoutDescText.setColumns(30);
+        argoutDescText.setRows(2);
+        argoutScrollPane.setViewportView(argoutDescText);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
+        centerPanel.add(argoutScrollPane, gridBagConstraints);
+
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
-
-        nameLbl.setFont(new java.awt.Font("Arial", 1, 12));
-        nameLbl.setText("Command Name:");
-        toipPanel.add(nameLbl);
-
-        nameComboBox.setEditable(true);
-        nameComboBox.setFont(new java.awt.Font("Arial", 1, 12));
-        toipPanel.add(nameComboBox);
-
-        abstractBtn.setFont(new java.awt.Font("Arial", 1, 12));
-        abstractBtn.setText("Abstract");
-        abstractBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        abstractBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        abstractBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        abstractBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abstractBtnActionPerformed(evt);
-            }
-        });
-        toipPanel.add(abstractBtn);
-
-        overloadBtn.setFont(new java.awt.Font("Arial", 1, 12));
-        overloadBtn.setText("Overload");
-        overloadBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        overloadBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        overloadBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        overloadBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                overloadBtnActionPerformed(evt);
-            }
-        });
-        toipPanel.add(overloadBtn);
-
-        getContentPane().add(toipPanel, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -577,13 +587,10 @@ public class CommandDialog extends JDialog
 		JButton	btn = (JButton) evt.getSource();
 		String	text;
 		if (btn==arginDescBtn)
-			text = arginDescTxt.getText();
+			text = arginDescText.getText();
 		else
 		if (btn==argoutDescBtn)
-			text = argoutDescTxt.getText();
-		else
-		if (btn==cmdDescBtn)
-			text = descTxt.getText();
+			text = argoutDescText.getText();
 		else
 			return;
 
@@ -593,13 +600,10 @@ public class CommandDialog extends JDialog
 		{
 			//	Put new text in field
 			if (btn==arginDescBtn)
-				arginDescTxt.setText(dlg.getText());
+				arginDescText.setText(dlg.getText());
 			else
 			if (btn==argoutDescBtn)
-				argoutDescTxt.setText(dlg.getText());
-			else
-			if (btn==cmdDescBtn)
-				descTxt.setText(dlg.getText());
+				argoutDescText.setText(dlg.getText());
 		}
 	}//GEN-LAST:event_descBtnActionPerformed
 
@@ -652,7 +656,10 @@ public class CommandDialog extends JDialog
             canBePolled = false;
         }
 
-        polledBtn.setSelected(canBePolled);
+        if (!canBePolled) {
+            polledBtn.setSelected(false);
+            polledTxt.setEnabled(false);
+        }
         polledBtn.setEnabled(canBePolled);
     }//GEN-LAST:event_arginComboBoxActionPerformed
 
@@ -682,7 +689,8 @@ public class CommandDialog extends JDialog
 		}
 		cmd.setName(name);
 	    cmd.setExecMethod(Utils.buildExcecMethodName(name));
-	    cmd.setDescription(descTxt.getText());
+        String  desc = Utils.strReplaceSpecialCharToCode(descText.getText());
+	    cmd.setDescription(desc);
 
 		//	Argin/argout management
 		Argument	argin  = OAWutils.factory.createArgument();
@@ -694,9 +702,9 @@ public class CommandDialog extends JDialog
 		argin.setType(arginType);
 	    argout.setType(argoutType);
 
-        String  desc = Utils.strReplaceSpecialCharToCode(arginDescTxt.getText());
+        desc = Utils.strReplaceSpecialCharToCode(arginDescText.getText());
 		argin.setDescription(desc);
-        desc = Utils.strReplaceSpecialCharToCode(argoutDescTxt.getText());
+        desc = Utils.strReplaceSpecialCharToCode(argoutDescText.getText());
 	    argout.setDescription(desc);
 	    cmd.setArgin(argin);
 	    cmd.setArgout(argout);
@@ -773,12 +781,11 @@ public class CommandDialog extends JDialog
     private javax.swing.JRadioButton abstractBtn;
     private javax.swing.JComboBox arginComboBox;
     private javax.swing.JButton arginDescBtn;
-    private javax.swing.JTextField arginDescTxt;
+    private javax.swing.JTextArea arginDescText;
     private javax.swing.JComboBox argoutComboBox;
     private javax.swing.JButton argoutDescBtn;
-    private javax.swing.JTextField argoutDescTxt;
-    private javax.swing.JButton cmdDescBtn;
-    private javax.swing.JTextField descTxt;
+    private javax.swing.JTextArea argoutDescText;
+    private javax.swing.JTextArea descText;
     private javax.swing.JRadioButton levelBtn;
     private javax.swing.JComboBox nameComboBox;
     private javax.swing.JRadioButton overloadBtn;

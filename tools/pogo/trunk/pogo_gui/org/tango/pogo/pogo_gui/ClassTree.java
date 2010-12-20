@@ -341,8 +341,7 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		Object	selection = getSelectedObject();
 		if  (selection instanceof PogoProperty)
 			return ((PogoProperty)selection).value;
-		if (selection instanceof PogoCommand)
-        {
+		if (selection instanceof PogoCommand) {
             Command cmd = ((PogoCommand)selection).value;
             if (cmd.getName().equals("State") ||
                 cmd.getName().equals("Status") )
@@ -361,14 +360,11 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 	private void expandChildren(DefaultMutableTreeNode node)
 	{
 		boolean	level_done = false;
-		for (int i=0 ; i<node.getChildCount() ; i++)
-		{
+		for (int i=0 ; i<node.getChildCount() ; i++) {
 			DefaultMutableTreeNode child =
 					(DefaultMutableTreeNode) node.getChildAt(i);
-			if (child.isLeaf())
-			{
-				if (!level_done)
-				{
+			if (child.isLeaf()) {
+				if (!level_done) {
 					expandNode(child);
 					level_done = true;
 				}

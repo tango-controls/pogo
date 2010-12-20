@@ -42,7 +42,7 @@
 #-======================================================================
 
 
-RELEASE    = 7.0.0
+RELEASE    = 7.0.3
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango
@@ -56,7 +56,7 @@ JAR_DIR		=	$(TANGO_JAR_HOME)/appli
 #
 #---------------------
 
-BIN_DIR   =  /segfs/tango/tools/pogo/bin
+BIN_DIR   = $(TANGO_HOME)/tools/pogo/bin
 JAVAFLAGS =  -d $(BIN_DIR)
 JAVAC     =  javac -g $(JAVAFLAGS)
 
@@ -69,7 +69,7 @@ DOC_HEADER = "<h1>POGO Classes</h1>"
 
 #-----------------------------------------------------------------
 
-all:	GUI
+all:	GUI exe
 
 full:	constants	utils	GUI
 
@@ -116,20 +116,20 @@ ECLIPSE_JAR_DIR=/users/verdier/pogo_jar/jar
 TARGET_JAR_DIR=/segfs/tango/release/java/appli
 JAR_FILE=org.tango.pogo
 install:
-	mv $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar  $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE)-tmp.jar
 	@cp $(ECLIPSE_JAR_DIR)/$(JAR_FILE).jar $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar
 	@cd $(TARGET_JAR_DIR); \
 	rm $(JAR_FILE).jar;   \
 	ln -s $(JAR_FILE)-$(RELEASE).jar  $(JAR_FILE).jar; \
 	ls -l $(JAR_FILE)*.jar
 
+#	mv $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar  $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE)-tmp.jar
 
 FTP_TARGET	=	maya:/ftp/pub/cs/tango/Pogo
 install_ftp:
 	@echo "rcp $(JAR_FILE) $(FTP_TARGET)"
 	@cd $(TARGET_JAR_DIR); rcp $(JAR_FILE)-$(RELEASE).jar  $(FTP_TARGET)
 
-TANGO_REV=tango-7.2.0
+TANGO_REV=tango-7.2.2
 SRC_REL_PATH=$(TANGO_HOME)/source_release/$(TANGO_REV)/lib/java
 source_release:
 	@cd $(TARGET_JAR_DIR); cp $(JAR_FILE)-$(RELEASE).jar  $(SRC_REL_PATH)
