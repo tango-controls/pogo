@@ -158,12 +158,16 @@ public class Utils
 	}
 	//===============================================================
 	//===============================================================
+	public java.net.URL getImageUrl(String filename)
+	{
+	    return getClass().getResource("/org/tango/pogo/pogo_gui/img/"+filename);
+    }
+	//===============================================================
+	//===============================================================
 	public ImageIcon getIcon(String filename)
 	{
-		java.net.URL	url =
-			getClass().getResource("/org/tango/pogo/pogo_gui/img/"+filename);
-		if (url==null)
-		{
+		java.net.URL	url = getImageUrl( filename);
+		if (url==null) {
 			System.err.println("Icon file  " + filename + "  not found");
 			return null;
 		}
@@ -311,8 +315,8 @@ public class Utils
 	{
         if (text==null)
             return null;
-        text = Utils.strReplace(text, "\"", "\\\"").trim();
-        text = Utils.strReplace(text, "\'", "\\\'").trim();
+        text = Utils.strReplace(text, "\"", "``").trim();
+        text = Utils.strReplace(text, "\'", "`").trim();
         return text;
     }
 	//===================================================================
@@ -536,25 +540,15 @@ public class Utils
 	}
 	//===============================================================
     /**
-     *
+     *  Check if OS is Unix
      * @return true if OS is not windows
      */
 	//===============================================================
 	public static boolean osIsUnix()
 	{
-        boolean	_osIsUnix;
-		try
-		{
-			String	os = System.getProperty("os.name");
-			//System.out.println("Running under " + os);
-			_osIsUnix = ! os.toLowerCase().startsWith("windows");
-		}
-		catch(Exception e)
-		{
-			//System.out.println(e);
-			_osIsUnix = false;
-		}
-		return _osIsUnix;
+		String	os = System.getProperty("os.name");
+		//System.out.println("Running under " + os);
+	    return ! os.toLowerCase().startsWith("windows");
 	}
 	//===============================================================
 	//===============================================================
