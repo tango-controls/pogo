@@ -69,8 +69,8 @@ public class PogoGUI extends JFrame
 	 *	File Chooser Object used in file menu.
 	 */
 	private static  JFileChooser    chooser = null;
-    private static final PogoFileFilter	pogoFilter  = new PogoFileFilter("xmi", "Tango Classes");
-    private static final PogoFileFilter	pogo6Filter = new PogoFileFilter(
+    static final PogoFileFilter	pogoFilter  = new PogoFileFilter("xmi", "Tango Classes");
+    static final PogoFileFilter	pogo6Filter = new PogoFileFilter(
                                 new String[] { "h", "java", "py" }, "Pogo-6 Tango Classes");
 	static String		homeDir;
 
@@ -90,6 +90,8 @@ public class PogoGUI extends JFrame
 
     public static boolean  dbg_java   = false;
     public static boolean  dbg_python = false;
+
+    public static MultiClassesPanel multiClassesPanel = null;
 	//=======================================================
     /**
 	 *	Creates new form PogoGUI
@@ -103,15 +105,15 @@ public class PogoGUI extends JFrame
         this();
         checkLoadAtStartup(filename);
 	}
-
 	//=======================================================
     /**
 	 *	Creates new form PogoGUI and display DeviceClass object
      * @param devclass  DeviceClass object to be edited by Pogo
+     * @param forceModified Force the edito modified value to this boolean value.
      * @throws fr.esrf.Tango.DevFailed in case of failure
 	 */
 	//=======================================================
-    public PogoGUI(DeviceClass devclass) throws DevFailed
+    public PogoGUI(DeviceClass devclass, boolean forceModified) throws DevFailed
 	{
         this();
 
@@ -122,7 +124,7 @@ public class PogoGUI extends JFrame
 
         //  Not from file but from new class.
         //  So set it as modified.
-        class_panels.get(0).getTree().setModified(true);
+        class_panels.get(0).getTree().setModified(forceModified);
 	}
 	//=======================================================
     /**
@@ -243,6 +245,12 @@ public class PogoGUI extends JFrame
 
 		preferencesItem.setMnemonic ('P');
 		preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
+
+		toolsMenu.setMnemonic ('T');
+        //if (!Utils.osIsUnix())
+    		toolsMenu.setVisible(false);
+        multiItem.setMnemonic ('M');
+        multiItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK | Event.SHIFT_MASK));
 
 		helpMenu.setMnemonic ('H');
 		colorItem.setMnemonic ('C');
@@ -369,6 +377,8 @@ public class PogoGUI extends JFrame
         moveDownItem = new javax.swing.JMenuItem();
         preferencesItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem sitePreferencesItem = new javax.swing.JMenuItem();
+        toolsMenu = new javax.swing.JMenu();
+        multiItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         colorItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem releaseItem = new javax.swing.JMenuItem();
@@ -508,6 +518,18 @@ public class PogoGUI extends JFrame
 
         jMenuBar1.add(editMenu);
 
+        toolsMenu.setText("Tools");
+
+        multiItem.setText("Multi Classes Manager");
+        multiItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multiItemActionPerformed(evt);
+            }
+        });
+        toolsMenu.add(multiItem);
+
+        jMenuBar1.add(toolsMenu);
+
         helpMenu.setText("Help");
 
         colorItem.setText("On Color");
@@ -645,8 +667,8 @@ public class PogoGUI extends JFrame
    }//GEN-LAST:event_exitForm
 	//=======================================================
     /**
-     * Manage if modification(s) has been done, and propose to generate trhem.
-     * @return JOptionPane.OK_OPTION to continue, JOptionPane.CANCEL_OPTION if cancel has been choosen
+     * Manage if modification(s) has been done, and propose to generate them.
+     * @return JOptionPane.OK_OPTION to continue, JOptionPane.CANCEL_OPTION otherwise
      */
 	//=======================================================
     private int checkModifications()
@@ -689,9 +711,24 @@ public class PogoGUI extends JFrame
             for (JFrame frame : runningApplis)
                 if (frame.isVisible())
                     return;
+            //  Check if MultiClassesPanel is visible
+            if (multiClassesPanel!=null && multiClassesPanel.isVisible())
+                return;
+
             //  No visible found.
             System.exit(0);
         }
+    }
+	//=======================================================
+
+    /**
+     * Returns the main edited class name.
+     * @return the edited main class name.
+     */
+	//=======================================================
+    String getMainClassName()
+    {
+        return class_panels.getPanelNameAt(0);
     }
 	//=======================================================
 	//=======================================================
@@ -766,7 +803,7 @@ public class PogoGUI extends JFrame
             DeviceClass devclass = dialog.getInputs();
             if (class_panels.getSelectedTree()!=null) {
                 try {
-                    new PogoGUI(devclass);
+                    new PogoGUI(devclass, true);
                     return;
                 }
                 catch (Exception e) {
@@ -1067,6 +1104,19 @@ public class PogoGUI extends JFrame
     private void sitePreferencesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitePreferencesItemActionPerformed
         new PogoConfiguration(this).showDialog();
     }//GEN-LAST:event_sitePreferencesItemActionPerformed
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void multiItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiItemActionPerformed
+        try {
+            if (multiClassesPanel==null)
+                multiClassesPanel = new MultiClassesPanel(this, null);
+            multiClassesPanel.setVisible(true);
+        }
+        catch (DevFailed e) {
+            ErrorPane.showErrorMessage(this, null, e);
+        }
+    }//GEN-LAST:event_multiItemActionPerformed
 	//=======================================================
 	//=======================================================
 	private void loadDeviceClassFromFile(String filename) {
@@ -1175,12 +1225,14 @@ public class PogoGUI extends JFrame
     private javax.swing.JPanel inherPanel;
     private javax.swing.JMenuItem moveDownItem;
     private javax.swing.JMenuItem moveUpItem;
+    private javax.swing.JMenuItem multiItem;
     private javax.swing.JMenuItem newItem;
     private javax.swing.JMenuItem openItem;
     private javax.swing.JMenuItem preferencesItem;
     private javax.swing.JMenu recentMenu;
     private javax.swing.JMenuItem stateMachineItem;
     private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JMenu toolsMenu;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 	//=======================================================
@@ -1203,6 +1255,20 @@ public class PogoGUI extends JFrame
         {
             this.gui = gui;
         }
+        //=======================================================
+        //=======================================================
+         private String getPanelNameAt(int idx)
+         {
+             ClassPanel  panel = (ClassPanel) tabbedPane.getComponent(idx);
+             return panel.getName();
+         }
+        //=======================================================
+        /*
+        private ClassTree getTreeAt(int idx)
+        {
+            return get(idx).getTree();
+        }
+        */
         //=======================================================
         private ClassTree getSelectedTree()
         {

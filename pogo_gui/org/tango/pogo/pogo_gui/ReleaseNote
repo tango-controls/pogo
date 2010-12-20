@@ -15,14 +15,15 @@
 #
 #-======================================================================
 
+Pogo-7.0.3 - 20/12/2010:
+	Pb with DevVarLongArray and DevVarULongArray fixed.
+	Pb with special characters in comments fixed.
+
+Pogo-7.0.2 - 15/12/2010:
+	Pb on command polled (by default) fixed.
+
+Pogo-7.0.1 - 30/11/2010:
+	State/Status polling forbidden.
+
 Pogo-7.0.0 - 24/09/2010:
 	First release for Tango distribution.
-
-Pogo-7.0.0_rc3 - 03/09/2010:
-	Multi frame implemented.
-
-Pogo-7.0.0_rc2 - 30/08/2010:
-	Little bugs fixed.
-
-Pogo-7.0.0_rc1 - 28/07/2010:
-	First release candidate for Pogo using oAW technology.

@@ -60,8 +60,9 @@ public class  Pogo
 {
 	private static final int		GENE_SRC = 0;
 	private static final int		GENE_DOC = 1;
-	private static final int		HELP     = 2;
-	private static final String[]	known_actions = { "-src", "-doc", "-?" };
+	private static final int		MULTI    = 2;
+	private static final int		HELP     = 3;
+	private static final String[]	known_actions = { "-src", "-doc", "-multi", "-?" };
 
     private DeviceClass     deviceClass = null;
     private DevFailed       devFailed   = null;
@@ -184,9 +185,36 @@ public class  Pogo
 	{
 		try {
 			if (sourcefiles.size()==0)
-				new PogoGUI((String)null);  //.setVisible(true);
+				new PogoGUI(null);
 			else
-				new PogoGUI(sourcefiles.get(0));    //.setVisible(true);
+				new PogoGUI(sourcefiles.get(0));
+		}
+		catch (Exception e) {
+			Utils.getInstance().stopSplashRefresher();
+			ErrorPane.showErrorMessage(new JFrame(), null, e);
+			System.exit(-1);
+		}
+		catch (Error e) {
+			Utils.getInstance().stopSplashRefresher();
+			JOptionPane.showMessageDialog(new JFrame(),
+						e.toString(), "Error Window",
+						JOptionPane.ERROR_MESSAGE);
+			System.exit(-1);
+		}
+	}
+	//===============================================================
+	//===============================================================
+	private void startPogoMulti()
+	{
+		try {
+            if (!Utils.osIsUnix())
+                Except.throw_exception("BAD_OS",
+                        "Running only on Linux",
+                        "Pogo.startPogoMulti()");
+			if (sourcefiles.size()==0)
+				new MultiClassesPanel(new JFrame(), null).setVisible(true);
+			else
+				new MultiClassesPanel(new JFrame(), sourcefiles.get(0)).setVisible(true);
 		}
 		catch (Exception e) {
 			Utils.getInstance().stopSplashRefresher();
@@ -243,6 +271,7 @@ public class  Pogo
 		System.out.println();
 		System.out.println("Actions:");
 		System.out.println("	-src:	will re-generate the device server source files.");
+		System.out.println("	-multi:	will start Pogo for multi class server.");
 		System.out.println("	-doc:	will generate the device server documentation.");
 		System.out.println();
 	}
@@ -264,6 +293,9 @@ public class  Pogo
             case GENE_DOC:
                 pogo.generateDocumentation();
                 System.exit(0);
+                break;
+            case MULTI:
+                pogo.startPogoMulti();
                 break;
             case HELP:
                 Pogo.displaySyntax();

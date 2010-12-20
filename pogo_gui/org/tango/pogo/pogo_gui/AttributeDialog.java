@@ -1238,8 +1238,9 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
 		//	Attribute properties
 		AttrProperties	prop = OAWutils.factory.createAttrProperties();
-		prop.setDescription(
-			Utils.strReplace(attrPropDescription.getText(), "\n", "\\n") );
+		prop.setDescription(attrPropDescription.getText());
+//			Utils.strReplaceSpecialCharToCode(attrPropDescription.getText()));
+//			Utils.strReplace(attrPropDescription.getText(), "\n", "\\n") );
 		prop.setLabel(attrPropLabel.getText().trim());
 		prop.setUnit(attrPropUnit.getText().trim());
 		prop.setStandardUnit(attrPropStdUnit.getText().trim());

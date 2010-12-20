@@ -70,6 +70,8 @@ public class  DeviceClass
     private static final String defaultInheritanceEnd = "Impl";
     private static final String defaultInheritance    =
                             defaultInheritanceStart + defaultInheritanceEnd;
+    //  Used only by MultiClasses
+    private Vector<String>  parentClasses = new Vector<String>();
 	//===============================================================
 	/**
 	 * Create an empty object
@@ -128,7 +130,7 @@ public class  DeviceClass
 	{
 		if (filename.endsWith(".xmi")) {
             //	Load the model
-            pogo_class = OAWutils.getInstance().loadModel(filename);
+            pogo_class = OAWutils.getInstance().loadDeviceClassModel(filename);
 
             EList<Inheritance>  inheritances = pogo_class.getDescription().getInheritances();
             if (inheritances.size()==0)
@@ -560,6 +562,24 @@ public class  DeviceClass
 
 	//===============================================================
 	//===============================================================
+    public void  resetParentClasses()
+    {
+        parentClasses.clear();
+    }
+	//===============================================================
+	//===============================================================
+    public Vector<String>  getParentClasses()
+    {
+        return parentClasses;
+    }
+	//===============================================================
+	//===============================================================
+    public  void addParentClass(String name)
+    {
+        parentClasses.add(name);
+    }
+	//===============================================================
+	//===============================================================
 	public String toString()
 	{
 		if (pogo_class.getName()==null ||
@@ -576,7 +596,7 @@ public class  DeviceClass
 		try
 		{
 			OAWutils	oaw = OAWutils.getInstance();
-			PogoDeviceClass	pogo_class = oaw.loadModel(filename);
+			PogoDeviceClass	pogo_class = oaw.loadDeviceClassModel(filename);
 
 
 			//= new DeviceClass(filename).getPogoDeviceClass();

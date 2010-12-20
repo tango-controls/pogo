@@ -123,6 +123,7 @@ public class ClassDialog extends JDialog
 
 		pack ();
 		ATKGraphicsUtils.centerDialog(this);
+        nameText.requestFocus();
 	}
 	//===================================================================
 	/**
@@ -233,6 +234,11 @@ public class ClassDialog extends JDialog
         nameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextActionPerformed(evt);
+            }
+        });
+        nameText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameTextKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -501,6 +507,14 @@ public class ClassDialog extends JDialog
 		}
 		
     }//GEN-LAST:event_addInheritanceBtnActionPerformed
+    //===================================================================
+    //===================================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void nameTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameTextKeyPressed
+        if (evt.getKeyCode()==27) {  // Escape
+            doClose(JOptionPane.CANCEL_OPTION);
+        }
+    }//GEN-LAST:event_nameTextKeyPressed
 
 	//===================================================================
 	//===================================================================
