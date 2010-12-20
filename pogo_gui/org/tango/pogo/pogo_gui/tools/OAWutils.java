@@ -58,11 +58,9 @@ import org.eclipse.emf.mwe.core.issues.MWEDiagnostic;
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 import fr.esrf.TangoDs.TangoConst;
-import org.eclipse.xpand2.Generator;
 import org.tango.pogo.pogo_gui.DeviceClass;
 import org.tango.pogo.pogo_gui.PropertyDialog;
 
-import javax.swing.*;
 
 public class OAWutils
 {
@@ -84,9 +82,10 @@ public class OAWutils
 	private static final String	backend =
 			"fr/esrf/tango/pogo/backend.mwe";
 
-    //  Do not remove, it seems to more than a simple assign
+    //  Do not remove, it seems to more than a simple assignment
+    @SuppressWarnings({"UnusedDeclaration"})
+    public static PogoDslPackage dp      = PogoDslPackage.eINSTANCE;
 	public static PogoDslFactory factory = PogoDslFactory.eINSTANCE;
-	public static PogoDslPackage dp      = PogoDslPackage.eINSTANCE;
 
 	//========================================================================
 	/**
@@ -96,7 +95,43 @@ public class OAWutils
 	 * @throws DevFailed in case of I/O error or bad xmi file.
 	 */
 	//========================================================================
-    public PogoDeviceClass loadModel(String xmi) throws DevFailed
+    public PogoMultiClasses loadMultiClassesModel(String xmi) throws DevFailed
+	{
+        Object  pogoObj = loadTheModel(xmi);
+        if (! (pogoObj instanceof PogoMultiClasses))
+            Except.throw_exception("BAD_FILE",
+                    "This is not a Pogo Multi Classes file !",
+                    "OAWutils.loadModel()");
+        PogoMultiClasses    pmc = (PogoMultiClasses)pogoObj;
+        reverseClassOrder(pmc);
+        return pmc;
+    }
+	//========================================================================
+	/**
+	 * Read the xmi file and returns the PogoDeviceClass model found.
+	 * @param xmi	xmi file name.
+	 * @return the model loaded form xmi file.
+	 * @throws DevFailed in case of I/O error or bad xmi file.
+	 */
+	//========================================================================
+    public PogoDeviceClass loadDeviceClassModel(String xmi) throws DevFailed
+	{
+        Object  pogoObj = loadTheModel(xmi);
+        if (! (pogoObj instanceof PogoDeviceClass))
+            Except.throw_exception("BAD_FILE",
+                    "This is not a Pogo Device Class file !",
+                    "OAWutils.loadModel()");
+        return (PogoDeviceClass) pogoObj;
+    }
+	//========================================================================
+	/**
+	 * Read the xmi file and returns the PogoDeviceClass model found.
+	 * @param xmi	xmi file name.
+	 * @return the model loaded form xmi file.
+	 * @throws DevFailed in case of I/O error or bad xmi file.
+	 */
+	//========================================================================
+    private Object loadTheModel(String xmi) throws DevFailed
 	{
 		System.out.println("Loading "+xmi);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
@@ -112,7 +147,10 @@ public class OAWutils
 		}
 
 		PogoSystem	sys = (PogoSystem)resource.getContents().get(0);
-		return sys.getClasses().get(0);
+        if (sys.getMultiClasses().size()>0)
+            return sys.getMultiClasses().get(0);    //  A multi classes project
+        else
+            return sys.getClasses().get(0);         //  A single device classes project
 	}
 	//========================================================================
 	/**
@@ -121,17 +159,10 @@ public class OAWutils
 	 * @throws DevFailed in caseof I/O error
 	 */
 	//========================================================================
-	public void generate(PogoDeviceClass pogo_class) throws DevFailed
+	@SuppressWarnings({"unchecked"})
+    public void generate(PogoDeviceClass pogo_class) throws DevFailed
 	{
-		//	pre-process the class for additional info
-		doPreProcessing(pogo_class);
-
-        EList<Inheritance> inher = pogo_class.getDescription().getInheritances();
-        for (Inheritance inheritance : inher)
-           System.out.println(inheritance.getClassname() + " from " + inheritance.getSourcePath());
-		//	Start the XMI generation
-		PogoSystem sys = factory.createPogoSystem();
-		sys.getClasses().add(pogo_class);
+        PogoSystem  sys = buildPogoSystem(pogo_class);
 
 		//	Generate XMI file if requested.
 		if (pogo_class.getDescription().getFilestogenerate().toLowerCase().indexOf("xmi")>=0)
@@ -156,6 +187,44 @@ public class OAWutils
 		Map params = new HashMap();
 		params.put("targetDir",      pogo_class.getDescription().getSourcePath());
 		params.put("targetLanguage", pogo_class.getDescription().getLanguage());
+        params.put("theModel",       sys);
+
+		runWorkflow(params);
+	}
+	//========================================================================
+	/**
+	 * Generate xmi file for PogoDeviceClass object and code associeted.
+	 * @param multiClasses	The multi classes project
+	 * @throws DevFailed in caseof I/O error
+	 */
+	//========================================================================
+	@SuppressWarnings({"unchecked"})
+    public void generate(PogoMultiClasses multiClasses) throws DevFailed
+	{
+        PogoSystem sys = factory.createPogoSystem();
+        reverseClassOrder(multiClasses);
+        sys.getMultiClasses().add(multiClasses);
+
+		//	Generate XMI file if requested.
+        String	xmi_file = multiClasses.getSourcePath()+"/"+multiClasses.getName()+".xmi";
+        ResourceSet resourceSet = new ResourceSetImpl();
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
+        URI fileURI = URI.createFileURI(new File(xmi_file).getAbsolutePath());
+        Resource resource = resourceSet.createResource(fileURI);
+        resource.getContents().add(sys);
+        try {
+            resource.save(Collections.EMPTY_MAP);
+            System.out.println(xmi_file + " generated");
+        }
+        catch (IOException e) {
+            Except.throw_exception("IOException",
+                    e.toString(), "DeviceClass.generate()");
+        }
+
+		//	Start the code generation
+		Map params = new HashMap();
+		params.put("targetDir",      multiClasses.getSourcePath());
+		params.put("targetLanguage", "MultiCpp");
 		params.put("theModel",       sys);
 
 		runWorkflow(params);
@@ -186,7 +255,8 @@ public class OAWutils
 	private void runWorkflow(Map params) throws DevFailed
 	{
 		WorkflowRunner runner  = new WorkflowRunner();
-		final boolean configOK = runner.prepare(backend, null, params);
+		@SuppressWarnings({"unchecked"})
+        final boolean configOK = runner.prepare(backend, null, params);
 		if (configOK)
 		{
 			final Issues issues = new IssuesImpl();
@@ -357,7 +427,8 @@ public class OAWutils
 				return factory.createCharArrayType();
 		if (tangoType.equals("DevVarShortArray"))
 				return factory.createShortArrayType();
-		if (tangoType.equals("DevVarLongArray"))
+		if (tangoType.equals("DevVarLongArray") ||
+            tangoType.equals("DevVarIntArray"))
 				return factory.createIntArrayType();
 		if (tangoType.equals("DevVarFloatArray"))
 				return factory.createFloatArrayType();
@@ -415,8 +486,16 @@ public class OAWutils
 			int		pos =tangoType.indexOf(footer);
 			if (pos>0)
 				tangoType = tangoType.substring(0, pos);
-			if  (tangoType.indexOf("Array")>0)
-				return "DevVar" + tangoType;
+			if  (tangoType.indexOf("Array")>0){
+                //System.out.println(tangoType);
+                if (tangoType.indexOf("UInt")>=0)    //  Int is Long and vice versa
+    				return "DevVarULongArray";
+                else
+                if (tangoType.indexOf("Int")>=0)    //  Int is Long and vice versa
+    				return "DevVarLongArray";
+                else
+	    			return "DevVar" + tangoType;
+            }
 			else
 			{
 				if (tangoType.startsWith("Const"))
@@ -513,6 +592,46 @@ public class OAWutils
 	}
     //========================================================================
     //========================================================================
+    private PogoSystem buildPogoSystem(PogoDeviceClass pogoClass)
+    {
+        PogoSystem sys = factory.createPogoSystem();
+
+        //	pre-process the class for additional info
+        doPreProcessing(pogoClass);
+
+        EList<Inheritance> inher = pogoClass.getDescription().getInheritances();
+        for (Inheritance inheritance : inher)
+           System.out.println(inheritance.getClassname() + " from " + inheritance.getSourcePath());
+
+        sys.getClasses().add(pogoClass);
+        return sys;
+    }
+    //===============================================================
+    /**
+     * The classes must be returned between display and code generation,
+     * because it is displayed low level class at bottom and in class factory,
+     * The low level class must be created in first.
+     * @param pmc The object where tyhe classes must be reversed.
+     */
+    //===============================================================
+    private void reverseClassOrder(PogoMultiClasses pmc)
+    {
+        EList<OneClassSimpleDef>    classes = pmc.getClasses();
+        Vector<OneClassSimpleDef>   v = new Vector<OneClassSimpleDef>();
+        //  copy list to vector in reverse order
+        for (OneClassSimpleDef _class : classes)
+            v.insertElementAt(_class, 0);
+        classes.clear();
+        //  Copy vector to list
+        for (OneClassSimpleDef _class : v)
+            classes.add(_class);
+    }
+    //========================================================================
+    //========================================================================
+
+
+
+
 
 
 
