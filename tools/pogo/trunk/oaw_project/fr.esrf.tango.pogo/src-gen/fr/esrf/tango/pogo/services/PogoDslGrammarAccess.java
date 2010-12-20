@@ -24,12 +24,14 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
 		private final Assignment cClassesAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cClassesPogoDeviceClassParserRuleCall_1_0 = (RuleCall)cClassesAssignment_1.eContents().get(0);
+		private final Assignment cMultiClassesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMultiClassesPogoMultiClassesParserRuleCall_2_0 = (RuleCall)cMultiClassesAssignment_2.eContents().get(0);
 		
 		//PogoSystem:
-		//  imports+=Import* classes+=PogoDeviceClass*;
+		//  imports+=Import* classes+=PogoDeviceClass* multiClasses+=PogoMultiClasses*;
 		public ParserRule getRule() { return rule; }
 
-		//imports+=Import* classes+=PogoDeviceClass*
+		//imports+=Import* classes+=PogoDeviceClass* multiClasses+=PogoMultiClasses*
 		public Group getGroup() { return cGroup; }
 
 		//imports+=Import*
@@ -43,6 +45,12 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 		//PogoDeviceClass
 		public RuleCall getClassesPogoDeviceClassParserRuleCall_1_0() { return cClassesPogoDeviceClassParserRuleCall_1_0; }
+
+		//multiClasses+=PogoMultiClasses*
+		public Assignment getMultiClassesAssignment_2() { return cMultiClassesAssignment_2; }
+
+		//PogoMultiClasses
+		public RuleCall getMultiClassesPogoMultiClassesParserRuleCall_2_0() { return cMultiClassesPogoMultiClassesParserRuleCall_2_0; }
 	}
 
 	public class ImportElements implements IParserRuleAccess {
@@ -57,9 +65,9 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//
 		//
 		//	  
-		////
-		////	Class definition
-		////
+		////==============================================
+		////	Multi Classes definition
+		////==============================================
 		public ParserRule getRule() { return rule; }
 
 		//"import" importURI=STRING
@@ -73,6 +81,213 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 		//STRING
 		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
+	}
+
+	public class PogoMultiClassesElements implements IParserRuleAccess {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PogoMultiClasses");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMulticlassesKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSourcePathAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSourcePathSTRINGTerminalRuleCall_3_0 = (RuleCall)cSourcePathAssignment_3.eContents().get(0);
+		private final Assignment cDescriptionAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDescriptionSTRINGTerminalRuleCall_4_0 = (RuleCall)cDescriptionAssignment_4.eContents().get(0);
+		private final Assignment cTitleAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTitleSTRINGTerminalRuleCall_5_0 = (RuleCall)cTitleAssignment_5.eContents().get(0);
+		private final Keyword cClassesKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cClassesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cClassesOneClassSimpleDefParserRuleCall_7_0 = (RuleCall)cClassesAssignment_7.eContents().get(0);
+		private final Assignment cFilestogenerateAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cFilestogenerateSTRINGTerminalRuleCall_8_0 = (RuleCall)cFilestogenerateAssignment_8.eContents().get(0);
+		private final Assignment cPreferencesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_9_0 = (RuleCall)cPreferencesAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//PogoMultiClasses:
+		//  "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING
+		//  "classes:" classes+=OneClassSimpleDef filestogenerate=STRING preferences=
+		//  Preferences "}"; 
+		////==============================================
+		////	Multi Classes definition
+		////==============================================
+		//
+		//	  
+		//	
+		//		     
+		//		    
+		//		          
+		//		
+		//	    	
+		//	
+		//		    			 //	File(s) to generate (code, makefile,....)
+		//		         		 //	Preferences (for programer, for site or at run time)
+		//	 
+		//
+		//
+		////
+		////	One class simple definition
+		////
+		public ParserRule getRule() { return rule; }
+
+		//"multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING
+		//"classes:" classes+=OneClassSimpleDef filestogenerate=STRING preferences=
+		//Preferences "}" 
+		//	  
+		//	
+		//		     
+		//		    
+		//		          
+		//		
+		//	    	
+		//	
+		//		    			 //	File(s) to generate (code, makefile,....)
+		//		         		 //	Preferences (for programer, for site or at run time)
+		public Group getGroup() { return cGroup; }
+
+		//"multiclasses"
+		public Keyword getMulticlassesKeyword_0() { return cMulticlassesKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//sourcePath=STRING
+		public Assignment getSourcePathAssignment_3() { return cSourcePathAssignment_3; }
+
+		//STRING
+		public RuleCall getSourcePathSTRINGTerminalRuleCall_3_0() { return cSourcePathSTRINGTerminalRuleCall_3_0; }
+
+		//description=STRING
+		public Assignment getDescriptionAssignment_4() { return cDescriptionAssignment_4; }
+
+		//STRING
+		public RuleCall getDescriptionSTRINGTerminalRuleCall_4_0() { return cDescriptionSTRINGTerminalRuleCall_4_0; }
+
+		//title=STRING
+		public Assignment getTitleAssignment_5() { return cTitleAssignment_5; }
+
+		//STRING
+		public RuleCall getTitleSTRINGTerminalRuleCall_5_0() { return cTitleSTRINGTerminalRuleCall_5_0; }
+
+		//"classes:"
+		public Keyword getClassesKeyword_6() { return cClassesKeyword_6; }
+
+		//classes+=OneClassSimpleDef
+		public Assignment getClassesAssignment_7() { return cClassesAssignment_7; }
+
+		//OneClassSimpleDef
+		public RuleCall getClassesOneClassSimpleDefParserRuleCall_7_0() { return cClassesOneClassSimpleDefParserRuleCall_7_0; }
+
+		//filestogenerate=STRING 
+		//	
+		//		    			 //	File(s) to generate (code, makefile,....)
+		public Assignment getFilestogenerateAssignment_8() { return cFilestogenerateAssignment_8; }
+
+		//STRING   			 //	File(s) to generate (code, makefile,....)
+		public RuleCall getFilestogenerateSTRINGTerminalRuleCall_8_0() { return cFilestogenerateSTRINGTerminalRuleCall_8_0; }
+
+		//preferences=Preferences 			 //	File(s) to generate (code, makefile,....)
+		//		         		 //	Preferences (for programer, for site or at run time)
+		public Assignment getPreferencesAssignment_9() { return cPreferencesAssignment_9; }
+
+		//Preferences   		 //	Preferences (for programer, for site or at run time)
+		public RuleCall getPreferencesPreferencesParserRuleCall_9_0() { return cPreferencesPreferencesParserRuleCall_9_0; }
+
+		//"}" 		 //	Preferences (for programer, for site or at run time)
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+
+	public class OneClassSimpleDefElements implements IParserRuleAccess {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OneClassSimpleDef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cClassnameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cClassnameSTRINGTerminalRuleCall_0_0 = (RuleCall)cClassnameAssignment_0.eContents().get(0);
+		private final Assignment cSourcePathAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cSourcePathSTRINGTerminalRuleCall_1_0 = (RuleCall)cSourcePathAssignment_1.eContents().get(0);
+		private final Assignment cPogo6Assignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPogo6BooleanParserRuleCall_2_0 = (RuleCall)cPogo6Assignment_2.eContents().get(0);
+		private final Keyword cInheritancesKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cInheritancesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cInheritancesInheritanceParserRuleCall_4_0 = (RuleCall)cInheritancesAssignment_4.eContents().get(0);
+		private final Keyword cParentClassesKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cParentClassesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cParentClassesSTRINGTerminalRuleCall_6_0 = (RuleCall)cParentClassesAssignment_6.eContents().get(0);
+		
+		//OneClassSimpleDef:
+		//  classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=
+		//  Inheritance "parentClasses:" parentClasses+=STRING; 
+		//
+		////
+		////	One class simple definition
+		////
+		//
+		//	     
+		//	    
+		//	         
+		//	
+		//	   				 //	inheritance class definitions
+		//	 
+		//			 //	Used only by graphical display
+		//
+		//
+		////==============================================
+		////	Class definition
+		////==============================================
+		public ParserRule getRule() { return rule; }
+
+		//classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=
+		//Inheritance "parentClasses:" parentClasses+=STRING 
+		//	     
+		//	    
+		//	         
+		//	
+		//	   				 //	inheritance class definitions
+		//	 
+		//			 //	Used only by graphical display
+		public Group getGroup() { return cGroup; }
+
+		//classname=STRING
+		public Assignment getClassnameAssignment_0() { return cClassnameAssignment_0; }
+
+		//STRING
+		public RuleCall getClassnameSTRINGTerminalRuleCall_0_0() { return cClassnameSTRINGTerminalRuleCall_0_0; }
+
+		//sourcePath=STRING
+		public Assignment getSourcePathAssignment_1() { return cSourcePathAssignment_1; }
+
+		//STRING
+		public RuleCall getSourcePathSTRINGTerminalRuleCall_1_0() { return cSourcePathSTRINGTerminalRuleCall_1_0; }
+
+		//pogo6=Boolean
+		public Assignment getPogo6Assignment_2() { return cPogo6Assignment_2; }
+
+		//Boolean
+		public RuleCall getPogo6BooleanParserRuleCall_2_0() { return cPogo6BooleanParserRuleCall_2_0; }
+
+		//"inheritances:"
+		public Keyword getInheritancesKeyword_3() { return cInheritancesKeyword_3; }
+
+		//inheritances+=Inheritance
+		public Assignment getInheritancesAssignment_4() { return cInheritancesAssignment_4; }
+
+		//Inheritance
+		public RuleCall getInheritancesInheritanceParserRuleCall_4_0() { return cInheritancesInheritanceParserRuleCall_4_0; }
+
+		//"parentClasses:" 			 //	inheritance class definitions
+		public Keyword getParentClassesKeyword_5() { return cParentClassesKeyword_5; }
+
+		//parentClasses+=STRING
+		public Assignment getParentClassesAssignment_6() { return cParentClassesAssignment_6; }
+
+		//STRING
+		public RuleCall getParentClassesSTRINGTerminalRuleCall_6_0() { return cParentClassesSTRINGTerminalRuleCall_6_0; }
 	}
 
 	public class PogoDeviceClassElements implements IParserRuleAccess {
@@ -119,9 +334,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//  classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
 		//  "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
 		//  +=State* preferences=Preferences "}"; 
-		////
+		//
+		////==============================================
 		////	Class definition
-		////
+		////==============================================
 		//
 		//	        
 		//	
@@ -599,6 +815,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//	     
 		//	    
 		//
+		//
 		////
 		////	Class identification
 		////
@@ -645,6 +862,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//ClassIdentification:
 		//  contact=STRING author=STRING emailDomain=STRING classFamily=STRING siteSpecific=
 		//  STRING platform=STRING bus=STRING manufacturer=STRING reference=STRING; 
+		//
 		//
 		////
 		////	Class identification
@@ -806,7 +1024,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//	           
 		//	      
 		//	       
-		//	       
+		//	       	 //	Used by web automat
 		//
 		////
 		////	State Definition
@@ -852,7 +1070,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cStatusInheritanceStatusParserRuleCall_2_0 = (RuleCall)cStatusAssignment_2.eContents().get(0);
 		
 		//State:
-		//  name=ID description=STRING status=InheritanceStatus; 
+		//  name=ID description=STRING status=InheritanceStatus; 	 //	Used by web automat
 		//
 		////
 		////	State Definition
@@ -2505,6 +2723,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	
 	private PogoSystemElements pPogoSystem;
 	private ImportElements pImport;
+	private PogoMultiClassesElements pPogoMultiClasses;
+	private OneClassSimpleDefElements pOneClassSimpleDef;
 	private PogoDeviceClassElements pPogoDeviceClass;
 	private LanguageElements pLanguage;
 	private DisplayLevelElements pDisplayLevel;
@@ -2585,7 +2805,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 	
 	//PogoSystem:
-	//  imports+=Import* classes+=PogoDeviceClass*;
+	//  imports+=Import* classes+=PogoDeviceClass* multiClasses+=PogoMultiClasses*;
 	public PogoSystemElements getPogoSystemAccess() {
 		return (pPogoSystem != null) ? pPogoSystem : (pPogoSystem = new PogoSystemElements());
 	}
@@ -2599,9 +2819,9 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//
 	//
 	//	  
-	////
-	////	Class definition
-	////
+	////==============================================
+	////	Multi Classes definition
+	////==============================================
 	public ImportElements getImportAccess() {
 		return (pImport != null) ? pImport : (pImport = new ImportElements());
 	}
@@ -2610,15 +2830,76 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		return getImportAccess().getRule();
 	}
 
+	//PogoMultiClasses:
+	//  "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING
+	//  "classes:" classes+=OneClassSimpleDef filestogenerate=STRING preferences=
+	//  Preferences "}"; 
+	////==============================================
+	////	Multi Classes definition
+	////==============================================
+	//
+	//	  
+	//	
+	//		     
+	//		    
+	//		          
+	//		
+	//	    	
+	//	
+	//		    			 //	File(s) to generate (code, makefile,....)
+	//		         		 //	Preferences (for programer, for site or at run time)
+	//	 
+	//
+	//
+	////
+	////	One class simple definition
+	////
+	public PogoMultiClassesElements getPogoMultiClassesAccess() {
+		return (pPogoMultiClasses != null) ? pPogoMultiClasses : (pPogoMultiClasses = new PogoMultiClassesElements());
+	}
+	
+	public ParserRule getPogoMultiClassesRule() {
+		return getPogoMultiClassesAccess().getRule();
+	}
+
+	//OneClassSimpleDef:
+	//  classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=
+	//  Inheritance "parentClasses:" parentClasses+=STRING; 
+	//
+	////
+	////	One class simple definition
+	////
+	//
+	//	     
+	//	    
+	//	         
+	//	
+	//	   				 //	inheritance class definitions
+	//	 
+	//			 //	Used only by graphical display
+	//
+	//
+	////==============================================
+	////	Class definition
+	////==============================================
+	public OneClassSimpleDefElements getOneClassSimpleDefAccess() {
+		return (pOneClassSimpleDef != null) ? pOneClassSimpleDef : (pOneClassSimpleDef = new OneClassSimpleDefElements());
+	}
+	
+	public ParserRule getOneClassSimpleDefRule() {
+		return getOneClassSimpleDefAccess().getRule();
+	}
+
 	//PogoDeviceClass:
 	//  "deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass]
 	//  )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 	//  classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
 	//  "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
 	//  +=State* preferences=Preferences "}"; 
-	////
+	//
+	////==============================================
 	////	Class definition
-	////
+	////==============================================
 	//
 	//	        
 	//	
@@ -2761,6 +3042,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//	     
 	//	    
 	//
+	//
 	////
 	////	Class identification
 	////
@@ -2775,6 +3057,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//ClassIdentification:
 	//  contact=STRING author=STRING emailDomain=STRING classFamily=STRING siteSpecific=
 	//  STRING platform=STRING bus=STRING manufacturer=STRING reference=STRING; 
+	//
 	//
 	////
 	////	Class identification
@@ -2833,7 +3116,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//	           
 	//	      
 	//	       
-	//	       
+	//	       	 //	Used by web automat
 	//
 	////
 	////	State Definition
@@ -2847,7 +3130,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	}
 
 	//State:
-	//  name=ID description=STRING status=InheritanceStatus; 
+	//  name=ID description=STRING status=InheritanceStatus; 	 //	Used by web automat
 	//
 	////
 	////	State Definition

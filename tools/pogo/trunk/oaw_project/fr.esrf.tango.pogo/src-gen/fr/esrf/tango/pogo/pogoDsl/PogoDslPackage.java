@@ -88,13 +88,22 @@ public interface PogoDslPackage extends EPackage
   int POGO_SYSTEM__CLASSES = 1;
 
   /**
+   * The feature id for the '<em><b>Multi Classes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_SYSTEM__MULTI_CLASSES = 2;
+
+  /**
    * The number of structural features of the '<em>Pogo System</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_SYSTEM_FEATURE_COUNT = 2;
+  int POGO_SYSTEM_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ImportImpl <em>Import</em>}' class.
@@ -125,6 +134,152 @@ public interface PogoDslPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl <em>Pogo Multi Classes</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPogoMultiClasses()
+   * @generated
+   */
+  int POGO_MULTI_CLASSES = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Source Path</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__SOURCE_PATH = 1;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__DESCRIPTION = 2;
+
+  /**
+   * The feature id for the '<em><b>Title</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__TITLE = 3;
+
+  /**
+   * The feature id for the '<em><b>Classes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__CLASSES = 4;
+
+  /**
+   * The feature id for the '<em><b>Filestogenerate</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__FILESTOGENERATE = 5;
+
+  /**
+   * The feature id for the '<em><b>Preferences</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__PREFERENCES = 6;
+
+  /**
+   * The number of structural features of the '<em>Pogo Multi Classes</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES_FEATURE_COUNT = 7;
+
+  /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl <em>One Class Simple Def</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getOneClassSimpleDef()
+   * @generated
+   */
+  int ONE_CLASS_SIMPLE_DEF = 3;
+
+  /**
+   * The feature id for the '<em><b>Classname</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__CLASSNAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Source Path</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__SOURCE_PATH = 1;
+
+  /**
+   * The feature id for the '<em><b>Pogo6</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__POGO6 = 2;
+
+  /**
+   * The feature id for the '<em><b>Inheritances</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__INHERITANCES = 3;
+
+  /**
+   * The feature id for the '<em><b>Parent Classes</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES = 4;
+
+  /**
+   * The number of structural features of the '<em>One Class Simple Def</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF_FEATURE_COUNT = 5;
+
+  /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl <em>Pogo Device Class</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,7 +287,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPogoDeviceClass()
    * @generated
    */
-  int POGO_DEVICE_CLASS = 2;
+  int POGO_DEVICE_CLASS = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -250,7 +405,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getClassDescription()
    * @generated
    */
-  int CLASS_DESCRIPTION = 3;
+  int CLASS_DESCRIPTION = 5;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -368,7 +523,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getInheritance()
    * @generated
    */
-  int INHERITANCE = 4;
+  int INHERITANCE = 6;
 
   /**
    * The feature id for the '<em><b>Classname</b></em>' attribute.
@@ -405,7 +560,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getClassIdentification()
    * @generated
    */
-  int CLASS_IDENTIFICATION = 5;
+  int CLASS_IDENTIFICATION = 7;
 
   /**
    * The feature id for the '<em><b>Contact</b></em>' attribute.
@@ -505,7 +660,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getComments()
    * @generated
    */
-  int COMMENTS = 6;
+  int COMMENTS = 8;
 
   /**
    * The feature id for the '<em><b>Html Inheritance</b></em>' attribute.
@@ -542,7 +697,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPreferences()
    * @generated
    */
-  int PREFERENCES = 7;
+  int PREFERENCES = 9;
 
   /**
    * The feature id for the '<em><b>Doc Home</b></em>' attribute.
@@ -597,7 +752,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getState()
    * @generated
    */
-  int STATE = 8;
+  int STATE = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -643,7 +798,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 9;
+  int PROPERTY = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -707,7 +862,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPropType()
    * @generated
    */
-  int PROP_TYPE = 10;
+  int PROP_TYPE = 12;
 
   /**
    * The number of structural features of the '<em>Prop Type</em>' class.
@@ -726,7 +881,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getSimpleType()
    * @generated
    */
-  int SIMPLE_TYPE = 11;
+  int SIMPLE_TYPE = 13;
 
   /**
    * The number of structural features of the '<em>Simple Type</em>' class.
@@ -745,7 +900,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getVectorType()
    * @generated
    */
-  int VECTOR_TYPE = 12;
+  int VECTOR_TYPE = 14;
 
   /**
    * The number of structural features of the '<em>Vector Type</em>' class.
@@ -764,7 +919,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getInheritanceStatus()
    * @generated
    */
-  int INHERITANCE_STATUS = 13;
+  int INHERITANCE_STATUS = 15;
 
   /**
    * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -828,7 +983,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 14;
+  int COMMAND = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -928,7 +1083,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getArgument()
    * @generated
    */
-  int ARGUMENT = 15;
+  int ARGUMENT = 17;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -965,7 +1120,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 16;
+  int ATTRIBUTE = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1146,7 +1301,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFireEvents()
    * @generated
    */
-  int FIRE_EVENTS = 17;
+  int FIRE_EVENTS = 19;
 
   /**
    * The feature id for the '<em><b>Fire</b></em>' attribute.
@@ -1183,7 +1338,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getAttrProperties()
    * @generated
    */
-  int ATTR_PROPERTIES = 18;
+  int ATTR_PROPERTIES = 20;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1328,7 +1483,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getType()
    * @generated
    */
-  int TYPE = 19;
+  int TYPE = 21;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -1347,7 +1502,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getVoidType()
    * @generated
    */
-  int VOID_TYPE = 20;
+  int VOID_TYPE = 22;
 
   /**
    * The number of structural features of the '<em>Void Type</em>' class.
@@ -1366,7 +1521,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 21;
+  int BOOLEAN_TYPE = 23;
 
   /**
    * The number of structural features of the '<em>Boolean Type</em>' class.
@@ -1385,7 +1540,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortType()
    * @generated
    */
-  int SHORT_TYPE = 22;
+  int SHORT_TYPE = 24;
 
   /**
    * The number of structural features of the '<em>Short Type</em>' class.
@@ -1404,7 +1559,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUShortType()
    * @generated
    */
-  int USHORT_TYPE = 23;
+  int USHORT_TYPE = 25;
 
   /**
    * The number of structural features of the '<em>UShort Type</em>' class.
@@ -1423,7 +1578,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntType()
    * @generated
    */
-  int INT_TYPE = 24;
+  int INT_TYPE = 26;
 
   /**
    * The number of structural features of the '<em>Int Type</em>' class.
@@ -1442,7 +1597,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUIntType()
    * @generated
    */
-  int UINT_TYPE = 25;
+  int UINT_TYPE = 27;
 
   /**
    * The number of structural features of the '<em>UInt Type</em>' class.
@@ -1461,7 +1616,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatType()
    * @generated
    */
-  int FLOAT_TYPE = 26;
+  int FLOAT_TYPE = 28;
 
   /**
    * The number of structural features of the '<em>Float Type</em>' class.
@@ -1480,7 +1635,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 27;
+  int DOUBLE_TYPE = 29;
 
   /**
    * The number of structural features of the '<em>Double Type</em>' class.
@@ -1499,7 +1654,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 28;
+  int STRING_TYPE = 30;
 
   /**
    * The number of structural features of the '<em>String Type</em>' class.
@@ -1518,7 +1673,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getCharArrayType()
    * @generated
    */
-  int CHAR_ARRAY_TYPE = 29;
+  int CHAR_ARRAY_TYPE = 31;
 
   /**
    * The number of structural features of the '<em>Char Array Type</em>' class.
@@ -1537,7 +1692,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortArrayType()
    * @generated
    */
-  int SHORT_ARRAY_TYPE = 30;
+  int SHORT_ARRAY_TYPE = 32;
 
   /**
    * The number of structural features of the '<em>Short Array Type</em>' class.
@@ -1556,7 +1711,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUShortArrayType()
    * @generated
    */
-  int USHORT_ARRAY_TYPE = 31;
+  int USHORT_ARRAY_TYPE = 33;
 
   /**
    * The number of structural features of the '<em>UShort Array Type</em>' class.
@@ -1575,7 +1730,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntArrayType()
    * @generated
    */
-  int INT_ARRAY_TYPE = 32;
+  int INT_ARRAY_TYPE = 34;
 
   /**
    * The number of structural features of the '<em>Int Array Type</em>' class.
@@ -1594,7 +1749,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUIntArrayType()
    * @generated
    */
-  int UINT_ARRAY_TYPE = 33;
+  int UINT_ARRAY_TYPE = 35;
 
   /**
    * The number of structural features of the '<em>UInt Array Type</em>' class.
@@ -1613,7 +1768,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatArrayType()
    * @generated
    */
-  int FLOAT_ARRAY_TYPE = 34;
+  int FLOAT_ARRAY_TYPE = 36;
 
   /**
    * The number of structural features of the '<em>Float Array Type</em>' class.
@@ -1632,7 +1787,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleArrayType()
    * @generated
    */
-  int DOUBLE_ARRAY_TYPE = 35;
+  int DOUBLE_ARRAY_TYPE = 37;
 
   /**
    * The number of structural features of the '<em>Double Array Type</em>' class.
@@ -1651,7 +1806,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringArrayType()
    * @generated
    */
-  int STRING_ARRAY_TYPE = 36;
+  int STRING_ARRAY_TYPE = 38;
 
   /**
    * The number of structural features of the '<em>String Array Type</em>' class.
@@ -1670,7 +1825,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongStringArrayType()
    * @generated
    */
-  int LONG_STRING_ARRAY_TYPE = 37;
+  int LONG_STRING_ARRAY_TYPE = 39;
 
   /**
    * The number of structural features of the '<em>Long String Array Type</em>' class.
@@ -1689,7 +1844,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleStringArrayType()
    * @generated
    */
-  int DOUBLE_STRING_ARRAY_TYPE = 38;
+  int DOUBLE_STRING_ARRAY_TYPE = 40;
 
   /**
    * The number of structural features of the '<em>Double String Array Type</em>' class.
@@ -1708,7 +1863,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStateType()
    * @generated
    */
-  int STATE_TYPE = 39;
+  int STATE_TYPE = 41;
 
   /**
    * The number of structural features of the '<em>State Type</em>' class.
@@ -1727,7 +1882,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getConstStringType()
    * @generated
    */
-  int CONST_STRING_TYPE = 40;
+  int CONST_STRING_TYPE = 42;
 
   /**
    * The number of structural features of the '<em>Const String Type</em>' class.
@@ -1746,7 +1901,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getBooleanArrayType()
    * @generated
    */
-  int BOOLEAN_ARRAY_TYPE = 41;
+  int BOOLEAN_ARRAY_TYPE = 43;
 
   /**
    * The number of structural features of the '<em>Boolean Array Type</em>' class.
@@ -1765,7 +1920,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getUCharType()
    * @generated
    */
-  int UCHAR_TYPE = 42;
+  int UCHAR_TYPE = 44;
 
   /**
    * The number of structural features of the '<em>UChar Type</em>' class.
@@ -1784,7 +1939,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongType()
    * @generated
    */
-  int LONG_TYPE = 43;
+  int LONG_TYPE = 45;
 
   /**
    * The number of structural features of the '<em>Long Type</em>' class.
@@ -1803,7 +1958,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongType()
    * @generated
    */
-  int ULONG_TYPE = 44;
+  int ULONG_TYPE = 46;
 
   /**
    * The number of structural features of the '<em>ULong Type</em>' class.
@@ -1822,7 +1977,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongArrayType()
    * @generated
    */
-  int LONG_ARRAY_TYPE = 45;
+  int LONG_ARRAY_TYPE = 47;
 
   /**
    * The number of structural features of the '<em>Long Array Type</em>' class.
@@ -1841,7 +1996,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongArrayType()
    * @generated
    */
-  int ULONG_ARRAY_TYPE = 46;
+  int ULONG_ARRAY_TYPE = 48;
 
   /**
    * The number of structural features of the '<em>ULong Array Type</em>' class.
@@ -1860,7 +2015,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDevIntType()
    * @generated
    */
-  int DEV_INT_TYPE = 47;
+  int DEV_INT_TYPE = 49;
 
   /**
    * The number of structural features of the '<em>Dev Int Type</em>' class.
@@ -1879,7 +2034,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getEncodedType()
    * @generated
    */
-  int ENCODED_TYPE = 48;
+  int ENCODED_TYPE = 50;
 
   /**
    * The number of structural features of the '<em>Encoded Type</em>' class.
@@ -1898,7 +2053,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortVectorType()
    * @generated
    */
-  int SHORT_VECTOR_TYPE = 49;
+  int SHORT_VECTOR_TYPE = 51;
 
   /**
    * The number of structural features of the '<em>Short Vector Type</em>' class.
@@ -1917,7 +2072,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntVectorType()
    * @generated
    */
-  int INT_VECTOR_TYPE = 50;
+  int INT_VECTOR_TYPE = 52;
 
   /**
    * The number of structural features of the '<em>Int Vector Type</em>' class.
@@ -1936,7 +2091,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatVectorType()
    * @generated
    */
-  int FLOAT_VECTOR_TYPE = 51;
+  int FLOAT_VECTOR_TYPE = 53;
 
   /**
    * The number of structural features of the '<em>Float Vector Type</em>' class.
@@ -1955,7 +2110,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleVectorType()
    * @generated
    */
-  int DOUBLE_VECTOR_TYPE = 52;
+  int DOUBLE_VECTOR_TYPE = 54;
 
   /**
    * The number of structural features of the '<em>Double Vector Type</em>' class.
@@ -1974,7 +2129,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringVectorType()
    * @generated
    */
-  int STRING_VECTOR_TYPE = 53;
+  int STRING_VECTOR_TYPE = 55;
 
   /**
    * The number of structural features of the '<em>String Vector Type</em>' class.
@@ -2019,6 +2174,17 @@ public interface PogoDslPackage extends EPackage
   EReference getPogoSystem_Classes();
 
   /**
+   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoSystem#getMultiClasses <em>Multi Classes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Multi Classes</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoSystem#getMultiClasses()
+   * @see #getPogoSystem()
+   * @generated
+   */
+  EReference getPogoSystem_MultiClasses();
+
+  /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2038,6 +2204,158 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getImport_ImportURI();
+
+  /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses <em>Pogo Multi Classes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Pogo Multi Classes</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
+   * @generated
+   */
+  EClass getPogoMultiClasses();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getName()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EAttribute getPogoMultiClasses_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getSourcePath <em>Source Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Source Path</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getSourcePath()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EAttribute getPogoMultiClasses_SourcePath();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getDescription()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EAttribute getPogoMultiClasses_Description();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getTitle <em>Title</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Title</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getTitle()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EAttribute getPogoMultiClasses_Title();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getClasses <em>Classes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Classes</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getClasses()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EReference getPogoMultiClasses_Classes();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getFilestogenerate <em>Filestogenerate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Filestogenerate</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getFilestogenerate()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EAttribute getPogoMultiClasses_Filestogenerate();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getPreferences <em>Preferences</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Preferences</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getPreferences()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EReference getPogoMultiClasses_Preferences();
+
+  /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef <em>One Class Simple Def</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>One Class Simple Def</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef
+   * @generated
+   */
+  EClass getOneClassSimpleDef();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getClassname <em>Classname</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Classname</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getClassname()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EAttribute getOneClassSimpleDef_Classname();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getSourcePath <em>Source Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Source Path</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getSourcePath()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EAttribute getOneClassSimpleDef_SourcePath();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogo6 <em>Pogo6</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Pogo6</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogo6()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EAttribute getOneClassSimpleDef_Pogo6();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getInheritances <em>Inheritances</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Inheritances</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getInheritances()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EReference getOneClassSimpleDef_Inheritances();
+
+  /**
+   * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getParentClasses <em>Parent Classes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Parent Classes</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getParentClasses()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EAttribute getOneClassSimpleDef_ParentClasses();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass <em>Pogo Device Class</em>}'.
@@ -3676,6 +3994,14 @@ public interface PogoDslPackage extends EPackage
     EReference POGO_SYSTEM__CLASSES = eINSTANCE.getPogoSystem_Classes();
 
     /**
+     * The meta object literal for the '<em><b>Multi Classes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POGO_SYSTEM__MULTI_CLASSES = eINSTANCE.getPogoSystem_MultiClasses();
+
+    /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ImportImpl <em>Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3692,6 +4018,122 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute IMPORT__IMPORT_URI = eINSTANCE.getImport_ImportURI();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl <em>Pogo Multi Classes</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getPogoMultiClasses()
+     * @generated
+     */
+    EClass POGO_MULTI_CLASSES = eINSTANCE.getPogoMultiClasses();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_MULTI_CLASSES__NAME = eINSTANCE.getPogoMultiClasses_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Source Path</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_MULTI_CLASSES__SOURCE_PATH = eINSTANCE.getPogoMultiClasses_SourcePath();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_MULTI_CLASSES__DESCRIPTION = eINSTANCE.getPogoMultiClasses_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_MULTI_CLASSES__TITLE = eINSTANCE.getPogoMultiClasses_Title();
+
+    /**
+     * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POGO_MULTI_CLASSES__CLASSES = eINSTANCE.getPogoMultiClasses_Classes();
+
+    /**
+     * The meta object literal for the '<em><b>Filestogenerate</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_MULTI_CLASSES__FILESTOGENERATE = eINSTANCE.getPogoMultiClasses_Filestogenerate();
+
+    /**
+     * The meta object literal for the '<em><b>Preferences</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POGO_MULTI_CLASSES__PREFERENCES = eINSTANCE.getPogoMultiClasses_Preferences();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl <em>One Class Simple Def</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getOneClassSimpleDef()
+     * @generated
+     */
+    EClass ONE_CLASS_SIMPLE_DEF = eINSTANCE.getOneClassSimpleDef();
+
+    /**
+     * The meta object literal for the '<em><b>Classname</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_CLASS_SIMPLE_DEF__CLASSNAME = eINSTANCE.getOneClassSimpleDef_Classname();
+
+    /**
+     * The meta object literal for the '<em><b>Source Path</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_CLASS_SIMPLE_DEF__SOURCE_PATH = eINSTANCE.getOneClassSimpleDef_SourcePath();
+
+    /**
+     * The meta object literal for the '<em><b>Pogo6</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_CLASS_SIMPLE_DEF__POGO6 = eINSTANCE.getOneClassSimpleDef_Pogo6();
+
+    /**
+     * The meta object literal for the '<em><b>Inheritances</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_CLASS_SIMPLE_DEF__INHERITANCES = eINSTANCE.getOneClassSimpleDef_Inheritances();
+
+    /**
+     * The meta object literal for the '<em><b>Parent Classes</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES = eINSTANCE.getOneClassSimpleDef_ParentClasses();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl <em>Pogo Device Class</em>}' class.

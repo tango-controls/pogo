@@ -11,9 +11,26 @@
     <genClasses ecoreClass="PogoDsl.ecore#//PogoSystem">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoSystem/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoSystem/classes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoSystem/multiClasses"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Import/importURI"/>
+    </genClasses>
+    <genClasses ecoreClass="PogoDsl.ecore#//PogoMultiClasses">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/sourcePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoMultiClasses/classes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/filestogenerate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoMultiClasses/preferences"/>
+    </genClasses>
+    <genClasses ecoreClass="PogoDsl.ecore#//OneClassSimpleDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/classname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/sourcePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/pogo6"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//OneClassSimpleDef/inheritances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/parentClasses"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//PogoDeviceClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoDeviceClass/name"/>

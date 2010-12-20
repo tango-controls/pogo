@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoSystem#getImports <em>Imports</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoSystem#getClasses <em>Classes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoSystem#getMultiClasses <em>Multi Classes</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,5 +60,21 @@ public interface PogoSystem extends EObject
    * @generated
    */
   EList<PogoDeviceClass> getClasses();
+
+  /**
+   * Returns the value of the '<em><b>Multi Classes</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Multi Classes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Multi Classes</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoSystem_MultiClasses()
+   * @model containment="true"
+   * @generated
+   */
+  EList<PogoMultiClasses> getMultiClasses();
 
 } // PogoSystem

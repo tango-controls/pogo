@@ -44,6 +44,24 @@ public interface PogoDslFactory extends EFactory
   Import createImport();
 
   /**
+   * Returns a new object of class '<em>Pogo Multi Classes</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pogo Multi Classes</em>'.
+   * @generated
+   */
+  PogoMultiClasses createPogoMultiClasses();
+
+  /**
+   * Returns a new object of class '<em>One Class Simple Def</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>One Class Simple Def</em>'.
+   * @generated
+   */
+  OneClassSimpleDef createOneClassSimpleDef();
+
+  /**
    * Returns a new object of class '<em>Pogo Device Class</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

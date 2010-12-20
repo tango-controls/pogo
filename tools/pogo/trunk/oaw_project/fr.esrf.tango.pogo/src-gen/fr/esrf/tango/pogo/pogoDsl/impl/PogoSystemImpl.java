@@ -8,6 +8,7 @@ package fr.esrf.tango.pogo.pogoDsl.impl;
 import fr.esrf.tango.pogo.pogoDsl.Import;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
+import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tango.pogo.pogoDsl.PogoSystem;
 
 import java.util.Collection;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoSystemImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoSystemImpl#getClasses <em>Classes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoSystemImpl#getMultiClasses <em>Multi Classes</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,6 +61,16 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
    * @ordered
    */
   protected EList<PogoDeviceClass> classes;
+
+  /**
+   * The cached value of the '{@link #getMultiClasses() <em>Multi Classes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMultiClasses()
+   * @generated
+   * @ordered
+   */
+  protected EList<PogoMultiClasses> multiClasses;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,6 +126,20 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<PogoMultiClasses> getMultiClasses()
+  {
+    if (multiClasses == null)
+    {
+      multiClasses = new EObjectContainmentEList<PogoMultiClasses>(PogoMultiClasses.class, this, PogoDslPackage.POGO_SYSTEM__MULTI_CLASSES);
+    }
+    return multiClasses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -123,6 +149,8 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_SYSTEM__CLASSES:
         return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
+      case PogoDslPackage.POGO_SYSTEM__MULTI_CLASSES:
+        return ((InternalEList<?>)getMultiClasses()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -141,6 +169,8 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
         return getImports();
       case PogoDslPackage.POGO_SYSTEM__CLASSES:
         return getClasses();
+      case PogoDslPackage.POGO_SYSTEM__MULTI_CLASSES:
+        return getMultiClasses();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,6 +194,10 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
         getClasses().clear();
         getClasses().addAll((Collection<? extends PogoDeviceClass>)newValue);
         return;
+      case PogoDslPackage.POGO_SYSTEM__MULTI_CLASSES:
+        getMultiClasses().clear();
+        getMultiClasses().addAll((Collection<? extends PogoMultiClasses>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -184,6 +218,9 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
       case PogoDslPackage.POGO_SYSTEM__CLASSES:
         getClasses().clear();
         return;
+      case PogoDslPackage.POGO_SYSTEM__MULTI_CLASSES:
+        getMultiClasses().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -202,6 +239,8 @@ public class PogoSystemImpl extends MinimalEObjectImpl.Container implements Pogo
         return imports != null && !imports.isEmpty();
       case PogoDslPackage.POGO_SYSTEM__CLASSES:
         return classes != null && !classes.isEmpty();
+      case PogoDslPackage.POGO_SYSTEM__MULTI_CLASSES:
+        return multiClasses != null && !multiClasses.isEmpty();
     }
     return super.eIsSet(featureID);
   }

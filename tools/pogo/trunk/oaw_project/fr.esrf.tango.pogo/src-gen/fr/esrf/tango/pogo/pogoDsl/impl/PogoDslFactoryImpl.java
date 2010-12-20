@@ -69,6 +69,8 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
     {
       case PogoDslPackage.POGO_SYSTEM: return createPogoSystem();
       case PogoDslPackage.IMPORT: return createImport();
+      case PogoDslPackage.POGO_MULTI_CLASSES: return createPogoMultiClasses();
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF: return createOneClassSimpleDef();
       case PogoDslPackage.POGO_DEVICE_CLASS: return createPogoDeviceClass();
       case PogoDslPackage.CLASS_DESCRIPTION: return createClassDescription();
       case PogoDslPackage.INHERITANCE: return createInheritance();
@@ -146,6 +148,28 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PogoMultiClasses createPogoMultiClasses()
+  {
+    PogoMultiClassesImpl pogoMultiClasses = new PogoMultiClassesImpl();
+    return pogoMultiClasses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OneClassSimpleDef createOneClassSimpleDef()
+  {
+    OneClassSimpleDefImpl oneClassSimpleDef = new OneClassSimpleDefImpl();
+    return oneClassSimpleDef;
   }
 
   /**
