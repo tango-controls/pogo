@@ -109,6 +109,20 @@ public class PogoDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case PogoDslPackage.POGO_MULTI_CLASSES:
+      {
+        PogoMultiClasses pogoMultiClasses = (PogoMultiClasses)theEObject;
+        T result = casePogoMultiClasses(pogoMultiClasses);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF:
+      {
+        OneClassSimpleDef oneClassSimpleDef = (OneClassSimpleDef)theEObject;
+        T result = caseOneClassSimpleDef(oneClassSimpleDef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case PogoDslPackage.POGO_DEVICE_CLASS:
       {
         PogoDeviceClass pogoDeviceClass = (PogoDeviceClass)theEObject;
@@ -562,6 +576,38 @@ public class PogoDslSwitch<T>
    * @generated
    */
   public T caseImport(Import object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pogo Multi Classes</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pogo Multi Classes</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePogoMultiClasses(PogoMultiClasses object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>One Class Simple Def</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>One Class Simple Def</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOneClassSimpleDef(OneClassSimpleDef object)
   {
     return null;
   }

@@ -125,6 +125,27 @@ rulePogoSystem returns [EObject current=null]
 	        currentNode = currentNode.getParent();
 	    }
 	
+)*(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getPogoSystemAccess().getMultiClassesPogoMultiClassesParserRuleCall_2_0(), currentNode); 
+	    }
+	    lv_multiClasses_2=rulePogoMultiClasses 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoSystemRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		add($current, "multiClasses", lv_multiClasses_2, "PogoMultiClasses", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
 )*);
 
 
@@ -165,6 +186,316 @@ ruleImport returns [EObject current=null]
 	        
 	        try {
 	       		set($current, "importURI", lv_importURI_1, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+));
+
+
+
+
+
+// Entry rule entryRulePogoMultiClasses
+entryRulePogoMultiClasses returns [EObject current=null] :
+	{ currentNode = createCompositeNode(grammarAccess.getPogoMultiClassesRule(), currentNode); }
+	 iv_rulePogoMultiClasses=rulePogoMultiClasses 
+	 { $current=$iv_rulePogoMultiClasses.current; } 
+	 EOF 
+;
+
+// Rule PogoMultiClasses
+rulePogoMultiClasses returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+('multiclasses' 
+    {
+        createLeafNode(grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_0(), null); 
+    }
+(	
+	
+	    lv_name_1=	RULE_ID
+	{
+		createLeafNode(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "name", lv_name_1, "ID", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)'{' 
+    {
+        createLeafNode(grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_2(), null); 
+    }
+(	
+	
+	    lv_sourcePath_3=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0(), "sourcePath"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "sourcePath", lv_sourcePath_3, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_description_4=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0(), "description"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "description", lv_description_4, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_title_5=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0(), "title"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "title", lv_title_5, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)'classes:' 
+    {
+        createLeafNode(grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_6(), null); 
+    }
+(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_7_0(), currentNode); 
+	    }
+	    lv_classes_7=ruleOneClassSimpleDef 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		add($current, "classes", lv_classes_7, "OneClassSimpleDef", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)(	
+	
+	    lv_filestogenerate_8=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0(), "filestogenerate"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "filestogenerate", lv_filestogenerate_8, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_9_0(), currentNode); 
+	    }
+	    lv_preferences_9=rulePreferences 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoMultiClassesRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		set($current, "preferences", lv_preferences_9, "Preferences", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)'}' 
+    {
+        createLeafNode(grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_10(), null); 
+    }
+);
+
+
+
+
+
+// Entry rule entryRuleOneClassSimpleDef
+entryRuleOneClassSimpleDef returns [EObject current=null] :
+	{ currentNode = createCompositeNode(grammarAccess.getOneClassSimpleDefRule(), currentNode); }
+	 iv_ruleOneClassSimpleDef=ruleOneClassSimpleDef 
+	 { $current=$iv_ruleOneClassSimpleDef.current; } 
+	 EOF 
+;
+
+// Rule OneClassSimpleDef
+ruleOneClassSimpleDef returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+((	
+	
+	    lv_classname_0=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0(), "classname"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "classname", lv_classname_0, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    lv_sourcePath_1=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0(), "sourcePath"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "sourcePath", lv_sourcePath_1, "STRING", lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+	
+)(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_2_0(), currentNode); 
+	    }
+	    lv_pogo6_2=ruleBoolean 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		set($current, "pogo6", lv_pogo6_2, "Boolean", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)'inheritances:' 
+    {
+        createLeafNode(grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_3(), null); 
+    }
+(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_4_0(), currentNode); 
+	    }
+	    lv_inheritances_4=ruleInheritance 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		add($current, "inheritances", lv_inheritances_4, "Inheritance", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)'parentClasses:' 
+    {
+        createLeafNode(grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_5(), null); 
+    }
+(	
+	
+	    lv_parentClasses_6=	RULE_STRING
+	{
+		createLeafNode(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_6_0(), "parentClasses"); 
+	}
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		add($current, "parentClasses", lv_parentClasses_6, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }

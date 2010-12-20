@@ -4,13 +4,44 @@ generate pogoDsl "http://www.esrf.fr/tango/pogo/PogoDsl"
 
 PogoSystem:
 	(imports+=Import)*
-	(classes+=PogoDeviceClass)*;
+	(classes+=PogoDeviceClass)*
+	(multiClasses+=PogoMultiClasses)*;
 
 Import:
 	"import" importURI=STRING;
+//==============================================
+//	Multi Classes definition
+//==============================================
+PogoMultiClasses:
+	"multiclasses" name=ID
+	"{"
+		sourcePath  = STRING
+		description = STRING
+		title       = STRING
+		"classes:"
+	    	(classes+=OneClassSimpleDef)
+	
+		filestogenerate = STRING			//	File(s) to generate (code, makefile,....)
+		preferences     = Preferences		//	Preferences (for programer, for site or at run time)
+	"}"
+;
+
 //
+//	One class simple definition
+//
+OneClassSimpleDef:
+	classname  = STRING
+	sourcePath = STRING
+	pogo6      = Boolean
+	"inheritances:"
+	   	(inheritances+=Inheritance)			//	inheritance class definitions
+	"parentClasses:"
+		(parentClasses+=STRING)	//	Used only by graphical display
+;
+
+//==============================================
 //	Class definition
-//
+//==============================================
 PogoDeviceClass:
 	"deviceclass" name=ID (isAbstract?="abstract")? ("extends" baseClass=[PogoDeviceClass])?
 	"{"
@@ -71,6 +102,7 @@ Inheritance:
 	classname  = STRING
 	sourcePath = STRING;
 
+
 //
 //	Class identification
 //
@@ -100,7 +132,7 @@ Preferences:
 	docHome       =  STRING
 	makefileHome  =  STRING
 	installHome   =  STRING
-	htmlVersion   =  Boolean;
+	htmlVersion   =  Boolean;	//	Used by web automat
 
 //
 //	State Definition

@@ -34,58 +34,60 @@ protected class ThisRootNode extends RootToken {
 		switch(index) {
 			case 0: return new PogoSystem_Group(this, this, 0, inst);
 			case 1: return new Import_Group(this, this, 1, inst);
-			case 2: return new PogoDeviceClass_Group(this, this, 2, inst);
-			case 3: return new ClassDescription_Group(this, this, 3, inst);
-			case 4: return new Inheritance_Group(this, this, 4, inst);
-			case 5: return new ClassIdentification_Group(this, this, 5, inst);
-			case 6: return new Comments_Group(this, this, 6, inst);
-			case 7: return new Preferences_Group(this, this, 7, inst);
-			case 8: return new State_Group(this, this, 8, inst);
-			case 9: return new Property_Group(this, this, 9, inst);
-			case 10: return new PropType_Alternatives(this, this, 10, inst);
-			case 11: return new SimpleType_Alternatives(this, this, 11, inst);
-			case 12: return new VectorType_Alternatives(this, this, 12, inst);
-			case 13: return new InheritanceStatus_Group(this, this, 13, inst);
-			case 14: return new Command_Group(this, this, 14, inst);
-			case 15: return new Argument_Group(this, this, 15, inst);
-			case 16: return new Attribute_Group(this, this, 16, inst);
-			case 17: return new FireEvents_Group(this, this, 17, inst);
-			case 18: return new AttrProperties_Group(this, this, 18, inst);
-			case 19: return new Type_Alternatives(this, this, 19, inst);
-			case 20: return new VoidType_Group(this, this, 20, inst);
-			case 21: return new BooleanType_Group(this, this, 21, inst);
-			case 22: return new ShortType_Group(this, this, 22, inst);
-			case 23: return new UShortType_Group(this, this, 23, inst);
-			case 24: return new IntType_Group(this, this, 24, inst);
-			case 25: return new UIntType_Group(this, this, 25, inst);
-			case 26: return new FloatType_Group(this, this, 26, inst);
-			case 27: return new DoubleType_Group(this, this, 27, inst);
-			case 28: return new StringType_Group(this, this, 28, inst);
-			case 29: return new CharArrayType_Group(this, this, 29, inst);
-			case 30: return new ShortArrayType_Group(this, this, 30, inst);
-			case 31: return new UShortArrayType_Group(this, this, 31, inst);
-			case 32: return new IntArrayType_Group(this, this, 32, inst);
-			case 33: return new UIntArrayType_Group(this, this, 33, inst);
-			case 34: return new FloatArrayType_Group(this, this, 34, inst);
-			case 35: return new DoubleArrayType_Group(this, this, 35, inst);
-			case 36: return new StringArrayType_Group(this, this, 36, inst);
-			case 37: return new LongStringArrayType_Group(this, this, 37, inst);
-			case 38: return new DoubleStringArrayType_Group(this, this, 38, inst);
-			case 39: return new StateType_Group(this, this, 39, inst);
-			case 40: return new ConstStringType_Group(this, this, 40, inst);
-			case 41: return new BooleanArrayType_Group(this, this, 41, inst);
-			case 42: return new UCharType_Group(this, this, 42, inst);
-			case 43: return new LongType_Group(this, this, 43, inst);
-			case 44: return new ULongType_Group(this, this, 44, inst);
-			case 45: return new LongArrayType_Group(this, this, 45, inst);
-			case 46: return new ULongArrayType_Group(this, this, 46, inst);
-			case 47: return new DevIntType_Group(this, this, 47, inst);
-			case 48: return new EncodedType_Group(this, this, 48, inst);
-			case 49: return new ShortVectorType_Group(this, this, 49, inst);
-			case 50: return new IntVectorType_Group(this, this, 50, inst);
-			case 51: return new FloatVectorType_Group(this, this, 51, inst);
-			case 52: return new DoubleVectorType_Group(this, this, 52, inst);
-			case 53: return new StringVectorType_Group(this, this, 53, inst);
+			case 2: return new PogoMultiClasses_Group(this, this, 2, inst);
+			case 3: return new OneClassSimpleDef_Group(this, this, 3, inst);
+			case 4: return new PogoDeviceClass_Group(this, this, 4, inst);
+			case 5: return new ClassDescription_Group(this, this, 5, inst);
+			case 6: return new Inheritance_Group(this, this, 6, inst);
+			case 7: return new ClassIdentification_Group(this, this, 7, inst);
+			case 8: return new Comments_Group(this, this, 8, inst);
+			case 9: return new Preferences_Group(this, this, 9, inst);
+			case 10: return new State_Group(this, this, 10, inst);
+			case 11: return new Property_Group(this, this, 11, inst);
+			case 12: return new PropType_Alternatives(this, this, 12, inst);
+			case 13: return new SimpleType_Alternatives(this, this, 13, inst);
+			case 14: return new VectorType_Alternatives(this, this, 14, inst);
+			case 15: return new InheritanceStatus_Group(this, this, 15, inst);
+			case 16: return new Command_Group(this, this, 16, inst);
+			case 17: return new Argument_Group(this, this, 17, inst);
+			case 18: return new Attribute_Group(this, this, 18, inst);
+			case 19: return new FireEvents_Group(this, this, 19, inst);
+			case 20: return new AttrProperties_Group(this, this, 20, inst);
+			case 21: return new Type_Alternatives(this, this, 21, inst);
+			case 22: return new VoidType_Group(this, this, 22, inst);
+			case 23: return new BooleanType_Group(this, this, 23, inst);
+			case 24: return new ShortType_Group(this, this, 24, inst);
+			case 25: return new UShortType_Group(this, this, 25, inst);
+			case 26: return new IntType_Group(this, this, 26, inst);
+			case 27: return new UIntType_Group(this, this, 27, inst);
+			case 28: return new FloatType_Group(this, this, 28, inst);
+			case 29: return new DoubleType_Group(this, this, 29, inst);
+			case 30: return new StringType_Group(this, this, 30, inst);
+			case 31: return new CharArrayType_Group(this, this, 31, inst);
+			case 32: return new ShortArrayType_Group(this, this, 32, inst);
+			case 33: return new UShortArrayType_Group(this, this, 33, inst);
+			case 34: return new IntArrayType_Group(this, this, 34, inst);
+			case 35: return new UIntArrayType_Group(this, this, 35, inst);
+			case 36: return new FloatArrayType_Group(this, this, 36, inst);
+			case 37: return new DoubleArrayType_Group(this, this, 37, inst);
+			case 38: return new StringArrayType_Group(this, this, 38, inst);
+			case 39: return new LongStringArrayType_Group(this, this, 39, inst);
+			case 40: return new DoubleStringArrayType_Group(this, this, 40, inst);
+			case 41: return new StateType_Group(this, this, 41, inst);
+			case 42: return new ConstStringType_Group(this, this, 42, inst);
+			case 43: return new BooleanArrayType_Group(this, this, 43, inst);
+			case 44: return new UCharType_Group(this, this, 44, inst);
+			case 45: return new LongType_Group(this, this, 45, inst);
+			case 46: return new ULongType_Group(this, this, 46, inst);
+			case 47: return new LongArrayType_Group(this, this, 47, inst);
+			case 48: return new ULongArrayType_Group(this, this, 48, inst);
+			case 49: return new DevIntType_Group(this, this, 49, inst);
+			case 50: return new EncodedType_Group(this, this, 50, inst);
+			case 51: return new ShortVectorType_Group(this, this, 51, inst);
+			case 52: return new IntVectorType_Group(this, this, 52, inst);
+			case 53: return new FloatVectorType_Group(this, this, 53, inst);
+			case 54: return new DoubleVectorType_Group(this, this, 54, inst);
+			case 55: return new StringVectorType_Group(this, this, 55, inst);
 			default: return null;
 		}	
 	}	
@@ -95,11 +97,11 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule PogoSystem ****************
  *
  * PogoSystem:
- *   imports+=Import* classes+=PogoDeviceClass*;
+ *   imports+=Import* classes+=PogoDeviceClass* multiClasses+=PogoMultiClasses*;
  *
  **/
 
-// imports+=Import* classes+=PogoDeviceClass*
+// imports+=Import* classes+=PogoDeviceClass* multiClasses+=PogoMultiClasses*
 protected class PogoSystem_Group extends GroupToken {
 	
 	public PogoSystem_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -112,8 +114,9 @@ protected class PogoSystem_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new PogoSystem_ClassesAssignment_1(parent, this, 0, inst);
-			case 1: return new PogoSystem_ImportsAssignment_0(parent, this, 1, inst);
+			case 0: return new PogoSystem_MultiClassesAssignment_2(parent, this, 0, inst);
+			case 1: return new PogoSystem_ClassesAssignment_1(parent, this, 1, inst);
+			case 2: return new PogoSystem_ImportsAssignment_0(parent, this, 2, inst);
 			default: return null;
 		}	
 	}	
@@ -209,6 +212,50 @@ protected class PogoSystem_ClassesAssignment_1 extends AssignmentToken  {
 	}	
 }
 
+// multiClasses+=PogoMultiClasses*
+protected class PogoSystem_MultiClassesAssignment_2 extends AssignmentToken  {
+	
+	public PogoSystem_MultiClassesAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoSystemAccess().getMultiClassesAssignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("multiClasses",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("multiClasses");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPogoMultiClassesRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getPogoSystemAccess().getMultiClassesPogoMultiClassesParserRuleCall_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new PogoSystem_MultiClassesAssignment_2(parent, next, actIndex, consumed);
+			case 1: return new PogoSystem_ClassesAssignment_1(parent, next, actIndex, consumed);
+			case 2: return new PogoSystem_ImportsAssignment_0(parent, next, actIndex, consumed);
+			default: return parent.createParentFollower(next, actIndex , index - 3, consumed);
+		}	
+	}	
+}
+
 
 /************ end Rule PogoSystem ****************/
 
@@ -220,9 +267,9 @@ protected class PogoSystem_ClassesAssignment_1 extends AssignmentToken  {
  * 
  * 
  * 	  
- * //
- * //	Class definition
- * //
+ * //==============================================
+ * //	Multi Classes definition
+ * //==============================================
  *
  **/
 
@@ -304,6 +351,662 @@ protected class Import_ImportURIAssignment_1 extends AssignmentToken  {
 /************ end Rule Import ****************/
 
 
+/************ begin Rule PogoMultiClasses ****************
+ *
+ * PogoMultiClasses:
+ *   "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING
+ *   "classes:" classes+=OneClassSimpleDef filestogenerate=STRING preferences=
+ *   Preferences "}"; 
+ * //==============================================
+ * //	Multi Classes definition
+ * //==============================================
+ * 
+ * 	  
+ * 	
+ * 		     
+ * 		    
+ * 		          
+ * 		
+ * 	    	
+ * 	
+ * 		    			 //	File(s) to generate (code, makefile,....)
+ * 		         		 //	Preferences (for programer, for site or at run time)
+ * 	 
+ * 
+ * 
+ * //
+ * //	One class simple definition
+ * //
+ *
+ **/
+
+// "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING
+// "classes:" classes+=OneClassSimpleDef filestogenerate=STRING preferences=
+// Preferences "}" 
+// 	  
+// 	
+// 		     
+// 		    
+// 		          
+// 		
+// 	    	
+// 	
+// 		    			 //	File(s) to generate (code, makefile,....)
+// 		         		 //	Preferences (for programer, for site or at run time)
+protected class PogoMultiClasses_Group extends GroupToken {
+	
+	public PogoMultiClasses_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_RightCurlyBracketKeyword_10(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getPogoMultiClassesRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// "multiclasses"
+protected class PogoMultiClasses_MulticlassesKeyword_0 extends KeywordToken  {
+	
+	public PogoMultiClasses_MulticlassesKeyword_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+}
+
+// name=ID
+protected class PogoMultiClasses_NameAssignment_1 extends AssignmentToken  {
+	
+	public PogoMultiClasses_NameAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getNameAssignment_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_MulticlassesKeyword_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("name",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("name");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "{"
+protected class PogoMultiClasses_LeftCurlyBracketKeyword_2 extends KeywordToken  {
+	
+	public PogoMultiClasses_LeftCurlyBracketKeyword_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_NameAssignment_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// sourcePath=STRING
+protected class PogoMultiClasses_SourcePathAssignment_3 extends AssignmentToken  {
+	
+	public PogoMultiClasses_SourcePathAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getSourcePathAssignment_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_LeftCurlyBracketKeyword_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("sourcePath",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("sourcePath");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// description=STRING
+protected class PogoMultiClasses_DescriptionAssignment_4 extends AssignmentToken  {
+	
+	public PogoMultiClasses_DescriptionAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getDescriptionAssignment_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_SourcePathAssignment_3(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("description",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("description");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// title=STRING
+protected class PogoMultiClasses_TitleAssignment_5 extends AssignmentToken  {
+	
+	public PogoMultiClasses_TitleAssignment_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getTitleAssignment_5();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_DescriptionAssignment_4(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("title",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("title");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "classes:"
+protected class PogoMultiClasses_ClassesKeyword_6 extends KeywordToken  {
+	
+	public PogoMultiClasses_ClassesKeyword_6(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_6();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_TitleAssignment_5(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// classes+=OneClassSimpleDef
+protected class PogoMultiClasses_ClassesAssignment_7 extends AssignmentToken  {
+	
+	public PogoMultiClasses_ClassesAssignment_7(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getClassesAssignment_7();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("classes",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("classes");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_7_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new PogoMultiClasses_ClassesKeyword_6(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// filestogenerate=STRING 
+// 	
+// 		    			 //	File(s) to generate (code, makefile,....)
+protected class PogoMultiClasses_FilestogenerateAssignment_8 extends AssignmentToken  {
+	
+	public PogoMultiClasses_FilestogenerateAssignment_8(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getFilestogenerateAssignment_8();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_ClassesAssignment_7(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("filestogenerate",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("filestogenerate");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// preferences=Preferences 			 //	File(s) to generate (code, makefile,....)
+// 		         		 //	Preferences (for programer, for site or at run time)
+protected class PogoMultiClasses_PreferencesAssignment_9 extends AssignmentToken  {
+	
+	public PogoMultiClasses_PreferencesAssignment_9(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getPreferencesAssignment_9();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Preferences_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("preferences",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("preferences");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getPreferencesRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_9_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new PogoMultiClasses_FilestogenerateAssignment_8(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}" 		 //	Preferences (for programer, for site or at run time)
+protected class PogoMultiClasses_RightCurlyBracketKeyword_10 extends KeywordToken  {
+	
+	public PogoMultiClasses_RightCurlyBracketKeyword_10(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_10();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoMultiClasses_PreferencesAssignment_9(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+
+/************ end Rule PogoMultiClasses ****************/
+
+
+/************ begin Rule OneClassSimpleDef ****************
+ *
+ * OneClassSimpleDef:
+ *   classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=
+ *   Inheritance "parentClasses:" parentClasses+=STRING; 
+ * 
+ * //
+ * //	One class simple definition
+ * //
+ * 
+ * 	     
+ * 	    
+ * 	         
+ * 	
+ * 	   				 //	inheritance class definitions
+ * 	 
+ * 			 //	Used only by graphical display
+ * 
+ * 
+ * //==============================================
+ * //	Class definition
+ * //==============================================
+ *
+ **/
+
+// classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=
+// Inheritance "parentClasses:" parentClasses+=STRING 
+// 	     
+// 	    
+// 	         
+// 	
+// 	   				 //	inheritance class definitions
+// 	 
+// 			 //	Used only by graphical display
+protected class OneClassSimpleDef_Group extends GroupToken {
+	
+	public OneClassSimpleDef_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_ParentClassesAssignment_6(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getOneClassSimpleDefRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// classname=STRING
+protected class OneClassSimpleDef_ClassnameAssignment_0 extends AssignmentToken  {
+	
+	public OneClassSimpleDef_ClassnameAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getClassnameAssignment_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("classname",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("classname");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// sourcePath=STRING
+protected class OneClassSimpleDef_SourcePathAssignment_1 extends AssignmentToken  {
+	
+	public OneClassSimpleDef_SourcePathAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getSourcePathAssignment_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_ClassnameAssignment_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("sourcePath",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("sourcePath");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// pogo6=Boolean
+protected class OneClassSimpleDef_Pogo6Assignment_2 extends AssignmentToken  {
+	
+	public OneClassSimpleDef_Pogo6Assignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getPogo6Assignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_SourcePathAssignment_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("pogo6",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("pogo6");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_2_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "inheritances:"
+protected class OneClassSimpleDef_InheritancesKeyword_3 extends KeywordToken  {
+	
+	public OneClassSimpleDef_InheritancesKeyword_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_Pogo6Assignment_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// inheritances+=Inheritance
+protected class OneClassSimpleDef_InheritancesAssignment_4 extends AssignmentToken  {
+	
+	public OneClassSimpleDef_InheritancesAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getInheritancesAssignment_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Inheritance_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("inheritances",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("inheritances");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getInheritanceRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new OneClassSimpleDef_InheritancesKeyword_3(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "parentClasses:" 			 //	inheritance class definitions
+protected class OneClassSimpleDef_ParentClassesKeyword_5 extends KeywordToken  {
+	
+	public OneClassSimpleDef_ParentClassesKeyword_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_5();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_InheritancesAssignment_4(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// parentClasses+=STRING
+protected class OneClassSimpleDef_ParentClassesAssignment_6 extends AssignmentToken  {
+	
+	public OneClassSimpleDef_ParentClassesAssignment_6(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getOneClassSimpleDefAccess().getParentClassesAssignment_6();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new OneClassSimpleDef_ParentClassesKeyword_5(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("parentClasses",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("parentClasses");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_6_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule OneClassSimpleDef ****************/
+
+
 /************ begin Rule PogoDeviceClass ****************
  *
  * PogoDeviceClass:
@@ -312,9 +1015,10 @@ protected class Import_ImportURIAssignment_1 extends AssignmentToken  {
  *   classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
  *   "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
  *   +=State* preferences=Preferences "}"; 
- * //
+ * 
+ * //==============================================
  * //	Class definition
- * //
+ * //==============================================
  * 
  * 	        
  * 	
@@ -1556,6 +2260,7 @@ protected class ClassDescription_HasDynamicAttributeAssignment_11 extends Assign
  * 	     
  * 	    
  * 
+ * 
  * //
  * //	Class identification
  * //
@@ -1656,6 +2361,7 @@ protected class Inheritance_SourcePathAssignment_1 extends AssignmentToken  {
  * ClassIdentification:
  *   contact=STRING author=STRING emailDomain=STRING classFamily=STRING siteSpecific=
  *   STRING platform=STRING bus=STRING manufacturer=STRING reference=STRING; 
+ * 
  * 
  * //
  * //	Class identification
@@ -2124,7 +2830,7 @@ protected class Comments_CommandsTableAssignment_1 extends AssignmentToken  {
  * 	           
  * 	      
  * 	       
- * 	       
+ * 	       	 //	Used by web automat
  * 
  * //
  * //	State Definition
@@ -2286,7 +2992,7 @@ protected class Preferences_HtmlVersionAssignment_3 extends AssignmentToken  {
 /************ begin Rule State ****************
  *
  * State:
- *   name=ID description=STRING status=InheritanceStatus; 
+ *   name=ID description=STRING status=InheritanceStatus; 	 //	Used by web automat
  * 
  * //
  * //	State Definition
