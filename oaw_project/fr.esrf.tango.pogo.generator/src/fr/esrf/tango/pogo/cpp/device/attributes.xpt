@@ -34,7 +34,7 @@
 «separator2()»
 /**
  *	Read «att.name» attribute
- *	«att.properties.description.comments(" *	")»
+ *	Description: «att.properties.description.comments(" *	             ")»
  *
  *	Data type:	«att.dataType.cppType().toString()»
  *	Attr type:	«att.attType» «att.attTypeDimentions()»
@@ -48,7 +48,7 @@
 «DEFINE readAttributeHeaderProto(Attribute att) FOR PogoDeviceClass-»
 	/**
 	 *	«att.name» attribute related methods.
-	 *	«att.properties.description.comments(" *	")»
+	 *	Description: «att.properties.description.comments(" *	             ")»
 	 *
 	 *	Data type:	«att.dataType.cppType().toString()»
 	 *	Attr type:	«att.attType» «att.attTypeDimentions()»
