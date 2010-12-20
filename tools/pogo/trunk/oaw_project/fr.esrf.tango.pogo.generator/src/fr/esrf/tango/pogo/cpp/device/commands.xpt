@@ -23,10 +23,10 @@
 «separator2()»
 /**
  *	Execute the «cmd.name» command:
- *	«cmd.description.comments(" *	")»
+ *	Description: «cmd.description.comments(" *	             ")»
  *
- *	@param argin «cmd.argin.description»
- *	@returns «cmd.argout.description»
+ *	@param argin «cmd.argin.description.comments(" *	             ")»
+ *	@returns «cmd.argout.description.comments(" *	         ")»
  */
 «separator2()»«ENDDEFINE»
 
@@ -37,10 +37,10 @@
 «DEFINE executeCommandHeaderProto(Command cmd) FOR PogoDeviceClass-»
 	/**
 	 *	Execute the «cmd.name» command:
-	 *	«cmd.description.comments(" *	")»
+	 *	Description: «cmd.description.comments(" *	             ")»
 	 *
-	 *	@param argin «cmd.argin.description»
-	 *	@returns «cmd.argout.description»
+	 *	@param argin «cmd.argin.description.comments(" *	             ")»
+	 *	@returns «cmd.argout.description.comments(" *	         ")»
 	 */«ENDDEFINE»
 
 

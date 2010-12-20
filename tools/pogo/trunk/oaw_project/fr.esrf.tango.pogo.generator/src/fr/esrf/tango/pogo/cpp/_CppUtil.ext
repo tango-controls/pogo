@@ -166,6 +166,11 @@ hasInheritanceClass(ClassDescription this):
 //	Makefile util
 makeVariable( Inheritance inher, String s ): 
 	inher.classname.toUpperCase() + s;
+//
+//	Makefile util
+makeVariable( OneClassSimpleDef _class, String s ): 
+	_class.classname.toUpperCase() + s;
+
 
 
 

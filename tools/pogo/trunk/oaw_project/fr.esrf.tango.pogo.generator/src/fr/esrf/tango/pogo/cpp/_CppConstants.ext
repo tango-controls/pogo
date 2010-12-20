@@ -15,6 +15,9 @@ deviceHeaderFileName(PogoDeviceClass this):
 deviceCppFileName(PogoDeviceClass this):
 	name+".cpp";
 	
+deviceCppFileName(PogoMultiClasses this):
+	name+".cpp";
+	
 dserverClassHeaderFileName(PogoDeviceClass this):
 	name+"Class.h";
 	
@@ -23,6 +26,9 @@ dserverClassCppFileName(PogoDeviceClass this):
 	
 classFactoryFileName(PogoDeviceClass this):
 	"ClassFactory.cpp";
+
+classFactoryFileName(PogoMultiClasses this):
+	"MultiClassesFactory.cpp";
 	
 stateMachineFileName(PogoDeviceClass this):
 	name+"StateMachine.cpp";
@@ -62,6 +68,9 @@ superClassNameConstr(Inheritance this):
 
 
 areaProtectedID(PogoDeviceClass this, String str):
+	name+"::"+str;
+
+areaProtectedID(PogoMultiClasses this, String str):
 	name+"::"+str;
 
 
