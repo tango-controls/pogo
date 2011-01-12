@@ -1,0 +1,29 @@
+#+======================================================================
+# $Source: /segfs/tango/cvsroot/tools/pogo_oaw/org/tango/pogo/pogo_gui/ReleaseNote,v $
+#
+# Project:      Tango Code Generator
+#
+# Description:  Pogo revisions
+#
+# $Author: verdier $
+#
+# $Revision: 1.4 $
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+Pogo-7.0.3 - 20/12/2010:
+	Pb with DevVarLongArray and DevVarULongArray fixed.
+	Pb with special characters in comments fixed.
+
+Pogo-7.0.2 - 15/12/2010:
+	Pb on command polled (by default) fixed.
+
+Pogo-7.0.1 - 30/11/2010:
+	State/Status polling forbidden.
+
+Pogo-7.0.0 - 24/09/2010:
+	First release for Tango distribution.
