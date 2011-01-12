@@ -1,0 +1,69 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+«DEFINE htmlFile FOR PogoDeviceClass»
+«FILE propertyPageFileName()»«htmlHeader()»
+
+«htmlPageTitle("Properties")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+«IF classProperties.size>0-»
+	«EXPAND _htmlUtil::htmlTableHeader(""+classProperties.size+" Class Properties",
+			{"Property Name", "Description", "Property type", "Default Value"})-»
+	«FOREACH classProperties AS property-»
+	<Tr>
+		<Td> «property.name»                   </Td>
+		<Td> «property.description»            </Td>
+		<Td> «property.type.stringPropType()»  </Td>
+		<Td> «EXPAND defaultValue(property)»   </td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+«ELSE»
+	<b> There is no class property defined.</b>
+«ENDIF»
+<Br>
+<Br>
+
+«IF deviceProperties.size>0-»
+	«EXPAND _htmlUtil::htmlTableHeader(""+deviceProperties.size+" Device Properties",
+			{"Property Name", "Description", "Property type", "Default Value"})-»
+	«FOREACH deviceProperties AS property-»
+	<Tr>
+		<Td> «property.name»                   </Td>
+		<Td> «property.description»            </Td>
+		<Td> «property.type.stringPropType()»  </Td>
+		<Td> «EXPAND defaultValue(property)»   </td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+«ELSE»
+	<b> There is no device property defined.</b>
+«ENDIF»
+	<Br>
+	<Br>
+
+	«EXPAND _htmlUtil::htmlProtectedArea(propertyPageFileName())»
+	<Br>
+	<Br>
+</ul>
+</FONT>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDDEFINE»
+
+
+
+«DEFINE defaultValue(Property property) FOR PogoDeviceClass»
+	«IF property.DefaultPropValue.size>0-»
+		«FOREACH property.DefaultPropValue AS value»		«value»«ENDFOREACH»
+	«ELSE-»
+		.....
+	«ENDIF»</Td>
+«ENDDEFINE»

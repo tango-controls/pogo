@@ -1,0 +1,342 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+
+
+//
+//	Define the DeviceClass class property management
+//
+«DEFINE cppFile FOR PogoDeviceClass»
+//===================================================================
+//	Properties management
+//===================================================================
+«EXPAND getClassPropertyByName»
+«EXPAND getDevicePropertyByName»
+«EXPAND getClassPropertyValueByName»
+«EXPAND getClassPropertyFromDatabase»
+«EXPAND setClassPropertyValues»
+«EXPAND putClassPropertiesToDatabase»
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the method to get the class property for specified name
+//	=========================================================
+«DEFINE getClassPropertyByName FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::get_class_property
+ * description : 	Get the class property for specified name.
+ *
+ * @param	name  The property name
+ */
+«separator2()»
+Tango::DbDatum «name»Class::get_class_property(string &prop_name)
+{
+	for (unsigned int i=0 ; i<cl_prop.size() ; i++)
+		if (cl_prop[i].name == prop_name)
+			return cl_prop[i];
+	//	if not found, returns  an empty DbDatum
+	return Tango::DbDatum(prop_name);
+}
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define the method to get the device property for specified name
+//	=========================================================
+«DEFINE getDevicePropertyByName FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::get_default_device_property()",
+		"Return the default value for device property.")-»
+Tango::DbDatum «name»Class::get_default_device_property(string &prop_name)
+{
+	for (unsigned int i=0 ; i<dev_def_prop.size() ; i++)
+		if (dev_def_prop[i].name == prop_name)
+			return dev_def_prop[i];
+	//	if not found, return  an empty DbDatum
+	return Tango::DbDatum(prop_name);
+}
+«ENDDEFINE»
+
+
+
+
+
+//	=========================================================
+//	Define the method to get the class property value for specified name
+//	=========================================================
+«DEFINE getClassPropertyValueByName FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::get_default_class_property()",
+ 		"Return the default value for class property.")-»
+Tango::DbDatum «name»Class::get_default_class_property(string &prop_name)
+{
+	for (unsigned int i=0 ; i<cl_def_prop.size() ; i++)
+		if (cl_def_prop[i].name == prop_name)
+			return cl_def_prop[i];
+	//	if not found, return  an empty DbDatum
+	return Tango::DbDatum(prop_name);
+}
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define the method to get the class properties from database
+//	=========================================================
+«DEFINE getClassPropertyFromDatabase FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::get_class_property",
+		"//	Add your own code to initialize")-»
+void «name»Class::get_class_property()
+{
+«IF classProperties.size>0-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		"Class::get_class_property_before",
+		"//	Initialize class property data members")-»
+
+	//	Read class properties from database.
+	«FOREACH classProperties AS prop-»
+	«IF prop.status.concreteHere=="true"-»
+	cl_prop.push_back(Tango::DbDatum("«prop.name»"));
+	«ENDIF»«ENDFOREACH»
+
+	if (cl_prop.size()==0) return;	//	No property to read
+
+	//	Call database and extract values
+	if (Tango::Util::instance()->_UseDb==true)
+		get_db_class()->get_property(cl_prop);
+	Tango::DbDatum	def_prop;
+	int	i = -1;
+
+«FOREACH classProperties AS prop-»
+	«IF prop.status.concreteHere=="true"-»
+	//	Try to extract «prop.name» value
+	if (cl_prop[++i].is_empty()==false)	cl_prop[i]  >>  «prop.name.dataMemberName()»;
+	else
+	{
+		//	Check default value for «prop.name»
+		def_prop = get_default_class_property(cl_prop[i].name);
+		if (def_prop.is_empty()==false)
+		{
+			def_prop    >>  «prop.name.dataMemberName()»;
+			cl_prop[i]  <<  «prop.name.dataMemberName()»;
+		}
+	}
+	«ENDIF-»
+«ENDFOREACH»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		"Class::get_class_property_after",
+		"//	Check class property data members init")»
+«ENDIF-»
+}
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the method to set the class property defaut values
+//	=========================================================
+«DEFINE setClassPropertyValues FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::set_default_property",
+		"Set default property (class and device) for wizard.\n" +
+		"For each property, add to wizard property name and description.\n" +
+		"If default value has been set, add it to wizard property and.\n" +
+		"store it in a DbDatum.")-»
+void «name»Class::set_default_property()
+{
+	string	prop_name;
+	string	prop_desc;
+	string	prop_def;
+	vector<string>	vect_data;
+	
+	//	Set Default Class Properties
+«FOREACH classProperties AS prop-»
+«IF prop.status.concreteHere=="true"-»
+	prop_name = "«prop.name»";
+	prop_desc = "«prop.description.onlyOneLine()»";
+	prop_def  = "«FOREACH prop.DefaultPropValue AS val»«val»`\n«ENDFOREACH»";
+	vect_data.clear();«FOREACH prop.DefaultPropValue AS val»
+	vect_data.push_back("«val»");«ENDFOREACH»
+	if (prop_def.length()>0)
+	{
+		Tango::DbDatum	data(prop_name);
+		data << vect_data ;
+		cl_def_prop.push_back(data);
+		add_wiz_class_prop(prop_name, prop_desc,  prop_def);
+	}
+	else
+		add_wiz_class_prop(prop_name, prop_desc);
+«ENDIF»«ENDFOREACH-»
+
+	//	Set Default Device Properties
+«FOREACH deviceProperties AS prop»
+«IF prop.status.concreteHere=="true"-»
+	prop_name = "«prop.name»";
+	prop_desc = "«prop.description.onlyOneLine()»";
+	prop_def  = "«FOREACH prop.DefaultPropValue AS val»«val»\n«ENDFOREACH»";
+	vect_data.clear();«FOREACH prop.DefaultPropValue AS val»
+	vect_data.push_back("«val»");«ENDFOREACH»
+	if (prop_def.length()>0)
+	{
+		Tango::DbDatum	data(prop_name);
+		data << vect_data ;
+		dev_def_prop.push_back(data);
+		add_wiz_dev_prop(prop_name, prop_desc,  prop_def);
+	}
+	else
+		add_wiz_dev_prop(prop_name, prop_desc);
+«ENDIF»«ENDFOREACH-»
+}
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the method to put the class property in database
+//	=========================================================
+«DEFINE putClassPropertiesToDatabase FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::write_class_property",
+ 		"Set class description fields as property in database")-»
+void «name»Class::write_class_property()
+{
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+	//	First time, check if database used
+	if (Tango::Util::_UseDb == false)
+		return;
+
+	Tango::DbData	data;
+	string	classname = get_name();
+	string	header;
+	string::size_type	start, end;
+
+	//	Put title
+	Tango::DbDatum	title("ProjectTitle");
+	string	str_title("«description.title»");
+	title << str_title;
+	data.push_back(title);
+
+	//	Put Description
+	Tango::DbDatum	description("Description");
+	vector<string>	str_desc;
+	str_desc.push_back("«description.description.inVector("str_desc")»");
+	description << str_desc;
+	data.push_back(description);
+		
+	//	put cvs or svn location
+	string	filename("«name»");
+	filename += "Class.cpp";
+	
+	// check for cvs information
+	string	src_path(CvsPath);
+	start = src_path.find("/");
+	if (start!=string::npos)
+	{
+		end   = src_path.find(filename);
+		if (end>start)
+		{
+			string	strloc = src_path.substr(start, end-start);
+			//	Check if specific repository
+			start = strloc.find("/cvsroot/");
+			if (start!=string::npos && start>0)
+			{
+				string	repository = strloc.substr(0, start);
+				if (repository.find("/segfs/")!=string::npos)
+					strloc = "ESRF:" + strloc.substr(start, strloc.length()-start);
+			}
+			Tango::DbDatum	cvs_loc("cvs_location");
+			cvs_loc << strloc;
+			data.push_back(cvs_loc);
+		}
+	}
+	// check for svn information
+	else
+	{
+		string	src_path(SvnPath);
+		start = src_path.find("://");
+		if (start!=string::npos)
+		{
+			end = src_path.find(filename);
+			if (end>start)
+			{
+				header = "$HeadURL: ";
+				start = header.length();
+				string	strloc = src_path.substr(start, (end-start));
+				
+				Tango::DbDatum	svn_loc("svn_location");
+				svn_loc << strloc;
+				data.push_back(svn_loc);
+			}
+		}
+	}
+
+	//	Get CVS or SVN revision tag
+	
+	// CVS tag
+	string	tagname(TagName);
+	header = "$Name: ";
+	start = header.length();
+	string	endstr(" $");
+	
+	end   = tagname.find(endstr);
+	if (end!=string::npos && end>start)
+	{
+		string	strtag = tagname.substr(start, end-start);
+		Tango::DbDatum	cvs_tag("cvs_tag");
+		cvs_tag << strtag;
+		data.push_back(cvs_tag);
+	}
+	
+	// SVN tag
+	string	svnpath(SvnPath);
+	header = "$HeadURL: ";
+	start = header.length();
+	
+	end   = svnpath.find(endstr);
+	if (end!=string::npos && end>start)
+	{
+		string	strloc = svnpath.substr(start, end-start);
+		
+		string tagstr ("/tags/");
+		start = strloc.find(tagstr);
+		if ( start!=string::npos )
+		{
+			start = start + tagstr.length();
+			end   = strloc.find(filename);
+			string	strtag = strloc.substr(start, end-start-1);
+			
+			Tango::DbDatum	svn_tag("svn_tag");
+			svn_tag << strtag;
+			data.push_back(svn_tag);
+		}
+	}
+
+	//	Get URL location
+	string	httpServ(HttpServer);
+	if (httpServ.length()>0)
+	{
+		Tango::DbDatum	db_doc_url("doc_url");
+		db_doc_url << httpServ;
+		data.push_back(db_doc_url);
+	}
+
+	//  Put inheritance
+	Tango::DbDatum	inher_datum("InheritedFrom");
+	vector<string> inheritance;
+	inheritance.push_back("«description.inheritances.get(0).classname»");
+	inher_datum << inheritance;
+	data.push_back(inher_datum);
+
+	//	Call database and and values
+	get_db_class()->put_property(data);
+«ENDIF-»
+}
+«ENDDEFINE»
+
+

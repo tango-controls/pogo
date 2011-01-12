@@ -1,0 +1,59 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode())»
+
+«FILE deviceCppFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID deviceCppFileName()»
+static const char *RcsId = "«cvsEscaped("Id:")»";
+«EXPAND Common::fileHeader(deviceCppFileName(),
+	"C++ source for the " + name + " and its commands.\n" +
+	"The class is derived from Device. It represents the\n" +
+	"CORBA servant object which will be accessed from the\n" +
+	"network. All commands which can be executed on the\n" +
+	name + " are implemented in this file.")-»
+
+
+#include <«deviceHeaderFileName()»>
+#include <«dserverClassHeaderFileName()»>
+
+«ENDPROTECT»
+
+
+/**
+ *	«name» class description:
+ *	«description.description.comments(" *	")»
+ */
+
+«description.comments.commandsTable»
+
+namespace «name»_ns
+{
+«EXPAND Common::ProtectedArea("namespace_starting", "//	static initializations")-»
+
+«EXPAND device::initialize::cppFile-»
+
+«IF deviceProperties.size > 0-»
+«EXPAND device::properties::cppFile-»
+«ENDIF»
+«EXPAND Common::methodHeader("always_executed_hook",
+		"method always executed before any command is executed")-»
+void «name»::always_executed_hook()
+{
+	INFO_STREAM << "«name»::always_executed_hook()  " << device_name << endl;
+	«EXPAND Common::ProtectedArea("always_executed_hook", "//	code always executed before all requests")-»
+}
+
+«EXPAND device::attributes::cppFile-»
+
+«EXPAND device::commands::cppFile-»
+
+«EXPAND Common::ProtectedArea("namespace_ending", "//	Additional Methods")-»
+} //	namespace
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
+
