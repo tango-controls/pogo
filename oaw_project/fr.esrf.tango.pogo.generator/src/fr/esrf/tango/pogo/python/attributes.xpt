@@ -1,0 +1,43 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::python::pythonUtils»
+
+«DEFINE pythonFile FOR PogoDeviceClass»
+«FOREACH attributes AS att»
+	«IF att.status.concreteHere == "true"»
+		«EXPAND readHeaderAttribute( att )»
+		«EXPAND readMethodAttribute( att )»
+	«ENDIF»
+«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE readHeaderAttribute( Attribute att ) FOR PogoDeviceClass»
+«separator2()»
+#
+#	Reads «att.name» attribute
+#	Description:	«att.properties.description.toString()»
+#
+#	Data type:		«att.dataType.toString()»
+#	Attr type:		«att.attType» «att.attTypeDimensions()»
+#
+«separator2()»
+«ENDDEFINE»
+
+«DEFINE readMethodAttribute(Attribute att) FOR PogoDeviceClass-»
+	def read_«att.name»(PyTango.Attribute attr)
+		print "«name»->read_«att.name»(PyTango.Attribute attr) entering..."
+		«EXPAND ProtectedArea(
+			"read_"+att.name,
+			"\t# Sets the attribute value\n" +
+			"\t\tattr.set_value(attr_"+att.name+"_read"+att.SetAttValueSize()+");")-»
+«ENDDEFINE»
+
+«DEFINE ProtectedArea( String id ) FOR PogoDeviceClass»
+	«PROTECT CSTART "\t#---" CEND "---#" ID name + "->" + id»
+	«ENDPROTECT»
+«ENDDEFINE»
+
+«DEFINE ProtectedArea( String id, String lines ) FOR PogoDeviceClass»
+	«PROTECT CSTART "\t#---" CEND "---#" ID name + "->" + id»
+	«lines»
+	«ENDPROTECT»
+«ENDDEFINE»

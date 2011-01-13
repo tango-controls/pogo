@@ -13,7 +13,7 @@
 		«EXPAND java::Tasks::main FOREACH classes»
 		
 	«ELSEIF target.toLowerCase() == "python"»
-		«EXPAND java::Tasks::main FOREACH classes»
+		«EXPAND python::Tasks::main FOREACH classes»
 		
 	«ELSE»
 		«ERROR "language identifier "+target+" unknown. Use cpp, java, or python"»
