@@ -1,0 +1,31 @@
+import pogoDsl;
+
+tagForSourceCode( PogoDeviceClass this ): "Code files";
+
+defaultPythonExtension(): ".py";
+
+devicePythonClassName( PogoDeviceClass this ): name;
+devicePythonFileName( PogoDeviceClass this ): devicePythonClassName() + defaultPythonExtension();
+dserverClassPythonClassName( PogoDeviceClass this ): name + "Class";
+
+classFactoryFileName( PogoDeviceClass this ): "ClassFactory" + defaultPythonExtension();
+stateMachineFileName( PogoDeviceClass this ): name + "StateMachine" + defaultPythonExtension();
+
+separator1(): "#=============================================================================";
+separator2(): "#------------------------------------------------------------------";
+
+attTypeDimensions(Attribute this):
+	attType == "Spectrum"
+	? " max = "+maxX
+	:	(attType == "Image"
+		?	" max = "+maxX+" x "+maxY
+		: null);
+
+SetAttValueSize(Attribute this):	//	attribute set value (scalar, spectrum, image)
+	attType == "Spectrum"
+	? ", "+maxX
+	:	(attType == "Image"
+		?	", "+maxX+", "+maxY
+		: "");
+		
+cvsEscaped( String s ): "$" + s + "  $";

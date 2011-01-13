@@ -1,0 +1,5 @@
+«IMPORT pogoDsl»
+
+«DEFINE main FOR PogoDeviceClass»
+	«EXPAND pythonDevice::pythonFile»
+«ENDDEFINE»
