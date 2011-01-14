@@ -44,12 +44,12 @@ import sys
 #	«description.description»
 #
 «separator2()»
-#	«devicePythonClassName()» States Description:
+«IF states.size > 0»#	«devicePythonClassName()» States Description:
 #
 #	«FOREACH states AS state»«state.name» : «state.description»
 #	«ENDFOREACH»
 #
-«separator2()»
+«separator2()»«ENDIF»
 
 class «devicePythonClassName()»(PyTango.Device_4Impl):
 
