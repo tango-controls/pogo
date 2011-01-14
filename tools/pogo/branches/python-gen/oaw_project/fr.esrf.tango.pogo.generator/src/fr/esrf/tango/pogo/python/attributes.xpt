@@ -25,12 +25,31 @@
 «ENDDEFINE»
 
 «DEFINE readMethodAttribute(Attribute att) FOR PogoDeviceClass-»
-	def read_«att.name»(PyTango.Attribute attr)
-		print "«name»->read_«att.name»(PyTango.Attribute attr) entering..."
-		«EXPAND ProtectedArea(
-			"read_"+att.name,
-			"\t# Sets the attribute value\n" +
-			"\t\tattr.set_value(attr_"+att.name+"_read"+att.SetAttValueSize()+");")-»
+«IF att.attType.toLowerCase() == "scalar"»
+	def read_«att.name»(self, attr)
+		print "In ", self.get_name(), "::read_«att.name»()"
+
+		# Add your own code here
+
+		attr_«att.name»_read = 1
+		attr_set_value( attr_«att.name»_read )
+«ELSEIF att.attType.toLowerCase() == "spectrum"»
+	def read_«att.name»( self, attr )
+		print "In ", self.get_name(), "::read_«att.name»()"
+	
+		# Add your own code here
+	
+		attr_«att.name»_read = [1]
+		attr_set_value( attr_«att.name»_read, 1 )
+«ELSE»
+	def read_«att.name»( self, attr )
+		print "In ", self.get_name(), "::read_«att.name»()"
+		
+		# Add your own code here
+		
+		attr_«att.name»_read = [1] [2]
+		attr_set_value( attr_«att.name»_read, 1, 1 )
+«ENDIF»
 «ENDDEFINE»
 
 «DEFINE writeHeaderAttribute( Attribute att ) FOR PogoDeviceClass»
