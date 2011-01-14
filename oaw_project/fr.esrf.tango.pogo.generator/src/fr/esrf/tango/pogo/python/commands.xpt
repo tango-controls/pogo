@@ -5,14 +5,13 @@
 // Defines commands management
 // =======================================================================================
 «DEFINE pythonFile FOR PogoDeviceClass»
-«FOREACH commands AS cmd»
-«IF cmd.status.concreteHere=="true"»
 «separator1()»
 #
 #	«devicePythonClassName()» command methods
 #
 «separator1()»
-
+«FOREACH commands AS cmd»
+«IF cmd.status.concreteHere=="true"»
 «EXPAND executeCommandHeader( cmd )»
 «EXPAND executeCommandMethod( cmd )»
 «ENDIF»
@@ -37,9 +36,41 @@
 // Defines the execute command method
 // =======================================================================================
 «DEFINE executeCommandMethod( Command cmd ) FOR PogoDeviceClass»
+«IF cmd.name.toLowerCase() == "state"»
+«EXPAND executeStateCommandMethod( cmd )»
+«ELSEIF cmd.name.toLowerCase() == "status"»
+«EXPAND executeStatusCommandMethod( cmd )»
+«ELSE»
 	def «cmd.name»( self, argin ):
 		print "In ", self.getName(), "::«cmd.name»()"
 		# Add your own code here
 		
+		return argout
+«ENDIF»
+«ENDDEFINE»
+
+// =======================================================================================
+// Defines the execute command method for State
+// =======================================================================================
+«DEFINE executeStateCommandMethod( Command cmd ) FOR PogoDeviceClass»
+	def dev_«cmd.name.toLowerCase()»( self ):
+		print "In ", self.getName(), "::dev_«cmd.name.toLowerCase()»()"
+		argout = self.get_state()
+		# Add your own code here
+		
+		self.set_state( argout )
+		return argout
+«ENDDEFINE»
+
+// =======================================================================================
+// Defines the execute command method for Status
+// =======================================================================================
+«DEFINE executeStatusCommandMethod( Command cmd ) FOR PogoDeviceClass»
+	def dev_«cmd.name.toLowerCase()»( self ):
+		print "In ", self.getName(), "::dev_«cmd.name.toLowerCase()»()"
+		argout = self.get_status()
+		# Add your own code here
+		
+		self.set_status( argout )
 		return argout
 «ENDDEFINE»
