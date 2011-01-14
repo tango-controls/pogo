@@ -29,3 +29,35 @@ SetAttValueSize(Attribute this):	//	attribute set value (scalar, spectrum, image
 		: "");
 		
 cvsEscaped( String s ): "$" + s + "  $";
+
+//	Type utilities
+pyType(Type this):					null;
+pyType(VoidType this):				"void";
+pyType(BooleanType this):			"Tango::DevBoolean";
+pyType(ShortType this):				"Tango::DevShort";
+pyType(IntType this):				"Tango::DevLong";
+pyType(FloatType this):				"Tango::DevFloat";
+pyType(DoubleType this):			"Tango::DevDouble";
+pyType(UShortType this):			"Tango::DevUShort";
+pyType(UIntType this):				"Tango::DevULong";
+pyType(StringType this):			"Tango::DevString";
+pyType(CharArrayType this):			"Tango::DevVarCharArray";
+pyType(ShortArrayType this):		"Tango::DevVarShortArray";
+pyType(IntArrayType this):			"Tango::DevVarLongArray";
+pyType(FloatArrayType this):		"Tango::DevVarFloatArray";
+pyType(DoubleArrayType this):		"Tango::DevVarDoubleArray";
+pyType(UShortArrayType this):		"Tango::DevVarUShortArray";
+pyType(UIntArrayType this):			"Tango::DevVarULongArray";
+pyType(StringArrayType this):		"Tango::DevVarStringArray";
+pyType(LongStringArrayType this):	"Tango::DevVarLongStringArray";
+pyType(DoubleStringArrayType this):	"Tango::DevVarDoubleStringArray";
+pyType(StateType this):				"Tango::DevState";
+pyType(ConstStringType this):		"Tango::ConstDevString";
+pyType(BooleanArrayType this):		"Tango::DevVarBooleanArray";
+pyType(UCharType this):				"Tango::DevUChar";
+pyType(LongType this):				"Tango::DevLong64";
+pyType(ULongType this):				"Tango::DevULong64";
+pyType(LongArrayType this):			"Tango::DevVarLong64Array";
+pyType(ULongArrayType this):		"Tango::DevVarULong64Array";
+pyType(DevIntType this):			"Tango::DevInt";
+pyType(EncodedType this):			"Tango::DevEncoded";
