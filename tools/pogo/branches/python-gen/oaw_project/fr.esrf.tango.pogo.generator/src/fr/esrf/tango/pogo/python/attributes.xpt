@@ -6,7 +6,8 @@
 	«IF att.status.concreteHere == "true"»
 		«EXPAND readHeaderAttribute( att )»
 		«EXPAND readMethodAttribute( att )»«IF att.rwType.contains("WRITE")»
-		«EXPAND writeHeaderAttribute( att )»«ENDIF»
+		«EXPAND writeHeaderAttribute( att )»
+		«EXPAND writeMethodAttribute( att )»«ENDIF»
 	«ENDIF»
 «ENDFOREACH»
 «ENDDEFINE»
@@ -40,6 +41,16 @@
 #	Data type:	«att.dataType.pyType()»
 #	Attr type:	«att.attType»	«att.attTypeDimensions()»
 «separator2()»«ENDDEFINE»
+
+«DEFINE writeMethodAttribute( Attribute att ) FOR PogoDeviceClass»
+	def write_«att.name»( self, attr )
+		print "In ", self.getName(), "::write_«att.name»"
+		data = []
+		attr.get_write_value( data )
+		print "Attribute value = ", data
+		
+		# Add your own code here
+«ENDDEFINE»
 
 «DEFINE ProtectedArea( String id ) FOR PogoDeviceClass»
 	«PROTECT CSTART "\t#---" CEND "---#" ID name + "->" + id»
