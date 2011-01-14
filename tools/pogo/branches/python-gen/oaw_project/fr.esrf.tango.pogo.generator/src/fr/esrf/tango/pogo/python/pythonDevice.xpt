@@ -92,12 +92,6 @@ class «devicePythonClassName()»(PyTango.Device_4Impl):
 
 «separator1()»
 #
-#	«devicePythonClassName()» command methods
-#
-«separator1()»
-
-«separator1()»
-#
 #	TemplateDevServClass class definition
 #
 «separator1()»
