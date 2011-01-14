@@ -14,6 +14,7 @@
 «separator1()»
 
 «EXPAND executeCommandHeader( cmd )»
+«EXPAND executeCommandMethod( cmd )»
 «ENDIF»
 «ENDFOREACH»
 «ENDDEFINE»
@@ -30,4 +31,15 @@
 #	argin:	«pyType( cmd.argin.type )»	«cmd.argin.description»
 #	argout:	«pyType( cmd.argout.type )»	«cmd.argout.description»
 «separator2()»
+«ENDDEFINE»
+
+// =======================================================================================
+// Defines the execute command method
+// =======================================================================================
+«DEFINE executeCommandMethod( Command cmd ) FOR PogoDeviceClass»
+	def «cmd.name»( self, argin ):
+		print "In ", self.getName(), "::«cmd.name»()"
+		# Add your own code here
+		
+		return argout
 «ENDDEFINE»
