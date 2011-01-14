@@ -5,7 +5,8 @@
 «FOREACH attributes AS att»
 	«IF att.status.concreteHere == "true"»
 		«EXPAND readHeaderAttribute( att )»
-		«EXPAND readMethodAttribute( att )»
+		«EXPAND readMethodAttribute( att )»«IF att.rwType.contains("WRITE")»
+		«EXPAND writeHeaderAttribute( att )»«ENDIF»
 	«ENDIF»
 «ENDFOREACH»
 «ENDDEFINE»
@@ -30,6 +31,15 @@
 			"\t# Sets the attribute value\n" +
 			"\t\tattr.set_value(attr_"+att.name+"_read"+att.SetAttValueSize()+");")-»
 «ENDDEFINE»
+
+«DEFINE writeHeaderAttribute( Attribute att ) FOR PogoDeviceClass»
+«separator2()»
+#
+#	Writes «att.name» attribute values to hardware
+#
+#	Data type:	«att.dataType.pyType()»
+#	Attr type:	«att.attType»	«att.attTypeDimensions()»
+«separator2()»«ENDDEFINE»
 
 «DEFINE ProtectedArea( String id ) FOR PogoDeviceClass»
 	«PROTECT CSTART "\t#---" CEND "---#" ID name + "->" + id»
