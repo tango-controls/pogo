@@ -17,7 +17,7 @@
 #	Reads «att.name» attribute
 #	Description:	«att.properties.description.toString()»
 #
-#	Data type:		«att.dataType.toString()»
+#	Data type:		«att.dataType.pyType()»
 #	Attr type:		«att.attType» «att.attTypeDimensions()»
 #
 «separator2()»
