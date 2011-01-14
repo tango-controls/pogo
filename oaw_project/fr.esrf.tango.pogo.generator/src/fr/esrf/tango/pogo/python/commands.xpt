@@ -1,0 +1,33 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::python::pythonUtils»
+
+// =======================================================================================
+// Defines commands management
+// =======================================================================================
+«DEFINE pythonFile FOR PogoDeviceClass»
+«FOREACH commands AS cmd»
+«IF cmd.status.concreteHere=="true"»
+«separator1()»
+#
+#	«devicePythonClassName()» command methods
+#
+«separator1()»
+
+«EXPAND executeCommandHeader( cmd )»
+«ENDIF»
+«ENDFOREACH»
+«ENDDEFINE»
+
+// =======================================================================================
+// Defines the header for an execute command method
+// =======================================================================================
+«DEFINE executeCommandHeader( Command cmd ) FOR PogoDeviceClass»
+«separator2()»
+#	«cmd.name» command:
+#
+#	Description: «cmd.description»
+#
+#	argin:	«pyType( cmd.argin.type )»	«cmd.argin.description»
+#	argout:	«pyType( cmd.argout.type )»	«cmd.argout.description»
+«separator2()»
+«ENDDEFINE»
