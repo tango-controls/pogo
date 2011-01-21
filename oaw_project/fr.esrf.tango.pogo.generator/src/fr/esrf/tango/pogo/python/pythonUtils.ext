@@ -65,13 +65,15 @@ pyType(EncodedType this):			"Tango::DevEncoded";
 //	Property Type utilities
 pyTangoType(PropType this):			null;
 pyTangoType(BooleanType this):		"PyTango.DevBoolean";
-PyTangoType(ShortType this):		"PyTango.DevShort";
-PyTangoType(IntType this):			"PyTango.DevLong";
-PyTangoType(UShortType this):		"PyTango.DevUShort";
-PyTangoType(UIntType this):			"PyTango.DevULong";
-PyTangoType(FloatType this):		"PyTango.DevFloat";
-PyTangoType(DoubleType this):		"PyTango.DevDouble";
-PyTangoType(StringType this):		"PyTango.DevString";
+pyTangoType(ShortType this):		"PyTango.DevShort";
+pyTangoType(IntType this):			"PyTango.DevInt";
+pyTangoType(UShortType this):		"PyTango.DevUShort";
+pyTangoType(UIntType this):			"PyTango.DevUInt";
+pyTangoType(FloatType this):		"PyTango.DevFloat";
+pyTangoType(DoubleType this):		"PyTango.DevDouble";
+pyTangoType(StringType this):		"PyTango.DevString";
+pyTangoType(LongType this):			"PyTango.DevInt";
+pyTangoType(ULongType this):		"PyTango.DevUInt";
 
 pyTangoType(ShortVectorType this):	"PyTango.DevVarShortArray";
 pyTangoType(IntVectorType this):	"PyTango.DevVarLongArray";

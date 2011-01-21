@@ -111,7 +111,15 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 		
 	# Device properties
 	device_property_list = {
-		}
+		«FOREACH deviceProperties AS dev»'«dev.name»':
+			«IF dev.status.concreteHere == "true"»[«dev.type.pyTangoType()»,
+			"«dev.description»",«IF dev.DefaultPropValue.size == 1»«dev.DefaultPropValue.get(0)»
+			«ELSEIF dev.DefaultPropValue.size == 2»[«dev.DefaultPropValue.get(0)», «dev.DefaultPropValue.get(1)»]
+			«ELSE»
+			«FOREACH dev.DefaultPropValue AS val SEPARATOR ","»
+			«IF dev.DefaultPropValue.get(0) == val»[«val»«ELSEIF dev.DefaultPropValue.get(dev.DefaultPropValue.size - 1).compareTo(val) == 0»«val»]«ELSE»«val»«ENDIF»«ENDFOREACH»«ENDIF»]
+			«ENDIF»
+		«ENDFOREACH»}
 		
 	# Command definitions
 	cmd_list = {
