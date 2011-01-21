@@ -30,6 +30,12 @@ SetAttValueSize(Attribute this):	//	attribute set value (scalar, spectrum, image
 		
 cvsEscaped( String s ): "$" + s + "  $";
 
+displayDescription( String s ):
+	if( s == "" ) then
+		"\"" + "No description has been defined for this argument" + "\""
+	else
+		"\"" + s + "\"";
+		
 //	Type utilities
 pyType(Type this):					null;
 pyType(VoidType this):				"void";
@@ -80,3 +86,35 @@ pyTangoType(IntVectorType this):	"PyTango.DevVarLongArray";
 pyTangoType(FloatVectorType this):	"PyTango.DevVarFloatArray";
 pyTangoType(DoubleVectorType this):	"PyTango.DevVarDoubleArray";
 pyTangoType(StringVectorType this):	"PyTango.DevVarStringArray";
+
+// Types
+pyTangoType(Type this):					null;
+pyTangoType(VoidType this):				"PyTango.DevVoid";
+pyTangoType(BooleanType this):			"PyTango.DevBoolean";
+pyTangoType(ShortType this):			"PyTango.DevShort";
+pyTangoType(IntType this):				"PyTango.DevLong";
+pyTangoType(FloatType this):			"PyTango.DevFloat";
+pyTangoType(DoubleType this):			"PyTango.DevDouble";
+pyTangoType(UShortType this):			"PyTango.DevUShort";
+pyTangoType(UIntType this):				"PyTango.DevULong";
+pyTangoType(StringType this):			"PyTango.DevString";
+pyTangoType(CharArrayType this):		"PyTango.DevVarCharArray";
+pyTangoType(ShortArrayType this):		"PyTango.DevVarShortArray";
+pyTangoType(IntArrayType this):			"PyTango.DevVarLongArray";
+pyTangoType(FloatArrayType this):		"PyTango.DevVarFloatArray";
+pyTangoType(DoubleArrayType this):		"PyTango.DevVarDoubleArray";
+pyTangoType(UShortArrayType this):		"PyTango.DevVarUShortArray";
+pyTangoType(UIntArrayType this):		"PyTango.DevVarULongArray";
+pyTangoType(StringArrayType this):		"PyTango.DevVarStringArray";
+pyTangoType(LongStringArrayType this):	"PyTango.DevVarLongStringArray";
+pyTangoType(DoubleStringArrayType this):"PyTango.DevVarDoubleStringArray";
+pyTangoType(StateType this):			"PyTango.DevState";
+pyTangoType(ConstStringType this):		"PyTango.ConstDevString";
+pyTangoType(BooleanArrayType this):		"PyTango.DevVarBooleanArray";
+pyTangoType(UCharType this):			"PyTango.DevUChar";
+pyTangoType(LongType this):				"PyTango.DevLong64";
+pyTangoType(ULongType this):			"PyTango.DevULong64";
+pyTangoType(LongArrayType this):		"PyTango.DevVarLong64Array";
+pyTangoType(ULongArrayType this):		"PyTango.DevVarULong64Array";
+pyTangoType(DevIntType this):			"PyTango.DevInt";
+pyTangoType(EncodedType this):			"PyTango.DevEncoded";
