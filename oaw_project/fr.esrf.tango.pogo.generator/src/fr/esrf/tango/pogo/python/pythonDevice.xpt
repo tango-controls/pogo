@@ -123,7 +123,12 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 		
 	# Command definitions
 	cmd_list = {
-		}
+		«FOREACH commands AS cmd»'«cmd.name»':
+			«IF cmd.status.concreteHere == "true"»
+			[[«cmd.argin.type.pyTangoType()», «displayDescription(cmd.argin.description)»],
+			[«cmd.argout.type.pyTangoType()», «displayDescription(cmd.argout.description)»]]
+			«ENDIF»
+		«ENDFOREACH»}
 		
 	# Attribute definitions
 	attr_list = {
