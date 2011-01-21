@@ -99,7 +99,15 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 
 	# Class properties
 	class_property_list = {
-		}
+		«FOREACH classProperties AS cp»'«cp.name»':
+			«IF cp.status.concreteHere == "true"»[«cp.type.pyTangoType()»,
+			"«cp.description»",«IF cp.DefaultPropValue.size == 1»«cp.DefaultPropValue.get(0)»
+			«ELSEIF cp.DefaultPropValue.size == 2»[«cp.DefaultPropValue.get(0)», «cp.DefaultPropValue.get(1)»]
+			«ELSE»
+			«FOREACH cp.DefaultPropValue AS val SEPARATOR ","»
+			«IF cp.DefaultPropValue.get(0) == val»[«val»«ELSEIF cp.DefaultPropValue.get(cp.DefaultPropValue.size - 1).compareTo(val) == 0»«val»]«ELSE»«val»«ENDIF»«ENDFOREACH»«ENDIF»]
+			«ENDIF»
+		«ENDFOREACH»}
 		
 	# Device properties
 	device_property_list = {
