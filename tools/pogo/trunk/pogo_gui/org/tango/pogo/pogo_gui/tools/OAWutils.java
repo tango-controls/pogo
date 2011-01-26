@@ -290,9 +290,10 @@ public class OAWutils
 	/**
 	 *	Do a pre-processing for additional info (eg: coments, tables,....
      * @param pogo_class    Specified PogoDeviceClass object
+     * @throws DevFailed in case of changing prtected area ID dailed. 
      */
 	//========================================================================
-	private void doPreProcessing(PogoDeviceClass pogo_class)
+	private void doPreProcessing(PogoDeviceClass pogo_class) throws DevFailed
 	{
 		//	Set the institute field (could have changed)
 		String	institute = System.getenv("INSTITUTE");
@@ -319,6 +320,17 @@ public class OAWutils
 		comments.setCommandsTable(buildCommandsTable(pogo_class));
         comments.setHtmlInheritance(buildHtmlInheritance(pogo_class));
 		pogo_class.getDescription().setComments(comments);
+
+        //  Change protected Area ID if have been change.
+        if (pogo_class.getDescription().getFilestogenerate().toLowerCase().indexOf("code")>0) {
+
+            if (pogo_class.getDescription().getLanguage().toLowerCase().equals("cpp")) {
+                //  ClassFactory ID has been modified to take in account class name
+                ParserTool.modifyProtectedAreaID(pogo_class.getDescription().getSourcePath(),
+                        "ClassFactory.cpp",
+                        "ClassFactory.cpp", pogo_class.getName()+"::ClassFactory.cpp");
+            }
+        }
 	}
 	//========================================================================
 	//========================================================================
@@ -329,18 +341,15 @@ public class OAWutils
 		String		desc;
 		String		argout_str;
 		String		argout_desc;
-		for (int i=0 ; i<2 ; i++)
-		{
-			if (i==0)
-			{
+		for (int i=0 ; i<2 ; i++) {
+			if (i==0) {
 				//	Create State
 				name = "State";
 				desc = "This command gets the device state (stored in its device_state data member) and returns it to the caller.";
 				argout_str   = "State";
 				argout_desc = "Device state";
 			}
-			else
-			{
+			else {
 				//	Create Status
 				name = "Status";
 				desc = "This command gets the device status (stored in its device_status data member) and returns it to the caller.";
@@ -592,7 +601,7 @@ public class OAWutils
 	}
     //========================================================================
     //========================================================================
-    private PogoSystem buildPogoSystem(PogoDeviceClass pogoClass)
+    private PogoSystem buildPogoSystem(PogoDeviceClass pogoClass) throws DevFailed
     {
         PogoSystem sys = factory.createPogoSystem();
 
