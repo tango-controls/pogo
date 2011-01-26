@@ -226,8 +226,6 @@ public class InheritanceUtils
             new_attr.setDataType(OAWutils.createType(inher_attr.getDataType()));
             new_attr.setMaxX(inher_attr.getMaxX());
             new_attr.setMaxY(inher_attr.getMaxY());
-            if (inher_attr.getName().equals("FirstVelocity"))
-                System.out.println("-----------> "+new_attr.getDataType());
 
             //	Attribute properties.
             AttrProperties	new_prop = OAWutils.factory.createAttrProperties();
