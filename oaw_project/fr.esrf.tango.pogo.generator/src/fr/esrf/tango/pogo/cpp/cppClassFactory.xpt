@@ -7,7 +7,7 @@
 «IF description.filestogenerate.contains(tagForSourceCode())»
 
 «FILE classFactoryFileName()-»
-«PROTECT CSTART '/*----- ' CEND ' -----*/' ID classFactoryFileName()»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID concatString(name, "::ClassFactory.cpp")»
 static const char *RcsId = "«cvsEscaped("Id:")»";
 «EXPAND Common::fileHeader(classFactoryFileName(),
 	"C++ source for the class_factory method of the DServer\n" +
