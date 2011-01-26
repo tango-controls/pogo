@@ -493,8 +493,7 @@ public class Utils
         if (filenames==null)
             return v;
 
-		for (String name : filenames)
-		{
+		for (String name : filenames) {
 			String filename = dirname + "/" + name;
 			File f = new File(filename);
 			if (!f.isDirectory())
@@ -519,13 +518,11 @@ public class Utils
 
         if (filenames==null)
             return null;
-		for (String name : filenames)
-		{
+		for (String name : filenames) {
 			//	Recursive if directory
 			String filename = dirname + "/" + name;
 			File f = new File(filename);
-			if (f.isDirectory())
-			{
+			if (f.isDirectory()) {
 				String	found = searchFileFromDirectory(searched, f.toString());
 				if (found!=null)
 					return found;
@@ -556,16 +553,14 @@ public class Utils
 	{
 	   //  Check for browser
 		String  browser;
-		if ((browser=System.getProperty("BROWSER"))==null)
-		{
+		if ((browser=System.getProperty("BROWSER"))==null) {
 			if (osIsUnix())
 				browser = "firefox - turbo";
 			else
 				browser = "explorer";
 		}
 		String	cmd = browser + " " + url;
-		try
-		{
+		try {
 			executeShellCmdAndReturn(cmd);
 		}
 		catch(Exception e)
@@ -595,6 +590,66 @@ public class Utils
 		// do not read output lines from command
 		// Do not check its exit value
 	}
+
+    //===============================================================
+    /**
+     * Check the files to be excluded by XPand scans
+     * @param dirName the directory to be checked (output code)
+     * @return list of files to be excluded by XPand scans
+     */
+    //===============================================================
+    static public String getExcludeFilesAndDir(String dirName)
+    {
+        //  Define what will be generated
+        String[]        geneFiles = { ".cpp", ".h", ".java", ".py", "Makefile"};
+        String[]        geneDirs  = { "vc8_proj", "vc9_proj"};
+        //  Get file list
+        File			d = new File(dirName);
+        String[]		fileNames = d.list();
+        Vector<String>  excluded = new Vector<String>();
+        for (String fileName : fileNames) {
+            //  Check if fileName must be generated
+            boolean generates = couldBeGenerated(fileName, geneFiles);
+            if (!generates)
+                generates = couldBeGenerated(fileName, geneDirs);
+
+            if (!generates) {
+                //  if not -> add it to excluded ones
+                excluded.add(fileName);
+            }
+        }
+        //  Convert to String
+        StringBuffer    sb = new StringBuffer();
+        for (String fileName : excluded) {
+            sb.append(fileName).append(", ");
+        }
+        //  Remove last ", " if any
+        String  str = sb.toString();
+        int pos = str.lastIndexOf(',');
+        if (pos>0)
+            str = str.substring(0, pos);
+        //System.out.println(str+"\n");
+        return str;
+    }
+	//===============================================================
+	//===============================================================
+    static private boolean couldBeGenerated(String fileName, String[] generated)
+    {
+        //  Check for hiden files
+        if (fileName.startsWith(".") ||
+            fileName.startsWith("#") ||
+            fileName.startsWith("~"))
+                return false;
+
+        //  Check if file must be generated.
+        boolean generates = false;
+        for (String s : generated) {
+            if (fileName.endsWith(s)) {
+                generates = true;
+            }
+        }
+        return generates;
+    }
 	//===============================================================
 	//===============================================================
 
