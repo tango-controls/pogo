@@ -163,10 +163,10 @@ public class OAWutils
     public void generate(PogoDeviceClass pogo_class) throws DevFailed
 	{
         PogoSystem  sys = buildPogoSystem(pogo_class);
+        String      prExcludes = Utils.getExcludeFilesAndDir(pogo_class.getDescription().getSourcePath());
 
 		//	Generate XMI file if requested.
-		if (pogo_class.getDescription().getFilestogenerate().toLowerCase().indexOf("xmi")>=0)
-		{
+		if (pogo_class.getDescription().getFilestogenerate().toLowerCase().indexOf("xmi")>=0) {
 			String	xmi_file = pogo_class.getDescription().getSourcePath() + "/" +
 										pogo_class.getName() + ".xmi";
 			ResourceSet resourceSet = new ResourceSetImpl();
@@ -188,6 +188,7 @@ public class OAWutils
 		params.put("targetDir",      pogo_class.getDescription().getSourcePath());
 		params.put("targetLanguage", pogo_class.getDescription().getLanguage());
         params.put("theModel",       sys);
+        params.put("prExcludes",     prExcludes);
 
 		runWorkflow(params);
 	}
