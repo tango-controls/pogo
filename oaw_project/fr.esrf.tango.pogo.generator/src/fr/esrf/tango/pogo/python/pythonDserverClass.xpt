@@ -99,7 +99,8 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 			'min_warning': «att.properties.minWarning»,
 			'delta_t': «att.properties.deltaTime»,
 			'delta_val': «att.properties.deltaValue»,
-			«IF att.polledPeriod.length > 0 && att.polledPeriod != "0"»'Polling period': «att.polledPeriod»«ELSE»# No polling period defined«ENDIF»
+			«IF att.polledPeriod.length > 0 && att.polledPeriod != "0"-»'Polling period': «att.polledPeriod»«ELSE»# No polling period defined«ENDIF»
+			«IF att.displayLevel == "EXPERT"-»			'Display level': PyTango.DispLevel.EXPERT«ENDIF»
 			}]
 			«ENDIF»
 		«ENDFOREACH»
