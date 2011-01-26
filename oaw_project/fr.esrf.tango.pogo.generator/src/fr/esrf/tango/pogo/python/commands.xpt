@@ -43,7 +43,6 @@
 «ELSE»
 	def «cmd.name»( self, argin ):
 		print "In ", self.getName(), "::«cmd.name»()"
-		# Add your own code here
 		
 		return argout
 «ENDIF»
@@ -56,7 +55,6 @@
 	def dev_«cmd.name.toLowerCase()»( self ):
 		print "In ", self.getName(), "::dev_«cmd.name.toLowerCase()»()"
 		argout = self.get_state()
-		# Add your own code here
 		
 		self.set_state( argout )
 		return argout
@@ -69,7 +67,6 @@
 	def dev_«cmd.name.toLowerCase()»( self ):
 		print "In ", self.getName(), "::dev_«cmd.name.toLowerCase()»()"
 		argout = self.get_status()
-		# Add your own code here
 		
 		self.set_status( argout )
 		return argout
