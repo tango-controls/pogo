@@ -131,6 +131,35 @@ public class ParserTool
 		}
 	}
     //===============================================================
+    //===============================================================
+    public static void modifyProtectedAreaID(String path, String fileName, String oldID, String newID)
+            throws DevFailed
+    {
+        oldID = "PROTECTED REGION ID(" + oldID + ") ENABLED START";
+        newID = "PROTECTED REGION ID(" + newID + ") ENABLED START";
+
+        //  Read file
+        String code;
+        try {
+            code = readFile(path+'/'+fileName);
+        }
+        catch (DevFailed e) {
+            //  If failed -> do nothing
+            return;
+        }
+        //  Check if old ID exists
+        int start = code.indexOf(oldID);
+        if (start<0)
+            return; //  Do nothing
+        int end = start + oldID.length();
+
+        //  Else replace
+        String  newCode = code.substring(0, start) + newID + code.substring(end);
+
+        //  And Re Write file
+        writeFile(path+'/'+fileName, newCode);
+    }
+    //===============================================================
 	/**
 	 *	Convert html file to java String
      * @param   filename HTML specified file name
