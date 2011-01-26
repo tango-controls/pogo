@@ -29,23 +29,17 @@
 	def read_«att.name»(self, attr)
 		print "In ", self.get_name(), "::read_«att.name»()"
 
-		# Add your own code here
-
 		attr_«att.name»_read = 1
 		attr_set_value( attr_«att.name»_read )
 «ELSEIF att.attType.toLowerCase() == "spectrum"»
 	def read_«att.name»( self, attr )
 		print "In ", self.get_name(), "::read_«att.name»()"
 	
-		# Add your own code here
-	
 		attr_«att.name»_read = [1]
 		attr_set_value( attr_«att.name»_read, 1 )
 «ELSE»
 	def read_«att.name»( self, attr )
 		print "In ", self.get_name(), "::read_«att.name»()"
-		
-		# Add your own code here
 		
 		attr_«att.name»_read = [1] [2]
 		attr_set_value( attr_«att.name»_read, 1, 1 )
@@ -68,7 +62,6 @@
 		attr.get_write_value( data )
 		print "Attribute value = ", data
 		
-		# Add your own code here
 «ENDDEFINE»
 
 «DEFINE ProtectedArea( String id ) FOR PogoDeviceClass»
