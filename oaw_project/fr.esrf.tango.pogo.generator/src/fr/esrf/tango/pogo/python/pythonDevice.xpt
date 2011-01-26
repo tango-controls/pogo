@@ -132,6 +132,17 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 		
 	# Attribute definitions
 	attr_list = {
+		«FOREACH attributes AS att»'«att.name»':
+			«IF att.status.concreteHere == "true"-»
+			«IF att.attType == "Scalar"-»
+			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()»]]
+			«ELSEIF att.attType == "Spectrum"-»
+			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()», «att.maxX»]]
+			«ELSEIF att.attType == "Image"-»
+			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()», «att.maxX», «att.maxY»]]
+			«ENDIF»
+			«ENDIF»
+		«ENDFOREACH»
 		}
 		
 «separator2()»
