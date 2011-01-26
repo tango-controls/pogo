@@ -43,6 +43,7 @@ package org.tango.pogo.pogo_gui.tools;
  */
 import fr.esrf.TangoDs.Except;
 import fr.esrf.Tango.DevFailed;
+import org.tango.pogo.pogo_gui.PogoConst;
 
 import java.io.*;
 import java.util.*;
@@ -78,18 +79,20 @@ public class  PogoProperty
     public static  String           installHome   = "$(TANGO_HOME)";
 	public static Vector<String>	siteClassFamilies = new Vector<String>();
 
-    //---------------------- $HOME/.prorc definitions -----------------------------------
+    //---------------------- $HOME/.pogorc definitions -----------------------------------
 
 	private static final int	ownHistoSize       = 20;
  	private static final String	ownInheritanceHome = "hinerit_home";
  	private static final String	ownContactAddress  = "contact_address";
  	private static final String	ownLoadPrevious    = "load_previous";
 	private static final String	ownProjectHistory  = "project_history";
+	private static final String	multiProjectHistory  = "multi_class_project_history";
 
 	public static String			inheritHome    = null;
 	public static String			contactAddress = "";
 	public static boolean			loadPrevious   = true;
 	public static Vector<String>	projectHistory = new Vector<String>();
+	public static Vector<String>	multiClassProjectHistory = new Vector<String>();
 
 	//===============================================================
    //===============================================================
@@ -173,6 +176,8 @@ public class  PogoProperty
                 System.out.println(rc_file);
                 Vector<String>	vs = loadPropertiesRC(rc_file);
                 projectHistory = getStringVectorProperty(ownProjectHistory, vs);
+                multiClassProjectHistory =
+                        getStringVectorProperty(multiProjectHistory, vs);
                 inheritHome    = getStringProperty(ownInheritanceHome, vs);
                 contactAddress = getStringProperty(ownContactAddress, vs);
 
@@ -182,6 +187,8 @@ public class  PogoProperty
                 //	remove first one if is empty
                 if (projectHistory.size()>0 && projectHistory.get(0).length()==0)
                     projectHistory.remove(0);
+                if (multiClassProjectHistory.size()>0 && multiClassProjectHistory.get(0).length()==0)
+                    multiClassProjectHistory.remove(0);
             }
         }
         catch(Exception e)
@@ -340,19 +347,32 @@ public class  PogoProperty
 	}
 	//===============================================================
 	//===============================================================
-	public static void addProject(String projname)
+	public static void addProject(String projname, int type)
 	{
-		//	Check if already exists -> remove
-		for (int i=0 ; i<projectHistory.size() ; i++)
-			if (projectHistory.get(i).equals(projname))
-				projectHistory.remove(i);
-		//	Add the new one in first index
-		projectHistory.add(0, projname);
-		
-		//	Check if size is not too big
-		while (projectHistory.size()>ownHistoSize)
-			projectHistory.remove(ownHistoSize-1);
+        if (type==PogoConst.SINGLE_CLASS) {
+            //	Check if already exists -> remove
+            for (int i=0 ; i<projectHistory.size() ; i++)
+                if (projectHistory.get(i).equals(projname))
+                    projectHistory.remove(i);
+            //	Add the new one in first index
+            projectHistory.add(0, projname);
 
+            //	Check if size is not too big
+            while (projectHistory.size()>ownHistoSize)
+                projectHistory.remove(ownHistoSize-1);
+        }
+        else {
+            //	Check if already exists -> remove
+            for (int i=0 ; i<multiClassProjectHistory.size() ; i++)
+                if (multiClassProjectHistory.get(i).equals(projname))
+                    multiClassProjectHistory.remove(i);
+            //	Add the new one in first index
+            multiClassProjectHistory.add(0, projname);
+
+            //	Check if size is not too big
+            while (multiClassProjectHistory.size()>ownHistoSize)
+                multiClassProjectHistory.remove(ownHistoSize-1);
+        }
 		//	Then update file.
 		updatePogoRC();
 	}
@@ -380,6 +400,10 @@ public class  PogoProperty
 		sb.append("\n\n");
 		sb.append(buildPropertyLine(ownProjectHistory)).append('\n');
 		for (String project : projectHistory)
+			sb.append('\t').append(project).append('\n');
+		sb.append("\n\n");
+		sb.append(buildPropertyLine(multiProjectHistory)).append('\n');
+		for (String project : multiClassProjectHistory)
 			sb.append('\t').append(project).append('\n');
 
         //  Try to read to compare
