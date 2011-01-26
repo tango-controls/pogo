@@ -79,12 +79,27 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 		«FOREACH attributes AS att»'«att.name»':
 			«IF att.status.concreteHere == "true"-»
 			«IF att.attType == "Scalar"-»
-			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()»]]
+			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()»]
 			«ELSEIF att.attType == "Spectrum"-»
-			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()», «att.maxX»]]
+			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()», «att.maxX»]
 			«ELSEIF att.attType == "Image"-»
-			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()», «att.maxX», «att.maxY»]]
+			[[«att.dataType.pyTangoType()», «att.pyTangoFromAtt()», «att.pyTangoFromRw()», «att.maxX», «att.maxY»]
 			«ENDIF»
+			{'description': "«att.properties.description»",
+			'label': "«att.properties.label»",
+			'unit': "«att.properties.unit»",
+			'standard_unit': «att.properties.standardUnit»,
+			'display_unit': "«att.properties.displayUnit»",
+			'format': "«att.properties.format»",
+			'max_value': «att.properties.maxValue»,
+			'min_value': «att.properties.minValue»,
+			'max_alarm': «att.properties.maxAlarm»,
+			'min_alarm': «att.properties.minAlarm»,
+			'max_warning': «att.properties.maxWarning»,
+			'min_warning': «att.properties.minWarning»,
+			'delta_t': «att.properties.deltaTime»,
+			'delta_val': «att.properties.deltaValue»
+			}]
 			«ENDIF»
 		«ENDFOREACH»
 		}
