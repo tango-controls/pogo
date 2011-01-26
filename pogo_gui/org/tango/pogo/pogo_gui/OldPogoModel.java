@@ -116,19 +116,21 @@ public class  OldPogoModel
 
 			//	Set the inheritance
 			Inheritance	inheritance = OAWutils.factory.createInheritance();
-			inheritance.setClassname(old_model.inherited_from);
-			String	inherit_path = System.getProperty("SUPER_HOME");
-			if (inherit_path!=null)
-				inheritance.setSourcePath(inherit_path);
-			else
-			if (old_model.inherited_from.startsWith("Device_") &&
-				old_model.inherited_from.endsWith("Impl"))
-			{
-				inheritance.setSourcePath("");
-				//inheritance.setClassname("");
+			//	Split path and class name if any
+			String	inherPath = System.getProperty("SUPER_HOME");
+			if (inherPath==null)
+				inherPath = "";
+			String	inherClass = old_model.inherited_from;
+			int	pos = inherClass.lastIndexOf('/');
+			if (pos<0)
+				pos = inherClass.lastIndexOf('\\'); //	from windows ?
+			if (pos>0) {
+				inherPath  = inherClass.substring(0, pos);
+				inherClass = inherClass.substring(pos+1);
 			}
-			else
-				inheritance.setSourcePath(Utils.getPath(filename));
+			inheritance.setClassname(inherClass);
+			inheritance.setSourcePath(inherPath);
+
             EList<Inheritance> inher = new_model.getDescription().getInheritances();
 			inher.add(inheritance);
 
