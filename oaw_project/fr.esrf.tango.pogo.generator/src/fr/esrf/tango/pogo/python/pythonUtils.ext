@@ -7,6 +7,7 @@ defaultPythonExtension(): ".py";
 devicePythonClassName( PogoDeviceClass this ): name;
 devicePythonFileName( PogoDeviceClass this ): devicePythonClassName() + defaultPythonExtension();
 dserverClassPythonClassName( PogoDeviceClass this ): name + "Class";
+dserverClassPythonFileName( PogoDeviceClass this ): dserverClassPythonClassName() + defaultPythonExtension();
 
 classFactoryFileName( PogoDeviceClass this ): "ClassFactory" + defaultPythonExtension();
 stateMachineFileName( PogoDeviceClass this ): name + "StateMachine" + defaultPythonExtension();
