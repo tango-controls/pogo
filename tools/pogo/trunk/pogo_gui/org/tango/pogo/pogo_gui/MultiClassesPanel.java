@@ -134,7 +134,37 @@ public class MultiClassesPanel extends JFrame
         helpMenu.setMnemonic ('H');
 	    helpItem.setMnemonic ('H');
 		helpItem.setAccelerator(KeyStroke.getKeyStroke('H', Event.CTRL_MASK));
+
+        manageRecentMenu(null);
 	}
+    //=======================================================
+    //=======================================================
+    private void manageRecentMenu(String new_proj)
+    {
+        try {
+            //	Check if there is something to manage.
+            if (new_proj==null && PogoProperty.projectHistory.size()==0)	//	No project histo
+                return;
+
+            if (new_proj!=null)
+                PogoProperty.addProject(new_proj, PogoConst.MULTI_CLASS);
+
+            //	If project history available add it in recent menu
+            recentMenu.removeAll();
+            for (String project : PogoProperty.multiClassProjectHistory) {
+                JMenuItem	item = new JMenuItem(project);
+                item.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        recentItemActionPerformed(evt);
+                    }
+                });
+                recentMenu.add(item);
+            }
+        }
+        catch(Exception e) {
+            System.err.println("\nWARNING:	" + e);
+        }
+    }
 	//=======================================================
     /** This method is called from within the constructor to
      * initialize the form.
@@ -149,6 +179,8 @@ public class MultiClassesPanel extends JFrame
         fileMenu = new javax.swing.JMenu();
         newItem = new javax.swing.JMenuItem();
         openItem = new javax.swing.JMenuItem();
+        recentMenu = new javax.swing.JMenu();
+        javax.swing.JMenuItem dummyItem = new javax.swing.JMenuItem();
         generateItem = new javax.swing.JMenuItem();
         exitItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
@@ -180,6 +212,13 @@ public class MultiClassesPanel extends JFrame
             }
         });
         fileMenu.add(openItem);
+
+        recentMenu.setText("Open Recent");
+
+        dummyItem.setText("...");
+        recentMenu.add(dummyItem);
+
+        fileMenu.add(recentMenu);
 
         generateItem.setText("Generate");
         generateItem.addActionListener(new java.awt.event.ActionListener() {
@@ -241,6 +280,18 @@ public class MultiClassesPanel extends JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //=======================================================
+    //=======================================================
+    private void recentItemActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        try {
+            String proj_name = ((JMenuItem)evt.getSource()).getText();
+            loadXmiFile(proj_name);
+        }
+        catch(DevFailed e) {
+            ErrorPane.showErrorMessage(this, null, e);
+        }
+    }
 	//=======================================================
 	//=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -270,6 +321,7 @@ public class MultiClassesPanel extends JFrame
     {
         PogoMultiClasses    pmc = OAWutils.getInstance().loadMultiClassesModel(xmiFileName);
         buildTree(pmc);
+        manageRecentMenu(xmiFileName);
         return pmc;
     }
 	//=======================================================
@@ -311,8 +363,7 @@ public class MultiClassesPanel extends JFrame
         try {
             PogoMultiClasses    multiClasses = tree.getServer();
             GenerateDialog      dialog = new GenerateDialog(this);
-            if (dialog.showDialog(multiClasses)==JOptionPane.OK_OPTION)
-            {
+            if (dialog.showDialog(multiClasses)==JOptionPane.OK_OPTION)  {
                 //	Then generate code and save
                 setCursor(new Cursor(Cursor.WAIT_CURSOR));
                 multiClasses.setSourcePath(dialog.getPath());
@@ -386,7 +437,7 @@ public class MultiClassesPanel extends JFrame
                 "             Pogo  (Tango Code Generator)\n"+
                 "    This tool is able to generate, update and modify\n" +
                 "           a server project containing several\n" +
-                "            Tango device classes.\n\n" +
+                "                 Tango device classes.\n\n" +
                 "Define a new server (Name, description,...)\n" +
                 "Then add classes (Highest classes to lowest ones)\n" +
                 "And finally, generate.\n\n"+
@@ -472,6 +523,7 @@ public class MultiClassesPanel extends JFrame
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem newItem;
     private javax.swing.JMenuItem openItem;
+    private javax.swing.JMenu recentMenu;
     private javax.swing.JMenuItem removeItem;
     // End of variables declaration//GEN-END:variables
 	//=======================================================

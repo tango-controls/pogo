@@ -15,6 +15,12 @@
 #
 #-======================================================================
 
+Pogo-7.0.5 - 26/01/2011:
+	Some files and sub directories are not scaned any more at workflow.
+
+Pogo-7.0.4 - 04/01/2011:
+	Pb with inherited class path for Pogo-6 convertion fixed.
+
 Pogo-7.0.3 - 20/12/2010:
 	Pb with DevVarLongArray and DevVarULongArray fixed.
 	Pb with special characters in comments fixed.

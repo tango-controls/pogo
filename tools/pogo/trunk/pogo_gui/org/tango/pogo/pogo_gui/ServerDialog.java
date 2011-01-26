@@ -67,7 +67,7 @@ public class ServerDialog extends JDialog
         this.server = server;
 		initComponents();
 
-        titleLabel.setText("Tang Server definition");
+        titleLabel.setText("Tango Server definition");
         if (server!=null) {
     		nameText.setText(server.name);
     		descriptionText.setText(server.description);

@@ -42,7 +42,7 @@
 #-======================================================================
 
 
-RELEASE    = 7.0.3
+RELEASE    = 7.0.5
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango
@@ -96,8 +96,9 @@ version:
 	@make GUI
 
 jar:
-	@make vers
-	@make_jar $(PACKAGE) $(RELEASE) $(JAR_DIR)
+	@echo "------------------------------------"
+	@echo "  Use Eclipse to build jar file !"
+	@echo "------------------------------------"
 
 doc:
 	@javadoc 				\
