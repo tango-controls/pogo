@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Dec 20 11:25:23 CET 2010)</Center><Br>\n" + 
+		"	(Generated Tue Jan 04 13:22:06 CET 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.0.4 - 04/01/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb with inherited class path for Pogo-6 convertion fixed.<Br>\n" + 
 		"<li><b>Pogo-7.0.3 - 20/12/2010:</b><Br>\n" + 
 		"&nbsp; &nbsp; Pb with DevVarLongArray and DevVarULongArray fixed.<Br>\n" + 
 		"&nbsp; &nbsp; Pb with special characters in comments fixed.<Br>\n" + 

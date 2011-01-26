@@ -262,8 +262,7 @@ public class PogoGUI extends JFrame
 	//=======================================================
 	private void manageRecentMenu(String new_proj)
 	{
-		try
-		{
+		try {
 			//	Check if there is something to manage.
 			if (new_proj==null && PogoProperty.projectHistory.size()==0)	//	No project histo
 				return;
@@ -273,12 +272,11 @@ public class PogoGUI extends JFrame
                 return;
 			
 			if (new_proj!=null)
-				PogoProperty.addProject(new_proj);
+				PogoProperty.addProject(new_proj, PogoConst.SINGLE_CLASS);
 
 			//	If project history available add it in recent menu
 			recentMenu.removeAll();
-			for (String project : PogoProperty.projectHistory)
-			{
+			for (String project : PogoProperty.projectHistory) {
 				JMenuItem	item = new JMenuItem(project);
         		item.addActionListener(new java.awt.event.ActionListener() {
             		public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,8 +286,7 @@ public class PogoGUI extends JFrame
 				recentMenu.add(item);
 			}
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			System.err.println("\nWARNING:	" + e);
 		}
 	}
@@ -316,8 +313,7 @@ public class PogoGUI extends JFrame
 		addTopPanelButton(utils.state_icon,     "Add State", true);
 		
 		homeDir=System.getenv("SOURCE_PATH");
-		if (homeDir==null)
-		{
+		if (homeDir==null) {
 			homeDir=System.getProperty("SOURCE_PATH");
 			if (homeDir==null)
 				homeDir = new File("").getAbsolutePath();
