@@ -203,7 +203,8 @@ include $(MAKE_ENV)/common_target.opt
 #=============================================================================
 «DEFINE addClassObjectFiles FOR PogoMultiClasses-»
 	«FOREACH classes AS _class-» \
-            $(SVC_«_class.classname.toUpperCase()»_OBJ)«ENDFOREACH-»
+            $(SVC_«_class.classname.toUpperCase()»_OBJ)«ENDFOREACH-» \
+            $(ADDITIONAL_OBJ)
 
 	«FOREACH classes AS _class-»
 
@@ -213,6 +214,11 @@ SVC_«_class.classname.toUpperCase()»_OBJ = \
 		$(OBJDIR)/«_class.classname»Class.o \
 		$(OBJDIR)/«_class.classname»StateMachine.o«EXPAND addInheritedClassObjectFiles(_class)-»
 	«ENDFOREACH-»
+
+#------------  Object files for additional files (add your own ones) ------------
+ADDITIONAL_OBJ = 
+
+
 «ENDDEFINE»
 
 #=============================================================================
@@ -247,7 +253,12 @@ SVC_«_class.classname.toUpperCase()»_OBJ = \
 «EXPAND inheritanceDependancy(inher, "StateMachine")-»
 	«ENDIF»«ENDFOREACH-»
 «ENDFOREACH»
-	
+
+#------------  Object files dependancies for additional files  ------------
+#$(OBJDIR)/.o: $()/.cpp $()
+#	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/.o
+
+
 «ENDDEFINE»
 
 
@@ -283,5 +294,3 @@ $(OBJDIR)/«_class.classname»«str».o: $(«_class.classname.toUpperCase()»_HOME)/«_
 $(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inher.classname»«str».cpp $(«inher.makeVariable("_INCL")»)
 	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
 «ENDDEFINE»
- 	
- 			
