@@ -2,4 +2,5 @@
 
 «DEFINE main FOR PogoDeviceClass»
 	«EXPAND pythonDevice::pythonFile»
+	«EXPAND pythonDserverClass::pythonFile»
 «ENDDEFINE»
