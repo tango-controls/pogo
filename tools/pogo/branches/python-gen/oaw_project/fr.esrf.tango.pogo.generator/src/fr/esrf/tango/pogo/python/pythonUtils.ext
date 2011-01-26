@@ -20,6 +20,14 @@ attTypeDimensions(Attribute this):
 	:	(attType == "Image"
 		?	" max = "+maxX+" x "+maxY
 		: null);
+		
+pyTangoFromAtt( Attribute this ):
+	attType == "Image" ? "PyTango.IMAGE" :
+	(attType == "Spectrum" ? "PyTango.SPECTRUM" : "PyTango.SCALAR");
+	
+pyTangoFromRw( Attribute this ):
+	rwType == "READ_WRITE" ? "PyTango.READ_WRITE" :
+	(rwType == "WRITE" ? "PyTango.WRITE" : "PyTango.READ");
 
 SetAttValueSize(Attribute this):	//	attribute set value (scalar, spectrum, image)
 	attType == "Spectrum"
