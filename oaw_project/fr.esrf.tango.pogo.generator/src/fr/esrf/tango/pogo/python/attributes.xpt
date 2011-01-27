@@ -8,6 +8,7 @@
 		«EXPAND readMethodAttribute( att )»«IF att.rwType.contains("WRITE")»
 		«EXPAND writeHeaderAttribute( att )»
 		«EXPAND writeMethodAttribute( att )»«ENDIF»
+		«EXPAND isAllowedAttributeMethod( att )»
 	«ENDIF»
 «ENDFOREACH»
 «ENDDEFINE»
@@ -62,6 +63,30 @@
 		attr.get_write_value( data )
 		print "Attribute value = ", data
 		
+«ENDDEFINE»
+
+// =======================================================================================
+// Defines the is_allowed attribute method
+// TODO Manages the write and read attribute State Machine in a same function
+// =======================================================================================
+«DEFINE isAllowedAttributeMethod( Attribute att ) FOR PogoDeviceClass»
+«separator2()»
+# Read «att.name» attribute State Machine
+# TODO Manages the write and read attribute State Machine in a same function
+«separator2()»
+	def is_«att.name»_allowed( self ):
+		if self.get_state() in [«FOREACH att.readExcludedStates AS e SEPARATOR ','»«e»«ENDFOREACH»]
+			return False
+		return True
+
+«separator2()»
+# Write «att.name» attribute State Machine
+# TODO Manages the write and read attribute State Machine in a same function
+«separator2()»
+	def is_«att.name»_allowed( self ):
+		if self.get_state() in [«FOREACH att.writeExcludedStates AS e SEPARATOR ','»«e»«ENDFOREACH»]
+			return False
+		return True
 «ENDDEFINE»
 
 «DEFINE ProtectedArea( String id ) FOR PogoDeviceClass»
