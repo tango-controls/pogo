@@ -15,6 +15,9 @@
 #
 #-======================================================================
 
+Pogo-7.0.6 - 27/01/2011:
+	The files and sub directories not scaned at workflow is now passed dynamicaly to the workflow.
+
 Pogo-7.0.5 - 26/01/2011:
 	Some files and sub directories are not scaned any more at workflow.
 
