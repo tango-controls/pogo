@@ -42,7 +42,7 @@
 #-======================================================================
 
 
-RELEASE    = 7.0.5
+RELEASE    = 7.0.6
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango
@@ -69,7 +69,7 @@ DOC_HEADER = "<h1>POGO Classes</h1>"
 
 #-----------------------------------------------------------------
 
-all:	GUI exe
+all:	utils GUI exe
 
 full:	constants	utils	GUI
 
