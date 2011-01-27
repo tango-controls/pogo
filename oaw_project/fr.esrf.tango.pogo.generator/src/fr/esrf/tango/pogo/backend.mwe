@@ -15,7 +15,7 @@
      <expand value='fr::esrf::tango::pogo::Main::main("${targetLanguage}") FOR theModel'/>
      <prSrcPaths value="${targetDir}"/>
      <prDefaultExcludes value="false"/> <!-- don't use the build-in set of ignore patterns -->
-     <prExcludes value=".*, ~*, *.bak, *.bck, *.sav, *.old, *.tmp, core,      bin, obj, CVS, OLD, SAV, BAK, BCK, tmp, toto, bidon"/>
+     <prExcludes value="${prExcludes}"/>
      <genPath value='${targetDir}'/>
   </component>
   
