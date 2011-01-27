@@ -101,6 +101,8 @@ class «dserverClassPythonClassName()»(PyTango.DeviceClass):
 			'delta_val': «att.properties.deltaValue»,
 			«IF att.polledPeriod.length > 0 && att.polledPeriod != "0"-»'Polling period': «att.polledPeriod»«ELSE»# No polling period defined«ENDIF»
 			«IF att.displayLevel == "EXPERT"-»			'Display level': PyTango.DispLevel.EXPERT«ENDIF»
+			«IF att.memorized == "true"-»			'Memorized': "true"«ENDIF»
+			«IF att.memorizedAtInit == "true"-»			'MemorizedAtInit': "true"«ENDIF»
 			}]
 			«ENDIF»
 		«ENDFOREACH»
