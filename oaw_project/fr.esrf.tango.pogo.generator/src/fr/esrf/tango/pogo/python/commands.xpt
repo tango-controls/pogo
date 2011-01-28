@@ -5,11 +5,13 @@
 // Defines commands management
 // =======================================================================================
 «DEFINE pythonFile FOR PogoDeviceClass»
+«IF commands.size > 0-»
 «separator1()»
 #
-#	«devicePythonClassName()» command methods
+#	«devicePythonClassName()» commands methods
 #
 «separator1()»
+«ENDIF»
 «FOREACH commands AS cmd»
 «IF cmd.status.concreteHere=="true"»
 «EXPAND executeCommandHeader( cmd )»
@@ -77,13 +79,13 @@
 // Defines the is_allowed command method
 // =======================================================================================
 «DEFINE isAllowedCommandMethod( Command cmd ) FOR PogoDeviceClass»
+«IF cmd.name.toLowerCase() != "state" && cmd.name.toLowerCase() != "status"-»
 «separator2()»
 # «cmd.name» command State Machine
 «separator2()»
-	«IF cmd.name.toLowerCase() != "state" && cmd.name.toLowerCase() != "status"-»	
 	def is_«cmd.name»_allowed( self ):
 		if self.get_state() in [«FOREACH cmd.excludedStates AS e SEPARATOR ','»«e»«ENDFOREACH»]
 			return False
 		return True
-	«ENDIF»
+«ENDIF»
 «ENDDEFINE»
