@@ -4,6 +4,8 @@
 «DEFINE pythonFile FOR PogoDeviceClass»
 «FOREACH attributes AS att»
 	«IF att.status.concreteHere == "true"»
+		«EXPAND readAttributeHardwareHeader»
+		«EXPAND readAttributeHardwareMethod»
 		«EXPAND readHeaderAttribute( att )»
 		«EXPAND readMethodAttribute( att )»«IF att.rwType.contains("WRITE")»
 		«EXPAND writeHeaderAttribute( att )»
@@ -11,6 +13,19 @@
 		«EXPAND isAllowedAttributeMethod( att )»
 	«ENDIF»
 «ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE readAttributeHardwareHeader FOR PogoDeviceClass»
+«separator2()»
+#
+#	Reads attribute hardware
+#
+«separator2()»
+«ENDDEFINE»
+
+«DEFINE readAttributeHardwareMethod FOR PogoDeviceClass»
+	def read_attr_hardware( self, data )
+		self.info_stream( "In read_attr_hardware" )
 «ENDDEFINE»
 
 «DEFINE readHeaderAttribute( Attribute att ) FOR PogoDeviceClass»
