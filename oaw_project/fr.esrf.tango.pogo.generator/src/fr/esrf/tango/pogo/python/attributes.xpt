@@ -2,10 +2,13 @@
 «EXTENSION fr::esrf::tango::pogo::python::pythonUtils»
 
 «DEFINE pythonFile FOR PogoDeviceClass»
+«IF attributes.size > 0-»
+	«EXPAND attributesHeader»
+	«EXPAND readAttributeHardwareHeader»
+	«EXPAND readAttributeHardwareMethod»
+«ENDIF-»
 «FOREACH attributes AS att»
 	«IF att.status.concreteHere == "true"»
-		«EXPAND readAttributeHardwareHeader»
-		«EXPAND readAttributeHardwareMethod»
 		«EXPAND readHeaderAttribute( att )»
 		«EXPAND readMethodAttribute( att )»«IF att.rwType.contains("WRITE")»
 		«EXPAND writeHeaderAttribute( att )»
@@ -13,6 +16,14 @@
 		«EXPAND isAllowedAttributeMethod( att )»
 	«ENDIF»
 «ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE attributesHeader FOR PogoDeviceClass»
+«separator1()»
+#
+#	«devicePythonClassName()» read/write attribute methods
+#
+«separator1()»
 «ENDDEFINE»
 
 «DEFINE readAttributeHardwareHeader FOR PogoDeviceClass»
