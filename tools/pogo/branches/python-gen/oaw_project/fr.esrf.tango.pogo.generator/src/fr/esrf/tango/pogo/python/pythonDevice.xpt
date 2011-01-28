@@ -82,11 +82,6 @@ class «devicePythonClassName()»(PyTango.Device_4Impl):
 	def always_executed_hook(self):
 		print "In ", self.get_name(), "::always_excuted_hook()"
 		
-«separator1()»
-#
-#	«devicePythonClassName()» read/write attribute methods
-#
-«separator1()»
 «EXPAND attributes::pythonFile»
 «EXPAND commands::pythonFile»
 «separator1()»
