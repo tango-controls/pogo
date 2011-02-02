@@ -1514,28 +1514,30 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cChangeEventFireEventsParserRuleCall_10_0 = (RuleCall)cChangeEventAssignment_10.eContents().get(0);
 		private final Assignment cArchiveEventAssignment_11 = (Assignment)cGroup.eContents().get(11);
 		private final RuleCall cArchiveEventFireEventsParserRuleCall_11_0 = (RuleCall)cArchiveEventAssignment_11.eContents().get(0);
-		private final Assignment cStatusAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cStatusInheritanceStatusParserRuleCall_12_0 = (RuleCall)cStatusAssignment_12.eContents().get(0);
-		private final Assignment cPropertiesAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cPropertiesAttrPropertiesParserRuleCall_13_0 = (RuleCall)cPropertiesAssignment_13.eContents().get(0);
-		private final Assignment cAllocReadMemberAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cAllocReadMemberBooleanParserRuleCall_14_0 = (RuleCall)cAllocReadMemberAssignment_14.eContents().get(0);
-		private final Assignment cIsDynamicAssignment_15 = (Assignment)cGroup.eContents().get(15);
-		private final RuleCall cIsDynamicBooleanParserRuleCall_15_0 = (RuleCall)cIsDynamicAssignment_15.eContents().get(0);
-		private final Keyword cReadExcludedStatesKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Assignment cReadExcludedStatesAssignment_17 = (Assignment)cGroup.eContents().get(17);
-		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_17_0 = (RuleCall)cReadExcludedStatesAssignment_17.eContents().get(0);
-		private final Keyword cWriteExcludedStatesKeyword_18 = (Keyword)cGroup.eContents().get(18);
-		private final Assignment cWriteExcludedStatesAssignment_19 = (Assignment)cGroup.eContents().get(19);
-		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_19_0 = (RuleCall)cWriteExcludedStatesAssignment_19.eContents().get(0);
+		private final Assignment cDataReadyEventAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cDataReadyEventFireEventsParserRuleCall_12_0 = (RuleCall)cDataReadyEventAssignment_12.eContents().get(0);
+		private final Assignment cStatusAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cStatusInheritanceStatusParserRuleCall_13_0 = (RuleCall)cStatusAssignment_13.eContents().get(0);
+		private final Assignment cPropertiesAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cPropertiesAttrPropertiesParserRuleCall_14_0 = (RuleCall)cPropertiesAssignment_14.eContents().get(0);
+		private final Assignment cAllocReadMemberAssignment_15 = (Assignment)cGroup.eContents().get(15);
+		private final RuleCall cAllocReadMemberBooleanParserRuleCall_15_0 = (RuleCall)cAllocReadMemberAssignment_15.eContents().get(0);
+		private final Assignment cIsDynamicAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cIsDynamicBooleanParserRuleCall_16_0 = (RuleCall)cIsDynamicAssignment_16.eContents().get(0);
+		private final Keyword cReadExcludedStatesKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cReadExcludedStatesAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_18_0 = (RuleCall)cReadExcludedStatesAssignment_18.eContents().get(0);
+		private final Keyword cWriteExcludedStatesKeyword_19 = (Keyword)cGroup.eContents().get(19);
+		private final Assignment cWriteExcludedStatesAssignment_20 = (Assignment)cGroup.eContents().get(20);
+		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_20_0 = (RuleCall)cWriteExcludedStatesAssignment_20.eContents().get(0);
 		
 		//Attribute:
 		//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-		//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-		//  properties=AttrProperties allocReadMember=Boolean isDynamic=Boolean
-		//  "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
-		//  writeExcludedStates+=STRING*;  
+		//  Boolean changeEvent=FireEvents archiveEvent=FireEvents dataReadyEvent=FireEvents
+		//  status=InheritanceStatus properties=AttrProperties allocReadMember=Boolean
+		//  isDynamic=Boolean "readExcludedStates:" readExcludedStates+=STRING*
+		//  "writeExcludedStates:" writeExcludedStates+=STRING*;  
 		//
 		////
 		////	Attribute Definition
@@ -1544,10 +1546,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 		//name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 		//polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-		//Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-		//properties=AttrProperties allocReadMember=Boolean isDynamic=Boolean
-		//"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
-		//writeExcludedStates+=STRING*
+		//Boolean changeEvent=FireEvents archiveEvent=FireEvents dataReadyEvent=FireEvents
+		//status=InheritanceStatus properties=AttrProperties allocReadMember=Boolean
+		//isDynamic=Boolean "readExcludedStates:" readExcludedStates+=STRING*
+		//"writeExcludedStates:" writeExcludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1622,47 +1624,53 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//FireEvents
 		public RuleCall getArchiveEventFireEventsParserRuleCall_11_0() { return cArchiveEventFireEventsParserRuleCall_11_0; }
 
+		//dataReadyEvent=FireEvents
+		public Assignment getDataReadyEventAssignment_12() { return cDataReadyEventAssignment_12; }
+
+		//FireEvents
+		public RuleCall getDataReadyEventFireEventsParserRuleCall_12_0() { return cDataReadyEventFireEventsParserRuleCall_12_0; }
+
 		//status=InheritanceStatus
-		public Assignment getStatusAssignment_12() { return cStatusAssignment_12; }
+		public Assignment getStatusAssignment_13() { return cStatusAssignment_13; }
 
 		//InheritanceStatus
-		public RuleCall getStatusInheritanceStatusParserRuleCall_12_0() { return cStatusInheritanceStatusParserRuleCall_12_0; }
+		public RuleCall getStatusInheritanceStatusParserRuleCall_13_0() { return cStatusInheritanceStatusParserRuleCall_13_0; }
 
 		//properties=AttrProperties
-		public Assignment getPropertiesAssignment_13() { return cPropertiesAssignment_13; }
+		public Assignment getPropertiesAssignment_14() { return cPropertiesAssignment_14; }
 
 		//AttrProperties
-		public RuleCall getPropertiesAttrPropertiesParserRuleCall_13_0() { return cPropertiesAttrPropertiesParserRuleCall_13_0; }
+		public RuleCall getPropertiesAttrPropertiesParserRuleCall_14_0() { return cPropertiesAttrPropertiesParserRuleCall_14_0; }
 
 		//allocReadMember=Boolean
-		public Assignment getAllocReadMemberAssignment_14() { return cAllocReadMemberAssignment_14; }
+		public Assignment getAllocReadMemberAssignment_15() { return cAllocReadMemberAssignment_15; }
 
 		//Boolean
-		public RuleCall getAllocReadMemberBooleanParserRuleCall_14_0() { return cAllocReadMemberBooleanParserRuleCall_14_0; }
+		public RuleCall getAllocReadMemberBooleanParserRuleCall_15_0() { return cAllocReadMemberBooleanParserRuleCall_15_0; }
 
 		//isDynamic=Boolean
-		public Assignment getIsDynamicAssignment_15() { return cIsDynamicAssignment_15; }
+		public Assignment getIsDynamicAssignment_16() { return cIsDynamicAssignment_16; }
 
 		//Boolean
-		public RuleCall getIsDynamicBooleanParserRuleCall_15_0() { return cIsDynamicBooleanParserRuleCall_15_0; }
+		public RuleCall getIsDynamicBooleanParserRuleCall_16_0() { return cIsDynamicBooleanParserRuleCall_16_0; }
 
 		//"readExcludedStates:"
-		public Keyword getReadExcludedStatesKeyword_16() { return cReadExcludedStatesKeyword_16; }
+		public Keyword getReadExcludedStatesKeyword_17() { return cReadExcludedStatesKeyword_17; }
 
 		//readExcludedStates+=STRING*
-		public Assignment getReadExcludedStatesAssignment_17() { return cReadExcludedStatesAssignment_17; }
+		public Assignment getReadExcludedStatesAssignment_18() { return cReadExcludedStatesAssignment_18; }
 
 		//STRING
-		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_17_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_17_0; }
+		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_18_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_18_0; }
 
 		//"writeExcludedStates:"
-		public Keyword getWriteExcludedStatesKeyword_18() { return cWriteExcludedStatesKeyword_18; }
+		public Keyword getWriteExcludedStatesKeyword_19() { return cWriteExcludedStatesKeyword_19; }
 
 		//writeExcludedStates+=STRING*
-		public Assignment getWriteExcludedStatesAssignment_19() { return cWriteExcludedStatesAssignment_19; }
+		public Assignment getWriteExcludedStatesAssignment_20() { return cWriteExcludedStatesAssignment_20; }
 
 		//STRING
-		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_19_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_19_0; }
+		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_20_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_20_0; }
 	}
 
 	public class FireEventsElements implements IParserRuleAccess {
@@ -3269,10 +3277,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//Attribute:
 	//  name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel
 	//  polledPeriod=STRING maxX=STRING maxY=STRING memorized=Boolean memorizedAtInit=
-	//  Boolean changeEvent=FireEvents archiveEvent=FireEvents status=InheritanceStatus
-	//  properties=AttrProperties allocReadMember=Boolean isDynamic=Boolean
-	//  "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
-	//  writeExcludedStates+=STRING*;  
+	//  Boolean changeEvent=FireEvents archiveEvent=FireEvents dataReadyEvent=FireEvents
+	//  status=InheritanceStatus properties=AttrProperties allocReadMember=Boolean
+	//  isDynamic=Boolean "readExcludedStates:" readExcludedStates+=STRING*
+	//  "writeExcludedStates:" writeExcludedStates+=STRING*;  
 	//
 	////
 	////	Attribute Definition

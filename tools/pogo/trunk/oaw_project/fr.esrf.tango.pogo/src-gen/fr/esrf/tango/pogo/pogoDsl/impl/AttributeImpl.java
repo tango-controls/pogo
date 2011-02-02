@@ -46,6 +46,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMemorizedAtInit <em>Memorized At Init</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getChangeEvent <em>Change Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getArchiveEvent <em>Archive Event</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getDataReadyEvent <em>Data Ready Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getAllocReadMember <em>Alloc Read Member</em>}</li>
@@ -268,6 +269,16 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * @ordered
    */
   protected FireEvents archiveEvent;
+
+  /**
+   * The cached value of the '{@link #getDataReadyEvent() <em>Data Ready Event</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDataReadyEvent()
+   * @generated
+   * @ordered
+   */
+  protected FireEvents dataReadyEvent;
 
   /**
    * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
@@ -726,6 +737,54 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
+  public FireEvents getDataReadyEvent()
+  {
+    return dataReadyEvent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDataReadyEvent(FireEvents newDataReadyEvent, NotificationChain msgs)
+  {
+    FireEvents oldDataReadyEvent = dataReadyEvent;
+    dataReadyEvent = newDataReadyEvent;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT, oldDataReadyEvent, newDataReadyEvent);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDataReadyEvent(FireEvents newDataReadyEvent)
+  {
+    if (newDataReadyEvent != dataReadyEvent)
+    {
+      NotificationChain msgs = null;
+      if (dataReadyEvent != null)
+        msgs = ((InternalEObject)dataReadyEvent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT, null, msgs);
+      if (newDataReadyEvent != null)
+        msgs = ((InternalEObject)newDataReadyEvent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT, null, msgs);
+      msgs = basicSetDataReadyEvent(newDataReadyEvent, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT, newDataReadyEvent, newDataReadyEvent));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public InheritanceStatus getStatus()
   {
     return status;
@@ -907,6 +966,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return basicSetChangeEvent(null, msgs);
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         return basicSetArchiveEvent(null, msgs);
+      case PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT:
+        return basicSetDataReadyEvent(null, msgs);
       case PogoDslPackage.ATTRIBUTE__STATUS:
         return basicSetStatus(null, msgs);
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
@@ -949,6 +1010,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getChangeEvent();
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         return getArchiveEvent();
+      case PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT:
+        return getDataReadyEvent();
       case PogoDslPackage.ATTRIBUTE__STATUS:
         return getStatus();
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
@@ -1011,6 +1074,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         setArchiveEvent((FireEvents)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT:
+        setDataReadyEvent((FireEvents)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__STATUS:
         setStatus((InheritanceStatus)newValue);
@@ -1082,6 +1148,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         setArchiveEvent((FireEvents)null);
         return;
+      case PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT:
+        setDataReadyEvent((FireEvents)null);
+        return;
       case PogoDslPackage.ATTRIBUTE__STATUS:
         setStatus((InheritanceStatus)null);
         return;
@@ -1138,6 +1207,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return changeEvent != null;
       case PogoDslPackage.ATTRIBUTE__ARCHIVE_EVENT:
         return archiveEvent != null;
+      case PogoDslPackage.ATTRIBUTE__DATA_READY_EVENT:
+        return dataReadyEvent != null;
       case PogoDslPackage.ATTRIBUTE__STATUS:
         return status != null;
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
