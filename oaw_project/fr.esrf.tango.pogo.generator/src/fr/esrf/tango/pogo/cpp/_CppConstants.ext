@@ -36,6 +36,9 @@ stateMachineFileName(PogoDeviceClass this):
 vc8ProjectFileName(String filename):
 	"vc8_proj/"+filename;	
 
+vc9ProjectFileName(String filename):
+	"vc9_proj/"+filename;	
+
 //	Constant Names
 headerConstantName(PogoDeviceClass this):
 	name.toUpperCase()+"_H";
