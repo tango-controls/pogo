@@ -78,6 +78,7 @@ public class GenerateDialog extends JDialog
 		rBtn.add(codeBtn);
 		rBtn.add(makefileBtn);
 		rBtn.add(vc8Btn);
+		rBtn.add(vc9Btn);
 		rBtn.add(htmlBtn);
 		pack ();
 		ATKGraphicsUtils.centerDialog(this);
@@ -112,6 +113,11 @@ public class GenerateDialog extends JDialog
         warningLabel = new javax.swing.JLabel();
         javax.swing.JLabel dummyLbl = new javax.swing.JLabel();
         javax.swing.JButton detailsBtn = new javax.swing.JButton();
+        vc9Btn = new javax.swing.JRadioButton();
+        javax.swing.JLabel windowsLabel = new javax.swing.JLabel();
+        javax.swing.JLabel linuxLabel = new javax.swing.JLabel();
+        javax.swing.JLabel docLabel = new javax.swing.JLabel();
+        javax.swing.JLabel classLabel = new javax.swing.JLabel();
 
         setTitle("Generation Preference  Window");
         setBackground(new java.awt.Color(198, 178, 168));
@@ -190,36 +196,39 @@ public class GenerateDialog extends JDialog
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(xmiBtn, gridBagConstraints);
 
         codeBtn.setSelected(true);
         codeBtn.setText("Code files");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        buttonsPanel.add(codeBtn, gridBagConstraints);
-
-        makefileBtn.setText("Linux Makefile");
-        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
-        buttonsPanel.add(makefileBtn, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(codeBtn, gridBagConstraints);
 
-        vc8Btn.setText("VC8 project");
+        makefileBtn.setText("Makefile");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(makefileBtn, gridBagConstraints);
+
+        vc8Btn.setText("VC8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(vc8Btn, gridBagConstraints);
 
-        generateLabel.setText("Generate :");
+        generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
+        generateLabel.setText("Files to be enerated :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -227,13 +236,13 @@ public class GenerateDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(generateLabel, gridBagConstraints);
 
-        htmlBtn.setText("html Doc.");
+        htmlBtn.setText("html Pages");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(htmlBtn, gridBagConstraints);
 
         warningPanel.setBackground(new java.awt.Color(255, 229, 126));
@@ -255,11 +264,56 @@ public class GenerateDialog extends JDialog
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
         buttonsPanel.add(warningPanel, gridBagConstraints);
+
+        vc9Btn.setText("VC9");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(vc9Btn, gridBagConstraints);
+
+        windowsLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+        windowsLabel.setText("Win. Projects:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
+        buttonsPanel.add(windowsLabel, gridBagConstraints);
+
+        linuxLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+        linuxLabel.setText("Linux:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
+        buttonsPanel.add(linuxLabel, gridBagConstraints);
+
+        docLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+        docLabel.setText("Documentation:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
+        buttonsPanel.add(docLabel, gridBagConstraints);
+
+        classLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+        classLabel.setText("Device Class:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
+        buttonsPanel.add(classLabel, gridBagConstraints);
 
         getContentPane().add(buttonsPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -413,25 +467,27 @@ public class GenerateDialog extends JDialog
         outPathText.setRequestFocusEnabled(true);
         outPathText.requestFocus();
 
-        if (devclass.checkIfAbstractClass())
-        {
+        if (devclass.checkIfAbstractClass())  {
             makefileBtn.setEnabled(false);
             vc8Btn.setEnabled(false);
+            vc9Btn.setEnabled(false);
         }
 		int lang = Utils.getLanguage(devclass.getPogoDeviceClass().getDescription().getLanguage());
-		switch(lang)
-		{
+		switch(lang) {
 		case PogoConst.Cpp:
 			makefileBtn.setVisible(true);
 			vc8Btn.setVisible(true);
+			vc9Btn.setVisible(true);
 			break;
 		case PogoConst.Java:
 			makefileBtn.setVisible(true);
 			vc8Btn.setVisible(false);
+			vc9Btn.setVisible(false);
 			break;
 		case PogoConst.Python:
 			makefileBtn.setVisible(false);
 			vc8Btn.setVisible(false);
+			vc9Btn.setVisible(false);
 			break;
 		}
 
@@ -458,6 +514,7 @@ public class GenerateDialog extends JDialog
         outPathText.requestFocus();
 
         vc8Btn.setVisible(false);
+        vc9Btn.setVisible(false);
         htmlBtn.setVisible(false);
 		makefileBtn.setVisible(true);
         warningPanel.setVisible(false);
@@ -519,6 +576,7 @@ public class GenerateDialog extends JDialog
     private javax.swing.JRadioButton makefileBtn;
     private javax.swing.JTextField outPathText;
     private javax.swing.JRadioButton vc8Btn;
+    private javax.swing.JRadioButton vc9Btn;
     private javax.swing.JLabel warningLabel;
     private javax.swing.JPanel warningPanel;
     private javax.swing.JRadioButton xmiBtn;

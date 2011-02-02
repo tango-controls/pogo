@@ -15,6 +15,12 @@
 #
 #-======================================================================
 
+Pogo-7.0.8 - 02/02/2011:
+	Fire DatReady event added on attribute.
+
+Pogo-7.0.7 - 01/02/2011:
+	VC9 project generation added.
+
 Pogo-7.0.6 - 27/01/2011:
 	The files and sub directories not scaned at workflow is now passed dynamicaly to the workflow.
 
