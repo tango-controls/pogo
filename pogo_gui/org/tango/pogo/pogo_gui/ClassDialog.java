@@ -348,12 +348,10 @@ public class ClassDialog extends JDialog
 		if (classname==null ||
 			classname.length()==0)
 			return;
-        try
-        {
+        try {
             IDdialog.checkInputs();
         }
-        catch (DevFailed e)
-        {
+        catch (DevFailed e)  {
             ErrorPane.showErrorMessage(this, null, e);
 			return;
         }
@@ -402,8 +400,7 @@ public class ClassDialog extends JDialog
 			btn.setSelected(true);
 
         //  Check if inheritance -> cannot have another language.
-        if (devclass.getAncestors().size()>0)
-        {
+        if (devclass.getAncestors().size()>0) {
             btn.setSelected(false);
             JOptionPane.showMessageDialog(this,
                     devclass.getPogoDeviceClass().getName() + " inherite  for "+
@@ -452,11 +449,9 @@ public class ClassDialog extends JDialog
 
         
 		//	Initialize chooser if not already done.
-		if (chooser==null)
-		{
+		if (chooser==null) {
 			String path = System.getenv("SOURCE_PATH");
-			if (path==null)
-			{
+			if (path==null) {
 				path = System.getProperty("SOURCE_PATH");
 				if (path==null)
 					path = new File("").getAbsolutePath();
@@ -470,15 +465,11 @@ public class ClassDialog extends JDialog
 		
 		//	Start the file chooser
 		int	retval = chooser.showOpenDialog(this);
-		if (retval== JFileChooser.APPROVE_OPTION)
-		{
+		if (retval== JFileChooser.APPROVE_OPTION) {
 			File file = chooser.getSelectedFile();
-			if (file!=null)
-			{
-				if (!file.isDirectory())
-				{
-					try
-					{
+			if (file!=null) {
+				if (!file.isDirectory()) {
+					try {
 						//	Try to load class
 						DeviceClass	dc = new DeviceClass(file.getAbsolutePath());
                         devclass.addAncestor(dc);
@@ -497,8 +488,7 @@ public class ClassDialog extends JDialog
                         addInheritanceBtn.setVisible(false);
                         
 					}
-					catch (DevFailed e)
-					{
+					catch (DevFailed e) {
 						if (!e.errors[0].reason.equals("CANCEL"))
 							ErrorPane.showErrorMessage(this, file.getAbsolutePath(), e);
 					}
@@ -567,12 +557,26 @@ public class ClassDialog extends JDialog
 		if (nameText.getText().length()==0)
 		return null;
 
-		//	Take of space char if exist
+        //  Check if char are OK
+        String  name = nameText.getText().toLowerCase();
+        if (name.charAt(0)<'a' || name.charAt(0)>'z') {
+            Utils.popupError(this, "First char of class name must be a letter");
+            return null;
+        }
+        for (int i=0 ; i<name.length() ; i++) {
+            if ((name.charAt(i)<'a' || name.charAt(i)>'z') &&
+                (name.charAt(i)<'0' || name.charAt(i)>'9') &&
+                    name.charAt(i)!='_'){
+                Utils.popupError(this, "Char \'" + name.charAt(i) + "\' is not authorized in class name");
+                return null;
+            }
+        }
+
+		//	Take off space char if exist
 		//--------------------------------------
 		StringTokenizer stk = new StringTokenizer(nameText.getText());
-		String	name = "";
-		while(stk.hasMoreTokens())
-		{
+		name = "";
+		while(stk.hasMoreTokens()) {
 			String	tmp = stk.nextToken();
 			//	Check if first char is upcase else set it
 			if (tmp.length()>1)

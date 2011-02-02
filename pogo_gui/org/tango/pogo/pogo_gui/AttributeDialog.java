@@ -64,6 +64,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
 	private	int				poll_period = 0;
 
+    private JRadioButton    dataReadyEvtCode;
     private JRadioButton    changeEvtCode;
     private JRadioButton    changeEvtChecked;
     private JRadioButton    archiveEvtCode;
@@ -152,13 +153,14 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         lbl = new JLabel("Change Event : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
+        gbc.insets = new java.awt.Insets(10, 0, 0, 0);
         gbc.fill  = GridBagConstraints.HORIZONTAL;
         definitionPanel.add (lbl, gbc);
         changeEvtCode = new JRadioButton ("Pushed by code");
         gbc.gridx = 1;
         gbc.gridy = y;
         gbc.fill  = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        gbc.insets = new java.awt.Insets(10, 0, 0, 0);
         definitionPanel.add (changeEvtCode, gbc);
         changeEvtCode.addActionListener (new java.awt.event.ActionListener () {
             public void actionPerformed (java.awt.event.ActionEvent evt) {
@@ -172,7 +174,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gbc.gridx = 1;
         gbc.gridy = ++y;
         gbc.fill  = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new java.awt.Insets(0, 0, 10, 0);
+        gbc.insets = new java.awt.Insets(0, 0, 5, 0);
         definitionPanel.add (changeEvtChecked, gbc);
 
         //  Add Buttons for archive event management
@@ -180,6 +182,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         lbl = new JLabel("Archive Event : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
         gbc.fill  = GridBagConstraints.HORIZONTAL;
         definitionPanel.add (lbl, gbc);
         archiveEvtCode = new JRadioButton ("Pushed by code");
@@ -200,11 +203,31 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gbc.gridx = 1;
         gbc.gridy = ++y;
         gbc.fill  = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new java.awt.Insets(0, 0, 10, 0);
+        gbc.insets = new java.awt.Insets(0, 0, 5, 0);
         definitionPanel.add (archiveEvtChecked, gbc);
 
+        //  Add Buttons for DataReady event management
+        //-------------------------------------------------------------
+        lbl = new JLabel("DataReady Event : ");
+        gbc.gridx = 0;
+        gbc.gridy = ++y;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add (lbl, gbc);
+        dataReadyEvtCode = new JRadioButton ("Pushed by code");
+        gbc.gridx = 1;
+        gbc.gridy = y;
+        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        definitionPanel.add (dataReadyEvtCode, gbc);
+        dataReadyEvtCode.addActionListener (new java.awt.event.ActionListener () {
+            public void actionPerformed (java.awt.event.ActionEvent evt) {
+                evtByCodeBtnActionPerformed (evt);
+                }
+            });
 
-        //	Add radio box btn for command polled
+
+        //	Add radio box btn for attribute polled
 		//-------------------------------------------------------------
 		polledBtn = new javax.swing.JRadioButton ();
 		polledBtn.setToolTipText ("Attribute polled");
@@ -212,7 +235,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		gbc.gridx = 1;
 		gbc.gridy = ++y;
 		gbc.fill  = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        gbc.insets = new java.awt.Insets(10, 0, 0, 0);
 		definitionPanel.add (polledBtn, gbc);
 		polledBtn.addActionListener (new java.awt.event.ActionListener () {
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
@@ -225,6 +248,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		periodLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		gbc.gridx = 0;
 		gbc.gridy = ++y;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
 		definitionPanel.add (periodLabel, gbc);
 		
 		periodText = new JTextField();
@@ -281,6 +305,11 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         else
         if (o == archiveEvtCode)
             archiveEvtChecked.setVisible(archiveEvtCode.getSelectedObjects()!=null);
+        /*
+        else
+        if (o == dataReadyEvtCode)
+            System.out.println("DataReady Event: "+ (dataReadyEvtCode.getSelectedObjects()!=null));
+        */
         pack();
     }
 	//===================================================================
@@ -1215,6 +1244,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             archiveEvtChecked.setVisible(Utils.isTrue(archiveEvents.getFire()));
             archiveEvtChecked.setSelected(Utils.isTrue(archiveEvents.getLibCheckCriteria()));
         }
+        FireEvents  dataReadyEvents = attribute.getDataReadyEvent();
+        if (dataReadyEvents!=null) {
+            dataReadyEvtCode.setSelected(Utils.isTrue(dataReadyEvents.getFire()));
+        }
 	}
 
   //======================================================
@@ -1309,19 +1342,25 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             attr.setAllocReadMember("false");
 
         //  Set event fire management
-        FireEvents  changeEvents = OAWutils.factory.createFireEvents();// attr.getChangeEvent();
+        FireEvents  changeEvents = OAWutils.factory.createFireEvents();
         changeEvents.setFire(
                 Utils.strBoolean(changeEvtCode.getSelectedObjects()!=null));
         changeEvents.setLibCheckCriteria(
                 Utils.strBoolean(changeEvtChecked.getSelectedObjects()!=null));
         attr.setChangeEvent(changeEvents);
 
-        FireEvents  archiveEvents = OAWutils.factory.createFireEvents();// attr.getChangeEvent();
+        FireEvents  archiveEvents = OAWutils.factory.createFireEvents();
         archiveEvents.setFire(
                 Utils.strBoolean(archiveEvtCode.getSelectedObjects()!=null));
         archiveEvents.setLibCheckCriteria(
                 Utils.strBoolean(archiveEvtChecked.getSelectedObjects()!=null));
         attr.setArchiveEvent(archiveEvents);
+
+        FireEvents  dataReadyEvents = OAWutils.factory.createFireEvents();
+        dataReadyEvents.setFire(
+                Utils.strBoolean(dataReadyEvtCode.getSelectedObjects()!=null));
+        dataReadyEvents.setLibCheckCriteria("true");
+        attr.setDataReadyEvent(dataReadyEvents);
         return attr;
 	}
 	//===============================================================

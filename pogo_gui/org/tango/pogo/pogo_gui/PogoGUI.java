@@ -45,6 +45,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
 //=======================================================
@@ -1126,8 +1127,16 @@ public class PogoGUI extends JFrame
         //    return;
 
         Cursor	cursor = new Cursor(Cursor.WAIT_CURSOR);
-        manageRecentMenu(filename);
-
+        try {
+            //  Get absolute pathe for file
+            File    f = new File(filename);
+            filename = f.getCanonicalFile().toString();
+            manageRecentMenu(filename);
+        }
+        catch(IOException e) {
+            ErrorPane.showErrorMessage(this, null, e);
+            return;
+        }
         if ((filename.endsWith(".java") && !dbg_java) ||
             (filename.endsWith(".py")   && !dbg_python)) {
 
