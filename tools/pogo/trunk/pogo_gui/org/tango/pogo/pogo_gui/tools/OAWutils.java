@@ -824,6 +824,12 @@ public class OAWutils
               archiveEvents.setLibCheckCriteria(src.getArchiveEvent().getLibCheckCriteria());
               attr.setArchiveEvent(archiveEvents);
           }
+          if (src.getDataReadyEvent()!=null) {
+              FireEvents  dataReadyEvents = OAWutils.factory.createFireEvents();
+              dataReadyEvents.setFire(src.getDataReadyEvent().getFire());
+              dataReadyEvents.setLibCheckCriteria(src.getDataReadyEvent().getLibCheckCriteria());
+              attr.setDataReadyEvent(dataReadyEvents);
+          }
           return attr;
       }
     //===============================================================
