@@ -156,6 +156,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="archiveEvent" eType="#//FireEvents"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataReadyEvent" eType="#//FireEvents"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//InheritanceStatus"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" eType="#//AttrProperties"
