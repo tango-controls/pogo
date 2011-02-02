@@ -119,8 +119,9 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	«IF att.polledPeriod.length>0 && att.polledPeriod != "0"»«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);«ELSE»//	Not Polled«ENDIF»
 	«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
 	«EXPAND manageMemorized(att)»
-	«setAttributeFireEvent(att.name, "change",  att.changeEvent)»
-	«setAttributeFireEvent(att.name, "archive", att.archiveEvent)»
+	«setAttributeFireEvent(att.name, "change",     att.changeEvent)»
+	«setAttributeFireEvent(att.name, "archive",    att.archiveEvent)»
+	«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
 	att_list.push_back(«att.name.toLowerCase()»);
 	«ENDIF-»
 «ENDFOREACH»

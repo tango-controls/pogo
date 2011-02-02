@@ -1231,13 +1231,22 @@ public interface PogoDslPackage extends EPackage
   int ATTRIBUTE__ARCHIVE_EVENT = 11;
 
   /**
+   * The feature id for the '<em><b>Data Ready Event</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__DATA_READY_EVENT = 12;
+
+  /**
    * The feature id for the '<em><b>Status</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__STATUS = 12;
+  int ATTRIBUTE__STATUS = 13;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference.
@@ -1246,7 +1255,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__PROPERTIES = 13;
+  int ATTRIBUTE__PROPERTIES = 14;
 
   /**
    * The feature id for the '<em><b>Alloc Read Member</b></em>' attribute.
@@ -1255,7 +1264,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__ALLOC_READ_MEMBER = 14;
+  int ATTRIBUTE__ALLOC_READ_MEMBER = 15;
 
   /**
    * The feature id for the '<em><b>Is Dynamic</b></em>' attribute.
@@ -1264,7 +1273,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__IS_DYNAMIC = 15;
+  int ATTRIBUTE__IS_DYNAMIC = 16;
 
   /**
    * The feature id for the '<em><b>Read Excluded States</b></em>' attribute list.
@@ -1273,7 +1282,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__READ_EXCLUDED_STATES = 16;
+  int ATTRIBUTE__READ_EXCLUDED_STATES = 17;
 
   /**
    * The feature id for the '<em><b>Write Excluded States</b></em>' attribute list.
@@ -1282,7 +1291,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 17;
+  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 18;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -1291,7 +1300,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = 18;
+  int ATTRIBUTE_FEATURE_COUNT = 19;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FireEventsImpl <em>Fire Events</em>}' class.
@@ -3333,6 +3342,17 @@ public interface PogoDslPackage extends EPackage
   EReference getAttribute_ArchiveEvent();
 
   /**
+   * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getDataReadyEvent <em>Data Ready Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Data Ready Event</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getDataReadyEvent()
+   * @see #getAttribute()
+   * @generated
+   */
+  EReference getAttribute_DataReadyEvent();
+
+  /**
    * Returns the meta object for the containment reference '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4884,6 +4904,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EReference ATTRIBUTE__ARCHIVE_EVENT = eINSTANCE.getAttribute_ArchiveEvent();
+
+    /**
+     * The meta object literal for the '<em><b>Data Ready Event</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATTRIBUTE__DATA_READY_EVENT = eINSTANCE.getAttribute_DataReadyEvent();
 
     /**
      * The meta object literal for the '<em><b>Status</b></em>' containment reference feature.

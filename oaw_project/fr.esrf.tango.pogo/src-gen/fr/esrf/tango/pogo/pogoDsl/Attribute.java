@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMemorizedAtInit <em>Memorized At Init</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getChangeEvent <em>Change Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getArchiveEvent <em>Archive Event</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getDataReadyEvent <em>Data Ready Event</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getProperties <em>Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAllocReadMember <em>Alloc Read Member</em>}</li>
@@ -355,6 +356,32 @@ public interface Attribute extends EObject
    * @generated
    */
   void setArchiveEvent(FireEvents value);
+
+  /**
+   * Returns the value of the '<em><b>Data Ready Event</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Data Ready Event</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Data Ready Event</em>' containment reference.
+   * @see #setDataReadyEvent(FireEvents)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_DataReadyEvent()
+   * @model containment="true"
+   * @generated
+   */
+  FireEvents getDataReadyEvent();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getDataReadyEvent <em>Data Ready Event</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Data Ready Event</em>' containment reference.
+   * @see #getDataReadyEvent()
+   * @generated
+   */
+  void setDataReadyEvent(FireEvents value);
 
   /**
    * Returns the value of the '<em><b>Status</b></em>' containment reference.

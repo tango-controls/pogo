@@ -57,6 +57,11 @@ setAttributeFireEvent(String att_name, String evtType, FireEvents fe):
 		?	att_name.toLowerCase()+"->set_"+evtType+"_event("+fe.fire+", "+fe.libCheckCriteria+");"
 		:	"//	"+att_name+" does not fire "+evtType+" event";
 
+setAttributeFireDataReadyEvent(String att_name, FireEvents fe):	//	Special case (one arg)
+	fe.fire == "true"
+		?	att_name.toLowerCase()+"->set_data_ready_event("+fe.fire+");"
+		:	"//	"+att_name+" does not fire data_ready event";
+
 writeAttrValueDeclaration(Attribute att):
 	att.dataType.cppType().toString()!="Tango::DevString"
 	?	att.dataType.cppType().toString()
