@@ -133,6 +133,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/memorizedAtInit"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/changeEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/archiveEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/dataReadyEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/properties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/allocReadMember"/>

@@ -499,6 +499,9 @@
         <tokens xsi:type="xtext:Assignment" feature="archiveEvent" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
         </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="dataReadyEvent" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+        </tokens>
         <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         </tokens>
