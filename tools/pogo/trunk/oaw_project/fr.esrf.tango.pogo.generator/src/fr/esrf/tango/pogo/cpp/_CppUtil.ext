@@ -12,6 +12,9 @@ comments(String this, String tag):	//	Comment a String with more than one line
 inVector(String this, String vectName):	//	Comment a String with more than one line
 	replaceAll("\n", "\");\n	"+vectName+".push_back(\"");
 
+inOneLine(String this):
+	replaceAll("\n", "\\\\n");
+
 onlyOneLine(String this):
 	replaceAll("\n", "  ");	//	It seems that  \\n does not work !!
 

@@ -172,8 +172,8 @@ void «name»Class::command_factory()
 	«cmd.name»Class	*p«cmd.name»Cmd =
 		new «cmd.name»Class("«cmd.name»",
 			«cmd.argin.type.cppTypeEnum()», «cmd.argout.type.cppTypeEnum()»,
-			"«cmd.argin.description»",
-			"«cmd.argout.description»",
+			"«cmd.argin.description.inOneLine()»",
+			"«cmd.argout.description.inOneLine()»",
 			«cmd.cppDisplayLevel()»);
 	«cmd.cppSetPollingPeriod()»command_list.push_back(p«cmd.name»Cmd);
 	«ENDIF-»
