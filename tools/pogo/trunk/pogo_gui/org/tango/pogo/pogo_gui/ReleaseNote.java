@@ -17,8 +17,12 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Feb 02 13:51:12 CET 2011)</Center><Br>\n" + 
-		"<li><b>Pogo-7.0.8 - 02/02/2011:</b><Br>\n" + 
+		"	(Generated Thu Feb 10 15:43:31 CET 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.1.0 - 10/02/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Class name change is now managed.<Br>\n" + 
+		"&nbsp; &nbsp; If a xmi file is in current directory, it is proposed to be loaded.<Br>\n" + 
+		"<li><b>Pogo-7.0.8 - 07/02/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb in command factory (args description) fixed.<Br>\n" + 
 		"&nbsp; &nbsp; Fire DatReady event added on attribute.<Br>\n" + 
 		"<li><b>Pogo-7.0.7 - 01/02/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; VC9 project generation added.<Br>\n" + 

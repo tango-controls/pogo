@@ -76,15 +76,17 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 	private RenamedObjects	    renamed_objects = new RenamedObjects();
     private InheritanceUtils    inherit_utils;
     private boolean             modified = false;
+    private boolean             isInheritedClass;
 
     static private Object   copiedItem = null;
 	//===============================================================
 	//===============================================================
-	public ClassTree(PogoGUI parent, DeviceClass devclass)
+	public ClassTree(PogoGUI parent, DeviceClass devclass, boolean isInheritedClass)
 	{
 		super();
 		this.parent    = parent;
 		this.dev_class = devclass;
+        this.isInheritedClass = isInheritedClass;
 		pogo_class = devclass.getPogoDeviceClass();
         inherit_utils = InheritanceUtils.getInstance();
 
@@ -641,11 +643,13 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 	//===============================================================
 	private void editClass()
 	{
-        ClassDialog	dialog = new ClassDialog(parent, dev_class);
+        ClassDialog	dialog = new ClassDialog(parent, this, dev_class, isInheritedClass);
         if (dialog.showDialog()==JOptionPane.OK_OPTION) {
             dev_class  = dialog.getInputs();
             root.setUserObject(new PogoRoot(dev_class.getPogoDeviceClass()));
-            setModified(true);
+            if (! dialog.hasForcedToGenerate())
+                setModified(true);
+            repaint();
         }
 	}
 	//===============================================================

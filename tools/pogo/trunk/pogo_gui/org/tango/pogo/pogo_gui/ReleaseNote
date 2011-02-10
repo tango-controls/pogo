@@ -15,7 +15,12 @@
 #
 #-======================================================================
 
-Pogo-7.0.8 - 02/02/2011:
+Pogo-7.1.0 - 10/02/2011:
+	Class name change is now managed.
+	If a xmi file is in current directory, it is proposed to be loaded.
+
+Pogo-7.0.8 - 07/02/2011:
+	Pb in command factory (args description) fixed.
 	Fire DatReady event added on attribute.
 
 Pogo-7.0.7 - 01/02/2011:
