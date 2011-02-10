@@ -253,7 +253,7 @@ public class PogoGUI extends JFrame
 		preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
 
 		toolsMenu.setMnemonic ('T');
-        if (!Utils.osIsUnix())
+        //if (!Utils.osIsUnix())
     		toolsMenu.setVisible(false);
         multiItem.setMnemonic ('M');
         multiItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK | Event.SHIFT_MASK));
