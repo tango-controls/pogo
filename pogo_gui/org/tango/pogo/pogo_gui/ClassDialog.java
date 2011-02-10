@@ -35,6 +35,7 @@
 
 package org.tango.pogo.pogo_gui;
 
+import java.awt.*;
 import java.io.File;
 import java.util.StringTokenizer;
 
@@ -59,8 +60,10 @@ public class ClassDialog extends JDialog
 
 	private static int		    returnStatus;
 	private DeviceClass		    devclass;
+    private String              origClassName = null;
     private InheritancePanel    inheritance_panel;
     private JRadioButton[]      langBtn;
+    private boolean             hasForcedGenerate = false;
     static private JFileChooser chooser = null;
 
 
@@ -70,18 +73,24 @@ public class ClassDialog extends JDialog
 	 */
 	private DeviceIdDialog	IDdialog;
 
-
+    /**
+     * Get ClassTree instance to do save in case of class name changed
+     */
+    private ClassTree   classTree;
 
 	//===================================================================
 	/**
 	 *	 Initializes the ClassDialog object
      * @param parent   The parent frame object
+     * @param classTree instance to do save in case of class name changed
      * @param dc       The device class object to be edited
+     * @param isInheritedClass true if this class is an inherited one
      */
 	//===================================================================
-	public ClassDialog(JFrame parent, DeviceClass dc)
+	public ClassDialog(JFrame parent, ClassTree classTree, DeviceClass dc, boolean isInheritedClass)
 	{
 		super (parent, true);
+        this.classTree = classTree;
 		initComponents ();
         langBtn = new JRadioButton[3];
         langBtn[PogoConst.Cpp]    = cppBtn;
@@ -93,6 +102,7 @@ public class ClassDialog extends JDialog
         else {
 			//	Edit the specified class
 	    	this.devclass = dc;
+            origClassName = dc.getPogoDeviceClass().getName();
             //  remove the add inheritance class button
             addInheritanceBtn.setVisible(false);
             if (PogoGUI.dbg_java) {
@@ -121,6 +131,9 @@ public class ClassDialog extends JDialog
         inheritance_panel = new InheritancePanel(devclass);
         inheritanceScrollPane.setViewportView(inheritance_panel);
 
+        if (isInheritedClass)
+            nameText.setEditable(false);
+
 		pack ();
 		ATKGraphicsUtils.centerDialog(this);
         nameText.requestFocus();
@@ -133,7 +146,7 @@ public class ClassDialog extends JDialog
 	//===================================================================
 	public ClassDialog(JFrame parent)
 	{
-		this(parent, null);
+		this(parent, null, null, false);
 	}
     //===================================================================
     //===================================================================
@@ -356,8 +369,82 @@ public class ClassDialog extends JDialog
 			return;
         }
 		nameText.setText(classname);
-		doClose(JOptionPane.OK_OPTION);
+        //  Check if class name has changed
+        if (checkClassNameChanged(classname))
+    		doClose(JOptionPane.OK_OPTION);
 	}
+	//===================================================================
+	//===================================================================
+    private boolean checkClassNameChanged(String className)
+    {
+        //  Check if it has changed
+        if (classTree==null)        //  it is a new one
+            return true;
+        if (origClassName==null)    //  it is a new one
+            return true;
+        if (devclass.getPogoDeviceClass().getDescription().getSourcePath()==null)
+            return true;    //  Not already saved
+        if (className.equals(origClassName))    //   no change
+            return true;
+
+
+        //  Ask to choose.
+        Object[] options = {"Change Class name",
+                            "Create new class files",
+                            "Cancel"};
+        int choice = JOptionPane.showOptionDialog(this,
+                    "Class name has changed",
+                    "Confirmation Window",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null, options, options[0]);
+        switch (choice) {
+            case 0:
+                System.out.println("Will generate");
+                return manageClassNameChanged(className);
+            case 1:
+                return true;
+        }
+        return false;
+    }
+    //===================================================================
+    //===================================================================
+    private boolean manageClassNameChanged(String className)
+    {
+        if (JOptionPane.showConfirmDialog(this,
+                "The " + className + " files (xmi and code) will be generated",
+                "Confirmation Window",
+                JOptionPane.YES_NO_OPTION)!=JOptionPane.OK_OPTION)
+            return false;
+
+        setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        Utils.getInstance().startSplashRefresher(
+                            "Generate class: " + className);
+
+        try {
+            DeviceClass deviceClass = classTree.getDeviceClass();
+            deviceClass.generateWithNewName(className, classTree.getModified(),
+                    classTree.getDeletedObjects(), classTree.getRenamedObjects());
+
+            classTree.setModified(false);
+            hasForcedGenerate = true;
+            setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            Utils.getInstance().stopSplashRefresher();
+        }
+        catch (Exception e) {
+            setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            Utils.getInstance().stopSplashRefresher();
+            ErrorPane.showErrorMessage(this, null, e);
+            return false;
+        }
+        return true;
+    }
+	//===================================================================
+	//===================================================================
+    public boolean hasForcedToGenerate()
+    {
+        return hasForcedGenerate;
+    }
 	//===================================================================
 	//===================================================================
 	@SuppressWarnings({"UnusedDeclaration"})

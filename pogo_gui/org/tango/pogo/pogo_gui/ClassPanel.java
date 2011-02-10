@@ -66,13 +66,14 @@ public class ClassPanel extends JPanel
     /**
      * Bulid the inheritances class tree.
      * @param devclass  class to display hineritances
+     * @param isInheritedClass true if this class is an inherited one
      */
 	//=======================================================
-	public void setTree(DeviceClass devclass)
+	public void setTree(DeviceClass devclass, boolean isInheritedClass)
 	{
         name = devclass.getPogoDeviceClass().getName();
          //	Build users_tree to display info
-		tree = new ClassTree(parent, devclass);
+		tree = new ClassTree(parent, devclass, isInheritedClass);
 		scrollPane.setViewportView(tree);
 	}
 	//=======================================================

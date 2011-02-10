@@ -41,11 +41,7 @@ import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
-import org.tango.pogo.pogo_gui.tools.OAWutils;
-import org.tango.pogo.pogo_gui.tools.PogoProperty;
-import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
-import org.tango.pogo.pogo_gui.tools.Utils;
-import org.tango.pogo.pogo_gui.tools.ParserTool;
+import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import java.io.File;
@@ -175,7 +171,7 @@ public class  DeviceClass
     public static Inheritance getDefaultInheritance()
     {
         Inheritance inher = OAWutils.factory.createInheritance();
-        System.out.println("inher.setClassname("+defaultInheritance+")");
+        //System.out.println("inher.setClassname("+defaultInheritance+")");
         inher.setClassname(defaultInheritance);
         inher.setSourcePath("");
         return inher;
@@ -457,24 +453,66 @@ public class  DeviceClass
 	}
 	//===============================================================
 	//===============================================================
+	public void generateWithNewName(String newClassName, boolean modified, DeletedObjects deleted, RenamedObjects renamed)
+					throws	SecurityException,
+                            IOException, DevFailed
+	{
+        String  srcClassName = getPogoDeviceClass().getName();
+        //  if modified, generated before 
+        if (modified) {
+            getPogoDeviceClass().getDescription().setFilestogenerate("XMI File, Code files");
+            generate(deleted, renamed);
+        }
+        deleted.clear();
+        renamed.clear();
+
+        //  Change class name and generate
+        getPogoDeviceClass().setName(newClassName);
+        getPogoDeviceClass().getDescription().setFilestogenerate("XMI File, Code files");
+        generate(new DeletedObjects(), new RenamedObjects());
+
+        //  Manage Propected areas for each file
+        if (getPogoDeviceClass().getDescription().getLanguage().toLowerCase().equals("cpp")) {
+            String  path = getPogoDeviceClass().getDescription().getSourcePath();
+            String[]    extensions = {
+                    ".h",      ".cpp",
+                    "Class.h", "Class.cpp",
+                    "StateMachine.cpp"
+            };
+            for (String extension: extensions)
+                new ProtectedAreaManager(path + "/" +
+                        srcClassName+extension).setClassName(newClassName);
+
+            //  And remove original files (for old class name)
+            for (String extension: extensions)
+                if (!new File(path + "/" + srcClassName+extension).delete())
+                    System.err.println("failed to delete" + srcClassName+extension);
+        }
+    }
+	//===============================================================
+	//===============================================================
 	public void generate(DeletedObjects deleted, RenamedObjects renamed)
 					throws	SecurityException,
                             IOException, DevFailed
 	{
 		String classname = pogo_class.getName();
 		//	Get code for deleted and renamed objects
-		renamed.readCode(classname, getCppFile());
-		deleted.readCode(classname, getCppFile());
+        if (renamed!=null)
+    		renamed.readCode(classname, getCppFile());
+        if (deleted!=null)
+    		deleted.readCode(classname, getCppFile());
 
 		//	Generate code from model
 		OAWutils	oaw = OAWutils.getInstance();
 		oaw.generate(pogo_class);
 
 		//	Insert code for deleted and rename objects
-		if (deleted.size()>0)
-			deleted.insertCode(classname, getCppFile());
-		if (renamed.size()>0)
-			renamed.insertCode(classname, getCppFile());
+        if (deleted!=null)
+		    if (deleted.size()>0)
+		    	deleted.insertCode(classname, getCppFile());
+        if (renamed!=null)
+		    if (renamed.size()>0)
+			    renamed.insertCode(classname, getCppFile());
 	}
 	//===============================================================
 	//===============================================================
@@ -514,8 +552,7 @@ public class  DeviceClass
 			OAWutils.getInstance().generate(pogo_class);
 
 			//	For old model, try to copy methods code to new model.
-			if (recoverCode)
-			{
+			if (recoverCode) {
 				recoverCodeFromOldPogoModel();
 			}
 
