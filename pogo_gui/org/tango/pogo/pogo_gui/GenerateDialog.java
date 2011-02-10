@@ -218,7 +218,7 @@ public class GenerateDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(makefileBtn, gridBagConstraints);
 
-        vc8Btn.setText("VC8");
+        vc8Btn.setText("VC8 Project");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -227,8 +227,8 @@ public class GenerateDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(vc8Btn, gridBagConstraints);
 
-        generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
-        generateLabel.setText("Files to be enerated :");
+        generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        generateLabel.setText("Files to be generated :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -270,7 +270,7 @@ public class GenerateDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
         buttonsPanel.add(warningPanel, gridBagConstraints);
 
-        vc9Btn.setText("VC9");
+        vc9Btn.setText("VC9 Project");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -280,7 +280,7 @@ public class GenerateDialog extends JDialog
         buttonsPanel.add(vc9Btn, gridBagConstraints);
 
         windowsLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
-        windowsLabel.setText("Win. Projects:");
+        windowsLabel.setText("Windows:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
