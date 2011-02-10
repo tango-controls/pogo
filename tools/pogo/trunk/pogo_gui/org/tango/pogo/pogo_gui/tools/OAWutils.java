@@ -610,8 +610,8 @@ public class OAWutils
         doPreProcessing(pogoClass);
 
         EList<Inheritance> inher = pogoClass.getDescription().getInheritances();
-        for (Inheritance inheritance : inher)
-           System.out.println(inheritance.getClassname() + " from " + inheritance.getSourcePath());
+        //for (Inheritance inheritance : inher)
+        //   System.out.println(inheritance.getClassname() + " from " + inheritance.getSourcePath());
 
         sys.getClasses().add(pogoClass);
         return sys;

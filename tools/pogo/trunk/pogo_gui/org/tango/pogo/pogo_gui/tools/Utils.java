@@ -652,6 +652,20 @@ public class Utils
     }
 	//===============================================================
 	//===============================================================
+    public static String getXmiFile()
+    {
+        File    f = new File(".");
+        String[]    fileList = f.list();
+        for (String fileName : fileList) {
+            if (fileName.endsWith(".xmi")) {
+                if (new File(fileName).isFile())
+                    return fileName;
+            }
+        }
+        return null;
+    }
+	//===============================================================
+	//===============================================================
 
 
 

@@ -51,6 +51,10 @@ public class  PogoParser
 {
 	private String	fileCode;
 	private String	filename;
+
+    static final String	start_protected = "PROTECTED REGION ID(";
+    static final String	start_protected_enabled = "ENABLED START";
+    static final String	end_protected = "PROTECTED REGION END";
 	//===============================================================
 	//===============================================================
 	public PogoParser(String filename) throws	DevFailed
@@ -118,9 +122,6 @@ public class  PogoParser
 	 *	Insert methods for new model
 	 */
 	//===============================================================
-	private static final String	start_protected = "PROTECTED REGION ID(";
-	private static final String	start_protected_enabled = "ENABLED START";
-	private static final String	end_protected = "PROTECTED REGION END";
 	//===============================================================
 	/*
 	 *	Insert code in a protected area
