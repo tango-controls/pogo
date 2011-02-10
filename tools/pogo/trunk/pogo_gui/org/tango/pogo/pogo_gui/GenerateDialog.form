@@ -183,7 +183,7 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="vc8Btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="VC8"/>
+            <Property name="text" type="java.lang.String" value="VC8 Project"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -196,7 +196,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Files to be enerated :"/>
+            <Property name="text" type="java.lang.String" value="Files to be generated :"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -265,7 +265,7 @@
         </Container>
         <Component class="javax.swing.JRadioButton" name="vc9Btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="VC9"/>
+            <Property name="text" type="java.lang.String" value="VC9 Project"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -278,7 +278,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Win. Projects:"/>
+            <Property name="text" type="java.lang.String" value="Windows:"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
