@@ -170,6 +170,11 @@ public class PogoGUI extends JFrame
         if (filename!=null && filename.length()>0)
             loadDeviceClassFromFile(filename);
         else {
+            String  xmiFile = Utils.getXmiFile();
+            if (xmiFile!=null) {
+                openItemActionPerformed(null);
+            }
+            else
             if (PogoProperty.loadPrevious)
                 if (PogoProperty.projectHistory.size()>0)
                     loadDeviceClassFromFile(PogoProperty.projectHistory.get(0));
@@ -248,7 +253,7 @@ public class PogoGUI extends JFrame
 		preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
 
 		toolsMenu.setMnemonic ('T');
-        //if (!Utils.osIsUnix())
+        if (!Utils.osIsUnix())
     		toolsMenu.setVisible(false);
         multiItem.setMnemonic ('M');
         multiItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK | Event.SHIFT_MASK));
@@ -267,7 +272,7 @@ public class PogoGUI extends JFrame
 			//	Check if there is something to manage.
 			if (new_proj==null && PogoProperty.projectHistory.size()==0)	//	No project histo
 				return;
-			
+
 			//	Check if main class or inherited one.
 			if (tabbedPane.getSelectedIndex()>0)
                 return;
@@ -626,13 +631,11 @@ public class PogoGUI extends JFrame
 		ClassIdentification	id = devclass.getPogoDeviceClass().getDescription().getIdentification();
 
         //  Manage Device ID
-		if (id==null && !Utils.isTrue(System.getenv("TEST_MODE")))
-		{
+		if (id==null && !Utils.isTrue(System.getenv("TEST_MODE"))) {
 			Utils.getInstance().stopSplashRefresher();
 			setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			DeviceIdDialog	dialog = new DeviceIdDialog(this);
-			if (dialog.showDialog()==JOptionPane.OK_OPTION)
-			{
+			if (dialog.showDialog()==JOptionPane.OK_OPTION) {
 				id = dialog.getInputs();
 				devclass.getPogoDeviceClass().getDescription().setIdentification(id);
 			}
@@ -1121,22 +1124,21 @@ public class PogoGUI extends JFrame
     }
 	//=======================================================
 	//=======================================================
-	private void loadDeviceClassFromFile(String filename, boolean checkForNewFrame) {
+	private void loadDeviceClassFromFile(String filename, boolean checkForNewFrame)
+    {
         //  Not called any more --> open a new JFrame !
         //if (checkModifications()==JOptionPane.CANCEL_OPTION)
         //    return;
 
         Cursor	cursor = new Cursor(Cursor.WAIT_CURSOR);
         try {
-            //  Get absolute pathe for file
+            //  Get absolute path for file
             File    f = new File(filename);
             filename = f.getCanonicalFile().toString();
             manageRecentMenu(filename);
         }
-        catch(IOException e) {
-            ErrorPane.showErrorMessage(this, null, e);
-            return;
-        }
+        catch(IOException e) { /* */ }
+        
         if ((filename.endsWith(".java") && !dbg_java) ||
             (filename.endsWith(".py")   && !dbg_python)) {
 
@@ -1181,8 +1183,11 @@ public class PogoGUI extends JFrame
             if (startup)
                 System.err.println(e.errors[0].desc);
             else
-			if (!e.errors[0].reason.equals("CANCEL"))
-				ErrorPane.showErrorMessage(this, filename, e);
+			if (!e.errors[0].reason.equals("CANCEL")) {
+                ErrorPane.showErrorMessage(this, filename, e);
+                if (class_panels.getPanelNameAt(0)==null && runningApplis.size()>1)
+                    setVisible(false);
+            }
 		}
 		cursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		setCursor(cursor);
@@ -1284,7 +1289,7 @@ public class PogoGUI extends JFrame
         {
 
             ClassPanel  cp = new ClassPanel(gui);
-            cp.setTree(devclass);
+            cp.setTree(devclass, this.size()>0);
             add(cp);
             tabbedPane.add(cp);
         }
