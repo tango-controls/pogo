@@ -15,6 +15,10 @@
 #
 #-======================================================================
 
+Pogo-7.1.1 - 14/02/2011:
+	Does not generate Classfactory.cpp and main.cpp if clas is abstract.
+	Pb in commnads table fixed.
+
 Pogo-7.1.0 - 10/02/2011:
 	Class name change is now managed.
 	If a xmi file is in current directory, it is proposed to be loaded.
