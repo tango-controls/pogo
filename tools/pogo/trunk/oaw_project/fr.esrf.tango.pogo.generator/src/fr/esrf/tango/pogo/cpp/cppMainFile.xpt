@@ -2,9 +2,10 @@
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
 
-
+//	Generate the main.cpp file if source code and class not abstract
 «DEFINE cppFile FOR PogoDeviceClass»
-«IF description.filestogenerate.contains(tagForSourceCode())»
+«IF description.filestogenerate.contains(tagForSourceCode()) &&
+	description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 «FILE "main.cpp"»«PROTECT CSTART '/*' CEND '*/' ID areaProtectedID("main.cpp") »
 static const char *RcsId = "$Id: $";
 «EXPAND Common::fileHeader(deviceCppFileName(),
