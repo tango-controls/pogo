@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Feb 10 15:43:31 CET 2011)</Center><Br>\n" + 
+		"	(Generated Mon Feb 14 10:55:18 CET 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.1.1 - 14/02/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Does not generate Classfactory.cpp and main.cpp if clas is abstract.<Br>\n" + 
+		"&nbsp; &nbsp; Pb in commnads table fixed.<Br>\n" + 
 		"<li><b>Pogo-7.1.0 - 10/02/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Class name change is now managed.<Br>\n" + 
 		"&nbsp; &nbsp; If a xmi file is in current directory, it is proposed to be loaded.<Br>\n" + 
