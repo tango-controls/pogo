@@ -57,7 +57,7 @@ void «name»::init_device()
 «DEFINE deviceConstructors FOR PogoDeviceClass»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(name,
  	"Constructors for a Tango device\n"+
- 	"implementing the class" + name)»«name»::«name»(Tango::DeviceClass *cl, string &s)«EXPAND inheritanceManagement("cl, s.c_str()")-»
+ 	"implementing the class " + name)»«name»::«name»(Tango::DeviceClass *cl, string &s)«EXPAND inheritanceManagement("cl, s.c_str()")-»
 {
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("constructor_1", "init_device();")-»
 }

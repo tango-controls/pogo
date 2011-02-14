@@ -3,8 +3,10 @@
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
 
 
+//	Generate the Classfactory.cpp file if source code and class not abstract
 «DEFINE cppFile FOR PogoDeviceClass»
-«IF description.filestogenerate.contains(tagForSourceCode())»
+«IF description.filestogenerate.contains(tagForSourceCode())	&&
+			description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 
 «FILE classFactoryFileName()-»
 «PROTECT CSTART '/*----- ' CEND ' -----*/' ID concatString(name, "::ClassFactory.cpp")»
