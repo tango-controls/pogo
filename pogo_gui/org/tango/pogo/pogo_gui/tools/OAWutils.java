@@ -592,7 +592,7 @@ public class OAWutils
 			sb.append("//  ").append(cmd.getName()).append(Utils.spaceTabulation(nb));
 			sb.append('|').append("  ");
 			InheritanceStatus	status = cmd.getStatus();
-			if (! Utils.isTrue(status.getConcrete()))
+			if (! Utils.isTrue(status.getConcreteHere()))
 				sb.append("Inherited (no method)\n");
 			else
 				sb.append(cmd.getExecMethod()).append('\n');
