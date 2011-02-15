@@ -1,0 +1,13 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::cppUtil»
+
+«DEFINE main FOR PogoMultiClasses»
+	«IF filestogenerate.toLowerCase().contains("code files")»
+		«EXPAND cppClassFactory::multiCppFile»
+		«EXPAND cppMainFile::multiCppFile»
+	«ENDIF»
+	«IF filestogenerate.toLowerCase().contains("makefile")»
+		«EXPAND Makefile::multiCppFile»
+	«ENDIF»
+«ENDDEFINE»
+

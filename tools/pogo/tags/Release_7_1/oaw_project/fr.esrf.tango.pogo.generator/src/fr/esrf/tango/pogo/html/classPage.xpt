@@ -1,0 +1,77 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+«DEFINE htmlFile FOR PogoDeviceClass»
+«FILE classPageFileName()»«htmlHeader()»
+
+«htmlPageTitle("TANGO " + description.language + " Class Decription"+htmlCheckIfAbtract())»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<Br>
+<Br>
+<ul>
+	«htmlSectionTitle("Class Identification")»
+	<ul>
+	<TABLE BORDER="0">
+    	<Tr>
+			<td> Contact </td><td> : «description.identification.contact»</td>
+		</tr>
+		<tr>
+			<td> Class Family </td><td> : «description.identification.classFamily»
+			«IF description.identification.siteSpecific.length>0-»
+				(«description.identification.siteSpecific»     Specific) </td>
+			«ENDIF»
+		</tr>
+		<tr>
+			<td> Platform </td><td> : «description.identification.platform» </td>
+		</tr>
+		<tr>
+			<td> Bus </td><td> : «description.identification.bus» </td>
+		</tr>
+		<tr>
+			<td> Manufacturer </td><td> : «description.identification.manufacturer» </td>
+		</tr>
+		<tr>
+			<td> Manufacturer ref.</td><td> : «description.identification.reference» </td>
+		</tr>
+	</Table>
+	</ul>
+	<Br>
+	<Br>
+	«htmlSectionTitle("Class Inheritance")»
+	<ul>
+		<li> <a href="http://www.esrf.fr/computing/cs/tango/tango_doc/kernel_doc/cpp_doc/"> Tango::DeviceImpl</a></li>
+		«FOREACH description.inheritances AS inher-»
+			«IF inher.classname.startsWith("Device")==false && inher.classname.endsWith("Impl")==false-»
+				<ul><li> «inher.classname»
+			«ENDIF-»
+		«ENDFOREACH-»
+					<ul><li><b> «name» </b></ul>
+		«FOREACH description.inheritances AS inher-»
+			«IF inher.classname.startsWith("Device")==false && inher.classname.endsWith("Impl")==false-»
+				</ul>
+			«ENDIF-»
+		«ENDFOREACH-»
+
+	</ul>
+	<Br>
+	<Br>
+	«htmlSectionTitle("Class Description")»
+	<ul>
+	«description.description»
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(classPageFileName())»
+	</ul>
+	<Br>
+	<Br>
+</ul>
+</FONT>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDDEFINE»

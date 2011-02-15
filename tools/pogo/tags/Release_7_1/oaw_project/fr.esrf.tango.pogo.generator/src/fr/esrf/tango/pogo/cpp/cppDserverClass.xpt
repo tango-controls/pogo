@@ -1,0 +1,62 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode())»
+
+«FILE dserverClassCppFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID dserverClassCppFileName()»
+static const char *RcsId      = "«cvsEscaped("Id:")»";
+static const char *TagName    = "«cvsEscaped("Name:")»";
+static const char *CvsPath    = "«cvsEscaped("Source:")»";
+static const char *SvnPath    = "«cvsEscaped("HeadURL:")»";
+static const char *HttpServer = "http://www.esrf.eu/computing/cs/tango/tango_doc/ds_doc/";
+«EXPAND Common::fileHeader(dserverClassCppFileName(),
+	"C++ source for the " + name + "Class. A singleton\n" +
+	"class derived from DeviceClass. It implements the\n" +
+	"command list and all properties and methods required\n" +
+	"by the «name» once per process.")-»
+
+
+#include <«dserverClassHeaderFileName()»>
+
+«ENDPROTECT»
+
+//-------------------------------------------------------------------
+/**
+ *	Create «name»Class singleton and
+ *	return it in a C function for Python usage
+ */
+//-------------------------------------------------------------------
+extern "C" {
+#ifdef _TG_WINDOWS_
+
+__declspec(dllexport)
+
+#endif
+
+	Tango::DeviceClass *_create_«name»_class(const char *name) {
+		return «name»_ns::«name»Class::init(name);
+	}
+}
+
+
+namespace «name»_ns
+{
+
+«EXPAND dserver::initialize::cppFile»
+
+«EXPAND dserver::commands::cppFile»
+
+«EXPAND dserver::properties::cppFile»
+
+«EXPAND dserver::factories::cppFile»
+
+«EXPAND dserver::dynamicAttributes::cppFile»
+
+«EXPAND Common::ProtectedArea("Class::Additional Methods")»
+} //	namespace
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»

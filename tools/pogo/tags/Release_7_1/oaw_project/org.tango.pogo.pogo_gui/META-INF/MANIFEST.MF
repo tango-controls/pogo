@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ExistingCode
+Bundle-SymbolicName: org.tango.pogo.pogo_gui
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: existingcode.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ fr.esrf.tango.pogo;bundle-version="1.0.0",
+ fr.esrf.tango.pogo.generator;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

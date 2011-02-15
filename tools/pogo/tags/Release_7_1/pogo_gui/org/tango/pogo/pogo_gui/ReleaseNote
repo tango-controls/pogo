@@ -1,0 +1,53 @@
+#+======================================================================
+# $Source: /segfs/tango/cvsroot/tools/pogo_oaw/org/tango/pogo/pogo_gui/ReleaseNote,v $
+#
+# Project:      Tango Code Generator
+#
+# Description:  Pogo revisions
+#
+# $Author: verdier $
+#
+# $Revision: 1.4 $
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+Pogo-7.1.1 - 14/02/2011:
+	Does not generate Classfactory.cpp and main.cpp if clas is abstract.
+	Pb in commnads table fixed.
+
+Pogo-7.1.0 - 10/02/2011:
+	Class name change is now managed.
+	If a xmi file is in current directory, it is proposed to be loaded.
+
+Pogo-7.0.8 - 07/02/2011:
+	Pb in command factory (args description) fixed.
+	Fire DatReady event added on attribute.
+
+Pogo-7.0.7 - 01/02/2011:
+	VC9 project generation added.
+
+Pogo-7.0.6 - 27/01/2011:
+	The files and sub directories not scaned at workflow is now passed dynamicaly to the workflow.
+
+Pogo-7.0.5 - 26/01/2011:
+	Some files and sub directories are not scaned any more at workflow.
+
+Pogo-7.0.4 - 04/01/2011:
+	Pb with inherited class path for Pogo-6 convertion fixed.
+
+Pogo-7.0.3 - 20/12/2010:
+	Pb with DevVarLongArray and DevVarULongArray fixed.
+	Pb with special characters in comments fixed.
+
+Pogo-7.0.2 - 15/12/2010:
+	Pb on command polled (by default) fixed.
+
+Pogo-7.0.1 - 30/11/2010:
+	State/Status polling forbidden.
+
+Pogo-7.0.0 - 24/09/2010:
+	First release for Tango distribution.
