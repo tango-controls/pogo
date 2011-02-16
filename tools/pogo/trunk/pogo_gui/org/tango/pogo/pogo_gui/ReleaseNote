@@ -1,19 +1,24 @@
 #+======================================================================
-# $Source: /segfs/tango/cvsroot/tools/pogo_oaw/org/tango/pogo/pogo_gui/ReleaseNote,v $
 #
 # Project:      Tango Code Generator
 #
-# Description:  Pogo revisions
+# Description:  Pogo release notes
 #
 # $Author: verdier $
 #
-# $Revision: 1.4 $
+# $Revision: $
+# $Date:  $
 #
-# copyleft :    European Synchrotron Radiation Facility
-#               BP 220, Grenoble 38043
-#               FRANCE
+# $HeadURL: $
+#
 #
 #-======================================================================
+
+Pogo-7.2.0 - 16/02/2011:
+	Multi classes manager tool added.
+	Additional files added for Makefile and vc9 projects.
+	VC9 project templates improved.
+	Bug in multi lines attribute description fixed.
 
 Pogo-7.1.1 - 14/02/2011:
 	Does not generate Classfactory.cpp and main.cpp if clas is abstract.

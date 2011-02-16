@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -1240,12 +1240,10 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		EList<Command>		commands   = pg_class.getCommands();
 		EList<Attribute>	attributes = pg_class.getAttributes();
 		EList<State>		states     = pg_class.getStates();
-		for (int i=0 ; i<root.getChildCount() ; i++)
-		{
+		for (int i=0 ; i<root.getChildCount() ; i++) {
 			DefaultMutableTreeNode	collecNode =
 					(DefaultMutableTreeNode) root.getChildAt(i);
-			switch(i)
-			{
+			switch(i) {
 			case CLASS_PROPERTIES:
 				setPropertyToPogoDeviceClass(classprop, collecNode);
 				break;
@@ -1266,6 +1264,12 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		}
         //  Update abstract class fields
         DeviceClass.checkIfAbstractClass(pg_class, true);
+        //  Update additinal file list
+        EList<AdditionalFile>   newFileList = pg_class.getAdditionalFiles();
+        EList<AdditionalFile>   orgFileList = dev_class.getPogoDeviceClass().getAdditionalFiles();
+        for (AdditionalFile file : orgFileList) {
+            newFileList.add(OAWutils.cloneAdditionalFile(file));
+        }
 		return devclass;
 	}
 	//===============================================================
@@ -2047,18 +2051,14 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 			add(title);
 			add(new JPopupMenu.Separator());
 
-			for (String menuLabel : menuLabels)
-			{
+			for (String menuLabel : menuLabels) {
 				if (menuLabel == null)
 					add(new Separator());
-				else
-				{
+				else {
 					JMenuItem btn = new JMenuItem(menuLabel);
-					btn.addActionListener(new ActionListener()
-					{
-						public void actionPerformed(ActionEvent evt)
-						{
-							hostActionPerformed(evt);
+					btn.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							menuActionPerformed(evt);
 						}
 					});
 					add(btn);
@@ -2167,7 +2167,7 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
             show(tree, evt.getX(), evt.getY());
 		}
 		//======================================================
-		private void hostActionPerformed(ActionEvent evt)
+		private void menuActionPerformed(ActionEvent evt)
 		{
 			 //	Check component source
 			Object	obj = evt.getSource();

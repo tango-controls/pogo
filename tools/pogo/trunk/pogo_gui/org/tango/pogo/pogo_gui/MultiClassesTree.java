@@ -7,7 +7,7 @@
 //
 // $Author: pascal_verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -27,9 +27,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Tango.  If not, see <http://www.gnu.org/licenses/>.
 //
-// $Revision: 1.2 $
+// $Revision: $
+// $Date:  $
 //
-// $Log:  $
+// $HeadURL: $
 //
 //-======================================================================
 
@@ -270,14 +271,11 @@ public class  MultiClassesTree  extends JTree implements TangoConst
 	private void expandChildren(DefaultMutableTreeNode node)
 	{
 		boolean	level_done = false;
-		for (int i=0 ; i<node.getChildCount() ; i++)
-		{
+		for (int i=0 ; i<node.getChildCount() ; i++) {
 			DefaultMutableTreeNode child =
 					(DefaultMutableTreeNode) node.getChildAt(i);
-			if (child.isLeaf())
-			{
-				if (!level_done)
-				{
+			if (child.isLeaf()) {
+				if (!level_done) {
 					expandNode(child);
 					level_done = true;
 				}
@@ -292,8 +290,7 @@ public class  MultiClassesTree  extends JTree implements TangoConst
 	{
 		Vector<DefaultMutableTreeNode>	v = new Vector<DefaultMutableTreeNode>();
 		v.add(node);
-		while (node!=root)
-		{
+		while (node!=root) {
 			node = (DefaultMutableTreeNode) node.getParent();
 			v.insertElementAt(node, 0);
 		}
@@ -442,6 +439,16 @@ public class  MultiClassesTree  extends JTree implements TangoConst
     }
     //===============================================================
     //===============================================================
+    public String getServerFileName()
+    {
+        TangoServer server = (TangoServer) root.getUserObject();
+        if (server.sourcePath!=null)
+            return server.sourcePath + "/" + server.name + ".multi.xmi";
+        else
+            return null;
+    }
+    //===============================================================
+    //===============================================================
     public PogoMultiClasses getServer()
     {
         loadedClasses.resetParentClasses();
@@ -479,7 +486,7 @@ public class  MultiClassesTree  extends JTree implements TangoConst
     }
     //========================================================================
     //========================================================================
-    public PogoMultiClasses buildPogoMultiClassesObject(String name, Vector<DeviceClass> classes)
+    private PogoMultiClasses buildPogoMultiClassesObject(String name, Vector<DeviceClass> classes)
     {
         //  Build Multi classes object
         PogoMultiClasses    multiClasses = OAWutils.factory.createPogoMultiClasses();
@@ -491,30 +498,37 @@ public class  MultiClassesTree  extends JTree implements TangoConst
         multiClasses.setPreferences(pref);
 
         EList<OneClassSimpleDef>    definitions = multiClasses.getClasses();
-        for (DeviceClass _class : classes) {
+        for (DeviceClass devClass : classes) {
 
-            PogoDeviceClass pogoClass = _class.getPogoDeviceClass();
+            PogoDeviceClass pogoClass = devClass.getPogoDeviceClass();
+
             //  Convert to simple class def
-            OneClassSimpleDef   def = OAWutils.factory.createOneClassSimpleDef();
-            def.setClassname(pogoClass.getName());
-            def.setSourcePath(pogoClass.getDescription().getSourcePath());
-            for (String parentClass : _class.getParentClasses()) {
-                 def.getParentClasses().add(parentClass);
+            OneClassSimpleDef   simple = OAWutils.factory.createOneClassSimpleDef();
+            simple.setClassname(pogoClass.getName());
+            simple.setSourcePath(pogoClass.getDescription().getSourcePath());
+            for (String parentClass : devClass.getParentClasses()) {
+                 simple.getParentClasses().add(parentClass);
              }
-            if (_class.isOldPogoModel())
-                def.setPogo6("true");
-            definitions.add(def);
+            if (devClass.isOldPogoModel())
+                simple.setPogo6("true");
+            definitions.add(simple);
 
             //  Copy inheritances
-            EList<Inheritance> multiInheritances = def.getInheritances();
-            EList<Inheritance> monoInheritances = pogoClass.getDescription().getInheritances();
+            EList<Inheritance> multiInheritances = simple.getInheritances();
+            EList<Inheritance> monoInheritances  = pogoClass.getDescription().getInheritances();
             for (Inheritance monoInheritance : monoInheritances) {
                 Inheritance multiInheritance = OAWutils.factory.createInheritance();
                 multiInheritance.setClassname(monoInheritance.getClassname());
                 multiInheritance.setSourcePath(monoInheritance.getSourcePath());
                 multiInheritances.add(multiInheritance);
             }
-         }
+            //  Copy additional files
+            EList<AdditionalFile>   multiAdditional = simple.getAdditionalFiles();
+            EList<AdditionalFile>   monoAdditional  = pogoClass.getAdditionalFiles();
+            for (AdditionalFile monoFile : monoAdditional) {
+                multiAdditional.add(OAWutils.cloneAdditionalFile(monoFile));
+            }
+        }
 
         return multiClasses;
     }

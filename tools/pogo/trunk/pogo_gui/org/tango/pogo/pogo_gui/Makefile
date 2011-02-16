@@ -1,48 +1,20 @@
 #+======================================================================
-# $Source: /segfs/tango/cvsroot/tools/pogo_oaw/org/tango/pogo/pogo_gui/Makefile,v $
 #
 # Project:      Tango Device Server
 #
-# Description:  Makefile to generate the JAVA Tango classes package
+# Description:  Makefile to generate the Pogo classes
 #
 # $Author: verdier $
 #
-# $Version: $
+# $Revision: $
+# $Date:  $
 #
-# $Log: Makefile,v $
-# Revision 1.5  2010/10/22 07:48:34  verdier
-# Pogo-7.0.0
-#
-# Revision 1.4  2010/09/15 10:52:06  verdier
-# *** empty log message ***
-#
-# Revision 1.3  2010/09/03 12:54:32  verdier
-# Multi JFrame implemeted.
-#
-# Revision 1.2  2010/08/03 14:07:26  verdier
-# First release candidate.
-#
-# Revision 1.1.1.1  2010/07/02 10:54:41  verdier
-# Initial Revision
-#
-# Revision 1.3  2009/11/09 08:37:30  verdier
-# *** empty log message ***
-#
-# Revision 1.2  2009/09/23 12:16:24  verdier
-# *** empty log message ***
-#
-# Revision 1.1.1.1  2009/06/18 10:30:11  verdier
-# Initial Revision
-#
-#
-# copyleft :    European Synchrotron Radiation Facility
-#               BP 220, Grenoble 38043
-#               FRANCE
+# $HeadURL: $
 #
 #-======================================================================
 
 
-RELEASE    = 7.1.1
+RELEASE    = 7.2.0
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango
@@ -69,7 +41,7 @@ DOC_HEADER = "<h1>POGO Classes</h1>"
 
 #-----------------------------------------------------------------
 
-all:	utils GUI exe
+all:	 GUI exe
 
 full:	constants	utils	GUI
 

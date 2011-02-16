@@ -17,7 +17,12 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Feb 14 10:55:18 CET 2011)</Center><Br>\n" + 
+		"	(Generated Wed Feb 16 15:04:11 CET 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.2.0 - 16/02/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Multi classes manager tool added.<Br>\n" + 
+		"&nbsp; &nbsp; Additional files added for Makefile and vc9 projects.<Br>\n" + 
+		"&nbsp; &nbsp; VC9 project templates improved.<Br>\n" + 
+		"&nbsp; &nbsp; Bug in multi lines attribute description fixed.<Br>\n" + 
 		"<li><b>Pogo-7.1.1 - 14/02/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Does not generate Classfactory.cpp and main.cpp if clas is abstract.<Br>\n" + 
 		"&nbsp; &nbsp; Pb in commnads table fixed.<Br>\n" + 

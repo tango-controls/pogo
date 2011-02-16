@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -45,7 +45,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
+import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
+import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.Utils;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
 
@@ -57,8 +59,8 @@ import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 
 public class GenerateDialog extends JDialog 
 {
-
-	private static int returnStatus;
+    private int         mode = PogoConst.SINGLE_CLASS;
+	private static int  returnStatus;
 	private DeviceClass	devclass;
 	private Vector<JRadioButton>	rBtn;
 
@@ -80,6 +82,14 @@ public class GenerateDialog extends JDialog
 		rBtn.add(vc8Btn);
 		rBtn.add(vc9Btn);
 		rBtn.add(htmlBtn);
+
+        //  Check debug
+        String  dbg = System.getenv("DEBUG_MAKE");
+        if (Utils.isTrue(dbg))
+        {
+            codeBtn.setSelected(false);
+            makefileBtn.setSelected(true);
+        }
 		pack ();
 		ATKGraphicsUtils.centerDialog(this);
 	}
@@ -114,9 +124,9 @@ public class GenerateDialog extends JDialog
         javax.swing.JLabel dummyLbl = new javax.swing.JLabel();
         javax.swing.JButton detailsBtn = new javax.swing.JButton();
         vc9Btn = new javax.swing.JRadioButton();
-        javax.swing.JLabel windowsLabel = new javax.swing.JLabel();
+        windowsLabel = new javax.swing.JLabel();
         javax.swing.JLabel linuxLabel = new javax.swing.JLabel();
-        javax.swing.JLabel docLabel = new javax.swing.JLabel();
+        docLabel = new javax.swing.JLabel();
         javax.swing.JLabel classLabel = new javax.swing.JLabel();
 
         setTitle("Generation Preference  Window");
@@ -227,7 +237,7 @@ public class GenerateDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(vc8Btn, gridBagConstraints);
 
-        generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         generateLabel.setText("Files to be generated :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -356,10 +366,16 @@ public class GenerateDialog extends JDialog
 		//----------------------------------------------------------------
 		String path = outPathText.getText();
 		File file = new File(path);
-		if (file.exists())
-		{
-			if (file.isDirectory())
-				doClose(JOptionPane.OK_OPTION);
+		if (file.exists()) {
+			if (file.isDirectory()) {
+                //  Special check for Makefile
+                if (makefileBtn.getSelectedObjects()!=null ||
+                        vc9Btn.getSelectedObjects()!=null) {
+                    doClose (manageMakefile()); //  Close dialog if OK
+                }
+                else
+                    doClose (JOptionPane.OK_OPTION);
+            }
 			else
 				JOptionPane.showMessageDialog(this,
 								path + " is not a directory !",
@@ -371,12 +387,10 @@ public class GenerateDialog extends JDialog
 							path + " Does not exists !\n\n"+
 							"   Would you like to create it ? ",
 							"Error Window",
-							JOptionPane.ERROR_MESSAGE)==JOptionPane.OK_OPTION)
-		{
+							JOptionPane.ERROR_MESSAGE)==JOptionPane.OK_OPTION) {
 			//	The try to create a new directory
 			try{
-				if (file.mkdir())
-				{
+				if (file.mkdir()) {
 					System.out.println(path + " created");
 					doClose(JOptionPane.OK_OPTION);
 				}
@@ -386,14 +400,14 @@ public class GenerateDialog extends JDialog
 							"Error Window",
 							JOptionPane.ERROR_MESSAGE);
 			}
-			catch(Exception e)
-			{
+			catch(Exception e) {
 				JOptionPane.showMessageDialog(this,
 								"Cannot create: " + path + "\n" + e,
 								"Error Window",
 								JOptionPane.ERROR_MESSAGE);
 			}
 		}
+
 	}//GEN-LAST:event_okBtnActionPerformed
 
 	//=============================================================
@@ -459,6 +473,7 @@ public class GenerateDialog extends JDialog
 	//======================================================
 	public int showDialog(DeviceClass devclass)
 	{
+        mode = PogoConst.SINGLE_CLASS;
 		this.devclass = devclass;
 		String	path = devclass.getPogoDeviceClass().getDescription().getSourcePath();
 		if (path==null || ! new File(path).exists())
@@ -506,15 +521,18 @@ public class GenerateDialog extends JDialog
 	//======================================================
 	public int showDialog(PogoMultiClasses classes)
 	{
-		String	path = classes.getSourcePath();
+        mode = PogoConst.MULTI_CLASS;
+        String	path = classes.getSourcePath();
 		if (path==null || ! new File(path).exists())
 			path = MultiClassesPanel.homeDir;
         outPathText.setText(path);
         outPathText.setRequestFocusEnabled(true);
         outPathText.requestFocus();
 
+        windowsLabel.setVisible(false);
         vc8Btn.setVisible(false);
         vc9Btn.setVisible(false);
+        docLabel.setVisible(false);
         htmlBtn.setVisible(false);
 		makefileBtn.setVisible(true);
         warningPanel.setVisible(false);
@@ -543,16 +561,14 @@ public class GenerateDialog extends JDialog
 	public String getGenerated()
 	{
 		String	generated = "";
-		for (JRadioButton btn : rBtn)
-        {
+		for (JRadioButton btn : rBtn) {
             //System.out.println(btn.getText() + " :  " + btn.getSelectedObjects());
 			if (btn.getSelectedObjects()!=null)
 				generated += btn.getText() + ",";
         }
 		if (generated.length()==0)
 			return generated;
-		else	//	Remove last comma
-        {
+		else {	//	Remove last comma
             //System.out.println(generated.substring(0, generated.length()-1));
 			return generated.substring(0, generated.length()-1);
         }
@@ -570,8 +586,81 @@ public class GenerateDialog extends JDialog
 	//======================================================
 	//======================================================
 
+
+	//======================================================
+	//======================================================
+    private boolean mustBeOverWritten(String fileName)
+    {
+        String  path = outPathText.getText();
+        String  fullName = path + "/" + fileName;
+        File    file = new File(fullName);
+
+        if (file.exists()) {
+            if (JOptionPane.showConfirmDialog(this,
+                    fileName + " already exists !\n"+
+                    "Overwrite it ?",
+                    "Confirmation Window",
+                    JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION) {
+                return true;
+            }
+        }
+        return false;
+    }
+	//======================================================
+	//======================================================
+    private int manageMakefile()
+    {
+        String  makefile = "Makefile";
+        if (mode==PogoConst.MULTI_CLASS)
+            makefile += ".multi";
+
+        //  Check if Makefile or Win project must be overwritten
+        boolean overwriteMakefile = false;
+        boolean overwriteVC9      = false;
+        boolean generate          = false;
+        if (makefileBtn.getSelectedObjects()!=null) {
+            overwriteMakefile = mustBeOverWritten(makefile);
+        }
+        else
+            generate = true;
+        if (mode==PogoConst.SINGLE_CLASS && vc9Btn.getSelectedObjects()!=null) {
+            overwriteVC9 = mustBeOverWritten("vc9_proj");
+        }
+        else
+            generate = true;
+
+       // Ask for additional files
+        String  path = outPathText.getText();
+        if (mode==PogoConst.SINGLE_CLASS &&
+                (generate || overwriteMakefile || overwriteVC9)) {
+            String  lang = devclass.getPogoDeviceClass().getDescription().getLanguage();
+            EList<AdditionalFile>   files = devclass.getPogoDeviceClass().getAdditionalFiles();
+            AdditionalFilesDialog   dlg =
+                    new AdditionalFilesDialog(this, files, path, Utils.getFileExtension(lang));
+            if (dlg.showDialog()==JOptionPane.CANCEL_OPTION)
+                return JOptionPane.CANCEL_OPTION;
+        }
+
+        if (overwriteMakefile) {
+            //  Rename Makefile to be overwritten by XPand
+            File    file = new File(path + "/"+makefile);
+            if (!file.renameTo(new File(file.toString()+".bck")))
+                System.err.println("Cannot rename " + file);
+        }
+        if (overwriteVC9) {
+            //  Rename vc9_proj to be overwritten by XPand
+            File    file = new File(path + "/vc9_proj");
+            if (!file.renameTo(new File(file.toString()+".bck")))
+                System.err.println("Cannot rename " + file);
+        }
+        return JOptionPane.OK_OPTION;
+    }
+	//======================================================
+	//======================================================
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton codeBtn;
+    private javax.swing.JLabel docLabel;
     private javax.swing.JRadioButton htmlBtn;
     private javax.swing.JRadioButton makefileBtn;
     private javax.swing.JTextField outPathText;
@@ -579,6 +668,7 @@ public class GenerateDialog extends JDialog
     private javax.swing.JRadioButton vc9Btn;
     private javax.swing.JLabel warningLabel;
     private javax.swing.JPanel warningPanel;
+    private javax.swing.JLabel windowsLabel;
     private javax.swing.JRadioButton xmiBtn;
     // End of variables declaration//GEN-END:variables
 }

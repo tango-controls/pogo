@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -50,7 +50,7 @@ public interface PogoConst
 	 *  Revision number and date
 	 */
     public static String revNumber =
-            "Release 7.1.1  -  Mon Feb 14 10:55:17 CET 2011";
+            "Release 7.2.0  -  Wed Feb 16 15:04:10 CET 2011";
 
     public static final int	TANGO_PAGES   = 0;
     public static final int	POGO_PAGES    = 1;
@@ -82,6 +82,7 @@ public interface PogoConst
 
 	//	Languages
 	public static final String[]	strLang = { "Java", "Cpp", "Python" };
+	public static final String[]	fileExtention = { "java", "cpp", "py" };
 	public static final int			Java   = 0;
 	public static final int			Cpp    = 1;
 	public static final int			Python = 2;

@@ -7,7 +7,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -27,12 +27,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Tango.  If not, see <http://www.gnu.org/licenses/>.
 //
-// $Revision:  $
+// $Revision: $
+// $Date:  $
 //
-// $Log:  $
+// $HeadURL: $
 //
 //-======================================================================
-
 
 package org.tango.pogo.pogo_gui;
 
@@ -40,13 +40,12 @@ import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
-import org.tango.pogo.pogo_gui.tools.OAWutils;
-import org.tango.pogo.pogo_gui.tools.PogoProperty;
-import org.tango.pogo.pogo_gui.tools.TangoServer;
+import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.util.Vector;
 
 //=======================================================
 /**
@@ -62,6 +61,14 @@ public class MultiClassesPanel extends JFrame
     static public  String       homeDir;
 	private MultiClassesTree	tree;
     private JScrollPane         scrollPane;
+
+    private Vector<JButton>     topButtons = new Vector<JButton>();
+    private static final int    TOP_RELOAD  = 0;
+    private static final int    TOP_NEW     = 1;
+    private static final int    TOP_OPEN    = 2;
+    private static final int    TOP_GENE    = 3;
+
+    private static final PogoFileFilter pogoFilter  = new PogoFileFilter("xmi", "Multi Classes");
 
 	//=======================================================
     /**
@@ -108,8 +115,30 @@ public class MultiClassesPanel extends JFrame
                 homeDir = new File("").getAbsolutePath();
         }
         chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
-        chooser.setFileFilter(PogoGUI.pogoFilter);
+        chooser.setFileFilter(pogoFilter);
+
+
+        Utils utils = Utils.getInstance();
+        addTopPanelButton(utils.reload_icon, "Reload Server");
+        addTopPanelButton(utils.new_icon,    "New Server");
+        addTopPanelButton(utils.open_icon,   "Open Server");
+        addTopPanelButton(utils.save_icon,   "Generate Server");
 	}
+    //=======================================================
+    //=======================================================
+    private void addTopPanelButton(ImageIcon icon, String tip)
+    {
+        JButton btn = new JButton(icon);
+        btn.setToolTipText(tip);
+        btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn.addActionListener(new java.awt.event.ActionListener() {
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                topButtonActionPerformed(evt);
+             }
+         });
+        topPanel.add(btn);
+        topButtons.add(btn);
+    }
 
 	//=======================================================
 	//=======================================================
@@ -175,6 +204,7 @@ public class MultiClassesPanel extends JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        topPanel = new javax.swing.JPanel();
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newItem = new javax.swing.JMenuItem();
@@ -194,6 +224,9 @@ public class MultiClassesPanel extends JFrame
                 exitForm(evt);
             }
         });
+
+        topPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
 
         fileMenu.setText("File");
 
@@ -280,6 +313,48 @@ public class MultiClassesPanel extends JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //=======================================================
+    //=======================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void topButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        JButton src = (JButton) evt.getSource();
+        for (int i=0 ; i<topButtons.size() ; i++)
+            if (topButtons.get(i)==src)
+                switch(i)
+                {
+                    case TOP_RELOAD:
+                        if (tree!=null)
+                            reloadProject();
+                        break;
+                    case TOP_NEW:
+                        newItemActionPerformed(evt);
+                        break;
+                    case TOP_OPEN:
+                        openItemActionPerformed(evt);
+                        break;
+                    case TOP_GENE:
+                        if (tree!=null)
+                            generateItemActionPerformed(evt);
+                        break;
+                }
+    }
+    //=======================================================
+    //=======================================================
+    private void reloadProject() {
+
+         if (checkModifications()==JOptionPane.OK_OPTION) {
+             String filename = tree.getServerFileName();
+             if (filename!=null) {
+                 try {
+                     loadXmiFile(filename);
+                 }
+                 catch(DevFailed e) {
+                     ErrorPane.showErrorMessage(this, null, e);
+                 }
+             }
+         }
+    }
     //=======================================================
     //=======================================================
     private void recentItemActionPerformed(java.awt.event.ActionEvent evt)
@@ -371,6 +446,11 @@ public class MultiClassesPanel extends JFrame
                 OAWutils.getInstance().generate(multiClasses);
                 tree.setModified(false);
                 setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+
+                //  Manage recent menu
+                String projectFile = multiClasses.getSourcePath() +
+                        "/" + multiClasses.getName() + ".multi.xmi";
+                manageRecentMenu(projectFile);
                 return JOptionPane.OK_OPTION;
             }
         }
@@ -455,25 +535,28 @@ public class MultiClassesPanel extends JFrame
     //=======================================================
     private int checkModifications()
     {
-        String name = tree.getName();
-        Object[] options = {"Generate", "Discard", "Cancel"};
-        switch (JOptionPane.showOptionDialog(this,
-                name + " project has not been generated !\n\n",
-                "Warning",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.WARNING_MESSAGE,
-                null, options, options[0]))
-        {
-            case 0:    //	Generate
-                return generateFiles();
+        if (tree.getModified()) {
+            String name = tree.getName();
+            Object[] options = {"Generate", "Discard", "Cancel"};
+            switch (JOptionPane.showOptionDialog(this,
+                    name + " project has not been generated !\n\n",
+                    "Warning",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null, options, options[0]))
+            {
+                case 0:    //	Generate
+                    return generateFiles();
 
-            case 1:    // Discard
-                return JOptionPane.OK_OPTION;
-            case 2:    //	Cancel
-            case -1:   //	escape
-            default:
-                return JOptionPane.CANCEL_OPTION;
+                case 1:    // Discard
+                    return JOptionPane.OK_OPTION;
+                case 2:    //	Cancel
+                case -1:   //	escape
+                default:
+                    return JOptionPane.CANCEL_OPTION;
+            }
         }
+        return JOptionPane.OK_OPTION;
     }
 	//=======================================================
 	//=======================================================
@@ -525,6 +608,7 @@ public class MultiClassesPanel extends JFrame
     private javax.swing.JMenuItem openItem;
     private javax.swing.JMenu recentMenu;
     private javax.swing.JMenuItem removeItem;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 	//=======================================================
 

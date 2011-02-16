@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -32,7 +32,6 @@
 // $HeadURL: $
 //
 //-======================================================================
-
 
 package org.tango.pogo.pogo_gui;
 
