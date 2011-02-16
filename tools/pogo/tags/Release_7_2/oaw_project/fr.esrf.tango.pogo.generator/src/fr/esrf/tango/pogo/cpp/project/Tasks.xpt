@@ -1,0 +1,38 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::cppUtil»
+
+
+//	Linux makefile
+«DEFINE CppProject FOR PogoDeviceClass»
+«IF description.filestogenerate.toLowerCase().contains("makefile")»
+	«EXPAND Makefile::CppProject»
+«ENDIF»
+
+
+//	Windows Visual Studio 2005 (VC8) projact
+«IF description.filestogenerate.toLowerCase().contains("vc8")»
+	«EXPAND WindowsProject::CppProject»
+	«EXPAND WinClassLib::CppProject»
+	«EXPAND WinClassDll::CppProject»
+	«EXPAND WinServerStatic::CppProject»
+	«EXPAND WinServerShared::CppProject»
+«ENDIF»
+
+
+//	Windows Visual Studio 2008 (VC9) projact
+«IF description.filestogenerate.toLowerCase().contains("vc9")»
+	«EXPAND VC9_Project::CppProject»
+	«EXPAND VC9_ClassLib::CppProject»
+	«EXPAND VC9_ClassDll::CppProject»
+	«EXPAND VC9_ServerStatic::CppProject»
+	«EXPAND VC9_ServerShared::CppProject»
+«ENDIF»
+«ENDDEFINE»
+
+
+#=============================================================================
+#	Define the definition for VC project file
+#=============================================================================
+«DEFINE VC9souceFile(String fileName) FOR PogoDeviceClass-»
+			<File RelativePath="..\«fileName»"> </File>
+«ENDDEFINE»

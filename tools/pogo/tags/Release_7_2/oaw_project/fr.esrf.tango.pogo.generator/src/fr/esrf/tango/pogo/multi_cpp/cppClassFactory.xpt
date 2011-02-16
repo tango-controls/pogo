@@ -1,0 +1,37 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+«DEFINE multiCppFile FOR PogoMultiClasses»
+
+«FILE classFactoryFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID concatString(name, "::"+classFactoryFileName())»
+static const char *RcsId = "«cvsEscaped("Id:")»";
+«EXPAND fr::esrf::tango::pogo::cpp::Common::fileHeader(classFactoryFileName(),
+	"C++ source for the class_factory method of the DServer\n" +
+	"device class. This method is responsible for the creation of\n" +
+	"all class singleton for a device server. It is called\n" +
+	"at device server startup.")-»
+
+
+#include <tango.h>
+
+//	Add class header files
+«FOREACH classes AS _class-»
+#include <«_class.classname»Class.h>
+«ENDFOREACH»
+
+«EXPAND fr::esrf::tango::pogo::cpp::Common::defaultHeader("Create Class singletons and store them in DServer object.")»
+void Tango::DServer::class_factory()
+{
+	//	Add methods for class init
+«FOREACH classes AS _class-»	
+	add_class(«_class.classname»_ns::«_class.classname»Class::init("«_class.classname»"));
+«ENDFOREACH»
+}
+
+«ENDPROTECT»
+«ENDFILE»
+«ENDDEFINE»
+
