@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -32,7 +32,6 @@
 // $HeadURL: $
 //
 //-======================================================================
-
 
 package org.tango.pogo.pogo_gui;
 
@@ -253,7 +252,7 @@ public class PogoGUI extends JFrame
 		preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
 
 		toolsMenu.setMnemonic ('T');
-        //if (!Utils.osIsUnix())
+        if (!Utils.osIsUnix())
     		toolsMenu.setVisible(false);
         multiItem.setMnemonic ('M');
         multiItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK | Event.SHIFT_MASK));
@@ -1192,6 +1191,7 @@ public class PogoGUI extends JFrame
 		cursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		setCursor(cursor);
         class_panels.checkWarnings();
+
 	}
 	//=======================================================
 	//=======================================================
