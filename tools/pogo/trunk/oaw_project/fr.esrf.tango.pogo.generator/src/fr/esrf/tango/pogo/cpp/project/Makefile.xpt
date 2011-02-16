@@ -135,7 +135,10 @@ SVC_OBJS =      \
             $(OBJDIR)/$(PACKAGE_NAME)Class.o \
             $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
             $(OBJDIR)/ClassFactory.o  \
-            $(OBJDIR)/main.o «EXPAND addInheritancObjectFiles»
+            $(OBJDIR)/main.o \
+            $(ADDITIONAL_OBJS) «EXPAND addInheritancObjectFiles»
+
+«EXPAND addAdditionalObjectFiles»
 
 #=============================================================================
 #	include common targets
@@ -147,6 +150,19 @@ include $(MAKE_ENV)/common_target.opt
 «ENDPROTECT»
 «ENDFILE»
 «ENDDEFINE»
+
+
+#=============================================================================
+#	Add Additional object files if any (Utils, threads, ...)
+#=============================================================================
+«DEFINE addAdditionalObjectFiles FOR PogoDeviceClass-»
+
+#------------  Object files for additional files  ------------
+ADDITIONAL_OBJS = «FOREACH additionalFiles AS file-» \
+	$(OBJDIR)/«file.name».o«ENDFOREACH-»
+«ENDDEFINE»
+
+
 
 
 
@@ -183,8 +199,6 @@ include $(MAKE_ENV)/common_target.opt
               -I $(«inheritance.classname.toUpperCase()»_HOME)«ENDIF-»
 «ENDFOREACH»
 «ENDDEFINE»
-
-
 
 
 #=============================================================================
