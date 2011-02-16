@@ -101,7 +101,7 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	//	Attribute : «att.name»
 	«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
 	Tango::UserDefaultAttrProp	«att.name.toLowerCase()»_prop;
-	«setAttributeProperty(att.name, "description",   att.properties.description)»
+	«setAttributeProperty(att.name, "description",   att.properties.description.replaceAll("\n", "\\\\n"))»
 	«setAttributeProperty(att.name, "label",         att.properties.label)»
 	«setAttributeProperty(att.name, "unit",          att.properties.unit)»
 	«setAttributeProperty(att.name, "standard_unit", att.properties.standardUnit)»
