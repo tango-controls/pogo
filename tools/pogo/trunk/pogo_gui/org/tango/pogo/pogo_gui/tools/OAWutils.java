@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -203,11 +203,13 @@ public class OAWutils
     public void generate(PogoMultiClasses multiClasses) throws DevFailed
 	{
         PogoSystem sys = factory.createPogoSystem();
+        String      prExcludes = Utils.getExcludeFilesAndDir(multiClasses.getSourcePath());
+
         reverseClassOrder(multiClasses);
         sys.getMultiClasses().add(multiClasses);
 
 		//	Generate XMI file if requested.
-        String	xmi_file = multiClasses.getSourcePath()+"/"+multiClasses.getName()+".xmi";
+        String	xmi_file = multiClasses.getSourcePath()+"/"+multiClasses.getName()+".multi.xmi";
         ResourceSet resourceSet = new ResourceSetImpl();
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
         URI fileURI = URI.createFileURI(new File(xmi_file).getAbsolutePath());
@@ -227,6 +229,7 @@ public class OAWutils
 		params.put("targetDir",      multiClasses.getSourcePath());
 		params.put("targetLanguage", "MultiCpp");
 		params.put("theModel",       sys);
+        params.put("prExcludes",     prExcludes);
 
 		runWorkflow(params);
 	}
@@ -609,10 +612,6 @@ public class OAWutils
         //	pre-process the class for additional info
         doPreProcessing(pogoClass);
 
-        EList<Inheritance> inher = pogoClass.getDescription().getInheritances();
-        //for (Inheritance inheritance : inher)
-        //   System.out.println(inheritance.getClassname() + " from " + inheritance.getSourcePath());
-
         sys.getClasses().add(pogoClass);
         return sys;
     }
@@ -748,7 +747,7 @@ public class OAWutils
     //======================================================
       public static Attribute  cloneAttribute(Attribute src)
       {
-          Attribute	attr = OAWutils.factory.createAttribute();
+          Attribute	attr = factory.createAttribute();
           attr.setName(src.getName());
 
           attr.setAttType(src.getAttType());
@@ -836,7 +835,7 @@ public class OAWutils
     //===============================================================
     public static Property cloneProperty(Property src)
     {
-        Property	property = OAWutils.factory.createProperty();
+        Property	property = factory.createProperty();
         property.setName(src.getName());
         property.setDescription(src.getDescription());
 
@@ -863,7 +862,7 @@ public class OAWutils
     //======================================================
     public static State cloneState(State src)
     {
-        State	state = OAWutils.factory.createState();
+        State	state = factory.createState();
         state.setName(src.getName());
         state.setDescription(src.getDescription());
         
@@ -876,6 +875,16 @@ public class OAWutils
         status .setConcreteHere(src_st.getConcreteHere());
         state.setStatus(status);
         return state;
+    }
+	//========================================================================
+	//========================================================================
+    public static AdditionalFile cloneAdditionalFile(AdditionalFile src)
+    {
+        AdditionalFile  file = factory.createAdditionalFile();
+        file.setName(src.getName());
+        file.setPath(src.getPath());
+
+        return file;
     }
 	//========================================================================
 	//========================================================================

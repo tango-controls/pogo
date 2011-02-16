@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -210,6 +210,12 @@ public class Utils
     public static String getLanguage(int lang)
 	{
 		return PogoConst.strLang[lang];
+	}
+    //============================================================================
+    //============================================================================
+    public static String getFileExtension(String lang)
+	{
+		return PogoConst.fileExtention[getLanguage(lang)];
 	}
 	//============================================================================
 	/**
@@ -601,7 +607,7 @@ public class Utils
     static public String getExcludeFilesAndDir(String dirName)
     {
         //  Define what will be generated
-        String[]        geneFiles = { ".cpp", ".h", ".java", ".py", "Makefile"};
+        String[]        geneFiles = { ".cpp", ".h", ".java", ".py", "Makefile", "Makefile.multi"};
         String[]        geneDirs  = { "vc8_proj", "vc9_proj"};
         //  Get file list
         File			d = new File(dirName);
@@ -680,9 +686,14 @@ public class Utils
 	//=======================================================
 	private void createSplash()
 	{
+		//	Now done by a getenv call
+        /*
 		//	Check if Display is used
 		try {
-			new JFrame().setVisible(true);
+			JFrame  frame = new JFrame();
+            frame.setVisible(true);
+            System.out.println("frame.setVisible(false);");
+            frame.setVisible(false);
 		}
         catch(java.lang.ExceptionInInitializerError e) {
             useDisplay = false;
@@ -694,7 +705,7 @@ public class Utils
             System.err.println("Cannot create Splah: "+e);
 			return;
         }
-
+        */
         try {
 			if (tango_icon==null)
 				tango_icon = getIcon("TangoSplash.gif");
