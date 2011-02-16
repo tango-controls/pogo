@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009, 2010
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -35,6 +35,8 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
+
+import fr.esrf.Tango.DevFailed;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
@@ -144,8 +146,9 @@ public class PogoFileFilter extends FileFilter {
     public boolean accept(File f) {
 		if(f != null)
 		{
-		    if(f.isDirectory())
-				return true;
+		    if(f.isDirectory()) {
+                return true;
+            }
 		    String	extension   = getExtension(f);
 			if(extension != null) {
                 for (String filter : filters) {
@@ -156,8 +159,18 @@ public class PogoFileFilter extends FileFilter {
                             return isDeviceImplClass(f.toString());
                         }
                         else
-                            //	else default one
-                            return true;
+                        if (getDescription().toLowerCase().startsWith("additional")) {
+                            boolean generated = isPogoGeneratedFile(f .toString());
+                            //System.out.println(f + ":   " + generated);
+                            return (! generated);
+                        }
+                        if (getDescription().toLowerCase().startsWith("multi classes")) {
+                            return isMultiClassXmi(f.toString());
+                        }
+                        else {
+                            //	else default one (the xmi Tango class file)
+                            return !isMultiClassXmi(f.toString());
+                        }
                     }
                 }
 			}
@@ -284,6 +297,34 @@ public class PogoFileFilter extends FileFilter {
 
 
 
+    //===============================================================
+    //===============================================================
+    private boolean isPogoGeneratedFile(String fileName)
+    {
+        String code;
+        try {
+             code = ParserTool.readFile(fileName);
+        }
+        catch (DevFailed e) {
+            return false;
+        }
+        return (code.indexOf("PROTECTED REGION ID")>=0);
+    }
+    //===============================================================
+    //===============================================================
+    private boolean isMultiClassXmi(String filename)
+    {
+        return (filename.endsWith(".multi.xmi"));
+        /*
+        try {
+            String readCode = ParserTool.readFile(filename);
+            int pos = readCode.indexOf("<multiClasses");
+            return (pos>0);
+        }
+        catch (Exception e) { /* Noting to do }
+        return false;
+        */
+    }
     //===============================================================
     //===============================================================
     public static final String[]	cpp_target  = {
