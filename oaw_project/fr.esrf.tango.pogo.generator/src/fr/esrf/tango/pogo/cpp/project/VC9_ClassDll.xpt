@@ -205,32 +205,19 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-			<File
-				RelativePath="..\«name».cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\«name»Class.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\«name»StateMachine.cpp"
-				>
-			</File>
+			«EXPAND Tasks::VC9souceFile(name+".cpp")-»
+			«EXPAND Tasks::VC9souceFile(name+"Class.cpp")-»
+			«EXPAND Tasks::VC9souceFile(name+"StateMachine.cpp")-»
+			«FOREACH additionalFiles AS file» «EXPAND Tasks::VC9souceFile(file.name+".cpp")-»
+			«ENDFOREACH»
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath="..\«name».h"
-				>
-			</File>
-			<File
-				RelativePath="..\«name»Class.h"
-				>
-			</File>
+			«EXPAND Tasks::VC9souceFile(name+".h")-»
+			«EXPAND Tasks::VC9souceFile(name+"Class.h")-»
 		</Filter>
 	</Files>
 	<Globals>

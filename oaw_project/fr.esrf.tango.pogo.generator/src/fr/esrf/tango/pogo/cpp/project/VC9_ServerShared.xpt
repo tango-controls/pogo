@@ -210,21 +210,11 @@
 	<References>
 	</References>
 	<Files>
-		<Filter
-			Name="Source Files"
-			>
-			<File
-				RelativePath="..\ClassFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\main.cpp"
-				>
-			</File>
+		<Filter Name="Source Files">
+			«EXPAND Tasks::VC9souceFile("ClassFactory.cpp")-»
+			«EXPAND Tasks::VC9souceFile("main.cpp")-»
 		</Filter>
-		<Filter
-			Name="Header Files"
-			>
+		<Filter Name="Header Files">
 		</Filter>
 	</Files>
 	<Globals>

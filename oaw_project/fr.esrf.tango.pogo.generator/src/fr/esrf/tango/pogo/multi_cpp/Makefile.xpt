@@ -4,7 +4,7 @@
 
 
 «DEFINE multiCppFile FOR PogoMultiClasses»
-«FILE "Makefile"»«PROTECT CSTART '#' CEND '#' ID concatString(name, "::Makefile")»
+«FILE "Makefile.multi"»«PROTECT CSTART '#' CEND '#' ID concatString(name, "::Makefile.multi")»
 #=============================================================================
 #
 # file :        Makefile
@@ -204,7 +204,7 @@ include $(MAKE_ENV)/common_target.opt
 «DEFINE addClassObjectFiles FOR PogoMultiClasses-»
 	«FOREACH classes AS _class-» \
             $(SVC_«_class.classname.toUpperCase()»_OBJ)«ENDFOREACH-» \
-            $(ADDITIONAL_OBJ)
+            $(ADDITIONAL_OBJS)
 
 	«FOREACH classes AS _class-»
 
@@ -215,11 +215,26 @@ SVC_«_class.classname.toUpperCase()»_OBJ = \
 		$(OBJDIR)/«_class.classname»StateMachine.o«EXPAND addInheritedClassObjectFiles(_class)-»
 	«ENDFOREACH-»
 
-#------------  Object files for additional files (add your own ones) ------------
-ADDITIONAL_OBJ = 
-
+«EXPAND addAdditionalObjectFiles»
 
 «ENDDEFINE»
+
+
+
+
+#=============================================================================
+#	Add Additional object files if any (Utils, threads, ...)
+#=============================================================================
+«DEFINE addAdditionalObjectFiles FOR PogoMultiClasses-»
+
+#------------  Object files for additional files (add your own ones) ------------
+ADDITIONAL_OBJS = «FOREACH classes AS _class-»«FOREACH _class.additionalFiles AS file-» \
+	$(OBJDIR)/«file.name».o«ENDFOREACH-»«ENDFOREACH-»
+«ENDDEFINE»
+
+
+
+
 
 #=============================================================================
 #	Add inherited Class object files
@@ -254,10 +269,7 @@ ADDITIONAL_OBJ =
 	«ENDIF»«ENDFOREACH-»
 «ENDFOREACH»
 
-#------------  Object files dependancies for additional files  ------------
-#$(OBJDIR)/.o: $()/.cpp $()
-#	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/.o
-
+«EXPAND additionalFileDependancy»
 
 «ENDDEFINE»
 
@@ -277,8 +289,6 @@ ADDITIONAL_OBJ =
 
 «ENDDEFINE»
 
-
-
 #=============================================================================
 #	Define the dependancy for each class object file
 #=============================================================================
@@ -287,10 +297,26 @@ $(OBJDIR)/«_class.classname»«str».o: $(«_class.classname.toUpperCase()»_HOME)/«_
 	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«_class.classname»«str».o
 «ENDDEFINE»
 
- #=============================================================================
+#=============================================================================
 #	Define the dependancy for inherited class object file
 #=============================================================================
 «DEFINE inheritanceDependancy(Inheritance inher, String str) FOR PogoMultiClasses-»
 $(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inher.classname»«str».cpp $(«inher.makeVariable("_INCL")»)
 	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
 «ENDDEFINE»
+
+#=============================================================================
+#	Define the dependancy for each additional files
+#=============================================================================
+«DEFINE additionalFileDependancy FOR PogoMultiClasses-»
+#------------  Object files dependancies for additional files  ------------
+«FOREACH classes AS _class-»«FOREACH _class.additionalFiles AS file-»
+«file.name.toUpperCase()»_HOME = «_class.sourcePath»
+$(OBJDIR)/«file.name».o: $(«file.name.toUpperCase()»_HOME)/«file.name».cpp $(«_class.makeVariable("_INCL")»)
+	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«file.name».o
+«ENDFOREACH-»«ENDFOREACH-»
+«ENDDEFINE»
+
+
+
+

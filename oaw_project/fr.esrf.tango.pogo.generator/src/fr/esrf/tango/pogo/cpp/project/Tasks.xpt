@@ -28,3 +28,11 @@
 	«EXPAND VC9_ServerShared::CppProject»
 «ENDIF»
 «ENDDEFINE»
+
+
+#=============================================================================
+#	Define the definition for VC project file
+#=============================================================================
+«DEFINE VC9souceFile(String fileName) FOR PogoDeviceClass-»
+			<File RelativePath="..\«fileName»"> </File>
+«ENDDEFINE»
