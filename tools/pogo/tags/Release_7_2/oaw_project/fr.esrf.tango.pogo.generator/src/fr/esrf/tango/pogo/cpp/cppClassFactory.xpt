@@ -1,0 +1,39 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//	Generate the Classfactory.cpp file if source code and class not abstract
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode())	&&
+			description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+
+«FILE classFactoryFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID concatString(name, "::ClassFactory.cpp")»
+static const char *RcsId = "«cvsEscaped("Id:")»";
+«EXPAND Common::fileHeader(classFactoryFileName(),
+	"C++ source for the class_factory method of the DServer\n" +
+	"device class. This method is responsible for the creation of\n" +
+	"all class singleton for a device server. It is called\n" +
+	"at device server startup.")-»
+
+
+#include <tango.h>
+#include <«dserverClassHeaderFileName()»>
+
+//	Add class header files if needed
+
+
+«EXPAND Common::defaultHeader("Create " +name + " Class singleton and store it in DServer object.")»
+void Tango::DServer::class_factory()
+{
+	//	Add method class init if needed
+	
+	add_class(«name»_ns::«name»Class::init("«name»"));
+}
+
+«ENDPROTECT»
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
+

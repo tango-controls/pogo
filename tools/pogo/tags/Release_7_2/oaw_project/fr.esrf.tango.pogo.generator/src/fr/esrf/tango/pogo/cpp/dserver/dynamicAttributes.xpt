@@ -1,0 +1,90 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+//===================================================================
+//	Dynamic attributes related methods
+//===================================================================
+
+«EXPAND createStaticAttList»
+«EXPAND eraseDynamicAttributes»
+«ENDIF-»
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the erase_dynamic_attributes method
+//	=========================================================
+«DEFINE eraseDynamicAttributes FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::erase_dynamic_attributes
+ * description : 	delete the dynamic attributes if any.
+ *
+ * @param	devlist_ptr	the device list pointer
+ * @param	list of all attributes
+ */
+«separator2()»
+void «name»Class::erase_dynamic_attributes(const Tango::DevVarStringArray *devlist_ptr, vector<Tango::Attr *> &att_list)
+{
+	Tango::Util *tg = Tango::Util::instance();
+
+	for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
+	{	
+		Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((string)(*devlist_ptr)[i]).c_str());
+		«name» *dev = static_cast<«name» *> (dev_impl);
+		
+		vector<Tango::Attribute *> &dev_att_list = dev->get_device_attr()->get_attribute_list();
+		vector<Tango::Attribute *>::iterator ite_att;
+		for (ite_att=dev_att_list.begin() ; ite_att != dev_att_list.end() ; ++ite_att)
+		{
+			string att_name((*ite_att)->get_name_lower());
+			if ((att_name == "state") || (att_name == "status"))
+				continue;
+			vector<string>::iterator ite_str = find(defaultAttList.begin(), defaultAttList.end(), att_name);
+			if (ite_str == defaultAttList.end())
+			{
+				cout2 << att_name << " is a UNWANTED dynamic attribute for device " << (*devlist_ptr)[i] << endl;
+				Tango::Attribute &att = dev->get_device_attr()->get_attr_by_name(att_name.c_str());
+				dev->remove_attribute(att_list[att.get_attr_idx()],true);
+				--ite_att;
+			}
+		}
+	}
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::erase_dynamic_attributes")»
+}
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the create_static_attribute_list method
+//	=========================================================
+«DEFINE createStaticAttList FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::create_static_attribute_list
+ * description : 	Create the a list of static attributes
+ *
+ * @param	att_list	the ceated attribute list 
+ */
+«separator2()»
+void «name»Class::create_static_attribute_list(vector<Tango::Attr *> &att_list)
+{
+	for (unsigned long i=0 ; i<att_list.size() ; i++)
+	{
+		string att_name(att_list[i]->get_name());
+		transform(att_name.begin(), att_name.end(), att_name.begin(), ::tolower);
+		defaultAttList.push_back(att_name);
+	}
+
+	cout2 << defaultAttList.size() << " attributes in default list" << endl;
+
+
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::create_static_att_list")»
+}
+«ENDDEFINE»

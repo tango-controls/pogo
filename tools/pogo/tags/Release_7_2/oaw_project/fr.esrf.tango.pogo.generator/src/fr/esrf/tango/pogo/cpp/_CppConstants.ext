@@ -1,0 +1,83 @@
+import pogoDsl;
+import _CppType;
+
+//	Default device Impl version
+tangoDeviceImpl():
+	"Tango::Device_4Impl";
+	
+//	Code source file option
+tagForSourceCode(PogoDeviceClass this):	"Code files";
+
+//	File names
+deviceHeaderFileName(PogoDeviceClass this):
+	name+".h";
+	
+deviceCppFileName(PogoDeviceClass this):
+	name+".cpp";
+	
+deviceCppFileName(PogoMultiClasses this):
+	name+".cpp";
+	
+dserverClassHeaderFileName(PogoDeviceClass this):
+	name+"Class.h";
+	
+dserverClassCppFileName(PogoDeviceClass this):
+	name+"Class.cpp";
+	
+classFactoryFileName(PogoDeviceClass this):
+	"ClassFactory.cpp";
+
+classFactoryFileName(PogoMultiClasses this):
+	"MultiClassesFactory.cpp";
+	
+stateMachineFileName(PogoDeviceClass this):
+	name+"StateMachine.cpp";
+
+vc8ProjectFileName(String filename):
+	"vc8_proj/"+filename;	
+
+vc9ProjectFileName(String filename):
+	"vc9_proj/"+filename;	
+
+//	Constant Names
+headerConstantName(PogoDeviceClass this):
+	name.toUpperCase()+"_H";
+
+dserverClassHeaderConstantName(PogoDeviceClass this):
+	name.toUpperCase()+"CLASS_H";
+
+
+
+baseClassName(PogoDeviceClass this):
+	baseClass == null 
+		? tangoDeviceImpl()
+		: baseClass.name;
+
+
+getInheritance(ClassDescription this):
+	inheritances.get(inheritances.size-1);
+
+superClassName(Inheritance this):
+	classname == null
+		? "public " + tangoDeviceImpl()
+		: (classname.startsWith("Device_")
+			? "public " + tangoDeviceImpl()
+			: "public " + classname + "_ns::" + classname);
+
+superClassNameConstr(Inheritance this):
+	classname == null
+		? tangoDeviceImpl()
+		: classname;
+
+
+areaProtectedID(PogoDeviceClass this, String str):
+	name+"::"+str;
+
+areaProtectedID(PogoMultiClasses this, String str):
+	name+"::"+str;
+
+
+//	Separators
+separator1(PogoDeviceClass this):	"//========================================================";
+separator2(PogoDeviceClass this):	"//--------------------------------------------------------";
+

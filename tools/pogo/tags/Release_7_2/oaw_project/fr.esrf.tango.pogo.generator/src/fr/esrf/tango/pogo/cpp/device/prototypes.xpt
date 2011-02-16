@@ -1,0 +1,98 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+//	=========================================================
+//	Define protypes the device class
+//	=========================================================
+«DEFINE headerFile FOR PogoDeviceClass»
+//	Constructors and destructors
+public:«EXPAND constructorsProto»
+
+//	Miscellaneous methods
+public:«EXPAND miscellaneousProto»
+«IF attributes.size > 0»
+//	Attribute methods
+public:
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeaderProto(
+	"read_attr_hardware",
+	"Hardware acquisition for attributes.")-»
+	virtual void read_attr_hardware(vector<long> &attr_list);
+«FOREACH attributes AS att»
+«EXPAND attributes::attributeCallsProto(att)»
+«ENDFOREACH»
+«ENDIF»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeaderProto(
+		"add_dynamic_attributes",
+		"Add dynamic attributes if any.")-»
+		void add_dynamic_attributes();
+«ENDIF-»
+
+//	Command related methods
+public: «FOREACH commands AS cmd»
+	«EXPAND commands::executeCommandSignatureProto(cmd)-»
+	«EXPAND commands::allowedCommandSignatureProto(cmd)-»
+«ENDFOREACH»
+«ENDDEFINE»
+
+
+
+
+
+//	=========================================================
+//	Define the protype for miscellaneous methods
+//	=========================================================
+«DEFINE miscellaneousProto FOR PogoDeviceClass»
+	/**
+	 *	will be called at device destruction or at init command.
+	 */
+	void delete_device();
+	/**
+	 *	Initialize the device
+	 */
+	virtual void init_device();
+	/**
+	 *	Read the device properties from database
+	 */
+	 void get_device_property();
+	/**
+	 *	Always executed method before execution command method.
+	 */
+	virtual void always_executed_hook();
+«ENDDEFINE»
+
+//	=========================================================
+//	Define the protype for constructors
+//	=========================================================
+«DEFINE constructorsProto FOR PogoDeviceClass»
+	/**
+	 * Constructs a newly allocated Command object.
+	 *
+	 *	@param cl	Class.
+	 *	@param s 	Device Name
+	 */
+	«name»(Tango::DeviceClass *cl,string &s);
+	/**
+	 * Constructs a newly allocated Command object.
+	 *
+	 *	@param cl	Class.
+	 *	@param s 	Device Name
+	 */
+	«name»(Tango::DeviceClass *cl,const char *s);
+	/**
+	 * Constructs a newly allocated Command object.
+	 *
+	 *	@param cl	Class.
+	 *	@param s 	Device name
+	 *	@param d	Device description.
+	 */
+	«name»(Tango::DeviceClass *cl,const char *s,const char *d);
+	/**
+	 * The object destructor.
+	 */	
+	~«name»() {delete_device();};
+
+«ENDDEFINE»
+
+
