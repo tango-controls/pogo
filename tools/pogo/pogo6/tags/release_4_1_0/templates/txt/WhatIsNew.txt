@@ -1,0 +1,22 @@
+Since revision 4.0.0:
+  - The attribute management has been modified.
+     The methods read_attr(Tango::Attribute &attr) and
+     write_attr_hardware(vector<long> &attr_list)
+     do not exist any more.
+     A read method is generated for each attribute.
+     A write method is generated for each writable attribute.
+
+  - A new file is genarated with state machine methods.
+
+  - If a device property is not found in database,
+     the property value will be taken from class property if exists.
+
+  - A description editor has been added.
+
+  - Item could be sorted in alphabetic order.
+
+
+
+
+see: http://www.esrf.fr/tango/tango_doc/tools_doc/pogo_doc/
+

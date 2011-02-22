@@ -1,0 +1,10 @@
+#MAIL_LIST=verdier@esrf.fr
+MAIL_LIST=tango@esrf.fr
+FILE_NAME=$1
+TITLE='New Tango Device Server Classes'
+
+
+echo "/usr/bin/mailx -s  "$TITLE"  $MAIL_LIST < $FILE_NAME"
+#/usr/bin/mailx -s  "$TITLE"  $MAIL_LIST < $FILE_NAME
+
+#rm $FILE_NAME

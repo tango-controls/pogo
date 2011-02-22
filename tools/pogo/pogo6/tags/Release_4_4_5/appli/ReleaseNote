@@ -1,0 +1,37 @@
+#+======================================================================
+# $Source$
+#
+# Project:      Pogo
+#
+# Description:  Pogo revisions
+#
+# $Author$
+#
+# $Revision$
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+Pogo-4.4.5:	make_util package added (for tag module).
+
+Pogo-4.4.4:	Bug in renaming command has been fixed.
+
+Pogo-4.4.3:	Memorized attribute written or not at starteup added.
+
+Pogo-4.4.2:	Bug on AttributeDialog fixed.
+            Splash screen is not displayed any more at startup.
+
+Pogo-4.4.1:	Bug on array property fixed.
+
+Pogo-4.4.0:	Property Wizard functionalities added.
+
+Pogo-4.3.2:	Bug on display message about Device_2 to Device_3 fixed.
+
+Pogo-4.3.1:	Check main.cpp file and add tg->server_cleanup() call if not already done.
+
+Pogo-4.3.0:	CVS tags to Database management added.
+           State machine inherited from abstract class (if any) added.
+

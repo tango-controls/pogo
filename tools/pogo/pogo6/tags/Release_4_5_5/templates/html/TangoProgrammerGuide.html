@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Tango Programer's Guide</title>
+  <meta content="Pascale Verdier" name="author">
+</head>
+<body>
+<div style="text-align: center;"><small><font color="#0000ff"><font
+ size="+4"><small>E</small></font></font><font
+ style="font-weight: bold;" size="+1"><small>UROPEAN</small></font><span
+ style="font-weight: bold;">
+</span><font color="#0000ff"><font size="+4"><small>S</small></font></font><font
+ style="font-weight: bold;" size="+1"><small>YNCHROTRON</small></font>
+<font color="#0000ff"><font size="+4"><small>R</small></font></font><font
+ style="font-weight: bold;" size="+1"><small>ADIATION</small></font>
+<font color="#0000ff"><font size="+4"><small>F</small></font></font><font
+ style="font-weight: bold;" size="+1"><small>ACILITY</small></font></small>
+</div>
+<h5 style="text-align: center;">
+<small>INSTALLATION EUROPEENNE DE RAYONNEMENT SYNCHROTRON</small></h5>
+<div style="text-align: center;"><br>
+
+<big style="font-weight: bold;"><big><big>
+<span style="text-decoration: underline;"> TANGO Programmer's Guide</span>
+</big></big></big>
+
+<div style="text-align: left;">
+<br>
+<br>
+<br>
+The goal of this <i>Programemr's Guide</i> is to define some conventions and<br>
+to specify some customs to stadardize <b>Tango device servers</b> writing style.<br>
+It specify the<a href="TPG_NamingConventions.html"> Tango naming conventions</a>
+<br>
+<br>
+<br>
+Tango project collaboration is based on <b>CVS</b>.<Br>
+There are 2 main repositories:
+<ul>
+	<li> <i>cvs.sourceforge.net:/cvsroot/tango-cs</i> for kernel modules.</li>
+	<li> <i>cvs.sourceforge.net:/cvsroot/tango-ds</i> for device servers modules.</li>
+</ul>
+In addition each institute has is own repository for specific device servers.<Br>
+A new device server must be added to the apropriate CVS repository in a
+<a href="TPG_CvsModule.html">new CVS module</a>
+<br>
+<br>
+When a stable version has been developped and tested, the module must be
+<a href="TPG_CvsTags.html"> tagged</a>.<Br>
+It allows to check out this stable version and to know which version is running.
+
+
+
+<!---
+<ol>
+	<li><a href="TPG_NamingConventions.html">Naming Convention</a></li>
+	<li><a href="#CVS_module">Create a CVS Module</a></li>
+	<ul>
+		<li><a href="#CVS_module_create">  Creation</a></li>
+		<li><a href="#CVS_module_esrf">    On ESRF repository</a></li>
+		<li><a href="#CVS_module_tango_ds">On Tango DS repository</a></li>
+	</ul>
+	<li><a href="#CVS_tag_man">CVS Tag Management</a>
+	<ul>
+		<li><a href="#CVS_tag_ds">Tag a Device Server</a>
+		<li><a href="#CVS_tag_list">See last Tags of a Device Server</a>
+		<li><a href="#CVS_tag_goal">CVS tag goal</a>
+	</ul>
+	</li>
+</ol>
+<br>
+<br>
+<br>
+
+<a name="Naming_convention"> </a>
+<big><span style="font-weight: bold;"><span style="text-decoration: underline;">
+ 1 - Tango Naming Convention</span>:</span></big>
+ 
+<ul>
+	<a name="Naming_cmd_attr"> </a>
+	<li><span style="font-weight: bold;"><span style="text-decoration: underline;">
+		Commands and Attributes:</span></span></li>
+		<ul>
+			Between clients and servers, they are case unsensitive.<br>
+			But by convention it is recommended to build it by appending all words<br>
+			starting with capital letter.<br>
+			(i.e. ReadValues,&nbsp; StartCounter, .......)
+		</ul>
+	<br>
+
+	<a name="Naming_properties"> </a>
+	<li><span style="font-weight: bold;"><span style="text-decoration: underline;">
+ 		Class and Device Properties</span>:</span></li>
+		<ul>
+			They are case sensitive:<br>
+			By convention it is recommended to build it by appending all words <br>
+			starting with capital letter.<br>
+			(i.e. DefaultValue,&nbsp; ReadDeviceName, .......)
+		</ul>
+</ul>
+<br>
+<br>
+<a name="CVS_module"> </a>
+<big><span style="font-weight: bold;"><span style="text-decoration: underline;">
+2 - Create a CVS Module</big></span>:</span><br>
+<ul>
+	(To create a new module &nbsp;
+	<span style="font-style: italic;">my_module</span> for 
+	<span style="font-style: italic;">MyDServer</span>&nbsp; class in 
+	<span style="font-style: italic;">MyDsFamily.</span>)<br>
+	<br>
+	<a name="CVS_module_create"> </a>
+    <li><span style="font-weight: bold;">
+	Module creation:</span></li>
+	<ol>
+		<li>export the CVSROOT&nbsp;&nbsp; environment variable.</li>
+		<li>cd&nbsp;&nbsp; {anywhere}</li>
+		<li>cvs checkout&nbsp; CVSROOT/modules</li>
+		<li>cd&nbsp; CVSROOT</li>
+		<li>nedit&nbsp; modules</li>
+		<li>&nbsp;&nbsp; #-----&gt; add your module with editor&nbsp;&nbsp;
+			(see for specific repository)</li>
+		
+		<li>cvs commit -m "module&nbsp; <span style="font-style: italic;">my_module</span>
+			&nbsp; added"</li>
+		<li>cd ..</li>
+		<li>cvs&nbsp; release&nbsp; -d&nbsp; CVSROOT</li>
+		<li>cd &nbsp; ../../<span style="font-style: italic;">my_module</span></li>
+		<li>cvs import -m "Initial Revision" ../../<span style="font-style: italic;">
+			my_module</span> &nbsp;&nbsp; vendortag&nbsp;&nbsp; releasetag</li>
+		<li>cd&nbsp; ..</li>
+		<li>mv&nbsp;&nbsp; <span style="font-style: italic;">my_module</span>&nbsp;&nbsp;
+		  <span style="font-style: italic;">my_module.org</span></li>
+		<li>cvs&nbsp; co &nbsp; <span style="font-style: italic;">my_module</span></li>
+		<li>cd&nbsp; <span style="font-style: italic;">my_module</span></li>
+	</ol>
+	<br>
+
+	<a name="CVS_module_esrf"> </a>
+    <li><span style="font-weight: bold;">
+	On ESRF repository: </span></li>
+	<ul>
+		This repository is located at (CVSROOT=/segfs/tango/cvsroot)<br>
+		Inside the edited <span style="font-weight: bold;">modules</span> file, add the
+		following lines:<br>
+		<ul>
+			<span style="font-weight: italic;">
+			<li> #M&nbsp;&nbsp;&nbsp; my_module &nbsp;&nbsp;&nbsp; MyDsFamily
+					:&nbsp;&nbsp; This class is able to bla bla bla....</li>
+			<li> my_module
+				&nbsp; &nbsp;&nbsp;&nbsp; cppserver/../../my_module</li>
+			</span>
+		</ul>
+		<br>
+		Where MyDsFamily could be:<br>
+		<ul>
+			<li>Archiving</li>
+			<li>Beamlines</li>
+			<li>Input/Output</li>
+			<li>Linac</li>
+			<li>Measures</li>
+			<li>Motion</li>
+			<li>Power Supply</li>
+			<li>Protocols</li>
+			<li>TACO Interfaces</li>
+			<li>Vacuum</li>
+		</ul>
+	</ul>
+	<br>
+	<a name="CVS_module_tango_ds"> </a>
+    <li><span style="font-weight: bold;">
+	On Tango DS repository: </span></li>
+	<ul>
+		This repository is located at 
+		(CVSROOT=my_loggin@cvs.sourceforge.net:/cvsroot/tango-ds)<br>
+		Inside the edited <span style="font-weight: bold;">modules</span> file, 
+		search the line:<br>
+		<ul>
+			<li> #&nbsp; &nbsp; MyDsFamily </li>
+		</ul>
+		And add the following line:
+		<ul>
+			<li> my_module &nbsp; &nbsp;&nbsp; &nbsp; MyDsFamily/../../my_module</li>
+		</ul>
+		<br>
+		Where MyDsFamily could be:<br>
+		<ul>
+			<li> Acquisition </li>
+			<li> Application </li>
+			<li> Beamdiag </li>
+			<li> Calculation </li>
+			<li> Communication </li>
+			<li> Inputoutput </>
+			<li> Instrumentation </li>
+			<li> Motion </li>
+			<li> Process </li>
+			<li> Miscellaneous </li>
+			<li> Radiation protection </li>
+			<li> Vacuum </li>
+		</ul>
+	</ul>
+</ul>
+<br>
+<br>
+
+<a name="CVS_tag_man"> </a>
+<big><span style="font-weight: bold;"><span style="text-decoration: underline;">
+3 - CVS Tag Management</span>:</span></big><br>
+<ul>
+	<a name="CVS_tag_ds"> </a>
+    <li><span style="font-weight: bold;">
+		Tag a Device Server: </span></li>
+	<ul>
+		<li> First time, don't forget to commit your source files (cvs commit -m..., tkcvs, ...).
+		<li> Then increase the release number in <b>Makefile</b>.
+		<ul>
+			The line to be modified looks like:
+			<ul>
+				RELEASE  = Release_1_3
+			</ul>Change it to:
+			<ul>
+				RELEASE  = Release_1_4 <Br>
+					&nbsp;&nbsp;&nbsp;&nbsp; <b>or</b><br>
+				RELEASE  = Release_2_0
+			</ul>
+		</ul>
+		<li> Then type:<Br>
+		<ul>
+			linuxmake tag <Br>
+				&nbsp;&nbsp;&nbsp;&nbsp;<b>or</b><Br>
+			solmake tag.<Br>
+			<br>
+			This command needs /segfs/tango/bin/cvstag script using Pogo java classes.
+			It will make a CVS tag on the current module.
+			It will patch the MyDServerClass.cpp file like:
+			<ul>
+				static const char *TagName   = "$Name$";
+			</ul>
+			And then it will re-build the executable file.
+		</ul>
+		<li> And finally you can install the device serer.
+	</ul>
+
+	<br>
+	<br>
+	<a name="CVS_tag_list"> </a>
+    <li><span style="font-weight: bold;">
+		See last Tags of a Device Server: </span></li>
+	<ul>
+		Type &nbsp;&nbsp;&nbsp;<i>make show_tag</i> to display the last 
+		tag used for this module.
+	</ul>
+	
+	<br>
+	<br>
+	<a name="CVS_tag_goal"> </a>
+    <li><span style="font-weight: bold;">
+		CVS tag goal: </span></li>
+	<ul>
+		The goal of the CVS tag usage is to know which version is running.
+		There is 2 ways to know it.
+		<ol>
+			<li> <b>The server is running.</b><br>
+				Use the command info on a device proxy or <br>
+				with Device Panel, on tab admin click on Device Info.
+			</li>
+
+			<li><b> The server is NOT running.</b><br>
+				Use the shell command : <br>
+				<i>ident {dserver filename} |grep Name </i>
+				It will display:<br>
+				&nbsp;&nbsp;<i>$Name$</i>
+			</li>
+		</ol>
+	</ul>
+</ul-->
+</div>
+</div>
+</body>
+</html>

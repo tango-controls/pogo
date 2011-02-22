@@ -1,0 +1,78 @@
+#+======================================================================
+# $Source$
+#
+# Project:      Pogo
+#
+# Description:  Pogo revisions
+#
+# $Author$
+#
+# $Revision$
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+
+Pogo-4.6.0:	Allow boolean attribute for java servers.
+            Bug in command factory for abstract class generation fixed.
+			Bug in changing class name fixed.
+			Put class inheritance as class property.
+			Edit Abstract class if any added.
+			Generate inheritance diagram in index.html
+
+Pogo-4.5.10:	Bug command comments fixed.
+
+Pogo-4.5.9:	Bug project file when using abstract classes under win32 fixed.
+
+Pogo-4.5.8:	Change buttons text on attribute dialog.
+
+Pogo-4.5.7:	NullPointerException fixed in PogoString class.
+
+Pogo-4.5.6:	One line Added to get round a file database usage bug.
+
+Pogo-4.5.5:	Tango-5.5 compatiblity.
+            extern C method added to be used as shared library.
+			VCC 6 project file generated if running on Win32.
+			.obj, .so, executable files generated in separated directories.
+
+Pogo-4.5.1: Add a missing class to jar file.
+
+Pogo-4.5.0: Add the pdf doc generation (under linux only).
+            Revision and cvsroot get from CVS files if exist.
+
+Pogo-4.4.10: Bug in get_class_property() call position fixed.
+             Bug in State description fixed.
+
+Pogo-4.4.9: If ...StateMachine not found, display a warning message
+            and generate a default one at next code genaration.
+
+Pogo-4.4.8: Bug fixed in command execute method.
+
+Pogo-4.4.7: Bug fixed in read property description (due to '*' char).
+            Change in tag syntax.
+
+Pogo-4.4.6: Display Release note in help menu added.
+
+Pogo-4.4.5: make_util package added (for tag module).
+
+Pogo-4.4.4: Bug in renaming command has been fixed.
+
+Pogo-4.4.3: Memorized attribute written or not at starteup added.
+
+Pogo-4.4.2: Bug on AttributeDialog fixed.
+            Splash screen is not displayed any more at startup.
+
+Pogo-4.4.1: Bug on array property fixed.
+
+Pogo-4.4.0: Property Wizard functionalities added.
+
+Pogo-4.3.2:	Bug on display message about Device_2 to Device_3 fixed.
+
+Pogo-4.3.1:	Check main.cpp file and add tg->server_cleanup() call if not already done.
+
+Pogo-4.3.0:	CVS tags to Database management added.
+            State machine inherited from abstract class (if any) added.
+

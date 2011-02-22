@@ -1,0 +1,133 @@
+#!/bin/sh
+
+#CLASSPATH=$TANGO_HOME/bin/java/PogoTest.jar:/segfs/tango/lib/java/TangORB.jar
+
+#---------------------------------------------------------
+#	Fix OS PATH
+#---------------------------------------------------------
+TANGO_HOME=/segfs/tango
+MY_OS=`uname`
+export MY_OS
+
+if [ $MY_OS = "SunOS" ]
+then
+	OS_DIR=solaris8
+	CPP_DOC=$TANGO_HOME/doc/www/doxygen/$OS_DIR/doxygen-1.2.14/bin
+else
+	if [ $MY_OS == "Linux" ]
+	then
+		OS_DIR=suse72
+		CPP_DOC=$TANGO_HOME/doc/www/doxygen/$OS_DIR/bin
+	fi
+fi
+
+#---------------------------------------------------------
+#	Add sourceforge tmp repository to CVSROOT
+#---------------------------------------------------------
+SF_BCK_HOME=/users/taurel/sourceforge/bup/daily
+#SF_BCK_HOME=/users/taurel/sourceforge/bup/weekly
+#SF_BCK_HOME=/users/taurel/sourceforge/bup/monthly
+export SF_BCK_HOME
+
+SF_BCK_FILE_CS=tango-cs-cvsroot.tar.bz2
+export SF_BCK_FILE_CS
+SF_BCK_FILE_DS=tango-ds-cvsroot.tar.bz2
+export SF_BCK_FILE_DS
+
+SF_TMP_CVS_ROOT=$TANGO_HOME/tmp/servers_list
+export SF_TMP_CVS_ROOT
+
+LOCAL_CVSROOT=$TANGO_HOME/cvsroot
+
+#---------------------------------------------------------
+#	Set the CVSROOT to many repository
+#	and give them a title
+#---------------------------------------------------------
+CVSROOT=$SF_TMP_CVS_ROOT/tango-cs:$SF_TMP_CVS_ROOT/tango-ds:$LOCAL_CVSROOT
+export CVSROOT
+
+TABLE_TITLES="SourceForge(Tango-cs)":"SourceForge(Tango-ds)":ESRF
+export TABLE_TITLES
+
+#---------------------------------------------------------
+#	Set the final target
+#---------------------------------------------------------
+TARGET_FILE=$TANGO_HOME/doc/www/tango/tango_doc/ds_doc
+export TARGET_FILE
+#---------------------------------------------------------
+#	Set the template path
+#---------------------------------------------------------
+export CPP_DOC
+TEMPLATES=$TANGO_HOME/tools/pogo/templates
+export TEMPLATES
+
+#---------------------------------------------------------
+#	Store starting time
+#---------------------------------------------------------
+echo "UPdating servers list on WWW Tango server"
+echo "-----------------------------------------"
+echo
+START_DATE=`date`
+export START_DATE
+
+
+
+#=========================================================
+#		Start Execution
+#=========================================================
+
+
+#---------------------------------------------------------
+#	Unzip sourceforge file
+#---------------------------------------------------------
+echo "untaring sourceforge repository...."
+cd $SF_TMP_CVS_ROOT
+cp $SF_BCK_HOME/$SF_BCK_FILE_CS .
+tar -xjf   $SF_BCK_FILE_CS
+
+cp $SF_BCK_HOME/$SF_BCK_FILE_DS .
+tar -xjf   $SF_BCK_FILE_DS
+
+
+#cp -R /segfs/tango/tools/pogo/TMP/tango-ds/  $SF_TMP_CVS_ROOT
+
+#---------------------------------------------------------
+#	Start pogo class
+#---------------------------------------------------------
+#cd tmp
+java  -DTEMPL_HOME=$TEMPLATES      \
+      -DCPP_DOC_PATH=$CPP_DOC      \
+	  -DCVSROOT=$CVSROOT           \
+	  -DTABLE_TITLES=$TABLE_TITLES \
+	  -DTANGO_HOST=corvus:10000    \
+      pogo.servers2www.Servers2www
+
+#---------------------------------------------------------
+#	Test the returned value. If OK (0) then 
+#	move results to final directory and remove tmp dirs
+#---------------------------------------------------------
+RETVAL=$?
+export RETVAL
+if [ $RETVAL = 0 ]
+then
+	echo "moving ServersList to  $TARGET_FILE"
+	rm -Rf $TARGET_FILE
+	mv  ServersList  $TARGET_FILE
+#	---	Add help file ----------
+	cp $TEMPLATES/html/HowIsGenerated.html  $TARGET_FILE
+	cp $TEMPLATES/html/*.jpg                $TARGET_FILE
+
+	echo "Clean directorie"
+	rm -Rf *
+	
+	echo "Update ESRF HTTP server"
+#	rsh corvus "$TANGO_HOME/doc/www/bin/tango2www"
+fi
+
+echo
+echo
+echo
+END_DATE=`date`
+export END_DATE
+echo "Started at $START_DATE"
+echo "Stopped at $END_DATE"

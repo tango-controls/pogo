@@ -1,0 +1,24 @@
+#+======================================================================
+# $Source$
+#
+# Project:      Pogo
+#
+# Description:  Pogo revisions
+#
+# $Author$
+#
+# $Revision$
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+Pogo-4.3.2:	Bug on display message about Device_2 to Device_3 fixed.
+
+Pogo-4.3.1:	Check main.cpp file and add tg->server_cleanup() call if not already done.
+
+Pogo-4.3.0:	CVS tags to Database management added.
+           State machine inherited from abstract class (if any) added.
+

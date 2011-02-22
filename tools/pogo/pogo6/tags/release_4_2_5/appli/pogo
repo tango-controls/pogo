@@ -1,0 +1,66 @@
+#!/bin/sh
+
+#---------------------------------------------------------
+#	Add Doc path to $PATH (depends on OS used)
+#---------------------------------------------------------
+TANGO_HOME=/segfs/tango
+MY_OS=`uname`
+export MY_OS
+
+if [ $MY_OS = "SunOS" ]
+then
+	OS_DIR=solaris8/doxygen-1.2.14/
+else
+	if [ $MY_OS == "Linux" ]
+	then
+		OS_DIR=suse72
+	fi
+fi
+
+
+#CPP_DOC=NOT_INSTALLED
+CPP_DOC=$TANGO_HOME/doc/www/doxygen/$OS_DIR/bin
+echo $CPP_DOC
+#---------------------------------------------------------
+#	Set the template path
+#---------------------------------------------------------
+TEMPLATES=/segfs/tango/tools/pogo/templates
+export TEMPLATES
+
+#---------------------------------------------------------
+#	Set the Home Source Path
+#---------------------------------------------------------
+#SRC_PATH=../test/cpp/PowerSupply.impl2
+SRC_PATH=../test/cpp/PowerSupply
+#SRC_PATH=../test/cpp
+
+#SRC_PATH=/segfs/tango/cppserver
+#SRC_PATH=/segfs/tango/cppserver/admin/starter
+
+export SRC_PATH
+
+#---------------------------------------------------------
+#	Set the Class Path for Tango and pogo usage
+#---------------------------------------------------------
+POGOCLASS=/segfs/tango/tools/pogo/bin;         export POGOCLASS
+TANGOCLASS=/segfs/tango/lib/java/TangORB.jar;  export TANGOCLASS
+CLASSPATH=$POGOCLASS:$TANGOCLASS;              export CLASSPATH
+
+export CLASSPATH
+
+
+#---------------------------------------------------------
+#	Start the Pogo process
+#---------------------------------------------------------
+echo ""
+echo "Starting Pogo Appli under $MY_OS.  Be patient...."
+echo "Do not forget, it is a java program...."
+echo ""
+
+java	-DTEMPL_HOME=$TEMPLATES		\
+		-DCPP_DOC_PATH=$CPP_DOC		\
+		-DHOME_GENE=$SRC_PATH		\
+		-DEDITOR=$POGO_EDITOR		\
+		-DPOGO_FILE=$IN_FILE		\
+		-DPOGO_TEST=true			\
+		pogo.appli.PogoAppli
