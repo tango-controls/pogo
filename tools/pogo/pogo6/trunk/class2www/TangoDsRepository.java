@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/class2www/TangoDsRepository.java,v $
 //
 // Project:   Tango
 //
@@ -29,7 +29,10 @@
 //
 // $Revision$
 //
-// $Log$
+// $Log: TangoDsRepository.java,v $
+// Revision 1.3  2008/12/17 10:25:25  pascal_verdier
+// Do not read modules in Libraries family.
+//
 // Revision 1.2  2008/11/20 13:05:55  pascal_verdier
 // Methods moved from Utils to PogoUtils class.
 //
@@ -49,7 +52,7 @@ package pogo.class2www;
 
 import fr.esrf.Tango.DevFailed;
 import pogo.gene.PogoUtil;
-
+import java.util.Vector;
 
 public class TangoDsRepository extends Repository
 {
@@ -99,8 +102,44 @@ public class TangoDsRepository extends Repository
 					String[]	tmp = PogoUtil.string2array(line);
 					Module	module = new Module(tmp[0], tmp[1], this, family, CVS);
 					family.add(module);
+					cvs_modules.add(tmp[0]);
 				}
 		}
+	}
+	//===============================================================
+	//===============================================================
+	public String getCvsSvnSummary()
+	{
+		try
+		{
+			int	cnt = 0;
+			String	code = "CVS: " + cvs_modules.size() + " classes\n";
+			for (String cvsModule : cvs_modules)
+				code += (++cnt) + ": " + cvsModule + "\n";
+
+			cnt = 0;
+			code += "SVN: " + svn_modules.size() + " classes\n";
+			for (String svnModule : svn_modules)
+				code += (++cnt) + ": " + svnModule + "\n";
+
+			PogoUtil.writeFile("/segfs/tango/backup/log/tango-ds", code);
+		}
+		catch(Exception e) { System.err.println(e); }
+
+
+
+		String	numbers =
+				 "CVS: " + cvs_modules.size() + " classes\n" +
+				 "SVN: " + svn_modules.size() + " classes\n";
+		Vector<String>	duplic = new Vector<String>();
+		for (String cvsModule : cvs_modules)
+			for (String svnModule : svn_modules)
+				if (cvsModule.toLowerCase().equals(svnModule.toLowerCase()))
+					duplic.add(cvsModule + " - " + svnModule);
+		String	duplications = "Duplications found:\n";
+		for (String s : duplic)
+			duplications += s + "\n";
+		return numbers + "\n" + duplications;
 	}
 	//===============================================================
 	//===============================================================

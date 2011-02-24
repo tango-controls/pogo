@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/class2www/Repository.java,v $
 //
 // Project:   Tango
 //
@@ -29,7 +29,10 @@
 //
 // $Revision$
 //
-// $Log$
+// $Log: Repository.java,v $
+// Revision 1.4  2009/10/07 12:38:04  pascal_verdier
+// Vector replaced by Vector<String> in buildFamilyAndModulesFromSvn()
+//
 // Revision 1.3  2008/12/17 10:24:24  pascal_verdier
 // toString() method added to test parsing.
 //
@@ -75,6 +78,9 @@ public class  Repository
 	public static final int	CVS = 0;
 	public static final int	SVN = 1;
 	public static final String[]	RepositoryTypeStr = { "CVS", "SVN" };
+	
+	public Vector<String>	cvs_modules = new Vector<String>();
+	public Vector<String>	svn_modules = new Vector<String>();
 
 	//===============================================================
 	//===============================================================
@@ -298,6 +304,7 @@ public class  Repository
 			String	path = name + "/"
 					+ family.name + "/" + module.name;
 			module.setHtmlPath(path);
+			svn_modules.add(module_name);
 		}
 
 		for (Object o : families)

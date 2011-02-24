@@ -28,7 +28,7 @@ export CLASSPATH
 #---------------------------------------
 #	Add path for java, tango2www and svn
 #---------------------------------------
-PATH=$PATH:$TANGO_HOME/jdk/Linux/jdk1.6.0/bin:$TANGO_HOME/bin
+PATH=$TANGO_HOME/jdk/Linux/jdk1.6.0/bin:$PATH:$TANGO_HOME/bin
 PATH=$PATH:/opt/CollabNet_Subversion/bin
 export PATH
 
@@ -51,13 +51,14 @@ java -DTEMPL_HOME=$TEMPLATES_HOME  \
 		1>$LOG_DIR/class2www.log   \
 		2>$LOG_DIR/class2www.err
 
+echo "pogo.class2www.Class2www  done" >>$LOG_DIR/class2www.log
 
 #---------------------------------------
 #	Save old doc
 #---------------------------------------
 rm -Rf $DOC_TARGET/$CLASSES_DIR_SAV
-mv $DOC_TARGET/$CLASSES_DIR   $DOC_TARGET/$CLASSES_DIR_SAV
-mv 	$CLASSES_DIR  $DOC_TARGET
+mv $DOC_TARGET/$CLASSES_DIR   $DOC_TARGET/$CLASSES_DIR_SAV	1>$LOG_DIR/move_1.log	2>$LOG_DIR/move_1.err
+mv 	$CLASSES_DIR  $DOC_TARGET	1>$LOG_DIR/move_2.log	2>$LOG_DIR/move_2.err
 
 #---------------------------------------
 #	Move result to WWW

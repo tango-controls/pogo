@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/class2www/Class2www.java,v $
 //
 // Project:   Tango
 //
@@ -29,7 +29,10 @@
 //
 // $Revision$
 //
-// $Log$
+// $Log: Class2www.java,v $
+// Revision 1.2  2008/11/20 13:05:55  pascal_verdier
+// Methods moved from Utils to PogoUtils class.
+//
 // Revision 1.1  2008/11/10 15:21:46  pascal_verdier
 // *** empty log message ***
 //
@@ -201,6 +204,11 @@ public class  Class2www
 
 		for (int i=0 ; i<repositories.size() ; i++)
 			System.out.println(repositories.getRepository(i).getSummary());
+		
+		System.out.println();
+		System.out.println("Tango-ds:");
+		System.out.println(ds.getCvsSvnSummary());
+		System.out.println();
 	}
 	//===============================================================
 	//===============================================================
