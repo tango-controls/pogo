@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Feb 19 13:43:07 CET 2010)</Center><Br>\n" + 
+		"	(Generated Wed Sep 08 11:21:46 CEST 2010)</Center><Br>\n" + 
+		"<li><b>Pogo-6.2.4 - 02/09/10:</b><Br>\n" + 
+		"&nbsp; &nbsp; External vector management added (for Pogo-7 compatibility).<Br>\n" + 
+		"<li><b>Pogo-6.2.3 - 29/06/10:</b><Br>\n" + 
+		"&nbsp; &nbsp; Get author name from DeviceID.txt if exists.<Br>\n" + 
 		"<li><b>Pogo-6.2.2 - 19/02/10:</b><Br>\n" + 
 		"&nbsp; &nbsp; Bug in reload abstract class fixed.<Br>\n" + 
 		"<li><b>Pogo-6.2.0 - 02/11/09:</b><Br>\n" + 

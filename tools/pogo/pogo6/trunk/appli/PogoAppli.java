@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/appli/PogoAppli.java,v $
 //
 // Project:   Tango
 //
@@ -9,7 +9,10 @@
 //
 // $Version$
 //
-// $Log$
+// $Log: PogoAppli.java,v $
+// Revision 3.51  2010/02/19 12:43:53  pascal_verdier
+// Bug in reload abstract class fixed.
+//
 // Revision 3.50  2009/12/01 06:57:56  pascal_verdier
 // DeviceID management added.
 //
@@ -277,7 +280,7 @@ public class PogoAppli extends JFrame
 /**
  *  Initialized by make jar call and used to display title.
  */
-private static String revNumber = "Release 6.2.2  -  Fri Feb 19 13:43:07 CET 2010";
+private static String revNumber = "Release 6.2.4  -  Wed Sep 08 11:21:45 CEST 2010";
 /**
  *  JTree used to display <a href=../gene/PogoClass.html>PogoClass</a> object.
  */
@@ -298,8 +301,26 @@ private String  homeDir;
  */
 private JFileChooser  chooser;
 
-static Vector   v_appli = new Vector();
+static Vector<JFrame>   v_appli = new Vector<JFrame>();
 
+//===========================================================
+/**
+ *  Constructor for PogoAppli object.
+ *  Initialize JFrame
+ *  And initialize Jtree and all Pogo graphic application..
+ */
+ //===========================================================
+	public PogoAppli(String filename, Vector<JFrame> runningApplis)
+	{
+		buildAppli();
+        readSourceFile(filename);
+        Point   p = getLocation();
+        p.translate(20, 20);
+        setLocation(p);
+        homeDir = pogo.projectFiles.getPath();
+		v_appli = runningApplis;
+        v_appli.add(this);
+    }
 //===========================================================
 /**
  *  Constructor for PogoAppli object.
@@ -309,15 +330,26 @@ static Vector   v_appli = new Vector();
  //===========================================================
 	public PogoAppli(String filename)
 	{
-        this();
+		buildAppli();
         readSourceFile(filename);
         Point   p = getLocation();
         p.translate(20, 20);
         setLocation(p);
         homeDir = pogo.projectFiles.getPath();
+
+        v_appli.add(this);
     }
  //===========================================================
+ //===========================================================
 	public PogoAppli()
+	{
+		buildAppli();
+
+        v_appli.add(this);
+	}
+ //===========================================================
+ //===========================================================
+ 	private void buildAppli()
 	{
 		initComponents ();
 
@@ -354,7 +386,6 @@ static Vector   v_appli = new Vector();
 		pack ();
 		centerWindow();
         app_util.MultiLineToolTipUI.initialize();
-        v_appli.add(this);
     }
 
 //===========================================================
@@ -1917,6 +1948,16 @@ static Vector   v_appli = new Vector();
 //======================================================
     private void closeAppli()
     {
+        this.setVisible(false);
+        this.dispose();
+
+        // Check to know if at least one is still visible.
+        for (JFrame frame : v_appli)
+            if (frame.isVisible())
+                return;
+        //  No visible found.
+        System.exit(0);
+	/*
         v_appli.remove(this);
         if (v_appli.size()==0)
             System.exit(0);
@@ -1925,6 +1966,7 @@ static Vector   v_appli = new Vector();
             this.setVisible(false);
             this.dispose();
         }
+	*/
     }
 //======================================================
 /**

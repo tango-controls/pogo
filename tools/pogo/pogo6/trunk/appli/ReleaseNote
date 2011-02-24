@@ -1,5 +1,5 @@
 #+======================================================================
-# $Source$
+# $Source: /cvsroot/tango-cs/tango/tools/pogo/appli/ReleaseNote,v $
 #
 # Project:      Pogo
 #
@@ -16,6 +16,12 @@
 #-======================================================================
 
 
+
+Pogo-6.2.4 - 02/09/10:
+	External vector management added (for Pogo-7 compatibility).
+
+Pogo-6.2.3 - 29/06/10:
+	Get author name from DeviceID.txt if exists.
 
 Pogo-6.2.2 - 19/02/10:
 	Bug in reload abstract class fixed.
