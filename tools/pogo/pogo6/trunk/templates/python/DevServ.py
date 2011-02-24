@@ -1,5 +1,5 @@
-#	"$Name$";
-#	"$Header$";
+#	"$Name:  $";
+#	"$Header: /cvsroot/tango-cs/tango/tools/pogo/templates/python/DevServ.py,v 1.6 2007/01/08 07:03:01 pascal_verdier Exp $";
 #=============================================================================
 #
 # file :        TemplateDevServ.py
@@ -16,7 +16,10 @@
 #
 # $Revision$
 #
-# $Log$
+# $Log: DevServ.py,v $
+# Revision 1.6  2007/01/08 07:03:01  pascal_verdier
+# *** empty log message ***
+#
 # Revision 1.5  2006/11/24 14:29:22  pascal_verdier
 # Implements first Python gurus remarks.
 #
@@ -51,7 +54,7 @@ import sys
 
 
 
-class TemplateDevServ(PyTango.Device_3Impl):
+class TemplateDevServ(PyTango.Device_4Impl):
 
 #--------- Add you global variables here --------------------------
 
@@ -59,7 +62,7 @@ class TemplateDevServ(PyTango.Device_3Impl):
 #	Device constructor
 #------------------------------------------------------------------
 	def __init__(self,cl, name):
-		PyTango.Device_3Impl.__init__(self,cl,name)
+		PyTango.Device_4Impl.__init__(self,cl,name)
 		TemplateDevServ.init_device(self)
 
 #------------------------------------------------------------------
@@ -106,7 +109,7 @@ class TemplateDevServ(PyTango.Device_3Impl):
 #	TemplateDevServClass class definition
 #
 #==================================================================
-class TemplateDevServClass(PyTango.PyDeviceClass):
+class TemplateDevServClass(PyTango.DeviceClass):
 
 	#	Class Properties
 	class_property_list = {
@@ -132,7 +135,7 @@ class TemplateDevServClass(PyTango.PyDeviceClass):
 #	TemplateDevServClass Constructor
 #------------------------------------------------------------------
 	def __init__(self, name):
-		PyTango.PyDeviceClass.__init__(self, name)
+		PyTango.DeviceClass.__init__(self, name)
 		self.set_type(name);
 		print "In TemplateDevServClass  constructor"
 
@@ -143,7 +146,7 @@ class TemplateDevServClass(PyTango.PyDeviceClass):
 #==================================================================
 if __name__ == '__main__':
 	try:
-		py = PyTango.PyUtil(sys.argv)
+		py = PyTango.Util(sys.argv)
 		py.add_TgClass(TemplateDevServClass,TemplateDevServ,'TemplateDevServ')
 
 		U = PyTango.Util.instance()
