@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/gene/PogoUtil.java,v $
 //
 // Project:   Tango
 //
@@ -8,7 +8,10 @@
 // $Author$
 //
 // $Revision$
-// $Log$
+// $Log: PogoUtil.java,v $
+// Revision 3.41  2009/12/01 06:54:59  pascal_verdier
+// DeviceID management added.
+//
 // Revision 3.40  2009/10/07 12:41:51  pascal_verdier
 // IDL 4 added for Python (PyTango-7)
 //
@@ -181,7 +184,9 @@ public class PogoUtil implements PogoDefs {
                                     };
     public static final String[]	py_target  = {
                                     "(PyTango.Device_4Impl):",
-                                    "(PyTango.Device_3Impl):"
+                                    "(PyTango.Device_3Impl):",
+                                    "(PyTango.Device_4Impl,",
+                                    "(PyTango.Device_3Impl,",
                                     };
     //===============================================================
     /**
@@ -198,7 +203,7 @@ public class PogoUtil implements PogoDefs {
             String readcode = readFile(filename);
 			
 			//	Check if new POGO generated code (oAW)
-			if (readcode.startsWith("/*PROTECTED REGION ID"))
+			if (readcode.startsWith("/*----- PROTECTED REGION ID"))
 				return false;
 
             //	Check if cpp device impl
@@ -210,9 +215,10 @@ public class PogoUtil implements PogoDefs {
 				if (readcode.indexOf(aJava_target) > 0)
 					return true;
             //	Check if python device impl
-			for (String aPy_target : py_target)
+			for (String aPy_target : py_target) {
 				if (readcode.indexOf(aPy_target) > 0)
 					return true;
+			}
         }
         catch (Exception e) { /* Noting to do */}
         return false;
@@ -1514,12 +1520,12 @@ public class PogoUtil implements PogoDefs {
 			//String filename = "/segfs/tango/tmp/pascal/Vrif/Vrif.h";
 			//String filename = "/segfs/tango/tools/admin/tinku/Tinku.java";
 
-			String dirname = "/segfs/tango/tmp/class2www/ScanServerV2";
-			Vector	filenames = PogoUtil.getInstance().checkForTangoDir(dirname);
+			String dirname = "/segfs/tango/tmp/pascal/VacuumController/";
+			Vector<String>	filenames = PogoUtil.getInstance().checkForTangoDir(dirname);
 
-			for (Object o : filenames)
+			System.out.println(filenames.size() + " file(s) found");
+			for (String filename : filenames)
 			{
-				String	filename = (String)o;
 				System.out.println(filename);
 				/*
 				String	s = PogoUtil.getCvsInfo(filename, "author:");

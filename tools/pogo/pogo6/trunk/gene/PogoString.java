@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/gene/PogoString.java,v $
 //
 // Project:   Tango
 //
@@ -12,7 +12,11 @@
 //
 // $Version$
 //
-// $Log$
+// $Log: PogoString.java,v $
+// Revision 3.18  2008/03/13 08:47:27  pascal_verdier
+// Default property values added to html pages.
+// Bug in property description (use cotes in python) fixed.
+//
 // Revision 3.17  2006/11/02 11:41:03  pascal_verdier
 // Python code generation added.
 //
@@ -967,34 +971,23 @@ public class PogoString
 	}
 //=======================================================================
 //=======================================================================
-	public static void main(java.lang.String[] args) {
-	
-		PogoString	pgs = new PogoString(
-"<Td><b><a href=ArchivingWatcher/doc_html/index.html> This device is in charge of controlling HDB archiving. It does so by comparing the theoretical archiving (the attributes that have been registered for archiving) with the effective archiving (are records being added for the registered attributes).\n<Br>"+
-"If the effective archiving matches the theoretical a..... <Br>\n" +
-"If (x < y)  dont do it.</a></b></Td></Tr>"
-);
-/*
-//"/*\n" +
-//" *	Device States Description:\n" +
-" *	Tango::UNKNOWN :	This device server has NOT been correctly initialised.\n" +
-" *	Tango::ON :	All controlled servers are running.\n" +
-" *	Tango::ALARM :	At least one controled device server is not running.\n" +
-" */
-//");
-
-
-//			"/**\n" +
-//			" *	Type of formula used to calculate the value attribute.\n" +
-//			" *	could be set to POLYNOM or POW10.\n" +
-//			" *	POLYNOM: the formula used is :\n" +
-//			" *	a0 + a1X + a2X^2 + a3X^3\n" +
-//			" *	POW10: the formula is :\n" +
-//			" *	a0 + a1*10^(a2 + a3*X))\n" +
-//			" */\n"+
-//			"        string  calc_type;");
-//		System.out.println(pgs.getDescription());
-		System.out.println(pgs.removeHtmlTags());
+	public static void main(java.lang.String[] args)
+	{
+		if (args.length==0)
+			System.err.println("File name ?");
+		else
+		for (String filename : args)
+			try
+			{
+				//	Will remove windows Cr
+				PogoString	pgs = new PogoString(PogoUtil.readFile(filename));
+				PogoUtil.writeFile(filename, pgs.str);
+				System.out.println(filename + " done.");
+			}
+			catch(Exception e)
+			{
+				System.err.println(e);
+			}
 	}
 }
-/* end of $Source$ */
+/* end of $Source: /cvsroot/tango-cs/tango/tools/pogo/gene/PogoString.java,v $ */
