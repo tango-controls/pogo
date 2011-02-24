@@ -1,5 +1,5 @@
 //+======================================================================
-// $Source$
+// $Source: /cvsroot/tango-cs/tango/tools/pogo/make_util/UpdateRevision.java,v $
 //
 // Project:   Tango
 //
@@ -9,7 +9,10 @@
 //
 // $Revision$
 //
-// $Log$
+// $Log: UpdateRevision.java,v $
+// Revision 1.2  2008/08/05 07:26:02  pascal_verdier
+// Search with a tab added.
+//
 // Revision 1.1  2005/12/07 13:25:56  pascal_verdier
 // *** empty log message ***
 //
@@ -43,8 +46,12 @@ import pogo.gene.PogoString;
 
 public class  UpdateRevision
 {
-	private final static String	declare = "private static String revNumber =";
-	private final static String	declareTab = "private static String\trevNumber =";
+	private final static String[]	declare = {
+					"static String revNumber =",
+					"private static String\trevNumber =",
+					"public static final String revNumber =",
+					"public static final String\trevNumber =",
+			};
 	private String		filename = null;
 	private String		revision = null;
 	private	PogoString	code;
@@ -63,9 +70,13 @@ public class  UpdateRevision
 	private void updateCode() throws PogoException
 	{
 		//	Get sting to be replaced
-		int start = code.str.indexOf(declare);
-		if (start<0)
-			start = code.str.indexOf(declareTab);
+		int start = -1;
+		
+		for (int i=0 ; i<declare.length && start<0 ; i++)
+		{
+			start = code.str.indexOf(declare[i]);
+		}
+
 		if (start<0)
 			throw new PogoException("Revision declaration not found !");
 		int end = code.str.indexOf(";", start);
