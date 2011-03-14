@@ -241,18 +241,22 @@ public class  DeviceClass
         {
             pc.getDescription().setHasAbstractCommand("false");
             pc.getDescription().setHasAbstractAttribute("false");
-            for (Command cmd : commands)
-                if (!Utils.isTrue(cmd.getStatus().getConcrete()) &&
-                    !Utils.isTrue(cmd.getStatus().getConcreteHere()) )
-                {
-                    pc.getDescription().setHasAbstractCommand("true");
+            for (Command cmd : commands) {
+                if (cmd.getStatus()!=null) {
+                    if (!Utils.isTrue(cmd.getStatus().getConcrete()) &&
+                        !Utils.isTrue(cmd.getStatus().getConcreteHere()) ) {
+                            pc.getDescription().setHasAbstractCommand("true");
+                    }
                 }
-            for (Attribute att : attributes)
-                if (!Utils.isTrue(att.getStatus().getConcrete()) &&
-                    !Utils.isTrue(att.getStatus().getConcreteHere()) )
-                {
-                    pc.getDescription().setHasAbstractAttribute("true");
+            }
+            for (Attribute att : attributes) {
+                if (att.getStatus()!=null) {
+                    if (!Utils.isTrue(att.getStatus().getConcrete()) &&
+                        !Utils.isTrue(att.getStatus().getConcreteHere()) ) {
+                           pc.getDescription().setHasAbstractAttribute("true");
+                    }
                 }
+            }
         }
         return  (Utils.isTrue(pc.getDescription().getHasAbstractCommand()) ||
                  Utils.isTrue(pc.getDescription().getHasAbstractAttribute()) );
