@@ -715,23 +715,22 @@ public class CommandDialog extends JDialog
 		    cmd.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
 
         //	Inheritance status
-        if (Utils.isTrue(orig_status.getInherited()))
-        {
-            if (overloadBtn.getSelectedObjects()!=null)
+        if (Utils.isTrue(orig_status.getInherited()))  {
+            if (overloadBtn.getSelectedObjects()!=null) {
+                orig_status.setConcrete("true");
                 orig_status.setConcreteHere("true");
-            else
+            }
+            else {
                 orig_status.setConcreteHere("false");
+            }
         }
-        else
-        {
-            if (abstractBtn.getSelectedObjects()!=null)
-            {
+        else {
+            if (abstractBtn.getSelectedObjects()!=null)  {
                 orig_status.setAbstract("true");
                 orig_status.setConcrete("false");
                 orig_status.setConcreteHere("false");
             }
-            else
-            {
+            else  {
                 orig_status.setAbstract("false");
                 orig_status.setConcrete("true");
                 orig_status.setConcreteHere("true");
