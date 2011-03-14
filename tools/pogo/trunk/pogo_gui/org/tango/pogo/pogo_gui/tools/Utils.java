@@ -620,17 +620,19 @@ public class Utils
                 dirName += "/"+dir;
             File		d = new File(dirName);
             String[]	fileNames = d.list();
-            for (String fileName : fileNames) {
-                //  Check if fileName must be generated
-                boolean generates = couldBeGenerated(fileName, geneFiles);
-                //if (!generates)
-                //    generates = couldBeGenerated(fileName, geneDirs);
+			if (fileNames!=null) {
+            	for (String fileName : fileNames) {
+                	//  Check if fileName must be generated
+                	boolean generates = couldBeGenerated(fileName, geneFiles);
+                	//if (!generates)
+                	//    generates = couldBeGenerated(fileName, geneDirs);
 
-                if (!generates) {
-                    //  if not -> add it to excluded ones
-                    excluded.add(fileName);
-                }
-            }
+                	if (!generates) {
+                    	//  if not -> add it to excluded ones
+                    	excluded.add(fileName);
+                	}
+            	}
+			}
         }
         //  Convert to String
         StringBuffer    sb = new StringBuffer();
