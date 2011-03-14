@@ -58,7 +58,6 @@ import org.eclipse.emf.mwe.core.issues.MWEDiagnostic;
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 import fr.esrf.TangoDs.TangoConst;
-import org.tango.pogo.pogo_gui.DeviceClass;
 import org.tango.pogo.pogo_gui.PropertyDialog;
 
 
@@ -90,14 +89,18 @@ public class OAWutils
 	//========================================================================
 	/**
 	 * Read the xmi file and returns the PogoDeviceClass model found.
-	 * @param xmi	xmi file name.
+	 * @param  xmiFile   xmi file name.
 	 * @return the model loaded form xmi file.
 	 * @throws DevFailed in case of I/O error or bad xmi file.
 	 */
 	//========================================================================
-    public PogoMultiClasses loadMultiClassesModel(String xmi) throws DevFailed
+    public PogoMultiClasses loadMultiClassesModel(String xmiFile) throws DevFailed
 	{
-        Object  pogoObj = loadTheModel(xmi);
+        //  Before everything, update xmi file for compatibility.
+        //ParserTool.removeXmiKey("", xmiFile);
+
+        //  OK, Now can be loaded
+        Object  pogoObj = loadTheModel(xmiFile);
         if (! (pogoObj instanceof PogoMultiClasses))
             Except.throw_exception("BAD_FILE",
                     "This is not a Pogo Multi Classes file !",
@@ -109,14 +112,19 @@ public class OAWutils
 	//========================================================================
 	/**
 	 * Read the xmi file and returns the PogoDeviceClass model found.
-	 * @param xmi	xmi file name.
+	 * @param  xmiFile   xmi file name.
 	 * @return the model loaded form xmi file.
 	 * @throws DevFailed in case of I/O error or bad xmi file.
 	 */
 	//========================================================================
-    public PogoDeviceClass loadDeviceClassModel(String xmi) throws DevFailed
+    public PogoDeviceClass loadDeviceClassModel(String xmiFile) throws DevFailed
 	{
-        Object  pogoObj = loadTheModel(xmi);
+        //  Before everything, update xmi file for compatibility.
+        ParserTool.removeXmiKey("htmlInheritance", xmiFile);
+        //ParserTool.renameXmiKey("Key1", "Key2", xmiFile);
+
+        //  OK, Now can be loaded
+        Object  pogoObj = loadTheModel(xmiFile);
         if (! (pogoObj instanceof PogoDeviceClass))
             Except.throw_exception("BAD_FILE",
                     "This is not a Pogo Device Class file !",
@@ -164,8 +172,11 @@ public class OAWutils
 	{
         PogoSystem  sys = buildPogoSystem(pogo_class);
         String      prExcludes = Utils.getExcludeFilesAndDir(pogo_class.getDescription().getSourcePath());
+        //System.out.println("\n-----------------------------------------------------------------");
+        //System.out.println("Excluded : "+prExcludes);
+        //System.out.println("-----------------------------------------------------------------\\n");
 
-		//	Generate XMI file if requested.
+        //	Generate XMI file if requested.
 		if (pogo_class.getDescription().getFilestogenerate().toLowerCase().indexOf("xmi")>=0) {
 			String	xmi_file = pogo_class.getDescription().getSourcePath() + "/" +
 										pogo_class.getName() + ".xmi";
@@ -322,7 +333,6 @@ public class OAWutils
 		//	Update the additional comments
 		Comments	comments = OAWutils.factory.createComments();
 		comments.setCommandsTable(buildCommandsTable(pogo_class));
-        comments.setHtmlInheritance(buildHtmlInheritance(pogo_class));
 		pogo_class.getDescription().setComments(comments);
 
         //  Change protected Area ID if have been change.
@@ -534,6 +544,8 @@ public class OAWutils
      * @return the string built
 	 */
 	//========================================================================
+    /*   NOT Used any more
+     *
 	private static String buildHtmlInheritance(PogoDeviceClass pogo_class)
 	{
         //  If no inheritance -> return empty string.
@@ -561,6 +573,7 @@ public class OAWutils
             sb.append("</ul>");
         return sb.toString();
     }
+    */
 	//========================================================================
 	/**
 	 * Build a String as a to give the correspondence
