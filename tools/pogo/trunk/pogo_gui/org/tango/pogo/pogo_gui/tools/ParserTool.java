@@ -40,6 +40,8 @@ import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 
 import java.io.*;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 
 public class ParserTool
@@ -210,19 +212,128 @@ public class ParserTool
 		System.out.println("    option: -html  convert html file to java String");
 		System.exit(0);
 	}
+
+
+
+
+    //===============================================================
+    /*
+     *  XMI Compatibility tools (When a key is removed or renamed).
+     */
+    //===============================================================
+    //===============================================================
+    /**
+     * Remove key in xmi file for compatibility.
+     * @param key       the key name to be removed
+     * @param fileName  the xmi file where key must be removed
+     * @throws DevFailed if read x,i failed
+     */
+    //===============================================================
+    public static void removeXmiKey(String key, String fileName) throws DevFailed
+    {
+        //  Rea=d file and split lines
+        boolean modified = false;
+        key = " " + key + "=\"";
+        String  code = readFile(fileName);
+        StringTokenizer stk = new StringTokenizer(code, "\n");
+        Vector<String>  v = new Vector<String>();
+        while (stk.hasMoreTokens()) {
+            //  For each line
+            String line = stk.nextToken();
+            int start;
+            //  Check if key exists
+            if ((start=line.indexOf(key))>0) {
+                int end = line.indexOf("\"", start+key.length());
+                if (end<0) {
+                    System.err.println("XMI syntax error !!!");
+                    return;
+                }
+                //  Remove it
+                line = line.substring(0, start) + line.substring(end + 1);
+                modified = true;
+            }
+            v.add(line);
+        }
+
+        //  Reconstruct code and save it if modified
+        if (modified) {
+            StringBuffer    sb = new StringBuffer();
+            for (String s : v)
+                sb.append(s).append("\n");
+            code = sb.toString();
+            //  Remove last '\n'
+            code = code.substring(0, code.length()-1);
+            writeFile(fileName, code);
+        }
+    }
+    //===============================================================
+    /**
+     * Rename key in xmi file for compatibility.
+     * @param srcKey    the old key name to be renamed
+     * @param newKey    the new key name
+     * @param fileName  the xmi file where key must be removed
+     * @throws DevFailed if read x,i failed
+     */
+    //===============================================================
+    public static void renameXmiKey(String srcKey, String newKey, String fileName) throws DevFailed
+    {
+        //  Rea=d file and split lines
+        boolean modified = false;
+        srcKey = " " + srcKey + "=";
+        String  code = readFile(fileName);
+        StringTokenizer stk = new StringTokenizer(code, "\n");
+        Vector<String>  v = new Vector<String>();
+        while (stk.hasMoreTokens()) {
+            //  For each line
+            String line = stk.nextToken();
+            int start;
+            //  Check if key exists
+            if ((start=line.indexOf(srcKey))>0) {
+                int end = start+srcKey.length();
+                if (end<0) {
+                    System.err.println("XMI syntax error !!!");
+                    return;
+                }
+                //  Rename it
+                start++; // For space char at beginning
+                end--;
+                line = line.substring(0, start) + newKey + line.substring(end);
+                modified = true;
+            }
+            v.add(line);
+        }
+
+        //  Reconstruct code and save it if modified
+        if (modified) {
+            StringBuffer    sb = new StringBuffer();
+            for (String s : v)
+                sb.append(s).append("\n");
+            code = sb.toString();
+            //  Remove last '\n'
+            code = code.substring(0, code.length()-1);
+            writeFile(fileName, code);
+        }
+    }
     //===============================================================
     //===============================================================
 	public static void main(String[] args)
 	{
 		if (args.length<2)
 			displaySyntax();
-		try
-		{
+		try {
 			if (args[0].equals("-html"))
 				convertHTML(args[1]);
+            else
+            if (args[0].equals("-xmi-clean")) {
+                //removeXmiKey("htmlInheritance", args[1]);
+                //removeXmiKey("concreteHere", args[1]);
+                //renameXmiKey("concreteHere", "MyNewKeyWordAndBlaBlaBla", args[1]);
+            }
 		}
-		catch(Exception e)
-		{
+		catch(DevFailed e) {
+            Except.print_exception_stack(e);
+        }
+		catch(Exception e) {
 			System.err.println(e);
 		}
 	}
