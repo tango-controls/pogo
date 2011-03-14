@@ -14,7 +14,7 @@
 #-======================================================================
 
 
-RELEASE    = 7.2.0
+RELEASE    = 7.2.1
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango

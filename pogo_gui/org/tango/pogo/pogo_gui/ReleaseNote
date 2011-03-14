@@ -14,6 +14,10 @@
 #
 #-======================================================================
 
+Pogo-7.2.1 - 14/03/2011:
+	Tools to modified keys (for compatibility with PogoDsl changes) in xmi file added.
+	Exclude not generated files from vcX_proj dir for workflow.
+
 Pogo-7.2.0 - 16/02/2011:
 	Multi classes manager tool added.
 	Additional files added for Makefile and vc9 projects.
