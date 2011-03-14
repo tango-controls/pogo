@@ -600,28 +600,36 @@ public class Utils
     //===============================================================
     /**
      * Check the files to be excluded by XPand scans
-     * @param dirName the directory to be checked (output code)
+     * @param rootDir the directory to be checked (output code)
      * @return list of files to be excluded by XPand scans
      */
     //===============================================================
-    static public String getExcludeFilesAndDir(String dirName)
+    static public String getExcludeFilesAndDir(String rootDir)
     {
         //  Define what will be generated
-        String[]        geneFiles = { ".cpp", ".h", ".java", ".py", "Makefile", "Makefile.multi"};
-        String[]        geneDirs  = { "vc8_proj", "vc9_proj"};
-        //  Get file list
-        File			d = new File(dirName);
-        String[]		fileNames = d.list();
-        Vector<String>  excluded = new Vector<String>();
-        for (String fileName : fileNames) {
-            //  Check if fileName must be generated
-            boolean generates = couldBeGenerated(fileName, geneFiles);
-            if (!generates)
-                generates = couldBeGenerated(fileName, geneDirs);
+        String[]        geneFiles = { ".cpp", ".h", ".java", ".py",
+                                        "Makefile", "Makefile.multi",
+                                        ".sln", ".vcproj"};
+        String[]        geneDirs  = { "", "vc8_proj", "vc9_proj"};
 
-            if (!generates) {
-                //  if not -> add it to excluded ones
-                excluded.add(fileName);
+        Vector<String>  excluded = new Vector<String>();
+        for (String dir : geneDirs) {
+            //  Get file list
+            String      dirName = rootDir;
+            if (dir.length()>0)
+                dirName += "/"+dir;
+            File		d = new File(dirName);
+            String[]	fileNames = d.list();
+            for (String fileName : fileNames) {
+                //  Check if fileName must be generated
+                boolean generates = couldBeGenerated(fileName, geneFiles);
+                //if (!generates)
+                //    generates = couldBeGenerated(fileName, geneDirs);
+
+                if (!generates) {
+                    //  if not -> add it to excluded ones
+                    excluded.add(fileName);
+                }
             }
         }
         //  Convert to String
@@ -641,7 +649,7 @@ public class Utils
 	//===============================================================
     static private boolean couldBeGenerated(String fileName, String[] generated)
     {
-        //  Check for hiden files
+        //  Check for hidden files
         if (fileName.startsWith(".") ||
             fileName.startsWith("#") ||
             fileName.startsWith("~"))
