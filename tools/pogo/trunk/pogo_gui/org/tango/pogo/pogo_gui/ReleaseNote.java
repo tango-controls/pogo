@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Feb 16 15:04:11 CET 2011)</Center><Br>\n" + 
+		"	(Generated Mon Mar 14 13:58:13 CET 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.2.1 - 14/03/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Tools to modified keys (for compatibility with PogoDsl changes) in xmi file added.<Br>\n" + 
+		"&nbsp; &nbsp; Exclude not generated files from vcX_proj dir for workflow.<Br>\n" + 
 		"<li><b>Pogo-7.2.0 - 16/02/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Multi classes manager tool added.<Br>\n" + 
 		"&nbsp; &nbsp; Additional files added for Makefile and vc9 projects.<Br>\n" + 
