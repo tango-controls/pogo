@@ -62,10 +62,13 @@
 	«htmlSectionTitle("Class Description")»
 	<ul>
 	«description.description»
-	<Br>
-	<Br>
-	«EXPAND _htmlUtil::htmlProtectedArea(classPageFileName())»
 	</ul>
+	«IF description.descriptionHtmlExists=="true"»
+		<b><u> <a href="Description.html"> More...</a>«ENDIF»
+	<Br>
+	<Br>
+	
+	«EXPAND _htmlUtil::htmlProtectedArea(classPageFileName())»
 	<Br>
 	<Br>
 </ul>
