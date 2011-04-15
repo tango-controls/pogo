@@ -50,7 +50,7 @@ public interface PogoConst
 	 *  Revision number and date
 	 */
     public static String revNumber =
-            "Release 7.2.1  -  Mon Mar 14 13:58:12 CET 2011";
+            "Release 7.2.2  -  Fri Apr 15 09:06:35 CEST 2011";
 
     public static final int	TANGO_PAGES   = 0;
     public static final int	POGO_PAGES    = 1;

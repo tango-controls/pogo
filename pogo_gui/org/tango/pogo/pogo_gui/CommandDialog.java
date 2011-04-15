@@ -173,23 +173,24 @@ public class CommandDialog extends JDialog
 		//	Initialize ComboBoxes
 		for (String name : commandNames)
 			nameComboBox.addItem(name);
-		for (String type : TangoConst.Tango_CmdArgTypeName)
-		{
-			arginComboBox.addItem(type);
-			argoutComboBox.addItem(type);
+		//for (String type : TangoConst.Tango_CmdArgTypeName) {
+		for (int i=0 ; i<TangoConst.Tango_CmdArgTypeName.length &&
+                i<=TangoConst.Tango_CONST_DEV_STRING ; i++) {
+
+            String typeName = TangoConst.Tango_CmdArgTypeName[i];
+			arginComboBox.addItem(typeName);
+			argoutComboBox.addItem(typeName);
 		}
 
 		polledTxt.setEnabled(false);
 		polledTxt.setText("3000");
 
-		if (cmd!=null)
-		{
+		if (cmd!=null) {
 			for (String name : commandNames)
 				if (name.equals(cmd.getName()))
 					nameComboBox.setSelectedItem(name);
 			//	Check if found
-			if (nameComboBox.getSelectedIndex()==0)
-			{
+			if (nameComboBox.getSelectedIndex()==0) {
 				String	name = cmd.getName();
 				nameComboBox.addItem(name);
 				nameComboBox.setSelectedItem(name);
@@ -213,8 +214,7 @@ public class CommandDialog extends JDialog
 					cmd.getArgin().getType().toString());
 			String	argout = OAWutils.pogo2tangoType(
 					cmd.getArgout().getType().toString());
-			for (String type : TangoConst.Tango_CmdArgTypeName)
-			{
+			for (String type : TangoConst.Tango_CmdArgTypeName) {
 				if (type.equals(argin))
 					arginComboBox.setSelectedItem(type);
 				if (type.equals(argout))
@@ -228,8 +228,7 @@ public class CommandDialog extends JDialog
 
             //  Manage polling
 			if (cmd.getPolledPeriod()!=null &&
-				cmd.getPolledPeriod().length()>0)
-			{
+				cmd.getPolledPeriod().length()>0) {
 				polledBtn.setSelected(true);
 				polledTxt.setEnabled(true);
 				polledLbl.setVisible(true);
@@ -249,8 +248,7 @@ public class CommandDialog extends JDialog
                 levelBtn.setSelected(false);
             }
 		}
-		else
-		{
+		else {
 			String	name = "";
 			nameComboBox.addItem(name);
 			nameComboBox.setSelectedItem(name);
