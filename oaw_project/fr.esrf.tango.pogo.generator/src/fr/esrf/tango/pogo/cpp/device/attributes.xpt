@@ -16,10 +16,11 @@
 «EXPAND readAttributeHardwareMethod»
 «ENDIF»
 «FOREACH attributes AS att»«IF att.status.concreteHere=="true"»
-«EXPAND readAttributeHeader(att)»
-«EXPAND readAttributeMethod(att)»«IF att.rwType.contains("WRITE")»
-«EXPAND writeAttributeHeader(att)»
-«EXPAND writeAttributeMethod(att)»
+	«EXPAND readAttributeHeader(att)»
+	«EXPAND readAttributeMethod(att)»
+«IF att.rwType.contains("WRITE")-»
+	«EXPAND writeAttributeHeader(att)»
+	«EXPAND writeAttributeMethod(att)»
 «ENDIF»«ENDIF-»
 «ENDFOREACH»
 «EXPAND addDynamicAttributes»
@@ -31,6 +32,7 @@
 //	Define The header for a read attribute method
 //	=========================================================
 «DEFINE readAttributeHeader(Attribute att) FOR PogoDeviceClass-»
+«IF att.rwType!="WRITE"-»
 «separator2()»
 /**
  *	Read «att.name» attribute
@@ -39,7 +41,7 @@
  *	Data type:	«att.dataType.cppType().toString()»
  *	Attr type:	«att.attType» «att.attTypeDimentions()»
  */
-«separator2()»«ENDDEFINE»
+«separator2()»«ENDIF»«ENDDEFINE»
 
 
 //	=========================================================
@@ -48,7 +50,7 @@
 «DEFINE readAttributeHeaderProto(Attribute att) FOR PogoDeviceClass-»
 	/**
 	 *	«att.name» attribute related methods.
-	 *	Description: «att.properties.description.comments(" *	             ")»
+	 *	Description: «att.properties.description.comments("	 *             ")»
 	 *
 	 *	Data type:	«att.dataType.cppType().toString()»
 	 *	Attr type:	«att.attType» «att.attTypeDimentions()»
@@ -60,6 +62,7 @@
 //	Define The method to execute a read attribute
 //	=========================================================
 «DEFINE readAttributeMethod(Attribute att) FOR PogoDeviceClass-»
+«IF att.rwType!="WRITE"-»
 void «name»::read_«att.name»(Tango::Attribute &attr)
 {
 	DEBUG_STREAM << "«name»::read_«att.name»(Tango::Attribute &attr) entering... " << endl;
@@ -67,7 +70,7 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 			"read_"+att.name,
 			"//	Set the attribute value\n" +
 			"attr.set_value(attr_"+att.name+"_read"+att.SetAttValueSize()+");")-»
-}«ENDDEFINE»
+}«ENDIF»«ENDDEFINE»
 
 
 //	=========================================================
@@ -123,14 +126,18 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 «DEFINE attributeCallsProto(Attribute att) FOR PogoDeviceClass»
 «IF att.status.abstract=="true" && att.status.inherited!="true"-»
 	«EXPAND attributes::readAttributeHeaderProto(att)-»
+	«IF att.rwType!="WRITE"-»
 	virtual void read_«att.name»(Tango::Attribute &attr)=0;
+	«ENDIF-»
 	«IF att.rwType.contains("WRITE")-»
 	virtual void write_«att.name»(Tango::WAttribute &attr)=0;
 	«ENDIF-»
 «ENDIF-»
 «IF att.status.concreteHere=="true"-»
 	«EXPAND attributes::readAttributeHeaderProto(att)-»
+	«IF att.rwType!="WRITE"-»
 	virtual void read_«att.name»(Tango::Attribute &attr);
+	«ENDIF-»
 	«IF att.rwType.contains("WRITE")-»
 	virtual void write_«att.name»(Tango::WAttribute &attr);
 	«ENDIF-»
