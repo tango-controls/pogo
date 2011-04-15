@@ -15,16 +15,14 @@
 <Br>
 <ul>
 	«EXPAND _htmlUtil::htmlTableHeader(""+commands.size+" Device Commands",
-			 {"Name", "Inherited", "Concrete", "Input type", "Output type", "Level", "Description"})-»
+			 {"Name", "Input type", "Output type", "Level", "Description"})-»
 	«FOREACH commands AS cmd-»
 	<Tr>
-		<Td> <a href=Cmd«cmd.name».html> «cmd.name» </a></Td>
-		<Td> «cmd.status.inherited»                 </Td>
-		<Td> «cmd.status.concrete»                  </Td>
-		<Td> «cmd.argin.type.stringTypeEnum()»      </Td>
-		<Td> «cmd.argout.type.stringTypeEnum()»     </Td>
-		<Td> «cmd.displayLevel»                     </Td>
-		<Td> «cmd.description»                      </Td>
+		<Td> <a href=Cmd«cmd.name».html> «cmd.name»     </a></Td>
+		<Td> «strShort(cmd.argin.type.stringTypeEnum())»    </Td>
+		<Td> «strShort(cmd.argout.type.stringTypeEnum())»   </Td>
+		<Td> «cmd.displayLevel»                             </Td>
+		<Td> «cmd.description»                              </Td>
 	</Tr>
 	«ENDFOREACH-»
 	</table>

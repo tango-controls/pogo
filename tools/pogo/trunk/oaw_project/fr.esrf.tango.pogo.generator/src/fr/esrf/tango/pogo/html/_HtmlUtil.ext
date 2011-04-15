@@ -285,7 +285,8 @@ stringTypeEnum(EncodedType this):			"Tango::DEV_ENCODED";
 
 
 
-
+strShort(String s):
+	s.subString("Tango::".length, s.length);
 
 
 
