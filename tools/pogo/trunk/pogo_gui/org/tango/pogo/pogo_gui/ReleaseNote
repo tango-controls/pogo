@@ -14,6 +14,10 @@
 #
 #-======================================================================
 
+Pogo-7.2.3 - 19/04/2011:
+	Associated attribute for READ_WITH_WRITE added.
+	Fixe a pb between Long and Long64.
+
 Pogo-7.2.2 - 15/04/2011:
 	Does not generate read_xxx() metod if xxx attribute is WRITE type.
 	Add a filter on Tango types for commands.
