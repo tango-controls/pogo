@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getPolledPeriod <em>Polled Period</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMaxX <em>Max X</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMaxY <em>Max Y</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getAssociatedAttr <em>Associated Attr</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMemorized <em>Memorized</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getMemorizedAtInit <em>Memorized At Init</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getChangeEvent <em>Change Event</em>}</li>
@@ -209,6 +210,26 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * @ordered
    */
   protected String maxY = MAX_Y_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAssociatedAttr() <em>Associated Attr</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAssociatedAttr()
+   * @generated
+   * @ordered
+   */
+  protected static final String ASSOCIATED_ATTR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAssociatedAttr() <em>Associated Attr</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAssociatedAttr()
+   * @generated
+   * @ordered
+   */
+  protected String associatedAttr = ASSOCIATED_ATTR_EDEFAULT;
 
   /**
    * The default value of the '{@link #getMemorized() <em>Memorized</em>}' attribute.
@@ -588,6 +609,29 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     maxY = newMaxY;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__MAX_Y, oldMaxY, maxY));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getAssociatedAttr()
+  {
+    return associatedAttr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAssociatedAttr(String newAssociatedAttr)
+  {
+    String oldAssociatedAttr = associatedAttr;
+    associatedAttr = newAssociatedAttr;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__ASSOCIATED_ATTR, oldAssociatedAttr, associatedAttr));
   }
 
   /**
@@ -1002,6 +1046,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getMaxX();
       case PogoDslPackage.ATTRIBUTE__MAX_Y:
         return getMaxY();
+      case PogoDslPackage.ATTRIBUTE__ASSOCIATED_ATTR:
+        return getAssociatedAttr();
       case PogoDslPackage.ATTRIBUTE__MEMORIZED:
         return getMemorized();
       case PogoDslPackage.ATTRIBUTE__MEMORIZED_AT_INIT:
@@ -1062,6 +1108,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__MAX_Y:
         setMaxY((String)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__ASSOCIATED_ATTR:
+        setAssociatedAttr((String)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__MEMORIZED:
         setMemorized((String)newValue);
@@ -1136,6 +1185,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__MAX_Y:
         setMaxY(MAX_Y_EDEFAULT);
         return;
+      case PogoDslPackage.ATTRIBUTE__ASSOCIATED_ATTR:
+        setAssociatedAttr(ASSOCIATED_ATTR_EDEFAULT);
+        return;
       case PogoDslPackage.ATTRIBUTE__MEMORIZED:
         setMemorized(MEMORIZED_EDEFAULT);
         return;
@@ -1199,6 +1251,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return MAX_X_EDEFAULT == null ? maxX != null : !MAX_X_EDEFAULT.equals(maxX);
       case PogoDslPackage.ATTRIBUTE__MAX_Y:
         return MAX_Y_EDEFAULT == null ? maxY != null : !MAX_Y_EDEFAULT.equals(maxY);
+      case PogoDslPackage.ATTRIBUTE__ASSOCIATED_ATTR:
+        return ASSOCIATED_ATTR_EDEFAULT == null ? associatedAttr != null : !ASSOCIATED_ATTR_EDEFAULT.equals(associatedAttr);
       case PogoDslPackage.ATTRIBUTE__MEMORIZED:
         return MEMORIZED_EDEFAULT == null ? memorized != null : !MEMORIZED_EDEFAULT.equals(memorized);
       case PogoDslPackage.ATTRIBUTE__MEMORIZED_AT_INIT:
@@ -1250,6 +1304,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     result.append(maxX);
     result.append(", maxY: ");
     result.append(maxY);
+    result.append(", associatedAttr: ");
+    result.append(associatedAttr);
     result.append(", memorized: ");
     result.append(memorized);
     result.append(", memorizedAtInit: ");

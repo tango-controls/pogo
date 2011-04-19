@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Comments#getHtmlInheritance <em>Html Inheritance</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Comments#getCommandsTable <em>Commands Table</em>}</li>
  * </ul>
  * </p>
@@ -26,32 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Comments extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Html Inheritance</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Html Inheritance</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Html Inheritance</em>' attribute.
-   * @see #setHtmlInheritance(String)
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getComments_HtmlInheritance()
-   * @model
-   * @generated
-   */
-  String getHtmlInheritance();
-
-  /**
-   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Comments#getHtmlInheritance <em>Html Inheritance</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Html Inheritance</em>' attribute.
-   * @see #getHtmlInheritance()
-   * @generated
-   */
-  void setHtmlInheritance(String value);
-
   /**
    * Returns the value of the '<em><b>Commands Table</b></em>' attribute.
    * <!-- begin-user-doc -->

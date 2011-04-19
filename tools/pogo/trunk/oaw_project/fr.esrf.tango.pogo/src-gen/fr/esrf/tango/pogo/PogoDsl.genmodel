@@ -31,6 +31,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/pogo6"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//OneClassSimpleDef/inheritances"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/parentClasses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//OneClassSimpleDef/additionalFiles"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//PogoDeviceClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoDeviceClass/name"/>
@@ -44,6 +45,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/states"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/preferences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/additionalFiles"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//ClassDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/description"/>
@@ -57,6 +59,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractCommand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractAttribute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasDynamicAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/descriptionHtmlExists"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Inheritance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Inheritance/classname"/>
@@ -74,7 +77,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassIdentification/reference"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Comments">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Comments/htmlInheritance"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Comments/commandsTable"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Preferences">
@@ -129,6 +131,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/polledPeriod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/maxX"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/maxY"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/associatedAttr"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/memorized"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/memorizedAtInit"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/changeEvent"/>
@@ -160,6 +163,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//AttrProperties/minWarning"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//AttrProperties/deltaTime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//AttrProperties/deltaValue"/>
+    </genClasses>
+    <genClasses ecoreClass="PogoDsl.ecore#//AdditionalFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//AdditionalFile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//AdditionalFile/path"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Type"/>
     <genClasses ecoreClass="PogoDsl.ecore#//VoidType"/>

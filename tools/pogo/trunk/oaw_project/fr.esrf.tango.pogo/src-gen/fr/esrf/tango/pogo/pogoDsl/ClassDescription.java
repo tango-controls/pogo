@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractAttribute <em>Has Abstract Attribute</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasDynamicAttribute <em>Has Dynamic Attribute</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getDescriptionHtmlExists <em>Description Html Exists</em>}</li>
  * </ul>
  * </p>
  *
@@ -312,5 +313,31 @@ public interface ClassDescription extends EObject
    * @generated
    */
   void setHasDynamicAttribute(String value);
+
+  /**
+   * Returns the value of the '<em><b>Description Html Exists</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Description Html Exists</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Description Html Exists</em>' attribute.
+   * @see #setDescriptionHtmlExists(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_DescriptionHtmlExists()
+   * @model
+   * @generated
+   */
+  String getDescriptionHtmlExists();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getDescriptionHtmlExists <em>Description Html Exists</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Description Html Exists</em>' attribute.
+   * @see #getDescriptionHtmlExists()
+   * @generated
+   */
+  void setDescriptionHtmlExists(String value);
 
 } // ClassDescription

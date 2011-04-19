@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommentsImpl#getHtmlInheritance <em>Html Inheritance</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommentsImpl#getCommandsTable <em>Commands Table</em>}</li>
  * </ul>
  * </p>
@@ -31,26 +30,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class CommentsImpl extends MinimalEObjectImpl.Container implements Comments
 {
-  /**
-   * The default value of the '{@link #getHtmlInheritance() <em>Html Inheritance</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHtmlInheritance()
-   * @generated
-   * @ordered
-   */
-  protected static final String HTML_INHERITANCE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getHtmlInheritance() <em>Html Inheritance</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHtmlInheritance()
-   * @generated
-   * @ordered
-   */
-  protected String htmlInheritance = HTML_INHERITANCE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getCommandsTable() <em>Commands Table</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -97,29 +76,6 @@ public class CommentsImpl extends MinimalEObjectImpl.Container implements Commen
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getHtmlInheritance()
-  {
-    return htmlInheritance;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setHtmlInheritance(String newHtmlInheritance)
-  {
-    String oldHtmlInheritance = htmlInheritance;
-    htmlInheritance = newHtmlInheritance;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.COMMENTS__HTML_INHERITANCE, oldHtmlInheritance, htmlInheritance));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getCommandsTable()
   {
     return commandsTable;
@@ -148,8 +104,6 @@ public class CommentsImpl extends MinimalEObjectImpl.Container implements Commen
   {
     switch (featureID)
     {
-      case PogoDslPackage.COMMENTS__HTML_INHERITANCE:
-        return getHtmlInheritance();
       case PogoDslPackage.COMMENTS__COMMANDS_TABLE:
         return getCommandsTable();
     }
@@ -166,9 +120,6 @@ public class CommentsImpl extends MinimalEObjectImpl.Container implements Commen
   {
     switch (featureID)
     {
-      case PogoDslPackage.COMMENTS__HTML_INHERITANCE:
-        setHtmlInheritance((String)newValue);
-        return;
       case PogoDslPackage.COMMENTS__COMMANDS_TABLE:
         setCommandsTable((String)newValue);
         return;
@@ -186,9 +137,6 @@ public class CommentsImpl extends MinimalEObjectImpl.Container implements Commen
   {
     switch (featureID)
     {
-      case PogoDslPackage.COMMENTS__HTML_INHERITANCE:
-        setHtmlInheritance(HTML_INHERITANCE_EDEFAULT);
-        return;
       case PogoDslPackage.COMMENTS__COMMANDS_TABLE:
         setCommandsTable(COMMANDS_TABLE_EDEFAULT);
         return;
@@ -206,8 +154,6 @@ public class CommentsImpl extends MinimalEObjectImpl.Container implements Commen
   {
     switch (featureID)
     {
-      case PogoDslPackage.COMMENTS__HTML_INHERITANCE:
-        return HTML_INHERITANCE_EDEFAULT == null ? htmlInheritance != null : !HTML_INHERITANCE_EDEFAULT.equals(htmlInheritance);
       case PogoDslPackage.COMMENTS__COMMANDS_TABLE:
         return COMMANDS_TABLE_EDEFAULT == null ? commandsTable != null : !COMMANDS_TABLE_EDEFAULT.equals(commandsTable);
     }
@@ -225,9 +171,7 @@ public class CommentsImpl extends MinimalEObjectImpl.Container implements Commen
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (htmlInheritance: ");
-    result.append(htmlInheritance);
-    result.append(", commandsTable: ");
+    result.append(" (commandsTable: ");
     result.append(commandsTable);
     result.append(')');
     return result.toString();

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogo6 <em>Pogo6</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getInheritances <em>Inheritances</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getParentClasses <em>Parent Classes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getAdditionalFiles <em>Additional Files</em>}</li>
  * </ul>
  * </p>
  *
@@ -140,5 +141,21 @@ public interface OneClassSimpleDef extends EObject
    * @generated
    */
   EList<String> getParentClasses();
+
+  /**
+   * Returns the value of the '<em><b>Additional Files</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.AdditionalFile}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Additional Files</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Additional Files</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getOneClassSimpleDef_AdditionalFiles()
+   * @model containment="true"
+   * @generated
+   */
+  EList<AdditionalFile> getAdditionalFiles();
 
 } // OneClassSimpleDef

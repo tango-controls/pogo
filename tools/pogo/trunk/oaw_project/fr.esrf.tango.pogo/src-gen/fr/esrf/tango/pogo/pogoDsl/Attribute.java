@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getPolledPeriod <em>Polled Period</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMaxX <em>Max X</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMaxY <em>Max Y</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAssociatedAttr <em>Associated Attr</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMemorized <em>Memorized</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getMemorizedAtInit <em>Memorized At Init</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getChangeEvent <em>Change Event</em>}</li>
@@ -252,6 +253,32 @@ public interface Attribute extends EObject
    * @generated
    */
   void setMaxY(String value);
+
+  /**
+   * Returns the value of the '<em><b>Associated Attr</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Associated Attr</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Associated Attr</em>' attribute.
+   * @see #setAssociatedAttr(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_AssociatedAttr()
+   * @model
+   * @generated
+   */
+  String getAssociatedAttr();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getAssociatedAttr <em>Associated Attr</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Associated Attr</em>' attribute.
+   * @see #getAssociatedAttr()
+   * @generated
+   */
+  void setAssociatedAttr(String value);
 
   /**
    * Returns the value of the '<em><b>Memorized</b></em>' attribute.

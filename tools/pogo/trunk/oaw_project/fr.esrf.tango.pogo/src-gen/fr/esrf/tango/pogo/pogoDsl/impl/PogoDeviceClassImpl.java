@@ -5,6 +5,7 @@
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 
+import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.Command;
@@ -48,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getPreferences <em>Preferences</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAdditionalFiles <em>Additional Files</em>}</li>
  * </ul>
  * </p>
  *
@@ -194,6 +196,16 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected Preferences preferences;
+
+  /**
+   * The cached value of the '{@link #getAdditionalFiles() <em>Additional Files</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAdditionalFiles()
+   * @generated
+   * @ordered
+   */
+  protected EList<AdditionalFile> additionalFiles;
 
   /**
    * <!-- begin-user-doc -->
@@ -499,6 +511,20 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<AdditionalFile> getAdditionalFiles()
+  {
+    if (additionalFiles == null)
+    {
+      additionalFiles = new EObjectContainmentEList<AdditionalFile>(AdditionalFile.class, this, PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES);
+    }
+    return additionalFiles;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -518,6 +544,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
         return basicSetPreferences(null, msgs);
+      case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
+        return ((InternalEList<?>)getAdditionalFiles()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -555,6 +583,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return getStates();
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
         return getPreferences();
+      case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
+        return getAdditionalFiles();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -608,6 +638,10 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
         setPreferences((Preferences)newValue);
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
+        getAdditionalFiles().clear();
+        getAdditionalFiles().addAll((Collection<? extends AdditionalFile>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -655,6 +689,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
         setPreferences((Preferences)null);
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
+        getAdditionalFiles().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -691,6 +728,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return states != null && !states.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
         return preferences != null;
+      case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
+        return additionalFiles != null && !additionalFiles.isEmpty();
     }
     return super.eIsSet(featureID);
   }
