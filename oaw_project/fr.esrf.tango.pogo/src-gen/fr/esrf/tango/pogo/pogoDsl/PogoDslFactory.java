@@ -215,6 +215,15 @@ public interface PogoDslFactory extends EFactory
   AttrProperties createAttrProperties();
 
   /**
+   * Returns a new object of class '<em>Additional File</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Additional File</em>'.
+   * @generated
+   */
+  AdditionalFile createAdditionalFile();
+
+  /**
    * Returns a new object of class '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

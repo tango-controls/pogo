@@ -13,7 +13,7 @@ class «att.name»Attrib: public Tango::«IF att.attType!="Scalar"»«att.attType»«EN
 {
 public:
 	«att.name»Attrib():«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr("«att.name»",
-	                   «att.dataType.cppTypeEnum()», Tango::«att.rwType»«attConstructorSize(att)») {};
+	                   «att.dataType.cppTypeEnum()», «IF att.rwType=="READ_WITH_WRITE"»"«att.associatedAttr»"«ELSE»Tango::«att.rwType»«attConstructorSize(att)»«ENDIF») {};
 	~«att.name»Attrib() {};
 	
 	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)

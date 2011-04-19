@@ -183,6 +183,11 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
         return createAttrPropertiesAdapter();
       }
       @Override
+      public Adapter caseAdditionalFile(AdditionalFile object)
+      {
+        return createAdditionalFileAdapter();
+      }
+      @Override
       public Adapter caseType(Type object)
       {
         return createTypeAdapter();
@@ -690,6 +695,21 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAttrPropertiesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.AdditionalFile <em>Additional File</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.AdditionalFile
+   * @generated
+   */
+  public Adapter createAdditionalFileAdapter()
   {
     return null;
   }

@@ -5,6 +5,7 @@
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 
+import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getPogo6 <em>Pogo6</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getInheritances <em>Inheritances</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getParentClasses <em>Parent Classes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getAdditionalFiles <em>Additional Files</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,6 +126,16 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected EList<String> parentClasses;
+
+  /**
+   * The cached value of the '{@link #getAdditionalFiles() <em>Additional Files</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAdditionalFiles()
+   * @generated
+   * @ordered
+   */
+  protected EList<AdditionalFile> additionalFiles;
 
   /**
    * <!-- begin-user-doc -->
@@ -248,6 +260,20 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<AdditionalFile> getAdditionalFiles()
+  {
+    if (additionalFiles == null)
+    {
+      additionalFiles = new EObjectContainmentEList<AdditionalFile>(AdditionalFile.class, this, PogoDslPackage.ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES);
+    }
+    return additionalFiles;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -255,6 +281,8 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
     {
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__INHERITANCES:
         return ((InternalEList<?>)getInheritances()).basicRemove(otherEnd, msgs);
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES:
+        return ((InternalEList<?>)getAdditionalFiles()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -279,6 +307,8 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
         return getInheritances();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES:
         return getParentClasses();
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES:
+        return getAdditionalFiles();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -311,6 +341,10 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
         getParentClasses().clear();
         getParentClasses().addAll((Collection<? extends String>)newValue);
         return;
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES:
+        getAdditionalFiles().clear();
+        getAdditionalFiles().addAll((Collection<? extends AdditionalFile>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -340,6 +374,9 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES:
         getParentClasses().clear();
         return;
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES:
+        getAdditionalFiles().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -364,6 +401,8 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
         return inheritances != null && !inheritances.isEmpty();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES:
         return parentClasses != null && !parentClasses.isEmpty();
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES:
+        return additionalFiles != null && !additionalFiles.isEmpty();
     }
     return super.eIsSet(featureID);
   }

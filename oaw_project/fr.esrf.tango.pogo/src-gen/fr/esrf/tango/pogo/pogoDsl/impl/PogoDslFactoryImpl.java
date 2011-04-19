@@ -88,6 +88,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.ATTRIBUTE: return createAttribute();
       case PogoDslPackage.FIRE_EVENTS: return createFireEvents();
       case PogoDslPackage.ATTR_PROPERTIES: return createAttrProperties();
+      case PogoDslPackage.ADDITIONAL_FILE: return createAdditionalFile();
       case PogoDslPackage.TYPE: return createType();
       case PogoDslPackage.VOID_TYPE: return createVoidType();
       case PogoDslPackage.BOOLEAN_TYPE: return createBooleanType();
@@ -357,6 +358,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     AttrPropertiesImpl attrProperties = new AttrPropertiesImpl();
     return attrProperties;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditionalFile createAdditionalFile()
+  {
+    AdditionalFileImpl additionalFile = new AdditionalFileImpl();
+    return additionalFile;
   }
 
   /**

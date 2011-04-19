@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAdditionalFiles <em>Additional Files</em>}</li>
  * </ul>
  * </p>
  *
@@ -272,5 +273,21 @@ public interface PogoDeviceClass extends EObject
    * @generated
    */
   void setPreferences(Preferences value);
+
+  /**
+   * Returns the value of the '<em><b>Additional Files</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.AdditionalFile}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Additional Files</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Additional Files</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_AdditionalFiles()
+   * @model containment="true"
+   * @generated
+   */
+  EList<AdditionalFile> getAdditionalFiles();
 
 } // PogoDeviceClass
