@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Apr 15 09:06:36 CEST 2011)</Center><Br>\n" + 
+		"	(Generated Tue Apr 19 11:12:21 CEST 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.2.3 - 19/04/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Associated attribute for READ_WITH_WRITE added.<Br>\n" + 
+		"&nbsp; &nbsp; Fixe a pb between Long and Long64.<Br>\n" + 
 		"<li><b>Pogo-7.2.2 - 15/04/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Does not generate read_xxx() metod if xxx attribute is WRITE type.<Br>\n" + 
 		"&nbsp; &nbsp; Add a filter on Tango types for commands.<Br>\n" + 

@@ -940,16 +940,17 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
 		//	Control if  xSize and ySize fields have been filled.
 		int attrType = attrTypeCB.getSelectedIndex();
+        String assAttr = "";
 		switch(attrType)
 		{
-		/*
 		case SCALAR:
-			if (((String)rwTypeCB.getSelectedIndex()).equals("READ_WITH_WRITE"))
+			if (rwTypeCB.getSelectedItem().equals("READ_WITH_WRITE")) {
 				assAttr = assAttrTF.getText();
-			else
-				assAttr = "";
+
+                if (assAttr.length()==0)
+                    message = "READ_WITH_WRITE  attribute must have an associated attribute";
+            }
 			break;
-		*/
 		case SPECTRUM:
 			switch(checkIntField(xDataTF.getText()))
 			{
@@ -1149,7 +1150,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		nameText.setText(attribute.getName());
 		xDataTF.setText(attribute.getMaxX());
 		yDataTF.setText(attribute.getMaxY());
-		//assAttrTF.setText(attr.assAttr);
+		assAttrTF.setText(attribute.getAssociatedAttr());
 
 		attrTypeCB.setSelectedItem(attribute.getAttType());
 		rwTypeCB.setSelectedItem(attribute.getRwType());
@@ -1158,14 +1159,14 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         allocateBtn.setSelected(Utils.isTrue(attribute.getAllocReadMember()));
 
 		//	Update combo box
-		String	attType =  OAWutils.pogo2tangoType(
+		String	dataType =  OAWutils.pogo2tangoType(
 				attribute.getDataType().toString());
-        if (attType.equals("State"))
-            attType = "DevState"; //    Sorry.
+        if (dataType.equals("State"))
+            dataType = "DevState"; //    Sorry.
 
 		for (int i=0 ; i<dataTypeCB.getItemCount() ; i++) {
 			String	type = (String)dataTypeCB.getItemAt(i);
-			if (type.equals(attType))
+			if (type.equals(dataType))
 				dataTypeCB.setSelectedIndex(i);
 		}
 		//	Set the default attribute property values
@@ -1256,19 +1257,22 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	public Attribute  getAttribute()
 	{
 		Attribute	attr = OAWutils.factory.createAttribute();
-		attr.setName(nameText.getText());
+		attr.setName(nameText.getText().trim());
 
 		String  attType = (String) attrTypeCB.getSelectedItem();
 		attr.setAttType(attType);
 
 		attr.setRwType((String) rwTypeCB.getSelectedItem());
+        if (rwTypeCB.getSelectedItem().equals("READ_WITH_WRITE")) {
+            attr.setAssociatedAttr(assAttrTF.getText().trim());
+        }
 
 		String	tangoDataType = (String) dataTypeCB.getSelectedItem();
 		Type	pogoDataType  = OAWutils.tango2pogoType(tangoDataType);
 		attr.setDataType(pogoDataType);
 
-		attr.setMaxX(xDataTF.getText());
-		attr.setMaxY(yDataTF.getText());
+		attr.setMaxX(xDataTF.getText().trim());
+		attr.setMaxY(yDataTF.getText().trim());
 
 		//	Attribute properties
 		AttrProperties	prop = OAWutils.factory.createAttrProperties();
