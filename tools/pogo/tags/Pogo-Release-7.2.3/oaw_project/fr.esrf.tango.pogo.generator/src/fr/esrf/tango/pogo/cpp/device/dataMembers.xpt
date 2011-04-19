@@ -1,0 +1,50 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+//	=========================================================
+//	Define device data members declaration
+//	=========================================================
+«DEFINE headerFile FOR PogoDeviceClass»
+
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Data Members",
+		"//		Add your own data members")»
+
+//	Device property data members
+public:«FOREACH deviceProperties AS prop-»
+	«IF prop.status.concreteHere=="true"-»
+	//	«prop.name»:	«prop.description.comments("	//	")»
+	«prop.type.cppPropType()»	«prop.name.dataMemberName()»;
+	«ENDIF»«ENDFOREACH-»
+	
+
+//	Attribute data members
+public:
+	«FOREACH attributes AS att-»
+	«EXPAND readAttributeMembers(att)»«ENDFOREACH-»
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Data members declaration for readable attributes
+//	=========================================================
+«DEFINE readAttributeMembers(Attribute attr) FOR PogoDeviceClass-»
+	«IF attr.status.concreteHere=="true"-»
+	«attr.dataType.cppType().toString()»	*attr_«attr.name»_read;«ENDIF»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Data members declaration for writable attributes
+//	=========================================================
+«DEFINE writeAttributeMembers(Attribute attr) FOR PogoDeviceClass-»
+
+//	«FOREACH attributes AS att-»
+//	«EXPAND writeAttributeMembers(att)»«ENDFOREACH-»
+	«IF attr.status.concreteHere=="true" &&
+		attr.rwType.toLowerCase().contains("write")-»
+	«attr.dataType.cppType().toString()»	attr_«attr.name»_write;«ENDIF»
+«ENDDEFINE»

@@ -1,0 +1,76 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//	=========================================================
+//	Define get_device_property method
+//	=========================================================
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF deviceProperties.size>0-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		"get_device_property",
+		"//	Add your own code to initialize")-»
+void «name»::get_device_property()
+{
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		"get_device_property_before",
+		"//	Initialize property data members")»
+«EXPAND getDevicePropertyFromDatabase»
+«FOREACH deviceProperties AS prop-»
+	«IF prop.status.concreteHere=="true"-»
+		«EXPAND initializeDataMember(prop)»
+	«ENDIF-»
+«ENDFOREACH»
+	}
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		"get_device_property_after",
+		"//	Check device property data members init")»
+«ENDIF-»
+}
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the databse read
+//	=========================================================
+«DEFINE getDevicePropertyFromDatabase FOR PogoDeviceClass»
+	//	Read device properties from database.
+	Tango::DbData	dev_prop;
+	«FOREACH deviceProperties AS prop-»
+	«IF prop.status.concreteHere=="true"-»
+	dev_prop.push_back(Tango::DbDatum("«prop.name»"));
+	«ENDIF»«ENDFOREACH-»
+
+	//	is there at least one property to be read ?
+	if (dev_prop.size()>0)
+	{
+		//	Call database and extract values
+		if (Tango::Util::instance()->_UseDb==true)
+			get_db_device()->get_property(dev_prop);
+	
+		//	get instance on «name»Class to get class property
+		Tango::DbDatum	def_prop, cl_prop;
+		«name»Class	*ds_class =
+			(static_cast<«name»Class *>(get_device_class()));
+		int	i = -1;
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define the property data members initialization
+//	=========================================================
+«DEFINE initializeDataMember(Property prop) FOR PogoDeviceClass-»
+		//	Try to initialize «prop.name» from class property
+		cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+		if (cl_prop.is_empty()==false)	cl_prop  >>  «prop.name.dataMemberName()»;
+		else {
+			//	Try to initialize «prop.name» from default device value
+			def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+			if (def_prop.is_empty()==false)	def_prop  >>  «prop.name.dataMemberName()»;
+		}
+		//	And try to extract «prop.name» value from database
+		if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  «prop.name.dataMemberName()»;
+«ENDDEFINE»
