@@ -213,7 +213,7 @@ public class OAWutils
 	@SuppressWarnings({"unchecked"})
     public void generate(PogoMultiClasses multiClasses) throws DevFailed
 	{
-        PogoSystem sys = factory.createPogoSystem();
+        PogoSystem  sys = factory.createPogoSystem();
         String      prExcludes = Utils.getExcludeFilesAndDir(multiClasses.getSourcePath());
 
         reverseClassOrder(multiClasses);
@@ -344,6 +344,16 @@ public class OAWutils
                         "ClassFactory.cpp",
                         "ClassFactory.cpp", pogo_class.getName()+"::ClassFactory.cpp");
             }
+        }
+
+        //  If doc is generated, check if old pogo Description.html file exists
+        if (pogo_class.getDescription().getFilestogenerate().indexOf("html")>=0) {
+            String filename = pogo_class.getDescription().getSourcePath() + "/" +
+                    pogo_class.getPreferences().getDocHome() + "/Description.html";
+            if (new File(filename).exists())
+                pogo_class.getDescription().setDescriptionHtmlExists("true");
+            else
+                pogo_class.getDescription().setDescriptionHtmlExists("false");
         }
 	}
 	//========================================================================
@@ -511,10 +521,16 @@ public class OAWutils
 				tangoType = tangoType.substring(0, pos);
 			if  (tangoType.indexOf("Array")>0){
                 //System.out.println(tangoType);
-                if (tangoType.indexOf("UInt")>=0)    //  Int is Long and vice versa
+                if (tangoType.indexOf("ULong")>=0)    //  Int is Long
+    				return "DevVarULong64Array";
+                else
+                if (tangoType.indexOf("Long")>=0)    //  Int is Long
+    				return "DevVarLong64Array";
+                else
+                if (tangoType.indexOf("UInt")>=0)    //  Int is Long
     				return "DevVarULongArray";
                 else
-                if (tangoType.indexOf("Int")>=0)    //  Int is Long and vice versa
+                if (tangoType.indexOf("Int")>=0)    //  Int is Long
     				return "DevVarLongArray";
                 else
 	    			return "DevVar" + tangoType;
@@ -525,6 +541,12 @@ public class OAWutils
 					return TangoConst.Tango_CmdArgTypeName[TangoConst.Tango_CONST_DEV_STRING];
 				if (tangoType.equals("State"))
 					return tangoType;
+				else
+				if (tangoType.equals("Long"))    //  Int is a DevLong
+					return "DevLong64";
+				else
+				if (tangoType.equals("ULong"))    //  UInt is a DevULong
+					return "DevULong64";
 				else
 				if (tangoType.equals("Int"))    //  Int is a DevLong
 					return "DevLong";
@@ -765,6 +787,10 @@ public class OAWutils
 
           attr.setAttType(src.getAttType());
           attr.setRwType(src.getRwType());
+          if (src.getAssociatedAttr()!=null && src.getAssociatedAttr().length()>0)
+            attr.setAssociatedAttr(src.getAssociatedAttr());
+if (src.getDataType()==null)
+	System.out.println("Type is null for " + src.getName());
           attr.setDataType(cloneType(src.getDataType()));
 
           attr.setMaxX(src.getMaxX());
