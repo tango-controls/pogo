@@ -45,20 +45,14 @@ package org.tango.pogo.pogo_gui.tools;
 
 import java.util.Vector;
 import fr.esrf.Tango.DevFailed;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
-
-import javax.swing.*;
 
 public class  ProtectedAreaManager
 {
     private Vector<ProtectedArea>   protectedAreas = new Vector<ProtectedArea>();
-    private String  srcFileName;
-    private String  srcClassName;
     //===============================================================
     //===============================================================
     public ProtectedAreaManager(String fileName) throws DevFailed
     {
-        srcFileName = fileName;
         String code = ParserTool.readFile(fileName);
         int  start;
         int  end = 0;
@@ -73,42 +67,35 @@ public class  ProtectedAreaManager
 
             String  paCode = code.substring(start, end);
             protectedAreas.add(new ProtectedArea(paCode));
-            //System.out.println(protectedAreas.get(0));
+            //System.out.println(protectedAreas.get(protectedAreas.size()-1));
         }
-        srcClassName = protectedAreas.get(0).className;
     }
     //===============================================================
     //===============================================================
-    public void setClassName(String newClassName) throws DevFailed
+    public void setClassName(String newClassName, String fileName) throws DevFailed
     {
-        //  Build new file name
-         int pos = srcFileName.lastIndexOf(srcClassName);
-        String  fileName = srcFileName.substring(0, pos) + newClassName +
-                            srcFileName.substring(pos+srcClassName.length());
-        pos = srcFileName.lastIndexOf('.');
-        if (pos>0)
-            fileName += srcFileName.substring(pos); //  Extension
-
         //  Get code
-        String code = ParserTool.readFile(fileName);
+        String  code = ParserTool.readFile(fileName);
 
         //  For each protected area
         for (ProtectedArea   pa : protectedAreas) {
+            //  Replace protected code
             pa.setClass(newClassName);
             code = replaceProtectedAreaCode(code, pa);
         }
+
         ParserTool.writeFile(fileName, code);
+        //System.out.println(fileName + "  Written");
     }
     //===============================================================
     //===============================================================
     private String replaceProtectedAreaCode(String code, ProtectedArea pa)
     {
         int start = code.indexOf(pa.id_start);
-        if (start>0) {
+        if (start>=0) {
             start = code.indexOf('\n', start)+1;
             int end = code.indexOf(PogoParser.end_protected, start);
             end = code.lastIndexOf("\n", end);
-
             code = code.substring(0, start) + pa.code +
                     code.substring(end);
         }
@@ -117,23 +104,7 @@ public class  ProtectedAreaManager
     //===============================================================
     //===============================================================
 
-    //===============================================================
-    //===============================================================
-    public static void main(String[] args)
-    {
-        try {
-            ProtectedAreaManager    pam =
-                new ProtectedAreaManager("/segfs/tango/tools/pogo/test/cpp/test_oaw-1/test_1/Test_1.cpp");
-            pam.setClassName("Test_2");
-        }
-        catch (DevFailed e) {
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
-        }
-    }
-
-
-
-
+    
 
 
     //===============================================================
@@ -166,16 +137,25 @@ public class  ProtectedAreaManager
         //===========================================================
         private void setClass(String newClassName)
         {
-            int pos = id_start.indexOf(className);
-            id_start = id_start.substring(0, pos) + newClassName +
-                    id_start.substring(pos+className.length());
-
-            if (id_start.indexOf("::")<0) {
-                //  Special case for first one (it is the header)
-                code = Utils.strReplace(code, className, newClassName);
-                code = Utils.strReplace(code, className.toUpperCase(), newClassName.toUpperCase());
-                code = Utils.strReplace(code, className.toLowerCase(), newClassName.toLowerCase());
+            if (id_start.indexOf("::")>0) {
+                int pos = id_start.indexOf(className);
+                id_start = id_start.substring(0, pos) + newClassName +
+                        id_start.substring(pos+className.length());
             }
+            else {
+                //  Special case for first one (it is the header)
+                String tmpClassName = className;
+                int pos = tmpClassName.indexOf(".");
+                
+                if (pos>0) //    remove extension if any
+                    tmpClassName = tmpClassName.substring(0, pos);
+                id_start = Utils.strReplace(id_start, tmpClassName, newClassName);
+
+                code = Utils.strReplace(code, tmpClassName, newClassName);
+                code = Utils.strReplace(code, tmpClassName.toUpperCase(), newClassName.toUpperCase());
+                code = Utils.strReplace(code, tmpClassName.toLowerCase(), newClassName.toLowerCase());
+            }
+
             className = newClassName;
         }
         //===========================================================
