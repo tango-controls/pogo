@@ -14,7 +14,7 @@
 «PROTECT CSTART '/*----- ' CEND ' -----*/' ID stateMachineFileName()»
 static const char *RcsId = "«cvsEscaped("Id:")»";
 «EXPAND Common::fileHeader(stateMachineFileName(),
-	"C++ source for the «name» and its alowed\n" +
+	"C++ source for the " + name + " and its alowed\n" +
 	"methods for commands and attributes")»
 
 
