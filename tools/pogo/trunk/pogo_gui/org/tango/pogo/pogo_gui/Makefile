@@ -14,13 +14,16 @@
 #-======================================================================
 
 
-RELEASE    = 7.2.3
+RELEASE    = 7.2.4
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango
 PACK_HOME	=	$(TANGO_HOME)/tools
 DOC_HOME    =	$(TANGO_HOME)/doc/www/tango/tango_doc/tools_doc/pogo_doc/
 JAR_DIR		=	$(TANGO_JAR_HOME)/appli
+
+SVN_POGO_PATH = $(SVN_TCS)/tools/pogo
+SVN_TAG_REV    = Release-$(RELEASE)
 
 # -----------------------------------------------------------------
 #
@@ -101,6 +104,7 @@ FTP_TARGET	=	maya:/ftp/pub/cs/tango/Pogo
 install_ftp:
 	@echo "rcp $(JAR_FILE) $(FTP_TARGET)"
 	@cd $(TARGET_JAR_DIR); rcp $(JAR_FILE)-$(RELEASE).jar  $(FTP_TARGET)
+	@rcp ReleaseNote $(FTP_TARGET)
 
 TANGO_REV=tango-7.2.2
 SRC_REL_PATH=$(TANGO_HOME)/source_release/$(TANGO_REV)/lib/java
@@ -121,4 +125,8 @@ clean_headers:
 	clean_headers tools/*.java
 
 
+tag:
+	@echo "Tagging  $(PACKAGE)  for $(SVN_TAG_REV)"
+	svn copy  $(SVN_POGO_PATH)/trunk \
+	          $(SVN_POGO_PATH)/tags/$(PACKAGE)-$(SVN_TAG_REV)
 

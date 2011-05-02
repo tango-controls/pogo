@@ -475,7 +475,7 @@ public class  DeviceClass
         getPogoDeviceClass().getDescription().setFilestogenerate("XMI File, Code files");
         generate(new DeletedObjects(), new RenamedObjects());
 
-        //  Manage Propected areas for each file
+        //  Manage Protected areas for each file
         if (getPogoDeviceClass().getDescription().getLanguage().toLowerCase().equals("cpp")) {
             String  path = getPogoDeviceClass().getDescription().getSourcePath();
             String[]    extensions = {
@@ -483,9 +483,12 @@ public class  DeviceClass
                     "Class.h", "Class.cpp",
                     "StateMachine.cpp"
             };
-            for (String extension: extensions)
-                new ProtectedAreaManager(path + "/" +
-                        srcClassName+extension).setClassName(newClassName);
+            for (String extension: extensions) {
+                String  inFileName  = path + "/" + srcClassName + extension;
+                String  outFileName = path + "/" + newClassName + extension;
+                ProtectedAreaManager pam =  new ProtectedAreaManager(inFileName);
+                pam.setClassName(newClassName, outFileName);
+            }
 
             //  And remove original files (for old class name)
             for (String extension: extensions)

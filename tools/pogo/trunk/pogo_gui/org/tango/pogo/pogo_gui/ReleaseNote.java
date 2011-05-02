@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Apr 19 11:12:21 CEST 2011)</Center><Br>\n" + 
+		"	(Generated Mon May 02 13:36:47 CEST 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.2.4 - 02/05/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb in headers when class name has changed fixed.<Br>\n" + 
 		"<li><b>Pogo-7.2.3 - 19/04/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Associated attribute for READ_WITH_WRITE added.<Br>\n" + 
 		"&nbsp; &nbsp; Fixe a pb between Long and Long64.<Br>\n" + 
