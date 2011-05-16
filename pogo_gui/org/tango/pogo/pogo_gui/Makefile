@@ -7,14 +7,11 @@
 # $Author: verdier $
 #
 # $Revision: $
-# $Date:  $
-#
-# $HeadURL: $
 #
 #-======================================================================
 
 
-RELEASE    = 7.2.4
+RELEASE    = 7.2.5
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango

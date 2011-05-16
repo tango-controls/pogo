@@ -1734,8 +1734,8 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		{
 			StringBuffer	sb = new StringBuffer(((is_dev)? "Device":"Class"));
 			sb.append(" property:  ").append(value.getName());
-
             //sb.append("   (").append(InheritanceUtils.getStatusStr(value.getStatus())).append(")");
+
 			sb.append("\n\n");
 			sb.append(Utils.strReplace(value.getDescription(), "\\n", "\n")).append("\n");
 			return sb.toString();
