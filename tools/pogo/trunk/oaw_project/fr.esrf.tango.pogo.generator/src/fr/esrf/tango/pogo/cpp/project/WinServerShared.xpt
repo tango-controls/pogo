@@ -78,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(SolutionName).lib omniORB410_rt.lib omniDynamic410_rt.lib COS410_rt.lib omniThread33_rt.lib tango.lib log4tango.lib comctl32.lib ws2_32.lib"
+				AdditionalDependencies="$(SolutionName).lib omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omniThread_rt.lib tango.lib log4tango.lib comctl32.lib ws2_32.lib"
 				ShowProgress="0"
 				OutputFile="$(OutDir)\$(SolutionName).exe"
 				LinkIncremental="1"
@@ -172,7 +172,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(SolutionName)d.lib omniORB410_rtd.lib omniDynamic410_rtd.lib COS410_rtd.lib omnithread33_rtd.lib tangod.lib log4tangod.lib comctl32.lib ws2_32.lib"
+				AdditionalDependencies="$(SolutionName)d.lib omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib log4tangod.lib comctl32.lib ws2_32.lib"
 				ShowProgress="0"
 				OutputFile="$(OutDir)\$(SolutionName).exe"
 				LinkIncremental="2"
