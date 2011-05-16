@@ -58,7 +58,7 @@ public interface PogoConst
     public static final int	CLASS_PAGES   = 3;
     public static final String[]      tangoHTTP = {
             "http://www.tango-controls.org/",
-            "http://www.esrf.eu/computing/cs/tango/tango_doc/tools_doc/pogo_doc/UserGuide.html",
+            "http://www.esrf.eu/computing/cs/tango/tango_doc/tools_doc/pogo_doc/",
             "http://www.tango-controls.org/Documents/tango-kernel",
             "http://www.tango-controls.org/device-servers",
     };

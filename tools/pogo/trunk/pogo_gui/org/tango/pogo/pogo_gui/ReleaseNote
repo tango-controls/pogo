@@ -6,13 +6,11 @@
 #
 # $Author: verdier $
 #
-# $Revision: $
-# $Date:  $
-#
-# $HeadURL: $
-#
-#
 #-======================================================================
+
+Pogo-7.2.5 - 16/05/2011:
+	Litle bug in checkLinesToRemove() method fixed.
+	Problem with omniORB library release number in vc project files fixed.
 
 Pogo-7.2.4 - 02/05/2011:
 	Pb in headers when class name has changed fixed.
