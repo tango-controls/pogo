@@ -1237,9 +1237,9 @@ ruleClassDescription returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_9_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyBooleanParserRuleCall_9_0(), currentNode); 
 	    }
-	    lv_hasAbstractCommand_9=ruleBoolean 
+	    lv_hasMandatoryProperty_9=ruleBoolean 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
@@ -1247,7 +1247,7 @@ ruleClassDescription returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "hasAbstractCommand", lv_hasAbstractCommand_9, "Boolean", currentNode);
+	       		set($current, "hasMandatoryProperty", lv_hasMandatoryProperty_9, "Boolean", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1258,9 +1258,9 @@ ruleClassDescription returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_10_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0(), currentNode); 
 	    }
-	    lv_hasAbstractAttribute_10=ruleBoolean 
+	    lv_hasAbstractCommand_10=ruleBoolean 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
@@ -1268,7 +1268,7 @@ ruleClassDescription returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "hasAbstractAttribute", lv_hasAbstractAttribute_10, "Boolean", currentNode);
+	       		set($current, "hasAbstractCommand", lv_hasAbstractCommand_10, "Boolean", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1279,9 +1279,9 @@ ruleClassDescription returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_11_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0(), currentNode); 
 	    }
-	    lv_hasDynamicAttribute_11=ruleBoolean 
+	    lv_hasAbstractAttribute_11=ruleBoolean 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
@@ -1289,7 +1289,7 @@ ruleClassDescription returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "hasDynamicAttribute", lv_hasDynamicAttribute_11, "Boolean", currentNode);
+	       		set($current, "hasAbstractAttribute", lv_hasAbstractAttribute_11, "Boolean", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1300,9 +1300,9 @@ ruleClassDescription returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0(), currentNode); 
 	    }
-	    lv_descriptionHtmlExists_12=ruleBoolean 
+	    lv_hasDynamicAttribute_12=ruleBoolean 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
@@ -1310,7 +1310,28 @@ ruleClassDescription returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "descriptionHtmlExists", lv_descriptionHtmlExists_12, "Boolean", currentNode);
+	       		set($current, "hasDynamicAttribute", lv_hasDynamicAttribute_12, "Boolean", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0(), currentNode); 
+	    }
+	    lv_descriptionHtmlExists_13=ruleBoolean 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		set($current, "descriptionHtmlExists", lv_descriptionHtmlExists_13, "Boolean", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1889,9 +1910,30 @@ ruleProperty returns [EObject current=null]
 	
 )(	
 	
-	    lv_description_3=	RULE_STRING
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getPropertyAccess().getMandatoryBooleanParserRuleCall_3_0(), currentNode); 
+	    }
+	    lv_mandatory_3=ruleBoolean 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPropertyRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		set($current, "mandatory", lv_mandatory_3, "Boolean", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)(	
+	
+	    lv_description_4=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_3_0(), "description"); 
+		createLeafNode(grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_4_0(), "description"); 
 	}
  
 	    {
@@ -1901,7 +1943,7 @@ ruleProperty returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "description", lv_description_3, "STRING", lastConsumedNode);
+	       		set($current, "description", lv_description_4, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -1909,13 +1951,13 @@ ruleProperty returns [EObject current=null]
 	
 )'defaultPropValue:' 
     {
-        createLeafNode(grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_4(), null); 
+        createLeafNode(grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_5(), null); 
     }
 (	
 	
-	    lv_DefaultPropValue_5=	RULE_STRING
+	    lv_DefaultPropValue_6=	RULE_STRING
 	{
-		createLeafNode(grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_5_0(), "DefaultPropValue"); 
+		createLeafNode(grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_6_0(), "DefaultPropValue"); 
 	}
  
 	    {
@@ -1925,7 +1967,7 @@ ruleProperty returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "DefaultPropValue", lv_DefaultPropValue_5, "STRING", lastConsumedNode);
+	       		add($current, "DefaultPropValue", lv_DefaultPropValue_6, "STRING", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }

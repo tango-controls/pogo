@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getIdentification <em>Identification</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getComments <em>Comments</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasMandatoryProperty <em>Has Mandatory Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractAttribute <em>Has Abstract Attribute</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasDynamicAttribute <em>Has Dynamic Attribute</em>}</li>
@@ -235,6 +236,32 @@ public interface ClassDescription extends EObject
    * @generated
    */
   void setComments(Comments value);
+
+  /**
+   * Returns the value of the '<em><b>Has Mandatory Property</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Mandatory Property</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Mandatory Property</em>' attribute.
+   * @see #setHasMandatoryProperty(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassDescription_HasMandatoryProperty()
+   * @model
+   * @generated
+   */
+  String getHasMandatoryProperty();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasMandatoryProperty <em>Has Mandatory Property</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Mandatory Property</em>' attribute.
+   * @see #getHasMandatoryProperty()
+   * @generated
+   */
+  void setHasMandatoryProperty(String value);
 
   /**
    * Returns the value of the '<em><b>Has Abstract Command</b></em>' attribute.

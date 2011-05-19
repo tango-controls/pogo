@@ -231,6 +231,9 @@
         <tokens xsi:type="xtext:Assignment" feature="comments" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
         </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="hasMandatoryProperty" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+        </tokens>
         <tokens xsi:type="xtext:Assignment" feature="hasAbstractCommand" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </tokens>
@@ -348,6 +351,9 @@
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        </tokens>
+        <tokens xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>

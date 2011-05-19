@@ -1928,9 +1928,9 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
  * ClassDescription:
  *   description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
  *   Inheritance language=Language filestogenerate=STRING identification=
- *   ClassIdentification comments=Comments hasAbstractCommand=Boolean
- *   hasAbstractAttribute=Boolean hasDynamicAttribute=Boolean descriptionHtmlExists=
- *   Boolean; 
+ *   ClassIdentification comments=Comments hasMandatoryProperty=Boolean
+ *   hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
+ *   Boolean descriptionHtmlExists=Boolean; 
  * 
  * 
  * //
@@ -1946,6 +1946,7 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
  * 	   			 //	File(s) to generate (code, makefile,....)
  * 	     
  * 	          
+ * 	     
  * 	       
  * 	     
  * 	      
@@ -1960,9 +1961,9 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
 
 // description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
 // Inheritance language=Language filestogenerate=STRING identification=
-// ClassIdentification comments=Comments hasAbstractCommand=Boolean
-// hasAbstractAttribute=Boolean hasDynamicAttribute=Boolean descriptionHtmlExists=
-// Boolean 
+// ClassIdentification comments=Comments hasMandatoryProperty=Boolean
+// hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
+// Boolean descriptionHtmlExists=Boolean 
 // 	       	 //	Class description
 // 	              	 //	Short description
 // 	         	 //	Files location
@@ -1972,6 +1973,7 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
 // 	   			 //	File(s) to generate (code, makefile,....)
 // 	     
 // 	          
+// 	     
 // 	       
 // 	     
 // 	      
@@ -1988,7 +1990,7 @@ protected class ClassDescription_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_DescriptionHtmlExistsAssignment_12(parent, this, 0, inst);
+			case 0: return new ClassDescription_DescriptionHtmlExistsAssignment_13(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2304,15 +2306,15 @@ protected class ClassDescription_CommentsAssignment_8 extends AssignmentToken  {
 	}	
 }
 
-// hasAbstractCommand=Boolean
-protected class ClassDescription_HasAbstractCommandAssignment_9 extends AssignmentToken  {
+// hasMandatoryProperty=Boolean
+protected class ClassDescription_HasMandatoryPropertyAssignment_9 extends AssignmentToken  {
 	
-	public ClassDescription_HasAbstractCommandAssignment_9(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_HasMandatoryPropertyAssignment_9(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_9();
+		return grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyAssignment_9();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -2323,11 +2325,42 @@ protected class ClassDescription_HasAbstractCommandAssignment_9 extends Assignme
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("hasMandatoryProperty",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("hasMandatoryProperty");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyBooleanParserRuleCall_9_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// hasAbstractCommand=Boolean
+protected class ClassDescription_HasAbstractCommandAssignment_10 extends AssignmentToken  {
+	
+	public ClassDescription_HasAbstractCommandAssignment_10(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new ClassDescription_HasMandatoryPropertyAssignment_9(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
 		if((value = current.getConsumable("hasAbstractCommand",true)) == null) return null;
 		IInstanceDescription obj = current.cloneAndConsume("hasAbstractCommand");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_9_0();
+			element = grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0();
 			return obj;
 		}
 		return null;
@@ -2336,19 +2369,19 @@ protected class ClassDescription_HasAbstractCommandAssignment_9 extends Assignme
 }
 
 // hasAbstractAttribute=Boolean
-protected class ClassDescription_HasAbstractAttributeAssignment_10 extends AssignmentToken  {
+protected class ClassDescription_HasAbstractAttributeAssignment_11 extends AssignmentToken  {
 	
-	public ClassDescription_HasAbstractAttributeAssignment_10(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_HasAbstractAttributeAssignment_11(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_10();
+		return grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_HasAbstractCommandAssignment_9(parent, this, 0, inst);
+			case 0: return new ClassDescription_HasAbstractCommandAssignment_10(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2358,7 +2391,7 @@ protected class ClassDescription_HasAbstractAttributeAssignment_10 extends Assig
 		IInstanceDescription obj = current.cloneAndConsume("hasAbstractAttribute");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_10_0();
+			element = grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0();
 			return obj;
 		}
 		return null;
@@ -2367,19 +2400,19 @@ protected class ClassDescription_HasAbstractAttributeAssignment_10 extends Assig
 }
 
 // hasDynamicAttribute=Boolean
-protected class ClassDescription_HasDynamicAttributeAssignment_11 extends AssignmentToken  {
+protected class ClassDescription_HasDynamicAttributeAssignment_12 extends AssignmentToken  {
 	
-	public ClassDescription_HasDynamicAttributeAssignment_11(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_HasDynamicAttributeAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_11();
+		return grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_HasAbstractAttributeAssignment_10(parent, this, 0, inst);
+			case 0: return new ClassDescription_HasAbstractAttributeAssignment_11(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2389,7 +2422,7 @@ protected class ClassDescription_HasDynamicAttributeAssignment_11 extends Assign
 		IInstanceDescription obj = current.cloneAndConsume("hasDynamicAttribute");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_11_0();
+			element = grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0();
 			return obj;
 		}
 		return null;
@@ -2399,19 +2432,19 @@ protected class ClassDescription_HasDynamicAttributeAssignment_11 extends Assign
 
 // descriptionHtmlExists=Boolean 
 // 	    	 //	File from pogo-6
-protected class ClassDescription_DescriptionHtmlExistsAssignment_12 extends AssignmentToken  {
+protected class ClassDescription_DescriptionHtmlExistsAssignment_13 extends AssignmentToken  {
 	
-	public ClassDescription_DescriptionHtmlExistsAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_DescriptionHtmlExistsAssignment_13(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12();
+		return grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_HasDynamicAttributeAssignment_11(parent, this, 0, inst);
+			case 0: return new ClassDescription_HasDynamicAttributeAssignment_12(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2421,7 +2454,7 @@ protected class ClassDescription_DescriptionHtmlExistsAssignment_12 extends Assi
 		IInstanceDescription obj = current.cloneAndConsume("descriptionHtmlExists");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0();
+			element = grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0();
 			return obj;
 		}
 		return null;
@@ -3272,7 +3305,7 @@ protected class State_StatusAssignment_2 extends AssignmentToken  {
 /************ begin Rule Property ****************
  *
  * Property:
- *   name=ID type=PropType status=InheritanceStatus description=STRING
+ *   name=ID type=PropType status=InheritanceStatus mandatory=Boolean description=STRING
  *   "defaultPropValue:" DefaultPropValue+=STRING*; 
  * 
  * //
@@ -3282,6 +3315,7 @@ protected class State_StatusAssignment_2 extends AssignmentToken  {
  * 	           
  * 	           
  * 	         
+ * 	      
  * 	    
  * 	
  * 		
@@ -3290,7 +3324,7 @@ protected class State_StatusAssignment_2 extends AssignmentToken  {
  *
  **/
 
-// name=ID type=PropType status=InheritanceStatus description=STRING
+// name=ID type=PropType status=InheritanceStatus mandatory=Boolean description=STRING
 // "defaultPropValue:" DefaultPropValue+=STRING*
 protected class Property_Group extends GroupToken {
 	
@@ -3304,8 +3338,8 @@ protected class Property_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_DefaultPropValueAssignment_5(parent, this, 0, inst);
-			case 1: return new Property_DefaultPropValueKeyword_4(parent, this, 1, inst);
+			case 0: return new Property_DefaultPropValueAssignment_6(parent, this, 0, inst);
+			case 1: return new Property_DefaultPropValueKeyword_5(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -3430,15 +3464,15 @@ protected class Property_StatusAssignment_2 extends AssignmentToken  {
 	}	
 }
 
-// description=STRING
-protected class Property_DescriptionAssignment_3 extends AssignmentToken  {
+// mandatory=Boolean
+protected class Property_MandatoryAssignment_3 extends AssignmentToken  {
 	
-	public Property_DescriptionAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Property_MandatoryAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDescriptionAssignment_3();
+		return grammarAccess.getPropertyAccess().getMandatoryAssignment_3();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -3449,11 +3483,42 @@ protected class Property_DescriptionAssignment_3 extends AssignmentToken  {
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("mandatory",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("mandatory");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.DRC;
+			element = grammarAccess.getPropertyAccess().getMandatoryBooleanParserRuleCall_3_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// description=STRING
+protected class Property_DescriptionAssignment_4 extends AssignmentToken  {
+	
+	public Property_DescriptionAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPropertyAccess().getDescriptionAssignment_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Property_MandatoryAssignment_3(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
 		if((value = current.getConsumable("description",true)) == null) return null;
 		IInstanceDescription obj = current.cloneAndConsume("description");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_3_0();
+			element = grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_4_0();
 			return obj;
 		}
 		return null;
@@ -3462,19 +3527,19 @@ protected class Property_DescriptionAssignment_3 extends AssignmentToken  {
 }
 
 // "defaultPropValue:"
-protected class Property_DefaultPropValueKeyword_4 extends KeywordToken  {
+protected class Property_DefaultPropValueKeyword_5 extends KeywordToken  {
 	
-	public Property_DefaultPropValueKeyword_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Property_DefaultPropValueKeyword_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_4();
+		return grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_5();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_DescriptionAssignment_3(parent, this, 0, inst);
+			case 0: return new Property_DescriptionAssignment_4(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -3482,20 +3547,20 @@ protected class Property_DefaultPropValueKeyword_4 extends KeywordToken  {
 }
 
 // DefaultPropValue+=STRING*
-protected class Property_DefaultPropValueAssignment_5 extends AssignmentToken  {
+protected class Property_DefaultPropValueAssignment_6 extends AssignmentToken  {
 	
-	public Property_DefaultPropValueAssignment_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Property_DefaultPropValueAssignment_6(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_5();
+		return grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_6();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Property_DefaultPropValueAssignment_5(parent, this, 0, inst);
-			case 1: return new Property_DefaultPropValueKeyword_4(parent, this, 1, inst);
+			case 0: return new Property_DefaultPropValueAssignment_6(parent, this, 0, inst);
+			case 1: return new Property_DefaultPropValueKeyword_5(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -3505,7 +3570,7 @@ protected class Property_DefaultPropValueAssignment_5 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("DefaultPropValue");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_5_0();
+			element = grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_6_0();
 			return obj;
 		}
 		return null;

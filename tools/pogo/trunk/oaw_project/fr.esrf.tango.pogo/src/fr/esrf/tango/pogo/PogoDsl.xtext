@@ -96,6 +96,7 @@ ClassDescription:
 	filestogenerate= STRING			//	File(s) to generate (code, makefile,....)
 	identification = ClassIdentification
 	comments       = Comments
+	hasMandatoryProperty  = Boolean
 	hasAbstractCommand    = Boolean
 	hasAbstractAttribute  = Boolean
 	hasDynamicAttribute   = Boolean
@@ -155,6 +156,7 @@ Property:
 	name        = ID
 	type        = PropType
 	status      = InheritanceStatus
+	mandatory   = Boolean
 	description = STRING
 	"defaultPropValue:"
 		(DefaultPropValue+=STRING)*;
