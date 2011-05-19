@@ -39,13 +39,7 @@ namespace «name»_ns
 «IF deviceProperties.size > 0-»
 «EXPAND device::properties::cppFile-»
 «ENDIF»
-«EXPAND Common::methodHeader("always_executed_hook",
-		"method always executed before any command is executed")-»
-void «name»::always_executed_hook()
-{
-	INFO_STREAM << "«name»::always_executed_hook()  " << device_name << endl;
-	«EXPAND Common::ProtectedArea("always_executed_hook", "//	code always executed before all requests")-»
-}
+«EXPAND alwaysExecutedHookMethod»
 
 «EXPAND device::attributes::cppFile-»
 
@@ -57,3 +51,29 @@ void «name»::always_executed_hook()
 «ENDIF»
 «ENDDEFINE»
 
+
+//============================================================
+//	always_executed_hook method
+/============================================================
+«DEFINE alwaysExecutedHookMethod FOR PogoDeviceClass»
+«EXPAND Common::methodHeader("always_executed_hook",
+		"method always executed before any command is executed")-»
+void «name»::always_executed_hook()
+{
+	INFO_STREAM << "«name»::always_executed_hook()  " << device_name << endl;
+	«IF description.hasMandatoryProperty=="true"» «EXPAND checkMandatoryStatusCode»«ENDIF»
+	«EXPAND Common::ProtectedArea("always_executed_hook", "//	code always executed before all requests")-»
+}
+«ENDDEFINE»
+
+
+«DEFINE checkMandatoryStatusCode FOR PogoDeviceClass»
+	if (mandatoryNotDefined)
+	{
+		string	status(get_status());
+		Tango::Except::throw_exception(
+					(const char *)"PROPERTY_NOT_SET",
+					status.c_str(),
+					(const char *)"«name»::always_executed_hook()");
+	}
+«ENDDEFINE»

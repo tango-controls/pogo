@@ -29,7 +29,10 @@ void «name»::init_device()
 	
 	//	Get the device properties (if any) from database
 	get_device_property();
+	«IF description.hasMandatoryProperty=="true"»if (mandatoryNotDefined)
+		return;
 	«ENDIF»
+	«ENDIF-»
 	«EXPAND attributes::allocateReadMembers-»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device", "//	Initialize device")-»
 }

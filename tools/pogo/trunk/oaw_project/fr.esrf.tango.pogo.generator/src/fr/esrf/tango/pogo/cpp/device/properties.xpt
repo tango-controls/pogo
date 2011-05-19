@@ -10,12 +10,16 @@
 «IF deviceProperties.size>0-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
 		"get_device_property",
-		"//	Add your own code to initialize")-»
+		"Read database to initialize property data members.")-»
 void «name»::get_device_property()
 {
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		"get_device_property_before",
 		"//	Initialize property data members")»
+«IF description.hasMandatoryProperty=="true"-»
+	mandatoryNotDefined = false;
+	set_status("Initializing....");
+«ENDIF-»
 «EXPAND getDevicePropertyFromDatabase»
 «FOREACH deviceProperties AS prop-»
 	«IF prop.status.concreteHere=="true"-»
@@ -28,6 +32,7 @@ void «name»::get_device_property()
 		"//	Check device property data members init")»
 «ENDIF-»
 }
+«IF description.hasMandatoryProperty=="true"» «EXPAND checkMandatoryPropertyMethod» «ENDIF-»
 «ENDDEFINE»
 
 
@@ -73,4 +78,34 @@ void «name»::get_device_property()
 		}
 		//	And try to extract «prop.name» value from database
 		if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  «prop.name.dataMemberName()»;
+	«IF prop.mandatory=="true"-»
+		//	Property «prop.name» is mandatory, check if has been defined in database.
+		check_mandatory_property(cl_prop, dev_prop[i]);
+	«ENDIF-»
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define code to check mandatory properties
+//	=========================================================
+«DEFINE checkMandatoryPropertyMethod FOR PogoDeviceClass-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		"check_mandatory_property",
+		"For mandatory properties check if defined in database.")-»
+void «name»::check_mandatory_property(Tango::DbDatum &class_prop, Tango::DbDatum &dev_prop)
+{
+	//	Check if all properties are empty
+	if (class_prop.is_empty() && dev_prop.is_empty())
+	{
+		TangoSys_OMemStream	tms;
+		tms << endl <<"Property \'" << dev_prop.name << "\' is mandatory but not defined in database";
+		string	status(get_status());
+		status += tms.str();
+		set_status(status);
+		mandatoryNotDefined = true;
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+		"check_mandatory_property",
+		"	cerr << tms.str() << \" for \" << device_name << endl;")»
+	}
+}
 «ENDDEFINE»

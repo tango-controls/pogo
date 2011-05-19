@@ -1,3 +1,6 @@
+//	=========================================================
+//	Define code for MyDevice.h file.
+//	=========================================================
 «IMPORT pogoDsl»
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
 «EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»

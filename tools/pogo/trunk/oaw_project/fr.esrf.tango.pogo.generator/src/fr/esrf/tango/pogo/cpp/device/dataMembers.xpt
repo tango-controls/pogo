@@ -16,8 +16,9 @@ public:«FOREACH deviceProperties AS prop-»
 	//	«prop.name»:	«prop.description.comments("	//	")»
 	«prop.type.cppPropType()»	«prop.name.dataMemberName()»;
 	«ENDIF»«ENDFOREACH-»
-	
-
+	«IF description.hasMandatoryProperty=="true"»
+	bool	mandatoryNotDefined;
+	«ENDIF»
 //	Attribute data members
 public:
 	«FOREACH attributes AS att-»
