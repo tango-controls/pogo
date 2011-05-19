@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PropertyImpl#getDefaultPropValue <em>Default Prop Value</em>}</li>
  * </ul>
@@ -83,6 +84,26 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @ordered
    */
   protected InheritanceStatus status;
+
+  /**
+   * The default value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMandatory()
+   * @generated
+   * @ordered
+   */
+  protected static final String MANDATORY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMandatory()
+   * @generated
+   * @ordered
+   */
+  protected String mandatory = MANDATORY_EDEFAULT;
 
   /**
    * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -259,6 +280,29 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getMandatory()
+  {
+    return mandatory;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMandatory(String newMandatory)
+  {
+    String oldMandatory = mandatory;
+    mandatory = newMandatory;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.PROPERTY__MANDATORY, oldMandatory, mandatory));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getDescription()
   {
     return description;
@@ -325,6 +369,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return getType();
       case PogoDslPackage.PROPERTY__STATUS:
         return getStatus();
+      case PogoDslPackage.PROPERTY__MANDATORY:
+        return getMandatory();
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         return getDescription();
       case PogoDslPackage.PROPERTY__DEFAULT_PROP_VALUE:
@@ -352,6 +398,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return;
       case PogoDslPackage.PROPERTY__STATUS:
         setStatus((InheritanceStatus)newValue);
+        return;
+      case PogoDslPackage.PROPERTY__MANDATORY:
+        setMandatory((String)newValue);
         return;
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         setDescription((String)newValue);
@@ -383,6 +432,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case PogoDslPackage.PROPERTY__STATUS:
         setStatus((InheritanceStatus)null);
         return;
+      case PogoDslPackage.PROPERTY__MANDATORY:
+        setMandatory(MANDATORY_EDEFAULT);
+        return;
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
@@ -409,6 +461,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return type != null;
       case PogoDslPackage.PROPERTY__STATUS:
         return status != null;
+      case PogoDslPackage.PROPERTY__MANDATORY:
+        return MANDATORY_EDEFAULT == null ? mandatory != null : !MANDATORY_EDEFAULT.equals(mandatory);
       case PogoDslPackage.PROPERTY__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case PogoDslPackage.PROPERTY__DEFAULT_PROP_VALUE:
@@ -430,6 +484,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", mandatory: ");
+    result.append(mandatory);
     result.append(", description: ");
     result.append(description);
     result.append(", DefaultPropValue: ");

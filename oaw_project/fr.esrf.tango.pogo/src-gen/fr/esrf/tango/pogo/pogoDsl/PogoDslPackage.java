@@ -498,13 +498,22 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__COMMENTS = 7;
 
   /**
+   * The feature id for the '<em><b>Has Mandatory Property</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY = 8;
+
+  /**
    * The feature id for the '<em><b>Has Abstract Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 8;
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 9;
 
   /**
    * The feature id for the '<em><b>Has Abstract Attribute</b></em>' attribute.
@@ -513,7 +522,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 9;
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 10;
 
   /**
    * The feature id for the '<em><b>Has Dynamic Attribute</b></em>' attribute.
@@ -522,7 +531,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE = 10;
+  int CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE = 11;
 
   /**
    * The feature id for the '<em><b>Description Html Exists</b></em>' attribute.
@@ -531,7 +540,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 11;
+  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 12;
 
   /**
    * The number of structural features of the '<em>Class Description</em>' class.
@@ -540,7 +549,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION_FEATURE_COUNT = 12;
+  int CLASS_DESCRIPTION_FEATURE_COUNT = 13;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -846,13 +855,22 @@ public interface PogoDslPackage extends EPackage
   int PROPERTY__STATUS = 2;
 
   /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__MANDATORY = 3;
+
+  /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__DESCRIPTION = 3;
+  int PROPERTY__DESCRIPTION = 4;
 
   /**
    * The feature id for the '<em><b>Default Prop Value</b></em>' attribute list.
@@ -861,7 +879,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__DEFAULT_PROP_VALUE = 4;
+  int PROPERTY__DEFAULT_PROP_VALUE = 5;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -870,7 +888,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 5;
+  int PROPERTY_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PropTypeImpl <em>Prop Type</em>}' class.
@@ -2682,6 +2700,17 @@ public interface PogoDslPackage extends EPackage
   EReference getClassDescription_Comments();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasMandatoryProperty <em>Has Mandatory Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Mandatory Property</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasMandatoryProperty()
+   * @see #getClassDescription()
+   * @generated
+   */
+  EAttribute getClassDescription_HasMandatoryProperty();
+
+  /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3026,6 +3055,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EReference getProperty_Status();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Property#getMandatory <em>Mandatory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Property#getMandatory()
+   * @see #getProperty()
+   * @generated
+   */
+  EAttribute getProperty_Mandatory();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Property#getDescription <em>Description</em>}'.
@@ -4473,6 +4513,14 @@ public interface PogoDslPackage extends EPackage
     EReference CLASS_DESCRIPTION__COMMENTS = eINSTANCE.getClassDescription_Comments();
 
     /**
+     * The meta object literal for the '<em><b>Has Mandatory Property</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY = eINSTANCE.getClassDescription_HasMandatoryProperty();
+
+    /**
      * The meta object literal for the '<em><b>Has Abstract Command</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4739,6 +4787,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EReference PROPERTY__STATUS = eINSTANCE.getProperty_Status();
+
+    /**
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY__MANDATORY = eINSTANCE.getProperty_Mandatory();
 
     /**
      * The meta object literal for the '<em><b>Description</b></em>' attribute feature.

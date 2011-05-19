@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getIdentification <em>Identification</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getComments <em>Comments</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasMandatoryProperty <em>Has Mandatory Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasAbstractAttribute <em>Has Abstract Attribute</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasDynamicAttribute <em>Has Dynamic Attribute</em>}</li>
@@ -182,6 +183,26 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected Comments comments;
+
+  /**
+   * The default value of the '{@link #getHasMandatoryProperty() <em>Has Mandatory Property</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHasMandatoryProperty()
+   * @generated
+   * @ordered
+   */
+  protected static final String HAS_MANDATORY_PROPERTY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getHasMandatoryProperty() <em>Has Mandatory Property</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHasMandatoryProperty()
+   * @generated
+   * @ordered
+   */
+  protected String hasMandatoryProperty = HAS_MANDATORY_PROPERTY_EDEFAULT;
 
   /**
    * The default value of the '{@link #getHasAbstractCommand() <em>Has Abstract Command</em>}' attribute.
@@ -514,6 +535,29 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getHasMandatoryProperty()
+  {
+    return hasMandatoryProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasMandatoryProperty(String newHasMandatoryProperty)
+  {
+    String oldHasMandatoryProperty = hasMandatoryProperty;
+    hasMandatoryProperty = newHasMandatoryProperty;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY, oldHasMandatoryProperty, hasMandatoryProperty));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getHasAbstractCommand()
   {
     return hasAbstractCommand;
@@ -647,6 +691,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return getIdentification();
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         return getComments();
+      case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
+        return getHasMandatoryProperty();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND:
         return getHasAbstractCommand();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE:
@@ -694,6 +740,9 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return;
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         setComments((Comments)newValue);
+        return;
+      case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
+        setHasMandatoryProperty((String)newValue);
         return;
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND:
         setHasAbstractCommand((String)newValue);
@@ -745,6 +794,9 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         setComments((Comments)null);
         return;
+      case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
+        setHasMandatoryProperty(HAS_MANDATORY_PROPERTY_EDEFAULT);
+        return;
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND:
         setHasAbstractCommand(HAS_ABSTRACT_COMMAND_EDEFAULT);
         return;
@@ -787,6 +839,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return identification != null;
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         return comments != null;
+      case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
+        return HAS_MANDATORY_PROPERTY_EDEFAULT == null ? hasMandatoryProperty != null : !HAS_MANDATORY_PROPERTY_EDEFAULT.equals(hasMandatoryProperty);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND:
         return HAS_ABSTRACT_COMMAND_EDEFAULT == null ? hasAbstractCommand != null : !HAS_ABSTRACT_COMMAND_EDEFAULT.equals(hasAbstractCommand);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE:
@@ -820,6 +874,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
     result.append(language);
     result.append(", filestogenerate: ");
     result.append(filestogenerate);
+    result.append(", hasMandatoryProperty: ");
+    result.append(hasMandatoryProperty);
     result.append(", hasAbstractCommand: ");
     result.append(hasAbstractCommand);
     result.append(", hasAbstractAttribute: ");

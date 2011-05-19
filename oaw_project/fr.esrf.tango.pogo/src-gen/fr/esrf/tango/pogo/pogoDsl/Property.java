@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getType <em>Type</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getStatus <em>Status</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Property#getDefaultPropValue <em>Default Prop Value</em>}</li>
  * </ul>
@@ -108,6 +109,32 @@ public interface Property extends EObject
    * @generated
    */
   void setStatus(InheritanceStatus value);
+
+  /**
+   * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Mandatory</em>' attribute.
+   * @see #setMandatory(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getProperty_Mandatory()
+   * @model
+   * @generated
+   */
+  String getMandatory();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Property#getMandatory <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Mandatory</em>' attribute.
+   * @see #getMandatory()
+   * @generated
+   */
+  void setMandatory(String value);
 
   /**
    * Returns the value of the '<em><b>Description</b></em>' attribute.
