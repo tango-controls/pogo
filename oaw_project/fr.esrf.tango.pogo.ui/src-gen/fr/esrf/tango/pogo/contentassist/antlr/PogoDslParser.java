@@ -141,10 +141,11 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassDescriptionAccess().getFilestogenerateAssignment_6(), "rule__ClassDescription__FilestogenerateAssignment_6");
 					put(grammarAccess.getClassDescriptionAccess().getIdentificationAssignment_7(), "rule__ClassDescription__IdentificationAssignment_7");
 					put(grammarAccess.getClassDescriptionAccess().getCommentsAssignment_8(), "rule__ClassDescription__CommentsAssignment_8");
-					put(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_9(), "rule__ClassDescription__HasAbstractCommandAssignment_9");
-					put(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_10(), "rule__ClassDescription__HasAbstractAttributeAssignment_10");
-					put(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_11(), "rule__ClassDescription__HasDynamicAttributeAssignment_11");
-					put(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12(), "rule__ClassDescription__DescriptionHtmlExistsAssignment_12");
+					put(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyAssignment_9(), "rule__ClassDescription__HasMandatoryPropertyAssignment_9");
+					put(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10(), "rule__ClassDescription__HasAbstractCommandAssignment_10");
+					put(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11(), "rule__ClassDescription__HasAbstractAttributeAssignment_11");
+					put(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12(), "rule__ClassDescription__HasDynamicAttributeAssignment_12");
+					put(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13(), "rule__ClassDescription__DescriptionHtmlExistsAssignment_13");
 					put(grammarAccess.getInheritanceAccess().getClassnameAssignment_0(), "rule__Inheritance__ClassnameAssignment_0");
 					put(grammarAccess.getInheritanceAccess().getSourcePathAssignment_1(), "rule__Inheritance__SourcePathAssignment_1");
 					put(grammarAccess.getClassIdentificationAccess().getContactAssignment_0(), "rule__ClassIdentification__ContactAssignment_0");
@@ -167,8 +168,9 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyAccess().getNameAssignment_0(), "rule__Property__NameAssignment_0");
 					put(grammarAccess.getPropertyAccess().getTypeAssignment_1(), "rule__Property__TypeAssignment_1");
 					put(grammarAccess.getPropertyAccess().getStatusAssignment_2(), "rule__Property__StatusAssignment_2");
-					put(grammarAccess.getPropertyAccess().getDescriptionAssignment_3(), "rule__Property__DescriptionAssignment_3");
-					put(grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_5(), "rule__Property__DefaultPropValueAssignment_5");
+					put(grammarAccess.getPropertyAccess().getMandatoryAssignment_3(), "rule__Property__MandatoryAssignment_3");
+					put(grammarAccess.getPropertyAccess().getDescriptionAssignment_4(), "rule__Property__DescriptionAssignment_4");
+					put(grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_6(), "rule__Property__DefaultPropValueAssignment_6");
 					put(grammarAccess.getInheritanceStatusAccess().getAbstractAssignment_0(), "rule__InheritanceStatus__AbstractAssignment_0");
 					put(grammarAccess.getInheritanceStatusAccess().getInheritedAssignment_1(), "rule__InheritanceStatus__InheritedAssignment_1");
 					put(grammarAccess.getInheritanceStatusAccess().getConcreteAssignment_2(), "rule__InheritanceStatus__ConcreteAssignment_2");
