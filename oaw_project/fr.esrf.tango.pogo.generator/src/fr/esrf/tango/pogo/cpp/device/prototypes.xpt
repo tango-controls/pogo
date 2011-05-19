@@ -60,6 +60,12 @@ public: «FOREACH commands AS cmd»
 	 *	Always executed method before execution command method.
 	 */
 	virtual void always_executed_hook();
+	«IF description.hasMandatoryProperty=="true"-»
+	/**
+	 *	Check if mandatory property has been set
+	 */
+	 void check_mandatory_property(Tango::DbDatum &class_prop, Tango::DbDatum &dev_prop);
+	«ENDIF-»
 «ENDDEFINE»
 
 //	=========================================================
