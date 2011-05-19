@@ -7502,10 +7502,13 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
                     if ( (LA13_2==RULE_STRING) ) {
                         int LA13_3 = input.LA(3);
 
-                        if ( (LA13_3==RULE_STRING) ) {
-                            int LA13_4 = input.LA(4);
+                        if ( (LA13_3==EOF) ) {
+                            alt13=1;
+                        }
+                        else if ( (LA13_3==RULE_STRING) ) {
+                            int LA13_5 = input.LA(4);
 
-                            if ( (LA13_4==RULE_STRING) ) {
+                            if ( (LA13_5==RULE_STRING) ) {
                                 int LA13_6 = input.LA(5);
 
                                 if ( (LA13_6==EOF||LA13_6==RULE_STRING) ) {
@@ -7516,9 +7519,6 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
                             }
 
 
-                        }
-                        else if ( (LA13_3==EOF) ) {
-                            alt13=1;
                         }
 
 
@@ -9232,30 +9232,30 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__Group__9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3378:1: rule__ClassDescription__Group__9 : ( ( rule__ClassDescription__HasAbstractCommandAssignment_9 ) ) rule__ClassDescription__Group__10 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3378:1: rule__ClassDescription__Group__9 : ( ( rule__ClassDescription__HasMandatoryPropertyAssignment_9 ) ) rule__ClassDescription__Group__10 ;
     public final void rule__ClassDescription__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3382:1: ( ( ( rule__ClassDescription__HasAbstractCommandAssignment_9 ) ) rule__ClassDescription__Group__10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3383:1: ( ( rule__ClassDescription__HasAbstractCommandAssignment_9 ) ) rule__ClassDescription__Group__10
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3382:1: ( ( ( rule__ClassDescription__HasMandatoryPropertyAssignment_9 ) ) rule__ClassDescription__Group__10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3383:1: ( ( rule__ClassDescription__HasMandatoryPropertyAssignment_9 ) ) rule__ClassDescription__Group__10
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3383:1: ( ( rule__ClassDescription__HasAbstractCommandAssignment_9 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3384:1: ( rule__ClassDescription__HasAbstractCommandAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3383:1: ( ( rule__ClassDescription__HasMandatoryPropertyAssignment_9 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3384:1: ( rule__ClassDescription__HasMandatoryPropertyAssignment_9 )
             {
-             before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_9()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3385:1: ( rule__ClassDescription__HasAbstractCommandAssignment_9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3385:2: rule__ClassDescription__HasAbstractCommandAssignment_9
+             before(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyAssignment_9()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3385:1: ( rule__ClassDescription__HasMandatoryPropertyAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3385:2: rule__ClassDescription__HasMandatoryPropertyAssignment_9
             {
-            pushFollow(FOLLOW_rule__ClassDescription__HasAbstractCommandAssignment_9_in_rule__ClassDescription__Group__97233);
-            rule__ClassDescription__HasAbstractCommandAssignment_9();
+            pushFollow(FOLLOW_rule__ClassDescription__HasMandatoryPropertyAssignment_9_in_rule__ClassDescription__Group__97233);
+            rule__ClassDescription__HasMandatoryPropertyAssignment_9();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_9()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyAssignment_9()); 
 
             }
 
@@ -9282,30 +9282,30 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__Group__10
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3396:1: rule__ClassDescription__Group__10 : ( ( rule__ClassDescription__HasAbstractAttributeAssignment_10 ) ) rule__ClassDescription__Group__11 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3396:1: rule__ClassDescription__Group__10 : ( ( rule__ClassDescription__HasAbstractCommandAssignment_10 ) ) rule__ClassDescription__Group__11 ;
     public final void rule__ClassDescription__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3400:1: ( ( ( rule__ClassDescription__HasAbstractAttributeAssignment_10 ) ) rule__ClassDescription__Group__11 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3401:1: ( ( rule__ClassDescription__HasAbstractAttributeAssignment_10 ) ) rule__ClassDescription__Group__11
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3400:1: ( ( ( rule__ClassDescription__HasAbstractCommandAssignment_10 ) ) rule__ClassDescription__Group__11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3401:1: ( ( rule__ClassDescription__HasAbstractCommandAssignment_10 ) ) rule__ClassDescription__Group__11
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3401:1: ( ( rule__ClassDescription__HasAbstractAttributeAssignment_10 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3402:1: ( rule__ClassDescription__HasAbstractAttributeAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3401:1: ( ( rule__ClassDescription__HasAbstractCommandAssignment_10 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3402:1: ( rule__ClassDescription__HasAbstractCommandAssignment_10 )
             {
-             before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_10()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3403:1: ( rule__ClassDescription__HasAbstractAttributeAssignment_10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3403:2: rule__ClassDescription__HasAbstractAttributeAssignment_10
+             before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3403:1: ( rule__ClassDescription__HasAbstractCommandAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3403:2: rule__ClassDescription__HasAbstractCommandAssignment_10
             {
-            pushFollow(FOLLOW_rule__ClassDescription__HasAbstractAttributeAssignment_10_in_rule__ClassDescription__Group__107270);
-            rule__ClassDescription__HasAbstractAttributeAssignment_10();
+            pushFollow(FOLLOW_rule__ClassDescription__HasAbstractCommandAssignment_10_in_rule__ClassDescription__Group__107270);
+            rule__ClassDescription__HasAbstractCommandAssignment_10();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_10()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10()); 
 
             }
 
@@ -9332,30 +9332,30 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__Group__11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3414:1: rule__ClassDescription__Group__11 : ( ( rule__ClassDescription__HasDynamicAttributeAssignment_11 ) ) rule__ClassDescription__Group__12 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3414:1: rule__ClassDescription__Group__11 : ( ( rule__ClassDescription__HasAbstractAttributeAssignment_11 ) ) rule__ClassDescription__Group__12 ;
     public final void rule__ClassDescription__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3418:1: ( ( ( rule__ClassDescription__HasDynamicAttributeAssignment_11 ) ) rule__ClassDescription__Group__12 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3419:1: ( ( rule__ClassDescription__HasDynamicAttributeAssignment_11 ) ) rule__ClassDescription__Group__12
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3418:1: ( ( ( rule__ClassDescription__HasAbstractAttributeAssignment_11 ) ) rule__ClassDescription__Group__12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3419:1: ( ( rule__ClassDescription__HasAbstractAttributeAssignment_11 ) ) rule__ClassDescription__Group__12
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3419:1: ( ( rule__ClassDescription__HasDynamicAttributeAssignment_11 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3420:1: ( rule__ClassDescription__HasDynamicAttributeAssignment_11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3419:1: ( ( rule__ClassDescription__HasAbstractAttributeAssignment_11 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3420:1: ( rule__ClassDescription__HasAbstractAttributeAssignment_11 )
             {
-             before(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_11()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3421:1: ( rule__ClassDescription__HasDynamicAttributeAssignment_11 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3421:2: rule__ClassDescription__HasDynamicAttributeAssignment_11
+             before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3421:1: ( rule__ClassDescription__HasAbstractAttributeAssignment_11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3421:2: rule__ClassDescription__HasAbstractAttributeAssignment_11
             {
-            pushFollow(FOLLOW_rule__ClassDescription__HasDynamicAttributeAssignment_11_in_rule__ClassDescription__Group__117307);
-            rule__ClassDescription__HasDynamicAttributeAssignment_11();
+            pushFollow(FOLLOW_rule__ClassDescription__HasAbstractAttributeAssignment_11_in_rule__ClassDescription__Group__117307);
+            rule__ClassDescription__HasAbstractAttributeAssignment_11();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_11()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11()); 
 
             }
 
@@ -9382,32 +9382,36 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__Group__12
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3432:1: rule__ClassDescription__Group__12 : ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_12 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3432:1: rule__ClassDescription__Group__12 : ( ( rule__ClassDescription__HasDynamicAttributeAssignment_12 ) ) rule__ClassDescription__Group__13 ;
     public final void rule__ClassDescription__Group__12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3436:1: ( ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_12 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3437:1: ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_12 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3436:1: ( ( ( rule__ClassDescription__HasDynamicAttributeAssignment_12 ) ) rule__ClassDescription__Group__13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3437:1: ( ( rule__ClassDescription__HasDynamicAttributeAssignment_12 ) ) rule__ClassDescription__Group__13
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3437:1: ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_12 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3438:1: ( rule__ClassDescription__DescriptionHtmlExistsAssignment_12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3437:1: ( ( rule__ClassDescription__HasDynamicAttributeAssignment_12 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3438:1: ( rule__ClassDescription__HasDynamicAttributeAssignment_12 )
             {
-             before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3439:1: ( rule__ClassDescription__DescriptionHtmlExistsAssignment_12 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3439:2: rule__ClassDescription__DescriptionHtmlExistsAssignment_12
+             before(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3439:1: ( rule__ClassDescription__HasDynamicAttributeAssignment_12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3439:2: rule__ClassDescription__HasDynamicAttributeAssignment_12
             {
-            pushFollow(FOLLOW_rule__ClassDescription__DescriptionHtmlExistsAssignment_12_in_rule__ClassDescription__Group__127344);
-            rule__ClassDescription__DescriptionHtmlExistsAssignment_12();
+            pushFollow(FOLLOW_rule__ClassDescription__HasDynamicAttributeAssignment_12_in_rule__ClassDescription__Group__127344);
+            rule__ClassDescription__HasDynamicAttributeAssignment_12();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12()); 
 
             }
+
+            pushFollow(FOLLOW_rule__ClassDescription__Group__13_in_rule__ClassDescription__Group__127353);
+            rule__ClassDescription__Group__13();
+            _fsp--;
 
 
             }
@@ -9427,24 +9431,70 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__ClassDescription__Group__12
 
 
+    // $ANTLR start rule__ClassDescription__Group__13
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3450:1: rule__ClassDescription__Group__13 : ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_13 ) ) ;
+    public final void rule__ClassDescription__Group__13() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3454:1: ( ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_13 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3455:1: ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_13 ) )
+            {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3455:1: ( ( rule__ClassDescription__DescriptionHtmlExistsAssignment_13 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3456:1: ( rule__ClassDescription__DescriptionHtmlExistsAssignment_13 )
+            {
+             before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3457:1: ( rule__ClassDescription__DescriptionHtmlExistsAssignment_13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3457:2: rule__ClassDescription__DescriptionHtmlExistsAssignment_13
+            {
+            pushFollow(FOLLOW_rule__ClassDescription__DescriptionHtmlExistsAssignment_13_in_rule__ClassDescription__Group__137381);
+            rule__ClassDescription__DescriptionHtmlExistsAssignment_13();
+            _fsp--;
+
+
+            }
+
+             after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end rule__ClassDescription__Group__13
+
+
     // $ANTLR start rule__Inheritance__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3475:1: rule__Inheritance__Group__0 : ( ( rule__Inheritance__ClassnameAssignment_0 ) ) rule__Inheritance__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3495:1: rule__Inheritance__Group__0 : ( ( rule__Inheritance__ClassnameAssignment_0 ) ) rule__Inheritance__Group__1 ;
     public final void rule__Inheritance__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3479:1: ( ( ( rule__Inheritance__ClassnameAssignment_0 ) ) rule__Inheritance__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3480:1: ( ( rule__Inheritance__ClassnameAssignment_0 ) ) rule__Inheritance__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3499:1: ( ( ( rule__Inheritance__ClassnameAssignment_0 ) ) rule__Inheritance__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3500:1: ( ( rule__Inheritance__ClassnameAssignment_0 ) ) rule__Inheritance__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3480:1: ( ( rule__Inheritance__ClassnameAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3481:1: ( rule__Inheritance__ClassnameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3500:1: ( ( rule__Inheritance__ClassnameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3501:1: ( rule__Inheritance__ClassnameAssignment_0 )
             {
              before(grammarAccess.getInheritanceAccess().getClassnameAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3482:1: ( rule__Inheritance__ClassnameAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3482:2: rule__Inheritance__ClassnameAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3502:1: ( rule__Inheritance__ClassnameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3502:2: rule__Inheritance__ClassnameAssignment_0
             {
-            pushFollow(FOLLOW_rule__Inheritance__ClassnameAssignment_0_in_rule__Inheritance__Group__07404);
+            pushFollow(FOLLOW_rule__Inheritance__ClassnameAssignment_0_in_rule__Inheritance__Group__07443);
             rule__Inheritance__ClassnameAssignment_0();
             _fsp--;
 
@@ -9455,7 +9505,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Inheritance__Group__1_in_rule__Inheritance__Group__07413);
+            pushFollow(FOLLOW_rule__Inheritance__Group__1_in_rule__Inheritance__Group__07452);
             rule__Inheritance__Group__1();
             _fsp--;
 
@@ -9478,23 +9528,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Inheritance__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3493:1: rule__Inheritance__Group__1 : ( ( rule__Inheritance__SourcePathAssignment_1 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3513:1: rule__Inheritance__Group__1 : ( ( rule__Inheritance__SourcePathAssignment_1 ) ) ;
     public final void rule__Inheritance__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3497:1: ( ( ( rule__Inheritance__SourcePathAssignment_1 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3498:1: ( ( rule__Inheritance__SourcePathAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3517:1: ( ( ( rule__Inheritance__SourcePathAssignment_1 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3518:1: ( ( rule__Inheritance__SourcePathAssignment_1 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3498:1: ( ( rule__Inheritance__SourcePathAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3499:1: ( rule__Inheritance__SourcePathAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3518:1: ( ( rule__Inheritance__SourcePathAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3519:1: ( rule__Inheritance__SourcePathAssignment_1 )
             {
              before(grammarAccess.getInheritanceAccess().getSourcePathAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3500:1: ( rule__Inheritance__SourcePathAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3500:2: rule__Inheritance__SourcePathAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3520:1: ( rule__Inheritance__SourcePathAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3520:2: rule__Inheritance__SourcePathAssignment_1
             {
-            pushFollow(FOLLOW_rule__Inheritance__SourcePathAssignment_1_in_rule__Inheritance__Group__17441);
+            pushFollow(FOLLOW_rule__Inheritance__SourcePathAssignment_1_in_rule__Inheritance__Group__17480);
             rule__Inheritance__SourcePathAssignment_1();
             _fsp--;
 
@@ -9524,23 +9574,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3514:1: rule__ClassIdentification__Group__0 : ( ( rule__ClassIdentification__ContactAssignment_0 ) ) rule__ClassIdentification__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3534:1: rule__ClassIdentification__Group__0 : ( ( rule__ClassIdentification__ContactAssignment_0 ) ) rule__ClassIdentification__Group__1 ;
     public final void rule__ClassIdentification__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3518:1: ( ( ( rule__ClassIdentification__ContactAssignment_0 ) ) rule__ClassIdentification__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3519:1: ( ( rule__ClassIdentification__ContactAssignment_0 ) ) rule__ClassIdentification__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3538:1: ( ( ( rule__ClassIdentification__ContactAssignment_0 ) ) rule__ClassIdentification__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3539:1: ( ( rule__ClassIdentification__ContactAssignment_0 ) ) rule__ClassIdentification__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3519:1: ( ( rule__ClassIdentification__ContactAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3520:1: ( rule__ClassIdentification__ContactAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3539:1: ( ( rule__ClassIdentification__ContactAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3540:1: ( rule__ClassIdentification__ContactAssignment_0 )
             {
              before(grammarAccess.getClassIdentificationAccess().getContactAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3521:1: ( rule__ClassIdentification__ContactAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3521:2: rule__ClassIdentification__ContactAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3541:1: ( rule__ClassIdentification__ContactAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3541:2: rule__ClassIdentification__ContactAssignment_0
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__ContactAssignment_0_in_rule__ClassIdentification__Group__07479);
+            pushFollow(FOLLOW_rule__ClassIdentification__ContactAssignment_0_in_rule__ClassIdentification__Group__07518);
             rule__ClassIdentification__ContactAssignment_0();
             _fsp--;
 
@@ -9551,7 +9601,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__1_in_rule__ClassIdentification__Group__07488);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__1_in_rule__ClassIdentification__Group__07527);
             rule__ClassIdentification__Group__1();
             _fsp--;
 
@@ -9574,23 +9624,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3532:1: rule__ClassIdentification__Group__1 : ( ( rule__ClassIdentification__AuthorAssignment_1 ) ) rule__ClassIdentification__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3552:1: rule__ClassIdentification__Group__1 : ( ( rule__ClassIdentification__AuthorAssignment_1 ) ) rule__ClassIdentification__Group__2 ;
     public final void rule__ClassIdentification__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3536:1: ( ( ( rule__ClassIdentification__AuthorAssignment_1 ) ) rule__ClassIdentification__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3537:1: ( ( rule__ClassIdentification__AuthorAssignment_1 ) ) rule__ClassIdentification__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3556:1: ( ( ( rule__ClassIdentification__AuthorAssignment_1 ) ) rule__ClassIdentification__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3557:1: ( ( rule__ClassIdentification__AuthorAssignment_1 ) ) rule__ClassIdentification__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3537:1: ( ( rule__ClassIdentification__AuthorAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3538:1: ( rule__ClassIdentification__AuthorAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3557:1: ( ( rule__ClassIdentification__AuthorAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3558:1: ( rule__ClassIdentification__AuthorAssignment_1 )
             {
              before(grammarAccess.getClassIdentificationAccess().getAuthorAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3539:1: ( rule__ClassIdentification__AuthorAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3539:2: rule__ClassIdentification__AuthorAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3559:1: ( rule__ClassIdentification__AuthorAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3559:2: rule__ClassIdentification__AuthorAssignment_1
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__AuthorAssignment_1_in_rule__ClassIdentification__Group__17516);
+            pushFollow(FOLLOW_rule__ClassIdentification__AuthorAssignment_1_in_rule__ClassIdentification__Group__17555);
             rule__ClassIdentification__AuthorAssignment_1();
             _fsp--;
 
@@ -9601,7 +9651,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__2_in_rule__ClassIdentification__Group__17525);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__2_in_rule__ClassIdentification__Group__17564);
             rule__ClassIdentification__Group__2();
             _fsp--;
 
@@ -9624,23 +9674,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3550:1: rule__ClassIdentification__Group__2 : ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) ) rule__ClassIdentification__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3570:1: rule__ClassIdentification__Group__2 : ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) ) rule__ClassIdentification__Group__3 ;
     public final void rule__ClassIdentification__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3554:1: ( ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) ) rule__ClassIdentification__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3555:1: ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) ) rule__ClassIdentification__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3574:1: ( ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) ) rule__ClassIdentification__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3575:1: ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) ) rule__ClassIdentification__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3555:1: ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3556:1: ( rule__ClassIdentification__EmailDomainAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3575:1: ( ( rule__ClassIdentification__EmailDomainAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3576:1: ( rule__ClassIdentification__EmailDomainAssignment_2 )
             {
              before(grammarAccess.getClassIdentificationAccess().getEmailDomainAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3557:1: ( rule__ClassIdentification__EmailDomainAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3557:2: rule__ClassIdentification__EmailDomainAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3577:1: ( rule__ClassIdentification__EmailDomainAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3577:2: rule__ClassIdentification__EmailDomainAssignment_2
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__EmailDomainAssignment_2_in_rule__ClassIdentification__Group__27553);
+            pushFollow(FOLLOW_rule__ClassIdentification__EmailDomainAssignment_2_in_rule__ClassIdentification__Group__27592);
             rule__ClassIdentification__EmailDomainAssignment_2();
             _fsp--;
 
@@ -9651,7 +9701,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__3_in_rule__ClassIdentification__Group__27562);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__3_in_rule__ClassIdentification__Group__27601);
             rule__ClassIdentification__Group__3();
             _fsp--;
 
@@ -9674,23 +9724,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3568:1: rule__ClassIdentification__Group__3 : ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) ) rule__ClassIdentification__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3588:1: rule__ClassIdentification__Group__3 : ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) ) rule__ClassIdentification__Group__4 ;
     public final void rule__ClassIdentification__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3572:1: ( ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) ) rule__ClassIdentification__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3573:1: ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) ) rule__ClassIdentification__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3592:1: ( ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) ) rule__ClassIdentification__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3593:1: ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) ) rule__ClassIdentification__Group__4
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3573:1: ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3574:1: ( rule__ClassIdentification__ClassFamilyAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3593:1: ( ( rule__ClassIdentification__ClassFamilyAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3594:1: ( rule__ClassIdentification__ClassFamilyAssignment_3 )
             {
              before(grammarAccess.getClassIdentificationAccess().getClassFamilyAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3575:1: ( rule__ClassIdentification__ClassFamilyAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3575:2: rule__ClassIdentification__ClassFamilyAssignment_3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3595:1: ( rule__ClassIdentification__ClassFamilyAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3595:2: rule__ClassIdentification__ClassFamilyAssignment_3
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__ClassFamilyAssignment_3_in_rule__ClassIdentification__Group__37590);
+            pushFollow(FOLLOW_rule__ClassIdentification__ClassFamilyAssignment_3_in_rule__ClassIdentification__Group__37629);
             rule__ClassIdentification__ClassFamilyAssignment_3();
             _fsp--;
 
@@ -9701,7 +9751,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__4_in_rule__ClassIdentification__Group__37599);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__4_in_rule__ClassIdentification__Group__37638);
             rule__ClassIdentification__Group__4();
             _fsp--;
 
@@ -9724,23 +9774,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3586:1: rule__ClassIdentification__Group__4 : ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) ) rule__ClassIdentification__Group__5 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3606:1: rule__ClassIdentification__Group__4 : ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) ) rule__ClassIdentification__Group__5 ;
     public final void rule__ClassIdentification__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3590:1: ( ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) ) rule__ClassIdentification__Group__5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3591:1: ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) ) rule__ClassIdentification__Group__5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3610:1: ( ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) ) rule__ClassIdentification__Group__5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3611:1: ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) ) rule__ClassIdentification__Group__5
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3591:1: ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3592:1: ( rule__ClassIdentification__SiteSpecificAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3611:1: ( ( rule__ClassIdentification__SiteSpecificAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3612:1: ( rule__ClassIdentification__SiteSpecificAssignment_4 )
             {
              before(grammarAccess.getClassIdentificationAccess().getSiteSpecificAssignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3593:1: ( rule__ClassIdentification__SiteSpecificAssignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3593:2: rule__ClassIdentification__SiteSpecificAssignment_4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3613:1: ( rule__ClassIdentification__SiteSpecificAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3613:2: rule__ClassIdentification__SiteSpecificAssignment_4
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__SiteSpecificAssignment_4_in_rule__ClassIdentification__Group__47627);
+            pushFollow(FOLLOW_rule__ClassIdentification__SiteSpecificAssignment_4_in_rule__ClassIdentification__Group__47666);
             rule__ClassIdentification__SiteSpecificAssignment_4();
             _fsp--;
 
@@ -9751,7 +9801,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__5_in_rule__ClassIdentification__Group__47636);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__5_in_rule__ClassIdentification__Group__47675);
             rule__ClassIdentification__Group__5();
             _fsp--;
 
@@ -9774,23 +9824,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3604:1: rule__ClassIdentification__Group__5 : ( ( rule__ClassIdentification__PlatformAssignment_5 ) ) rule__ClassIdentification__Group__6 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3624:1: rule__ClassIdentification__Group__5 : ( ( rule__ClassIdentification__PlatformAssignment_5 ) ) rule__ClassIdentification__Group__6 ;
     public final void rule__ClassIdentification__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3608:1: ( ( ( rule__ClassIdentification__PlatformAssignment_5 ) ) rule__ClassIdentification__Group__6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3609:1: ( ( rule__ClassIdentification__PlatformAssignment_5 ) ) rule__ClassIdentification__Group__6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3628:1: ( ( ( rule__ClassIdentification__PlatformAssignment_5 ) ) rule__ClassIdentification__Group__6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3629:1: ( ( rule__ClassIdentification__PlatformAssignment_5 ) ) rule__ClassIdentification__Group__6
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3609:1: ( ( rule__ClassIdentification__PlatformAssignment_5 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3610:1: ( rule__ClassIdentification__PlatformAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3629:1: ( ( rule__ClassIdentification__PlatformAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3630:1: ( rule__ClassIdentification__PlatformAssignment_5 )
             {
              before(grammarAccess.getClassIdentificationAccess().getPlatformAssignment_5()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3611:1: ( rule__ClassIdentification__PlatformAssignment_5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3611:2: rule__ClassIdentification__PlatformAssignment_5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3631:1: ( rule__ClassIdentification__PlatformAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3631:2: rule__ClassIdentification__PlatformAssignment_5
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__PlatformAssignment_5_in_rule__ClassIdentification__Group__57664);
+            pushFollow(FOLLOW_rule__ClassIdentification__PlatformAssignment_5_in_rule__ClassIdentification__Group__57703);
             rule__ClassIdentification__PlatformAssignment_5();
             _fsp--;
 
@@ -9801,7 +9851,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__6_in_rule__ClassIdentification__Group__57673);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__6_in_rule__ClassIdentification__Group__57712);
             rule__ClassIdentification__Group__6();
             _fsp--;
 
@@ -9824,23 +9874,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3622:1: rule__ClassIdentification__Group__6 : ( ( rule__ClassIdentification__BusAssignment_6 ) ) rule__ClassIdentification__Group__7 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3642:1: rule__ClassIdentification__Group__6 : ( ( rule__ClassIdentification__BusAssignment_6 ) ) rule__ClassIdentification__Group__7 ;
     public final void rule__ClassIdentification__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3626:1: ( ( ( rule__ClassIdentification__BusAssignment_6 ) ) rule__ClassIdentification__Group__7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3627:1: ( ( rule__ClassIdentification__BusAssignment_6 ) ) rule__ClassIdentification__Group__7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3646:1: ( ( ( rule__ClassIdentification__BusAssignment_6 ) ) rule__ClassIdentification__Group__7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3647:1: ( ( rule__ClassIdentification__BusAssignment_6 ) ) rule__ClassIdentification__Group__7
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3627:1: ( ( rule__ClassIdentification__BusAssignment_6 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3628:1: ( rule__ClassIdentification__BusAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3647:1: ( ( rule__ClassIdentification__BusAssignment_6 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3648:1: ( rule__ClassIdentification__BusAssignment_6 )
             {
              before(grammarAccess.getClassIdentificationAccess().getBusAssignment_6()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3629:1: ( rule__ClassIdentification__BusAssignment_6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3629:2: rule__ClassIdentification__BusAssignment_6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3649:1: ( rule__ClassIdentification__BusAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3649:2: rule__ClassIdentification__BusAssignment_6
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__BusAssignment_6_in_rule__ClassIdentification__Group__67701);
+            pushFollow(FOLLOW_rule__ClassIdentification__BusAssignment_6_in_rule__ClassIdentification__Group__67740);
             rule__ClassIdentification__BusAssignment_6();
             _fsp--;
 
@@ -9851,7 +9901,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__7_in_rule__ClassIdentification__Group__67710);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__7_in_rule__ClassIdentification__Group__67749);
             rule__ClassIdentification__Group__7();
             _fsp--;
 
@@ -9874,23 +9924,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3640:1: rule__ClassIdentification__Group__7 : ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) ) rule__ClassIdentification__Group__8 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3660:1: rule__ClassIdentification__Group__7 : ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) ) rule__ClassIdentification__Group__8 ;
     public final void rule__ClassIdentification__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3644:1: ( ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) ) rule__ClassIdentification__Group__8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3645:1: ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) ) rule__ClassIdentification__Group__8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3664:1: ( ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) ) rule__ClassIdentification__Group__8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3665:1: ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) ) rule__ClassIdentification__Group__8
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3645:1: ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3646:1: ( rule__ClassIdentification__ManufacturerAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3665:1: ( ( rule__ClassIdentification__ManufacturerAssignment_7 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3666:1: ( rule__ClassIdentification__ManufacturerAssignment_7 )
             {
              before(grammarAccess.getClassIdentificationAccess().getManufacturerAssignment_7()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3647:1: ( rule__ClassIdentification__ManufacturerAssignment_7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3647:2: rule__ClassIdentification__ManufacturerAssignment_7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3667:1: ( rule__ClassIdentification__ManufacturerAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3667:2: rule__ClassIdentification__ManufacturerAssignment_7
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__ManufacturerAssignment_7_in_rule__ClassIdentification__Group__77738);
+            pushFollow(FOLLOW_rule__ClassIdentification__ManufacturerAssignment_7_in_rule__ClassIdentification__Group__77777);
             rule__ClassIdentification__ManufacturerAssignment_7();
             _fsp--;
 
@@ -9901,7 +9951,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ClassIdentification__Group__8_in_rule__ClassIdentification__Group__77747);
+            pushFollow(FOLLOW_rule__ClassIdentification__Group__8_in_rule__ClassIdentification__Group__77786);
             rule__ClassIdentification__Group__8();
             _fsp--;
 
@@ -9924,23 +9974,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__Group__8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3658:1: rule__ClassIdentification__Group__8 : ( ( rule__ClassIdentification__ReferenceAssignment_8 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3678:1: rule__ClassIdentification__Group__8 : ( ( rule__ClassIdentification__ReferenceAssignment_8 ) ) ;
     public final void rule__ClassIdentification__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3662:1: ( ( ( rule__ClassIdentification__ReferenceAssignment_8 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3663:1: ( ( rule__ClassIdentification__ReferenceAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3682:1: ( ( ( rule__ClassIdentification__ReferenceAssignment_8 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3683:1: ( ( rule__ClassIdentification__ReferenceAssignment_8 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3663:1: ( ( rule__ClassIdentification__ReferenceAssignment_8 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3664:1: ( rule__ClassIdentification__ReferenceAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3683:1: ( ( rule__ClassIdentification__ReferenceAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3684:1: ( rule__ClassIdentification__ReferenceAssignment_8 )
             {
              before(grammarAccess.getClassIdentificationAccess().getReferenceAssignment_8()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3665:1: ( rule__ClassIdentification__ReferenceAssignment_8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3665:2: rule__ClassIdentification__ReferenceAssignment_8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3685:1: ( rule__ClassIdentification__ReferenceAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3685:2: rule__ClassIdentification__ReferenceAssignment_8
             {
-            pushFollow(FOLLOW_rule__ClassIdentification__ReferenceAssignment_8_in_rule__ClassIdentification__Group__87775);
+            pushFollow(FOLLOW_rule__ClassIdentification__ReferenceAssignment_8_in_rule__ClassIdentification__Group__87814);
             rule__ClassIdentification__ReferenceAssignment_8();
             _fsp--;
 
@@ -9970,23 +10020,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3693:1: rule__Preferences__Group__0 : ( ( rule__Preferences__DocHomeAssignment_0 ) ) rule__Preferences__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3713:1: rule__Preferences__Group__0 : ( ( rule__Preferences__DocHomeAssignment_0 ) ) rule__Preferences__Group__1 ;
     public final void rule__Preferences__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3697:1: ( ( ( rule__Preferences__DocHomeAssignment_0 ) ) rule__Preferences__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3698:1: ( ( rule__Preferences__DocHomeAssignment_0 ) ) rule__Preferences__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3717:1: ( ( ( rule__Preferences__DocHomeAssignment_0 ) ) rule__Preferences__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3718:1: ( ( rule__Preferences__DocHomeAssignment_0 ) ) rule__Preferences__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3698:1: ( ( rule__Preferences__DocHomeAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3699:1: ( rule__Preferences__DocHomeAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3718:1: ( ( rule__Preferences__DocHomeAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3719:1: ( rule__Preferences__DocHomeAssignment_0 )
             {
              before(grammarAccess.getPreferencesAccess().getDocHomeAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3700:1: ( rule__Preferences__DocHomeAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3700:2: rule__Preferences__DocHomeAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3720:1: ( rule__Preferences__DocHomeAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3720:2: rule__Preferences__DocHomeAssignment_0
             {
-            pushFollow(FOLLOW_rule__Preferences__DocHomeAssignment_0_in_rule__Preferences__Group__07827);
+            pushFollow(FOLLOW_rule__Preferences__DocHomeAssignment_0_in_rule__Preferences__Group__07866);
             rule__Preferences__DocHomeAssignment_0();
             _fsp--;
 
@@ -9997,7 +10047,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Preferences__Group__1_in_rule__Preferences__Group__07836);
+            pushFollow(FOLLOW_rule__Preferences__Group__1_in_rule__Preferences__Group__07875);
             rule__Preferences__Group__1();
             _fsp--;
 
@@ -10020,23 +10070,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3711:1: rule__Preferences__Group__1 : ( ( rule__Preferences__MakefileHomeAssignment_1 ) ) rule__Preferences__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3731:1: rule__Preferences__Group__1 : ( ( rule__Preferences__MakefileHomeAssignment_1 ) ) rule__Preferences__Group__2 ;
     public final void rule__Preferences__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3715:1: ( ( ( rule__Preferences__MakefileHomeAssignment_1 ) ) rule__Preferences__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3716:1: ( ( rule__Preferences__MakefileHomeAssignment_1 ) ) rule__Preferences__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3735:1: ( ( ( rule__Preferences__MakefileHomeAssignment_1 ) ) rule__Preferences__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3736:1: ( ( rule__Preferences__MakefileHomeAssignment_1 ) ) rule__Preferences__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3716:1: ( ( rule__Preferences__MakefileHomeAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3717:1: ( rule__Preferences__MakefileHomeAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3736:1: ( ( rule__Preferences__MakefileHomeAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3737:1: ( rule__Preferences__MakefileHomeAssignment_1 )
             {
              before(grammarAccess.getPreferencesAccess().getMakefileHomeAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3718:1: ( rule__Preferences__MakefileHomeAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3718:2: rule__Preferences__MakefileHomeAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3738:1: ( rule__Preferences__MakefileHomeAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3738:2: rule__Preferences__MakefileHomeAssignment_1
             {
-            pushFollow(FOLLOW_rule__Preferences__MakefileHomeAssignment_1_in_rule__Preferences__Group__17864);
+            pushFollow(FOLLOW_rule__Preferences__MakefileHomeAssignment_1_in_rule__Preferences__Group__17903);
             rule__Preferences__MakefileHomeAssignment_1();
             _fsp--;
 
@@ -10047,7 +10097,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Preferences__Group__2_in_rule__Preferences__Group__17873);
+            pushFollow(FOLLOW_rule__Preferences__Group__2_in_rule__Preferences__Group__17912);
             rule__Preferences__Group__2();
             _fsp--;
 
@@ -10070,23 +10120,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3729:1: rule__Preferences__Group__2 : ( ( rule__Preferences__InstallHomeAssignment_2 ) ) rule__Preferences__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3749:1: rule__Preferences__Group__2 : ( ( rule__Preferences__InstallHomeAssignment_2 ) ) rule__Preferences__Group__3 ;
     public final void rule__Preferences__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3733:1: ( ( ( rule__Preferences__InstallHomeAssignment_2 ) ) rule__Preferences__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3734:1: ( ( rule__Preferences__InstallHomeAssignment_2 ) ) rule__Preferences__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3753:1: ( ( ( rule__Preferences__InstallHomeAssignment_2 ) ) rule__Preferences__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3754:1: ( ( rule__Preferences__InstallHomeAssignment_2 ) ) rule__Preferences__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3734:1: ( ( rule__Preferences__InstallHomeAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3735:1: ( rule__Preferences__InstallHomeAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3754:1: ( ( rule__Preferences__InstallHomeAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3755:1: ( rule__Preferences__InstallHomeAssignment_2 )
             {
              before(grammarAccess.getPreferencesAccess().getInstallHomeAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3736:1: ( rule__Preferences__InstallHomeAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3736:2: rule__Preferences__InstallHomeAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3756:1: ( rule__Preferences__InstallHomeAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3756:2: rule__Preferences__InstallHomeAssignment_2
             {
-            pushFollow(FOLLOW_rule__Preferences__InstallHomeAssignment_2_in_rule__Preferences__Group__27901);
+            pushFollow(FOLLOW_rule__Preferences__InstallHomeAssignment_2_in_rule__Preferences__Group__27940);
             rule__Preferences__InstallHomeAssignment_2();
             _fsp--;
 
@@ -10097,7 +10147,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Preferences__Group__3_in_rule__Preferences__Group__27910);
+            pushFollow(FOLLOW_rule__Preferences__Group__3_in_rule__Preferences__Group__27949);
             rule__Preferences__Group__3();
             _fsp--;
 
@@ -10120,23 +10170,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3747:1: rule__Preferences__Group__3 : ( ( rule__Preferences__HtmlVersionAssignment_3 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3767:1: rule__Preferences__Group__3 : ( ( rule__Preferences__HtmlVersionAssignment_3 ) ) ;
     public final void rule__Preferences__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3751:1: ( ( ( rule__Preferences__HtmlVersionAssignment_3 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3752:1: ( ( rule__Preferences__HtmlVersionAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3771:1: ( ( ( rule__Preferences__HtmlVersionAssignment_3 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3772:1: ( ( rule__Preferences__HtmlVersionAssignment_3 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3752:1: ( ( rule__Preferences__HtmlVersionAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3753:1: ( rule__Preferences__HtmlVersionAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3772:1: ( ( rule__Preferences__HtmlVersionAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3773:1: ( rule__Preferences__HtmlVersionAssignment_3 )
             {
              before(grammarAccess.getPreferencesAccess().getHtmlVersionAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3754:1: ( rule__Preferences__HtmlVersionAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3754:2: rule__Preferences__HtmlVersionAssignment_3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3774:1: ( rule__Preferences__HtmlVersionAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3774:2: rule__Preferences__HtmlVersionAssignment_3
             {
-            pushFollow(FOLLOW_rule__Preferences__HtmlVersionAssignment_3_in_rule__Preferences__Group__37938);
+            pushFollow(FOLLOW_rule__Preferences__HtmlVersionAssignment_3_in_rule__Preferences__Group__37977);
             rule__Preferences__HtmlVersionAssignment_3();
             _fsp--;
 
@@ -10166,23 +10216,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__State__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3772:1: rule__State__Group__0 : ( ( rule__State__NameAssignment_0 ) ) rule__State__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3792:1: rule__State__Group__0 : ( ( rule__State__NameAssignment_0 ) ) rule__State__Group__1 ;
     public final void rule__State__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3776:1: ( ( ( rule__State__NameAssignment_0 ) ) rule__State__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3777:1: ( ( rule__State__NameAssignment_0 ) ) rule__State__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3796:1: ( ( ( rule__State__NameAssignment_0 ) ) rule__State__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3797:1: ( ( rule__State__NameAssignment_0 ) ) rule__State__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3777:1: ( ( rule__State__NameAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3778:1: ( rule__State__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3797:1: ( ( rule__State__NameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3798:1: ( rule__State__NameAssignment_0 )
             {
              before(grammarAccess.getStateAccess().getNameAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3779:1: ( rule__State__NameAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3779:2: rule__State__NameAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3799:1: ( rule__State__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3799:2: rule__State__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__State__NameAssignment_0_in_rule__State__Group__07980);
+            pushFollow(FOLLOW_rule__State__NameAssignment_0_in_rule__State__Group__08019);
             rule__State__NameAssignment_0();
             _fsp--;
 
@@ -10193,7 +10243,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__State__Group__1_in_rule__State__Group__07989);
+            pushFollow(FOLLOW_rule__State__Group__1_in_rule__State__Group__08028);
             rule__State__Group__1();
             _fsp--;
 
@@ -10216,23 +10266,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__State__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3790:1: rule__State__Group__1 : ( ( rule__State__DescriptionAssignment_1 ) ) rule__State__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3810:1: rule__State__Group__1 : ( ( rule__State__DescriptionAssignment_1 ) ) rule__State__Group__2 ;
     public final void rule__State__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3794:1: ( ( ( rule__State__DescriptionAssignment_1 ) ) rule__State__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3795:1: ( ( rule__State__DescriptionAssignment_1 ) ) rule__State__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3814:1: ( ( ( rule__State__DescriptionAssignment_1 ) ) rule__State__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3815:1: ( ( rule__State__DescriptionAssignment_1 ) ) rule__State__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3795:1: ( ( rule__State__DescriptionAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3796:1: ( rule__State__DescriptionAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3815:1: ( ( rule__State__DescriptionAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3816:1: ( rule__State__DescriptionAssignment_1 )
             {
              before(grammarAccess.getStateAccess().getDescriptionAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3797:1: ( rule__State__DescriptionAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3797:2: rule__State__DescriptionAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3817:1: ( rule__State__DescriptionAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3817:2: rule__State__DescriptionAssignment_1
             {
-            pushFollow(FOLLOW_rule__State__DescriptionAssignment_1_in_rule__State__Group__18017);
+            pushFollow(FOLLOW_rule__State__DescriptionAssignment_1_in_rule__State__Group__18056);
             rule__State__DescriptionAssignment_1();
             _fsp--;
 
@@ -10243,7 +10293,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__State__Group__2_in_rule__State__Group__18026);
+            pushFollow(FOLLOW_rule__State__Group__2_in_rule__State__Group__18065);
             rule__State__Group__2();
             _fsp--;
 
@@ -10266,23 +10316,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__State__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3808:1: rule__State__Group__2 : ( ( rule__State__StatusAssignment_2 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3828:1: rule__State__Group__2 : ( ( rule__State__StatusAssignment_2 ) ) ;
     public final void rule__State__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3812:1: ( ( ( rule__State__StatusAssignment_2 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3813:1: ( ( rule__State__StatusAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3832:1: ( ( ( rule__State__StatusAssignment_2 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3833:1: ( ( rule__State__StatusAssignment_2 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3813:1: ( ( rule__State__StatusAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3814:1: ( rule__State__StatusAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3833:1: ( ( rule__State__StatusAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3834:1: ( rule__State__StatusAssignment_2 )
             {
              before(grammarAccess.getStateAccess().getStatusAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3815:1: ( rule__State__StatusAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3815:2: rule__State__StatusAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3835:1: ( rule__State__StatusAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3835:2: rule__State__StatusAssignment_2
             {
-            pushFollow(FOLLOW_rule__State__StatusAssignment_2_in_rule__State__Group__28054);
+            pushFollow(FOLLOW_rule__State__StatusAssignment_2_in_rule__State__Group__28093);
             rule__State__StatusAssignment_2();
             _fsp--;
 
@@ -10312,23 +10362,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3831:1: rule__Property__Group__0 : ( ( rule__Property__NameAssignment_0 ) ) rule__Property__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3851:1: rule__Property__Group__0 : ( ( rule__Property__NameAssignment_0 ) ) rule__Property__Group__1 ;
     public final void rule__Property__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3835:1: ( ( ( rule__Property__NameAssignment_0 ) ) rule__Property__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3836:1: ( ( rule__Property__NameAssignment_0 ) ) rule__Property__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3855:1: ( ( ( rule__Property__NameAssignment_0 ) ) rule__Property__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3856:1: ( ( rule__Property__NameAssignment_0 ) ) rule__Property__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3836:1: ( ( rule__Property__NameAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3837:1: ( rule__Property__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3856:1: ( ( rule__Property__NameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3857:1: ( rule__Property__NameAssignment_0 )
             {
              before(grammarAccess.getPropertyAccess().getNameAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3838:1: ( rule__Property__NameAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3838:2: rule__Property__NameAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3858:1: ( rule__Property__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3858:2: rule__Property__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__Property__NameAssignment_0_in_rule__Property__Group__08094);
+            pushFollow(FOLLOW_rule__Property__NameAssignment_0_in_rule__Property__Group__08133);
             rule__Property__NameAssignment_0();
             _fsp--;
 
@@ -10339,7 +10389,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Property__Group__1_in_rule__Property__Group__08103);
+            pushFollow(FOLLOW_rule__Property__Group__1_in_rule__Property__Group__08142);
             rule__Property__Group__1();
             _fsp--;
 
@@ -10362,23 +10412,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3849:1: rule__Property__Group__1 : ( ( rule__Property__TypeAssignment_1 ) ) rule__Property__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3869:1: rule__Property__Group__1 : ( ( rule__Property__TypeAssignment_1 ) ) rule__Property__Group__2 ;
     public final void rule__Property__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3853:1: ( ( ( rule__Property__TypeAssignment_1 ) ) rule__Property__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3854:1: ( ( rule__Property__TypeAssignment_1 ) ) rule__Property__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3873:1: ( ( ( rule__Property__TypeAssignment_1 ) ) rule__Property__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3874:1: ( ( rule__Property__TypeAssignment_1 ) ) rule__Property__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3854:1: ( ( rule__Property__TypeAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3855:1: ( rule__Property__TypeAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3874:1: ( ( rule__Property__TypeAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3875:1: ( rule__Property__TypeAssignment_1 )
             {
              before(grammarAccess.getPropertyAccess().getTypeAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3856:1: ( rule__Property__TypeAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3856:2: rule__Property__TypeAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3876:1: ( rule__Property__TypeAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3876:2: rule__Property__TypeAssignment_1
             {
-            pushFollow(FOLLOW_rule__Property__TypeAssignment_1_in_rule__Property__Group__18131);
+            pushFollow(FOLLOW_rule__Property__TypeAssignment_1_in_rule__Property__Group__18170);
             rule__Property__TypeAssignment_1();
             _fsp--;
 
@@ -10389,7 +10439,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Property__Group__2_in_rule__Property__Group__18140);
+            pushFollow(FOLLOW_rule__Property__Group__2_in_rule__Property__Group__18179);
             rule__Property__Group__2();
             _fsp--;
 
@@ -10412,23 +10462,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3867:1: rule__Property__Group__2 : ( ( rule__Property__StatusAssignment_2 ) ) rule__Property__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3887:1: rule__Property__Group__2 : ( ( rule__Property__StatusAssignment_2 ) ) rule__Property__Group__3 ;
     public final void rule__Property__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3871:1: ( ( ( rule__Property__StatusAssignment_2 ) ) rule__Property__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3872:1: ( ( rule__Property__StatusAssignment_2 ) ) rule__Property__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3891:1: ( ( ( rule__Property__StatusAssignment_2 ) ) rule__Property__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3892:1: ( ( rule__Property__StatusAssignment_2 ) ) rule__Property__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3872:1: ( ( rule__Property__StatusAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3873:1: ( rule__Property__StatusAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3892:1: ( ( rule__Property__StatusAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3893:1: ( rule__Property__StatusAssignment_2 )
             {
              before(grammarAccess.getPropertyAccess().getStatusAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3874:1: ( rule__Property__StatusAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3874:2: rule__Property__StatusAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3894:1: ( rule__Property__StatusAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3894:2: rule__Property__StatusAssignment_2
             {
-            pushFollow(FOLLOW_rule__Property__StatusAssignment_2_in_rule__Property__Group__28168);
+            pushFollow(FOLLOW_rule__Property__StatusAssignment_2_in_rule__Property__Group__28207);
             rule__Property__StatusAssignment_2();
             _fsp--;
 
@@ -10439,7 +10489,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Property__Group__3_in_rule__Property__Group__28177);
+            pushFollow(FOLLOW_rule__Property__Group__3_in_rule__Property__Group__28216);
             rule__Property__Group__3();
             _fsp--;
 
@@ -10462,34 +10512,34 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3885:1: rule__Property__Group__3 : ( ( rule__Property__DescriptionAssignment_3 ) ) rule__Property__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3905:1: rule__Property__Group__3 : ( ( rule__Property__MandatoryAssignment_3 ) ) rule__Property__Group__4 ;
     public final void rule__Property__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3889:1: ( ( ( rule__Property__DescriptionAssignment_3 ) ) rule__Property__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3890:1: ( ( rule__Property__DescriptionAssignment_3 ) ) rule__Property__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3909:1: ( ( ( rule__Property__MandatoryAssignment_3 ) ) rule__Property__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3910:1: ( ( rule__Property__MandatoryAssignment_3 ) ) rule__Property__Group__4
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3890:1: ( ( rule__Property__DescriptionAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3891:1: ( rule__Property__DescriptionAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3910:1: ( ( rule__Property__MandatoryAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3911:1: ( rule__Property__MandatoryAssignment_3 )
             {
-             before(grammarAccess.getPropertyAccess().getDescriptionAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3892:1: ( rule__Property__DescriptionAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3892:2: rule__Property__DescriptionAssignment_3
+             before(grammarAccess.getPropertyAccess().getMandatoryAssignment_3()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3912:1: ( rule__Property__MandatoryAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3912:2: rule__Property__MandatoryAssignment_3
             {
-            pushFollow(FOLLOW_rule__Property__DescriptionAssignment_3_in_rule__Property__Group__38205);
-            rule__Property__DescriptionAssignment_3();
+            pushFollow(FOLLOW_rule__Property__MandatoryAssignment_3_in_rule__Property__Group__38244);
+            rule__Property__MandatoryAssignment_3();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getPropertyAccess().getDescriptionAssignment_3()); 
+             after(grammarAccess.getPropertyAccess().getMandatoryAssignment_3()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Property__Group__4_in_rule__Property__Group__38214);
+            pushFollow(FOLLOW_rule__Property__Group__4_in_rule__Property__Group__38253);
             rule__Property__Group__4();
             _fsp--;
 
@@ -10512,25 +10562,34 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__Group__4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3903:1: rule__Property__Group__4 : ( 'defaultPropValue:' ) rule__Property__Group__5 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3923:1: rule__Property__Group__4 : ( ( rule__Property__DescriptionAssignment_4 ) ) rule__Property__Group__5 ;
     public final void rule__Property__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3907:1: ( ( 'defaultPropValue:' ) rule__Property__Group__5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3908:1: ( 'defaultPropValue:' ) rule__Property__Group__5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3927:1: ( ( ( rule__Property__DescriptionAssignment_4 ) ) rule__Property__Group__5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3928:1: ( ( rule__Property__DescriptionAssignment_4 ) ) rule__Property__Group__5
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3908:1: ( 'defaultPropValue:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3909:1: 'defaultPropValue:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3928:1: ( ( rule__Property__DescriptionAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3929:1: ( rule__Property__DescriptionAssignment_4 )
             {
-             before(grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_4()); 
-            match(input,41,FOLLOW_41_in_rule__Property__Group__48243); 
-             after(grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_4()); 
+             before(grammarAccess.getPropertyAccess().getDescriptionAssignment_4()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3930:1: ( rule__Property__DescriptionAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3930:2: rule__Property__DescriptionAssignment_4
+            {
+            pushFollow(FOLLOW_rule__Property__DescriptionAssignment_4_in_rule__Property__Group__48281);
+            rule__Property__DescriptionAssignment_4();
+            _fsp--;
+
 
             }
 
-            pushFollow(FOLLOW_rule__Property__Group__5_in_rule__Property__Group__48253);
+             after(grammarAccess.getPropertyAccess().getDescriptionAssignment_4()); 
+
+            }
+
+            pushFollow(FOLLOW_rule__Property__Group__5_in_rule__Property__Group__48290);
             rule__Property__Group__5();
             _fsp--;
 
@@ -10553,50 +10612,27 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__Group__5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3923:1: rule__Property__Group__5 : ( ( rule__Property__DefaultPropValueAssignment_5 )* ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3941:1: rule__Property__Group__5 : ( 'defaultPropValue:' ) rule__Property__Group__6 ;
     public final void rule__Property__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3927:1: ( ( ( rule__Property__DefaultPropValueAssignment_5 )* ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3928:1: ( ( rule__Property__DefaultPropValueAssignment_5 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3945:1: ( ( 'defaultPropValue:' ) rule__Property__Group__6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3946:1: ( 'defaultPropValue:' ) rule__Property__Group__6
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3928:1: ( ( rule__Property__DefaultPropValueAssignment_5 )* )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3929:1: ( rule__Property__DefaultPropValueAssignment_5 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3946:1: ( 'defaultPropValue:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3947:1: 'defaultPropValue:'
             {
-             before(grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_5()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3930:1: ( rule__Property__DefaultPropValueAssignment_5 )*
-            loop22:
-            do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
-
-                if ( (LA22_0==RULE_STRING) ) {
-                    alt22=1;
-                }
-
-
-                switch (alt22) {
-            	case 1 :
-            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3930:2: rule__Property__DefaultPropValueAssignment_5
-            	    {
-            	    pushFollow(FOLLOW_rule__Property__DefaultPropValueAssignment_5_in_rule__Property__Group__58281);
-            	    rule__Property__DefaultPropValueAssignment_5();
-            	    _fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop22;
-                }
-            } while (true);
-
-             after(grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_5()); 
+             before(grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_5()); 
+            match(input,41,FOLLOW_41_in_rule__Property__Group__58319); 
+             after(grammarAccess.getPropertyAccess().getDefaultPropValueKeyword_5()); 
 
             }
+
+            pushFollow(FOLLOW_rule__Property__Group__6_in_rule__Property__Group__58329);
+            rule__Property__Group__6();
+            _fsp--;
 
 
             }
@@ -10616,24 +10652,88 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__Property__Group__5
 
 
+    // $ANTLR start rule__Property__Group__6
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3961:1: rule__Property__Group__6 : ( ( rule__Property__DefaultPropValueAssignment_6 )* ) ;
+    public final void rule__Property__Group__6() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3965:1: ( ( ( rule__Property__DefaultPropValueAssignment_6 )* ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3966:1: ( ( rule__Property__DefaultPropValueAssignment_6 )* )
+            {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3966:1: ( ( rule__Property__DefaultPropValueAssignment_6 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3967:1: ( rule__Property__DefaultPropValueAssignment_6 )*
+            {
+             before(grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_6()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3968:1: ( rule__Property__DefaultPropValueAssignment_6 )*
+            loop22:
+            do {
+                int alt22=2;
+                int LA22_0 = input.LA(1);
+
+                if ( (LA22_0==RULE_STRING) ) {
+                    alt22=1;
+                }
+
+
+                switch (alt22) {
+            	case 1 :
+            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3968:2: rule__Property__DefaultPropValueAssignment_6
+            	    {
+            	    pushFollow(FOLLOW_rule__Property__DefaultPropValueAssignment_6_in_rule__Property__Group__68357);
+            	    rule__Property__DefaultPropValueAssignment_6();
+            	    _fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop22;
+                }
+            } while (true);
+
+             after(grammarAccess.getPropertyAccess().getDefaultPropValueAssignment_6()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end rule__Property__Group__6
+
+
     // $ANTLR start rule__InheritanceStatus__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3952:1: rule__InheritanceStatus__Group__0 : ( ( rule__InheritanceStatus__AbstractAssignment_0 ) ) rule__InheritanceStatus__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3992:1: rule__InheritanceStatus__Group__0 : ( ( rule__InheritanceStatus__AbstractAssignment_0 ) ) rule__InheritanceStatus__Group__1 ;
     public final void rule__InheritanceStatus__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3956:1: ( ( ( rule__InheritanceStatus__AbstractAssignment_0 ) ) rule__InheritanceStatus__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3957:1: ( ( rule__InheritanceStatus__AbstractAssignment_0 ) ) rule__InheritanceStatus__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3996:1: ( ( ( rule__InheritanceStatus__AbstractAssignment_0 ) ) rule__InheritanceStatus__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3997:1: ( ( rule__InheritanceStatus__AbstractAssignment_0 ) ) rule__InheritanceStatus__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3957:1: ( ( rule__InheritanceStatus__AbstractAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3958:1: ( rule__InheritanceStatus__AbstractAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3997:1: ( ( rule__InheritanceStatus__AbstractAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3998:1: ( rule__InheritanceStatus__AbstractAssignment_0 )
             {
              before(grammarAccess.getInheritanceStatusAccess().getAbstractAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3959:1: ( rule__InheritanceStatus__AbstractAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3959:2: rule__InheritanceStatus__AbstractAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3999:1: ( rule__InheritanceStatus__AbstractAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3999:2: rule__InheritanceStatus__AbstractAssignment_0
             {
-            pushFollow(FOLLOW_rule__InheritanceStatus__AbstractAssignment_0_in_rule__InheritanceStatus__Group__08328);
+            pushFollow(FOLLOW_rule__InheritanceStatus__AbstractAssignment_0_in_rule__InheritanceStatus__Group__08406);
             rule__InheritanceStatus__AbstractAssignment_0();
             _fsp--;
 
@@ -10644,7 +10744,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__InheritanceStatus__Group__1_in_rule__InheritanceStatus__Group__08337);
+            pushFollow(FOLLOW_rule__InheritanceStatus__Group__1_in_rule__InheritanceStatus__Group__08415);
             rule__InheritanceStatus__Group__1();
             _fsp--;
 
@@ -10667,23 +10767,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3970:1: rule__InheritanceStatus__Group__1 : ( ( rule__InheritanceStatus__InheritedAssignment_1 ) ) rule__InheritanceStatus__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4010:1: rule__InheritanceStatus__Group__1 : ( ( rule__InheritanceStatus__InheritedAssignment_1 ) ) rule__InheritanceStatus__Group__2 ;
     public final void rule__InheritanceStatus__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3974:1: ( ( ( rule__InheritanceStatus__InheritedAssignment_1 ) ) rule__InheritanceStatus__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3975:1: ( ( rule__InheritanceStatus__InheritedAssignment_1 ) ) rule__InheritanceStatus__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4014:1: ( ( ( rule__InheritanceStatus__InheritedAssignment_1 ) ) rule__InheritanceStatus__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4015:1: ( ( rule__InheritanceStatus__InheritedAssignment_1 ) ) rule__InheritanceStatus__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3975:1: ( ( rule__InheritanceStatus__InheritedAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3976:1: ( rule__InheritanceStatus__InheritedAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4015:1: ( ( rule__InheritanceStatus__InheritedAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4016:1: ( rule__InheritanceStatus__InheritedAssignment_1 )
             {
              before(grammarAccess.getInheritanceStatusAccess().getInheritedAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3977:1: ( rule__InheritanceStatus__InheritedAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3977:2: rule__InheritanceStatus__InheritedAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4017:1: ( rule__InheritanceStatus__InheritedAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4017:2: rule__InheritanceStatus__InheritedAssignment_1
             {
-            pushFollow(FOLLOW_rule__InheritanceStatus__InheritedAssignment_1_in_rule__InheritanceStatus__Group__18365);
+            pushFollow(FOLLOW_rule__InheritanceStatus__InheritedAssignment_1_in_rule__InheritanceStatus__Group__18443);
             rule__InheritanceStatus__InheritedAssignment_1();
             _fsp--;
 
@@ -10694,7 +10794,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__InheritanceStatus__Group__2_in_rule__InheritanceStatus__Group__18374);
+            pushFollow(FOLLOW_rule__InheritanceStatus__Group__2_in_rule__InheritanceStatus__Group__18452);
             rule__InheritanceStatus__Group__2();
             _fsp--;
 
@@ -10717,23 +10817,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3988:1: rule__InheritanceStatus__Group__2 : ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) ) rule__InheritanceStatus__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4028:1: rule__InheritanceStatus__Group__2 : ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) ) rule__InheritanceStatus__Group__3 ;
     public final void rule__InheritanceStatus__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3992:1: ( ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) ) rule__InheritanceStatus__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3993:1: ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) ) rule__InheritanceStatus__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4032:1: ( ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) ) rule__InheritanceStatus__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4033:1: ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) ) rule__InheritanceStatus__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3993:1: ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3994:1: ( rule__InheritanceStatus__ConcreteAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4033:1: ( ( rule__InheritanceStatus__ConcreteAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4034:1: ( rule__InheritanceStatus__ConcreteAssignment_2 )
             {
              before(grammarAccess.getInheritanceStatusAccess().getConcreteAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3995:1: ( rule__InheritanceStatus__ConcreteAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:3995:2: rule__InheritanceStatus__ConcreteAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4035:1: ( rule__InheritanceStatus__ConcreteAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4035:2: rule__InheritanceStatus__ConcreteAssignment_2
             {
-            pushFollow(FOLLOW_rule__InheritanceStatus__ConcreteAssignment_2_in_rule__InheritanceStatus__Group__28402);
+            pushFollow(FOLLOW_rule__InheritanceStatus__ConcreteAssignment_2_in_rule__InheritanceStatus__Group__28480);
             rule__InheritanceStatus__ConcreteAssignment_2();
             _fsp--;
 
@@ -10744,7 +10844,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__InheritanceStatus__Group__3_in_rule__InheritanceStatus__Group__28411);
+            pushFollow(FOLLOW_rule__InheritanceStatus__Group__3_in_rule__InheritanceStatus__Group__28489);
             rule__InheritanceStatus__Group__3();
             _fsp--;
 
@@ -10767,23 +10867,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4006:1: rule__InheritanceStatus__Group__3 : ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) ) rule__InheritanceStatus__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4046:1: rule__InheritanceStatus__Group__3 : ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) ) rule__InheritanceStatus__Group__4 ;
     public final void rule__InheritanceStatus__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4010:1: ( ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) ) rule__InheritanceStatus__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4011:1: ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) ) rule__InheritanceStatus__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4050:1: ( ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) ) rule__InheritanceStatus__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4051:1: ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) ) rule__InheritanceStatus__Group__4
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4011:1: ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4012:1: ( rule__InheritanceStatus__ConcreteHereAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4051:1: ( ( rule__InheritanceStatus__ConcreteHereAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4052:1: ( rule__InheritanceStatus__ConcreteHereAssignment_3 )
             {
              before(grammarAccess.getInheritanceStatusAccess().getConcreteHereAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4013:1: ( rule__InheritanceStatus__ConcreteHereAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4013:2: rule__InheritanceStatus__ConcreteHereAssignment_3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4053:1: ( rule__InheritanceStatus__ConcreteHereAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4053:2: rule__InheritanceStatus__ConcreteHereAssignment_3
             {
-            pushFollow(FOLLOW_rule__InheritanceStatus__ConcreteHereAssignment_3_in_rule__InheritanceStatus__Group__38439);
+            pushFollow(FOLLOW_rule__InheritanceStatus__ConcreteHereAssignment_3_in_rule__InheritanceStatus__Group__38517);
             rule__InheritanceStatus__ConcreteHereAssignment_3();
             _fsp--;
 
@@ -10794,7 +10894,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__InheritanceStatus__Group__4_in_rule__InheritanceStatus__Group__38448);
+            pushFollow(FOLLOW_rule__InheritanceStatus__Group__4_in_rule__InheritanceStatus__Group__38526);
             rule__InheritanceStatus__Group__4();
             _fsp--;
 
@@ -10817,23 +10917,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__Group__4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4024:1: rule__InheritanceStatus__Group__4 : ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4064:1: rule__InheritanceStatus__Group__4 : ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) ) ;
     public final void rule__InheritanceStatus__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4028:1: ( ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4029:1: ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4068:1: ( ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4069:1: ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4029:1: ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4030:1: ( rule__InheritanceStatus__HasChangedAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4069:1: ( ( rule__InheritanceStatus__HasChangedAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4070:1: ( rule__InheritanceStatus__HasChangedAssignment_4 )
             {
              before(grammarAccess.getInheritanceStatusAccess().getHasChangedAssignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4031:1: ( rule__InheritanceStatus__HasChangedAssignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4031:2: rule__InheritanceStatus__HasChangedAssignment_4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4071:1: ( rule__InheritanceStatus__HasChangedAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4071:2: rule__InheritanceStatus__HasChangedAssignment_4
             {
-            pushFollow(FOLLOW_rule__InheritanceStatus__HasChangedAssignment_4_in_rule__InheritanceStatus__Group__48476);
+            pushFollow(FOLLOW_rule__InheritanceStatus__HasChangedAssignment_4_in_rule__InheritanceStatus__Group__48554);
             rule__InheritanceStatus__HasChangedAssignment_4();
             _fsp--;
 
@@ -10863,23 +10963,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4051:1: rule__Command__Group__0 : ( ( rule__Command__NameAssignment_0 ) ) rule__Command__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4091:1: rule__Command__Group__0 : ( ( rule__Command__NameAssignment_0 ) ) rule__Command__Group__1 ;
     public final void rule__Command__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4055:1: ( ( ( rule__Command__NameAssignment_0 ) ) rule__Command__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4056:1: ( ( rule__Command__NameAssignment_0 ) ) rule__Command__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4095:1: ( ( ( rule__Command__NameAssignment_0 ) ) rule__Command__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4096:1: ( ( rule__Command__NameAssignment_0 ) ) rule__Command__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4056:1: ( ( rule__Command__NameAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4057:1: ( rule__Command__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4096:1: ( ( rule__Command__NameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4097:1: ( rule__Command__NameAssignment_0 )
             {
              before(grammarAccess.getCommandAccess().getNameAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4058:1: ( rule__Command__NameAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4058:2: rule__Command__NameAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4098:1: ( rule__Command__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4098:2: rule__Command__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__Command__NameAssignment_0_in_rule__Command__Group__08520);
+            pushFollow(FOLLOW_rule__Command__NameAssignment_0_in_rule__Command__Group__08598);
             rule__Command__NameAssignment_0();
             _fsp--;
 
@@ -10890,7 +10990,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__1_in_rule__Command__Group__08529);
+            pushFollow(FOLLOW_rule__Command__Group__1_in_rule__Command__Group__08607);
             rule__Command__Group__1();
             _fsp--;
 
@@ -10913,23 +11013,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4069:1: rule__Command__Group__1 : ( ( rule__Command__ArginAssignment_1 ) ) rule__Command__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4109:1: rule__Command__Group__1 : ( ( rule__Command__ArginAssignment_1 ) ) rule__Command__Group__2 ;
     public final void rule__Command__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4073:1: ( ( ( rule__Command__ArginAssignment_1 ) ) rule__Command__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4074:1: ( ( rule__Command__ArginAssignment_1 ) ) rule__Command__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4113:1: ( ( ( rule__Command__ArginAssignment_1 ) ) rule__Command__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4114:1: ( ( rule__Command__ArginAssignment_1 ) ) rule__Command__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4074:1: ( ( rule__Command__ArginAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4075:1: ( rule__Command__ArginAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4114:1: ( ( rule__Command__ArginAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4115:1: ( rule__Command__ArginAssignment_1 )
             {
              before(grammarAccess.getCommandAccess().getArginAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4076:1: ( rule__Command__ArginAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4076:2: rule__Command__ArginAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4116:1: ( rule__Command__ArginAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4116:2: rule__Command__ArginAssignment_1
             {
-            pushFollow(FOLLOW_rule__Command__ArginAssignment_1_in_rule__Command__Group__18557);
+            pushFollow(FOLLOW_rule__Command__ArginAssignment_1_in_rule__Command__Group__18635);
             rule__Command__ArginAssignment_1();
             _fsp--;
 
@@ -10940,7 +11040,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__2_in_rule__Command__Group__18566);
+            pushFollow(FOLLOW_rule__Command__Group__2_in_rule__Command__Group__18644);
             rule__Command__Group__2();
             _fsp--;
 
@@ -10963,23 +11063,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4087:1: rule__Command__Group__2 : ( ( rule__Command__ArgoutAssignment_2 ) ) rule__Command__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4127:1: rule__Command__Group__2 : ( ( rule__Command__ArgoutAssignment_2 ) ) rule__Command__Group__3 ;
     public final void rule__Command__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4091:1: ( ( ( rule__Command__ArgoutAssignment_2 ) ) rule__Command__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4092:1: ( ( rule__Command__ArgoutAssignment_2 ) ) rule__Command__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4131:1: ( ( ( rule__Command__ArgoutAssignment_2 ) ) rule__Command__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4132:1: ( ( rule__Command__ArgoutAssignment_2 ) ) rule__Command__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4092:1: ( ( rule__Command__ArgoutAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4093:1: ( rule__Command__ArgoutAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4132:1: ( ( rule__Command__ArgoutAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4133:1: ( rule__Command__ArgoutAssignment_2 )
             {
              before(grammarAccess.getCommandAccess().getArgoutAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4094:1: ( rule__Command__ArgoutAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4094:2: rule__Command__ArgoutAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4134:1: ( rule__Command__ArgoutAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4134:2: rule__Command__ArgoutAssignment_2
             {
-            pushFollow(FOLLOW_rule__Command__ArgoutAssignment_2_in_rule__Command__Group__28594);
+            pushFollow(FOLLOW_rule__Command__ArgoutAssignment_2_in_rule__Command__Group__28672);
             rule__Command__ArgoutAssignment_2();
             _fsp--;
 
@@ -10990,7 +11090,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__3_in_rule__Command__Group__28603);
+            pushFollow(FOLLOW_rule__Command__Group__3_in_rule__Command__Group__28681);
             rule__Command__Group__3();
             _fsp--;
 
@@ -11013,23 +11113,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4105:1: rule__Command__Group__3 : ( ( rule__Command__DescriptionAssignment_3 ) ) rule__Command__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4145:1: rule__Command__Group__3 : ( ( rule__Command__DescriptionAssignment_3 ) ) rule__Command__Group__4 ;
     public final void rule__Command__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4109:1: ( ( ( rule__Command__DescriptionAssignment_3 ) ) rule__Command__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4110:1: ( ( rule__Command__DescriptionAssignment_3 ) ) rule__Command__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4149:1: ( ( ( rule__Command__DescriptionAssignment_3 ) ) rule__Command__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4150:1: ( ( rule__Command__DescriptionAssignment_3 ) ) rule__Command__Group__4
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4110:1: ( ( rule__Command__DescriptionAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4111:1: ( rule__Command__DescriptionAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4150:1: ( ( rule__Command__DescriptionAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4151:1: ( rule__Command__DescriptionAssignment_3 )
             {
              before(grammarAccess.getCommandAccess().getDescriptionAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4112:1: ( rule__Command__DescriptionAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4112:2: rule__Command__DescriptionAssignment_3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4152:1: ( rule__Command__DescriptionAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4152:2: rule__Command__DescriptionAssignment_3
             {
-            pushFollow(FOLLOW_rule__Command__DescriptionAssignment_3_in_rule__Command__Group__38631);
+            pushFollow(FOLLOW_rule__Command__DescriptionAssignment_3_in_rule__Command__Group__38709);
             rule__Command__DescriptionAssignment_3();
             _fsp--;
 
@@ -11040,7 +11140,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__4_in_rule__Command__Group__38640);
+            pushFollow(FOLLOW_rule__Command__Group__4_in_rule__Command__Group__38718);
             rule__Command__Group__4();
             _fsp--;
 
@@ -11063,23 +11163,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4123:1: rule__Command__Group__4 : ( ( rule__Command__StatusAssignment_4 ) ) rule__Command__Group__5 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4163:1: rule__Command__Group__4 : ( ( rule__Command__StatusAssignment_4 ) ) rule__Command__Group__5 ;
     public final void rule__Command__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4127:1: ( ( ( rule__Command__StatusAssignment_4 ) ) rule__Command__Group__5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4128:1: ( ( rule__Command__StatusAssignment_4 ) ) rule__Command__Group__5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4167:1: ( ( ( rule__Command__StatusAssignment_4 ) ) rule__Command__Group__5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4168:1: ( ( rule__Command__StatusAssignment_4 ) ) rule__Command__Group__5
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4128:1: ( ( rule__Command__StatusAssignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4129:1: ( rule__Command__StatusAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4168:1: ( ( rule__Command__StatusAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4169:1: ( rule__Command__StatusAssignment_4 )
             {
              before(grammarAccess.getCommandAccess().getStatusAssignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4130:1: ( rule__Command__StatusAssignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4130:2: rule__Command__StatusAssignment_4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4170:1: ( rule__Command__StatusAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4170:2: rule__Command__StatusAssignment_4
             {
-            pushFollow(FOLLOW_rule__Command__StatusAssignment_4_in_rule__Command__Group__48668);
+            pushFollow(FOLLOW_rule__Command__StatusAssignment_4_in_rule__Command__Group__48746);
             rule__Command__StatusAssignment_4();
             _fsp--;
 
@@ -11090,7 +11190,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__5_in_rule__Command__Group__48677);
+            pushFollow(FOLLOW_rule__Command__Group__5_in_rule__Command__Group__48755);
             rule__Command__Group__5();
             _fsp--;
 
@@ -11113,23 +11213,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4141:1: rule__Command__Group__5 : ( ( rule__Command__ExecMethodAssignment_5 ) ) rule__Command__Group__6 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4181:1: rule__Command__Group__5 : ( ( rule__Command__ExecMethodAssignment_5 ) ) rule__Command__Group__6 ;
     public final void rule__Command__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4145:1: ( ( ( rule__Command__ExecMethodAssignment_5 ) ) rule__Command__Group__6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4146:1: ( ( rule__Command__ExecMethodAssignment_5 ) ) rule__Command__Group__6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4185:1: ( ( ( rule__Command__ExecMethodAssignment_5 ) ) rule__Command__Group__6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4186:1: ( ( rule__Command__ExecMethodAssignment_5 ) ) rule__Command__Group__6
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4146:1: ( ( rule__Command__ExecMethodAssignment_5 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4147:1: ( rule__Command__ExecMethodAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4186:1: ( ( rule__Command__ExecMethodAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4187:1: ( rule__Command__ExecMethodAssignment_5 )
             {
              before(grammarAccess.getCommandAccess().getExecMethodAssignment_5()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4148:1: ( rule__Command__ExecMethodAssignment_5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4148:2: rule__Command__ExecMethodAssignment_5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4188:1: ( rule__Command__ExecMethodAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4188:2: rule__Command__ExecMethodAssignment_5
             {
-            pushFollow(FOLLOW_rule__Command__ExecMethodAssignment_5_in_rule__Command__Group__58705);
+            pushFollow(FOLLOW_rule__Command__ExecMethodAssignment_5_in_rule__Command__Group__58783);
             rule__Command__ExecMethodAssignment_5();
             _fsp--;
 
@@ -11140,7 +11240,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__6_in_rule__Command__Group__58714);
+            pushFollow(FOLLOW_rule__Command__Group__6_in_rule__Command__Group__58792);
             rule__Command__Group__6();
             _fsp--;
 
@@ -11163,23 +11263,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4159:1: rule__Command__Group__6 : ( ( rule__Command__DisplayLevelAssignment_6 ) ) rule__Command__Group__7 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4199:1: rule__Command__Group__6 : ( ( rule__Command__DisplayLevelAssignment_6 ) ) rule__Command__Group__7 ;
     public final void rule__Command__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4163:1: ( ( ( rule__Command__DisplayLevelAssignment_6 ) ) rule__Command__Group__7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4164:1: ( ( rule__Command__DisplayLevelAssignment_6 ) ) rule__Command__Group__7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4203:1: ( ( ( rule__Command__DisplayLevelAssignment_6 ) ) rule__Command__Group__7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4204:1: ( ( rule__Command__DisplayLevelAssignment_6 ) ) rule__Command__Group__7
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4164:1: ( ( rule__Command__DisplayLevelAssignment_6 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4165:1: ( rule__Command__DisplayLevelAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4204:1: ( ( rule__Command__DisplayLevelAssignment_6 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4205:1: ( rule__Command__DisplayLevelAssignment_6 )
             {
              before(grammarAccess.getCommandAccess().getDisplayLevelAssignment_6()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4166:1: ( rule__Command__DisplayLevelAssignment_6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4166:2: rule__Command__DisplayLevelAssignment_6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4206:1: ( rule__Command__DisplayLevelAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4206:2: rule__Command__DisplayLevelAssignment_6
             {
-            pushFollow(FOLLOW_rule__Command__DisplayLevelAssignment_6_in_rule__Command__Group__68742);
+            pushFollow(FOLLOW_rule__Command__DisplayLevelAssignment_6_in_rule__Command__Group__68820);
             rule__Command__DisplayLevelAssignment_6();
             _fsp--;
 
@@ -11190,7 +11290,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__7_in_rule__Command__Group__68751);
+            pushFollow(FOLLOW_rule__Command__Group__7_in_rule__Command__Group__68829);
             rule__Command__Group__7();
             _fsp--;
 
@@ -11213,23 +11313,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4177:1: rule__Command__Group__7 : ( ( rule__Command__PolledPeriodAssignment_7 ) ) rule__Command__Group__8 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4217:1: rule__Command__Group__7 : ( ( rule__Command__PolledPeriodAssignment_7 ) ) rule__Command__Group__8 ;
     public final void rule__Command__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4181:1: ( ( ( rule__Command__PolledPeriodAssignment_7 ) ) rule__Command__Group__8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4182:1: ( ( rule__Command__PolledPeriodAssignment_7 ) ) rule__Command__Group__8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4221:1: ( ( ( rule__Command__PolledPeriodAssignment_7 ) ) rule__Command__Group__8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4222:1: ( ( rule__Command__PolledPeriodAssignment_7 ) ) rule__Command__Group__8
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4182:1: ( ( rule__Command__PolledPeriodAssignment_7 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4183:1: ( rule__Command__PolledPeriodAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4222:1: ( ( rule__Command__PolledPeriodAssignment_7 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4223:1: ( rule__Command__PolledPeriodAssignment_7 )
             {
              before(grammarAccess.getCommandAccess().getPolledPeriodAssignment_7()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4184:1: ( rule__Command__PolledPeriodAssignment_7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4184:2: rule__Command__PolledPeriodAssignment_7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4224:1: ( rule__Command__PolledPeriodAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4224:2: rule__Command__PolledPeriodAssignment_7
             {
-            pushFollow(FOLLOW_rule__Command__PolledPeriodAssignment_7_in_rule__Command__Group__78779);
+            pushFollow(FOLLOW_rule__Command__PolledPeriodAssignment_7_in_rule__Command__Group__78857);
             rule__Command__PolledPeriodAssignment_7();
             _fsp--;
 
@@ -11240,7 +11340,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__8_in_rule__Command__Group__78788);
+            pushFollow(FOLLOW_rule__Command__Group__8_in_rule__Command__Group__78866);
             rule__Command__Group__8();
             _fsp--;
 
@@ -11263,25 +11363,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4195:1: rule__Command__Group__8 : ( 'excludedStates:' ) rule__Command__Group__9 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4235:1: rule__Command__Group__8 : ( 'excludedStates:' ) rule__Command__Group__9 ;
     public final void rule__Command__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4199:1: ( ( 'excludedStates:' ) rule__Command__Group__9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4200:1: ( 'excludedStates:' ) rule__Command__Group__9
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4239:1: ( ( 'excludedStates:' ) rule__Command__Group__9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4240:1: ( 'excludedStates:' ) rule__Command__Group__9
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4200:1: ( 'excludedStates:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4201:1: 'excludedStates:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4240:1: ( 'excludedStates:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4241:1: 'excludedStates:'
             {
              before(grammarAccess.getCommandAccess().getExcludedStatesKeyword_8()); 
-            match(input,42,FOLLOW_42_in_rule__Command__Group__88817); 
+            match(input,42,FOLLOW_42_in_rule__Command__Group__88895); 
              after(grammarAccess.getCommandAccess().getExcludedStatesKeyword_8()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Command__Group__9_in_rule__Command__Group__88827);
+            pushFollow(FOLLOW_rule__Command__Group__9_in_rule__Command__Group__88905);
             rule__Command__Group__9();
             _fsp--;
 
@@ -11304,20 +11404,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__Group__9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4215:1: rule__Command__Group__9 : ( ( rule__Command__ExcludedStatesAssignment_9 )* ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4255:1: rule__Command__Group__9 : ( ( rule__Command__ExcludedStatesAssignment_9 )* ) ;
     public final void rule__Command__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4219:1: ( ( ( rule__Command__ExcludedStatesAssignment_9 )* ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4220:1: ( ( rule__Command__ExcludedStatesAssignment_9 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4259:1: ( ( ( rule__Command__ExcludedStatesAssignment_9 )* ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4260:1: ( ( rule__Command__ExcludedStatesAssignment_9 )* )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4220:1: ( ( rule__Command__ExcludedStatesAssignment_9 )* )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4221:1: ( rule__Command__ExcludedStatesAssignment_9 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4260:1: ( ( rule__Command__ExcludedStatesAssignment_9 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4261:1: ( rule__Command__ExcludedStatesAssignment_9 )*
             {
              before(grammarAccess.getCommandAccess().getExcludedStatesAssignment_9()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4222:1: ( rule__Command__ExcludedStatesAssignment_9 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4262:1: ( rule__Command__ExcludedStatesAssignment_9 )*
             loop23:
             do {
                 int alt23=2;
@@ -11330,9 +11430,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
                 switch (alt23) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4222:2: rule__Command__ExcludedStatesAssignment_9
+            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4262:2: rule__Command__ExcludedStatesAssignment_9
             	    {
-            	    pushFollow(FOLLOW_rule__Command__ExcludedStatesAssignment_9_in_rule__Command__Group__98855);
+            	    pushFollow(FOLLOW_rule__Command__ExcludedStatesAssignment_9_in_rule__Command__Group__98933);
             	    rule__Command__ExcludedStatesAssignment_9();
             	    _fsp--;
 
@@ -11368,23 +11468,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Argument__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4252:1: rule__Argument__Group__0 : ( ( rule__Argument__TypeAssignment_0 ) ) rule__Argument__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4292:1: rule__Argument__Group__0 : ( ( rule__Argument__TypeAssignment_0 ) ) rule__Argument__Group__1 ;
     public final void rule__Argument__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4256:1: ( ( ( rule__Argument__TypeAssignment_0 ) ) rule__Argument__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4257:1: ( ( rule__Argument__TypeAssignment_0 ) ) rule__Argument__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4296:1: ( ( ( rule__Argument__TypeAssignment_0 ) ) rule__Argument__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4297:1: ( ( rule__Argument__TypeAssignment_0 ) ) rule__Argument__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4257:1: ( ( rule__Argument__TypeAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4258:1: ( rule__Argument__TypeAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4297:1: ( ( rule__Argument__TypeAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4298:1: ( rule__Argument__TypeAssignment_0 )
             {
              before(grammarAccess.getArgumentAccess().getTypeAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4259:1: ( rule__Argument__TypeAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4259:2: rule__Argument__TypeAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4299:1: ( rule__Argument__TypeAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4299:2: rule__Argument__TypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__Argument__TypeAssignment_0_in_rule__Argument__Group__08910);
+            pushFollow(FOLLOW_rule__Argument__TypeAssignment_0_in_rule__Argument__Group__08988);
             rule__Argument__TypeAssignment_0();
             _fsp--;
 
@@ -11395,7 +11495,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Argument__Group__1_in_rule__Argument__Group__08919);
+            pushFollow(FOLLOW_rule__Argument__Group__1_in_rule__Argument__Group__08997);
             rule__Argument__Group__1();
             _fsp--;
 
@@ -11418,23 +11518,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Argument__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4270:1: rule__Argument__Group__1 : ( ( rule__Argument__DescriptionAssignment_1 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4310:1: rule__Argument__Group__1 : ( ( rule__Argument__DescriptionAssignment_1 ) ) ;
     public final void rule__Argument__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4274:1: ( ( ( rule__Argument__DescriptionAssignment_1 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4275:1: ( ( rule__Argument__DescriptionAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4314:1: ( ( ( rule__Argument__DescriptionAssignment_1 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4315:1: ( ( rule__Argument__DescriptionAssignment_1 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4275:1: ( ( rule__Argument__DescriptionAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4276:1: ( rule__Argument__DescriptionAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4315:1: ( ( rule__Argument__DescriptionAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4316:1: ( rule__Argument__DescriptionAssignment_1 )
             {
              before(grammarAccess.getArgumentAccess().getDescriptionAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4277:1: ( rule__Argument__DescriptionAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4277:2: rule__Argument__DescriptionAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4317:1: ( rule__Argument__DescriptionAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4317:2: rule__Argument__DescriptionAssignment_1
             {
-            pushFollow(FOLLOW_rule__Argument__DescriptionAssignment_1_in_rule__Argument__Group__18947);
+            pushFollow(FOLLOW_rule__Argument__DescriptionAssignment_1_in_rule__Argument__Group__19025);
             rule__Argument__DescriptionAssignment_1();
             _fsp--;
 
@@ -11464,23 +11564,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4291:1: rule__Attribute__Group__0 : ( ( rule__Attribute__NameAssignment_0 ) ) rule__Attribute__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4331:1: rule__Attribute__Group__0 : ( ( rule__Attribute__NameAssignment_0 ) ) rule__Attribute__Group__1 ;
     public final void rule__Attribute__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4295:1: ( ( ( rule__Attribute__NameAssignment_0 ) ) rule__Attribute__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4296:1: ( ( rule__Attribute__NameAssignment_0 ) ) rule__Attribute__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4335:1: ( ( ( rule__Attribute__NameAssignment_0 ) ) rule__Attribute__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4336:1: ( ( rule__Attribute__NameAssignment_0 ) ) rule__Attribute__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4296:1: ( ( rule__Attribute__NameAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4297:1: ( rule__Attribute__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4336:1: ( ( rule__Attribute__NameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4337:1: ( rule__Attribute__NameAssignment_0 )
             {
              before(grammarAccess.getAttributeAccess().getNameAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4298:1: ( rule__Attribute__NameAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4298:2: rule__Attribute__NameAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4338:1: ( rule__Attribute__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4338:2: rule__Attribute__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__Attribute__NameAssignment_0_in_rule__Attribute__Group__08985);
+            pushFollow(FOLLOW_rule__Attribute__NameAssignment_0_in_rule__Attribute__Group__09063);
             rule__Attribute__NameAssignment_0();
             _fsp--;
 
@@ -11491,7 +11591,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__08994);
+            pushFollow(FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__09072);
             rule__Attribute__Group__1();
             _fsp--;
 
@@ -11514,23 +11614,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4309:1: rule__Attribute__Group__1 : ( ( rule__Attribute__AttTypeAssignment_1 ) ) rule__Attribute__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4349:1: rule__Attribute__Group__1 : ( ( rule__Attribute__AttTypeAssignment_1 ) ) rule__Attribute__Group__2 ;
     public final void rule__Attribute__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4313:1: ( ( ( rule__Attribute__AttTypeAssignment_1 ) ) rule__Attribute__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4314:1: ( ( rule__Attribute__AttTypeAssignment_1 ) ) rule__Attribute__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4353:1: ( ( ( rule__Attribute__AttTypeAssignment_1 ) ) rule__Attribute__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4354:1: ( ( rule__Attribute__AttTypeAssignment_1 ) ) rule__Attribute__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4314:1: ( ( rule__Attribute__AttTypeAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4315:1: ( rule__Attribute__AttTypeAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4354:1: ( ( rule__Attribute__AttTypeAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4355:1: ( rule__Attribute__AttTypeAssignment_1 )
             {
              before(grammarAccess.getAttributeAccess().getAttTypeAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4316:1: ( rule__Attribute__AttTypeAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4316:2: rule__Attribute__AttTypeAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4356:1: ( rule__Attribute__AttTypeAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4356:2: rule__Attribute__AttTypeAssignment_1
             {
-            pushFollow(FOLLOW_rule__Attribute__AttTypeAssignment_1_in_rule__Attribute__Group__19022);
+            pushFollow(FOLLOW_rule__Attribute__AttTypeAssignment_1_in_rule__Attribute__Group__19100);
             rule__Attribute__AttTypeAssignment_1();
             _fsp--;
 
@@ -11541,7 +11641,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__19031);
+            pushFollow(FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__19109);
             rule__Attribute__Group__2();
             _fsp--;
 
@@ -11564,23 +11664,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4327:1: rule__Attribute__Group__2 : ( ( rule__Attribute__DataTypeAssignment_2 ) ) rule__Attribute__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4367:1: rule__Attribute__Group__2 : ( ( rule__Attribute__DataTypeAssignment_2 ) ) rule__Attribute__Group__3 ;
     public final void rule__Attribute__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4331:1: ( ( ( rule__Attribute__DataTypeAssignment_2 ) ) rule__Attribute__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4332:1: ( ( rule__Attribute__DataTypeAssignment_2 ) ) rule__Attribute__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4371:1: ( ( ( rule__Attribute__DataTypeAssignment_2 ) ) rule__Attribute__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4372:1: ( ( rule__Attribute__DataTypeAssignment_2 ) ) rule__Attribute__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4332:1: ( ( rule__Attribute__DataTypeAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4333:1: ( rule__Attribute__DataTypeAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4372:1: ( ( rule__Attribute__DataTypeAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4373:1: ( rule__Attribute__DataTypeAssignment_2 )
             {
              before(grammarAccess.getAttributeAccess().getDataTypeAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4334:1: ( rule__Attribute__DataTypeAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4334:2: rule__Attribute__DataTypeAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4374:1: ( rule__Attribute__DataTypeAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4374:2: rule__Attribute__DataTypeAssignment_2
             {
-            pushFollow(FOLLOW_rule__Attribute__DataTypeAssignment_2_in_rule__Attribute__Group__29059);
+            pushFollow(FOLLOW_rule__Attribute__DataTypeAssignment_2_in_rule__Attribute__Group__29137);
             rule__Attribute__DataTypeAssignment_2();
             _fsp--;
 
@@ -11591,7 +11691,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__3_in_rule__Attribute__Group__29068);
+            pushFollow(FOLLOW_rule__Attribute__Group__3_in_rule__Attribute__Group__29146);
             rule__Attribute__Group__3();
             _fsp--;
 
@@ -11614,23 +11714,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4345:1: rule__Attribute__Group__3 : ( ( rule__Attribute__RwTypeAssignment_3 ) ) rule__Attribute__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4385:1: rule__Attribute__Group__3 : ( ( rule__Attribute__RwTypeAssignment_3 ) ) rule__Attribute__Group__4 ;
     public final void rule__Attribute__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4349:1: ( ( ( rule__Attribute__RwTypeAssignment_3 ) ) rule__Attribute__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4350:1: ( ( rule__Attribute__RwTypeAssignment_3 ) ) rule__Attribute__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4389:1: ( ( ( rule__Attribute__RwTypeAssignment_3 ) ) rule__Attribute__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4390:1: ( ( rule__Attribute__RwTypeAssignment_3 ) ) rule__Attribute__Group__4
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4350:1: ( ( rule__Attribute__RwTypeAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4351:1: ( rule__Attribute__RwTypeAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4390:1: ( ( rule__Attribute__RwTypeAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4391:1: ( rule__Attribute__RwTypeAssignment_3 )
             {
              before(grammarAccess.getAttributeAccess().getRwTypeAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4352:1: ( rule__Attribute__RwTypeAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4352:2: rule__Attribute__RwTypeAssignment_3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4392:1: ( rule__Attribute__RwTypeAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4392:2: rule__Attribute__RwTypeAssignment_3
             {
-            pushFollow(FOLLOW_rule__Attribute__RwTypeAssignment_3_in_rule__Attribute__Group__39096);
+            pushFollow(FOLLOW_rule__Attribute__RwTypeAssignment_3_in_rule__Attribute__Group__39174);
             rule__Attribute__RwTypeAssignment_3();
             _fsp--;
 
@@ -11641,7 +11741,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__4_in_rule__Attribute__Group__39105);
+            pushFollow(FOLLOW_rule__Attribute__Group__4_in_rule__Attribute__Group__39183);
             rule__Attribute__Group__4();
             _fsp--;
 
@@ -11664,23 +11764,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4363:1: rule__Attribute__Group__4 : ( ( rule__Attribute__DisplayLevelAssignment_4 ) ) rule__Attribute__Group__5 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4403:1: rule__Attribute__Group__4 : ( ( rule__Attribute__DisplayLevelAssignment_4 ) ) rule__Attribute__Group__5 ;
     public final void rule__Attribute__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4367:1: ( ( ( rule__Attribute__DisplayLevelAssignment_4 ) ) rule__Attribute__Group__5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4368:1: ( ( rule__Attribute__DisplayLevelAssignment_4 ) ) rule__Attribute__Group__5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4407:1: ( ( ( rule__Attribute__DisplayLevelAssignment_4 ) ) rule__Attribute__Group__5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4408:1: ( ( rule__Attribute__DisplayLevelAssignment_4 ) ) rule__Attribute__Group__5
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4368:1: ( ( rule__Attribute__DisplayLevelAssignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4369:1: ( rule__Attribute__DisplayLevelAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4408:1: ( ( rule__Attribute__DisplayLevelAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4409:1: ( rule__Attribute__DisplayLevelAssignment_4 )
             {
              before(grammarAccess.getAttributeAccess().getDisplayLevelAssignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4370:1: ( rule__Attribute__DisplayLevelAssignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4370:2: rule__Attribute__DisplayLevelAssignment_4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4410:1: ( rule__Attribute__DisplayLevelAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4410:2: rule__Attribute__DisplayLevelAssignment_4
             {
-            pushFollow(FOLLOW_rule__Attribute__DisplayLevelAssignment_4_in_rule__Attribute__Group__49133);
+            pushFollow(FOLLOW_rule__Attribute__DisplayLevelAssignment_4_in_rule__Attribute__Group__49211);
             rule__Attribute__DisplayLevelAssignment_4();
             _fsp--;
 
@@ -11691,7 +11791,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__5_in_rule__Attribute__Group__49142);
+            pushFollow(FOLLOW_rule__Attribute__Group__5_in_rule__Attribute__Group__49220);
             rule__Attribute__Group__5();
             _fsp--;
 
@@ -11714,23 +11814,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4381:1: rule__Attribute__Group__5 : ( ( rule__Attribute__PolledPeriodAssignment_5 ) ) rule__Attribute__Group__6 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4421:1: rule__Attribute__Group__5 : ( ( rule__Attribute__PolledPeriodAssignment_5 ) ) rule__Attribute__Group__6 ;
     public final void rule__Attribute__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4385:1: ( ( ( rule__Attribute__PolledPeriodAssignment_5 ) ) rule__Attribute__Group__6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4386:1: ( ( rule__Attribute__PolledPeriodAssignment_5 ) ) rule__Attribute__Group__6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4425:1: ( ( ( rule__Attribute__PolledPeriodAssignment_5 ) ) rule__Attribute__Group__6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4426:1: ( ( rule__Attribute__PolledPeriodAssignment_5 ) ) rule__Attribute__Group__6
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4386:1: ( ( rule__Attribute__PolledPeriodAssignment_5 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4387:1: ( rule__Attribute__PolledPeriodAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4426:1: ( ( rule__Attribute__PolledPeriodAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4427:1: ( rule__Attribute__PolledPeriodAssignment_5 )
             {
              before(grammarAccess.getAttributeAccess().getPolledPeriodAssignment_5()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4388:1: ( rule__Attribute__PolledPeriodAssignment_5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4388:2: rule__Attribute__PolledPeriodAssignment_5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4428:1: ( rule__Attribute__PolledPeriodAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4428:2: rule__Attribute__PolledPeriodAssignment_5
             {
-            pushFollow(FOLLOW_rule__Attribute__PolledPeriodAssignment_5_in_rule__Attribute__Group__59170);
+            pushFollow(FOLLOW_rule__Attribute__PolledPeriodAssignment_5_in_rule__Attribute__Group__59248);
             rule__Attribute__PolledPeriodAssignment_5();
             _fsp--;
 
@@ -11741,7 +11841,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__6_in_rule__Attribute__Group__59179);
+            pushFollow(FOLLOW_rule__Attribute__Group__6_in_rule__Attribute__Group__59257);
             rule__Attribute__Group__6();
             _fsp--;
 
@@ -11764,23 +11864,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4399:1: rule__Attribute__Group__6 : ( ( rule__Attribute__MaxXAssignment_6 ) ) rule__Attribute__Group__7 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4439:1: rule__Attribute__Group__6 : ( ( rule__Attribute__MaxXAssignment_6 ) ) rule__Attribute__Group__7 ;
     public final void rule__Attribute__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4403:1: ( ( ( rule__Attribute__MaxXAssignment_6 ) ) rule__Attribute__Group__7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4404:1: ( ( rule__Attribute__MaxXAssignment_6 ) ) rule__Attribute__Group__7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4443:1: ( ( ( rule__Attribute__MaxXAssignment_6 ) ) rule__Attribute__Group__7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4444:1: ( ( rule__Attribute__MaxXAssignment_6 ) ) rule__Attribute__Group__7
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4404:1: ( ( rule__Attribute__MaxXAssignment_6 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4405:1: ( rule__Attribute__MaxXAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4444:1: ( ( rule__Attribute__MaxXAssignment_6 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4445:1: ( rule__Attribute__MaxXAssignment_6 )
             {
              before(grammarAccess.getAttributeAccess().getMaxXAssignment_6()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4406:1: ( rule__Attribute__MaxXAssignment_6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4406:2: rule__Attribute__MaxXAssignment_6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4446:1: ( rule__Attribute__MaxXAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4446:2: rule__Attribute__MaxXAssignment_6
             {
-            pushFollow(FOLLOW_rule__Attribute__MaxXAssignment_6_in_rule__Attribute__Group__69207);
+            pushFollow(FOLLOW_rule__Attribute__MaxXAssignment_6_in_rule__Attribute__Group__69285);
             rule__Attribute__MaxXAssignment_6();
             _fsp--;
 
@@ -11791,7 +11891,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__7_in_rule__Attribute__Group__69216);
+            pushFollow(FOLLOW_rule__Attribute__Group__7_in_rule__Attribute__Group__69294);
             rule__Attribute__Group__7();
             _fsp--;
 
@@ -11814,23 +11914,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4417:1: rule__Attribute__Group__7 : ( ( rule__Attribute__MaxYAssignment_7 ) ) rule__Attribute__Group__8 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4457:1: rule__Attribute__Group__7 : ( ( rule__Attribute__MaxYAssignment_7 ) ) rule__Attribute__Group__8 ;
     public final void rule__Attribute__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4421:1: ( ( ( rule__Attribute__MaxYAssignment_7 ) ) rule__Attribute__Group__8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4422:1: ( ( rule__Attribute__MaxYAssignment_7 ) ) rule__Attribute__Group__8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4461:1: ( ( ( rule__Attribute__MaxYAssignment_7 ) ) rule__Attribute__Group__8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4462:1: ( ( rule__Attribute__MaxYAssignment_7 ) ) rule__Attribute__Group__8
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4422:1: ( ( rule__Attribute__MaxYAssignment_7 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4423:1: ( rule__Attribute__MaxYAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4462:1: ( ( rule__Attribute__MaxYAssignment_7 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4463:1: ( rule__Attribute__MaxYAssignment_7 )
             {
              before(grammarAccess.getAttributeAccess().getMaxYAssignment_7()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4424:1: ( rule__Attribute__MaxYAssignment_7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4424:2: rule__Attribute__MaxYAssignment_7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4464:1: ( rule__Attribute__MaxYAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4464:2: rule__Attribute__MaxYAssignment_7
             {
-            pushFollow(FOLLOW_rule__Attribute__MaxYAssignment_7_in_rule__Attribute__Group__79244);
+            pushFollow(FOLLOW_rule__Attribute__MaxYAssignment_7_in_rule__Attribute__Group__79322);
             rule__Attribute__MaxYAssignment_7();
             _fsp--;
 
@@ -11841,7 +11941,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__8_in_rule__Attribute__Group__79253);
+            pushFollow(FOLLOW_rule__Attribute__Group__8_in_rule__Attribute__Group__79331);
             rule__Attribute__Group__8();
             _fsp--;
 
@@ -11864,23 +11964,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4435:1: rule__Attribute__Group__8 : ( ( rule__Attribute__AssociatedAttrAssignment_8 ) ) rule__Attribute__Group__9 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4475:1: rule__Attribute__Group__8 : ( ( rule__Attribute__AssociatedAttrAssignment_8 ) ) rule__Attribute__Group__9 ;
     public final void rule__Attribute__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4439:1: ( ( ( rule__Attribute__AssociatedAttrAssignment_8 ) ) rule__Attribute__Group__9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4440:1: ( ( rule__Attribute__AssociatedAttrAssignment_8 ) ) rule__Attribute__Group__9
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4479:1: ( ( ( rule__Attribute__AssociatedAttrAssignment_8 ) ) rule__Attribute__Group__9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4480:1: ( ( rule__Attribute__AssociatedAttrAssignment_8 ) ) rule__Attribute__Group__9
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4440:1: ( ( rule__Attribute__AssociatedAttrAssignment_8 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4441:1: ( rule__Attribute__AssociatedAttrAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4480:1: ( ( rule__Attribute__AssociatedAttrAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4481:1: ( rule__Attribute__AssociatedAttrAssignment_8 )
             {
              before(grammarAccess.getAttributeAccess().getAssociatedAttrAssignment_8()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4442:1: ( rule__Attribute__AssociatedAttrAssignment_8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4442:2: rule__Attribute__AssociatedAttrAssignment_8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4482:1: ( rule__Attribute__AssociatedAttrAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4482:2: rule__Attribute__AssociatedAttrAssignment_8
             {
-            pushFollow(FOLLOW_rule__Attribute__AssociatedAttrAssignment_8_in_rule__Attribute__Group__89281);
+            pushFollow(FOLLOW_rule__Attribute__AssociatedAttrAssignment_8_in_rule__Attribute__Group__89359);
             rule__Attribute__AssociatedAttrAssignment_8();
             _fsp--;
 
@@ -11891,7 +11991,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__9_in_rule__Attribute__Group__89290);
+            pushFollow(FOLLOW_rule__Attribute__Group__9_in_rule__Attribute__Group__89368);
             rule__Attribute__Group__9();
             _fsp--;
 
@@ -11914,23 +12014,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4453:1: rule__Attribute__Group__9 : ( ( rule__Attribute__MemorizedAssignment_9 ) ) rule__Attribute__Group__10 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4493:1: rule__Attribute__Group__9 : ( ( rule__Attribute__MemorizedAssignment_9 ) ) rule__Attribute__Group__10 ;
     public final void rule__Attribute__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4457:1: ( ( ( rule__Attribute__MemorizedAssignment_9 ) ) rule__Attribute__Group__10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4458:1: ( ( rule__Attribute__MemorizedAssignment_9 ) ) rule__Attribute__Group__10
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4497:1: ( ( ( rule__Attribute__MemorizedAssignment_9 ) ) rule__Attribute__Group__10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4498:1: ( ( rule__Attribute__MemorizedAssignment_9 ) ) rule__Attribute__Group__10
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4458:1: ( ( rule__Attribute__MemorizedAssignment_9 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4459:1: ( rule__Attribute__MemorizedAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4498:1: ( ( rule__Attribute__MemorizedAssignment_9 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4499:1: ( rule__Attribute__MemorizedAssignment_9 )
             {
              before(grammarAccess.getAttributeAccess().getMemorizedAssignment_9()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4460:1: ( rule__Attribute__MemorizedAssignment_9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4460:2: rule__Attribute__MemorizedAssignment_9
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4500:1: ( rule__Attribute__MemorizedAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4500:2: rule__Attribute__MemorizedAssignment_9
             {
-            pushFollow(FOLLOW_rule__Attribute__MemorizedAssignment_9_in_rule__Attribute__Group__99318);
+            pushFollow(FOLLOW_rule__Attribute__MemorizedAssignment_9_in_rule__Attribute__Group__99396);
             rule__Attribute__MemorizedAssignment_9();
             _fsp--;
 
@@ -11941,7 +12041,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__10_in_rule__Attribute__Group__99327);
+            pushFollow(FOLLOW_rule__Attribute__Group__10_in_rule__Attribute__Group__99405);
             rule__Attribute__Group__10();
             _fsp--;
 
@@ -11964,23 +12064,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__10
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4471:1: rule__Attribute__Group__10 : ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) ) rule__Attribute__Group__11 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4511:1: rule__Attribute__Group__10 : ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) ) rule__Attribute__Group__11 ;
     public final void rule__Attribute__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4475:1: ( ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) ) rule__Attribute__Group__11 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4476:1: ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) ) rule__Attribute__Group__11
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4515:1: ( ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) ) rule__Attribute__Group__11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4516:1: ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) ) rule__Attribute__Group__11
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4476:1: ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4477:1: ( rule__Attribute__MemorizedAtInitAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4516:1: ( ( rule__Attribute__MemorizedAtInitAssignment_10 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4517:1: ( rule__Attribute__MemorizedAtInitAssignment_10 )
             {
              before(grammarAccess.getAttributeAccess().getMemorizedAtInitAssignment_10()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4478:1: ( rule__Attribute__MemorizedAtInitAssignment_10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4478:2: rule__Attribute__MemorizedAtInitAssignment_10
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4518:1: ( rule__Attribute__MemorizedAtInitAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4518:2: rule__Attribute__MemorizedAtInitAssignment_10
             {
-            pushFollow(FOLLOW_rule__Attribute__MemorizedAtInitAssignment_10_in_rule__Attribute__Group__109355);
+            pushFollow(FOLLOW_rule__Attribute__MemorizedAtInitAssignment_10_in_rule__Attribute__Group__109433);
             rule__Attribute__MemorizedAtInitAssignment_10();
             _fsp--;
 
@@ -11991,7 +12091,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__11_in_rule__Attribute__Group__109364);
+            pushFollow(FOLLOW_rule__Attribute__Group__11_in_rule__Attribute__Group__109442);
             rule__Attribute__Group__11();
             _fsp--;
 
@@ -12014,23 +12114,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4489:1: rule__Attribute__Group__11 : ( ( rule__Attribute__ChangeEventAssignment_11 ) ) rule__Attribute__Group__12 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4529:1: rule__Attribute__Group__11 : ( ( rule__Attribute__ChangeEventAssignment_11 ) ) rule__Attribute__Group__12 ;
     public final void rule__Attribute__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4493:1: ( ( ( rule__Attribute__ChangeEventAssignment_11 ) ) rule__Attribute__Group__12 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4494:1: ( ( rule__Attribute__ChangeEventAssignment_11 ) ) rule__Attribute__Group__12
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4533:1: ( ( ( rule__Attribute__ChangeEventAssignment_11 ) ) rule__Attribute__Group__12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4534:1: ( ( rule__Attribute__ChangeEventAssignment_11 ) ) rule__Attribute__Group__12
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4494:1: ( ( rule__Attribute__ChangeEventAssignment_11 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4495:1: ( rule__Attribute__ChangeEventAssignment_11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4534:1: ( ( rule__Attribute__ChangeEventAssignment_11 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4535:1: ( rule__Attribute__ChangeEventAssignment_11 )
             {
              before(grammarAccess.getAttributeAccess().getChangeEventAssignment_11()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4496:1: ( rule__Attribute__ChangeEventAssignment_11 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4496:2: rule__Attribute__ChangeEventAssignment_11
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4536:1: ( rule__Attribute__ChangeEventAssignment_11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4536:2: rule__Attribute__ChangeEventAssignment_11
             {
-            pushFollow(FOLLOW_rule__Attribute__ChangeEventAssignment_11_in_rule__Attribute__Group__119392);
+            pushFollow(FOLLOW_rule__Attribute__ChangeEventAssignment_11_in_rule__Attribute__Group__119470);
             rule__Attribute__ChangeEventAssignment_11();
             _fsp--;
 
@@ -12041,7 +12141,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__12_in_rule__Attribute__Group__119401);
+            pushFollow(FOLLOW_rule__Attribute__Group__12_in_rule__Attribute__Group__119479);
             rule__Attribute__Group__12();
             _fsp--;
 
@@ -12064,23 +12164,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__12
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4507:1: rule__Attribute__Group__12 : ( ( rule__Attribute__ArchiveEventAssignment_12 ) ) rule__Attribute__Group__13 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4547:1: rule__Attribute__Group__12 : ( ( rule__Attribute__ArchiveEventAssignment_12 ) ) rule__Attribute__Group__13 ;
     public final void rule__Attribute__Group__12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4511:1: ( ( ( rule__Attribute__ArchiveEventAssignment_12 ) ) rule__Attribute__Group__13 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4512:1: ( ( rule__Attribute__ArchiveEventAssignment_12 ) ) rule__Attribute__Group__13
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4551:1: ( ( ( rule__Attribute__ArchiveEventAssignment_12 ) ) rule__Attribute__Group__13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4552:1: ( ( rule__Attribute__ArchiveEventAssignment_12 ) ) rule__Attribute__Group__13
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4512:1: ( ( rule__Attribute__ArchiveEventAssignment_12 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4513:1: ( rule__Attribute__ArchiveEventAssignment_12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4552:1: ( ( rule__Attribute__ArchiveEventAssignment_12 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4553:1: ( rule__Attribute__ArchiveEventAssignment_12 )
             {
              before(grammarAccess.getAttributeAccess().getArchiveEventAssignment_12()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4514:1: ( rule__Attribute__ArchiveEventAssignment_12 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4514:2: rule__Attribute__ArchiveEventAssignment_12
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4554:1: ( rule__Attribute__ArchiveEventAssignment_12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4554:2: rule__Attribute__ArchiveEventAssignment_12
             {
-            pushFollow(FOLLOW_rule__Attribute__ArchiveEventAssignment_12_in_rule__Attribute__Group__129429);
+            pushFollow(FOLLOW_rule__Attribute__ArchiveEventAssignment_12_in_rule__Attribute__Group__129507);
             rule__Attribute__ArchiveEventAssignment_12();
             _fsp--;
 
@@ -12091,7 +12191,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__13_in_rule__Attribute__Group__129438);
+            pushFollow(FOLLOW_rule__Attribute__Group__13_in_rule__Attribute__Group__129516);
             rule__Attribute__Group__13();
             _fsp--;
 
@@ -12114,23 +12214,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__13
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4525:1: rule__Attribute__Group__13 : ( ( rule__Attribute__DataReadyEventAssignment_13 ) ) rule__Attribute__Group__14 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4565:1: rule__Attribute__Group__13 : ( ( rule__Attribute__DataReadyEventAssignment_13 ) ) rule__Attribute__Group__14 ;
     public final void rule__Attribute__Group__13() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4529:1: ( ( ( rule__Attribute__DataReadyEventAssignment_13 ) ) rule__Attribute__Group__14 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4530:1: ( ( rule__Attribute__DataReadyEventAssignment_13 ) ) rule__Attribute__Group__14
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4569:1: ( ( ( rule__Attribute__DataReadyEventAssignment_13 ) ) rule__Attribute__Group__14 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4570:1: ( ( rule__Attribute__DataReadyEventAssignment_13 ) ) rule__Attribute__Group__14
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4530:1: ( ( rule__Attribute__DataReadyEventAssignment_13 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4531:1: ( rule__Attribute__DataReadyEventAssignment_13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4570:1: ( ( rule__Attribute__DataReadyEventAssignment_13 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4571:1: ( rule__Attribute__DataReadyEventAssignment_13 )
             {
              before(grammarAccess.getAttributeAccess().getDataReadyEventAssignment_13()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4532:1: ( rule__Attribute__DataReadyEventAssignment_13 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4532:2: rule__Attribute__DataReadyEventAssignment_13
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4572:1: ( rule__Attribute__DataReadyEventAssignment_13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4572:2: rule__Attribute__DataReadyEventAssignment_13
             {
-            pushFollow(FOLLOW_rule__Attribute__DataReadyEventAssignment_13_in_rule__Attribute__Group__139466);
+            pushFollow(FOLLOW_rule__Attribute__DataReadyEventAssignment_13_in_rule__Attribute__Group__139544);
             rule__Attribute__DataReadyEventAssignment_13();
             _fsp--;
 
@@ -12141,7 +12241,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__14_in_rule__Attribute__Group__139475);
+            pushFollow(FOLLOW_rule__Attribute__Group__14_in_rule__Attribute__Group__139553);
             rule__Attribute__Group__14();
             _fsp--;
 
@@ -12164,23 +12264,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__14
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4543:1: rule__Attribute__Group__14 : ( ( rule__Attribute__StatusAssignment_14 ) ) rule__Attribute__Group__15 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4583:1: rule__Attribute__Group__14 : ( ( rule__Attribute__StatusAssignment_14 ) ) rule__Attribute__Group__15 ;
     public final void rule__Attribute__Group__14() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4547:1: ( ( ( rule__Attribute__StatusAssignment_14 ) ) rule__Attribute__Group__15 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4548:1: ( ( rule__Attribute__StatusAssignment_14 ) ) rule__Attribute__Group__15
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4587:1: ( ( ( rule__Attribute__StatusAssignment_14 ) ) rule__Attribute__Group__15 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4588:1: ( ( rule__Attribute__StatusAssignment_14 ) ) rule__Attribute__Group__15
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4548:1: ( ( rule__Attribute__StatusAssignment_14 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4549:1: ( rule__Attribute__StatusAssignment_14 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4588:1: ( ( rule__Attribute__StatusAssignment_14 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4589:1: ( rule__Attribute__StatusAssignment_14 )
             {
              before(grammarAccess.getAttributeAccess().getStatusAssignment_14()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4550:1: ( rule__Attribute__StatusAssignment_14 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4550:2: rule__Attribute__StatusAssignment_14
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4590:1: ( rule__Attribute__StatusAssignment_14 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4590:2: rule__Attribute__StatusAssignment_14
             {
-            pushFollow(FOLLOW_rule__Attribute__StatusAssignment_14_in_rule__Attribute__Group__149503);
+            pushFollow(FOLLOW_rule__Attribute__StatusAssignment_14_in_rule__Attribute__Group__149581);
             rule__Attribute__StatusAssignment_14();
             _fsp--;
 
@@ -12191,7 +12291,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__15_in_rule__Attribute__Group__149512);
+            pushFollow(FOLLOW_rule__Attribute__Group__15_in_rule__Attribute__Group__149590);
             rule__Attribute__Group__15();
             _fsp--;
 
@@ -12214,23 +12314,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__15
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4561:1: rule__Attribute__Group__15 : ( ( rule__Attribute__PropertiesAssignment_15 ) ) rule__Attribute__Group__16 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4601:1: rule__Attribute__Group__15 : ( ( rule__Attribute__PropertiesAssignment_15 ) ) rule__Attribute__Group__16 ;
     public final void rule__Attribute__Group__15() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4565:1: ( ( ( rule__Attribute__PropertiesAssignment_15 ) ) rule__Attribute__Group__16 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4566:1: ( ( rule__Attribute__PropertiesAssignment_15 ) ) rule__Attribute__Group__16
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4605:1: ( ( ( rule__Attribute__PropertiesAssignment_15 ) ) rule__Attribute__Group__16 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4606:1: ( ( rule__Attribute__PropertiesAssignment_15 ) ) rule__Attribute__Group__16
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4566:1: ( ( rule__Attribute__PropertiesAssignment_15 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4567:1: ( rule__Attribute__PropertiesAssignment_15 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4606:1: ( ( rule__Attribute__PropertiesAssignment_15 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4607:1: ( rule__Attribute__PropertiesAssignment_15 )
             {
              before(grammarAccess.getAttributeAccess().getPropertiesAssignment_15()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4568:1: ( rule__Attribute__PropertiesAssignment_15 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4568:2: rule__Attribute__PropertiesAssignment_15
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4608:1: ( rule__Attribute__PropertiesAssignment_15 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4608:2: rule__Attribute__PropertiesAssignment_15
             {
-            pushFollow(FOLLOW_rule__Attribute__PropertiesAssignment_15_in_rule__Attribute__Group__159540);
+            pushFollow(FOLLOW_rule__Attribute__PropertiesAssignment_15_in_rule__Attribute__Group__159618);
             rule__Attribute__PropertiesAssignment_15();
             _fsp--;
 
@@ -12241,7 +12341,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__16_in_rule__Attribute__Group__159549);
+            pushFollow(FOLLOW_rule__Attribute__Group__16_in_rule__Attribute__Group__159627);
             rule__Attribute__Group__16();
             _fsp--;
 
@@ -12264,23 +12364,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__16
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4579:1: rule__Attribute__Group__16 : ( ( rule__Attribute__AllocReadMemberAssignment_16 ) ) rule__Attribute__Group__17 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4619:1: rule__Attribute__Group__16 : ( ( rule__Attribute__AllocReadMemberAssignment_16 ) ) rule__Attribute__Group__17 ;
     public final void rule__Attribute__Group__16() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4583:1: ( ( ( rule__Attribute__AllocReadMemberAssignment_16 ) ) rule__Attribute__Group__17 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4584:1: ( ( rule__Attribute__AllocReadMemberAssignment_16 ) ) rule__Attribute__Group__17
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4623:1: ( ( ( rule__Attribute__AllocReadMemberAssignment_16 ) ) rule__Attribute__Group__17 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4624:1: ( ( rule__Attribute__AllocReadMemberAssignment_16 ) ) rule__Attribute__Group__17
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4584:1: ( ( rule__Attribute__AllocReadMemberAssignment_16 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4585:1: ( rule__Attribute__AllocReadMemberAssignment_16 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4624:1: ( ( rule__Attribute__AllocReadMemberAssignment_16 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4625:1: ( rule__Attribute__AllocReadMemberAssignment_16 )
             {
              before(grammarAccess.getAttributeAccess().getAllocReadMemberAssignment_16()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4586:1: ( rule__Attribute__AllocReadMemberAssignment_16 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4586:2: rule__Attribute__AllocReadMemberAssignment_16
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4626:1: ( rule__Attribute__AllocReadMemberAssignment_16 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4626:2: rule__Attribute__AllocReadMemberAssignment_16
             {
-            pushFollow(FOLLOW_rule__Attribute__AllocReadMemberAssignment_16_in_rule__Attribute__Group__169577);
+            pushFollow(FOLLOW_rule__Attribute__AllocReadMemberAssignment_16_in_rule__Attribute__Group__169655);
             rule__Attribute__AllocReadMemberAssignment_16();
             _fsp--;
 
@@ -12291,7 +12391,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__17_in_rule__Attribute__Group__169586);
+            pushFollow(FOLLOW_rule__Attribute__Group__17_in_rule__Attribute__Group__169664);
             rule__Attribute__Group__17();
             _fsp--;
 
@@ -12314,23 +12414,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__17
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4597:1: rule__Attribute__Group__17 : ( ( rule__Attribute__IsDynamicAssignment_17 ) ) rule__Attribute__Group__18 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4637:1: rule__Attribute__Group__17 : ( ( rule__Attribute__IsDynamicAssignment_17 ) ) rule__Attribute__Group__18 ;
     public final void rule__Attribute__Group__17() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4601:1: ( ( ( rule__Attribute__IsDynamicAssignment_17 ) ) rule__Attribute__Group__18 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4602:1: ( ( rule__Attribute__IsDynamicAssignment_17 ) ) rule__Attribute__Group__18
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4641:1: ( ( ( rule__Attribute__IsDynamicAssignment_17 ) ) rule__Attribute__Group__18 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4642:1: ( ( rule__Attribute__IsDynamicAssignment_17 ) ) rule__Attribute__Group__18
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4602:1: ( ( rule__Attribute__IsDynamicAssignment_17 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4603:1: ( rule__Attribute__IsDynamicAssignment_17 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4642:1: ( ( rule__Attribute__IsDynamicAssignment_17 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4643:1: ( rule__Attribute__IsDynamicAssignment_17 )
             {
              before(grammarAccess.getAttributeAccess().getIsDynamicAssignment_17()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4604:1: ( rule__Attribute__IsDynamicAssignment_17 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4604:2: rule__Attribute__IsDynamicAssignment_17
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4644:1: ( rule__Attribute__IsDynamicAssignment_17 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4644:2: rule__Attribute__IsDynamicAssignment_17
             {
-            pushFollow(FOLLOW_rule__Attribute__IsDynamicAssignment_17_in_rule__Attribute__Group__179614);
+            pushFollow(FOLLOW_rule__Attribute__IsDynamicAssignment_17_in_rule__Attribute__Group__179692);
             rule__Attribute__IsDynamicAssignment_17();
             _fsp--;
 
@@ -12341,7 +12441,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__18_in_rule__Attribute__Group__179623);
+            pushFollow(FOLLOW_rule__Attribute__Group__18_in_rule__Attribute__Group__179701);
             rule__Attribute__Group__18();
             _fsp--;
 
@@ -12364,25 +12464,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__18
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4615:1: rule__Attribute__Group__18 : ( 'readExcludedStates:' ) rule__Attribute__Group__19 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4655:1: rule__Attribute__Group__18 : ( 'readExcludedStates:' ) rule__Attribute__Group__19 ;
     public final void rule__Attribute__Group__18() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4619:1: ( ( 'readExcludedStates:' ) rule__Attribute__Group__19 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4620:1: ( 'readExcludedStates:' ) rule__Attribute__Group__19
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4659:1: ( ( 'readExcludedStates:' ) rule__Attribute__Group__19 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4660:1: ( 'readExcludedStates:' ) rule__Attribute__Group__19
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4620:1: ( 'readExcludedStates:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4621:1: 'readExcludedStates:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4660:1: ( 'readExcludedStates:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4661:1: 'readExcludedStates:'
             {
              before(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_18()); 
-            match(input,43,FOLLOW_43_in_rule__Attribute__Group__189652); 
+            match(input,43,FOLLOW_43_in_rule__Attribute__Group__189730); 
              after(grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_18()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__19_in_rule__Attribute__Group__189662);
+            pushFollow(FOLLOW_rule__Attribute__Group__19_in_rule__Attribute__Group__189740);
             rule__Attribute__Group__19();
             _fsp--;
 
@@ -12405,20 +12505,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__19
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4635:1: rule__Attribute__Group__19 : ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* ) rule__Attribute__Group__20 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4675:1: rule__Attribute__Group__19 : ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* ) rule__Attribute__Group__20 ;
     public final void rule__Attribute__Group__19() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4639:1: ( ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* ) rule__Attribute__Group__20 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4640:1: ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* ) rule__Attribute__Group__20
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4679:1: ( ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* ) rule__Attribute__Group__20 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4680:1: ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* ) rule__Attribute__Group__20
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4640:1: ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4641:1: ( rule__Attribute__ReadExcludedStatesAssignment_19 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4680:1: ( ( rule__Attribute__ReadExcludedStatesAssignment_19 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4681:1: ( rule__Attribute__ReadExcludedStatesAssignment_19 )*
             {
              before(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_19()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4642:1: ( rule__Attribute__ReadExcludedStatesAssignment_19 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4682:1: ( rule__Attribute__ReadExcludedStatesAssignment_19 )*
             loop24:
             do {
                 int alt24=2;
@@ -12431,9 +12531,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
                 switch (alt24) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4642:2: rule__Attribute__ReadExcludedStatesAssignment_19
+            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4682:2: rule__Attribute__ReadExcludedStatesAssignment_19
             	    {
-            	    pushFollow(FOLLOW_rule__Attribute__ReadExcludedStatesAssignment_19_in_rule__Attribute__Group__199690);
+            	    pushFollow(FOLLOW_rule__Attribute__ReadExcludedStatesAssignment_19_in_rule__Attribute__Group__199768);
             	    rule__Attribute__ReadExcludedStatesAssignment_19();
             	    _fsp--;
 
@@ -12450,7 +12550,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__20_in_rule__Attribute__Group__199700);
+            pushFollow(FOLLOW_rule__Attribute__Group__20_in_rule__Attribute__Group__199778);
             rule__Attribute__Group__20();
             _fsp--;
 
@@ -12473,25 +12573,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__20
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4653:1: rule__Attribute__Group__20 : ( 'writeExcludedStates:' ) rule__Attribute__Group__21 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4693:1: rule__Attribute__Group__20 : ( 'writeExcludedStates:' ) rule__Attribute__Group__21 ;
     public final void rule__Attribute__Group__20() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4657:1: ( ( 'writeExcludedStates:' ) rule__Attribute__Group__21 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4658:1: ( 'writeExcludedStates:' ) rule__Attribute__Group__21
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4697:1: ( ( 'writeExcludedStates:' ) rule__Attribute__Group__21 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4698:1: ( 'writeExcludedStates:' ) rule__Attribute__Group__21
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4658:1: ( 'writeExcludedStates:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4659:1: 'writeExcludedStates:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4698:1: ( 'writeExcludedStates:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4699:1: 'writeExcludedStates:'
             {
              before(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_20()); 
-            match(input,44,FOLLOW_44_in_rule__Attribute__Group__209729); 
+            match(input,44,FOLLOW_44_in_rule__Attribute__Group__209807); 
              after(grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_20()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__21_in_rule__Attribute__Group__209739);
+            pushFollow(FOLLOW_rule__Attribute__Group__21_in_rule__Attribute__Group__209817);
             rule__Attribute__Group__21();
             _fsp--;
 
@@ -12514,20 +12614,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__21
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4673:1: rule__Attribute__Group__21 : ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4713:1: rule__Attribute__Group__21 : ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* ) ;
     public final void rule__Attribute__Group__21() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4677:1: ( ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4678:1: ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4717:1: ( ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4718:1: ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4678:1: ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4679:1: ( rule__Attribute__WriteExcludedStatesAssignment_21 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4718:1: ( ( rule__Attribute__WriteExcludedStatesAssignment_21 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4719:1: ( rule__Attribute__WriteExcludedStatesAssignment_21 )*
             {
              before(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_21()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4680:1: ( rule__Attribute__WriteExcludedStatesAssignment_21 )*
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4720:1: ( rule__Attribute__WriteExcludedStatesAssignment_21 )*
             loop25:
             do {
                 int alt25=2;
@@ -12540,9 +12640,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
                 switch (alt25) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4680:2: rule__Attribute__WriteExcludedStatesAssignment_21
+            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4720:2: rule__Attribute__WriteExcludedStatesAssignment_21
             	    {
-            	    pushFollow(FOLLOW_rule__Attribute__WriteExcludedStatesAssignment_21_in_rule__Attribute__Group__219767);
+            	    pushFollow(FOLLOW_rule__Attribute__WriteExcludedStatesAssignment_21_in_rule__Attribute__Group__219845);
             	    rule__Attribute__WriteExcludedStatesAssignment_21();
             	    _fsp--;
 
@@ -12578,23 +12678,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FireEvents__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4734:1: rule__FireEvents__Group__0 : ( ( rule__FireEvents__FireAssignment_0 ) ) rule__FireEvents__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4774:1: rule__FireEvents__Group__0 : ( ( rule__FireEvents__FireAssignment_0 ) ) rule__FireEvents__Group__1 ;
     public final void rule__FireEvents__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4738:1: ( ( ( rule__FireEvents__FireAssignment_0 ) ) rule__FireEvents__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4739:1: ( ( rule__FireEvents__FireAssignment_0 ) ) rule__FireEvents__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4778:1: ( ( ( rule__FireEvents__FireAssignment_0 ) ) rule__FireEvents__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4779:1: ( ( rule__FireEvents__FireAssignment_0 ) ) rule__FireEvents__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4739:1: ( ( rule__FireEvents__FireAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4740:1: ( rule__FireEvents__FireAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4779:1: ( ( rule__FireEvents__FireAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4780:1: ( rule__FireEvents__FireAssignment_0 )
             {
              before(grammarAccess.getFireEventsAccess().getFireAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4741:1: ( rule__FireEvents__FireAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4741:2: rule__FireEvents__FireAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4781:1: ( rule__FireEvents__FireAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4781:2: rule__FireEvents__FireAssignment_0
             {
-            pushFollow(FOLLOW_rule__FireEvents__FireAssignment_0_in_rule__FireEvents__Group__09846);
+            pushFollow(FOLLOW_rule__FireEvents__FireAssignment_0_in_rule__FireEvents__Group__09924);
             rule__FireEvents__FireAssignment_0();
             _fsp--;
 
@@ -12605,7 +12705,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__FireEvents__Group__1_in_rule__FireEvents__Group__09855);
+            pushFollow(FOLLOW_rule__FireEvents__Group__1_in_rule__FireEvents__Group__09933);
             rule__FireEvents__Group__1();
             _fsp--;
 
@@ -12628,23 +12728,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FireEvents__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4752:1: rule__FireEvents__Group__1 : ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4792:1: rule__FireEvents__Group__1 : ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) ) ;
     public final void rule__FireEvents__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4756:1: ( ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4757:1: ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4796:1: ( ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4797:1: ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4757:1: ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4758:1: ( rule__FireEvents__LibCheckCriteriaAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4797:1: ( ( rule__FireEvents__LibCheckCriteriaAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4798:1: ( rule__FireEvents__LibCheckCriteriaAssignment_1 )
             {
              before(grammarAccess.getFireEventsAccess().getLibCheckCriteriaAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4759:1: ( rule__FireEvents__LibCheckCriteriaAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4759:2: rule__FireEvents__LibCheckCriteriaAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4799:1: ( rule__FireEvents__LibCheckCriteriaAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4799:2: rule__FireEvents__LibCheckCriteriaAssignment_1
             {
-            pushFollow(FOLLOW_rule__FireEvents__LibCheckCriteriaAssignment_1_in_rule__FireEvents__Group__19883);
+            pushFollow(FOLLOW_rule__FireEvents__LibCheckCriteriaAssignment_1_in_rule__FireEvents__Group__19961);
             rule__FireEvents__LibCheckCriteriaAssignment_1();
             _fsp--;
 
@@ -12674,23 +12774,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4773:1: rule__AttrProperties__Group__0 : ( ( rule__AttrProperties__DescriptionAssignment_0 ) ) rule__AttrProperties__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4813:1: rule__AttrProperties__Group__0 : ( ( rule__AttrProperties__DescriptionAssignment_0 ) ) rule__AttrProperties__Group__1 ;
     public final void rule__AttrProperties__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4777:1: ( ( ( rule__AttrProperties__DescriptionAssignment_0 ) ) rule__AttrProperties__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4778:1: ( ( rule__AttrProperties__DescriptionAssignment_0 ) ) rule__AttrProperties__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4817:1: ( ( ( rule__AttrProperties__DescriptionAssignment_0 ) ) rule__AttrProperties__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4818:1: ( ( rule__AttrProperties__DescriptionAssignment_0 ) ) rule__AttrProperties__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4778:1: ( ( rule__AttrProperties__DescriptionAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4779:1: ( rule__AttrProperties__DescriptionAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4818:1: ( ( rule__AttrProperties__DescriptionAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4819:1: ( rule__AttrProperties__DescriptionAssignment_0 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getDescriptionAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4780:1: ( rule__AttrProperties__DescriptionAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4780:2: rule__AttrProperties__DescriptionAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4820:1: ( rule__AttrProperties__DescriptionAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4820:2: rule__AttrProperties__DescriptionAssignment_0
             {
-            pushFollow(FOLLOW_rule__AttrProperties__DescriptionAssignment_0_in_rule__AttrProperties__Group__09921);
+            pushFollow(FOLLOW_rule__AttrProperties__DescriptionAssignment_0_in_rule__AttrProperties__Group__09999);
             rule__AttrProperties__DescriptionAssignment_0();
             _fsp--;
 
@@ -12701,7 +12801,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__1_in_rule__AttrProperties__Group__09930);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__1_in_rule__AttrProperties__Group__010008);
             rule__AttrProperties__Group__1();
             _fsp--;
 
@@ -12724,23 +12824,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4791:1: rule__AttrProperties__Group__1 : ( ( rule__AttrProperties__LabelAssignment_1 ) ) rule__AttrProperties__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4831:1: rule__AttrProperties__Group__1 : ( ( rule__AttrProperties__LabelAssignment_1 ) ) rule__AttrProperties__Group__2 ;
     public final void rule__AttrProperties__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4795:1: ( ( ( rule__AttrProperties__LabelAssignment_1 ) ) rule__AttrProperties__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4796:1: ( ( rule__AttrProperties__LabelAssignment_1 ) ) rule__AttrProperties__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4835:1: ( ( ( rule__AttrProperties__LabelAssignment_1 ) ) rule__AttrProperties__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4836:1: ( ( rule__AttrProperties__LabelAssignment_1 ) ) rule__AttrProperties__Group__2
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4796:1: ( ( rule__AttrProperties__LabelAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4797:1: ( rule__AttrProperties__LabelAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4836:1: ( ( rule__AttrProperties__LabelAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4837:1: ( rule__AttrProperties__LabelAssignment_1 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getLabelAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4798:1: ( rule__AttrProperties__LabelAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4798:2: rule__AttrProperties__LabelAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4838:1: ( rule__AttrProperties__LabelAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4838:2: rule__AttrProperties__LabelAssignment_1
             {
-            pushFollow(FOLLOW_rule__AttrProperties__LabelAssignment_1_in_rule__AttrProperties__Group__19958);
+            pushFollow(FOLLOW_rule__AttrProperties__LabelAssignment_1_in_rule__AttrProperties__Group__110036);
             rule__AttrProperties__LabelAssignment_1();
             _fsp--;
 
@@ -12751,7 +12851,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__2_in_rule__AttrProperties__Group__19967);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__2_in_rule__AttrProperties__Group__110045);
             rule__AttrProperties__Group__2();
             _fsp--;
 
@@ -12774,23 +12874,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4809:1: rule__AttrProperties__Group__2 : ( ( rule__AttrProperties__UnitAssignment_2 ) ) rule__AttrProperties__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4849:1: rule__AttrProperties__Group__2 : ( ( rule__AttrProperties__UnitAssignment_2 ) ) rule__AttrProperties__Group__3 ;
     public final void rule__AttrProperties__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4813:1: ( ( ( rule__AttrProperties__UnitAssignment_2 ) ) rule__AttrProperties__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4814:1: ( ( rule__AttrProperties__UnitAssignment_2 ) ) rule__AttrProperties__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4853:1: ( ( ( rule__AttrProperties__UnitAssignment_2 ) ) rule__AttrProperties__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4854:1: ( ( rule__AttrProperties__UnitAssignment_2 ) ) rule__AttrProperties__Group__3
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4814:1: ( ( rule__AttrProperties__UnitAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4815:1: ( rule__AttrProperties__UnitAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4854:1: ( ( rule__AttrProperties__UnitAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4855:1: ( rule__AttrProperties__UnitAssignment_2 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getUnitAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4816:1: ( rule__AttrProperties__UnitAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4816:2: rule__AttrProperties__UnitAssignment_2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4856:1: ( rule__AttrProperties__UnitAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4856:2: rule__AttrProperties__UnitAssignment_2
             {
-            pushFollow(FOLLOW_rule__AttrProperties__UnitAssignment_2_in_rule__AttrProperties__Group__29995);
+            pushFollow(FOLLOW_rule__AttrProperties__UnitAssignment_2_in_rule__AttrProperties__Group__210073);
             rule__AttrProperties__UnitAssignment_2();
             _fsp--;
 
@@ -12801,7 +12901,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__3_in_rule__AttrProperties__Group__210004);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__3_in_rule__AttrProperties__Group__210082);
             rule__AttrProperties__Group__3();
             _fsp--;
 
@@ -12824,23 +12924,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4827:1: rule__AttrProperties__Group__3 : ( ( rule__AttrProperties__StandardUnitAssignment_3 ) ) rule__AttrProperties__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4867:1: rule__AttrProperties__Group__3 : ( ( rule__AttrProperties__StandardUnitAssignment_3 ) ) rule__AttrProperties__Group__4 ;
     public final void rule__AttrProperties__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4831:1: ( ( ( rule__AttrProperties__StandardUnitAssignment_3 ) ) rule__AttrProperties__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4832:1: ( ( rule__AttrProperties__StandardUnitAssignment_3 ) ) rule__AttrProperties__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4871:1: ( ( ( rule__AttrProperties__StandardUnitAssignment_3 ) ) rule__AttrProperties__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4872:1: ( ( rule__AttrProperties__StandardUnitAssignment_3 ) ) rule__AttrProperties__Group__4
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4832:1: ( ( rule__AttrProperties__StandardUnitAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4833:1: ( rule__AttrProperties__StandardUnitAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4872:1: ( ( rule__AttrProperties__StandardUnitAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4873:1: ( rule__AttrProperties__StandardUnitAssignment_3 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getStandardUnitAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4834:1: ( rule__AttrProperties__StandardUnitAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4834:2: rule__AttrProperties__StandardUnitAssignment_3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4874:1: ( rule__AttrProperties__StandardUnitAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4874:2: rule__AttrProperties__StandardUnitAssignment_3
             {
-            pushFollow(FOLLOW_rule__AttrProperties__StandardUnitAssignment_3_in_rule__AttrProperties__Group__310032);
+            pushFollow(FOLLOW_rule__AttrProperties__StandardUnitAssignment_3_in_rule__AttrProperties__Group__310110);
             rule__AttrProperties__StandardUnitAssignment_3();
             _fsp--;
 
@@ -12851,7 +12951,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__4_in_rule__AttrProperties__Group__310041);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__4_in_rule__AttrProperties__Group__310119);
             rule__AttrProperties__Group__4();
             _fsp--;
 
@@ -12874,23 +12974,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4845:1: rule__AttrProperties__Group__4 : ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) ) rule__AttrProperties__Group__5 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4885:1: rule__AttrProperties__Group__4 : ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) ) rule__AttrProperties__Group__5 ;
     public final void rule__AttrProperties__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4849:1: ( ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) ) rule__AttrProperties__Group__5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4850:1: ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) ) rule__AttrProperties__Group__5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4889:1: ( ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) ) rule__AttrProperties__Group__5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4890:1: ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) ) rule__AttrProperties__Group__5
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4850:1: ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4851:1: ( rule__AttrProperties__DisplayUnitAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4890:1: ( ( rule__AttrProperties__DisplayUnitAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4891:1: ( rule__AttrProperties__DisplayUnitAssignment_4 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getDisplayUnitAssignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4852:1: ( rule__AttrProperties__DisplayUnitAssignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4852:2: rule__AttrProperties__DisplayUnitAssignment_4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4892:1: ( rule__AttrProperties__DisplayUnitAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4892:2: rule__AttrProperties__DisplayUnitAssignment_4
             {
-            pushFollow(FOLLOW_rule__AttrProperties__DisplayUnitAssignment_4_in_rule__AttrProperties__Group__410069);
+            pushFollow(FOLLOW_rule__AttrProperties__DisplayUnitAssignment_4_in_rule__AttrProperties__Group__410147);
             rule__AttrProperties__DisplayUnitAssignment_4();
             _fsp--;
 
@@ -12901,7 +13001,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__5_in_rule__AttrProperties__Group__410078);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__5_in_rule__AttrProperties__Group__410156);
             rule__AttrProperties__Group__5();
             _fsp--;
 
@@ -12924,23 +13024,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4863:1: rule__AttrProperties__Group__5 : ( ( rule__AttrProperties__FormatAssignment_5 ) ) rule__AttrProperties__Group__6 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4903:1: rule__AttrProperties__Group__5 : ( ( rule__AttrProperties__FormatAssignment_5 ) ) rule__AttrProperties__Group__6 ;
     public final void rule__AttrProperties__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4867:1: ( ( ( rule__AttrProperties__FormatAssignment_5 ) ) rule__AttrProperties__Group__6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4868:1: ( ( rule__AttrProperties__FormatAssignment_5 ) ) rule__AttrProperties__Group__6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4907:1: ( ( ( rule__AttrProperties__FormatAssignment_5 ) ) rule__AttrProperties__Group__6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4908:1: ( ( rule__AttrProperties__FormatAssignment_5 ) ) rule__AttrProperties__Group__6
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4868:1: ( ( rule__AttrProperties__FormatAssignment_5 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4869:1: ( rule__AttrProperties__FormatAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4908:1: ( ( rule__AttrProperties__FormatAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4909:1: ( rule__AttrProperties__FormatAssignment_5 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getFormatAssignment_5()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4870:1: ( rule__AttrProperties__FormatAssignment_5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4870:2: rule__AttrProperties__FormatAssignment_5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4910:1: ( rule__AttrProperties__FormatAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4910:2: rule__AttrProperties__FormatAssignment_5
             {
-            pushFollow(FOLLOW_rule__AttrProperties__FormatAssignment_5_in_rule__AttrProperties__Group__510106);
+            pushFollow(FOLLOW_rule__AttrProperties__FormatAssignment_5_in_rule__AttrProperties__Group__510184);
             rule__AttrProperties__FormatAssignment_5();
             _fsp--;
 
@@ -12951,7 +13051,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__6_in_rule__AttrProperties__Group__510115);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__6_in_rule__AttrProperties__Group__510193);
             rule__AttrProperties__Group__6();
             _fsp--;
 
@@ -12974,23 +13074,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4881:1: rule__AttrProperties__Group__6 : ( ( rule__AttrProperties__MaxValueAssignment_6 ) ) rule__AttrProperties__Group__7 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4921:1: rule__AttrProperties__Group__6 : ( ( rule__AttrProperties__MaxValueAssignment_6 ) ) rule__AttrProperties__Group__7 ;
     public final void rule__AttrProperties__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4885:1: ( ( ( rule__AttrProperties__MaxValueAssignment_6 ) ) rule__AttrProperties__Group__7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4886:1: ( ( rule__AttrProperties__MaxValueAssignment_6 ) ) rule__AttrProperties__Group__7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4925:1: ( ( ( rule__AttrProperties__MaxValueAssignment_6 ) ) rule__AttrProperties__Group__7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4926:1: ( ( rule__AttrProperties__MaxValueAssignment_6 ) ) rule__AttrProperties__Group__7
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4886:1: ( ( rule__AttrProperties__MaxValueAssignment_6 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4887:1: ( rule__AttrProperties__MaxValueAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4926:1: ( ( rule__AttrProperties__MaxValueAssignment_6 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4927:1: ( rule__AttrProperties__MaxValueAssignment_6 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getMaxValueAssignment_6()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4888:1: ( rule__AttrProperties__MaxValueAssignment_6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4888:2: rule__AttrProperties__MaxValueAssignment_6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4928:1: ( rule__AttrProperties__MaxValueAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4928:2: rule__AttrProperties__MaxValueAssignment_6
             {
-            pushFollow(FOLLOW_rule__AttrProperties__MaxValueAssignment_6_in_rule__AttrProperties__Group__610143);
+            pushFollow(FOLLOW_rule__AttrProperties__MaxValueAssignment_6_in_rule__AttrProperties__Group__610221);
             rule__AttrProperties__MaxValueAssignment_6();
             _fsp--;
 
@@ -13001,7 +13101,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__7_in_rule__AttrProperties__Group__610152);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__7_in_rule__AttrProperties__Group__610230);
             rule__AttrProperties__Group__7();
             _fsp--;
 
@@ -13024,23 +13124,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4899:1: rule__AttrProperties__Group__7 : ( ( rule__AttrProperties__MinValueAssignment_7 ) ) rule__AttrProperties__Group__8 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4939:1: rule__AttrProperties__Group__7 : ( ( rule__AttrProperties__MinValueAssignment_7 ) ) rule__AttrProperties__Group__8 ;
     public final void rule__AttrProperties__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4903:1: ( ( ( rule__AttrProperties__MinValueAssignment_7 ) ) rule__AttrProperties__Group__8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4904:1: ( ( rule__AttrProperties__MinValueAssignment_7 ) ) rule__AttrProperties__Group__8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4943:1: ( ( ( rule__AttrProperties__MinValueAssignment_7 ) ) rule__AttrProperties__Group__8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4944:1: ( ( rule__AttrProperties__MinValueAssignment_7 ) ) rule__AttrProperties__Group__8
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4904:1: ( ( rule__AttrProperties__MinValueAssignment_7 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4905:1: ( rule__AttrProperties__MinValueAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4944:1: ( ( rule__AttrProperties__MinValueAssignment_7 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4945:1: ( rule__AttrProperties__MinValueAssignment_7 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getMinValueAssignment_7()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4906:1: ( rule__AttrProperties__MinValueAssignment_7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4906:2: rule__AttrProperties__MinValueAssignment_7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4946:1: ( rule__AttrProperties__MinValueAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4946:2: rule__AttrProperties__MinValueAssignment_7
             {
-            pushFollow(FOLLOW_rule__AttrProperties__MinValueAssignment_7_in_rule__AttrProperties__Group__710180);
+            pushFollow(FOLLOW_rule__AttrProperties__MinValueAssignment_7_in_rule__AttrProperties__Group__710258);
             rule__AttrProperties__MinValueAssignment_7();
             _fsp--;
 
@@ -13051,7 +13151,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__8_in_rule__AttrProperties__Group__710189);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__8_in_rule__AttrProperties__Group__710267);
             rule__AttrProperties__Group__8();
             _fsp--;
 
@@ -13074,23 +13174,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4917:1: rule__AttrProperties__Group__8 : ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) ) rule__AttrProperties__Group__9 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4957:1: rule__AttrProperties__Group__8 : ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) ) rule__AttrProperties__Group__9 ;
     public final void rule__AttrProperties__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4921:1: ( ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) ) rule__AttrProperties__Group__9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4922:1: ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) ) rule__AttrProperties__Group__9
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4961:1: ( ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) ) rule__AttrProperties__Group__9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4962:1: ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) ) rule__AttrProperties__Group__9
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4922:1: ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4923:1: ( rule__AttrProperties__MaxAlarmAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4962:1: ( ( rule__AttrProperties__MaxAlarmAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4963:1: ( rule__AttrProperties__MaxAlarmAssignment_8 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getMaxAlarmAssignment_8()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4924:1: ( rule__AttrProperties__MaxAlarmAssignment_8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4924:2: rule__AttrProperties__MaxAlarmAssignment_8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4964:1: ( rule__AttrProperties__MaxAlarmAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4964:2: rule__AttrProperties__MaxAlarmAssignment_8
             {
-            pushFollow(FOLLOW_rule__AttrProperties__MaxAlarmAssignment_8_in_rule__AttrProperties__Group__810217);
+            pushFollow(FOLLOW_rule__AttrProperties__MaxAlarmAssignment_8_in_rule__AttrProperties__Group__810295);
             rule__AttrProperties__MaxAlarmAssignment_8();
             _fsp--;
 
@@ -13101,7 +13201,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__9_in_rule__AttrProperties__Group__810226);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__9_in_rule__AttrProperties__Group__810304);
             rule__AttrProperties__Group__9();
             _fsp--;
 
@@ -13124,23 +13224,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4935:1: rule__AttrProperties__Group__9 : ( ( rule__AttrProperties__MinAlarmAssignment_9 ) ) rule__AttrProperties__Group__10 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4975:1: rule__AttrProperties__Group__9 : ( ( rule__AttrProperties__MinAlarmAssignment_9 ) ) rule__AttrProperties__Group__10 ;
     public final void rule__AttrProperties__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4939:1: ( ( ( rule__AttrProperties__MinAlarmAssignment_9 ) ) rule__AttrProperties__Group__10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4940:1: ( ( rule__AttrProperties__MinAlarmAssignment_9 ) ) rule__AttrProperties__Group__10
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4979:1: ( ( ( rule__AttrProperties__MinAlarmAssignment_9 ) ) rule__AttrProperties__Group__10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4980:1: ( ( rule__AttrProperties__MinAlarmAssignment_9 ) ) rule__AttrProperties__Group__10
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4940:1: ( ( rule__AttrProperties__MinAlarmAssignment_9 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4941:1: ( rule__AttrProperties__MinAlarmAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4980:1: ( ( rule__AttrProperties__MinAlarmAssignment_9 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4981:1: ( rule__AttrProperties__MinAlarmAssignment_9 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getMinAlarmAssignment_9()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4942:1: ( rule__AttrProperties__MinAlarmAssignment_9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4942:2: rule__AttrProperties__MinAlarmAssignment_9
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4982:1: ( rule__AttrProperties__MinAlarmAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4982:2: rule__AttrProperties__MinAlarmAssignment_9
             {
-            pushFollow(FOLLOW_rule__AttrProperties__MinAlarmAssignment_9_in_rule__AttrProperties__Group__910254);
+            pushFollow(FOLLOW_rule__AttrProperties__MinAlarmAssignment_9_in_rule__AttrProperties__Group__910332);
             rule__AttrProperties__MinAlarmAssignment_9();
             _fsp--;
 
@@ -13151,7 +13251,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__10_in_rule__AttrProperties__Group__910263);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__10_in_rule__AttrProperties__Group__910341);
             rule__AttrProperties__Group__10();
             _fsp--;
 
@@ -13174,23 +13274,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__10
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4953:1: rule__AttrProperties__Group__10 : ( ( rule__AttrProperties__MaxWarningAssignment_10 ) ) rule__AttrProperties__Group__11 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4993:1: rule__AttrProperties__Group__10 : ( ( rule__AttrProperties__MaxWarningAssignment_10 ) ) rule__AttrProperties__Group__11 ;
     public final void rule__AttrProperties__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4957:1: ( ( ( rule__AttrProperties__MaxWarningAssignment_10 ) ) rule__AttrProperties__Group__11 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4958:1: ( ( rule__AttrProperties__MaxWarningAssignment_10 ) ) rule__AttrProperties__Group__11
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4997:1: ( ( ( rule__AttrProperties__MaxWarningAssignment_10 ) ) rule__AttrProperties__Group__11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4998:1: ( ( rule__AttrProperties__MaxWarningAssignment_10 ) ) rule__AttrProperties__Group__11
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4958:1: ( ( rule__AttrProperties__MaxWarningAssignment_10 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4959:1: ( rule__AttrProperties__MaxWarningAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4998:1: ( ( rule__AttrProperties__MaxWarningAssignment_10 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4999:1: ( rule__AttrProperties__MaxWarningAssignment_10 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getMaxWarningAssignment_10()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4960:1: ( rule__AttrProperties__MaxWarningAssignment_10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4960:2: rule__AttrProperties__MaxWarningAssignment_10
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5000:1: ( rule__AttrProperties__MaxWarningAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5000:2: rule__AttrProperties__MaxWarningAssignment_10
             {
-            pushFollow(FOLLOW_rule__AttrProperties__MaxWarningAssignment_10_in_rule__AttrProperties__Group__1010291);
+            pushFollow(FOLLOW_rule__AttrProperties__MaxWarningAssignment_10_in_rule__AttrProperties__Group__1010369);
             rule__AttrProperties__MaxWarningAssignment_10();
             _fsp--;
 
@@ -13201,7 +13301,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__11_in_rule__AttrProperties__Group__1010300);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__11_in_rule__AttrProperties__Group__1010378);
             rule__AttrProperties__Group__11();
             _fsp--;
 
@@ -13224,23 +13324,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4971:1: rule__AttrProperties__Group__11 : ( ( rule__AttrProperties__MinWarningAssignment_11 ) ) rule__AttrProperties__Group__12 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5011:1: rule__AttrProperties__Group__11 : ( ( rule__AttrProperties__MinWarningAssignment_11 ) ) rule__AttrProperties__Group__12 ;
     public final void rule__AttrProperties__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4975:1: ( ( ( rule__AttrProperties__MinWarningAssignment_11 ) ) rule__AttrProperties__Group__12 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4976:1: ( ( rule__AttrProperties__MinWarningAssignment_11 ) ) rule__AttrProperties__Group__12
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5015:1: ( ( ( rule__AttrProperties__MinWarningAssignment_11 ) ) rule__AttrProperties__Group__12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5016:1: ( ( rule__AttrProperties__MinWarningAssignment_11 ) ) rule__AttrProperties__Group__12
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4976:1: ( ( rule__AttrProperties__MinWarningAssignment_11 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4977:1: ( rule__AttrProperties__MinWarningAssignment_11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5016:1: ( ( rule__AttrProperties__MinWarningAssignment_11 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5017:1: ( rule__AttrProperties__MinWarningAssignment_11 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getMinWarningAssignment_11()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4978:1: ( rule__AttrProperties__MinWarningAssignment_11 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4978:2: rule__AttrProperties__MinWarningAssignment_11
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5018:1: ( rule__AttrProperties__MinWarningAssignment_11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5018:2: rule__AttrProperties__MinWarningAssignment_11
             {
-            pushFollow(FOLLOW_rule__AttrProperties__MinWarningAssignment_11_in_rule__AttrProperties__Group__1110328);
+            pushFollow(FOLLOW_rule__AttrProperties__MinWarningAssignment_11_in_rule__AttrProperties__Group__1110406);
             rule__AttrProperties__MinWarningAssignment_11();
             _fsp--;
 
@@ -13251,7 +13351,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__12_in_rule__AttrProperties__Group__1110337);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__12_in_rule__AttrProperties__Group__1110415);
             rule__AttrProperties__Group__12();
             _fsp--;
 
@@ -13274,23 +13374,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__12
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4989:1: rule__AttrProperties__Group__12 : ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) ) rule__AttrProperties__Group__13 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5029:1: rule__AttrProperties__Group__12 : ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) ) rule__AttrProperties__Group__13 ;
     public final void rule__AttrProperties__Group__12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4993:1: ( ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) ) rule__AttrProperties__Group__13 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4994:1: ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) ) rule__AttrProperties__Group__13
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5033:1: ( ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) ) rule__AttrProperties__Group__13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5034:1: ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) ) rule__AttrProperties__Group__13
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4994:1: ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4995:1: ( rule__AttrProperties__DeltaTimeAssignment_12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5034:1: ( ( rule__AttrProperties__DeltaTimeAssignment_12 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5035:1: ( rule__AttrProperties__DeltaTimeAssignment_12 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getDeltaTimeAssignment_12()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4996:1: ( rule__AttrProperties__DeltaTimeAssignment_12 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:4996:2: rule__AttrProperties__DeltaTimeAssignment_12
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5036:1: ( rule__AttrProperties__DeltaTimeAssignment_12 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5036:2: rule__AttrProperties__DeltaTimeAssignment_12
             {
-            pushFollow(FOLLOW_rule__AttrProperties__DeltaTimeAssignment_12_in_rule__AttrProperties__Group__1210365);
+            pushFollow(FOLLOW_rule__AttrProperties__DeltaTimeAssignment_12_in_rule__AttrProperties__Group__1210443);
             rule__AttrProperties__DeltaTimeAssignment_12();
             _fsp--;
 
@@ -13301,7 +13401,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AttrProperties__Group__13_in_rule__AttrProperties__Group__1210374);
+            pushFollow(FOLLOW_rule__AttrProperties__Group__13_in_rule__AttrProperties__Group__1210452);
             rule__AttrProperties__Group__13();
             _fsp--;
 
@@ -13324,23 +13424,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__Group__13
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5007:1: rule__AttrProperties__Group__13 : ( ( rule__AttrProperties__DeltaValueAssignment_13 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5047:1: rule__AttrProperties__Group__13 : ( ( rule__AttrProperties__DeltaValueAssignment_13 ) ) ;
     public final void rule__AttrProperties__Group__13() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5011:1: ( ( ( rule__AttrProperties__DeltaValueAssignment_13 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5012:1: ( ( rule__AttrProperties__DeltaValueAssignment_13 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5051:1: ( ( ( rule__AttrProperties__DeltaValueAssignment_13 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5052:1: ( ( rule__AttrProperties__DeltaValueAssignment_13 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5012:1: ( ( rule__AttrProperties__DeltaValueAssignment_13 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5013:1: ( rule__AttrProperties__DeltaValueAssignment_13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5052:1: ( ( rule__AttrProperties__DeltaValueAssignment_13 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5053:1: ( rule__AttrProperties__DeltaValueAssignment_13 )
             {
              before(grammarAccess.getAttrPropertiesAccess().getDeltaValueAssignment_13()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5014:1: ( rule__AttrProperties__DeltaValueAssignment_13 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5014:2: rule__AttrProperties__DeltaValueAssignment_13
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5054:1: ( rule__AttrProperties__DeltaValueAssignment_13 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5054:2: rule__AttrProperties__DeltaValueAssignment_13
             {
-            pushFollow(FOLLOW_rule__AttrProperties__DeltaValueAssignment_13_in_rule__AttrProperties__Group__1310402);
+            pushFollow(FOLLOW_rule__AttrProperties__DeltaValueAssignment_13_in_rule__AttrProperties__Group__1310480);
             rule__AttrProperties__DeltaValueAssignment_13();
             _fsp--;
 
@@ -13370,23 +13470,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AdditionalFile__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5052:1: rule__AdditionalFile__Group__0 : ( ( rule__AdditionalFile__NameAssignment_0 ) ) rule__AdditionalFile__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5092:1: rule__AdditionalFile__Group__0 : ( ( rule__AdditionalFile__NameAssignment_0 ) ) rule__AdditionalFile__Group__1 ;
     public final void rule__AdditionalFile__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5056:1: ( ( ( rule__AdditionalFile__NameAssignment_0 ) ) rule__AdditionalFile__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5057:1: ( ( rule__AdditionalFile__NameAssignment_0 ) ) rule__AdditionalFile__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5096:1: ( ( ( rule__AdditionalFile__NameAssignment_0 ) ) rule__AdditionalFile__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5097:1: ( ( rule__AdditionalFile__NameAssignment_0 ) ) rule__AdditionalFile__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5057:1: ( ( rule__AdditionalFile__NameAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5058:1: ( rule__AdditionalFile__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5097:1: ( ( rule__AdditionalFile__NameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5098:1: ( rule__AdditionalFile__NameAssignment_0 )
             {
              before(grammarAccess.getAdditionalFileAccess().getNameAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5059:1: ( rule__AdditionalFile__NameAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5059:2: rule__AdditionalFile__NameAssignment_0
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5099:1: ( rule__AdditionalFile__NameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5099:2: rule__AdditionalFile__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__AdditionalFile__NameAssignment_0_in_rule__AdditionalFile__Group__010464);
+            pushFollow(FOLLOW_rule__AdditionalFile__NameAssignment_0_in_rule__AdditionalFile__Group__010542);
             rule__AdditionalFile__NameAssignment_0();
             _fsp--;
 
@@ -13397,7 +13497,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__AdditionalFile__Group__1_in_rule__AdditionalFile__Group__010473);
+            pushFollow(FOLLOW_rule__AdditionalFile__Group__1_in_rule__AdditionalFile__Group__010551);
             rule__AdditionalFile__Group__1();
             _fsp--;
 
@@ -13420,23 +13520,23 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AdditionalFile__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5070:1: rule__AdditionalFile__Group__1 : ( ( rule__AdditionalFile__PathAssignment_1 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5110:1: rule__AdditionalFile__Group__1 : ( ( rule__AdditionalFile__PathAssignment_1 ) ) ;
     public final void rule__AdditionalFile__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5074:1: ( ( ( rule__AdditionalFile__PathAssignment_1 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5075:1: ( ( rule__AdditionalFile__PathAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5114:1: ( ( ( rule__AdditionalFile__PathAssignment_1 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5115:1: ( ( rule__AdditionalFile__PathAssignment_1 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5075:1: ( ( rule__AdditionalFile__PathAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5076:1: ( rule__AdditionalFile__PathAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5115:1: ( ( rule__AdditionalFile__PathAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5116:1: ( rule__AdditionalFile__PathAssignment_1 )
             {
              before(grammarAccess.getAdditionalFileAccess().getPathAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5077:1: ( rule__AdditionalFile__PathAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5077:2: rule__AdditionalFile__PathAssignment_1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5117:1: ( rule__AdditionalFile__PathAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5117:2: rule__AdditionalFile__PathAssignment_1
             {
-            pushFollow(FOLLOW_rule__AdditionalFile__PathAssignment_1_in_rule__AdditionalFile__Group__110501);
+            pushFollow(FOLLOW_rule__AdditionalFile__PathAssignment_1_in_rule__AdditionalFile__Group__110579);
             rule__AdditionalFile__PathAssignment_1();
             _fsp--;
 
@@ -13466,21 +13566,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__VoidType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5091:1: rule__VoidType__Group__0 : ( () ) rule__VoidType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5131:1: rule__VoidType__Group__0 : ( () ) rule__VoidType__Group__1 ;
     public final void rule__VoidType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5095:1: ( ( () ) rule__VoidType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5096:1: ( () ) rule__VoidType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5135:1: ( ( () ) rule__VoidType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5136:1: ( () ) rule__VoidType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5096:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5097:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5136:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5137:1: ()
             {
              before(grammarAccess.getVoidTypeAccess().getVoidTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5098:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5100:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5138:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5140:1: 
             {
             }
 
@@ -13488,7 +13588,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__VoidType__Group__1_in_rule__VoidType__Group__010549);
+            pushFollow(FOLLOW_rule__VoidType__Group__1_in_rule__VoidType__Group__010627);
             rule__VoidType__Group__1();
             _fsp--;
 
@@ -13511,20 +13611,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__VoidType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5111:1: rule__VoidType__Group__1 : ( 'void' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5151:1: rule__VoidType__Group__1 : ( 'void' ) ;
     public final void rule__VoidType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5115:1: ( ( 'void' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5116:1: ( 'void' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5155:1: ( ( 'void' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5156:1: ( 'void' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5116:1: ( 'void' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5117:1: 'void'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5156:1: ( 'void' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5157:1: 'void'
             {
              before(grammarAccess.getVoidTypeAccess().getVoidKeyword_1()); 
-            match(input,45,FOLLOW_45_in_rule__VoidType__Group__110578); 
+            match(input,45,FOLLOW_45_in_rule__VoidType__Group__110656); 
              after(grammarAccess.getVoidTypeAccess().getVoidKeyword_1()); 
 
             }
@@ -13548,21 +13648,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__BooleanType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5134:1: rule__BooleanType__Group__0 : ( () ) rule__BooleanType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5174:1: rule__BooleanType__Group__0 : ( () ) rule__BooleanType__Group__1 ;
     public final void rule__BooleanType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5138:1: ( ( () ) rule__BooleanType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5139:1: ( () ) rule__BooleanType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5178:1: ( ( () ) rule__BooleanType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5179:1: ( () ) rule__BooleanType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5139:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5140:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5179:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5180:1: ()
             {
              before(grammarAccess.getBooleanTypeAccess().getBooleanTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5141:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5143:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5181:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5183:1: 
             {
             }
 
@@ -13570,7 +13670,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__BooleanType__Group__1_in_rule__BooleanType__Group__010627);
+            pushFollow(FOLLOW_rule__BooleanType__Group__1_in_rule__BooleanType__Group__010705);
             rule__BooleanType__Group__1();
             _fsp--;
 
@@ -13593,20 +13693,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__BooleanType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5154:1: rule__BooleanType__Group__1 : ( 'boolean' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5194:1: rule__BooleanType__Group__1 : ( 'boolean' ) ;
     public final void rule__BooleanType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5158:1: ( ( 'boolean' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5159:1: ( 'boolean' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5198:1: ( ( 'boolean' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5199:1: ( 'boolean' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5159:1: ( 'boolean' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5160:1: 'boolean'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5199:1: ( 'boolean' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5200:1: 'boolean'
             {
              before(grammarAccess.getBooleanTypeAccess().getBooleanKeyword_1()); 
-            match(input,46,FOLLOW_46_in_rule__BooleanType__Group__110656); 
+            match(input,46,FOLLOW_46_in_rule__BooleanType__Group__110734); 
              after(grammarAccess.getBooleanTypeAccess().getBooleanKeyword_1()); 
 
             }
@@ -13630,21 +13730,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ShortType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5177:1: rule__ShortType__Group__0 : ( () ) rule__ShortType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5217:1: rule__ShortType__Group__0 : ( () ) rule__ShortType__Group__1 ;
     public final void rule__ShortType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5181:1: ( ( () ) rule__ShortType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5182:1: ( () ) rule__ShortType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5221:1: ( ( () ) rule__ShortType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5222:1: ( () ) rule__ShortType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5182:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5183:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5222:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5223:1: ()
             {
              before(grammarAccess.getShortTypeAccess().getShortTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5184:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5186:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5224:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5226:1: 
             {
             }
 
@@ -13652,7 +13752,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ShortType__Group__1_in_rule__ShortType__Group__010705);
+            pushFollow(FOLLOW_rule__ShortType__Group__1_in_rule__ShortType__Group__010783);
             rule__ShortType__Group__1();
             _fsp--;
 
@@ -13675,20 +13775,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ShortType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5197:1: rule__ShortType__Group__1 : ( 'short' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5237:1: rule__ShortType__Group__1 : ( 'short' ) ;
     public final void rule__ShortType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5201:1: ( ( 'short' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5202:1: ( 'short' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5241:1: ( ( 'short' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5242:1: ( 'short' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5202:1: ( 'short' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5203:1: 'short'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5242:1: ( 'short' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5243:1: 'short'
             {
              before(grammarAccess.getShortTypeAccess().getShortKeyword_1()); 
-            match(input,47,FOLLOW_47_in_rule__ShortType__Group__110734); 
+            match(input,47,FOLLOW_47_in_rule__ShortType__Group__110812); 
              after(grammarAccess.getShortTypeAccess().getShortKeyword_1()); 
 
             }
@@ -13712,21 +13812,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UShortType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5220:1: rule__UShortType__Group__0 : ( () ) rule__UShortType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5260:1: rule__UShortType__Group__0 : ( () ) rule__UShortType__Group__1 ;
     public final void rule__UShortType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5224:1: ( ( () ) rule__UShortType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5225:1: ( () ) rule__UShortType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5264:1: ( ( () ) rule__UShortType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5265:1: ( () ) rule__UShortType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5225:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5226:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5265:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5266:1: ()
             {
              before(grammarAccess.getUShortTypeAccess().getUShortTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5227:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5229:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5267:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5269:1: 
             {
             }
 
@@ -13734,7 +13834,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__UShortType__Group__1_in_rule__UShortType__Group__010783);
+            pushFollow(FOLLOW_rule__UShortType__Group__1_in_rule__UShortType__Group__010861);
             rule__UShortType__Group__1();
             _fsp--;
 
@@ -13757,20 +13857,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UShortType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5240:1: rule__UShortType__Group__1 : ( 'ushort' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5280:1: rule__UShortType__Group__1 : ( 'ushort' ) ;
     public final void rule__UShortType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5244:1: ( ( 'ushort' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5245:1: ( 'ushort' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5284:1: ( ( 'ushort' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5285:1: ( 'ushort' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5245:1: ( 'ushort' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5246:1: 'ushort'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5285:1: ( 'ushort' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5286:1: 'ushort'
             {
              before(grammarAccess.getUShortTypeAccess().getUshortKeyword_1()); 
-            match(input,48,FOLLOW_48_in_rule__UShortType__Group__110812); 
+            match(input,48,FOLLOW_48_in_rule__UShortType__Group__110890); 
              after(grammarAccess.getUShortTypeAccess().getUshortKeyword_1()); 
 
             }
@@ -13794,21 +13894,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__IntType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5263:1: rule__IntType__Group__0 : ( () ) rule__IntType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5303:1: rule__IntType__Group__0 : ( () ) rule__IntType__Group__1 ;
     public final void rule__IntType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5267:1: ( ( () ) rule__IntType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5268:1: ( () ) rule__IntType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5307:1: ( ( () ) rule__IntType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5308:1: ( () ) rule__IntType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5268:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5269:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5308:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5309:1: ()
             {
              before(grammarAccess.getIntTypeAccess().getIntTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5270:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5272:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5310:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5312:1: 
             {
             }
 
@@ -13816,7 +13916,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__IntType__Group__1_in_rule__IntType__Group__010861);
+            pushFollow(FOLLOW_rule__IntType__Group__1_in_rule__IntType__Group__010939);
             rule__IntType__Group__1();
             _fsp--;
 
@@ -13839,20 +13939,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__IntType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5283:1: rule__IntType__Group__1 : ( 'int' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5323:1: rule__IntType__Group__1 : ( 'int' ) ;
     public final void rule__IntType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5287:1: ( ( 'int' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5288:1: ( 'int' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5327:1: ( ( 'int' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5328:1: ( 'int' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5288:1: ( 'int' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5289:1: 'int'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5328:1: ( 'int' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5329:1: 'int'
             {
              before(grammarAccess.getIntTypeAccess().getIntKeyword_1()); 
-            match(input,49,FOLLOW_49_in_rule__IntType__Group__110890); 
+            match(input,49,FOLLOW_49_in_rule__IntType__Group__110968); 
              after(grammarAccess.getIntTypeAccess().getIntKeyword_1()); 
 
             }
@@ -13876,21 +13976,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UIntType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5306:1: rule__UIntType__Group__0 : ( () ) rule__UIntType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5346:1: rule__UIntType__Group__0 : ( () ) rule__UIntType__Group__1 ;
     public final void rule__UIntType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5310:1: ( ( () ) rule__UIntType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5311:1: ( () ) rule__UIntType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5350:1: ( ( () ) rule__UIntType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5351:1: ( () ) rule__UIntType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5311:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5312:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5351:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5352:1: ()
             {
              before(grammarAccess.getUIntTypeAccess().getUIntTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5313:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5315:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5353:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5355:1: 
             {
             }
 
@@ -13898,7 +13998,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__UIntType__Group__1_in_rule__UIntType__Group__010939);
+            pushFollow(FOLLOW_rule__UIntType__Group__1_in_rule__UIntType__Group__011017);
             rule__UIntType__Group__1();
             _fsp--;
 
@@ -13921,20 +14021,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UIntType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5326:1: rule__UIntType__Group__1 : ( 'uint' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5366:1: rule__UIntType__Group__1 : ( 'uint' ) ;
     public final void rule__UIntType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5330:1: ( ( 'uint' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5331:1: ( 'uint' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5370:1: ( ( 'uint' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5371:1: ( 'uint' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5331:1: ( 'uint' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5332:1: 'uint'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5371:1: ( 'uint' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5372:1: 'uint'
             {
              before(grammarAccess.getUIntTypeAccess().getUintKeyword_1()); 
-            match(input,50,FOLLOW_50_in_rule__UIntType__Group__110968); 
+            match(input,50,FOLLOW_50_in_rule__UIntType__Group__111046); 
              after(grammarAccess.getUIntTypeAccess().getUintKeyword_1()); 
 
             }
@@ -13958,21 +14058,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FloatType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5349:1: rule__FloatType__Group__0 : ( () ) rule__FloatType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5389:1: rule__FloatType__Group__0 : ( () ) rule__FloatType__Group__1 ;
     public final void rule__FloatType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5353:1: ( ( () ) rule__FloatType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5354:1: ( () ) rule__FloatType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5393:1: ( ( () ) rule__FloatType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5394:1: ( () ) rule__FloatType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5354:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5355:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5394:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5395:1: ()
             {
              before(grammarAccess.getFloatTypeAccess().getFloatTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5356:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5358:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5396:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5398:1: 
             {
             }
 
@@ -13980,7 +14080,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__FloatType__Group__1_in_rule__FloatType__Group__011017);
+            pushFollow(FOLLOW_rule__FloatType__Group__1_in_rule__FloatType__Group__011095);
             rule__FloatType__Group__1();
             _fsp--;
 
@@ -14003,20 +14103,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FloatType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5369:1: rule__FloatType__Group__1 : ( 'float' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5409:1: rule__FloatType__Group__1 : ( 'float' ) ;
     public final void rule__FloatType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5373:1: ( ( 'float' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5374:1: ( 'float' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5413:1: ( ( 'float' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5414:1: ( 'float' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5374:1: ( 'float' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5375:1: 'float'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5414:1: ( 'float' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5415:1: 'float'
             {
              before(grammarAccess.getFloatTypeAccess().getFloatKeyword_1()); 
-            match(input,51,FOLLOW_51_in_rule__FloatType__Group__111046); 
+            match(input,51,FOLLOW_51_in_rule__FloatType__Group__111124); 
              after(grammarAccess.getFloatTypeAccess().getFloatKeyword_1()); 
 
             }
@@ -14040,21 +14140,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5392:1: rule__DoubleType__Group__0 : ( () ) rule__DoubleType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5432:1: rule__DoubleType__Group__0 : ( () ) rule__DoubleType__Group__1 ;
     public final void rule__DoubleType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5396:1: ( ( () ) rule__DoubleType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5397:1: ( () ) rule__DoubleType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5436:1: ( ( () ) rule__DoubleType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5437:1: ( () ) rule__DoubleType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5397:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5398:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5437:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5438:1: ()
             {
              before(grammarAccess.getDoubleTypeAccess().getDoubleTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5399:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5401:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5439:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5441:1: 
             {
             }
 
@@ -14062,7 +14162,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__DoubleType__Group__1_in_rule__DoubleType__Group__011095);
+            pushFollow(FOLLOW_rule__DoubleType__Group__1_in_rule__DoubleType__Group__011173);
             rule__DoubleType__Group__1();
             _fsp--;
 
@@ -14085,20 +14185,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5412:1: rule__DoubleType__Group__1 : ( 'double' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5452:1: rule__DoubleType__Group__1 : ( 'double' ) ;
     public final void rule__DoubleType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5416:1: ( ( 'double' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5417:1: ( 'double' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5456:1: ( ( 'double' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5457:1: ( 'double' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5417:1: ( 'double' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5418:1: 'double'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5457:1: ( 'double' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5458:1: 'double'
             {
              before(grammarAccess.getDoubleTypeAccess().getDoubleKeyword_1()); 
-            match(input,52,FOLLOW_52_in_rule__DoubleType__Group__111124); 
+            match(input,52,FOLLOW_52_in_rule__DoubleType__Group__111202); 
              after(grammarAccess.getDoubleTypeAccess().getDoubleKeyword_1()); 
 
             }
@@ -14122,21 +14222,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StringType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5435:1: rule__StringType__Group__0 : ( () ) rule__StringType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5475:1: rule__StringType__Group__0 : ( () ) rule__StringType__Group__1 ;
     public final void rule__StringType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5439:1: ( ( () ) rule__StringType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5440:1: ( () ) rule__StringType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5479:1: ( ( () ) rule__StringType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5480:1: ( () ) rule__StringType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5440:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5441:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5480:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5481:1: ()
             {
              before(grammarAccess.getStringTypeAccess().getStringTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5442:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5444:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5482:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5484:1: 
             {
             }
 
@@ -14144,7 +14244,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__StringType__Group__1_in_rule__StringType__Group__011173);
+            pushFollow(FOLLOW_rule__StringType__Group__1_in_rule__StringType__Group__011251);
             rule__StringType__Group__1();
             _fsp--;
 
@@ -14167,20 +14267,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StringType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5455:1: rule__StringType__Group__1 : ( 'string' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5495:1: rule__StringType__Group__1 : ( 'string' ) ;
     public final void rule__StringType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5459:1: ( ( 'string' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5460:1: ( 'string' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5499:1: ( ( 'string' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5500:1: ( 'string' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5460:1: ( 'string' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5461:1: 'string'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5500:1: ( 'string' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5501:1: 'string'
             {
              before(grammarAccess.getStringTypeAccess().getStringKeyword_1()); 
-            match(input,53,FOLLOW_53_in_rule__StringType__Group__111202); 
+            match(input,53,FOLLOW_53_in_rule__StringType__Group__111280); 
              after(grammarAccess.getStringTypeAccess().getStringKeyword_1()); 
 
             }
@@ -14204,21 +14304,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__CharArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5478:1: rule__CharArrayType__Group__0 : ( () ) rule__CharArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5518:1: rule__CharArrayType__Group__0 : ( () ) rule__CharArrayType__Group__1 ;
     public final void rule__CharArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5482:1: ( ( () ) rule__CharArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5483:1: ( () ) rule__CharArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5522:1: ( ( () ) rule__CharArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5523:1: ( () ) rule__CharArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5483:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5484:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5523:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5524:1: ()
             {
              before(grammarAccess.getCharArrayTypeAccess().getCharArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5485:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5487:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5525:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5527:1: 
             {
             }
 
@@ -14226,7 +14326,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__CharArrayType__Group__1_in_rule__CharArrayType__Group__011251);
+            pushFollow(FOLLOW_rule__CharArrayType__Group__1_in_rule__CharArrayType__Group__011329);
             rule__CharArrayType__Group__1();
             _fsp--;
 
@@ -14249,20 +14349,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__CharArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5498:1: rule__CharArrayType__Group__1 : ( 'DevVarCharArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5538:1: rule__CharArrayType__Group__1 : ( 'DevVarCharArray' ) ;
     public final void rule__CharArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5502:1: ( ( 'DevVarCharArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5503:1: ( 'DevVarCharArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5542:1: ( ( 'DevVarCharArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5543:1: ( 'DevVarCharArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5503:1: ( 'DevVarCharArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5504:1: 'DevVarCharArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5543:1: ( 'DevVarCharArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5544:1: 'DevVarCharArray'
             {
              before(grammarAccess.getCharArrayTypeAccess().getDevVarCharArrayKeyword_1()); 
-            match(input,54,FOLLOW_54_in_rule__CharArrayType__Group__111280); 
+            match(input,54,FOLLOW_54_in_rule__CharArrayType__Group__111358); 
              after(grammarAccess.getCharArrayTypeAccess().getDevVarCharArrayKeyword_1()); 
 
             }
@@ -14286,21 +14386,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ShortArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5521:1: rule__ShortArrayType__Group__0 : ( () ) rule__ShortArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5561:1: rule__ShortArrayType__Group__0 : ( () ) rule__ShortArrayType__Group__1 ;
     public final void rule__ShortArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5525:1: ( ( () ) rule__ShortArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5526:1: ( () ) rule__ShortArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5565:1: ( ( () ) rule__ShortArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5566:1: ( () ) rule__ShortArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5526:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5527:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5566:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5567:1: ()
             {
              before(grammarAccess.getShortArrayTypeAccess().getShortArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5528:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5530:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5568:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5570:1: 
             {
             }
 
@@ -14308,7 +14408,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ShortArrayType__Group__1_in_rule__ShortArrayType__Group__011329);
+            pushFollow(FOLLOW_rule__ShortArrayType__Group__1_in_rule__ShortArrayType__Group__011407);
             rule__ShortArrayType__Group__1();
             _fsp--;
 
@@ -14331,20 +14431,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ShortArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5541:1: rule__ShortArrayType__Group__1 : ( 'DevVarShortArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5581:1: rule__ShortArrayType__Group__1 : ( 'DevVarShortArray' ) ;
     public final void rule__ShortArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5545:1: ( ( 'DevVarShortArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5546:1: ( 'DevVarShortArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5585:1: ( ( 'DevVarShortArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5586:1: ( 'DevVarShortArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5546:1: ( 'DevVarShortArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5547:1: 'DevVarShortArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5586:1: ( 'DevVarShortArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5587:1: 'DevVarShortArray'
             {
              before(grammarAccess.getShortArrayTypeAccess().getDevVarShortArrayKeyword_1()); 
-            match(input,55,FOLLOW_55_in_rule__ShortArrayType__Group__111358); 
+            match(input,55,FOLLOW_55_in_rule__ShortArrayType__Group__111436); 
              after(grammarAccess.getShortArrayTypeAccess().getDevVarShortArrayKeyword_1()); 
 
             }
@@ -14368,21 +14468,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UShortArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5564:1: rule__UShortArrayType__Group__0 : ( () ) rule__UShortArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5604:1: rule__UShortArrayType__Group__0 : ( () ) rule__UShortArrayType__Group__1 ;
     public final void rule__UShortArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5568:1: ( ( () ) rule__UShortArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5569:1: ( () ) rule__UShortArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5608:1: ( ( () ) rule__UShortArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5609:1: ( () ) rule__UShortArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5569:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5570:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5609:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5610:1: ()
             {
              before(grammarAccess.getUShortArrayTypeAccess().getUShortArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5571:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5573:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5611:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5613:1: 
             {
             }
 
@@ -14390,7 +14490,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__UShortArrayType__Group__1_in_rule__UShortArrayType__Group__011407);
+            pushFollow(FOLLOW_rule__UShortArrayType__Group__1_in_rule__UShortArrayType__Group__011485);
             rule__UShortArrayType__Group__1();
             _fsp--;
 
@@ -14413,20 +14513,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UShortArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5584:1: rule__UShortArrayType__Group__1 : ( 'DevVarUShortArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5624:1: rule__UShortArrayType__Group__1 : ( 'DevVarUShortArray' ) ;
     public final void rule__UShortArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5588:1: ( ( 'DevVarUShortArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5589:1: ( 'DevVarUShortArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5628:1: ( ( 'DevVarUShortArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5629:1: ( 'DevVarUShortArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5589:1: ( 'DevVarUShortArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5590:1: 'DevVarUShortArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5629:1: ( 'DevVarUShortArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5630:1: 'DevVarUShortArray'
             {
              before(grammarAccess.getUShortArrayTypeAccess().getDevVarUShortArrayKeyword_1()); 
-            match(input,56,FOLLOW_56_in_rule__UShortArrayType__Group__111436); 
+            match(input,56,FOLLOW_56_in_rule__UShortArrayType__Group__111514); 
              after(grammarAccess.getUShortArrayTypeAccess().getDevVarUShortArrayKeyword_1()); 
 
             }
@@ -14450,21 +14550,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__IntArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5607:1: rule__IntArrayType__Group__0 : ( () ) rule__IntArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5647:1: rule__IntArrayType__Group__0 : ( () ) rule__IntArrayType__Group__1 ;
     public final void rule__IntArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5611:1: ( ( () ) rule__IntArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5612:1: ( () ) rule__IntArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5651:1: ( ( () ) rule__IntArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5652:1: ( () ) rule__IntArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5612:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5613:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5652:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5653:1: ()
             {
              before(grammarAccess.getIntArrayTypeAccess().getIntArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5614:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5616:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5654:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5656:1: 
             {
             }
 
@@ -14472,7 +14572,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__IntArrayType__Group__1_in_rule__IntArrayType__Group__011485);
+            pushFollow(FOLLOW_rule__IntArrayType__Group__1_in_rule__IntArrayType__Group__011563);
             rule__IntArrayType__Group__1();
             _fsp--;
 
@@ -14495,20 +14595,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__IntArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5627:1: rule__IntArrayType__Group__1 : ( 'DevVarLongArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5667:1: rule__IntArrayType__Group__1 : ( 'DevVarLongArray' ) ;
     public final void rule__IntArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5631:1: ( ( 'DevVarLongArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5632:1: ( 'DevVarLongArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5671:1: ( ( 'DevVarLongArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5672:1: ( 'DevVarLongArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5632:1: ( 'DevVarLongArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5633:1: 'DevVarLongArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5672:1: ( 'DevVarLongArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5673:1: 'DevVarLongArray'
             {
              before(grammarAccess.getIntArrayTypeAccess().getDevVarLongArrayKeyword_1()); 
-            match(input,57,FOLLOW_57_in_rule__IntArrayType__Group__111514); 
+            match(input,57,FOLLOW_57_in_rule__IntArrayType__Group__111592); 
              after(grammarAccess.getIntArrayTypeAccess().getDevVarLongArrayKeyword_1()); 
 
             }
@@ -14532,21 +14632,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UIntArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5650:1: rule__UIntArrayType__Group__0 : ( () ) rule__UIntArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5690:1: rule__UIntArrayType__Group__0 : ( () ) rule__UIntArrayType__Group__1 ;
     public final void rule__UIntArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5654:1: ( ( () ) rule__UIntArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5655:1: ( () ) rule__UIntArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5694:1: ( ( () ) rule__UIntArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5695:1: ( () ) rule__UIntArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5655:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5656:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5695:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5696:1: ()
             {
              before(grammarAccess.getUIntArrayTypeAccess().getUIntArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5657:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5659:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5697:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5699:1: 
             {
             }
 
@@ -14554,7 +14654,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__UIntArrayType__Group__1_in_rule__UIntArrayType__Group__011563);
+            pushFollow(FOLLOW_rule__UIntArrayType__Group__1_in_rule__UIntArrayType__Group__011641);
             rule__UIntArrayType__Group__1();
             _fsp--;
 
@@ -14577,20 +14677,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UIntArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5670:1: rule__UIntArrayType__Group__1 : ( 'DevVarULongArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5710:1: rule__UIntArrayType__Group__1 : ( 'DevVarULongArray' ) ;
     public final void rule__UIntArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5674:1: ( ( 'DevVarULongArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5675:1: ( 'DevVarULongArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5714:1: ( ( 'DevVarULongArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5715:1: ( 'DevVarULongArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5675:1: ( 'DevVarULongArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5676:1: 'DevVarULongArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5715:1: ( 'DevVarULongArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5716:1: 'DevVarULongArray'
             {
              before(grammarAccess.getUIntArrayTypeAccess().getDevVarULongArrayKeyword_1()); 
-            match(input,58,FOLLOW_58_in_rule__UIntArrayType__Group__111592); 
+            match(input,58,FOLLOW_58_in_rule__UIntArrayType__Group__111670); 
              after(grammarAccess.getUIntArrayTypeAccess().getDevVarULongArrayKeyword_1()); 
 
             }
@@ -14614,21 +14714,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FloatArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5693:1: rule__FloatArrayType__Group__0 : ( () ) rule__FloatArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5733:1: rule__FloatArrayType__Group__0 : ( () ) rule__FloatArrayType__Group__1 ;
     public final void rule__FloatArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5697:1: ( ( () ) rule__FloatArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5698:1: ( () ) rule__FloatArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5737:1: ( ( () ) rule__FloatArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5738:1: ( () ) rule__FloatArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5698:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5699:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5738:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5739:1: ()
             {
              before(grammarAccess.getFloatArrayTypeAccess().getFloatArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5700:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5702:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5740:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5742:1: 
             {
             }
 
@@ -14636,7 +14736,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__FloatArrayType__Group__1_in_rule__FloatArrayType__Group__011641);
+            pushFollow(FOLLOW_rule__FloatArrayType__Group__1_in_rule__FloatArrayType__Group__011719);
             rule__FloatArrayType__Group__1();
             _fsp--;
 
@@ -14659,20 +14759,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FloatArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5713:1: rule__FloatArrayType__Group__1 : ( 'DevVarFloatArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5753:1: rule__FloatArrayType__Group__1 : ( 'DevVarFloatArray' ) ;
     public final void rule__FloatArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5717:1: ( ( 'DevVarFloatArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5718:1: ( 'DevVarFloatArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5757:1: ( ( 'DevVarFloatArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5758:1: ( 'DevVarFloatArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5718:1: ( 'DevVarFloatArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5719:1: 'DevVarFloatArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5758:1: ( 'DevVarFloatArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5759:1: 'DevVarFloatArray'
             {
              before(grammarAccess.getFloatArrayTypeAccess().getDevVarFloatArrayKeyword_1()); 
-            match(input,59,FOLLOW_59_in_rule__FloatArrayType__Group__111670); 
+            match(input,59,FOLLOW_59_in_rule__FloatArrayType__Group__111748); 
              after(grammarAccess.getFloatArrayTypeAccess().getDevVarFloatArrayKeyword_1()); 
 
             }
@@ -14696,21 +14796,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5736:1: rule__DoubleArrayType__Group__0 : ( () ) rule__DoubleArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5776:1: rule__DoubleArrayType__Group__0 : ( () ) rule__DoubleArrayType__Group__1 ;
     public final void rule__DoubleArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5740:1: ( ( () ) rule__DoubleArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5741:1: ( () ) rule__DoubleArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5780:1: ( ( () ) rule__DoubleArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5781:1: ( () ) rule__DoubleArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5741:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5742:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5781:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5782:1: ()
             {
              before(grammarAccess.getDoubleArrayTypeAccess().getDoubleArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5743:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5745:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5783:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5785:1: 
             {
             }
 
@@ -14718,7 +14818,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__DoubleArrayType__Group__1_in_rule__DoubleArrayType__Group__011719);
+            pushFollow(FOLLOW_rule__DoubleArrayType__Group__1_in_rule__DoubleArrayType__Group__011797);
             rule__DoubleArrayType__Group__1();
             _fsp--;
 
@@ -14741,20 +14841,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5756:1: rule__DoubleArrayType__Group__1 : ( 'DevVarDoubleArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5796:1: rule__DoubleArrayType__Group__1 : ( 'DevVarDoubleArray' ) ;
     public final void rule__DoubleArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5760:1: ( ( 'DevVarDoubleArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5761:1: ( 'DevVarDoubleArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5800:1: ( ( 'DevVarDoubleArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5801:1: ( 'DevVarDoubleArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5761:1: ( 'DevVarDoubleArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5762:1: 'DevVarDoubleArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5801:1: ( 'DevVarDoubleArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5802:1: 'DevVarDoubleArray'
             {
              before(grammarAccess.getDoubleArrayTypeAccess().getDevVarDoubleArrayKeyword_1()); 
-            match(input,60,FOLLOW_60_in_rule__DoubleArrayType__Group__111748); 
+            match(input,60,FOLLOW_60_in_rule__DoubleArrayType__Group__111826); 
              after(grammarAccess.getDoubleArrayTypeAccess().getDevVarDoubleArrayKeyword_1()); 
 
             }
@@ -14778,21 +14878,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StringArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5779:1: rule__StringArrayType__Group__0 : ( () ) rule__StringArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5819:1: rule__StringArrayType__Group__0 : ( () ) rule__StringArrayType__Group__1 ;
     public final void rule__StringArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5783:1: ( ( () ) rule__StringArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5784:1: ( () ) rule__StringArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5823:1: ( ( () ) rule__StringArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5824:1: ( () ) rule__StringArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5784:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5785:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5824:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5825:1: ()
             {
              before(grammarAccess.getStringArrayTypeAccess().getStringArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5786:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5788:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5826:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5828:1: 
             {
             }
 
@@ -14800,7 +14900,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__StringArrayType__Group__1_in_rule__StringArrayType__Group__011797);
+            pushFollow(FOLLOW_rule__StringArrayType__Group__1_in_rule__StringArrayType__Group__011875);
             rule__StringArrayType__Group__1();
             _fsp--;
 
@@ -14823,20 +14923,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StringArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5799:1: rule__StringArrayType__Group__1 : ( 'DevVarStringArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5839:1: rule__StringArrayType__Group__1 : ( 'DevVarStringArray' ) ;
     public final void rule__StringArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5803:1: ( ( 'DevVarStringArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5804:1: ( 'DevVarStringArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5843:1: ( ( 'DevVarStringArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5844:1: ( 'DevVarStringArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5804:1: ( 'DevVarStringArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5805:1: 'DevVarStringArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5844:1: ( 'DevVarStringArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5845:1: 'DevVarStringArray'
             {
              before(grammarAccess.getStringArrayTypeAccess().getDevVarStringArrayKeyword_1()); 
-            match(input,61,FOLLOW_61_in_rule__StringArrayType__Group__111826); 
+            match(input,61,FOLLOW_61_in_rule__StringArrayType__Group__111904); 
              after(grammarAccess.getStringArrayTypeAccess().getDevVarStringArrayKeyword_1()); 
 
             }
@@ -14860,21 +14960,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__LongStringArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5822:1: rule__LongStringArrayType__Group__0 : ( () ) rule__LongStringArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5862:1: rule__LongStringArrayType__Group__0 : ( () ) rule__LongStringArrayType__Group__1 ;
     public final void rule__LongStringArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5826:1: ( ( () ) rule__LongStringArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5827:1: ( () ) rule__LongStringArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5866:1: ( ( () ) rule__LongStringArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5867:1: ( () ) rule__LongStringArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5827:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5828:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5867:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5868:1: ()
             {
              before(grammarAccess.getLongStringArrayTypeAccess().getLongStringArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5829:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5831:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5869:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5871:1: 
             {
             }
 
@@ -14882,7 +14982,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__LongStringArrayType__Group__1_in_rule__LongStringArrayType__Group__011875);
+            pushFollow(FOLLOW_rule__LongStringArrayType__Group__1_in_rule__LongStringArrayType__Group__011953);
             rule__LongStringArrayType__Group__1();
             _fsp--;
 
@@ -14905,20 +15005,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__LongStringArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5842:1: rule__LongStringArrayType__Group__1 : ( 'DevVarLongStringArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5882:1: rule__LongStringArrayType__Group__1 : ( 'DevVarLongStringArray' ) ;
     public final void rule__LongStringArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5846:1: ( ( 'DevVarLongStringArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5847:1: ( 'DevVarLongStringArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5886:1: ( ( 'DevVarLongStringArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5887:1: ( 'DevVarLongStringArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5847:1: ( 'DevVarLongStringArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5848:1: 'DevVarLongStringArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5887:1: ( 'DevVarLongStringArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5888:1: 'DevVarLongStringArray'
             {
              before(grammarAccess.getLongStringArrayTypeAccess().getDevVarLongStringArrayKeyword_1()); 
-            match(input,62,FOLLOW_62_in_rule__LongStringArrayType__Group__111904); 
+            match(input,62,FOLLOW_62_in_rule__LongStringArrayType__Group__111982); 
              after(grammarAccess.getLongStringArrayTypeAccess().getDevVarLongStringArrayKeyword_1()); 
 
             }
@@ -14942,21 +15042,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleStringArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5865:1: rule__DoubleStringArrayType__Group__0 : ( () ) rule__DoubleStringArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5905:1: rule__DoubleStringArrayType__Group__0 : ( () ) rule__DoubleStringArrayType__Group__1 ;
     public final void rule__DoubleStringArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5869:1: ( ( () ) rule__DoubleStringArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5870:1: ( () ) rule__DoubleStringArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5909:1: ( ( () ) rule__DoubleStringArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5910:1: ( () ) rule__DoubleStringArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5870:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5871:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5910:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5911:1: ()
             {
              before(grammarAccess.getDoubleStringArrayTypeAccess().getDoubleStringArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5872:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5874:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5912:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5914:1: 
             {
             }
 
@@ -14964,7 +15064,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__DoubleStringArrayType__Group__1_in_rule__DoubleStringArrayType__Group__011953);
+            pushFollow(FOLLOW_rule__DoubleStringArrayType__Group__1_in_rule__DoubleStringArrayType__Group__012031);
             rule__DoubleStringArrayType__Group__1();
             _fsp--;
 
@@ -14987,20 +15087,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleStringArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5885:1: rule__DoubleStringArrayType__Group__1 : ( 'DevVarDoubleStringArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5925:1: rule__DoubleStringArrayType__Group__1 : ( 'DevVarDoubleStringArray' ) ;
     public final void rule__DoubleStringArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5889:1: ( ( 'DevVarDoubleStringArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5890:1: ( 'DevVarDoubleStringArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5929:1: ( ( 'DevVarDoubleStringArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5930:1: ( 'DevVarDoubleStringArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5890:1: ( 'DevVarDoubleStringArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5891:1: 'DevVarDoubleStringArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5930:1: ( 'DevVarDoubleStringArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5931:1: 'DevVarDoubleStringArray'
             {
              before(grammarAccess.getDoubleStringArrayTypeAccess().getDevVarDoubleStringArrayKeyword_1()); 
-            match(input,63,FOLLOW_63_in_rule__DoubleStringArrayType__Group__111982); 
+            match(input,63,FOLLOW_63_in_rule__DoubleStringArrayType__Group__112060); 
              after(grammarAccess.getDoubleStringArrayTypeAccess().getDevVarDoubleStringArrayKeyword_1()); 
 
             }
@@ -15024,21 +15124,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StateType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5908:1: rule__StateType__Group__0 : ( () ) rule__StateType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5948:1: rule__StateType__Group__0 : ( () ) rule__StateType__Group__1 ;
     public final void rule__StateType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5912:1: ( ( () ) rule__StateType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5913:1: ( () ) rule__StateType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5952:1: ( ( () ) rule__StateType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5953:1: ( () ) rule__StateType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5913:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5914:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5953:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5954:1: ()
             {
              before(grammarAccess.getStateTypeAccess().getStateTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5915:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5917:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5955:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5957:1: 
             {
             }
 
@@ -15046,7 +15146,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__StateType__Group__1_in_rule__StateType__Group__012031);
+            pushFollow(FOLLOW_rule__StateType__Group__1_in_rule__StateType__Group__012109);
             rule__StateType__Group__1();
             _fsp--;
 
@@ -15069,20 +15169,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StateType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5928:1: rule__StateType__Group__1 : ( 'DevState' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5968:1: rule__StateType__Group__1 : ( 'DevState' ) ;
     public final void rule__StateType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5932:1: ( ( 'DevState' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5933:1: ( 'DevState' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5972:1: ( ( 'DevState' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5973:1: ( 'DevState' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5933:1: ( 'DevState' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5934:1: 'DevState'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5973:1: ( 'DevState' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5974:1: 'DevState'
             {
              before(grammarAccess.getStateTypeAccess().getDevStateKeyword_1()); 
-            match(input,64,FOLLOW_64_in_rule__StateType__Group__112060); 
+            match(input,64,FOLLOW_64_in_rule__StateType__Group__112138); 
              after(grammarAccess.getStateTypeAccess().getDevStateKeyword_1()); 
 
             }
@@ -15106,21 +15206,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ConstStringType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5951:1: rule__ConstStringType__Group__0 : ( () ) rule__ConstStringType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5991:1: rule__ConstStringType__Group__0 : ( () ) rule__ConstStringType__Group__1 ;
     public final void rule__ConstStringType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5955:1: ( ( () ) rule__ConstStringType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5956:1: ( () ) rule__ConstStringType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5995:1: ( ( () ) rule__ConstStringType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5996:1: ( () ) rule__ConstStringType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5956:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5957:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5996:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5997:1: ()
             {
              before(grammarAccess.getConstStringTypeAccess().getConstStringTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5958:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5960:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5998:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6000:1: 
             {
             }
 
@@ -15128,7 +15228,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ConstStringType__Group__1_in_rule__ConstStringType__Group__012109);
+            pushFollow(FOLLOW_rule__ConstStringType__Group__1_in_rule__ConstStringType__Group__012187);
             rule__ConstStringType__Group__1();
             _fsp--;
 
@@ -15151,20 +15251,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ConstStringType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5971:1: rule__ConstStringType__Group__1 : ( 'ConstDevString' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6011:1: rule__ConstStringType__Group__1 : ( 'ConstDevString' ) ;
     public final void rule__ConstStringType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5975:1: ( ( 'ConstDevString' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5976:1: ( 'ConstDevString' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6015:1: ( ( 'ConstDevString' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6016:1: ( 'ConstDevString' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5976:1: ( 'ConstDevString' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5977:1: 'ConstDevString'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6016:1: ( 'ConstDevString' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6017:1: 'ConstDevString'
             {
              before(grammarAccess.getConstStringTypeAccess().getConstDevStringKeyword_1()); 
-            match(input,65,FOLLOW_65_in_rule__ConstStringType__Group__112138); 
+            match(input,65,FOLLOW_65_in_rule__ConstStringType__Group__112216); 
              after(grammarAccess.getConstStringTypeAccess().getConstDevStringKeyword_1()); 
 
             }
@@ -15188,21 +15288,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__BooleanArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5994:1: rule__BooleanArrayType__Group__0 : ( () ) rule__BooleanArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6034:1: rule__BooleanArrayType__Group__0 : ( () ) rule__BooleanArrayType__Group__1 ;
     public final void rule__BooleanArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5998:1: ( ( () ) rule__BooleanArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5999:1: ( () ) rule__BooleanArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6038:1: ( ( () ) rule__BooleanArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6039:1: ( () ) rule__BooleanArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:5999:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6000:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6039:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6040:1: ()
             {
              before(grammarAccess.getBooleanArrayTypeAccess().getBooleanArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6001:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6003:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6041:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6043:1: 
             {
             }
 
@@ -15210,7 +15310,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__BooleanArrayType__Group__1_in_rule__BooleanArrayType__Group__012187);
+            pushFollow(FOLLOW_rule__BooleanArrayType__Group__1_in_rule__BooleanArrayType__Group__012265);
             rule__BooleanArrayType__Group__1();
             _fsp--;
 
@@ -15233,20 +15333,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__BooleanArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6014:1: rule__BooleanArrayType__Group__1 : ( 'DevVarBooleanArray' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6054:1: rule__BooleanArrayType__Group__1 : ( 'DevVarBooleanArray' ) ;
     public final void rule__BooleanArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6018:1: ( ( 'DevVarBooleanArray' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6019:1: ( 'DevVarBooleanArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6058:1: ( ( 'DevVarBooleanArray' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6059:1: ( 'DevVarBooleanArray' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6019:1: ( 'DevVarBooleanArray' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6020:1: 'DevVarBooleanArray'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6059:1: ( 'DevVarBooleanArray' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6060:1: 'DevVarBooleanArray'
             {
              before(grammarAccess.getBooleanArrayTypeAccess().getDevVarBooleanArrayKeyword_1()); 
-            match(input,66,FOLLOW_66_in_rule__BooleanArrayType__Group__112216); 
+            match(input,66,FOLLOW_66_in_rule__BooleanArrayType__Group__112294); 
              after(grammarAccess.getBooleanArrayTypeAccess().getDevVarBooleanArrayKeyword_1()); 
 
             }
@@ -15270,21 +15370,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UCharType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6037:1: rule__UCharType__Group__0 : ( () ) rule__UCharType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6077:1: rule__UCharType__Group__0 : ( () ) rule__UCharType__Group__1 ;
     public final void rule__UCharType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6041:1: ( ( () ) rule__UCharType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6042:1: ( () ) rule__UCharType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6081:1: ( ( () ) rule__UCharType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6082:1: ( () ) rule__UCharType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6042:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6043:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6082:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6083:1: ()
             {
              before(grammarAccess.getUCharTypeAccess().getUCharTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6044:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6046:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6084:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6086:1: 
             {
             }
 
@@ -15292,7 +15392,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__UCharType__Group__1_in_rule__UCharType__Group__012265);
+            pushFollow(FOLLOW_rule__UCharType__Group__1_in_rule__UCharType__Group__012343);
             rule__UCharType__Group__1();
             _fsp--;
 
@@ -15315,20 +15415,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__UCharType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6057:1: rule__UCharType__Group__1 : ( 'DevUChar' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6097:1: rule__UCharType__Group__1 : ( 'DevUChar' ) ;
     public final void rule__UCharType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6061:1: ( ( 'DevUChar' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6062:1: ( 'DevUChar' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6101:1: ( ( 'DevUChar' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6102:1: ( 'DevUChar' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6062:1: ( 'DevUChar' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6063:1: 'DevUChar'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6102:1: ( 'DevUChar' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6103:1: 'DevUChar'
             {
              before(grammarAccess.getUCharTypeAccess().getDevUCharKeyword_1()); 
-            match(input,67,FOLLOW_67_in_rule__UCharType__Group__112294); 
+            match(input,67,FOLLOW_67_in_rule__UCharType__Group__112372); 
              after(grammarAccess.getUCharTypeAccess().getDevUCharKeyword_1()); 
 
             }
@@ -15352,21 +15452,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__LongType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6080:1: rule__LongType__Group__0 : ( () ) rule__LongType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6120:1: rule__LongType__Group__0 : ( () ) rule__LongType__Group__1 ;
     public final void rule__LongType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6084:1: ( ( () ) rule__LongType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6085:1: ( () ) rule__LongType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6124:1: ( ( () ) rule__LongType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6125:1: ( () ) rule__LongType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6085:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6086:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6125:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6126:1: ()
             {
              before(grammarAccess.getLongTypeAccess().getLongTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6087:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6089:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6127:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6129:1: 
             {
             }
 
@@ -15374,7 +15474,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__LongType__Group__1_in_rule__LongType__Group__012343);
+            pushFollow(FOLLOW_rule__LongType__Group__1_in_rule__LongType__Group__012421);
             rule__LongType__Group__1();
             _fsp--;
 
@@ -15397,20 +15497,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__LongType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6100:1: rule__LongType__Group__1 : ( 'DevLong64' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6140:1: rule__LongType__Group__1 : ( 'DevLong64' ) ;
     public final void rule__LongType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6104:1: ( ( 'DevLong64' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6105:1: ( 'DevLong64' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6144:1: ( ( 'DevLong64' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6145:1: ( 'DevLong64' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6105:1: ( 'DevLong64' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6106:1: 'DevLong64'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6145:1: ( 'DevLong64' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6146:1: 'DevLong64'
             {
              before(grammarAccess.getLongTypeAccess().getDevLong64Keyword_1()); 
-            match(input,68,FOLLOW_68_in_rule__LongType__Group__112372); 
+            match(input,68,FOLLOW_68_in_rule__LongType__Group__112450); 
              after(grammarAccess.getLongTypeAccess().getDevLong64Keyword_1()); 
 
             }
@@ -15434,21 +15534,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ULongType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6123:1: rule__ULongType__Group__0 : ( () ) rule__ULongType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6163:1: rule__ULongType__Group__0 : ( () ) rule__ULongType__Group__1 ;
     public final void rule__ULongType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6127:1: ( ( () ) rule__ULongType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6128:1: ( () ) rule__ULongType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6167:1: ( ( () ) rule__ULongType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6168:1: ( () ) rule__ULongType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6128:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6129:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6168:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6169:1: ()
             {
              before(grammarAccess.getULongTypeAccess().getULongTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6130:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6132:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6170:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6172:1: 
             {
             }
 
@@ -15456,7 +15556,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ULongType__Group__1_in_rule__ULongType__Group__012421);
+            pushFollow(FOLLOW_rule__ULongType__Group__1_in_rule__ULongType__Group__012499);
             rule__ULongType__Group__1();
             _fsp--;
 
@@ -15479,20 +15579,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ULongType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6143:1: rule__ULongType__Group__1 : ( 'DevULong64' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6183:1: rule__ULongType__Group__1 : ( 'DevULong64' ) ;
     public final void rule__ULongType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6147:1: ( ( 'DevULong64' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6148:1: ( 'DevULong64' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6187:1: ( ( 'DevULong64' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6188:1: ( 'DevULong64' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6148:1: ( 'DevULong64' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6149:1: 'DevULong64'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6188:1: ( 'DevULong64' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6189:1: 'DevULong64'
             {
              before(grammarAccess.getULongTypeAccess().getDevULong64Keyword_1()); 
-            match(input,69,FOLLOW_69_in_rule__ULongType__Group__112450); 
+            match(input,69,FOLLOW_69_in_rule__ULongType__Group__112528); 
              after(grammarAccess.getULongTypeAccess().getDevULong64Keyword_1()); 
 
             }
@@ -15516,21 +15616,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__LongArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6166:1: rule__LongArrayType__Group__0 : ( () ) rule__LongArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6206:1: rule__LongArrayType__Group__0 : ( () ) rule__LongArrayType__Group__1 ;
     public final void rule__LongArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6170:1: ( ( () ) rule__LongArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6171:1: ( () ) rule__LongArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6210:1: ( ( () ) rule__LongArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6211:1: ( () ) rule__LongArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6171:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6172:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6211:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6212:1: ()
             {
              before(grammarAccess.getLongArrayTypeAccess().getLongArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6173:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6175:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6213:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6215:1: 
             {
             }
 
@@ -15538,7 +15638,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__LongArrayType__Group__1_in_rule__LongArrayType__Group__012499);
+            pushFollow(FOLLOW_rule__LongArrayType__Group__1_in_rule__LongArrayType__Group__012577);
             rule__LongArrayType__Group__1();
             _fsp--;
 
@@ -15561,20 +15661,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__LongArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6186:1: rule__LongArrayType__Group__1 : ( 'DevVarLong64Array' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6226:1: rule__LongArrayType__Group__1 : ( 'DevVarLong64Array' ) ;
     public final void rule__LongArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6190:1: ( ( 'DevVarLong64Array' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6191:1: ( 'DevVarLong64Array' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6230:1: ( ( 'DevVarLong64Array' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6231:1: ( 'DevVarLong64Array' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6191:1: ( 'DevVarLong64Array' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6192:1: 'DevVarLong64Array'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6231:1: ( 'DevVarLong64Array' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6232:1: 'DevVarLong64Array'
             {
              before(grammarAccess.getLongArrayTypeAccess().getDevVarLong64ArrayKeyword_1()); 
-            match(input,70,FOLLOW_70_in_rule__LongArrayType__Group__112528); 
+            match(input,70,FOLLOW_70_in_rule__LongArrayType__Group__112606); 
              after(grammarAccess.getLongArrayTypeAccess().getDevVarLong64ArrayKeyword_1()); 
 
             }
@@ -15598,21 +15698,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ULongArrayType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6209:1: rule__ULongArrayType__Group__0 : ( () ) rule__ULongArrayType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6249:1: rule__ULongArrayType__Group__0 : ( () ) rule__ULongArrayType__Group__1 ;
     public final void rule__ULongArrayType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6213:1: ( ( () ) rule__ULongArrayType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6214:1: ( () ) rule__ULongArrayType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6253:1: ( ( () ) rule__ULongArrayType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6254:1: ( () ) rule__ULongArrayType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6214:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6215:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6254:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6255:1: ()
             {
              before(grammarAccess.getULongArrayTypeAccess().getULongArrayTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6216:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6218:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6256:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6258:1: 
             {
             }
 
@@ -15620,7 +15720,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ULongArrayType__Group__1_in_rule__ULongArrayType__Group__012577);
+            pushFollow(FOLLOW_rule__ULongArrayType__Group__1_in_rule__ULongArrayType__Group__012655);
             rule__ULongArrayType__Group__1();
             _fsp--;
 
@@ -15643,20 +15743,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ULongArrayType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6229:1: rule__ULongArrayType__Group__1 : ( 'DevVarULong64Array' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6269:1: rule__ULongArrayType__Group__1 : ( 'DevVarULong64Array' ) ;
     public final void rule__ULongArrayType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6233:1: ( ( 'DevVarULong64Array' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6234:1: ( 'DevVarULong64Array' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6273:1: ( ( 'DevVarULong64Array' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6274:1: ( 'DevVarULong64Array' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6234:1: ( 'DevVarULong64Array' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6235:1: 'DevVarULong64Array'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6274:1: ( 'DevVarULong64Array' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6275:1: 'DevVarULong64Array'
             {
              before(grammarAccess.getULongArrayTypeAccess().getDevVarULong64ArrayKeyword_1()); 
-            match(input,71,FOLLOW_71_in_rule__ULongArrayType__Group__112606); 
+            match(input,71,FOLLOW_71_in_rule__ULongArrayType__Group__112684); 
              after(grammarAccess.getULongArrayTypeAccess().getDevVarULong64ArrayKeyword_1()); 
 
             }
@@ -15680,21 +15780,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DevIntType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6252:1: rule__DevIntType__Group__0 : ( () ) rule__DevIntType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6292:1: rule__DevIntType__Group__0 : ( () ) rule__DevIntType__Group__1 ;
     public final void rule__DevIntType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6256:1: ( ( () ) rule__DevIntType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6257:1: ( () ) rule__DevIntType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6296:1: ( ( () ) rule__DevIntType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6297:1: ( () ) rule__DevIntType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6257:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6258:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6297:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6298:1: ()
             {
              before(grammarAccess.getDevIntTypeAccess().getDevIntTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6259:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6261:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6299:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6301:1: 
             {
             }
 
@@ -15702,7 +15802,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__DevIntType__Group__1_in_rule__DevIntType__Group__012655);
+            pushFollow(FOLLOW_rule__DevIntType__Group__1_in_rule__DevIntType__Group__012733);
             rule__DevIntType__Group__1();
             _fsp--;
 
@@ -15725,20 +15825,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DevIntType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6272:1: rule__DevIntType__Group__1 : ( 'DevInt' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6312:1: rule__DevIntType__Group__1 : ( 'DevInt' ) ;
     public final void rule__DevIntType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6276:1: ( ( 'DevInt' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6277:1: ( 'DevInt' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6316:1: ( ( 'DevInt' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6317:1: ( 'DevInt' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6277:1: ( 'DevInt' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6278:1: 'DevInt'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6317:1: ( 'DevInt' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6318:1: 'DevInt'
             {
              before(grammarAccess.getDevIntTypeAccess().getDevIntKeyword_1()); 
-            match(input,72,FOLLOW_72_in_rule__DevIntType__Group__112684); 
+            match(input,72,FOLLOW_72_in_rule__DevIntType__Group__112762); 
              after(grammarAccess.getDevIntTypeAccess().getDevIntKeyword_1()); 
 
             }
@@ -15762,21 +15862,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EncodedType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6295:1: rule__EncodedType__Group__0 : ( () ) rule__EncodedType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6335:1: rule__EncodedType__Group__0 : ( () ) rule__EncodedType__Group__1 ;
     public final void rule__EncodedType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6299:1: ( ( () ) rule__EncodedType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6300:1: ( () ) rule__EncodedType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6339:1: ( ( () ) rule__EncodedType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6340:1: ( () ) rule__EncodedType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6300:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6301:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6340:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6341:1: ()
             {
              before(grammarAccess.getEncodedTypeAccess().getEncodedTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6302:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6304:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6342:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6344:1: 
             {
             }
 
@@ -15784,7 +15884,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__EncodedType__Group__1_in_rule__EncodedType__Group__012733);
+            pushFollow(FOLLOW_rule__EncodedType__Group__1_in_rule__EncodedType__Group__012811);
             rule__EncodedType__Group__1();
             _fsp--;
 
@@ -15807,20 +15907,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EncodedType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6315:1: rule__EncodedType__Group__1 : ( 'DevEncoded' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6355:1: rule__EncodedType__Group__1 : ( 'DevEncoded' ) ;
     public final void rule__EncodedType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6319:1: ( ( 'DevEncoded' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6320:1: ( 'DevEncoded' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6359:1: ( ( 'DevEncoded' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6360:1: ( 'DevEncoded' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6320:1: ( 'DevEncoded' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6321:1: 'DevEncoded'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6360:1: ( 'DevEncoded' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6361:1: 'DevEncoded'
             {
              before(grammarAccess.getEncodedTypeAccess().getDevEncodedKeyword_1()); 
-            match(input,73,FOLLOW_73_in_rule__EncodedType__Group__112762); 
+            match(input,73,FOLLOW_73_in_rule__EncodedType__Group__112840); 
              after(grammarAccess.getEncodedTypeAccess().getDevEncodedKeyword_1()); 
 
             }
@@ -15844,21 +15944,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ShortVectorType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6338:1: rule__ShortVectorType__Group__0 : ( () ) rule__ShortVectorType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6378:1: rule__ShortVectorType__Group__0 : ( () ) rule__ShortVectorType__Group__1 ;
     public final void rule__ShortVectorType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6342:1: ( ( () ) rule__ShortVectorType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6343:1: ( () ) rule__ShortVectorType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6382:1: ( ( () ) rule__ShortVectorType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6383:1: ( () ) rule__ShortVectorType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6343:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6344:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6383:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6384:1: ()
             {
              before(grammarAccess.getShortVectorTypeAccess().getShortVectorTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6345:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6347:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6385:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6387:1: 
             {
             }
 
@@ -15866,7 +15966,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__ShortVectorType__Group__1_in_rule__ShortVectorType__Group__012811);
+            pushFollow(FOLLOW_rule__ShortVectorType__Group__1_in_rule__ShortVectorType__Group__012889);
             rule__ShortVectorType__Group__1();
             _fsp--;
 
@@ -15889,20 +15989,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ShortVectorType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6358:1: rule__ShortVectorType__Group__1 : ( 'vector<short>' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6398:1: rule__ShortVectorType__Group__1 : ( 'vector<short>' ) ;
     public final void rule__ShortVectorType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6362:1: ( ( 'vector<short>' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6363:1: ( 'vector<short>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6402:1: ( ( 'vector<short>' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6403:1: ( 'vector<short>' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6363:1: ( 'vector<short>' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6364:1: 'vector<short>'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6403:1: ( 'vector<short>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6404:1: 'vector<short>'
             {
              before(grammarAccess.getShortVectorTypeAccess().getVectorShortKeyword_1()); 
-            match(input,74,FOLLOW_74_in_rule__ShortVectorType__Group__112840); 
+            match(input,74,FOLLOW_74_in_rule__ShortVectorType__Group__112918); 
              after(grammarAccess.getShortVectorTypeAccess().getVectorShortKeyword_1()); 
 
             }
@@ -15926,21 +16026,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__IntVectorType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6381:1: rule__IntVectorType__Group__0 : ( () ) rule__IntVectorType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6421:1: rule__IntVectorType__Group__0 : ( () ) rule__IntVectorType__Group__1 ;
     public final void rule__IntVectorType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6385:1: ( ( () ) rule__IntVectorType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6386:1: ( () ) rule__IntVectorType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6425:1: ( ( () ) rule__IntVectorType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6426:1: ( () ) rule__IntVectorType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6386:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6387:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6426:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6427:1: ()
             {
              before(grammarAccess.getIntVectorTypeAccess().getIntVectorTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6388:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6390:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6428:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6430:1: 
             {
             }
 
@@ -15948,7 +16048,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__IntVectorType__Group__1_in_rule__IntVectorType__Group__012889);
+            pushFollow(FOLLOW_rule__IntVectorType__Group__1_in_rule__IntVectorType__Group__012967);
             rule__IntVectorType__Group__1();
             _fsp--;
 
@@ -15971,20 +16071,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__IntVectorType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6401:1: rule__IntVectorType__Group__1 : ( 'vector<int>' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6441:1: rule__IntVectorType__Group__1 : ( 'vector<int>' ) ;
     public final void rule__IntVectorType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6405:1: ( ( 'vector<int>' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6406:1: ( 'vector<int>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6445:1: ( ( 'vector<int>' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6446:1: ( 'vector<int>' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6406:1: ( 'vector<int>' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6407:1: 'vector<int>'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6446:1: ( 'vector<int>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6447:1: 'vector<int>'
             {
              before(grammarAccess.getIntVectorTypeAccess().getVectorIntKeyword_1()); 
-            match(input,75,FOLLOW_75_in_rule__IntVectorType__Group__112918); 
+            match(input,75,FOLLOW_75_in_rule__IntVectorType__Group__112996); 
              after(grammarAccess.getIntVectorTypeAccess().getVectorIntKeyword_1()); 
 
             }
@@ -16008,21 +16108,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FloatVectorType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6424:1: rule__FloatVectorType__Group__0 : ( () ) rule__FloatVectorType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6464:1: rule__FloatVectorType__Group__0 : ( () ) rule__FloatVectorType__Group__1 ;
     public final void rule__FloatVectorType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6428:1: ( ( () ) rule__FloatVectorType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6429:1: ( () ) rule__FloatVectorType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6468:1: ( ( () ) rule__FloatVectorType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6469:1: ( () ) rule__FloatVectorType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6429:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6430:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6469:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6470:1: ()
             {
              before(grammarAccess.getFloatVectorTypeAccess().getFloatVectorTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6431:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6433:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6471:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6473:1: 
             {
             }
 
@@ -16030,7 +16130,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__FloatVectorType__Group__1_in_rule__FloatVectorType__Group__012967);
+            pushFollow(FOLLOW_rule__FloatVectorType__Group__1_in_rule__FloatVectorType__Group__013045);
             rule__FloatVectorType__Group__1();
             _fsp--;
 
@@ -16053,20 +16153,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FloatVectorType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6444:1: rule__FloatVectorType__Group__1 : ( 'vector<float>' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6484:1: rule__FloatVectorType__Group__1 : ( 'vector<float>' ) ;
     public final void rule__FloatVectorType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6448:1: ( ( 'vector<float>' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6449:1: ( 'vector<float>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6488:1: ( ( 'vector<float>' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6489:1: ( 'vector<float>' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6449:1: ( 'vector<float>' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6450:1: 'vector<float>'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6489:1: ( 'vector<float>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6490:1: 'vector<float>'
             {
              before(grammarAccess.getFloatVectorTypeAccess().getVectorFloatKeyword_1()); 
-            match(input,76,FOLLOW_76_in_rule__FloatVectorType__Group__112996); 
+            match(input,76,FOLLOW_76_in_rule__FloatVectorType__Group__113074); 
              after(grammarAccess.getFloatVectorTypeAccess().getVectorFloatKeyword_1()); 
 
             }
@@ -16090,21 +16190,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleVectorType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6467:1: rule__DoubleVectorType__Group__0 : ( () ) rule__DoubleVectorType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6507:1: rule__DoubleVectorType__Group__0 : ( () ) rule__DoubleVectorType__Group__1 ;
     public final void rule__DoubleVectorType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6471:1: ( ( () ) rule__DoubleVectorType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6472:1: ( () ) rule__DoubleVectorType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6511:1: ( ( () ) rule__DoubleVectorType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6512:1: ( () ) rule__DoubleVectorType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6472:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6473:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6512:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6513:1: ()
             {
              before(grammarAccess.getDoubleVectorTypeAccess().getDoubleVectorTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6474:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6476:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6514:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6516:1: 
             {
             }
 
@@ -16112,7 +16212,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__DoubleVectorType__Group__1_in_rule__DoubleVectorType__Group__013045);
+            pushFollow(FOLLOW_rule__DoubleVectorType__Group__1_in_rule__DoubleVectorType__Group__013123);
             rule__DoubleVectorType__Group__1();
             _fsp--;
 
@@ -16135,20 +16235,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__DoubleVectorType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6487:1: rule__DoubleVectorType__Group__1 : ( 'vector<double>' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6527:1: rule__DoubleVectorType__Group__1 : ( 'vector<double>' ) ;
     public final void rule__DoubleVectorType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6491:1: ( ( 'vector<double>' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6492:1: ( 'vector<double>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6531:1: ( ( 'vector<double>' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6532:1: ( 'vector<double>' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6492:1: ( 'vector<double>' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6493:1: 'vector<double>'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6532:1: ( 'vector<double>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6533:1: 'vector<double>'
             {
              before(grammarAccess.getDoubleVectorTypeAccess().getVectorDoubleKeyword_1()); 
-            match(input,77,FOLLOW_77_in_rule__DoubleVectorType__Group__113074); 
+            match(input,77,FOLLOW_77_in_rule__DoubleVectorType__Group__113152); 
              after(grammarAccess.getDoubleVectorTypeAccess().getVectorDoubleKeyword_1()); 
 
             }
@@ -16172,21 +16272,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StringVectorType__Group__0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6510:1: rule__StringVectorType__Group__0 : ( () ) rule__StringVectorType__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6550:1: rule__StringVectorType__Group__0 : ( () ) rule__StringVectorType__Group__1 ;
     public final void rule__StringVectorType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6514:1: ( ( () ) rule__StringVectorType__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6515:1: ( () ) rule__StringVectorType__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6554:1: ( ( () ) rule__StringVectorType__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6555:1: ( () ) rule__StringVectorType__Group__1
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6515:1: ( () )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6516:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6555:1: ( () )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6556:1: ()
             {
              before(grammarAccess.getStringVectorTypeAccess().getStringVectorTypeAction_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6517:1: ()
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6519:1: 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6557:1: ()
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6559:1: 
             {
             }
 
@@ -16194,7 +16294,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__StringVectorType__Group__1_in_rule__StringVectorType__Group__013123);
+            pushFollow(FOLLOW_rule__StringVectorType__Group__1_in_rule__StringVectorType__Group__013201);
             rule__StringVectorType__Group__1();
             _fsp--;
 
@@ -16217,20 +16317,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__StringVectorType__Group__1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6530:1: rule__StringVectorType__Group__1 : ( 'vector<string>' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6570:1: rule__StringVectorType__Group__1 : ( 'vector<string>' ) ;
     public final void rule__StringVectorType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6534:1: ( ( 'vector<string>' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6535:1: ( 'vector<string>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6574:1: ( ( 'vector<string>' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6575:1: ( 'vector<string>' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6535:1: ( 'vector<string>' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6536:1: 'vector<string>'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6575:1: ( 'vector<string>' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6576:1: 'vector<string>'
             {
              before(grammarAccess.getStringVectorTypeAccess().getVectorStringKeyword_1()); 
-            match(input,78,FOLLOW_78_in_rule__StringVectorType__Group__113152); 
+            match(input,78,FOLLOW_78_in_rule__StringVectorType__Group__113230); 
              after(grammarAccess.getStringVectorTypeAccess().getVectorStringKeyword_1()); 
 
             }
@@ -16254,20 +16354,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoSystem__ImportsAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6553:1: rule__PogoSystem__ImportsAssignment_0 : ( ruleImport ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6593:1: rule__PogoSystem__ImportsAssignment_0 : ( ruleImport ) ;
     public final void rule__PogoSystem__ImportsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6557:1: ( ( ruleImport ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6558:1: ( ruleImport )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6597:1: ( ( ruleImport ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6598:1: ( ruleImport )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6558:1: ( ruleImport )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6559:1: ruleImport
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6598:1: ( ruleImport )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6599:1: ruleImport
             {
              before(grammarAccess.getPogoSystemAccess().getImportsImportParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleImport_in_rule__PogoSystem__ImportsAssignment_013191);
+            pushFollow(FOLLOW_ruleImport_in_rule__PogoSystem__ImportsAssignment_013269);
             ruleImport();
             _fsp--;
 
@@ -16294,20 +16394,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoSystem__ClassesAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6568:1: rule__PogoSystem__ClassesAssignment_1 : ( rulePogoDeviceClass ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6608:1: rule__PogoSystem__ClassesAssignment_1 : ( rulePogoDeviceClass ) ;
     public final void rule__PogoSystem__ClassesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6572:1: ( ( rulePogoDeviceClass ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6573:1: ( rulePogoDeviceClass )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6612:1: ( ( rulePogoDeviceClass ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6613:1: ( rulePogoDeviceClass )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6573:1: ( rulePogoDeviceClass )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6574:1: rulePogoDeviceClass
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6613:1: ( rulePogoDeviceClass )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6614:1: rulePogoDeviceClass
             {
              before(grammarAccess.getPogoSystemAccess().getClassesPogoDeviceClassParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_rulePogoDeviceClass_in_rule__PogoSystem__ClassesAssignment_113222);
+            pushFollow(FOLLOW_rulePogoDeviceClass_in_rule__PogoSystem__ClassesAssignment_113300);
             rulePogoDeviceClass();
             _fsp--;
 
@@ -16334,20 +16434,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoSystem__MultiClassesAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6583:1: rule__PogoSystem__MultiClassesAssignment_2 : ( rulePogoMultiClasses ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6623:1: rule__PogoSystem__MultiClassesAssignment_2 : ( rulePogoMultiClasses ) ;
     public final void rule__PogoSystem__MultiClassesAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6587:1: ( ( rulePogoMultiClasses ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6588:1: ( rulePogoMultiClasses )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6627:1: ( ( rulePogoMultiClasses ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6628:1: ( rulePogoMultiClasses )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6588:1: ( rulePogoMultiClasses )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6589:1: rulePogoMultiClasses
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6628:1: ( rulePogoMultiClasses )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6629:1: rulePogoMultiClasses
             {
              before(grammarAccess.getPogoSystemAccess().getMultiClassesPogoMultiClassesParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_rulePogoMultiClasses_in_rule__PogoSystem__MultiClassesAssignment_213253);
+            pushFollow(FOLLOW_rulePogoMultiClasses_in_rule__PogoSystem__MultiClassesAssignment_213331);
             rulePogoMultiClasses();
             _fsp--;
 
@@ -16374,20 +16474,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Import__ImportURIAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6598:1: rule__Import__ImportURIAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6638:1: rule__Import__ImportURIAssignment_1 : ( RULE_STRING ) ;
     public final void rule__Import__ImportURIAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6602:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6603:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6642:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6643:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6603:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6604:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6643:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6644:1: RULE_STRING
             {
              before(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Import__ImportURIAssignment_113284); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Import__ImportURIAssignment_113362); 
              after(grammarAccess.getImportAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -16411,20 +16511,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__NameAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6613:1: rule__PogoMultiClasses__NameAssignment_1 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6653:1: rule__PogoMultiClasses__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__PogoMultiClasses__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6617:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6618:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6657:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6658:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6618:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6619:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6658:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6659:1: RULE_ID
             {
              before(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_113315); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_113393); 
              after(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -16448,20 +16548,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__SourcePathAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6628:1: rule__PogoMultiClasses__SourcePathAssignment_3 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6668:1: rule__PogoMultiClasses__SourcePathAssignment_3 : ( RULE_STRING ) ;
     public final void rule__PogoMultiClasses__SourcePathAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6632:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6633:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6672:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6673:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6633:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6634:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6673:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6674:1: RULE_STRING
             {
              before(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_313346); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_313424); 
              after(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0()); 
 
             }
@@ -16485,20 +16585,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__DescriptionAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6643:1: rule__PogoMultiClasses__DescriptionAssignment_4 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6683:1: rule__PogoMultiClasses__DescriptionAssignment_4 : ( RULE_STRING ) ;
     public final void rule__PogoMultiClasses__DescriptionAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6647:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6648:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6687:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6688:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6648:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6649:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6688:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6689:1: RULE_STRING
             {
              before(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_413377); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_413455); 
              after(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
 
             }
@@ -16522,20 +16622,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__TitleAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6658:1: rule__PogoMultiClasses__TitleAssignment_5 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6698:1: rule__PogoMultiClasses__TitleAssignment_5 : ( RULE_STRING ) ;
     public final void rule__PogoMultiClasses__TitleAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6662:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6663:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6702:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6703:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6663:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6664:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6703:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6704:1: RULE_STRING
             {
              before(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_513408); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_513486); 
              after(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0()); 
 
             }
@@ -16559,20 +16659,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__ClassesAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6673:1: rule__PogoMultiClasses__ClassesAssignment_7 : ( ruleOneClassSimpleDef ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6713:1: rule__PogoMultiClasses__ClassesAssignment_7 : ( ruleOneClassSimpleDef ) ;
     public final void rule__PogoMultiClasses__ClassesAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6677:1: ( ( ruleOneClassSimpleDef ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6678:1: ( ruleOneClassSimpleDef )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6717:1: ( ( ruleOneClassSimpleDef ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6718:1: ( ruleOneClassSimpleDef )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6678:1: ( ruleOneClassSimpleDef )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6679:1: ruleOneClassSimpleDef
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6718:1: ( ruleOneClassSimpleDef )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6719:1: ruleOneClassSimpleDef
             {
              before(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_7_0()); 
-            pushFollow(FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_713439);
+            pushFollow(FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_713517);
             ruleOneClassSimpleDef();
             _fsp--;
 
@@ -16599,20 +16699,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__FilestogenerateAssignment_8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6688:1: rule__PogoMultiClasses__FilestogenerateAssignment_8 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6728:1: rule__PogoMultiClasses__FilestogenerateAssignment_8 : ( RULE_STRING ) ;
     public final void rule__PogoMultiClasses__FilestogenerateAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6692:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6693:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6732:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6733:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6693:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6694:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6733:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6734:1: RULE_STRING
             {
              before(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_813470); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_813548); 
              after(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0()); 
 
             }
@@ -16636,20 +16736,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoMultiClasses__PreferencesAssignment_9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6703:1: rule__PogoMultiClasses__PreferencesAssignment_9 : ( rulePreferences ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6743:1: rule__PogoMultiClasses__PreferencesAssignment_9 : ( rulePreferences ) ;
     public final void rule__PogoMultiClasses__PreferencesAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6707:1: ( ( rulePreferences ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6708:1: ( rulePreferences )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6747:1: ( ( rulePreferences ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6748:1: ( rulePreferences )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6708:1: ( rulePreferences )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6709:1: rulePreferences
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6748:1: ( rulePreferences )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6749:1: rulePreferences
             {
              before(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_9_0()); 
-            pushFollow(FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_913501);
+            pushFollow(FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_913579);
             rulePreferences();
             _fsp--;
 
@@ -16676,20 +16776,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__OneClassSimpleDef__ClassnameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6718:1: rule__OneClassSimpleDef__ClassnameAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6758:1: rule__OneClassSimpleDef__ClassnameAssignment_0 : ( RULE_STRING ) ;
     public final void rule__OneClassSimpleDef__ClassnameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6722:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6723:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6762:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6763:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6723:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6724:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6763:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6764:1: RULE_STRING
             {
              before(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_013532); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_013610); 
              after(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -16713,20 +16813,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__OneClassSimpleDef__SourcePathAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6733:1: rule__OneClassSimpleDef__SourcePathAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6773:1: rule__OneClassSimpleDef__SourcePathAssignment_1 : ( RULE_STRING ) ;
     public final void rule__OneClassSimpleDef__SourcePathAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6737:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6738:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6777:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6778:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6738:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6739:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6778:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6779:1: RULE_STRING
             {
              before(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_113563); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_113641); 
              after(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -16750,20 +16850,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__OneClassSimpleDef__Pogo6Assignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6748:1: rule__OneClassSimpleDef__Pogo6Assignment_2 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6788:1: rule__OneClassSimpleDef__Pogo6Assignment_2 : ( ruleBoolean ) ;
     public final void rule__OneClassSimpleDef__Pogo6Assignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6752:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6753:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6792:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6793:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6753:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6754:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6793:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6794:1: ruleBoolean
             {
              before(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_213594);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_213672);
             ruleBoolean();
             _fsp--;
 
@@ -16790,20 +16890,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__OneClassSimpleDef__InheritancesAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6763:1: rule__OneClassSimpleDef__InheritancesAssignment_4 : ( ruleInheritance ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6803:1: rule__OneClassSimpleDef__InheritancesAssignment_4 : ( ruleInheritance ) ;
     public final void rule__OneClassSimpleDef__InheritancesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6767:1: ( ( ruleInheritance ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6768:1: ( ruleInheritance )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6807:1: ( ( ruleInheritance ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6808:1: ( ruleInheritance )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6768:1: ( ruleInheritance )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6769:1: ruleInheritance
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6808:1: ( ruleInheritance )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6809:1: ruleInheritance
             {
              before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_413625);
+            pushFollow(FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_413703);
             ruleInheritance();
             _fsp--;
 
@@ -16830,20 +16930,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__OneClassSimpleDef__ParentClassesAssignment_6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6778:1: rule__OneClassSimpleDef__ParentClassesAssignment_6 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6818:1: rule__OneClassSimpleDef__ParentClassesAssignment_6 : ( RULE_STRING ) ;
     public final void rule__OneClassSimpleDef__ParentClassesAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6782:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6783:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6822:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6823:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6783:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6784:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6823:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6824:1: RULE_STRING
             {
              before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_6_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_613656); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_613734); 
              after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_6_0()); 
 
             }
@@ -16867,20 +16967,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__OneClassSimpleDef__AdditionalFilesAssignment_8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6793:1: rule__OneClassSimpleDef__AdditionalFilesAssignment_8 : ( ruleAdditionalFile ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6833:1: rule__OneClassSimpleDef__AdditionalFilesAssignment_8 : ( ruleAdditionalFile ) ;
     public final void rule__OneClassSimpleDef__AdditionalFilesAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6797:1: ( ( ruleAdditionalFile ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6798:1: ( ruleAdditionalFile )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6837:1: ( ( ruleAdditionalFile ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6838:1: ( ruleAdditionalFile )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6798:1: ( ruleAdditionalFile )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6799:1: ruleAdditionalFile
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6838:1: ( ruleAdditionalFile )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6839:1: ruleAdditionalFile
             {
              before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_8_0()); 
-            pushFollow(FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_813687);
+            pushFollow(FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_813765);
             ruleAdditionalFile();
             _fsp--;
 
@@ -16907,20 +17007,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__NameAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6808:1: rule__PogoDeviceClass__NameAssignment_1 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6848:1: rule__PogoDeviceClass__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__PogoDeviceClass__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6812:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6813:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6852:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6853:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6813:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6814:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6853:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6854:1: RULE_ID
             {
              before(grammarAccess.getPogoDeviceClassAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoDeviceClass__NameAssignment_113718); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoDeviceClass__NameAssignment_113796); 
              after(grammarAccess.getPogoDeviceClassAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -16944,24 +17044,24 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__IsAbstractAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6823:1: rule__PogoDeviceClass__IsAbstractAssignment_2 : ( ( 'abstract' ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6863:1: rule__PogoDeviceClass__IsAbstractAssignment_2 : ( ( 'abstract' ) ) ;
     public final void rule__PogoDeviceClass__IsAbstractAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6827:1: ( ( ( 'abstract' ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6828:1: ( ( 'abstract' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6867:1: ( ( ( 'abstract' ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6868:1: ( ( 'abstract' ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6828:1: ( ( 'abstract' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6829:1: ( 'abstract' )
-            {
-             before(grammarAccess.getPogoDeviceClassAccess().getIsAbstractAbstractKeyword_2_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6830:1: ( 'abstract' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6831:1: 'abstract'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6868:1: ( ( 'abstract' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6869:1: ( 'abstract' )
             {
              before(grammarAccess.getPogoDeviceClassAccess().getIsAbstractAbstractKeyword_2_0()); 
-            match(input,79,FOLLOW_79_in_rule__PogoDeviceClass__IsAbstractAssignment_213754); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6870:1: ( 'abstract' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6871:1: 'abstract'
+            {
+             before(grammarAccess.getPogoDeviceClassAccess().getIsAbstractAbstractKeyword_2_0()); 
+            match(input,79,FOLLOW_79_in_rule__PogoDeviceClass__IsAbstractAssignment_213832); 
              after(grammarAccess.getPogoDeviceClassAccess().getIsAbstractAbstractKeyword_2_0()); 
 
             }
@@ -16989,24 +17089,24 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__BaseClassAssignment_3_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6846:1: rule__PogoDeviceClass__BaseClassAssignment_3_1 : ( ( RULE_ID ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6886:1: rule__PogoDeviceClass__BaseClassAssignment_3_1 : ( ( RULE_ID ) ) ;
     public final void rule__PogoDeviceClass__BaseClassAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6850:1: ( ( ( RULE_ID ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6851:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6890:1: ( ( ( RULE_ID ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6891:1: ( ( RULE_ID ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6851:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6852:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6891:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6892:1: ( RULE_ID )
             {
              before(grammarAccess.getPogoDeviceClassAccess().getBaseClassPogoDeviceClassCrossReference_3_1_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6853:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6854:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6893:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6894:1: RULE_ID
             {
              before(grammarAccess.getPogoDeviceClassAccess().getBaseClassPogoDeviceClassIDTerminalRuleCall_3_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoDeviceClass__BaseClassAssignment_3_113797); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoDeviceClass__BaseClassAssignment_3_113875); 
              after(grammarAccess.getPogoDeviceClassAccess().getBaseClassPogoDeviceClassIDTerminalRuleCall_3_1_0_1()); 
 
             }
@@ -17034,20 +17134,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__InstituteAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6865:1: rule__PogoDeviceClass__InstituteAssignment_5 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6905:1: rule__PogoDeviceClass__InstituteAssignment_5 : ( RULE_ID ) ;
     public final void rule__PogoDeviceClass__InstituteAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6869:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6870:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6909:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6910:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6870:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6871:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6910:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6911:1: RULE_ID
             {
              before(grammarAccess.getPogoDeviceClassAccess().getInstituteIDTerminalRuleCall_5_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoDeviceClass__InstituteAssignment_513832); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoDeviceClass__InstituteAssignment_513910); 
              after(grammarAccess.getPogoDeviceClassAccess().getInstituteIDTerminalRuleCall_5_0()); 
 
             }
@@ -17071,20 +17171,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__DescriptionAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6880:1: rule__PogoDeviceClass__DescriptionAssignment_7 : ( ruleClassDescription ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6920:1: rule__PogoDeviceClass__DescriptionAssignment_7 : ( ruleClassDescription ) ;
     public final void rule__PogoDeviceClass__DescriptionAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6884:1: ( ( ruleClassDescription ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6885:1: ( ruleClassDescription )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6924:1: ( ( ruleClassDescription ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6925:1: ( ruleClassDescription )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6885:1: ( ruleClassDescription )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6886:1: ruleClassDescription
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6925:1: ( ruleClassDescription )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6926:1: ruleClassDescription
             {
              before(grammarAccess.getPogoDeviceClassAccess().getDescriptionClassDescriptionParserRuleCall_7_0()); 
-            pushFollow(FOLLOW_ruleClassDescription_in_rule__PogoDeviceClass__DescriptionAssignment_713863);
+            pushFollow(FOLLOW_ruleClassDescription_in_rule__PogoDeviceClass__DescriptionAssignment_713941);
             ruleClassDescription();
             _fsp--;
 
@@ -17111,20 +17211,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__ClassPropertiesAssignment_9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6895:1: rule__PogoDeviceClass__ClassPropertiesAssignment_9 : ( ruleProperty ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6935:1: rule__PogoDeviceClass__ClassPropertiesAssignment_9 : ( ruleProperty ) ;
     public final void rule__PogoDeviceClass__ClassPropertiesAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6899:1: ( ( ruleProperty ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6900:1: ( ruleProperty )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6939:1: ( ( ruleProperty ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6940:1: ( ruleProperty )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6900:1: ( ruleProperty )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6901:1: ruleProperty
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6940:1: ( ruleProperty )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6941:1: ruleProperty
             {
              before(grammarAccess.getPogoDeviceClassAccess().getClassPropertiesPropertyParserRuleCall_9_0()); 
-            pushFollow(FOLLOW_ruleProperty_in_rule__PogoDeviceClass__ClassPropertiesAssignment_913894);
+            pushFollow(FOLLOW_ruleProperty_in_rule__PogoDeviceClass__ClassPropertiesAssignment_913972);
             ruleProperty();
             _fsp--;
 
@@ -17151,20 +17251,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__DevicePropertiesAssignment_11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6910:1: rule__PogoDeviceClass__DevicePropertiesAssignment_11 : ( ruleProperty ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6950:1: rule__PogoDeviceClass__DevicePropertiesAssignment_11 : ( ruleProperty ) ;
     public final void rule__PogoDeviceClass__DevicePropertiesAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6914:1: ( ( ruleProperty ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6915:1: ( ruleProperty )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6954:1: ( ( ruleProperty ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6955:1: ( ruleProperty )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6915:1: ( ruleProperty )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6916:1: ruleProperty
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6955:1: ( ruleProperty )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6956:1: ruleProperty
             {
              before(grammarAccess.getPogoDeviceClassAccess().getDevicePropertiesPropertyParserRuleCall_11_0()); 
-            pushFollow(FOLLOW_ruleProperty_in_rule__PogoDeviceClass__DevicePropertiesAssignment_1113925);
+            pushFollow(FOLLOW_ruleProperty_in_rule__PogoDeviceClass__DevicePropertiesAssignment_1114003);
             ruleProperty();
             _fsp--;
 
@@ -17191,20 +17291,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__CommandsAssignment_13
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6925:1: rule__PogoDeviceClass__CommandsAssignment_13 : ( ruleCommand ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6965:1: rule__PogoDeviceClass__CommandsAssignment_13 : ( ruleCommand ) ;
     public final void rule__PogoDeviceClass__CommandsAssignment_13() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6929:1: ( ( ruleCommand ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6930:1: ( ruleCommand )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6969:1: ( ( ruleCommand ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6970:1: ( ruleCommand )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6930:1: ( ruleCommand )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6931:1: ruleCommand
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6970:1: ( ruleCommand )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6971:1: ruleCommand
             {
              before(grammarAccess.getPogoDeviceClassAccess().getCommandsCommandParserRuleCall_13_0()); 
-            pushFollow(FOLLOW_ruleCommand_in_rule__PogoDeviceClass__CommandsAssignment_1313956);
+            pushFollow(FOLLOW_ruleCommand_in_rule__PogoDeviceClass__CommandsAssignment_1314034);
             ruleCommand();
             _fsp--;
 
@@ -17231,20 +17331,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__AttributesAssignment_15
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6940:1: rule__PogoDeviceClass__AttributesAssignment_15 : ( ruleAttribute ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6980:1: rule__PogoDeviceClass__AttributesAssignment_15 : ( ruleAttribute ) ;
     public final void rule__PogoDeviceClass__AttributesAssignment_15() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6944:1: ( ( ruleAttribute ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6945:1: ( ruleAttribute )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6984:1: ( ( ruleAttribute ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6985:1: ( ruleAttribute )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6945:1: ( ruleAttribute )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6946:1: ruleAttribute
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6985:1: ( ruleAttribute )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6986:1: ruleAttribute
             {
              before(grammarAccess.getPogoDeviceClassAccess().getAttributesAttributeParserRuleCall_15_0()); 
-            pushFollow(FOLLOW_ruleAttribute_in_rule__PogoDeviceClass__AttributesAssignment_1513987);
+            pushFollow(FOLLOW_ruleAttribute_in_rule__PogoDeviceClass__AttributesAssignment_1514065);
             ruleAttribute();
             _fsp--;
 
@@ -17271,20 +17371,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__StatesAssignment_17
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6955:1: rule__PogoDeviceClass__StatesAssignment_17 : ( ruleState ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6995:1: rule__PogoDeviceClass__StatesAssignment_17 : ( ruleState ) ;
     public final void rule__PogoDeviceClass__StatesAssignment_17() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6959:1: ( ( ruleState ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6960:1: ( ruleState )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6999:1: ( ( ruleState ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7000:1: ( ruleState )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6960:1: ( ruleState )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6961:1: ruleState
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7000:1: ( ruleState )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7001:1: ruleState
             {
              before(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_17_0()); 
-            pushFollow(FOLLOW_ruleState_in_rule__PogoDeviceClass__StatesAssignment_1714018);
+            pushFollow(FOLLOW_ruleState_in_rule__PogoDeviceClass__StatesAssignment_1714096);
             ruleState();
             _fsp--;
 
@@ -17311,20 +17411,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__PreferencesAssignment_18
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6970:1: rule__PogoDeviceClass__PreferencesAssignment_18 : ( rulePreferences ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7010:1: rule__PogoDeviceClass__PreferencesAssignment_18 : ( rulePreferences ) ;
     public final void rule__PogoDeviceClass__PreferencesAssignment_18() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6974:1: ( ( rulePreferences ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6975:1: ( rulePreferences )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7014:1: ( ( rulePreferences ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7015:1: ( rulePreferences )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6975:1: ( rulePreferences )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6976:1: rulePreferences
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7015:1: ( rulePreferences )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7016:1: rulePreferences
             {
              before(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_18_0()); 
-            pushFollow(FOLLOW_rulePreferences_in_rule__PogoDeviceClass__PreferencesAssignment_1814049);
+            pushFollow(FOLLOW_rulePreferences_in_rule__PogoDeviceClass__PreferencesAssignment_1814127);
             rulePreferences();
             _fsp--;
 
@@ -17351,20 +17451,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__PogoDeviceClass__AdditionalFilesAssignment_20
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6985:1: rule__PogoDeviceClass__AdditionalFilesAssignment_20 : ( ruleAdditionalFile ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7025:1: rule__PogoDeviceClass__AdditionalFilesAssignment_20 : ( ruleAdditionalFile ) ;
     public final void rule__PogoDeviceClass__AdditionalFilesAssignment_20() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6989:1: ( ( ruleAdditionalFile ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6990:1: ( ruleAdditionalFile )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7029:1: ( ( ruleAdditionalFile ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7030:1: ( ruleAdditionalFile )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6990:1: ( ruleAdditionalFile )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:6991:1: ruleAdditionalFile
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7030:1: ( ruleAdditionalFile )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7031:1: ruleAdditionalFile
             {
              before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_20_0()); 
-            pushFollow(FOLLOW_ruleAdditionalFile_in_rule__PogoDeviceClass__AdditionalFilesAssignment_2014080);
+            pushFollow(FOLLOW_ruleAdditionalFile_in_rule__PogoDeviceClass__AdditionalFilesAssignment_2014158);
             ruleAdditionalFile();
             _fsp--;
 
@@ -17391,20 +17491,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__DescriptionAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7000:1: rule__ClassDescription__DescriptionAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7040:1: rule__ClassDescription__DescriptionAssignment_0 : ( RULE_STRING ) ;
     public final void rule__ClassDescription__DescriptionAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7004:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7005:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7044:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7045:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7005:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7006:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7045:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7046:1: RULE_STRING
             {
              before(grammarAccess.getClassDescriptionAccess().getDescriptionSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__DescriptionAssignment_014111); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__DescriptionAssignment_014189); 
              after(grammarAccess.getClassDescriptionAccess().getDescriptionSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -17428,20 +17528,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__TitleAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7015:1: rule__ClassDescription__TitleAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7055:1: rule__ClassDescription__TitleAssignment_1 : ( RULE_STRING ) ;
     public final void rule__ClassDescription__TitleAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7019:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7020:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7059:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7060:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7020:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7021:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7060:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7061:1: RULE_STRING
             {
              before(grammarAccess.getClassDescriptionAccess().getTitleSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__TitleAssignment_114142); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__TitleAssignment_114220); 
              after(grammarAccess.getClassDescriptionAccess().getTitleSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -17465,20 +17565,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__SourcePathAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7030:1: rule__ClassDescription__SourcePathAssignment_2 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7070:1: rule__ClassDescription__SourcePathAssignment_2 : ( RULE_STRING ) ;
     public final void rule__ClassDescription__SourcePathAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7034:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7035:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7074:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7075:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7035:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7036:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7075:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7076:1: RULE_STRING
             {
              before(grammarAccess.getClassDescriptionAccess().getSourcePathSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__SourcePathAssignment_214173); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__SourcePathAssignment_214251); 
              after(grammarAccess.getClassDescriptionAccess().getSourcePathSTRINGTerminalRuleCall_2_0()); 
 
             }
@@ -17502,20 +17602,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__InheritancesAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7045:1: rule__ClassDescription__InheritancesAssignment_4 : ( ruleInheritance ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7085:1: rule__ClassDescription__InheritancesAssignment_4 : ( ruleInheritance ) ;
     public final void rule__ClassDescription__InheritancesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7049:1: ( ( ruleInheritance ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7050:1: ( ruleInheritance )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7089:1: ( ( ruleInheritance ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7090:1: ( ruleInheritance )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7050:1: ( ruleInheritance )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7051:1: ruleInheritance
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7090:1: ( ruleInheritance )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7091:1: ruleInheritance
             {
              before(grammarAccess.getClassDescriptionAccess().getInheritancesInheritanceParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleInheritance_in_rule__ClassDescription__InheritancesAssignment_414204);
+            pushFollow(FOLLOW_ruleInheritance_in_rule__ClassDescription__InheritancesAssignment_414282);
             ruleInheritance();
             _fsp--;
 
@@ -17542,20 +17642,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__LanguageAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7060:1: rule__ClassDescription__LanguageAssignment_5 : ( ruleLanguage ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7100:1: rule__ClassDescription__LanguageAssignment_5 : ( ruleLanguage ) ;
     public final void rule__ClassDescription__LanguageAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7064:1: ( ( ruleLanguage ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7065:1: ( ruleLanguage )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7104:1: ( ( ruleLanguage ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7105:1: ( ruleLanguage )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7065:1: ( ruleLanguage )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7066:1: ruleLanguage
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7105:1: ( ruleLanguage )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7106:1: ruleLanguage
             {
              before(grammarAccess.getClassDescriptionAccess().getLanguageLanguageParserRuleCall_5_0()); 
-            pushFollow(FOLLOW_ruleLanguage_in_rule__ClassDescription__LanguageAssignment_514235);
+            pushFollow(FOLLOW_ruleLanguage_in_rule__ClassDescription__LanguageAssignment_514313);
             ruleLanguage();
             _fsp--;
 
@@ -17582,20 +17682,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__FilestogenerateAssignment_6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7075:1: rule__ClassDescription__FilestogenerateAssignment_6 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7115:1: rule__ClassDescription__FilestogenerateAssignment_6 : ( RULE_STRING ) ;
     public final void rule__ClassDescription__FilestogenerateAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7079:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7080:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7119:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7120:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7080:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7081:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7120:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7121:1: RULE_STRING
             {
              before(grammarAccess.getClassDescriptionAccess().getFilestogenerateSTRINGTerminalRuleCall_6_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__FilestogenerateAssignment_614266); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassDescription__FilestogenerateAssignment_614344); 
              after(grammarAccess.getClassDescriptionAccess().getFilestogenerateSTRINGTerminalRuleCall_6_0()); 
 
             }
@@ -17619,20 +17719,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__IdentificationAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7090:1: rule__ClassDescription__IdentificationAssignment_7 : ( ruleClassIdentification ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7130:1: rule__ClassDescription__IdentificationAssignment_7 : ( ruleClassIdentification ) ;
     public final void rule__ClassDescription__IdentificationAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7094:1: ( ( ruleClassIdentification ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7095:1: ( ruleClassIdentification )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7134:1: ( ( ruleClassIdentification ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7135:1: ( ruleClassIdentification )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7095:1: ( ruleClassIdentification )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7096:1: ruleClassIdentification
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7135:1: ( ruleClassIdentification )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7136:1: ruleClassIdentification
             {
              before(grammarAccess.getClassDescriptionAccess().getIdentificationClassIdentificationParserRuleCall_7_0()); 
-            pushFollow(FOLLOW_ruleClassIdentification_in_rule__ClassDescription__IdentificationAssignment_714297);
+            pushFollow(FOLLOW_ruleClassIdentification_in_rule__ClassDescription__IdentificationAssignment_714375);
             ruleClassIdentification();
             _fsp--;
 
@@ -17659,20 +17759,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassDescription__CommentsAssignment_8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7105:1: rule__ClassDescription__CommentsAssignment_8 : ( ruleComments ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7145:1: rule__ClassDescription__CommentsAssignment_8 : ( ruleComments ) ;
     public final void rule__ClassDescription__CommentsAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7109:1: ( ( ruleComments ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7110:1: ( ruleComments )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7149:1: ( ( ruleComments ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7150:1: ( ruleComments )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7110:1: ( ruleComments )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7111:1: ruleComments
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7150:1: ( ruleComments )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7151:1: ruleComments
             {
              before(grammarAccess.getClassDescriptionAccess().getCommentsCommentsParserRuleCall_8_0()); 
-            pushFollow(FOLLOW_ruleComments_in_rule__ClassDescription__CommentsAssignment_814328);
+            pushFollow(FOLLOW_ruleComments_in_rule__ClassDescription__CommentsAssignment_814406);
             ruleComments();
             _fsp--;
 
@@ -17698,25 +17798,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__ClassDescription__CommentsAssignment_8
 
 
-    // $ANTLR start rule__ClassDescription__HasAbstractCommandAssignment_9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7120:1: rule__ClassDescription__HasAbstractCommandAssignment_9 : ( ruleBoolean ) ;
-    public final void rule__ClassDescription__HasAbstractCommandAssignment_9() throws RecognitionException {
+    // $ANTLR start rule__ClassDescription__HasMandatoryPropertyAssignment_9
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7160:1: rule__ClassDescription__HasMandatoryPropertyAssignment_9 : ( ruleBoolean ) ;
+    public final void rule__ClassDescription__HasMandatoryPropertyAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7124:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7125:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7164:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7165:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7125:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7126:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7165:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7166:1: ruleBoolean
             {
-             before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_9_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractCommandAssignment_914359);
+             before(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyBooleanParserRuleCall_9_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasMandatoryPropertyAssignment_914437);
             ruleBoolean();
             _fsp--;
 
-             after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_9_0()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyBooleanParserRuleCall_9_0()); 
 
             }
 
@@ -17735,28 +17835,28 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__ClassDescription__HasAbstractCommandAssignment_9
+    // $ANTLR end rule__ClassDescription__HasMandatoryPropertyAssignment_9
 
 
-    // $ANTLR start rule__ClassDescription__HasAbstractAttributeAssignment_10
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7135:1: rule__ClassDescription__HasAbstractAttributeAssignment_10 : ( ruleBoolean ) ;
-    public final void rule__ClassDescription__HasAbstractAttributeAssignment_10() throws RecognitionException {
+    // $ANTLR start rule__ClassDescription__HasAbstractCommandAssignment_10
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7175:1: rule__ClassDescription__HasAbstractCommandAssignment_10 : ( ruleBoolean ) ;
+    public final void rule__ClassDescription__HasAbstractCommandAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7139:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7140:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7179:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7180:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7140:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7141:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7180:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7181:1: ruleBoolean
             {
-             before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_10_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractAttributeAssignment_1014390);
+             before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractCommandAssignment_1014468);
             ruleBoolean();
             _fsp--;
 
-             after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_10_0()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0()); 
 
             }
 
@@ -17775,28 +17875,28 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__ClassDescription__HasAbstractAttributeAssignment_10
+    // $ANTLR end rule__ClassDescription__HasAbstractCommandAssignment_10
 
 
-    // $ANTLR start rule__ClassDescription__HasDynamicAttributeAssignment_11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7150:1: rule__ClassDescription__HasDynamicAttributeAssignment_11 : ( ruleBoolean ) ;
-    public final void rule__ClassDescription__HasDynamicAttributeAssignment_11() throws RecognitionException {
+    // $ANTLR start rule__ClassDescription__HasAbstractAttributeAssignment_11
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7190:1: rule__ClassDescription__HasAbstractAttributeAssignment_11 : ( ruleBoolean ) ;
+    public final void rule__ClassDescription__HasAbstractAttributeAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7154:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7155:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7194:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7195:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7155:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7156:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7195:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7196:1: ruleBoolean
             {
-             before(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_11_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasDynamicAttributeAssignment_1114421);
+             before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractAttributeAssignment_1114499);
             ruleBoolean();
             _fsp--;
 
-             after(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_11_0()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0()); 
 
             }
 
@@ -17815,28 +17915,28 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__ClassDescription__HasDynamicAttributeAssignment_11
+    // $ANTLR end rule__ClassDescription__HasAbstractAttributeAssignment_11
 
 
-    // $ANTLR start rule__ClassDescription__DescriptionHtmlExistsAssignment_12
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7165:1: rule__ClassDescription__DescriptionHtmlExistsAssignment_12 : ( ruleBoolean ) ;
-    public final void rule__ClassDescription__DescriptionHtmlExistsAssignment_12() throws RecognitionException {
+    // $ANTLR start rule__ClassDescription__HasDynamicAttributeAssignment_12
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7205:1: rule__ClassDescription__HasDynamicAttributeAssignment_12 : ( ruleBoolean ) ;
+    public final void rule__ClassDescription__HasDynamicAttributeAssignment_12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7169:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7170:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7209:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7210:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7170:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7171:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7210:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7211:1: ruleBoolean
             {
-             before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__DescriptionHtmlExistsAssignment_1214452);
+             before(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__HasDynamicAttributeAssignment_1214530);
             ruleBoolean();
             _fsp--;
 
-             after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); 
+             after(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0()); 
 
             }
 
@@ -17855,24 +17955,64 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__ClassDescription__DescriptionHtmlExistsAssignment_12
+    // $ANTLR end rule__ClassDescription__HasDynamicAttributeAssignment_12
+
+
+    // $ANTLR start rule__ClassDescription__DescriptionHtmlExistsAssignment_13
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7220:1: rule__ClassDescription__DescriptionHtmlExistsAssignment_13 : ( ruleBoolean ) ;
+    public final void rule__ClassDescription__DescriptionHtmlExistsAssignment_13() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7224:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7225:1: ( ruleBoolean )
+            {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7225:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7226:1: ruleBoolean
+            {
+             before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__ClassDescription__DescriptionHtmlExistsAssignment_1314561);
+            ruleBoolean();
+            _fsp--;
+
+             after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end rule__ClassDescription__DescriptionHtmlExistsAssignment_13
 
 
     // $ANTLR start rule__Inheritance__ClassnameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7180:1: rule__Inheritance__ClassnameAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7235:1: rule__Inheritance__ClassnameAssignment_0 : ( RULE_STRING ) ;
     public final void rule__Inheritance__ClassnameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7184:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7185:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7239:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7240:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7185:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7186:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7240:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7241:1: RULE_STRING
             {
              before(grammarAccess.getInheritanceAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Inheritance__ClassnameAssignment_014483); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Inheritance__ClassnameAssignment_014592); 
              after(grammarAccess.getInheritanceAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -17896,20 +18036,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Inheritance__SourcePathAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7195:1: rule__Inheritance__SourcePathAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7250:1: rule__Inheritance__SourcePathAssignment_1 : ( RULE_STRING ) ;
     public final void rule__Inheritance__SourcePathAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7199:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7200:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7254:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7255:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7200:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7201:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7255:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7256:1: RULE_STRING
             {
              before(grammarAccess.getInheritanceAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Inheritance__SourcePathAssignment_114514); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Inheritance__SourcePathAssignment_114623); 
              after(grammarAccess.getInheritanceAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -17933,20 +18073,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__ContactAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7210:1: rule__ClassIdentification__ContactAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7265:1: rule__ClassIdentification__ContactAssignment_0 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__ContactAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7214:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7215:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7269:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7270:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7215:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7216:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7270:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7271:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getContactSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ContactAssignment_014545); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ContactAssignment_014654); 
              after(grammarAccess.getClassIdentificationAccess().getContactSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -17970,20 +18110,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__AuthorAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7225:1: rule__ClassIdentification__AuthorAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7280:1: rule__ClassIdentification__AuthorAssignment_1 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__AuthorAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7229:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7230:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7284:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7285:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7230:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7231:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7285:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7286:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getAuthorSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__AuthorAssignment_114576); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__AuthorAssignment_114685); 
              after(grammarAccess.getClassIdentificationAccess().getAuthorSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -18007,20 +18147,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__EmailDomainAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7240:1: rule__ClassIdentification__EmailDomainAssignment_2 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7295:1: rule__ClassIdentification__EmailDomainAssignment_2 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__EmailDomainAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7244:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7245:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7299:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7300:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7245:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7246:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7300:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7301:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getEmailDomainSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__EmailDomainAssignment_214607); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__EmailDomainAssignment_214716); 
              after(grammarAccess.getClassIdentificationAccess().getEmailDomainSTRINGTerminalRuleCall_2_0()); 
 
             }
@@ -18044,20 +18184,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__ClassFamilyAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7255:1: rule__ClassIdentification__ClassFamilyAssignment_3 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7310:1: rule__ClassIdentification__ClassFamilyAssignment_3 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__ClassFamilyAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7259:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7260:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7314:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7315:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7260:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7261:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7315:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7316:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getClassFamilySTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ClassFamilyAssignment_314638); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ClassFamilyAssignment_314747); 
              after(grammarAccess.getClassIdentificationAccess().getClassFamilySTRINGTerminalRuleCall_3_0()); 
 
             }
@@ -18081,20 +18221,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__SiteSpecificAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7270:1: rule__ClassIdentification__SiteSpecificAssignment_4 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7325:1: rule__ClassIdentification__SiteSpecificAssignment_4 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__SiteSpecificAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7274:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7275:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7329:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7330:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7275:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7276:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7330:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7331:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getSiteSpecificSTRINGTerminalRuleCall_4_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__SiteSpecificAssignment_414669); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__SiteSpecificAssignment_414778); 
              after(grammarAccess.getClassIdentificationAccess().getSiteSpecificSTRINGTerminalRuleCall_4_0()); 
 
             }
@@ -18118,20 +18258,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__PlatformAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7285:1: rule__ClassIdentification__PlatformAssignment_5 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7340:1: rule__ClassIdentification__PlatformAssignment_5 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__PlatformAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7289:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7290:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7344:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7345:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7290:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7291:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7345:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7346:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getPlatformSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__PlatformAssignment_514700); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__PlatformAssignment_514809); 
              after(grammarAccess.getClassIdentificationAccess().getPlatformSTRINGTerminalRuleCall_5_0()); 
 
             }
@@ -18155,20 +18295,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__BusAssignment_6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7300:1: rule__ClassIdentification__BusAssignment_6 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7355:1: rule__ClassIdentification__BusAssignment_6 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__BusAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7304:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7305:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7359:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7360:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7305:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7306:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7360:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7361:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getBusSTRINGTerminalRuleCall_6_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__BusAssignment_614731); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__BusAssignment_614840); 
              after(grammarAccess.getClassIdentificationAccess().getBusSTRINGTerminalRuleCall_6_0()); 
 
             }
@@ -18192,20 +18332,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__ManufacturerAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7315:1: rule__ClassIdentification__ManufacturerAssignment_7 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7370:1: rule__ClassIdentification__ManufacturerAssignment_7 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__ManufacturerAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7319:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7320:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7374:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7375:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7320:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7321:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7375:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7376:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getManufacturerSTRINGTerminalRuleCall_7_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ManufacturerAssignment_714762); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ManufacturerAssignment_714871); 
              after(grammarAccess.getClassIdentificationAccess().getManufacturerSTRINGTerminalRuleCall_7_0()); 
 
             }
@@ -18229,20 +18369,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__ClassIdentification__ReferenceAssignment_8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7330:1: rule__ClassIdentification__ReferenceAssignment_8 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7385:1: rule__ClassIdentification__ReferenceAssignment_8 : ( RULE_STRING ) ;
     public final void rule__ClassIdentification__ReferenceAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7334:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7335:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7389:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7390:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7335:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7336:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7390:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7391:1: RULE_STRING
             {
              before(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_8_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ReferenceAssignment_814793); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ClassIdentification__ReferenceAssignment_814902); 
              after(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_8_0()); 
 
             }
@@ -18266,20 +18406,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Comments__CommandsTableAssignment
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7345:1: rule__Comments__CommandsTableAssignment : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7400:1: rule__Comments__CommandsTableAssignment : ( RULE_STRING ) ;
     public final void rule__Comments__CommandsTableAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7349:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7350:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7404:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7405:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7350:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7351:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7405:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7406:1: RULE_STRING
             {
              before(grammarAccess.getCommentsAccess().getCommandsTableSTRINGTerminalRuleCall_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Comments__CommandsTableAssignment14824); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Comments__CommandsTableAssignment14933); 
              after(grammarAccess.getCommentsAccess().getCommandsTableSTRINGTerminalRuleCall_0()); 
 
             }
@@ -18303,20 +18443,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__DocHomeAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7360:1: rule__Preferences__DocHomeAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7415:1: rule__Preferences__DocHomeAssignment_0 : ( RULE_STRING ) ;
     public final void rule__Preferences__DocHomeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7364:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7365:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7419:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7420:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7365:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7366:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7420:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7421:1: RULE_STRING
             {
              before(grammarAccess.getPreferencesAccess().getDocHomeSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Preferences__DocHomeAssignment_014855); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Preferences__DocHomeAssignment_014964); 
              after(grammarAccess.getPreferencesAccess().getDocHomeSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -18340,20 +18480,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__MakefileHomeAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7375:1: rule__Preferences__MakefileHomeAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7430:1: rule__Preferences__MakefileHomeAssignment_1 : ( RULE_STRING ) ;
     public final void rule__Preferences__MakefileHomeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7379:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7380:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7434:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7435:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7380:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7381:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7435:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7436:1: RULE_STRING
             {
              before(grammarAccess.getPreferencesAccess().getMakefileHomeSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Preferences__MakefileHomeAssignment_114886); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Preferences__MakefileHomeAssignment_114995); 
              after(grammarAccess.getPreferencesAccess().getMakefileHomeSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -18377,20 +18517,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__InstallHomeAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7390:1: rule__Preferences__InstallHomeAssignment_2 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7445:1: rule__Preferences__InstallHomeAssignment_2 : ( RULE_STRING ) ;
     public final void rule__Preferences__InstallHomeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7394:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7395:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7449:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7450:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7395:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7396:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7450:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7451:1: RULE_STRING
             {
              before(grammarAccess.getPreferencesAccess().getInstallHomeSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Preferences__InstallHomeAssignment_214917); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Preferences__InstallHomeAssignment_215026); 
              after(grammarAccess.getPreferencesAccess().getInstallHomeSTRINGTerminalRuleCall_2_0()); 
 
             }
@@ -18414,20 +18554,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Preferences__HtmlVersionAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7405:1: rule__Preferences__HtmlVersionAssignment_3 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7460:1: rule__Preferences__HtmlVersionAssignment_3 : ( ruleBoolean ) ;
     public final void rule__Preferences__HtmlVersionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7409:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7410:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7464:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7465:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7410:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7411:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7465:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7466:1: ruleBoolean
             {
              before(grammarAccess.getPreferencesAccess().getHtmlVersionBooleanParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__Preferences__HtmlVersionAssignment_314948);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__Preferences__HtmlVersionAssignment_315057);
             ruleBoolean();
             _fsp--;
 
@@ -18454,20 +18594,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__State__NameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7420:1: rule__State__NameAssignment_0 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7475:1: rule__State__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__State__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7424:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7425:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7479:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7480:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7425:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7426:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7480:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7481:1: RULE_ID
             {
              before(grammarAccess.getStateAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__State__NameAssignment_014979); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__State__NameAssignment_015088); 
              after(grammarAccess.getStateAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -18491,20 +18631,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__State__DescriptionAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7435:1: rule__State__DescriptionAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7490:1: rule__State__DescriptionAssignment_1 : ( RULE_STRING ) ;
     public final void rule__State__DescriptionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7439:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7440:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7494:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7495:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7440:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7441:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7495:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7496:1: RULE_STRING
             {
              before(grammarAccess.getStateAccess().getDescriptionSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__State__DescriptionAssignment_115010); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__State__DescriptionAssignment_115119); 
              after(grammarAccess.getStateAccess().getDescriptionSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -18528,20 +18668,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__State__StatusAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7450:1: rule__State__StatusAssignment_2 : ( ruleInheritanceStatus ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7505:1: rule__State__StatusAssignment_2 : ( ruleInheritanceStatus ) ;
     public final void rule__State__StatusAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7454:1: ( ( ruleInheritanceStatus ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7455:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7509:1: ( ( ruleInheritanceStatus ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7510:1: ( ruleInheritanceStatus )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7455:1: ( ruleInheritanceStatus )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7456:1: ruleInheritanceStatus
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7510:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7511:1: ruleInheritanceStatus
             {
              before(grammarAccess.getStateAccess().getStatusInheritanceStatusParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__State__StatusAssignment_215041);
+            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__State__StatusAssignment_215150);
             ruleInheritanceStatus();
             _fsp--;
 
@@ -18568,20 +18708,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__NameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7465:1: rule__Property__NameAssignment_0 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7520:1: rule__Property__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Property__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7469:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7470:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7524:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7525:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7470:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7471:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7525:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7526:1: RULE_ID
             {
              before(grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Property__NameAssignment_015072); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Property__NameAssignment_015181); 
              after(grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -18605,20 +18745,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__TypeAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7480:1: rule__Property__TypeAssignment_1 : ( rulePropType ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7535:1: rule__Property__TypeAssignment_1 : ( rulePropType ) ;
     public final void rule__Property__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7484:1: ( ( rulePropType ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7485:1: ( rulePropType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7539:1: ( ( rulePropType ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7540:1: ( rulePropType )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7485:1: ( rulePropType )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7486:1: rulePropType
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7540:1: ( rulePropType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7541:1: rulePropType
             {
              before(grammarAccess.getPropertyAccess().getTypePropTypeParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_rulePropType_in_rule__Property__TypeAssignment_115103);
+            pushFollow(FOLLOW_rulePropType_in_rule__Property__TypeAssignment_115212);
             rulePropType();
             _fsp--;
 
@@ -18645,20 +18785,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Property__StatusAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7495:1: rule__Property__StatusAssignment_2 : ( ruleInheritanceStatus ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7550:1: rule__Property__StatusAssignment_2 : ( ruleInheritanceStatus ) ;
     public final void rule__Property__StatusAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7499:1: ( ( ruleInheritanceStatus ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7500:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7554:1: ( ( ruleInheritanceStatus ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7555:1: ( ruleInheritanceStatus )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7500:1: ( ruleInheritanceStatus )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7501:1: ruleInheritanceStatus
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7555:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7556:1: ruleInheritanceStatus
             {
              before(grammarAccess.getPropertyAccess().getStatusInheritanceStatusParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__Property__StatusAssignment_215134);
+            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__Property__StatusAssignment_215243);
             ruleInheritanceStatus();
             _fsp--;
 
@@ -18684,22 +18824,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__Property__StatusAssignment_2
 
 
-    // $ANTLR start rule__Property__DescriptionAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7510:1: rule__Property__DescriptionAssignment_3 : ( RULE_STRING ) ;
-    public final void rule__Property__DescriptionAssignment_3() throws RecognitionException {
+    // $ANTLR start rule__Property__MandatoryAssignment_3
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7565:1: rule__Property__MandatoryAssignment_3 : ( ruleBoolean ) ;
+    public final void rule__Property__MandatoryAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7514:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7515:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7569:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7570:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7515:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7516:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7570:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7571:1: ruleBoolean
             {
-             before(grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Property__DescriptionAssignment_315165); 
-             after(grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_3_0()); 
+             before(grammarAccess.getPropertyAccess().getMandatoryBooleanParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__Property__MandatoryAssignment_315274);
+            ruleBoolean();
+            _fsp--;
+
+             after(grammarAccess.getPropertyAccess().getMandatoryBooleanParserRuleCall_3_0()); 
 
             }
 
@@ -18718,25 +18861,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Property__DescriptionAssignment_3
+    // $ANTLR end rule__Property__MandatoryAssignment_3
 
 
-    // $ANTLR start rule__Property__DefaultPropValueAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7525:1: rule__Property__DefaultPropValueAssignment_5 : ( RULE_STRING ) ;
-    public final void rule__Property__DefaultPropValueAssignment_5() throws RecognitionException {
+    // $ANTLR start rule__Property__DescriptionAssignment_4
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7580:1: rule__Property__DescriptionAssignment_4 : ( RULE_STRING ) ;
+    public final void rule__Property__DescriptionAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7529:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7530:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7584:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7585:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7530:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7531:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7585:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7586:1: RULE_STRING
             {
-             before(grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Property__DefaultPropValueAssignment_515196); 
-             after(grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_5_0()); 
+             before(grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Property__DescriptionAssignment_415305); 
+             after(grammarAccess.getPropertyAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
 
             }
 
@@ -18755,24 +18898,61 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Property__DefaultPropValueAssignment_5
+    // $ANTLR end rule__Property__DescriptionAssignment_4
+
+
+    // $ANTLR start rule__Property__DefaultPropValueAssignment_6
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7595:1: rule__Property__DefaultPropValueAssignment_6 : ( RULE_STRING ) ;
+    public final void rule__Property__DefaultPropValueAssignment_6() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7599:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7600:1: ( RULE_STRING )
+            {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7600:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7601:1: RULE_STRING
+            {
+             before(grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_6_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Property__DefaultPropValueAssignment_615336); 
+             after(grammarAccess.getPropertyAccess().getDefaultPropValueSTRINGTerminalRuleCall_6_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end rule__Property__DefaultPropValueAssignment_6
 
 
     // $ANTLR start rule__InheritanceStatus__AbstractAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7540:1: rule__InheritanceStatus__AbstractAssignment_0 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7610:1: rule__InheritanceStatus__AbstractAssignment_0 : ( ruleBoolean ) ;
     public final void rule__InheritanceStatus__AbstractAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7544:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7545:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7614:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7615:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7545:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7546:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7615:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7616:1: ruleBoolean
             {
              before(grammarAccess.getInheritanceStatusAccess().getAbstractBooleanParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__AbstractAssignment_015227);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__AbstractAssignment_015367);
             ruleBoolean();
             _fsp--;
 
@@ -18799,20 +18979,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__InheritedAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7555:1: rule__InheritanceStatus__InheritedAssignment_1 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7625:1: rule__InheritanceStatus__InheritedAssignment_1 : ( ruleBoolean ) ;
     public final void rule__InheritanceStatus__InheritedAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7559:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7560:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7629:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7630:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7560:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7561:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7630:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7631:1: ruleBoolean
             {
              before(grammarAccess.getInheritanceStatusAccess().getInheritedBooleanParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__InheritedAssignment_115258);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__InheritedAssignment_115398);
             ruleBoolean();
             _fsp--;
 
@@ -18839,20 +19019,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__ConcreteAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7570:1: rule__InheritanceStatus__ConcreteAssignment_2 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7640:1: rule__InheritanceStatus__ConcreteAssignment_2 : ( ruleBoolean ) ;
     public final void rule__InheritanceStatus__ConcreteAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7574:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7575:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7644:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7645:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7575:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7576:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7645:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7646:1: ruleBoolean
             {
              before(grammarAccess.getInheritanceStatusAccess().getConcreteBooleanParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteAssignment_215289);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteAssignment_215429);
             ruleBoolean();
             _fsp--;
 
@@ -18879,20 +19059,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__ConcreteHereAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7585:1: rule__InheritanceStatus__ConcreteHereAssignment_3 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7655:1: rule__InheritanceStatus__ConcreteHereAssignment_3 : ( ruleBoolean ) ;
     public final void rule__InheritanceStatus__ConcreteHereAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7589:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7590:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7659:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7660:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7590:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7591:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7660:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7661:1: ruleBoolean
             {
              before(grammarAccess.getInheritanceStatusAccess().getConcreteHereBooleanParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteHereAssignment_315320);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteHereAssignment_315460);
             ruleBoolean();
             _fsp--;
 
@@ -18919,20 +19099,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__InheritanceStatus__HasChangedAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7600:1: rule__InheritanceStatus__HasChangedAssignment_4 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7670:1: rule__InheritanceStatus__HasChangedAssignment_4 : ( RULE_STRING ) ;
     public final void rule__InheritanceStatus__HasChangedAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7604:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7605:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7674:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7675:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7605:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7606:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7675:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7676:1: RULE_STRING
             {
              before(grammarAccess.getInheritanceStatusAccess().getHasChangedSTRINGTerminalRuleCall_4_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__InheritanceStatus__HasChangedAssignment_415351); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__InheritanceStatus__HasChangedAssignment_415491); 
              after(grammarAccess.getInheritanceStatusAccess().getHasChangedSTRINGTerminalRuleCall_4_0()); 
 
             }
@@ -18956,20 +19136,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__NameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7615:1: rule__Command__NameAssignment_0 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7685:1: rule__Command__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Command__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7619:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7620:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7689:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7690:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7620:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7621:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7690:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7691:1: RULE_ID
             {
              before(grammarAccess.getCommandAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Command__NameAssignment_015382); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Command__NameAssignment_015522); 
              after(grammarAccess.getCommandAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -18993,20 +19173,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__ArginAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7630:1: rule__Command__ArginAssignment_1 : ( ruleArgument ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7700:1: rule__Command__ArginAssignment_1 : ( ruleArgument ) ;
     public final void rule__Command__ArginAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7634:1: ( ( ruleArgument ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7635:1: ( ruleArgument )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7704:1: ( ( ruleArgument ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7705:1: ( ruleArgument )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7635:1: ( ruleArgument )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7636:1: ruleArgument
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7705:1: ( ruleArgument )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7706:1: ruleArgument
             {
              before(grammarAccess.getCommandAccess().getArginArgumentParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleArgument_in_rule__Command__ArginAssignment_115413);
+            pushFollow(FOLLOW_ruleArgument_in_rule__Command__ArginAssignment_115553);
             ruleArgument();
             _fsp--;
 
@@ -19033,20 +19213,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__ArgoutAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7645:1: rule__Command__ArgoutAssignment_2 : ( ruleArgument ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7715:1: rule__Command__ArgoutAssignment_2 : ( ruleArgument ) ;
     public final void rule__Command__ArgoutAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7649:1: ( ( ruleArgument ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7650:1: ( ruleArgument )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7719:1: ( ( ruleArgument ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7720:1: ( ruleArgument )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7650:1: ( ruleArgument )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7651:1: ruleArgument
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7720:1: ( ruleArgument )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7721:1: ruleArgument
             {
              before(grammarAccess.getCommandAccess().getArgoutArgumentParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleArgument_in_rule__Command__ArgoutAssignment_215444);
+            pushFollow(FOLLOW_ruleArgument_in_rule__Command__ArgoutAssignment_215584);
             ruleArgument();
             _fsp--;
 
@@ -19073,20 +19253,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__DescriptionAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7660:1: rule__Command__DescriptionAssignment_3 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7730:1: rule__Command__DescriptionAssignment_3 : ( RULE_STRING ) ;
     public final void rule__Command__DescriptionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7664:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7665:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7734:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7735:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7665:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7666:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7735:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7736:1: RULE_STRING
             {
              before(grammarAccess.getCommandAccess().getDescriptionSTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__DescriptionAssignment_315475); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__DescriptionAssignment_315615); 
              after(grammarAccess.getCommandAccess().getDescriptionSTRINGTerminalRuleCall_3_0()); 
 
             }
@@ -19110,20 +19290,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__StatusAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7675:1: rule__Command__StatusAssignment_4 : ( ruleInheritanceStatus ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7745:1: rule__Command__StatusAssignment_4 : ( ruleInheritanceStatus ) ;
     public final void rule__Command__StatusAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7679:1: ( ( ruleInheritanceStatus ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7680:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7749:1: ( ( ruleInheritanceStatus ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7750:1: ( ruleInheritanceStatus )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7680:1: ( ruleInheritanceStatus )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7681:1: ruleInheritanceStatus
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7750:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7751:1: ruleInheritanceStatus
             {
              before(grammarAccess.getCommandAccess().getStatusInheritanceStatusParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__Command__StatusAssignment_415506);
+            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__Command__StatusAssignment_415646);
             ruleInheritanceStatus();
             _fsp--;
 
@@ -19150,20 +19330,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__ExecMethodAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7690:1: rule__Command__ExecMethodAssignment_5 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7760:1: rule__Command__ExecMethodAssignment_5 : ( RULE_STRING ) ;
     public final void rule__Command__ExecMethodAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7694:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7695:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7764:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7765:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7695:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7696:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7765:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7766:1: RULE_STRING
             {
              before(grammarAccess.getCommandAccess().getExecMethodSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__ExecMethodAssignment_515537); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__ExecMethodAssignment_515677); 
              after(grammarAccess.getCommandAccess().getExecMethodSTRINGTerminalRuleCall_5_0()); 
 
             }
@@ -19187,20 +19367,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__DisplayLevelAssignment_6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7705:1: rule__Command__DisplayLevelAssignment_6 : ( ruleDisplayLevel ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7775:1: rule__Command__DisplayLevelAssignment_6 : ( ruleDisplayLevel ) ;
     public final void rule__Command__DisplayLevelAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7709:1: ( ( ruleDisplayLevel ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7710:1: ( ruleDisplayLevel )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7779:1: ( ( ruleDisplayLevel ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7780:1: ( ruleDisplayLevel )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7710:1: ( ruleDisplayLevel )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7711:1: ruleDisplayLevel
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7780:1: ( ruleDisplayLevel )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7781:1: ruleDisplayLevel
             {
              before(grammarAccess.getCommandAccess().getDisplayLevelDisplayLevelParserRuleCall_6_0()); 
-            pushFollow(FOLLOW_ruleDisplayLevel_in_rule__Command__DisplayLevelAssignment_615568);
+            pushFollow(FOLLOW_ruleDisplayLevel_in_rule__Command__DisplayLevelAssignment_615708);
             ruleDisplayLevel();
             _fsp--;
 
@@ -19227,20 +19407,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__PolledPeriodAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7720:1: rule__Command__PolledPeriodAssignment_7 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7790:1: rule__Command__PolledPeriodAssignment_7 : ( RULE_STRING ) ;
     public final void rule__Command__PolledPeriodAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7724:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7725:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7794:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7795:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7725:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7726:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7795:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7796:1: RULE_STRING
             {
              before(grammarAccess.getCommandAccess().getPolledPeriodSTRINGTerminalRuleCall_7_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__PolledPeriodAssignment_715599); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__PolledPeriodAssignment_715739); 
              after(grammarAccess.getCommandAccess().getPolledPeriodSTRINGTerminalRuleCall_7_0()); 
 
             }
@@ -19264,20 +19444,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Command__ExcludedStatesAssignment_9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7735:1: rule__Command__ExcludedStatesAssignment_9 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7805:1: rule__Command__ExcludedStatesAssignment_9 : ( RULE_STRING ) ;
     public final void rule__Command__ExcludedStatesAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7739:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7740:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7809:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7810:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7740:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7741:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7810:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7811:1: RULE_STRING
             {
              before(grammarAccess.getCommandAccess().getExcludedStatesSTRINGTerminalRuleCall_9_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__ExcludedStatesAssignment_915630); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Command__ExcludedStatesAssignment_915770); 
              after(grammarAccess.getCommandAccess().getExcludedStatesSTRINGTerminalRuleCall_9_0()); 
 
             }
@@ -19301,20 +19481,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Argument__TypeAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7750:1: rule__Argument__TypeAssignment_0 : ( ruleType ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7820:1: rule__Argument__TypeAssignment_0 : ( ruleType ) ;
     public final void rule__Argument__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7754:1: ( ( ruleType ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7755:1: ( ruleType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7824:1: ( ( ruleType ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7825:1: ( ruleType )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7755:1: ( ruleType )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7756:1: ruleType
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7825:1: ( ruleType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7826:1: ruleType
             {
              before(grammarAccess.getArgumentAccess().getTypeTypeParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleType_in_rule__Argument__TypeAssignment_015661);
+            pushFollow(FOLLOW_ruleType_in_rule__Argument__TypeAssignment_015801);
             ruleType();
             _fsp--;
 
@@ -19341,20 +19521,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Argument__DescriptionAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7765:1: rule__Argument__DescriptionAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7835:1: rule__Argument__DescriptionAssignment_1 : ( RULE_STRING ) ;
     public final void rule__Argument__DescriptionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7769:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7770:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7839:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7840:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7770:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7771:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7840:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7841:1: RULE_STRING
             {
              before(grammarAccess.getArgumentAccess().getDescriptionSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Argument__DescriptionAssignment_115692); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Argument__DescriptionAssignment_115832); 
              after(grammarAccess.getArgumentAccess().getDescriptionSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -19378,20 +19558,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__NameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7780:1: rule__Attribute__NameAssignment_0 : ( RULE_ID ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7850:1: rule__Attribute__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Attribute__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7784:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7785:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7854:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7855:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7785:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7786:1: RULE_ID
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7855:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7856:1: RULE_ID
             {
              before(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_015723); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_015863); 
              after(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -19415,20 +19595,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__AttTypeAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7795:1: rule__Attribute__AttTypeAssignment_1 : ( ruleAttrType ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7865:1: rule__Attribute__AttTypeAssignment_1 : ( ruleAttrType ) ;
     public final void rule__Attribute__AttTypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7799:1: ( ( ruleAttrType ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7800:1: ( ruleAttrType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7869:1: ( ( ruleAttrType ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7870:1: ( ruleAttrType )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7800:1: ( ruleAttrType )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7801:1: ruleAttrType
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7870:1: ( ruleAttrType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7871:1: ruleAttrType
             {
              before(grammarAccess.getAttributeAccess().getAttTypeAttrTypeParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleAttrType_in_rule__Attribute__AttTypeAssignment_115754);
+            pushFollow(FOLLOW_ruleAttrType_in_rule__Attribute__AttTypeAssignment_115894);
             ruleAttrType();
             _fsp--;
 
@@ -19455,20 +19635,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__DataTypeAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7810:1: rule__Attribute__DataTypeAssignment_2 : ( ruleType ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7880:1: rule__Attribute__DataTypeAssignment_2 : ( ruleType ) ;
     public final void rule__Attribute__DataTypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7814:1: ( ( ruleType ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7815:1: ( ruleType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7884:1: ( ( ruleType ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7885:1: ( ruleType )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7815:1: ( ruleType )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7816:1: ruleType
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7885:1: ( ruleType )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7886:1: ruleType
             {
              before(grammarAccess.getAttributeAccess().getDataTypeTypeParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleType_in_rule__Attribute__DataTypeAssignment_215785);
+            pushFollow(FOLLOW_ruleType_in_rule__Attribute__DataTypeAssignment_215925);
             ruleType();
             _fsp--;
 
@@ -19495,20 +19675,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__RwTypeAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7825:1: rule__Attribute__RwTypeAssignment_3 : ( ruleRW_Type ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7895:1: rule__Attribute__RwTypeAssignment_3 : ( ruleRW_Type ) ;
     public final void rule__Attribute__RwTypeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7829:1: ( ( ruleRW_Type ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7830:1: ( ruleRW_Type )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7899:1: ( ( ruleRW_Type ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7900:1: ( ruleRW_Type )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7830:1: ( ruleRW_Type )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7831:1: ruleRW_Type
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7900:1: ( ruleRW_Type )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7901:1: ruleRW_Type
             {
              before(grammarAccess.getAttributeAccess().getRwTypeRW_TypeParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleRW_Type_in_rule__Attribute__RwTypeAssignment_315816);
+            pushFollow(FOLLOW_ruleRW_Type_in_rule__Attribute__RwTypeAssignment_315956);
             ruleRW_Type();
             _fsp--;
 
@@ -19535,20 +19715,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__DisplayLevelAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7840:1: rule__Attribute__DisplayLevelAssignment_4 : ( ruleDisplayLevel ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7910:1: rule__Attribute__DisplayLevelAssignment_4 : ( ruleDisplayLevel ) ;
     public final void rule__Attribute__DisplayLevelAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7844:1: ( ( ruleDisplayLevel ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7845:1: ( ruleDisplayLevel )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7914:1: ( ( ruleDisplayLevel ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7915:1: ( ruleDisplayLevel )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7845:1: ( ruleDisplayLevel )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7846:1: ruleDisplayLevel
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7915:1: ( ruleDisplayLevel )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7916:1: ruleDisplayLevel
             {
              before(grammarAccess.getAttributeAccess().getDisplayLevelDisplayLevelParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleDisplayLevel_in_rule__Attribute__DisplayLevelAssignment_415847);
+            pushFollow(FOLLOW_ruleDisplayLevel_in_rule__Attribute__DisplayLevelAssignment_415987);
             ruleDisplayLevel();
             _fsp--;
 
@@ -19575,20 +19755,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__PolledPeriodAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7855:1: rule__Attribute__PolledPeriodAssignment_5 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7925:1: rule__Attribute__PolledPeriodAssignment_5 : ( RULE_STRING ) ;
     public final void rule__Attribute__PolledPeriodAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7859:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7860:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7929:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7930:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7860:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7861:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7930:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7931:1: RULE_STRING
             {
              before(grammarAccess.getAttributeAccess().getPolledPeriodSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__PolledPeriodAssignment_515878); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__PolledPeriodAssignment_516018); 
              after(grammarAccess.getAttributeAccess().getPolledPeriodSTRINGTerminalRuleCall_5_0()); 
 
             }
@@ -19612,20 +19792,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__MaxXAssignment_6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7870:1: rule__Attribute__MaxXAssignment_6 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7940:1: rule__Attribute__MaxXAssignment_6 : ( RULE_STRING ) ;
     public final void rule__Attribute__MaxXAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7874:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7875:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7944:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7945:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7875:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7876:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7945:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7946:1: RULE_STRING
             {
              before(grammarAccess.getAttributeAccess().getMaxXSTRINGTerminalRuleCall_6_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__MaxXAssignment_615909); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__MaxXAssignment_616049); 
              after(grammarAccess.getAttributeAccess().getMaxXSTRINGTerminalRuleCall_6_0()); 
 
             }
@@ -19649,20 +19829,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__MaxYAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7885:1: rule__Attribute__MaxYAssignment_7 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7955:1: rule__Attribute__MaxYAssignment_7 : ( RULE_STRING ) ;
     public final void rule__Attribute__MaxYAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7889:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7890:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7959:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7960:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7890:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7891:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7960:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7961:1: RULE_STRING
             {
              before(grammarAccess.getAttributeAccess().getMaxYSTRINGTerminalRuleCall_7_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__MaxYAssignment_715940); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__MaxYAssignment_716080); 
              after(grammarAccess.getAttributeAccess().getMaxYSTRINGTerminalRuleCall_7_0()); 
 
             }
@@ -19686,20 +19866,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__AssociatedAttrAssignment_8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7900:1: rule__Attribute__AssociatedAttrAssignment_8 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7970:1: rule__Attribute__AssociatedAttrAssignment_8 : ( RULE_STRING ) ;
     public final void rule__Attribute__AssociatedAttrAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7904:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7905:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7974:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7975:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7905:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7906:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7975:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7976:1: RULE_STRING
             {
              before(grammarAccess.getAttributeAccess().getAssociatedAttrSTRINGTerminalRuleCall_8_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__AssociatedAttrAssignment_815971); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__AssociatedAttrAssignment_816111); 
              after(grammarAccess.getAttributeAccess().getAssociatedAttrSTRINGTerminalRuleCall_8_0()); 
 
             }
@@ -19723,20 +19903,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__MemorizedAssignment_9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7915:1: rule__Attribute__MemorizedAssignment_9 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7985:1: rule__Attribute__MemorizedAssignment_9 : ( ruleBoolean ) ;
     public final void rule__Attribute__MemorizedAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7919:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7920:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7989:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7990:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7920:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7921:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7990:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7991:1: ruleBoolean
             {
              before(grammarAccess.getAttributeAccess().getMemorizedBooleanParserRuleCall_9_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAssignment_916002);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAssignment_916142);
             ruleBoolean();
             _fsp--;
 
@@ -19763,20 +19943,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__MemorizedAtInitAssignment_10
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7930:1: rule__Attribute__MemorizedAtInitAssignment_10 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8000:1: rule__Attribute__MemorizedAtInitAssignment_10 : ( ruleBoolean ) ;
     public final void rule__Attribute__MemorizedAtInitAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7934:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7935:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8004:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8005:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7935:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7936:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8005:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8006:1: ruleBoolean
             {
              before(grammarAccess.getAttributeAccess().getMemorizedAtInitBooleanParserRuleCall_10_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAtInitAssignment_1016033);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAtInitAssignment_1016173);
             ruleBoolean();
             _fsp--;
 
@@ -19803,20 +19983,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__ChangeEventAssignment_11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7945:1: rule__Attribute__ChangeEventAssignment_11 : ( ruleFireEvents ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8015:1: rule__Attribute__ChangeEventAssignment_11 : ( ruleFireEvents ) ;
     public final void rule__Attribute__ChangeEventAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7949:1: ( ( ruleFireEvents ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7950:1: ( ruleFireEvents )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8019:1: ( ( ruleFireEvents ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8020:1: ( ruleFireEvents )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7950:1: ( ruleFireEvents )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7951:1: ruleFireEvents
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8020:1: ( ruleFireEvents )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8021:1: ruleFireEvents
             {
              before(grammarAccess.getAttributeAccess().getChangeEventFireEventsParserRuleCall_11_0()); 
-            pushFollow(FOLLOW_ruleFireEvents_in_rule__Attribute__ChangeEventAssignment_1116064);
+            pushFollow(FOLLOW_ruleFireEvents_in_rule__Attribute__ChangeEventAssignment_1116204);
             ruleFireEvents();
             _fsp--;
 
@@ -19843,20 +20023,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__ArchiveEventAssignment_12
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7960:1: rule__Attribute__ArchiveEventAssignment_12 : ( ruleFireEvents ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8030:1: rule__Attribute__ArchiveEventAssignment_12 : ( ruleFireEvents ) ;
     public final void rule__Attribute__ArchiveEventAssignment_12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7964:1: ( ( ruleFireEvents ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7965:1: ( ruleFireEvents )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8034:1: ( ( ruleFireEvents ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8035:1: ( ruleFireEvents )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7965:1: ( ruleFireEvents )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7966:1: ruleFireEvents
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8035:1: ( ruleFireEvents )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8036:1: ruleFireEvents
             {
              before(grammarAccess.getAttributeAccess().getArchiveEventFireEventsParserRuleCall_12_0()); 
-            pushFollow(FOLLOW_ruleFireEvents_in_rule__Attribute__ArchiveEventAssignment_1216095);
+            pushFollow(FOLLOW_ruleFireEvents_in_rule__Attribute__ArchiveEventAssignment_1216235);
             ruleFireEvents();
             _fsp--;
 
@@ -19883,20 +20063,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__DataReadyEventAssignment_13
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7975:1: rule__Attribute__DataReadyEventAssignment_13 : ( ruleFireEvents ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8045:1: rule__Attribute__DataReadyEventAssignment_13 : ( ruleFireEvents ) ;
     public final void rule__Attribute__DataReadyEventAssignment_13() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7979:1: ( ( ruleFireEvents ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7980:1: ( ruleFireEvents )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8049:1: ( ( ruleFireEvents ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8050:1: ( ruleFireEvents )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7980:1: ( ruleFireEvents )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7981:1: ruleFireEvents
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8050:1: ( ruleFireEvents )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8051:1: ruleFireEvents
             {
              before(grammarAccess.getAttributeAccess().getDataReadyEventFireEventsParserRuleCall_13_0()); 
-            pushFollow(FOLLOW_ruleFireEvents_in_rule__Attribute__DataReadyEventAssignment_1316126);
+            pushFollow(FOLLOW_ruleFireEvents_in_rule__Attribute__DataReadyEventAssignment_1316266);
             ruleFireEvents();
             _fsp--;
 
@@ -19923,20 +20103,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__StatusAssignment_14
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7990:1: rule__Attribute__StatusAssignment_14 : ( ruleInheritanceStatus ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8060:1: rule__Attribute__StatusAssignment_14 : ( ruleInheritanceStatus ) ;
     public final void rule__Attribute__StatusAssignment_14() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7994:1: ( ( ruleInheritanceStatus ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7995:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8064:1: ( ( ruleInheritanceStatus ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8065:1: ( ruleInheritanceStatus )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7995:1: ( ruleInheritanceStatus )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:7996:1: ruleInheritanceStatus
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8065:1: ( ruleInheritanceStatus )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8066:1: ruleInheritanceStatus
             {
              before(grammarAccess.getAttributeAccess().getStatusInheritanceStatusParserRuleCall_14_0()); 
-            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__Attribute__StatusAssignment_1416157);
+            pushFollow(FOLLOW_ruleInheritanceStatus_in_rule__Attribute__StatusAssignment_1416297);
             ruleInheritanceStatus();
             _fsp--;
 
@@ -19963,20 +20143,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__PropertiesAssignment_15
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8005:1: rule__Attribute__PropertiesAssignment_15 : ( ruleAttrProperties ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8075:1: rule__Attribute__PropertiesAssignment_15 : ( ruleAttrProperties ) ;
     public final void rule__Attribute__PropertiesAssignment_15() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8009:1: ( ( ruleAttrProperties ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8010:1: ( ruleAttrProperties )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8079:1: ( ( ruleAttrProperties ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8080:1: ( ruleAttrProperties )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8010:1: ( ruleAttrProperties )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8011:1: ruleAttrProperties
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8080:1: ( ruleAttrProperties )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8081:1: ruleAttrProperties
             {
              before(grammarAccess.getAttributeAccess().getPropertiesAttrPropertiesParserRuleCall_15_0()); 
-            pushFollow(FOLLOW_ruleAttrProperties_in_rule__Attribute__PropertiesAssignment_1516188);
+            pushFollow(FOLLOW_ruleAttrProperties_in_rule__Attribute__PropertiesAssignment_1516328);
             ruleAttrProperties();
             _fsp--;
 
@@ -20003,20 +20183,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__AllocReadMemberAssignment_16
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8020:1: rule__Attribute__AllocReadMemberAssignment_16 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8090:1: rule__Attribute__AllocReadMemberAssignment_16 : ( ruleBoolean ) ;
     public final void rule__Attribute__AllocReadMemberAssignment_16() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8024:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8025:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8094:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8095:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8025:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8026:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8095:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8096:1: ruleBoolean
             {
              before(grammarAccess.getAttributeAccess().getAllocReadMemberBooleanParserRuleCall_16_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__AllocReadMemberAssignment_1616219);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__AllocReadMemberAssignment_1616359);
             ruleBoolean();
             _fsp--;
 
@@ -20043,20 +20223,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__IsDynamicAssignment_17
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8035:1: rule__Attribute__IsDynamicAssignment_17 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8105:1: rule__Attribute__IsDynamicAssignment_17 : ( ruleBoolean ) ;
     public final void rule__Attribute__IsDynamicAssignment_17() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8039:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8040:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8109:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8110:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8040:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8041:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8110:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8111:1: ruleBoolean
             {
              before(grammarAccess.getAttributeAccess().getIsDynamicBooleanParserRuleCall_17_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__IsDynamicAssignment_1716250);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__Attribute__IsDynamicAssignment_1716390);
             ruleBoolean();
             _fsp--;
 
@@ -20083,20 +20263,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__ReadExcludedStatesAssignment_19
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8050:1: rule__Attribute__ReadExcludedStatesAssignment_19 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8120:1: rule__Attribute__ReadExcludedStatesAssignment_19 : ( RULE_STRING ) ;
     public final void rule__Attribute__ReadExcludedStatesAssignment_19() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8054:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8055:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8124:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8125:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8055:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8056:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8125:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8126:1: RULE_STRING
             {
              before(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_19_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__ReadExcludedStatesAssignment_1916281); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__ReadExcludedStatesAssignment_1916421); 
              after(grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_19_0()); 
 
             }
@@ -20120,20 +20300,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__WriteExcludedStatesAssignment_21
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8065:1: rule__Attribute__WriteExcludedStatesAssignment_21 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8135:1: rule__Attribute__WriteExcludedStatesAssignment_21 : ( RULE_STRING ) ;
     public final void rule__Attribute__WriteExcludedStatesAssignment_21() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8069:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8070:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8139:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8140:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8070:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8071:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8140:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8141:1: RULE_STRING
             {
              before(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_21_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__WriteExcludedStatesAssignment_2116312); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Attribute__WriteExcludedStatesAssignment_2116452); 
              after(grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_21_0()); 
 
             }
@@ -20157,20 +20337,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FireEvents__FireAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8080:1: rule__FireEvents__FireAssignment_0 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8150:1: rule__FireEvents__FireAssignment_0 : ( ruleBoolean ) ;
     public final void rule__FireEvents__FireAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8084:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8085:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8154:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8155:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8085:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8086:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8155:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8156:1: ruleBoolean
             {
              before(grammarAccess.getFireEventsAccess().getFireBooleanParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__FireEvents__FireAssignment_016343);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__FireEvents__FireAssignment_016483);
             ruleBoolean();
             _fsp--;
 
@@ -20197,20 +20377,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__FireEvents__LibCheckCriteriaAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8095:1: rule__FireEvents__LibCheckCriteriaAssignment_1 : ( ruleBoolean ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8165:1: rule__FireEvents__LibCheckCriteriaAssignment_1 : ( ruleBoolean ) ;
     public final void rule__FireEvents__LibCheckCriteriaAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8099:1: ( ( ruleBoolean ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8100:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8169:1: ( ( ruleBoolean ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8170:1: ( ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8100:1: ( ruleBoolean )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8101:1: ruleBoolean
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8170:1: ( ruleBoolean )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8171:1: ruleBoolean
             {
              before(grammarAccess.getFireEventsAccess().getLibCheckCriteriaBooleanParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__FireEvents__LibCheckCriteriaAssignment_116374);
+            pushFollow(FOLLOW_ruleBoolean_in_rule__FireEvents__LibCheckCriteriaAssignment_116514);
             ruleBoolean();
             _fsp--;
 
@@ -20237,20 +20417,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__DescriptionAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8110:1: rule__AttrProperties__DescriptionAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8180:1: rule__AttrProperties__DescriptionAssignment_0 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__DescriptionAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8114:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8115:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8184:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8185:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8115:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8116:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8185:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8186:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getDescriptionSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DescriptionAssignment_016405); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DescriptionAssignment_016545); 
              after(grammarAccess.getAttrPropertiesAccess().getDescriptionSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -20274,20 +20454,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__LabelAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8125:1: rule__AttrProperties__LabelAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8195:1: rule__AttrProperties__LabelAssignment_1 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__LabelAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8129:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8130:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8199:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8200:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8130:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8131:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8200:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8201:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getLabelSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__LabelAssignment_116436); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__LabelAssignment_116576); 
              after(grammarAccess.getAttrPropertiesAccess().getLabelSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -20311,20 +20491,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__UnitAssignment_2
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8140:1: rule__AttrProperties__UnitAssignment_2 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8210:1: rule__AttrProperties__UnitAssignment_2 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__UnitAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8144:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8145:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8214:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8215:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8145:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8146:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8215:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8216:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getUnitSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__UnitAssignment_216467); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__UnitAssignment_216607); 
              after(grammarAccess.getAttrPropertiesAccess().getUnitSTRINGTerminalRuleCall_2_0()); 
 
             }
@@ -20348,20 +20528,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__StandardUnitAssignment_3
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8155:1: rule__AttrProperties__StandardUnitAssignment_3 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8225:1: rule__AttrProperties__StandardUnitAssignment_3 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__StandardUnitAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8159:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8160:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8229:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8230:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8160:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8161:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8230:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8231:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getStandardUnitSTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__StandardUnitAssignment_316498); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__StandardUnitAssignment_316638); 
              after(grammarAccess.getAttrPropertiesAccess().getStandardUnitSTRINGTerminalRuleCall_3_0()); 
 
             }
@@ -20385,20 +20565,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__DisplayUnitAssignment_4
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8170:1: rule__AttrProperties__DisplayUnitAssignment_4 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8240:1: rule__AttrProperties__DisplayUnitAssignment_4 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__DisplayUnitAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8174:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8175:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8244:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8245:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8175:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8176:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8245:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8246:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getDisplayUnitSTRINGTerminalRuleCall_4_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DisplayUnitAssignment_416529); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DisplayUnitAssignment_416669); 
              after(grammarAccess.getAttrPropertiesAccess().getDisplayUnitSTRINGTerminalRuleCall_4_0()); 
 
             }
@@ -20422,20 +20602,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__FormatAssignment_5
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8185:1: rule__AttrProperties__FormatAssignment_5 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8255:1: rule__AttrProperties__FormatAssignment_5 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__FormatAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8189:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8190:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8259:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8260:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8190:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8191:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8260:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8261:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getFormatSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__FormatAssignment_516560); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__FormatAssignment_516700); 
              after(grammarAccess.getAttrPropertiesAccess().getFormatSTRINGTerminalRuleCall_5_0()); 
 
             }
@@ -20459,20 +20639,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__MaxValueAssignment_6
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8200:1: rule__AttrProperties__MaxValueAssignment_6 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8270:1: rule__AttrProperties__MaxValueAssignment_6 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__MaxValueAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8204:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8205:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8274:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8275:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8205:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8206:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8275:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8276:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getMaxValueSTRINGTerminalRuleCall_6_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxValueAssignment_616591); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxValueAssignment_616731); 
              after(grammarAccess.getAttrPropertiesAccess().getMaxValueSTRINGTerminalRuleCall_6_0()); 
 
             }
@@ -20496,20 +20676,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__MinValueAssignment_7
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8215:1: rule__AttrProperties__MinValueAssignment_7 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8285:1: rule__AttrProperties__MinValueAssignment_7 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__MinValueAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8219:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8220:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8289:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8290:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8220:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8221:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8290:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8291:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getMinValueSTRINGTerminalRuleCall_7_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MinValueAssignment_716622); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MinValueAssignment_716762); 
              after(grammarAccess.getAttrPropertiesAccess().getMinValueSTRINGTerminalRuleCall_7_0()); 
 
             }
@@ -20533,20 +20713,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__MaxAlarmAssignment_8
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8230:1: rule__AttrProperties__MaxAlarmAssignment_8 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8300:1: rule__AttrProperties__MaxAlarmAssignment_8 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__MaxAlarmAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8234:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8235:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8304:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8305:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8235:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8236:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8305:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8306:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getMaxAlarmSTRINGTerminalRuleCall_8_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxAlarmAssignment_816653); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxAlarmAssignment_816793); 
              after(grammarAccess.getAttrPropertiesAccess().getMaxAlarmSTRINGTerminalRuleCall_8_0()); 
 
             }
@@ -20570,20 +20750,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__MinAlarmAssignment_9
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8245:1: rule__AttrProperties__MinAlarmAssignment_9 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8315:1: rule__AttrProperties__MinAlarmAssignment_9 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__MinAlarmAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8249:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8250:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8319:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8320:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8250:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8251:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8320:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8321:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getMinAlarmSTRINGTerminalRuleCall_9_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MinAlarmAssignment_916684); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MinAlarmAssignment_916824); 
              after(grammarAccess.getAttrPropertiesAccess().getMinAlarmSTRINGTerminalRuleCall_9_0()); 
 
             }
@@ -20607,20 +20787,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__MaxWarningAssignment_10
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8260:1: rule__AttrProperties__MaxWarningAssignment_10 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8330:1: rule__AttrProperties__MaxWarningAssignment_10 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__MaxWarningAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8264:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8265:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8334:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8335:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8265:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8266:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8335:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8336:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getMaxWarningSTRINGTerminalRuleCall_10_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxWarningAssignment_1016715); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxWarningAssignment_1016855); 
              after(grammarAccess.getAttrPropertiesAccess().getMaxWarningSTRINGTerminalRuleCall_10_0()); 
 
             }
@@ -20644,20 +20824,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__MinWarningAssignment_11
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8275:1: rule__AttrProperties__MinWarningAssignment_11 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8345:1: rule__AttrProperties__MinWarningAssignment_11 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__MinWarningAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8279:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8280:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8349:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8350:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8280:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8281:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8350:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8351:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getMinWarningSTRINGTerminalRuleCall_11_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MinWarningAssignment_1116746); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__MinWarningAssignment_1116886); 
              after(grammarAccess.getAttrPropertiesAccess().getMinWarningSTRINGTerminalRuleCall_11_0()); 
 
             }
@@ -20681,20 +20861,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__DeltaTimeAssignment_12
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8290:1: rule__AttrProperties__DeltaTimeAssignment_12 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8360:1: rule__AttrProperties__DeltaTimeAssignment_12 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__DeltaTimeAssignment_12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8294:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8295:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8364:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8365:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8295:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8296:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8365:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8366:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getDeltaTimeSTRINGTerminalRuleCall_12_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaTimeAssignment_1216777); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaTimeAssignment_1216917); 
              after(grammarAccess.getAttrPropertiesAccess().getDeltaTimeSTRINGTerminalRuleCall_12_0()); 
 
             }
@@ -20718,20 +20898,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttrProperties__DeltaValueAssignment_13
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8305:1: rule__AttrProperties__DeltaValueAssignment_13 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8375:1: rule__AttrProperties__DeltaValueAssignment_13 : ( RULE_STRING ) ;
     public final void rule__AttrProperties__DeltaValueAssignment_13() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8309:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8310:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8379:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8380:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8310:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8311:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8380:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8381:1: RULE_STRING
             {
              before(grammarAccess.getAttrPropertiesAccess().getDeltaValueSTRINGTerminalRuleCall_13_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaValueAssignment_1316808); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaValueAssignment_1316948); 
              after(grammarAccess.getAttrPropertiesAccess().getDeltaValueSTRINGTerminalRuleCall_13_0()); 
 
             }
@@ -20755,20 +20935,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AdditionalFile__NameAssignment_0
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8320:1: rule__AdditionalFile__NameAssignment_0 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8390:1: rule__AdditionalFile__NameAssignment_0 : ( RULE_STRING ) ;
     public final void rule__AdditionalFile__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8324:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8325:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8394:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8395:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8325:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8326:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8395:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8396:1: RULE_STRING
             {
              before(grammarAccess.getAdditionalFileAccess().getNameSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AdditionalFile__NameAssignment_016839); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AdditionalFile__NameAssignment_016979); 
              after(grammarAccess.getAdditionalFileAccess().getNameSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -20792,20 +20972,20 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AdditionalFile__PathAssignment_1
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8335:1: rule__AdditionalFile__PathAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8405:1: rule__AdditionalFile__PathAssignment_1 : ( RULE_STRING ) ;
     public final void rule__AdditionalFile__PathAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8339:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8340:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8409:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8410:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8340:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8341:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8410:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g:8411:1: RULE_STRING
             {
              before(grammarAccess.getAdditionalFileAccess().getPathSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AdditionalFile__PathAssignment_116870); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__AdditionalFile__PathAssignment_117010); 
              after(grammarAccess.getAdditionalFileAccess().getPathSTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -21184,349 +21364,355 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ClassDescription__Group__8_in_rule__ClassDescription__Group__77168 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ClassDescription__CommentsAssignment_8_in_rule__ClassDescription__Group__87196 = new BitSet(new long[]{0x0000000001800000L});
     public static final BitSet FOLLOW_rule__ClassDescription__Group__9_in_rule__ClassDescription__Group__87205 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassDescription__HasAbstractCommandAssignment_9_in_rule__ClassDescription__Group__97233 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__ClassDescription__HasMandatoryPropertyAssignment_9_in_rule__ClassDescription__Group__97233 = new BitSet(new long[]{0x0000000001800000L});
     public static final BitSet FOLLOW_rule__ClassDescription__Group__10_in_rule__ClassDescription__Group__97242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassDescription__HasAbstractAttributeAssignment_10_in_rule__ClassDescription__Group__107270 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__ClassDescription__HasAbstractCommandAssignment_10_in_rule__ClassDescription__Group__107270 = new BitSet(new long[]{0x0000000001800000L});
     public static final BitSet FOLLOW_rule__ClassDescription__Group__11_in_rule__ClassDescription__Group__107279 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassDescription__HasDynamicAttributeAssignment_11_in_rule__ClassDescription__Group__117307 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__ClassDescription__HasAbstractAttributeAssignment_11_in_rule__ClassDescription__Group__117307 = new BitSet(new long[]{0x0000000001800000L});
     public static final BitSet FOLLOW_rule__ClassDescription__Group__12_in_rule__ClassDescription__Group__117316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassDescription__DescriptionHtmlExistsAssignment_12_in_rule__ClassDescription__Group__127344 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Inheritance__ClassnameAssignment_0_in_rule__Inheritance__Group__07404 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Inheritance__Group__1_in_rule__Inheritance__Group__07413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Inheritance__SourcePathAssignment_1_in_rule__Inheritance__Group__17441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__ContactAssignment_0_in_rule__ClassIdentification__Group__07479 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__1_in_rule__ClassIdentification__Group__07488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__AuthorAssignment_1_in_rule__ClassIdentification__Group__17516 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__2_in_rule__ClassIdentification__Group__17525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__EmailDomainAssignment_2_in_rule__ClassIdentification__Group__27553 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__3_in_rule__ClassIdentification__Group__27562 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__ClassFamilyAssignment_3_in_rule__ClassIdentification__Group__37590 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__4_in_rule__ClassIdentification__Group__37599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__SiteSpecificAssignment_4_in_rule__ClassIdentification__Group__47627 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__5_in_rule__ClassIdentification__Group__47636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__PlatformAssignment_5_in_rule__ClassIdentification__Group__57664 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__6_in_rule__ClassIdentification__Group__57673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__BusAssignment_6_in_rule__ClassIdentification__Group__67701 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__7_in_rule__ClassIdentification__Group__67710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__ManufacturerAssignment_7_in_rule__ClassIdentification__Group__77738 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__Group__8_in_rule__ClassIdentification__Group__77747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ClassIdentification__ReferenceAssignment_8_in_rule__ClassIdentification__Group__87775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Preferences__DocHomeAssignment_0_in_rule__Preferences__Group__07827 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Preferences__Group__1_in_rule__Preferences__Group__07836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Preferences__MakefileHomeAssignment_1_in_rule__Preferences__Group__17864 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Preferences__Group__2_in_rule__Preferences__Group__17873 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Preferences__InstallHomeAssignment_2_in_rule__Preferences__Group__27901 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Preferences__Group__3_in_rule__Preferences__Group__27910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Preferences__HtmlVersionAssignment_3_in_rule__Preferences__Group__37938 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__State__NameAssignment_0_in_rule__State__Group__07980 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__State__Group__1_in_rule__State__Group__07989 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__State__DescriptionAssignment_1_in_rule__State__Group__18017 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__State__Group__2_in_rule__State__Group__18026 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__State__StatusAssignment_2_in_rule__State__Group__28054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__NameAssignment_0_in_rule__Property__Group__08094 = new BitSet(new long[]{0x003FC00000000000L,0x0000000000007C00L});
-    public static final BitSet FOLLOW_rule__Property__Group__1_in_rule__Property__Group__08103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__TypeAssignment_1_in_rule__Property__Group__18131 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Property__Group__2_in_rule__Property__Group__18140 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__StatusAssignment_2_in_rule__Property__Group__28168 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Property__Group__3_in_rule__Property__Group__28177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__DescriptionAssignment_3_in_rule__Property__Group__38205 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_rule__Property__Group__4_in_rule__Property__Group__38214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__Property__Group__48243 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__Property__Group__5_in_rule__Property__Group__48253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__DefaultPropValueAssignment_5_in_rule__Property__Group__58281 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__AbstractAssignment_0_in_rule__InheritanceStatus__Group__08328 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__1_in_rule__InheritanceStatus__Group__08337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__InheritedAssignment_1_in_rule__InheritanceStatus__Group__18365 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__2_in_rule__InheritanceStatus__Group__18374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__ConcreteAssignment_2_in_rule__InheritanceStatus__Group__28402 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__3_in_rule__InheritanceStatus__Group__28411 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__ConcreteHereAssignment_3_in_rule__InheritanceStatus__Group__38439 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__4_in_rule__InheritanceStatus__Group__38448 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InheritanceStatus__HasChangedAssignment_4_in_rule__InheritanceStatus__Group__48476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__NameAssignment_0_in_rule__Command__Group__08520 = new BitSet(new long[]{0xFFFFE00000000000L,0x00000000000003FFL});
-    public static final BitSet FOLLOW_rule__Command__Group__1_in_rule__Command__Group__08529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__ArginAssignment_1_in_rule__Command__Group__18557 = new BitSet(new long[]{0xFFFFE00000000000L,0x00000000000003FFL});
-    public static final BitSet FOLLOW_rule__Command__Group__2_in_rule__Command__Group__18566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__ArgoutAssignment_2_in_rule__Command__Group__28594 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Command__Group__3_in_rule__Command__Group__28603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__DescriptionAssignment_3_in_rule__Command__Group__38631 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Command__Group__4_in_rule__Command__Group__38640 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__StatusAssignment_4_in_rule__Command__Group__48668 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Command__Group__5_in_rule__Command__Group__48677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__ExecMethodAssignment_5_in_rule__Command__Group__58705 = new BitSet(new long[]{0x000000000000C000L});
-    public static final BitSet FOLLOW_rule__Command__Group__6_in_rule__Command__Group__58714 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__DisplayLevelAssignment_6_in_rule__Command__Group__68742 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Command__Group__7_in_rule__Command__Group__68751 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__PolledPeriodAssignment_7_in_rule__Command__Group__78779 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_rule__Command__Group__8_in_rule__Command__Group__78788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_rule__Command__Group__88817 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__Command__Group__9_in_rule__Command__Group__88827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Command__ExcludedStatesAssignment_9_in_rule__Command__Group__98855 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__Argument__TypeAssignment_0_in_rule__Argument__Group__08910 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Argument__Group__1_in_rule__Argument__Group__08919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Argument__DescriptionAssignment_1_in_rule__Argument__Group__18947 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__NameAssignment_0_in_rule__Attribute__Group__08985 = new BitSet(new long[]{0x0000000000070000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__08994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__AttTypeAssignment_1_in_rule__Attribute__Group__19022 = new BitSet(new long[]{0xFFFFE00000000000L,0x00000000000003FFL});
-    public static final BitSet FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__19031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__DataTypeAssignment_2_in_rule__Attribute__Group__29059 = new BitSet(new long[]{0x0000000000780000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__3_in_rule__Attribute__Group__29068 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__RwTypeAssignment_3_in_rule__Attribute__Group__39096 = new BitSet(new long[]{0x000000000000C000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__4_in_rule__Attribute__Group__39105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__DisplayLevelAssignment_4_in_rule__Attribute__Group__49133 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__5_in_rule__Attribute__Group__49142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__PolledPeriodAssignment_5_in_rule__Attribute__Group__59170 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__6_in_rule__Attribute__Group__59179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__MaxXAssignment_6_in_rule__Attribute__Group__69207 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__7_in_rule__Attribute__Group__69216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__MaxYAssignment_7_in_rule__Attribute__Group__79244 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__8_in_rule__Attribute__Group__79253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__AssociatedAttrAssignment_8_in_rule__Attribute__Group__89281 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__9_in_rule__Attribute__Group__89290 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__MemorizedAssignment_9_in_rule__Attribute__Group__99318 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__10_in_rule__Attribute__Group__99327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__MemorizedAtInitAssignment_10_in_rule__Attribute__Group__109355 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__11_in_rule__Attribute__Group__109364 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__ChangeEventAssignment_11_in_rule__Attribute__Group__119392 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__12_in_rule__Attribute__Group__119401 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__ArchiveEventAssignment_12_in_rule__Attribute__Group__129429 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__13_in_rule__Attribute__Group__129438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__DataReadyEventAssignment_13_in_rule__Attribute__Group__139466 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__14_in_rule__Attribute__Group__139475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__StatusAssignment_14_in_rule__Attribute__Group__149503 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__15_in_rule__Attribute__Group__149512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__PropertiesAssignment_15_in_rule__Attribute__Group__159540 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__16_in_rule__Attribute__Group__159549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__AllocReadMemberAssignment_16_in_rule__Attribute__Group__169577 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__17_in_rule__Attribute__Group__169586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__IsDynamicAssignment_17_in_rule__Attribute__Group__179614 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__18_in_rule__Attribute__Group__179623 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_rule__Attribute__Group__189652 = new BitSet(new long[]{0x0000100000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__19_in_rule__Attribute__Group__189662 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__ReadExcludedStatesAssignment_19_in_rule__Attribute__Group__199690 = new BitSet(new long[]{0x0000100000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__20_in_rule__Attribute__Group__199700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_rule__Attribute__Group__209729 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__21_in_rule__Attribute__Group__209739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__WriteExcludedStatesAssignment_21_in_rule__Attribute__Group__219767 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__FireEvents__FireAssignment_0_in_rule__FireEvents__Group__09846 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__FireEvents__Group__1_in_rule__FireEvents__Group__09855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FireEvents__LibCheckCriteriaAssignment_1_in_rule__FireEvents__Group__19883 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__DescriptionAssignment_0_in_rule__AttrProperties__Group__09921 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__1_in_rule__AttrProperties__Group__09930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__LabelAssignment_1_in_rule__AttrProperties__Group__19958 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__2_in_rule__AttrProperties__Group__19967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__UnitAssignment_2_in_rule__AttrProperties__Group__29995 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__3_in_rule__AttrProperties__Group__210004 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__StandardUnitAssignment_3_in_rule__AttrProperties__Group__310032 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__4_in_rule__AttrProperties__Group__310041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__DisplayUnitAssignment_4_in_rule__AttrProperties__Group__410069 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__5_in_rule__AttrProperties__Group__410078 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__FormatAssignment_5_in_rule__AttrProperties__Group__510106 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__6_in_rule__AttrProperties__Group__510115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__MaxValueAssignment_6_in_rule__AttrProperties__Group__610143 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__7_in_rule__AttrProperties__Group__610152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__MinValueAssignment_7_in_rule__AttrProperties__Group__710180 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__8_in_rule__AttrProperties__Group__710189 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__MaxAlarmAssignment_8_in_rule__AttrProperties__Group__810217 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__9_in_rule__AttrProperties__Group__810226 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__MinAlarmAssignment_9_in_rule__AttrProperties__Group__910254 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__10_in_rule__AttrProperties__Group__910263 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__MaxWarningAssignment_10_in_rule__AttrProperties__Group__1010291 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__11_in_rule__AttrProperties__Group__1010300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__MinWarningAssignment_11_in_rule__AttrProperties__Group__1110328 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__12_in_rule__AttrProperties__Group__1110337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__DeltaTimeAssignment_12_in_rule__AttrProperties__Group__1210365 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AttrProperties__Group__13_in_rule__AttrProperties__Group__1210374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AttrProperties__DeltaValueAssignment_13_in_rule__AttrProperties__Group__1310402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdditionalFile__NameAssignment_0_in_rule__AdditionalFile__Group__010464 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__AdditionalFile__Group__1_in_rule__AdditionalFile__Group__010473 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdditionalFile__PathAssignment_1_in_rule__AdditionalFile__Group__110501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VoidType__Group__1_in_rule__VoidType__Group__010549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__VoidType__Group__110578 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BooleanType__Group__1_in_rule__BooleanType__Group__010627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_rule__BooleanType__Group__110656 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ShortType__Group__1_in_rule__ShortType__Group__010705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_rule__ShortType__Group__110734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UShortType__Group__1_in_rule__UShortType__Group__010783 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_rule__UShortType__Group__110812 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IntType__Group__1_in_rule__IntType__Group__010861 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__IntType__Group__110890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UIntType__Group__1_in_rule__UIntType__Group__010939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__UIntType__Group__110968 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FloatType__Group__1_in_rule__FloatType__Group__011017 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_rule__FloatType__Group__111046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DoubleType__Group__1_in_rule__DoubleType__Group__011095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_rule__DoubleType__Group__111124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__StringType__Group__1_in_rule__StringType__Group__011173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_rule__StringType__Group__111202 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CharArrayType__Group__1_in_rule__CharArrayType__Group__011251 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_rule__CharArrayType__Group__111280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ShortArrayType__Group__1_in_rule__ShortArrayType__Group__011329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_rule__ShortArrayType__Group__111358 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UShortArrayType__Group__1_in_rule__UShortArrayType__Group__011407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_rule__UShortArrayType__Group__111436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IntArrayType__Group__1_in_rule__IntArrayType__Group__011485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_rule__IntArrayType__Group__111514 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UIntArrayType__Group__1_in_rule__UIntArrayType__Group__011563 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_rule__UIntArrayType__Group__111592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FloatArrayType__Group__1_in_rule__FloatArrayType__Group__011641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_rule__FloatArrayType__Group__111670 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DoubleArrayType__Group__1_in_rule__DoubleArrayType__Group__011719 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_60_in_rule__DoubleArrayType__Group__111748 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__StringArrayType__Group__1_in_rule__StringArrayType__Group__011797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_rule__StringArrayType__Group__111826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LongStringArrayType__Group__1_in_rule__LongStringArrayType__Group__011875 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_62_in_rule__LongStringArrayType__Group__111904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DoubleStringArrayType__Group__1_in_rule__DoubleStringArrayType__Group__011953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_rule__DoubleStringArrayType__Group__111982 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__StateType__Group__1_in_rule__StateType__Group__012031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_64_in_rule__StateType__Group__112060 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ConstStringType__Group__1_in_rule__ConstStringType__Group__012109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_rule__ConstStringType__Group__112138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BooleanArrayType__Group__1_in_rule__BooleanArrayType__Group__012187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_rule__BooleanArrayType__Group__112216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UCharType__Group__1_in_rule__UCharType__Group__012265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_67_in_rule__UCharType__Group__112294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LongType__Group__1_in_rule__LongType__Group__012343 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_rule__LongType__Group__112372 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ULongType__Group__1_in_rule__ULongType__Group__012421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_rule__ULongType__Group__112450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LongArrayType__Group__1_in_rule__LongArrayType__Group__012499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_70_in_rule__LongArrayType__Group__112528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ULongArrayType__Group__1_in_rule__ULongArrayType__Group__012577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_rule__ULongArrayType__Group__112606 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DevIntType__Group__1_in_rule__DevIntType__Group__012655 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_rule__DevIntType__Group__112684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EncodedType__Group__1_in_rule__EncodedType__Group__012733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_rule__EncodedType__Group__112762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ShortVectorType__Group__1_in_rule__ShortVectorType__Group__012811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_rule__ShortVectorType__Group__112840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IntVectorType__Group__1_in_rule__IntVectorType__Group__012889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_rule__IntVectorType__Group__112918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FloatVectorType__Group__1_in_rule__FloatVectorType__Group__012967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_76_in_rule__FloatVectorType__Group__112996 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DoubleVectorType__Group__1_in_rule__DoubleVectorType__Group__013045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_77_in_rule__DoubleVectorType__Group__113074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__StringVectorType__Group__1_in_rule__StringVectorType__Group__013123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_78_in_rule__StringVectorType__Group__113152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_rule__PogoSystem__ImportsAssignment_013191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePogoDeviceClass_in_rule__PogoSystem__ClassesAssignment_113222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePogoMultiClasses_in_rule__PogoSystem__MultiClassesAssignment_213253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Import__ImportURIAssignment_113284 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_113315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_313346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_413377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_513408 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_713439 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_813470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_913501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_013532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_113563 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_213594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_413625 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_613656 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_813687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__NameAssignment_113718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_79_in_rule__PogoDeviceClass__IsAbstractAssignment_213754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__BaseClassAssignment_3_113797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__InstituteAssignment_513832 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassDescription_in_rule__PogoDeviceClass__DescriptionAssignment_713863 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_rule__PogoDeviceClass__ClassPropertiesAssignment_913894 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_rule__PogoDeviceClass__DevicePropertiesAssignment_1113925 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCommand_in_rule__PogoDeviceClass__CommandsAssignment_1313956 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_rule__PogoDeviceClass__AttributesAssignment_1513987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleState_in_rule__PogoDeviceClass__StatesAssignment_1714018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePreferences_in_rule__PogoDeviceClass__PreferencesAssignment_1814049 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdditionalFile_in_rule__PogoDeviceClass__AdditionalFilesAssignment_2014080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__DescriptionAssignment_014111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__TitleAssignment_114142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__SourcePathAssignment_214173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritance_in_rule__ClassDescription__InheritancesAssignment_414204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLanguage_in_rule__ClassDescription__LanguageAssignment_514235 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__FilestogenerateAssignment_614266 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassIdentification_in_rule__ClassDescription__IdentificationAssignment_714297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComments_in_rule__ClassDescription__CommentsAssignment_814328 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractCommandAssignment_914359 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractAttributeAssignment_1014390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasDynamicAttributeAssignment_1114421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__DescriptionHtmlExistsAssignment_1214452 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Inheritance__ClassnameAssignment_014483 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Inheritance__SourcePathAssignment_114514 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ContactAssignment_014545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__AuthorAssignment_114576 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__EmailDomainAssignment_214607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ClassFamilyAssignment_314638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__SiteSpecificAssignment_414669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__PlatformAssignment_514700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__BusAssignment_614731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ManufacturerAssignment_714762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ReferenceAssignment_814793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Comments__CommandsTableAssignment14824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Preferences__DocHomeAssignment_014855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Preferences__MakefileHomeAssignment_114886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Preferences__InstallHomeAssignment_214917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__Preferences__HtmlVersionAssignment_314948 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__State__NameAssignment_014979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__State__DescriptionAssignment_115010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__State__StatusAssignment_215041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Property__NameAssignment_015072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropType_in_rule__Property__TypeAssignment_115103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__Property__StatusAssignment_215134 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Property__DescriptionAssignment_315165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Property__DefaultPropValueAssignment_515196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__AbstractAssignment_015227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__InheritedAssignment_115258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteAssignment_215289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteHereAssignment_315320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__InheritanceStatus__HasChangedAssignment_415351 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Command__NameAssignment_015382 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArgument_in_rule__Command__ArginAssignment_115413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArgument_in_rule__Command__ArgoutAssignment_215444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__DescriptionAssignment_315475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__Command__StatusAssignment_415506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__ExecMethodAssignment_515537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDisplayLevel_in_rule__Command__DisplayLevelAssignment_615568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__PolledPeriodAssignment_715599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__ExcludedStatesAssignment_915630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__Argument__TypeAssignment_015661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Argument__DescriptionAssignment_115692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_015723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttrType_in_rule__Attribute__AttTypeAssignment_115754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__Attribute__DataTypeAssignment_215785 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRW_Type_in_rule__Attribute__RwTypeAssignment_315816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDisplayLevel_in_rule__Attribute__DisplayLevelAssignment_415847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__PolledPeriodAssignment_515878 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__MaxXAssignment_615909 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__MaxYAssignment_715940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__AssociatedAttrAssignment_815971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAssignment_916002 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAtInitAssignment_1016033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFireEvents_in_rule__Attribute__ChangeEventAssignment_1116064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFireEvents_in_rule__Attribute__ArchiveEventAssignment_1216095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFireEvents_in_rule__Attribute__DataReadyEventAssignment_1316126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__Attribute__StatusAssignment_1416157 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttrProperties_in_rule__Attribute__PropertiesAssignment_1516188 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__AllocReadMemberAssignment_1616219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__IsDynamicAssignment_1716250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__ReadExcludedStatesAssignment_1916281 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__WriteExcludedStatesAssignment_2116312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__FireEvents__FireAssignment_016343 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__FireEvents__LibCheckCriteriaAssignment_116374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DescriptionAssignment_016405 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__LabelAssignment_116436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__UnitAssignment_216467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__StandardUnitAssignment_316498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DisplayUnitAssignment_416529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__FormatAssignment_516560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxValueAssignment_616591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MinValueAssignment_716622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxAlarmAssignment_816653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MinAlarmAssignment_916684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxWarningAssignment_1016715 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MinWarningAssignment_1116746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaTimeAssignment_1216777 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaValueAssignment_1316808 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AdditionalFile__NameAssignment_016839 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__AdditionalFile__PathAssignment_116870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassDescription__HasDynamicAttributeAssignment_12_in_rule__ClassDescription__Group__127344 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__ClassDescription__Group__13_in_rule__ClassDescription__Group__127353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassDescription__DescriptionHtmlExistsAssignment_13_in_rule__ClassDescription__Group__137381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Inheritance__ClassnameAssignment_0_in_rule__Inheritance__Group__07443 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Inheritance__Group__1_in_rule__Inheritance__Group__07452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Inheritance__SourcePathAssignment_1_in_rule__Inheritance__Group__17480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__ContactAssignment_0_in_rule__ClassIdentification__Group__07518 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__1_in_rule__ClassIdentification__Group__07527 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__AuthorAssignment_1_in_rule__ClassIdentification__Group__17555 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__2_in_rule__ClassIdentification__Group__17564 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__EmailDomainAssignment_2_in_rule__ClassIdentification__Group__27592 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__3_in_rule__ClassIdentification__Group__27601 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__ClassFamilyAssignment_3_in_rule__ClassIdentification__Group__37629 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__4_in_rule__ClassIdentification__Group__37638 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__SiteSpecificAssignment_4_in_rule__ClassIdentification__Group__47666 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__5_in_rule__ClassIdentification__Group__47675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__PlatformAssignment_5_in_rule__ClassIdentification__Group__57703 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__6_in_rule__ClassIdentification__Group__57712 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__BusAssignment_6_in_rule__ClassIdentification__Group__67740 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__7_in_rule__ClassIdentification__Group__67749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__ManufacturerAssignment_7_in_rule__ClassIdentification__Group__77777 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__Group__8_in_rule__ClassIdentification__Group__77786 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ClassIdentification__ReferenceAssignment_8_in_rule__ClassIdentification__Group__87814 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Preferences__DocHomeAssignment_0_in_rule__Preferences__Group__07866 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Preferences__Group__1_in_rule__Preferences__Group__07875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Preferences__MakefileHomeAssignment_1_in_rule__Preferences__Group__17903 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Preferences__Group__2_in_rule__Preferences__Group__17912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Preferences__InstallHomeAssignment_2_in_rule__Preferences__Group__27940 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Preferences__Group__3_in_rule__Preferences__Group__27949 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Preferences__HtmlVersionAssignment_3_in_rule__Preferences__Group__37977 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__State__NameAssignment_0_in_rule__State__Group__08019 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__State__Group__1_in_rule__State__Group__08028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__State__DescriptionAssignment_1_in_rule__State__Group__18056 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__State__Group__2_in_rule__State__Group__18065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__State__StatusAssignment_2_in_rule__State__Group__28093 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Property__NameAssignment_0_in_rule__Property__Group__08133 = new BitSet(new long[]{0x003FC00000000000L,0x0000000000007C00L});
+    public static final BitSet FOLLOW_rule__Property__Group__1_in_rule__Property__Group__08142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Property__TypeAssignment_1_in_rule__Property__Group__18170 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Property__Group__2_in_rule__Property__Group__18179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Property__StatusAssignment_2_in_rule__Property__Group__28207 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Property__Group__3_in_rule__Property__Group__28216 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Property__MandatoryAssignment_3_in_rule__Property__Group__38244 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Property__Group__4_in_rule__Property__Group__38253 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Property__DescriptionAssignment_4_in_rule__Property__Group__48281 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_rule__Property__Group__5_in_rule__Property__Group__48290 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__Property__Group__58319 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__Property__Group__6_in_rule__Property__Group__58329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Property__DefaultPropValueAssignment_6_in_rule__Property__Group__68357 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__AbstractAssignment_0_in_rule__InheritanceStatus__Group__08406 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__1_in_rule__InheritanceStatus__Group__08415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__InheritedAssignment_1_in_rule__InheritanceStatus__Group__18443 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__2_in_rule__InheritanceStatus__Group__18452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__ConcreteAssignment_2_in_rule__InheritanceStatus__Group__28480 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__3_in_rule__InheritanceStatus__Group__28489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__ConcreteHereAssignment_3_in_rule__InheritanceStatus__Group__38517 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__Group__4_in_rule__InheritanceStatus__Group__38526 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__InheritanceStatus__HasChangedAssignment_4_in_rule__InheritanceStatus__Group__48554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__NameAssignment_0_in_rule__Command__Group__08598 = new BitSet(new long[]{0xFFFFE00000000000L,0x00000000000003FFL});
+    public static final BitSet FOLLOW_rule__Command__Group__1_in_rule__Command__Group__08607 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__ArginAssignment_1_in_rule__Command__Group__18635 = new BitSet(new long[]{0xFFFFE00000000000L,0x00000000000003FFL});
+    public static final BitSet FOLLOW_rule__Command__Group__2_in_rule__Command__Group__18644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__ArgoutAssignment_2_in_rule__Command__Group__28672 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Command__Group__3_in_rule__Command__Group__28681 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__DescriptionAssignment_3_in_rule__Command__Group__38709 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Command__Group__4_in_rule__Command__Group__38718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__StatusAssignment_4_in_rule__Command__Group__48746 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Command__Group__5_in_rule__Command__Group__48755 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__ExecMethodAssignment_5_in_rule__Command__Group__58783 = new BitSet(new long[]{0x000000000000C000L});
+    public static final BitSet FOLLOW_rule__Command__Group__6_in_rule__Command__Group__58792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__DisplayLevelAssignment_6_in_rule__Command__Group__68820 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Command__Group__7_in_rule__Command__Group__68829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__PolledPeriodAssignment_7_in_rule__Command__Group__78857 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_rule__Command__Group__8_in_rule__Command__Group__78866 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_rule__Command__Group__88895 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__Command__Group__9_in_rule__Command__Group__88905 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Command__ExcludedStatesAssignment_9_in_rule__Command__Group__98933 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__Argument__TypeAssignment_0_in_rule__Argument__Group__08988 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Argument__Group__1_in_rule__Argument__Group__08997 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Argument__DescriptionAssignment_1_in_rule__Argument__Group__19025 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__NameAssignment_0_in_rule__Attribute__Group__09063 = new BitSet(new long[]{0x0000000000070000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__09072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__AttTypeAssignment_1_in_rule__Attribute__Group__19100 = new BitSet(new long[]{0xFFFFE00000000000L,0x00000000000003FFL});
+    public static final BitSet FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__19109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__DataTypeAssignment_2_in_rule__Attribute__Group__29137 = new BitSet(new long[]{0x0000000000780000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__3_in_rule__Attribute__Group__29146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__RwTypeAssignment_3_in_rule__Attribute__Group__39174 = new BitSet(new long[]{0x000000000000C000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__4_in_rule__Attribute__Group__39183 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__DisplayLevelAssignment_4_in_rule__Attribute__Group__49211 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__5_in_rule__Attribute__Group__49220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__PolledPeriodAssignment_5_in_rule__Attribute__Group__59248 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__6_in_rule__Attribute__Group__59257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__MaxXAssignment_6_in_rule__Attribute__Group__69285 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__7_in_rule__Attribute__Group__69294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__MaxYAssignment_7_in_rule__Attribute__Group__79322 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__8_in_rule__Attribute__Group__79331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__AssociatedAttrAssignment_8_in_rule__Attribute__Group__89359 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__9_in_rule__Attribute__Group__89368 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__MemorizedAssignment_9_in_rule__Attribute__Group__99396 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__10_in_rule__Attribute__Group__99405 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__MemorizedAtInitAssignment_10_in_rule__Attribute__Group__109433 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__11_in_rule__Attribute__Group__109442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__ChangeEventAssignment_11_in_rule__Attribute__Group__119470 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__12_in_rule__Attribute__Group__119479 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__ArchiveEventAssignment_12_in_rule__Attribute__Group__129507 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__13_in_rule__Attribute__Group__129516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__DataReadyEventAssignment_13_in_rule__Attribute__Group__139544 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__14_in_rule__Attribute__Group__139553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__StatusAssignment_14_in_rule__Attribute__Group__149581 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__15_in_rule__Attribute__Group__149590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__PropertiesAssignment_15_in_rule__Attribute__Group__159618 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__16_in_rule__Attribute__Group__159627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__AllocReadMemberAssignment_16_in_rule__Attribute__Group__169655 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__17_in_rule__Attribute__Group__169664 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__IsDynamicAssignment_17_in_rule__Attribute__Group__179692 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__18_in_rule__Attribute__Group__179701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__Attribute__Group__189730 = new BitSet(new long[]{0x0000100000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__19_in_rule__Attribute__Group__189740 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__ReadExcludedStatesAssignment_19_in_rule__Attribute__Group__199768 = new BitSet(new long[]{0x0000100000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__20_in_rule__Attribute__Group__199778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_rule__Attribute__Group__209807 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__21_in_rule__Attribute__Group__209817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__WriteExcludedStatesAssignment_21_in_rule__Attribute__Group__219845 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__FireEvents__FireAssignment_0_in_rule__FireEvents__Group__09924 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__FireEvents__Group__1_in_rule__FireEvents__Group__09933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FireEvents__LibCheckCriteriaAssignment_1_in_rule__FireEvents__Group__19961 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__DescriptionAssignment_0_in_rule__AttrProperties__Group__09999 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__1_in_rule__AttrProperties__Group__010008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__LabelAssignment_1_in_rule__AttrProperties__Group__110036 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__2_in_rule__AttrProperties__Group__110045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__UnitAssignment_2_in_rule__AttrProperties__Group__210073 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__3_in_rule__AttrProperties__Group__210082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__StandardUnitAssignment_3_in_rule__AttrProperties__Group__310110 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__4_in_rule__AttrProperties__Group__310119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__DisplayUnitAssignment_4_in_rule__AttrProperties__Group__410147 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__5_in_rule__AttrProperties__Group__410156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__FormatAssignment_5_in_rule__AttrProperties__Group__510184 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__6_in_rule__AttrProperties__Group__510193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__MaxValueAssignment_6_in_rule__AttrProperties__Group__610221 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__7_in_rule__AttrProperties__Group__610230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__MinValueAssignment_7_in_rule__AttrProperties__Group__710258 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__8_in_rule__AttrProperties__Group__710267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__MaxAlarmAssignment_8_in_rule__AttrProperties__Group__810295 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__9_in_rule__AttrProperties__Group__810304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__MinAlarmAssignment_9_in_rule__AttrProperties__Group__910332 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__10_in_rule__AttrProperties__Group__910341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__MaxWarningAssignment_10_in_rule__AttrProperties__Group__1010369 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__11_in_rule__AttrProperties__Group__1010378 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__MinWarningAssignment_11_in_rule__AttrProperties__Group__1110406 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__12_in_rule__AttrProperties__Group__1110415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__DeltaTimeAssignment_12_in_rule__AttrProperties__Group__1210443 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AttrProperties__Group__13_in_rule__AttrProperties__Group__1210452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AttrProperties__DeltaValueAssignment_13_in_rule__AttrProperties__Group__1310480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdditionalFile__NameAssignment_0_in_rule__AdditionalFile__Group__010542 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__AdditionalFile__Group__1_in_rule__AdditionalFile__Group__010551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdditionalFile__PathAssignment_1_in_rule__AdditionalFile__Group__110579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VoidType__Group__1_in_rule__VoidType__Group__010627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_rule__VoidType__Group__110656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BooleanType__Group__1_in_rule__BooleanType__Group__010705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_rule__BooleanType__Group__110734 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ShortType__Group__1_in_rule__ShortType__Group__010783 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_rule__ShortType__Group__110812 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__UShortType__Group__1_in_rule__UShortType__Group__010861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_rule__UShortType__Group__110890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IntType__Group__1_in_rule__IntType__Group__010939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__IntType__Group__110968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__UIntType__Group__1_in_rule__UIntType__Group__011017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__UIntType__Group__111046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FloatType__Group__1_in_rule__FloatType__Group__011095 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_rule__FloatType__Group__111124 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DoubleType__Group__1_in_rule__DoubleType__Group__011173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_rule__DoubleType__Group__111202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StringType__Group__1_in_rule__StringType__Group__011251 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_rule__StringType__Group__111280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CharArrayType__Group__1_in_rule__CharArrayType__Group__011329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_rule__CharArrayType__Group__111358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ShortArrayType__Group__1_in_rule__ShortArrayType__Group__011407 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_rule__ShortArrayType__Group__111436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__UShortArrayType__Group__1_in_rule__UShortArrayType__Group__011485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_rule__UShortArrayType__Group__111514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IntArrayType__Group__1_in_rule__IntArrayType__Group__011563 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_rule__IntArrayType__Group__111592 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__UIntArrayType__Group__1_in_rule__UIntArrayType__Group__011641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_rule__UIntArrayType__Group__111670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FloatArrayType__Group__1_in_rule__FloatArrayType__Group__011719 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_rule__FloatArrayType__Group__111748 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DoubleArrayType__Group__1_in_rule__DoubleArrayType__Group__011797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_rule__DoubleArrayType__Group__111826 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StringArrayType__Group__1_in_rule__StringArrayType__Group__011875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_rule__StringArrayType__Group__111904 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LongStringArrayType__Group__1_in_rule__LongStringArrayType__Group__011953 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_rule__LongStringArrayType__Group__111982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DoubleStringArrayType__Group__1_in_rule__DoubleStringArrayType__Group__012031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_rule__DoubleStringArrayType__Group__112060 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StateType__Group__1_in_rule__StateType__Group__012109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_64_in_rule__StateType__Group__112138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ConstStringType__Group__1_in_rule__ConstStringType__Group__012187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_rule__ConstStringType__Group__112216 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BooleanArrayType__Group__1_in_rule__BooleanArrayType__Group__012265 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_rule__BooleanArrayType__Group__112294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__UCharType__Group__1_in_rule__UCharType__Group__012343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_67_in_rule__UCharType__Group__112372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LongType__Group__1_in_rule__LongType__Group__012421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_rule__LongType__Group__112450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ULongType__Group__1_in_rule__ULongType__Group__012499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_rule__ULongType__Group__112528 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LongArrayType__Group__1_in_rule__LongArrayType__Group__012577 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_70_in_rule__LongArrayType__Group__112606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ULongArrayType__Group__1_in_rule__ULongArrayType__Group__012655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_rule__ULongArrayType__Group__112684 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DevIntType__Group__1_in_rule__DevIntType__Group__012733 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_rule__DevIntType__Group__112762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EncodedType__Group__1_in_rule__EncodedType__Group__012811 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_rule__EncodedType__Group__112840 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ShortVectorType__Group__1_in_rule__ShortVectorType__Group__012889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_74_in_rule__ShortVectorType__Group__112918 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IntVectorType__Group__1_in_rule__IntVectorType__Group__012967 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_rule__IntVectorType__Group__112996 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FloatVectorType__Group__1_in_rule__FloatVectorType__Group__013045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_76_in_rule__FloatVectorType__Group__113074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DoubleVectorType__Group__1_in_rule__DoubleVectorType__Group__013123 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_rule__DoubleVectorType__Group__113152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StringVectorType__Group__1_in_rule__StringVectorType__Group__013201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_78_in_rule__StringVectorType__Group__113230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_rule__PogoSystem__ImportsAssignment_013269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePogoDeviceClass_in_rule__PogoSystem__ClassesAssignment_113300 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePogoMultiClasses_in_rule__PogoSystem__MultiClassesAssignment_213331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Import__ImportURIAssignment_113362 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_113393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_313424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_413455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_513486 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_713517 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_813548 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_913579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_013610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_113641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_213672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_413703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_613734 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_813765 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__NameAssignment_113796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_79_in_rule__PogoDeviceClass__IsAbstractAssignment_213832 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__BaseClassAssignment_3_113875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__InstituteAssignment_513910 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClassDescription_in_rule__PogoDeviceClass__DescriptionAssignment_713941 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProperty_in_rule__PogoDeviceClass__ClassPropertiesAssignment_913972 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProperty_in_rule__PogoDeviceClass__DevicePropertiesAssignment_1114003 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCommand_in_rule__PogoDeviceClass__CommandsAssignment_1314034 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_rule__PogoDeviceClass__AttributesAssignment_1514065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleState_in_rule__PogoDeviceClass__StatesAssignment_1714096 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePreferences_in_rule__PogoDeviceClass__PreferencesAssignment_1814127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAdditionalFile_in_rule__PogoDeviceClass__AdditionalFilesAssignment_2014158 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__DescriptionAssignment_014189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__TitleAssignment_114220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__SourcePathAssignment_214251 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritance_in_rule__ClassDescription__InheritancesAssignment_414282 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLanguage_in_rule__ClassDescription__LanguageAssignment_514313 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassDescription__FilestogenerateAssignment_614344 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClassIdentification_in_rule__ClassDescription__IdentificationAssignment_714375 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComments_in_rule__ClassDescription__CommentsAssignment_814406 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasMandatoryPropertyAssignment_914437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractCommandAssignment_1014468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasAbstractAttributeAssignment_1114499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__HasDynamicAttributeAssignment_1214530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__ClassDescription__DescriptionHtmlExistsAssignment_1314561 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Inheritance__ClassnameAssignment_014592 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Inheritance__SourcePathAssignment_114623 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ContactAssignment_014654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__AuthorAssignment_114685 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__EmailDomainAssignment_214716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ClassFamilyAssignment_314747 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__SiteSpecificAssignment_414778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__PlatformAssignment_514809 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__BusAssignment_614840 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ManufacturerAssignment_714871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ClassIdentification__ReferenceAssignment_814902 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Comments__CommandsTableAssignment14933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Preferences__DocHomeAssignment_014964 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Preferences__MakefileHomeAssignment_114995 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Preferences__InstallHomeAssignment_215026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__Preferences__HtmlVersionAssignment_315057 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__State__NameAssignment_015088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__State__DescriptionAssignment_115119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__State__StatusAssignment_215150 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Property__NameAssignment_015181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePropType_in_rule__Property__TypeAssignment_115212 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__Property__StatusAssignment_215243 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__Property__MandatoryAssignment_315274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Property__DescriptionAssignment_415305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Property__DefaultPropValueAssignment_615336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__AbstractAssignment_015367 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__InheritedAssignment_115398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteAssignment_215429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__InheritanceStatus__ConcreteHereAssignment_315460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__InheritanceStatus__HasChangedAssignment_415491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Command__NameAssignment_015522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArgument_in_rule__Command__ArginAssignment_115553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArgument_in_rule__Command__ArgoutAssignment_215584 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__DescriptionAssignment_315615 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__Command__StatusAssignment_415646 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__ExecMethodAssignment_515677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDisplayLevel_in_rule__Command__DisplayLevelAssignment_615708 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__PolledPeriodAssignment_715739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Command__ExcludedStatesAssignment_915770 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__Argument__TypeAssignment_015801 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Argument__DescriptionAssignment_115832 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_015863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttrType_in_rule__Attribute__AttTypeAssignment_115894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__Attribute__DataTypeAssignment_215925 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRW_Type_in_rule__Attribute__RwTypeAssignment_315956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDisplayLevel_in_rule__Attribute__DisplayLevelAssignment_415987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__PolledPeriodAssignment_516018 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__MaxXAssignment_616049 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__MaxYAssignment_716080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__AssociatedAttrAssignment_816111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAssignment_916142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__MemorizedAtInitAssignment_1016173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFireEvents_in_rule__Attribute__ChangeEventAssignment_1116204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFireEvents_in_rule__Attribute__ArchiveEventAssignment_1216235 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFireEvents_in_rule__Attribute__DataReadyEventAssignment_1316266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritanceStatus_in_rule__Attribute__StatusAssignment_1416297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttrProperties_in_rule__Attribute__PropertiesAssignment_1516328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__AllocReadMemberAssignment_1616359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__Attribute__IsDynamicAssignment_1716390 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__ReadExcludedStatesAssignment_1916421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Attribute__WriteExcludedStatesAssignment_2116452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__FireEvents__FireAssignment_016483 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__FireEvents__LibCheckCriteriaAssignment_116514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DescriptionAssignment_016545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__LabelAssignment_116576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__UnitAssignment_216607 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__StandardUnitAssignment_316638 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DisplayUnitAssignment_416669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__FormatAssignment_516700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxValueAssignment_616731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MinValueAssignment_716762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxAlarmAssignment_816793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MinAlarmAssignment_916824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MaxWarningAssignment_1016855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__MinWarningAssignment_1116886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaTimeAssignment_1216917 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AttrProperties__DeltaValueAssignment_1316948 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AdditionalFile__NameAssignment_016979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__AdditionalFile__PathAssignment_117010 = new BitSet(new long[]{0x0000000000000002L});
 
 }
