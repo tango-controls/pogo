@@ -263,7 +263,8 @@ public class DeviceIdDialog extends JDialog
 
         contactTxt.setColumns(20);
         contactTxt.setFont(new java.awt.Font("Dialog", 1, 12));
-        contactTxt.setToolTipText("Programmer or contact email address");
+        contactTxt.setToolTipText(
+			Utils.buildToolTip("Programmer or contact email address"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -273,7 +274,8 @@ public class DeviceIdDialog extends JDialog
 
         manufacturerTxt.setColumns(20);
         manufacturerTxt.setFont(new java.awt.Font("Dialog", 1, 12));
-        manufacturerTxt.setToolTipText("manufacturer name");
+        manufacturerTxt.setToolTipText(Utils.buildToolTip(
+			"manufacturer name"));
         manufacturerTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 manufacturerTxtKeyReleased(evt);

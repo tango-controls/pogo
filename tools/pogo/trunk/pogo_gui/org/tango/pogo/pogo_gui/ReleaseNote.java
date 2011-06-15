@@ -17,7 +17,15 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon May 02 13:36:47 CEST 2011)</Center><Br>\n" + 
+		"	(Generated Wed Jun 15 15:42:47 CEST 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.2.7 - 15/06/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Problem in property dialog (description & default value) fixed.<Br>\n" + 
+		"<li><b>Pogo-7.2.6 - 19/05/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Mandatory device property management added.<Br>\n" + 
+		"&nbsp; &nbsp; Change ToolTips management.<Br>\n" + 
+		"<li><b>Pogo-7.2.5 - 16/05/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Litle bug in checkLinesToRemove() method fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Problem with omniORB library release number in vc project files fixed.<Br>\n" + 
 		"<li><b>Pogo-7.2.4 - 02/05/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Pb in headers when class name has changed fixed.<Br>\n" + 
 		"<li><b>Pogo-7.2.3 - 19/04/2011:</b><Br>\n" + 

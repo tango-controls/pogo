@@ -142,7 +142,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         definitionPanel.add (lbl, gbc);
 
         levelBtn = new javax.swing.JRadioButton ();
-		levelBtn.setToolTipText ("Display Level (expert or operator)");
+		levelBtn.setToolTipText(Utils.buildToolTip("Display Level","Expert or Operator"));
 		levelBtn.setText (" Expert Only  ");
 		gbc.gridx = 1;
 		gbc.gridy = y;
@@ -231,7 +231,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         //	Add radio box btn for attribute polled
 		//-------------------------------------------------------------
 		polledBtn = new javax.swing.JRadioButton ();
-		polledBtn.setToolTipText ("Attribute polled");
+		polledBtn.setToolTipText (Utils.buildToolTip("Attribute polled"));
 		polledBtn.setText ("Polled");
 		gbc.gridx = 1;
 		gbc.gridy = ++y;
@@ -273,7 +273,11 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		//	Add radio btn to memorized and memorized int
 		//-------------------------------------------------------------
 		memorizedBtn = new JRadioButton ();
-		memorizedBtn.setToolTipText ("Attribute setpoint memorized .");
+		memorizedBtn.setToolTipText(Utils.buildToolTip(
+                "Attribute memorized",
+                "The write attribute value will be stored in database\n"+
+                "And at next startup, the write attribute value will\n"+
+                 "be set to this stored value."));
 		memorizedBtn.setText (" Memorized  ");
 		memorizedBtn.setVisible(false);
 		gbc.gridx = 0;
@@ -288,7 +292,11 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 			});
 
 		memorizedInitBtn = new javax.swing.JRadioButton ();
-		memorizedInitBtn.setToolTipText ("Attribute setpoint memorized witten on hardware at startup");
+		memorizedInitBtn.setToolTipText(
+                Utils.buildToolTip("Write at init",
+                        "At each device initialization\n" +
+                        "the write attribute method will be called\n" +
+                        "with the value stored in database at previous write."));
 		memorizedInitBtn.setText (" Write hardware at init ");
 		memorizedInitBtn.setVisible(false);
 		gbc.gridx = 1;
@@ -940,14 +948,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
 		//	Control if  xSize and ySize fields have been filled.
 		int attrType = attrTypeCB.getSelectedIndex();
-        String assAttr = "";
 		switch(attrType)
 		{
 		case SCALAR:
 			if (rwTypeCB.getSelectedItem().equals("READ_WITH_WRITE")) {
-				assAttr = assAttrTF.getText();
-
-                if (assAttr.length()==0)
+				String  associatedAttribute = assAttrTF.getText();
+                if (associatedAttribute.length()==0)
                     message = "READ_WITH_WRITE  attribute must have an associated attribute";
             }
 			break;

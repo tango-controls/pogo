@@ -115,6 +115,14 @@ public class PropertyDialog extends JDialog
 		setProperty(property);
         manageInheritanceStatus(property);
 		titleLbl.setText(((is_dev)? "Device":"Class") + "  Property");
+        //  Class property is not mandatory
+        if (is_dev) {
+	        mandatoryBtn.setToolTipText(Utils.buildToolTip("Mandatoty Device Property",
+				"The property value must be specified in Tango database.\n"+
+				"Otherwise all commands and read/write attribute will throw an exception."));
+		}
+		else
+            mandatoryBtn.setVisible(false);
 		pack();
  		ATKGraphicsUtils.centerDialog(this);
 	}
@@ -123,21 +131,18 @@ public class PropertyDialog extends JDialog
     //===============================================================
     private void manageInheritanceStatus(Property prop)
     {
-        if (prop!=null)
-        {
+        if (prop!=null)  {
             //	Manage inheritance status
             orig_status = prop.getStatus();
             //abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
 
-            if (Utils.isTrue(orig_status.getInherited()) )
-            {
+            if (Utils.isTrue(orig_status.getInherited()) ) {
                 setEditable(false);
             }
             else
                 setEditable(true);
         }
-        else
-        {
+        else {
             orig_status = OAWutils.factory.createInheritanceStatus();
             orig_status.setAbstract("false");
             orig_status.setInherited("false");
@@ -150,8 +155,7 @@ public class PropertyDialog extends JDialog
     private void setNotEditable(JComboBox jcb)
     {
         String name = (String)jcb.getSelectedItem();
-        if (name!=null)
-        {
+        if (name!=null)  {
             jcb.removeAllItems();
             jcb.addItem(name);
         }
@@ -173,20 +177,19 @@ public class PropertyDialog extends JDialog
 		for (String type : propertyTypeNames)
 			typeComboBox.addItem(type);
 
-		if (property!=null)
-		{
+		if (property!=null) {
 			nameTxt.setText(property.getName());
             String  desc = Utils.strReplaceSpecialCharToDisplay(property.getDescription());
 			descTxt.setText(desc);
 			EList<String>	values = property.getDefaultPropValue();
 			StringBuffer	sb = new StringBuffer();
-			for (int i=0 ;i<values.size() ; i++)
-            {
+			for (int i=0 ;i<values.size() ; i++) {
                 sb.append(values.get(i));
                 if (i<values.size()-1)
-                    sb.append("\\n");
+                    sb.append("\n");
             }
 			valueTxt.setText(sb.toString().trim());
+            mandatoryBtn.setSelected(Utils.isTrue(property.getMandatory()));
 
 			String	strType =  pogo2tangoType(property.getType());
 			for (String type : propertyTypeNames)
@@ -214,15 +217,18 @@ public class PropertyDialog extends JDialog
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel centerPanel = new javax.swing.JPanel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
+        nameTxt = new javax.swing.JTextField();
         javax.swing.JLabel descLbl = new javax.swing.JLabel();
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
+        descTxt = new javax.swing.JTextArea();
         javax.swing.JLabel arginLbl = new javax.swing.JLabel();
         javax.swing.JLabel valueLbl = new javax.swing.JLabel();
-        nameTxt = new javax.swing.JTextField();
-        descTxt = new javax.swing.JTextField();
-        valueTxt = new javax.swing.JTextField();
         typeComboBox = new javax.swing.JComboBox();
         descBtn = new javax.swing.JButton();
         valueBtn = new javax.swing.JButton();
+        mandatoryBtn = new javax.swing.JRadioButton();
+        javax.swing.JScrollPane scrollPane2 = new javax.swing.JScrollPane();
+        valueTxt = new javax.swing.JTextArea();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -264,6 +270,13 @@ public class PropertyDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
         centerPanel.add(nameLbl, gridBagConstraints);
 
+        nameTxt.setColumns(20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        centerPanel.add(nameTxt, gridBagConstraints);
+
         descLbl.setText("Property description:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -272,7 +285,20 @@ public class PropertyDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
         centerPanel.add(descLbl, gridBagConstraints);
 
-        arginLbl.setText("Propery Type");
+        scrollPane.setPreferredSize(new java.awt.Dimension(200, 100));
+
+        descTxt.setColumns(20);
+        descTxt.setRows(5);
+        scrollPane.setViewportView(descTxt);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        centerPanel.add(scrollPane, gridBagConstraints);
+
+        arginLbl.setText("Propery Type :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -280,38 +306,13 @@ public class PropertyDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 10);
         centerPanel.add(arginLbl, gridBagConstraints);
 
-        valueLbl.setText("Default Value");
+        valueLbl.setText("Default Value :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
         centerPanel.add(valueLbl, gridBagConstraints);
-
-        nameTxt.setColumns(20);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        centerPanel.add(nameTxt, gridBagConstraints);
-
-        descTxt.setColumns(30);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
-        centerPanel.add(descTxt, gridBagConstraints);
-
-        valueTxt.setColumns(30);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
-        centerPanel.add(valueTxt, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -346,6 +347,32 @@ public class PropertyDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         centerPanel.add(valueBtn, gridBagConstraints);
 
+        mandatoryBtn.setText("Mandatory in Database");
+        mandatoryBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        mandatoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mandatoryBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        centerPanel.add(mandatoryBtn, gridBagConstraints);
+
+        scrollPane2.setPreferredSize(new java.awt.Dimension(166, 60));
+
+        valueTxt.setColumns(20);
+        valueTxt.setRows(5);
+        scrollPane2.setViewportView(valueTxt);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        centerPanel.add(scrollPane2, gridBagConstraints);
+
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -356,8 +383,7 @@ public class PropertyDialog extends JDialog
 	@SuppressWarnings({"UnusedDeclaration"})
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
 
-		try
-		{
+		try {
 			//	Check The inputs first
 			String	name = nameTxt.getText();
 			if (name.length()==0)
@@ -368,8 +394,7 @@ public class PropertyDialog extends JDialog
 			name = Utils.checkNameSyntax(name, true);
 			nameTxt.setText(name);
 		}
-		catch (Exception e)
-		{
+		catch (Exception e) {
 			ErrorPane.showErrorMessage(this, null, e);
 			return;
 		}
@@ -386,10 +411,6 @@ public class PropertyDialog extends JDialog
 	}//GEN-LAST:event_cancelBtnActionPerformed
 
 	//===============================================================
-	/**
-	 *	Closes the dialog
-     * @param evt the event
-     */
 	//===============================================================
 	@SuppressWarnings({"UnusedDeclaration"})
 	private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
@@ -411,8 +432,7 @@ public class PropertyDialog extends JDialog
 
 		//	Edit in dialog.
 		EditDialog	dlg = new EditDialog(this, text.trim());
-		if (dlg.showDialog()==JOptionPane.OK_OPTION)
-		{
+		if (dlg.showDialog()==JOptionPane.OK_OPTION) {
 			//	Put new text in field
 			if (btn==valueBtn)
 				valueTxt.setText(dlg.getText().trim());
@@ -421,6 +441,15 @@ public class PropertyDialog extends JDialog
 				descTxt.setText(dlg.getText().trim());
 		}
 	}//GEN-LAST:event_descBtnActionPerformed
+
+	//===============================================================
+	//===============================================================
+	@SuppressWarnings({"UnusedDeclaration"})
+    private void mandatoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mandatoryBtnActionPerformed
+        boolean mandatory = !(mandatoryBtn.getSelectedObjects()==null);
+        valueTxt.setEnabled(!mandatory);
+        valueBtn.setEnabled(!mandatory);
+    }//GEN-LAST:event_mandatoryBtnActionPerformed
 	//===============================================================
 	//===============================================================
 	/**
@@ -448,17 +477,20 @@ public class PropertyDialog extends JDialog
 		PropType	type = tango2pogoType(strType);
 		property.setType(type);
 
-		//	Default value
-		String	strVal = Utils.strReplace(valueTxt.getText(), "\\n", "\n").trim();
-		EList<String>	list = property.getDefaultPropValue();
- 		StringTokenizer	st = new StringTokenizer(strVal, "\n");
-		while (st.hasMoreTokens())
-		{
-			String	line = st.nextToken().trim();
-			if (line.length()>0)
-				list.add(line);
-		}
-
+        boolean mandatory = !(mandatoryBtn.getSelectedObjects()==null);
+        if (mandatory)
+            property.setMandatory("true");
+        else {
+            //	Default value
+            String	strVal = Utils.strReplace(valueTxt.getText(), "\\n", "\n").trim();
+            EList<String>	list = property.getDefaultPropValue();
+            StringTokenizer	st = new StringTokenizer(strVal, "\n");
+            while (st.hasMoreTokens()) {
+                String	line = st.nextToken().trim();
+                if (line.length()>0)
+                    list.add(line);
+            }
+        }
         //	Inheritance status
         property.setStatus(orig_status);
 
@@ -499,12 +531,13 @@ public class PropertyDialog extends JDialog
 	//===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton descBtn;
-    private javax.swing.JTextField descTxt;
+    private javax.swing.JTextArea descTxt;
+    private javax.swing.JRadioButton mandatoryBtn;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JLabel titleLbl;
     private javax.swing.JComboBox typeComboBox;
     private javax.swing.JButton valueBtn;
-    private javax.swing.JTextField valueTxt;
+    private javax.swing.JTextArea valueTxt;
     // End of variables declaration//GEN-END:variables
 	//===============================================================
 

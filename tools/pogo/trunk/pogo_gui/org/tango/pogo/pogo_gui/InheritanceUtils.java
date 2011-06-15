@@ -129,6 +129,8 @@ public class InheritanceUtils
             EList<String>   new_values      = new_prop.getDefaultPropValue();
             for (String s : ancestor_values)
                     new_values.add(s);
+            if (Utils.isTrue(inher_prop.getMandatory()))
+                new_prop.setMandatory("true");
 
             //	manage inheritance status
             InheritanceStatus	status = OAWutils.factory.createInheritanceStatus();
