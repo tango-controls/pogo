@@ -684,6 +684,33 @@ public class Utils
 	//===============================================================
 
 
+    //  Multi line tooltip methods
+    private static final String tooltipHeader =
+            "<html><BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFD0\">";
+    //===============================================================
+    //===============================================================
+    public static String buildToolTip(String text) {
+        return buildToolTip(null, text);
+    }
+    //===============================================================
+    //===============================================================
+    public static String buildToolTip(String title, String text) {
+
+        StringBuffer    sb = new StringBuffer(tooltipHeader);
+        if (title!=null && title.length()>0) {
+            sb.append("<b><Center>")
+                    .append(Utils.strReplace(title, "\n", "<br>\n"))
+                    .append("</center></b><HR WIDTH=\"100%\">");
+        }
+        if (text!=null && text.length()>0) {
+            sb.append(Utils.strReplace(text, "\n", "<br>\n"));
+        }
+        return sb.toString();
+    }
+    //===============================================================
+    //===============================================================
+
+
 
 
 

@@ -355,6 +355,17 @@ public class OAWutils
             else
                 pogo_class.getDescription().setDescriptionHtmlExists("false");
         }
+
+        //  Check if at least one device property is mandatory
+        EList<Property> properties = pogo_class.getDeviceProperties();
+        boolean hasMandatory = false;
+        for (Property property : properties) {
+            if (Utils.isTrue(property.getMandatory())) {
+                hasMandatory = true;
+            }
+        }
+        if (hasMandatory)
+            pogo_class.getDescription().setHasMandatoryProperty("true");
 	}
 	//========================================================================
 	//========================================================================
@@ -895,6 +906,9 @@ if (src.getDataType()==null)
         status .setConcrete(src_st.getConcrete());
         status .setConcreteHere(src_st.getConcreteHere());
         property.setStatus(status);
+
+        if (Utils.isTrue(src.getMandatory()))
+            property.setMandatory("true");
         return property;
     }
     //======================================================

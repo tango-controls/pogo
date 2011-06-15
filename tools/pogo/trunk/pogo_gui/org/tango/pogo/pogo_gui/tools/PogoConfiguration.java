@@ -67,6 +67,11 @@ public class PogoConfiguration extends JDialog
 	{
 		super(parent, true);
 		initComponents();
+        titleLabel.setToolTipText(Utils.buildToolTip("Class Families",
+                "If you use your own repository with specific class families\n" +
+                "Add your  institute name on right fields\n"+
+                "&nbsp; &nbsp; and the specific family names below.\n"+
+                "It will ne used for Class Identification Window."));
         pack();
  		ATKGraphicsUtils.centerDialog(this);
 	}
@@ -82,7 +87,7 @@ public class PogoConfiguration extends JDialog
         java.awt.GridBagConstraints gridBagConstraints;
 
         javax.swing.JPanel topPanel = new javax.swing.JPanel();
-        javax.swing.JLabel titleLabel = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
         siteLabel = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         helpBtn = new javax.swing.JButton();
@@ -101,13 +106,12 @@ public class PogoConfiguration extends JDialog
             }
         });
 
-        titleLabel.setFont(new java.awt.Font("Dialog", 1, 14));
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         titleLabel.setText("Specific Class Family Names for  ");
-        titleLabel.setToolTipText("Used for class ID in repository.");
         topPanel.add(titleLabel);
 
         siteLabel.setColumns(10);
-        siteLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        siteLabel.setFont(new java.awt.Font("Dialog", 1, 14));
         topPanel.add(siteLabel);
 
         jLabel1.setText("      ");
@@ -377,6 +381,7 @@ public class PogoConfiguration extends JDialog
     private javax.swing.JButton helpBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField siteLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 	//===============================================================
 
