@@ -129,7 +129,7 @@ public class MultiClassesPanel extends JFrame
     private void addTopPanelButton(ImageIcon icon, String tip)
     {
         JButton btn = new JButton(icon);
-        btn.setToolTipText(tip);
+        btn.setToolTipText(Utils.buildToolTip(tip));
         btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn.addActionListener(new java.awt.event.ActionListener() {
              public void actionPerformed(java.awt.event.ActionEvent evt) {
