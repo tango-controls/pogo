@@ -1671,11 +1671,15 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		//===========================================================
 		private String toInfoString()
 		{
-			StringBuffer	sb = new StringBuffer("Class name:  " + name);
+			
+			String  title = "Class name:  " + name;
             if (isAbstract)
-                sb.append("  (class is abstract !)");
+    			title += "  (class is abstract !)";
+			
+			
+			StringBuffer	sb = new StringBuffer();
             if (path!=null && path.length()>0)
-                sb.append("\nRead at:   ").append(path);
+                sb.append("Read at:   ").append(path);
 
             sb.append("\nInherited from: ").append(inheritances.get(0).getClassname());
             if (! DeviceClass.isDefaultInheritance(inheritances.get(0)))
@@ -1686,7 +1690,7 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 			sb.append(Utils.strReplace(description, "\\n", "\n")).append("\n");
 
 
-			return sb.toString();
+			return Utils.buildToolTip(title, sb.toString());
 		}
 		//===========================================================
 		public String toString()
@@ -1734,11 +1738,9 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		{
 			StringBuffer	sb = new StringBuffer(((is_dev)? "Device":"Class"));
 			sb.append(" property:  ").append(value.getName());
-            //sb.append("   (").append(InheritanceUtils.getStatusStr(value.getStatus())).append(")");
 
-			sb.append("\n\n");
-			sb.append(Utils.strReplace(value.getDescription(), "\\n", "\n")).append("\n");
-			return sb.toString();
+			return Utils.buildToolTip(sb.toString(),
+                    Utils.strReplace(value.getDescription(), "\\n", "\n"));
 		}
 		//===========================================================
         private void manageDisplay(TangoRenderer renderer)
@@ -1784,12 +1786,13 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		//===========================================================
 		private String toInfoString()
 		{
-			StringBuffer	sb = new StringBuffer("Attribute:  " + value.getName());
-            //sb.append("   (").append(InheritanceUtils.getStatusStr(value.getStatus())).append(")");
-			sb.append("\n\n");
-			if (value.getProperties()!=null)
-				sb.append(Utils.strReplace(value.getProperties().getDescription(), "\\n", "\n"));
-			return sb.toString();
+            String desc;
+			if (value.getProperties()==null ||
+                value.getProperties().getDescription().length()==0)
+                desc = "No Description.";
+            else
+                desc = Utils.strReplace(value.getProperties().getDescription(), "\\n", "\n");
+			return Utils.buildToolTip("Attribute:  " + value.getName(), desc);
 		}
 		//===========================================================
 		private void manageDisplay(TangoRenderer renderer)
@@ -1830,11 +1833,12 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		//===========================================================
 		private String toInfoString()
 		{
-			StringBuffer	sb = new StringBuffer("Command:  " + value.getName());
-			//sb.append("   (").append(InheritanceUtils.getStatusStr(value.getStatus())).append(")");
-            sb.append("\n\n");
-			sb.append(Utils.strReplace(value.getDescription(), "\\n", "\n"));
-			return sb.toString();
+            String desc = value.getDescription();
+            if (desc!=null && desc.length()>0)
+                desc = Utils.strReplace(desc, "\\n", "\n");
+            else
+                desc = "No Description.";
+			return Utils.buildToolTip("Command:  " + value.getName(), desc);
 		}
 		//===========================================================
 		private void manageDisplay(TangoRenderer renderer)
@@ -1874,10 +1878,12 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
 		//===========================================================
 		private String toInfoString()
 		{
-			StringBuffer	sb = new StringBuffer("State:  " + value.getName());
-			sb.append("\n\n");
-			sb.append(Utils.strReplace(value.getDescription(), "\\n", "\n"));
-			return sb.toString();
+            String desc = value.getDescription();
+            if (desc!=null && desc.length()>0)
+                desc = Utils.strReplace(desc, "\\n", "\n");
+            else
+                desc = "No Description.";
+			return Utils.buildToolTip("State:  " + value.getName(), desc);
 		}
         //===========================================================
         private void manageDisplay(TangoRenderer renderer)

@@ -119,9 +119,11 @@ public class ClassDialog extends JDialog
 		PogoDeviceClass	pogo_class = devclass.getPogoDeviceClass();
 		nameText.setText(pogo_class.getName());
 		descText.setText(pogo_class.getDescription().getDescription());
-		descText.setToolTipText("Description for device server documentation.");
+		descText.setToolTipText(Utils.buildToolTip("Class Description",
+			"Description for device server documentation."));
 		projectText.setText(pogo_class.getDescription().getTitle());
-		projectText.setToolTipText("Short description for documentation header");
+		projectText.setToolTipText(Utils.buildToolTip(
+			"Short description for documentation header"));
 
 		IDdialog = new DeviceIdDialog(parent, pogo_class.getDescription().getIdentification());
         horizontalPanel.setLeftComponent(IDdialog.getCenterPanel());

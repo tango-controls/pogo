@@ -8,6 +8,13 @@
 #
 #-======================================================================
 
+Pogo-7.2.7 - 15/06/2011:
+	Problem in property dialog (description & default value) fixed.
+
+Pogo-7.2.6 - 19/05/2011:
+	Mandatory device property management added.
+	Change ToolTips management.
+
 Pogo-7.2.5 - 16/05/2011:
 	Litle bug in checkLinesToRemove() method fixed.
 	Problem with omniORB library release number in vc project files fixed.

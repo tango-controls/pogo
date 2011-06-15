@@ -213,14 +213,16 @@ class InheritancePanel extends JPanel
 
 			String	path = null;
 			if (devClass==null)
-				setToolTipText("See: " + PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]);
+				setToolTipText(Utils.buildToolTip("TANGO DeviceImpl model",
+					"See: " + PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]));
 			else
 			if (devClass.getPogoDeviceClass()!=null)
 				if (devClass.getPogoDeviceClass().getDescription()!=null)
 					path = devClass.getPogoDeviceClass().getDescription().getSourcePath();
 
 			if (path!=null)
-				setToolTipText("Read at: " + path);
+				setToolTipText(Utils.buildToolTip(
+					devClass.getPogoDeviceClass().getName(), "Read at: " + path));
 
 			
 			//	Display classname and few commands

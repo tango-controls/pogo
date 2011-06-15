@@ -135,7 +135,7 @@ public class PogoGUI extends JFrame
     public PogoGUI() throws DevFailed
 	{
         useDisplay = true;
-        MultiLineToolTipUI.initialize();
+        //MultiLineToolTipUI.initialize();
         initComponents();
         PogoProperty.init();
         initOwnComponents();
@@ -334,7 +334,7 @@ public class PogoGUI extends JFrame
 	private void addTopPanelButton(ImageIcon icon, String tip, final boolean isPalette)
 	{
 		JButton btn = new JButton(icon);
-		btn.setToolTipText(tip);
+		btn.setToolTipText(Utils.buildToolTip(tip));
 		btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		btn.addActionListener(new java.awt.event.ActionListener() {
 			 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -662,8 +662,11 @@ public class PogoGUI extends JFrame
     @SuppressWarnings({"UnusedDeclaration"})
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         
-        exitAppli();
-   }//GEN-LAST:event_exitForm
+        if (exitAppli()==JOptionPane.CANCEL_OPTION) {
+            //  If not exited -> start a thread to set it visible a bit later
+            new SetVisibleLater(this).start();
+        }
+    }//GEN-LAST:event_exitForm
 	//=======================================================
     /**
      * Manage if modification(s) has been done, and propose to generate them.
@@ -701,7 +704,7 @@ public class PogoGUI extends JFrame
     }
 	//=======================================================
 	//=======================================================
-    private void exitAppli()
+    private int exitAppli()
     {
         if (checkModifications()==JOptionPane.OK_OPTION) {
 
@@ -709,14 +712,15 @@ public class PogoGUI extends JFrame
             // Check to know if at least one is still visible.
             for (JFrame frame : runningApplis)
                 if (frame.isVisible())
-                    return;
+                    return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
             if (multiClassesPanel!=null && multiClassesPanel.isVisible())
-                return;
+                return JOptionPane.OK_OPTION;
 
             //  No visible found.
             System.exit(0);
         }
+        return JOptionPane.CANCEL_OPTION;
     }
 	//=======================================================
 
@@ -1345,5 +1349,20 @@ public class PogoGUI extends JFrame
         */
     }
     //===============================================================
+    //===============================================================
+
+
+
+    //===============================================================
+    private class SetVisibleLater extends Thread {
+        private Component component;
+        private SetVisibleLater(Component component) {
+            this.component = component;
+        }
+        public void run() {
+            try { sleep(100); } catch(InterruptedException e) { /* */ }
+            component.setVisible(true);
+        }
+    }
     //===============================================================
 }
