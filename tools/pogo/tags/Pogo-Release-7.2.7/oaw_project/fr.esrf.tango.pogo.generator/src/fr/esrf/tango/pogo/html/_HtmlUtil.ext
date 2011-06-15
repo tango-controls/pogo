@@ -1,0 +1,296 @@
+import pogoDsl;
+
+
+//==================================================
+//	File names
+//==================================================
+classPageFileName(PogoDeviceClass this):
+	preferences.docHome + "/index.html";
+propertyPageFileName(PogoDeviceClass this):
+	preferences.docHome + "/Properties.html";
+statePageFileName(PogoDeviceClass this):
+	preferences.docHome + "/States.html";
+commandPageFileName(PogoDeviceClass this):
+	preferences.docHome + "/Commands.html";
+commandPageFileName(PogoDeviceClass this, Command cmd):
+	preferences.docHome + "/Cmd" + cmd.name + ".html";
+attributePageFileName(PogoDeviceClass this):
+	preferences.docHome + "/Attributes.html";
+attributePageFileName(PogoDeviceClass this, Attribute attr):
+	preferences.docHome + "/Attr" + attr.name + ".html";
+
+//==================================================
+//	HTML page header
+//==================================================
+htmlHeader(PogoDeviceClass this):
+		"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n" +
+        "<HTML>\n" +
+        "<HEAD>\n" +
+        "<Title> Tango Device Server User s Guide </Title>\n" +
+        "</HEAD>\n" +
+        "<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" +
+        "\n" +
+        "<P><!-------TITLE------></P>\n" +
+        "<TABLE BORDER=\"0\" WIDTH=\"100%\">\n" +
+         "    <TR>\n" +
+        "        <TD ALIGN=\"left\">\n" +
+        "            <A HREF=\"http://www.esrf.fr/\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/gifs/logo/80.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "            <A HREF=\"http://www.elettra.trieste.it/\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/elettra_logo.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "            <A HREF=\"http://www.synchrotron-soleil.fr/\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/soleil_logo.gif\" BORDER=0 Height=\"60\"></A>\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "            <A HREF=\"http://www.cells.es/\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/alba.jpg\" BORDER=0 Height=\"45\"></A>\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"Right\">\n" +
+        "            <H2><FONT COLOR=\"#7F00FF\">\n" +
+        "            <Br><Center><A HREF=\"http://www.tango-controls.org/\" TARGET=\"_top\"> TANGO </a> \n" +
+        "            </Center></FONT>\n" +
+        "       </TD>\n" +
+        "    </TR>\n" +
+        "    <TR>\n" +
+        "        <TD ALIGN=\"left\">\n" +
+        "            <A HREF=\"http://www.desy.de/html/home/index_eng.html\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/desy.gif\" BORDER=0 Height=\"44\"></A>\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "            <A HREF=\"http://www.maxlab.lu.se/maxlab/max4/index.html\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/maxlab.gif\" BORDER=0 Height=\"40\"></A>\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"center\">\n" +
+        "            <A HREF=\"http://www.frm2.tum.de/en/index.html\" TARGET=new>\n" +
+        "            <IMG SRC=\"http://www.esrf.fr/computing/cs/tango/frm-2.jpg\" BORDER=0 Height=\"45\"></A>\n" +
+        "        </TD>\n" +
+        "            <TD>\n" +
+        "            <!-- Empty -->\n" +
+        "        </TD>\n" +
+        "        <TD ALIGN=\"Right\">\n" +
+        "            <H2><FONT COLOR=\"#7F00FF\">\n" +
+        "            <Center> Device Servers\n" +
+        "            </Center></FONT>\n" +
+        "        </TD>\n" +
+        "    </TR>\n" +
+        "</TABLE>\n" +
+        "\n" +
+        "<HR WIDTH=\"100%\"></H5>\n" +
+        "\n"; 
+
+
+//==================================================
+//	HTML page footer
+//==================================================
+htmlFooter():
+		"<!--- html Footer --->\n"+
+		"<Center>\n"+
+		"<Font size=-1>\n"+
+		"<br>\n"+
+		"<br>\n"+
+		"<TABLE BORDER=\"1\" WIDTH=\"100%\">\n"+
+		"    <Tr>\n"+
+		"		<!--- Hosted by Sourceforge --->\n"+
+		"        <Td Align=\"Center\">\n"+
+		"			<Font size=-1>\n"+
+		"			<b>TANGO</b> is an open source project hosted by :<br>\n"+
+		"			<A href=\"http://sourceforge.net\" Target=\"new\">\n"+
+		"					<IMG title=\"Sourceforge logo\"\n"+
+		"						alt=\"Sourceforge logo small\"\n"+
+		"						src=\"http://www.esrf.fr/computing/cs/tango/sourceforge.gif\"\n"+
+		"						border=0> </a>\n"+
+		"			</Font>\n"+
+		"		</Td>\n"+
+		"		<!--- 2 Sourceforge Repositories --->\n"+
+		"		<Td Align=\"Center\">\n"+
+		"			<Font size=-1>\n"+
+		"			Core and Tools :\n"+
+		"			<a href=\"http://tango-cs.cvs.sourceforge.net/tango-cs/\" Target=new>\n"+
+		"			CVS repository</a> on\n"+
+		"			<a href=\"https://sourceforge.net/projects/tango-cs\" Target=new>\n"+
+		"			tango-cs project</a>\n"+
+		"			<br>\n"+
+		"			Device Servers :\n"+
+		"			<a href=\"http://tango-ds.cvs.sourceforge.net/tango-ds/\" Target=new>\n"+
+		"					CVS repository</cmda> on\n"+
+		"			<a href=\"https://sourceforge.net/projects/tango-ds\" Target=new>\n"+
+		"					tango-ds project</a>\n"+
+		"			</Font>\n"+
+		"		</Td>\n"+
+		"    </Tr>\n"+
+		"</Table>\n"+
+		"</Font>\n"+
+		"</Center>\n"+
+		"</body>\n"+
+		"</html>\n";
+
+
+//==================================================
+//	HTML page title
+//==================================================
+htmlPageTitle(PogoDeviceClass this, String pageTitle):
+        "<FONT SIZE=\"+3\">\n" +
+        "<center>\n" +
+        "<u>\n" +
+        "         " + name + " Tango Class <Br>\n" +
+        "</u> \n" +
+        "<FONT SIZE=\"+1\">\n" +
+        "      ( " + description.title + " )\n" +
+        "<Br>\n" +
+        "<Br>\n" +
+        "<TABLE BORDER=\"1\" WIDTH=\"100%\" CELLSPACING=0>\n" + htmlVersionCode() +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"index.html\">         Description</a>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"Properties.html\">    Properties</a></li>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"Commands.html\">      Commands</a></li>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"Attributes.html\">    Attributes</a></li>\n" +
+        "       </Td>\n" +
+        "       <TD ALIGN=\"center\">\n" +
+        "               <a href=\"States.html\">        States</a></li>\n" +
+        "       </Td>\n" +
+        "</TABLE>\n" +
+        "<Br>\n" +
+        "<Br>\n" +
+        "<Br>\n" +
+        "<FONT SIZE=\"+2\"><u>\n" +
+        "            " + pageTitle + "\n" +
+        "</u></Font>\n" +
+        "</Center>\n" +
+        "\n";
+
+
+//==================================================
+//	HTML section title
+//==================================================
+htmlSectionTitle(String str):
+	"<Font SIZE=\"+0\"> <b><u> " + str + " :</u></b> </Font>";
+
+startComment():	"<!--- ";
+endComment():	" --->";
+
+
+htmlVersionCode(PogoDeviceClass this):
+	preferences.htmlVersion == "true"
+	? "<TD ALIGN=\"center\">\n <a href=Version.html> Version </a></Td>\n"
+	: "";
+
+attTypeDimentions(Attribute this):
+	attType == "Spectrum"
+	? maxX
+	:	(attType == "Image"
+		?	maxX + " x " + maxY
+		: 1);
+
+
+htmlCheckIfAbtract(PogoDeviceClass this):
+	description.hasAbstractAttribute=="true" || description.hasAbstractCommand=="true"
+	? "<Br><Font size=+1> (Abstract class)</Font>"
+	: "";
+
+
+//==================================================
+//	Property Type utilities
+//==================================================
+stringPropType(PropType this):			null;
+stringPropType(BooleanType this):		"bool";
+stringPropType(ShortType this):			"short";
+stringPropType(IntType this):			"int";
+stringPropType(UShortType this):		"unsigned short";
+stringPropType(UIntType this):			"unsigned int";
+stringPropType(FloatType this):			"float";
+stringPropType(DoubleType this):		"double";
+stringPropType(StringType this):		"string";
+
+stringPropType(ShortVectorType this):	"vector<short>";
+stringPropType(IntVectorType this):		"vector<int>";
+stringPropType(FloatVectorType this):	"vector<float>";
+stringPropType(DoubleVectorType this):	"vector<double>";
+stringPropType(StringVectorType this):	"vector<string>";
+
+
+//	Type utilities
+stringType(Type this):					null;
+stringType(VoidType this):				"void";
+stringType(BooleanType this):			"Tango::DevBoolean";
+stringType(ShortType this):				"Tango::DevShort";
+stringType(IntType this):				"Tango::DevLong";
+stringType(FloatType this):				"Tango::DevFloat";
+stringType(DoubleType this):			"Tango::DevDouble";
+stringType(UShortType this):			"Tango::DevUShort";
+stringType(UIntType this):				"Tango::DevULong";
+stringType(StringType this):			"Tango::DevString";
+stringType(CharArrayType this):			"Tango::DevVarCharArray";
+stringType(ShortArrayType this):		"Tango::DevVarShortArray";
+stringType(IntArrayType this):			"Tango::DevVarLongArray";
+stringType(FloatArrayType this):		"Tango::DevVarFloatArray";
+stringType(DoubleArrayType this):		"Tango::DevVarDoubleArray";
+stringType(UShortArrayType this):		"Tango::DevVarUShortArray";
+stringType(UIntArrayType this):			"Tango::DevVarULongArray";
+stringType(StringArrayType this):		"Tango::DevVarStringArray";
+stringType(LongStringArrayType this):	"Tango::DevVarLongStringArray";
+stringType(DoubleStringArrayType this):"Tango::DevVarDoubleStringArray";
+stringType(StateType this):				"Tango::DevState";
+stringType(ConstStringType this):		"Tango::ConstDevString";
+stringType(BooleanArrayType this):		"Tango::DevVarBooleanArray";
+stringType(UCharType this):				"Tango::DevUChar";
+stringType(LongType this):				"Tango::DevLong64";
+stringType(ULongType this):				"Tango::DevULong64";
+stringType(LongArrayType this):			"Tango::DevVarLong64Array";
+stringType(ULongArrayType this):		"Tango::DevVarULong64Array";
+stringType(DevIntType this):			"Tango::DevInt";
+stringType(EncodedType this):			"Tango::DevEncoded";
+
+	
+//	Type enum
+stringTypeEnum(Type this):					null;
+stringTypeEnum(VoidType this):				"Tango::DEV_VOID";
+stringTypeEnum(BooleanType this):			"Tango::DEV_BOOLEAN";
+stringTypeEnum(ShortType this):				"Tango::DEV_SHORT";
+stringTypeEnum(IntType this):				"Tango::DEV_LONG";
+stringTypeEnum(FloatType this):				"Tango::DEV_FLOAT";
+stringTypeEnum(DoubleType this):			"Tango::DEV_DOUBLE";
+stringTypeEnum(UShortType this):			"Tango::DEV_USHORT";
+stringTypeEnum(UIntType this):				"Tango::DEV_ULONG";
+stringTypeEnum(StringType this):			"Tango::DEV_STRING";
+stringTypeEnum(CharArrayType this):			"Tango::DEVVAR_CHARARRAY";
+stringTypeEnum(ShortArrayType this):		"Tango::DEVVAR_SHORTARRAY";
+stringTypeEnum(IntArrayType this):			"Tango::DEVVAR_LONGARRAY";
+stringTypeEnum(FloatArrayType this):		"Tango::DEVVAR_FLOATARRAY";
+stringTypeEnum(DoubleArrayType this):		"Tango::DEVVAR_DOUBLEARRAY";
+stringTypeEnum(UShortArrayType this):		"Tango::DEVVAR_USHORTARRAY";
+stringTypeEnum(UIntArrayType this):			"Tango::DEVVAR_ULONGARRAY";
+stringTypeEnum(StringArrayType this):		"Tango::DEVVAR_STRINGARRAY";
+stringTypeEnum(LongStringArrayType this):	"Tango::DEVVAR_LONGSTRINGARRAY";
+stringTypeEnum(DoubleStringArrayType this):	"Tango::DEVVAR_DOUBLESTRINGARRAY";
+stringTypeEnum(StateType this):				"Tango::DEV_STATE";
+stringTypeEnum(ConstStringType this):		"Tango::CONST_DEV_STRING";
+stringTypeEnum(BooleanArrayType this):		"Tango::DEVVAR_BOOLEANARRAY";
+stringTypeEnum(UCharType this):				"Tango::DEV_UCHAR";
+stringTypeEnum(LongType this):				"Tango::DEV_LONG64";
+stringTypeEnum(ULongType this):				"Tango::DEV_ULONG64";
+stringTypeEnum(LongArrayType this):			"Tango::DEVVAR_LONG64ARRAY";
+stringTypeEnum(ULongArrayType this):		"Tango::DEVVAR_ULONG64ARRAY";
+stringTypeEnum(DevIntType this):			"Tango::DEV_INT";
+stringTypeEnum(EncodedType this):			"Tango::DEV_ENCODED";
+
+
+
+strShort(String s):
+	s.subString("Tango::".length, s.length);
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+#+======================================================================
+#
+# Project:      Tango Code Generator
+#
+# Description:  Pogo release notes
+#
+# $Author: verdier $
+#
+#-======================================================================
+
+Pogo-7.2.7 - 15/06/2011:
+	Problem in property dialog (description & default value) fixed.
+
+Pogo-7.2.6 - 19/05/2011:
+	Mandatory device property management added.
+	Change ToolTips management.
+
+Pogo-7.2.5 - 16/05/2011:
+	Litle bug in checkLinesToRemove() method fixed.
+	Problem with omniORB library release number in vc project files fixed.
+
+Pogo-7.2.4 - 02/05/2011:
+	Pb in headers when class name has changed fixed.
+
+Pogo-7.2.3 - 19/04/2011:
+	Associated attribute for READ_WITH_WRITE added.
+	Fixe a pb between Long and Long64.
+
+Pogo-7.2.2 - 15/04/2011:
+	Does not generate read_xxx() metod if xxx attribute is WRITE type.
+	Add a filter on Tango types for commands.
+
+Pogo-7.2.1 - 14/03/2011:
+	Tools to modified keys (for compatibility with PogoDsl changes) in xmi file added.
+	Exclude not generated files from vcX_proj dir for workflow.
+
+Pogo-7.2.0 - 16/02/2011:
+	Multi classes manager tool added.
+	Additional files added for Makefile and vc9 projects.
+	VC9 project templates improved.
+	Bug in multi lines attribute description fixed.
+
+Pogo-7.1.1 - 14/02/2011:
+	Does not generate Classfactory.cpp and main.cpp if clas is abstract.
+	Pb in commnads table fixed.
+
+Pogo-7.1.0 - 10/02/2011:
+	Class name change is now managed.
+	If a xmi file is in current directory, it is proposed to be loaded.
+
+Pogo-7.0.8 - 07/02/2011:
+	Pb in command factory (args description) fixed.
+	Fire DatReady event added on attribute.
+
+Pogo-7.0.7 - 01/02/2011:
+	VC9 project generation added.
+
+Pogo-7.0.6 - 27/01/2011:
+	The files and sub directories not scaned at workflow is now passed dynamicaly to the workflow.
+
+Pogo-7.0.5 - 26/01/2011:
+	Some files and sub directories are not scaned any more at workflow.
+
+Pogo-7.0.4 - 04/01/2011:
+	Pb with inherited class path for Pogo-6 convertion fixed.
+
+Pogo-7.0.3 - 20/12/2010:
+	Pb with DevVarLongArray and DevVarULongArray fixed.
+	Pb with special characters in comments fixed.
+
+Pogo-7.0.2 - 15/12/2010:
+	Pb on command polled (by default) fixed.
+
+Pogo-7.0.1 - 30/11/2010:
+	State/Status polling forbidden.
+
+Pogo-7.0.0 - 24/09/2010:
+	First release for Tango distribution.
