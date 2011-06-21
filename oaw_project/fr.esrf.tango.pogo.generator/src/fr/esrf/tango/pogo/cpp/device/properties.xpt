@@ -98,7 +98,11 @@ void «name»::check_mandatory_property(Tango::DbDatum &class_prop, Tango::DbDatum
 	if (class_prop.is_empty() && dev_prop.is_empty())
 	{
 		TangoSys_OMemStream	tms;
-		tms << endl <<"Property \'" << dev_prop.name << "\' is mandatory but not defined in database";
+		tms << endl <<"Property \'" << dev_prop.name;
+		if (Tango::Util::instance()->_UseDb==true)
+			tms << "\' is mandatory but not defined in database";
+		else
+			tms << "\' is mandatory but cannot be defined without database";
 		string	status(get_status());
 		status += tms.str();
 		set_status(status);
