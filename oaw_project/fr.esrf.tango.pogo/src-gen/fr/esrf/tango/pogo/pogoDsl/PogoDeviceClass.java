@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDeviceProperties <em>Device Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getCommands <em>Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicAttributes <em>Dynamic Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAdditionalFiles <em>Additional Files</em>}</li>
@@ -231,6 +232,22 @@ public interface PogoDeviceClass extends EObject
    * @generated
    */
   EList<Attribute> getAttributes();
+
+  /**
+   * Returns the value of the '<em><b>Dynamic Attributes</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.Attribute}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dynamic Attributes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dynamic Attributes</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_DynamicAttributes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Attribute> getDynamicAttributes();
 
   /**
    * Returns the value of the '<em><b>States</b></em>' containment reference list.

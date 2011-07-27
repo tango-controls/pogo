@@ -43,6 +43,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/deviceProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/commands"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/dynamicAttributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/states"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/preferences"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/additionalFiles"/>
@@ -59,7 +60,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasMandatoryProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractCommand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractAttribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasDynamicAttribute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/descriptionHtmlExists"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Inheritance">

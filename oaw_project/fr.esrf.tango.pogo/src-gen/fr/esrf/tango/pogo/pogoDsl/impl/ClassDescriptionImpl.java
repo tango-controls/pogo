@@ -45,7 +45,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasMandatoryProperty <em>Has Mandatory Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasAbstractAttribute <em>Has Abstract Attribute</em>}</li>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasDynamicAttribute <em>Has Dynamic Attribute</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getDescriptionHtmlExists <em>Description Html Exists</em>}</li>
  * </ul>
  * </p>
@@ -243,26 +242,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String hasAbstractAttribute = HAS_ABSTRACT_ATTRIBUTE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getHasDynamicAttribute() <em>Has Dynamic Attribute</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHasDynamicAttribute()
-   * @generated
-   * @ordered
-   */
-  protected static final String HAS_DYNAMIC_ATTRIBUTE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getHasDynamicAttribute() <em>Has Dynamic Attribute</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHasDynamicAttribute()
-   * @generated
-   * @ordered
-   */
-  protected String hasDynamicAttribute = HAS_DYNAMIC_ATTRIBUTE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getDescriptionHtmlExists() <em>Description Html Exists</em>}' attribute.
@@ -604,29 +583,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getHasDynamicAttribute()
-  {
-    return hasDynamicAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setHasDynamicAttribute(String newHasDynamicAttribute)
-  {
-    String oldHasDynamicAttribute = hasDynamicAttribute;
-    hasDynamicAttribute = newHasDynamicAttribute;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE, oldHasDynamicAttribute, hasDynamicAttribute));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getDescriptionHtmlExists()
   {
     return descriptionHtmlExists;
@@ -697,8 +653,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return getHasAbstractCommand();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE:
         return getHasAbstractAttribute();
-      case PogoDslPackage.CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE:
-        return getHasDynamicAttribute();
       case PogoDslPackage.CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS:
         return getDescriptionHtmlExists();
     }
@@ -750,9 +704,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE:
         setHasAbstractAttribute((String)newValue);
         return;
-      case PogoDslPackage.CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE:
-        setHasDynamicAttribute((String)newValue);
-        return;
       case PogoDslPackage.CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS:
         setDescriptionHtmlExists((String)newValue);
         return;
@@ -803,9 +754,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE:
         setHasAbstractAttribute(HAS_ABSTRACT_ATTRIBUTE_EDEFAULT);
         return;
-      case PogoDslPackage.CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE:
-        setHasDynamicAttribute(HAS_DYNAMIC_ATTRIBUTE_EDEFAULT);
-        return;
       case PogoDslPackage.CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS:
         setDescriptionHtmlExists(DESCRIPTION_HTML_EXISTS_EDEFAULT);
         return;
@@ -845,8 +793,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return HAS_ABSTRACT_COMMAND_EDEFAULT == null ? hasAbstractCommand != null : !HAS_ABSTRACT_COMMAND_EDEFAULT.equals(hasAbstractCommand);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE:
         return HAS_ABSTRACT_ATTRIBUTE_EDEFAULT == null ? hasAbstractAttribute != null : !HAS_ABSTRACT_ATTRIBUTE_EDEFAULT.equals(hasAbstractAttribute);
-      case PogoDslPackage.CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE:
-        return HAS_DYNAMIC_ATTRIBUTE_EDEFAULT == null ? hasDynamicAttribute != null : !HAS_DYNAMIC_ATTRIBUTE_EDEFAULT.equals(hasDynamicAttribute);
       case PogoDslPackage.CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS:
         return DESCRIPTION_HTML_EXISTS_EDEFAULT == null ? descriptionHtmlExists != null : !DESCRIPTION_HTML_EXISTS_EDEFAULT.equals(descriptionHtmlExists);
     }
@@ -880,8 +826,6 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
     result.append(hasAbstractCommand);
     result.append(", hasAbstractAttribute: ");
     result.append(hasAbstractAttribute);
-    result.append(", hasDynamicAttribute: ");
-    result.append(hasDynamicAttribute);
     result.append(", descriptionHtmlExists: ");
     result.append(descriptionHtmlExists);
     result.append(')');
