@@ -29,6 +29,7 @@ static const char *RcsId = "«cvsEscaped("Id:")»";
  */
 
 «description.comments.commandsTable»
+«EXPAND device::attributes::attributesTableComments»
 
 namespace «name»_ns
 {

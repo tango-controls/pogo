@@ -80,6 +80,8 @@ void «name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
 
 
 
+
+
 //	=========================================================
 //	Define the attribute_factory method
 //	=========================================================
@@ -100,6 +102,29 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	«IF att.status.concreteHere=="true"-»
 	//	Attribute : «att.name»
 	«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
+	«EXPAND manageAttributeProperties(att)»
+	att_list.push_back(«att.name.toLowerCase()»);
+	«ENDIF-»
+«ENDFOREACH»
+
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+	//	Create a list of static attributes
+	create_static_attribute_list(get_class_attr()->get_attr_list());
+
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"Class::attribute_factory_after",
+			"//	Add your own code")»
+«ENDIF-»
+}
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the set attribute properties part for attribute_factory
+//	=========================================================
+«DEFINE manageAttributeProperties(Attribute att) FOR PogoDeviceClass-»
 	Tango::UserDefaultAttrProp	«att.name.toLowerCase()»_prop;
 	«setAttributeProperty(att.name, "description",   att.properties.description.replaceAll("\n", "\\\\n"))»
 	«setAttributeProperty(att.name, "label",         att.properties.label)»
@@ -115,26 +140,13 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	«setAttributeProperty(att.name, "min_warning",   att.properties.minWarning)»
 	«setAttributeProperty(att.name, "delta_t",       att.properties.deltaTime)»
 	«setAttributeProperty(att.name, "delta_val",     att.properties.deltaValue)»
-	«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);
+	«IF att.isDynamic!="true"»«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);«ENDIF»
 	«IF att.polledPeriod.length>0 && att.polledPeriod != "0"»«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);«ELSE»//	Not Polled«ENDIF»
 	«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
 	«EXPAND manageMemorized(att)»
 	«setAttributeFireEvent(att.name, "change",     att.changeEvent)»
 	«setAttributeFireEvent(att.name, "archive",    att.archiveEvent)»
 	«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
-	att_list.push_back(«att.name.toLowerCase()»);
-	«ENDIF-»
-«ENDFOREACH»
-
-«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
-	//	Create a list of static attributes
-	create_static_attribute_list(get_class_attr()->get_attr_list());
-
-	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
-			"Class::attribute_factory_after",
-			"//	Add your own code")»
-«ENDIF-»
-}
 «ENDDEFINE»
 
 //	=========================================================

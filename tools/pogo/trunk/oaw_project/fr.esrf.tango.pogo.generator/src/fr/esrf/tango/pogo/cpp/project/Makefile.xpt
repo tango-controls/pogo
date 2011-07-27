@@ -133,7 +133,8 @@ include $(MAKE_ENV)/tango.opt
 SVC_OBJS =      \
             $(OBJDIR)/$(PACKAGE_NAME).o \
             $(OBJDIR)/$(PACKAGE_NAME)Class.o \
-            $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
+            $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \«IF dynamicAttributes.size>0»
+            $(OBJDIR)/$(PACKAGE_NAME)DynAttrUtils.o \«ENDIF»
             $(OBJDIR)/ClassFactory.o  \
             $(OBJDIR)/main.o \
             $(ADDITIONAL_OBJS) «EXPAND addInheritancObjectFiles»
