@@ -1,0 +1,55 @@
+//	=========================================================
+//	Define code for MyDevice.h file.
+//	=========================================================
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE headerFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode())»
+
+«FILE deviceHeaderFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID deviceHeaderFileName()»
+«EXPAND Common::fileHeader(deviceHeaderFileName(),
+	"Include for the "+ name + " class.")»
+
+#ifndef «headerConstantName()»
+#define «headerConstantName()»
+
+
+#include <tango.h>
+«IF description.hasInheritanceClass()==true-»
+#include <«description.getInheritance().classname».h>
+«ENDIF»
+«ENDPROTECT»
+
+
+/**
+ *	«name» class Description:
+ *	«description.description.comments(" *	")»
+ */
+
+namespace «name»_ns
+{
+«EXPAND Common::ProtectedArea("Additional Class Declarations",
+		"	//		Additional Class Declarations")»
+
+class «name» : «superClassName(description.getInheritance())»
+{
+«EXPAND device::dataMembers::headerFile»
+
+«EXPAND device::prototypes::headerFile»
+
+«EXPAND Common::ProtectedArea("Additional Method prototypes",
+	"//	Additional Method prototypes")»
+};
+
+«EXPAND Common::ProtectedArea("Additional Classes Definitions",
+	"//	Additional Classes definitions")»
+} //	namespace
+
+#endif	//	«headerConstantName()»
+«ENDFILE»
+
+«ENDIF»
+«ENDDEFINE»

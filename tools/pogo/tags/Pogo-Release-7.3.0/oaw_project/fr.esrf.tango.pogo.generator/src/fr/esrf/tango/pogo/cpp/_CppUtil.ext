@@ -1,0 +1,268 @@
+import pogoDsl;
+
+
+cvsEscaped( String s ): "$" + s + "  $";
+
+dataMemberName(String this):	//	Convert name to data member name (first char to lower case
+	subString(0,1).toLowerCase()+subString(1, length);
+
+comments(String this, String tag):	//	Comment a String with more than one line
+	replaceAll("\n", "\n"+tag);
+
+inVector(String this, String vectName):	//	Comment a String with more than one line
+	replaceAll("\n", "\");\n	"+vectName+".push_back(\"");
+
+inOneLine(String this):
+	replaceAll("\n", "\\\\n");
+
+onlyOneLine(String this):
+	replaceAll("\n", "  ");	//	It seems that  \\n does not work !!
+
+concatString(String s1, String s2):
+	s1 + s2;
+
+// Attribute utilities
+attTypeDimentions(Attribute this):
+	attType == "Spectrum"
+	? " max = "+maxX
+	:	(attType == "Image"
+		?	" max = "+maxX+" x "+maxY
+		: null);
+	
+attConstructorSize(Attribute this):	//	attribute constructor (scalar, spectrum, image)
+	attType == "Spectrum"
+	? ", "+maxX
+	:	(attType == "Image"
+		?	", "+maxX+", "+maxY
+		: "");
+	
+SetAttValueSize(Attribute this):	//	attribute set value (scalar, spectrum, image)
+	attType == "Spectrum"
+	? ", "+maxX
+	:	(attType == "Image"
+		?	", "+maxX+", "+maxY
+		: "");
+		
+attAllocSize(Attribute this):	//	attribute allocation
+	attType == "Spectrum"
+	? maxX
+	:	(attType == "Image"
+		?	maxX+" * "+maxY
+		: 1);
+
+setAttributeProperty(String att_name, String field, String value):		//	Code to set the attribute property
+	value.length > 0
+	?	att_name.toLowerCase()+"_prop.set_"+field+"(\""+value+"\");"
+	:	"//	"+field+"	not set for	"+att_name; 
+
+setAttributeFireEvent(String att_name, String evtType, FireEvents fe):
+	fe.fire == "true"
+		?	att_name.toLowerCase()+"->set_"+evtType+"_event("+fe.fire+", "+fe.libCheckCriteria+");"
+		:	"//	"+att_name+" does not fire "+evtType+" event";
+
+setAttributeFireDataReadyEvent(String att_name, FireEvents fe):	//	Special case (one arg)
+	fe.fire == "true"
+		?	att_name.toLowerCase()+"->set_data_ready_event("+fe.fire+");"
+		:	"//	"+att_name+" does not fire data_ready event";
+
+writeAttrValueDeclaration(Attribute att):
+	att.dataType.cppType().toString()!="Tango::DevString"
+	?	att.dataType.cppType().toString()
+	:	"Tango::ConstDevString";
+
+
+protectedID(PogoDeviceClass this, Attribute att, String str):
+	name + "::"+str+"_"+att.name;
+
+stateAllowedMethod( Attribute this ):
+	name+"StateAllowed";
+
+cppExcludeStatesClose(Attribute this):
+	readExcludedStates.size == 0
+	?	null
+	: "return false;\n\t}"; 
+
+
+//	Command utilities
+protectedID(PogoDeviceClass this, Command cmd):
+	name + "::"+cmd.execMethod;
+
+argoutDescription(Command this):
+	argout.description == ""
+	? "none"
+	: argout.description;
+
+//	dserverClass.cpp command execute method
+executeCmdExtract(Command this):
+	argin.type.cppType()=="void"
+	? null
+	:	(argin.type.cppType().toString().endsWith("Array")
+		?	"const " + argin.type.cppType().toString()+
+				"	*argin;\n	extract(in_any, argin);"
+		:	argin.type.cppType().toString()+
+				"	argin;\n	extract(in_any, argin);");
+
+//	dserverClass.cpp command execute method
+executeCmdInsert(PogoDeviceClass this, Command cmd):
+	//	Depends on if argout and/or argin type is void
+	cmd.argin.type.cppType()=="void" && cmd.argout.type.cppType()=="void"
+	? "((static_cast<"+this.name+" *>(device))->"+cmd.execMethod+"());"
+		+"\n	return new CORBA::Any();"
+
+	: (cmd.argin.type.cppType()!="void" && cmd.argout.type.cppType()=="void"
+		?	"((static_cast<"+this.name+" *>(device))->"+cmd.execMethod+"(argin));"+
+			"\n	return new CORBA::Any();"
+
+		: (cmd.argin.type.cppType()=="void" && cmd.argout.type.cppType()!="void"
+			?	"return insert((static_cast<"+this.name+" *>(device))->"+cmd.execMethod+"());"
+			://	cmd.argin.type.cppType()!="void" && cmd.argout.type.cppType()!="void"
+			"return insert((static_cast<"+this.name+" *>(device))->"+cmd.execMethod+"(argin));"));
+
+
+declareArgumentWithPointer(Argument this):
+	//	Check if pointer needed
+	type.cppType().toString().endsWith("Array")
+	?	type.cppType().toString() + " *"
+	:	type.cppType().toString() + " ";
+
+
+declareCmdArgin(Command this):
+	argin.type.cppType()=="void"
+	?	null
+	:	(argin.type.cppType().toString().endsWith("Array")
+		?	"const " + argin.type.cppType().toString()+" *argin"
+		:	argin.type.cppType().toString()+" argin");
+
+cppSetPollingPeriod(Command this):
+	polledPeriod ==null
+	? null
+	: "p"+name+"Cmd->set_polling_period("+polledPeriod+");\n\t";
+
+cppDisplayLevel(Command this):
+		displayLevel==null
+		?	"Tango::OPERATOR"
+		:	"Tango::"+displayLevel;
+
+
+stateAllowedMethod( Command this ):
+	name+"StateAllowed";
+
+
+cppExculudeStatesClose(Command this):
+	excludedStates.size == 0
+	?	null
+	: "return false;\n\t}"; 
+
+//
+//	Inheritance util (return true if not the TangoDeviceImpl)
+//
+isInheritanceClass(Inheritance inher):
+	(inher.classname==null || inher.classname.length==0)
+	? false
+	: ((inher.classname.startsWith("Device_")==true && inher.classname.endsWith("Impl")==true)
+		? false
+		: true);
+
+//
+//	Inheritance util (return true at least the first one is not the TangoDeviceImpl)
+//
+hasInheritanceClass(ClassDescription this):
+	inheritances.size>0 && isInheritanceClass(inheritances.get(inheritances.size-1))
+	? true
+	: false;
+//
+//	Makefile util
+makeVariable( Inheritance inher, String s ): 
+	inher.classname.toUpperCase() + s;
+//
+//	Makefile util
+makeVariable( OneClassSimpleDef _class, String s ): 
+	_class.classname.toUpperCase() + s;
+
+
+
+
+
+
+//	Property Type utilities
+cppPropType(PropType this):			null;
+cppPropType(BooleanType this):		"Tango::DevBoolean";
+cppPropType(ShortType this):		"Tango::DevShort";
+cppPropType(IntType this):			"Tango::DevLong";
+cppPropType(UShortType this):		"Tango::DevUShort";
+cppPropType(UIntType this):			"Tango::DevULong";
+cppPropType(FloatType this):		"Tango::DevFloat";
+cppPropType(DoubleType this):		"Tango::DevDouble";
+cppPropType(StringType this):		"string";
+
+cppPropType(ShortVectorType this):	"vector<Tango::DevShort>";
+cppPropType(IntVectorType this):	"vector<Tango::DevLong>";
+cppPropType(FloatVectorType this):	"vector<Tango::DevFloat>";
+cppPropType(DoubleVectorType this):	"vector<Tango::DevDouble>";
+cppPropType(StringVectorType this):	"vector<string>";
+
+
+//	Type utilities
+cppType(Type this):					null;
+cppType(VoidType this):				"void";
+cppType(BooleanType this):			"Tango::DevBoolean";
+cppType(ShortType this):			"Tango::DevShort";
+cppType(IntType this):				"Tango::DevLong";
+cppType(FloatType this):			"Tango::DevFloat";
+cppType(DoubleType this):			"Tango::DevDouble";
+cppType(UShortType this):			"Tango::DevUShort";
+cppType(UIntType this):				"Tango::DevULong";
+cppType(StringType this):			"Tango::DevString";
+cppType(CharArrayType this):		"Tango::DevVarCharArray";
+cppType(ShortArrayType this):		"Tango::DevVarShortArray";
+cppType(IntArrayType this):			"Tango::DevVarLongArray";
+cppType(FloatArrayType this):		"Tango::DevVarFloatArray";
+cppType(DoubleArrayType this):		"Tango::DevVarDoubleArray";
+cppType(UShortArrayType this):		"Tango::DevVarUShortArray";
+cppType(UIntArrayType this):		"Tango::DevVarULongArray";
+cppType(StringArrayType this):		"Tango::DevVarStringArray";
+cppType(LongStringArrayType this):	"Tango::DevVarLongStringArray";
+cppType(DoubleStringArrayType this):"Tango::DevVarDoubleStringArray";
+cppType(StateType this):			"Tango::DevState";
+cppType(ConstStringType this):		"Tango::ConstDevString";
+cppType(BooleanArrayType this):		"Tango::DevVarBooleanArray";
+cppType(UCharType this):			"Tango::DevUChar";
+cppType(LongType this):				"Tango::DevLong64";
+cppType(ULongType this):			"Tango::DevULong64";
+cppType(LongArrayType this):		"Tango::DevVarLong64Array";
+cppType(ULongArrayType this):		"Tango::DevVarULong64Array";
+cppType(DevIntType this):			"Tango::DevInt";
+cppType(EncodedType this):			"Tango::DevEncoded";
+
+	
+//	Type enum
+cppTypeEnum(Type this):					null;
+cppTypeEnum(VoidType this):				"Tango::DEV_VOID";
+cppTypeEnum(BooleanType this):			"Tango::DEV_BOOLEAN";
+cppTypeEnum(ShortType this):			"Tango::DEV_SHORT";
+cppTypeEnum(IntType this):				"Tango::DEV_LONG";
+cppTypeEnum(FloatType this):			"Tango::DEV_FLOAT";
+cppTypeEnum(DoubleType this):			"Tango::DEV_DOUBLE";
+cppTypeEnum(UShortType this):			"Tango::DEV_USHORT";
+cppTypeEnum(UIntType this):				"Tango::DEV_ULONG";
+cppTypeEnum(StringType this):			"Tango::DEV_STRING";
+cppTypeEnum(CharArrayType this):		"Tango::DEVVAR_CHARARRAY";
+cppTypeEnum(ShortArrayType this):		"Tango::DEVVAR_SHORTARRAY";
+cppTypeEnum(IntArrayType this):			"Tango::DEVVAR_LONGARRAY";
+cppTypeEnum(FloatArrayType this):		"Tango::DEVVAR_FLOATARRAY";
+cppTypeEnum(DoubleArrayType this):		"Tango::DEVVAR_DOUBLEARRAY";
+cppTypeEnum(UShortArrayType this):		"Tango::DEVVAR_USHORTARRAY";
+cppTypeEnum(UIntArrayType this):		"Tango::DEVVAR_ULONGARRAY";
+cppTypeEnum(StringArrayType this):		"Tango::DEVVAR_STRINGARRAY";
+cppTypeEnum(LongStringArrayType this):	"Tango::DEVVAR_LONGSTRINGARRAY";
+cppTypeEnum(DoubleStringArrayType this):"Tango::DEVVAR_DOUBLESTRINGARRAY";
+cppTypeEnum(StateType this):			"Tango::DEV_STATE";
+cppTypeEnum(ConstStringType this):		"Tango::CONST_DEV_STRING";
+cppTypeEnum(BooleanArrayType this):		"Tango::DEVVAR_BOOLEANARRAY";
+cppTypeEnum(UCharType this):			"Tango::DEV_UCHAR";
+cppTypeEnum(LongType this):				"Tango::DEV_LONG64";
+cppTypeEnum(ULongType this):			"Tango::DEV_ULONG64";
+cppTypeEnum(LongArrayType this):		"Tango::DEVVAR_LONG64ARRAY";
+cppTypeEnum(ULongArrayType this):		"Tango::DEVVAR_ULONG64ARRAY";
+cppTypeEnum(DevIntType this):			"Tango::DEV_INT";
+cppTypeEnum(EncodedType this):			"Tango::DEV_ENCODED";
