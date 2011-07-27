@@ -339,23 +339,26 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final Keyword cAttributesKeyword_14 = (Keyword)cGroup.eContents().get(14);
 		private final Assignment cAttributesAssignment_15 = (Assignment)cGroup.eContents().get(15);
 		private final RuleCall cAttributesAttributeParserRuleCall_15_0 = (RuleCall)cAttributesAssignment_15.eContents().get(0);
-		private final Keyword cStatesKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Assignment cStatesAssignment_17 = (Assignment)cGroup.eContents().get(17);
-		private final RuleCall cStatesStateParserRuleCall_17_0 = (RuleCall)cStatesAssignment_17.eContents().get(0);
-		private final Assignment cPreferencesAssignment_18 = (Assignment)cGroup.eContents().get(18);
-		private final RuleCall cPreferencesPreferencesParserRuleCall_18_0 = (RuleCall)cPreferencesAssignment_18.eContents().get(0);
-		private final Keyword cAdditionalFilesKeyword_19 = (Keyword)cGroup.eContents().get(19);
-		private final Assignment cAdditionalFilesAssignment_20 = (Assignment)cGroup.eContents().get(20);
-		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_20_0 = (RuleCall)cAdditionalFilesAssignment_20.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_21 = (Keyword)cGroup.eContents().get(21);
+		private final Keyword cDynamicAttributesKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Assignment cDynamicAttributesAssignment_17 = (Assignment)cGroup.eContents().get(17);
+		private final RuleCall cDynamicAttributesAttributeParserRuleCall_17_0 = (RuleCall)cDynamicAttributesAssignment_17.eContents().get(0);
+		private final Keyword cStatesKeyword_18 = (Keyword)cGroup.eContents().get(18);
+		private final Assignment cStatesAssignment_19 = (Assignment)cGroup.eContents().get(19);
+		private final RuleCall cStatesStateParserRuleCall_19_0 = (RuleCall)cStatesAssignment_19.eContents().get(0);
+		private final Assignment cPreferencesAssignment_20 = (Assignment)cGroup.eContents().get(20);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_20_0 = (RuleCall)cPreferencesAssignment_20.eContents().get(0);
+		private final Keyword cAdditionalFilesKeyword_21 = (Keyword)cGroup.eContents().get(21);
+		private final Assignment cAdditionalFilesAssignment_22 = (Assignment)cGroup.eContents().get(22);
+		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_22_0 = (RuleCall)cAdditionalFilesAssignment_22.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_23 = (Keyword)cGroup.eContents().get(23);
 		
 		//PogoDeviceClass:
 		//  "deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass]
 		//  )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 		//  classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
-		//  "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-		//  +=State* preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile
-		//  * "}"; 
+		//  "commands:" commands+=Command* "attributes:" attributes+=Attribute*
+		//  "dynamicAttributes:" dynamicAttributes+=Attribute* "states:" states+=State*
+		//  preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile* "}"; 
 		//
 		////==============================================
 		////	Class definition
@@ -377,7 +380,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//										 //	Device command list
 		//			 
 		//
-		//									 //	Device attribute list
+		//									 //	Device static attribute list
+		//			 
+		//
+		//							 //	Device dynamic attribute list
 		//			 
 		//
 		//										 //	Device state list
@@ -397,9 +403,9 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass]
 		//)? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 		//classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
-		//"commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-		//+=State* preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile
-		// * "}" 
+		//"commands:" commands+=Command* "attributes:" attributes+=Attribute*
+		//"dynamicAttributes:" dynamicAttributes+=Attribute* "states:" states+=State*
+		//preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile* "}" 
 		//	        
 		//	
 		//		    							 //	For future specific features 
@@ -416,7 +422,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//										 //	Device command list
 		//			 
 		//
-		//									 //	Device attribute list
+		//									 //	Device static attribute list
+		//			 
+		//
+		//							 //	Device dynamic attribute list
 		//			 
 		//
 		//										 //	Device state list
@@ -514,7 +523,7 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 
 		//"attributes:" 
 		//
-		//									 //	Device attribute list
+		//									 //	Device static attribute list
 		public Keyword getAttributesKeyword_14() { return cAttributesKeyword_14; }
 
 		//attributes+=Attribute*
@@ -523,36 +532,47 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//Attribute
 		public RuleCall getAttributesAttributeParserRuleCall_15_0() { return cAttributesAttributeParserRuleCall_15_0; }
 
+		//"dynamicAttributes:" 
+		//
+		//							 //	Device dynamic attribute list
+		public Keyword getDynamicAttributesKeyword_16() { return cDynamicAttributesKeyword_16; }
+
+		//dynamicAttributes+=Attribute*
+		public Assignment getDynamicAttributesAssignment_17() { return cDynamicAttributesAssignment_17; }
+
+		//Attribute
+		public RuleCall getDynamicAttributesAttributeParserRuleCall_17_0() { return cDynamicAttributesAttributeParserRuleCall_17_0; }
+
 		//"states:" 
 		//
 		//										 //	Device state list
-		public Keyword getStatesKeyword_16() { return cStatesKeyword_16; }
+		public Keyword getStatesKeyword_18() { return cStatesKeyword_18; }
 
 		//states+=State*
-		public Assignment getStatesAssignment_17() { return cStatesAssignment_17; }
+		public Assignment getStatesAssignment_19() { return cStatesAssignment_19; }
 
 		//State
-		public RuleCall getStatesStateParserRuleCall_17_0() { return cStatesStateParserRuleCall_17_0; }
+		public RuleCall getStatesStateParserRuleCall_19_0() { return cStatesStateParserRuleCall_19_0; }
 
 		//preferences=Preferences 
 		//		
 		//		    				 //	Preferences (for programer, for site or at run time)
-		public Assignment getPreferencesAssignment_18() { return cPreferencesAssignment_18; }
+		public Assignment getPreferencesAssignment_20() { return cPreferencesAssignment_20; }
 
 		//Preferences   				 //	Preferences (for programer, for site or at run time)
-		public RuleCall getPreferencesPreferencesParserRuleCall_18_0() { return cPreferencesPreferencesParserRuleCall_18_0; }
+		public RuleCall getPreferencesPreferencesParserRuleCall_20_0() { return cPreferencesPreferencesParserRuleCall_20_0; }
 
 		//"additionalFiles:" 				 //	Preferences (for programer, for site or at run time)
-		public Keyword getAdditionalFilesKeyword_19() { return cAdditionalFilesKeyword_19; }
+		public Keyword getAdditionalFilesKeyword_21() { return cAdditionalFilesKeyword_21; }
 
 		//additionalFiles+=AdditionalFile*
-		public Assignment getAdditionalFilesAssignment_20() { return cAdditionalFilesAssignment_20; }
+		public Assignment getAdditionalFilesAssignment_22() { return cAdditionalFilesAssignment_22; }
 
 		//AdditionalFile
-		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_20_0() { return cAdditionalFilesAdditionalFileParserRuleCall_20_0; }
+		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_22_0() { return cAdditionalFilesAdditionalFileParserRuleCall_22_0; }
 
 		//"}" 	 //	Programmer's additional files to be added in Makefile (utils, threads,...)
-		public Keyword getRightCurlyBracketKeyword_21() { return cRightCurlyBracketKeyword_21; }
+		public Keyword getRightCurlyBracketKeyword_23() { return cRightCurlyBracketKeyword_23; }
 	}
 
 	public class LanguageElements implements IParserRuleAccess {
@@ -717,17 +737,15 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		private final RuleCall cHasAbstractCommandBooleanParserRuleCall_10_0 = (RuleCall)cHasAbstractCommandAssignment_10.eContents().get(0);
 		private final Assignment cHasAbstractAttributeAssignment_11 = (Assignment)cGroup.eContents().get(11);
 		private final RuleCall cHasAbstractAttributeBooleanParserRuleCall_11_0 = (RuleCall)cHasAbstractAttributeAssignment_11.eContents().get(0);
-		private final Assignment cHasDynamicAttributeAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cHasDynamicAttributeBooleanParserRuleCall_12_0 = (RuleCall)cHasDynamicAttributeAssignment_12.eContents().get(0);
-		private final Assignment cDescriptionHtmlExistsAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cDescriptionHtmlExistsBooleanParserRuleCall_13_0 = (RuleCall)cDescriptionHtmlExistsAssignment_13.eContents().get(0);
+		private final Assignment cDescriptionHtmlExistsAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cDescriptionHtmlExistsBooleanParserRuleCall_12_0 = (RuleCall)cDescriptionHtmlExistsAssignment_12.eContents().get(0);
 		
 		//ClassDescription:
 		//  description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
 		//  Inheritance language=Language filestogenerate=STRING identification=
 		//  ClassIdentification comments=Comments hasMandatoryProperty=Boolean
-		//  hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
-		//  Boolean descriptionHtmlExists=Boolean; 
+		//  hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists=
+		//  Boolean; 
 		//
 		//
 		////
@@ -746,7 +764,6 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//	     
 		//	       
 		//	     
-		//	      
 		//	    	 //	File from pogo-6
 		//
 		//	
@@ -758,8 +775,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
 		//Inheritance language=Language filestogenerate=STRING identification=
 		//ClassIdentification comments=Comments hasMandatoryProperty=Boolean
-		//hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
-		//Boolean descriptionHtmlExists=Boolean 
+		//hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists=
+		//Boolean 
 		//	       	 //	Class description
 		//	              	 //	Short description
 		//	         	 //	Files location
@@ -772,7 +789,6 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//	     
 		//	       
 		//	     
-		//	      
 		//	    	 //	File from pogo-6
 		public Group getGroup() { return cGroup; }
 
@@ -850,18 +866,12 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 		//Boolean
 		public RuleCall getHasAbstractAttributeBooleanParserRuleCall_11_0() { return cHasAbstractAttributeBooleanParserRuleCall_11_0; }
 
-		//hasDynamicAttribute=Boolean
-		public Assignment getHasDynamicAttributeAssignment_12() { return cHasDynamicAttributeAssignment_12; }
-
-		//Boolean
-		public RuleCall getHasDynamicAttributeBooleanParserRuleCall_12_0() { return cHasDynamicAttributeBooleanParserRuleCall_12_0; }
-
 		//descriptionHtmlExists=Boolean 
 		//	    	 //	File from pogo-6
-		public Assignment getDescriptionHtmlExistsAssignment_13() { return cDescriptionHtmlExistsAssignment_13; }
+		public Assignment getDescriptionHtmlExistsAssignment_12() { return cDescriptionHtmlExistsAssignment_12; }
 
 		//Boolean   	 //	File from pogo-6
-		public RuleCall getDescriptionHtmlExistsBooleanParserRuleCall_13_0() { return cDescriptionHtmlExistsBooleanParserRuleCall_13_0; }
+		public RuleCall getDescriptionHtmlExistsBooleanParserRuleCall_12_0() { return cDescriptionHtmlExistsBooleanParserRuleCall_12_0; }
 	}
 
 	public class InheritanceElements implements IParserRuleAccess {
@@ -3017,9 +3027,9 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//  "deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass]
 	//  )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 	//  classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
-	//  "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-	//  +=State* preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile
-	//  * "}"; 
+	//  "commands:" commands+=Command* "attributes:" attributes+=Attribute*
+	//  "dynamicAttributes:" dynamicAttributes+=Attribute* "states:" states+=State*
+	//  preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile* "}"; 
 	//
 	////==============================================
 	////	Class definition
@@ -3041,7 +3051,10 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//										 //	Device command list
 	//			 
 	//
-	//									 //	Device attribute list
+	//									 //	Device static attribute list
+	//			 
+	//
+	//							 //	Device dynamic attribute list
 	//			 
 	//
 	//										 //	Device state list
@@ -3128,8 +3141,8 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//  description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
 	//  Inheritance language=Language filestogenerate=STRING identification=
 	//  ClassIdentification comments=Comments hasMandatoryProperty=Boolean
-	//  hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
-	//  Boolean descriptionHtmlExists=Boolean; 
+	//  hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists=
+	//  Boolean; 
 	//
 	//
 	////
@@ -3148,7 +3161,6 @@ public class PogoDslGrammarAccess implements IGrammarAccess {
 	//	     
 	//	       
 	//	     
-	//	      
 	//	    	 //	File from pogo-6
 	//
 	//	

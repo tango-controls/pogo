@@ -138,6 +138,10 @@
         <tokens xsi:type="xtext:Assignment" cardinality="*" feature="attributes" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
         </tokens>
+        <tokens xsi:type="xtext:Keyword" value="dynamicAttributes:"/>
+        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="dynamicAttributes" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+        </tokens>
         <tokens xsi:type="xtext:Keyword" value="states:"/>
         <tokens xsi:type="xtext:Assignment" cardinality="*" feature="states" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
@@ -238,9 +242,6 @@
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="hasAbstractAttribute" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="hasDynamicAttribute" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="descriptionHtmlExists" operator="=">

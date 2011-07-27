@@ -61,8 +61,11 @@ PogoDeviceClass:
 		"commands:"								//	Device command list
 			(commands+=Command)*
 
-		"attributes:"							//	Device attribute list
+		"attributes:"							//	Device static attribute list
 			(attributes+=Attribute)*
+
+		"dynamicAttributes:"					//	Device dynamic attribute list
+			(dynamicAttributes+=Attribute)*
 
 		"states:"								//	Device state list
 			(states+=State)*
@@ -99,7 +102,6 @@ ClassDescription:
 	hasMandatoryProperty  = Boolean
 	hasAbstractCommand    = Boolean
 	hasAbstractAttribute  = Boolean
-	hasDynamicAttribute   = Boolean
 	descriptionHtmlExists = Boolean	//	File from pogo-6
 ;
 	
@@ -223,8 +225,8 @@ Attribute:
 	status           = InheritanceStatus
 	properties       = AttrProperties
 	allocReadMember  = Boolean
-	isDynamic        = Boolean
-	
+	isDynamic        = Boolean	
+
 	"readExcludedStates:"
 		(readExcludedStates+=STRING)*
 	"writeExcludedStates:"

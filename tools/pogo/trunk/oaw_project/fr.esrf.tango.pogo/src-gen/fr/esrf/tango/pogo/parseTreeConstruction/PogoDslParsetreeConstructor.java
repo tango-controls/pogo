@@ -1084,9 +1084,9 @@ protected class OneClassSimpleDef_AdditionalFilesAssignment_8 extends Assignment
  *   "deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass]
  *   )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
  *   classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
- *   "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
- *   +=State* preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile
- *   * "}"; 
+ *   "commands:" commands+=Command* "attributes:" attributes+=Attribute*
+ *   "dynamicAttributes:" dynamicAttributes+=Attribute* "states:" states+=State*
+ *   preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile* "}"; 
  * 
  * //==============================================
  * //	Class definition
@@ -1108,7 +1108,10 @@ protected class OneClassSimpleDef_AdditionalFilesAssignment_8 extends Assignment
  * 										 //	Device command list
  * 			 
  * 
- * 									 //	Device attribute list
+ * 									 //	Device static attribute list
+ * 			 
+ * 
+ * 							 //	Device dynamic attribute list
  * 			 
  * 
  * 										 //	Device state list
@@ -1129,9 +1132,9 @@ protected class OneClassSimpleDef_AdditionalFilesAssignment_8 extends Assignment
 // "deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass]
 // )? "{" institute=ID "description:" description=ClassDescription "classProperties:"
 // classProperties+=Property* "deviceProperties:" deviceProperties+=Property*
-// "commands:" commands+=Command* "attributes:" attributes+=Attribute* "states:" states
-// +=State* preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile
-// * "}" 
+// "commands:" commands+=Command* "attributes:" attributes+=Attribute*
+// "dynamicAttributes:" dynamicAttributes+=Attribute* "states:" states+=State*
+// preferences=Preferences "additionalFiles:" additionalFiles+=AdditionalFile* "}" 
 // 	        
 // 	
 // 		    							 //	For future specific features 
@@ -1148,7 +1151,10 @@ protected class OneClassSimpleDef_AdditionalFilesAssignment_8 extends Assignment
 // 										 //	Device command list
 // 			 
 // 
-// 									 //	Device attribute list
+// 									 //	Device static attribute list
+// 			 
+// 
+// 							 //	Device dynamic attribute list
 // 			 
 // 
 // 										 //	Device state list
@@ -1170,7 +1176,7 @@ protected class PogoDeviceClass_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new PogoDeviceClass_RightCurlyBracketKeyword_21(parent, this, 0, inst);
+			case 0: return new PogoDeviceClass_RightCurlyBracketKeyword_23(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1655,7 +1661,7 @@ protected class PogoDeviceClass_CommandsAssignment_13 extends AssignmentToken  {
 
 // "attributes:" 
 // 
-// 									 //	Device attribute list
+// 									 //	Device static attribute list
 protected class PogoDeviceClass_AttributesKeyword_14 extends KeywordToken  {
 	
 	public PogoDeviceClass_AttributesKeyword_14(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1719,17 +1725,17 @@ protected class PogoDeviceClass_AttributesAssignment_15 extends AssignmentToken 
 	}	
 }
 
-// "states:" 
+// "dynamicAttributes:" 
 // 
-// 										 //	Device state list
-protected class PogoDeviceClass_StatesKeyword_16 extends KeywordToken  {
+// 							 //	Device dynamic attribute list
+protected class PogoDeviceClass_DynamicAttributesKeyword_16 extends KeywordToken  {
 	
-	public PogoDeviceClass_StatesKeyword_16(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public PogoDeviceClass_DynamicAttributesKeyword_16(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_16();
+		return grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesKeyword_16();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1742,15 +1748,81 @@ protected class PogoDeviceClass_StatesKeyword_16 extends KeywordToken  {
 		
 }
 
-// states+=State*
-protected class PogoDeviceClass_StatesAssignment_17 extends AssignmentToken  {
+// dynamicAttributes+=Attribute*
+protected class PogoDeviceClass_DynamicAttributesAssignment_17 extends AssignmentToken  {
 	
-	public PogoDeviceClass_StatesAssignment_17(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public PogoDeviceClass_DynamicAttributesAssignment_17(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_17();
+		return grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAssignment_17();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Attribute_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("dynamicAttributes",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("dynamicAttributes");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getAttributeRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAttributeParserRuleCall_17_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new PogoDeviceClass_DynamicAttributesAssignment_17(parent, next, actIndex, consumed);
+			case 1: return new PogoDeviceClass_DynamicAttributesKeyword_16(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "states:" 
+// 
+// 										 //	Device state list
+protected class PogoDeviceClass_StatesKeyword_18 extends KeywordToken  {
+	
+	public PogoDeviceClass_StatesKeyword_18(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_18();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new PogoDeviceClass_DynamicAttributesAssignment_17(parent, this, 0, inst);
+			case 1: return new PogoDeviceClass_DynamicAttributesKeyword_16(parent, this, 1, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// states+=State*
+protected class PogoDeviceClass_StatesAssignment_19 extends AssignmentToken  {
+	
+	public PogoDeviceClass_StatesAssignment_19(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_19();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1767,7 +1839,7 @@ protected class PogoDeviceClass_StatesAssignment_17 extends AssignmentToken  {
 			IInstanceDescription param = getDescr((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getStateRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_17_0(); 
+				element = grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_19_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1778,8 +1850,8 @@ protected class PogoDeviceClass_StatesAssignment_17 extends AssignmentToken  {
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new PogoDeviceClass_StatesAssignment_17(parent, next, actIndex, consumed);
-			case 1: return new PogoDeviceClass_StatesKeyword_16(parent, next, actIndex, consumed);
+			case 0: return new PogoDeviceClass_StatesAssignment_19(parent, next, actIndex, consumed);
+			case 1: return new PogoDeviceClass_StatesKeyword_18(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -1788,14 +1860,14 @@ protected class PogoDeviceClass_StatesAssignment_17 extends AssignmentToken  {
 // preferences=Preferences 
 // 		
 // 		    				 //	Preferences (for programer, for site or at run time)
-protected class PogoDeviceClass_PreferencesAssignment_18 extends AssignmentToken  {
+protected class PogoDeviceClass_PreferencesAssignment_20 extends AssignmentToken  {
 	
-	public PogoDeviceClass_PreferencesAssignment_18(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public PogoDeviceClass_PreferencesAssignment_20(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_18();
+		return grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_20();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1812,7 +1884,7 @@ protected class PogoDeviceClass_PreferencesAssignment_18 extends AssignmentToken
 			IInstanceDescription param = getDescr((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getPreferencesRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_18_0(); 
+				element = grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_20_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1823,27 +1895,27 @@ protected class PogoDeviceClass_PreferencesAssignment_18 extends AssignmentToken
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new PogoDeviceClass_StatesAssignment_17(parent, next, actIndex, consumed);
-			case 1: return new PogoDeviceClass_StatesKeyword_16(parent, next, actIndex, consumed);
+			case 0: return new PogoDeviceClass_StatesAssignment_19(parent, next, actIndex, consumed);
+			case 1: return new PogoDeviceClass_StatesKeyword_18(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // "additionalFiles:" 				 //	Preferences (for programer, for site or at run time)
-protected class PogoDeviceClass_AdditionalFilesKeyword_19 extends KeywordToken  {
+protected class PogoDeviceClass_AdditionalFilesKeyword_21 extends KeywordToken  {
 	
-	public PogoDeviceClass_AdditionalFilesKeyword_19(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public PogoDeviceClass_AdditionalFilesKeyword_21(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_19();
+		return grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_21();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new PogoDeviceClass_PreferencesAssignment_18(parent, this, 0, inst);
+			case 0: return new PogoDeviceClass_PreferencesAssignment_20(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1851,14 +1923,14 @@ protected class PogoDeviceClass_AdditionalFilesKeyword_19 extends KeywordToken  
 }
 
 // additionalFiles+=AdditionalFile*
-protected class PogoDeviceClass_AdditionalFilesAssignment_20 extends AssignmentToken  {
+protected class PogoDeviceClass_AdditionalFilesAssignment_22 extends AssignmentToken  {
 	
-	public PogoDeviceClass_AdditionalFilesAssignment_20(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public PogoDeviceClass_AdditionalFilesAssignment_22(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_20();
+		return grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_22();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1875,7 +1947,7 @@ protected class PogoDeviceClass_AdditionalFilesAssignment_20 extends AssignmentT
 			IInstanceDescription param = getDescr((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getAdditionalFileRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_20_0(); 
+				element = grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_22_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1886,28 +1958,28 @@ protected class PogoDeviceClass_AdditionalFilesAssignment_20 extends AssignmentT
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new PogoDeviceClass_AdditionalFilesAssignment_20(parent, next, actIndex, consumed);
-			case 1: return new PogoDeviceClass_AdditionalFilesKeyword_19(parent, next, actIndex, consumed);
+			case 0: return new PogoDeviceClass_AdditionalFilesAssignment_22(parent, next, actIndex, consumed);
+			case 1: return new PogoDeviceClass_AdditionalFilesKeyword_21(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // "}" 	 //	Programmer's additional files to be added in Makefile (utils, threads,...)
-protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken  {
+protected class PogoDeviceClass_RightCurlyBracketKeyword_23 extends KeywordToken  {
 	
-	public PogoDeviceClass_RightCurlyBracketKeyword_21(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public PogoDeviceClass_RightCurlyBracketKeyword_23(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_21();
+		return grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new PogoDeviceClass_AdditionalFilesAssignment_20(parent, this, 0, inst);
-			case 1: return new PogoDeviceClass_AdditionalFilesKeyword_19(parent, this, 1, inst);
+			case 0: return new PogoDeviceClass_AdditionalFilesAssignment_22(parent, this, 0, inst);
+			case 1: return new PogoDeviceClass_AdditionalFilesKeyword_21(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -1929,8 +2001,8 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
  *   description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
  *   Inheritance language=Language filestogenerate=STRING identification=
  *   ClassIdentification comments=Comments hasMandatoryProperty=Boolean
- *   hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
- *   Boolean descriptionHtmlExists=Boolean; 
+ *   hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists=
+ *   Boolean; 
  * 
  * 
  * //
@@ -1949,7 +2021,6 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
  * 	     
  * 	       
  * 	     
- * 	      
  * 	    	 //	File from pogo-6
  * 
  * 	
@@ -1962,8 +2033,8 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
 // description=STRING title=STRING sourcePath=STRING "inheritances:" inheritances+=
 // Inheritance language=Language filestogenerate=STRING identification=
 // ClassIdentification comments=Comments hasMandatoryProperty=Boolean
-// hasAbstractCommand=Boolean hasAbstractAttribute=Boolean hasDynamicAttribute=
-// Boolean descriptionHtmlExists=Boolean 
+// hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists=
+// Boolean 
 // 	       	 //	Class description
 // 	              	 //	Short description
 // 	         	 //	Files location
@@ -1976,7 +2047,6 @@ protected class PogoDeviceClass_RightCurlyBracketKeyword_21 extends KeywordToken
 // 	     
 // 	       
 // 	     
-// 	      
 // 	    	 //	File from pogo-6
 protected class ClassDescription_Group extends GroupToken {
 	
@@ -1990,7 +2060,7 @@ protected class ClassDescription_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new ClassDescription_DescriptionHtmlExistsAssignment_13(parent, this, 0, inst);
+			case 0: return new ClassDescription_DescriptionHtmlExistsAssignment_12(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -2399,15 +2469,16 @@ protected class ClassDescription_HasAbstractAttributeAssignment_11 extends Assig
 
 }
 
-// hasDynamicAttribute=Boolean
-protected class ClassDescription_HasDynamicAttributeAssignment_12 extends AssignmentToken  {
+// descriptionHtmlExists=Boolean 
+// 	    	 //	File from pogo-6
+protected class ClassDescription_DescriptionHtmlExistsAssignment_12 extends AssignmentToken  {
 	
-	public ClassDescription_HasDynamicAttributeAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public ClassDescription_DescriptionHtmlExistsAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12();
+		return grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -2418,43 +2489,11 @@ protected class ClassDescription_HasDynamicAttributeAssignment_12 extends Assign
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if((value = current.getConsumable("hasDynamicAttribute",true)) == null) return null;
-		IInstanceDescription obj = current.cloneAndConsume("hasDynamicAttribute");
-		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
-			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// descriptionHtmlExists=Boolean 
-// 	    	 //	File from pogo-6
-protected class ClassDescription_DescriptionHtmlExistsAssignment_13 extends AssignmentToken  {
-	
-	public ClassDescription_DescriptionHtmlExistsAssignment_13(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
-		super(parent, next, no, current);
-	}
-	
-	public Assignment getGrammarElement() {
-		return grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13();
-	}
-
-	public AbstractToken createFollower(int index, IInstanceDescription inst) {
-		switch(index) {
-			case 0: return new ClassDescription_HasDynamicAttributeAssignment_12(parent, this, 0, inst);
-			default: return null;
-		}	
-	}	
-		
-	protected IInstanceDescription tryConsumeVal() {
 		if((value = current.getConsumable("descriptionHtmlExists",true)) == null) return null;
 		IInstanceDescription obj = current.cloneAndConsume("descriptionHtmlExists");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.DRC;
-			element = grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0();
+			element = grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0();
 			return obj;
 		}
 		return null;

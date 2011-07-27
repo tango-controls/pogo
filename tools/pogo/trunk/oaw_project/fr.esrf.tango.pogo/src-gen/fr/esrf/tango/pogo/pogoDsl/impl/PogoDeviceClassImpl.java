@@ -47,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getDeviceProperties <em>Device Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getDynamicAttributes <em>Dynamic Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getPreferences <em>Preferences</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAdditionalFiles <em>Additional Files</em>}</li>
@@ -176,6 +177,16 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected EList<Attribute> attributes;
+
+  /**
+   * The cached value of the '{@link #getDynamicAttributes() <em>Dynamic Attributes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDynamicAttributes()
+   * @generated
+   * @ordered
+   */
+  protected EList<Attribute> dynamicAttributes;
 
   /**
    * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
@@ -449,6 +460,20 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Attribute> getDynamicAttributes()
+  {
+    if (dynamicAttributes == null)
+    {
+      dynamicAttributes = new EObjectContainmentEList<Attribute>(Attribute.class, this, PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES);
+    }
+    return dynamicAttributes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<State> getStates()
   {
     if (states == null)
@@ -540,6 +565,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__ATTRIBUTES:
         return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+      case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
+        return ((InternalEList<?>)getDynamicAttributes()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
@@ -579,6 +606,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return getCommands();
       case PogoDslPackage.POGO_DEVICE_CLASS__ATTRIBUTES:
         return getAttributes();
+      case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
+        return getDynamicAttributes();
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return getStates();
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
@@ -630,6 +659,10 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__ATTRIBUTES:
         getAttributes().clear();
         getAttributes().addAll((Collection<? extends Attribute>)newValue);
+        return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
+        getDynamicAttributes().clear();
+        getDynamicAttributes().addAll((Collection<? extends Attribute>)newValue);
         return;
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         getStates().clear();
@@ -683,6 +716,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__ATTRIBUTES:
         getAttributes().clear();
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
+        getDynamicAttributes().clear();
+        return;
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         getStates().clear();
         return;
@@ -724,6 +760,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return commands != null && !commands.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__ATTRIBUTES:
         return attributes != null && !attributes.isEmpty();
+      case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
+        return dynamicAttributes != null && !dynamicAttributes.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return states != null && !states.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:

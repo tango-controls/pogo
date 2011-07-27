@@ -761,17 +761,17 @@ rulePogoDeviceClass returns [EObject current=null]
 	        currentNode = currentNode.getParent();
 	    }
 	
-)*'states:' 
+)*'dynamicAttributes:' 
     {
-        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_16(), null); 
+        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesKeyword_16(), null); 
     }
 (	
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_17_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAttributeParserRuleCall_17_0(), currentNode); 
 	    }
-	    lv_states_18=ruleState 
+	    lv_dynamicAttributes_18=ruleAttribute 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getPogoDeviceClassRule().getType().getClassifier());
@@ -779,7 +779,32 @@ rulePogoDeviceClass returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "states", lv_states_18, "State", currentNode);
+	       		add($current, "dynamicAttributes", lv_dynamicAttributes_18, "Attribute", currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+	
+)*'states:' 
+    {
+        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_18(), null); 
+    }
+(	
+	
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_19_0(), currentNode); 
+	    }
+	    lv_states_20=ruleState 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getPogoDeviceClassRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        
+	        try {
+	       		add($current, "states", lv_states_20, "State", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -790,9 +815,9 @@ rulePogoDeviceClass returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_18_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_20_0(), currentNode); 
 	    }
-	    lv_preferences_19=rulePreferences 
+	    lv_preferences_21=rulePreferences 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getPogoDeviceClassRule().getType().getClassifier());
@@ -800,7 +825,7 @@ rulePogoDeviceClass returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "preferences", lv_preferences_19, "Preferences", currentNode);
+	       		set($current, "preferences", lv_preferences_21, "Preferences", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -809,15 +834,15 @@ rulePogoDeviceClass returns [EObject current=null]
 	
 )'additionalFiles:' 
     {
-        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_19(), null); 
+        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_21(), null); 
     }
 (	
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_20_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_22_0(), currentNode); 
 	    }
-	    lv_additionalFiles_21=ruleAdditionalFile 
+	    lv_additionalFiles_23=ruleAdditionalFile 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getPogoDeviceClassRule().getType().getClassifier());
@@ -825,7 +850,7 @@ rulePogoDeviceClass returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "additionalFiles", lv_additionalFiles_21, "AdditionalFile", currentNode);
+	       		add($current, "additionalFiles", lv_additionalFiles_23, "AdditionalFile", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -834,7 +859,7 @@ rulePogoDeviceClass returns [EObject current=null]
 	
 )*'}' 
     {
-        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_21(), null); 
+        createLeafNode(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23(), null); 
     }
 );
 
@@ -1300,9 +1325,9 @@ ruleClassDescription returns [EObject current=null]
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0(), currentNode); 
 	    }
-	    lv_hasDynamicAttribute_12=ruleBoolean 
+	    lv_descriptionHtmlExists_12=ruleBoolean 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
@@ -1310,28 +1335,7 @@ ruleClassDescription returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "hasDynamicAttribute", lv_hasDynamicAttribute_12, "Boolean", currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-	
-)(	
-	
-	    
-	    { 
-	        currentNode=createCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0(), currentNode); 
-	    }
-	    lv_descriptionHtmlExists_13=ruleBoolean 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getClassDescriptionRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        
-	        try {
-	       		set($current, "descriptionHtmlExists", lv_descriptionHtmlExists_13, "Boolean", currentNode);
+	       		set($current, "descriptionHtmlExists", lv_descriptionHtmlExists_12, "Boolean", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }

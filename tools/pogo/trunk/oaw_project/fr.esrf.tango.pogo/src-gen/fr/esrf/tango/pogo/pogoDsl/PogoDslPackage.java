@@ -380,13 +380,22 @@ public interface PogoDslPackage extends EPackage
   int POGO_DEVICE_CLASS__ATTRIBUTES = 8;
 
   /**
+   * The feature id for the '<em><b>Dynamic Attributes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES = 9;
+
+  /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__STATES = 9;
+  int POGO_DEVICE_CLASS__STATES = 10;
 
   /**
    * The feature id for the '<em><b>Preferences</b></em>' containment reference.
@@ -395,7 +404,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__PREFERENCES = 10;
+  int POGO_DEVICE_CLASS__PREFERENCES = 11;
 
   /**
    * The feature id for the '<em><b>Additional Files</b></em>' containment reference list.
@@ -404,7 +413,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__ADDITIONAL_FILES = 11;
+  int POGO_DEVICE_CLASS__ADDITIONAL_FILES = 12;
 
   /**
    * The number of structural features of the '<em>Pogo Device Class</em>' class.
@@ -413,7 +422,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS_FEATURE_COUNT = 12;
+  int POGO_DEVICE_CLASS_FEATURE_COUNT = 13;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl <em>Class Description</em>}' class.
@@ -525,22 +534,13 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 10;
 
   /**
-   * The feature id for the '<em><b>Has Dynamic Attribute</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE = 11;
-
-  /**
    * The feature id for the '<em><b>Description Html Exists</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 12;
+  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 11;
 
   /**
    * The number of structural features of the '<em>Class Description</em>' class.
@@ -549,7 +549,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION_FEATURE_COUNT = 13;
+  int CLASS_DESCRIPTION_FEATURE_COUNT = 12;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -2569,6 +2569,17 @@ public interface PogoDslPackage extends EPackage
   EReference getPogoDeviceClass_Attributes();
 
   /**
+   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicAttributes <em>Dynamic Attributes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Dynamic Attributes</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicAttributes()
+   * @see #getPogoDeviceClass()
+   * @generated
+   */
+  EReference getPogoDeviceClass_DynamicAttributes();
+
+  /**
    * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2731,17 +2742,6 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getClassDescription_HasAbstractAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasDynamicAttribute <em>Has Dynamic Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Dynamic Attribute</em>'.
-   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasDynamicAttribute()
-   * @see #getClassDescription()
-   * @generated
-   */
-  EAttribute getClassDescription_HasDynamicAttribute();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getDescriptionHtmlExists <em>Description Html Exists</em>}'.
@@ -4415,6 +4415,14 @@ public interface PogoDslPackage extends EPackage
     EReference POGO_DEVICE_CLASS__ATTRIBUTES = eINSTANCE.getPogoDeviceClass_Attributes();
 
     /**
+     * The meta object literal for the '<em><b>Dynamic Attributes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES = eINSTANCE.getPogoDeviceClass_DynamicAttributes();
+
+    /**
      * The meta object literal for the '<em><b>States</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4535,14 +4543,6 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = eINSTANCE.getClassDescription_HasAbstractAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Has Dynamic Attribute</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CLASS_DESCRIPTION__HAS_DYNAMIC_ATTRIBUTE = eINSTANCE.getClassDescription_HasDynamicAttribute();
 
     /**
      * The meta object literal for the '<em><b>Description Html Exists</b></em>' attribute feature.
