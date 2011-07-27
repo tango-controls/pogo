@@ -35,7 +35,7 @@
 	<Br>
 	<Br>
 «IF dynamicAttributes.size>0»
-	«EXPAND _htmlUtil::htmlTableHeader(""+attributes.size+" Device Dynamic Attributes",
+	«EXPAND _htmlUtil::htmlTableHeader(""+dynamicAttributes.size+" Device Dynamic Attributes",
 			 {"Class Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description"})-»
 	«FOREACH dynamicAttributes AS attr-»
 	<Tr>
