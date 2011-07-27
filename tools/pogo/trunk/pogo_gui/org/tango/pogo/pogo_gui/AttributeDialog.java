@@ -62,16 +62,16 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	private int					retVal = JOptionPane.OK_OPTION;
 	private PogoGUI				pogo_gui;
     private InheritanceStatus   orig_status = null;
+    private boolean             isDynamic   = false;
+	private	int				    poll_period = 0;
 
-	private	int				poll_period = 0;
+    private JRadioButton        dataReadyEvtCode;
+    private JRadioButton        changeEvtCode;
+    private JRadioButton        changeEvtChecked;
+    private JRadioButton        archiveEvtCode;
+    private JRadioButton        archiveEvtChecked;
 
-    private JRadioButton    dataReadyEvtCode;
-    private JRadioButton    changeEvtCode;
-    private JRadioButton    changeEvtChecked;
-    private JRadioButton    archiveEvtCode;
-    private JRadioButton    archiveEvtChecked;
-
-	private Attribute		attribute;
+	private Attribute		    attribute;
 	private static final String	defaultDataType = AttrDataArray[9];	//	Efault is double
 
 	private static final int	EMPTY_FIELD    = -1;
@@ -83,12 +83,14 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	/**
 	 * Initializes the Form for creation
      * @param parent    the parent frame object
-     * @param attType   attribuite type
+     * @param attType   attribute type
+     * @param isDynamic the created attribute will be a dynamic one
      */
 	//===================================================================
-	public AttributeDialog(PogoGUI parent, int attType)
+	public AttributeDialog(PogoGUI parent, int attType, boolean isDynamic)
 	{
 		this(parent, null);
+        this.isDynamic = isDynamic;
 		attrTypeCB.setSelectedIndex(attType);
 		updateWindow();
 	}
@@ -104,6 +106,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
  		super (parent, true);
 		this.pogo_gui  = parent;
 		this.attribute = attribute;
+        if (attribute!=null) {
+            orig_status = attribute.getStatus();
+            isDynamic = Utils.isTrue(attribute.getIsDynamic());
+        }
 		initComponents ();
 
 		initOwnComponents();
@@ -119,7 +125,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	//===================================================================
 	private void initOwnComponents()
 	{
-		//  init comboboxes
+		//  init combo box
 		//-----------------------
         for (String s : AttrDataArray)
             dataTypeCB.addItem(s);
@@ -138,6 +144,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         lbl = new JLabel("Controlled by : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
+        gbc.insets = new java.awt.Insets(0, 10, 0, 0);
         gbc.fill  = GridBagConstraints.HORIZONTAL;
         definitionPanel.add (lbl, gbc);
 
@@ -146,6 +153,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		levelBtn.setText (" Expert Only  ");
 		gbc.gridx = 1;
 		gbc.gridy = y;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
 		gbc.fill  = GridBagConstraints.HORIZONTAL;
 		definitionPanel.add (levelBtn, gbc);
 
@@ -154,7 +162,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         lbl = new JLabel("Change Event : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
-        gbc.insets = new java.awt.Insets(10, 0, 0, 0);
+        gbc.insets = new java.awt.Insets(10, 10, 0, 0);
         gbc.fill  = GridBagConstraints.HORIZONTAL;
         definitionPanel.add (lbl, gbc);
         changeEvtCode = new JRadioButton ("Pushed by code");
@@ -183,7 +191,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         lbl = new JLabel("Archive Event : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
-        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        gbc.insets = new java.awt.Insets(0, 10, 0, 0);
         gbc.fill  = GridBagConstraints.HORIZONTAL;
         definitionPanel.add (lbl, gbc);
         archiveEvtCode = new JRadioButton ("Pushed by code");
@@ -212,7 +220,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         lbl = new JLabel("DataReady Event : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
-        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        gbc.insets = new java.awt.Insets(0, 10, 0, 0);
         gbc.fill  = GridBagConstraints.HORIZONTAL;
         definitionPanel.add (lbl, gbc);
         dataReadyEvtCode = new JRadioButton ("Pushed by code");
@@ -342,35 +350,42 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	}
 	//===============================================================
 	//===============================================================
-    private void manageInheritanceStatus(Attribute attribute)
-    {
-        if (attribute!=null)
-        {
-            //	Manage inheritance status
-            orig_status = attribute.getStatus();
-            abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
+    private void manageAbstractOverloadButtons() {
 
-            if (Utils.isTrue(orig_status.getInherited()) )
-            {
-                //  Is inherited (cannot be created as abstract)
-                abstractBtn.setVisible(false);
-                overloadBtn.setVisible(true);
-                //  is Already overloaded
-                boolean oveload = Utils.isTrue(orig_status.getConcreteHere());
-                overloadBtn.setSelected(oveload);
-                setEditable(false);
-            }
-            else
-            {
-                //  Not inherited -> full edition
-                overloadBtn.setVisible(false);
-                abstractBtn.setVisible(true);
-                abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
-                setEditable(true);
-            }
+        abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
+
+        if (isDynamic) {
+            overloadBtn.setVisible(false);
+            abstractBtn.setVisible(false);
+            setEditable(true);
         }
         else
-        {
+        if (Utils.isTrue(orig_status.getInherited()) ) {
+            //  Is inherited (cannot be created as abstract)
+            abstractBtn.setVisible(false);
+            overloadBtn.setVisible(true);
+            //  is Already overloaded
+            boolean oveload = Utils.isTrue(orig_status.getConcreteHere());
+            overloadBtn.setSelected(oveload);
+            setEditable(false);
+        }
+        else  {
+            //  Not inherited -> full edition
+            overloadBtn.setVisible(false);
+            abstractBtn.setVisible(true);
+            abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
+            setEditable(true);
+        }
+    }
+	//===============================================================
+	//===============================================================
+    private void manageInheritanceStatus(Attribute attribute)
+    {
+        if (attribute!=null) {
+            //	Manage inheritance status
+            manageAbstractOverloadButtons();
+        }
+        else {
             //  Create a new command
             overloadBtn.setVisible(false);
             abstractBtn.setSelected(false);
@@ -387,8 +402,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private void setNotEditable(JComboBox jcb)
     {
         String name = (String)jcb.getSelectedItem();
-        if (name!=null)
-        {
+        if (name!=null)  {
             jcb.removeAllItems();
             jcb.addItem(name);
         }
@@ -399,8 +413,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     {
 		nameText.setEditable(b);
         //  if not editable -> get only selected one
-        if (!b)
-        {
+        if (!b) {
             setNotEditable(attrTypeCB);
             setNotEditable(dataTypeCB);
             setNotEditable(rwTypeCB);
@@ -420,8 +433,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	private void polledBtnActionPerformed (java.awt.event.ActionEvent evt) {
 		boolean state = (polledBtn.getSelectedObjects()!=null);
 		setPeriodEnabled(state);
-		if (state)
-		{
+		if (state) {
 			periodText.selectAll();
 			periodText.requestFocus();
 		}
@@ -441,7 +453,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
-        javax.swing.JTabbedPane jTabbedPane1 = new javax.swing.JTabbedPane();
+        javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         definitionPanel = new javax.swing.JPanel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
         attrTypeCB = new javax.swing.JComboBox();
@@ -461,6 +473,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         overloadBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel allocateLbl = new javax.swing.JLabel();
         allocateBtn = new javax.swing.JRadioButton();
+        dynamicLbl = new javax.swing.JLabel();
         javax.swing.JPanel propertyPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
@@ -523,17 +536,17 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         definitionPanel.setLayout(new java.awt.GridBagLayout());
 
-        nameLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        nameLbl.setFont(new java.awt.Font("Arial", 1, 12));
         nameLbl.setText("Attribute name: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(nameLbl, gridBagConstraints);
 
-        attrTypeCB.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        attrTypeCB.setFont(new java.awt.Font("Arial", 1, 12));
         attrTypeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 attrTypeCBActionPerformed(evt);
@@ -541,7 +554,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(attrTypeCB, gridBagConstraints);
@@ -550,15 +563,15 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         attTypeLbl.setText("Attribute Type: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(attTypeLbl, gridBagConstraints);
 
         nameText.setFont(new java.awt.Font("Arial", 1, 12));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(nameText, gridBagConstraints);
@@ -567,9 +580,9 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         dataTypeLbl.setText("Data Type: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(dataTypeLbl, gridBagConstraints);
 
         dataTypeCB.setFont(new java.awt.Font("Arial", 1, 12));
@@ -580,7 +593,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(dataTypeCB, gridBagConstraints);
@@ -591,7 +604,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(xDataLBL, gridBagConstraints);
 
         yDataLBL.setFont(new java.awt.Font("Arial", 1, 12));
@@ -600,7 +613,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(yDataLBL, gridBagConstraints);
 
         xDataTF.setFont(new java.awt.Font("Arial", 1, 12));
@@ -642,7 +655,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
         definitionPanel.add(assAttrLBL, gridBagConstraints);
 
         assAttrTF.setFont(new java.awt.Font("Arial", 1, 12));
@@ -661,10 +674,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(rwTypeLBL, gridBagConstraints);
 
-        abstractBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        abstractBtn.setFont(new java.awt.Font("Arial", 1, 12));
         abstractBtn.setText("Abstract");
         abstractBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         abstractBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -676,10 +689,11 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         definitionPanel.add(abstractBtn, gridBagConstraints);
 
-        overloadBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        overloadBtn.setFont(new java.awt.Font("Arial", 1, 12));
         overloadBtn.setText("Overload");
         overloadBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         overloadBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -691,29 +705,39 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         definitionPanel.add(overloadBtn, gridBagConstraints);
 
-        allocateLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        allocateLbl.setFont(new java.awt.Font("Arial", 1, 12));
         allocateLbl.setText("Allocate:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 20, 10);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 10);
         definitionPanel.add(allocateLbl, gridBagConstraints);
 
-        allocateBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        allocateBtn.setFont(new java.awt.Font("Arial", 1, 12));
         allocateBtn.setSelected(true);
         allocateBtn.setText("Read data member");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 3);
         definitionPanel.add(allocateBtn, gridBagConstraints);
 
-        jTabbedPane1.addTab("Definition", definitionPanel);
+        dynamicLbl.setFont(new java.awt.Font("Arial", 1, 12));
+        dynamicLbl.setText("Dynamic Attribute (Add/Remove attribute will be done by code)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 15, 0);
+        definitionPanel.add(dynamicLbl, gridBagConstraints);
+
+        tabbedPane.addTab("Definition", definitionPanel);
 
         propertyPanel.setLayout(new java.awt.GridBagLayout());
 
@@ -917,9 +941,9 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         propertyPanel.add(attrPropMinWarning, gridBagConstraints);
 
-        jTabbedPane1.addTab("Properties", propertyPanel);
+        tabbedPane.addTab("Properties", propertyPanel);
 
-        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 	//==============================================================
@@ -958,62 +982,57 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             }
 			break;
 		case SPECTRUM:
-			switch(checkIntField(xDataTF.getText()))
-			{
-			case EMPTY_FIELD:
-				message = "Spectrum Attribute needs an X length of data";
-				break;
-			case NEGATIVE_FIELD:
-				message = "Spectrum Attribute needs a POSITIVE X length of data";
-				break;
-			case INVALID_FIELD:
-				message = "Cannot parse an integer value for X length !";
-				break;
+			switch(checkIntField(xDataTF.getText())) {
+                case EMPTY_FIELD:
+                    message = "Spectrum Attribute needs an X length of data";
+                    break;
+                case NEGATIVE_FIELD:
+                    message = "Spectrum Attribute needs a POSITIVE X length of data";
+                    break;
+                case INVALID_FIELD:
+                    message = "Cannot parse an integer value for X length !";
+                    break;
 			}
 			break;
 		case IMAGE:
-			switch(checkIntField(xDataTF.getText()))
-			{
-			case EMPTY_FIELD:
-				message = "Image Attribute needs an X length of data";
-				break;
-			case NEGATIVE_FIELD:
-				message = "Image Attribute needs a POSITIVE X length of data";
-				break;
-			case INVALID_FIELD:
-				message = "Cannot parse an integer value for X length !";
-				break;
+			switch(checkIntField(xDataTF.getText())) {
+                case EMPTY_FIELD:
+                    message = "Image Attribute needs an X length of data";
+                    break;
+                case NEGATIVE_FIELD:
+                    message = "Image Attribute needs a POSITIVE X length of data";
+                    break;
+                case INVALID_FIELD:
+                    message = "Cannot parse an integer value for X length !";
+                    break;
 			}
-			switch(checkIntField(yDataTF.getText()))
-			{
-			case EMPTY_FIELD:
-				message = "Image Attribute needs an Y length of data";
-				break;
-			case NEGATIVE_FIELD:
-				message = "Image Attribute needs a POSITIVE Y length of data";
-				break;
-			case INVALID_FIELD:
-				message = "Cannot parse an integer value for Y length !";
-				break;
+			switch(checkIntField(yDataTF.getText())) {
+                case EMPTY_FIELD:
+                    message = "Image Attribute needs an Y length of data";
+                    break;
+                case NEGATIVE_FIELD:
+                    message = "Image Attribute needs a POSITIVE Y length of data";
+                    break;
+                case INVALID_FIELD:
+                    message = "Cannot parse an integer value for Y length !";
+                    break;
 			}
 		}
 
 		//	Check polled period if set
-		if (polledBtn.getSelectedObjects()!=null)
-		{
+		if (polledBtn.getSelectedObjects()!=null) {
 			String strval = periodText.getText();
 			try {
 				poll_period = Integer.parseInt(strval);
 				//	Control if value not too small
 				if (poll_period < 20  &&
-					poll_period != 0)	//	if 0 means externally filling mode (by code)
-				{
+					poll_period != 0) {	//	if 0 means externally filling mode (by code)
+
 					message = "The polling period minimum value is  " +
 									20 + " ms";
 				}
 			}
-			catch (NumberFormatException e)
-			{
+			catch (NumberFormatException e) {
 				 message = e.toString() + "\n\nBad Value in Polling period field !";
 			}
 		}
@@ -1051,16 +1070,15 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 			return;
 		//	Add/Remove read with write
 		String	item = "Tango::"+AttrRWtypeArray[AttrRWtypeArray.length-1];
-		switch (attrTypeCB.getSelectedIndex())
-		{
-		case SCALAR:
-			if (rwTypeCB.getItemCount() < AttrRWtypeArray.length)
-				rwTypeCB.addItem(item);
-			break;
-		default:
-			if (rwTypeCB.getItemCount()>=AttrRWtypeArray.length)
-				rwTypeCB.removeItem(item);
-			break;
+		switch (attrTypeCB.getSelectedIndex()) {
+            case SCALAR:
+                if (rwTypeCB.getItemCount() < AttrRWtypeArray.length)
+                    rwTypeCB.addItem(item);
+                break;
+            default:
+                if (rwTypeCB.getItemCount()>=AttrRWtypeArray.length)
+                    rwTypeCB.removeItem(item);
+                break;
 		}
 	}//GEN-LAST:event_attrTypeCBActionPerformed
 
@@ -1082,8 +1100,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		if (end>=0)
 			s = s.substring(0, end);
 
-		try
-		{
+		try {
 			if (s.length()==0)
 				return EMPTY_FIELD;
 			else
@@ -1092,8 +1109,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 			else
 				return value;
 		}
-		catch (NumberFormatException e)
-		{
+		catch (NumberFormatException e) {
 			return INVALID_FIELD;
 		}
 	}
@@ -1118,9 +1134,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private void overloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overloadBtnActionPerformed
 
     }//GEN-LAST:event_overloadBtnActionPerformed
+
     //======================================================
-    //======================================================	//======================================================
-	//======================================================
+    //======================================================    //======================================================
+    //======================================================
 	private void doClose(int retStatus)
 	{
 	  retVal = retStatus;
@@ -1150,8 +1167,9 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 	//======================================================
 	private void initializeWindow()
 	{
-        if (attribute==null)
+        if (attribute==null) {
 			return;
+        }
 		//  Initialize Window with input parameters
 		nameText.setText(attribute.getName());
 		xDataTF.setText(attribute.getMaxX());
@@ -1177,8 +1195,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		}
 		//	Set the default attribute property values
 		AttrProperties	prop = attribute.getProperties();
-		if (prop!=null)
-		{
+		if (prop!=null) {
             String  desc = Utils.strReplaceSpecialCharToCode(prop.getDescription());
 			setDescriptionText(desc);
 			attrPropLabel.setText(prop.getLabel());
@@ -1208,29 +1225,25 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		String	strPeriod = attribute.getPolledPeriod();
 		if (strPeriod!=null && strPeriod.length()>0)
 		{
-			try
-			{
+			try {
 				int	period = Integer.parseInt(strPeriod);
-				if (period>0)
-				{
+				if (period>0) {
 					polledBtn.setSelected(true);
 					poll_period = period;
 					setPeriodEnabled(true);
 				}
 			}
-			catch (NumberFormatException e)
-			{
+			catch (NumberFormatException e) {
 				System.err.println(e);
 			}
 		}
 
 		//	memorized
 		if (attribute.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
-			attribute.getRwType().equals(AttrRWtypeArray[WRITE]) )
-		{
+			attribute.getRwType().equals(AttrRWtypeArray[WRITE]) ) {
+            
 			String	s = attribute.getMemorized();
-			if (s!=null && s.equals("true"))
-			{
+			if (s!=null && s.equals("true")) {
 				memorizedBtn.setSelected(true);
 				memorizedInitBtn.setVisible(true);
 				s = attribute.getMemorizedAtInit();
@@ -1256,6 +1269,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         if (dataReadyEvents!=null) {
             dataReadyEvtCode.setSelected(Utils.isTrue(dataReadyEvents.getFire()));
         }
+
+        if (isDynamic) {
+            abstractBtn.setVisible(false);
+            overloadBtn.setVisible(false);
+        }
+        dynamicLbl.setVisible(isDynamic);
 	}
 
   //======================================================
@@ -1283,8 +1302,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 		//	Attribute properties
 		AttrProperties	prop = OAWutils.factory.createAttrProperties();
 		prop.setDescription(attrPropDescription.getText());
-//			Utils.strReplaceSpecialCharToCode(attrPropDescription.getText()));
-//			Utils.strReplace(attrPropDescription.getText(), "\n", "\\n") );
 		prop.setLabel(attrPropLabel.getText().trim());
 		prop.setUnit(attrPropUnit.getText().trim());
 		prop.setStandardUnit(attrPropStdUnit.getText().trim());
@@ -1310,37 +1327,39 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
 		//	memorized
 		if (attr.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
-			attr.getRwType().equals(AttrRWtypeArray[WRITE]) )
-		{
-			if (memorizedBtn.getSelectedObjects()!=null)
-			{
+			attr.getRwType().equals(AttrRWtypeArray[WRITE]) ) {
+			if (memorizedBtn.getSelectedObjects()!=null) {
 				attr.setMemorized("true");
 				if (memorizedInitBtn.getSelectedObjects()!=null)
 					attr.setMemorizedAtInit("true");
 			}
 		}
-		
-		//	Inheritance status
-        if (Utils.isTrue(orig_status.getInherited()))
-        {
-            if (overloadBtn.getSelectedObjects()!=null)
-                orig_status.setConcreteHere("true");
-            else
-                orig_status.setConcreteHere("false");
+
+        //  Is it a dynamic attribute ?
+        if (isDynamic) {
+            attr.setIsDynamic("true");
         }
-        else
-        {
-            if (abstractBtn.getSelectedObjects()!=null)
-            {
-                orig_status.setAbstract("true");
-                orig_status.setConcrete("false");
-                orig_status.setConcreteHere("false");
+        else {
+            attr.setIsDynamic("false");
+
+            //	Inheritance status
+            if (Utils.isTrue(orig_status.getInherited())) {
+                if (overloadBtn.getSelectedObjects()!=null)
+                    orig_status.setConcreteHere("true");
+                else
+                    orig_status.setConcreteHere("false");
             }
-            else
-            {
-                orig_status.setAbstract("false");
-                orig_status.setConcrete("true");
-                orig_status.setConcreteHere("true");
+            else {
+                if (abstractBtn.getSelectedObjects()!=null) {
+                    orig_status.setAbstract("true");
+                    orig_status.setConcrete("false");
+                    orig_status.setConcreteHere("false");
+                }
+                else {
+                    orig_status.setAbstract("false");
+                    orig_status.setConcrete("true");
+                    orig_status.setConcreteHere("true");
+                }
             }
         }
         attr.setStatus(orig_status);
@@ -1424,43 +1443,41 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         if (dataType.equals("DevEncoded"))
             attrTypeCB.setSelectedIndex(SCALAR);//    Attribute only scalar
 
-        switch(attrTypeCB.getSelectedIndex())
-        {
-        case SCALAR:
-            switch(rwTypeCB.getSelectedIndex())
-            {
-            case READ_WITH_WRITE:
-                assAttrTF.setVisible(true);
-                assAttrLBL.setVisible(true);
-                break;
-            case WRITE:
-            case READ_WRITE:
-                if (memorizedBtn!=null)
+        switch(attrTypeCB.getSelectedIndex()) {
+            case SCALAR:
+                switch(rwTypeCB.getSelectedIndex())
                 {
-                    memorizedBtn.setVisible(true);
-                    memorizedInitBtn.setVisible(false);
+                case READ_WITH_WRITE:
+                    assAttrTF.setVisible(true);
+                    assAttrLBL.setVisible(true);
+                    break;
+                case WRITE:
+                case READ_WRITE:
+                    if (memorizedBtn!=null)
+                    {
+                        memorizedBtn.setVisible(true);
+                        memorizedInitBtn.setVisible(false);
+                    }
+                    break;
                 }
                 break;
+            case SPECTRUM:
+                xDataTF.setVisible(true);
+                xDataLBL.setVisible(true);
+                break;
+            case IMAGE:
+                xDataTF.setVisible(true);
+                yDataTF.setVisible(true);
+                xDataLBL.setVisible(true);
+                yDataLBL.setVisible(true);
+                break;
             }
-            break;
-        case SPECTRUM:
-            xDataTF.setVisible(true);
-            xDataLBL.setVisible(true);
-            break;
-        case IMAGE:
-            xDataTF.setVisible(true);
-            yDataTF.setVisible(true);
-            xDataLBL.setVisible(true);
-            yDataLBL.setVisible(true);
-            break;
-        }
-        //    Special case for DevEncoded type
-        if (dataType.equals("Tango::DEV_ENCODED"))
-        {
-            //    Attribute not memorized
-            memorizedBtn.setSelected(false);
-            memorizedBtn.setVisible(false);
-            memorizedInitBtn.setVisible(false);
+            //    Special case for DevEncoded type
+            if (dataType.equals("Tango::DEV_ENCODED")) {
+                //    Attribute not memorized
+                memorizedBtn.setSelected(false);
+                memorizedBtn.setVisible(false);
+                memorizedInitBtn.setVisible(false);
         }
         allocateBtn.setVisible(rwTypeCB.getSelectedIndex()!=WRITE);
 
@@ -1490,6 +1507,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private javax.swing.JComboBox attrTypeCB;
     private javax.swing.JComboBox dataTypeCB;
     private javax.swing.JPanel definitionPanel;
+    private javax.swing.JLabel dynamicLbl;
     private javax.swing.JTextField nameText;
     private javax.swing.JRadioButton overloadBtn;
     private javax.swing.JComboBox rwTypeCB;
