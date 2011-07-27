@@ -23,6 +23,15 @@
 	«EXPAND writeAttributeMethod(att)»
 «ENDIF»«ENDIF-»
 «ENDFOREACH»
+«FOREACH dynamicAttributes AS att-»
+	«EXPAND readAttributeHeader(att)-»
+	«EXPAND readDynamicAttributeMethod(att)-»
+«IF att.rwType.contains("WRITE")-»
+	«EXPAND writeAttributeHeader(att)-»
+	«EXPAND writeAttributeMethod(att)-»
+«ENDIF»
+«ENDFOREACH»
+
 «EXPAND addDynamicAttributes»
 «ENDDEFINE»
 
@@ -147,6 +156,19 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 
 
 //	=========================================================
+//	Define specific protypes for a dynamic attribute call methods
+//	=========================================================
+«DEFINE dynamicAttributeCallsProto(Attribute att) FOR PogoDeviceClass-»
+	«EXPAND attributeCallsProto(att)-»
+	void add_«att.name»_dynamic_attribute(string attname«IF att.attType!="Scalar"», «att.dataType.cppType().toString()» *ptr=NULL«ENDIF»);
+	void remove_«att.name»_dynamic_attribute(string attname«IF att.attType!="Scalar"», bool free_it=true«ENDIF»);
+	«att.dataType.cppType().toString()» *get_«att.name»_data_ptr(string &name);
+    map<string,«att.dataType.cppType().toString()»«IF att.attType!="Scalar"»*«ENDIF»>	   «att.name»_data;
+«ENDDEFINE»
+
+
+
+//	=========================================================
 //	Allocate the read attribute members if requested
 //	=========================================================
 «DEFINE allocateReadMembers FOR PogoDeviceClass-»
@@ -172,20 +194,65 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 
 
 
+
+//====================================================================================
+//	Read/Write dynamic attribute methods
+/====================================================================================
+«DEFINE readDynamicAttributeMethod(Attribute att) FOR PogoDeviceClass»
+void «name»::read_«att.name»(Tango::Attribute &attr)
+{
+	DEBUG_STREAM << "«name»::read_«att.name»(Tango::Attribute &attr) entering... " << endl;
+	«att.dataType.cppType().toString()»	*att_value = get_«att.name»_data_ptr(attr.get_name());
+
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"read_"+att.name,
+			"//	Set the attribute value\n" +
+			"attr.set_value(att_value"+att.SetAttValueSize()+");")-»
+}
+«ENDDEFINE»
+
+
+
+
 //	=========================================================
 //	Define the add_dynamic_attributes method
 //	=========================================================
-«DEFINE addDynamicAttributes FOR PogoDeviceClass»
+«DEFINE addDynamicAttributes FOR PogoDeviceClass-»
 «IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
 		name + "Class::add_dynamic_attributes",
-		"Create the dynamic attributes if any\n" +
+		"Create the dynamic attributes if any at server startup\n" +
 		"for specified device.")-»
 void «name»::add_dynamic_attributes()
 {
-«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::add_dynamic_attributes",
-	"//	Add your own code to create and add dynamic attributes if any")»
+	«IF dynamicAttributes.size>0-»
+	//	Example to add dynamic attribute:
+	«FOREACH dynamicAttributes AS att-»
+	//	add_«att.name»_dynamic_attribute("MyAttribute");
+	«ENDFOREACH»«ENDIF»
+	«PROTECT CSTART '/*----- ' CEND ' -----*/' ID name+"::add_dynamic_attributes"»
+
+	//	Add your own code to create and add dynamic attributes if any
+
+	«ENDPROTECT»	//	«name+"::add_dynamic_attributes()"»
 }
 «ENDIF-»
 «ENDDEFINE»
 
+//	==================================================================
+//	Define a table for all attributes to be displayed as comments
+//	==================================================================
+«DEFINE attributesTableComments FOR PogoDeviceClass-»
+«IF attributes.size>0»«IF attributes.size>1-»
+//	Attributes managed are:«ELSE»
+//	Attribute managed is:«ENDIF»
+«FOREACH attributes AS att-»
+//	«att.name»:	
+«ENDFOREACH»«ENDIF»
+«IF dynamicAttributes.size>0»«IF dynamicAttributes.size>1-»
+//	Dynamic attributes managed are:«ELSE»
+//	Dynamic attribute managed is:«ENDIF»
+«FOREACH dynamicAttributes AS att-»
+//     - «att.name»
+«ENDFOREACH»«ENDIF»
+«ENDDEFINE»

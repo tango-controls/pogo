@@ -8,25 +8,73 @@
 //=========================================
 «FOREACH attributes AS att-»
 «IF att.status.concreteHere=="true"-»
-//	Attribute «att.name» class definition
-class «att.name»Attrib: public Tango::«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr
+«EXPAND attributeClassDefinition(att)-»
 {
 public:
-	«att.name»Attrib():«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr("«att.name»",
-	                   «att.dataType.cppTypeEnum()», «IF att.rwType=="READ_WITH_WRITE"»"«att.associatedAttr»"«ELSE»Tango::«att.rwType»«attConstructorSize(att)»«ENDIF») {};
+	«EXPAND staticAttributeConstructor(att)-»
 	~«att.name»Attrib() {};
 	
+	«EXPAND attributeMethods(att)-»
+};
+
+«ENDIF»«ENDFOREACH»
+«IF dynamicAttributes.size>0»
+//=========================================
+//	Define classes for dynamic attributes
+//=========================================
+«FOREACH dynamicAttributes AS att-»
+«EXPAND attributeClassDefinition(att)-»
+{
+public:
+	«EXPAND dynamicAttributeConstructor(att)-»
+	~«att.name»Attrib() {};
+
+	«EXPAND attributeMethods(att)-»
+};
+
+«ENDFOREACH»«ENDIF»
+«ENDDEFINE»
+
+
+//=========================================
+//	Attribute Constructors
+//=========================================
+«DEFINE attributeClassDefinition(Attribute att) FOR PogoDeviceClass-»
+//	Attribute «att.name» class definition
+class «att.name»Attrib: public Tango::«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr
+«ENDDEFINE»
+
+
+
+//=========================================
+//	Attribute Constructors
+//=========================================
+«DEFINE staticAttributeConstructor(Attribute att) FOR PogoDeviceClass-»
+	«att.name»Attrib():«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr("«att.name»",
+	                   «att.dataType.cppTypeEnum()», «IF att.rwType=="READ_WITH_WRITE"»"«att.associatedAttr»"«ELSE»Tango::«att.rwType»«attConstructorSize(att)»«ENDIF») {};
+«ENDDEFINE»
+
+//=========================================
+«DEFINE dynamicAttributeConstructor(Attribute att) FOR PogoDeviceClass-»
+	«att.name»Attrib(const string &att_name):«IF att.attType!="Scalar"»«att.attType»«ENDIF»Attr(
+			att_name.c_str(), «att.dataType.cppTypeEnum()», «IF att.rwType=="READ_WITH_WRITE"»"«att.associatedAttr»"«ELSE»Tango::«att.rwType»«attConstructorSize(att)»«ENDIF») {};
+«ENDDEFINE»
+
+
+
+
+//=========================================
+//	Attribute Methods
+//=========================================
+«DEFINE attributeMethods(Attribute att) FOR PogoDeviceClass-»
+	«IF att.rwType!="WRITE"-»
 	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
 		{(static_cast<«name» *>(dev))->read_«att.name»(att);}
+	«ENDIF-»
 	«IF att.rwType.contains("WRITE")-»
 	virtual void write(Tango::DeviceImpl *dev,Tango::WAttribute &att)
 		{(static_cast<«name» *>(dev))->write_«att.name»(att);}
 	«ENDIF-»
 	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
 		{return (static_cast<«name» *>(dev))->is_«att.name»_allowed(ty);}
-};
-
-«ENDIF»«ENDFOREACH»
 «ENDDEFINE»
-
-

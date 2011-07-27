@@ -8,6 +8,7 @@
 	«EXPAND cppDevice::cppFile»
 	«EXPAND cppDserverClass::cppFile»
 	«EXPAND cppStateMachine::cppFile»
+	«EXPAND cppDynamicAttributes::cppFile»
 
 	«EXPAND cppClassFactory::cppFile»
 	«EXPAND cppMainFile::cppFile»

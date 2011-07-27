@@ -3019,11 +3019,11 @@ rule__PogoDeviceClass__Group__16
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_16()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesKeyword_16()); }
 
-	'states:' 
+	'dynamicAttributes:' 
 
-{ after(grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_16()); }
+{ after(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesKeyword_16()); }
 )
 
 	rule__PogoDeviceClass__Group__17
@@ -3039,9 +3039,9 @@ rule__PogoDeviceClass__Group__17
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_17()); }
-(rule__PogoDeviceClass__StatesAssignment_17)*
-{ after(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_17()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAssignment_17()); }
+(rule__PogoDeviceClass__DynamicAttributesAssignment_17)*
+{ after(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAssignment_17()); }
 )
 
 	rule__PogoDeviceClass__Group__18
@@ -3057,9 +3057,11 @@ rule__PogoDeviceClass__Group__18
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_18()); }
-(rule__PogoDeviceClass__PreferencesAssignment_18)
-{ after(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_18()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_18()); }
+
+	'states:' 
+
+{ after(grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_18()); }
 )
 
 	rule__PogoDeviceClass__Group__19
@@ -3075,11 +3077,9 @@ rule__PogoDeviceClass__Group__19
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_19()); }
-
-	'additionalFiles:' 
-
-{ after(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_19()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_19()); }
+(rule__PogoDeviceClass__StatesAssignment_19)*
+{ after(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_19()); }
 )
 
 	rule__PogoDeviceClass__Group__20
@@ -3095,9 +3095,9 @@ rule__PogoDeviceClass__Group__20
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_20()); }
-(rule__PogoDeviceClass__AdditionalFilesAssignment_20)*
-{ after(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_20()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_20()); }
+(rule__PogoDeviceClass__PreferencesAssignment_20)
+{ after(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_20()); }
 )
 
 	rule__PogoDeviceClass__Group__21
@@ -3113,17 +3113,59 @@ rule__PogoDeviceClass__Group__21
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_21()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_21()); }
+
+	'additionalFiles:' 
+
+{ after(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_21()); }
+)
+
+	rule__PogoDeviceClass__Group__22
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PogoDeviceClass__Group__22
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_22()); }
+(rule__PogoDeviceClass__AdditionalFilesAssignment_22)*
+{ after(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_22()); }
+)
+
+	rule__PogoDeviceClass__Group__23
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PogoDeviceClass__Group__23
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23()); }
 
 	'}' 
 
-{ after(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_21()); }
+{ after(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+
+
 
 
 
@@ -3435,35 +3477,15 @@ rule__ClassDescription__Group__12
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12()); }
-(rule__ClassDescription__HasDynamicAttributeAssignment_12)
-{ after(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12()); }
-)
-
-	rule__ClassDescription__Group__13
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__ClassDescription__Group__13
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13()); }
-(rule__ClassDescription__DescriptionHtmlExistsAssignment_13)
-{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13()); }
+{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12()); }
+(rule__ClassDescription__DescriptionHtmlExistsAssignment_12)
+{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
 
 
 
@@ -6992,14 +7014,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PogoDeviceClass__StatesAssignment_17
+rule__PogoDeviceClass__DynamicAttributesAssignment_17
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_17_0()); }
-	ruleState{ after(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_17_0()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAttributeParserRuleCall_17_0()); }
+	ruleAttribute{ after(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAttributeParserRuleCall_17_0()); }
 )
 
 ;
@@ -7007,14 +7029,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PogoDeviceClass__PreferencesAssignment_18
+rule__PogoDeviceClass__StatesAssignment_19
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_18_0()); }
-	rulePreferences{ after(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_18_0()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_19_0()); }
+	ruleState{ after(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_19_0()); }
 )
 
 ;
@@ -7022,14 +7044,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PogoDeviceClass__AdditionalFilesAssignment_20
+rule__PogoDeviceClass__PreferencesAssignment_20
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_20_0()); }
-	ruleAdditionalFile{ after(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_20_0()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_20_0()); }
+	rulePreferences{ after(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_20_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PogoDeviceClass__AdditionalFilesAssignment_22
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_22_0()); }
+	ruleAdditionalFile{ after(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_22_0()); }
 )
 
 ;
@@ -7202,29 +7239,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassDescription__HasDynamicAttributeAssignment_12
+rule__ClassDescription__DescriptionHtmlExistsAssignment_12
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0()); }
-	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeBooleanParserRuleCall_12_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ClassDescription__DescriptionHtmlExistsAssignment_13
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); }
-	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); }
+{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); }
+	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); }
 )
 
 ;

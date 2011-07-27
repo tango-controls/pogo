@@ -22,11 +22,18 @@ public:
 «EXPAND attributes::attributeCallsProto(att)»
 «ENDFOREACH»
 «ENDIF»
+«IF dynamicAttributes.size > 0»
+//	Dynamic attribute methods
+public:
+	«FOREACH dynamicAttributes AS att-»
+		«EXPAND attributes::dynamicAttributeCallsProto(att)»
+	«ENDFOREACH»
+«ENDIF»
 «IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeaderProto(
 		"add_dynamic_attributes",
 		"Add dynamic attributes if any.")-»
-		void add_dynamic_attributes();
+	void add_dynamic_attributes();
 «ENDIF-»
 
 //	Command related methods

@@ -33,6 +33,9 @@ classFactoryFileName(PogoMultiClasses this):
 stateMachineFileName(PogoDeviceClass this):
 	name+"StateMachine.cpp";
 
+dynAttCppFileName(PogoDeviceClass this):
+	name+"DynAttrUtils.cpp";
+
 vc8ProjectFileName(String filename):
 	"vc8_proj/"+filename;	
 

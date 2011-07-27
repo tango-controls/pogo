@@ -217,7 +217,11 @@
 			<File
 				RelativePath="..\«name»StateMachine.cpp"
 				>
-			</File>
+			</File>«IF dynamicAttributes.size>0»
+			<File
+				RelativePath="..\«name»DynAttrUtils.cpp"
+				>
+			</File>«ENDIF»
 		</Filter>
 		<Filter
 			Name="Header Files"

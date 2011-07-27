@@ -32,11 +32,47 @@ static const char *RcsId = "«cvsEscaped("Id:")»";
 
 namespace «name»_ns
 {
-
 //=================================================
 //		Attributes Allowed Methods
 //=================================================
 «FOREACH attributes AS att»
+«EXPAND Common::methodHeader("is_" + att.name + "State_allowed",
+		"Execution allowed for " + att.name + " attribute.")»
+bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
+{
+«IF att.rwType.contains("WRITE")-»
+	//	Check if access type.
+	if ( type!=Tango::READ_REQ )
+	{
+		«IF att.writeExcludedStates.size>0-»
+			«EXPAND checkExcludedStates(att.writeExcludedStates, "WRITE", "\t\t")-»
+		«ELSE-»
+			//	Not any excluded states for «att.name» attribute in WRITE access.
+		«ENDIF»
+		«EXPAND Common::ProtectedArea(att.stateAllowedMethod()+"_WRITE")»
+		«IF att.writeExcludedStates.size>0-»
+			«EXPAND closeCheckExcludedStates(att.writeExcludedStates, "\t\t")-»
+		«ENDIF-»
+		return true;
+	}
+	else
+«ENDIF»«IF att.readExcludedStates.size>0-»
+		«EXPAND checkExcludedStates(att.readExcludedStates, "READ", "\t")-»
+	«ELSE-»
+		//	Not any excluded states for «att.name» attribute in READ access.
+	«ENDIF»
+	«EXPAND Common::ProtectedArea("read_"+att.stateAllowedMethod()+"_READ")»
+	«IF att.readExcludedStates.size>0-»
+		«EXPAND closeCheckExcludedStates(att.readExcludedStates, "\t")-»
+	«ENDIF-»
+	return true;
+}
+«ENDFOREACH»
+
+//=================================================
+//	Dynamic Attributes Allowed Methods
+//=================================================
+«FOREACH dynamicAttributes AS att»
 «EXPAND Common::methodHeader("is_" + att.name + "State_allowed",
 		"Execution allowed for " + att.name + " attribute.")»
 bool «name»::is_«att.name»_allowed(Tango::AttReqType type)

@@ -208,6 +208,7 @@
 			«EXPAND Tasks::VC9souceFile(name+".cpp")-»
 			«EXPAND Tasks::VC9souceFile(name+"Class.cpp")-»
 			«EXPAND Tasks::VC9souceFile(name+"StateMachine.cpp")-»
+			«IF dynamicAttributes.size>0»«EXPAND Tasks::VC9souceFile(name+"DynAttrUtils.cpp")»«ENDIF-»
 			«FOREACH additionalFiles AS file» «EXPAND Tasks::VC9souceFile(file.name+".cpp")-»
 			«ENDFOREACH»
 		</Filter>

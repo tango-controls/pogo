@@ -35,67 +35,68 @@ T35 : 'classProperties:' ;
 T36 : 'deviceProperties:' ;
 T37 : 'commands:' ;
 T38 : 'attributes:' ;
-T39 : 'states:' ;
-T40 : 'extends' ;
-T41 : 'defaultPropValue:' ;
-T42 : 'excludedStates:' ;
-T43 : 'readExcludedStates:' ;
-T44 : 'writeExcludedStates:' ;
-T45 : 'void' ;
-T46 : 'boolean' ;
-T47 : 'short' ;
-T48 : 'ushort' ;
-T49 : 'int' ;
-T50 : 'uint' ;
-T51 : 'float' ;
-T52 : 'double' ;
-T53 : 'string' ;
-T54 : 'DevVarCharArray' ;
-T55 : 'DevVarShortArray' ;
-T56 : 'DevVarUShortArray' ;
-T57 : 'DevVarLongArray' ;
-T58 : 'DevVarULongArray' ;
-T59 : 'DevVarFloatArray' ;
-T60 : 'DevVarDoubleArray' ;
-T61 : 'DevVarStringArray' ;
-T62 : 'DevVarLongStringArray' ;
-T63 : 'DevVarDoubleStringArray' ;
-T64 : 'DevState' ;
-T65 : 'ConstDevString' ;
-T66 : 'DevVarBooleanArray' ;
-T67 : 'DevUChar' ;
-T68 : 'DevLong64' ;
-T69 : 'DevULong64' ;
-T70 : 'DevVarLong64Array' ;
-T71 : 'DevVarULong64Array' ;
-T72 : 'DevInt' ;
-T73 : 'DevEncoded' ;
-T74 : 'vector<short>' ;
-T75 : 'vector<int>' ;
-T76 : 'vector<float>' ;
-T77 : 'vector<double>' ;
-T78 : 'vector<string>' ;
-T79 : 'abstract' ;
+T39 : 'dynamicAttributes:' ;
+T40 : 'states:' ;
+T41 : 'extends' ;
+T42 : 'defaultPropValue:' ;
+T43 : 'excludedStates:' ;
+T44 : 'readExcludedStates:' ;
+T45 : 'writeExcludedStates:' ;
+T46 : 'void' ;
+T47 : 'boolean' ;
+T48 : 'short' ;
+T49 : 'ushort' ;
+T50 : 'int' ;
+T51 : 'uint' ;
+T52 : 'float' ;
+T53 : 'double' ;
+T54 : 'string' ;
+T55 : 'DevVarCharArray' ;
+T56 : 'DevVarShortArray' ;
+T57 : 'DevVarUShortArray' ;
+T58 : 'DevVarLongArray' ;
+T59 : 'DevVarULongArray' ;
+T60 : 'DevVarFloatArray' ;
+T61 : 'DevVarDoubleArray' ;
+T62 : 'DevVarStringArray' ;
+T63 : 'DevVarLongStringArray' ;
+T64 : 'DevVarDoubleStringArray' ;
+T65 : 'DevState' ;
+T66 : 'ConstDevString' ;
+T67 : 'DevVarBooleanArray' ;
+T68 : 'DevUChar' ;
+T69 : 'DevLong64' ;
+T70 : 'DevULong64' ;
+T71 : 'DevVarLong64Array' ;
+T72 : 'DevVarULong64Array' ;
+T73 : 'DevInt' ;
+T74 : 'DevEncoded' ;
+T75 : 'vector<short>' ;
+T76 : 'vector<int>' ;
+T77 : 'vector<float>' ;
+T78 : 'vector<double>' ;
+T79 : 'vector<string>' ;
+T80 : 'abstract' ;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8421
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8443
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8423
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8445
 RULE_INT : ('0'..'9')+;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8425
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8447
 RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8427
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8449
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8429
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8451
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8431
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8453
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8433
+// $ANTLR src "../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/contentassist/antlr/internal/InternalPogoDsl.g" 8455
 RULE_ANY_OTHER : .;
 
 

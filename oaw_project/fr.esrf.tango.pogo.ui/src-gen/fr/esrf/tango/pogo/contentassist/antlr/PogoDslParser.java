@@ -130,9 +130,10 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPogoDeviceClassAccess().getDevicePropertiesAssignment_11(), "rule__PogoDeviceClass__DevicePropertiesAssignment_11");
 					put(grammarAccess.getPogoDeviceClassAccess().getCommandsAssignment_13(), "rule__PogoDeviceClass__CommandsAssignment_13");
 					put(grammarAccess.getPogoDeviceClassAccess().getAttributesAssignment_15(), "rule__PogoDeviceClass__AttributesAssignment_15");
-					put(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_17(), "rule__PogoDeviceClass__StatesAssignment_17");
-					put(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_18(), "rule__PogoDeviceClass__PreferencesAssignment_18");
-					put(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_20(), "rule__PogoDeviceClass__AdditionalFilesAssignment_20");
+					put(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAssignment_17(), "rule__PogoDeviceClass__DynamicAttributesAssignment_17");
+					put(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_19(), "rule__PogoDeviceClass__StatesAssignment_19");
+					put(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_20(), "rule__PogoDeviceClass__PreferencesAssignment_20");
+					put(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_22(), "rule__PogoDeviceClass__AdditionalFilesAssignment_22");
 					put(grammarAccess.getClassDescriptionAccess().getDescriptionAssignment_0(), "rule__ClassDescription__DescriptionAssignment_0");
 					put(grammarAccess.getClassDescriptionAccess().getTitleAssignment_1(), "rule__ClassDescription__TitleAssignment_1");
 					put(grammarAccess.getClassDescriptionAccess().getSourcePathAssignment_2(), "rule__ClassDescription__SourcePathAssignment_2");
@@ -144,8 +145,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyAssignment_9(), "rule__ClassDescription__HasMandatoryPropertyAssignment_9");
 					put(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10(), "rule__ClassDescription__HasAbstractCommandAssignment_10");
 					put(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11(), "rule__ClassDescription__HasAbstractAttributeAssignment_11");
-					put(grammarAccess.getClassDescriptionAccess().getHasDynamicAttributeAssignment_12(), "rule__ClassDescription__HasDynamicAttributeAssignment_12");
-					put(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13(), "rule__ClassDescription__DescriptionHtmlExistsAssignment_13");
+					put(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12(), "rule__ClassDescription__DescriptionHtmlExistsAssignment_12");
 					put(grammarAccess.getInheritanceAccess().getClassnameAssignment_0(), "rule__Inheritance__ClassnameAssignment_0");
 					put(grammarAccess.getInheritanceAccess().getSourcePathAssignment_1(), "rule__Inheritance__SourcePathAssignment_1");
 					put(grammarAccess.getClassIdentificationAccess().getContactAssignment_0(), "rule__ClassIdentification__ContactAssignment_0");

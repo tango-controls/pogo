@@ -33,6 +33,29 @@
 	</table>
 	<Br>
 	<Br>
+	<Br>
+«IF dynamicAttributes.size>0»
+	«EXPAND _htmlUtil::htmlTableHeader(""+attributes.size+" Device Dynamic Attributes",
+			 {"Class Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description"})-»
+	«FOREACH dynamicAttributes AS attr-»
+	<Tr>
+		<Td> <a href=Attr«attr.name».html> «attr.name» </a></Td>
+		<Td> «attr.status.inherited»                   </Td>
+		<Td> «IF attr.status.concrete==true ||
+				 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+		<Td> «attr.attType»«IF attr.attType.toLowerCase()!="scalar"-»
+				(«attr.attTypeDimentions()»)«ENDIF»    </Td>
+		<Td> «attr.rwType»                             </Td>
+		<Td> «attr.dataType.stringTypeEnum()»          </Td>
+		<Td> «attr.displayLevel»                       </Td>
+		<Td> «attr.properties.description»             </Td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+	<Br>
+	<Br>
+	<Br>
+«ENDIF»
 	«EXPAND _htmlUtil::htmlProtectedArea(attributePageFileName())»
 	<Br>
 	<Br>
@@ -47,6 +70,9 @@
 «FOREACH attributes AS attr-»
 	«EXPAND oneAttributeHtmlFile(attr)»
 «ENDFOREACH»
+«FOREACH dynamicAttributes AS attr-»
+	«EXPAND oneAttributeHtmlFile(attr)»
+«ENDFOREACH»
 
 «ENDDEFINE»
 
@@ -56,8 +82,11 @@
 //
 «DEFINE oneAttributeHtmlFile(Attribute attr)  FOR PogoDeviceClass»
 «FILE attributePageFileName(attr)»«htmlHeader()»
-«htmlPageTitle(attr.name + " Attribute ")»
-
+«IF attr.isDynamic=="true"»
+	«htmlPageTitle(attr.name + "&nbsp;&nbsp; Dynamic Attribute ")»
+«ELSE»
+	«htmlPageTitle(attr.name + "&nbsp;&nbsp; Attribute ")»
+«ENDIF»
 <FONT SIZE="-1">
 <Br>
 <Br>
