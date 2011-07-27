@@ -177,7 +177,9 @@ public class OAWutils
         //System.out.println("-----------------------------------------------------------------\\n");
 
         //	Generate XMI file if requested.
-		if (pogo_class.getDescription().getFilestogenerate().toLowerCase().indexOf("xmi")>=0) {
+        String gene = pogo_class.getDescription().getFilestogenerate().toLowerCase();
+        int pos = gene.indexOf("xmi");
+		if (pos>=0) {
 			String	xmi_file = pogo_class.getDescription().getSourcePath() + "/" +
 										pogo_class.getName() + ".xmi";
 			ResourceSet resourceSet = new ResourceSetImpl();
@@ -193,15 +195,25 @@ public class OAWutils
 				Except.throw_exception("IOException",
 						e.toString(), "DeviceClass.generate()");
 			}
-		}
-		//	Start the code generation
-		Map params = new HashMap();
-		params.put("targetDir",      pogo_class.getDescription().getSourcePath());
-		params.put("targetLanguage", pogo_class.getDescription().getLanguage());
-        params.put("theModel",       sys);
-        params.put("prExcludes",     prExcludes);
 
-		runWorkflow(params);
+            pos = gene.indexOf(",");
+            if (pos<0) //   Nothing else
+                gene = "";
+            else
+                gene = gene.substring(pos+1);   //  xmi done 
+		}
+
+
+        if (gene.length()>0) {
+            //	Start the code generation
+            Map params = new HashMap();
+            params.put("targetDir",      pogo_class.getDescription().getSourcePath());
+            params.put("targetLanguage", pogo_class.getDescription().getLanguage());
+            params.put("theModel",       sys);
+            params.put("prExcludes",     prExcludes);
+
+            runWorkflow(params);
+        }
 	}
 	//========================================================================
 	/**
@@ -796,12 +808,12 @@ public class OAWutils
           Attribute	attr = factory.createAttribute();
           attr.setName(src.getName());
 
+          attr.setIsDynamic(src.getIsDynamic());
           attr.setAttType(src.getAttType());
           attr.setRwType(src.getRwType());
           if (src.getAssociatedAttr()!=null && src.getAssociatedAttr().length()>0)
             attr.setAssociatedAttr(src.getAssociatedAttr());
-if (src.getDataType()==null)
-	System.out.println("Type is null for " + src.getName());
+
           attr.setDataType(cloneType(src.getDataType()));
 
           attr.setMaxX(src.getMaxX());
