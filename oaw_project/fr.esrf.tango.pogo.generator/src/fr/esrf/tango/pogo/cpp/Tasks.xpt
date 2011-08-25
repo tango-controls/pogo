@@ -1,5 +1,5 @@
 «IMPORT pogoDsl»
-«EXTENSION fr::esrf::tango::pogo::cpp::cppUtil»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
 
 «DEFINE main FOR PogoDeviceClass»
 	«EXPAND headerDevice::headerFile»
