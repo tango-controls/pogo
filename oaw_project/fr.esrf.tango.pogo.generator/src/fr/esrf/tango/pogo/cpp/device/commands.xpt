@@ -50,10 +50,11 @@
 «DEFINE executeStateCommandMethod(Command cmd) FOR PogoDeviceClass-»
 	DEBUG_STREAM << "«name»::«cmd.name»()  - " << device_name << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
-		cmd.execMethod, "Tango::DevState	argout = DeviceImpl::dev_state();\n"+
-						"	//	Add your own state management")»
-	set_state(argout);               // Give the state to Tango.
-	return DeviceImpl::dev_state();  // Return it after Tango management.
+		cmd.execMethod, "Tango::DevState	argout = Tango::UNKNOWN; // replace by your own algorithm")»
+	set_state(argout);    // Give the state to Tango.
+	if (argout!=Tango::ALARM)
+		DeviceImpl::dev_state();
+	return get_state();  // Return it after Tango management.
 «ENDDEFINE»
 
 
