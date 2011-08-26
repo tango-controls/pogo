@@ -825,7 +825,6 @@ public class  ClassTree  extends JTree implements TangoConst, PogoConst
             treeModel.insertNodeInto(newNode, collecNode, collecNode.getChildCount());
             setSelectionNode(newNode);
             boolean editOk = (editItem()==JOptionPane.OK_OPTION);
-            System.out.println(editOk);
             if (editOk)
                 setModified(true);
             else

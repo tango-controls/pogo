@@ -17,7 +17,13 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Jun 15 15:42:47 CEST 2011)</Center><Br>\n" + 
+		"	(Generated Fri Aug 26 14:39:35 CEST 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.3.1 - 27/07/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb with dev_state() method in case of ALARM state fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Pb in case of main.cpp missing (convertion from pogo-6) fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Buttons for java projects added.<Br>\n" + 
+		"<li><b>Pogo-7.3.0 - 27/07/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Dynamic attributes management added.<Br>\n" + 
 		"<li><b>Pogo-7.2.7 - 15/06/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Problem in property dialog (description & default value) fixed.<Br>\n" + 
 		"<li><b>Pogo-7.2.6 - 19/05/2011:</b><Br>\n" + 
