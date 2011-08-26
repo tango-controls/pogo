@@ -378,15 +378,23 @@ System.out.println(filename + "StateMachine.cpp  updated");
         //===============================================================
         //	build  parser for main.cpp
         //===============================================================
-        new_parser = new PogoParser(new_model.getDescription().getSourcePath() + "/main.cpp");
-        old_parser = new OldModelParser(old_model.projectFiles.getPath()+"/main.cpp", old_model);
+        try {
+            new_parser = new PogoParser(new_model.getDescription().getSourcePath() + "/main.cpp");
+            old_parser = new OldModelParser(old_model.projectFiles.getPath()+"/main.cpp", old_model);
 
-        code =  getMainCode(old_parser);
-        new_parser.removeProtectedZoneAtEnd(classname, "main.cpp", "#i");
-        new_parser.insertInProtectedZoneAtEnd(classname, "main.cpp", code);
+            code =  getMainCode(old_parser);
+            new_parser.removeProtectedZoneAtEnd(classname, "main.cpp", "#i");
+            new_parser.insertInProtectedZoneAtEnd(classname, "main.cpp", code);
 
-        new_parser.write();
-System.out.println("main.cpp  updated");
+            new_parser.write();
+            System.out.println("main.cpp  updated");
+        }
+        catch (DevFailed e) {
+            //  Continue even main.cpp is missing
+            System.err.println("================================================================");
+            System.err.println("\t" + e.errors[0].desc);
+            System.err.println("================================================================");
+        }
 	}
 	//===============================================================
 	//===============================================================

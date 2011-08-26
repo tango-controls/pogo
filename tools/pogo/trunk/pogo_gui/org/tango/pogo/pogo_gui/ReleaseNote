@@ -8,6 +8,14 @@
 #
 #-======================================================================
 
+Pogo-7.3.1 - 27/07/2011:
+	Pb with dev_state() method in case of ALARM state fixed.
+	Pb in case of main.cpp missing (convertion from pogo-6) fixed.
+	Buttons for java projects added.
+
+Pogo-7.3.0 - 27/07/2011:
+	Dynamic attributes management added.
+
 Pogo-7.2.7 - 15/06/2011:
 	Problem in property dialog (description & default value) fixed.
 
