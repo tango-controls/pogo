@@ -1,0 +1,118 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//
+//	Define the DeviceClass class initialization
+//
+
+
+«DEFINE cppFile FOR PogoDeviceClass»
+//===================================================================
+//	Initialize pointer for singleton pattern
+//===================================================================
+«name»Class *«name»Class::_instance = NULL;
+«EXPAND constructor»
+«EXPAND destructor»
+«EXPAND getInstance»
+«ENDDEFINE»
+
+//	=========================================================
+//	Define the constructor
+//	=========================================================
+«DEFINE constructor FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::«name»Class(string &s)
+ * description : 	constructor for the «name»Class
+ *
+ * @param s	The class name
+ */
+«separator2()»
+«IF description.hasInheritanceClass()-»
+«name»Class::«name»Class(string &s):«description.getInheritance().classname»_ns::«description.getInheritance().classname»Class(s)
+«ELSE-»
+«name»Class::«name»Class(string &s):DeviceClass(s)
+«ENDIF-»
+{
+	cout2 << "Entering «name»Class constructor" << endl;
+	set_default_property();
+	get_class_property();
+	write_class_property();
+
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::constructor")»
+	cout2 << "Leaving «name»Class constructor" << endl;
+}
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the destructor
+//	=========================================================
+«DEFINE destructor FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::~«name»Class()
+ * description : 	destructor for the «name»Class
+ */
+«separator2()»
+«name»Class::~«name»Class()
+{
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::destructor")»
+	_instance = NULL;
+}
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the instance management
+//	=========================================================
+«DEFINE getInstance FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::init
+ * description : 	Create the object if not already done.
+ *                  Otherwise, just return a pointer to the object
+ *
+ * @param	name	The class name
+ */
+«separator2()»
+«name»Class *«name»Class::init(const char *name)
+{
+	if (_instance == NULL)
+	{
+		try
+		{
+			string s(name);
+			_instance = new «name»Class(s);
+		}
+		catch (bad_alloc)
+		{
+			throw;
+		}		
+	}		
+	return _instance;
+}
+
+«separator2()»
+/**
+ * method : 		«name»Class::instance
+ * description : 	Check if object already created,
+ *                  and return a pointer to the object
+ */
+«separator2()»
+«name»Class *«name»Class::instance()
+{
+	if (_instance == NULL)
+	{
+		cerr << "Class is not initialised !!" << endl;
+		exit(-1);
+	}
+	return _instance;
+}
+«ENDDEFINE»
+
+
