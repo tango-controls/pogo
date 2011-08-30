@@ -1377,7 +1377,10 @@ public class CppServerClass extends PogoGene implements PogoDefs, TangoConst
 			if (pos>0)
 			{
 				pos = tmp.indexOf(" ", pos);
-				v.add(0, tmp.substring(0, pos) + " $\";");
+				if (pos>0)
+					v.add(0, tmp.substring(0, pos) + " $\";");
+				else
+					v.add(0, tmp);
 			}
 			else
 				v.add(0, tmp);
