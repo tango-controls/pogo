@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Sep 08 11:21:46 CEST 2010)</Center><Br>\n" + 
+		"	(Generated Tue Aug 30 11:31:45 CEST 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-6.2.5 - 30/08/11:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb with templates from SVN fixed.<Br>\n" + 
 		"<li><b>Pogo-6.2.4 - 02/09/10:</b><Br>\n" + 
 		"&nbsp; &nbsp; External vector management added (for Pogo-7 compatibility).<Br>\n" + 
 		"<li><b>Pogo-6.2.3 - 29/06/10:</b><Br>\n" + 

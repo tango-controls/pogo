@@ -280,7 +280,7 @@ public class PogoAppli extends JFrame
 /**
  *  Initialized by make jar call and used to display title.
  */
-private static String revNumber = "Release 6.2.4  -  Wed Sep 08 11:21:45 CEST 2010";
+private static String revNumber = "Release 6.2.5  -  Tue Aug 30 11:31:45 CEST 2011";
 /**
  *  JTree used to display <a href=../gene/PogoClass.html>PogoClass</a> object.
  */
