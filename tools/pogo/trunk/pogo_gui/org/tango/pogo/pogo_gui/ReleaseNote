@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-7.3.2 - 08/09/2011:
+	Bug with DevVarLongStringArray and DevVarDoubleStringArray fixed.
+
 Pogo-7.3.1 - 27/07/2011:
 	Pb with dev_state() method in case of ALARM state fixed.
 	Pb in case of main.cpp missing (convertion from pogo-6) fixed.

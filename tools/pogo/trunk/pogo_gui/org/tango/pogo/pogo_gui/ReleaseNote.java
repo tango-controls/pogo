@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Aug 26 14:39:35 CEST 2011)</Center><Br>\n" + 
+		"	(Generated Thu Sep 08 08:59:35 CEST 2011)</Center><Br>\n" + 
+		"<li><b>Pogo-7.3.2 - 08/09/2011:</b><Br>\n" + 
+		"&nbsp; &nbsp; Bug with DevVarLongStringArray and DevVarDoubleStringArray fixed.<Br>\n" + 
 		"<li><b>Pogo-7.3.1 - 27/07/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Pb with dev_state() method in case of ALARM state fixed.<Br>\n" + 
 		"&nbsp; &nbsp; Pb in case of main.cpp missing (convertion from pogo-6) fixed.<Br>\n" + 
