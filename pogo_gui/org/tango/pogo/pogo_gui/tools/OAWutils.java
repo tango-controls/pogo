@@ -544,6 +544,12 @@ public class OAWutils
 				tangoType = tangoType.substring(0, pos);
 			if  (tangoType.indexOf("Array")>0){
                 //System.out.println(tangoType);
+                if (tangoType.indexOf("LongString")>=0)    //  Int is Long
+    				return "DevVarLongStringArray";
+                else
+                if (tangoType.indexOf("DoubleString")>=0)    //  Int is Long
+    				return "DevVarDoubleStringArray";
+                else
                 if (tangoType.indexOf("ULong")>=0)    //  Int is Long
     				return "DevVarULong64Array";
                 else
@@ -749,20 +755,6 @@ public class OAWutils
         return PropertyDialog.tango2pogoType(strType);
 
     }
-    //========================================================================
-    /**
-     * clone an Argument object
-     * @param src	the  Argument to be cloned.
-     * @return a clone of specified  Argument object.
-     */
-    //========================================================================
-    public static Argument cloneArgument(Argument src)
-    {
-        Argument    arg = factory.createArgument();
-        arg.setType(cloneType(src.getType()));
-        arg.setDescription(src.getDescription());
-        return arg;
-    }
 	//===============================================================
 	//===============================================================
 	public static Command cloneCommand(Command src)
@@ -774,9 +766,14 @@ public class OAWutils
 	    cmd.setDescription(src.getDescription());
 
 		//	Argin/argout management
-		Argument	argin  = cloneArgument(src.getArgin());
-	    Argument	argout = cloneArgument(src.getArgout());
-	    cmd.setArgin(argin);
+		Argument	argin  = factory.createArgument();
+        argin.setType(cloneType(src.getArgin().getType()));
+        argin.setDescription(src.getArgin().getDescription());
+        cmd.setArgin(argin);
+
+	    Argument	argout = factory.createArgument();
+        argout.setType(cloneType(src.getArgout().getType()));
+        argout.setDescription(src.getArgout().getDescription());
 	    cmd.setArgout(argout);
 
         if (src.getDisplayLevel() == null)
