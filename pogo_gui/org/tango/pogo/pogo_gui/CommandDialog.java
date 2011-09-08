@@ -698,9 +698,9 @@ public class CommandDialog extends JDialog
 		Argument	argin  = OAWutils.factory.createArgument();
 	    Argument	argout = OAWutils.factory.createArgument();
 		Type	arginType = OAWutils.tango2pogoType(
-				arginComboBox.getSelectedItem().toString());
+                    arginComboBox.getSelectedItem().toString());
 		Type	argoutType = OAWutils.tango2pogoType(
-				argoutComboBox.getSelectedItem().toString());
+                    argoutComboBox.getSelectedItem().toString());
 		argin.setType(arginType);
 	    argout.setType(argoutType);
 
