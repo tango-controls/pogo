@@ -1,0 +1,18 @@
+<workflow>
+  <property name='xmiFile' />
+  <property name='targetLanguage' />
+  <property name='targetDir' value='src-gen/'/>
+  
+  <bean class="org.eclipse.emf.mwe.utils.StandaloneSetup">
+     <platformUri value=".."/>
+     <registerGeneratedEPackage value="fr.esrf.tango.pogo.pogoDsl.PogoDslPackage"/>
+  </bean>
+  
+  <component class='org.eclipse.xtend.typesystem.emf.XmiReader'>
+     <modelFile value='${xmiFile}'/>
+     <outputSlot value='theModel'/>
+  </component>
+  
+  <component file="fr/esrf/tango/pogo/backend.mwe" inheritAll="true"/>
+  
+</workflow>
