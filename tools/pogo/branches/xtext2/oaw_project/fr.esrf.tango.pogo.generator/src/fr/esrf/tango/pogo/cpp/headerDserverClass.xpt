@@ -1,0 +1,59 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE headerFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode())»
+
+«FILE dserverClassHeaderFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID dserverClassHeaderFileName()»
+«EXPAND Common::fileHeader(dserverClassHeaderFileName(),
+	"Include for the " + name + "Class root class.\n" +
+	"This class is the singleton class for.\n" +
+	"the " + name + " device class..\n" +
+	"It contains all properties and methods which the .\n" +
+	name + " requires only once e.g. the commands.")»
+
+#ifndef «dserverClassHeaderConstantName()»
+#define «dserverClassHeaderConstantName()»
+
+#include <tango.h>
+«IF description.hasInheritanceClass()-»
+#include <«description.getInheritance().classname»Class.h>
+«ENDIF-»
+#include <«deviceHeaderFileName()»>
+
+«ENDPROTECT»
+
+namespace «name»_ns
+{
+«EXPAND Common::ProtectedArea("classes for dynamic creation")»
+
+«EXPAND dserver::attributeDefs::headerFile»
+
+«EXPAND dserver::commandDefs::headerFile»
+
+
+«EXPAND Common::defaultHeader("The TemplateDevServClass singleton definition")»
+class
+#ifdef _TG_WINDOWS_
+	__declspec(dllexport)
+#endif
+«IF description.hasInheritanceClass()-»
+	«name»Class : public «description.getInheritance().classname»_ns::«description.getInheritance().classname»Class
+«ELSE-»
+	«name»Class : public Tango::DeviceClass
+«ENDIF-»
+{
+«EXPAND Common::ProtectedArea("Additionnal DServer data members")»
+
+«EXPAND dserver::prototypes::headerFile»
+};
+
+}	//	namespace
+
+#endif	//	«dserverClassHeaderConstantName()»
+
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
