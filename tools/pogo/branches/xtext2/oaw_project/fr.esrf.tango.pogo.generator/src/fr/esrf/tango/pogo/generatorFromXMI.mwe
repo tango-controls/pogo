@@ -2,6 +2,7 @@
   <property name='xmiFile' />
   <property name='targetLanguage' />
   <property name='targetDir' value='src-gen/'/>
+  <property name='prExcludes' value=''/>
   
   <bean class="org.eclipse.emf.mwe.utils.StandaloneSetup">
      <platformUri value=".."/>

@@ -9,15 +9,15 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//PogoSystem"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="classes" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="classes" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="multiClasses" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="multiClasses" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Import">
@@ -25,10 +25,10 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Import"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Keyword" value="import"/>
-        <tokens xsi:type="xtext:Assignment" feature="importURI" operator="=">
+        <elements xsi:type="xtext:Keyword" value="import"/>
+        <elements xsi:type="xtext:Assignment" feature="importURI" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PogoMultiClasses">
@@ -36,31 +36,31 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//PogoMultiClasses"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Keyword" value="multiclasses"/>
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Keyword" value="multiclasses"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="{"/>
-        <tokens xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="title" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="title" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="classes:"/>
-        <tokens xsi:type="xtext:Assignment" feature="classes" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="classes:"/>
+        <elements xsi:type="xtext:Assignment" feature="classes" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="filestogenerate" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="filestogenerate" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="preferences" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="preferences" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="}"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="OneClassSimpleDef">
@@ -68,27 +68,27 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//OneClassSimpleDef"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="classname" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="classname" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="pogo6" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="pogo6" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="inheritances:"/>
-        <tokens xsi:type="xtext:Assignment" feature="inheritances" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="inheritances:"/>
+        <elements xsi:type="xtext:Assignment" feature="inheritances" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="parentClasses:"/>
-        <tokens xsi:type="xtext:Assignment" feature="parentClasses" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="parentClasses:"/>
+        <elements xsi:type="xtext:Assignment" feature="parentClasses" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="additionalFiles:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="additionalFiles" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="additionalFiles:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="additionalFiles" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PogoDeviceClass">
@@ -96,64 +96,64 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//PogoDeviceClass"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Keyword" value="deviceclass"/>
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Keyword" value="deviceclass"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" cardinality="?" feature="isAbstract" operator="?=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="isAbstract" operator="?=">
           <terminal xsi:type="xtext:Keyword" value="abstract"/>
-        </tokens>
-        <tokens xsi:type="xtext:Group" cardinality="?">
-          <tokens xsi:type="xtext:Keyword" value="extends"/>
-          <tokens xsi:type="xtext:Assignment" feature="baseClass" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="extends"/>
+          <elements xsi:type="xtext:Assignment" feature="baseClass" operator="=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.0">
                 <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//PogoDeviceClass"/>
               </type>
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
-          </tokens>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="{"/>
-        <tokens xsi:type="xtext:Assignment" feature="institute" operator="=">
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" feature="institute" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="description:"/>
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="description:"/>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="classProperties:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="classProperties" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="classProperties:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="classProperties" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="deviceProperties:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="deviceProperties" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="deviceProperties:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="deviceProperties" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="commands:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="commands" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="commands:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="commands" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="attributes:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="attributes" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="attributes:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="attributes" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="dynamicAttributes:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="dynamicAttributes" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="dynamicAttributes:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="dynamicAttributes" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="states:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="states" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="states:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="states" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="preferences" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="preferences" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="additionalFiles:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="additionalFiles" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="additionalFiles:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="additionalFiles" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="}"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Language">
@@ -161,9 +161,9 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:Keyword" value="Cpp"/>
-        <groups xsi:type="xtext:Keyword" value="Java"/>
-        <groups xsi:type="xtext:Keyword" value="Python"/>
+        <elements xsi:type="xtext:Keyword" value="Cpp"/>
+        <elements xsi:type="xtext:Keyword" value="Java"/>
+        <elements xsi:type="xtext:Keyword" value="Python"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DisplayLevel">
@@ -171,8 +171,8 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:Keyword" value="OPERATOR"/>
-        <groups xsi:type="xtext:Keyword" value="EXPERT"/>
+        <elements xsi:type="xtext:Keyword" value="OPERATOR"/>
+        <elements xsi:type="xtext:Keyword" value="EXPERT"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AttrType">
@@ -180,9 +180,9 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:Keyword" value="Scalar"/>
-        <groups xsi:type="xtext:Keyword" value="Spectrum"/>
-        <groups xsi:type="xtext:Keyword" value="Image"/>
+        <elements xsi:type="xtext:Keyword" value="Scalar"/>
+        <elements xsi:type="xtext:Keyword" value="Spectrum"/>
+        <elements xsi:type="xtext:Keyword" value="Image"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RW_Type">
@@ -190,10 +190,10 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:Keyword" value="READ"/>
-        <groups xsi:type="xtext:Keyword" value="WRITE"/>
-        <groups xsi:type="xtext:Keyword" value="READ_WRITE"/>
-        <groups xsi:type="xtext:Keyword" value="READ_WITH_WRITE"/>
+        <elements xsi:type="xtext:Keyword" value="READ"/>
+        <elements xsi:type="xtext:Keyword" value="WRITE"/>
+        <elements xsi:type="xtext:Keyword" value="READ_WRITE"/>
+        <elements xsi:type="xtext:Keyword" value="READ_WITH_WRITE"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Boolean">
@@ -201,8 +201,8 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:Keyword" value="true"/>
-        <groups xsi:type="xtext:Keyword" value="false"/>
+        <elements xsi:type="xtext:Keyword" value="true"/>
+        <elements xsi:type="xtext:Keyword" value="false"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ClassDescription">
@@ -210,43 +210,43 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ClassDescription"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="title" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="title" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="inheritances:"/>
-        <tokens xsi:type="xtext:Assignment" feature="inheritances" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="inheritances:"/>
+        <elements xsi:type="xtext:Assignment" feature="inheritances" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="language" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="language" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="filestogenerate" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="filestogenerate" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="identification" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="identification" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="comments" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="comments" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="hasMandatoryProperty" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="hasMandatoryProperty" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="hasAbstractCommand" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="hasAbstractCommand" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="hasAbstractAttribute" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="hasAbstractAttribute" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="descriptionHtmlExists" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="descriptionHtmlExists" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Inheritance">
@@ -254,12 +254,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Inheritance"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="classname" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="classname" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourcePath" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ClassIdentification">
@@ -267,33 +267,33 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ClassIdentification"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="contact" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="contact" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="author" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="author" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="emailDomain" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="emailDomain" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="classFamily" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="classFamily" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="siteSpecific" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="siteSpecific" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="platform" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="platform" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="bus" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="bus" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="manufacturer" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="manufacturer" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="reference" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="reference" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Comments">
@@ -309,18 +309,18 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Preferences"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="docHome" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="docHome" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="makefileHome" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="makefileHome" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="installHome" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="installHome" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="htmlVersion" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="htmlVersion" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="State">
@@ -328,15 +328,15 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//State"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="status" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Property">
@@ -344,25 +344,25 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Property"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="type" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="status" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="defaultPropValue:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="DefaultPropValue" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="defaultPropValue:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="DefaultPropValue" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PropType">
@@ -370,8 +370,8 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//PropType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SimpleType">
@@ -379,14 +379,14 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//SimpleType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="VectorType">
@@ -394,11 +394,11 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//VectorType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.57"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.61"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.57"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.61"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="InheritanceStatus">
@@ -406,21 +406,21 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//InheritanceStatus"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="abstract" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="abstract" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="inherited" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="inherited" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="concrete" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="concrete" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="concreteHere" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="concreteHere" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="hasChanged" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="hasChanged" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Command">
@@ -428,34 +428,34 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Command"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="argin" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="argin" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="argout" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="argout" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="status" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="execMethod" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="execMethod" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="displayLevel" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="displayLevel" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="polledPeriod" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="polledPeriod" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="excludedStates:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="excludedStates" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="excludedStates:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="excludedStates" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Argument">
@@ -463,12 +463,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Argument"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="type" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Attribute">
@@ -476,68 +476,68 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Attribute"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="attType" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="attType" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="dataType" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="dataType" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="rwType" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rwType" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="displayLevel" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="displayLevel" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="polledPeriod" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="polledPeriod" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="maxX" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="maxX" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="maxY" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="maxY" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="associatedAttr" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="associatedAttr" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="memorized" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="memorized" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="memorizedAtInit" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="memorizedAtInit" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="changeEvent" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="changeEvent" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="archiveEvent" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="archiveEvent" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="dataReadyEvent" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="dataReadyEvent" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="status" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="status" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="properties" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="properties" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="allocReadMember" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="allocReadMember" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="isDynamic" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="isDynamic" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="readExcludedStates:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="readExcludedStates" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="readExcludedStates:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="readExcludedStates" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="writeExcludedStates:"/>
-        <tokens xsi:type="xtext:Assignment" cardinality="*" feature="writeExcludedStates" operator="+=">
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="writeExcludedStates:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="writeExcludedStates" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FireEvents">
@@ -545,12 +545,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FireEvents"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="fire" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="fire" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="libCheckCriteria" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="libCheckCriteria" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AttrProperties">
@@ -558,48 +558,48 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//AttrProperties"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="description" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="label" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="label" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="unit" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="unit" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="standardUnit" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="standardUnit" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="displayUnit" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="displayUnit" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="format" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="format" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="maxValue" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="maxValue" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="minValue" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="minValue" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="maxAlarm" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="maxAlarm" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="minAlarm" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="minAlarm" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="maxWarning" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="maxWarning" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="minWarning" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="minWarning" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="deltaTime" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="deltaTime" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="deltaValue" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="deltaValue" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="AdditionalFile">
@@ -607,12 +607,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//AdditionalFile"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
-        <tokens xsi:type="xtext:Assignment" feature="path" operator="=">
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="path" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Type">
@@ -620,35 +620,35 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//Type"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.41"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.48"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.55"/>
-        <groups xsi:type="xtext:RuleCall" rule="/0/@rules.56"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.41"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.48"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.55"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.56"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="VoidType">
@@ -656,12 +656,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//VoidType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//VoidType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="void"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="void"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BooleanType">
@@ -669,12 +669,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//BooleanType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//BooleanType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="boolean"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="boolean"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ShortType">
@@ -682,12 +682,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ShortType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ShortType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="short"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="short"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UShortType">
@@ -695,12 +695,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UShortType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UShortType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="ushort"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="ushort"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntType">
@@ -708,12 +708,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//IntType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//IntType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="int"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="int"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UIntType">
@@ -721,12 +721,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UIntType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UIntType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="uint"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="uint"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FloatType">
@@ -734,12 +734,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FloatType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FloatType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="float"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="float"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DoubleType">
@@ -747,12 +747,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="double"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="double"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringType">
@@ -760,12 +760,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StringType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StringType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="string"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="string"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CharArrayType">
@@ -773,12 +773,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//CharArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//CharArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarCharArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarCharArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ShortArrayType">
@@ -786,12 +786,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ShortArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ShortArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarShortArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarShortArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UShortArrayType">
@@ -799,12 +799,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UShortArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UShortArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarUShortArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarUShortArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntArrayType">
@@ -812,12 +812,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//IntArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//IntArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarLongArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarLongArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UIntArrayType">
@@ -825,12 +825,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UIntArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UIntArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarULongArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarULongArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FloatArrayType">
@@ -838,12 +838,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FloatArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FloatArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarFloatArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarFloatArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DoubleArrayType">
@@ -851,12 +851,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarDoubleArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarDoubleArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringArrayType">
@@ -864,12 +864,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StringArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StringArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarStringArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarStringArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LongStringArrayType">
@@ -877,12 +877,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//LongStringArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//LongStringArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarLongStringArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarLongStringArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DoubleStringArrayType">
@@ -890,12 +890,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleStringArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleStringArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarDoubleStringArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarDoubleStringArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StateType">
@@ -903,12 +903,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StateType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StateType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevState"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevState"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ConstStringType">
@@ -916,12 +916,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ConstStringType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ConstStringType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="ConstDevString"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="ConstDevString"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="BooleanArrayType">
@@ -929,12 +929,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//BooleanArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//BooleanArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarBooleanArray"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarBooleanArray"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UCharType">
@@ -942,12 +942,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UCharType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//UCharType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevUChar"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevUChar"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LongType">
@@ -955,12 +955,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//LongType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//LongType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevLong64"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevLong64"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ULongType">
@@ -968,12 +968,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ULongType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ULongType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevULong64"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevULong64"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LongArrayType">
@@ -981,12 +981,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//LongArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//LongArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarLong64Array"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarLong64Array"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ULongArrayType">
@@ -994,12 +994,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ULongArrayType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ULongArrayType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevVarULong64Array"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevVarULong64Array"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DevIntType">
@@ -1007,12 +1007,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DevIntType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DevIntType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevInt"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevInt"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="EncodedType">
@@ -1020,12 +1020,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//EncodedType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//EncodedType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="DevEncoded"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevEncoded"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ShortVectorType">
@@ -1033,12 +1033,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ShortVectorType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//ShortVectorType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="vector&lt;short>"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="vector&lt;short>"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntVectorType">
@@ -1046,12 +1046,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//IntVectorType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//IntVectorType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="vector&lt;int>"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="vector&lt;int>"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FloatVectorType">
@@ -1059,12 +1059,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FloatVectorType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//FloatVectorType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="vector&lt;float>"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="vector&lt;float>"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DoubleVectorType">
@@ -1072,12 +1072,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleVectorType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//DoubleVectorType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="vector&lt;double>"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="vector&lt;double>"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringVectorType">
@@ -1085,12 +1085,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StringVectorType"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Action">
+        <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//StringVectorType"/>
           </type>
-        </tokens>
-        <tokens xsi:type="xtext:Keyword" value="vector&lt;string>"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="vector&lt;string>"/>
       </alternatives>
     </rules>
   </xtext:Grammar>
@@ -1103,33 +1103,33 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Keyword" cardinality="?" value="^"/>
-        <tokens xsi:type="xtext:Alternatives">
-          <groups xsi:type="xtext:CharacterRange">
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="^"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:CharacterRange">
             <left value="a"/>
             <right value="z"/>
-          </groups>
-          <groups xsi:type="xtext:CharacterRange">
+          </elements>
+          <elements xsi:type="xtext:CharacterRange">
             <left value="A"/>
             <right value="Z"/>
-          </groups>
-          <groups xsi:type="xtext:Keyword" value="_"/>
-        </tokens>
-        <tokens xsi:type="xtext:Alternatives" cardinality="*">
-          <groups xsi:type="xtext:CharacterRange">
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="_"/>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="*">
+          <elements xsi:type="xtext:CharacterRange">
             <left value="a"/>
             <right value="z"/>
-          </groups>
-          <groups xsi:type="xtext:CharacterRange">
+          </elements>
+          <elements xsi:type="xtext:CharacterRange">
             <left value="A"/>
             <right value="Z"/>
-          </groups>
-          <groups xsi:type="xtext:Keyword" value="_"/>
-          <groups xsi:type="xtext:CharacterRange">
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="_"/>
+          <elements xsi:type="xtext:CharacterRange">
             <left value="0"/>
             <right value="9"/>
-          </groups>
-        </tokens>
+          </elements>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="INT">
@@ -1146,56 +1146,58 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <groups xsi:type="xtext:Group">
-          <tokens xsi:type="xtext:Keyword" value="&quot;"/>
-          <tokens xsi:type="xtext:Alternatives" cardinality="*">
-            <groups xsi:type="xtext:Group">
-              <tokens xsi:type="xtext:Keyword" value="\"/>
-              <tokens xsi:type="xtext:Alternatives">
-                <groups xsi:type="xtext:Keyword" value="b"/>
-                <groups xsi:type="xtext:Keyword" value="t"/>
-                <groups xsi:type="xtext:Keyword" value="n"/>
-                <groups xsi:type="xtext:Keyword" value="f"/>
-                <groups xsi:type="xtext:Keyword" value="r"/>
-                <groups xsi:type="xtext:Keyword" value="&quot;"/>
-                <groups xsi:type="xtext:Keyword" value="'"/>
-                <groups xsi:type="xtext:Keyword" value="\"/>
-              </tokens>
-            </groups>
-            <groups xsi:type="xtext:NegatedToken">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="&quot;"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="b"/>
+                <elements xsi:type="xtext:Keyword" value="t"/>
+                <elements xsi:type="xtext:Keyword" value="n"/>
+                <elements xsi:type="xtext:Keyword" value="f"/>
+                <elements xsi:type="xtext:Keyword" value="r"/>
+                <elements xsi:type="xtext:Keyword" value="u"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
+                <elements xsi:type="xtext:Keyword" value="\"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:NegatedToken">
               <terminal xsi:type="xtext:Alternatives">
-                <groups xsi:type="xtext:Keyword" value="\"/>
-                <groups xsi:type="xtext:Keyword" value="&quot;"/>
+                <elements xsi:type="xtext:Keyword" value="\"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
               </terminal>
-            </groups>
-          </tokens>
-          <tokens xsi:type="xtext:Keyword" value="&quot;"/>
-        </groups>
-        <groups xsi:type="xtext:Group">
-          <tokens xsi:type="xtext:Keyword" value="'"/>
-          <tokens xsi:type="xtext:Alternatives" cardinality="*">
-            <groups xsi:type="xtext:Group">
-              <tokens xsi:type="xtext:Keyword" value="\"/>
-              <tokens xsi:type="xtext:Alternatives">
-                <groups xsi:type="xtext:Keyword" value="b"/>
-                <groups xsi:type="xtext:Keyword" value="t"/>
-                <groups xsi:type="xtext:Keyword" value="n"/>
-                <groups xsi:type="xtext:Keyword" value="f"/>
-                <groups xsi:type="xtext:Keyword" value="r"/>
-                <groups xsi:type="xtext:Keyword" value="&quot;"/>
-                <groups xsi:type="xtext:Keyword" value="'"/>
-                <groups xsi:type="xtext:Keyword" value="\"/>
-              </tokens>
-            </groups>
-            <groups xsi:type="xtext:NegatedToken">
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="&quot;"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="'"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="b"/>
+                <elements xsi:type="xtext:Keyword" value="t"/>
+                <elements xsi:type="xtext:Keyword" value="n"/>
+                <elements xsi:type="xtext:Keyword" value="f"/>
+                <elements xsi:type="xtext:Keyword" value="r"/>
+                <elements xsi:type="xtext:Keyword" value="u"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
+                <elements xsi:type="xtext:Keyword" value="\"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:NegatedToken">
               <terminal xsi:type="xtext:Alternatives">
-                <groups xsi:type="xtext:Keyword" value="\"/>
-                <groups xsi:type="xtext:Keyword" value="'"/>
+                <elements xsi:type="xtext:Keyword" value="\"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
               </terminal>
-            </groups>
-          </tokens>
-          <tokens xsi:type="xtext:Keyword" value="'"/>
-        </groups>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="'"/>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT">
@@ -1203,10 +1205,10 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Keyword" value="/*"/>
-        <tokens xsi:type="xtext:UntilToken">
+        <elements xsi:type="xtext:Keyword" value="/*"/>
+        <elements xsi:type="xtext:UntilToken">
           <terminal xsi:type="xtext:Keyword" value="*/"/>
-        </tokens>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="SL_COMMENT">
@@ -1214,17 +1216,17 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <tokens xsi:type="xtext:Keyword" value="//"/>
-        <tokens xsi:type="xtext:NegatedToken" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value="//"/>
+        <elements xsi:type="xtext:NegatedToken" cardinality="*">
           <terminal xsi:type="xtext:Alternatives">
-            <groups xsi:type="xtext:Keyword" value="&#xA;"/>
-            <groups xsi:type="xtext:Keyword" value="&#xD;"/>
+            <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+            <elements xsi:type="xtext:Keyword" value="&#xD;"/>
           </terminal>
-        </tokens>
-        <tokens xsi:type="xtext:Group" cardinality="?">
-          <tokens xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
-          <tokens xsi:type="xtext:Keyword" value="&#xA;"/>
-        </tokens>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
+          <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="WS">
@@ -1232,10 +1234,10 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives" cardinality="+">
-        <groups xsi:type="xtext:Keyword" value=" "/>
-        <groups xsi:type="xtext:Keyword" value="&#x9;"/>
-        <groups xsi:type="xtext:Keyword" value="&#xD;"/>
-        <groups xsi:type="xtext:Keyword" value="&#xA;"/>
+        <elements xsi:type="xtext:Keyword" value=" "/>
+        <elements xsi:type="xtext:Keyword" value="&#x9;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xA;"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="ANY_OTHER">

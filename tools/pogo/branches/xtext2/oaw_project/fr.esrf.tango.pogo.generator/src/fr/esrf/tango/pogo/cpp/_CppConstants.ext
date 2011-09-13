@@ -1,5 +1,4 @@
 import pogoDsl;
-import _CppType;
 
 //	Default device Impl version
 tangoDeviceImpl():
