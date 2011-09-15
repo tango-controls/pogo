@@ -3,15 +3,10 @@
   <property name='targetLanguage' />
   <property name='targetDir' value='src-gen/'/>
   
- 
-  <!--
-  <component class="org.eclipse.xtend.check.CheckComponent">
-       <metaModel id="mm" class="org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel"/>
-       <emfAllChildrenSlot value="theModel"/>
-	   <checkFile value="fr::esrf::tango::pogo::validation::PogoDslFastChecks"/>
-	</component>
-  -->
-  
+  <component class='org.eclipse.emf.mwe.utils.DirectoryCleaner'>
+  	<directory value='${targetDir}'/>
+  </component>
+
   <component class='org.eclipse.xpand2.Generator' id="pogogenerator">
      <metaModel id='mm' class='org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel'/>
      <expand value='fr::esrf::tango::pogo::Main::main("${targetLanguage}") FOR theModel'/>
