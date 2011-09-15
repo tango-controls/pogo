@@ -2,10 +2,6 @@
 
   <property name='targetLanguage' />
   <property name='targetDir' value='src-gen/'/>
-  
-  <component class='org.eclipse.emf.mwe.utils.DirectoryCleaner'>
-  	<directory value='${targetDir}'/>
-  </component>
 
   <component class='org.eclipse.xpand2.Generator' id="pogogenerator">
      <metaModel id='mm' class='org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel'/>
