@@ -50,6 +50,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.mwe.core.WorkflowEngine;
 import org.eclipse.emf.mwe.core.WorkflowRunner;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.issues.IssuesImpl;
@@ -281,7 +282,7 @@ public class OAWutils
 	//========================================================================
 	private void runWorkflow(Map params) throws DevFailed
 	{
-		WorkflowRunner runner  = new WorkflowRunner();
+		WorkflowEngine runner  = new WorkflowEngine();
 		@SuppressWarnings({"unchecked"})
         final boolean configOK = runner.prepare(backend, null, params);
 		if (configOK)
@@ -764,6 +765,7 @@ public class OAWutils
 		cmd.setName(name);
 	    cmd.setExecMethod(Utils.buildExcecMethodName(name));
 	    cmd.setDescription(src.getDescription());
+        //System.out.println(src.getName());
 
 		//	Argin/argout management
 		Argument	argin  = factory.createArgument();
