@@ -1,0 +1,43 @@
+«IMPORT pogoDsl»
+
+«EXTENSION fr::esrf::tango::pogo::java::javaUtils»
+
+«DEFINE javaFile FOR PogoDeviceClass»
+«FILE javaDServerClassClassFileName()»
+package «javaDevicePackage()»;
+
+import java.util.*;
+import org.omg.CORBA.*;
+import fr.esrf.Tango.*;
+import fr.esrf.TangoDs.*;
+import fr.esrf.TangoApi.*;
+
+public class «javaDServerClassName()» extends DeviceClass implements TangoConst{
+
+	protected «javaDServerClassName()»(String arg0) throws DevFailed {
+		super(arg0);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void command_factory() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void device_factory(String[] arg0) throws DevFailed {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	«IF deviceProperties.size>0 »
+	DbDatum get_class_property(String propName){
+		return new DbDatum("");
+	}
+	«ENDIF»
+}
+
+
+«ENDFILE»
+«ENDDEFINE»

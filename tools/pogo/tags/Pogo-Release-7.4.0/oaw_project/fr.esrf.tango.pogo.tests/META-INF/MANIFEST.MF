@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: fr.esrf.tango.pogo.tests
+Bundle-Version: 2.0.0.qualifier
+Require-Bundle: fr.esrf.tango.pogo;bundle-version="2.0.0",
+ fr.esrf.tango.pogo.generator;bundle-version="2.0.0"

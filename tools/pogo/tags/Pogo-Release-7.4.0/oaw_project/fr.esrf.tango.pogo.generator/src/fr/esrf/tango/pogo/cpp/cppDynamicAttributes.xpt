@@ -1,0 +1,152 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+//===================================================================================
+//	Dynamic attribute management file
+//===================================================================================
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode()) &&
+	dynamicAttributes.size>0»
+
+«FILE dynAttCppFileName()-»
+«PROTECT CSTART '/*----- ' CEND ' -----*/' ID dynAttCppFileName()»
+static const char *RcsId = "«cvsEscaped("Id:")»";
+«EXPAND Common::fileHeader(deviceCppFileName(),
+	"C++ source to manage dynamic attributes for " + name + "class.")-»
+
+
+#include <«deviceHeaderFileName()»>
+#include <«dserverClassHeaderFileName()»>
+
+«ENDPROTECT»
+«IF dynamicAttributes.size>1-»
+//	Dynamic attributes managed are:«ELSE»
+//	Dynamic attribute managed is:«ENDIF»
+«FOREACH dynamicAttributes AS att-»
+//     - «att.name»
+«ENDFOREACH»
+
+
+namespace «name»_ns
+{
+//=============================================================
+//	Adding dynamic attribute methods
+//=============================================================
+«FOREACH dynamicAttributes AS att-»
+	«EXPAND addDynamicAttributeMethod(att)-»
+«ENDFOREACH»
+
+//============================================================
+//	Tool methods to get pointer on attribute data buffer 
+//============================================================
+«FOREACH dynamicAttributes AS att-»
+	«EXPAND getDynamicAttributeDataPointerMethod(att)»
+«ENDFOREACH»
+} //	namespace
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
+//====================================================================================
+//	End of dynamic attribute management file
+//====================================================================================
+
+
+
+
+
+
+
+
+
+
+
+//====================================================================================
+//	Adding and Removing dynamic attribute method
+/====================================================================================
+«DEFINE addDynamicAttributeMethod(Attribute att) FOR PogoDeviceClass»
+«separator2()»
+/**
+ *	Add a «att.name» dynamic attribute.
+ *
+ *  parameter attname: attribute name to be cretated and added.«IF att.attType!="Scalar"»
+ *  parameter ptr:     memory buffer used to set attribute value.
+ *                     If NULL or not specified, buffer will be allocated.«ENDIF»
+ */
+«separator2()»
+«IF att.attType=="Scalar"-»
+void «name»::add_«att.name»_dynamic_attribute(string attname)
+«ELSE-»
+void «name»::add_«att.name»_dynamic_attribute(string attname, «att.dataType.cppType().toString()» *ptr)
+«ENDIF-»
+{
+	//	Create and add dynamic attribute
+	«IF att.attType!="Scalar"-»
+	if (ptr==NULL)
+		ptr = new double[«att.attAllocSize()»];
+	«ENDIF-»
+	«att.name»Attrib *«att.name.toLowerCase()» = new «att.name»Attrib(attname);
+	«EXPAND dserver::factories::manageAttributeProperties(att)»
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"att_"+att.name+"_dynamic_attribute")-»
+
+	«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);
+	«att.name»_data.insert(make_pair(attname, «IF att.attType=="Scalar"»0.0«ELSE»ptr«ENDIF»));
+    add_attribute(«att.name.toLowerCase()»);
+}
+«separator2()»
+/**
+ *	remove a «att.name» dynamic attribute.
+ *
+ *  parameter attname: attribute name to be removed.«IF att.attType!="Scalar"»
+ *  parameter free_it: memory buffer will be freed if true or not specified.«ENDIF»
+ */
+«separator2()»
+«IF att.attType=="Scalar"-»
+void «name»::remove_«att.name»_dynamic_attribute(string attname)
+«ELSE-»
+void «name»::remove_«att.name»_dynamic_attribute(string attname, bool free_it)
+«ENDIF-»
+{
+	remove_attribute(attname, true);
+    map<string,«att.dataType.cppType().toString()»«IF att.attType!="Scalar"»*«ENDIF»>::iterator ite;
+    if ((ite=«att.name»_data.find(attname))!=«att.name»_data.end())
+    {
+	«IF att.attType!="Scalar"-»
+		if (free_it)
+			delete ite->second;
+	«ENDIF-»
+		«att.name»_data.erase(ite);
+	}
+}
+«ENDDEFINE»
+
+
+
+//====================================================================================
+//	get dynamic attribute data method
+/====================================================================================
+«DEFINE getDynamicAttributeDataPointerMethod(Attribute att) FOR PogoDeviceClass-»
+«separator2()»
+/**
+ *	Return a pointer on «att.name» data.
+ *
+ *  parameter attname: the specified attribute name.
+ */
+«separator2()»
+«att.dataType.cppType().toString()» *«name»::get_«att.name»_data_ptr(string &name)
+{
+    map<string,«att.dataType.cppType().toString()»«IF att.attType!="Scalar"»*«ENDIF»>::iterator ite;
+    if ((ite=«att.name»_data.find(name))==«att.name»_data.end())
+    {
+		TangoSys_OMemStream	tms;
+		tms << "Dynamic attribute " << name << " has not been created";
+		Tango::Except::throw_exception(
+					(const char *)"ATTRIBUTE_NOT_FOUND",
+					tms.str().c_str(),
+					(const char *)"«name»::get_«att.name»_data_ptr()");
+    }
+	return «IF att.attType=="Scalar"» &(ite->second)«ELSE» ite->second«ENDIF»;
+}
+«ENDDEFINE»
