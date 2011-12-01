@@ -220,7 +220,7 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 «DEFINE addDynamicAttributes FOR PogoDeviceClass-»
 «IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
-		name + "Class::add_dynamic_attributes",
+		"add_dynamic_attributes",
 		"Create the dynamic attributes if any at server startup\n" +
 		"for specified device.")-»
 void «name»::add_dynamic_attributes()
