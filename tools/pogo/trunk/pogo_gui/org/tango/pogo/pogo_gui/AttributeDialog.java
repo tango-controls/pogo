@@ -93,6 +93,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         this.isDynamic = isDynamic;
 		attrTypeCB.setSelectedIndex(attType);
 		updateWindow();
+        dynamicLbl.setVisible(isDynamic);
 	}
 	///===================================================================
 	/**
