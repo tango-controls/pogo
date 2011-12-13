@@ -18,7 +18,7 @@ class JavaDevice implements IGenerator {
 	}
 	
 	def generate_javaFile (PogoDeviceClass cls) '''
-		package Çcls.javaDevicePackageÈ;
+		package Â«cls.javaDevicePackageÂ»;
 		
 		import java.util.Vector;
 		
@@ -35,21 +35,21 @@ class JavaDevice implements IGenerator {
 		import fr.esrf.TangoDs.Util;
 		
 		/**
-		 *	Class Description: Çcls.description.descriptionÈ
+		 *	Class Description: Â«cls.description.descriptionÂ»
 		 *	
-		 * @author	Ç"Author".vcsEscapedÈ
-		 * @version	 Ç"Revision".vcsEscapedÈ
+		 * @author	Â«"Author".vcsEscapedÂ»
+		 * @version	 Â«"Revision".vcsEscapedÂ»
 		 */
-		public class Çcls.nameÈ extends DeviceImpl implements TangoConst{
+		public class Â«cls.nameÂ» extends DeviceImpl implements TangoConst{
 		
 			// properties
-			ÇFOR prop: cls.devicePropertiesÈ
-				Çprop.javaPropTypeÈ Çprop.name.toFirstLower()È;
-			ÇENDFORÈ
+			Â«FOR prop: cls.devicePropertiesÂ»
+				Â«prop.javaPropTypeÂ» Â«prop.name.toFirstLower()Â»;
+			Â«ENDFORÂ»
 			// attributes
-			ÇFOR attr : cls.attributesÈ
-				Çattr.dataType.javaTypeÈ  attrÇattr.nameÈ;
-			ÇENDFORÈ		
+			Â«FOR attr : cls.attributesÂ»
+				Â«attr.dataType.javaTypeÂ»  attrÂ«attr.nameÂ»;
+			Â«ENDFORÂ»	
 		}
 	'''
 }
