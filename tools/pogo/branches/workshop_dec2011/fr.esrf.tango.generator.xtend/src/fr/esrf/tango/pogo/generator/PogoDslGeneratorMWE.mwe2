@@ -1,0 +1,26 @@
+
+module fr.esrf.tango.pogo.generator.PogoDslGeneratorMWE
+
+import org.eclipse.emf.mwe.utils.*
+
+var targetDir = "src-gen"
+var modelPath
+
+Workflow {
+	bean = StandaloneSetup {
+//		platformUri = ".."
+		registerGeneratedEPackage = "fr.esrf.tango.pogo.pogoDsl.PogoDslPackage"
+	}
+	
+	component = Reader {
+		uri = modelPath
+		modelSlot = "model"
+	}
+	
+	component = PogoDslGeneratorComponent {
+		modelSlot = "model"
+		outlet = {
+			path = targetDir
+		}
+	}
+}
