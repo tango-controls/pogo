@@ -7,6 +7,6 @@
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="fr.esrf.tango.pogo.generator.PogoGeneratorMain"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="fr.esrf.tango.pogo.generator.PogoDslGeneratorMWE&#10;-ptargetDir=src-gen&#10;-pmodelPath=model/MultiCellGauges.xmi"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-srcdir=model/MultiCellGauges.xmi"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="fr.esrf.tango.generator.xtend"/>
 </launchConfiguration>
