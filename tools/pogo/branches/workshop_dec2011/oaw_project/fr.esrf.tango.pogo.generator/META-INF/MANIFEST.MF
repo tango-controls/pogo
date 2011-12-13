@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.esrf.tango.pogo.generator
+Bundle-Vendor: My Company
+Bundle-Version: 2.0.0.qualifier
+Bundle-SymbolicName: fr.esrf.tango.pogo.generator; singleton:=true
+Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
+Bundle-ActivationPolicy: lazy
+Require-Bundle: fr.esrf.tango.pogo;visibility:=reexport,
+ org.eclipse.xpand;visibility:=reexport,
+ org.eclipse.xtend;visibility:=reexport,
+ org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.emf.mwe.core;visibility:=reexport,
+ org.eclipse.emf.mwe.utils;visibility:=reexport,
+ org.eclipse.xtend.typesystem.emf;visibility:=reexport,
+ org.eclipse.xtend.util.stdlib;bundle-version="1.0.1"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

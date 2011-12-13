@@ -1,0 +1,252 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+//
+//	Define a HTML page for a table containing all attributes
+//
+«DEFINE htmlFile FOR PogoDeviceClass»
+«FILE attributePageFileName()»«htmlHeader()»
+
+«htmlPageTitle("Attributes")»
+
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+	«EXPAND _htmlUtil::htmlTableHeader(""+attributes.size+" Device Attributes",
+			 {"Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description"})-»
+	«FOREACH attributes AS attr-»
+	<Tr>
+		<Td> <a href=Attr«attr.name».html> «attr.name» </a></Td>
+		<Td> «attr.status.inherited»                   </Td>
+		<Td> «IF attr.status.concrete==true ||
+				 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+		<Td> «attr.attType»«IF attr.attType.toLowerCase()!="scalar"-»
+				(«attr.attTypeDimentions()»)«ENDIF»    </Td>
+		<Td> «attr.rwType»                             </Td>
+		<Td> «attr.dataType.stringTypeEnum()»          </Td>
+		<Td> «attr.displayLevel»                       </Td>
+		<Td> «attr.properties.description»             </Td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+	<Br>
+	<Br>
+	<Br>
+«IF dynamicAttributes.size>0»
+	«EXPAND _htmlUtil::htmlTableHeader(""+dynamicAttributes.size+" Device Dynamic Attributes",
+			 {"Class Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description"})-»
+	«FOREACH dynamicAttributes AS attr-»
+	<Tr>
+		<Td> <a href=Attr«attr.name».html> «attr.name» </a></Td>
+		<Td> «attr.status.inherited»                   </Td>
+		<Td> «IF attr.status.concrete==true ||
+				 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+		<Td> «attr.attType»«IF attr.attType.toLowerCase()!="scalar"-»
+				(«attr.attTypeDimentions()»)«ENDIF»    </Td>
+		<Td> «attr.rwType»                             </Td>
+		<Td> «attr.dataType.stringTypeEnum()»          </Td>
+		<Td> «attr.displayLevel»                       </Td>
+		<Td> «attr.properties.description»             </Td>
+	</Tr>
+	«ENDFOREACH-»
+	</table>
+	<Br>
+	<Br>
+	<Br>
+«ENDIF»
+	«EXPAND _htmlUtil::htmlProtectedArea(attributePageFileName())»
+	<Br>
+	<Br>
+</ul>
+</FONT>
+
+
+«htmlFooter()»
+«ENDFILE»
+
+	
+«FOREACH attributes AS attr-»
+	«EXPAND oneAttributeHtmlFile(attr)»
+«ENDFOREACH»
+«FOREACH dynamicAttributes AS attr-»
+	«EXPAND oneAttributeHtmlFile(attr)»
+«ENDFOREACH»
+
+«ENDDEFINE»
+
+
+//
+//	Define a HTML page for each attribute
+//
+«DEFINE oneAttributeHtmlFile(Attribute attr)  FOR PogoDeviceClass»
+«FILE attributePageFileName(attr)»«htmlHeader()»
+«IF attr.isDynamic=="true"»
+	«htmlPageTitle(attr.name + "&nbsp;&nbsp; Dynamic Attribute ")»
+«ELSE»
+	«htmlPageTitle(attr.name + "&nbsp;&nbsp; Attribute ")»
+«ENDIF»
+<FONT SIZE="-1">
+<Br>
+<Br>
+<ul>
+	«htmlSectionTitle("Description")»
+	<ul>
+		«attr.properties.description»
+	</ul>
+	<Br>
+	<Br>
+	
+	
+	
+	<Table Border=0 Cellpadding=0 CELLSPACING=10>
+	<TR>
+	<TD ALIGN="left" VALIGN=top>
+	
+		«EXPAND _htmlUtil::htmlTableHeader("Attribute Definition ",{})-»	
+			<!---------- Attribute type ----------->
+			<Tr>
+				<Td> <Font=+1><b> Attribute Type  </b></Font></Td>
+				<Td> «attr.attType» «IF attr.attType.toLowerCase()!="scalar"-»
+					(«attr.attTypeDimentions()»)«ENDIF» </Td>
+			</Tr>
+		
+			<!---------- R/W type ----------->
+			<Tr>
+				<Td> <Font=+1><b> R/W Type  </b></Font></Td>
+				<Td> «attr.rwType» </Td>
+			</Tr>
+			
+			<!---------- Data type ----------->
+			<Tr>
+				<Td> <Font=+1><b>   Data Type  </b></Font></Td>
+				<Td> «attr.dataType.stringTypeEnum()» </Td>
+			</Tr>
+			
+			<!---------- Allowed State ----------->
+			«EXPAND attrAllowedStates(attr)»
+		
+			<!---------- Display Level ----------->
+			<Tr>
+				<Td> <Font=+1><b> Display Level  </b></Font></Td>
+				<Td> «attr.displayLevel»	</Td>
+			</Tr>
+		
+			<!---------- Inheritance ----------->
+			<Tr>
+				<Td> <Font=+1><b>  Inherited </b></Font></Td>
+				<Td> «attr.status.inherited»	</Td>
+			</Tr>
+			<Tr>
+				<Td> <Font=+1><b>  Abstract </b></Font></Td>
+				<Td> «IF attr.status.concrete==true ||
+					 attr.status.concreteHere=="true"» false «ELSE» true «ENDIF»</Td>
+			</Tr>
+	
+			<!---------- Polling ----------->
+			«IF attr.polledPeriod.length>0-»
+			<Tr>
+				<Td> <Font=+1><b> Polling Period  </b></Font></Td>
+				<Td> «attr.polledPeriod» ms </Td>
+			</Tr>
+			«ENDIF-»
+		
+			<!---------- Memorized ----------->
+			«IF attr.memorized=="true"-»
+			<Tr>
+				<Td> <Font=+1><b> Memorized  </b></Font></Td>
+				<Td> Hardware «IF attr.memorizedAtInit!="true"» NOT «ENDIF» written at init</Td>
+			</Tr>
+			«ENDIF-»
+		
+			<!---------- Change Event ----------->
+			«IF attr.changeEvent.fire=="true"-»
+			<Tr>
+				<Td> <Font=+1><b> Fire Change Event  </b></Font></Td>
+				<Td> On «IF attr.changeEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
+			</Tr>
+			«ENDIF-»
+	
+			<!---------- Archive Event ----------->
+			«IF attr.archiveEvent.fire=="true"-»
+			<Tr>
+				<Td> <Font=+1><b> Fire Change Event  </b></Font></Td>
+				<Td> On «IF attr.archiveEvent.libCheckCriteria=="true"» Tango lib «ELSE» program «ENDIF» criteria</Td>
+			</Tr>
+			«ENDIF-»
+		
+		</Table>
+	</Td>
+	<Td ALIGN="left" VALIGN=top>
+		
+		«EXPAND _htmlUtil::htmlTableHeader(" Attrribute Properties ",{})-»
+			<Tr><Td> <Font=+1><b>  label         </b></Font></Td>    <Td> «attr.properties.label»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  unit          </b></Font></Td>    <Td> «attr.properties.unit»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  standard unit </b></Font></Td>    <Td> «attr.properties.standardUnit»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  display unit  </b></Font></Td>    <Td> «attr.properties.displayUnit»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  format        </b></Font></Td>    <Td> «attr.properties.format»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  max_value     </b></Font></Td>    <Td> «attr.properties.maxValue»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  min_value     </b></Font></Td>    <Td> «attr.properties.minValue»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  max_alarm     </b></Font></Td>    <Td> «attr.properties.maxAlarm»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  min_alarm     </b></Font></Td>    <Td> «attr.properties.minAlarm»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  max_warning   </b></Font></Td>    <Td> «attr.properties.maxWarning»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  min_warning   </b></Font></Td>    <Td> «attr.properties.minWarning»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  delta_time    </b></Font></Td>    <Td> «attr.properties.deltaTime»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  delta_val     </b></Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
+			<!--- Tr><Td> <Font=+1><b>  description   </b></Font></Td>    <Td> «attr.properties.description»</Td></Tr--->
+		</Table>
+	</Td>
+	</Table>
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	«EXPAND _htmlUtil::htmlProtectedArea(attributePageFileName(attr))»
+	<Br>
+	<Br>
+</ul>
+</FONT>
+<Br>
+<Br>
+
+
+«htmlFooter()»
+«ENDFILE»
+«ENDDEFINE»
+
+
+
+
+«DEFINE attrAllowedStates(Attribute attr)  FOR PogoDeviceClass»
+		<!--- Read access --->
+		<Tr>
+		«IF attr.readExcludedStates.size>0-»
+			<Td> <Font=+1><b> Read NOT allowed for   </b></Font></Td>
+			<Td> 
+				«FOREACH attr.readExcludedStates AS state-»
+					- «state» <Br>
+				«ENDFOREACH-»
+			</Td>
+		«ELSE-»
+			<Td> <Font=+1><b> Read allowed for   </b></Font></Td>
+			<Td> All states </Td>
+		«ENDIF-»
+		</Tr>
+	«IF attr.rwType.contains("WRITE")-»
+		<Tr>
+		«IF attr.writeExcludedStates.size>0-»
+			<Td> <Font=+1><b> Write NOT allowed for   </b></Font></Td>
+			<Td> 
+				«FOREACH attr.writeExcludedStates AS state-»
+					- «state» <Br>
+				«ENDFOREACH-»
+			</Td>
+		«ELSE-»
+			<Td> <Font=+1><b> Write allowed for   </b></Font></Td>
+			<Td> All states </Td>
+		«ENDIF-»
+		</Tr>
+	«ENDIF-»
+«ENDDEFINE»
+		

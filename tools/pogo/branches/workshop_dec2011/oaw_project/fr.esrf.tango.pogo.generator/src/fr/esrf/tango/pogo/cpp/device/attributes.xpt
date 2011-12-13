@@ -1,0 +1,258 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+
+
+
+//	=========================================================
+//	Define attributes mnanagement
+//	=========================================================
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF attributes.size > 0»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		"read_attr_hardware", "Hardware acquisition for attributes.")-»
+«EXPAND readAttributeHardwareMethod»
+«ENDIF»
+«FOREACH attributes AS att»«IF att.status.concreteHere=="true"»
+	«EXPAND readAttributeHeader(att)»
+	«EXPAND readAttributeMethod(att)»
+«IF att.rwType.contains("WRITE")-»
+	«EXPAND writeAttributeHeader(att)»
+	«EXPAND writeAttributeMethod(att)»
+«ENDIF»«ENDIF-»
+«ENDFOREACH»
+«FOREACH dynamicAttributes AS att-»
+	«EXPAND readAttributeHeader(att)-»
+	«EXPAND readDynamicAttributeMethod(att)-»
+«IF att.rwType.contains("WRITE")-»
+	«EXPAND writeAttributeHeader(att)-»
+	«EXPAND writeAttributeMethod(att)-»
+«ENDIF»
+«ENDFOREACH»
+
+«EXPAND addDynamicAttributes»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define The header for a read attribute method
+//	=========================================================
+«DEFINE readAttributeHeader(Attribute att) FOR PogoDeviceClass-»
+«IF att.rwType!="WRITE"-»
+«separator2()»
+/**
+ *	Read «att.name» attribute
+ *	Description: «att.properties.description.comments(" *	             ")»
+ *
+ *	Data type:	«att.dataType.cppType().toString()»
+ *	Attr type:	«att.attType» «att.attTypeDimentions()»
+ */
+«separator2()»«ENDIF»«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The header for a read attribute method for prototype
+//	=========================================================
+«DEFINE readAttributeHeaderProto(Attribute att) FOR PogoDeviceClass-»
+	/**
+	 *	«att.name» attribute related methods.
+	 *	Description: «att.properties.description.comments("	 *             ")»
+	 *
+	 *	Data type:	«att.dataType.cppType().toString()»
+	 *	Attr type:	«att.attType» «att.attTypeDimentions()»
+	 */
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute a read attribute
+//	=========================================================
+«DEFINE readAttributeMethod(Attribute att) FOR PogoDeviceClass-»
+«IF att.rwType!="WRITE"-»
+void «name»::read_«att.name»(Tango::Attribute &attr)
+{
+	DEBUG_STREAM << "«name»::read_«att.name»(Tango::Attribute &attr) entering... " << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"read_"+att.name,
+			"//	Set the attribute value\n" +
+			"attr.set_value(attr_"+att.name+"_read"+att.SetAttValueSize()+");")-»
+}«ENDIF»«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The header for a write attribute method
+//	=========================================================
+«DEFINE writeAttributeHeader(Attribute att) FOR PogoDeviceClass»
+«separator2()»
+/**
+ *	Write «att.name» attribute values to hardware.
+ *
+ *	Data type:	«att.dataType.cppType().toString()»
+ *	Attr type:	«att.attType» «att.attTypeDimentions()»
+ */
+«separator2()»«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to execute a write attribute
+//	=========================================================
+«DEFINE writeAttributeMethod(Attribute att) FOR PogoDeviceClass»void «name»::write_«att.name»(Tango::WAttribute &attr)
+{
+	DEBUG_STREAM << "«name»::write_«att.name»(Tango::Attribute &attr) entering... " << endl;
+	«IF att.attType.contains("Scalar")»
+	//	Retrieve write value
+	«att.dataType.cppType().toString()»	w_val;
+	attr.get_write_value(w_val);
+	«ELSE»
+	//	Retrieve number of write values
+	int	w_length = attr.get_write_value_length();
+
+	//	Retrieve pointer on write values (Do not delete !)
+	const «att.writeAttrValueDeclaration()»	*w_val;
+	attr.get_write_value(w_val);
+	«ENDIF»
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("write_"+att.name, "")-»
+}«ENDDEFINE»
+
+
+//	=========================================================
+//	Define The method to read attribute hardware
+//	=========================================================
+«DEFINE readAttributeHardwareMethod FOR PogoDeviceClass»void «name»::read_attr_hardware(vector<long> &attr_list)
+{
+	DEBUG_STREAM << "«name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("read_attr_hardware", "//	Add your own code")»
+}«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define protypes for a attribute call methods
+//	=========================================================
+«DEFINE attributeCallsProto(Attribute att) FOR PogoDeviceClass»
+«IF att.status.abstract=="true" && att.status.inherited!="true"-»
+	«EXPAND attributes::readAttributeHeaderProto(att)-»
+	«IF att.rwType!="WRITE"-»
+	virtual void read_«att.name»(Tango::Attribute &attr)=0;
+	«ENDIF-»
+	«IF att.rwType.contains("WRITE")-»
+	virtual void write_«att.name»(Tango::WAttribute &attr)=0;
+	«ENDIF-»
+«ENDIF-»
+«IF att.status.concreteHere=="true"-»
+	«EXPAND attributes::readAttributeHeaderProto(att)-»
+	«IF att.rwType!="WRITE"-»
+	virtual void read_«att.name»(Tango::Attribute &attr);
+	«ENDIF-»
+	«IF att.rwType.contains("WRITE")-»
+	virtual void write_«att.name»(Tango::WAttribute &attr);
+	«ENDIF-»
+«ENDIF-»
+	virtual bool is_«att.name»_allowed(Tango::AttReqType type);
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define specific protypes for a dynamic attribute call methods
+//	=========================================================
+«DEFINE dynamicAttributeCallsProto(Attribute att) FOR PogoDeviceClass-»
+	«EXPAND attributeCallsProto(att)-»
+	void add_«att.name»_dynamic_attribute(string attname«IF att.attType!="Scalar"», «att.dataType.cppType().toString()» *ptr=NULL«ENDIF»);
+	void remove_«att.name»_dynamic_attribute(string attname«IF att.attType!="Scalar"», bool free_it=true«ENDIF»);
+	«att.dataType.cppType().toString()» *get_«att.name»_data_ptr(string &name);
+    map<string,«att.dataType.cppType().toString()»«IF att.attType!="Scalar"»*«ENDIF»>	   «att.name»_data;
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Allocate the read attribute members if requested
+//	=========================================================
+«DEFINE allocateReadMembers FOR PogoDeviceClass-»
+	«FOREACH attributes AS attr-»
+	«IF attr.status.concreteHere=="true" &&
+		attr.allocReadMember=="true"-»
+	attr_«attr.name»_read = new «attr.dataType.cppType().toString()»[«attr.attAllocSize()»];
+	«ENDIF-»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+//	=========================================================
+//	delete the read attribute members if requested
+//	=========================================================
+«DEFINE deleteReadMembers FOR PogoDeviceClass-»
+	«FOREACH attributes AS attr-»
+	«IF attr.status.concreteHere=="true" &&
+		attr.allocReadMember=="true"-»
+	delete[] attr_«attr.name»_read;
+	«ENDIF-»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+
+
+
+//====================================================================================
+//	Read/Write dynamic attribute methods
+/====================================================================================
+«DEFINE readDynamicAttributeMethod(Attribute att) FOR PogoDeviceClass»
+void «name»::read_«att.name»(Tango::Attribute &attr)
+{
+	DEBUG_STREAM << "«name»::read_«att.name»(Tango::Attribute &attr) entering... " << endl;
+	«att.dataType.cppType().toString()»	*att_value = get_«att.name»_data_ptr(attr.get_name());
+
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"read_"+att.name,
+			"//	Set the attribute value\n" +
+			"attr.set_value(att_value"+att.SetAttValueSize()+");")-»
+}
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the add_dynamic_attributes method
+//	=========================================================
+«DEFINE addDynamicAttributes FOR PogoDeviceClass-»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		"add_dynamic_attributes",
+		"Create the dynamic attributes if any at server startup\n" +
+		"for specified device.")-»
+void «name»::add_dynamic_attributes()
+{
+	«IF dynamicAttributes.size>0-»
+	//	Example to add dynamic attribute:
+	«FOREACH dynamicAttributes AS att-»
+	//	add_«att.name»_dynamic_attribute("MyAttribute");
+	«ENDFOREACH»«ENDIF»
+	«PROTECT CSTART '/*----- ' CEND ' -----*/' ID name+"::add_dynamic_attributes"»
+
+	//	Add your own code to create and add dynamic attributes if any
+
+	«ENDPROTECT»	//	«name+"::add_dynamic_attributes()"»
+}
+«ENDIF-»
+«ENDDEFINE»
+
+//	==================================================================
+//	Define a table for all attributes to be displayed as comments
+//	==================================================================
+«DEFINE attributesTableComments FOR PogoDeviceClass-»
+«IF attributes.size>0»«IF attributes.size>1-»
+//	Attributes managed are:«ELSE»
+//	Attribute managed is:«ENDIF»
+«FOREACH attributes AS att-»
+//	«att.name»:	
+«ENDFOREACH»«ENDIF»
+«IF dynamicAttributes.size>0»«IF dynamicAttributes.size>1-»
+//	Dynamic attributes managed are:«ELSE»
+//	Dynamic attribute managed is:«ENDIF»
+«FOREACH dynamicAttributes AS att-»
+//     - «att.name»
+«ENDFOREACH»«ENDIF»
+«ENDDEFINE»

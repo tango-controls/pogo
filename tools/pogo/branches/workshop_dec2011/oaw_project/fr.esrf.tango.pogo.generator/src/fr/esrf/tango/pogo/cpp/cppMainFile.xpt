@@ -1,0 +1,60 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+//	Generate the main.cpp file if source code and class not abstract
+«DEFINE cppFile FOR PogoDeviceClass»
+«IF description.filestogenerate.contains(tagForSourceCode()) &&
+	description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+«FILE "main.cpp"»«PROTECT CSTART '/*' CEND '*/' ID areaProtectedID("main.cpp") »
+static const char *RcsId = "$Id: $";
+«EXPAND Common::fileHeader(deviceCppFileName(),
+	"C++ source for the " + name + " device server main.\n" +
+	"The main rule is to initialise (and create) the Tango\n" +
+	"system and to create the DServerClass singleton.\n " +
+	"The main should be the same for every Tango device server.")-»
+
+#include <tango.h>
+
+
+int main(int argc,char *argv[])
+{
+	Tango::Util *tg = NULL;
+	try
+	{
+		// Initialise the device server
+		//----------------------------------------
+		tg = Tango::Util::init(argc,argv);
+
+		// Create the device server singleton 
+		//	which will create everything
+		//----------------------------------------
+		tg->server_init(false);
+
+		// Run the endless loop
+		//----------------------------------------
+		cout << "Ready to accept request" << endl;
+		tg->server_run();
+	}
+	catch (bad_alloc)
+	{
+		cout << "Can't allocate memory to store device object !!!" << endl;
+		cout << "Exiting" << endl;
+	}
+	catch (CORBA::Exception &e)
+	{
+		Tango::Except::print_exception(e);
+		
+		cout << "Received a CORBA_Exception" << endl;
+		cout << "Exiting" << endl;
+	}
+	if (tg!=NULL)
+		tg->server_cleanup();
+	return(0);
+}
+«ENDPROTECT»
+«separator1()»
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
+

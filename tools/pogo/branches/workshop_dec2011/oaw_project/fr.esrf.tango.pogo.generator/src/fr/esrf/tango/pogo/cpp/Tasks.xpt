@@ -1,0 +1,18 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE main FOR PogoDeviceClass»
+	«EXPAND headerDevice::headerFile»
+	«EXPAND headerDserverClass::headerFile»
+	
+	«EXPAND cppDevice::cppFile»
+	«EXPAND cppDserverClass::cppFile»
+	«EXPAND cppStateMachine::cppFile»
+	«EXPAND cppDynamicAttributes::cppFile»
+
+	«EXPAND cppClassFactory::cppFile»
+	«EXPAND cppMainFile::cppFile»
+	
+	«EXPAND project::Tasks::CppProject»
+«ENDDEFINE»
+

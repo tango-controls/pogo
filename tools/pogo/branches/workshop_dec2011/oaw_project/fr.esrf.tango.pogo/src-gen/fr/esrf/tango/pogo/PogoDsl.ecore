@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pogoDsl"
+    nsURI="http://www.esrf.fr/tango/pogo/PogoDsl" nsPrefix="pogoDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="PogoSystem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Import"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiClasses" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Import">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PogoMultiClasses">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filestogenerate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preferences" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneClassSimpleDef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pogo6" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritances" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Inheritance"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parentClasses" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="additionalFiles" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AdditionalFile"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PogoDeviceClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baseClass" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="institute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classProperties" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceProperties" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicAttributes" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//State"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preferences" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="additionalFiles" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AdditionalFile"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritances" upperBound="-1"
+        eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Inheritance"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filestogenerate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identification" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comments" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Comments"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasMandatoryProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasAbstractCommand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasAbstractAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionHtmlExists"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Inheritance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassIdentification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contact" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emailDomain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classFamily" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="siteSpecific" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="manufacturer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Comments">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="commandsTable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Preferences">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="docHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="makefileHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="installHome" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="htmlVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PropType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DefaultPropValue" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PropType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VectorType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PropType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InheritanceStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inherited" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concrete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concreteHere" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasChanged" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argin" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Argument"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argout" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Argument"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="execMethod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="polledPeriod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="excludedStates" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Argument">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rwType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="polledPeriod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="associatedAttr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorizedAtInit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="changeEvent" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FireEvents"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archiveEvent" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FireEvents"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataReadyEvent" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FireEvents"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocReadMember" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDynamic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readExcludedStates" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="writeExcludedStates" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FireEvents">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fire" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="libCheckCriteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttrProperties">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="standardUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAlarm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minAlarm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxWarning" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minWarning" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deltaTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deltaValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdditionalFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VoidType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShortType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UShortType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UIntType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CharArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShortArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UShortArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UIntArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongStringArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleStringArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StateType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstStringType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UCharType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ULongType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ULongArrayType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DevIntType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EncodedType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShortVectorType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntVectorType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatVectorType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleVectorType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringVectorType" eSuperTypes="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VectorType"/>
+</ecore:EPackage>
