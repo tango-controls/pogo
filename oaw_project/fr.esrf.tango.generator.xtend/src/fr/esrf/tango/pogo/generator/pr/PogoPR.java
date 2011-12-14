@@ -5,27 +5,25 @@ import java.util.regex.Pattern;
 import net.danieldietrich.protectedregions.core.IRegionOracle;
 
 public class PogoPR implements IRegionOracle {
-    private static final String ID = "([a-zA-Z_$][a-zA-Z\\d_$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$:]*";
+    private static final String ID = "[a-zA-Z\\d_$:\\.\\s]*";
 
     private Pattern start;
     private Pattern end;
 
     public PogoPR () {
-      String label = "PROTECTED\\s+REGION";
       start =
-          Pattern.compile("\\s*" + label + "\\s+ID\\s*\\(\\s*" + ID
-              + "\\s*\\)\\s+(ENABLED\\s+)?START\\s*");
-      end = Pattern.compile("\\s*" + label + "\\s+END\\s*");
+          Pattern.compile("PROTECTED\\s+REGION\\s+ID\\s*\\(\\s*[a-zA-Z\\d_\\.\\s:]*\\s*\\)\\s+(ENABLED\\s+)?START");
+      end = Pattern.compile("PROTECTED\\s+REGION\\s+END");
     }
 
     //@Override
     public boolean isMarkedRegionStart(String s) {
-      return start.matcher(s).matches();
+      return start.matcher(s).find();
     }
 
     //@Override
     public boolean isMarkedRegionEnd(String s) {
-      return end.matcher(s).matches();
+      return end.matcher(s).find();
     }
 
     //@Override
