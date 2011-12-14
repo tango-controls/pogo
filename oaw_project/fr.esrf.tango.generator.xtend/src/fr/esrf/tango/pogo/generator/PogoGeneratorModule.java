@@ -37,32 +37,19 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 	
 	@Provides
 	public JavaIoFileSystemAccess createJavaIoFileSystemAccess(ProtectedRegionSupport support) {
-	  support.addParser(RegionParserFactory.createJavaParser(new PogoPR(),false), ".java");
+		// comments in Java and C++ are the same, so we just add the file extensions for C++ to the Java parser
+		support.addParser(RegionParserFactory.createJavaParser(new PogoPR(),false), ".java", "cxx", "h");
 	  support.addParser(RegionParserFactory.createXmlParser(), ".xml", ".xsd");
-	  for (IRegionParser parser: createCppParsers()) {
-		  support.addParser(parser);
-	  }
-	  support.addParser(createPythonParser());
+	  support.addParser(createPythonParser(), "py");
 	  BidiJavaIoFileSystemAccess fsa = new BidiJavaIoFileSystemAccess(support);
 	  // fsa.setFilter(...); // (optional)
 	  return fsa;
 	}
 	
 	private IRegionParser createPythonParser () {
-		IRegionParser parser = new RegionParserBuilder().name("py").addComment("#").ignoreCData('"', '\\')
+		IRegionParser parser = new RegionParserBuilder().name("python").addComment("#").ignoreCData('"', '\\')
 				.ignoreCData('\'', '\\').setInverse(false).useOracle(new PogoPR()).build();
 		return parser;
 	}
-	
-	private List<IRegionParser> createCppParsers () {
-		String[] extensions = new String[] {"cpp","hpp","h", "cxx","hxx"};
-		
-		List<IRegionParser> parsers = Lists.newArrayList();
-		for (String extension: extensions) {
-			IRegionParser parser = new RegionParserBuilder().name(extension).addComment("/*", "*/").addComment("//").ignoreCData('"', '\\')
-					.ignoreCData('\'', '\\').setInverse(false).useOracle(new PogoPR()).build();
-			parsers.add(parser);
-		}
-		return parsers;
-	}
+
 }
