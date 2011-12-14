@@ -41,7 +41,9 @@ class JavaDevice implements IGenerator {
 		 * @version	 «"Revision".vcsEscaped»
 		 */
 		public class «cls.name» extends DeviceImpl implements TangoConst{
-		
+			//PROTECTED REGION ID(«cls.name»::HEAD) ENABLED START
+			// TODO: Add protected code here!
+			//PROTECTED REGION END
 			// properties
 			«FOR prop: cls.deviceProperties»
 				«prop.javaPropType» «prop.name.toFirstLower()»;
