@@ -175,6 +175,9 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 void «name»Class::command_factory()
 {
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::command_factory_before")»
+«IF description.hasInheritanceClass()-»
+	«description.getInheritance().classname»_ns::«description.getInheritance().classname»Class::command_factory();
+«ENDIF-»
 «IF description.inheritances.size>0 &&
 	description.inheritances.get(0).classname.startsWith("Device_")==false-»
 	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::command_factory();

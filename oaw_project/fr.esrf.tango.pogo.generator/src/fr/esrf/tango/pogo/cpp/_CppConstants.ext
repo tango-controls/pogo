@@ -41,6 +41,9 @@ vc8ProjectFileName(String filename):
 vc9ProjectFileName(String filename):
 	"vc9_proj/"+filename;	
 
+vc10ProjectFileName(String filename):
+	"vc10_proj/"+filename;	
+
 //	Constant Names
 headerConstantName(PogoDeviceClass this):
 	name.toUpperCase()+"_H";
