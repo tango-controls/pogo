@@ -1,0 +1,37 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE headerFile FOR PogoDeviceClass»
+//=========================================
+//	Define classes for commands
+//=========================================
+«FOREACH commands AS cmd-»
+«IF cmd.name!="State" && cmd.name!="Status" &&cmd.status.concreteHere=="true"-»
+//	Command «cmd.name» class definition
+class «cmd.name»Class : public Tango::Command
+{
+public:
+	«cmd.name»Class(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
+
+	«cmd.name»Class(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~«cmd.name»Class() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<«name» *>(dev))->is_«cmd.name»_allowed(any);}
+};
+
+«ENDIF»«ENDFOREACH»
+«ENDDEFINE»
+
+

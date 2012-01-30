@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.esrf.tango.pogo/src-gen"
+    editDirectory="/fr.esrf.tango.pogo.edit/src" editorDirectory="/fr.esrf.tango.pogo.editor/src"
+    modelPluginID="fr.esrf.tango.pogo" forceOverwrite="true" modelName="PogoDsl" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
+    copyrightFields="false" editPluginID="fr.esrf.tango.pogo.edit" editorPluginID="fr.esrf.tango.pogo.editor">
+  <genPackages prefix="PogoDsl" basePackage="fr.esrf.tango.pogo" disposableProviderFactory="true"
+      ecorePackage="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#/">
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoSystem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoSystem/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoSystem/classes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoSystem/multiClasses"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Import/importURI"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/sourcePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/classes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/filestogenerate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoMultiClasses/preferences"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef/classname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef/sourcePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef/pogo6"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef/inheritances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef/parentClasses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//OneClassSimpleDef/additionalFiles"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/isAbstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/baseClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/institute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/classProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/deviceProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/commands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/dynamicAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/preferences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PogoDeviceClass/additionalFiles"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/sourcePath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/inheritances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/filestogenerate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/identification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasMandatoryProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasAbstractCommand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasAbstractAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/descriptionHtmlExists"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Inheritance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Inheritance/classname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Inheritance/sourcePath"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/contact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/emailDomain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/classFamily"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/siteSpecific"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/platform"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/bus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/manufacturer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassIdentification/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Comments">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Comments/commandsTable"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences/docHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences/makefileHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences/installHome"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Preferences/htmlVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//State/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//State/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//State/status"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property/mandatory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Property/DefaultPropValue"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//PropType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//SimpleType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VectorType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus/inherited"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus/concrete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus/concreteHere"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//InheritanceStatus/hasChanged"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/argin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/argout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/execMethod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/displayLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/polledPeriod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Command/excludedStates"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Argument">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Argument/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Argument/description"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/attType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/dataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/rwType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/displayLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/polledPeriod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/maxX"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/maxY"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/associatedAttr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/memorized"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/memorizedAtInit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/changeEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/archiveEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/dataReadyEvent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/allocReadMember"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/isDynamic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/readExcludedStates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Attribute/writeExcludedStates"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FireEvents">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FireEvents/fire"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FireEvents/libCheckCriteria"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/standardUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/displayUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/format"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/maxValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/minValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/maxAlarm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/minAlarm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/maxWarning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/minWarning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/deltaTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AttrProperties/deltaValue"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AdditionalFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AdditionalFile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//AdditionalFile/path"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//Type"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//VoidType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//BooleanType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ShortType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//UShortType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//IntType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//UIntType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FloatType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//DoubleType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//StringType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//CharArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ShortArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//UShortArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//IntArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//UIntArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FloatArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//DoubleArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//StringArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//LongStringArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//DoubleStringArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//StateType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ConstStringType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//BooleanArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//UCharType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//LongType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ULongType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//LongArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ULongArrayType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//DevIntType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//EncodedType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ShortVectorType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//IntVectorType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//FloatVectorType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//DoubleVectorType"/>
+    <genClasses ecoreClass="platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//StringVectorType"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,47 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE headerFile FOR PogoDeviceClass»
+«IF classProperties.size>0»
+//	Class properties data members
+public:
+«FOREACH classProperties AS prop-»
+	//	«prop.name»:	«prop.description.comments("	 //	")»
+	«prop.type.cppPropType()»	«prop.name.dataMemberName()»;
+«ENDFOREACH»«ENDIF-»
+public:
+//	write class properties data members
+	Tango::DbData	cl_prop;
+	Tango::DbData	cl_def_prop;
+	Tango::DbData	dev_def_prop;
+
+//	Method prototypes
+	static «name»Class *init(const char *);
+	static «name»Class *instance();
+	~«name»Class();
+	Tango::DbDatum	get_class_property(string &);
+	Tango::DbDatum	get_default_device_property(string &);
+	Tango::DbDatum	get_default_class_property(string &);
+	
+protected:
+	«name»Class(string &);
+	static «name»Class *_instance;
+	void command_factory();
+	void attribute_factory(vector<Tango::Attr *> &);
+	void write_class_property();
+	void set_default_property();
+	void get_class_property();
+	string get_cvstag();
+	string get_cvsroot();
+
+private:
+	void device_factory(const Tango::DevVarStringArray *);
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+	void create_static_attribute_list(vector<Tango::Attr *> &);
+	void erase_dynamic_attributes(const Tango::DevVarStringArray *,vector<Tango::Attr *> &);
+	vector<string>	defaultAttList;
+«ENDIF»
+«ENDDEFINE»
+
+
