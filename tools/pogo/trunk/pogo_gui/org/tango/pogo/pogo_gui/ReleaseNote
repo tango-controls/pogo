@@ -8,6 +8,10 @@
 #
 #-======================================================================
 
+Pogo-7.5.0 - 30/01/2012:
+	Win64/VC10 project added.
+	Call for init/delete device and command factory added when class is interited.
+
 Pogo-7.4.0 - 01/12/2011:
 	Workflow upgrade (Eclipse-3.7, XText-2.0, XPand-1.1)
 

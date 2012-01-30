@@ -72,7 +72,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private JRadioButton        archiveEvtChecked;
 
 	private Attribute		    attribute;
-	private static final String	defaultDataType = AttrDataArray[9];	//	Efault is double
+	private static final String	defaultDataType = AttrDataArray[9];	//	Default is double
 
 	private static final int	EMPTY_FIELD    = -1;
 	private static final int	NEGATIVE_FIELD = -2;
