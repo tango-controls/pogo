@@ -23,6 +23,12 @@
 void «name»::init_device()
 {
 	DEBUG_STREAM << "«name»::init_device() create device " << device_name << endl;
+	«IF description.hasInheritanceClass()==true-»
+	if (Tango::Util::instance()->is_svr_starting() == false)
+	{
+		//	If not starting up call init device for inherited object
+		«superClassNameConstr(description.getInheritance())»_ns::«superClassNameConstr(description.getInheritance())»::init_device();
+	}«ENDIF»
 
 	«IF deviceProperties.size > 0-»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device_before", "//	Initialization before get_device_property() call")-»
@@ -46,10 +52,17 @@ void «name»::init_device()
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader("delete_device()",
 		"will be called at device destruction or at init command")»void «name»::delete_device()
 {
+	DEBUG_STREAM << "«name»::delete_device() " << device_name << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 		"delete_device",
 		"//	Delete device allocated objects")-»
 	«EXPAND attributes::deleteReadMembers-»
+	«IF description.hasInheritanceClass()==true-»
+	if (Tango::Util::instance()->is_svr_shutting_down() == false)
+	{
+		//	If not shutting down call delete device for inherited object
+		«superClassNameConstr(description.getInheritance())»_ns::«superClassNameConstr(description.getInheritance())»::delete_device();
+	}«ENDIF»
 }
 «ENDDEFINE»
 

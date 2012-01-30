@@ -1,0 +1,53 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+«DEFINE CppProject FOR PogoDeviceClass»
+«FILE vc10ProjectFileName("Class_lib.vcxproj.filters")»ï»¿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\«name».cpp" />
+    <ClCompile Include="..\«name»Class.cpp" />
+    <ClCompile Include="..\«name»StateMachine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\«name»Class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\«name».h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{26066fcf-2f85-4ed9-978a-766eb01b58f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
+«ENDFILE»
+
+
+«FILE vc10ProjectFileName("Class_dll.vcxproj.filters")»ï»¿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\«name».cpp" />
+    <ClCompile Include="..\«name»Class.cpp" />
+    <ClCompile Include="..\«name»StateMachine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\«name»Class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\«name».h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{26066fcf-2f85-4ed9-978a-766eb01b58f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
+«ENDFILE»
+«ENDDEFINE»

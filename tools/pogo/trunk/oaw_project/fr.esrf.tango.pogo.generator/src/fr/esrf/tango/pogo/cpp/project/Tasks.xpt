@@ -13,8 +13,8 @@
 «IF description.filestogenerate.toLowerCase().contains("vc8")»
 	«EXPAND WindowsProject::CppProject»
 	«EXPAND WinClassLib::CppProject»
-	«EXPAND WinClassDll::CppProject»
 	«EXPAND WinServerStatic::CppProject»
+	«EXPAND WinClassDll::CppProject»
 	«EXPAND WinServerShared::CppProject»
 «ENDIF»
 
@@ -23,9 +23,19 @@
 «IF description.filestogenerate.toLowerCase().contains("vc9")»
 	«EXPAND VC9_Project::CppProject»
 	«EXPAND VC9_ClassLib::CppProject»
-	«EXPAND VC9_ClassDll::CppProject»
 	«EXPAND VC9_ServerStatic::CppProject»
+	«EXPAND VC9_ClassDll::CppProject»
 	«EXPAND VC9_ServerShared::CppProject»
+«ENDIF»
+
+//	Windows Visual Studio 2010 (VC10) projact
+«IF description.filestogenerate.toLowerCase().contains("vc10")»
+	«EXPAND VC10_Project::CppProject»
+	«EXPAND VC10_ClassLib::CppProject»
+	«EXPAND VC10_ServerStatic::CppProject»
+	«EXPAND VC10_ClassDll::CppProject»
+	«EXPAND VC10_ServerShared::CppProject»
+	«EXPAND VC10_Filters::CppProject»
 «ENDIF»
 «ENDDEFINE»
 
