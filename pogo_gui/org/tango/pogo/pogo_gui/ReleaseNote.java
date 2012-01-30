@@ -17,10 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Jan 30 15:01:27 CET 2012)</Center><Br>\n" + 
+		"	(Generated Mon Jan 30 15:06:30 CET 2012)</Center><Br>\n" + 
 		"<li><b>Pogo-7.5.0 - 30/01/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Win64/VC10 project added.<Br>\n" + 
-		"&nbsp; &nbsp; Call for init/delete device and command factory added when class is interited.<Br>\n" + 
+		"&nbsp; &nbsp; Call for init/delete device and command factory added when class is inherited.<Br>\n" + 
 		"<li><b>Pogo-7.4.0 - 01/12/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Workflow upgrade (Eclipse-3.7, XText-2.0, XPand-1.1)<Br>\n" + 
 		"<li><b>Pogo-7.3.2 - 08/09/2011:</b><Br>\n" + 
