@@ -42,28 +42,29 @@ import java.awt.*;
 
 
 //===============================================================
+
 /**
- *	JDialog Class to display info
+ * JDialog Class to display info
  *
- *	@author  Pascal Verdier
+ * @author Pascal Verdier
  */
 //===============================================================
 
 
-public class PopupColorCode extends JDialog
-{
-	//===============================================================
-    private class InherStatus
-    {
-        private ImageIcon   icon;
-        private String      description;
+public class PopupColorCode extends JDialog {
+    //===============================================================
+    private class InherStatus {
+        private ImageIcon icon;
+        private String description;
+
         private InherStatus(ImageIcon icon, String desc) {
-            this.icon   = icon;
+            this.icon = icon;
             description = desc;
         }
     }
-	//===============================================================
-    private final InherStatus[]  inherSatus = {
+
+    //===============================================================
+    private final InherStatus[] inherSatus = {
             new InherStatus(Utils.getInstance().abstract_icon,
                     "Abstract item inherited from parent class"),
             new InherStatus(Utils.getInstance().inherited_icon,
@@ -73,44 +74,43 @@ public class PopupColorCode extends JDialog
     };
 
 
-	//===============================================================
-	/**
-	 *	Creates new form PopupColorCode
+    //===============================================================
+
+    /**
+     * Creates new form PopupColorCode
+     *
      * @param parent the parent form instance
      */
-	//===============================================================
-	public PopupColorCode(JFrame parent)
-	{
-		super(parent, true);
-		initComponents();
+    //===============================================================
+    public PopupColorCode(JFrame parent) {
+        super(parent, true);
+        initComponents();
 
         buildColorPanel();
-		titleLabel.setText("Pogo color code");
+        titleLabel.setText("Pogo color code");
 
-		pack();
- 		ATKGraphicsUtils.centerDialog(this);
-	}
+        pack();
+        ATKGraphicsUtils.centerDialog(this);
+    }
 
-	//===============================================================
-	//===============================================================
-    private void buildColorPanel()
-    {
- 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridy = 0;
+    //===============================================================
+    //===============================================================
+    private void buildColorPanel() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridy = 0;
         gbc.insets = new Insets(5, 10, 5, 10);
 
-		gbc.gridx = 1;
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         centerPanel.add(new JSeparator(), gbc);
         gbc.gridy++;
- 
-        for (InherStatus is : inherSatus)
-        {
-	        gbc.fill  = 0;
-            gbc.gridx = 0;
-			centerPanel.add(new JLabel(is.icon), gbc);
 
-	        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        for (InherStatus is : inherSatus) {
+            gbc.fill = 0;
+            gbc.gridx = 0;
+            centerPanel.add(new JLabel(is.icon), gbc);
+
+            gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.gridx = 1;
             centerPanel.add(new JLabel(is.description), gbc);
             gbc.gridy++;
@@ -121,43 +121,45 @@ public class PopupColorCode extends JDialog
         gbc.gridy++;
 
         gbc.gridx = 0;
-		centerPanel.add(new JLabel("Value"), gbc);
+        centerPanel.add(new JLabel("Value"), gbc);
 
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 1;
         centerPanel.add(new JLabel("Item can be controlled by expert and operator level."), gbc);
         gbc.gridy++;
 
         JLabel lbl;
         gbc.gridx = 0;
-		lbl = new JLabel("Value");
+        lbl = new JLabel("Value");
         lbl.setForeground(Color.blue);
-		centerPanel.add(lbl, gbc);
+        centerPanel.add(lbl, gbc);
 
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 1;
         centerPanel.add(new JLabel("Item can be controlled by expert only."), gbc);
         gbc.gridy++;
 
         gbc.gridx = 0;
-		lbl = new JLabel("Value");
+        lbl = new JLabel("Value");
         lbl.setForeground(Color.red);
-		centerPanel.add(lbl, gbc);
+        centerPanel.add(lbl, gbc);
 
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 1;
         centerPanel.add(new JLabel("Inheritance item type has changed."), gbc);
         gbc.gridy++;
 
         centerPanel.add(new JSeparator(), gbc);
     }
-	//===============================================================
-    /** This method is called from within the constructor to
+    //===============================================================
+
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
      */
-	//===============================================================
+    //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -195,49 +197,48 @@ public class PopupColorCode extends JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	//===============================================================
-	//===============================================================
-	@SuppressWarnings({"UnusedDeclaration"})
-    private void dismisslBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dismisslBtnActionPerformed
-		doClose();
-	}//GEN-LAST:event_dismisslBtnActionPerformed
-
-	//===============================================================
-	//===============================================================
+    //===============================================================
+    //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
- 	private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-		doClose();
-	}//GEN-LAST:event_closeDialog
+    private void dismisslBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dismisslBtnActionPerformed
+        doClose();
+    }//GEN-LAST:event_dismisslBtnActionPerformed
 
-	//===============================================================
-	/**
-	 *	Closes the dialog
-	 */
-	//===============================================================
-	private void doClose()
-	{
-		setVisible(false);
-		dispose();
-	}
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        doClose();
+    }//GEN-LAST:event_closeDialog
 
-	//===============================================================
+    //===============================================================
+
+    /**
+     * Closes the dialog
+     */
+    //===============================================================
+    private void doClose() {
+        setVisible(false);
+        dispose();
+    }
+
+    //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel centerPanel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-	//===============================================================
+    //===============================================================
 
 
+    //===============================================================
 
+    /**
+     * @param args the command line arguments
+     */
+    //===============================================================
+    public static void main(String args[]) {
 
-	//===============================================================
-	/**
-	* @param args the command line arguments
-	*/
-	//===============================================================
-	public static void main(String args[]) {
-	
-		new PopupColorCode(new JFrame()).setVisible(true);
-	}
+        new PopupColorCode(new JFrame()).setVisible(true);
+    }
 
 }

@@ -39,66 +39,65 @@ package org.tango.pogo.pogo_gui.tools;
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.ArrayList;
 
 
-public class ParserTool
-{
+public class ParserTool {
     //===============================================================
+
     /**
-     *	Open a file and return text read.
+     * Open a file and return text read.
+     *
      * @param filename file to be read.
      * @return the file content read.
-     * @throws fr.esrf.Tango.DevFailed in case of failure during read file. 
+     * @throws fr.esrf.Tango.DevFailed in case of failure during read file.
      */
     //===============================================================
-    public static String readFile(String filename) throws DevFailed
-    {
+    public static String readFile(String filename) throws DevFailed {
         String str = "";
-		try
-		{
-        	FileInputStream	fid = new FileInputStream(filename);
-        	int nb = fid.available();
-        	byte[]	inStr  = new byte[nb];
-        	nb = fid.read(inStr);
-        	fid.close();
+        try {
+            FileInputStream fid = new FileInputStream(filename);
+            int nb = fid.available();
+            byte[] inStr = new byte[nb];
+            nb = fid.read(inStr);
+            fid.close();
 
-        	if (nb>0)
-            	str = takeOffWindowsChar(inStr);
+            if (nb > 0)
+                str = takeOffWindowsChar(inStr);
+        } catch (Exception e) {
+            Except.throw_exception("READ_FAILED",
+                    e.toString(), "ParserTool.readFile()");
         }
-		catch (Exception e)
-		{
-			Except.throw_exception("READ_FAILED",
-						e.toString(), "ParserTool.readFile()");
-		}
-		return str;
+        return str;
     }
-	//===============================================================
-	/**
-	 *	Take off Cr eventually added by Windows editor.
-     * @param b_in  specified byte array to be modified.
+    //===============================================================
+
+    /**
+     * Take off Cr eventually added by Windows editor.
+     *
+     * @param b_in specified byte array to be modified.
      * @return the modified byte array as String.
-	 */
-	//===============================================================
-	private static String takeOffWindowsChar(byte[] b_in)
-	{
-		//	Take off Cr (0x0d) eventually added by Windows editor
-        int	nb = 0;
+     */
+    //===============================================================
+    private static String takeOffWindowsChar(byte[] b_in) {
+        //	Take off Cr (0x0d) eventually added by Windows editor
+        int nb = 0;
         for (byte b : b_in)
             if (b != 13)
                 nb++;
-		byte[]	b_out = new byte[nb];
-		for (int i=0, j=0 ; i<b_in.length ; i++)
-			if (b_in[i]!=13)
-				b_out[j++] = b_in[i];
-		return new String(b_out);			
-	}
+        byte[] b_out = new byte[nb];
+        for (int i = 0, j = 0; i < b_in.length; i++)
+            if (b_in[i] != 13)
+                b_out[j++] = b_in[i];
+        return new String(b_out);
+    }
+
     //===============================================================
     //===============================================================
-    private static String checkOsFormat(String code)
-    {
+    private static String checkOsFormat(String code) {
         if (!Utils.osIsUnix())
             return setWindowsFileFormat(code);
         else
@@ -107,113 +106,102 @@ public class ParserTool
 
     //===============================================================
     //===============================================================
-    public static String setWindowsFileFormat(String code)
-    {
+    public static String setWindowsFileFormat(String code) {
         //	Convert default Unix format to Windows format
-        byte[]  b = { 0xd, 0xa };
-        String	lsp = new String(b); //System.getProperty("line.separator");
+        byte[] b = {0xd, 0xa};
+        String lsp = new String(b); //System.getProperty("line.separator");
         code = code.replaceAll("\n", lsp);
         return code;
     }
+
     //===============================================================
     //===============================================================
-    public static void writeFile(String filename, String code)  throws	DevFailed
-    {
- 		try
-		{
-        	code = checkOsFormat(code);
-        	FileOutputStream	fidout = new FileOutputStream(filename);
-        	fidout.write(code.getBytes());
-        	fidout.close();
-    	}
-		catch (Exception e)
-		{
-			Except.throw_exception("WRITE_FAILED",
-						e.toString(), "ParserTool.readFile()");
-		}
-	}
+    public static void writeFile(String filename, String code) throws DevFailed {
+        try {
+            code = checkOsFormat(code);
+            FileOutputStream fidout = new FileOutputStream(filename);
+            fidout.write(code.getBytes());
+            fidout.close();
+        } catch (Exception e) {
+            Except.throw_exception("WRITE_FAILED",
+                    e.toString(), "ParserTool.readFile()");
+        }
+    }
+
     //===============================================================
     //===============================================================
     public static void modifyProtectedAreaID(String path, String fileName, String oldID, String newID)
-            throws DevFailed
-    {
+            throws DevFailed {
         oldID = "PROTECTED REGION ID(" + oldID + ") ENABLED START";
         newID = "PROTECTED REGION ID(" + newID + ") ENABLED START";
 
         //  Read file
         String code;
         try {
-            code = readFile(path+'/'+fileName);
-        }
-        catch (DevFailed e) {
+            code = readFile(path + '/' + fileName);
+        } catch (DevFailed e) {
             //  If failed -> do nothing
             return;
         }
         //  Check if old ID exists
         int start = code.indexOf(oldID);
-        if (start<0)
+        if (start < 0)
             return; //  Do nothing
         int end = start + oldID.length();
 
         //  Else replace
-        String  newCode = code.substring(0, start) + newID + code.substring(end);
+        String newCode = code.substring(0, start) + newID + code.substring(end);
 
         //  And Re Write file
-        writeFile(path+'/'+fileName, newCode);
+        writeFile(path + '/' + fileName, newCode);
     }
     //===============================================================
-	/**
-	 *	Convert html file to java String
-     * @param   filename HTML specified file name
+
+    /**
+     * Convert html file to java String
+     *
+     * @param filename HTML specified file name
      * @throws fr.esrf.Tango.DevFailed in case of failure during write file.
-	 */
+     */
     //===============================================================
-	public static void convertHTML(String filename)  throws	DevFailed
-	{
- 		try
-		{
-			String			code = readFile(filename);
-			StringBuffer	sb = new StringBuffer();
-			int				start = 0;
-			int				end;
+    public static void convertHTML(String filename) throws DevFailed {
+        try {
+            String code = readFile(filename);
+            StringBuffer sb = new StringBuffer();
+            int start = 0;
+            int end;
 
-			//	Add '\\' before each '\"'
-			while((end=code.indexOf("\"", start+1))>0)
-			{
-				sb.append(code.substring(start, end)).append("\\");
-				start = end;
-			}
-			sb.append(code.substring(start));
-			code = sb.toString();
+            //	Add '\\' before each '\"'
+            while ((end = code.indexOf("\"", start + 1)) > 0) {
+                sb.append(code.substring(start, end)).append("\\");
+                start = end;
+            }
+            sb.append(code.substring(start));
+            code = sb.toString();
 
-			//	Replace each '\n' by "\\n\" + \n\""
-			sb = new StringBuffer("\"");
-			start = 0;
-			while((end=code.indexOf("\n", start))>0)
-			{
-				sb.append(code.substring(start, end)).append("\\n\" + \n\"");
-				start = end+1;
-			}
-			sb.append(code.substring(start)).append("\\n\"");
-			code = sb.toString();
-			System.out.println(code);
-		}
-		catch (Exception e)
-		{
-			Except.throw_exception("READ_FAILED",
-						e.toString(), "ParserTool.readFile()");
-		}
-	}
+            //	Replace each '\n' by "\\n\" + \n\""
+            sb = new StringBuffer("\"");
+            start = 0;
+            while ((end = code.indexOf("\n", start)) > 0) {
+                sb.append(code.substring(start, end)).append("\\n\" + \n\"");
+                start = end + 1;
+            }
+            sb.append(code.substring(start)).append("\\n\"");
+            code = sb.toString();
+            System.out.println(code);
+        } catch (Exception e) {
+            Except.throw_exception("READ_FAILED",
+                    e.toString(), "ParserTool.readFile()");
+        }
+    }
+
     //===============================================================
     //===============================================================
-	public static void displaySyntax()
-	{
-		System.out.println("ParserTool <option> <filename>");
-		System.out.println("    option: -html  convert html file to java String");
-		System.exit(0);
-	}
-
-
+    public static void displaySyntax() {
+        System.out.println("ParserTool <option> <filename>");
+        System.out.println("    option: -html  convert html file to java String");
+        System.exit(0);
+    }
 
 
     //===============================================================
@@ -222,29 +210,30 @@ public class ParserTool
      */
     //===============================================================
     //===============================================================
+
     /**
      * Remove key in xmi file for compatibility.
-     * @param key       the key name to be removed
-     * @param fileName  the xmi file where key must be removed
+     *
+     * @param key      the key name to be removed
+     * @param fileName the xmi file where key must be removed
      * @throws DevFailed if read x,i failed
      */
     //===============================================================
-    public static void removeXmiKey(String key, String fileName) throws DevFailed
-    {
+    public static void removeXmiKey(String key, String fileName) throws DevFailed {
         //  Rea=d file and split lines
         boolean modified = false;
         key = " " + key + "=\"";
-        String  code = readFile(fileName);
+        String code = readFile(fileName);
         StringTokenizer stk = new StringTokenizer(code, "\n");
-        Vector<String>  v = new Vector<String>();
+        ArrayList<String> v = new ArrayList<String>();
         while (stk.hasMoreTokens()) {
             //  For each line
             String line = stk.nextToken();
             int start;
             //  Check if key exists
-            if ((start=line.indexOf(key))>0) {
-                int end = line.indexOf("\"", start+key.length());
-                if (end<0) {
+            if ((start = line.indexOf(key)) > 0) {
+                int end = line.indexOf("\"", start + key.length());
+                if (end < 0) {
                     System.err.println("XMI syntax error !!!");
                     return;
                 }
@@ -257,40 +246,41 @@ public class ParserTool
 
         //  Reconstruct code and save it if modified
         if (modified) {
-            StringBuffer    sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (String s : v)
                 sb.append(s).append("\n");
             code = sb.toString();
             //  Remove last '\n'
-            code = code.substring(0, code.length()-1);
+            code = code.substring(0, code.length() - 1);
             writeFile(fileName, code);
         }
     }
     //===============================================================
     /**
      * Rename key in xmi file for compatibility.
-     * @param srcKey    the old key name to be renamed
-     * @param newKey    the new key name
-     * @param fileName  the xmi file where key must be removed
+     *
+     * @param srcKey   the old key name to be renamed
+     * @param newKey   the new key name
+     * @param fileName the xmi file where key must be removed
      * @throws DevFailed if read x,i failed
      */
     //===============================================================
-    public static void renameXmiKey(String srcKey, String newKey, String fileName) throws DevFailed
-    {
+    @SuppressWarnings("UnusedDeclaration")
+    public static void renameXmiKey(String srcKey, String newKey, String fileName) throws DevFailed {
         //  Rea=d file and split lines
         boolean modified = false;
         srcKey = " " + srcKey + "=";
-        String  code = readFile(fileName);
+        String code = readFile(fileName);
         StringTokenizer stk = new StringTokenizer(code, "\n");
-        Vector<String>  v = new Vector<String>();
+        ArrayList<String> v = new ArrayList<String>();
         while (stk.hasMoreTokens()) {
             //  For each line
             String line = stk.nextToken();
             int start;
             //  Check if key exists
-            if ((start=line.indexOf(srcKey))>0) {
-                int end = start+srcKey.length();
-                if (end<0) {
+            if ((start = line.indexOf(srcKey)) > 0) {
+                int end = start + srcKey.length();
+                if (end < 0) {
                     System.err.println("XMI syntax error !!!");
                     return;
                 }
@@ -305,38 +295,35 @@ public class ParserTool
 
         //  Reconstruct code and save it if modified
         if (modified) {
-            StringBuffer    sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (String s : v)
                 sb.append(s).append("\n");
             code = sb.toString();
             //  Remove last '\n'
-            code = code.substring(0, code.length()-1);
+            code = code.substring(0, code.length() - 1);
             writeFile(fileName, code);
         }
     }
+
     //===============================================================
     //===============================================================
-	public static void main(String[] args)
-	{
-		if (args.length<2)
-			displaySyntax();
-		try {
-			if (args[0].equals("-html"))
-				convertHTML(args[1]);
-            else
-            if (args[0].equals("-xmi-clean")) {
+    public static void main(String[] args) {
+        if (args.length < 2)
+            displaySyntax();
+        try {
+            if (args[0].equals("-html"))
+                convertHTML(args[1]);
+            else if (args[0].equals("-xmi-clean")) {
                 //removeXmiKey("htmlInheritance", args[1]);
                 //removeXmiKey("concreteHere", args[1]);
                 //renameXmiKey("concreteHere", "MyNewKeyWordAndBlaBlaBla", args[1]);
             }
-		}
-		catch(DevFailed e) {
+        } catch (DevFailed e) {
             Except.print_exception_stack(e);
+        } catch (Exception e) {
+            System.err.println(e);
         }
-		catch(Exception e) {
-			System.err.println(e);
-		}
-	}
+    }
     //===============================================================
     //===============================================================
 }

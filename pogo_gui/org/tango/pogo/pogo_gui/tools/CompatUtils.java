@@ -38,101 +38,95 @@ package org.tango.pogo.pogo_gui.tools;
 /**
  *	This class is able parse generated code.
  *
- * @author  verdier
+ * @author verdier
  */
- 
+
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 
-public class  CompatUtils
-{
-	private String	fileCode;
-	private String	filename;
+public class CompatUtils {
+    private String fileCode;
+    private String filename;
     private static final String startAttributeTag = "<attributes";
-    private static final String endAttributeTag   = "</attributes>";
-	//===============================================================
-	//===============================================================
-	public CompatUtils(String filename) throws	DevFailed
-	{
-		this.filename = filename;
-		fileCode = ParserTool.readFile(filename);
-	}
-   //===============================================================
+    private static final String endAttributeTag = "</attributes>";
+
     //===============================================================
-    public void write()  throws	DevFailed
-    {
-		ParserTool.writeFile(filename, fileCode);
+    //===============================================================
+    public CompatUtils(String filename) throws DevFailed {
+        this.filename = filename;
+        fileCode = ParserTool.readFile(filename);
     }
-	//===============================================================
-	//===============================================================
-	private void replaceAttributeTags(String find, String with)
-	{
-		//	Get Attribute part
-		int	start;
-		int	end = 0;
-        String[]    data = new String[] {find, with };
-        while ((start=fileCode.indexOf(startAttributeTag, end))>0)
-        {
+
+    //===============================================================
+    //===============================================================
+    public void write() throws DevFailed {
+        ParserTool.writeFile(filename, fileCode);
+    }
+
+    //===============================================================
+    //===============================================================
+    private void replaceAttributeTags(String find, String with) {
+        //	Get Attribute part
+        int start;
+        int end = 0;
+        String[] data = new String[]{find, with};
+        while ((start = fileCode.indexOf(startAttributeTag, end)) > 0) {
             end = fileCode.indexOf(endAttributeTag, start);
-            String  str = fileCode.substring(start, end);
+            String str = fileCode.substring(start, end);
             str = replaceString(str, data);
             fileCode = fileCode.substring(0, start) + str +
                     fileCode.substring(end);
             end = start + str.length();
         }
-	}
-	//===============================================================
-	//===============================================================
-    private String replaceString(String str, String[] data)
-    {
-        int	start;
-        int	end = 0;
-        while ((start=str.indexOf(data[0], end))>0)
-        {
+    }
+
+    //===============================================================
+    //===============================================================
+    private String replaceString(String str, String[] data) {
+        int start;
+        int end = 0;
+        while ((start = str.indexOf(data[0], end)) > 0) {
             end = start + data[0].length();
             str = str.substring(0, start) + data[1] +
-                   str.substring(end);
+                    str.substring(end);
             end = start + data[1].length();
         }
         return str;
     }
-	//===============================================================
-	//===============================================================
-	public String toString()
-	{
-		return fileCode;
-	}
-	//===============================================================
-	//===============================================================
-	private static final boolean test = false;
-	public static void main(String[] args)
-	{
-		if (!test && args.length==0)
-		{
-			System.err.println("xmi file  ?");
-			System.exit(0);
-		}
-		String	filename;
-		if (test)
-			filename = "/segfs/tango/tools/pogo/test/cpp/test_oaw-1/Holec/Holec.xmi";
-		else
-			filename = args[0];
 
-		try
-		{
-			CompatUtils	util = new CompatUtils(filename);
-			util.replaceAttributeTags("excludedStates", "readExcludedStates");
+    //===============================================================
+    //===============================================================
+    public String toString() {
+        return fileCode;
+    }
+
+    //===============================================================
+    //===============================================================
+    private static final boolean test = false;
+
+    public static void main(String[] args) {
+        if (!test && args.length == 0) {
+            System.err.println("xmi file  ?");
+            System.exit(0);
+        }
+        String filename;
+        if (test)
+            filename = "/segfs/tango/tools/pogo/test/cpp/test_oaw-1/Holec/Holec.xmi";
+        else
+            filename = args[0];
+
+        try {
+            CompatUtils util = new CompatUtils(filename);
+            util.replaceAttributeTags("excludedStates", "readExcludedStates");
             util.write();
-			//System.out.println(util);
+            //System.out.println(util);
 
-		}
-		catch(DevFailed e)
-		{
-			Except.print_exception(e);
-		}
-	}
-	//===============================================================
-	//===============================================================
+        } catch (DevFailed e) {
+            Except.print_exception(e);
+        }
+    }
+    //===============================================================
+    //===============================================================
 
 }

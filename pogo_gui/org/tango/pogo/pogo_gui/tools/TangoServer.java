@@ -39,28 +39,27 @@ import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 
 //===============================================================
 //===============================================================
-public class TangoServer
-{
-    public String  name = "";
-    public String  sourcePath = "";
-    public String  description = "";
-    public String  title = "";
+public class TangoServer {
+    public String name = "";
+    public String sourcePath = "";
+    public String description = "";
+    public String title = "";
+
     //===========================================================
-    public  TangoServer()
-    {
+    public TangoServer() {
 
     }
+
     //===========================================================
-    public  TangoServer(PogoMultiClasses pmc)
-    {
-        this.name        = pmc.getName();
-        this.sourcePath  = pmc.getSourcePath();
+    public TangoServer(PogoMultiClasses pmc) {
+        this.name = pmc.getName();
+        this.sourcePath = pmc.getSourcePath();
         this.description = pmc.getDescription();
-        this.title       = pmc.getTitle();
+        this.title = pmc.getTitle();
     }
+
     //===========================================================
-    public String toString()
-    {
+    public String toString() {
         return name;
     }
     //===========================================================
