@@ -96,28 +96,51 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 			"Class::attribute_factory_before",
 			"//	Add your own code")»
 «IF description.hasInheritanceClass()-»
-	«description.getInheritance().classname»_ns::«description.getInheritance().classname»Class::attribute_factory(att_list);
-«ENDIF-»
-«FOREACH attributes AS att»
-	«IF att.status.concreteHere=="true"-»
-	//	Attribute : «att.name»
-	«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
-	«EXPAND manageAttributeProperties(att)»
-	att_list.push_back(«att.name.toLowerCase()»);
-	«ENDIF-»
-«ENDFOREACH»
-
+	«description.getInheritance().classname»_ns::«
+		 description.getInheritance().classname»Class::attribute_factory(att_list);«ENDIF-»
+«EXPAND attributeCreation-»
 «IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 	//	Create a list of static attributes
 	create_static_attribute_list(get_class_attr()->get_attr_list());
 
-	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+«EXPAND overloadAttributePollingPeriod»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::attribute_factory_after",
 			"//	Add your own code")»
 «ENDIF-»
 }
+«IF overlodedPollPeriodObject.size>0»«EXPAND getAttributeByName»«ENDIF»
 «ENDDEFINE»
 
+
+
+
+//	=========================================================
+//	Define the attribute creation for attribute_factory
+//	=========================================================
+«DEFINE attributeCreation FOR PogoDeviceClass-»
+«FOREACH attributes AS att-»
+	«IF att.status.concreteHere=="true" && att.status.inherited=="false"-»
+	//	Attribute : «att.name»
+	«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
+	«EXPAND manageAttributeProperties(att)»
+	att_list.push_back(«att.name.toLowerCase()»);
+	«ENDIF»
+«ENDFOREACH»
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define code to overload attribute polling period if any
+//	=========================================================
+«DEFINE overloadAttributePollingPeriod FOR PogoDeviceClass-»
+«FOREACH overlodedPollPeriodObject AS obj-»«IF obj.type=="attribute"-»
+	//	Overload polling period for «obj.name»
+	Tango::Attr *«obj.name»Attr = get_attr_object_by_name(att_list, "«obj.name»");
+	if («obj.name»Attr != NULL)
+		«obj.name»Attr->set_polling_period(«obj.pollPeriod»);«ENDIF»
+«ENDFOREACH-»
+«ENDDEFINE»
 
 
 
@@ -141,13 +164,38 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	«setAttributeProperty(att.name, "delta_t",       att.properties.deltaTime)»
 	«setAttributeProperty(att.name, "delta_val",     att.properties.deltaValue)»
 	«IF att.isDynamic!="true"»«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);«ENDIF»
-	«IF att.polledPeriod.length>0 && att.polledPeriod != "0"»«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);«ELSE»//	Not Polled«ENDIF»
+	«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);
 	«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
 	«EXPAND manageMemorized(att)»
 	«setAttributeFireEvent(att.name, "change",     att.changeEvent)»
 	«setAttributeFireEvent(att.name, "archive",    att.archiveEvent)»
 	«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
 «ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define a little method to retreive Tango::Attr * object by name
+//	=========================================================
+«DEFINE getAttributeByName FOR PogoDeviceClass-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::get_attr_by_name",
+		"returns Tango::Attr * object found by name")-»
+Tango::Attr *«name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname)
+{
+	vector<Tango::Attr *>::iterator it;
+	for (it=att_list.begin() ; it<att_list.end() ; it++)
+		if ((*it)->get_name()==attname)
+			return (*it);
+	//	Attr does not exist
+	return NULL;
+}
+«ENDDEFINE»
+
+
+
+
+
 
 //	=========================================================
 //	Define the memorized part for attribute_factory
@@ -162,6 +210,8 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 	//	Not memorized
 «ENDIF-»
 «ENDDEFINE»
+
+
 
 
 //	=========================================================
@@ -182,8 +232,21 @@ void «name»Class::command_factory()
 	description.inheritances.get(0).classname.startsWith("Device_")==false-»
 	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::command_factory();
 «ENDIF-»
+«EXPAND createCommands»
+«EXPAND overloadCommandPollingPeriod»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+				"Class::command_factory_after")»
+}
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define code to create commands
+//	=========================================================
+«DEFINE createCommands FOR PogoDeviceClass»
 «FOREACH commands AS cmd-»
-	«IF cmd.name!="State" && cmd.name!="Status" && cmd.status.concreteHere=="true"-»
+	«IF cmd.status.inherited=="false" && cmd.status.concreteHere=="true"-»
+	//	Create «cmd.name» command object
 	«cmd.name»Class	*p«cmd.name»Cmd =
 		new «cmd.name»Class("«cmd.name»",
 			«cmd.argin.type.cppTypeEnum()», «cmd.argout.type.cppTypeEnum()»,
@@ -193,8 +256,18 @@ void «name»Class::command_factory()
 	«cmd.cppSetPollingPeriod()»command_list.push_back(p«cmd.name»Cmd);
 	«ENDIF-»
 «ENDFOREACH»
-«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
-				"Class::command_factory_after")»
-}
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define code to overload polling period if any
+//	=========================================================
+«DEFINE overloadCommandPollingPeriod FOR PogoDeviceClass-»
+«FOREACH  overlodedPollPeriodObject AS obj-»«IF obj.type=="command"-»
+	//	Overload polling period for «obj.name»
+	Tango::Command &«obj.name»Cmd = get_cmd_by_name("«obj.name»");
+	«obj.name»Cmd.set_polling_period(«obj.pollPeriod»);«ENDIF»
+«ENDFOREACH-»
 «ENDDEFINE»
 

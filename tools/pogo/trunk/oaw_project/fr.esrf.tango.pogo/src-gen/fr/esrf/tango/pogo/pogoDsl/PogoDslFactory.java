@@ -224,6 +224,15 @@ public interface PogoDslFactory extends EFactory
   AdditionalFile createAdditionalFile();
 
   /**
+   * Returns a new object of class '<em>Overloded Poll Period Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Overloded Poll Period Object</em>'.
+   * @generated
+   */
+  OverlodedPollPeriodObject createOverlodedPollPeriodObject();
+
+  /**
    * Returns a new object of class '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

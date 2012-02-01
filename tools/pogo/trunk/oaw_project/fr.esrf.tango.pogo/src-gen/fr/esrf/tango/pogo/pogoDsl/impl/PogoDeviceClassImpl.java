@@ -9,6 +9,7 @@ import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 import fr.esrf.tango.pogo.pogoDsl.Preferences;
@@ -51,6 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getPreferences <em>Preferences</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAdditionalFiles <em>Additional Files</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getOverlodedPollPeriodObject <em>Overloded Poll Period Object</em>}</li>
  * </ul>
  * </p>
  *
@@ -217,6 +219,16 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected EList<AdditionalFile> additionalFiles;
+
+  /**
+   * The cached value of the '{@link #getOverlodedPollPeriodObject() <em>Overloded Poll Period Object</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOverlodedPollPeriodObject()
+   * @generated
+   * @ordered
+   */
+  protected EList<OverlodedPollPeriodObject> overlodedPollPeriodObject;
 
   /**
    * <!-- begin-user-doc -->
@@ -550,6 +562,20 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<OverlodedPollPeriodObject> getOverlodedPollPeriodObject()
+  {
+    if (overlodedPollPeriodObject == null)
+    {
+      overlodedPollPeriodObject = new EObjectContainmentEList<OverlodedPollPeriodObject>(OverlodedPollPeriodObject.class, this, PogoDslPackage.POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT);
+    }
+    return overlodedPollPeriodObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -573,6 +599,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return basicSetPreferences(null, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
         return ((InternalEList<?>)getAdditionalFiles()).basicRemove(otherEnd, msgs);
+      case PogoDslPackage.POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT:
+        return ((InternalEList<?>)getOverlodedPollPeriodObject()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -614,6 +642,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return getPreferences();
       case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
         return getAdditionalFiles();
+      case PogoDslPackage.POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT:
+        return getOverlodedPollPeriodObject();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -675,6 +705,10 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         getAdditionalFiles().clear();
         getAdditionalFiles().addAll((Collection<? extends AdditionalFile>)newValue);
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT:
+        getOverlodedPollPeriodObject().clear();
+        getOverlodedPollPeriodObject().addAll((Collection<? extends OverlodedPollPeriodObject>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -728,6 +762,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
         getAdditionalFiles().clear();
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT:
+        getOverlodedPollPeriodObject().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -768,6 +805,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return preferences != null;
       case PogoDslPackage.POGO_DEVICE_CLASS__ADDITIONAL_FILES:
         return additionalFiles != null && !additionalFiles.isEmpty();
+      case PogoDslPackage.POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT:
+        return overlodedPollPeriodObject != null && !overlodedPollPeriodObject.isEmpty();
     }
     return super.eIsSet(featureID);
   }

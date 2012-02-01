@@ -37,6 +37,7 @@ import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
+import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslFactory;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
@@ -233,6 +234,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass additionalFileEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass overlodedPollPeriodObjectEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -890,6 +898,16 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
   public EReference getPogoDeviceClass_AdditionalFiles()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  {
+    return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(13);
   }
 
   /**
@@ -1977,6 +1995,46 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getOverlodedPollPeriodObject()
+  {
+    return overlodedPollPeriodObjectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOverlodedPollPeriodObject_Name()
+  {
+    return (EAttribute)overlodedPollPeriodObjectEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOverlodedPollPeriodObject_Type()
+  {
+    return (EAttribute)overlodedPollPeriodObjectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOverlodedPollPeriodObject_PollPeriod()
+  {
+    return (EAttribute)overlodedPollPeriodObjectEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getType()
   {
     return typeEClass;
@@ -2391,6 +2449,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__STATES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__PREFERENCES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ADDITIONAL_FILES);
+    createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT);
 
     classDescriptionEClass = createEClass(CLASS_DESCRIPTION);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__DESCRIPTION);
@@ -2516,6 +2575,11 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     additionalFileEClass = createEClass(ADDITIONAL_FILE);
     createEAttribute(additionalFileEClass, ADDITIONAL_FILE__NAME);
     createEAttribute(additionalFileEClass, ADDITIONAL_FILE__PATH);
+
+    overlodedPollPeriodObjectEClass = createEClass(OVERLODED_POLL_PERIOD_OBJECT);
+    createEAttribute(overlodedPollPeriodObjectEClass, OVERLODED_POLL_PERIOD_OBJECT__NAME);
+    createEAttribute(overlodedPollPeriodObjectEClass, OVERLODED_POLL_PERIOD_OBJECT__TYPE);
+    createEAttribute(overlodedPollPeriodObjectEClass, OVERLODED_POLL_PERIOD_OBJECT__POLL_PERIOD);
 
     typeEClass = createEClass(TYPE);
 
@@ -2702,6 +2766,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getPogoDeviceClass_States(), this.getState(), null, "states", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Preferences(), this.getPreferences(), null, "preferences", null, 0, 1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_AdditionalFiles(), this.getAdditionalFile(), null, "additionalFiles", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPogoDeviceClass_OverlodedPollPeriodObject(), this.getOverlodedPollPeriodObject(), null, "overlodedPollPeriodObject", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classDescriptionEClass, ClassDescription.class, "ClassDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClassDescription_Description(), ecorePackage.getEString(), "description", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2827,6 +2892,11 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEClass(additionalFileEClass, AdditionalFile.class, "AdditionalFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAdditionalFile_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdditionalFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAdditionalFile_Path(), ecorePackage.getEString(), "path", null, 0, 1, AdditionalFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(overlodedPollPeriodObjectEClass, OverlodedPollPeriodObject.class, "OverlodedPollPeriodObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getOverlodedPollPeriodObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, OverlodedPollPeriodObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOverlodedPollPeriodObject_Type(), ecorePackage.getEString(), "type", null, 0, 1, OverlodedPollPeriodObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOverlodedPollPeriodObject_PollPeriod(), ecorePackage.getEString(), "pollPeriod", null, 0, 1, OverlodedPollPeriodObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

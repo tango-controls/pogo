@@ -34,6 +34,7 @@ import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
+import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
@@ -316,6 +317,12 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.ONE_CLASS_SIMPLE_DEF:
 				if(context == grammarAccess.getOneClassSimpleDefRule()) {
 					sequence_OneClassSimpleDef(context, (OneClassSimpleDef) semanticObject); 
+					return; 
+				}
+				else break;
+			case PogoDslPackage.OVERLODED_POLL_PERIOD_OBJECT:
+				if(context == grammarAccess.getOverlodedPollPeriodObjectRule()) {
+					sequence_OverlodedPollPeriodObject(context, (OverlodedPollPeriodObject) semanticObject); 
 					return; 
 				}
 				else break;
@@ -930,6 +937,33 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     (name=STRING type=STRING pollPeriod=STRING)
+	 *
+	 * Features:
+	 *    name[1, 1]
+	 *    type[1, 1]
+	 *    pollPeriod[1, 1]
+	 */
+	protected void sequence_OverlodedPollPeriodObject(EObject context, OverlodedPollPeriodObject semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.OVERLODED_POLL_PERIOD_OBJECT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.OVERLODED_POLL_PERIOD_OBJECT__NAME));
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.OVERLODED_POLL_PERIOD_OBJECT__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.OVERLODED_POLL_PERIOD_OBJECT__TYPE));
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.OVERLODED_POLL_PERIOD_OBJECT__POLL_PERIOD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.OVERLODED_POLL_PERIOD_OBJECT__POLL_PERIOD));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getOverlodedPollPeriodObjectAccess().getNameSTRINGTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeSTRINGTerminalRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodSTRINGTerminalRuleCall_2_0(), semanticObject.getPollPeriod());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         name=ID 
 	 *         isAbstract?='abstract'? 
@@ -943,7 +977,8 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         dynamicAttributes+=Attribute* 
 	 *         states+=State* 
 	 *         preferences=Preferences 
-	 *         additionalFiles+=AdditionalFile*
+	 *         additionalFiles+=AdditionalFile* 
+	 *         overlodedPollPeriodObject+=OverlodedPollPeriodObject*
 	 *     )
 	 *
 	 * Features:
@@ -960,6 +995,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *    states[0, *]
 	 *    preferences[1, 1]
 	 *    additionalFiles[0, *]
+	 *    overlodedPollPeriodObject[0, *]
 	 */
 	protected void sequence_PogoDeviceClass(EObject context, PogoDeviceClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

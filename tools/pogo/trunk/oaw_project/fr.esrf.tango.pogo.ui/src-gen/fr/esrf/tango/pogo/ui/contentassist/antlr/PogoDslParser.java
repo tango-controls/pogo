@@ -65,6 +65,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFireEventsAccess().getGroup(), "rule__FireEvents__Group__0");
 					put(grammarAccess.getAttrPropertiesAccess().getGroup(), "rule__AttrProperties__Group__0");
 					put(grammarAccess.getAdditionalFileAccess().getGroup(), "rule__AdditionalFile__Group__0");
+					put(grammarAccess.getOverlodedPollPeriodObjectAccess().getGroup(), "rule__OverlodedPollPeriodObject__Group__0");
 					put(grammarAccess.getVoidTypeAccess().getGroup(), "rule__VoidType__Group__0");
 					put(grammarAccess.getBooleanTypeAccess().getGroup(), "rule__BooleanType__Group__0");
 					put(grammarAccess.getShortTypeAccess().getGroup(), "rule__ShortType__Group__0");
@@ -129,6 +130,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_19(), "rule__PogoDeviceClass__StatesAssignment_19");
 					put(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_20(), "rule__PogoDeviceClass__PreferencesAssignment_20");
 					put(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_22(), "rule__PogoDeviceClass__AdditionalFilesAssignment_22");
+					put(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectAssignment_24(), "rule__PogoDeviceClass__OverlodedPollPeriodObjectAssignment_24");
 					put(grammarAccess.getClassDescriptionAccess().getDescriptionAssignment_0(), "rule__ClassDescription__DescriptionAssignment_0");
 					put(grammarAccess.getClassDescriptionAccess().getTitleAssignment_1(), "rule__ClassDescription__TitleAssignment_1");
 					put(grammarAccess.getClassDescriptionAccess().getSourcePathAssignment_2(), "rule__ClassDescription__SourcePathAssignment_2");
@@ -220,6 +222,9 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttrPropertiesAccess().getDeltaValueAssignment_13(), "rule__AttrProperties__DeltaValueAssignment_13");
 					put(grammarAccess.getAdditionalFileAccess().getNameAssignment_0(), "rule__AdditionalFile__NameAssignment_0");
 					put(grammarAccess.getAdditionalFileAccess().getPathAssignment_1(), "rule__AdditionalFile__PathAssignment_1");
+					put(grammarAccess.getOverlodedPollPeriodObjectAccess().getNameAssignment_0(), "rule__OverlodedPollPeriodObject__NameAssignment_0");
+					put(grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeAssignment_1(), "rule__OverlodedPollPeriodObject__TypeAssignment_1");
+					put(grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodAssignment_2(), "rule__OverlodedPollPeriodObject__PollPeriodAssignment_2");
 				}
 			};
 		}

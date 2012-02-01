@@ -72,8 +72,11 @@ PogoDeviceClass:
 		
 		preferences = Preferences				//	Preferences (for programer, for site or at run time)
 
-		"additionalFiles:"
-			(additionalFiles+=AdditionalFile)*	//	Programmer's additional files to be added in Makefile (utils, threads,...)
+		"additionalFiles:"						//	Programmer's additional files to be added in Makefile (utils, threads,...)
+			(additionalFiles+=AdditionalFile)*
+
+		"overlodedPollPeriodObject:"			//	Object list (Command or Attribute) where polling period has been overloaded
+			(overlodedPollPeriodObject += OverlodedPollPeriodObject)*
 	"}";
 
 //
@@ -261,6 +264,15 @@ AttrProperties:
 AdditionalFile:
 	name   = STRING
 	path   = STRING;
+
+//
+//	Object (Command or Attribute) where polling period has been overloaded
+//
+OverlodedPollPeriodObject:
+	name       = STRING
+	type       = STRING	//	command or attribute
+	pollPeriod = STRING
+;
 
 
 //
