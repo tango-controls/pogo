@@ -38,7 +38,7 @@ package org.tango.pogo.pogo_gui.tools;
 /**
  *	This class is able parse generated code.
  *
- * @author  verdier
+ * @author verdier
  */
 
 
@@ -47,32 +47,31 @@ import fr.esrf.Tango.DevFailed;
 import java.util.StringTokenizer;
 
 
-public class  PogoParser
-{
-	private String	fileCode;
-	private String	filename;
+public class PogoParser {
+    private String fileCode;
+    private String filename;
 
-    static final String	start_protected = "PROTECTED REGION ID(";
-    static final String	start_protected_enabled = "ENABLED START";
-    static final String	end_protected = "PROTECTED REGION END";
-	//===============================================================
-	//===============================================================
-	public PogoParser(String filename) throws	DevFailed
-	{
-		this.filename = filename;
-		fileCode = ParserTool.readFile(filename);
-	}
-   //===============================================================
+    static final String start_protected = "PROTECTED REGION ID(";
+    static final String start_protected_enabled = "ENABLED START";
+    static final String end_protected = "PROTECTED REGION END";
+
     //===============================================================
-    public void write()  throws	DevFailed
-    {
-		ParserTool.writeFile(filename, fileCode);
+    //===============================================================
+    public PogoParser(String filename) throws DevFailed {
+        this.filename = filename;
+        fileCode = ParserTool.readFile(filename);
     }
-   //===============================================================
+
     //===============================================================
-    public boolean codeExists(String code)
-    {
-		return fileCode.indexOf(code)>=0;
+    //===============================================================
+    public void write() throws DevFailed {
+        ParserTool.writeFile(filename, fileCode);
+    }
+
+    //===============================================================
+    //===============================================================
+    public boolean codeExists(String code) {
+        return fileCode.indexOf(code) >= 0;
     }
     /*
  	//===============================================================
@@ -116,30 +115,27 @@ public class  PogoParser
 	*/
 
 
+    //===============================================================
+    /*
+      *	Insert methods for new model
+      */
+    //===============================================================
+    //===============================================================
+    /*
+      *	Insert code in a protected area
+      */
+    //===============================================================
+    public void insertInProtectedZone(String classname, String method, String code) {
+        if (code == null || code.length() == 0)
+            return;    //	Nothing to insert.
 
-	//===============================================================
-	/*
-	 *	Insert methods for new model
-	 */
-	//===============================================================
-	//===============================================================
-	/*
-	 *	Insert code in a protected area
-	 */
-	//===============================================================
-	public void insertInProtectedZone(String classname, String method, String code)
-	{
-		if (code==null || code.length()==0)
-			return;	//	Nothing to insert.
-
-		String	this_protected = start_protected;
-        if (classname!=null && classname.length()>0)
-			this_protected += classname + "::";
+        String this_protected = start_protected;
+        if (classname != null && classname.length() > 0)
+            this_protected += classname + "::";
         this_protected += method + ") " + start_protected_enabled;
 
-		int[]	indexes = indexesOfProtectedZone(this_protected);
-		if (indexes!=null)
-		{
+        int[] indexes = indexesOfProtectedZone(this_protected);
+        if (indexes != null) {
             /*
 			StringBuffer	sb =
 				new StringBuffer(fileCode.substring(0, indexes[0]));
@@ -150,269 +146,250 @@ public class  PogoParser
 			fileCode = sb.toString();
             */
 
-			StringBuffer	sb =
-				new StringBuffer(fileCode.substring(0, indexes[1]).trim()); // end of area
-			sb.append('\n');
-			sb.append(code);
-			sb.append('\n');
-			sb.append(fileCode.substring(indexes[1]));
-			fileCode = sb.toString();
-		}
-		else
-			System.err.println(this_protected+" not found");
-	}
-	//===============================================================
-	/*
-	 *	Insert code in a protected area
-	 */
-	//===============================================================
-	public void insertInProtectedZoneAtEnd(String classname, String method, String code)
-	{
-		if (code==null || code.length()==0)
-			return;	//	Nothing to insert.
+            StringBuffer sb =
+                    new StringBuffer(fileCode.substring(0, indexes[1]).trim()); // end of area
+            sb.append('\n');
+            sb.append(code);
+            sb.append('\n');
+            sb.append(fileCode.substring(indexes[1]));
+            fileCode = sb.toString();
+        } else
+            System.err.println(this_protected + " not found");
+    }
 
-		String	this_protected = start_protected +
-					classname + "::" + method + ") " + start_protected_enabled;
+    //===============================================================
+    /*
+      *	Insert code in a protected area
+      */
+    //===============================================================
+    public void insertInProtectedZoneAtEnd(String classname, String method, String code) {
+        if (code == null || code.length() == 0)
+            return;    //	Nothing to insert.
 
-		//	Get protected area edges
-		int[]	indexes = indexesOfProtectedZone(this_protected);
-		if (indexes!=null)
-		{
-			//	Get position to insert
+        String this_protected = start_protected +
+                classname + "::" + method + ") " + start_protected_enabled;
+
+        //	Get protected area edges
+        int[] indexes = indexesOfProtectedZone(this_protected);
+        if (indexes != null) {
+            //	Get position to insert
             int pos = indexes[1];
-            if (pos>0)
-            {
-                StringBuffer	sb =
-                    new StringBuffer(fileCode.substring(0, pos));
+            if (pos > 0) {
+                StringBuffer sb =
+                        new StringBuffer(fileCode.substring(0, pos));
                 sb.append('\n');
                 sb.append(code);
                 sb.append('\n');
                 sb.append(fileCode.substring(indexes[1]));
                 fileCode = sb.toString();
             }
-		}
-		else
-			System.err.println(this_protected+" not found");
-	}
+        } else
+            System.err.println(this_protected + " not found");
+    }
+
     //===============================================================
     /*
      *	Remove code in a protected area
      */
     //===============================================================
-    public void removeProtectedZone(String classname, String method)
-    {
-        String	this_protected = start_protected +
-                    classname + "::" + method + ") " + start_protected_enabled;
+    public void removeProtectedZone(String classname, String method) {
+        String this_protected = start_protected +
+                classname + "::" + method + ") " + start_protected_enabled;
 
-		//	Get protected area edges
-        int[]	indexes = indexesOfProtectedZone(this_protected);
-        if (indexes!=null)
-        {
-            StringBuffer	sb =
-                new StringBuffer(fileCode.substring(0, indexes[0]));
+        //	Get protected area edges
+        int[] indexes = indexesOfProtectedZone(this_protected);
+        if (indexes != null) {
+            StringBuffer sb =
+                    new StringBuffer(fileCode.substring(0, indexes[0]));
             sb.append(fileCode.substring(indexes[1]));
             fileCode = sb.toString();
-        }
-        else
-            System.err.println(this_protected+" not found");
+        } else
+            System.err.println(this_protected + " not found");
     }
+
     //===============================================================
     /*
      *	Remove code in a protected area
      */
     //===============================================================
-    public void removeProtectedZoneAtEnd(String classname, String method, String start_rem)
-    {
-        String	this_protected = start_protected +
-                    classname + "::" + method + ") " + start_protected_enabled;
+    public void removeProtectedZoneAtEnd(String classname, String method, String start_rem) {
+        String this_protected = start_protected +
+                classname + "::" + method + ") " + start_protected_enabled;
 
-		//	Get protected area edges
-        int[]	indexes = indexesOfProtectedZone(this_protected);
-        if (indexes!=null)
-        {
-			//	Get position to start remove
+        //	Get protected area edges
+        int[] indexes = indexesOfProtectedZone(this_protected);
+        if (indexes != null) {
+            //	Get position to start remove
             int pos = fileCode.indexOf(start_rem, indexes[0]);
-            if (pos>0)
-            {
-                StringBuffer	sb =
-                    new StringBuffer(fileCode.substring(0, pos));
+            if (pos > 0) {
+                StringBuffer sb =
+                        new StringBuffer(fileCode.substring(0, pos));
                 sb.append(fileCode.substring(indexes[1]));
                 fileCode = sb.toString();
             }
-        }
-        else
-            System.err.println(this_protected+" not found");
+        } else
+            System.err.println(this_protected + " not found");
     }
-	//===============================================================
-	//===============================================================
-	public void insertIncludeFiles(String code)
-	{
-		//	Insert at first occuence
-		int	start = fileCode.indexOf("#include");
-		int	end   = fileCode.indexOf(end_protected, start);
-		end = fileCode.lastIndexOf('\n', end);
-		StringBuffer	sb =
-				new StringBuffer(fileCode.substring(0, start));
-		sb.append(code);
-		sb.append(fileCode.substring(end));
-		fileCode = sb.toString();
-	}
-	//===============================================================
-	//===============================================================
-	public void insertAdditionalMethodPrototypes(String classname, String code)
-	{
-		insertInProtectedZone(classname, "Additional Method prototypes", code);
-	}
-	//===============================================================
-	//===============================================================
-	public void insertAdditionalClasses(String classname, String code)
-	{
-		insertInProtectedZone(classname, "Additional Classes Definitions", code);
-	}
-	//===============================================================
-	//===============================================================
-	public void insertAdditionalClassDefs(String classname, String code)
-	{
-		insertInProtectedZone(classname, "Additional Class Declarations", code);
-	}
-	//===============================================================
-	//===============================================================
-	public void addObjFiles(String objFiles) throws	DevFailed
-	{
-		//	Check if already done
-		if (fileCode.indexOf(objFiles)>0)
-			return;
-		//	Get position to insert
-		int	start = fileCode.indexOf("SHLIB_OBJS =");
-		if (start<0)
-			return;
-		start = fileCode.substring(0, start).trim().length();	//	end of previous word
-		//	Insert
-		fileCode = fileCode.substring(0, start) + objFiles +
-					fileCode.substring(start);
-		write();
-	}
-	//===============================================================
-	//===============================================================
+
+    //===============================================================
+    //===============================================================
+    public void insertIncludeFiles(String code) {
+        //	Insert at first occuence
+        int start = fileCode.indexOf("#include");
+        int end = fileCode.indexOf(end_protected, start);
+        end = fileCode.lastIndexOf('\n', end);
+        StringBuffer sb =
+                new StringBuffer(fileCode.substring(0, start));
+        sb.append(code);
+        sb.append(fileCode.substring(end));
+        fileCode = sb.toString();
+    }
+
+    //===============================================================
+    //===============================================================
+    public void insertAdditionalMethodPrototypes(String classname, String code) {
+        insertInProtectedZone(classname, "Additional Method prototypes", code);
+    }
+
+    //===============================================================
+    //===============================================================
+    public void insertAdditionalClasses(String classname, String code) {
+        insertInProtectedZone(classname, "Additional Classes Definitions", code);
+    }
+
+    //===============================================================
+    //===============================================================
+    public void insertAdditionalClassDefs(String classname, String code) {
+        insertInProtectedZone(classname, "Additional Class Declarations", code);
+    }
+
+    //===============================================================
+    //===============================================================
+    public void addObjFiles(String objFiles) throws DevFailed {
+        //	Check if already done
+        if (fileCode.indexOf(objFiles) > 0)
+            return;
+        //	Get position to insert
+        int start = fileCode.indexOf("SHLIB_OBJS =");
+        if (start < 0)
+            return;
+        start = fileCode.substring(0, start).trim().length();    //	end of previous word
+        //	Insert
+        fileCode = fileCode.substring(0, start) + objFiles +
+                fileCode.substring(start);
+        write();
+    }
+    //===============================================================
+    //===============================================================
 
 
+    //===============================================================
+    //===============================================================
+    private int[] indexesOfProtectedZone(String this_protected) {
+        //	Search protected zone begining
+        int start = fileCode.indexOf(this_protected);
+        if (start < 0) {
+            System.err.println(this_protected + " not found !");
+            return null;
+        }
+        start = fileCode.indexOf('\n', start) + 1;
 
-	//===============================================================
-	//===============================================================
-	private int[] indexesOfProtectedZone(String this_protected)
-	{
-		//	Search protected zone begining
-		int	start = fileCode.indexOf(this_protected);
-		if (start<0)
-		{
-			System.err.println(this_protected + " not found !");
-			return null;
-		}
-		start = fileCode.indexOf('\n', start) + 1;
+        //	Search protected zone ending
+        int end = fileCode.indexOf(end_protected, start);
+        if (end < 0) {
+            System.err.println("No end of protected zone for " + this_protected + " not found !");
+            return null;
+        }
+        end = fileCode.lastIndexOf('\n', end);
 
-		//	Search protected zone ending
-		int	end   = fileCode.indexOf(end_protected, start);
-		if (end<0)
-		{
-			System.err.println("No end of protected zone for "+this_protected + " not found !");
-			return null;
-		}
-		end = fileCode.lastIndexOf('\n', end);
+        return new int[]{start, end};
+    }
 
-		return new int[] { start, end };
-	}
-	//===============================================================
-	//===============================================================
-	public String getProtectedCode(String key)
-	{
-		String	this_protected = start_protected + key + ") " + start_protected_enabled;
+    //===============================================================
+    //===============================================================
+    public String getProtectedCode(String key) {
+        String this_protected = start_protected + key + ") " + start_protected_enabled;
 
-		int[]	indexes = indexesOfProtectedZone(this_protected);
-		if (indexes==null)
-			return "";
-		String	code = fileCode.substring(indexes[0], indexes[1]);
-		//	Remove empty lines
-		StringBuffer	sb = new StringBuffer();
-		StringTokenizer	st = new StringTokenizer(code, "\n");
-		while (st.hasMoreTokens())
-		{
-			String	line = st.nextToken();
-			if (line.length()>0)
-				sb.append(line);
-			if (st.hasMoreTokens())	//	Not last one
-				sb.append("\n");
-		}
-		return sb.toString();
-	}
-	//===============================================================
-	//===============================================================
+        int[] indexes = indexesOfProtectedZone(this_protected);
+        if (indexes == null)
+            return "";
+        String code = fileCode.substring(indexes[0], indexes[1]);
+        //	Remove empty lines
+        StringBuffer sb = new StringBuffer();
+        StringTokenizer st = new StringTokenizer(code, "\n");
+        while (st.hasMoreTokens()) {
+            String line = st.nextToken();
+            if (line.length() > 0)
+                sb.append(line);
+            if (st.hasMoreTokens())    //	Not last one
+                sb.append("\n");
+        }
+        return sb.toString();
+    }
+    //===============================================================
+    //===============================================================
 
 
+    //===============================================================
+    //	Deleted objects code management.
+    //===============================================================
 
-	//===============================================================
-	//	Deleted objects code management.
-	//===============================================================
-	
-	//===============================================================
-	/**
-	 *	Get deleted object code and comment it before return.
-     * @param comment   kind of comments used
-     *	@return deleted object code and comment it before return.
+    //===============================================================
+
+    /**
+     * Get deleted object code and comment it before return.
+     *
+     * @param comment kind of comments used
+     * @return deleted object code and comment it before return.
      */
-	//===============================================================
-	public String getDeletedObjectsCode(String comment)
-	{
-		int	start = fileCode.lastIndexOf(comment);
+    //===============================================================
+    public String getDeletedObjectsCode(String comment) {
+        int start = fileCode.lastIndexOf(comment);
 
-		//	Check if method exists
-		if (start>0)
-		{
-			start = fileCode.lastIndexOf("/**", start);
-			start = fileCode.lastIndexOf("//", start);
+        //	Check if method exists
+        if (start > 0) {
+            start = fileCode.lastIndexOf("/**", start);
+            start = fileCode.lastIndexOf("//", start);
 
-			int	end   = fileCode.indexOf(end_protected, start);
-			end = fileCode.indexOf("}", end);
-			end = fileCode.indexOf("\n", end)+1;
-			return commentCode(fileCode.substring(start, end));
-		}
-		else
-		{
-			System.out.println(comment + "	NOT FOUND !!!");
-			return null;
-		}
-	}
-	//===============================================================
-	//===============================================================
-	private String commentCode(String code)
-	{
-		StringBuffer	sb = new StringBuffer();
-		StringTokenizer	st = new StringTokenizer(code, "\n");
-		while (st.hasMoreTokens())
-		{
-			String	line = st.nextToken();
-			if (line.indexOf(start_protected)<0 &&
-					line.indexOf(end_protected)<0 )
-				sb.append("// ").append(line).append("\n");
-		}
-		return sb.toString();
-	}
-	//===============================================================
-	//===============================================================
-	public void insertDeletedObjectsCode(String code)
-	{
-		int	pos = fileCode.lastIndexOf(end_protected);
-		pos = fileCode.lastIndexOf("\n", pos);
-		fileCode = fileCode.substring(0, pos) + code +
-						fileCode.substring(pos);
-	}
-	
-	
-	//===============================================================
-	//===============================================================
-	public String toString()
-	{
-		return fileCode;
-	}
-	//===============================================================
-	//===============================================================
+            int end = fileCode.indexOf(end_protected, start);
+            end = fileCode.indexOf("}", end);
+            end = fileCode.indexOf("\n", end) + 1;
+            return commentCode(fileCode.substring(start, end));
+        } else {
+            System.out.println(comment + "	NOT FOUND !!!");
+            return null;
+        }
+    }
+
+    //===============================================================
+    //===============================================================
+    private String commentCode(String code) {
+        StringBuffer sb = new StringBuffer();
+        StringTokenizer st = new StringTokenizer(code, "\n");
+        while (st.hasMoreTokens()) {
+            String line = st.nextToken();
+            if (line.indexOf(start_protected) < 0 &&
+                    line.indexOf(end_protected) < 0)
+                sb.append("// ").append(line).append("\n");
+        }
+        return sb.toString();
+    }
+
+    //===============================================================
+    //===============================================================
+    public void insertDeletedObjectsCode(String code) {
+        int pos = fileCode.lastIndexOf(end_protected);
+        pos = fileCode.lastIndexOf("\n", pos);
+        fileCode = fileCode.substring(0, pos) + code +
+                fileCode.substring(pos);
+    }
+
+
+    //===============================================================
+    //===============================================================
+    public String toString() {
+        return fileCode;
+    }
+    //===============================================================
+    //===============================================================
 }
