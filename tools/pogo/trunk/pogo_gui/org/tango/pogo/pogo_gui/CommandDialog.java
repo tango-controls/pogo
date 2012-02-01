@@ -35,83 +35,76 @@
 
 package org.tango.pogo.pogo_gui;
 
-import java.util.Vector;
-
-import javax.swing.*;
-
-import org.tango.pogo.pogo_gui.tools.OAWutils;
-import org.tango.pogo.pogo_gui.tools.PopupTable;
-import org.tango.pogo.pogo_gui.tools.Utils;
-
+import fr.esrf.Tango.DevFailed;
+import fr.esrf.TangoDs.Except;
+import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.Argument;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.Type;
-
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
-import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PopupTable;
+import org.tango.pogo.pogo_gui.tools.Utils;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 //===============================================================
 /**
- *	JDialog Class to display info
+ * JDialog Class to display info
  *
- *	@author  Pascal Verdier
+ * @author Pascal Verdier
  */
 //===============================================================
 
 
-public class CommandDialog extends JDialog
-{
-	private int		retVal = JOptionPane.OK_OPTION;
-	private static String[]	commandNames = {
-			"Reset",
-			"Off",
-			"Warmup",
-			"Standby",
-			"On",
-			"Start",
-			"Stop",
-			"Open",
-			"Close",
-			"Local",
-			"Remote",
-	};
+public class CommandDialog extends JDialog {
+    private int retVal = JOptionPane.OK_OPTION;
+    private static String[] commandNames = {
+            "Reset",
+            "Off",
+            "Warmup",
+            "Standby",
+            "On",
+            "Start",
+            "Stop",
+            "Open",
+            "Close",
+            "Local",
+            "Remote",
+    };
 
-	private PogoGUI			    pogo_gui;
-    private InheritanceStatus   orig_status = null;
-    private boolean             isStateStatus = false;
-	//===============================================================
-	/**
-	 *	Creates new form CommandDialog
+    private PogoGUI pogo_gui;
+    private InheritanceStatus orig_status = null;
+    private boolean isStateStatus = false;
+    //===============================================================
+    /**
+     * Creates new form CommandDialog
+     *
      * @param parent The parent frame object
-     * @param cmd   the specified command object
+     * @param cmd    the specified command object
      */
-	//===============================================================
-	public CommandDialog(PogoGUI parent, Command cmd)
-	{
-		super(parent, true);
-		pogo_gui = parent;
-		initComponents();
-		setCommand(cmd);
+    //===============================================================
+    public CommandDialog(PogoGUI parent, Command cmd) {
+        super(parent, true);
+        pogo_gui = parent;
+        initComponents();
+        setCommand(cmd);
         manageInheritanceStatus(cmd);
 
-		pack();
- 		ATKGraphicsUtils.centerDialog(this);
-	}
+        pack();
+        ATKGraphicsUtils.centerDialog(this);
+    }
 
-	//===============================================================
-	//===============================================================
-    private void manageInheritanceStatus(Command cmd)
-    {
-        if (cmd!=null)
-        {
+    //===============================================================
+    //===============================================================
+    private void manageInheritanceStatus(Command cmd) {
+        if (cmd != null) {
             //	Manage inheritance status
             orig_status = cmd.getStatus();
-            if (Utils.isTrue(orig_status.getInherited()))
-            {
+            if (Utils.isTrue(orig_status.getInherited())) {
                 //  Is inherited (cannot be created as abstract)
                 abstractBtn.setVisible(false);
                 overloadBtn.setVisible(true);
@@ -119,18 +112,14 @@ public class CommandDialog extends JDialog
                 boolean oveload = Utils.isTrue(orig_status.getConcreteHere());
                 overloadBtn.setSelected(oveload);
                 setEditable(false);
-            }
-            else
-            {
+            } else {
                 //  Not inherited -> full edition
                 overloadBtn.setVisible(false);
                 abstractBtn.setVisible(true);
                 abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
                 setEditable(true);
             }
-        }
-        else
-        {
+        } else {
             //  Create a new command
             overloadBtn.setVisible(false);
             abstractBtn.setSelected(false);
@@ -140,86 +129,92 @@ public class CommandDialog extends JDialog
             orig_status.setConcrete("true");
             orig_status.setConcreteHere("true");
             setEditable(true);
-       }
+        }
     }
+
     //===============================================================
     //===============================================================
-    private void setNotEditable(JComboBox jcb)
-    {
-        String name = (String)jcb.getSelectedItem();
-        if (name!=null)
-        {
+    private void setNotEditable(JComboBox jcb) {
+        String name = (String) jcb.getSelectedItem();
+        if (name != null) {
             jcb.removeAllItems();
             jcb.addItem(name);
         }
     }
+
     //===============================================================
     //===============================================================
-    private void setEditable(boolean b)
-    {
+    private void setEditable(boolean b) {
         nameComboBox.setEditable(b);
         //  if not editable -> get only selected one
-        if (!b)
-        {
+        if (!b) {
             setNotEditable(nameComboBox);
             setNotEditable(arginComboBox);
             setNotEditable(argoutComboBox);
+
+            levelBtn.setEnabled(b);
+            arginDescBtn.setEnabled(b);
+            arginDescText.setEditable(b);
+            argoutDescBtn.setEnabled(b);
+            argoutDescText.setEditable(false);
+
+            descText.setEditable(b);
         }
     }
-	//===============================================================
-	//===============================================================
-	private void setCommand(Command cmd)
-	{
-		//	Initialize ComboBoxes
-		for (String name : commandNames)
-			nameComboBox.addItem(name);
-		//for (String type : TangoConst.Tango_CmdArgTypeName) {
-		for (int i=0 ; i<TangoConst.Tango_CmdArgTypeName.length &&
-                i<=TangoConst.Tango_CONST_DEV_STRING ; i++) {
+
+    //===============================================================
+    //===============================================================
+    private void setCommand(Command cmd) {
+        //	Initialize ComboBoxes
+        for (String name : commandNames)
+            nameComboBox.addItem(name);
+        //for (String type : TangoConst.Tango_CmdArgTypeName) {
+        for (int i = 0; i < TangoConst.Tango_CmdArgTypeName.length &&
+                i <= TangoConst.Tango_CONST_DEV_STRING; i++) {
 
             String typeName = TangoConst.Tango_CmdArgTypeName[i];
-			arginComboBox.addItem(typeName);
-			argoutComboBox.addItem(typeName);
-		}
+            arginComboBox.addItem(typeName);
+            argoutComboBox.addItem(typeName);
+        }
 
-		polledTxt.setEnabled(false);
-		polledTxt.setText("3000");
+        polledTxt.setEnabled(false);
+        polledTxt.setText("3000");
 
-		if (cmd!=null) {
-			for (String name : commandNames)
-				if (name.equals(cmd.getName()))
-					nameComboBox.setSelectedItem(name);
-			//	Check if found
-			if (nameComboBox.getSelectedIndex()==0) {
-				String	name = cmd.getName();
-				nameComboBox.addItem(name);
-				nameComboBox.setSelectedItem(name);
-			}
+        if (cmd != null) {
+            for (String name : commandNames)
+                if (name.equals(cmd.getName()))
+                    nameComboBox.setSelectedItem(name);
+            //	Check if found
+            if (nameComboBox.getSelectedIndex() == 0) {
+                String name = cmd.getName();
+                nameComboBox.addItem(name);
+                nameComboBox.setSelectedItem(name);
+            }
 
             //  Manage descriptions
             String desc = Utils.strReplace(cmd.getDescription(), "\\n", "\n"); // For pb fixed.
             desc = Utils.strReplaceSpecialCharToDisplay(desc);
-			descText.setText(desc);
+            descText.setText(desc);
 
             desc = Utils.strReplace(cmd.getArgin().getDescription(), "\\n", "\n"); // For pb fixed.
             desc = Utils.strReplaceSpecialCharToDisplay(desc);
-			arginDescText.setText(desc);
+            arginDescText.setText(desc);
 
             desc = Utils.strReplace(cmd.getArgout().getDescription(), "\\n", "\n"); // For pb fixed.
             desc = Utils.strReplaceSpecialCharToDisplay(desc);
-			argoutDescText.setText(desc);
+            argoutDescText.setText(desc);
 
             //  Manage argin / argout
-			String	argin =  OAWutils.pogo2tangoType(
-					cmd.getArgin().getType().toString());
-			String	argout = OAWutils.pogo2tangoType(
-					cmd.getArgout().getType().toString());
-			for (String type : TangoConst.Tango_CmdArgTypeName) {
-				if (type.equals(argin))
-					arginComboBox.setSelectedItem(type);
-				if (type.equals(argout))
-					argoutComboBox.setSelectedItem(type);
-			}
+            String argin = OAWutils.pogo2tangoType(
+                    cmd.getArgin().getType().toString());
+            String argout = OAWutils.pogo2tangoType(
+                    cmd.getArgout().getType().toString());
+            for (String type : TangoConst.Tango_CmdArgTypeName) {
+                if (type.equals(argin))
+                    arginComboBox.setSelectedItem(type);
+                if (type.equals(argout))
+                    argoutComboBox.setSelectedItem(type);
+            }
 
             //  manage display level
             if (Utils.isEquals(cmd.getDisplayLevel(),
@@ -227,40 +222,42 @@ public class CommandDialog extends JDialog
                 levelBtn.setSelected(true);
 
             //  Manage polling
-			if (cmd.getPolledPeriod()!=null &&
-				cmd.getPolledPeriod().length()>0) {
-				polledBtn.setSelected(true);
-				polledTxt.setEnabled(true);
-				polledLbl.setVisible(true);
-				polledTxt.setText(cmd.getPolledPeriod());
-			}
+            if (cmd.getPolledPeriod() != null &&
+                cmd.getPolledPeriod().length() > 0 &&
+                !cmd.getPolledPeriod().equals("0")) {
+                polledBtn.setSelected(true);
+                polledTxt.setEnabled(true);
+                polledLbl.setVisible(true);
+                polledTxt.setText(cmd.getPolledPeriod());
+            }
 
             //  Cannot poll state or status
             if (cmd.getName().toLowerCase().equals("state") ||
-                cmd.getName().toLowerCase().equals("status")) {
+                    cmd.getName().toLowerCase().equals("status")) {
 
                 isStateStatus = true;
 
-                polledBtn.setEnabled(false);
-                polledBtn.setSelected(false);
+                //polledBtn.setEnabled(false);
+                //polledBtn.setSelected(false);
 
                 levelBtn.setEnabled(false);
                 levelBtn.setSelected(false);
             }
-		}
-		else {
-			String	name = "";
-			nameComboBox.addItem(name);
-			nameComboBox.setSelectedItem(name);
-		}
-	}
-	//===============================================================
-    /** This method is called from within the constructor to
+        } else {
+            String name = "";
+            nameComboBox.addItem(name);
+            nameComboBox.setSelectedItem(name);
+        }
+    }
+    //===============================================================
+
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
      */
-	//===============================================================
+    //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -524,114 +521,99 @@ public class CommandDialog extends JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	//===============================================================
-	//===============================================================
-	@SuppressWarnings({"UnusedDeclaration"})
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
 
-		try
-		{
-			//	Check The inputs first
-			String	name = (String)nameComboBox.getSelectedItem();
-            boolean overload = overloadBtn.getSelectedObjects()!=null;
-			name = Utils.checkNameSyntax(name, isStateStatus);
+        try {
+            //	Check The inputs first
+            String name = (String) nameComboBox.getSelectedItem();
+            boolean overload = overloadBtn.getSelectedObjects() != null;
+            name = Utils.checkNameSyntax(name, isStateStatus);
 
 
-			if (pogo_gui.itemAlreadyExists(name, PogoConst.COMMANDS))
-				Except.throw_exception("CommandExists",
-						"Command \"" + name + "\" Already Exists !",
-						"CommandDialog.okBtnActionPerformed()");
-			
-			if (polledBtn.getSelectedObjects()!=null)
-			{
-				//noinspection NestedTryStatement
-				try	{
-					Integer.parseInt(polledTxt.getText());
-				}
-				catch (NumberFormatException e)	{
-					Except.throw_exception(e.toString(),
-							"Bad polling period.",
-							"CommandDialog.okBtnActionPerformed()");
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			ErrorPane.showErrorMessage(this, null, e);
-			return;
-		}
-		retVal = JOptionPane.OK_OPTION;
-		doClose();
-	}//GEN-LAST:event_okBtnActionPerformed
+            if (pogo_gui.itemAlreadyExists(name, PogoConst.COMMANDS))
+                Except.throw_exception("CommandExists",
+                        "Command \"" + name + "\" Already Exists !",
+                        "CommandDialog.okBtnActionPerformed()");
 
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-		retVal = JOptionPane.CANCEL_OPTION;
-		doClose();
-	}//GEN-LAST:event_cancelBtnActionPerformed
-
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-		retVal = JOptionPane.CANCEL_OPTION;
-		doClose();
-	}//GEN-LAST:event_closeDialog
-
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void descBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descBtnActionPerformed
-
-		//	Get the specified text
-		JButton	btn = (JButton) evt.getSource();
-		String	text;
-		if (btn==arginDescBtn)
-			text = arginDescText.getText();
-		else
-		if (btn==argoutDescBtn)
-			text = argoutDescText.getText();
-		else
-			return;
-
-		//	Edit in dialog.
-		EditDialog	dlg = new EditDialog(this, text);
-		if (dlg.showDialog()==JOptionPane.OK_OPTION)
-		{
-			//	Put new text in field
-			if (btn==arginDescBtn)
-				arginDescText.setText(dlg.getText());
-			else
-			if (btn==argoutDescBtn)
-				argoutDescText.setText(dlg.getText());
-		}
-	}//GEN-LAST:event_descBtnActionPerformed
-
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void polledBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_polledBtnActionPerformed
-
-        String name = nameComboBox.getSelectedItem().toString();
-        if (name.toLowerCase().equals("state") ||
-            name.toLowerCase().equals("status")) {
-            Utils.popupError(this, name + " Cannot be polled !");
-            polledBtn.setSelected(false);
+            if (polledBtn.getSelectedObjects() != null) {
+                //noinspection NestedTryStatement
+                try {
+                    Integer.parseInt(polledTxt.getText());
+                } catch (NumberFormatException e) {
+                    Except.throw_exception(e.toString(),
+                            "Bad polling period.",
+                            "CommandDialog.okBtnActionPerformed()");
+                }
+            }
+        } catch (Exception e) {
+            ErrorPane.showErrorMessage(this, null, e);
             return;
         }
-		boolean polled = polledBtn.getSelectedObjects()!=null;
-		polledTxt.setEnabled(polled);
-	}//GEN-LAST:event_polledBtnActionPerformed
+        retVal = JOptionPane.OK_OPTION;
+        doClose();
+    }//GEN-LAST:event_okBtnActionPerformed
 
-	//===============================================================
-	//===============================================================
+    //===============================================================
+    //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void abstractBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abstractBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        retVal = JOptionPane.CANCEL_OPTION;
+        doClose();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        retVal = JOptionPane.CANCEL_OPTION;
+        doClose();
+    }//GEN-LAST:event_closeDialog
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void descBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descBtnActionPerformed
+
+        //	Get the specified text
+        JButton btn = (JButton) evt.getSource();
+        String text;
+        if (btn == arginDescBtn)
+            text = arginDescText.getText();
+        else if (btn == argoutDescBtn)
+            text = argoutDescText.getText();
+        else
+            return;
+
+        //	Edit in dialog.
+        EditDialog dlg = new EditDialog(this, text);
+        if (dlg.showDialog() == JOptionPane.OK_OPTION) {
+            //	Put new text in field
+            if (btn == arginDescBtn)
+                arginDescText.setText(dlg.getText());
+            else if (btn == argoutDescBtn)
+                argoutDescText.setText(dlg.getText());
+        }
+    }//GEN-LAST:event_descBtnActionPerformed
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void polledBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_polledBtnActionPerformed
+
+        boolean polled = polledBtn.getSelectedObjects() != null;
+        polledTxt.setEnabled(polled);
+    }//GEN-LAST:event_polledBtnActionPerformed
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void abstractBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abstractBtnActionPerformed
 
 
-	}//GEN-LAST:event_abstractBtnActionPerformed
+    }//GEN-LAST:event_abstractBtnActionPerformed
 
     //===============================================================
     //===============================================================
@@ -648,21 +630,15 @@ public class CommandDialog extends JDialog
     @SuppressWarnings({"UnusedDeclaration"})
     private void arginComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arginComboBoxActionPerformed
 
-        //  Only if argin is void, a command can be polled
-        boolean canBePolled = (arginComboBox.getSelectedIndex()==0);
-
-        //  But not for state and status
-        String name = nameComboBox.getSelectedItem().toString();
-        if (name.toLowerCase().equals("state") ||
-            name.toLowerCase().equals("status")) {
-            canBePolled = false;
+        if (isVisible()) {
+            //  Only if argin is void, a command can be polled
+            boolean canBePolled =(arginComboBox.getSelectedIndex() == 0);
+            if (!canBePolled) {
+                polledBtn.setSelected(false);
+                polledTxt.setEnabled(false);
+            }
+            polledBtn.setEnabled(canBePolled);
         }
-
-        if (!canBePolled) {
-            polledBtn.setSelected(false);
-            polledTxt.setEnabled(false);
-        }
-        polledBtn.setEnabled(canBePolled);
     }//GEN-LAST:event_arginComboBoxActionPerformed
 
     /*
@@ -670,69 +646,65 @@ public class CommandDialog extends JDialog
 	/**
 	 *	Closes the dialog
 	 */
-	//===============================================================
-	private void doClose()
-	{
-		setVisible(false);
-		dispose();
-	}
-	//===============================================================
-	//===============================================================
-	Command getCommand()
-	{
-		Command	cmd = OAWutils.factory.createCommand();
-		String	name = (String) nameComboBox.getSelectedItem();
-		try	{
-			//	Re-check name for syntax
-            boolean overload = overloadBtn.getSelectedObjects()!=null;
-			name = Utils.checkNameSyntax(name, overload);
-		} catch(DevFailed e) {
-			/*	Already verified */
-		}
-		cmd.setName(name);
-	    cmd.setExecMethod(Utils.buildExcecMethodName(name));
-        String  desc = Utils.strReplaceSpecialCharToCode(descText.getText());
-	    cmd.setDescription(desc);
+    //===============================================================
+    private void doClose() {
+        setVisible(false);
+        dispose();
+    }
 
-		//	Argin/argout management
-		Argument	argin  = OAWutils.factory.createArgument();
-	    Argument	argout = OAWutils.factory.createArgument();
-		Type	arginType = OAWutils.tango2pogoType(
-                    arginComboBox.getSelectedItem().toString());
-		Type	argoutType = OAWutils.tango2pogoType(
-                    argoutComboBox.getSelectedItem().toString());
-		argin.setType(arginType);
-	    argout.setType(argoutType);
+    //===============================================================
+    //===============================================================
+    Command getCommand() {
+        Command cmd = OAWutils.factory.createCommand();
+        String name = (String) nameComboBox.getSelectedItem();
+        try {
+            //	Re-check name for syntax
+            boolean overload = overloadBtn.getSelectedObjects() != null;
+            name = Utils.checkNameSyntax(name, overload);
+        } catch (DevFailed e) {
+            /*	Already verified */
+        }
+        cmd.setName(name);
+        cmd.setExecMethod(Utils.buildExcecMethodName(name));
+        String desc = Utils.strReplaceSpecialCharToCode(descText.getText());
+        cmd.setDescription(desc);
+
+        //	Argin/argout management
+        Argument argin = OAWutils.factory.createArgument();
+        Argument argout = OAWutils.factory.createArgument();
+        Type arginType = OAWutils.tango2pogoType(
+                arginComboBox.getSelectedItem().toString());
+        Type argoutType = OAWutils.tango2pogoType(
+                argoutComboBox.getSelectedItem().toString());
+        argin.setType(arginType);
+        argout.setType(argoutType);
 
         desc = Utils.strReplaceSpecialCharToCode(arginDescText.getText());
-		argin.setDescription(desc);
+        argin.setDescription(desc);
         desc = Utils.strReplaceSpecialCharToCode(argoutDescText.getText());
-	    argout.setDescription(desc);
-	    cmd.setArgin(argin);
-	    cmd.setArgout(argout);
+        argout.setDescription(desc);
+        cmd.setArgin(argin);
+        cmd.setArgout(argout);
 
         if (levelBtn.getSelectedObjects() == null)
-		    cmd.setDisplayLevel(PogoConst.strLevel[PogoConst.OPERATOR]);
+            cmd.setDisplayLevel(PogoConst.strLevel[PogoConst.OPERATOR]);
         else
-		    cmd.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
+            cmd.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
 
         //	Inheritance status
-        if (Utils.isTrue(orig_status.getInherited()))  {
-            if (overloadBtn.getSelectedObjects()!=null) {
+        if (Utils.isTrue(orig_status.getInherited())) {
+            if (overloadBtn.getSelectedObjects() != null) {
                 orig_status.setConcrete("true");
                 orig_status.setConcreteHere("true");
-            }
-            else {
+            } else {
                 orig_status.setConcreteHere("false");
             }
-        }
-        else {
-            if (abstractBtn.getSelectedObjects()!=null)  {
+        } else {
+            if (abstractBtn.getSelectedObjects() != null) {
                 orig_status.setAbstract("true");
                 orig_status.setConcrete("false");
                 orig_status.setConcreteHere("false");
-            }
-            else  {
+            } else {
                 orig_status.setAbstract("false");
                 orig_status.setConcrete("true");
                 orig_status.setConcreteHere("true");
@@ -740,19 +712,22 @@ public class CommandDialog extends JDialog
         }
         cmd.setStatus(orig_status);
 
-		if (polledBtn.getSelectedObjects()!=null)
-			cmd.setPolledPeriod(polledTxt.getText());
-		return cmd;
-	}
-	//===============================================================
-	//===============================================================
-	public static Command cloneCommand(Command srcCmd) {
+        if (polledBtn.getSelectedObjects() != null)
+            cmd.setPolledPeriod(polledTxt.getText());
+        else
+            cmd.setPolledPeriod("0");
+        return cmd;
+    }
 
-        Command	newCmd = OAWutils.cloneCommand(srcCmd);
+    //===============================================================
+    //===============================================================
+    public static Command cloneCommand(Command srcCmd) {
+
+        Command newCmd = OAWutils.cloneCommand(srcCmd);
 
         //	Inheritance status
         //  For a clone item, there is no inheritance.
-        InheritanceStatus   inher_status = newCmd.getStatus();
+        InheritanceStatus inher_status = newCmd.getStatus();
         if (!Utils.isTrue(inher_status.getAbstract())) {
             inher_status.setAbstract("false");
             inher_status.setInherited("false");
@@ -767,17 +742,17 @@ public class CommandDialog extends JDialog
         }
 
         newCmd.setStatus(inher_status);
-		return newCmd;
-	}
-	//===============================================================
-	//===============================================================
-	public int showDialog()
-	{
-		setVisible(true);
-		return retVal;
-	}
+        return newCmd;
+    }
 
-	//===============================================================
+    //===============================================================
+    //===============================================================
+    public int showDialog() {
+        setVisible(true);
+        return retVal;
+    }
+
+    //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton abstractBtn;
     private javax.swing.JComboBox arginComboBox;
@@ -794,14 +769,14 @@ public class CommandDialog extends JDialog
     private javax.swing.JLabel polledLbl;
     private javax.swing.JTextField polledTxt;
     // End of variables declaration//GEN-END:variables
-	//===============================================================
+    //===============================================================
 
 
-	//===============================================================
-	/*
-	 *	Manage the popup summary methods
-	 */
-	//===============================================================
+    //===============================================================
+    /*
+      *	Manage the popup summary methods
+      */
+    //===============================================================
     private static int[] columnSize = {
             140, 130, 130, 80, 40, 40, 400
     };
@@ -813,49 +788,48 @@ public class CommandDialog extends JDialog
             "Inherited",
             "Abstract",
             "Description",
-         };
-	//===============================================================
-	//===============================================================
-    public static void popupSummary(JFrame parent, Vector<Command> vc)
-    {
-		Vector<Vector<String>>	summary = buildSummary(vc);
-		String	title = Integer.toString(vc.size()) + "  Commands";
+    };
 
-		PopupTable  ppt =
-			new PopupTable(parent, title, columnTitle, summary);
+    //===============================================================
+    //===============================================================
+    public static void popupSummary(JFrame parent, ArrayList<Command> vc) {
+        ArrayList<ArrayList<String>> summary = buildSummary(vc);
+        String title = Integer.toString(vc.size()) + "  Commands";
 
-		int nb = vc.size();
-		if (nb>35)	nb = 35;
-		ppt.setPreferredSize(columnSize, nb);
-		ppt.setVisible(true);
-   }
-	//===============================================================
-	//===============================================================
-	public static Vector<Vector<String>> buildSummary(Vector<Command> vc)
-	{
-        Vector<Vector<String>>  result = new Vector<Vector<String>>();
-		for (Command command : vc)
-		{
-            Vector<String>  line = new Vector<String>();
- 			line.add(command.getName());
-			line.add(OAWutils.pogo2tangoType(command.getArgin().getType().toString()));
-			line.add(OAWutils.pogo2tangoType(command.getArgout().getType().toString()));
+        PopupTable ppt = new PopupTable(
+                parent, title, columnTitle, summary);
+
+        int nb = vc.size();
+        if (nb > 35) nb = 35;
+        ppt.setPreferredSize(columnSize, nb);
+        ppt.setVisible(true);
+    }
+
+    //===============================================================
+    //===============================================================
+    public static ArrayList<ArrayList<String>> buildSummary(ArrayList<Command> vc) {
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+        for (Command command : vc) {
+            ArrayList<String> line = new ArrayList<String>();
+            line.add(command.getName());
+            line.add(OAWutils.pogo2tangoType(command.getArgin().getType().toString()));
+            line.add(OAWutils.pogo2tangoType(command.getArgout().getType().toString()));
             if (Utils.isEquals(command.getDisplayLevel(),
                     PogoConst.strLevel[PogoConst.EXPERT]))
                 line.add(PogoConst.strLevel[PogoConst.EXPERT]);
             else
                 line.add(PogoConst.strLevel[PogoConst.OPERATOR]);
 
-            InheritanceStatus	status = command.getStatus();
+            InheritanceStatus status = command.getStatus();
             line.add(Utils.strBoolean(status.getInherited()));
             boolean concreate = Utils.isTrue(status.getConcrete()) ||
-                                Utils.isTrue(status.getConcreteHere());
-            line.add(""+(!concreate));
+                    Utils.isTrue(status.getConcreteHere());
+            line.add("" + (!concreate));
             line.add(Utils.strReplace(command.getDescription(), "\\n", "\n"));
-			result.add(line);
-		}
-		return result;
-	}
-	//===============================================================
-	//===============================================================
+            result.add(line);
+        }
+        return result;
+    }
+    //===============================================================
+    //===============================================================
 }

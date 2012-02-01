@@ -36,100 +36,98 @@
 
 package org.tango.pogo.pogo_gui;
 
-import java.awt.*;
-import java.io.File;
-import java.util.StringTokenizer;
-
-import javax.swing.*;
-
+import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
-
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.util.StringTokenizer;
+
 //===============================================================
+
 /**
- *	A Dialog Class to get the Class definitions.
+ * A Dialog Class to get the Class definitions.
  */
 //===============================================================
-public class ClassDialog extends JDialog
-{
+public class ClassDialog extends JDialog {
 
-	private static int		    returnStatus;
-	private DeviceClass		    devclass;
-    private String              origClassName = null;
-    private InheritancePanel    inheritance_panel;
-    private JRadioButton[]      langBtn;
-    private boolean             hasForcedGenerate = false;
+    private static int returnStatus;
+    private DeviceClass devclass;
+    private String origClassName = null;
+    private InheritancePanel inheritance_panel;
+    private JRadioButton[] langBtn;
+    private boolean hasForcedGenerate = false;
     static private JFileChooser chooser = null;
 
 
-	/**
-	 *	It is kept as JDialog to be edited with netbeans,
-	 *	but only centerPanel and data nmanagement are used
-	 */
-	private DeviceIdDialog	IDdialog;
+    /**
+     * It is kept as JDialog to be edited with netbeans,
+     * but only centerPanel and data nmanagement are used
+     */
+    private DeviceIdDialog IDdialog;
 
     /**
      * Get ClassTree instance to do save in case of class name changed
      */
-    private ClassTree   classTree;
+    private ClassTree classTree;
 
-	//===================================================================
-	/**
-	 *	 Initializes the ClassDialog object
-     * @param parent   The parent frame object
-     * @param classTree instance to do save in case of class name changed
-     * @param dc       The device class object to be edited
+    //===================================================================
+
+    /**
+     * Initializes the ClassDialog object
+     *
+     * @param parent           The parent frame object
+     * @param classTree        instance to do save in case of class name changed
+     * @param dc               The device class object to be edited
      * @param isInheritedClass true if this class is an inherited one
      */
-	//===================================================================
-	public ClassDialog(JFrame parent, ClassTree classTree, DeviceClass dc, boolean isInheritedClass)
-	{
-		super (parent, true);
+    //===================================================================
+    public ClassDialog(JFrame parent, ClassTree classTree, DeviceClass dc, boolean isInheritedClass) {
+        super(parent, true);
         this.classTree = classTree;
-		initComponents ();
+        initComponents();
         langBtn = new JRadioButton[3];
-        langBtn[PogoConst.Cpp]    = cppBtn;
-        langBtn[PogoConst.Java]   = javaBtn;
+        langBtn[PogoConst.Cpp] = cppBtn;
+        langBtn[PogoConst.Java] = javaBtn;
         langBtn[PogoConst.Python] = pythonBtn;
 
-        if (dc==null)   //  Creating a new class
+        if (dc == null)   //  Creating a new class
             this.devclass = new DeviceClass("", null);
         else {
-			//	Edit the specified class
-	    	this.devclass = dc;
+            //	Edit the specified class
+            this.devclass = dc;
             origClassName = dc.getPogoDeviceClass().getName();
             //  remove the add inheritance class button
             addInheritanceBtn.setVisible(false);
             if (PogoGUI.dbg_java) {
                 ClassDescription desc = dc.getPogoDeviceClass().getDescription();
-                if (desc!=null)
+                if (desc != null)
                     setLanguage(desc.getLanguage());
-            }
-            else
+            } else
                 setLanguage(Utils.getLanguage(PogoConst.Cpp));
         }
 
-		//	Fill fields with data if any
-		PogoDeviceClass	pogo_class = devclass.getPogoDeviceClass();
-		nameText.setText(pogo_class.getName());
-		descText.setText(pogo_class.getDescription().getDescription());
-		descText.setToolTipText(Utils.buildToolTip("Class Description",
-			"Description for device server documentation."));
-		projectText.setText(pogo_class.getDescription().getTitle());
-		projectText.setToolTipText(Utils.buildToolTip(
-			"Short description for documentation header"));
+        //	Fill fields with data if any
+        PogoDeviceClass pogo_class = devclass.getPogoDeviceClass();
+        nameText.setText(pogo_class.getName());
+        descText.setText(pogo_class.getDescription().getDescription());
+        descText.setToolTipText(Utils.buildToolTip("Class Description",
+                "Description for device server documentation."));
+        projectText.setText(pogo_class.getDescription().getTitle());
+        projectText.setToolTipText(Utils.buildToolTip(
+                "Short description for documentation header"));
 
-		IDdialog = new DeviceIdDialog(parent, pogo_class.getDescription().getIdentification());
+        IDdialog = new DeviceIdDialog(parent, pogo_class.getDescription().getIdentification());
         horizontalPanel.setLeftComponent(IDdialog.getCenterPanel());
 
-		//	Build a panel to display inheritance
-        if (devclass.getPogoDeviceClass().getName().length()==0)
+        //	Build a panel to display inheritance
+        if (devclass.getPogoDeviceClass().getName().length() == 0)
             devclass.getPogoDeviceClass().setName("New Tango Class");
         inheritance_panel = new InheritancePanel(devclass);
         inheritanceScrollPane.setViewportView(inheritance_panel);
@@ -137,39 +135,42 @@ public class ClassDialog extends JDialog
         if (isInheritedClass)
             nameText.setEditable(false);
 
-		pack ();
-		ATKGraphicsUtils.centerDialog(this);
+        pack();
+        ATKGraphicsUtils.centerDialog(this);
         nameText.requestFocus();
-	}
-	//===================================================================
-	/**
-	 *	 Initializes the ClassDialog object
-     * @param parent   The parent frame object
+    }
+    //===================================================================
+
+    /**
+     * Initializes the ClassDialog object
+     *
+     * @param parent The parent frame object
      */
-	//===================================================================
-	public ClassDialog(JFrame parent)
-	{
-		this(parent, null, null, false);
-	}
+    //===================================================================
+    public ClassDialog(JFrame parent) {
+        this(parent, null, null, false);
+    }
+
     //===================================================================
     //===================================================================
-    private void setLanguage(String lang)
-    {
+    private void setLanguage(String lang) {
         int langCode = Utils.getLanguage(lang);
-        if (langCode<0)
+        if (langCode < 0)
             langCode = PogoConst.Cpp;
-        for (int i=0 ; i<langBtn.length ; i++) {
-            langBtn[i].setSelected(i==langCode);
+        for (int i = 0; i < langBtn.length; i++) {
+            langBtn[i].setSelected(i == langCode);
         }
     }
 
-	//===================================================================
-	/** This method is called from within the constructor to
-	* initialize the form.
-	* WARNING: Do NOT modify this code. The content of this method is
-	* always regenerated by the FormEditor.
-	*/
-	//===================================================================
+    //===================================================================
+
+    /**
+     * This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the FormEditor.
+     */
+    //===================================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -356,36 +357,34 @@ public class ClassDialog extends JDialog
         getContentPane().add(inheritanceScrollPane, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
-	//===================================================================
-	//===================================================================
-	private void manageOK()
-	{
-		String	classname = checkClassName();
-		if (classname==null ||
-			classname.length()==0)
-			return;
+    //===================================================================
+    //===================================================================
+    private void manageOK() {
+        String classname = checkClassName();
+        if (classname == null ||
+                classname.length() == 0)
+            return;
         try {
             IDdialog.checkInputs();
-        }
-        catch (DevFailed e)  {
+        } catch (DevFailed e) {
             ErrorPane.showErrorMessage(this, null, e);
-			return;
+            return;
         }
-		nameText.setText(classname);
+        nameText.setText(classname);
         //  Check if class name has changed
         if (checkClassNameChanged(classname))
-    		doClose(JOptionPane.OK_OPTION);
-	}
-	//===================================================================
-	//===================================================================
-    private boolean checkClassNameChanged(String className)
-    {
+            doClose(JOptionPane.OK_OPTION);
+    }
+
+    //===================================================================
+    //===================================================================
+    private boolean checkClassNameChanged(String className) {
         //  Check if it has changed
-        if (classTree==null)        //  it is a new one
+        if (classTree == null)        //  it is a new one
             return true;
-        if (origClassName==null)    //  it is a new one
+        if (origClassName == null)    //  it is a new one
             return true;
-        if (devclass.getPogoDeviceClass().getDescription().getSourcePath()==null)
+        if (devclass.getPogoDeviceClass().getDescription().getSourcePath() == null)
             return true;    //  Not already saved
         if (className.equals(origClassName))    //   no change
             return true;
@@ -393,14 +392,14 @@ public class ClassDialog extends JDialog
 
         //  Ask to choose.
         Object[] options = {"Change Class name",
-                            "Create new class files",
-                            "Cancel"};
+                "Create new class files",
+                "Cancel"};
         int choice = JOptionPane.showOptionDialog(this,
-                    "Class name has changed",
-                    "Confirmation Window",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.WARNING_MESSAGE,
-                    null, options, options[0]);
+                "Class name has changed",
+                "Confirmation Window",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.WARNING_MESSAGE,
+                null, options, options[0]);
         switch (choice) {
             case 0:
                 System.out.println("Will generate");
@@ -410,19 +409,19 @@ public class ClassDialog extends JDialog
         }
         return false;
     }
+
     //===================================================================
     //===================================================================
-    private boolean manageClassNameChanged(String className)
-    {
+    private boolean manageClassNameChanged(String className) {
         if (JOptionPane.showConfirmDialog(this,
                 "The " + className + " files (xmi and code) will be generated",
                 "Confirmation Window",
-                JOptionPane.YES_NO_OPTION)!=JOptionPane.OK_OPTION)
+                JOptionPane.YES_NO_OPTION) != JOptionPane.OK_OPTION)
             return false;
 
         setCursor(new Cursor(Cursor.WAIT_CURSOR));
         Utils.getInstance().startSplashRefresher(
-                            "Generate class: " + className);
+                "Generate class: " + className);
 
         try {
             DeviceClass deviceClass = classTree.getDeviceClass();
@@ -433,8 +432,7 @@ public class ClassDialog extends JDialog
             hasForcedGenerate = true;
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             Utils.getInstance().stopSplashRefresher();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             Utils.getInstance().stopSplashRefresher();
             ErrorPane.showErrorMessage(this, null, e);
@@ -442,246 +440,238 @@ public class ClassDialog extends JDialog
         }
         return true;
     }
-	//===================================================================
-	//===================================================================
-    public boolean hasForcedToGenerate()
-    {
+
+    //===================================================================
+    //===================================================================
+    public boolean hasForcedToGenerate() {
         return hasForcedGenerate;
     }
-	//===================================================================
-	//===================================================================
-	@SuppressWarnings({"UnusedDeclaration"})
-	private void nameTextActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextActionPerformed
 
-		manageOK();
-	}//GEN-LAST:event_nameTextActionPerformed
-
-	//===================================================================
-	//===================================================================
+    //===================================================================
+    //===================================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void okBtnActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+    private void nameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextActionPerformed
 
-		manageOK();
-	}//GEN-LAST:event_okBtnActionPerformed
+        manageOK();
+    }//GEN-LAST:event_nameTextActionPerformed
+
+    //===================================================================
+    //===================================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+
+        manageOK();
+    }//GEN-LAST:event_okBtnActionPerformed
 
 
-	//===================================================================
-	//===================================================================
-	@SuppressWarnings({"UnusedDeclaration"})
-	private void cancelBtnActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-		doClose(JOptionPane.CANCEL_OPTION);
-	}//GEN-LAST:event_cancelBtnActionPerformed
+    //===================================================================
+    //===================================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        doClose(JOptionPane.CANCEL_OPTION);
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
-	//===================================================================
-	//===================================================================
+    //===================================================================
+    //===================================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-		doClose(JOptionPane.CANCEL_OPTION);
-	}//GEN-LAST:event_closeDialog
+        doClose(JOptionPane.CANCEL_OPTION);
+    }//GEN-LAST:event_closeDialog
 
-	//===================================================================
-	//===================================================================
-	private void languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageActionPerformed
+    //===================================================================
+    //===================================================================
+    private void languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageActionPerformed
 
-		JRadioButton	btn = (JRadioButton) evt.getSource();
+        JRadioButton btn = (JRadioButton) evt.getSource();
 
-		//	If action performed to reset -> force it
-		if (btn.getSelectedObjects()==null)
-			btn.setSelected(true);
+        //	If action performed to reset -> force it
+        if (btn.getSelectedObjects() == null)
+            btn.setSelected(true);
 
         //  Check if inheritance -> cannot have another language.
-        if (devclass.getAncestors().size()>0) {
+        if (devclass.getAncestors().size() > 0) {
             btn.setSelected(false);
             JOptionPane.showMessageDialog(this,
-                    devclass.getPogoDeviceClass().getName() + " inherite  for "+
-                    devclass.getAncestors().get(0).getPogoDeviceClass().getName() +
-                    ".\n It must be generated in same language !",
-                        "Error Window",
-                        JOptionPane.ERROR_MESSAGE);
-        }
-        else
-		//	Check the language
-		if (btn==cppBtn) {
-            setLanguage(btn.getText());
-		}
-		else
-		if (btn==javaBtn) {
-            if (PogoGUI.dbg_java) {
+                    devclass.getPogoDeviceClass().getName() + " inherite  for " +
+                            devclass.getAncestors().get(0).getPogoDeviceClass().getName() +
+                            ".\n It must be generated in same language !",
+                    "Error Window",
+                    JOptionPane.ERROR_MESSAGE);
+        } else
+            //	Check the language
+            if (btn == cppBtn) {
                 setLanguage(btn.getText());
+            } else if (btn == javaBtn) {
+                if (PogoGUI.dbg_java) {
+                    setLanguage(btn.getText());
+                } else {
+                    btn.setSelected(false);
+                    JOptionPane.showMessageDialog(this,
+                            btn.getText() + " language is not available !",
+                            "Error Window",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (btn == pythonBtn) {
+                if (PogoGUI.dbg_python) {
+                    setLanguage(btn.getText());
+                } else {
+                    btn.setSelected(false);
+                    JOptionPane.showMessageDialog(this,
+                            btn.getText() + " language is not available !",
+                            "Error Window",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
-            else {
-    			btn.setSelected(false);
-	    		JOptionPane.showMessageDialog(this,
-						btn.getText()+" language is not available !",
-						"Error Window",
-						JOptionPane.ERROR_MESSAGE);
-            }
-		}
-		else
-		if (btn==pythonBtn) {
-            if (PogoGUI.dbg_python) {
-                setLanguage(btn.getText());
-            }
-            else {
-    			btn.setSelected(false);
-	    		JOptionPane.showMessageDialog(this,
-						btn.getText()+" language is not available !",
-						"Error Window",
-						JOptionPane.ERROR_MESSAGE);
-            }
-		}
-	}//GEN-LAST:event_languageActionPerformed
+    }//GEN-LAST:event_languageActionPerformed
 
     //===================================================================
     //===================================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void addInheritanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addInheritanceBtnActionPerformed
 
-        
-		//	Initialize chooser if not already done.
-		if (chooser==null) {
-			String path = System.getenv("SOURCE_PATH");
-			if (path==null) {
-				path = System.getProperty("SOURCE_PATH");
-				if (path==null)
-					path = new File("").getAbsolutePath();
-			}
-			chooser = new JFileChooser(new File(path).getAbsolutePath());
 
-			PogoFileFilter	filter = new PogoFileFilter("xmi", "Tango Classes");
-			filter.setExtensionListInDescription(false);
-			chooser.setFileFilter(filter);
-		}
-		
-		//	Start the file chooser
-		int	retval = chooser.showOpenDialog(this);
-		if (retval== JFileChooser.APPROVE_OPTION) {
-			File file = chooser.getSelectedFile();
-			if (file!=null) {
-				if (!file.isDirectory()) {
-					try {
-						//	Try to load class
-						DeviceClass	dc = new DeviceClass(file.getAbsolutePath());
+        //	Initialize chooser if not already done.
+        if (chooser == null) {
+            String path = System.getenv("SOURCE_PATH");
+            if (path == null) {
+                path = System.getProperty("SOURCE_PATH");
+                if (path == null)
+                    path = new File("").getAbsolutePath();
+            }
+            chooser = new JFileChooser(new File(path).getAbsolutePath());
+
+            PogoFileFilter filter = new PogoFileFilter("xmi", "Tango Classes");
+            filter.setExtensionListInDescription(false);
+            chooser.setFileFilter(filter);
+        }
+
+        //	Start the file chooser
+        int retval = chooser.showOpenDialog(this);
+        if (retval == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            if (file != null) {
+                if (!file.isDirectory()) {
+                    try {
+                        //	Try to load class
+                        DeviceClass dc = new DeviceClass(file.getAbsolutePath());
                         devclass.addAncestor(dc);
-                
-						//	Then Remove old inheritance panel
+
+                        //	Then Remove old inheritance panel
                         inheritanceScrollPane.remove(inheritance_panel);
 
                         //  Check if Class name has been typed
-                        String  name = nameText.getText();
-                        if (name.length()>0)
+                        String name = nameText.getText();
+                        if (name.length() > 0)
                             devclass.getPogoDeviceClass().setName(name);
 
                         //  Then build a new panel and display
                         inheritance_panel = new InheritancePanel(devclass);
                         inheritanceScrollPane.setViewportView(inheritance_panel);
                         addInheritanceBtn.setVisible(false);
-                        
-					}
-					catch (DevFailed e) {
-						if (!e.errors[0].reason.equals("CANCEL"))
-							ErrorPane.showErrorMessage(this, file.getAbsolutePath(), e);
-					}
-				}
-			}
-		}
-		
+
+                    } catch (DevFailed e) {
+                        if (!e.errors[0].reason.equals("CANCEL"))
+                            ErrorPane.showErrorMessage(this, file.getAbsolutePath(), e);
+                    }
+                }
+            }
+        }
+
     }//GEN-LAST:event_addInheritanceBtnActionPerformed
+
     //===================================================================
     //===================================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void nameTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameTextKeyPressed
-        if (evt.getKeyCode()==27) {  // Escape
+        if (evt.getKeyCode() == 27) {  // Escape
             doClose(JOptionPane.CANCEL_OPTION);
         }
     }//GEN-LAST:event_nameTextKeyPressed
 
-	//===================================================================
-	//===================================================================
-	public int showDialog()
-	{
-		setVisible(true);
-		return returnStatus;
-	}
+    //===================================================================
+    //===================================================================
+    public int showDialog() {
+        setVisible(true);
+        return returnStatus;
+    }
 
-	//===========================================================
-	/**
-	 *	Close th dialog and set the reurn status.
-	 *
-	 *	@param	retStatus	value to b used to set the return status.
-	 */
-	//===========================================================
-	private void doClose(int retStatus)
-	{
-		returnStatus = retStatus;
-		setVisible (false);
-		dispose ();
-	}
-	//===========================================================
-	//===========================================================
-	DeviceClass getInputs()
-	{
-		PogoDeviceClass	pogo_class = devclass.getPogoDeviceClass();
-		pogo_class.setName(nameText.getText());
-		pogo_class.getDescription().setTitle(projectText.getText());
-		pogo_class.getDescription().setDescription(descText.getText());
+    //===========================================================
+
+    /**
+     * Close th dialog and set the reurn status.
+     *
+     * @param    retStatus    value to b used to set the return status.
+     */
+    //===========================================================
+    private void doClose(int retStatus) {
+        returnStatus = retStatus;
+        setVisible(false);
+        dispose();
+    }
+
+    //===========================================================
+    //===========================================================
+    DeviceClass getInputs() {
+        PogoDeviceClass pogo_class = devclass.getPogoDeviceClass();
+        pogo_class.setName(nameText.getText());
+        pogo_class.getDescription().setTitle(projectText.getText());
+        pogo_class.getDescription().setDescription(descText.getText());
         pogo_class.getDescription().setIdentification(IDdialog.getInputs());
-		if (pythonBtn.getSelectedObjects()!=null)
-			pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Python]);
-		else
-		if (javaBtn.getSelectedObjects()!=null)
-			pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Java]);
-		else
-			pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Cpp]);
-		return devclass;
-	}
-	//===========================================================
-	/**
-	*	Read class name text field.
-	*
-	*	@return the String read in class name text field.
-	*/
-	//===========================================================
-	private String  checkClassName()
-	{
-		if (nameText.getText().length()==0)
-		return null;
+        if (pythonBtn.getSelectedObjects() != null)
+            pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Python]);
+        else if (javaBtn.getSelectedObjects() != null)
+            pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Java]);
+        else
+            pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Cpp]);
+        return devclass;
+    }
+    //===========================================================
+
+    /**
+     * Read class name text field.
+     *
+     * @return the String read in class name text field.
+     */
+    //===========================================================
+    private String checkClassName() {
+        if (nameText.getText().length() == 0)
+            return null;
 
         //  Check if char are OK
-        String  name = nameText.getText().toLowerCase();
-        if (name.charAt(0)<'a' || name.charAt(0)>'z') {
+        String name = nameText.getText().toLowerCase();
+        if (name.charAt(0) < 'a' || name.charAt(0) > 'z') {
             Utils.popupError(this, "First char of class name must be a letter");
             return null;
         }
-        for (int i=0 ; i<name.length() ; i++) {
-            if ((name.charAt(i)<'a' || name.charAt(i)>'z') &&
-                (name.charAt(i)<'0' || name.charAt(i)>'9') &&
-                    name.charAt(i)!='_'){
+        for (int i = 0; i < name.length(); i++) {
+            if ((name.charAt(i) < 'a' || name.charAt(i) > 'z') &&
+                    (name.charAt(i) < '0' || name.charAt(i) > '9') &&
+                    name.charAt(i) != '_') {
                 Utils.popupError(this, "Char \'" + name.charAt(i) + "\' is not authorized in class name");
                 return null;
             }
         }
 
-		//	Take off space char if exist
-		//--------------------------------------
-		StringTokenizer stk = new StringTokenizer(nameText.getText());
-		name = "";
-		while(stk.hasMoreTokens()) {
-			String	tmp = stk.nextToken();
-			//	Check if first char is upcase else set it
-			if (tmp.length()>1)
-				name += tmp.substring(0, 1).toUpperCase() + tmp.substring(1);
-			else
-				name += tmp.toUpperCase();
-		}
-		if (name.length()==0)
-			return null;
-		else
-			return name;
-	}
+        //	Take off space char if exist
+        //--------------------------------------
+        StringTokenizer stk = new StringTokenizer(nameText.getText());
+        name = "";
+        while (stk.hasMoreTokens()) {
+            String tmp = stk.nextToken();
+            //	Check if first char is upcase else set it
+            if (tmp.length() > 1)
+                name += tmp.substring(0, 1).toUpperCase() + tmp.substring(1);
+            else
+                name += tmp.toUpperCase();
+        }
+        if (name.length() == 0)
+            return null;
+        else
+            return name;
+    }
 
-	//===================================================================
-	//===================================================================
+    //===================================================================
+    //===================================================================
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addInheritanceBtn;

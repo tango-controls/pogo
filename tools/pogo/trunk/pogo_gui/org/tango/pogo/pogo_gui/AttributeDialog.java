@@ -36,127 +36,127 @@
 
 package org.tango.pogo.pogo_gui;
 
-import java.awt.GridBagConstraints;
-import java.awt.event.ActionEvent;
-import java.util.Vector;
-
-import javax.swing.*;
-
+import fr.esrf.Tango.DevFailed;
+import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
+import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
-import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 //===============================================================
+
 /**
- *	A Dialog Class to get the Attribute parameters.
+ * A Dialog Class to get the Attribute parameters.
  */
 //===============================================================
-public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.PogoConst
-{
-	private int					retVal = JOptionPane.OK_OPTION;
-	private PogoGUI				pogo_gui;
-    private InheritanceStatus   orig_status = null;
-    private boolean             isDynamic   = false;
-	private	int				    poll_period = 0;
+public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.PogoConst {
+    private int retVal = JOptionPane.OK_OPTION;
+    private PogoGUI pogo_gui;
+    private InheritanceStatus orig_status = null;
+    private boolean isDynamic = false;
+    private int poll_period = 0;
 
-    private JRadioButton        dataReadyEvtCode;
-    private JRadioButton        changeEvtCode;
-    private JRadioButton        changeEvtChecked;
-    private JRadioButton        archiveEvtCode;
-    private JRadioButton        archiveEvtChecked;
+    private JRadioButton dataReadyEvtCode;
+    private JRadioButton changeEvtCode;
+    private JRadioButton changeEvtChecked;
+    private JRadioButton archiveEvtCode;
+    private JRadioButton archiveEvtChecked;
 
-	private Attribute		    attribute;
-	private static final String	defaultDataType = AttrDataArray[9];	//	Default is double
+    private Attribute attribute;
+    private static final String defaultDataType = AttrDataArray[9];    //	Default is double
 
-	private static final int	EMPTY_FIELD    = -1;
-	private static final int	NEGATIVE_FIELD = -2;
-	private static final int	INVALID_FIELD  = -3;
+    private static final int EMPTY_FIELD = -1;
+    private static final int NEGATIVE_FIELD = -2;
+    private static final int INVALID_FIELD = -3;
 
 
-	///===================================================================
-	/**
-	 * Initializes the Form for creation
+    ///===================================================================
+
+    /**
+     * Initializes the Form for creation
+     *
      * @param parent    the parent frame object
      * @param attType   attribute type
      * @param isDynamic the created attribute will be a dynamic one
      */
-	//===================================================================
-	public AttributeDialog(PogoGUI parent, int attType, boolean isDynamic)
-	{
-		this(parent, null);
+    //===================================================================
+    public AttributeDialog(PogoGUI parent, int attType, boolean isDynamic) {
+        this(parent, null);
         this.isDynamic = isDynamic;
-		attrTypeCB.setSelectedIndex(attType);
-		updateWindow();
+        attrTypeCB.setSelectedIndex(attType);
+        updateWindow();
         dynamicLbl.setVisible(isDynamic);
-	}
-	///===================================================================
-	/**
-	 * Initializes the Form for edit
+    }
+    ///===================================================================
+
+    /**
+     * Initializes the Form for edit
+     *
      * @param parent    the parent frame object
      * @param attribute specified attribute object
-	 */
-	//===================================================================
-	public AttributeDialog(PogoGUI parent, Attribute attribute)
-	{
- 		super (parent, true);
-		this.pogo_gui  = parent;
-		this.attribute = attribute;
-        if (attribute!=null) {
+     */
+    //===================================================================
+    public AttributeDialog(PogoGUI parent, Attribute attribute) {
+        super(parent, true);
+        this.pogo_gui = parent;
+        this.attribute = attribute;
+        if (attribute != null) {
             orig_status = attribute.getStatus();
             isDynamic = Utils.isTrue(attribute.getIsDynamic());
         }
-		initComponents ();
+        initComponents();
 
-		initOwnComponents();
-		initializeWindow();
+        initOwnComponents();
+        initializeWindow();
         manageInheritanceStatus(attribute);
-		pack ();
-		ATKGraphicsUtils.centerDialog(this);
-	}
-	//===================================================================
-	/**
-	 *	 Add components in window
-	 */
-	//===================================================================
-	private void initOwnComponents()
-	{
-		//  init combo box
-		//-----------------------
+        pack();
+        ATKGraphicsUtils.centerDialog(this);
+    }
+    //===================================================================
+
+    /**
+     * Add components in window
+     */
+    //===================================================================
+    private void initOwnComponents() {
+        //  init combo box
+        //-----------------------
         for (String s : AttrDataArray)
             dataTypeCB.addItem(s);
-		dataTypeCB.setSelectedItem(defaultDataType);
-		for (String s : AttrTypeArray)
+        dataTypeCB.setSelectedItem(defaultDataType);
+        for (String s : AttrTypeArray)
             attrTypeCB.addItem(s);
         for (String s : AttrRWtypeArray)
             rwTypeCB.addItem(s);
 
-		//	add components for polling ang and display level
-		//	Add radio box for expert/operator
-		//-------------------------------------------------------------
-        JLabel  lbl;
+        //	add components for polling ang and display level
+        //	Add radio box for expert/operator
+        //-------------------------------------------------------------
+        JLabel lbl;
         int y = 14;
-        GridBagConstraints gbc = new GridBagConstraints ();
+        GridBagConstraints gbc = new GridBagConstraints();
         lbl = new JLabel("Controlled by : ");
         gbc.gridx = 0;
         gbc.gridy = ++y;
         gbc.insets = new java.awt.Insets(0, 10, 0, 0);
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
-        definitionPanel.add (lbl, gbc);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(lbl, gbc);
 
-        levelBtn = new javax.swing.JRadioButton ();
-		levelBtn.setToolTipText(Utils.buildToolTip("Display Level","Expert or Operator"));
-		levelBtn.setText (" Expert Only  ");
-		gbc.gridx = 1;
-		gbc.gridy = y;
+        levelBtn = new javax.swing.JRadioButton();
+        levelBtn.setToolTipText(Utils.buildToolTip("Display Level", "Expert or Operator"));
+        levelBtn.setText(" Expert Only  ");
+        gbc.gridx = 1;
+        gbc.gridy = y;
         gbc.insets = new java.awt.Insets(0, 0, 0, 0);
-		gbc.fill  = GridBagConstraints.HORIZONTAL;
-		definitionPanel.add (levelBtn, gbc);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(levelBtn, gbc);
 
         //  Add Buttons for change event management
         //-------------------------------------------------------------
@@ -164,28 +164,28 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gbc.gridx = 0;
         gbc.gridy = ++y;
         gbc.insets = new java.awt.Insets(10, 10, 0, 0);
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
-        definitionPanel.add (lbl, gbc);
-        changeEvtCode = new JRadioButton ("Pushed by code");
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(lbl, gbc);
+        changeEvtCode = new JRadioButton("Pushed by code");
         gbc.gridx = 1;
         gbc.gridy = y;
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new java.awt.Insets(10, 0, 0, 0);
-        definitionPanel.add (changeEvtCode, gbc);
-        changeEvtCode.addActionListener (new java.awt.event.ActionListener () {
-            public void actionPerformed (java.awt.event.ActionEvent evt) {
-                evtByCodeBtnActionPerformed (evt);
-                }
-            });
+        definitionPanel.add(changeEvtCode, gbc);
+        changeEvtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                evtByCodeBtnActionPerformed(evt);
+            }
+        });
 
-        changeEvtChecked = new JRadioButton ("Event criteria checked by library");
+        changeEvtChecked = new JRadioButton("Event criteria checked by library");
         changeEvtChecked.setSelected(true);
         changeEvtChecked.setVisible(false);
         gbc.gridx = 1;
         gbc.gridy = ++y;
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new java.awt.Insets(0, 0, 5, 0);
-        definitionPanel.add (changeEvtChecked, gbc);
+        definitionPanel.add(changeEvtChecked, gbc);
 
         //  Add Buttons for archive event management
         //-------------------------------------------------------------
@@ -193,28 +193,28 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gbc.gridx = 0;
         gbc.gridy = ++y;
         gbc.insets = new java.awt.Insets(0, 10, 0, 0);
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
-        definitionPanel.add (lbl, gbc);
-        archiveEvtCode = new JRadioButton ("Pushed by code");
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(lbl, gbc);
+        archiveEvtCode = new JRadioButton("Pushed by code");
         gbc.gridx = 1;
         gbc.gridy = y;
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new java.awt.Insets(0, 0, 0, 0);
-        definitionPanel.add (archiveEvtCode, gbc);
-        archiveEvtCode.addActionListener (new java.awt.event.ActionListener () {
-            public void actionPerformed (java.awt.event.ActionEvent evt) {
-                evtByCodeBtnActionPerformed (evt);
-                }
-            });
+        definitionPanel.add(archiveEvtCode, gbc);
+        archiveEvtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                evtByCodeBtnActionPerformed(evt);
+            }
+        });
 
-        archiveEvtChecked = new JRadioButton ("Event criteria checked by library");
+        archiveEvtChecked = new JRadioButton("Event criteria checked by library");
         archiveEvtChecked.setSelected(true);
         archiveEvtChecked.setVisible(false);
         gbc.gridx = 1;
         gbc.gridy = ++y;
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new java.awt.Insets(0, 0, 5, 0);
-        definitionPanel.add (archiveEvtChecked, gbc);
+        definitionPanel.add(archiveEvtChecked, gbc);
 
         //  Add Buttons for DataReady event management
         //-------------------------------------------------------------
@@ -222,107 +222,106 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gbc.gridx = 0;
         gbc.gridy = ++y;
         gbc.insets = new java.awt.Insets(0, 10, 0, 0);
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
-        definitionPanel.add (lbl, gbc);
-        dataReadyEvtCode = new JRadioButton ("Pushed by code");
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(lbl, gbc);
+        dataReadyEvtCode = new JRadioButton("Pushed by code");
         gbc.gridx = 1;
         gbc.gridy = y;
-        gbc.fill  = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new java.awt.Insets(0, 0, 0, 0);
-        definitionPanel.add (dataReadyEvtCode, gbc);
-        dataReadyEvtCode.addActionListener (new java.awt.event.ActionListener () {
-            public void actionPerformed (java.awt.event.ActionEvent evt) {
-                evtByCodeBtnActionPerformed (evt);
-                }
-            });
+        definitionPanel.add(dataReadyEvtCode, gbc);
+        dataReadyEvtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                evtByCodeBtnActionPerformed(evt);
+            }
+        });
 
 
         //	Add radio box btn for attribute polled
-		//-------------------------------------------------------------
-		polledBtn = new javax.swing.JRadioButton ();
-		polledBtn.setToolTipText (Utils.buildToolTip("Attribute polled"));
-		polledBtn.setText ("Polled");
-		gbc.gridx = 1;
-		gbc.gridy = ++y;
-		gbc.fill  = GridBagConstraints.HORIZONTAL;
+        //-------------------------------------------------------------
+        polledBtn = new javax.swing.JRadioButton();
+        polledBtn.setToolTipText(Utils.buildToolTip("Attribute polled"));
+        polledBtn.setText("Polled");
+        gbc.gridx = 1;
+        gbc.gridy = ++y;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new java.awt.Insets(10, 0, 0, 0);
-		definitionPanel.add (polledBtn, gbc);
-		polledBtn.addActionListener (new java.awt.event.ActionListener () {
-			public void actionPerformed (java.awt.event.ActionEvent evt) {
-				polledBtnActionPerformed (evt);
-				}
-			});
-		
-		//	Add components for period polling
-		periodLabel = new JLabel("  Polling Period :");
-		periodLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		gbc.gridx = 0;
-		gbc.gridy = ++y;
+        definitionPanel.add(polledBtn, gbc);
+        polledBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                polledBtnActionPerformed(evt);
+            }
+        });
+
+        //	Add components for period polling
+        periodLabel = new JLabel("  Polling Period :");
+        periodLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        gbc.gridx = 0;
+        gbc.gridy = ++y;
         gbc.insets = new java.awt.Insets(0, 0, 0, 0);
-		definitionPanel.add (periodLabel, gbc);
-		
-		periodText = new JTextField();
-		gbc.gridx = 1;
-		gbc.gridy = y;
-		gbc.fill  = GridBagConstraints.HORIZONTAL;
-		definitionPanel.add (periodText, gbc);
-		periodText.setRequestFocusEnabled(true);
+        definitionPanel.add(periodLabel, gbc);
 
-		periodUnitLabel = new JLabel(" ms  ");
-		gbc.gridx = 2;
-		gbc.gridy = y;
-		definitionPanel.add (periodUnitLabel, gbc);
+        periodText = new JTextField();
+        gbc.gridx = 1;
+        gbc.gridy = y;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(periodText, gbc);
+        periodText.setRequestFocusEnabled(true);
 
-		//	Add a dummy label
-		gbc.gridx = 1;
-		gbc.gridy = ++y;
-		definitionPanel.add (new JLabel(" "), gbc);
-		setPeriodEnabled(false);
+        periodUnitLabel = new JLabel(" ms  ");
+        gbc.gridx = 2;
+        gbc.gridy = y;
+        definitionPanel.add(periodUnitLabel, gbc);
 
-		//	Add radio btn to memorized and memorized int
-		//-------------------------------------------------------------
-		memorizedBtn = new JRadioButton ();
-		memorizedBtn.setToolTipText(Utils.buildToolTip(
+        //	Add a dummy label
+        gbc.gridx = 1;
+        gbc.gridy = ++y;
+        definitionPanel.add(new JLabel(" "), gbc);
+        setPeriodEnabled(false);
+
+        //	Add radio btn to memorized and memorized int
+        //-------------------------------------------------------------
+        memorizedBtn = new JRadioButton();
+        memorizedBtn.setToolTipText(Utils.buildToolTip(
                 "Attribute memorized",
-                "The write attribute value will be stored in database\n"+
-                "And at next startup, the write attribute value will\n"+
-                 "be set to this stored value."));
-		memorizedBtn.setText (" Memorized  ");
-		memorizedBtn.setVisible(false);
-		gbc.gridx = 0;
-		gbc.gridy = ++y;
-		gbc.fill  = GridBagConstraints.HORIZONTAL;
-		definitionPanel.add (memorizedBtn, gbc);
-		
-		memorizedBtn.addActionListener (new java.awt.event.ActionListener () {
-			public void actionPerformed (java.awt.event.ActionEvent evt) {
-				memorizedBtnActionPerformed (evt);
-				}
-			});
+                "The write attribute value will be stored in database\n" +
+                        "And at next startup, the write attribute value will\n" +
+                        "be set to this stored value."));
+        memorizedBtn.setText(" Memorized  ");
+        memorizedBtn.setVisible(false);
+        gbc.gridx = 0;
+        gbc.gridy = ++y;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(memorizedBtn, gbc);
 
-		memorizedInitBtn = new javax.swing.JRadioButton ();
-		memorizedInitBtn.setToolTipText(
+        memorizedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memorizedBtnActionPerformed(evt);
+            }
+        });
+
+        memorizedInitBtn = new javax.swing.JRadioButton();
+        memorizedInitBtn.setToolTipText(
                 Utils.buildToolTip("Write at init",
                         "At each device initialization\n" +
-                        "the write attribute method will be called\n" +
-                        "with the value stored in database at previous write."));
-		memorizedInitBtn.setText (" Write hardware at init ");
-		memorizedInitBtn.setVisible(false);
-		gbc.gridx = 1;
-		gbc.gridy = y;
-		gbc.fill  = GridBagConstraints.HORIZONTAL;
-		definitionPanel.add (memorizedInitBtn, gbc);
- 	}
-	//===================================================================
-	//===================================================================
-    private void evtByCodeBtnActionPerformed(ActionEvent evt)
-    {
-        Object  o = evt.getSource();
+                                "the write attribute method will be called\n" +
+                                "with the value stored in database at previous write."));
+        memorizedInitBtn.setText(" Write hardware at init ");
+        memorizedInitBtn.setVisible(false);
+        gbc.gridx = 1;
+        gbc.gridy = y;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        definitionPanel.add(memorizedInitBtn, gbc);
+    }
+
+    //===================================================================
+    //===================================================================
+    private void evtByCodeBtnActionPerformed(ActionEvent evt) {
+        Object o = evt.getSource();
         if (o == changeEvtCode)
-            changeEvtChecked.setVisible(changeEvtCode.getSelectedObjects()!=null);
-        else
-        if (o == archiveEvtCode)
-            archiveEvtChecked.setVisible(archiveEvtCode.getSelectedObjects()!=null);
+            changeEvtChecked.setVisible(changeEvtCode.getSelectedObjects() != null);
+        else if (o == archiveEvtCode)
+            archiveEvtChecked.setVisible(archiveEvtCode.getSelectedObjects() != null);
         /*
         else
         if (o == dataReadyEvtCode)
@@ -330,27 +329,27 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         */
         pack();
     }
-	//===================================================================
-	//===================================================================
-	private void setPeriodEnabled(boolean state)
-	{
-		periodLabel.setVisible(state);
-		periodText.setVisible(state);
-		periodUnitLabel.setVisible(state);
-		if (state)
-		{
-			//	Default value if never set
-			String	txt;
-			if (poll_period==0)
-				txt = "2000";
-			else
-				txt = "" + poll_period;
-			periodText.setText(txt);
-			pack();
-		}
-	}
-	//===============================================================
-	//===============================================================
+
+    //===================================================================
+    //===================================================================
+    private void setPeriodEnabled(boolean state) {
+        periodLabel.setVisible(state);
+        periodText.setVisible(state);
+        periodUnitLabel.setVisible(state);
+        if (state) {
+            //	Default value if never set
+            String txt;
+            if (poll_period == 0)
+                txt = "3000";
+            else
+                txt = "" + poll_period;
+            periodText.setText(txt);
+            pack();
+        }
+    }
+
+    //===============================================================
+    //===============================================================
     private void manageAbstractOverloadButtons() {
 
         abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
@@ -359,9 +358,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             overloadBtn.setVisible(false);
             abstractBtn.setVisible(false);
             setEditable(true);
-        }
-        else
-        if (Utils.isTrue(orig_status.getInherited()) ) {
+        } else if (Utils.isTrue(orig_status.getInherited())) {
             //  Is inherited (cannot be created as abstract)
             abstractBtn.setVisible(false);
             overloadBtn.setVisible(true);
@@ -369,8 +366,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             boolean oveload = Utils.isTrue(orig_status.getConcreteHere());
             overloadBtn.setSelected(oveload);
             setEditable(false);
-        }
-        else  {
+        } else {
             //  Not inherited -> full edition
             overloadBtn.setVisible(false);
             abstractBtn.setVisible(true);
@@ -378,15 +374,14 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             setEditable(true);
         }
     }
-	//===============================================================
-	//===============================================================
-    private void manageInheritanceStatus(Attribute attribute)
-    {
-        if (attribute!=null) {
+
+    //===============================================================
+    //===============================================================
+    private void manageInheritanceStatus(Attribute attribute) {
+        if (attribute != null) {
             //	Manage inheritance status
             manageAbstractOverloadButtons();
-        }
-        else {
+        } else {
             //  Create a new command
             overloadBtn.setVisible(false);
             abstractBtn.setSelected(false);
@@ -398,55 +393,83 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             setEditable(true);
         }
     }
+
     //===============================================================
     //===============================================================
-    private void setNotEditable(JComboBox jcb)
-    {
-        String name = (String)jcb.getSelectedItem();
-        if (name!=null)  {
+    private void setNotEditable(JComboBox jcb) {
+        String name = (String) jcb.getSelectedItem();
+        if (name != null) {
             jcb.removeAllItems();
             jcb.addItem(name);
         }
     }
+
     //===============================================================
     //===============================================================
-    private void setEditable(boolean b)
-    {
-		nameText.setEditable(b);
+    private void setEditable(boolean b) {
+        nameText.setEditable(b);
+
         //  if not editable -> get only selected one
         if (!b) {
             setNotEditable(attrTypeCB);
             setNotEditable(dataTypeCB);
             setNotEditable(rwTypeCB);
+
+            levelBtn.setEnabled(b);
+            changeEvtCode.setEnabled(b);
+            changeEvtChecked.setEnabled(b);
+            archiveEvtCode.setEnabled(b);
+            archiveEvtChecked.setEnabled(b);
+            dataReadyEvtCode.setEnabled(b);
+            memorizedBtn.setEnabled(b);
+
+            attrPropDeltaTime.setEditable(b);
+            attrPropDeltaValue.setEditable(b);
+            attrPropDescription.setEditable(b);
+            attrPropDispUnit.setEditable(b);
+            attrPropFormat.setEditable(b);
+            attrPropLabel.setEditable(b);
+            attrPropMaxAlarm.setEditable(b);
+            attrPropMaxValue.setEditable(b);
+            attrPropMaxWarning.setEditable(b);
+            attrPropMinAlarm.setEditable(b);
+            attrPropMinValue.setEditable(b);
+            attrPropMinWarning.setEditable(b);
+            attrPropStdUnit.setEditable(b);
+            attrPropUnit.setEditable(b);
         }
-	}
-	//===================================================================
-	//===================================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void memorizedBtnActionPerformed (java.awt.event.ActionEvent evt) {
+    }
 
-		memorizedInitBtn.setVisible(
-			(memorizedBtn.getSelectedObjects()!=null) );
-	}
-	//===================================================================
-	//===================================================================
+    //===================================================================
+    //===================================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void polledBtnActionPerformed (java.awt.event.ActionEvent evt) {
-		boolean state = (polledBtn.getSelectedObjects()!=null);
-		setPeriodEnabled(state);
-		if (state) {
-			periodText.selectAll();
-			periodText.requestFocus();
-		}
-	}
+    private void memorizedBtnActionPerformed(java.awt.event.ActionEvent evt) {
 
-	 //===================================================================
-	 /** This method is called from within the constructor to
-	  * initialize the form.
-	  * WARNING: Do NOT modify this code. The content of this method is
-	  * always regenerated by the FormEditor.
-	  */
-	//===================================================================
+        memorizedInitBtn.setVisible(
+                (memorizedBtn.getSelectedObjects() != null));
+    }
+
+    //===================================================================
+    //===================================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void polledBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        boolean state = (polledBtn.getSelectedObjects() != null);
+        setPeriodEnabled(state);
+        if (state) {
+            periodText.selectAll();
+            periodText.requestFocus();
+        }
+    }
+
+    //===================================================================
+
+    /**
+     * This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the FormEditor.
+     */
+    //===================================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -947,180 +970,174 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-	//==============================================================
-	//==============================================================
+    //==============================================================
+    //==============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
 
-		String	message = null;
+        String message = null;
 
-		//	Control if Name has been filled.correctly
-		String	name = nameText.getText();
+        //	Control if Name has been filled.correctly
+        String name = nameText.getText();
 
-		try	{
-            boolean overload = overloadBtn.getSelectedObjects()!=null;
-			name = Utils.checkNameSyntax(name, false);
-			if (pogo_gui.itemAlreadyExists(name, PogoConst.SCALAR_ATTRIBUTE))
-				Except.throw_exception("AttributeExists",
-						"Attribute \"" + name + "\" Already Exists !",
-						"AttributeDislaog.okBtnActionPerformed()");
-		}
-		catch(DevFailed e) {
-			ErrorPane.showErrorMessage(this, null, e);
-			return;
-		}
-		nameText.setText(name);
+        try {
+            boolean overload = overloadBtn.getSelectedObjects() != null;
+            name = Utils.checkNameSyntax(name, false);
+            if (pogo_gui.itemAlreadyExists(name, PogoConst.SCALAR_ATTRIBUTE))
+                Except.throw_exception("AttributeExists",
+                        "Attribute \"" + name + "\" Already Exists !",
+                        "AttributeDislaog.okBtnActionPerformed()");
+        } catch (DevFailed e) {
+            ErrorPane.showErrorMessage(this, null, e);
+            return;
+        }
+        nameText.setText(name);
 
-		//	Control if  xSize and ySize fields have been filled.
-		int attrType = attrTypeCB.getSelectedIndex();
-		switch(attrType)
-		{
-		case SCALAR:
-			if (rwTypeCB.getSelectedItem().equals("READ_WITH_WRITE")) {
-				String  associatedAttribute = assAttrTF.getText();
-                if (associatedAttribute.length()==0)
-                    message = "READ_WITH_WRITE  attribute must have an associated attribute";
+        //	Control if  xSize and ySize fields have been filled.
+        int attrType = attrTypeCB.getSelectedIndex();
+        switch (attrType) {
+            case SCALAR:
+                if (rwTypeCB.getSelectedItem().equals("READ_WITH_WRITE")) {
+                    String associatedAttribute = assAttrTF.getText();
+                    if (associatedAttribute.length() == 0)
+                        message = "READ_WITH_WRITE  attribute must have an associated attribute";
+                }
+                break;
+            case SPECTRUM:
+                switch (checkIntField(xDataTF.getText())) {
+                    case EMPTY_FIELD:
+                        message = "Spectrum Attribute needs an X length of data";
+                        break;
+                    case NEGATIVE_FIELD:
+                        message = "Spectrum Attribute needs a POSITIVE X length of data";
+                        break;
+                    case INVALID_FIELD:
+                        message = "Cannot parse an integer value for X length !";
+                        break;
+                }
+                break;
+            case IMAGE:
+                switch (checkIntField(xDataTF.getText())) {
+                    case EMPTY_FIELD:
+                        message = "Image Attribute needs an X length of data";
+                        break;
+                    case NEGATIVE_FIELD:
+                        message = "Image Attribute needs a POSITIVE X length of data";
+                        break;
+                    case INVALID_FIELD:
+                        message = "Cannot parse an integer value for X length !";
+                        break;
+                }
+                switch (checkIntField(yDataTF.getText())) {
+                    case EMPTY_FIELD:
+                        message = "Image Attribute needs an Y length of data";
+                        break;
+                    case NEGATIVE_FIELD:
+                        message = "Image Attribute needs a POSITIVE Y length of data";
+                        break;
+                    case INVALID_FIELD:
+                        message = "Cannot parse an integer value for Y length !";
+                        break;
+                }
+        }
+
+        //	Check polled period if set
+        if (polledBtn.getSelectedObjects() != null) {
+            String strval = periodText.getText();
+            try {
+                poll_period = Integer.parseInt(strval);
+                //	Control if value not too small
+                if (poll_period < 20 &&
+                        poll_period != 0) {    //	if 0 means externally filling mode (by code)
+
+                    message = "The polling period minimum value is  " +
+                            20 + " ms";
+                }
+            } catch (NumberFormatException e) {
+                message = e.toString() + "\n\nBad Value in Polling period field !";
             }
-			break;
-		case SPECTRUM:
-			switch(checkIntField(xDataTF.getText())) {
-                case EMPTY_FIELD:
-                    message = "Spectrum Attribute needs an X length of data";
-                    break;
-                case NEGATIVE_FIELD:
-                    message = "Spectrum Attribute needs a POSITIVE X length of data";
-                    break;
-                case INVALID_FIELD:
-                    message = "Cannot parse an integer value for X length !";
-                    break;
-			}
-			break;
-		case IMAGE:
-			switch(checkIntField(xDataTF.getText())) {
-                case EMPTY_FIELD:
-                    message = "Image Attribute needs an X length of data";
-                    break;
-                case NEGATIVE_FIELD:
-                    message = "Image Attribute needs a POSITIVE X length of data";
-                    break;
-                case INVALID_FIELD:
-                    message = "Cannot parse an integer value for X length !";
-                    break;
-			}
-			switch(checkIntField(yDataTF.getText())) {
-                case EMPTY_FIELD:
-                    message = "Image Attribute needs an Y length of data";
-                    break;
-                case NEGATIVE_FIELD:
-                    message = "Image Attribute needs a POSITIVE Y length of data";
-                    break;
-                case INVALID_FIELD:
-                    message = "Cannot parse an integer value for Y length !";
-                    break;
-			}
-		}
+        }
+        if (message != null)
+            JOptionPane.showMessageDialog(this, message, "Error Window",
+                    JOptionPane.ERROR_MESSAGE);
+        else
+            doClose(JOptionPane.OK_OPTION);
+    }//GEN-LAST:event_okBtnActionPerformed
 
-		//	Check polled period if set
-		if (polledBtn.getSelectedObjects()!=null) {
-			String strval = periodText.getText();
-			try {
-				poll_period = Integer.parseInt(strval);
-				//	Control if value not too small
-				if (poll_period < 20  &&
-					poll_period != 0) {	//	if 0 means externally filling mode (by code)
-
-					message = "The polling period minimum value is  " +
-									20 + " ms";
-				}
-			}
-			catch (NumberFormatException e) {
-				 message = e.toString() + "\n\nBad Value in Polling period field !";
-			}
-		}
-		if (message!=null)
-			JOptionPane.showMessageDialog(this,  message, "Error Window",
-														JOptionPane.ERROR_MESSAGE);
-		else
-			doClose(JOptionPane.OK_OPTION);
-	}//GEN-LAST:event_okBtnActionPerformed
-	//==============================================================
-	//==============================================================
+    //==============================================================
+    //==============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void rwTypeCBActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rwTypeCBActionPerformed
-		if (isVisible())
-			updateWindow();
-	}//GEN-LAST:event_rwTypeCBActionPerformed
+    private void rwTypeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rwTypeCBActionPerformed
+        if (isVisible())
+            updateWindow();
+    }//GEN-LAST:event_rwTypeCBActionPerformed
 
-	//==============================================================
-	//==============================================================
+    //==============================================================
+    //==============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void dataTypeCBActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataTypeCBActionPerformed
-		if (isVisible())
-			updateWindow();
-	}//GEN-LAST:event_dataTypeCBActionPerformed
+    private void dataTypeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataTypeCBActionPerformed
+        if (isVisible())
+            updateWindow();
+    }//GEN-LAST:event_dataTypeCBActionPerformed
 
-	//==============================================================
-	//==============================================================
+    //==============================================================
+    //==============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void attrTypeCBActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attrTypeCBActionPerformed
-		if (isVisible())
-			updateWindow();
+    private void attrTypeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attrTypeCBActionPerformed
+        if (isVisible())
+            updateWindow();
 
-		//	Check if JComboBox initialized
-		if (rwTypeCB.getItemCount()==0)
-			return;
-		//	Add/Remove read with write
-		String	item = "Tango::"+AttrRWtypeArray[AttrRWtypeArray.length-1];
-		switch (attrTypeCB.getSelectedIndex()) {
+        //	Check if JComboBox initialized
+        if (rwTypeCB.getItemCount() == 0)
+            return;
+        //	Add/Remove read with write
+        String item = "Tango::" + AttrRWtypeArray[AttrRWtypeArray.length - 1];
+        switch (attrTypeCB.getSelectedIndex()) {
             case SCALAR:
                 if (rwTypeCB.getItemCount() < AttrRWtypeArray.length)
                     rwTypeCB.addItem(item);
                 break;
             default:
-                if (rwTypeCB.getItemCount()>=AttrRWtypeArray.length)
+                if (rwTypeCB.getItemCount() >= AttrRWtypeArray.length)
                     rwTypeCB.removeItem(item);
                 break;
-		}
-	}//GEN-LAST:event_attrTypeCBActionPerformed
+        }
+    }//GEN-LAST:event_attrTypeCBActionPerformed
 
 
-
-	//==============================================================
-	//==============================================================
+    //==============================================================
+    //==============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void cancelBtnActionPerformed (java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-		doClose(JOptionPane.CANCEL_OPTION);
-	}//GEN-LAST:event_cancelBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        doClose(JOptionPane.CANCEL_OPTION);
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
-	//==============================================================
-	//==============================================================
-	private int checkIntField(String s)
-	{
-		int	value;
-		int end = s.indexOf('.');
-		if (end>=0)
-			s = s.substring(0, end);
+    //==============================================================
+    //==============================================================
+    private int checkIntField(String s) {
+        int value;
+        int end = s.indexOf('.');
+        if (end >= 0)
+            s = s.substring(0, end);
 
-		try {
-			if (s.length()==0)
-				return EMPTY_FIELD;
-			else
-			if ((value=Integer.parseInt(s)) < 0)
-				return NEGATIVE_FIELD;
-			else
-				return value;
-		}
-		catch (NumberFormatException e) {
-			return INVALID_FIELD;
-		}
-	}
+        try {
+            if (s.length() == 0)
+                return EMPTY_FIELD;
+            else if ((value = Integer.parseInt(s)) < 0)
+                return NEGATIVE_FIELD;
+            else
+                return value;
+        } catch (NumberFormatException e) {
+            return INVALID_FIELD;
+        }
+    }
 
-	//======================================================
-	//======================================================
+    //======================================================
+    //======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-		doClose(JOptionPane.CANCEL_OPTION);
-	}//GEN-LAST:event_closeDialog
+    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        doClose(JOptionPane.CANCEL_OPTION);
+    }//GEN-LAST:event_closeDialog
 
     //======================================================
     //======================================================
@@ -1139,135 +1156,131 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     //======================================================
     //======================================================    //======================================================
     //======================================================
-	private void doClose(int retStatus)
-	{
-	  retVal = retStatus;
-	  setVisible (false);
-	  dispose ();
-	}
+    private void doClose(int retStatus) {
+        retVal = retStatus;
+        setVisible(false);
+        dispose();
+    }
 
-	//======================================================
-	//======================================================
-	public int showDialog()
-	{
-		setVisible(true);
-		return retVal;
-	}
-	//======================================================
-	//======================================================
-	private void setDescriptionText(String desc)
-	{
-		String	text = Utils.strReplace(desc, "\\n", "\n");
+    //======================================================
+    //======================================================
+    public int showDialog() {
+        setVisible(true);
+        return retVal;
+    }
+
+    //======================================================
+    //======================================================
+    private void setDescriptionText(String desc) {
+        String text = Utils.strReplace(desc, "\\n", "\n");
         text = Utils.strReplaceSpecialCharToDisplay(text);
-		attrPropDescription.setText(text);
-	}
-	//======================================================
-	/**
-	 *	Initialise Window
-	 */
-	//======================================================
-	private void initializeWindow()
-	{
-        if (attribute==null) {
-			return;
+        attrPropDescription.setText(text);
+    }
+    //======================================================
+
+    /**
+     * Initialise Window
+     */
+    //======================================================
+    private void initializeWindow() {
+        if (attribute == null) {
+            return;
         }
-		//  Initialize Window with input parameters
-		nameText.setText(attribute.getName());
-		xDataTF.setText(attribute.getMaxX());
-		yDataTF.setText(attribute.getMaxY());
-		assAttrTF.setText(attribute.getAssociatedAttr());
+        //  Initialize Window with input parameters
+        nameText.setText(attribute.getName());
+        xDataTF.setText(attribute.getMaxX());
+        yDataTF.setText(attribute.getMaxY());
+        assAttrTF.setText(attribute.getAssociatedAttr());
 
-		attrTypeCB.setSelectedItem(attribute.getAttType());
-		rwTypeCB.setSelectedItem(attribute.getRwType());
+        attrTypeCB.setSelectedItem(attribute.getAttType());
+        rwTypeCB.setSelectedItem(attribute.getRwType());
 
-        allocateBtn.setVisible(rwTypeCB.getSelectedIndex()!=WRITE);
+        allocateBtn.setVisible(rwTypeCB.getSelectedIndex() != WRITE);
         allocateBtn.setSelected(Utils.isTrue(attribute.getAllocReadMember()));
 
-		//	Update combo box
-		String	dataType =  OAWutils.pogo2tangoType(
-				attribute.getDataType().toString());
+        //	Update combo box
+        String dataType = OAWutils.pogo2tangoType(
+                attribute.getDataType().toString());
         if (dataType.equals("State"))
             dataType = "DevState"; //    Sorry.
 
-		for (int i=0 ; i<dataTypeCB.getItemCount() ; i++) {
-			String	type = (String)dataTypeCB.getItemAt(i);
-			if (type.equals(dataType))
-				dataTypeCB.setSelectedIndex(i);
-		}
-		//	Set the default attribute property values
-		AttrProperties	prop = attribute.getProperties();
-		if (prop!=null) {
-            String  desc = Utils.strReplaceSpecialCharToCode(prop.getDescription());
-			setDescriptionText(desc);
-			attrPropLabel.setText(prop.getLabel());
-			attrPropUnit.setText(prop.getUnit());
-			attrPropStdUnit.setText(prop.getStandardUnit());
-			attrPropDispUnit.setText(prop.getDisplayUnit());
-			attrPropFormat.setText(prop.getFormat());
-			attrPropMaxValue.setText(prop.getMaxValue());
-			attrPropMinValue.setText(prop.getMinValue());
-			attrPropMaxAlarm.setText(prop.getMaxAlarm());
-			attrPropMinAlarm.setText(prop.getMinAlarm());
-			attrPropMaxWarning.setText(prop.getMaxWarning());
-			attrPropMinWarning.setText(prop.getMinWarning());
-			attrPropDeltaTime.setText(prop.getDeltaTime());
-			attrPropDeltaValue.setText(prop.getDeltaValue());
-		}
-		//	Update window (what is visible or not)
-		updateWindow();
+        for (int i = 0; i < dataTypeCB.getItemCount(); i++) {
+            String type = (String) dataTypeCB.getItemAt(i);
+            if (type.equals(dataType))
+                dataTypeCB.setSelectedIndex(i);
+        }
+        //	Set the default attribute property values
+        AttrProperties prop = attribute.getProperties();
+        if (prop != null) {
+            String desc = Utils.strReplaceSpecialCharToCode(prop.getDescription());
+            setDescriptionText(desc);
+            attrPropLabel.setText(prop.getLabel());
+            attrPropUnit.setText(prop.getUnit());
+            attrPropStdUnit.setText(prop.getStandardUnit());
+            attrPropDispUnit.setText(prop.getDisplayUnit());
+            attrPropFormat.setText(prop.getFormat());
+            attrPropMaxValue.setText(prop.getMaxValue());
+            attrPropMinValue.setText(prop.getMinValue());
+            attrPropMaxAlarm.setText(prop.getMaxAlarm());
+            attrPropMinAlarm.setText(prop.getMinAlarm());
+            attrPropMaxWarning.setText(prop.getMaxWarning());
+            attrPropMinWarning.setText(prop.getMinWarning());
+            attrPropDeltaTime.setText(prop.getDeltaTime());
+            attrPropDeltaValue.setText(prop.getDeltaValue());
+        }
+        //	Update window (what is visible or not)
+        updateWindow();
 
-		//	Display level
-		if (attribute.getDisplayLevel() != null &&
-			attribute.getDisplayLevel().equals(PogoConst.strLevel[PogoConst.EXPERT]))
-			levelBtn.setSelected(true);
+        //	Display level
+        if (attribute.getDisplayLevel() != null &&
+                attribute.getDisplayLevel().equals(PogoConst.strLevel[PogoConst.EXPERT]))
+            levelBtn.setSelected(true);
 
-		//	Check if attribute polled
-		setPeriodEnabled(false);
-		String	strPeriod = attribute.getPolledPeriod();
-		if (strPeriod!=null && strPeriod.length()>0)
-		{
-			try {
-				int	period = Integer.parseInt(strPeriod);
-				if (period>0) {
-					polledBtn.setSelected(true);
-					poll_period = period;
-					setPeriodEnabled(true);
-				}
-			}
-			catch (NumberFormatException e) {
-				System.err.println(e);
-			}
-		}
+        //	Check if attribute polled
+        setPeriodEnabled(false);
+        String strPeriod = attribute.getPolledPeriod();
+        if (strPeriod != null && strPeriod.length() > 0) {
+            try {
+                int period = Integer.parseInt(strPeriod);
+                if (period > 0) {
+                    polledBtn.setSelected(true);
+                    poll_period = period;
+                    setPeriodEnabled(true);
+                }
+            } catch (NumberFormatException e) {
+                System.err.println(e);
+            }
+        }
 
-		//	memorized
-		if (attribute.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
-			attribute.getRwType().equals(AttrRWtypeArray[WRITE]) ) {
-            
-			String	s = attribute.getMemorized();
-			if (s!=null && s.equals("true")) {
-				memorizedBtn.setSelected(true);
-				memorizedInitBtn.setVisible(true);
-				s = attribute.getMemorizedAtInit();
-				if (s!=null && s.equals("true"))
-					memorizedInitBtn.setSelected(true);
-			}
-		}
+        //	memorized
+        if (attribute.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
+                attribute.getRwType().equals(AttrRWtypeArray[WRITE])) {
+
+            String s = attribute.getMemorized();
+            if (s != null && s.equals("true")) {
+                memorizedBtn.setSelected(true);
+                memorizedInitBtn.setVisible(true);
+                s = attribute.getMemorizedAtInit();
+                if (s != null && s.equals("true"))
+                    memorizedInitBtn.setSelected(true);
+            }
+        }
 
         //  Set event fire management
-        FireEvents  changeEvents = attribute.getChangeEvent();
-        if (changeEvents!=null) {
+        FireEvents changeEvents = attribute.getChangeEvent();
+        if (changeEvents != null) {
             changeEvtCode.setSelected(Utils.isTrue(changeEvents.getFire()));
             changeEvtChecked.setVisible(Utils.isTrue(changeEvents.getFire()));
             changeEvtChecked.setSelected(Utils.isTrue(changeEvents.getLibCheckCriteria()));
-         }
-        FireEvents  archiveEvents = attribute.getArchiveEvent();
-        if (archiveEvents!=null) {
+        }
+        FireEvents archiveEvents = attribute.getArchiveEvent();
+        if (archiveEvents != null) {
             archiveEvtCode.setSelected(Utils.isTrue(archiveEvents.getFire()));
             archiveEvtChecked.setVisible(Utils.isTrue(archiveEvents.getFire()));
             archiveEvtChecked.setSelected(Utils.isTrue(archiveEvents.getLibCheckCriteria()));
         }
-        FireEvents  dataReadyEvents = attribute.getDataReadyEvent();
-        if (dataReadyEvents!=null) {
+        FireEvents dataReadyEvents = attribute.getDataReadyEvent();
+        if (dataReadyEvents != null) {
             dataReadyEvtCode.setSelected(Utils.isTrue(dataReadyEvents.getFire()));
         }
 
@@ -1276,87 +1289,85 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             overloadBtn.setVisible(false);
         }
         dynamicLbl.setVisible(isDynamic);
-	}
+    }
 
-  //======================================================
-  //======================================================
-	public Attribute  getAttribute()
-	{
-		Attribute	attr = OAWutils.factory.createAttribute();
-		attr.setName(nameText.getText().trim());
+    //======================================================
+    //======================================================
+    public Attribute getAttribute() {
+        Attribute attr = OAWutils.factory.createAttribute();
+        attr.setName(nameText.getText().trim());
 
-		String  attType = (String) attrTypeCB.getSelectedItem();
-		attr.setAttType(attType);
+        String attType = (String) attrTypeCB.getSelectedItem();
+        attr.setAttType(attType);
 
-		attr.setRwType((String) rwTypeCB.getSelectedItem());
+        attr.setRwType((String) rwTypeCB.getSelectedItem());
         if (rwTypeCB.getSelectedItem().equals("READ_WITH_WRITE")) {
             attr.setAssociatedAttr(assAttrTF.getText().trim());
         }
 
-		String	tangoDataType = (String) dataTypeCB.getSelectedItem();
-		Type	pogoDataType  = OAWutils.tango2pogoType(tangoDataType);
-		attr.setDataType(pogoDataType);
+        String tangoDataType = (String) dataTypeCB.getSelectedItem();
+        Type pogoDataType = OAWutils.tango2pogoType(tangoDataType);
+        attr.setDataType(pogoDataType);
 
-		attr.setMaxX(xDataTF.getText().trim());
-		attr.setMaxY(yDataTF.getText().trim());
+        attr.setMaxX(xDataTF.getText().trim());
+        attr.setMaxY(yDataTF.getText().trim());
 
-		//	Attribute properties
-		AttrProperties	prop = OAWutils.factory.createAttrProperties();
-		prop.setDescription(attrPropDescription.getText());
-		prop.setLabel(attrPropLabel.getText().trim());
-		prop.setUnit(attrPropUnit.getText().trim());
-		prop.setStandardUnit(attrPropStdUnit.getText().trim());
-		prop.setDisplayUnit(attrPropDispUnit.getText().trim());
-		prop.setFormat(attrPropFormat.getText().trim());
-		prop.setMaxValue(attrPropMaxValue.getText().trim());
-		prop.setMinValue(attrPropMinValue.getText().trim());
-		prop.setMaxAlarm(attrPropMaxAlarm.getText().trim());
-		prop.setMinAlarm(attrPropMinAlarm.getText().trim());
-		prop.setMaxWarning(attrPropMaxWarning.getText().trim());
-		prop.setMinWarning(attrPropMinWarning.getText().trim());
-		prop.setDeltaTime(attrPropDeltaTime.getText().trim());
-		prop.setDeltaValue(attrPropDeltaValue.getText().trim());
-		attr.setProperties(prop);
+        //	Attribute properties
+        AttrProperties prop = OAWutils.factory.createAttrProperties();
+        prop.setDescription(attrPropDescription.getText());
+        prop.setLabel(attrPropLabel.getText().trim());
+        prop.setUnit(attrPropUnit.getText().trim());
+        prop.setStandardUnit(attrPropStdUnit.getText().trim());
+        prop.setDisplayUnit(attrPropDispUnit.getText().trim());
+        prop.setFormat(attrPropFormat.getText().trim());
+        prop.setMaxValue(attrPropMaxValue.getText().trim());
+        prop.setMinValue(attrPropMinValue.getText().trim());
+        prop.setMaxAlarm(attrPropMaxAlarm.getText().trim());
+        prop.setMinAlarm(attrPropMinAlarm.getText().trim());
+        prop.setMaxWarning(attrPropMaxWarning.getText().trim());
+        prop.setMinWarning(attrPropMinWarning.getText().trim());
+        prop.setDeltaTime(attrPropDeltaTime.getText().trim());
+        prop.setDeltaValue(attrPropDeltaValue.getText().trim());
+        attr.setProperties(prop);
 
-		//	Polling period
-		if (polledBtn.getSelectedObjects()!=null)
-			attr.setPolledPeriod(periodText.getText().trim());
+        //	Polling period
+        if (polledBtn.getSelectedObjects() != null)
+            attr.setPolledPeriod(periodText.getText().trim());
+        else
+            attr.setPolledPeriod("0");
 
-		//	Display level
-		if (levelBtn.getSelectedObjects()!=null)
-			attr.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
+        //	Display level
+        if (levelBtn.getSelectedObjects() != null)
+            attr.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
 
-		//	memorized
-		if (attr.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
-			attr.getRwType().equals(AttrRWtypeArray[WRITE]) ) {
-			if (memorizedBtn.getSelectedObjects()!=null) {
-				attr.setMemorized("true");
-				if (memorizedInitBtn.getSelectedObjects()!=null)
-					attr.setMemorizedAtInit("true");
-			}
-		}
+        //	memorized
+        if (attr.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
+                attr.getRwType().equals(AttrRWtypeArray[WRITE])) {
+            if (memorizedBtn.getSelectedObjects() != null) {
+                attr.setMemorized("true");
+                if (memorizedInitBtn.getSelectedObjects() != null)
+                    attr.setMemorizedAtInit("true");
+            }
+        }
 
         //  Is it a dynamic attribute ?
         if (isDynamic) {
             attr.setIsDynamic("true");
-        }
-        else {
+        } else {
             attr.setIsDynamic("false");
 
             //	Inheritance status
             if (Utils.isTrue(orig_status.getInherited())) {
-                if (overloadBtn.getSelectedObjects()!=null)
+                if (overloadBtn.getSelectedObjects() != null)
                     orig_status.setConcreteHere("true");
                 else
                     orig_status.setConcreteHere("false");
-            }
-            else {
-                if (abstractBtn.getSelectedObjects()!=null) {
+            } else {
+                if (abstractBtn.getSelectedObjects() != null) {
                     orig_status.setAbstract("true");
                     orig_status.setConcrete("false");
                     orig_status.setConcreteHere("false");
-                }
-                else {
+                } else {
                     orig_status.setAbstract("false");
                     orig_status.setConcrete("true");
                     orig_status.setConcreteHere("true");
@@ -1364,7 +1375,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             }
         }
         attr.setStatus(orig_status);
-        if (allocateBtn.getSelectedObjects()!=null)
+        if (allocateBtn.getSelectedObjects() != null)
             if (attr.getRwType().equals(AttrRWtypeArray[WRITE]))
                 attr.setAllocReadMember("false");
             else
@@ -1373,63 +1384,64 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             attr.setAllocReadMember("false");
 
         //  Set event fire management
-        FireEvents  changeEvents = OAWutils.factory.createFireEvents();
+        FireEvents changeEvents = OAWutils.factory.createFireEvents();
         changeEvents.setFire(
-                Utils.strBoolean(changeEvtCode.getSelectedObjects()!=null));
+                Utils.strBoolean(changeEvtCode.getSelectedObjects() != null));
         changeEvents.setLibCheckCriteria(
-                Utils.strBoolean(changeEvtChecked.getSelectedObjects()!=null));
+                Utils.strBoolean(changeEvtChecked.getSelectedObjects() != null));
         attr.setChangeEvent(changeEvents);
 
-        FireEvents  archiveEvents = OAWutils.factory.createFireEvents();
+        FireEvents archiveEvents = OAWutils.factory.createFireEvents();
         archiveEvents.setFire(
-                Utils.strBoolean(archiveEvtCode.getSelectedObjects()!=null));
+                Utils.strBoolean(archiveEvtCode.getSelectedObjects() != null));
         archiveEvents.setLibCheckCriteria(
-                Utils.strBoolean(archiveEvtChecked.getSelectedObjects()!=null));
+                Utils.strBoolean(archiveEvtChecked.getSelectedObjects() != null));
         attr.setArchiveEvent(archiveEvents);
 
-        FireEvents  dataReadyEvents = OAWutils.factory.createFireEvents();
+        FireEvents dataReadyEvents = OAWutils.factory.createFireEvents();
         dataReadyEvents.setFire(
-                Utils.strBoolean(dataReadyEvtCode.getSelectedObjects()!=null));
+                Utils.strBoolean(dataReadyEvtCode.getSelectedObjects() != null));
         dataReadyEvents.setLibCheckCriteria("true");
         attr.setDataReadyEvent(dataReadyEvents);
         return attr;
-	}
-	//===============================================================
+    }
+    //===============================================================
+
     /**
      * Clone the specified attribute
-     * @param srcAttribute  attribute to cloned.
-     * @return  the new object copyed from the specied one.
+     *
+     * @param srcAttribute attribute to cloned.
+     * @return the new object copyed from the specied one.
      */
-      //===============================================================
-      public static Attribute cloneAttribute(Attribute srcAttribute)
-      {
-          Attribute	newAttribute = OAWutils.cloneAttribute(srcAttribute);
+    //===============================================================
+    public static Attribute cloneAttribute(Attribute srcAttribute) {
+        Attribute newAttribute = OAWutils.cloneAttribute(srcAttribute);
 
-          //	Inheritance status
-          //  For a clone item, there is no inheritance.
-          InheritanceStatus   inher_status = newAttribute.getStatus();
-          if (!Utils.isTrue(inher_status.getAbstract())) {
-              inher_status.setAbstract("false");
-              inher_status.setInherited("false");
-              inher_status.setConcrete("true");
-              inher_status.setConcreteHere("true");
-          }
-          if (Utils.isTrue(inher_status.getInherited())) {
-              inher_status.setAbstract("false");
-              inher_status.setInherited("false");
-              inher_status.setConcrete("true");
-              inher_status.setConcreteHere("true");
-          }
-          newAttribute.setStatus(inher_status);
-          return newAttribute;
-      }
-  //======================================================
-  /**
-   *	Update Window . Depends on attribute type
-   */
-  //======================================================
-    private void updateWindow()
-    {
+        //	Inheritance status
+        //  For a clone item, there is no inheritance.
+        InheritanceStatus inher_status = newAttribute.getStatus();
+        if (!Utils.isTrue(inher_status.getAbstract())) {
+            inher_status.setAbstract("false");
+            inher_status.setInherited("false");
+            inher_status.setConcrete("true");
+            inher_status.setConcreteHere("true");
+        }
+        if (Utils.isTrue(inher_status.getInherited())) {
+            inher_status.setAbstract("false");
+            inher_status.setInherited("false");
+            inher_status.setConcrete("true");
+            inher_status.setConcreteHere("true");
+        }
+        newAttribute.setStatus(inher_status);
+        return newAttribute;
+    }
+    //======================================================
+
+    /**
+     * Update Window . Depends on attribute type
+     */
+    //======================================================
+    private void updateWindow() {
         xDataTF.setVisible(false);
         yDataTF.setVisible(false);
         xDataLBL.setVisible(false);
@@ -1440,26 +1452,24 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         memorizedInitBtn.setVisible(false);
 
         //    Special case for DevEncoded type
-        String    dataType = dataTypeCB.getSelectedItem().toString();
+        String dataType = dataTypeCB.getSelectedItem().toString();
         if (dataType.equals("DevEncoded"))
             attrTypeCB.setSelectedIndex(SCALAR);//    Attribute only scalar
 
-        switch(attrTypeCB.getSelectedIndex()) {
+        switch (attrTypeCB.getSelectedIndex()) {
             case SCALAR:
-                switch(rwTypeCB.getSelectedIndex())
-                {
-                case READ_WITH_WRITE:
-                    assAttrTF.setVisible(true);
-                    assAttrLBL.setVisible(true);
-                    break;
-                case WRITE:
-                case READ_WRITE:
-                    if (memorizedBtn!=null)
-                    {
-                        memorizedBtn.setVisible(true);
-                        memorizedInitBtn.setVisible(false);
-                    }
-                    break;
+                switch (rwTypeCB.getSelectedIndex()) {
+                    case READ_WITH_WRITE:
+                        assAttrTF.setVisible(true);
+                        assAttrLBL.setVisible(true);
+                        break;
+                    case WRITE:
+                    case READ_WRITE:
+                        if (memorizedBtn != null) {
+                            memorizedBtn.setVisible(true);
+                            memorizedInitBtn.setVisible(false);
+                        }
+                        break;
                 }
                 break;
             case SPECTRUM:
@@ -1472,19 +1482,19 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
                 xDataLBL.setVisible(true);
                 yDataLBL.setVisible(true);
                 break;
-            }
-            //    Special case for DevEncoded type
-            if (dataType.equals("Tango::DEV_ENCODED")) {
-                //    Attribute not memorized
-                memorizedBtn.setSelected(false);
-                memorizedBtn.setVisible(false);
-                memorizedInitBtn.setVisible(false);
         }
-        allocateBtn.setVisible(rwTypeCB.getSelectedIndex()!=WRITE);
+        //    Special case for DevEncoded type
+        if (dataType.equals("Tango::DEV_ENCODED")) {
+            //    Attribute not memorized
+            memorizedBtn.setSelected(false);
+            memorizedBtn.setVisible(false);
+            memorizedInitBtn.setVisible(false);
+        }
+        allocateBtn.setVisible(rwTypeCB.getSelectedIndex() != WRITE);
 
         pack();
     }
-  //======================================================
+    //======================================================
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton abstractBtn;
@@ -1519,25 +1529,23 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     // End of variables declaration//GEN-END:variables
 
 
-	//	Added components.
-	private JRadioButton	levelBtn;
-	private JRadioButton	polledBtn;
-	private JRadioButton	memorizedBtn;
-	private JRadioButton	memorizedInitBtn;
-	private JLabel			periodLabel;
-	private JLabel			periodUnitLabel;
-	private JTextField		periodText;
+    //	Added components.
+    private JRadioButton levelBtn;
+    private JRadioButton polledBtn;
+    private JRadioButton memorizedBtn;
+    private JRadioButton memorizedInitBtn;
+    private JLabel periodLabel;
+    private JLabel periodUnitLabel;
+    private JTextField periodText;
 
-  //======================================================
-
-
+    //======================================================
 
 
-	//===============================================================
-	/*
-	 *	Manage the popup summary methods
-	 */
-	//===============================================================
+    //===============================================================
+    /*
+      *	Manage the popup summary methods
+      */
+    //===============================================================
     private static int[] columnSize = {
             140, 70, 130, 60, 80, 40, 40, 400
     };
@@ -1550,57 +1558,54 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             "Inherited",
             "Abstract",
             "Description"
-         };
-	//===============================================================
-	//===============================================================
-    public static void popupSummary(JFrame parent, Vector<Attribute> va)
-    {
-		Vector<Vector<String>>	summary = buildSummary(va);
-		String	title = Integer.toString(va.size()) + "  Attributes";
+    };
 
-		PopupTable  ppt =
-			new PopupTable(parent, title, columnTitle, summary);
-		int nb = va.size();
-		if (nb>35)	nb = 35;
-		ppt.setPreferredSize(columnSize, nb);
-		ppt.setVisible(true);
-   }
-	//===============================================================
-	//===============================================================
-	private static Vector<Vector<String>> buildSummary(Vector<Attribute> va)
-	{
-        Vector<Vector<String>>  result = new Vector<Vector<String>>();
-		for (Attribute attribute : va)
-		{
-            Vector<String>  line = new Vector<String>();
-			line.add(attribute.getName());
+    //===============================================================
+    //===============================================================
+    public static void popupSummary(JFrame parent, ArrayList<Attribute> va) {
+        ArrayList<ArrayList<String>> summary = buildSummary(va);
+        String title = Integer.toString(va.size()) + "  Attributes";
+
+        PopupTable ppt =
+                new PopupTable(parent, title, columnTitle, summary);
+        int nb = va.size();
+        if (nb > 35) nb = 35;
+        ppt.setPreferredSize(columnSize, nb);
+        ppt.setVisible(true);
+    }
+
+    //===============================================================
+    //===============================================================
+    private static ArrayList<ArrayList<String>> buildSummary(ArrayList<Attribute> va) {
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+        for (Attribute attribute : va) {
+            ArrayList<String> line = new ArrayList<String>();
+            line.add(attribute.getName());
             line.add(attribute.getAttType());
             line.add(OAWutils.pogo2tangoType(attribute.getDataType().toString()));
             if (attribute.getAttType().equals("Scalar"))
                 line.add("1");
-            else
-            if (attribute.getAttType().equals("Spectrum"))
+            else if (attribute.getAttType().equals("Spectrum"))
                 line.add(attribute.getMaxX());
-            else
-            if (attribute.getAttType().equals("Image"))
-                line.add(attribute.getMaxX()+ " x "+attribute.getMaxY());
+            else if (attribute.getAttType().equals("Image"))
+                line.add(attribute.getMaxX() + " x " + attribute.getMaxY());
 
-			String	level = attribute.getDisplayLevel();
-			if (level==null || level.length()==0)
-				level = "OPERATOR";
-			line.add(level);
+            String level = attribute.getDisplayLevel();
+            if (level == null || level.length() == 0)
+                level = "OPERATOR";
+            line.add(level);
 
-            InheritanceStatus	status = attribute.getStatus();
+            InheritanceStatus status = attribute.getStatus();
             line.add(Utils.strBoolean(status.getInherited()));
             boolean concreate = Utils.isTrue(status.getConcrete()) ||
-                                Utils.isTrue(status.getConcreteHere());
-            line.add(""+(!concreate));
- 
-            AttrProperties  prop = attribute.getProperties();
-            line.add(Utils.strReplace(prop.getDescription(), "\\n", "\n"));
-			result.add(line);
-		}
+                    Utils.isTrue(status.getConcreteHere());
+            line.add("" + (!concreate));
 
-		return result;
-	}
+            AttrProperties prop = attribute.getProperties();
+            line.add(Utils.strReplace(prop.getDescription(), "\\n", "\n"));
+            result.add(line);
+        }
+
+        return result;
+    }
 }
