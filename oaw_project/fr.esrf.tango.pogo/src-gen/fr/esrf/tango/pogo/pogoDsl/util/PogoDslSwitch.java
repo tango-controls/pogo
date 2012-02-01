@@ -231,6 +231,13 @@ public class PogoDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case PogoDslPackage.OVERLODED_POLL_PERIOD_OBJECT:
+      {
+        OverlodedPollPeriodObject overlodedPollPeriodObject = (OverlodedPollPeriodObject)theEObject;
+        T result = caseOverlodedPollPeriodObject(overlodedPollPeriodObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case PogoDslPackage.TYPE:
       {
         Type type = (Type)theEObject;
@@ -883,6 +890,22 @@ public class PogoDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAdditionalFile(AdditionalFile object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Overloded Poll Period Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Overloded Poll Period Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOverlodedPollPeriodObject(OverlodedPollPeriodObject object)
   {
     return null;
   }

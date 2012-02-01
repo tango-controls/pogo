@@ -812,6 +812,34 @@ finally {
 
 
 
+// Entry rule entryRuleOverlodedPollPeriodObject
+entryRuleOverlodedPollPeriodObject 
+:
+{ before(grammarAccess.getOverlodedPollPeriodObjectRule()); }
+	 ruleOverlodedPollPeriodObject
+{ after(grammarAccess.getOverlodedPollPeriodObjectRule()); } 
+	 EOF 
+;
+
+// Rule OverlodedPollPeriodObject
+ruleOverlodedPollPeriodObject
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getGroup()); }
+(rule__OverlodedPollPeriodObject__Group__0)
+{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleType
 entryRuleType 
 :
@@ -3741,6 +3769,7 @@ rule__PogoDeviceClass__Group__23
     }
 :
 	rule__PogoDeviceClass__Group__23__Impl
+	rule__PogoDeviceClass__Group__24
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3752,17 +3781,80 @@ rule__PogoDeviceClass__Group__23__Impl
     }
 :
 (
-{ before(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23()); }
+{ before(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_23()); }
 
-	'}' 
+	'overlodedPollPeriodObject:' 
 
-{ after(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23()); }
+{ after(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_23()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__PogoDeviceClass__Group__24
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PogoDeviceClass__Group__24__Impl
+	rule__PogoDeviceClass__Group__25
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PogoDeviceClass__Group__24__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectAssignment_24()); }
+(rule__PogoDeviceClass__OverlodedPollPeriodObjectAssignment_24)*
+{ after(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectAssignment_24()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PogoDeviceClass__Group__25
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PogoDeviceClass__Group__25__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PogoDeviceClass__Group__25__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_25()); }
+
+	'}' 
+
+{ after(grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_25()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
 
 
 
@@ -6818,6 +6910,98 @@ finally {
 
 
 
+rule__OverlodedPollPeriodObject__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__OverlodedPollPeriodObject__Group__0__Impl
+	rule__OverlodedPollPeriodObject__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OverlodedPollPeriodObject__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getNameAssignment_0()); }
+(rule__OverlodedPollPeriodObject__NameAssignment_0)
+{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getNameAssignment_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__OverlodedPollPeriodObject__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__OverlodedPollPeriodObject__Group__1__Impl
+	rule__OverlodedPollPeriodObject__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OverlodedPollPeriodObject__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeAssignment_1()); }
+(rule__OverlodedPollPeriodObject__TypeAssignment_1)
+{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__OverlodedPollPeriodObject__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__OverlodedPollPeriodObject__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OverlodedPollPeriodObject__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodAssignment_2()); }
+(rule__OverlodedPollPeriodObject__PollPeriodAssignment_2)
+{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodAssignment_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
 rule__VoidType__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -9491,6 +9675,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__PogoDeviceClass__OverlodedPollPeriodObjectAssignment_24
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0()); }
+	ruleOverlodedPollPeriodObject{ after(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__ClassDescription__DescriptionAssignment_0
     @init {
 		int stackSize = keepStackSize();
@@ -10849,6 +11048,51 @@ rule__AdditionalFile__PathAssignment_1
 (
 { before(grammarAccess.getAdditionalFileAccess().getPathSTRINGTerminalRuleCall_1_0()); }
 	RULE_STRING{ after(grammarAccess.getAdditionalFileAccess().getPathSTRINGTerminalRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OverlodedPollPeriodObject__NameAssignment_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getNameSTRINGTerminalRuleCall_0_0()); }
+	RULE_STRING{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getNameSTRINGTerminalRuleCall_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OverlodedPollPeriodObject__TypeAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeSTRINGTerminalRuleCall_1_0()); }
+	RULE_STRING{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeSTRINGTerminalRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OverlodedPollPeriodObject__PollPeriodAssignment_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodSTRINGTerminalRuleCall_2_0()); }
+	RULE_STRING{ after(grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodSTRINGTerminalRuleCall_2_0()); }
 )
 
 ;

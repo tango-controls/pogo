@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAdditionalFiles <em>Additional Files</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getOverlodedPollPeriodObject <em>Overloded Poll Period Object</em>}</li>
  * </ul>
  * </p>
  *
@@ -306,5 +307,21 @@ public interface PogoDeviceClass extends EObject
    * @generated
    */
   EList<AdditionalFile> getAdditionalFiles();
+
+  /**
+   * Returns the value of the '<em><b>Overloded Poll Period Object</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Overloded Poll Period Object</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Overloded Poll Period Object</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_OverlodedPollPeriodObject()
+   * @model containment="true"
+   * @generated
+   */
+  EList<OverlodedPollPeriodObject> getOverlodedPollPeriodObject();
 
 } // PogoDeviceClass

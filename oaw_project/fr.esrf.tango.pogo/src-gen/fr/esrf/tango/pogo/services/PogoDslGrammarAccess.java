@@ -296,7 +296,10 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAdditionalFilesKeyword_21 = (Keyword)cGroup.eContents().get(21);
 		private final Assignment cAdditionalFilesAssignment_22 = (Assignment)cGroup.eContents().get(22);
 		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_22_0 = (RuleCall)cAdditionalFilesAssignment_22.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_23 = (Keyword)cGroup.eContents().get(23);
+		private final Keyword cOverlodedPollPeriodObjectKeyword_23 = (Keyword)cGroup.eContents().get(23);
+		private final Assignment cOverlodedPollPeriodObjectAssignment_24 = (Assignment)cGroup.eContents().get(24);
+		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_24.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_25 = (Keyword)cGroup.eContents().get(25);
 		
 		////==============================================
 		////	Class definition
@@ -311,8 +314,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	"attributes:" attributes+=Attribute* //	Device dynamic attribute list
 		//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device state list
 		//	"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
-		//	Preferences "additionalFiles:" additionalFiles+=AdditionalFile* //	Programmer's additional files to be added in Makefile (utils, threads,...)
-		//	"}";
+		//	Preferences //	Programmer's additional files to be added in Makefile (utils, threads,...)
+		//	"additionalFiles:" additionalFiles+=AdditionalFile* //	Object list (Command or Attribute) where polling period has been overloaded
+		//	"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}";
 		public ParserRule getRule() { return rule; }
 
 		//"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" institute= //	For future specific features 
@@ -324,8 +328,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"attributes:" attributes+=Attribute* //	Device dynamic attribute list
 		//"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device state list
 		//"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
-		//Preferences "additionalFiles:" additionalFiles+=AdditionalFile* //	Programmer's additional files to be added in Makefile (utils, threads,...)
-		//"}"
+		//Preferences //	Programmer's additional files to be added in Makefile (utils, threads,...)
+		//"additionalFiles:" additionalFiles+=AdditionalFile* //	Object list (Command or Attribute) where polling period has been overloaded
+		//"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"deviceclass"
@@ -447,6 +452,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Preferences
 		public RuleCall getPreferencesPreferencesParserRuleCall_20_0() { return cPreferencesPreferencesParserRuleCall_20_0; }
 
+		////	Programmer's additional files to be added in Makefile (utils, threads,...)
 		//"additionalFiles:"
 		public Keyword getAdditionalFilesKeyword_21() { return cAdditionalFilesKeyword_21; }
 
@@ -456,8 +462,18 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//AdditionalFile
 		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_22_0() { return cAdditionalFilesAdditionalFileParserRuleCall_22_0; }
 
+		////	Object list (Command or Attribute) where polling period has been overloaded
+		//"overlodedPollPeriodObject:"
+		public Keyword getOverlodedPollPeriodObjectKeyword_23() { return cOverlodedPollPeriodObjectKeyword_23; }
+
+		//overlodedPollPeriodObject+=OverlodedPollPeriodObject*
+		public Assignment getOverlodedPollPeriodObjectAssignment_24() { return cOverlodedPollPeriodObjectAssignment_24; }
+
+		//OverlodedPollPeriodObject
+		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_23() { return cRightCurlyBracketKeyword_23; }
+		public Keyword getRightCurlyBracketKeyword_25() { return cRightCurlyBracketKeyword_25; }
 	}
 
 	public class LanguageElements extends AbstractParserRuleElementFinder {
@@ -1715,6 +1731,49 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getPathSTRINGTerminalRuleCall_1_0() { return cPathSTRINGTerminalRuleCall_1_0; }
 	}
 
+	public class OverlodedPollPeriodObjectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OverlodedPollPeriodObject");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeSTRINGTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cPollPeriodAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPollPeriodSTRINGTerminalRuleCall_2_0 = (RuleCall)cPollPeriodAssignment_2.eContents().get(0);
+		
+		////
+		////	Object (Command or Attribute) where polling period has been overloaded
+		////
+		//OverlodedPollPeriodObject:
+		//	name=STRING type= //	command or attribute
+		//	STRING pollPeriod=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//name=STRING type= //	command or attribute
+		//STRING pollPeriod=STRING
+		public Group getGroup() { return cGroup; }
+
+		//name=STRING
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+
+		//type= //	command or attribute
+		//STRING
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		////	command or attribute
+		//STRING
+		public RuleCall getTypeSTRINGTerminalRuleCall_1_0() { return cTypeSTRINGTerminalRuleCall_1_0; }
+
+		//pollPeriod=STRING
+		public Assignment getPollPeriodAssignment_2() { return cPollPeriodAssignment_2; }
+
+		//STRING
+		public RuleCall getPollPeriodSTRINGTerminalRuleCall_2_0() { return cPollPeriodSTRINGTerminalRuleCall_2_0; }
+	}
+
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2563,6 +2622,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	private FireEventsElements pFireEvents;
 	private AttrPropertiesElements pAttrProperties;
 	private AdditionalFileElements pAdditionalFile;
+	private OverlodedPollPeriodObjectElements pOverlodedPollPeriodObject;
 	private TypeElements pType;
 	private VoidTypeElements pVoidType;
 	private BooleanTypeElements pBooleanType;
@@ -2685,8 +2745,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	"attributes:" attributes+=Attribute* //	Device dynamic attribute list
 	//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device state list
 	//	"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
-	//	Preferences "additionalFiles:" additionalFiles+=AdditionalFile* //	Programmer's additional files to be added in Makefile (utils, threads,...)
-	//	"}";
+	//	Preferences //	Programmer's additional files to be added in Makefile (utils, threads,...)
+	//	"additionalFiles:" additionalFiles+=AdditionalFile* //	Object list (Command or Attribute) where polling period has been overloaded
+	//	"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}";
 	public PogoDeviceClassElements getPogoDeviceClassAccess() {
 		return (pPogoDeviceClass != null) ? pPogoDeviceClass : (pPogoDeviceClass = new PogoDeviceClassElements());
 	}
@@ -2981,6 +3042,20 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAdditionalFileRule() {
 		return getAdditionalFileAccess().getRule();
+	}
+
+	////
+	////	Object (Command or Attribute) where polling period has been overloaded
+	////
+	//OverlodedPollPeriodObject:
+	//	name=STRING type= //	command or attribute
+	//	STRING pollPeriod=STRING;
+	public OverlodedPollPeriodObjectElements getOverlodedPollPeriodObjectAccess() {
+		return (pOverlodedPollPeriodObject != null) ? pOverlodedPollPeriodObject : (pOverlodedPollPeriodObject = new OverlodedPollPeriodObjectElements());
+	}
+	
+	public ParserRule getOverlodedPollPeriodObjectRule() {
+		return getOverlodedPollPeriodObjectAccess().getRule();
 	}
 
 	////

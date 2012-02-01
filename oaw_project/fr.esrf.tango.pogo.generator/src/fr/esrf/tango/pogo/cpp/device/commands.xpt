@@ -115,7 +115,7 @@
 	/**
 	 *	Command «cmd.name» related methods.
 	 */
-	«cmd.argout.declareArgumentWithPointer()»«cmd.execMethod»(«cmd.declareCmdArgin()»);
+	virtual «cmd.argout.declareArgumentWithPointer()»«cmd.execMethod»(«cmd.declareCmdArgin()»);
 	«ENDIF-»
 «ENDDEFINE»
 

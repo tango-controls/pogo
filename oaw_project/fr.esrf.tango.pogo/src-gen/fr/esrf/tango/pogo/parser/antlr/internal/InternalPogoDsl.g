@@ -769,9 +769,31 @@ rulePogoDeviceClass returns [EObject current=null]
 	    }
 
 )
-)*	otherlv_24='}' 
+)*	otherlv_24='overlodedPollPeriodObject:' 
     {
-    	newLeafNode(otherlv_24, grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_23());
+    	newLeafNode(otherlv_24, grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_23());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0()); 
+	    }
+		lv_overlodedPollPeriodObject_25_0=ruleOverlodedPollPeriodObject		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
+	        }
+       		add(
+       			$current, 
+       			"overlodedPollPeriodObject",
+        		lv_overlodedPollPeriodObject_25_0, 
+        		"OverlodedPollPeriodObject");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_26='}' 
+    {
+    	newLeafNode(otherlv_26, grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_25());
     }
 )
 ;
@@ -3129,6 +3151,81 @@ ruleAdditionalFile returns [EObject current=null]
        			$current, 
        			"path",
         		lv_path_1_0, 
+        		"STRING");
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleOverlodedPollPeriodObject
+entryRuleOverlodedPollPeriodObject returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getOverlodedPollPeriodObjectRule()); }
+	 iv_ruleOverlodedPollPeriodObject=ruleOverlodedPollPeriodObject 
+	 { $current=$iv_ruleOverlodedPollPeriodObject.current; } 
+	 EOF 
+;
+
+// Rule OverlodedPollPeriodObject
+ruleOverlodedPollPeriodObject returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_name_0_0=RULE_STRING
+		{
+			newLeafNode(lv_name_0_0, grammarAccess.getOverlodedPollPeriodObjectAccess().getNameSTRINGTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getOverlodedPollPeriodObjectRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		lv_type_1_0=RULE_STRING
+		{
+			newLeafNode(lv_type_1_0, grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getOverlodedPollPeriodObjectRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"type",
+        		lv_type_1_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		lv_pollPeriod_2_0=RULE_STRING
+		{
+			newLeafNode(lv_pollPeriod_2_0, grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getOverlodedPollPeriodObjectRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"pollPeriod",
+        		lv_pollPeriod_2_0, 
         		"STRING");
 	    }
 

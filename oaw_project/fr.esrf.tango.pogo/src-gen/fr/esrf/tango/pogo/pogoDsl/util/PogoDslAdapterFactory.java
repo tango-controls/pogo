@@ -188,6 +188,11 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
         return createAdditionalFileAdapter();
       }
       @Override
+      public Adapter caseOverlodedPollPeriodObject(OverlodedPollPeriodObject object)
+      {
+        return createOverlodedPollPeriodObjectAdapter();
+      }
+      @Override
       public Adapter caseType(Type object)
       {
         return createTypeAdapter();
@@ -710,6 +715,21 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAdditionalFileAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject <em>Overloded Poll Period Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject
+   * @generated
+   */
+  public Adapter createOverlodedPollPeriodObjectAdapter()
   {
     return null;
   }
