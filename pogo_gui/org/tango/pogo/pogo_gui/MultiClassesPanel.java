@@ -45,48 +45,49 @@ import org.tango.pogo.pogo_gui.tools.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
 
 //=======================================================
+
 /**
- *	JFrame Class to display info
+ * JFrame Class to display info
  *
- * @author  Pascal Verdier
+ * @author Pascal Verdier
  */
 //=======================================================
-public class MultiClassesPanel extends JFrame
-{
-    private JFrame              parent;
-	static private JFileChooser chooser = null;
-    static public  String       homeDir;
-	private MultiClassesTree	tree;
-    private JScrollPane         scrollPane;
+public class MultiClassesPanel extends JFrame {
+    private JFrame parent;
+    static private JFileChooser chooser = null;
+    static public String homeDir;
+    private MultiClassesTree tree;
+    private JScrollPane scrollPane;
 
-    private Vector<JButton>     topButtons = new Vector<JButton>();
-    private static final int    TOP_RELOAD  = 0;
-    private static final int    TOP_NEW     = 1;
-    private static final int    TOP_OPEN    = 2;
-    private static final int    TOP_GENE    = 3;
+    private ArrayList<JButton> topButtons = new ArrayList<JButton>();
+    private static final int TOP_RELOAD = 0;
+    private static final int TOP_NEW = 1;
+    private static final int TOP_OPEN = 2;
+    private static final int TOP_GENE = 3;
 
-    private static final PogoFileFilter pogoFilter  = new PogoFileFilter("xmi", "Multi Classes");
+    private static final PogoFileFilter pogoFilter = new PogoFileFilter("xmi", "Multi Classes");
 
-	//=======================================================
+    //=======================================================
+
     /**
-	 *	Creates new form MultiClassesPanel
+     * Creates new form MultiClassesPanel
+     *
      * @param parent   JFrame parent instance
      * @param fileName xmi file to be loaded (if not null).
      * @throws fr.esrf.Tango.DevFailed in case of Site Property not found
      */
-	//=======================================================
-    public MultiClassesPanel(JFrame parent, String fileName) throws DevFailed
-	{
+    //=======================================================
+    public MultiClassesPanel(JFrame parent, String fileName) throws DevFailed {
         this.parent = parent;
         initComponents();
-        PogoProperty.init().displayProperties();	//	Load them
+        PogoProperty.init().displayProperties();    //	Load them
 
-		customizeMenus();
-		initOwnComponents();
-        if (fileName!=null)
+        customizeMenus();
+        initOwnComponents();
+        if (fileName != null)
             loadXmiFile(fileName);
 
         //  Set the PogoGUI instance to do not close this when PogoGUI is closed !!!
@@ -94,24 +95,23 @@ public class MultiClassesPanel extends JFrame
 
         pack();
         ATKGraphicsUtils.centerFrameOnScreen(this);
-	}
-	//=======================================================
-	//=======================================================
-	private void initOwnComponents()
-	{
+    }
+
+    //=======================================================
+    //=======================================================
+    private void initOwnComponents() {
         setTitle("Multi TANGO Classes Code Generator - " + PogoConst.revNumber);
 
-         //	Build users_tree to display info
-		scrollPane = new JScrollPane();
-		scrollPane.setPreferredSize(new Dimension(350, 400));
-		getContentPane().add(scrollPane, BorderLayout.CENTER);
+        //	Build users_tree to display info
+        scrollPane = new JScrollPane();
+        scrollPane.setPreferredSize(new Dimension(350, 400));
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
 
         //  Initialize file chooser 
         homeDir = System.getenv("SOURCE_PATH");
-        if (homeDir==null)
-        {
-            homeDir=System.getProperty("SOURCE_PATH");
-            if (homeDir==null)
+        if (homeDir == null) {
+            homeDir = System.getProperty("SOURCE_PATH");
+            if (homeDir == null)
                 homeDir = new File("").getAbsolutePath();
         }
         chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
@@ -120,68 +120,67 @@ public class MultiClassesPanel extends JFrame
 
         Utils utils = Utils.getInstance();
         addTopPanelButton(utils.reload_icon, "Reload Server");
-        addTopPanelButton(utils.new_icon,    "New Server");
-        addTopPanelButton(utils.open_icon,   "Open Server");
-        addTopPanelButton(utils.save_icon,   "Generate Server");
-	}
+        addTopPanelButton(utils.new_icon, "New Server");
+        addTopPanelButton(utils.open_icon, "Open Server");
+        addTopPanelButton(utils.save_icon, "Generate Server");
+    }
+
     //=======================================================
     //=======================================================
-    private void addTopPanelButton(ImageIcon icon, String tip)
-    {
+    private void addTopPanelButton(ImageIcon icon, String tip) {
         JButton btn = new JButton(icon);
         btn.setToolTipText(Utils.buildToolTip(tip));
         btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn.addActionListener(new java.awt.event.ActionListener() {
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 topButtonActionPerformed(evt);
-             }
-         });
+            }
+        });
         topPanel.add(btn);
         topButtons.add(btn);
     }
 
-	//=======================================================
-	//=======================================================
-	private void customizeMenus()
-	{
-		fileMenu.setMnemonic ('F');
-		newItem.setMnemonic ('N');
-		newItem.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK));
-		openItem.setMnemonic ('O');
-		openItem.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK));
-		generateItem.setMnemonic ('G');
-		generateItem.setAccelerator(KeyStroke.getKeyStroke('G', Event.CTRL_MASK));
-		exitItem.setMnemonic ('E');
-		exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', Event.CTRL_MASK));
+    //=======================================================
+    //=======================================================
+    private void customizeMenus() {
+        fileMenu.setMnemonic('F');
+        newItem.setMnemonic('N');
+        newItem.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK));
+        openItem.setMnemonic('O');
+        openItem.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK));
+        generateItem.setMnemonic('G');
+        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', Event.CTRL_MASK));
+        exitItem.setMnemonic('E');
+        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', Event.CTRL_MASK));
 
-        editMenu.setMnemonic ('E');
-	    addItem.setMnemonic ('A');
-		addItem.setAccelerator(KeyStroke.getKeyStroke('A', Event.CTRL_MASK));
-	    removeItem.setMnemonic ('R');
+        editMenu.setMnemonic('E');
+        addItem.setMnemonic('A');
+        addItem.setAccelerator(KeyStroke.getKeyStroke('A', Event.CTRL_MASK));
+        removeItem.setMnemonic('R');
         removeItem.setAccelerator(KeyStroke.getKeyStroke(Event.DELETE, 0));
 
-        helpMenu.setMnemonic ('H');
-	    helpItem.setMnemonic ('H');
-		helpItem.setAccelerator(KeyStroke.getKeyStroke('H', Event.CTRL_MASK));
+        helpMenu.setMnemonic('H');
+        helpItem.setMnemonic('H');
+        helpItem.setAccelerator(KeyStroke.getKeyStroke('H', Event.CTRL_MASK));
 
         manageRecentMenu(null);
-	}
+    }
+
     //=======================================================
     //=======================================================
-    private void manageRecentMenu(String new_proj)
-    {
+    private void manageRecentMenu(String new_proj) {
         try {
             //	Check if there is something to manage.
-            if (new_proj==null && PogoProperty.projectHistory.size()==0)	//	No project histo
+            if (new_proj == null && PogoProperty.projectHistory.size() == 0)    //	No project histo
                 return;
 
-            if (new_proj!=null)
+            if (new_proj != null)
                 PogoProperty.addProject(new_proj, PogoConst.MULTI_CLASS);
 
             //	If project history available add it in recent menu
             recentMenu.removeAll();
             for (String project : PogoProperty.multiClassProjectHistory) {
-                JMenuItem	item = new JMenuItem(project);
+                JMenuItem item = new JMenuItem(project);
                 item.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         recentItemActionPerformed(evt);
@@ -189,18 +188,19 @@ public class MultiClassesPanel extends JFrame
                 });
                 recentMenu.add(item);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.err.println("\nWARNING:	" + e);
         }
     }
-	//=======================================================
-    /** This method is called from within the constructor to
+    //=======================================================
+
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
      */
-	//=======================================================
+    //=======================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -316,15 +316,13 @@ public class MultiClassesPanel extends JFrame
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-    private void topButtonActionPerformed(java.awt.event.ActionEvent evt)
-    {
+    private void topButtonActionPerformed(java.awt.event.ActionEvent evt) {
         JButton src = (JButton) evt.getSource();
-        for (int i=0 ; i<topButtons.size() ; i++)
-            if (topButtons.get(i)==src)
-                switch(i)
-                {
+        for (int i = 0; i < topButtons.size(); i++)
+            if (topButtons.get(i) == src)
+                switch (i) {
                     case TOP_RELOAD:
-                        if (tree!=null)
+                        if (tree != null)
                             reloadProject();
                         break;
                     case TOP_NEW:
@@ -334,92 +332,91 @@ public class MultiClassesPanel extends JFrame
                         openItemActionPerformed(evt);
                         break;
                     case TOP_GENE:
-                        if (tree!=null)
+                        if (tree != null)
                             generateItemActionPerformed(evt);
                         break;
                 }
     }
+
     //=======================================================
     //=======================================================
     private void reloadProject() {
 
-         if (checkModifications()==JOptionPane.OK_OPTION) {
-             String filename = tree.getServerFileName();
-             if (filename!=null) {
-                 try {
-                     loadXmiFile(filename);
-                 }
-                 catch(DevFailed e) {
-                     ErrorPane.showErrorMessage(this, null, e);
-                 }
-             }
-         }
-    }
-    //=======================================================
-    //=======================================================
-    private void recentItemActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        try {
-            String proj_name = ((JMenuItem)evt.getSource()).getText();
-            loadXmiFile(proj_name);
+        if (checkModifications() == JOptionPane.OK_OPTION) {
+            String filename = tree.getServerFileName();
+            if (filename != null) {
+                try {
+                    loadXmiFile(filename);
+                } catch (DevFailed e) {
+                    ErrorPane.showErrorMessage(this, null, e);
+                }
+            }
         }
-        catch(DevFailed e) {
+    }
+
+    //=======================================================
+    //=======================================================
+    private void recentItemActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            String proj_name = ((JMenuItem) evt.getSource()).getText();
+            loadXmiFile(proj_name);
+        } catch (DevFailed e) {
             ErrorPane.showErrorMessage(this, null, e);
         }
     }
-	//=======================================================
-	//=======================================================
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void openItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openItemActionPerformed
-		if (chooser==null) {
-			chooser = new JFileChooser(new File("").getAbsolutePath());
-		}
-		int	retval = chooser.showOpenDialog(this);
-		if (retval==JFileChooser.APPROVE_OPTION) {
-			File	file = chooser.getSelectedFile();
-			if (file!=null) {
-				if (! file.isDirectory()) {
-					String	filename = file.getAbsolutePath();
+        if (chooser == null) {
+            chooser = new JFileChooser(new File("").getAbsolutePath());
+        }
+        int retval = chooser.showOpenDialog(this);
+        if (retval == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            if (file != null) {
+                if (!file.isDirectory()) {
+                    String filename = file.getAbsolutePath();
                     try {
-    					loadXmiFile(filename);
-                    }
-                    catch(DevFailed e) {
+                        loadXmiFile(filename);
+                    } catch (DevFailed e) {
                         ErrorPane.showErrorMessage(this, null, e);
                     }
-				}
-			}
-		}
+                }
+            }
+        }
     }//GEN-LAST:event_openItemActionPerformed
+
     //===============================================================
     //===============================================================
-    public PogoMultiClasses loadXmiFile(String xmiFileName) throws DevFailed
-    {
-        PogoMultiClasses    pmc = OAWutils.getInstance().loadMultiClassesModel(xmiFileName);
+    public PogoMultiClasses loadXmiFile(String xmiFileName) throws DevFailed {
+        PogoMultiClasses pmc = OAWutils.getInstance().loadMultiClassesModel(xmiFileName);
         buildTree(pmc);
         manageRecentMenu(xmiFileName);
         return pmc;
     }
-	//=======================================================
-	//=======================================================
-    private void buildTree(PogoMultiClasses pmc)
-    {
+
+    //=======================================================
+    //=======================================================
+    private void buildTree(PogoMultiClasses pmc) {
         try {
             tree = new MultiClassesTree(this, pmc);
-	    	scrollPane.setViewportView(tree);
-        }
-        catch(DevFailed e) {
+            scrollPane.setViewportView(tree);
+        } catch (DevFailed e) {
             /* Has been canceled */
         }
     }
-	//=======================================================
-	//=======================================================
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void exitItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemActionPerformed
         doClose();
     }//GEN-LAST:event_exitItemActionPerformed
 
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         doClose();
@@ -431,14 +428,14 @@ public class MultiClassesPanel extends JFrame
     private void generateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateItemActionPerformed
         generateFiles();
     }
+
     //=======================================================
     //=======================================================
-    private int generateFiles()
-    {
+    private int generateFiles() {
         try {
-            PogoMultiClasses    multiClasses = tree.getServer();
-            GenerateDialog      dialog = new GenerateDialog(this);
-            if (dialog.showDialog(multiClasses)==JOptionPane.OK_OPTION)  {
+            PogoMultiClasses multiClasses = tree.getServer();
+            GenerateDialog dialog = new GenerateDialog(this);
+            if (dialog.showDialog(multiClasses) == JOptionPane.OK_OPTION) {
                 //	Then generate code and save
                 setCursor(new Cursor(Cursor.WAIT_CURSOR));
                 multiClasses.setSourcePath(dialog.getPath());
@@ -453,43 +450,44 @@ public class MultiClassesPanel extends JFrame
                 manageRecentMenu(projectFile);
                 return JOptionPane.OK_OPTION;
             }
-        }
-        catch (DevFailed e) {
+        } catch (DevFailed e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             ErrorPane.showErrorMessage(this, null, e);
         }
         return JOptionPane.CANCEL_OPTION;
     }//GEN-LAST:event_generateItemActionPerformed
+
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void newItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemActionPerformed
 
         //  First time, check if modied
-        if (tree!=null && tree.getModified()) {
-            if (checkModifications()==JOptionPane.CANCEL_OPTION)
+        if (tree != null && tree.getModified()) {
+            if (checkModifications() == JOptionPane.CANCEL_OPTION)
                 return;
         }
 
         try {
-            ServerDialog    dialog = new ServerDialog(this, new TangoServer());
-            if (dialog.showDialog()==JOptionPane.OK_OPTION) {
+            ServerDialog dialog = new ServerDialog(this, new TangoServer());
+            if (dialog.showDialog() == JOptionPane.OK_OPTION) {
                 tree = new MultiClassesTree(this, dialog.getTangoServer());
                 tree.setModified(true);
                 scrollPane.setViewportView(tree);
             }
-        }
-        catch (DevFailed e) {
+        } catch (DevFailed e) {
             ErrorPane.showErrorMessage(this, null, e);
         }
     }//GEN-LAST:event_newItemActionPerformed
+
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void addItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemActionPerformed
         if (tree.isANodeSelected())
-        tree.addClass();
+            tree.addClass();
     }//GEN-LAST:event_addItemActionPerformed
+
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -497,44 +495,47 @@ public class MultiClassesPanel extends JFrame
         if (tree.isAClassSelected())
             tree.removeClass();
     }//GEN-LAST:event_removeItemActionPerformed
+
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void editMenuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_editMenuStateChanged
 
-        boolean visible =  (!editMenu.isSelected());
-		if (tree!=null) {
-	        addItem.setEnabled(tree.isANodeSelected() || visible);
-    	    removeItem.setEnabled(tree.isAClassSelected() || visible);
-		}
+        boolean visible = (!editMenu.isSelected());
+        if (tree != null) {
+            addItem.setEnabled(tree.isANodeSelected() || visible);
+            removeItem.setEnabled(tree.isAClassSelected() || visible);
+        }
     }//GEN-LAST:event_editMenuStateChanged
+
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void helpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpItemActionPerformed
         JOptionPane.showMessageDialog(this,
 
-                "             Pogo  (Tango Code Generator)\n"+
-                "    This tool is able to generate, update and modify\n" +
-                "           a server project containing several\n" +
-                "                 Tango device classes.\n\n" +
-                "Define a new server (Name, description,...)\n" +
-                "Then add classes (Highest classes to lowest ones)\n" +
-                "And finally, generate.\n\n"+
-                "This tool is available only for C++ classes on Linux."+
-                "\n\n"+
-                "http://www.tango-controls.org/     -    tango@esrf.fr",
+                "             Pogo  (Tango Code Generator)\n" +
+                        "    This tool is able to generate, update and modify\n" +
+                        "           a server project containing several\n" +
+                        "                 Tango device classes.\n\n" +
+                        "Define a new server (Name, description,...)\n" +
+                        "Then add classes (Highest classes to lowest ones)\n" +
+                        "And finally, generate.\n\n" +
+                        "This tool is available only for C++ classes on Linux." +
+                        "\n\n" +
+                        "http://www.tango-controls.org/     -    tango@esrf.fr",
                 "Help Window", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_helpItemActionPerformed
 
     //=======================================================
+
     /**
      * Manage if modification(s) has been done, and propose to generate them.
+     *
      * @return JOptionPane.OK_OPTION to continue, JOptionPane.CANCEL_OPTION otherwise
      */
     //=======================================================
-    private int checkModifications()
-    {
+    private int checkModifications() {
         if (tree.getModified()) {
             String name = tree.getName();
             Object[] options = {"Generate", "Discard", "Cancel"};
@@ -543,8 +544,7 @@ public class MultiClassesPanel extends JFrame
                     "Warning",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.WARNING_MESSAGE,
-                    null, options, options[0]))
-            {
+                    null, options, options[0])) {
                 case 0:    //	Generate
                     return generateFiles();
 
@@ -558,44 +558,42 @@ public class MultiClassesPanel extends JFrame
         }
         return JOptionPane.OK_OPTION;
     }
-	//=======================================================
-	//=======================================================
-    private void doClose()
-    {
-        if (tree!=null && tree.getModified()) {
-            if (checkModifications()==JOptionPane.CANCEL_OPTION)
+
+    //=======================================================
+    //=======================================================
+    private void doClose() {
+        if (tree != null && tree.getModified()) {
+            if (checkModifications() == JOptionPane.CANCEL_OPTION)
                 return;
         }
         if (parent.isVisible())
             setVisible(false);
-        else
-        if (tree==null)
+        else if (tree == null)
             System.exit(0);
-        else
-        if (tree.allEditorsAreClosed())
+        else if (tree.allEditorsAreClosed())
             System.exit(0);
         else
             setVisible(false);
     }
-	//=======================================================
+    //=======================================================
+
     /**
-    * @param args the command line arguments
-    */
-	//=======================================================
+     * @param args the command line arguments
+     */
+    //=======================================================
     public static void main(String args[]) {
         try {
-            if (args.length==0)
-              	new MultiClassesPanel(new JFrame(), null).setVisible(true);
+            if (args.length == 0)
+                new MultiClassesPanel(new JFrame(), null).setVisible(true);
             else
-              	new MultiClassesPanel(new JFrame(), args[0]).setVisible(true);
-		}
-		catch(DevFailed e) {
+                new MultiClassesPanel(new JFrame(), args[0]).setVisible(true);
+        } catch (DevFailed e) {
             ErrorPane.showErrorMessage(new Frame(), null, e);
-		}
+        }
     }
 
 
-	//=======================================================
+    //=======================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addItem;
     private javax.swing.JMenu editMenu;
@@ -610,6 +608,6 @@ public class MultiClassesPanel extends JFrame
     private javax.swing.JMenuItem removeItem;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
-	//=======================================================
+    //=======================================================
 
 }

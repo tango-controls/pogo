@@ -41,21 +41,20 @@ import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Vector;
+import java.util.ArrayList;
 
 //=======================================================
+
 /**
- *	JFrame Class to manage Tango code generator GUI.
+ * JFrame Class to manage Tango code generator GUI.
  *
- * @author  Pascal Verdier
+ * @author Pascal Verdier
  */
 //=======================================================
-public class PogoGUI extends JFrame
-{
+public class PogoGUI extends JFrame {
     /**
      * True only if Display is used (false if code generator usage)
      */
@@ -64,15 +63,15 @@ public class PogoGUI extends JFrame
      * A vector to know how many JFrame has been instancied.
      * And to checked at exit button clicked, to know if at least one is still visible.
      */
-    static private Vector<JFrame>   runningApplis = new Vector<JFrame>();
-	/**
-	 *	File Chooser Object used in file menu.
-	 */
-	private static  JFileChooser    chooser = null;
-    static final PogoFileFilter	pogoFilter  = new PogoFileFilter("xmi", "Tango Classes");
-    static final PogoFileFilter	pogo6Filter = new PogoFileFilter(
-                                new String[] { "h", "java", "py" }, "Pogo-6 Tango Classes");
-	static String		homeDir;
+    static private ArrayList<JFrame> runningApplis = new ArrayList<JFrame>();
+    /**
+     * File Chooser Object used in file menu.
+     */
+    private static JFileChooser chooser = null;
+    static final PogoFileFilter pogoFilter = new PogoFileFilter("xmi", "Tango Classes");
+    static final PogoFileFilter pogo6Filter = new PogoFileFilter(
+            new String[]{"h", "java", "py"}, "Pogo-6 Tango Classes");
+    static String homeDir;
 
     //  Only for first instance, only when starting up
     private static boolean startup = true;
@@ -80,41 +79,43 @@ public class PogoGUI extends JFrame
     /**
      * little buttons with icon on top of JTree.
      */
-    private Vector<JButton> topButtons = new Vector<JButton>();
-    private static final int    TOP_RELOAD  = 0;
-    private static final int    TOP_NEW     = 1;
-    private static final int    TOP_OPEN    = 2;
-    private static final int    TOP_GENE    = 3;
+    private ArrayList<JButton> topButtons = new ArrayList<JButton>();
+    private static final int TOP_RELOAD = 0;
+    private static final int TOP_NEW = 1;
+    private static final int TOP_OPEN = 2;
+    private static final int TOP_GENE = 3;
 
     private ClassPanels class_panels;
 
-    public static boolean  dbg_java   = false;
-    public static boolean  dbg_python = false;
+    public static boolean dbg_java = false;
+    public static boolean dbg_python = false;
 
     public static MultiClassesPanel multiClassesPanel = null;
-	//=======================================================
+    //=======================================================
+
     /**
-	 *	Creates new form PogoGUI
+     * Creates new form PogoGUI
+     *
      * @param filename xmi file where device class is defined
-     *      (do not try to load if null).
+     *                 (do not try to load if null).
      * @throws fr.esrf.Tango.DevFailed in case of failure
      */
-	//=======================================================
-    public PogoGUI(String filename) throws DevFailed
-	{
+    //=======================================================
+    public PogoGUI(String filename) throws DevFailed {
         this();
         checkLoadAtStartup(filename);
-	}
-	//=======================================================
+    }
+    //=======================================================
+
     /**
-	 *	Creates new form PogoGUI and display DeviceClass object
-     * @param devclass  DeviceClass object to be edited by Pogo
+     * Creates new form PogoGUI and display DeviceClass object
+     *
+     * @param devclass      DeviceClass object to be edited by Pogo
      * @param forceModified Force the edito modified value to this boolean value.
      * @throws fr.esrf.Tango.DevFailed in case of failure
-	 */
-	//=======================================================
-    public PogoGUI(DeviceClass devclass, boolean forceModified) throws DevFailed
-	{
+     */
+    //=======================================================
+    public PogoGUI(DeviceClass devclass, boolean forceModified) throws DevFailed {
         this();
 
         //	Build users_tree to display info
@@ -125,15 +126,16 @@ public class PogoGUI extends JFrame
         //  Not from file but from new class.
         //  So set it as modified.
         class_panels.get(0).getTree().setModified(forceModified);
-	}
-	//=======================================================
+    }
+    //=======================================================
+
     /**
-	 *	Creates new form PogoGUI and load device class
+     * Creates new form PogoGUI and load device class
+     *
      * @throws fr.esrf.Tango.DevFailed in case of failure
-	 */
-	//=======================================================
-    public PogoGUI() throws DevFailed
-	{
+     */
+    //=======================================================
+    public PogoGUI() throws DevFailed {
         useDisplay = true;
         //MultiLineToolTipUI.initialize();
         initComponents();
@@ -143,7 +145,7 @@ public class PogoGUI extends JFrame
 
         //  Create a dummy panel for display
         class_panels = new ClassPanels(this);
-        ClassPanel  cp = new ClassPanel(this);
+        ClassPanel cp = new ClassPanel(this);
         class_panels.add(cp);
         tabbedPane.add(cp);
 
@@ -153,53 +155,52 @@ public class PogoGUI extends JFrame
         setVisible(true);
         runningApplis.add(this);
 
-        String  env = System.getenv("DBG_JAVA");
-        if (env!=null)
+        String env = System.getenv("DBG_JAVA");
+        if (env != null)
             if (env.toLowerCase().equals("true"))
                 dbg_java = true;
         env = System.getenv("DBG_PYTHON");
-        if (env!=null)
+        if (env != null)
             if (env.toLowerCase().equals("true"))
                 dbg_python = true;
-	}
-	//===========================================================
-	//===========================================================
-    private void checkLoadAtStartup(String filename)
-    {
-        if (filename!=null && filename.length()>0)
+    }
+
+    //===========================================================
+    //===========================================================
+    private void checkLoadAtStartup(String filename) {
+        if (filename != null && filename.length() > 0)
             loadDeviceClassFromFile(filename);
         else {
-            String  xmiFile = Utils.getXmiFile();
-            if (xmiFile!=null) {
+            String xmiFile = Utils.getXmiFile();
+            if (xmiFile != null) {
                 openItemActionPerformed(null);
-            }
-            else
-            if (PogoProperty.loadPrevious)
-                if (PogoProperty.projectHistory.size()>0)
+            } else if (PogoProperty.loadPrevious)
+                if (PogoProperty.projectHistory.size() > 0)
                     loadDeviceClassFromFile(PogoProperty.projectHistory.get(0));
         }
         startup = false;
     }
-	//===========================================================
-	/**
-	 *	Move specified frame to the center of the screen if first instance.
+    //===========================================================
+
+    /**
+     * Move specified frame to the center of the screen if first instance.
      * Else check position from other instance
+     *
      * @param frame frame to set position.
      */
-	//===========================================================
-	public void setScreenPosition(JFrame frame)
-	{
-        Point	p = new Point();
+    //===========================================================
+    public void setScreenPosition(JFrame frame) {
+        Point p = new Point();
 
         //  If not the first one set position from previous.
-        for (int i=runningApplis.size()-1 ; i>=0 ; i--) {
+        for (int i = runningApplis.size() - 1; i >= 0; i--) {
             JFrame parent = runningApplis.get(i);
             if (parent.isVisible()) {
                 p = parent.getLocation();
                 p.x += 20;
                 p.y += 20;
                 frame.setLocation(p);
-				return;
+                return;
             }
         }
 
@@ -207,154 +208,158 @@ public class PogoGUI extends JFrame
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension scrsize = toolkit.getScreenSize();
         Dimension appsize = frame.getSize();
-        p.x = (scrsize.width  - appsize.width)/2;
-        p.y = (scrsize.height - appsize.height)/2;
+        p.x = (scrsize.width - appsize.width) / 2;
+        p.y = (scrsize.height - appsize.height) / 2;
         frame.setLocation(p);
-	}
-	//=======================================================
-	//=======================================================
-    private void startOldPogo(String filename)
-    {
-        pogo.appli.PogoAppli    oldPogo = new pogo.appli.PogoAppli(filename, runningApplis);
+    }
+
+    //=======================================================
+    //=======================================================
+    private void startOldPogo(String filename) {
+        //  Convert to vector for old pogo
+        java.util.Vector<JFrame>    v = new java.util.Vector<JFrame>();
+        for (JFrame frame : runningApplis)
+            v.add(frame);
+        pogo.appli.PogoAppli oldPogo = new pogo.appli.PogoAppli(filename, v);
         setScreenPosition(oldPogo);
         oldPogo.setVisible(true);
         runningApplis.add(oldPogo);
     }
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
 
-	//=======================================================
-	//=======================================================
-	private void customizeMenus() throws DevFailed
-	{
-		fileMenu.setMnemonic ('F');
-		newItem.setMnemonic ('N');
-		newItem.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK));
-		openItem.setMnemonic ('O');
-		openItem.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK));
-		generateItem.setMnemonic ('G');
-		generateItem.setAccelerator(KeyStroke.getKeyStroke('G', Event.CTRL_MASK));
-		exitItem.setMnemonic ('E');
-		exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', Event.CTRL_MASK));
+    //=======================================================
+    //=======================================================
+    private void customizeMenus() throws DevFailed {
+        fileMenu.setMnemonic('F');
+        newItem.setMnemonic('N');
+        newItem.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK));
+        openItem.setMnemonic('O');
+        openItem.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK));
+        generateItem.setMnemonic('G');
+        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', Event.CTRL_MASK));
+        exitItem.setMnemonic('E');
+        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', Event.CTRL_MASK));
 
-		editMenu.setMnemonic ('E');
-		stateMachineItem.setMnemonic ('M');
-		stateMachineItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK));
-		deleteItem.setMnemonic ('D');
-		deleteItem.setAccelerator(KeyStroke.getKeyStroke(Event.DELETE, 0));
+        editMenu.setMnemonic('E');
+        stateMachineItem.setMnemonic('M');
+        stateMachineItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK));
+        deleteItem.setMnemonic('D');
+        deleteItem.setAccelerator(KeyStroke.getKeyStroke(Event.DELETE, 0));
 
-		moveUpItem.setMnemonic ('U');
-		moveUpItem.setAccelerator(KeyStroke.getKeyStroke('U', Event.CTRL_MASK));
-		moveDownItem.setMnemonic ('D');
-		moveDownItem.setAccelerator(KeyStroke.getKeyStroke('D', Event.CTRL_MASK));
+        moveUpItem.setMnemonic('U');
+        moveUpItem.setAccelerator(KeyStroke.getKeyStroke('U', Event.CTRL_MASK));
+        moveDownItem.setMnemonic('D');
+        moveDownItem.setAccelerator(KeyStroke.getKeyStroke('D', Event.CTRL_MASK));
 
-		preferencesItem.setMnemonic ('P');
-		preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
+        preferencesItem.setMnemonic('P');
+        preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
 
-		toolsMenu.setMnemonic ('T');
+        toolsMenu.setMnemonic('T');
         if (!Utils.osIsUnix())
-    		toolsMenu.setVisible(false);
-        multiItem.setMnemonic ('M');
+            toolsMenu.setVisible(false);
+        multiItem.setMnemonic('M');
         multiItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK | Event.SHIFT_MASK));
 
-		helpMenu.setMnemonic ('H');
-		colorItem.setMnemonic ('C');
-		aboutItem.setMnemonic ('A');
-		
-		manageRecentMenu(null);
-	}
-	//=======================================================
-	//=======================================================
-	private void manageRecentMenu(String new_proj)
-	{
-		try {
-			//	Check if there is something to manage.
-			if (new_proj==null && PogoProperty.projectHistory.size()==0)	//	No project histo
-				return;
+        helpMenu.setMnemonic('H');
+        colorItem.setMnemonic('C');
+        aboutItem.setMnemonic('A');
 
-			//	Check if main class or inherited one.
-			if (tabbedPane.getSelectedIndex()>0)
+        manageRecentMenu(null);
+    }
+
+    //=======================================================
+    //=======================================================
+    private void manageRecentMenu(String new_proj) {
+        try {
+            //	Check if there is something to manage.
+            if (new_proj == null && PogoProperty.projectHistory.size() == 0)    //	No project histo
                 return;
-			
-			if (new_proj!=null)
-				PogoProperty.addProject(new_proj, PogoConst.SINGLE_CLASS);
 
-			//	If project history available add it in recent menu
-			recentMenu.removeAll();
-			for (String project : PogoProperty.projectHistory) {
-				JMenuItem	item = new JMenuItem(project);
-        		item.addActionListener(new java.awt.event.ActionListener() {
-            		public void actionPerformed(java.awt.event.ActionEvent evt) {
-                		recentItemActionPerformed(evt);
-            		}
-        		});
-				recentMenu.add(item);
-			}
-		}
-		catch(Exception e) {
-			System.err.println("\nWARNING:	" + e);
-		}
-	}
-	//=======================================================
-	//=======================================================
-	private void initOwnComponents()
-	{
-		Utils	utils = Utils.getInstance();
-        addTopPanelButton(utils.reload_icon,  "Reload Class", false);
-        addTopPanelButton(utils.new_icon,     "New Class", false);
-        addTopPanelButton(utils.open_icon,    "Open Class", false);
-        addTopPanelButton(utils.save_icon,    "Generate Class", false);
-		
-		JLabel	lbl = new JLabel("      Palette:"); 
-		lbl.setFont(new Font("Dialog", Font.BOLD, 12));
-		topPanel.add(lbl);
-		
-		addTopPanelButton(utils.classprop_icon, "Add Class Property", true);
-		addTopPanelButton(utils.devprop_icon,   "Add Device Property", true);
-		addTopPanelButton(utils.cmd_icon,       "Add Command", true);
-		addTopPanelButton(utils.scalar_icon,    "Add ScalarAttribute", true);
-		addTopPanelButton(utils.spectrum_icon,  "Add Spectrum Attribute", true);
-		addTopPanelButton(utils.image_icon,     "Add ImageAttribute", true);
-		addTopPanelButton(utils.state_icon,     "Add State", true);
-		
-		homeDir=System.getenv("SOURCE_PATH");
-		if (homeDir==null) {
-			homeDir=System.getProperty("SOURCE_PATH");
-			if (homeDir==null)
-				homeDir = new File("").getAbsolutePath();
-		}
-		chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
+            //	Check if main class or inherited one.
+            if (tabbedPane.getSelectedIndex() > 0)
+                return;
+
+            if (new_proj != null)
+                PogoProperty.addProject(new_proj, PogoConst.SINGLE_CLASS);
+
+            //	If project history available add it in recent menu
+            recentMenu.removeAll();
+            for (String project : PogoProperty.projectHistory) {
+                JMenuItem item = new JMenuItem(project);
+                item.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        recentItemActionPerformed(evt);
+                    }
+                });
+                recentMenu.add(item);
+            }
+        } catch (Exception e) {
+            System.err.println("\nWARNING:	" + e);
+        }
+    }
+
+    //=======================================================
+    //=======================================================
+    private void initOwnComponents() {
+        Utils utils = Utils.getInstance();
+        addTopPanelButton(utils.reload_icon, "Reload Class", false);
+        addTopPanelButton(utils.new_icon, "New Class", false);
+        addTopPanelButton(utils.open_icon, "Open Class", false);
+        addTopPanelButton(utils.save_icon, "Generate Class", false);
+
+        JLabel lbl = new JLabel("      Palette:");
+        lbl.setFont(new Font("Dialog", Font.BOLD, 12));
+        topPanel.add(lbl);
+
+        addTopPanelButton(utils.classprop_icon, "Add Class Property", true);
+        addTopPanelButton(utils.devprop_icon, "Add Device Property", true);
+        addTopPanelButton(utils.cmd_icon, "Add Command", true);
+        addTopPanelButton(utils.scalar_icon, "Add ScalarAttribute", true);
+        addTopPanelButton(utils.spectrum_icon, "Add Spectrum Attribute", true);
+        addTopPanelButton(utils.image_icon, "Add ImageAttribute", true);
+        addTopPanelButton(utils.state_icon, "Add State", true);
+
+        homeDir = System.getenv("SOURCE_PATH");
+        if (homeDir == null) {
+            homeDir = System.getProperty("SOURCE_PATH");
+            if (homeDir == null)
+                homeDir = new File("").getAbsolutePath();
+        }
+        chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
         chooser.setFileFilter(pogo6Filter);
-		chooser.setFileFilter(pogoFilter);
-		//pogoFilter.setExtensionListInDescription(false);
-		//pogo6Filter.setExtensionListInDescription(false);
-	}
-	//=======================================================
-	//=======================================================
-	private void addTopPanelButton(ImageIcon icon, String tip, final boolean isPalette)
-	{
-		JButton btn = new JButton(icon);
-		btn.setToolTipText(Utils.buildToolTip(tip));
-		btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		btn.addActionListener(new java.awt.event.ActionListener() {
-			 public void actionPerformed(java.awt.event.ActionEvent evt) {
-			 	if (isPalette)
-					paletteActionPerformed(evt);
-				else
-					topButtonActionPerformed(evt);
-			 }
-		 });
-		topPanel.add(btn);
+        chooser.setFileFilter(pogoFilter);
+        //pogoFilter.setExtensionListInDescription(false);
+        //pogo6Filter.setExtensionListInDescription(false);
+    }
+
+    //=======================================================
+    //=======================================================
+    private void addTopPanelButton(ImageIcon icon, String tip, final boolean isPalette) {
+        JButton btn = new JButton(icon);
+        btn.setToolTipText(Utils.buildToolTip(tip));
+        btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (isPalette)
+                    paletteActionPerformed(evt);
+                else
+                    topButtonActionPerformed(evt);
+            }
+        });
+        topPanel.add(btn);
         topButtons.add(btn);
-	}
-	//=======================================================
-	//=======================================================
-    /** This method is called from within the constructor to
+    }
+    //=======================================================
+    //=======================================================
+
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
      */
-	//=======================================================
+    //=======================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -598,49 +603,48 @@ public class PogoGUI extends JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	//=======================================================
-	//=======================================================
-    private void recentItemActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		String proj_name = ((JMenuItem)evt.getSource()).getText();
-		loadDeviceClassFromFile(proj_name);
-	}
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
+    private void recentItemActionPerformed(java.awt.event.ActionEvent evt) {
+        String proj_name = ((JMenuItem) evt.getSource()).getText();
+        loadDeviceClassFromFile(proj_name);
+    }
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void openItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openItemActionPerformed
 
         chooser.setFileFilter(pogoFilter);
-		int	retval = chooser.showOpenDialog(this);
-		if (retval==JFileChooser.APPROVE_OPTION) {
-			File	file = chooser.getSelectedFile();
-			if (file!=null) {
-				if (!file.isDirectory()) {
-					homeDir = file.getParentFile().toString();
-					loadDeviceClassFromFile(file.getAbsolutePath());
-				}
-			}
-		}
+        int retval = chooser.showOpenDialog(this);
+        if (retval == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            if (file != null) {
+                if (!file.isDirectory()) {
+                    homeDir = file.getParentFile().toString();
+                    loadDeviceClassFromFile(file.getAbsolutePath());
+                }
+            }
+        }
     }//GEN-LAST:event_openItemActionPerformed
-	//=======================================================
-	//=======================================================
-	private void buildTree(DeviceClass devclass)
-	{ 
-		//	Check if ClassIdentification has already been defined.
-		ClassIdentification	id = devclass.getPogoDeviceClass().getDescription().getIdentification();
+
+    //=======================================================
+    //=======================================================
+    private void buildTree(DeviceClass devclass) {
+        //	Check if ClassIdentification has already been defined.
+        ClassIdentification id = devclass.getPogoDeviceClass().getDescription().getIdentification();
 
         //  Manage Device ID
-		if (id==null && !Utils.isTrue(System.getenv("TEST_MODE"))) {
-			Utils.getInstance().stopSplashRefresher();
-			setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			DeviceIdDialog	dialog = new DeviceIdDialog(this);
-			if (dialog.showDialog()==JOptionPane.OK_OPTION) {
-				id = dialog.getInputs();
-				devclass.getPogoDeviceClass().getDescription().setIdentification(id);
-			}
-			else
-				return;		//	No ID definition, do not edit
-		}
+        if (id == null && !Utils.isTrue(System.getenv("TEST_MODE"))) {
+            Utils.getInstance().stopSplashRefresher();
+            setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            DeviceIdDialog dialog = new DeviceIdDialog(this);
+            if (dialog.showDialog() == JOptionPane.OK_OPTION) {
+                id = dialog.getInputs();
+                devclass.getPogoDeviceClass().getDescription().setIdentification(id);
+            } else
+                return;        //	No ID definition, do not edit
+        }
 
         reBuildTabbedPane = true;
         tabbedPane.removeAll();
@@ -648,38 +652,38 @@ public class PogoGUI extends JFrame
         class_panels.addPanels(devclass);
         //class_panels.checkWarnings();
         reBuildTabbedPane = false;
-	}
-	//=======================================================
-	//=======================================================
+    }
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void exitItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemActionPerformed
 
         exitAppli();
     }//GEN-LAST:event_exitItemActionPerformed
 
-	//=======================================================
- 	//=======================================================
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
-        
-        if (exitAppli()==JOptionPane.CANCEL_OPTION) {
+
+        if (exitAppli() == JOptionPane.CANCEL_OPTION) {
             //  If not exited -> start a thread to set it visible a bit later
             new SetVisibleLater(this).start();
         }
     }//GEN-LAST:event_exitForm
-	//=======================================================
+    //=======================================================
+
     /**
      * Manage if modification(s) has been done, and propose to generate them.
+     *
      * @return JOptionPane.OK_OPTION to continue, JOptionPane.CANCEL_OPTION otherwise
      */
-	//=======================================================
-    private int checkModifications()
-    {
-        for (ClassPanel class_panel : class_panels)
-        {
-            if (class_panel.getTree()!=null &&
-                class_panel.getTree().getModified())
-            {
+    //=======================================================
+    private int checkModifications() {
+        for (ClassPanel class_panel : class_panels) {
+            if (class_panel.getTree() != null &&
+                    class_panel.getTree().getModified()) {
                 String name = class_panel.getName();
                 Object[] options = {"Generate", "Discard", "Cancel"};
                 switch (JOptionPane.showOptionDialog(this,
@@ -687,8 +691,7 @@ public class PogoGUI extends JFrame
                         "Warning",
                         JOptionPane.DEFAULT_OPTION,
                         JOptionPane.WARNING_MESSAGE,
-                        null, options, options[0]))
-                {
+                        null, options, options[0])) {
                     case 0:    //	Generate
                         generateSourceFiles(class_panel.getTree());
                         break;
@@ -702,11 +705,11 @@ public class PogoGUI extends JFrame
         }
         return JOptionPane.OK_OPTION;
     }
-	//=======================================================
-	//=======================================================
-    private int exitAppli()
-    {
-        if (checkModifications()==JOptionPane.OK_OPTION) {
+
+    //=======================================================
+    //=======================================================
+    private int exitAppli() {
+        if (checkModifications() == JOptionPane.OK_OPTION) {
 
             this.setVisible(false);
             // Check to know if at least one is still visible.
@@ -714,7 +717,7 @@ public class PogoGUI extends JFrame
                 if (frame.isVisible())
                     return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
-            if (multiClassesPanel!=null && multiClassesPanel.isVisible())
+            if (multiClassesPanel != null && multiClassesPanel.isVisible())
                 return JOptionPane.OK_OPTION;
 
             //  No visible found.
@@ -722,94 +725,90 @@ public class PogoGUI extends JFrame
         }
         return JOptionPane.CANCEL_OPTION;
     }
-	//=======================================================
+    //=======================================================
 
     /**
      * Returns the main edited class name.
+     *
      * @return the edited main class name.
      */
-	//=======================================================
-    String getMainClassName()
-    {
+    //=======================================================
+    String getMainClassName() {
         return class_panels.getPanelNameAt(0);
     }
-	//=======================================================
-	//=======================================================
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void generateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateItemActionPerformed
+    private void generateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateItemActionPerformed
 
         int idx = tabbedPane.getSelectedIndex();
         ClassTree tree = class_panels.getSelectedTree();
-		if (tree==null)	//	No class defined in tree
-			return;
+        if (tree == null)    //	No class defined in tree
+            return;
         generateSourceFiles(tree);
     }
+
     //=======================================================
     //=======================================================
-    private boolean generateSourceFiles(ClassTree tree)
-    {
-		//	First time check output path
-		GenerateDialog	dialog = new GenerateDialog(this);
-		DeviceClass		devclass = tree.getDeviceClass();
+    private boolean generateSourceFiles(ClassTree tree) {
+        //	First time check output path
+        GenerateDialog dialog = new GenerateDialog(this);
+        DeviceClass devclass = tree.getDeviceClass();
 
-		if (devclass==null)	//	No class defined in tree or cannot get it (ID is null)
-			return true;
-		if (dialog.showDialog(devclass)==JOptionPane.OK_OPTION)
-		{
-			//	Then generate code and save
-			Cursor	cursor = new Cursor(Cursor.WAIT_CURSOR);
-			setCursor(cursor);
-			try
-			{
-				devclass = dialog.getDevClass();
-				Utils.getInstance().startSplashRefresher(
-									"Generate class: " +
-									 devclass.getPogoDeviceClass().getName());
+        if (devclass == null)    //	No class defined in tree or cannot get it (ID is null)
+            return true;
+        if (dialog.showDialog(devclass) == JOptionPane.OK_OPTION) {
+            //	Then generate code and save
+            Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
+            setCursor(cursor);
+            try {
+                devclass = dialog.getDevClass();
+                Utils.getInstance().startSplashRefresher(
+                        "Generate class: " +
+                                devclass.getPogoDeviceClass().getName());
 
-				devclass.generate(tree.getDeletedObjects(),
-									tree.getRenamedObjects());
+                devclass.generate(tree.getDeletedObjects(),
+                        tree.getRenamedObjects());
 
-				Utils.getInstance().stopSplashRefresher();
-				
-				//	Update ClassTree object.
-				tree.setModified(false);
-				tree.setSrcPath(devclass.getPogoDeviceClass().getDescription().getSourcePath());
+                Utils.getInstance().stopSplashRefresher();
 
-				manageRecentMenu(devclass.getProjectFilename());
-			}
-			catch (Exception e)
-			{
-				Utils.getInstance().stopSplashRefresher();
+                //	Update ClassTree object.
+                tree.setModified(false);
+                tree.setSrcPath(devclass.getPogoDeviceClass().getDescription().getSourcePath());
+
+                manageRecentMenu(devclass.getProjectFilename());
+            } catch (Exception e) {
+                Utils.getInstance().stopSplashRefresher();
                 cursor = new Cursor(Cursor.DEFAULT_CURSOR);
                 setCursor(cursor);
-				ErrorPane.showErrorMessage(this, null, e);
+                ErrorPane.showErrorMessage(this, null, e);
                 return false;
-			}
-			cursor = new Cursor(Cursor.DEFAULT_CURSOR);
-			setCursor(cursor);
+            }
+            cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+            setCursor(cursor);
             return true;
-		}
-        else
+        } else
             return false;
 
-	}//GEN-LAST:event_generateItemActionPerformed
+    }//GEN-LAST:event_generateItemActionPerformed
 
-	//=======================================================
-	//=======================================================
-	private boolean reBuildTabbedPane = false;
+    //=======================================================
+    //=======================================================
+    private boolean reBuildTabbedPane = false;
+
     @SuppressWarnings({"UnusedDeclaration"})
-	private void newItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemActionPerformed
+    private void newItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemActionPerformed
 
-		ClassDialog	dialog = new ClassDialog(this);
-		if (dialog.showDialog()==JOptionPane.OK_OPTION) {
+        ClassDialog dialog = new ClassDialog(this);
+        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
 
             DeviceClass devclass = dialog.getInputs();
-            if (class_panels.getSelectedTree()!=null) {
+            if (class_panels.getSelectedTree() != null) {
                 try {
                     new PogoGUI(devclass, true);
                     return;
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Utils.getInstance().stopSplashRefresher();
                     ErrorPane.showErrorMessage(this, null, e);
                 }
@@ -817,72 +816,73 @@ public class PogoGUI extends JFrame
             }
 
             //  Display it in this panel
-			reBuildTabbedPane = true;
+            reBuildTabbedPane = true;
             tabbedPane.removeAll();
 
             //	Build users_tree to display info
             class_panels.addPanels(devclass);
             class_panels.checkWarnings();
-			reBuildTabbedPane = false;
-		}
-	}//GEN-LAST:event_newItemActionPerformed
+            reBuildTabbedPane = false;
+        }
+    }//GEN-LAST:event_newItemActionPerformed
 
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
+    private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
 
         ClassTree tree = class_panels.getSelectedTree();
-		Object	selection = tree.getSelectedEditableObject();
-		if (selection!=null)
-			tree.removeSelectedItem();
+        Object selection = tree.getSelectedEditableObject();
+        if (selection != null)
+            tree.removeSelectedItem();
 
-	}//GEN-LAST:event_deleteItemActionPerformed
-	//=======================================================
-	//=======================================================
+    }//GEN-LAST:event_deleteItemActionPerformed
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void moveUpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveUpItemActionPerformed
+    private void moveUpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveUpItemActionPerformed
 
         ClassTree tree = class_panels.getSelectedTree();
-		Object	selection = tree.getSelectedEditableObject();
-		if (selection!=null)
-			tree.moveSelectedItem(true);
-	}//GEN-LAST:event_moveUpItemActionPerformed
-	//=======================================================
-	//=======================================================
+        Object selection = tree.getSelectedEditableObject();
+        if (selection != null)
+            tree.moveSelectedItem(true);
+    }//GEN-LAST:event_moveUpItemActionPerformed
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void moveDownItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveDownItemActionPerformed
+    private void moveDownItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveDownItemActionPerformed
 
         ClassTree tree = class_panels.getSelectedTree();
-		Object	selection = tree.getSelectedEditableObject();
-		if (selection!=null)
-			tree.moveSelectedItem(false);
-	}//GEN-LAST:event_moveDownItemActionPerformed
+        Object selection = tree.getSelectedEditableObject();
+        if (selection != null)
+            tree.moveSelectedItem(false);
+    }//GEN-LAST:event_moveDownItemActionPerformed
 
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
     private void reloadProject() {
 
-         if (class_panels.getSelectedTree()!=null) {
-             if (checkModifications()==JOptionPane.OK_OPTION) {
-                 String filename = class_panels.get(0).getTree().getClassFileName();
-                 if (filename!=null) {
-                     //System.out.println("Reload "+filename);
-                     loadDeviceClassFromFile(filename, false);
-                 }
-             }
-         }
+        if (class_panels.getSelectedTree() != null) {
+            if (checkModifications() == JOptionPane.OK_OPTION) {
+                String filename = class_panels.get(0).getTree().getClassFileName();
+                if (filename != null) {
+                    //System.out.println("Reload "+filename);
+                    loadDeviceClassFromFile(filename, false);
+                }
+            }
+        }
     }
-	//=======================================================
-	//=======================================================
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void topButtonActionPerformed(java.awt.event.ActionEvent evt)
-    {
+    private void topButtonActionPerformed(java.awt.event.ActionEvent evt) {
         JButton src = (JButton) evt.getSource();
-        for (int i=0 ; i<topButtons.size() ; i++)
-            if (topButtons.get(i)==src)
-                switch(i)
-                {
+        for (int i = 0; i < topButtons.size(); i++)
+            if (topButtons.get(i) == src)
+                switch (i) {
                     case TOP_RELOAD:
                         reloadProject();
                         break;
@@ -897,49 +897,49 @@ public class PogoGUI extends JFrame
                         break;
                 }
     }
-	//=======================================================
-	//=======================================================
-	private void paletteActionPerformed(java.awt.event.ActionEvent evt)
-    {
+
+    //=======================================================
+    //=======================================================
+    private void paletteActionPerformed(java.awt.event.ActionEvent evt) {
         ClassTree tree = class_panels.getSelectedTree();
-		if (tree!=null)
-		{
-			JButton	btn = (JButton) evt.getSource();
-			String	txt = btn.getToolTipText();
-			tree.addItem(txt);
-		}
-	}
-	//=======================================================
-	//=======================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void stateMachineItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateMachineItemActionPerformed
-
-		ClassTree tree = class_panels.getSelectedTree();
-		if (tree!=null)
-			tree.editStateMachine();
-
-	}//GEN-LAST:event_stateMachineItemActionPerformed
+        if (tree != null) {
+            JButton btn = (JButton) evt.getSource();
+            String txt = btn.getToolTipText();
+            tree.addItem(txt);
+        }
+    }
 
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void editMenuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_editMenuStateChanged
+    private void stateMachineItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateMachineItemActionPerformed
 
-        if (class_panels==null)
+        ClassTree tree = class_panels.getSelectedTree();
+        if (tree != null)
+            tree.editStateMachine();
+
+    }//GEN-LAST:event_stateMachineItemActionPerformed
+
+    //=======================================================
+    //=======================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void editMenuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_editMenuStateChanged
+
+        if (class_panels == null)
             return; //  Not yet initialized
         ClassTree tree = class_panels.getSelectedTree();
         boolean visible = tree != null &&
                 (!editMenu.isSelected() ||
-                (tree.getSelectedEditableObject() != null));
+                        (tree.getSelectedEditableObject() != null));
 
-		deleteItem.setEnabled(visible);
-		moveUpItem.setEnabled(visible);
-		moveDownItem.setEnabled(visible);
-		
-	}//GEN-LAST:event_editMenuStateChanged
+        deleteItem.setEnabled(visible);
+        moveUpItem.setEnabled(visible);
+        moveDownItem.setEnabled(visible);
 
-	//=======================================================
-	//=======================================================
+    }//GEN-LAST:event_editMenuStateChanged
+
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void colorItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorItemActionPerformed
 
@@ -947,127 +947,126 @@ public class PogoGUI extends JFrame
 
     }//GEN-LAST:event_colorItemActionPerformed
 
- 	//=======================================================
-	//=======================================================
-     @SuppressWarnings({"UnusedDeclaration"})
-	private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
+    //=======================================================
+    //=======================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
 
-		JOptionPane.showMessageDialog(this,
+        JOptionPane.showMessageDialog(this,
 
-				"             Pogo  (Tango Code Generator)\n"+
-				"This programme is able to generate, update and modify\n" +
-				"                 Tango device classes.\n\n" +
-				PogoConst.revNumber +
-				"\n\n"+
-				"http://www.tango-controls.org/     -    tango@esrf.fr",
+                "             Pogo  (Tango Code Generator)\n" +
+                        "This programme is able to generate, update and modify\n" +
+                        "                 Tango device classes.\n\n" +
+                        PogoConst.revNumber +
+                        "\n\n" +
+                        "http://www.tango-controls.org/     -    tango@esrf.fr",
                 "Help Window", JOptionPane.INFORMATION_MESSAGE);
 
-	}//GEN-LAST:event_aboutItemActionPerformed
+    }//GEN-LAST:event_aboutItemActionPerformed
 
     //=======================================================
     //=======================================================
-     @SuppressWarnings({"UnusedDeclaration"})
-     private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
-
-         class_panels.updateInheritancePanelForSelection();
-     }//GEN-LAST:event_tabbedPaneStateChanged
-
-	//=======================================================
-	//=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-     private void preferencesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferencesItemActionPerformed
+    private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
 
-		new PreferencesDialog(this).setVisible(true);
+        class_panels.updateInheritancePanelForSelection();
+    }//GEN-LAST:event_tabbedPaneStateChanged
 
-     }//GEN-LAST:event_preferencesItemActionPerformed
-
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
-     private void releaseItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseItemActionPerformed
-		new PopupHtml(this).show(ReleaseNote.str, 550, 400);
-     }//GEN-LAST:event_releaseItemActionPerformed
+    private void preferencesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferencesItemActionPerformed
 
-	//=======================================================
-	//=======================================================
-	private DeviceClass  generateFromOldAndReload(DeviceClass devclass, String filename) throws DevFailed
-	{
-		Utils.getInstance().stopSplashRefresher();
-		Cursor	cursor = new Cursor(Cursor.DEFAULT_CURSOR);
-		setCursor(cursor);
+        new PreferencesDialog(this).setVisible(true);
 
-		boolean recoverCode;
+    }//GEN-LAST:event_preferencesItemActionPerformed
+
+    //=======================================================
+    //=======================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void releaseItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseItemActionPerformed
+        new PopupHtml(this).show(ReleaseNote.str, 550, 400);
+    }//GEN-LAST:event_releaseItemActionPerformed
+
+    //=======================================================
+    //=======================================================
+    private DeviceClass generateFromOldAndReload(DeviceClass devclass, String filename) throws DevFailed {
+        Utils.getInstance().stopSplashRefresher();
+        Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+        setCursor(cursor);
+
+        boolean recoverCode;
         //  If old class is not abstrac, ask if code must be inserted.
-        String  message =
+        String message =
                 "         Class:  " + devclass.toString() + "  loaded.\n" +
-                "         This device class has been generated by an old version of Pogo\n\n"+
-                "                       Do you want to convert and reload ?\n\n";
+                        "         This device class has been generated by an old version of Pogo\n\n" +
+                        "                       Do you want to convert and reload ?\n\n";
         if (devclass.isOldPogoModelAbstract()) {
             if (JOptionPane.showConfirmDialog(this,
                     message,
                     "Confirmation Window",
-                    JOptionPane.YES_NO_OPTION)!=JOptionPane.OK_OPTION)
+                    JOptionPane.YES_NO_OPTION) != JOptionPane.OK_OPTION)
                 return null;
             recoverCode = false;    //  No code to be recovered in abstract class
-        }
-        else {
+        } else {
             Object[] options = {"Convert and Insert User Code",
-                                "Convert Class Only",
-                                "Cancel"};
+                    "Convert Class Only",
+                    "Cancel"};
             int choice = JOptionPane.showOptionDialog(this,
-                        message,
-                        "Confirmation Window",
-                        JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.WARNING_MESSAGE,
-                        null, options, options[0]);
+                    message,
+                    "Confirmation Window",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null, options, options[0]);
 
 
-            switch(choice) {
-            case 0:    //	Convert and Try to Insert User Code
-                //  Add a test for the inheritance
-                if (OldPogoModel.checkForInheritance(this, devclass)==JOptionPane.CANCEL_OPTION)
+            switch (choice) {
+                case 0:    //	Convert and Try to Insert User Code
+                    //  Add a test for the inheritance
+                    if (OldPogoModel.checkForInheritance(this, devclass) == JOptionPane.CANCEL_OPTION)
+                        return null;
+                    recoverCode = true;
+                    break;
+                case 1:    // Convert Class Only
+                    //  Add a test for the inheritance
+                    if (OldPogoModel.checkForInheritance(this, devclass) == JOptionPane.CANCEL_OPTION)
+                        return null;
+                    recoverCode = false;
+                    break;
+                case 2:    //	Cancel
+                case -1:   //	escape
+                default:
                     return null;
-                recoverCode = true;
-                break;
-            case 1:    // Convert Class Only
-                //  Add a test for the inheritance 
-                if (OldPogoModel.checkForInheritance(this, devclass)==JOptionPane.CANCEL_OPTION)
-                    return null;
-                recoverCode = false;
-                break;
-            case 2:    //	Cancel
-            case -1:   //	escape
-            default:
-                return null;
             }
         }
-		cursor = new Cursor(Cursor.DEFAULT_CURSOR);
-		setCursor(cursor);
+        cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+        setCursor(cursor);
 
-		//	OK generate in a new dir
-		Utils.getInstance().startSplashRefresher(
-				"Generate  source files fo " +  devclass.getPogoDeviceClass().getName());
+        //	OK generate in a new dir
+        Utils.getInstance().startSplashRefresher(
+                "Generate  source files fo " + devclass.getPogoDeviceClass().getName());
 
-		devclass.generateFromOldModel(filename, recoverCode);
+        devclass.generateFromOldModel(filename, recoverCode);
 
-		//	And reload from new dir
-		String	env = System.getenv("TEST_MODE");
-		String	dir = (Utils.isTrue(env) ? PogoConst.CONVERTION_DIR : "");	//	Same dir if no test
-		String	new_filename = Utils.getPath(filename) + dir +
-						"/" + devclass.getPogoDeviceClass().getName() + ".xmi";
-		Utils.getInstance().startSplashRefresher(
-				"Loading  " + Utils.getRelativeFilename(new_filename));
+        //	And reload from new dir
+        String env = System.getenv("TEST_MODE");
+        String dir = (Utils.isTrue(env) ? PogoConst.CONVERTION_DIR : "");    //	Same dir if no test
+        String new_filename = Utils.getPath(filename) + dir +
+                "/" + devclass.getPogoDeviceClass().getName() + ".xmi";
+        Utils.getInstance().startSplashRefresher(
+                "Loading  " + Utils.getRelativeFilename(new_filename));
 
-		devclass = new DeviceClass(new_filename);
-		JOptionPane.showMessageDialog(new JFrame(),
-					"Device class source files have been generated in :\n"+
-					 Utils.getPath(filename) + dir,
-					"Message Window",
-					JOptionPane.INFORMATION_MESSAGE);
+        devclass = new DeviceClass(new_filename);
+        JOptionPane.showMessageDialog(new JFrame(),
+                "Device class source files have been generated in :\n" +
+                        Utils.getPath(filename) + dir,
+                "Message Window",
+                JOptionPane.INFORMATION_MESSAGE);
         manageRecentMenu(devclass.getProjectFilename());
-        
-		return devclass;
-	}
+
+        return devclass;
+    }
+
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -1075,18 +1074,21 @@ public class PogoGUI extends JFrame
 
         reloadProject();
     }//GEN-LAST:event_reLoadItemActionPerformed
+
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void tangoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tangoItemActionPerformed
         Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.TANGO_PAGES]);
     }//GEN-LAST:event_tangoItemActionPerformed
+
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void kernelItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kernelItemActionPerformed
         Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]);
     }//GEN-LAST:event_kernelItemActionPerformed
+
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -1107,53 +1109,53 @@ public class PogoGUI extends JFrame
     private void sitePreferencesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitePreferencesItemActionPerformed
         new PogoConfiguration(this).showDialog();
     }//GEN-LAST:event_sitePreferencesItemActionPerformed
+
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void multiItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiItemActionPerformed
         try {
-            if (multiClassesPanel==null)
+            if (multiClassesPanel == null)
                 multiClassesPanel = new MultiClassesPanel(this, null);
             multiClassesPanel.setVisible(true);
-        }
-        catch (DevFailed e) {
+        } catch (DevFailed e) {
             ErrorPane.showErrorMessage(this, null, e);
         }
     }//GEN-LAST:event_multiItemActionPerformed
-	//=======================================================
-	//=======================================================
-	private void loadDeviceClassFromFile(String filename) {
+
+    //=======================================================
+    //=======================================================
+    private void loadDeviceClassFromFile(String filename) {
         loadDeviceClassFromFile(filename, true);
     }
-	//=======================================================
-	//=======================================================
-	private void loadDeviceClassFromFile(String filename, boolean checkForNewFrame)
-    {
+
+    //=======================================================
+    //=======================================================
+    private void loadDeviceClassFromFile(String filename, boolean checkForNewFrame) {
         //  Not called any more --> open a new JFrame !
         //if (checkModifications()==JOptionPane.CANCEL_OPTION)
         //    return;
 
-        Cursor	cursor = new Cursor(Cursor.WAIT_CURSOR);
+        Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
         try {
             //  Get absolute path for file
-            File    f = new File(filename);
+            File f = new File(filename);
             filename = f.getCanonicalFile().toString();
             manageRecentMenu(filename);
-        }
-        catch(IOException e) { /* */ }
-        
+        } catch (IOException e) { /* */ }
+
         if ((filename.endsWith(".java") && !dbg_java) ||
-            (filename.endsWith(".py")   && !dbg_python)) {
+                (filename.endsWith(".py") && !dbg_python)) {
 
             System.out.println("-------> filename: " + filename + "   - Starting old Pogo");
             startOldPogo(filename);
             return;
         }
 
-		try {
+        try {
             if (checkForNewFrame) {
                 //  If not first one, New Frame
-                if (class_panels.getSelectedTree()!=null)  {
+                if (class_panels.getSelectedTree() != null) {
                     new PogoGUI(filename);
                     return;
                 }
@@ -1162,71 +1164,69 @@ public class PogoGUI extends JFrame
             setCursor(cursor);
             Utils.getInstance().startSplashRefresher(
                     "Loading  " + Utils.getRelativeFilename(filename));
-            
-			DeviceClass	devclass = new DeviceClass(filename);
 
-			//	If from old POGO, generate and reload
-			if (devclass.isOldPogoModel()) {
-				devclass = generateFromOldAndReload(devclass, filename);
-				if (devclass == null)
-					return;
-			}
-			
-			Utils.getInstance().startSplashRefresher(
-					"Building  " + Utils.getRelativeFilename(filename));
-			buildTree(devclass);
+            DeviceClass devclass = new DeviceClass(filename);
+
+            //	If from old POGO, generate and reload
+            if (devclass.isOldPogoModel()) {
+                devclass = generateFromOldAndReload(devclass, filename);
+                if (devclass == null)
+                    return;
+            }
+
+            Utils.getInstance().startSplashRefresher(
+                    "Building  " + Utils.getRelativeFilename(filename));
+            buildTree(devclass);
             setTitle("TANGO Code Generator - " + devclass.toString());
-			cursor = new Cursor(Cursor.DEFAULT_CURSOR);
-			setCursor(cursor);
-			Utils.getInstance().stopSplashRefresher();
-		}
-		catch (DevFailed e) {
-			Utils.getInstance().stopSplashRefresher();
+            cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+            setCursor(cursor);
+            Utils.getInstance().stopSplashRefresher();
+        } catch (DevFailed e) {
+            Utils.getInstance().stopSplashRefresher();
 
             if (startup)
                 System.err.println(e.errors[0].desc);
-            else
-			if (!e.errors[0].reason.equals("CANCEL")) {
+            else if (!e.errors[0].reason.equals("CANCEL")) {
                 ErrorPane.showErrorMessage(this, filename, e);
-                if (class_panels.getPanelNameAt(0)==null && runningApplis.size()>1)
+                if (class_panels.getPanelNameAt(0) == null && runningApplis.size() > 1)
                     setVisible(false);
             }
-		}
-		cursor = new Cursor(Cursor.DEFAULT_CURSOR);
-		setCursor(cursor);
+        }
+        cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+        setCursor(cursor);
         class_panels.checkWarnings();
 
-	}
-	//=======================================================
-	//=======================================================
-	boolean itemAlreadyExists(String name, int type)
-	{
+    }
+
+    //=======================================================
+    //=======================================================
+    boolean itemAlreadyExists(String name, int type) {
         ClassTree tree = class_panels.getSelectedTree();
-		return tree.itemAlreadyExists(name, type);
-	}
-	//=======================================================
-	//=======================================================
-    ClassPanels getClassPanels()
-    {
+        return tree.itemAlreadyExists(name, type);
+    }
+
+    //=======================================================
+    //=======================================================
+    ClassPanels getClassPanels() {
         return class_panels;
     }
-	//=======================================================
-	//=======================================================
-    void setTabbedPaneSelection(ClassPanel panel)
-    {
+
+    //=======================================================
+    //=======================================================
+    void setTabbedPaneSelection(ClassPanel panel) {
         tabbedPane.setSelectedComponent(panel);
     }
-	//=======================================================
-	//=======================================================
-    void fireClassHaveChanged()
-    {
-        for (int i=0 ; i<class_panels.size() ; i++)
+
+    //=======================================================
+    //=======================================================
+    void fireClassHaveChanged() {
+        for (int i = 0; i < class_panels.size(); i++)
             tabbedPane.setTitleAt(i, class_panels.get(i).toString());
     }
-	//=======================================================
-	//=======================================================
+    //=======================================================
+    //=======================================================
 
-	//=======================================================
+    //=======================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
     private javax.swing.JMenuItem colorItem;
@@ -1249,8 +1249,7 @@ public class PogoGUI extends JFrame
     private javax.swing.JMenu toolsMenu;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
-	//=======================================================
-
+    //=======================================================
 
 
     //=======================================================
@@ -1258,24 +1257,23 @@ public class PogoGUI extends JFrame
      * This class is a vector of panels displaying JTrees
      */
     //=======================================================
-    private class ClassPanels extends Vector<ClassPanel>
-    {
+    private class ClassPanels extends ArrayList<ClassPanel> {
         private PogoGUI gui;
-        private String  warnings = "";
+        private String warnings = "";
         private static final long serialVersionUID = -3468411367658544269L;
 
         //=======================================================
-        private ClassPanels(PogoGUI gui)
-        {
+        private ClassPanels(PogoGUI gui) {
             this.gui = gui;
         }
+
         //=======================================================
         //=======================================================
-         private String getPanelNameAt(int idx)
-         {
-             ClassPanel  panel = (ClassPanel) tabbedPane.getComponent(idx);
-             return panel.getName();
-         }
+        private String getPanelNameAt(int idx) {
+            ClassPanel panel = (ClassPanel) tabbedPane.getComponent(idx);
+            return panel.getName();
+        }
+
         //=======================================================
         /*
         private ClassTree getTreeAt(int idx)
@@ -1284,32 +1282,31 @@ public class PogoGUI extends JFrame
         }
         */
         //=======================================================
-        private ClassTree getSelectedTree()
-        {
+        private ClassTree getSelectedTree() {
             return get(tabbedPane.getSelectedIndex()).getTree();
         }
-        //=======================================================
-        private void addPanel(DeviceClass devclass)
-        {
 
-            ClassPanel  cp = new ClassPanel(gui);
-            cp.setTree(devclass, this.size()>0);
+        //=======================================================
+        private void addPanel(DeviceClass devclass) {
+
+            ClassPanel cp = new ClassPanel(gui);
+            cp.setTree(devclass, this.size() > 0);
             add(cp);
             tabbedPane.add(cp);
         }
+
         //=======================================================
-        private void addPanels(DeviceClass devclass)
-        {
+        private void addPanels(DeviceClass devclass) {
             //  Reset if needed
-            removeAllElements();
+            this.removeAll(this);
             tabbedPane.removeAll();
             warnings = org.tango.pogo.pogo_gui.InheritanceUtils.getInstance().manageInheritanceItems(devclass);
 
             addPanel(devclass);
 
             //  manage inheritance elements
-            Vector<DeviceClass> ancestors = devclass.getAncestors();
-            for (int i=ancestors.size()-1 ; i>=0 ; i--) {
+            ArrayList<DeviceClass> ancestors = devclass.getAncestors();
+            for (int i = ancestors.size() - 1; i >= 0; i--) {
                 addPanel(ancestors.get(i));
             }
 
@@ -1319,26 +1316,24 @@ public class PogoGUI extends JFrame
             getContentPane().add(inherPanel, java.awt.BorderLayout.EAST);
             pack();
         }
+
         //=======================================================
-        private void checkWarnings()
-        {
-            if (warnings.length()>0)
-            {
+        private void checkWarnings() {
+            if (warnings.length() > 0) {
                 Utils.getInstance().stopSplashRefresher();
                 JOptionPane.showMessageDialog(gui,
                         "Inheritance change(s):\n" + warnings,
                         "Warning Window", JOptionPane.WARNING_MESSAGE);
             }
         }
+
         //=======================================================
-        private void updateInheritancePanelForSelection()
-        {
-			if (!reBuildTabbedPane)
-			{
-	            ClassPanel  panel = (ClassPanel) tabbedPane.getSelectedComponent();
-    	        if (inherPanel instanceof InheritancePanel)
-        	        ((InheritancePanel)inherPanel).setSelected(panel.getName());
-			}
+        private void updateInheritancePanelForSelection() {
+            if (!reBuildTabbedPane) {
+                ClassPanel panel = (ClassPanel) tabbedPane.getSelectedComponent();
+                if (inherPanel instanceof InheritancePanel)
+                    ((InheritancePanel) inherPanel).setSelected(panel.getName());
+            }
         }
         //=======================================================
         /*
@@ -1352,15 +1347,18 @@ public class PogoGUI extends JFrame
     //===============================================================
 
 
-
     //===============================================================
     private class SetVisibleLater extends Thread {
         private Component component;
+
         private SetVisibleLater(Component component) {
             this.component = component;
         }
+
         public void run() {
-            try { sleep(100); } catch(InterruptedException e) { /* */ }
+            try {
+                sleep(100);
+            } catch (InterruptedException e) { /* */ }
             component.setVisible(true);
         }
     }

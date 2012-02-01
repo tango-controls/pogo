@@ -39,61 +39,62 @@ package org.tango.pogo.pogo_gui;
 import javax.swing.*;
 
 //=======================================================
+
 /**
- *	JPanel Class to manage pogo model JTree.
- *  It will be displayed in the main pogo frame.
+ * JPanel Class to manage pogo model JTree.
+ * It will be displayed in the main pogo frame.
  *
- * @author  Pascal Verdier
+ * @author Pascal Verdier
  */
 //=======================================================
-public class ClassPanel extends JPanel
-{
-	private PogoGUI		parent;
-	private ClassTree	tree;
-	private JScrollPane	scrollPane;
-    private String      name;
-	//=======================================================
-	//=======================================================
-	public ClassPanel(PogoGUI parent)
-	{
-		this.parent = parent;
-		setLayout(new java.awt.BorderLayout());
+public class ClassPanel extends JPanel {
+    private PogoGUI parent;
+    private ClassTree tree;
+    private JScrollPane scrollPane;
+    private String name;
+
+    //=======================================================
+    //=======================================================
+    public ClassPanel(PogoGUI parent) {
+        this.parent = parent;
+        setLayout(new java.awt.BorderLayout());
         scrollPane = new JScrollPane();
         scrollPane.setPreferredSize(new java.awt.Dimension(350, 600));
         add(scrollPane, java.awt.BorderLayout.CENTER);
-	}
-	//=======================================================
-    /**
-     * Bulid the inheritances class tree.
-     * @param devclass  class to display hineritances
-     * @param isInheritedClass true if this class is an inherited one
-     */
-	//=======================================================
-	public void setTree(DeviceClass devclass, boolean isInheritedClass)
-	{
-        name = devclass.getPogoDeviceClass().getName();
-         //	Build users_tree to display info
-		tree = new ClassTree(parent, devclass, isInheritedClass);
-		scrollPane.setViewportView(tree);
-	}
-	//=======================================================
-	//=======================================================
-	public ClassTree getTree()
-	{
-		return tree;
-	}
-    //=======================================================
-    //=======================================================
-    public String getName()
-    {
-        return name;
     }
     //=======================================================
+
+    /**
+     * Bulid the inheritances class tree.
+     *
+     * @param devclass         class to display hineritances
+     * @param isInheritedClass true if this class is an inherited one
+     */
     //=======================================================
-    public String toString()
-    {
-        String  ret = name;
-        if (tree!=null && tree.getModified())
+    public void setTree(DeviceClass devclass, boolean isInheritedClass) {
+        name = devclass.getPogoDeviceClass().getName();
+        //	Build users_tree to display info
+        tree = new ClassTree(parent, devclass, isInheritedClass);
+        scrollPane.setViewportView(tree);
+    }
+
+    //=======================================================
+    //=======================================================
+    public ClassTree getTree() {
+        return tree;
+    }
+
+    //=======================================================
+    //=======================================================
+    public String getName() {
+        return name;
+    }
+
+    //=======================================================
+    //=======================================================
+    public String toString() {
+        String ret = name;
+        if (tree != null && tree.getModified())
             ret += " *";
         return ret;
     }

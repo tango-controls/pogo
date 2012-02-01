@@ -36,228 +36,228 @@
 package org.tango.pogo.pogo_gui;
 
 
-import javax.swing.*;
-import javax.swing.text.*;
-
 import org.tango.pogo.pogo_gui.tools.Utils;
 
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import java.awt.*;
-import java.util.Vector;
+import java.util.ArrayList;
 
 
 //===============================================================
+
 /**
- *	A JPanel to draw an inheritance diagram
+ * A JPanel to draw an inheritance diagram
  */
 //===============================================================
 
-class InheritancePanel extends JPanel
-{
-	private Vector<JTextPane> textPanes = new Vector<JTextPane>();
-	private PogoGUI  gui = null;
-    private long     t0 = 0;
+class InheritancePanel extends JPanel {
+    private ArrayList<JTextPane> textPanes = new ArrayList<JTextPane>();
+    private PogoGUI gui = null;
+    private long t0 = 0;
 
-	private static final Color classBtnBG         =  new java.awt.Color(255, 230, 200);
-	private static final Color selectedClassBtnBG =  new java.awt.Color(255, 150, 100);
-	private static final String deviceImpl = "Tango DeviceImpl";
-	//===============================================================
-	//===============================================================
-	public InheritancePanel(DeviceClass devclass)
-	{
-	   setLayout(new java.awt.GridBagLayout());
-	   addAncestorPanes(devclass);
-	}
-	//===============================================================
-	//===============================================================
-	public InheritancePanel(DeviceClass devclass, PogoGUI gui)
-	{
-	   this.gui = gui;
-	   setLayout(new java.awt.GridBagLayout());
-	   addAncestorPanes(devclass);
-	}
-	//===============================================================
-	//===============================================================
-	private void addInheritanceIcon(int y)
-	{
-	   GridBagConstraints gbc = new java.awt.GridBagConstraints();
-	   gbc.gridx = 0;
-	   gbc.gridy = y;
-	   JLabel  lbl = new JLabel("");
-	   lbl.setIcon(Utils.getInstance().inherite_icon);
-	   add(lbl, gbc);
-	}
-	//===============================================================
-	//===============================================================
-	private void addClassPane(DeviceClass dc, int y, boolean addInher)
-	{
+    private static final Color classBtnBG = new java.awt.Color(255, 230, 200);
+    private static final Color selectedClassBtnBG = new java.awt.Color(255, 150, 100);
+    private static final String deviceImpl = "Tango DeviceImpl";
+
+    //===============================================================
+    //===============================================================
+    public InheritancePanel(DeviceClass devclass) {
+        setLayout(new java.awt.GridBagLayout());
+        addAncestorPanes(devclass);
+    }
+
+    //===============================================================
+    //===============================================================
+    public InheritancePanel(DeviceClass devclass, PogoGUI gui) {
+        this.gui = gui;
+        setLayout(new java.awt.GridBagLayout());
+        addAncestorPanes(devclass);
+    }
+
+    //===============================================================
+    //===============================================================
+    private void addInheritanceIcon(int y) {
+        GridBagConstraints gbc = new java.awt.GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = y;
+        JLabel lbl = new JLabel("");
+        lbl.setIcon(Utils.getInstance().inherite_icon);
+        add(lbl, gbc);
+    }
+
+    //===============================================================
+    //===============================================================
+    private void addClassPane(DeviceClass dc, int y, boolean addInher) {
         GridBagConstraints gbc = new java.awt.GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = y;
 
-		//	Build pane for class
-		ClassPane	cp = new ClassPane(dc);
-        if (gui!=null)
+        //	Build pane for class
+        ClassPane cp = new ClassPane(dc);
+        if (gui != null)
             cp.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     textPaneMouseClicked(evt);
                 }
             });
 
-		//	and store instance
+        //	and store instance
         add(cp, gbc);
         textPanes.add(cp);
         if (addInher)
-           addInheritanceIcon(y+1);
-	}
-	//===============================================================
-	//===============================================================
-	private void addAncestorPanes(DeviceClass dc)
-	{
-        Vector<DeviceClass> ancestors = dc.getAncestors();
+            addInheritanceIcon(y + 1);
+    }
+
+    //===============================================================
+    //===============================================================
+    private void addAncestorPanes(DeviceClass dc) {
+        ArrayList<DeviceClass> ancestors = dc.getAncestors();
         int y = 0;
-        addClassPane(null, y+=2, true);
+        addClassPane(null, y += 2, true);
         //for (int i=ancestors.size()-1 ; i>=0 ; i--)
         for (DeviceClass ancestor : ancestors)
-            addClassPane(ancestor, y+=2, true);
-        addClassPane(dc, y+=2, false);
+            addClassPane(ancestor, y += 2, true);
+        addClassPane(dc, y += 2, false);
 
-		//	Set last one looks like selected.
-        textPanes.get(textPanes.size()-1).setBackground(selectedClassBtnBG);
-	}
-	//===============================================================
+        //	Set last one looks like selected.
+        textPanes.get(textPanes.size() - 1).setBackground(selectedClassBtnBG);
+    }
+    //===============================================================
+
     /**
      * Set GUI panel selection as clicked JTextPane
-     * @param evt   the mouse event to retrieve which component as been clicked
+     *
+     * @param evt the mouse event to retrieve which component as been clicked
      */
-	//===============================================================
- 	private void textPaneMouseClicked(java.awt.event.MouseEvent evt)
-	{
-		JTextPane tp = (JTextPane) evt.getSource();
-		String  classname = tp.getName();
+    //===============================================================
+    private void textPaneMouseClicked(java.awt.event.MouseEvent evt) {
+        JTextPane tp = (JTextPane) evt.getSource();
+        String classname = tp.getName();
 
-        if (classname.equals(deviceImpl))
-        {
+        if (classname.equals(deviceImpl)) {
             //  Check if double click
             long t = evt.getWhen();
-            if (t-t0 < 1000)
-				if (JOptionPane.showConfirmDialog(this,
-					"Launch a WEB browser on DeviceImpl documentation ?",
-					"Confirmation Window",
-					JOptionPane.YES_NO_OPTION)==JOptionPane.OK_OPTION)
-				{
-                	Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]);
-				}
+            if (t - t0 < 1000)
+                if (JOptionPane.showConfirmDialog(this,
+                        "Launch a WEB browser on DeviceImpl documentation ?",
+                        "Confirmation Window",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+                    Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]);
+                }
             t0 = t;
             return;
         }
         boolean found = false;
         for (ClassPanel panel : gui.getClassPanels())
-          if (panel.getName().equals(classname))
-          {
-              found = true;
-              gui.setTabbedPaneSelection(panel);
-          }
+            if (panel.getName().equals(classname)) {
+                found = true;
+                gui.setTabbedPaneSelection(panel);
+            }
 
         //  Cannot found if DeviceImpl
         if (found)
-          for (JTextPane pane : textPanes)
-              if (pane==tp)
-                  pane.setBackground(selectedClassBtnBG);
-              else
-                  pane.setBackground(classBtnBG);
-	}
-	//===============================================================
+            for (JTextPane pane : textPanes)
+                if (pane == tp)
+                    pane.setBackground(selectedClassBtnBG);
+                else
+                    pane.setBackground(classBtnBG);
+    }
+    //===============================================================
+
     /**
      * set JTextPane selected as the GUI panel one
-     * @param name  selected GUI panel containing edited class  
+     *
+     * @param name selected GUI panel containing edited class
      */
-	//===============================================================
-    public void setSelected(String name)
-    {
+    //===============================================================
+    public void setSelected(String name) {
         for (JTextPane b : textPanes)
             if (b.getName().equals(name))
                 b.setBackground(selectedClassBtnBG);
             else
                 b.setBackground(classBtnBG);
     }
-	//===============================================================
-	//===============================================================
+    //===============================================================
+    //===============================================================
 
 
-	//===============================================================
-	/**
-	 *	A little class inherited from JTextPane to represente 
-	 *	a DeviceClass Object as aButton.
-	 */
-	//===============================================================
-	private class ClassPane extends JTextPane
-	{
-		private DeviceClass	devClass;
-		//============================================================
-		//============================================================
-		private ClassPane(DeviceClass dc)
-		{
-			devClass = dc;
-			String classname;
-			if (dc==null)
-				classname = deviceImpl;
-			else
-				classname = devClass.getPogoDeviceClass().getName();
-			setEditable(false);
-			setName(classname);
-        	setFont(new java.awt.Font("monospaced", 1, 10));
-        	setBackground(classBtnBG);
-        	insertIcon(Utils.getInstance().class_icon);
-        	setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    //===============================================================
+
+    /**
+     * A little class inherited from JTextPane to represente
+     * a DeviceClass Object as aButton.
+     */
+    //===============================================================
+    private class ClassPane extends JTextPane {
+        private DeviceClass devClass;
+
+        //============================================================
+        //============================================================
+        private ClassPane(DeviceClass dc) {
+            devClass = dc;
+            String classname;
+            if (dc == null)
+                classname = deviceImpl;
+            else
+                classname = devClass.getPogoDeviceClass().getName();
+            setEditable(false);
+            setName(classname);
+            setFont(new java.awt.Font("monospaced", 1, 10));
+            setBackground(classBtnBG);
+            insertIcon(Utils.getInstance().class_icon);
+            setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
 
-			String	path = null;
-			if (devClass==null)
-				setToolTipText(Utils.buildToolTip("TANGO DeviceImpl model",
-					"See: " + PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]));
-			else
-			if (devClass.getPogoDeviceClass()!=null)
-				if (devClass.getPogoDeviceClass().getDescription()!=null)
-					path = devClass.getPogoDeviceClass().getDescription().getSourcePath();
+            String path = null;
+            if (devClass == null)
+                setToolTipText(Utils.buildToolTip("TANGO DeviceImpl model",
+                        "See: " + PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]));
+            else if (devClass.getPogoDeviceClass() != null)
+                if (devClass.getPogoDeviceClass().getDescription() != null)
+                    path = devClass.getPogoDeviceClass().getDescription().getSourcePath();
 
-			if (path!=null)
-				setToolTipText(Utils.buildToolTip(
-					devClass.getPogoDeviceClass().getName(), "Read at: " + path));
+            if (path != null)
+                setToolTipText(Utils.buildToolTip(
+                        devClass.getPogoDeviceClass().getName(), "Read at: " + path));
 
-			
-			//	Display classname and few commands
-			showMsg(" "+classname+ " ", true);
-			showMsg("\n + State\n + Status\n + ---", false);
-		}
-		//============================================================
-		/**
-		 *	Insert the message in the TextPane with its attributes
-    	 * @param msg   message to be displayed
-    	 * @param title format as title if true
-    	 */
-		//============================================================
-		private void showMsg(String msg, boolean title)
-		{
-			Document	doc = getDocument();
-			SimpleAttributeSet	attrs = new SimpleAttributeSet();
-			int	fs = StyleConstants.getFontSize(attrs);
 
-			try
-			{
-				StyleConstants.setBold(attrs, title);
-				StyleConstants.setUnderline(attrs, title);
+            //	Display classname and few commands
+            showMsg(" " + classname + " ", true);
+            showMsg("\n + State\n + Status\n + ---", false);
+        }
+        //============================================================
 
-				if (title) {
-					StyleConstants.setFontSize(attrs, fs+2);
-				}
-				else {
-            		StyleConstants.setFontSize(attrs, fs-2);
-				}
-				doc.insertString(doc.getLength(), msg, attrs);
-			}
-			catch(BadLocationException ex) { ex.printStackTrace(); }
-		}
-	}
-	//===============================================================
-	//===============================================================
+        /**
+         * Insert the message in the TextPane with its attributes
+         *
+         * @param msg   message to be displayed
+         * @param title format as title if true
+         */
+        //============================================================
+        private void showMsg(String msg, boolean title) {
+            Document doc = getDocument();
+            SimpleAttributeSet attrs = new SimpleAttributeSet();
+            int fs = StyleConstants.getFontSize(attrs);
+
+            try {
+                StyleConstants.setBold(attrs, title);
+                StyleConstants.setUnderline(attrs, title);
+
+                if (title) {
+                    StyleConstants.setFontSize(attrs, fs + 2);
+                } else {
+                    StyleConstants.setFontSize(attrs, fs - 2);
+                }
+                doc.insertString(doc.getLength(), msg, attrs);
+            } catch (BadLocationException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    //===============================================================
+    //===============================================================
 }

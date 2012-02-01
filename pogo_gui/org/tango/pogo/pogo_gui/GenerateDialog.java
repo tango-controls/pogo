@@ -45,7 +45,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * Dialog object to manage generation preferences.
@@ -55,7 +55,7 @@ public class GenerateDialog extends JDialog {
     private int mode = PogoConst.SINGLE_CLASS;
     private static int returnStatus;
     private DeviceClass devclass;
-    private Vector<JRadioButton> rBtn;
+    private ArrayList<JRadioButton> rBtn;
 
     //===================================================================
 
@@ -69,7 +69,7 @@ public class GenerateDialog extends JDialog {
         super(parent, true);
         initComponents();
 
-        rBtn = new Vector<JRadioButton>();
+        rBtn = new ArrayList<JRadioButton>();
         rBtn.add(xmiBtn);
         rBtn.add(codeBtn);
         rBtn.add(makefileBtn);
@@ -407,7 +407,7 @@ public class GenerateDialog extends JDialog {
             if (file.isDirectory()) {
                 //  Special check for Makefile
                 if (makefileBtn.getSelectedObjects() != null ||
-                        vc9Btn.getSelectedObjects()  != null ||
+                        vc9Btn.getSelectedObjects() != null ||
                         vc10Btn.getSelectedObjects() != null) {
                     doClose(manageMakefile()); //  Close dialog if OK
                 } else
@@ -458,7 +458,7 @@ public class GenerateDialog extends JDialog {
 
     //=============================================================
     //=============================================================
-    private String buidDetailsString(Vector<String> items, String name) {
+    private String buidDetailsString(ArrayList<String> items, String name) {
         StringBuilder sb = new StringBuilder();
 
         if (items.size() > 0) {
@@ -477,8 +477,8 @@ public class GenerateDialog extends JDialog {
     @SuppressWarnings({"UnusedDeclaration"})
     private void detailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsBtnActionPerformed
 
-        Vector<String> commands = devclass.getAbstractCommandNames();
-        Vector<String> attributes = devclass.getAbstractAttributeNames();
+        ArrayList<String> commands = devclass.getAbstractCommandNames();
+        ArrayList<String> attributes = devclass.getAbstractAttributeNames();
 
         String
                 message = buidDetailsString(commands, "command");

@@ -36,159 +36,164 @@
 package org.tango.pogo.pogo_gui;
 
 
-import java.awt.Color;
-import java.util.StringTokenizer;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
+import fr.esrf.Tango.DevFailed;
+import fr.esrf.TangoDs.Except;
+import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
+import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
-import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
-
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
-import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 //===============================================================
+
 /**
- *	JDialog Class to display and get device identification
- *	It is kept as JDialog to be edited with netbeans,
- *	but only centerPanel and data nmanagement are used
+ * JDialog Class to display and get device identification
+ * It is kept as JDialog to be edited with netbeans,
+ * but only centerPanel and data nmanagement are used
  *
- *	@author  Pascal Verdier
+ * @author Pascal Verdier
  */
 //===============================================================
 
-public class DeviceIdDialog extends JDialog
-{
-	private int		retVal = JOptionPane.OK_OPTION;
-    private ClassIdentification	id = null;
-	private static final String	HelpMessage =
-		"During TANGO meeting in Kobe (Japan)\n"+
-		"It has been decided to create a\n" +
-		"device class identification for all TANGO classes.\n\n" +
-		"The goal of this device class identification\n" +
-		"is to sort and find class by key words.\n\n" +
-		"Do not be afraid to be spammed,\n" +
-		"the email for contact will not appear clearly in html pages";
+public class DeviceIdDialog extends JDialog {
+    private int retVal = JOptionPane.OK_OPTION;
+    private ClassIdentification id = null;
+    private static final String HelpMessage =
+            "During TANGO meeting in Kobe (Japan)\n" +
+                    "It has been decided to create a\n" +
+                    "device class identification for all TANGO classes.\n\n" +
+                    "The goal of this device class identification\n" +
+                    "is to sort and find class by key words.\n\n" +
+                    "Do not be afraid to be spammed,\n" +
+                    "the email for contact will not appear clearly in html pages";
 
-	//===============================================================
-	/**
-	 *	Creates new form DeviceIdDialog
-     * @param parent    the parent frame
+    //===============================================================
+    //===============================================================
+    private java.util.Vector<String> toVector(ArrayList<String> strings) {
+        java.util.Vector<String>    vs = new java.util.Vector<String>();
+        for (String str : strings)
+            vs.add(str);
+        return vs;
+    }
+    //===============================================================
+    /**
+     * Creates new form DeviceIdDialog
+     *
+     * @param parent the parent frame
      */
-	//===============================================================
-	public DeviceIdDialog(JFrame parent)
-	{
-		super(parent, true);
-		initComponents();
-        
-		familyComboBox.setModel(new DefaultComboBoxModel(PogoProperty.classFamilies));
-		platformComboBox.setModel(new DefaultComboBoxModel(PogoProperty.platformNames));
-		busComboBox.setModel(new DefaultComboBoxModel(PogoProperty.busNames));
-		if (PogoProperty.siteName!=null          &&
-			PogoProperty.siteName.length()>0     &&
-			PogoProperty.siteClassFamilies!=null &&
-			PogoProperty.siteClassFamilies.size()>0 ) {
-            
-			siteButton.setText(PogoProperty.siteName + " Specific");
-		}
-		else {
-			siteButton.setVisible(false);
+    //===============================================================
+    public DeviceIdDialog(JFrame parent) {
+        super(parent, true);
+        initComponents();
+
+        familyComboBox.setModel(new DefaultComboBoxModel(
+                toVector(PogoProperty.classFamilies)));
+        platformComboBox.setModel(new DefaultComboBoxModel(
+                toVector(PogoProperty.platformNames)));
+        busComboBox.setModel(new DefaultComboBoxModel(
+                toVector(PogoProperty.busNames)));
+        if (PogoProperty.siteName != null &&
+                PogoProperty.siteName.length() > 0 &&
+                PogoProperty.siteClassFamilies != null &&
+                PogoProperty.siteClassFamilies.size() > 0) {
+
+            siteButton.setText(PogoProperty.siteName + " Specific");
+        } else {
+            siteButton.setVisible(false);
         }
 
-		//	Add a little help button
-		topPanel.add(new javax.swing.JLabel("        "));
-		javax.swing.JButton	btn = new javax.swing.JButton("Help");
-		btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        //	Add a little help button
+        topPanel.add(new javax.swing.JLabel("        "));
+        javax.swing.JButton btn = new javax.swing.JButton("Help");
+        btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpBtnActionPerformed(evt);
             }
         });
-		topPanel.add(btn);
+        topPanel.add(btn);
 
-		//	Fill email field if possible
-		String mail = java.lang.System.getenv("EMAIL");
-		if (mail==null || mail.length()==0)
-			mail = PogoProperty.contactAddress;
-		contactTxt.setText(mail);
-		manufacturerTxt.setText("none");
+        //	Fill email field if possible
+        String mail = java.lang.System.getenv("EMAIL");
+        if (mail == null || mail.length() == 0)
+            mail = PogoProperty.contactAddress;
+        contactTxt.setText(mail);
+        manufacturerTxt.setText("none");
 
-		pack();
-		setReferenceVisible(false);
-		ATKGraphicsUtils.centerDialog(this);
-	}
-	//===============================================================
-	/**
-	 *	Creates new form DeviceIdDialog
-     * @param parent    the parent frame
-     * @param id        the device class identification object
-	 */
-	//===============================================================
-	public DeviceIdDialog(JFrame parent, ClassIdentification id)
-	{
-		this(parent);
+        pack();
+        setReferenceVisible(false);
+        ATKGraphicsUtils.centerDialog(this);
+    }
+    //===============================================================
+
+    /**
+     * Creates new form DeviceIdDialog
+     *
+     * @param parent the parent frame
+     * @param id     the device class identification object
+     */
+    //===============================================================
+    public DeviceIdDialog(JFrame parent, ClassIdentification id) {
+        this(parent);
         this.id = id;
 
-		if (id!=null)
-		{
-        	//	Set fields from ID
-        	if (siteButton.isVisible()  &&
-            	PogoProperty.siteName != null && 
-            	id.getSiteSpecific()  != null   &&
-             	id.getSiteSpecific().equals(PogoProperty.siteName))
-       		{
-            	siteButton.setSelected(true);
-            	familyComboBox.setModel(new DefaultComboBoxModel(PogoProperty.siteClassFamilies));
-        	}
+        if (id != null) {
+            //	Set fields from ID
+            if (siteButton.isVisible() &&
+                    PogoProperty.siteName != null &&
+                    id.getSiteSpecific() != null &&
+                    id.getSiteSpecific().equals(PogoProperty.siteName)) {
+                siteButton.setSelected(true);
+                familyComboBox.setModel(new DefaultComboBoxModel(toVector(PogoProperty.siteClassFamilies)));
+            }
 
             contactTxt.setText(id.getAuthor() + "@" + id.getEmailDomain());
             //  For compatibility with beta release.
-            if (id.getAuthor()==null || id.getAuthor().length()==0)
-        	    contactTxt.setText(id.getContact());
-        	platformComboBox.setSelectedItem(id.getPlatform());
-	        familyComboBox.setSelectedItem(id.getClassFamily());
-        	busComboBox.setSelectedItem(id.getBus());
-        	manufacturerTxt.setText(id.getManufacturer());
-        	referenceTxt.setText(id.getReference());
-        	setReferenceVisible(id.getManufacturer().length()>0 &&
-                        	   ! id.getManufacturer().equals("none"));
-		}
-	}
-	//===============================================================
-	//===============================================================
-	public JPanel getCenterPanel()
-	{
-		return centerPanel;
-	}
-	//===============================================================
-	//===============================================================
-	private void setReferenceVisible(boolean b)
-	{
-		//referenceTxt.setVisible(b);
-		//referenceLabel.setVisible(b);
-		referenceTxt.setEditable(b);
-		if (b)
-			referenceTxt.setBackground(Color.white);
-		else
-			referenceTxt.setBackground(Color.lightGray);
-	}
-	//===============================================================
-    /** This method is called from within the constructor to
+            if (id.getAuthor() == null || id.getAuthor().length() == 0)
+                contactTxt.setText(id.getContact());
+            platformComboBox.setSelectedItem(id.getPlatform());
+            familyComboBox.setSelectedItem(id.getClassFamily());
+            busComboBox.setSelectedItem(id.getBus());
+            manufacturerTxt.setText(id.getManufacturer());
+            referenceTxt.setText(id.getReference());
+            setReferenceVisible(id.getManufacturer().length() > 0 &&
+                    !id.getManufacturer().equals("none"));
+        }
+    }
+
+    //===============================================================
+    //===============================================================
+    public JPanel getCenterPanel() {
+        return centerPanel;
+    }
+
+    //===============================================================
+    //===============================================================
+    private void setReferenceVisible(boolean b) {
+        //referenceTxt.setVisible(b);
+        //referenceLabel.setVisible(b);
+        referenceTxt.setEditable(b);
+        if (b)
+            referenceTxt.setBackground(Color.white);
+        else
+            referenceTxt.setBackground(Color.lightGray);
+    }
+    //===============================================================
+
+    /**
+     * This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
      */
-	//===============================================================
+    //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -264,7 +269,7 @@ public class DeviceIdDialog extends JDialog
         contactTxt.setColumns(20);
         contactTxt.setFont(new java.awt.Font("Dialog", 1, 12));
         contactTxt.setToolTipText(
-			Utils.buildToolTip("Programmer or contact email address"));
+                Utils.buildToolTip("Programmer or contact email address"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -275,7 +280,7 @@ public class DeviceIdDialog extends JDialog
         manufacturerTxt.setColumns(20);
         manufacturerTxt.setFont(new java.awt.Font("Dialog", 1, 12));
         manufacturerTxt.setToolTipText(Utils.buildToolTip(
-			"manufacturer name"));
+                "manufacturer name"));
         manufacturerTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 manufacturerTxtKeyReleased(evt);
@@ -297,7 +302,7 @@ public class DeviceIdDialog extends JDialog
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         centerPanel.add(referenceTxt, gridBagConstraints);
 
-        platformComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All Platforms", "Unix Like", "Windows" }));
+        platformComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"All Platforms", "Unix Like", "Windows"}));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -306,7 +311,7 @@ public class DeviceIdDialog extends JDialog
         centerPanel.add(platformComboBox, gridBagConstraints);
 
         busComboBox.setEditable(true);
-        busComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Not Applicable", "Compact PCI", "Data Socket", "Ethernet", "FireWire", "GPIB", "Modbus", "PCI", "PCI Express", "Serial Line", "Socket", "TCP/UDP", "USB", "VME" }));
+        busComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"", "Not Applicable", "Compact PCI", "Data Socket", "Ethernet", "FireWire", "GPIB", "Modbus", "PCI", "PCI Express", "Serial Line", "Socket", "TCP/UDP", "USB", "VME"}));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -315,7 +320,7 @@ public class DeviceIdDialog extends JDialog
         centerPanel.add(busComboBox, gridBagConstraints);
 
         familyComboBox.setEditable(true);
-        familyComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Miscellaneous", "AbstractClasses", "Acquisition", "Application", "BeamDiag", "Calculation", "Communication", "Controllers", "InputOutput", "Instrumentation", "Interlock", "Motion", "PowerSupply", "Process", "RadioProtection", "Sequencer", "Simulators", "Training", "Vacuum" }));
+        familyComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Miscellaneous", "AbstractClasses", "Acquisition", "Application", "BeamDiag", "Calculation", "Communication", "Controllers", "InputOutput", "Instrumentation", "Interlock", "Motion", "PowerSupply", "Process", "RadioProtection", "Sequencer", "Simulators", "Training", "Vacuum"}));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -379,184 +384,178 @@ public class DeviceIdDialog extends JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	//===============================================================
-	//===============================================================	//===============================================================
-	@SuppressWarnings({"UnusedDeclaration"})
+    //===============================================================
+    //===============================================================	//===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
     private void manufacturerTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manufacturerTxtKeyReleased
 
-		String	s = manufacturerTxt.getText();
-		setReferenceVisible(s.length()>0 && !s.equals("none"));
-	}//GEN-LAST:event_manufacturerTxtKeyReleased
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+        String s = manufacturerTxt.getText();
+        setReferenceVisible(s.length() > 0 && !s.equals("none"));
+    }//GEN-LAST:event_manufacturerTxtKeyReleased
 
-		try {
-			checkInputs();
-		}
-		catch (Exception e) {
-			ErrorPane.showErrorMessage(this, null, e);
-			return;
-		}
-
-		retVal = JOptionPane.OK_OPTION;
-		doClose();
-	}//GEN-LAST:event_okBtnActionPerformed
-
-	//===============================================================
-	//===============================================================
+    //===============================================================
+    //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void helpBtnActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		JOptionPane.showMessageDialog(new JFrame(), HelpMessage,
-					"Help Window", JOptionPane.INFORMATION_MESSAGE);
-	}
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-		retVal = JOptionPane.CANCEL_OPTION;
-		doClose();
-	}//GEN-LAST:event_cancelBtnActionPerformed
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
 
-	//===============================================================
-	//===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-	private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-		retVal = JOptionPane.CANCEL_OPTION;
-		doClose();
-	}//GEN-LAST:event_closeDialog
+        try {
+            checkInputs();
+        } catch (Exception e) {
+            ErrorPane.showErrorMessage(this, null, e);
+            return;
+        }
 
-	//===============================================================
-	//===============================================================
+        retVal = JOptionPane.OK_OPTION;
+        doClose();
+    }//GEN-LAST:event_okBtnActionPerformed
+
+    //===============================================================
+    //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-	private void siteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siteButtonActionPerformed
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        JOptionPane.showMessageDialog(new JFrame(), HelpMessage,
+                "Help Window", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        retVal = JOptionPane.CANCEL_OPTION;
+        doClose();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        retVal = JOptionPane.CANCEL_OPTION;
+        doClose();
+    }//GEN-LAST:event_closeDialog
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void siteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siteButtonActionPerformed
 
         manageSiteFamilies();
-	}//GEN-LAST:event_siteButtonActionPerformed
+    }//GEN-LAST:event_siteButtonActionPerformed
 
     //===============================================================
     //===============================================================	//===============================================================
-	//===============================================================
-    private void manageSiteFamilies()
-    {
-        if (PogoProperty.siteName!=null          &&
-            PogoProperty.siteName.length()>0     &&
-            PogoProperty.siteClassFamilies!=null &&
-            PogoProperty.siteClassFamilies.size()>0 ) {
+    //===============================================================
+    private void manageSiteFamilies() {
+        if (PogoProperty.siteName != null &&
+                PogoProperty.siteName.length() > 0 &&
+                PogoProperty.siteClassFamilies != null &&
+                PogoProperty.siteClassFamilies.size() > 0) {
 
             siteButton.setText(PogoProperty.siteName + " Specific");
             siteButton.setVisible(true);
-        }
-        else {
+        } else {
             siteButton.setVisible(false);
         }
 
         //  Get selection, update the list, and re-do the selection
-        String	family = (String)familyComboBox.getSelectedItem();
-        if (siteButton.getSelectedObjects()==null)
-            familyComboBox.setModel(new DefaultComboBoxModel(PogoProperty.classFamilies));
+        String family = (String) familyComboBox.getSelectedItem();
+        if (siteButton.getSelectedObjects() == null)
+            familyComboBox.setModel(new DefaultComboBoxModel(
+                    toVector(PogoProperty.classFamilies)));
         else
-            familyComboBox.setModel(new DefaultComboBoxModel(PogoProperty.siteClassFamilies));
+            familyComboBox.setModel(new DefaultComboBoxModel(
+                    toVector(PogoProperty.siteClassFamilies)));
 
         familyComboBox.setSelectedItem(family);
     }
-	//===============================================================
-	//===============================================================
+    //===============================================================
+    //===============================================================
 
 
+    //===============================================================
+    //===============================================================
+    private void doClose() {
+        setVisible(false);
+        dispose();
+    }
 
-	//===============================================================
-	//===============================================================
-	private void doClose()
-	{
-		setVisible(false);
-		dispose();
-	}
-	//===============================================================
-	//===============================================================
-	public int showDialog()
-	{
-		setVisible(true);
-		return retVal;
-	}
-	//===============================================================
-	//===============================================================
-	public void checkInputs() throws DevFailed
-	{
-		if (Utils.isTrue(System.getenv("TEST_MODE")))
-			return;
+    //===============================================================
+    //===============================================================
+    public int showDialog() {
+        setVisible(true);
+        return retVal;
+    }
 
-		//	Check if Contact email is coherent
-		String	 contact = contactTxt.getText().trim();
-		int		pos = contact.indexOf('@');
-		if (pos<=0)
-			Except.throw_exception("SyntaxError",
+    //===============================================================
+    //===============================================================
+    public void checkInputs() throws DevFailed {
+        if (Utils.isTrue(System.getenv("TEST_MODE")))
+            return;
+
+        //	Check if Contact email is coherent
+        String contact = contactTxt.getText().trim();
+        int pos = contact.indexOf('@');
+        if (pos <= 0)
+            Except.throw_exception("SyntaxError",
                     "email is not available",
                     "DeviceId.CheckInputs()");
 
-		int		pos2 = contact.indexOf('.', pos);
-		if (pos2<=0 || contact.length()-pos2<3)
+        int pos2 = contact.indexOf('.', pos);
+        if (pos2 <= 0 || contact.length() - pos2 < 3)
             Except.throw_exception("SyntaxError",
-			        "email is not available",
+                    "email is not available",
                     "DeviceId.CheckInputs()");
 
-		String	family = (String)familyComboBox.getSelectedItem();
-		if (family==null || family.trim().length()==0)
+        String family = (String) familyComboBox.getSelectedItem();
+        if (family == null || family.trim().length() == 0)
             Except.throw_exception("SyntaxError",
-			        "Class family is not available",
-                       "DeviceId.CheckInputs()");
-
-		String	 bus = (String)busComboBox.getSelectedItem();
-		if (bus==null || bus.trim().length()==0)
-            Except.throw_exception("SyntaxError",
-        			"Bus is not available",
+                    "Class family is not available",
                     "DeviceId.CheckInputs()");
 
-		//System.out.println(getInputs());
-	}
-	//===============================================================
-	//===============================================================
-    public static void buildIdContact(ClassIdentification id, String str)
-    {
+        String bus = (String) busComboBox.getSelectedItem();
+        if (bus == null || bus.trim().length() == 0)
+            Except.throw_exception("SyntaxError",
+                    "Bus is not available",
+                    "DeviceId.CheckInputs()");
+
+        //System.out.println(getInputs());
+    }
+
+    //===============================================================
+    //===============================================================
+    public static void buildIdContact(ClassIdentification id, String str) {
         StringTokenizer stk = new StringTokenizer(str, "@");
         id.setAuthor(stk.nextToken());
         id.setEmailDomain(stk.nextToken());
         id.setContact("at " + id.getEmailDomain() + " - " + id.getAuthor());
     }
-	//===============================================================
-	//===============================================================
-	public ClassIdentification getInputs()
-	{
-		if (id==null)
-			id = OAWutils.factory.createClassIdentification();
-			
-		String	platform = (String)platformComboBox.getSelectedItem();
-		String	family   = (String)familyComboBox.getSelectedItem();
-		String	bus      = (String)busComboBox.getSelectedItem();
-		
-		String	site = "";
-		if (siteButton.isVisible()  &&
-			siteButton.getSelectedObjects()!=null)
-			site = PogoProperty.siteName;
+
+    //===============================================================
+    //===============================================================
+    public ClassIdentification getInputs() {
+        if (id == null)
+            id = OAWutils.factory.createClassIdentification();
+
+        String platform = (String) platformComboBox.getSelectedItem();
+        String family = (String) familyComboBox.getSelectedItem();
+        String bus = (String) busComboBox.getSelectedItem();
+
+        String site = "";
+        if (siteButton.isVisible() &&
+                siteButton.getSelectedObjects() != null)
+            site = PogoProperty.siteName;
 
         buildIdContact(id, contactTxt.getText().trim());
         id.setClassFamily(family);
-		id.setSiteSpecific(site);
-		id.setPlatform(platform);
-		id.setBus(bus);
-		id.setManufacturer(manufacturerTxt.getText().trim());
-		id.setReference(referenceTxt.getText().trim());
+        id.setSiteSpecific(site);
+        id.setPlatform(platform);
+        id.setBus(bus);
+        id.setManufacturer(manufacturerTxt.getText().trim());
+        id.setReference(referenceTxt.getText().trim());
         return id;
-	}
+    }
 
 
-
-
-
-
-	//===============================================================
+    //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox busComboBox;
     private javax.swing.JPanel centerPanel;
@@ -568,5 +567,5 @@ public class DeviceIdDialog extends JDialog
     private javax.swing.JRadioButton siteButton;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
-	//===============================================================
+    //===============================================================
 }
