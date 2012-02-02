@@ -59,6 +59,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/identification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/comments"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasMandatoryProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasConcreteProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasAbstractCommand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/hasAbstractAttribute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//ClassDescription/descriptionHtmlExists"/>

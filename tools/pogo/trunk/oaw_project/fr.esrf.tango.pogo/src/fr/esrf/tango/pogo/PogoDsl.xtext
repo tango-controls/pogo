@@ -103,6 +103,7 @@ ClassDescription:
 	identification = ClassIdentification
 	comments       = Comments
 	hasMandatoryProperty  = Boolean
+	hasConcreteProperty   = Boolean
 	hasAbstractCommand    = Boolean
 	hasAbstractAttribute  = Boolean
 	descriptionHtmlExists = Boolean	//	File from pogo-6

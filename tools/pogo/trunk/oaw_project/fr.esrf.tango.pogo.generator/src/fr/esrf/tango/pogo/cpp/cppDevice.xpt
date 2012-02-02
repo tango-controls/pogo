@@ -37,7 +37,7 @@ namespace «name»_ns
 
 «EXPAND device::initialize::cppFile-»
 
-«IF deviceProperties.size > 0-»
+«IF description.hasConcreteProperty=="true"-»
 «EXPAND device::properties::cppFile-»
 «ENDIF»
 «EXPAND alwaysExecutedHookMethod»

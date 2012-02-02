@@ -677,6 +677,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         identification=ClassIdentification 
 	 *         comments=Comments 
 	 *         hasMandatoryProperty=Boolean 
+	 *         hasConcreteProperty=Boolean 
 	 *         hasAbstractCommand=Boolean 
 	 *         hasAbstractAttribute=Boolean 
 	 *         descriptionHtmlExists=Boolean
@@ -692,6 +693,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *    identification[1, 1]
 	 *    comments[1, 1]
 	 *    hasMandatoryProperty[1, 1]
+	 *    hasConcreteProperty[1, 1]
 	 *    hasAbstractCommand[1, 1]
 	 *    hasAbstractAttribute[1, 1]
 	 *    descriptionHtmlExists[1, 1]

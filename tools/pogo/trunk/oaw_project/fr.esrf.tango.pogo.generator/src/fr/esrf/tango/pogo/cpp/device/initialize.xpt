@@ -30,7 +30,7 @@ void «name»::init_device()
 		«superClassNameConstr(description.getInheritance())»_ns::«superClassNameConstr(description.getInheritance())»::init_device();
 	}«ENDIF»
 
-	«IF deviceProperties.size > 0-»
+	«IF description.hasConcreteProperty=="true"-»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("init_device_before", "//	Initialization before get_device_property() call")-»
 	
 	//	Get the device properties (if any) from database

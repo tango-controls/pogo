@@ -1183,16 +1183,34 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyBooleanParserRuleCall_10_0()); 
 	    }
-		lv_hasAbstractCommand_10_0=ruleBoolean		{
+		lv_hasConcreteProperty_10_0=ruleBoolean		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
+	        }
+       		set(
+       			$current, 
+       			"hasConcreteProperty",
+        		lv_hasConcreteProperty_10_0, 
+        		"Boolean");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_11_0()); 
+	    }
+		lv_hasAbstractCommand_11_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"hasAbstractCommand",
-        		lv_hasAbstractCommand_10_0, 
+        		lv_hasAbstractCommand_11_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1201,16 +1219,16 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_12_0()); 
 	    }
-		lv_hasAbstractAttribute_11_0=ruleBoolean		{
+		lv_hasAbstractAttribute_12_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"hasAbstractAttribute",
-        		lv_hasAbstractAttribute_11_0, 
+        		lv_hasAbstractAttribute_12_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1219,16 +1237,16 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); 
 	    }
-		lv_descriptionHtmlExists_12_0=ruleBoolean		{
+		lv_descriptionHtmlExists_13_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"descriptionHtmlExists",
-        		lv_descriptionHtmlExists_12_0, 
+        		lv_descriptionHtmlExists_13_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
