@@ -97,7 +97,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win32_vc10\win32_dll\include;$(TANGO_ROOT)\classes\win32_vc10\win32_dll\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("32")-»
       <PreprocessorDefinitions>NDEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -141,7 +141,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win64_vc10\win64\include;$(TANGO_ROOT)\classes\win64_vc10\win64_dll\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("64")-»
       <PreprocessorDefinitions>NDEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -183,7 +183,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win32_vc10\win32_dll\include;$(TANGO_ROOT)\classes\win32_vc10\win32_dll\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("32")-»
       <PreprocessorDefinitions>_DEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -225,7 +225,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win64_vc10\win64\include;$(TANGO_ROOT)\classes\win64_vc10\win64_dll\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("64")-»
       <PreprocessorDefinitions>_DEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
