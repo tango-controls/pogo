@@ -59,3 +59,71 @@ Global
 EndGlobal
 «ENDFILE»
 «ENDDEFINE»
+
+
+
+
+#=============================================================================
+#	Add Source files
+#=============================================================================
+«DEFINE addSourceFiles FOR PogoDeviceClass-»
+	<ClCompile Include="..\«name».cpp" />
+	<ClCompile Include="..\«name»Class.cpp" />
+	<ClCompile Include="..\«name»StateMachine.cpp" />
+«ENDDEFINE»
+
+#=============================================================================
+#	Add include files
+#=============================================================================
+«DEFINE addIncludeFiles(String tag) FOR PogoDeviceClass-»
+	<ClInclude Include="..\«name».h">«tag»</ClInclude>
+	<ClInclude Include="..\«name»Class.h">«tag»</ClInclude>
+«ENDDEFINE»
+
+#=============================================================================
+#	Add inheritance Source files if any
+#=============================================================================
+«DEFINE addInheritanceSourceFiles FOR PogoDeviceClass-»
+«IF description.hasInheritanceClass()-»
+«FOREACH description.inheritances AS inheritance-»
+«IF inheritance.isInheritanceClass()-»
+	<ClCompile Include="«inheritance.sourcePath»/«inheritance.classname».cpp" />
+	<ClCompile Include="«inheritance.sourcePath»/«inheritance.classname»Class.cpp" />
+	<ClCompile Include="«inheritance.sourcePath»/«inheritance.classname»StateMachine.cpp" />
+«ENDIF-»
+«ENDFOREACH-»
+«ENDIF-»
+«ENDDEFINE»
+
+#=============================================================================
+#	Add inheritance include files if any
+#=============================================================================
+«DEFINE addInheritanceIncludeFiles(String tag) FOR PogoDeviceClass-»
+«IF description.hasInheritanceClass()-»
+«FOREACH description.inheritances AS inheritance-»
+«IF inheritance.isInheritanceClass()-»
+	<ClInclude Include="«inheritance.sourcePath»/«inheritance.classname».h">«tag»</ClInclude>
+	<ClInclude Include="«inheritance.sourcePath»/«inheritance.classname»Class.h">«tag»</ClInclude>
+«ENDIF»
+«ENDFOREACH-»
+«ENDIF-»
+«ENDDEFINE»
+
+#=============================================================================
+#	Add include files path
+#	n nb bits (32/64)
+#=============================================================================
+«DEFINE addIncludePath(String n) FOR PogoDeviceClass-»
+      <AdditionalIncludeDirectories>
+..;$(TANGO_ROOT)\win«n»_vc10\win«n»\include;$(TANGO_ROOT)\classes\win«n»_vc10\win«n»\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)
+«EXPAND addInheritanceIncludePath»
+      </AdditionalIncludeDirectories>
+«ENDDEFINE»
+
+#=============================================================================
+#	Add include files path
+#	n nb bits (32/64)
+#=============================================================================
+«DEFINE addInheritanceIncludePath FOR PogoDeviceClass-»
+«FOREACH description.inheritances AS inheritance-»«IF inheritance.isInheritanceClass()-»«inheritance.sourcePath»;«ENDIF-»«ENDFOREACH-»
+«ENDDEFINE»

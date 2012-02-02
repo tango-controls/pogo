@@ -84,7 +84,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win32_vc10\win32\include;$(TANGO_ROOT)\classes\win32_vc10\win32\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("32")-»
       <PreprocessorDefinitions>WIN32;_WINSTATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <MinimalRebuild>true</MinimalRebuild>
@@ -105,7 +105,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win64_vc10\win64\include;$(TANGO_ROOT)\classes\win64_vc10\win64\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("64")-»
       <PreprocessorDefinitions>WIN32;_WINSTATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -126,7 +126,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win32_vc10\win32\include;$(TANGO_ROOT)\classes\win32_vc10\win32\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("32")-»
       <PreprocessorDefinitions>WIN32;_WINSTATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -151,7 +151,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..;$(TANGO_ROOT)\win64_vc10\win64\include;$(TANGO_ROOT)\classes\win64_vc10\win64\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      «EXPAND VC10_Project::addIncludePath("64")-»
       <PreprocessorDefinitions>WIN32;_WINSTATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -172,16 +172,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\«name».cpp" />
-    <ClCompile Include="..\«name»Class.cpp" />
-    <ClCompile Include="..\«name»StateMachine.cpp"/>
+	«EXPAND VC10_Project::addSourceFiles-»
 	«IF dynamicAttributes.size>0»<ClCompile Include="..\«name»DynAttrUtils.cpp" />«ENDIF»
 	«FOREACH additionalFiles AS file»<ClCompile Include="..\«file.name».cpp" />
 	«ENDFOREACH-»
+	«EXPAND VC10_Project::addInheritanceSourceFiles-»
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\«name».h" />
-    <ClInclude Include="..\«name»Class.h" />
+	«EXPAND VC10_Project::addIncludeFiles("")-»
+ 	«EXPAND VC10_Project::addInheritanceIncludeFiles("")-»
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
