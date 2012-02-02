@@ -37,6 +37,7 @@ package org.tango.pogo.pogo_gui;
 
 
 import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
+import fr.esrf.tango.pogo.pogoDsl.Inheritance;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.eclipse.emf.common.util.EList;
@@ -54,7 +55,7 @@ import java.util.ArrayList;
 public class GenerateDialog extends JDialog {
     private int mode = PogoConst.SINGLE_CLASS;
     private static int returnStatus;
-    private DeviceClass devclass;
+    private DeviceClass deviceClass;
     private ArrayList<JRadioButton> rBtn;
 
     //===================================================================
@@ -409,7 +410,12 @@ public class GenerateDialog extends JDialog {
                 if (makefileBtn.getSelectedObjects() != null ||
                         vc9Btn.getSelectedObjects() != null ||
                         vc10Btn.getSelectedObjects() != null) {
-                    doClose(manageMakefile()); //  Close dialog if OK
+                    
+                    int ret = manageMakefile();
+                    if (ret==JOptionPane.OK_OPTION)
+                        if (vc10Btn.getSelectedObjects()!=null)
+                            ret = manageWindowsPathCase();
+                    doClose(ret); //  Close dialog if OK
                 } else
                     doClose(JOptionPane.OK_OPTION);
             } else
@@ -441,6 +447,41 @@ public class GenerateDialog extends JDialog {
         }
 
     }//GEN-LAST:event_okBtnActionPerformed
+
+    //=============================================================
+    /**
+     * If windows project generated under Linux,
+     * Inheritance path must be a valid Windows path
+     * @return OK or CANCEL
+     */
+    //=============================================================
+    private int manageWindowsPathCase() {
+        //  ToDo
+       if (Utils.osIsUnix()) {
+
+           ArrayList<DeviceClass>   ancestors = deviceClass.getAncestors();
+           EList<Inheritance>   inheritances =
+                   deviceClass.getPogoDeviceClass().getDescription().getInheritances();
+           for (Inheritance inheritance : inheritances) {
+               if (!DeviceClass.isDefaultInheritance(inheritance)) {
+                   String path = inheritance.getSourcePath();
+                   String newPath = (String) JOptionPane.showInputDialog(this,
+                           "Inheritance class path for "+
+                           inheritance.getClassname() + "  is NOT a WINDOWS path !   "+
+                           "Please give a valid Windows path.",
+                           "Input Dialog",
+                           JOptionPane.INFORMATION_MESSAGE,
+                           null, null, path);
+                   if (newPath==null)
+                      return JOptionPane.CANCEL_OPTION;
+                  else
+                      inheritance.setSourcePath(newPath);
+               }
+           }
+       }
+       
+       return JOptionPane.OK_OPTION;
+    }
 
     //=============================================================
     //=============================================================
@@ -477,8 +518,8 @@ public class GenerateDialog extends JDialog {
     @SuppressWarnings({"UnusedDeclaration"})
     private void detailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsBtnActionPerformed
 
-        ArrayList<String> commands = devclass.getAbstractCommandNames();
-        ArrayList<String> attributes = devclass.getAbstractAttributeNames();
+        ArrayList<String> commands = deviceClass.getAbstractCommandNames();
+        ArrayList<String> attributes = deviceClass.getAbstractAttributeNames();
 
         String
                 message = buidDetailsString(commands, "command");
@@ -502,7 +543,7 @@ public class GenerateDialog extends JDialog {
     //======================================================
     public int showDialog(DeviceClass devclass) {
         mode = PogoConst.SINGLE_CLASS;
-        this.devclass = devclass;
+        this.deviceClass = devclass;
         String path = devclass.getPogoDeviceClass().getDescription().getSourcePath();
         if (path == null || !new File(path).exists())
             path = PogoGUI.homeDir;
@@ -625,10 +666,10 @@ public class GenerateDialog extends JDialog {
     //======================================================
     public DeviceClass getDevClass() {
         //	Set the output path from JTextField
-        devclass.getPogoDeviceClass().getDescription().setSourcePath(outPathText.getText());
+        deviceClass.getPogoDeviceClass().getDescription().setSourcePath(outPathText.getText());
         //	Set the list for generated files from dadio buttons
-        devclass.getPogoDeviceClass().getDescription().setFilestogenerate(getGenerated());
-        return devclass;
+        deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(getGenerated());
+        return deviceClass;
     }
     //======================================================
     //======================================================
@@ -682,8 +723,8 @@ public class GenerateDialog extends JDialog {
         String path = outPathText.getText();
         if (mode == PogoConst.SINGLE_CLASS &&
                 (generate || overwriteMakefile || overwriteVC9 || overwriteVC10)) {
-            String lang = devclass.getPogoDeviceClass().getDescription().getLanguage();
-            EList<AdditionalFile> files = devclass.getPogoDeviceClass().getAdditionalFiles();
+            String lang = deviceClass.getPogoDeviceClass().getDescription().getLanguage();
+            EList<AdditionalFile> files = deviceClass.getPogoDeviceClass().getAdditionalFiles();
             AdditionalFilesDialog dlg =
                     new AdditionalFilesDialog(this, files, path, Utils.getFileExtension(lang));
             if (dlg.showDialog() == JOptionPane.CANCEL_OPTION)
