@@ -396,7 +396,6 @@ public class Utils {
         return (b) ? "true" : "false";
     }
     //===============================================================
-
     /**
      * If str equals true, return "true" , otherwise return "false"
      *
@@ -408,7 +407,6 @@ public class Utils {
         return (isTrue(str)) ? "true" : "false";
     }
     //===============================================================
-
     /**
      * If str equals true, return true , otherwise return false
      *
@@ -419,6 +417,17 @@ public class Utils {
     public static boolean isTrue(String str) {
         return str != null && str.equals("true");
     }
+    //===============================================================
+    /**
+     * If str equals false or null, return true , otherwise return false
+     *
+     * @param str the specified input string
+     * @return true if str equals false or null, otherwise return false
+     */
+    //===============================================================
+    public static boolean isFalse(String str) {
+        return ! isTrue(str);
+    }
 
     //===============================================================
     //===============================================================
@@ -426,12 +435,11 @@ public class Utils {
         return str != null && str.length() > 0;
     }
     //===============================================================
-
     /**
      * Like String.equals() but check if input args are not null
      *
-     * @param str1 string 1 to be compeared
-     * @param str2 string 2 to be compeared
+     * @param str1 string 1 to be compared
+     * @param str2 string 2 to be compared
      * @return return true is str1 equals str2.
      */
     //===============================================================
