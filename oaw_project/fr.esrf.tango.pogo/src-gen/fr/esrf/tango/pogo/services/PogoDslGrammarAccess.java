@@ -617,12 +617,14 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCommentsCommentsParserRuleCall_8_0 = (RuleCall)cCommentsAssignment_8.eContents().get(0);
 		private final Assignment cHasMandatoryPropertyAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cHasMandatoryPropertyBooleanParserRuleCall_9_0 = (RuleCall)cHasMandatoryPropertyAssignment_9.eContents().get(0);
-		private final Assignment cHasAbstractCommandAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cHasAbstractCommandBooleanParserRuleCall_10_0 = (RuleCall)cHasAbstractCommandAssignment_10.eContents().get(0);
-		private final Assignment cHasAbstractAttributeAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cHasAbstractAttributeBooleanParserRuleCall_11_0 = (RuleCall)cHasAbstractAttributeAssignment_11.eContents().get(0);
-		private final Assignment cDescriptionHtmlExistsAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cDescriptionHtmlExistsBooleanParserRuleCall_12_0 = (RuleCall)cDescriptionHtmlExistsAssignment_12.eContents().get(0);
+		private final Assignment cHasConcretePropertyAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cHasConcretePropertyBooleanParserRuleCall_10_0 = (RuleCall)cHasConcretePropertyAssignment_10.eContents().get(0);
+		private final Assignment cHasAbstractCommandAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cHasAbstractCommandBooleanParserRuleCall_11_0 = (RuleCall)cHasAbstractCommandAssignment_11.eContents().get(0);
+		private final Assignment cHasAbstractAttributeAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cHasAbstractAttributeBooleanParserRuleCall_12_0 = (RuleCall)cHasAbstractAttributeAssignment_12.eContents().get(0);
+		private final Assignment cDescriptionHtmlExistsAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cDescriptionHtmlExistsBooleanParserRuleCall_13_0 = (RuleCall)cDescriptionHtmlExistsAssignment_13.eContents().get(0);
 		
 		////
 		////	Class information
@@ -634,8 +636,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	STRING "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 		//	language= //	Language to generate
 		//	Language filestogenerate= //	File(s) to generate (code, makefile,....)
-		//	STRING identification=ClassIdentification comments=Comments hasMandatoryProperty=Boolean hasAbstractCommand=Boolean
-		//	hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
+		//	STRING identification=ClassIdentification comments=Comments hasMandatoryProperty=Boolean hasConcreteProperty=Boolean
+		//	hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
 		//	Boolean;
 		public ParserRule getRule() { return rule; }
 
@@ -645,8 +647,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 		//language= //	Language to generate
 		//Language filestogenerate= //	File(s) to generate (code, makefile,....)
-		//STRING identification=ClassIdentification comments=Comments hasMandatoryProperty=Boolean hasAbstractCommand=Boolean
-		//hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
+		//STRING identification=ClassIdentification comments=Comments hasMandatoryProperty=Boolean hasConcreteProperty=Boolean
+		//hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
 		//Boolean
 		public Group getGroup() { return cGroup; }
 
@@ -717,25 +719,31 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Boolean
 		public RuleCall getHasMandatoryPropertyBooleanParserRuleCall_9_0() { return cHasMandatoryPropertyBooleanParserRuleCall_9_0; }
 
-		//hasAbstractCommand=Boolean
-		public Assignment getHasAbstractCommandAssignment_10() { return cHasAbstractCommandAssignment_10; }
+		//hasConcreteProperty=Boolean
+		public Assignment getHasConcretePropertyAssignment_10() { return cHasConcretePropertyAssignment_10; }
 
 		//Boolean
-		public RuleCall getHasAbstractCommandBooleanParserRuleCall_10_0() { return cHasAbstractCommandBooleanParserRuleCall_10_0; }
+		public RuleCall getHasConcretePropertyBooleanParserRuleCall_10_0() { return cHasConcretePropertyBooleanParserRuleCall_10_0; }
+
+		//hasAbstractCommand=Boolean
+		public Assignment getHasAbstractCommandAssignment_11() { return cHasAbstractCommandAssignment_11; }
+
+		//Boolean
+		public RuleCall getHasAbstractCommandBooleanParserRuleCall_11_0() { return cHasAbstractCommandBooleanParserRuleCall_11_0; }
 
 		//hasAbstractAttribute=Boolean
-		public Assignment getHasAbstractAttributeAssignment_11() { return cHasAbstractAttributeAssignment_11; }
+		public Assignment getHasAbstractAttributeAssignment_12() { return cHasAbstractAttributeAssignment_12; }
 
 		//Boolean
-		public RuleCall getHasAbstractAttributeBooleanParserRuleCall_11_0() { return cHasAbstractAttributeBooleanParserRuleCall_11_0; }
+		public RuleCall getHasAbstractAttributeBooleanParserRuleCall_12_0() { return cHasAbstractAttributeBooleanParserRuleCall_12_0; }
 
 		//descriptionHtmlExists= //	File from pogo-6
 		//Boolean
-		public Assignment getDescriptionHtmlExistsAssignment_12() { return cDescriptionHtmlExistsAssignment_12; }
+		public Assignment getDescriptionHtmlExistsAssignment_13() { return cDescriptionHtmlExistsAssignment_13; }
 
 		////	File from pogo-6
 		//Boolean
-		public RuleCall getDescriptionHtmlExistsBooleanParserRuleCall_12_0() { return cDescriptionHtmlExistsBooleanParserRuleCall_12_0; }
+		public RuleCall getDescriptionHtmlExistsBooleanParserRuleCall_13_0() { return cDescriptionHtmlExistsBooleanParserRuleCall_13_0; }
 	}
 
 	public class InheritanceElements extends AbstractParserRuleElementFinder {
@@ -2819,8 +2827,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	STRING "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 	//	language= //	Language to generate
 	//	Language filestogenerate= //	File(s) to generate (code, makefile,....)
-	//	STRING identification=ClassIdentification comments=Comments hasMandatoryProperty=Boolean hasAbstractCommand=Boolean
-	//	hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
+	//	STRING identification=ClassIdentification comments=Comments hasMandatoryProperty=Boolean hasConcreteProperty=Boolean
+	//	hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
 	//	Boolean;
 	public ClassDescriptionElements getClassDescriptionAccess() {
 		return (pClassDescription != null) ? pClassDescription : (pClassDescription = new ClassDescriptionElements());

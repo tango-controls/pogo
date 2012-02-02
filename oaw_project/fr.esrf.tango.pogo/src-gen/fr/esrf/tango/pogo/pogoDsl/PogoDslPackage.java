@@ -525,13 +525,22 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY = 8;
 
   /**
+   * The feature id for the '<em><b>Has Concrete Property</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY = 9;
+
+  /**
    * The feature id for the '<em><b>Has Abstract Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 9;
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 10;
 
   /**
    * The feature id for the '<em><b>Has Abstract Attribute</b></em>' attribute.
@@ -540,7 +549,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 10;
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 11;
 
   /**
    * The feature id for the '<em><b>Description Html Exists</b></em>' attribute.
@@ -549,7 +558,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 11;
+  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 12;
 
   /**
    * The number of structural features of the '<em>Class Description</em>' class.
@@ -558,7 +567,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION_FEATURE_COUNT = 12;
+  int CLASS_DESCRIPTION_FEATURE_COUNT = 13;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -2788,6 +2797,17 @@ public interface PogoDslPackage extends EPackage
   EAttribute getClassDescription_HasMandatoryProperty();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasConcreteProperty <em>Has Concrete Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Concrete Property</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasConcreteProperty()
+   * @see #getClassDescription()
+   * @generated
+   */
+  EAttribute getClassDescription_HasConcreteProperty();
+
+  /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasAbstractCommand <em>Has Abstract Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4644,6 +4664,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY = eINSTANCE.getClassDescription_HasMandatoryProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Has Concrete Property</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY = eINSTANCE.getClassDescription_HasConcreteProperty();
 
     /**
      * The meta object literal for the '<em><b>Has Abstract Command</b></em>' attribute feature.

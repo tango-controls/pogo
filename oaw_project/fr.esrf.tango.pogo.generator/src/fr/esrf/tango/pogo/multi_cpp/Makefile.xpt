@@ -294,7 +294,7 @@ ADDITIONAL_OBJS = «FOREACH classes AS _class-»«FOREACH _class.additionalFiles AS
 #=============================================================================
 «DEFINE classDependancy(OneClassSimpleDef _class, String str) FOR PogoMultiClasses-»
 $(OBJDIR)/«_class.classname»«str».o: $(«_class.classname.toUpperCase()»_HOME)/«_class.classname»«str».cpp $(«_class.makeVariable("_INCL")»)
-	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«_class.classname»«str».o
+	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/«_class.classname»«str».o
 «ENDDEFINE»
 
 #=============================================================================
@@ -302,7 +302,7 @@ $(OBJDIR)/«_class.classname»«str».o: $(«_class.classname.toUpperCase()»_HOME)/«_
 #=============================================================================
 «DEFINE inheritanceDependancy(Inheritance inher, String str) FOR PogoMultiClasses-»
 $(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inher.classname»«str».cpp $(«inher.makeVariable("_INCL")»)
-	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
+	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
 «ENDDEFINE»
 
 #=============================================================================
@@ -313,7 +313,7 @@ $(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inh
 «FOREACH classes AS _class-»«FOREACH _class.additionalFiles AS file-»
 «file.name.toUpperCase()»_HOME = «_class.sourcePath»
 $(OBJDIR)/«file.name».o: $(«file.name.toUpperCase()»_HOME)/«file.name».cpp $(«_class.makeVariable("_INCL")»)
-	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«file.name».o
+	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/«file.name».o
 «ENDFOREACH-»«ENDFOREACH-»
 «ENDDEFINE»
 

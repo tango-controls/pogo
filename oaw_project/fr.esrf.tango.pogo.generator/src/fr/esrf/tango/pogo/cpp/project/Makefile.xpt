@@ -261,7 +261,7 @@ SVC_«inheritance.classname.toUpperCase()»_OBJ = \
 #=============================================================================
 «DEFINE inheritanceDependancy(Inheritance inher, String str) FOR PogoDeviceClass-»
 $(OBJDIR)/«inher.classname»«str».o: $(«inher.classname.toUpperCase()»_HOME)/«inher.classname»«str».cpp $(«inher.makeVariable("_INCL")»)
-	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
+	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/«inher.classname»«str».o
 «ENDDEFINE»
 
 #=============================================================================

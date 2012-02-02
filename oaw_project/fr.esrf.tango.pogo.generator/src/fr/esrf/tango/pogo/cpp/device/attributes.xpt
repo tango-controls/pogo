@@ -121,7 +121,8 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 //	=========================================================
 //	Define The method to read attribute hardware
 //	=========================================================
-«DEFINE readAttributeHardwareMethod FOR PogoDeviceClass»void «name»::read_attr_hardware(vector<long> &attr_list)
+«DEFINE readAttributeHardwareMethod FOR PogoDeviceClass-»
+void «name»::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
 {
 	DEBUG_STREAM << "«name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("read_attr_hardware", "//	Add your own code")»

@@ -4278,9 +4278,9 @@ rule__ClassDescription__Group__10__Impl
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10()); }
-(rule__ClassDescription__HasAbstractCommandAssignment_10)
-{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_10()); }
+{ before(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyAssignment_10()); }
+(rule__ClassDescription__HasConcretePropertyAssignment_10)
+{ after(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyAssignment_10()); }
 )
 
 ;
@@ -4307,9 +4307,9 @@ rule__ClassDescription__Group__11__Impl
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11()); }
-(rule__ClassDescription__HasAbstractAttributeAssignment_11)
-{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_11()); }
+{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_11()); }
+(rule__ClassDescription__HasAbstractCommandAssignment_11)
+{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandAssignment_11()); }
 )
 
 ;
@@ -4324,6 +4324,7 @@ rule__ClassDescription__Group__12
     }
 :
 	rule__ClassDescription__Group__12__Impl
+	rule__ClassDescription__Group__13
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4335,15 +4336,45 @@ rule__ClassDescription__Group__12__Impl
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12()); }
-(rule__ClassDescription__DescriptionHtmlExistsAssignment_12)
-{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_12()); }
+{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_12()); }
+(rule__ClassDescription__HasAbstractAttributeAssignment_12)
+{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeAssignment_12()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ClassDescription__Group__13
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClassDescription__Group__13__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassDescription__Group__13__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13()); }
+(rule__ClassDescription__DescriptionHtmlExistsAssignment_13)
+{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsAssignment_13()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -9825,14 +9856,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassDescription__HasAbstractCommandAssignment_10
+rule__ClassDescription__HasConcretePropertyAssignment_10
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0()); }
-	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_10_0()); }
+{ before(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyBooleanParserRuleCall_10_0()); }
+	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyBooleanParserRuleCall_10_0()); }
 )
 
 ;
@@ -9840,14 +9871,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassDescription__HasAbstractAttributeAssignment_11
+rule__ClassDescription__HasAbstractCommandAssignment_11
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0()); }
-	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_11_0()); }
+{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_11_0()); }
+	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_11_0()); }
 )
 
 ;
@@ -9855,14 +9886,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassDescription__DescriptionHtmlExistsAssignment_12
+rule__ClassDescription__HasAbstractAttributeAssignment_12
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); }
-	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_12_0()); }
+{ before(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_12_0()); }
+	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_12_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassDescription__DescriptionHtmlExistsAssignment_13
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); }
+	ruleBoolean{ after(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_13_0()); }
 )
 
 ;

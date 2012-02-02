@@ -38,7 +38,7 @@ namespace «name»_ns
 «FOREACH attributes AS att»
 «EXPAND Common::methodHeader("is_" + att.name + "State_allowed",
 		"Execution allowed for " + att.name + " attribute.")»
-bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
+bool «name»::is_«att.name»_allowed(TANGO_UNUSED(Tango::AttReqType type))
 {
 «IF att.rwType.contains("WRITE")-»
 	//	Check if access type.
@@ -75,7 +75,7 @@ bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 «FOREACH dynamicAttributes AS att»
 «EXPAND Common::methodHeader("is_" + att.name + "State_allowed",
 		"Execution allowed for " + att.name + " attribute.")»
-bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
+bool «name»::is_«att.name»_allowed(TANGO_UNUSED(Tango::AttReqType type))
 {
 «IF att.rwType.contains("WRITE")-»
 	//	Check if access type.
@@ -116,7 +116,7 @@ bool «name»::is_«att.name»_allowed(Tango::AttReqType type)
 «IF cmd.name.toLowerCase()!="state" && cmd.name.toLowerCase()!="status"-»
 «EXPAND Common::methodHeader("is_" + cmd.name + "State_allowed",
 		"Execution allowed for " + cmd.name + " command.")»
-bool «name»::is_«cmd.name»_allowed(const CORBA::Any &any)
+bool «name»::is_«cmd.name»_allowed(TANGO_UNUSED(const CORBA::Any &any))
 {
 «IF cmd.excludedStates.size>0-»
 «EXPAND checkExcludedStates(cmd.excludedStates, "command", "\t")-»

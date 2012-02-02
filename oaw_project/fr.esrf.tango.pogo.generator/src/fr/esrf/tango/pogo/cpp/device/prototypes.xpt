@@ -59,10 +59,12 @@ public: «FOREACH commands AS cmd»
 	 *	Initialize the device
 	 */
 	virtual void init_device();
+	«IF description.hasConcreteProperty=="true"-»
 	/**
 	 *	Read the device properties from database
 	 */
 	 void get_device_property();
+	 «ENDIF-»
 	/**
 	 *	Always executed method before execution command method.
 	 */

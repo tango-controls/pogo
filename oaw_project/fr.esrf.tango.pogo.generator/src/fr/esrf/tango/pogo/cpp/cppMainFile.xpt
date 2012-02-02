@@ -19,12 +19,11 @@ static const char *RcsId = "$Id: $";
 
 int main(int argc,char *argv[])
 {
-	Tango::Util *tg = NULL;
 	try
 	{
 		// Initialise the device server
 		//----------------------------------------
-		tg = Tango::Util::init(argc,argv);
+		Tango::Util *tg = Tango::Util::init(argc,argv);
 
 		// Create the device server singleton 
 		//	which will create everything
@@ -48,8 +47,7 @@ int main(int argc,char *argv[])
 		cout << "Received a CORBA_Exception" << endl;
 		cout << "Exiting" << endl;
 	}
-	if (tg!=NULL)
-		tg->server_cleanup();
+	Tango::Util::instance()->server_cleanup();
 	return(0);
 }
 «ENDPROTECT»
