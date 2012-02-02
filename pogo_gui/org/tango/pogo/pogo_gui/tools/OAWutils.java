@@ -358,22 +358,27 @@ public class OAWutils {
         if (pogo_class.getDescription().getFilestogenerate().contains("html")) {
             String filename = pogo_class.getDescription().getSourcePath() + "/" +
                     pogo_class.getPreferences().getDocHome() + "/Description.html";
-            if (new File(filename).exists())
-                pogo_class.getDescription().setDescriptionHtmlExists("true");
-            else
-                pogo_class.getDescription().setDescriptionHtmlExists("false");
+            pogo_class.getDescription().setDescriptionHtmlExists(
+                        Utils.strBoolean(new File(filename).exists()));
         }
 
         //  Check if at least one device property is mandatory
+        //  Check also if at least on property is concrete
         EList<Property> properties = pogo_class.getDeviceProperties();
         boolean hasMandatory = false;
+        boolean hasConcrete  = false;
         for (Property property : properties) {
             if (Utils.isTrue(property.getMandatory())) {
                 hasMandatory = true;
             }
+            //System.out.println(property.getName()+":\t" +
+            //    property.getStatus().getInherited() + );
+            if (Utils.isFalse(property.getStatus().getInherited())) {
+                hasConcrete = true;
+            }
         }
-        if (hasMandatory)
-            pogo_class.getDescription().setHasMandatoryProperty("true");
+        pogo_class.getDescription().setHasMandatoryProperty(Utils.strBoolean(hasMandatory));
+        pogo_class.getDescription().setHasConcreteProperty(Utils.strBoolean(hasConcrete));
     }
 
     //========================================================================
