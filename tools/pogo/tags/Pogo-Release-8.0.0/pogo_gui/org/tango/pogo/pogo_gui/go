@@ -1,0 +1,43 @@
+
+SITE_PROP=$TANGO_HOME/tools/pogo/properties.test
+
+CLASSPATH=$SITE_PROP:$DEFAULT_PROP:$CLASSPATH
+echo $CLASSPATH
+
+
+
+
+export DEBUG=true
+#export DEBUG_MAKE=true
+export DBG_JAVA=true
+export DBG_PYTHON=true
+export TEST_MODE=true
+export INSTITUTE=ESRF
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/PowerSupply
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1//make_test/toto/old
+export SOURCE_PATH=/segfs/tango/cppserver/machine
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/test_oaw
+
+
+#export INHERIT_HOME=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/tmp
+SUPER_HOME=/segfs/tango/templates/AbstractClasses
+
+
+java  -DSUPER_HOME=$SUPER_HOME \
+	org.tango.pogo.pogo_gui.Pogo $*
+
+
+#		org.tango.pogo.pogo_gui.tools.ParserTool \
+#		-xmi-clean /segfs/tango/tools/pogo/test/cpp/test_oaw-1/test_1/Test_1.xmi
+
+
+ 
+#		org.tango.pogo.pogo_gui.Pogo 
+
+#		-multi
+
+
+#		org.tango.pogo.pogo_gui.tools.ProtectedAreaManager  \
+#		../../../../../test/cpp/test_oaw-1/test_1/Test_1.xmi 
+

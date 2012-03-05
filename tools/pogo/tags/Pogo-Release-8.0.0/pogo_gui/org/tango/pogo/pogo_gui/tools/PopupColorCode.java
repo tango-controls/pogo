@@ -1,0 +1,244 @@
+//+======================================================================
+//
+// Project:   Tango
+//
+// Description:  Basic Dialog Class to display color info.
+//
+// $Author: verdier $
+//
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
+//						European Synchrotron Radiation Facility
+//                      BP 220, Grenoble 38043
+//                      FRANCE
+//
+// This file is part of Tango.
+//
+// Tango is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// Tango is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with Tango.  If not, see <http://www.gnu.org/licenses/>.
+//
+// $Revision: $
+// $Date:  $
+//
+// $HeadURL: $
+//
+//-======================================================================
+
+package org.tango.pogo.pogo_gui.tools;
+
+import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+
+import javax.swing.*;
+import java.awt.*;
+
+
+//===============================================================
+
+/**
+ * JDialog Class to display info
+ *
+ * @author Pascal Verdier
+ */
+//===============================================================
+
+
+public class PopupColorCode extends JDialog {
+    //===============================================================
+    private class InherStatus {
+        private ImageIcon icon;
+        private String description;
+
+        private InherStatus(ImageIcon icon, String desc) {
+            this.icon = icon;
+            description = desc;
+        }
+    }
+
+    //===============================================================
+    private final InherStatus[] inherSatus = {
+            new InherStatus(Utils.getInstance().abstract_icon,
+                    "Abstract item inherited from parent class"),
+            new InherStatus(Utils.getInstance().inherited_icon,
+                    "Concrete item inherited from parent class"),
+            new InherStatus(Utils.getInstance().overloaded_icon,
+                    "Concrete item defined in this class"),
+    };
+
+
+    //===============================================================
+
+    /**
+     * Creates new form PopupColorCode
+     *
+     * @param parent the parent form instance
+     */
+    //===============================================================
+    public PopupColorCode(JFrame parent) {
+        super(parent, true);
+        initComponents();
+
+        buildColorPanel();
+        titleLabel.setText("Pogo color code");
+
+        pack();
+        ATKGraphicsUtils.centerDialog(this);
+    }
+
+    //===============================================================
+    //===============================================================
+    private void buildColorPanel() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridy = 0;
+        gbc.insets = new Insets(5, 10, 5, 10);
+
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        centerPanel.add(new JSeparator(), gbc);
+        gbc.gridy++;
+
+        for (InherStatus is : inherSatus) {
+            gbc.fill = 0;
+            gbc.gridx = 0;
+            centerPanel.add(new JLabel(is.icon), gbc);
+
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.gridx = 1;
+            centerPanel.add(new JLabel(is.description), gbc);
+            gbc.gridy++;
+        }
+
+        gbc.gridx = 1;
+        centerPanel.add(new JSeparator(), gbc);
+        gbc.gridy++;
+
+        gbc.gridx = 0;
+        centerPanel.add(new JLabel("Value"), gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        centerPanel.add(new JLabel("Item can be controlled by expert and operator level."), gbc);
+        gbc.gridy++;
+
+        JLabel lbl;
+        gbc.gridx = 0;
+        lbl = new JLabel("Value");
+        lbl.setForeground(Color.blue);
+        centerPanel.add(lbl, gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        centerPanel.add(new JLabel("Item can be controlled by expert only."), gbc);
+        gbc.gridy++;
+
+        gbc.gridx = 0;
+        lbl = new JLabel("Value");
+        lbl.setForeground(Color.red);
+        centerPanel.add(lbl, gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        centerPanel.add(new JLabel("Inheritance item type has changed."), gbc);
+        gbc.gridy++;
+
+        centerPanel.add(new JSeparator(), gbc);
+    }
+    //===============================================================
+
+    /**
+     * This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    //===============================================================
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        javax.swing.JPanel topPanel = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        centerPanel = new javax.swing.JPanel();
+        javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
+        javax.swing.JButton dismisslBtn = new javax.swing.JButton();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closeDialog(evt);
+            }
+        });
+
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18));
+        titleLabel.setText("Dialog Title");
+        topPanel.add(titleLabel);
+
+        getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
+
+        centerPanel.setLayout(new java.awt.GridBagLayout());
+        getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
+
+        dismisslBtn.setText("Dismiss");
+        dismisslBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dismisslBtnActionPerformed(evt);
+            }
+        });
+        bottomPanel.add(dismisslBtn);
+
+        getContentPane().add(bottomPanel, java.awt.BorderLayout.SOUTH);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void dismisslBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dismisslBtnActionPerformed
+        doClose();
+    }//GEN-LAST:event_dismisslBtnActionPerformed
+
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
+        doClose();
+    }//GEN-LAST:event_closeDialog
+
+    //===============================================================
+
+    /**
+     * Closes the dialog
+     */
+    //===============================================================
+    private void doClose() {
+        setVisible(false);
+        dispose();
+    }
+
+    //===============================================================
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel centerPanel;
+    private javax.swing.JLabel titleLabel;
+    // End of variables declaration//GEN-END:variables
+    //===============================================================
+
+
+    //===============================================================
+
+    /**
+     * @param args the command line arguments
+     */
+    //===============================================================
+    public static void main(String args[]) {
+
+        new PopupColorCode(new JFrame()).setVisible(true);
+    }
+
+}

@@ -1,0 +1,273 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE cppFile FOR PogoDeviceClass»
+//===================================================================
+//	Factory methods
+//===================================================================
+
+«EXPAND deviceFactory»
+«EXPAND attributeFactory»
+«EXPAND commandFactory»
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the device_factory method
+//
+//	This factory does something only if class is not abstract
+//	A special case is managed for DataBase class
+//	=========================================================
+«DEFINE deviceFactory FOR PogoDeviceClass»
+«separator2()»
+/**
+ * method : 		«name»Class::device_factory
+ * description : 	Create the device object(s)
+ *                  and store them in the device list
+ *
+ * @param	*devlist_ptr	The device name list
+ */
+«separator2()»
+void «name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
+{
+«IF name=="DataBase"»
+	device_list.push_back(new DataBase(this, DataBase::db_name.c_str(),
+                                    	"TANGO database device server"));
+	export_device(device_list[0],"database");
+«ELSE»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"Class::device_factory_before",
+			"//	Add your own code")»
+	//	Create devices and add it into the device list
+	for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
+	{
+		cout4 << "Device name : " << (*devlist_ptr)[i].in() << endl;
+		device_list.push_back(new «name»(this, (*devlist_ptr)[i]));							 
+	}
+
+	//	Manage dynamic attributes if any
+	erase_dynamic_attributes(devlist_ptr, get_class_attr()->get_attr_list());
+
+	//	Export devices to the outside world
+	for (unsigned long i=1 ; i<=devlist_ptr->length() ; i++)
+	{
+		//	Add dynamic attributes if any
+		«name» *dev = static_cast<«name» *>(device_list[device_list.size()-i]);
+		dev->add_dynamic_attributes();
+
+		//	Check before if database used.
+		if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))
+			export_device(dev);
+		else
+			export_device(dev, dev->get_name().c_str());
+	}
+
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"Class::device_factory_after",
+			"//	Add your own code")»
+	«ELSE»
+
+	//	This class is not concrete and cannot implement devices
+
+	«ENDIF»
+«ENDIF-»
+}
+«ENDDEFINE»
+
+
+
+
+
+//	=========================================================
+//	Define the attribute_factory method
+//	=========================================================
+«DEFINE attributeFactory FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+			name + "Class::attribute_factory",
+			"Create the attribute object(s)\n" +
+			"and store them in the attribute list")-»
+void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
+{
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"Class::attribute_factory_before",
+			"//	Add your own code")»
+«IF description.hasInheritanceClass()-»
+	«description.getInheritance().classname»_ns::«
+		 description.getInheritance().classname»Class::attribute_factory(att_list);«ENDIF-»
+«EXPAND attributeCreation-»
+«IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
+	//	Create a list of static attributes
+	create_static_attribute_list(get_class_attr()->get_attr_list());
+
+«EXPAND overloadAttributePollingPeriod»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"Class::attribute_factory_after",
+			"//	Add your own code")»
+«ENDIF-»
+}
+«IF overlodedPollPeriodObject.size>0»«EXPAND getAttributeByName»«ENDIF»
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the attribute creation for attribute_factory
+//	=========================================================
+«DEFINE attributeCreation FOR PogoDeviceClass-»
+«FOREACH attributes AS att-»
+	«IF att.status.concreteHere=="true" && att.status.inherited=="false"-»
+	//	Attribute : «att.name»
+	«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
+	«EXPAND manageAttributeProperties(att)»
+	att_list.push_back(«att.name.toLowerCase()»);
+	«ENDIF»
+«ENDFOREACH»
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define code to overload attribute polling period if any
+//	=========================================================
+«DEFINE overloadAttributePollingPeriod FOR PogoDeviceClass-»
+«FOREACH overlodedPollPeriodObject AS obj-»«IF obj.type=="attribute"-»
+	//	Overload polling period for «obj.name»
+	Tango::Attr *«obj.name»Attr = get_attr_object_by_name(att_list, "«obj.name»");
+	if («obj.name»Attr != NULL)
+		«obj.name»Attr->set_polling_period(«obj.pollPeriod»);«ENDIF»
+«ENDFOREACH-»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define the set attribute properties part for attribute_factory
+//	=========================================================
+«DEFINE manageAttributeProperties(Attribute att) FOR PogoDeviceClass-»
+	Tango::UserDefaultAttrProp	«att.name.toLowerCase()»_prop;
+	«setAttributeProperty(att.name, "description",   att.properties.description.replaceAll("\n", "\\\\n"))»
+	«setAttributeProperty(att.name, "label",         att.properties.label)»
+	«setAttributeProperty(att.name, "unit",          att.properties.unit)»
+	«setAttributeProperty(att.name, "standard_unit", att.properties.standardUnit)»
+	«setAttributeProperty(att.name, "display_unit",  att.properties.displayUnit)»
+	«setAttributeProperty(att.name, "format",        att.properties.format)»
+	«setAttributeProperty(att.name, "max_value",     att.properties.maxValue)»
+	«setAttributeProperty(att.name, "min_value",     att.properties.minValue)»
+	«setAttributeProperty(att.name, "max_alarm",     att.properties.maxAlarm)»
+	«setAttributeProperty(att.name, "min_alarm",     att.properties.minAlarm)»
+	«setAttributeProperty(att.name, "max_warning",   att.properties.maxWarning)»
+	«setAttributeProperty(att.name, "min_warning",   att.properties.minWarning)»
+	«setAttributeProperty(att.name, "delta_t",       att.properties.deltaTime)»
+	«setAttributeProperty(att.name, "delta_val",     att.properties.deltaValue)»
+	«IF att.isDynamic!="true"»«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);«ENDIF»
+	«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);
+	«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
+	«EXPAND manageMemorized(att)»
+	«setAttributeFireEvent(att.name, "change",     att.changeEvent)»
+	«setAttributeFireEvent(att.name, "archive",    att.archiveEvent)»
+	«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define a little method to retreive Tango::Attr * object by name
+//	=========================================================
+«DEFINE getAttributeByName FOR PogoDeviceClass-»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::get_attr_by_name",
+		"returns Tango::Attr * object found by name")-»
+Tango::Attr *«name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname)
+{
+	vector<Tango::Attr *>::iterator it;
+	for (it=att_list.begin() ; it<att_list.end() ; it++)
+		if ((*it)->get_name()==attname)
+			return (*it);
+	//	Attr does not exist
+	return NULL;
+}
+«ENDDEFINE»
+
+
+
+
+
+
+//	=========================================================
+//	Define the memorized part for attribute_factory
+//	=========================================================
+«DEFINE manageMemorized(Attribute att) FOR PogoDeviceClass-»
+«IF att.memorized == "true"-»
+	«att.name.toLowerCase()»->set_memorized();
+	«IF att.memorizedAtInit == "true"-»
+	«att.name.toLowerCase()»->set_memorized_init(true);«ELSE-»
+	«att.name.toLowerCase()»->set_memorized_init(false);«ENDIF-»
+«ELSE-»
+	//	Not memorized
+«ENDIF-»
+«ENDDEFINE»
+
+
+
+
+//	=========================================================
+//	Define the command_factory method
+//	=========================================================
+«DEFINE commandFactory FOR PogoDeviceClass»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
+		name + "Class::command_factory",
+		"Create the command object(s)\n" +
+		"and store them in the command list")-»
+void «name»Class::command_factory()
+{
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::command_factory_before")»
+«IF description.hasInheritanceClass()-»
+	«description.getInheritance().classname»_ns::«description.getInheritance().classname»Class::command_factory();
+«ENDIF-»
+«IF description.inheritances.size>0 &&
+	description.inheritances.get(0).classname.startsWith("Device_")==false-»
+	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::command_factory();
+«ENDIF-»
+«EXPAND createCommands»
+«EXPAND overloadCommandPollingPeriod»
+«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+				"Class::command_factory_after")»
+}
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define code to create commands
+//	=========================================================
+«DEFINE createCommands FOR PogoDeviceClass»
+«FOREACH commands AS cmd-»
+	«IF cmd.status.inherited=="false" && cmd.status.concreteHere=="true"-»
+	//	Create «cmd.name» command object
+	«cmd.name»Class	*p«cmd.name»Cmd =
+		new «cmd.name»Class("«cmd.name»",
+			«cmd.argin.type.cppTypeEnum()», «cmd.argout.type.cppTypeEnum()»,
+			"«cmd.argin.description.inOneLine()»",
+			"«cmd.argout.description.inOneLine()»",
+			«cmd.cppDisplayLevel()»);
+	«cmd.cppSetPollingPeriod()»command_list.push_back(p«cmd.name»Cmd);
+	«ENDIF-»
+«ENDFOREACH»
+«ENDDEFINE»
+
+
+
+//	=========================================================
+//	Define code to overload polling period if any
+//	=========================================================
+«DEFINE overloadCommandPollingPeriod FOR PogoDeviceClass-»
+«FOREACH  overlodedPollPeriodObject AS obj-»«IF obj.type=="command"-»
+	//	Overload polling period for «obj.name»
+	Tango::Command &«obj.name»Cmd = get_cmd_by_name("«obj.name»");
+	«obj.name»Cmd.set_polling_period(«obj.pollPeriod»);«ENDIF»
+«ENDFOREACH-»
+«ENDDEFINE»
+
