@@ -8,9 +8,13 @@
 #
 #-======================================================================
 
-Pogo-7.6.0 - 01/02/2012:
+Pogo-8.0.0 - 05/03/2012:
 	Improve inheritance
 	Add polling on State and Status
+	Make corrections to remove warnings when compile with -Wall
+	Add ULong64 and ULong64Array.
+	Add DevEncoded for Command.
+	Fix a problem in non double dynamic attribute.
 
 Pogo-7.5.0 - 30/01/2012:
 	Win64/VC10 project added.

@@ -580,7 +580,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * Sort objects on specified collection
      */
     //===============================================================
-    @SuppressWarnings({"ConstantConditions"})
     private void sortItems() {
         //	Get all children nodes in a vector
         ArrayList<DefaultMutableTreeNode> v =
@@ -2157,15 +2156,15 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * MyCompare class to sort collection
      */
     //======================================================
-    class MyCompare implements Comparator {
-        public int compare(Object o1, Object o2) {
-            if (o1.toString().equals("State") ||
-                    o1.toString().equals("Status"))
+    class MyCompare implements Comparator<DefaultMutableTreeNode> {
+        public int compare(DefaultMutableTreeNode node1, DefaultMutableTreeNode node2) {
+            if (node1.toString().equals("State") ||
+                    node1.toString().equals("Status"))
                 return -1;
-            if (o2.toString().equals("State") ||
-                    o2.toString().equals("Status"))
+            if (node2.toString().equals("State") ||
+                    node2.toString().equals("Status"))
                 return -1;
-            return o1.toString().compareTo(o2.toString());
+            return node1.toString().compareTo(node2.toString());
         }
     }
 }
