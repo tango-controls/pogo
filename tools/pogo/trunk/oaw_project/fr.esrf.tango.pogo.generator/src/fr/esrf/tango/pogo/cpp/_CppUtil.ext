@@ -96,7 +96,7 @@ argoutDescription(Command this):
 executeCmdExtract(Command this):
 	argin.type.cppType()=="void"
 	? null
-	:	(argin.type.cppType().toString().endsWith("Array")
+	:	(argin.type.cppType().toString().endsWith("Array") || argin.type.cppType().toString().contains("Encoded")
 		?	"const " + argin.type.cppType().toString()+
 				"	*argin;\n	extract(in_any, argin);"
 		:	argin.type.cppType().toString()+
@@ -121,7 +121,7 @@ executeCmdInsert(PogoDeviceClass this, Command cmd):
 
 declareArgumentWithPointer(Argument this):
 	//	Check if pointer needed
-	type.cppType().toString().endsWith("Array")
+	type.cppType().toString().endsWith("Array") || type.cppType().toString().contains("Encoded")
 	?	type.cppType().toString() + " *"
 	:	type.cppType().toString() + " ";
 
@@ -129,7 +129,7 @@ declareArgumentWithPointer(Argument this):
 declareCmdArgin(Command this):
 	argin.type.cppType()=="void"
 	?	null
-	:	(argin.type.cppType().toString().endsWith("Array")
+	:	(argin.type.cppType().toString().endsWith("Array") || argin.type.cppType().toString().contains("Encoded")
 		?	"const " + argin.type.cppType().toString()+" *argin"
 		:	argin.type.cppType().toString()+" argin");
 
@@ -152,6 +152,17 @@ cppExculudeStatesClose(Command this):
 	excludedStates.size == 0
 	?	null
 	: "return false;\n\t}"; 
+
+//
+// ued to initialize dynamic scalar attribute
+//
+dynamicAttributeDefault(Attribute att):
+	(att.attType.toLowerCase()=="scalar") 
+	?	((att.dataType.toString().contains("Double") || att.dataType.toString().contains("Float"))	? "0.0"
+		: ((att.dataType.toString().contains("String"))			? "\"\""
+			: ((att.dataType.toString().contains("State"))		? "Tango::UNKNOWN"
+				: "0")))
+	: "ptr";
 
 //
 //	Inheritance util (return true if not the TangoDeviceImpl)

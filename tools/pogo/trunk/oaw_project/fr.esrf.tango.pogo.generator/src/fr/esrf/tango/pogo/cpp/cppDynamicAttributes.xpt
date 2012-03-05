@@ -84,7 +84,7 @@ void «name»::add_«att.name»_dynamic_attribute(string attname, «att.dataType.cppT
 	//	Create and add dynamic attribute
 	«IF att.attType!="Scalar"-»
 	if (ptr==NULL)
-		ptr = new double[«att.attAllocSize()»];
+		ptr = new «att.dataType.cppType().toString()»[«att.attAllocSize()»];
 	«ENDIF-»
 	«att.name»Attrib *«att.name.toLowerCase()» = new «att.name»Attrib(attname);
 	«EXPAND dserver::factories::manageAttributeProperties(att)»
@@ -92,7 +92,7 @@ void «name»::add_«att.name»_dynamic_attribute(string attname, «att.dataType.cppT
 			"att_"+att.name+"_dynamic_attribute")-»
 
 	«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);
-	«att.name»_data.insert(make_pair(attname, «IF att.attType=="Scalar"»0.0«ELSE»ptr«ENDIF»));
+	«att.name»_data.insert(make_pair(attname, «att.dynamicAttributeDefault()»));
     add_attribute(«att.name.toLowerCase()»);
 }
 «separator2()»
@@ -113,6 +113,8 @@ void «name»::remove_«att.name»_dynamic_attribute(string attname, bool free_it)
     map<string,«att.dataType.cppType().toString()»«IF att.attType!="Scalar"»*«ENDIF»>::iterator ite;
     if ((ite=«att.name»_data.find(attname))!=«att.name»_data.end())
     {
+	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
+			"remove_"+att.name+"_dynamic_attribute")-»
 	«IF att.attType!="Scalar"-»
 		if (free_it)
 			delete ite->second;
