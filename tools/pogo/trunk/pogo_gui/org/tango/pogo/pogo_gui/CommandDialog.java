@@ -168,13 +168,14 @@ public class CommandDialog extends JDialog {
         //	Initialize ComboBoxes
         for (String name : commandNames)
             nameComboBox.addItem(name);
-        //for (String type : TangoConst.Tango_CmdArgTypeName) {
-        for (int i = 0; i < TangoConst.Tango_CmdArgTypeName.length &&
-                i <= TangoConst.Tango_CONST_DEV_STRING; i++) {
 
-            String typeName = TangoConst.Tango_CmdArgTypeName[i];
-            arginComboBox.addItem(typeName);
-            argoutComboBox.addItem(typeName);
+        for (int i = 0; i < TangoConst.Tango_CmdArgTypeName.length ; i++) {
+            if (i != TangoConst.Tango_DEV_UCHAR &&
+                i != TangoConst.Tango_DEV_INT) {
+                String typeName = TangoConst.Tango_CmdArgTypeName[i];
+                arginComboBox.addItem(typeName);
+                argoutComboBox.addItem(typeName);
+            }
         }
 
         polledTxt.setEnabled(false);
