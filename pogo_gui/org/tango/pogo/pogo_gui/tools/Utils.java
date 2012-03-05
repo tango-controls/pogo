@@ -472,36 +472,24 @@ public class Utils {
             ErrorPane.showErrorMessage(component, null, e);
         }
     }
-
     //===============================================================
-    //===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-    public ArrayList sort(ArrayList v) {
-        MyCompare compare = new MyCompare();
-        //noinspection unchecked
-        Collections.sort(v, compare);
-        return v;
-    }
-    //===============================================================
-
     /**
      * Returns a vector of file names found in specified directory
      *
-     * @param dirname specified directory name
+     * @param dirName specified directory name
      * @return a vector of file names fond.
      */
     //===============================================================
-    @SuppressWarnings({"unchecked"})
-    public ArrayList<String> getFileList(String dirname) {
+    public ArrayList<String> getFileList(String dirName) {
         ArrayList<String> v = new ArrayList<String>();
-        File dir = new File(dirname);
-        String[] filenames = dir.list();
+        File dir = new File(dirName);
+        String[] fileNames = dir.list();
 
-        if (filenames == null)
+        if (fileNames == null)
             return v;
 
-        for (String name : filenames) {
-            String filename = dirname + "/" + name;
+        for (String name : fileNames) {
+            String filename = dirName + "/" + name;
             File f = new File(filename);
             if (!f.isDirectory())
                 v.add(name);
@@ -511,7 +499,6 @@ public class Utils {
         return v;
     }
     //===============================================================
-
     /**
      * Search a file from a directory (in it an sub directories)
      *
@@ -542,7 +529,6 @@ public class Utils {
         return null;
     }
     //===============================================================
-
     /**
      * Check if OS is Unix
      *
@@ -574,7 +560,6 @@ public class Utils {
         }
     }
     //===============================================================
-
     /**
      * Execute a shell command and throw exception if command failed.
      *
@@ -597,7 +582,6 @@ public class Utils {
     }
 
     //===============================================================
-
     /**
      * Check the files to be excluded by XPand scans
      *
@@ -684,7 +668,7 @@ public class Utils {
     //===============================================================
 
 
-    //  Multi line tooltip methods
+    //  Multi lines tooltip methods
     private static final String tooltipHeader =
             "<html><BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFD0\">";
 
@@ -838,15 +822,9 @@ public class Utils {
      * MyCompare class to sort collection
      */
     //======================================================
-    class MyCompare implements Comparator {
-        public int compare(Object o1, Object o2) {
-            if (o1 instanceof String &&
-                    o2 instanceof String) {
-                String s1 = o1.toString().toLowerCase();
-                String s2 = o2.toString().toLowerCase();
-                return s1.compareTo(s2);
-            } else
-                return o1.toString().compareTo(o2.toString());
+    class MyCompare implements Comparator<String> {
+        public int compare(String s1, String s2) {
+            return s1.compareTo(s2);
         }
     }
 }
