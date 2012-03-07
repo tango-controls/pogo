@@ -87,7 +87,7 @@ void «name»::add_«att.name»_dynamic_attribute(string attname, «att.dataType.cppT
 		ptr = new «att.dataType.cppType().toString()»[«att.attAllocSize()»];
 	«ENDIF-»
 	«att.name»Attrib *«att.name.toLowerCase()» = new «att.name»Attrib(attname);
-	«EXPAND dserver::factories::manageAttributeProperties(att)»
+	«EXPAND dserver::factories::manageAttributeProperties(att, "	")»
 	«EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"att_"+att.name+"_dynamic_attribute")-»
 
