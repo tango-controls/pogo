@@ -96,36 +96,41 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 			"Class::attribute_factory_before",
 			"//	Add your own code")»
 «IF description.hasInheritanceClass()-»
+	//	Call atribute_factory for inherited class
 	«description.getInheritance().classname»_ns::«
-		 description.getInheritance().classname»Class::attribute_factory(att_list);«ENDIF-»
+		description.getInheritance().classname»Class::attribute_factory(att_list);
+
+«ENDIF-»
 «EXPAND attributeCreation-»
 «IF description.hasAbstractAttribute=="false" && description.hasAbstractCommand=="false"-»
 	//	Create a list of static attributes
 	create_static_attribute_list(get_class_attr()->get_attr_list());
 
-«EXPAND overloadAttributePollingPeriod»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 			"Class::attribute_factory_after",
 			"//	Add your own code")»
 «ENDIF-»
 }
-«IF overlodedPollPeriodObject.size>0»«EXPAND getAttributeByName»«ENDIF»
+«EXPAND getAttributeByName»
 «ENDDEFINE»
 
 
 
 
 //	=========================================================
-//	Define the attribute creation for attribute_factory
+//	Define the attribute creation for attribute_factory 
+//&& att.status.inherited=="false"-
 //	=========================================================
 «DEFINE attributeCreation FOR PogoDeviceClass-»
 «FOREACH attributes AS att-»
-	«IF att.status.concreteHere=="true" && att.status.inherited=="false"-»
-	//	Attribute : «att.name»
+	«IF att.status.concreteHere=="true"-»
+	//	Attribute : «att.name»«IF att.status.inherited=="true"» if not concrete in inherited class
+	«EXPAND testAlreadyConcrete(att)-»
+	«ELSE»
 	«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
-	«EXPAND manageAttributeProperties(att)»
+	«EXPAND manageAttributeProperties(att, "	")»
 	att_list.push_back(«att.name.toLowerCase()»);
-	«ENDIF»
+	«ENDIF»«ENDIF»
 «ENDFOREACH»
 «ENDDEFINE»
 
@@ -133,43 +138,58 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 //	=========================================================
 //	Define code to overload attribute polling period if any
 //	=========================================================
-«DEFINE overloadAttributePollingPeriod FOR PogoDeviceClass-»
-«FOREACH overlodedPollPeriodObject AS obj-»«IF obj.type=="attribute"-»
-	//	Overload polling period for «obj.name»
-	Tango::Attr *«obj.name»Attr = get_attr_object_by_name(att_list, "«obj.name»");
-	if («obj.name»Attr != NULL)
-		«obj.name»Attr->set_polling_period(«obj.pollPeriod»);«ENDIF»
+«DEFINE overloadAttributePollingPeriod(String attName) FOR PogoDeviceClass-»
+«FOREACH overlodedPollPeriodObject AS obj-»«IF obj.type=="attribute"  && obj.name==attName-»
+	else
+	{
+		//	Overload polling period for «obj.name»
+		«obj.name»Attr->set_polling_period(«obj.pollPeriod»);
+	}«ENDIF»
 «ENDFOREACH-»
 «ENDDEFINE»
 
+//	=========================================================
+//	Define code to define attribute creation if not done
+//		in inherited class
+//	=========================================================
+«DEFINE testAlreadyConcrete(Attribute att) FOR PogoDeviceClass-»
+	Tango::Attr *«att.name»Attr = get_attr_object_by_name(att_list, "«att.name»");
+	if («att.name»Attr == NULL)
+	{	
+		«att.name»Attrib	*«att.name.toLowerCase()» = new «att.name»Attrib();
+		«EXPAND manageAttributeProperties(att, "		")»
+		att_list.push_back(«att.name.toLowerCase()»);
+	}
+	«EXPAND overloadAttributePollingPeriod(att.name)-»
+«ENDDEFINE»
 
 
 //	=========================================================
 //	Define the set attribute properties part for attribute_factory
 //	=========================================================
-«DEFINE manageAttributeProperties(Attribute att) FOR PogoDeviceClass-»
-	Tango::UserDefaultAttrProp	«att.name.toLowerCase()»_prop;
-	«setAttributeProperty(att.name, "description",   att.properties.description.replaceAll("\n", "\\\\n"))»
-	«setAttributeProperty(att.name, "label",         att.properties.label)»
-	«setAttributeProperty(att.name, "unit",          att.properties.unit)»
-	«setAttributeProperty(att.name, "standard_unit", att.properties.standardUnit)»
-	«setAttributeProperty(att.name, "display_unit",  att.properties.displayUnit)»
-	«setAttributeProperty(att.name, "format",        att.properties.format)»
-	«setAttributeProperty(att.name, "max_value",     att.properties.maxValue)»
-	«setAttributeProperty(att.name, "min_value",     att.properties.minValue)»
-	«setAttributeProperty(att.name, "max_alarm",     att.properties.maxAlarm)»
-	«setAttributeProperty(att.name, "min_alarm",     att.properties.minAlarm)»
-	«setAttributeProperty(att.name, "max_warning",   att.properties.maxWarning)»
-	«setAttributeProperty(att.name, "min_warning",   att.properties.minWarning)»
-	«setAttributeProperty(att.name, "delta_t",       att.properties.deltaTime)»
-	«setAttributeProperty(att.name, "delta_val",     att.properties.deltaValue)»
-	«IF att.isDynamic!="true"»«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);«ENDIF»
-	«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);
-	«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
-	«EXPAND manageMemorized(att)»
-	«setAttributeFireEvent(att.name, "change",     att.changeEvent)»
-	«setAttributeFireEvent(att.name, "archive",    att.archiveEvent)»
-	«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
+«DEFINE manageAttributeProperties(Attribute att, String tab) FOR PogoDeviceClass-»
+«tab»Tango::UserDefaultAttrProp	«att.name.toLowerCase()»_prop;
+«tab»«setAttributeProperty(att.name, "description",   att.properties.description.replaceAll("\n", "\\\\n"))»
+«tab»«setAttributeProperty(att.name, "label",         att.properties.label)»
+«tab»«setAttributeProperty(att.name, "unit",          att.properties.unit)»
+«tab»«setAttributeProperty(att.name, "standard_unit", att.properties.standardUnit)»
+«tab»«setAttributeProperty(att.name, "display_unit",  att.properties.displayUnit)»
+«tab»«setAttributeProperty(att.name, "format",        att.properties.format)»
+«tab»«setAttributeProperty(att.name, "max_value",     att.properties.maxValue)»
+«tab»«setAttributeProperty(att.name, "min_value",     att.properties.minValue)»
+«tab»«setAttributeProperty(att.name, "max_alarm",     att.properties.maxAlarm)»
+«tab»«setAttributeProperty(att.name, "min_alarm",     att.properties.minAlarm)»
+«tab»«setAttributeProperty(att.name, "max_warning",   att.properties.maxWarning)»
+«tab»«setAttributeProperty(att.name, "min_warning",   att.properties.minWarning)»
+«tab»«setAttributeProperty(att.name, "delta_t",       att.properties.deltaTime)»
+«tab»«setAttributeProperty(att.name, "delta_val",     att.properties.deltaValue)»
+«IF att.isDynamic!="true"»«tab»«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);«ENDIF»
+«tab»«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);
+«tab»«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
+	«EXPAND manageMemorized(att, tab)»
+«tab»«setAttributeFireEvent(att.name, "change",     att.changeEvent)»
+«tab»«setAttributeFireEvent(att.name, "archive",    att.archiveEvent)»
+«tab»«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
 «ENDDEFINE»
 
 
@@ -200,14 +220,14 @@ Tango::Attr *«name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_lis
 //	=========================================================
 //	Define the memorized part for attribute_factory
 //	=========================================================
-«DEFINE manageMemorized(Attribute att) FOR PogoDeviceClass-»
+«DEFINE manageMemorized(Attribute att, String tab) FOR PogoDeviceClass-»
 «IF att.memorized == "true"-»
-	«att.name.toLowerCase()»->set_memorized();
+«tab»«att.name.toLowerCase()»->set_memorized();
 	«IF att.memorizedAtInit == "true"-»
-	«att.name.toLowerCase()»->set_memorized_init(true);«ELSE-»
-	«att.name.toLowerCase()»->set_memorized_init(false);«ENDIF-»
+«tab»«att.name.toLowerCase()»->set_memorized_init(true);«ELSE-»
+«tab»«att.name.toLowerCase()»->set_memorized_init(false);«ENDIF-»
 «ELSE-»
-	//	Not memorized
+«tab»//	Not memorized
 «ENDIF-»
 «ENDDEFINE»
 
