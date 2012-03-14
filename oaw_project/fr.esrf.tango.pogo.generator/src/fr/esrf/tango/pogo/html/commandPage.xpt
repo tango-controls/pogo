@@ -53,48 +53,48 @@
 «FILE commandPageFileName(cmd)»«htmlHeader()»
 «htmlPageTitle(cmd.name + " Command ")»
 
-<FONT SIZE="-1">
+<FONT SIZE="-0">
 <Br>
 <Br>
 <ul>
 	«htmlSectionTitle("Description")»
 	<ul>
-		«cmd.description»
+		«cmd.description.htmlDescription()»
 	</ul>
 	<Br>
 	<Br>
 	«EXPAND _htmlUtil::htmlTableHeader(cmd.name+" Command ",{})-»
 		<!---------- Input Argument ----------->
 		<Tr>
-			<Td> <Font=+1><b> Input Argument  </Font></Td>
-			<Td> «cmd.argin.type.stringTypeEnum()»
+			<Td> <Font=+1><b> Input Argument  </Font></b></Td>
+			<Td> <b>«cmd.argin.type.stringTypeEnum()» </b><Font=-0>
 				«IF cmd.argin.description.length==0-»
 					(...)
 				 «ELSE-»
-				 	(«cmd.argin.description»)
-				 «ENDIF»
+				 	<ul>«cmd.argin.description.htmlDescription()»</ul>
+				 «ENDIF-»
 			</Td>
 		</Tr>
 	
 		<!---------- Output Argument ----------->
 		<Tr>
-			<Td> <Font=+1><b> Output Argument  </Font></Td>
-			<Td> «cmd.argout.type.stringTypeEnum()»
+			<Td> <Font=+1><b> Output Argument  </Font></b></Td>
+			<Td> <b>«cmd.argout.type.stringTypeEnum()» </b><Font=-0>
 				«IF cmd.argout.description.length==0-»
 					(...)
 				 «ELSE-»
-				 	(«cmd.argout.description»)
-				 «ENDIF»
+				 	<ul> «cmd.argout.description.htmlDescription()» </ul>
+				 «ENDIF-»
 			</Td>
 		</Tr>
 		
 		<!---------- Allowed State ----------->
 		«IF cmd.excludedStates.size>0»
 		<Tr>
-			<Td> <Font=+1><b> Command NOT allowed for   </Font></Td>
+			<Td> <Font=+1><b> Command NOT allowed for   </Font></b></Td>
 			<Td> 
 				«FOREACH cmd.excludedStates AS state»
-					- «state» <Br>
+					- <li> <b> «state» </b> <Br>
 				«ENDFOREACH»
 			</Td>
 		</Tr>
@@ -102,18 +102,18 @@
 	
 		<!---------- Display Level ----------->
 		<Tr>
-			<Td> <Font=+1><b> Display Level  </Font></Td>
-			<Td> «cmd.displayLevel»	</Td>
+			<Td> <Font=+1><b> Display Level  </Font></b></Td>
+			<Td> <b>  «cmd.displayLevel»	 </b></Td>
 		</Tr>
 	
 		<!---------- Inheritance ----------->
 		<Tr>
-			<Td> <Font=+1><b>  Inherited </Font></Td>
-			<Td> «cmd.status.inherited»	</Td>
+			<Td> <Font=+1><b>  Inherited </Font></b></Td>
+			<Td> <b>  «cmd.status.inherited»	</b></Td>
 		</Tr>
 		<Tr>
-			<Td> <Font=+1><b>  Abstract </Font></Td>
-			<Td> «cmd.status.abstract»	</Td>
+			<Td> <Font=+1><b>  Abstract </Font></b></Td>
+			<Td> <b>  «cmd.status.abstract»	</b></Td>
 		</Tr>
 
 
