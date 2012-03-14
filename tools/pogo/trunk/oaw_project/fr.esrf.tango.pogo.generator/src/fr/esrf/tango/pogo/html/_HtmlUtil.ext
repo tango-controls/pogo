@@ -1,5 +1,7 @@
 import pogoDsl;
 
+htmlDescription(String this):	//	Comment a String with more than one line
+	replaceAll("\n", "<br>\n");
 
 //==================================================
 //	File names
