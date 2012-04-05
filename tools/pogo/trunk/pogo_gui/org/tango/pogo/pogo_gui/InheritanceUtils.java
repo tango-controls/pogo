@@ -73,7 +73,7 @@ public class InheritanceUtils {
     //===============================================================
     //===============================================================
     private String cloneAncestor(DeviceClass orig, DeviceClass devClass) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         //  First time, check if devClass must best be updated from ancestors
         if (devClass.getAncestors().size() > 0) {
@@ -87,24 +87,23 @@ public class InheritanceUtils {
         }
         //  Then really clone items
         if (orig != null) {
-            sb.append(cloneProperties(orig, devClass, false));
-            sb.append(cloneProperties(orig, devClass, true));
+            cloneProperties(orig, devClass, false);
+            cloneProperties(orig, devClass, true);
             sb.append(cloneCommands(orig, devClass));
             sb.append(cloneAttributes(orig, devClass));
-            sb.append(cloneStates(orig, devClass));
+            cloneStates(orig, devClass);
         }
         return sb.toString();
     }
 
     //===============================================================
     //===============================================================
-    private String cloneProperties(DeviceClass devclass, DeviceClass ancestor, boolean is_dev) {
+    private void cloneProperties(DeviceClass devclass, DeviceClass ancestor, boolean is_dev) {
         if (trace)
             System.out.println("Cloning " + ((is_dev) ? "device" : "class") +
                     " properties from " + ancestor.getPogoDeviceClass().getName() +
                     " to  " + devclass.getPogoDeviceClass().getName());
 
-        StringBuffer sb = new StringBuffer();
         EList<Property> class_prop;
         EList<Property> ancestor_prop;
         if (is_dev) {
@@ -150,17 +149,15 @@ public class InheritanceUtils {
             } else
                 class_prop.add(new_prop);
         }
-        return sb.toString();
     }
 
     //===============================================================
     //===============================================================
-    private String cloneStates(DeviceClass devclass, DeviceClass ancestor) {
+    private void cloneStates(DeviceClass devclass, DeviceClass ancestor) {
         if (trace)
             System.out.println("Cloning states from " + ancestor.getPogoDeviceClass().getName() +
                     " to  " + devclass.getPogoDeviceClass().getName());
 
-        StringBuffer sb = new StringBuffer();
         EList<State> class_states = devclass.getPogoDeviceClass().getStates();
         EList<State> ancestor_states = ancestor.getPogoDeviceClass().getStates();
         for (State inher_state : ancestor_states) {
@@ -191,7 +188,6 @@ public class InheritanceUtils {
             } else
                 class_states.add(new_state);
         }
-        return sb.toString();
     }
 
     //===============================================================
@@ -201,7 +197,7 @@ public class InheritanceUtils {
             System.out.println("Cloning attributes from " + ancestor.getPogoDeviceClass().getName() +
                     " to  " + devclass.getPogoDeviceClass().getName());
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         EList<Attribute> class_attributes = devclass.getPogoDeviceClass().getAttributes();
         EList<Attribute> ancestor_attributes = ancestor.getPogoDeviceClass().getAttributes();
 
@@ -261,7 +257,23 @@ public class InheritanceUtils {
             for (String name : inher_states)
                 new_states.add(name);
 
-            //  Set event fire management
+            //  Set default event management
+            if (inher_attr.getEventCriteria()!=null) {
+                EventCriteria   eventCriteria = OAWutils.factory.createEventCriteria();
+                eventCriteria.setPeriod(inher_attr.getEventCriteria().getPeriod());
+                eventCriteria.setRelChange(inher_attr.getEventCriteria().getRelChange());
+                eventCriteria.setAbsChange(inher_attr.getEventCriteria().getAbsChange());
+                new_attr.setEventCriteria(eventCriteria);
+            }
+            if (inher_attr.getEvArchiveCriteria()!=null) {
+                EventCriteria   eventCriteria = OAWutils.factory.createEventCriteria();
+                eventCriteria.setPeriod(inher_attr.getEvArchiveCriteria().getPeriod());
+                eventCriteria.setRelChange(inher_attr.getEvArchiveCriteria().getRelChange());
+                eventCriteria.setAbsChange(inher_attr.getEvArchiveCriteria().getAbsChange());
+                new_attr.setEvArchiveCriteria(eventCriteria);
+            }
+
+            //  Set fire event management
             if (inher_attr.getChangeEvent() != null) {
                 FireEvents changeEvents = OAWutils.factory.createFireEvents();
                 changeEvents.setFire(inher_attr.getChangeEvent().getFire());
@@ -315,7 +327,7 @@ public class InheritanceUtils {
         if (trace)
             System.out.println("Cloning commands from " + ancestor.getPogoDeviceClass().getName() +
                     " to  " + devclass.getPogoDeviceClass().getName());
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         EList<Command> class_commands = devclass.getPogoDeviceClass().getCommands();
         EList<Command> ancestor_commands = ancestor.getPogoDeviceClass().getCommands();
 
@@ -519,6 +531,7 @@ public class InheritanceUtils {
 
     //===============================================================
     //===============================================================
+    @SuppressWarnings("UnusedDeclaration")
     public static String getStatusStr(InheritanceStatus status) {
         if (status == null)
             return "Inheritance status is null";

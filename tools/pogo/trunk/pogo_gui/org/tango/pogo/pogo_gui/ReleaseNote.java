@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Mar 05 14:33:50 CET 2012)</Center><Br>\n" + 
+		"	(Generated Thu Apr 05 13:32:25 CEST 2012)</Center><Br>\n" + 
+		"<li><b>Pogo-8.0.1 - 05/04/2012:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb with inherited object when DevRestart command received fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Event criteria management added for attributes (new Tango 8 feature)<Br>\n" + 
+		"&nbsp; &nbsp; Pb in inheritance for attribute_factory() fixed.<Br>\n" + 
 		"<li><b>Pogo-8.0.0 - 05/03/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve inheritance<Br>\n" + 
 		"&nbsp; &nbsp; Add polling on State and Status<Br>\n" + 

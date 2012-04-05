@@ -456,10 +456,7 @@ public class GenerateDialog extends JDialog {
      */
     //=============================================================
     private int manageWindowsPathCase() {
-        //  ToDo
        if (Utils.osIsUnix()) {
-
-           ArrayList<DeviceClass>   ancestors = deviceClass.getAncestors();
            EList<Inheritance>   inheritances =
                    deviceClass.getPogoDeviceClass().getDescription().getInheritances();
            for (Inheritance inheritance : inheritances) {
