@@ -1,203 +1,232 @@
 «IMPORT pogoDsl»
-
 «EXTENSION fr::esrf::tango::pogo::java::javaUtils»
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
-
 «DEFINE javaFile FOR PogoDeviceClass»
 «FILE javaDeviceClassFileName()»
 package «javaDevicePackage()»;
 
-import java.util.Vector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.ext.XLogger;
+import org.slf4j.ext.XLoggerFactory;
+import org.tango.DeviceState;
+import org.tango.server.InvocationContext;
+import org.tango.server.ServerManager;
+import org.tango.server.annotation.AroundInvoke;
+import org.tango.server.annotation.Attribute;
+import org.tango.server.annotation.AttributeProperties;
+import org.tango.server.annotation.ClassProperty;
+import org.tango.server.annotation.Command;
+import org.tango.server.annotation.Delete;
+import org.tango.server.annotation.Device;
+import org.tango.server.annotation.DeviceProperty;
+import org.tango.server.annotation.DynamicManagement;
+import org.tango.server.annotation.Init;
+import org.tango.server.annotation.State;
+import org.tango.server.annotation.StateMachine;
+import org.tango.server.annotation.Status;
+import org.tango.server.dynamic.DynamicManager;
+import org.tango.utils.DevFailedUtils;
 
-import org.omg.CORBA.SystemException;
-import org.omg.CORBA.UserException;
-
+import fr.esrf.Tango.DevEncoded;
 import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoApi.DbDatum;
-import fr.esrf.TangoDs.Attribute;
-import fr.esrf.TangoDs.DeviceClass;
-import fr.esrf.TangoDs.DeviceImpl;
-import fr.esrf.TangoDs.Except;
-import fr.esrf.TangoDs.TangoConst;
-import fr.esrf.TangoDs.Util;
+import fr.esrf.Tango.DevState;
+import fr.esrf.Tango.DevVarDoubleStringArray;
+import fr.esrf.Tango.DispLevel;
 
 /**
- *	Class Description: «description.description»
+ *	Description: «description.description»
  *	
  * @author	«vcsEscaped("Author")»
  * @version	 «vcsEscaped("Revision")»
  */
-public class «javaDeviceName()» extends DeviceImpl implements TangoConst{
+@Device
+public class «javaDeviceName()» {
 
-	// properties
-	«FOREACH deviceProperties AS prop »
-		«prop.type.javaPropType()» «prop.name.toFirstLower()»;
+	private static final Logger logger = LoggerFactory.getLogger(«javaDeviceName()».class);
+    private static final XLogger xlogger = XLoggerFactory.getXLogger(«javaDeviceName()».class);
+    «EXPAND pr( javaDeviceName()+".static", "put static variables here" )»
+
+	«FOREACH classProperties AS prop »
+	/**
+	* Class Property «prop.name» <br>
+	* «prop.description»
+	*/
+	@ClassProperty(name = "«prop.name»", description="«prop.description»")
+	private «prop.type.javaPropType()» «prop.name.toFirstLower()» «defaultPropValue(prop.DefaultPropValue)»;
 	«ENDFOREACH-»
-	// attributes
-	«FOREACH attributes AS attr»
-		«javaType(attr.dataType).toString()»  attr«attr.name»;
-	«ENDFOREACH-»		
-
-/**
- *	Constructor for Device Server.
- *
- *	@param	cl	The DeviceClass object
- *	@param	s	The Device name.
- */
-	«javaDeviceName()»(DeviceClass cl, String s) throws DevFailed
-	{
-		super(cl,s);
-
-		init_device();
-	}
-
-//=========================================================
-/**
- *	Constructor for simulated Time Device Server.
- *
- *	@param	cl	The DeviceClass object
- *	@param	s	The Device name.
- *	@param	d	Device description.
- */
-//=========================================================
-	«javaDeviceName()»(DeviceClass cl, String s, String d) throws DevFailed
-	{
-		super(cl,s,d);
-		init_device();
-	}
-
-
-
+	
+	«FOREACH deviceProperties AS prop »
 	/**
- 	*	Initialize the device.
+	* Device Property «prop.name» <br>
+	* «prop.description»
+	*/
+	@DeviceProperty(name = "«prop.name»", description="«prop.description»")
+	private «prop.type.javaPropType()» «prop.name.toFirstLower()» «defaultPropValue(prop.DefaultPropValue)»;
+	«ENDFOREACH-»
+	
+	«FOREACH attributes AS attr »
+	«IF attr.isDynamic != "true"-»	
+	/**
+	* Attribute «attr.name», «attr.dataType.toTangoType().toString()», «attr.attType», «attr.rwType»<br>
+	* description: «attr.properties.description»
+	*/
+	@Attribute(name = "«attr.name»"«displayLevel(attr.displayLevel)»«isMemorized(attr.memorized)»«polledPeriod(attr.polledPeriod)») «attributeProperties(attr.properties)»
+	«IF attr.writeExcludedStates.size>0-»@StateMachine(deniedStates={«FOREACH attr.writeExcludedStates AS state »DeviceState.«state»,«ENDFOREACH-»})
+	«ENDIF-»
+	private «javaType(attr.dataType).toString()»«isImage(attr.attType)»«isSpectrum(attr.attType)» «removeUnderscore(attr.name.toFirstLower())» = «javaAttrValue(attr.dataType, attr.attType)»;
+	«ENDIF-»
+	«ENDFOREACH-»
+	
+	/**
+     * The state of the device
+     */
+    @State
+    private DevState state = DevState.ON;
+
+    /**
+     * The status of the device
+     */
+    @Status
+    private String status = "";
+	
+	 /**
+     * dynamic command and attribute management. Will be injected by the framework.
+     */
+    @DynamicManagement
+    private DynamicManager dynamicManager;
+    	«EXPAND pr( javaDeviceName()+".private", "put private variables here" )»
+	
+	/**
+     * Initialize the device.
+     * 
+     * @throws DevFailed
+     */
+    @Init(lazyLoading = false)
+    public final void initDevice() throws DevFailed {
+		xlogger.entry();
+		logger.debug("init");
+		
+		«EXPAND pr( javaDeviceName()+".initDevice", "put your device initialization code here" )»xlogger.exit();
+    }
+
+	 /**
+     * all resources may be closed here. Collections may be also cleared.
+     * 
+     * @throws DevFailed
+     */
+    @Delete
+    public final void deleteDevice() throws DevFailed {
+		xlogger.entry();
+		dynamicManager.clearAll();«EXPAND pr( javaDeviceName()+".deleteDevice", "put your device clearing code here" )»xlogger.exit();
+    }
+	
+	/**
+ 	*	Method called before and after command and attribute calls.
  	*/
-	public void init_device() throws DevFailed
-	{
-		System.out.println("«javaDeviceName()» create " + device_name);
-
-		«IF deviceProperties.size>0 »
-		//	Initialise variables to default values
-		//-------------------------------------------
-		get_device_property();
-		«ENDIF»
-		
-		«EXPAND pr( javaDeviceName()+".init_device", "put your device initialization code here" )»
-		
-
-	}
-	
-	«IF deviceProperties.size>0 »
-	/**
- 	*	Read the device properties from database.
- 	*/		
-	public void get_device_property() throws DevFailed
-	{
-		«EXPAND pr( name+".get_device_property", "Initialize your default values here" )»
-
-		//	Read device properties from database.
-		//-------------------------------------------------------------
-		if (Util._UseDb==false)
-			return;
-		String[]	propnames = {
-				«FOREACH deviceProperties AS prop SEPARATOR ","»
-					"«prop.name»"
-				«ENDFOREACH-»
-			};
-
-		//	Call database and extract values
-		//--------------------------------------------
-		DbDatum[]	dev_prop = get_db_device().get_property(propnames);
-		«javaDServerClassName()»	ds_class = («javaDServerClassName()»)get_device_class();
-		
-		int	i = -1;
-		«FOREACH deviceProperties AS prop»
-			if (dev_prop[++i].is_empty()==false) {
-				«prop.name.toFirstLower()» = dev_prop[i].«prop.type.javaExtractorFunctionName()»();
-			} else {
-				//	Try to get value from class property
-				DbDatum	cl_prop = ds_class.get_class_property(dev_prop[i].name);
-				if (cl_prop.is_empty()==false)	«prop.name.toFirstLower()» = cl_prop.«prop.type.javaExtractorFunctionName()»();
-			}
-		«ENDFOREACH»
-		
-		«EXPAND pr( name + ".get_device_property_afterLoad", "Do what U want here" )»
-	}
-	«ENDIF»
-	
-	
-	/**
- 	*	Method always executed before command execution.
- 	*/
-	public void always_executed_hook() {	
-		//get_logger().info("In always_executed_hook method()");
-	}
+	@AroundInvoke
+    public final void aroundInvoke(final InvocationContext ctx) throws DevFailed {
+		xlogger.entry(ctx);«EXPAND pr( javaDeviceName()+".aroundInvoke", "put aroundInvoke code here" )»xlogger.exit();
+    }
 	
 	«FOREACH commands AS command»
+	«IF command.name != "State"-»«IF command.name != "Status"-»  
 	/**
-	 *	Execute command "«command.name»".
-	 *	«command.description»
-	 *  @param argin «command.argin.description»
-	 *  @param argout «command.argout.description»
+	 *	Execute command "«command.name»". <br>
+	 *	description: «command.description»
+	 *  @param «command.name.toFirstLower()+ "In"»  «command.argin.type.toTangoType().toString()», «command.argin.description» 
+	 *  @return «command.argout.type.toTangoType().toString()», «command.argout.description»
 	 */
-	
-	public «javaType(command.argout.type).toString()» «command.name»(«commandArginGen(command)») throws DevFailed {
-		//get_logger().info("Entering «command.name»");
-	
+	@Command(name = "«command.name»",inTypeDesc="«command.argin.description»", outTypeDesc="«command.argout.description»"«displayLevel(command.displayLevel)»«polledPeriod(command.polledPeriod)»)
+	«IF command.excludedStates.size>0-» 	@StateMachine(deniedStates={«FOREACH command.excludedStates AS state»DeviceState.«state»,«ENDFOREACH-»})
+	«ENDIF-»
+	public «javaType(command.argout.type).toString()» «removeUnderscore(command.name.toFirstLower())»(«commandArginGen(command)») throws DevFailed {
+		xlogger.entry();«EXPAND pr( javaDeviceName()+"."+command.name.toFirstLower(), "put command code here" )»xlogger.exit();
+		return «javaValue(command.argout.type)»;
 	}
+	«ENDIF-»«ENDIF-»
 	«ENDFOREACH»
 	
-	«IF attributes.size>0 »
-	/**
-	 *	Method called by the read_attributes CORBA operation to
-	 *	read device hardware
-	 *
-	 *	@param	attr_list	Vector of index in the attribute vector
-	 *		of attribute to be read
-	 */			
-	public void read_attr_hardware(Vector attr_list) throws DevFailed {
-		get_logger().info("In read_attr_hardware for "+attr_list.size()+" attribute(s)");
-
-		//	Switch on attribute name
-		//---------------------------------
+	«FOREACH attributes AS attr »
+	«IF attr.isDynamic !="true"-»	
+	«IF attr.rwType!="WRITE"-»	
+	 /**
+     * Read attribute «attr.name»
+     * 
+     * @return attribute value
+     */
+	public «javaType(attr.dataType).toString()»«isImage(attr.attType)»«isSpectrum(attr.attType)» get«removeUnderscore(attr.name.toFirstUpper())»(){
+		xlogger.entry();«EXPAND pr( javaDeviceName()+".get"+attr.name, "put read attribute code here" )»xlogger.exit();
+		return «removeUnderscore(attr.name.toFirstLower())»;
 	}
+	«ENDIF-»
+	«ENDIF-»
+	«ENDFOREACH-»
+	
+
+	«FOREACH attributes AS attr »
+	«IF attr.isDynamic !="true"-»	
+	«IF attr.rwType!="READ"-»	
+	/**
+ 	* Write attribute «attr.name»
+ 	* @param  «removeUnderscore(attr.name.toFirstLower())» value to write
+ 	*/
+	public void set«removeUnderscore(attr.name.toFirstUpper())»(«javaType(attr.dataType).toString()»«isImage(attr.attType)»«isSpectrum(attr.attType)» «removeUnderscore(attr.name.toFirstLower())»){
+		xlogger.entry();
+		this.«removeUnderscore(attr.name.toFirstLower())»=«removeUnderscore(attr.name.toFirstLower())»;«EXPAND pr( javaDeviceName()+".set"+attr.name, "put write attribute code here" )»xlogger.exit();
+	}
+	«ENDIF-»
+	«ENDIF-»
+	«ENDFOREACH-»
+	
+	«FOREACH deviceProperties AS prop »
+	/**
+ 	* set property «prop.name»
+ 	* @param  «prop.name.toFirstLower()»
+ 	*/
+	public void set«prop.name»(«prop.type.javaPropType()» «prop.name.toFirstLower()»){
+		this.«prop.name.toFirstLower()» = «prop.name.toFirstLower()»;«EXPAND pr( javaDeviceName()+".set"+prop.name, "check property value here" )»}
+	«ENDFOREACH-»
+	
+	«FOREACH classProperties AS prop »
+	/**
+ 	* set property «prop.name»
+ 	* @param  «prop.name.toFirstLower()»
+ 	*/
+	public void set«prop.name»(«prop.type.javaPropType()» «prop.name.toFirstLower()»){
+		«EXPAND pr( javaDeviceName()+".set"+prop.name, "check property value here" )»this.«prop.name.toFirstLower()» = «prop.name.toFirstLower()»;}
+	«ENDFOREACH-»
+	
+	public final DevState getState() throws DevFailed {«EXPAND pr( javaDeviceName()+".getState", "put state code here" )»return state;
+	}
+
+    public void setState(final DevState state) {
+		this.state = state;
+    }
+
+    public final String getStatus() {«EXPAND pr( javaDeviceName()+".getStatus", "put status code here" )»	return status;
+    }
+
+    public void setStatus(final String status) {
+		this.status = status;
+    }
+	
+	public void setDynamicManager(final DynamicManager dynamicManager) {
+		this.dynamicManager = dynamicManager;
+    }
 	
 	/**
-	 *	Method called by the read_attributes CORBA operation to
-	 *	set internal attribute value.
-	 *
-	 *	@param	attr	reference to the Attribute object
-	 */
-	public void read_attr(Attribute attr) throws DevFailed{
-		String attr_name = attr.get_name();
-		get_logger().info("In read_attr for attribute " + attr_name);
-
-		//	Switch on attribute name
-		//---------------------------------
-		«FOREACH attributes AS attr SEPARATOR "else"»
-		if (attr_name =="«attr.name»"){
-		«attr.attType»
-			attr.set_value(attr«attributeSetValueGen(attr)»);
-		}
-		«ENDFOREACH-»		
-	}
-	«ENDIF»
-	
-	/**
-	 *	main part for the device server class
-	 */
-	public static void main(String[] argv){
-		Util tg = Util.init(argv,"«javaDeviceName()»");
+     * Starts the server.
+     */
+	public static void main(final String[] args) {
 		try {
-			tg.server_init();
-			System.out.println("Ready to accept request");
-			tg.server_run();
-		} catch (DevFailed e) {
-			Except.print_exception(e);
-			System.err.println("Exiting");
-		}		
-	}	
+			ServerManager.getInstance().addClass("«javaDeviceName()»", «javaDeviceName()».class);
+			ServerManager.getInstance().start(args, "«javaDeviceName()»");
+		} catch (final DevFailed e) {
+			DevFailedUtils.printDevFailed(e);
+		}
+    }
 }
-
 
 «ENDFILE»
 «ENDDEFINE»
@@ -208,5 +237,3 @@ public class «javaDeviceName()» extends DeviceImpl implements TangoConst{
 	// «desc»
 «ENDPROTECT»
 «ENDDEFINE»
-
-

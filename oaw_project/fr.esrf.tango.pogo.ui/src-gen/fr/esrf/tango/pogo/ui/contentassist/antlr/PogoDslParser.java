@@ -63,6 +63,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getArgumentAccess().getGroup(), "rule__Argument__Group__0");
 					put(grammarAccess.getAttributeAccess().getGroup(), "rule__Attribute__Group__0");
 					put(grammarAccess.getFireEventsAccess().getGroup(), "rule__FireEvents__Group__0");
+					put(grammarAccess.getEventCriteriaAccess().getGroup(), "rule__EventCriteria__Group__0");
 					put(grammarAccess.getAttrPropertiesAccess().getGroup(), "rule__AttrProperties__Group__0");
 					put(grammarAccess.getAdditionalFileAccess().getGroup(), "rule__AdditionalFile__Group__0");
 					put(grammarAccess.getOverlodedPollPeriodObjectAccess().getGroup(), "rule__OverlodedPollPeriodObject__Group__0");
@@ -203,10 +204,15 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeAccess().getPropertiesAssignment_15(), "rule__Attribute__PropertiesAssignment_15");
 					put(grammarAccess.getAttributeAccess().getAllocReadMemberAssignment_16(), "rule__Attribute__AllocReadMemberAssignment_16");
 					put(grammarAccess.getAttributeAccess().getIsDynamicAssignment_17(), "rule__Attribute__IsDynamicAssignment_17");
-					put(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_19(), "rule__Attribute__ReadExcludedStatesAssignment_19");
-					put(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_21(), "rule__Attribute__WriteExcludedStatesAssignment_21");
+					put(grammarAccess.getAttributeAccess().getEventCriteriaAssignment_18(), "rule__Attribute__EventCriteriaAssignment_18");
+					put(grammarAccess.getAttributeAccess().getEvArchiveCriteriaAssignment_19(), "rule__Attribute__EvArchiveCriteriaAssignment_19");
+					put(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_21(), "rule__Attribute__ReadExcludedStatesAssignment_21");
+					put(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_23(), "rule__Attribute__WriteExcludedStatesAssignment_23");
 					put(grammarAccess.getFireEventsAccess().getFireAssignment_0(), "rule__FireEvents__FireAssignment_0");
 					put(grammarAccess.getFireEventsAccess().getLibCheckCriteriaAssignment_1(), "rule__FireEvents__LibCheckCriteriaAssignment_1");
+					put(grammarAccess.getEventCriteriaAccess().getRelChangeAssignment_0(), "rule__EventCriteria__RelChangeAssignment_0");
+					put(grammarAccess.getEventCriteriaAccess().getAbsChangeAssignment_1(), "rule__EventCriteria__AbsChangeAssignment_1");
+					put(grammarAccess.getEventCriteriaAccess().getPeriodAssignment_2(), "rule__EventCriteria__PeriodAssignment_2");
 					put(grammarAccess.getAttrPropertiesAccess().getDescriptionAssignment_0(), "rule__AttrProperties__DescriptionAssignment_0");
 					put(grammarAccess.getAttrPropertiesAccess().getLabelAssignment_1(), "rule__AttrProperties__LabelAssignment_1");
 					put(grammarAccess.getAttrPropertiesAccess().getUnitAssignment_2(), "rule__AttrProperties__UnitAssignment_2");
