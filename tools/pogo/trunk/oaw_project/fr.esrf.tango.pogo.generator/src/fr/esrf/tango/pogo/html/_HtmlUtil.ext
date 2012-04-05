@@ -32,7 +32,6 @@ htmlHeader(PogoDeviceClass this):
         "</HEAD>\n" +
         "<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" +
         "\n" +
-        "<P><!-------TITLE------></P>\n" +
         "<TABLE BORDER=\"0\" WIDTH=\"100%\">\n" +
          "    <TR>\n" +
         "        <TD ALIGN=\"left\">\n" +
@@ -54,7 +53,7 @@ htmlHeader(PogoDeviceClass this):
         "        <TD ALIGN=\"Right\">\n" +
         "            <H2><FONT COLOR=\"#7F00FF\">\n" +
         "            <Br><Center><A HREF=\"http://www.tango-controls.org/\" TARGET=\"_top\"> TANGO </a> \n" +
-        "            </Center></FONT>\n" +
+        "            </Center></FONT></H2>\n" +
         "       </TD>\n" +
         "    </TR>\n" +
         "    <TR>\n" +
@@ -76,12 +75,12 @@ htmlHeader(PogoDeviceClass this):
         "        <TD ALIGN=\"Right\">\n" +
         "            <H2><FONT COLOR=\"#7F00FF\">\n" +
         "            <Center> Device Servers\n" +
-        "            </Center></FONT>\n" +
+        "            </Center></FONT></H2>\n" +
         "        </TD>\n" +
         "    </TR>\n" +
         "</TABLE>\n" +
         "\n" +
-        "<HR WIDTH=\"100%\"></H5>\n" +
+        "<HR WIDTH=\"100%\">\n" +
         "\n"; 
 
 
@@ -145,21 +144,23 @@ htmlPageTitle(PogoDeviceClass this, String pageTitle):
         "<Br>\n" +
         "<Br>\n" +
         "<TABLE BORDER=\"1\" WIDTH=\"100%\" CELLSPACING=0>\n" + htmlVersionCode() +
+        "    <Tr>\n" +
         "       <TD ALIGN=\"center\">\n" +
         "               <a href=\"index.html\">         Description</a>\n" +
         "       </Td>\n" +
         "       <TD ALIGN=\"center\">\n" +
-        "               <a href=\"Properties.html\">    Properties</a></li>\n" +
+        "               <a href=\"Properties.html\">    Properties</a>\n" +
         "       </Td>\n" +
         "       <TD ALIGN=\"center\">\n" +
-        "               <a href=\"Commands.html\">      Commands</a></li>\n" +
+        "               <a href=\"Commands.html\">      Commands</a>\n" +
         "       </Td>\n" +
         "       <TD ALIGN=\"center\">\n" +
-        "               <a href=\"Attributes.html\">    Attributes</a></li>\n" +
+        "               <a href=\"Attributes.html\">    Attributes</a>\n" +
         "       </Td>\n" +
         "       <TD ALIGN=\"center\">\n" +
-        "               <a href=\"States.html\">        States</a></li>\n" +
+        "               <a href=\"States.html\">        States</a>\n" +
         "       </Td>\n" +
+        "    </Tr>\n" +
         "</TABLE>\n" +
         "<Br>\n" +
         "<Br>\n" +

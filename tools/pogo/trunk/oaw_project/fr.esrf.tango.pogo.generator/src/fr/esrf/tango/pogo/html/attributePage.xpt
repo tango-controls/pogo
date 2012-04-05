@@ -178,8 +178,7 @@
 		
 		</Table>
 	</Td>
-	<Td ALIGN="left" VALIGN=top>
-		
+	<Td ALIGN="Center" VALIGN=top>
 		«EXPAND _htmlUtil::htmlTableHeader(" Attrribute Properties ",{})-»
 			<Tr><Td> <Font=+1><b>  label         </b></Font></Td>    <Td> «attr.properties.label»</Td></Tr>
 			<Tr><Td> <Font=+1><b>  unit          </b></Font></Td>    <Td> «attr.properties.unit»</Td></Tr>
@@ -194,6 +193,42 @@
 			<Tr><Td> <Font=+1><b>  min_warning   </b></Font></Td>    <Td> «attr.properties.minWarning»</Td></Tr>
 			<Tr><Td> <Font=+1><b>  delta_time    </b></Font></Td>    <Td> «attr.properties.deltaTime»</Td></Tr>
 			<Tr><Td> <Font=+1><b>  delta_val     </b></Font></Td>    <Td> «attr.properties.deltaValue»</Td></Tr>
+		</Table>
+	</Td>
+	<Td ALIGN="left" VALIGN=top>
+		«EXPAND _htmlUtil::htmlTableHeader(" Event Criteria ",{})-»
+			<Tr><Td> <Font=+1><b>  Periodic        </b></Font></Td> <Td>
+				«IF attr.eventCriteria.period.length>0»«attr.eventCriteria.period» ms «ELSE»none«ENDIF»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  Relative Change </b></Font></Td> <Td>
+				«IF attr.eventCriteria.relChange.length>0» «attr.eventCriteria.relChange» % «ELSE»none«ENDIF»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  Absolute Change </b></Font></Td> <Td>
+				«IF attr.eventCriteria.absChange.length>0» «attr.eventCriteria.absChange»«ELSE»none«ENDIF»</Td></Tr>
+
+			<Tr BGCOLOR="#CCCCFF"><Td><Hr></Td><Td><Hr></Td></Tr>
+
+			<Tr><Td> <Font=+1><b>  Archive Periodic   </b></Font></Td> <Td>
+				«IF attr.evArchiveCriteria.period.length>0»«attr.evArchiveCriteria.period» ms «ELSE»none«ENDIF»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  Archive Relative Change   </b></Font></Td> <Td>
+				«IF attr.evArchiveCriteria.relChange.length>0»«attr.evArchiveCriteria.relChange» % «ELSE»none«ENDIF»</Td></Tr>
+			<Tr><Td> <Font=+1><b>  Archive Absolute Change  </b></Font></Td> <Td>«
+				IF attr.evArchiveCriteria.absChange.length>0»«attr.evArchiveCriteria.absChange»«ELSE»none«ENDIF»</Td></Tr>
+
+			<Tr BGCOLOR="#CCCCFF"><Td><Hr></Td><Td><Hr></Td></Tr>
+
+			<Tr><Td> <Font=+1><b>  Push Change event by user code   </b></Font></Td> <Td>
+				«IF attr.changeEvent.fire.length>0»«attr.changeEvent.fire»«ELSE»false«ENDIF»</Td></Tr>
+				«IF attr.changeEvent.fire=="true"-»
+				<Tr><Td Align="right"> <Font=+1><b>  Criteria checked by TANGO   </b></Font></Td> <Td>
+					«IF attr.changeEvent.libCheckCriteria.length>0»«attr.changeEvent.libCheckCriteria»«ELSE»false«ENDIF»</Td></Tr>
+				«ENDIF»
+			<Tr><Td> <Font=+1><b>  Push Archive event by user code   </b></Font></Td> <Td>
+				«IF attr.archiveEvent.fire.length>0»«attr.archiveEvent.fire»«ELSE»false«ENDIF»</Td></Tr>
+				«IF attr.archiveEvent.fire=="true"-»
+				<Tr><Td Align="right"> <Font=+1><b>  Criteria checked by TANGO   </b></Font></Td> <Td>
+					«IF attr.archiveEvent.libCheckCriteria.length>0»«attr.archiveEvent.libCheckCriteria»«ELSE»false«ENDIF»</Td></Tr>
+				«ENDIF»
+			<Tr><Td> <Font=+1><b>  Push DataReady event by user code </b></Font></Td> <Td>
+				«IF attr.dataReadyEvent.fire.length>0»«attr.dataReadyEvent.fire»«ELSE»false«ENDIF»</Td></Tr>
 		</Table>
 	</Td>
 	</Table>

@@ -183,6 +183,7 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 «tab»«setAttributeProperty(att.name, "min_warning",   att.properties.minWarning)»
 «tab»«setAttributeProperty(att.name, "delta_t",       att.properties.deltaTime)»
 «tab»«setAttributeProperty(att.name, "delta_val",     att.properties.deltaValue)»
+«EXPAND attributeEventCriteria(att, tab)»
 «IF att.isDynamic!="true"»«tab»«att.name.toLowerCase()»->set_default_properties(«att.name.toLowerCase()»_prop);«ENDIF»
 «tab»«att.name.toLowerCase()»->set_polling_period(«att.polledPeriod»);
 «tab»«att.name.toLowerCase()»->set_disp_level(Tango::«IF att.displayLevel == "EXPERT"»EXPERT«ELSE»OPERATOR«ENDIF»);
@@ -192,6 +193,23 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 «tab»«setAttributeFireDataReadyEvent(att.name, att.dataReadyEvent)»
 «ENDDEFINE»
 
+
+
+//	=========================================================
+//	Define the Event Criteria for attribute factory
+//	=========================================================
+«DEFINE attributeEventCriteria(Attribute att, String tab) FOR PogoDeviceClass-»
+«IF att.eventCriteria!=null-»
+«IF att.eventCriteria.period.length>0»«tab»«att.name.toLowerCase()»_prop.set_event_period("«att.eventCriteria.period»");«ENDIF»
+«IF att.eventCriteria.relChange.length>0»«tab»«att.name.toLowerCase()»_prop.set_event_rel_change("«att.eventCriteria.relChange»");«ENDIF»
+«IF att.eventCriteria.absChange.length>0»«tab»«att.name.toLowerCase()»_prop.set_event_abs_change("«att.eventCriteria.absChange»");«ENDIF»
+«ENDIF-»
+«IF att.evArchiveCriteria!=null-»
+«IF att.evArchiveCriteria.period.length>0»«tab»«att.name.toLowerCase()»_prop.set_archive_event_period("«att.evArchiveCriteria.period»");«ENDIF»
+«IF att.evArchiveCriteria.relChange.length>0»«tab»«att.name.toLowerCase()»_prop.set_archive_event_rel_change("«att.evArchiveCriteria.relChange»");«ENDIF»
+«IF att.evArchiveCriteria.absChange.length>0»«tab»«att.name.toLowerCase()»_prop.set_archive_event_abs_change("«att.evArchiveCriteria.absChange»");«ENDIF»
+«ENDIF-»
+«ENDDEFINE»
 
 
 //	=========================================================
