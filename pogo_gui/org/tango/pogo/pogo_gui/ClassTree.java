@@ -589,9 +589,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             v.add((DefaultMutableTreeNode) parent_node.getChildAt(i));
 
         //	Sort them
-        MyCompare compare = new MyCompare();
-        //noinspection unchecked
-        Collections.sort(v, compare);
+        Collections.sort(v, new NodeComparator());
 
         //	remove all nodes from parent
         while (parent_node.getChildCount() > 0)
@@ -2156,7 +2154,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * MyCompare class to sort collection
      */
     //======================================================
-    class MyCompare implements Comparator<DefaultMutableTreeNode> {
+    class NodeComparator implements Comparator<DefaultMutableTreeNode> {
         public int compare(DefaultMutableTreeNode node1, DefaultMutableTreeNode node2) {
             if (node1.toString().equals("State") ||
                     node1.toString().equals("Status"))
