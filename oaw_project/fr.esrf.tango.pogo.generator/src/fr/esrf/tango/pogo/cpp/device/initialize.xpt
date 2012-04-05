@@ -24,7 +24,8 @@ void «name»::init_device()
 {
 	DEBUG_STREAM << "«name»::init_device() create device " << device_name << endl;
 	«IF description.hasInheritanceClass()==true-»
-	if (Tango::Util::instance()->is_svr_starting() == false)
+	if (Tango::Util::instance()->is_svr_starting() == false  &&
+		Tango::Util::instance()->is_device_restarting(device_name)==false)
 	{
 		//	If not starting up call init device for inherited object
 		«superClassNameConstr(description.getInheritance())»_ns::«superClassNameConstr(description.getInheritance())»::init_device();
@@ -58,7 +59,8 @@ void «name»::init_device()
 		"//	Delete device allocated objects")-»
 	«EXPAND attributes::deleteReadMembers-»
 	«IF description.hasInheritanceClass()==true-»
-	if (Tango::Util::instance()->is_svr_shutting_down() == false)
+	if (Tango::Util::instance()->is_svr_shutting_down() == false  &&
+		Tango::Util::instance()->is_device_restarting(device_name)==false)
 	{
 		//	If not shutting down call delete device for inherited object
 		«superClassNameConstr(description.getInheritance())»_ns::«superClassNameConstr(description.getInheritance())»::delete_device();
