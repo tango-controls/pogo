@@ -80,6 +80,7 @@ public class PopupTable extends JDialog {
      * @param    v        vector of String vectors.
      */
     //===============================================================
+    @SuppressWarnings("UnusedDeclaration")
     public PopupTable(JDialog parent, String title, String[] col, ArrayList<ArrayList<String>> v) {
         super(parent, false);
         buildObject(title, col, v);
@@ -183,11 +184,11 @@ public class PopupTable extends JDialog {
     //===============================================================
     //===============================================================
     public void setPreferredSize(int[] width, int nb_lines) {
-        final Enumeration cenum = my_table.getColumnModel().getColumns();
+        final Enumeration enumeration = my_table.getColumnModel().getColumns();
         TableColumn tc;
         int sp_width = 0;
-        for (int i = 0; cenum.hasMoreElements(); i++) {
-            tc = (TableColumn) cenum.nextElement();
+        for (int i = 0; enumeration.hasMoreElements(); i++) {
+            tc = (TableColumn) enumeration.nextElement();
             tc.setPreferredWidth(width[i]);
             sp_width += width[i];
         }
@@ -199,6 +200,7 @@ public class PopupTable extends JDialog {
 
     //===============================================================
     //===============================================================
+    @SuppressWarnings("UnusedDeclaration")
     public void setColumnWidth(int[] width) {
         final Enumeration cenum = my_table.getColumnModel().getColumns();
         TableColumn tc;
