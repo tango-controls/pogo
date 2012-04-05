@@ -164,7 +164,6 @@ public class Utils {
             System.err.println("Icon file  " + filename + "  not found");
             return null;
         }
-        //System.out.println(filename + " loaded");
         return new ImageIcon(url);
     }
 
@@ -494,8 +493,7 @@ public class Utils {
             if (!f.isDirectory())
                 v.add(name);
         }
-        MyCompare compare = new MyCompare();
-        Collections.sort(v, compare);
+        Collections.sort(v, new StringCompare());
         return v;
     }
     //===============================================================
@@ -537,7 +535,6 @@ public class Utils {
     //===============================================================
     public static boolean osIsUnix() {
         String os = System.getProperty("os.name");
-        //System.out.println("Running under " + os);
         return !os.toLowerCase().startsWith("windows");
     }
 
@@ -586,15 +583,17 @@ public class Utils {
      * Check the files to be excluded by XPand scans
      *
      * @param rootDir the directory to be checked (output code)
+     * @param lang language to be generated
      * @return list of files to be excluded by XPand scans
      */
     //===============================================================
-    static public String getExcludeFilesAndDir(String rootDir) {
+    static public String getExcludeFilesAndDir(String rootDir, String lang) {
         //  Define what will be generated
+        //  ToDo
         String[] geneFiles = {".cpp", ".h", ".java", ".py",
                 "Makefile", "Makefile.multi",
                 ".sln", ".vcproj"};
-        String[] geneDirs = {"", "vc8_proj", "vc9_proj"};
+        String[] geneDirs = {"", "vc8_proj", "vc9_proj", "vc10_proj", };
 
         ArrayList<String> excluded = new ArrayList<String>();
         for (String dir : geneDirs) {
@@ -606,7 +605,7 @@ public class Utils {
             String[] fileNames = d.list();
             if (fileNames != null) {
                 for (String fileName : fileNames) {
-                    //  Check if fileName must be generated
+                   //  Check if fileName must be generated
                     boolean generates = couldBeGenerated(fileName, geneFiles);
                     //if (!generates)
                     //    generates = couldBeGenerated(fileName, geneDirs);
@@ -621,14 +620,14 @@ public class Utils {
         //  Convert to String
         StringBuilder sb = new StringBuilder();
         for (String fileName : excluded) {
-            sb.append(fileName).append(", ");
+            if (!(lang.equals(PogoConst.strLang[PogoConst.Java]) && fileName.equals("org")))
+                sb.append(fileName).append(", ");
         }
         //  Remove last ", " if any
         String str = sb.toString();
         int pos = str.lastIndexOf(',');
         if (pos > 0)
             str = str.substring(0, pos);
-        //System.out.println(str+"\n");
         return str;
     }
 
@@ -644,8 +643,8 @@ public class Utils {
         //  Check if file must be generated.
         boolean generates = false;
         for (String s : generated) {
-            if (fileName.endsWith(s)) {
-                generates = true;
+          if (fileName.endsWith(s)) {
+               generates = true;
             }
         }
         return generates;
@@ -705,26 +704,6 @@ public class Utils {
     //=======================================================
     //=======================================================
     private void createSplash() {
-        //	Now done by a getenv call
-        /*
-		//	Check if Display is used
-		try {
-			JFrame  frame = new JFrame();
-            frame.setVisible(true);
-            System.out.println("frame.setVisible(false);");
-            frame.setVisible(false);
-		}
-        catch(java.lang.ExceptionInInitializerError e) {
-            useDisplay = false;
-            System.err.println("Cannot create Splah: "+e);
-			return;
-        }
-        catch(java.awt.HeadlessException e) {
-            useDisplay = false;
-            System.err.println("Cannot create Splah: "+e);
-			return;
-        }
-        */
         try {
             if (tango_icon == null)
                 tango_icon = getIcon("TangoSplash.gif");
@@ -806,11 +785,9 @@ public class Utils {
 
         //===================================================
         private synchronized void doSleep(long millis) {
-            //System.out.println("Sleep " + millis);
             try {
                 wait(millis);
             } catch (InterruptedException e) {/*  */}
-            //System.out.println("Awaken .......");
         }
         //====================================================
     }
@@ -822,7 +799,7 @@ public class Utils {
      * MyCompare class to sort collection
      */
     //======================================================
-    class MyCompare implements Comparator<String> {
+    class StringCompare implements Comparator<String> {
         public int compare(String s1, String s2) {
             return s1.compareTo(s2);
         }

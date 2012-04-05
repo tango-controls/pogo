@@ -172,7 +172,9 @@ public class OAWutils {
     @SuppressWarnings({"unchecked"})
     public void generate(PogoDeviceClass pogo_class) throws DevFailed {
         PogoSystem sys = buildPogoSystem(pogo_class);
-        String prExcludes = Utils.getExcludeFilesAndDir(pogo_class.getDescription().getSourcePath());
+        String prExcludes = Utils.getExcludeFilesAndDir(
+                pogo_class.getDescription().getSourcePath(),
+                pogo_class.getDescription().getLanguage());
         //System.out.println("\n-----------------------------------------------------------------");
         //System.out.println("Excluded : "+prExcludes);
         //System.out.println("-----------------------------------------------------------------\\n");
@@ -216,7 +218,6 @@ public class OAWutils {
         }
     }
     //========================================================================
-
     /**
      * Generate xmi file for PogoDeviceClass object and code associeted.
      *
@@ -227,7 +228,8 @@ public class OAWutils {
     @SuppressWarnings({"unchecked"})
     public void generate(PogoMultiClasses multiClasses) throws DevFailed {
         PogoSystem sys = factory.createPogoSystem();
-        String prExcludes = Utils.getExcludeFilesAndDir(multiClasses.getSourcePath());
+        String prExcludes = Utils.getExcludeFilesAndDir(
+                multiClasses.getSourcePath(), "cpp");
 
         reverseClassOrder(multiClasses);
         sys.getMultiClasses().add(multiClasses);
@@ -859,6 +861,24 @@ public class OAWutils {
         attr.setStatus(status);
         attr.setAllocReadMember(src.getAllocReadMember());
 
+        //  Set default event management
+        EventCriteria   eventCriteria = src.getEventCriteria();
+        if (eventCriteriaIsSet(eventCriteria)) {
+            EventCriteria   newEventCriteria = OAWutils.factory.createEventCriteria();
+            newEventCriteria.setPeriod(eventCriteria.getPeriod());
+            newEventCriteria.setRelChange(eventCriteria.getRelChange());
+            newEventCriteria.setAbsChange(eventCriteria.getAbsChange());
+            attr.setEventCriteria(newEventCriteria);
+        }
+        EventCriteria   archiveEventCriteria = src.getEvArchiveCriteria();
+        if (eventCriteriaIsSet(archiveEventCriteria)) {
+            EventCriteria   newEventCriteria = OAWutils.factory.createEventCriteria();
+            newEventCriteria.setPeriod(archiveEventCriteria.getPeriod());
+            newEventCriteria.setRelChange(archiveEventCriteria.getRelChange());
+            newEventCriteria.setAbsChange(archiveEventCriteria.getAbsChange());
+            attr.setEvArchiveCriteria(newEventCriteria);
+        }
+
         //  Set event fire management
         if (src.getChangeEvent() != null) {
             FireEvents changeEvents = OAWutils.factory.createFireEvents();
@@ -881,6 +901,14 @@ public class OAWutils {
         return attr;
     }
 
+    //===============================================================
+    //===============================================================
+    private static boolean eventCriteriaIsSet(EventCriteria eventCriteria) {
+        return eventCriteria != null &&
+                (eventCriteria.getPeriod().length() > 0 ||
+                 eventCriteria.getRelChange().length() > 0 ||
+                 eventCriteria.getAbsChange().length() > 0);
+    }
     //===============================================================
     //===============================================================
     public static Property cloneProperty(Property src) {
