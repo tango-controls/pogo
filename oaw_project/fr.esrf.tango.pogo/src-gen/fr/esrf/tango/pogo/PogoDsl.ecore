@@ -192,6 +192,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocReadMember" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDynamic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventCriteria" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//EventCriteria"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evArchiveCriteria" eType="ecore:EClass platform:/resource/fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/PogoDsl.ecore#//EventCriteria"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="readExcludedStates" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="writeExcludedStates" unique="false"
@@ -200,6 +204,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="FireEvents">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fire" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="libCheckCriteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventCriteria">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="absChange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttrProperties">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

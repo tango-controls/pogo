@@ -206,6 +206,15 @@ public interface PogoDslFactory extends EFactory
   FireEvents createFireEvents();
 
   /**
+   * Returns a new object of class '<em>Event Criteria</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Event Criteria</em>'.
+   * @generated
+   */
+  EventCriteria createEventCriteria();
+
+  /**
    * Returns a new object of class '<em>Attr Properties</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

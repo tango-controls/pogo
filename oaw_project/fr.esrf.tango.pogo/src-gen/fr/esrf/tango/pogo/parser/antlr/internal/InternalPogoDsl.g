@@ -2742,15 +2742,51 @@ ruleAttribute returns [EObject current=null]
 	    }
 
 )
-)	otherlv_18='readExcludedStates:' 
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAttributeAccess().getEventCriteriaEventCriteriaParserRuleCall_18_0()); 
+	    }
+		lv_eventCriteria_18_0=ruleEventCriteria		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAttributeRule());
+	        }
+       		set(
+       			$current, 
+       			"eventCriteria",
+        		lv_eventCriteria_18_0, 
+        		"EventCriteria");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAttributeAccess().getEvArchiveCriteriaEventCriteriaParserRuleCall_19_0()); 
+	    }
+		lv_evArchiveCriteria_19_0=ruleEventCriteria		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAttributeRule());
+	        }
+       		set(
+       			$current, 
+       			"evArchiveCriteria",
+        		lv_evArchiveCriteria_19_0, 
+        		"EventCriteria");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_20='readExcludedStates:' 
     {
-    	newLeafNode(otherlv_18, grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_18());
+    	newLeafNode(otherlv_20, grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_20());
     }
 (
 (
-		lv_readExcludedStates_19_0=RULE_STRING
+		lv_readExcludedStates_21_0=RULE_STRING
 		{
-			newLeafNode(lv_readExcludedStates_19_0, grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_19_0()); 
+			newLeafNode(lv_readExcludedStates_21_0, grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_21_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2759,20 +2795,20 @@ ruleAttribute returns [EObject current=null]
        		addWithLastConsumed(
        			$current, 
        			"readExcludedStates",
-        		lv_readExcludedStates_19_0, 
+        		lv_readExcludedStates_21_0, 
         		"STRING");
 	    }
 
 )
-)*	otherlv_20='writeExcludedStates:' 
+)*	otherlv_22='writeExcludedStates:' 
     {
-    	newLeafNode(otherlv_20, grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_20());
+    	newLeafNode(otherlv_22, grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_22());
     }
 (
 (
-		lv_writeExcludedStates_21_0=RULE_STRING
+		lv_writeExcludedStates_23_0=RULE_STRING
 		{
-			newLeafNode(lv_writeExcludedStates_21_0, grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_21_0()); 
+			newLeafNode(lv_writeExcludedStates_23_0, grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_23_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2781,7 +2817,7 @@ ruleAttribute returns [EObject current=null]
        		addWithLastConsumed(
        			$current, 
        			"writeExcludedStates",
-        		lv_writeExcludedStates_21_0, 
+        		lv_writeExcludedStates_23_0, 
         		"STRING");
 	    }
 
@@ -2840,6 +2876,81 @@ ruleFireEvents returns [EObject current=null]
         		lv_libCheckCriteria_1_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleEventCriteria
+entryRuleEventCriteria returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getEventCriteriaRule()); }
+	 iv_ruleEventCriteria=ruleEventCriteria 
+	 { $current=$iv_ruleEventCriteria.current; } 
+	 EOF 
+;
+
+// Rule EventCriteria
+ruleEventCriteria returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_relChange_0_0=RULE_STRING
+		{
+			newLeafNode(lv_relChange_0_0, grammarAccess.getEventCriteriaAccess().getRelChangeSTRINGTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEventCriteriaRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"relChange",
+        		lv_relChange_0_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		lv_absChange_1_0=RULE_STRING
+		{
+			newLeafNode(lv_absChange_1_0, grammarAccess.getEventCriteriaAccess().getAbsChangeSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEventCriteriaRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"absChange",
+        		lv_absChange_1_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		lv_period_2_0=RULE_STRING
+		{
+			newLeafNode(lv_period_2_0, grammarAccess.getEventCriteriaAccess().getPeriodSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEventCriteriaRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"period",
+        		lv_period_2_0, 
+        		"STRING");
 	    }
 
 )

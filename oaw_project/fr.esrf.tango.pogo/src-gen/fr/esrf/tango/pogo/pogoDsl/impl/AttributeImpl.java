@@ -7,6 +7,7 @@ package fr.esrf.tango.pogo.pogoDsl.impl;
 
 import fr.esrf.tango.pogo.pogoDsl.AttrProperties;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
+import fr.esrf.tango.pogo.pogoDsl.EventCriteria;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
@@ -52,6 +53,8 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getAllocReadMember <em>Alloc Read Member</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getIsDynamic <em>Is Dynamic</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getEventCriteria <em>Event Criteria</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getEvArchiveCriteria <em>Ev Archive Criteria</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getReadExcludedStates <em>Read Excluded States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
@@ -360,6 +363,26 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * @ordered
    */
   protected String isDynamic = IS_DYNAMIC_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getEventCriteria() <em>Event Criteria</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEventCriteria()
+   * @generated
+   * @ordered
+   */
+  protected EventCriteria eventCriteria;
+
+  /**
+   * The cached value of the '{@link #getEvArchiveCriteria() <em>Ev Archive Criteria</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEvArchiveCriteria()
+   * @generated
+   * @ordered
+   */
+  protected EventCriteria evArchiveCriteria;
 
   /**
    * The cached value of the '{@link #getReadExcludedStates() <em>Read Excluded States</em>}' attribute list.
@@ -971,6 +994,102 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
+  public EventCriteria getEventCriteria()
+  {
+    return eventCriteria;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEventCriteria(EventCriteria newEventCriteria, NotificationChain msgs)
+  {
+    EventCriteria oldEventCriteria = eventCriteria;
+    eventCriteria = newEventCriteria;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA, oldEventCriteria, newEventCriteria);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEventCriteria(EventCriteria newEventCriteria)
+  {
+    if (newEventCriteria != eventCriteria)
+    {
+      NotificationChain msgs = null;
+      if (eventCriteria != null)
+        msgs = ((InternalEObject)eventCriteria).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA, null, msgs);
+      if (newEventCriteria != null)
+        msgs = ((InternalEObject)newEventCriteria).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA, null, msgs);
+      msgs = basicSetEventCriteria(newEventCriteria, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA, newEventCriteria, newEventCriteria));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EventCriteria getEvArchiveCriteria()
+  {
+    return evArchiveCriteria;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEvArchiveCriteria(EventCriteria newEvArchiveCriteria, NotificationChain msgs)
+  {
+    EventCriteria oldEvArchiveCriteria = evArchiveCriteria;
+    evArchiveCriteria = newEvArchiveCriteria;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA, oldEvArchiveCriteria, newEvArchiveCriteria);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEvArchiveCriteria(EventCriteria newEvArchiveCriteria)
+  {
+    if (newEvArchiveCriteria != evArchiveCriteria)
+    {
+      NotificationChain msgs = null;
+      if (evArchiveCriteria != null)
+        msgs = ((InternalEObject)evArchiveCriteria).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA, null, msgs);
+      if (newEvArchiveCriteria != null)
+        msgs = ((InternalEObject)newEvArchiveCriteria).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA, null, msgs);
+      msgs = basicSetEvArchiveCriteria(newEvArchiveCriteria, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA, newEvArchiveCriteria, newEvArchiveCriteria));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getReadExcludedStates()
   {
     if (readExcludedStates == null)
@@ -1016,6 +1135,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return basicSetStatus(null, msgs);
       case PogoDslPackage.ATTRIBUTE__PROPERTIES:
         return basicSetProperties(null, msgs);
+      case PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA:
+        return basicSetEventCriteria(null, msgs);
+      case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
+        return basicSetEvArchiveCriteria(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -1066,6 +1189,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getAllocReadMember();
       case PogoDslPackage.ATTRIBUTE__IS_DYNAMIC:
         return getIsDynamic();
+      case PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA:
+        return getEventCriteria();
+      case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
+        return getEvArchiveCriteria();
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         return getReadExcludedStates();
       case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
@@ -1138,6 +1265,12 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__IS_DYNAMIC:
         setIsDynamic((String)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA:
+        setEventCriteria((EventCriteria)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
+        setEvArchiveCriteria((EventCriteria)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         getReadExcludedStates().clear();
@@ -1215,6 +1348,12 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__IS_DYNAMIC:
         setIsDynamic(IS_DYNAMIC_EDEFAULT);
         return;
+      case PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA:
+        setEventCriteria((EventCriteria)null);
+        return;
+      case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
+        setEvArchiveCriteria((EventCriteria)null);
+        return;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         getReadExcludedStates().clear();
         return;
@@ -1271,6 +1410,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return ALLOC_READ_MEMBER_EDEFAULT == null ? allocReadMember != null : !ALLOC_READ_MEMBER_EDEFAULT.equals(allocReadMember);
       case PogoDslPackage.ATTRIBUTE__IS_DYNAMIC:
         return IS_DYNAMIC_EDEFAULT == null ? isDynamic != null : !IS_DYNAMIC_EDEFAULT.equals(isDynamic);
+      case PogoDslPackage.ATTRIBUTE__EVENT_CRITERIA:
+        return eventCriteria != null;
+      case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
+        return evArchiveCriteria != null;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         return readExcludedStates != null && !readExcludedStates.isEmpty();
       case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:

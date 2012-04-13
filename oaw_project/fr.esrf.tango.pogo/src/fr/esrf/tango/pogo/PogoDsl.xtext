@@ -212,24 +212,26 @@ Argument:
 //	Attribute Definition
 //
 Attribute:
-	name             = ID
-	attType          = AttrType
-	dataType         = Type
-	rwType           = RW_Type
-	displayLevel     = DisplayLevel
-	polledPeriod     = STRING
-	maxX             = STRING
-	maxY             = STRING
-	associatedAttr   = STRING
-	memorized        = Boolean
-	memorizedAtInit  = Boolean
-	changeEvent      = FireEvents
-	archiveEvent     = FireEvents
-	dataReadyEvent   = FireEvents
-	status           = InheritanceStatus
-	properties       = AttrProperties
-	allocReadMember  = Boolean
-	isDynamic        = Boolean	
+	name              = ID
+	attType           = AttrType
+	dataType          = Type
+	rwType            = RW_Type
+	displayLevel      = DisplayLevel
+	polledPeriod      = STRING
+	maxX              = STRING
+	maxY              = STRING
+	associatedAttr    = STRING
+	memorized         = Boolean
+	memorizedAtInit   = Boolean
+	changeEvent       = FireEvents
+	archiveEvent      = FireEvents
+	dataReadyEvent    = FireEvents
+	status            = InheritanceStatus
+	properties        = AttrProperties
+	allocReadMember   = Boolean
+	isDynamic         = Boolean
+	eventCriteria     = EventCriteria    	
+	evArchiveCriteria = EventCriteria    	
 
 	"readExcludedStates:"
 		(readExcludedStates+=STRING)*
@@ -239,6 +241,11 @@ Attribute:
 FireEvents:
 	fire             = Boolean
 	libCheckCriteria = Boolean;
+
+EventCriteria:
+	relChange = STRING
+	absChange = STRING
+	period    = STRING;
 
 //
 //	Attribute Properties Definition

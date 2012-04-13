@@ -23,6 +23,7 @@ import fr.esrf.tango.pogo.pogoDsl.DoubleStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleVectorType;
 import fr.esrf.tango.pogo.pogoDsl.EncodedType;
+import fr.esrf.tango.pogo.pogoDsl.EventCriteria;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
 import fr.esrf.tango.pogo.pogoDsl.FloatType;
@@ -220,6 +221,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass fireEventsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eventCriteriaEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1775,9 +1783,29 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getAttribute_EventCriteria()
+  {
+    return (EReference)attributeEClass.getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAttribute_EvArchiveCriteria()
+  {
+    return (EReference)attributeEClass.getEStructuralFeatures().get(19);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getAttribute_ReadExcludedStates()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(18);
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(20);
   }
 
   /**
@@ -1787,7 +1815,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    */
   public EAttribute getAttribute_WriteExcludedStates()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(19);
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(21);
   }
 
   /**
@@ -1818,6 +1846,46 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
   public EAttribute getFireEvents_LibCheckCriteria()
   {
     return (EAttribute)fireEventsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEventCriteria()
+  {
+    return eventCriteriaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEventCriteria_RelChange()
+  {
+    return (EAttribute)eventCriteriaEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEventCriteria_AbsChange()
+  {
+    return (EAttribute)eventCriteriaEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEventCriteria_Period()
+  {
+    return (EAttribute)eventCriteriaEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2560,12 +2628,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(attributeEClass, ATTRIBUTE__PROPERTIES);
     createEAttribute(attributeEClass, ATTRIBUTE__ALLOC_READ_MEMBER);
     createEAttribute(attributeEClass, ATTRIBUTE__IS_DYNAMIC);
+    createEReference(attributeEClass, ATTRIBUTE__EVENT_CRITERIA);
+    createEReference(attributeEClass, ATTRIBUTE__EV_ARCHIVE_CRITERIA);
     createEAttribute(attributeEClass, ATTRIBUTE__READ_EXCLUDED_STATES);
     createEAttribute(attributeEClass, ATTRIBUTE__WRITE_EXCLUDED_STATES);
 
     fireEventsEClass = createEClass(FIRE_EVENTS);
     createEAttribute(fireEventsEClass, FIRE_EVENTS__FIRE);
     createEAttribute(fireEventsEClass, FIRE_EVENTS__LIB_CHECK_CRITERIA);
+
+    eventCriteriaEClass = createEClass(EVENT_CRITERIA);
+    createEAttribute(eventCriteriaEClass, EVENT_CRITERIA__REL_CHANGE);
+    createEAttribute(eventCriteriaEClass, EVENT_CRITERIA__ABS_CHANGE);
+    createEAttribute(eventCriteriaEClass, EVENT_CRITERIA__PERIOD);
 
     attrPropertiesEClass = createEClass(ATTR_PROPERTIES);
     createEAttribute(attrPropertiesEClass, ATTR_PROPERTIES__DESCRIPTION);
@@ -2878,12 +2953,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getAttribute_Properties(), this.getAttrProperties(), null, "properties", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_AllocReadMember(), ecorePackage.getEString(), "allocReadMember", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_IsDynamic(), ecorePackage.getEString(), "isDynamic", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttribute_EventCriteria(), this.getEventCriteria(), null, "eventCriteria", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttribute_EvArchiveCriteria(), this.getEventCriteria(), null, "evArchiveCriteria", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_ReadExcludedStates(), ecorePackage.getEString(), "readExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_WriteExcludedStates(), ecorePackage.getEString(), "writeExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fireEventsEClass, FireEvents.class, "FireEvents", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFireEvents_Fire(), ecorePackage.getEString(), "fire", null, 0, 1, FireEvents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFireEvents_LibCheckCriteria(), ecorePackage.getEString(), "libCheckCriteria", null, 0, 1, FireEvents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eventCriteriaEClass, EventCriteria.class, "EventCriteria", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEventCriteria_RelChange(), ecorePackage.getEString(), "relChange", null, 0, 1, EventCriteria.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEventCriteria_AbsChange(), ecorePackage.getEString(), "absChange", null, 0, 1, EventCriteria.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEventCriteria_Period(), ecorePackage.getEString(), "period", null, 0, 1, EventCriteria.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attrPropertiesEClass, AttrProperties.class, "AttrProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAttrProperties_Description(), ecorePackage.getEString(), "description", null, 0, 1, AttrProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
