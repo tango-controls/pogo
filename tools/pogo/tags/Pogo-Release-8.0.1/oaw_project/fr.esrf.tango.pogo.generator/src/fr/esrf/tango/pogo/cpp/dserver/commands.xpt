@@ -1,0 +1,32 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+«DEFINE cppFile FOR PogoDeviceClass»
+//===================================================================
+//	Command execution method calls
+//===================================================================
+«FOREACH commands AS cmd-»
+«IF cmd.name!="State" && cmd.name!="Status" && cmd.status.concreteHere=="true"-»
+«separator2()»
+/**
+ * method : 		«cmd.name»Class::execute()
+ * description : 	method to trigger the execution of the command.
+ *
+ * @param	device	The device on which the command must be executed
+ * @param	in_any	The command input data
+ *
+ *	returns The command output data (packed in the Any object)
+ */
+«separator2()»
+CORBA::Any *«cmd.name»Class::execute(Tango::DeviceImpl *device, TANGO_UNUSED(const CORBA::Any &in_any))
+{
+	cout2 << "«cmd.name»Class::execute(): arrived" << endl;
+
+	«cmd.executeCmdExtract()»
+	«executeCmdInsert(cmd)»
+}
+«ENDIF»«ENDFOREACH»
+«ENDDEFINE»
+
+
