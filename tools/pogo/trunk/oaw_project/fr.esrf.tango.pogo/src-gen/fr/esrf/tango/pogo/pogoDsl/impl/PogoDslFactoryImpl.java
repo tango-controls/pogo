@@ -87,6 +87,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.ARGUMENT: return createArgument();
       case PogoDslPackage.ATTRIBUTE: return createAttribute();
       case PogoDslPackage.FIRE_EVENTS: return createFireEvents();
+      case PogoDslPackage.EVENT_CRITERIA: return createEventCriteria();
       case PogoDslPackage.ATTR_PROPERTIES: return createAttrProperties();
       case PogoDslPackage.ADDITIONAL_FILE: return createAdditionalFile();
       case PogoDslPackage.OVERLODED_POLL_PERIOD_OBJECT: return createOverlodedPollPeriodObject();
@@ -348,6 +349,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     FireEventsImpl fireEvents = new FireEventsImpl();
     return fireEvents;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EventCriteria createEventCriteria()
+  {
+    EventCriteriaImpl eventCriteria = new EventCriteriaImpl();
+    return eventCriteria;
   }
 
   /**

@@ -20,6 +20,7 @@ import fr.esrf.tango.pogo.pogoDsl.DoubleStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleVectorType;
 import fr.esrf.tango.pogo.pogoDsl.EncodedType;
+import fr.esrf.tango.pogo.pogoDsl.EventCriteria;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
 import fr.esrf.tango.pogo.pogoDsl.FloatType;
@@ -218,6 +219,12 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getEncodedTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_Type(context, (EncodedType) semanticObject); 
+					return; 
+				}
+				else break;
+			case PogoDslPackage.EVENT_CRITERIA:
+				if(context == grammarAccess.getEventCriteriaRule()) {
+					sequence_EventCriteria(context, (EventCriteria) semanticObject); 
 					return; 
 				}
 				else break;
@@ -634,6 +641,8 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         properties=AttrProperties 
 	 *         allocReadMember=Boolean 
 	 *         isDynamic=Boolean 
+	 *         eventCriteria=EventCriteria 
+	 *         evArchiveCriteria=EventCriteria 
 	 *         readExcludedStates+=STRING* 
 	 *         writeExcludedStates+=STRING*
 	 *     )
@@ -657,6 +666,8 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *    properties[1, 1]
 	 *    allocReadMember[1, 1]
 	 *    isDynamic[1, 1]
+	 *    eventCriteria[1, 1]
+	 *    evArchiveCriteria[1, 1]
 	 *    readExcludedStates[0, *]
 	 *    writeExcludedStates[0, *]
 	 */
@@ -809,6 +820,33 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getCommentsAccess().getCommandsTableSTRINGTerminalRuleCall_0(), semanticObject.getCommandsTable());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (relChange=STRING absChange=STRING period=STRING)
+	 *
+	 * Features:
+	 *    relChange[1, 1]
+	 *    absChange[1, 1]
+	 *    period[1, 1]
+	 */
+	protected void sequence_EventCriteria(EObject context, EventCriteria semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.EVENT_CRITERIA__REL_CHANGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.EVENT_CRITERIA__REL_CHANGE));
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.EVENT_CRITERIA__ABS_CHANGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.EVENT_CRITERIA__ABS_CHANGE));
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.EVENT_CRITERIA__PERIOD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.EVENT_CRITERIA__PERIOD));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getEventCriteriaAccess().getRelChangeSTRINGTerminalRuleCall_0_0(), semanticObject.getRelChange());
+		feeder.accept(grammarAccess.getEventCriteriaAccess().getAbsChangeSTRINGTerminalRuleCall_1_0(), semanticObject.getAbsChange());
+		feeder.accept(grammarAccess.getEventCriteriaAccess().getPeriodSTRINGTerminalRuleCall_2_0(), semanticObject.getPeriod());
 		feeder.finish();
 	}
 	

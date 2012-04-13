@@ -1398,12 +1398,16 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAllocReadMemberBooleanParserRuleCall_16_0 = (RuleCall)cAllocReadMemberAssignment_16.eContents().get(0);
 		private final Assignment cIsDynamicAssignment_17 = (Assignment)cGroup.eContents().get(17);
 		private final RuleCall cIsDynamicBooleanParserRuleCall_17_0 = (RuleCall)cIsDynamicAssignment_17.eContents().get(0);
-		private final Keyword cReadExcludedStatesKeyword_18 = (Keyword)cGroup.eContents().get(18);
-		private final Assignment cReadExcludedStatesAssignment_19 = (Assignment)cGroup.eContents().get(19);
-		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_19_0 = (RuleCall)cReadExcludedStatesAssignment_19.eContents().get(0);
-		private final Keyword cWriteExcludedStatesKeyword_20 = (Keyword)cGroup.eContents().get(20);
-		private final Assignment cWriteExcludedStatesAssignment_21 = (Assignment)cGroup.eContents().get(21);
-		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_21_0 = (RuleCall)cWriteExcludedStatesAssignment_21.eContents().get(0);
+		private final Assignment cEventCriteriaAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cEventCriteriaEventCriteriaParserRuleCall_18_0 = (RuleCall)cEventCriteriaAssignment_18.eContents().get(0);
+		private final Assignment cEvArchiveCriteriaAssignment_19 = (Assignment)cGroup.eContents().get(19);
+		private final RuleCall cEvArchiveCriteriaEventCriteriaParserRuleCall_19_0 = (RuleCall)cEvArchiveCriteriaAssignment_19.eContents().get(0);
+		private final Keyword cReadExcludedStatesKeyword_20 = (Keyword)cGroup.eContents().get(20);
+		private final Assignment cReadExcludedStatesAssignment_21 = (Assignment)cGroup.eContents().get(21);
+		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_21_0 = (RuleCall)cReadExcludedStatesAssignment_21.eContents().get(0);
+		private final Keyword cWriteExcludedStatesKeyword_22 = (Keyword)cGroup.eContents().get(22);
+		private final Assignment cWriteExcludedStatesAssignment_23 = (Assignment)cGroup.eContents().get(23);
+		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_23_0 = (RuleCall)cWriteExcludedStatesAssignment_23.eContents().get(0);
 		
 		////
 		////	Attribute Definition
@@ -1412,15 +1416,15 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel polledPeriod=STRING maxX=STRING
 		//	maxY=STRING associatedAttr=STRING memorized=Boolean memorizedAtInit=Boolean changeEvent=FireEvents
 		//	archiveEvent=FireEvents dataReadyEvent=FireEvents status=InheritanceStatus properties=AttrProperties
-		//	allocReadMember=Boolean isDynamic=Boolean "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
-		//	writeExcludedStates+=STRING*;
+		//	allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria
+		//	"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;
 		public ParserRule getRule() { return rule; }
 
 		//name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel polledPeriod=STRING maxX=STRING
 		//maxY=STRING associatedAttr=STRING memorized=Boolean memorizedAtInit=Boolean changeEvent=FireEvents
 		//archiveEvent=FireEvents dataReadyEvent=FireEvents status=InheritanceStatus properties=AttrProperties
-		//allocReadMember=Boolean isDynamic=Boolean "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
-		//writeExcludedStates+=STRING*
+		//allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria
+		//"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1531,23 +1535,35 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Boolean
 		public RuleCall getIsDynamicBooleanParserRuleCall_17_0() { return cIsDynamicBooleanParserRuleCall_17_0; }
 
+		//eventCriteria=EventCriteria
+		public Assignment getEventCriteriaAssignment_18() { return cEventCriteriaAssignment_18; }
+
+		//EventCriteria
+		public RuleCall getEventCriteriaEventCriteriaParserRuleCall_18_0() { return cEventCriteriaEventCriteriaParserRuleCall_18_0; }
+
+		//evArchiveCriteria=EventCriteria
+		public Assignment getEvArchiveCriteriaAssignment_19() { return cEvArchiveCriteriaAssignment_19; }
+
+		//EventCriteria
+		public RuleCall getEvArchiveCriteriaEventCriteriaParserRuleCall_19_0() { return cEvArchiveCriteriaEventCriteriaParserRuleCall_19_0; }
+
 		//"readExcludedStates:"
-		public Keyword getReadExcludedStatesKeyword_18() { return cReadExcludedStatesKeyword_18; }
+		public Keyword getReadExcludedStatesKeyword_20() { return cReadExcludedStatesKeyword_20; }
 
 		//readExcludedStates+=STRING*
-		public Assignment getReadExcludedStatesAssignment_19() { return cReadExcludedStatesAssignment_19; }
+		public Assignment getReadExcludedStatesAssignment_21() { return cReadExcludedStatesAssignment_21; }
 
 		//STRING
-		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_19_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_19_0; }
+		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_21_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_21_0; }
 
 		//"writeExcludedStates:"
-		public Keyword getWriteExcludedStatesKeyword_20() { return cWriteExcludedStatesKeyword_20; }
+		public Keyword getWriteExcludedStatesKeyword_22() { return cWriteExcludedStatesKeyword_22; }
 
 		//writeExcludedStates+=STRING*
-		public Assignment getWriteExcludedStatesAssignment_21() { return cWriteExcludedStatesAssignment_21; }
+		public Assignment getWriteExcludedStatesAssignment_23() { return cWriteExcludedStatesAssignment_23; }
 
 		//STRING
-		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_21_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_21_0; }
+		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_23_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_23_0; }
 	}
 
 	public class FireEventsElements extends AbstractParserRuleElementFinder {
@@ -1576,6 +1592,42 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Boolean
 		public RuleCall getLibCheckCriteriaBooleanParserRuleCall_1_0() { return cLibCheckCriteriaBooleanParserRuleCall_1_0; }
+	}
+
+	public class EventCriteriaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EventCriteria");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRelChangeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cRelChangeSTRINGTerminalRuleCall_0_0 = (RuleCall)cRelChangeAssignment_0.eContents().get(0);
+		private final Assignment cAbsChangeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cAbsChangeSTRINGTerminalRuleCall_1_0 = (RuleCall)cAbsChangeAssignment_1.eContents().get(0);
+		private final Assignment cPeriodAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPeriodSTRINGTerminalRuleCall_2_0 = (RuleCall)cPeriodAssignment_2.eContents().get(0);
+		
+		//EventCriteria:
+		//	relChange=STRING absChange=STRING period=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//relChange=STRING absChange=STRING period=STRING
+		public Group getGroup() { return cGroup; }
+
+		//relChange=STRING
+		public Assignment getRelChangeAssignment_0() { return cRelChangeAssignment_0; }
+
+		//STRING
+		public RuleCall getRelChangeSTRINGTerminalRuleCall_0_0() { return cRelChangeSTRINGTerminalRuleCall_0_0; }
+
+		//absChange=STRING
+		public Assignment getAbsChangeAssignment_1() { return cAbsChangeAssignment_1; }
+
+		//STRING
+		public RuleCall getAbsChangeSTRINGTerminalRuleCall_1_0() { return cAbsChangeSTRINGTerminalRuleCall_1_0; }
+
+		//period=STRING
+		public Assignment getPeriodAssignment_2() { return cPeriodAssignment_2; }
+
+		//STRING
+		public RuleCall getPeriodSTRINGTerminalRuleCall_2_0() { return cPeriodSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class AttrPropertiesElements extends AbstractParserRuleElementFinder {
@@ -2628,6 +2680,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	private ArgumentElements pArgument;
 	private AttributeElements pAttribute;
 	private FireEventsElements pFireEvents;
+	private EventCriteriaElements pEventCriteria;
 	private AttrPropertiesElements pAttrProperties;
 	private AdditionalFileElements pAdditionalFile;
 	private OverlodedPollPeriodObjectElements pOverlodedPollPeriodObject;
@@ -3004,8 +3057,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel polledPeriod=STRING maxX=STRING
 	//	maxY=STRING associatedAttr=STRING memorized=Boolean memorizedAtInit=Boolean changeEvent=FireEvents
 	//	archiveEvent=FireEvents dataReadyEvent=FireEvents status=InheritanceStatus properties=AttrProperties
-	//	allocReadMember=Boolean isDynamic=Boolean "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
-	//	writeExcludedStates+=STRING*;
+	//	allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria
+	//	"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;
 	public AttributeElements getAttributeAccess() {
 		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
 	}
@@ -3022,6 +3075,16 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFireEventsRule() {
 		return getFireEventsAccess().getRule();
+	}
+
+	//EventCriteria:
+	//	relChange=STRING absChange=STRING period=STRING;
+	public EventCriteriaElements getEventCriteriaAccess() {
+		return (pEventCriteria != null) ? pEventCriteria : (pEventCriteria = new EventCriteriaElements());
+	}
+	
+	public ParserRule getEventCriteriaRule() {
+		return getEventCriteriaAccess().getRule();
 	}
 
 	////

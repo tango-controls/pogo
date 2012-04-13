@@ -5420,7 +5420,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttribute"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2417:1: ruleAttribute returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) otherlv_18= 'readExcludedStates:' ( (lv_readExcludedStates_19_0= RULE_STRING ) )* otherlv_20= 'writeExcludedStates:' ( (lv_writeExcludedStates_21_0= RULE_STRING ) )* ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2417:1: ruleAttribute returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) ( (lv_eventCriteria_18_0= ruleEventCriteria ) ) ( (lv_evArchiveCriteria_19_0= ruleEventCriteria ) ) otherlv_20= 'readExcludedStates:' ( (lv_readExcludedStates_21_0= RULE_STRING ) )* otherlv_22= 'writeExcludedStates:' ( (lv_writeExcludedStates_23_0= RULE_STRING ) )* ) ;
     public final EObject ruleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -5429,10 +5429,10 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
         Token lv_maxX_6_0=null;
         Token lv_maxY_7_0=null;
         Token lv_associatedAttr_8_0=null;
-        Token otherlv_18=null;
-        Token lv_readExcludedStates_19_0=null;
         Token otherlv_20=null;
-        Token lv_writeExcludedStates_21_0=null;
+        Token lv_readExcludedStates_21_0=null;
+        Token otherlv_22=null;
+        Token lv_writeExcludedStates_23_0=null;
         AntlrDatatypeRuleToken lv_attType_1_0 = null;
 
         EObject lv_dataType_2_0 = null;
@@ -5459,15 +5459,19 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
         AntlrDatatypeRuleToken lv_isDynamic_17_0 = null;
 
+        EObject lv_eventCriteria_18_0 = null;
+
+        EObject lv_evArchiveCriteria_19_0 = null;
+
 
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2420:28: ( ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) otherlv_18= 'readExcludedStates:' ( (lv_readExcludedStates_19_0= RULE_STRING ) )* otherlv_20= 'writeExcludedStates:' ( (lv_writeExcludedStates_21_0= RULE_STRING ) )* ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:1: ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) otherlv_18= 'readExcludedStates:' ( (lv_readExcludedStates_19_0= RULE_STRING ) )* otherlv_20= 'writeExcludedStates:' ( (lv_writeExcludedStates_21_0= RULE_STRING ) )* )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2420:28: ( ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) ( (lv_eventCriteria_18_0= ruleEventCriteria ) ) ( (lv_evArchiveCriteria_19_0= ruleEventCriteria ) ) otherlv_20= 'readExcludedStates:' ( (lv_readExcludedStates_21_0= RULE_STRING ) )* otherlv_22= 'writeExcludedStates:' ( (lv_writeExcludedStates_23_0= RULE_STRING ) )* ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:1: ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) ( (lv_eventCriteria_18_0= ruleEventCriteria ) ) ( (lv_evArchiveCriteria_19_0= ruleEventCriteria ) ) otherlv_20= 'readExcludedStates:' ( (lv_readExcludedStates_21_0= RULE_STRING ) )* otherlv_22= 'writeExcludedStates:' ( (lv_writeExcludedStates_23_0= RULE_STRING ) )* )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:1: ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) otherlv_18= 'readExcludedStates:' ( (lv_readExcludedStates_19_0= RULE_STRING ) )* otherlv_20= 'writeExcludedStates:' ( (lv_writeExcludedStates_21_0= RULE_STRING ) )* )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:2: ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) otherlv_18= 'readExcludedStates:' ( (lv_readExcludedStates_19_0= RULE_STRING ) )* otherlv_20= 'writeExcludedStates:' ( (lv_writeExcludedStates_21_0= RULE_STRING ) )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:1: ( ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) ( (lv_eventCriteria_18_0= ruleEventCriteria ) ) ( (lv_evArchiveCriteria_19_0= ruleEventCriteria ) ) otherlv_20= 'readExcludedStates:' ( (lv_readExcludedStates_21_0= RULE_STRING ) )* otherlv_22= 'writeExcludedStates:' ( (lv_writeExcludedStates_23_0= RULE_STRING ) )* )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:2: ( (lv_name_0_0= RULE_ID ) ) ( (lv_attType_1_0= ruleAttrType ) ) ( (lv_dataType_2_0= ruleType ) ) ( (lv_rwType_3_0= ruleRW_Type ) ) ( (lv_displayLevel_4_0= ruleDisplayLevel ) ) ( (lv_polledPeriod_5_0= RULE_STRING ) ) ( (lv_maxX_6_0= RULE_STRING ) ) ( (lv_maxY_7_0= RULE_STRING ) ) ( (lv_associatedAttr_8_0= RULE_STRING ) ) ( (lv_memorized_9_0= ruleBoolean ) ) ( (lv_memorizedAtInit_10_0= ruleBoolean ) ) ( (lv_changeEvent_11_0= ruleFireEvents ) ) ( (lv_archiveEvent_12_0= ruleFireEvents ) ) ( (lv_dataReadyEvent_13_0= ruleFireEvents ) ) ( (lv_status_14_0= ruleInheritanceStatus ) ) ( (lv_properties_15_0= ruleAttrProperties ) ) ( (lv_allocReadMember_16_0= ruleBoolean ) ) ( (lv_isDynamic_17_0= ruleBoolean ) ) ( (lv_eventCriteria_18_0= ruleEventCriteria ) ) ( (lv_evArchiveCriteria_19_0= ruleEventCriteria ) ) otherlv_20= 'readExcludedStates:' ( (lv_readExcludedStates_21_0= RULE_STRING ) )* otherlv_22= 'writeExcludedStates:' ( (lv_writeExcludedStates_23_0= RULE_STRING ) )*
             {
             // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2421:2: ( (lv_name_0_0= RULE_ID ) )
             // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2422:1: (lv_name_0_0= RULE_ID )
@@ -6002,11 +6006,73 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_18=(Token)match(input,46,FOLLOW_46_in_ruleAttribute4931); 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2745:2: ( (lv_eventCriteria_18_0= ruleEventCriteria ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2746:1: (lv_eventCriteria_18_0= ruleEventCriteria )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2746:1: (lv_eventCriteria_18_0= ruleEventCriteria )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2747:3: lv_eventCriteria_18_0= ruleEventCriteria
+            {
+             
+            	        newCompositeNode(grammarAccess.getAttributeAccess().getEventCriteriaEventCriteriaParserRuleCall_18_0()); 
+            	    
+            pushFollow(FOLLOW_ruleEventCriteria_in_ruleAttribute4940);
+            lv_eventCriteria_18_0=ruleEventCriteria();
 
-                	newLeafNode(otherlv_18, grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_18());
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getAttributeRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"eventCriteria",
+                    		lv_eventCriteria_18_0, 
+                    		"EventCriteria");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2763:2: ( (lv_evArchiveCriteria_19_0= ruleEventCriteria ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2764:1: (lv_evArchiveCriteria_19_0= ruleEventCriteria )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2764:1: (lv_evArchiveCriteria_19_0= ruleEventCriteria )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2765:3: lv_evArchiveCriteria_19_0= ruleEventCriteria
+            {
+             
+            	        newCompositeNode(grammarAccess.getAttributeAccess().getEvArchiveCriteriaEventCriteriaParserRuleCall_19_0()); 
+            	    
+            pushFollow(FOLLOW_ruleEventCriteria_in_ruleAttribute4961);
+            lv_evArchiveCriteria_19_0=ruleEventCriteria();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getAttributeRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"evArchiveCriteria",
+                    		lv_evArchiveCriteria_19_0, 
+                    		"EventCriteria");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            otherlv_20=(Token)match(input,46,FOLLOW_46_in_ruleAttribute4973); 
+
+                	newLeafNode(otherlv_20, grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_20());
                 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2749:1: ( (lv_readExcludedStates_19_0= RULE_STRING ) )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2785:1: ( (lv_readExcludedStates_21_0= RULE_STRING ) )*
             loop25:
             do {
                 int alt25=2;
@@ -6019,14 +6085,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
                 switch (alt25) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2750:1: (lv_readExcludedStates_19_0= RULE_STRING )
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2786:1: (lv_readExcludedStates_21_0= RULE_STRING )
             	    {
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2750:1: (lv_readExcludedStates_19_0= RULE_STRING )
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2751:3: lv_readExcludedStates_19_0= RULE_STRING
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2786:1: (lv_readExcludedStates_21_0= RULE_STRING )
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2787:3: lv_readExcludedStates_21_0= RULE_STRING
             	    {
-            	    lv_readExcludedStates_19_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttribute4948); 
+            	    lv_readExcludedStates_21_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttribute4990); 
 
-            	    			newLeafNode(lv_readExcludedStates_19_0, grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_19_0()); 
+            	    			newLeafNode(lv_readExcludedStates_21_0, grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_21_0()); 
             	    		
 
             	    	        if (current==null) {
@@ -6035,7 +6101,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
             	           		addWithLastConsumed(
             	           			current, 
             	           			"readExcludedStates",
-            	            		lv_readExcludedStates_19_0, 
+            	            		lv_readExcludedStates_21_0, 
             	            		"STRING");
             	    	    
 
@@ -6050,11 +6116,11 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_20=(Token)match(input,47,FOLLOW_47_in_ruleAttribute4966); 
+            otherlv_22=(Token)match(input,47,FOLLOW_47_in_ruleAttribute5008); 
 
-                	newLeafNode(otherlv_20, grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_20());
+                	newLeafNode(otherlv_22, grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_22());
                 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2771:1: ( (lv_writeExcludedStates_21_0= RULE_STRING ) )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2807:1: ( (lv_writeExcludedStates_23_0= RULE_STRING ) )*
             loop26:
             do {
                 int alt26=2;
@@ -6067,14 +6133,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
                 switch (alt26) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2772:1: (lv_writeExcludedStates_21_0= RULE_STRING )
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2808:1: (lv_writeExcludedStates_23_0= RULE_STRING )
             	    {
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2772:1: (lv_writeExcludedStates_21_0= RULE_STRING )
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2773:3: lv_writeExcludedStates_21_0= RULE_STRING
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2808:1: (lv_writeExcludedStates_23_0= RULE_STRING )
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2809:3: lv_writeExcludedStates_23_0= RULE_STRING
             	    {
-            	    lv_writeExcludedStates_21_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttribute4983); 
+            	    lv_writeExcludedStates_23_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttribute5025); 
 
-            	    			newLeafNode(lv_writeExcludedStates_21_0, grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_21_0()); 
+            	    			newLeafNode(lv_writeExcludedStates_23_0, grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_23_0()); 
             	    		
 
             	    	        if (current==null) {
@@ -6083,7 +6149,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
             	           		addWithLastConsumed(
             	           			current, 
             	           			"writeExcludedStates",
-            	            		lv_writeExcludedStates_21_0, 
+            	            		lv_writeExcludedStates_23_0, 
             	            		"STRING");
             	    	    
 
@@ -6119,7 +6185,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFireEvents"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2797:1: entryRuleFireEvents returns [EObject current=null] : iv_ruleFireEvents= ruleFireEvents EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2833:1: entryRuleFireEvents returns [EObject current=null] : iv_ruleFireEvents= ruleFireEvents EOF ;
     public final EObject entryRuleFireEvents() throws RecognitionException {
         EObject current = null;
 
@@ -6127,17 +6193,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2798:2: (iv_ruleFireEvents= ruleFireEvents EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2799:2: iv_ruleFireEvents= ruleFireEvents EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2834:2: (iv_ruleFireEvents= ruleFireEvents EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2835:2: iv_ruleFireEvents= ruleFireEvents EOF
             {
              newCompositeNode(grammarAccess.getFireEventsRule()); 
-            pushFollow(FOLLOW_ruleFireEvents_in_entryRuleFireEvents5025);
+            pushFollow(FOLLOW_ruleFireEvents_in_entryRuleFireEvents5067);
             iv_ruleFireEvents=ruleFireEvents();
 
             state._fsp--;
 
              current =iv_ruleFireEvents; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFireEvents5035); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFireEvents5077); 
 
             }
 
@@ -6155,7 +6221,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFireEvents"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2806:1: ruleFireEvents returns [EObject current=null] : ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2842:1: ruleFireEvents returns [EObject current=null] : ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) ) ;
     public final EObject ruleFireEvents() throws RecognitionException {
         EObject current = null;
 
@@ -6167,22 +6233,22 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2809:28: ( ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2810:1: ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2845:28: ( ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2846:1: ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2810:1: ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2810:2: ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2846:1: ( ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2846:2: ( (lv_fire_0_0= ruleBoolean ) ) ( (lv_libCheckCriteria_1_0= ruleBoolean ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2810:2: ( (lv_fire_0_0= ruleBoolean ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2811:1: (lv_fire_0_0= ruleBoolean )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2846:2: ( (lv_fire_0_0= ruleBoolean ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2847:1: (lv_fire_0_0= ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2811:1: (lv_fire_0_0= ruleBoolean )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2812:3: lv_fire_0_0= ruleBoolean
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2847:1: (lv_fire_0_0= ruleBoolean )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2848:3: lv_fire_0_0= ruleBoolean
             {
              
             	        newCompositeNode(grammarAccess.getFireEventsAccess().getFireBooleanParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleBoolean_in_ruleFireEvents5081);
+            pushFollow(FOLLOW_ruleBoolean_in_ruleFireEvents5123);
             lv_fire_0_0=ruleBoolean();
 
             state._fsp--;
@@ -6204,16 +6270,16 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2828:2: ( (lv_libCheckCriteria_1_0= ruleBoolean ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2829:1: (lv_libCheckCriteria_1_0= ruleBoolean )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2864:2: ( (lv_libCheckCriteria_1_0= ruleBoolean ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2865:1: (lv_libCheckCriteria_1_0= ruleBoolean )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2829:1: (lv_libCheckCriteria_1_0= ruleBoolean )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2830:3: lv_libCheckCriteria_1_0= ruleBoolean
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2865:1: (lv_libCheckCriteria_1_0= ruleBoolean )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2866:3: lv_libCheckCriteria_1_0= ruleBoolean
             {
              
             	        newCompositeNode(grammarAccess.getFireEventsAccess().getLibCheckCriteriaBooleanParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleBoolean_in_ruleFireEvents5102);
+            pushFollow(FOLLOW_ruleBoolean_in_ruleFireEvents5144);
             lv_libCheckCriteria_1_0=ruleBoolean();
 
             state._fsp--;
@@ -6255,8 +6321,160 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleFireEvents"
 
 
+    // $ANTLR start "entryRuleEventCriteria"
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2890:1: entryRuleEventCriteria returns [EObject current=null] : iv_ruleEventCriteria= ruleEventCriteria EOF ;
+    public final EObject entryRuleEventCriteria() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleEventCriteria = null;
+
+
+        try {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2891:2: (iv_ruleEventCriteria= ruleEventCriteria EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2892:2: iv_ruleEventCriteria= ruleEventCriteria EOF
+            {
+             newCompositeNode(grammarAccess.getEventCriteriaRule()); 
+            pushFollow(FOLLOW_ruleEventCriteria_in_entryRuleEventCriteria5180);
+            iv_ruleEventCriteria=ruleEventCriteria();
+
+            state._fsp--;
+
+             current =iv_ruleEventCriteria; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEventCriteria5190); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEventCriteria"
+
+
+    // $ANTLR start "ruleEventCriteria"
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2899:1: ruleEventCriteria returns [EObject current=null] : ( ( (lv_relChange_0_0= RULE_STRING ) ) ( (lv_absChange_1_0= RULE_STRING ) ) ( (lv_period_2_0= RULE_STRING ) ) ) ;
+    public final EObject ruleEventCriteria() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_relChange_0_0=null;
+        Token lv_absChange_1_0=null;
+        Token lv_period_2_0=null;
+
+         enterRule(); 
+            
+        try {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2902:28: ( ( ( (lv_relChange_0_0= RULE_STRING ) ) ( (lv_absChange_1_0= RULE_STRING ) ) ( (lv_period_2_0= RULE_STRING ) ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2903:1: ( ( (lv_relChange_0_0= RULE_STRING ) ) ( (lv_absChange_1_0= RULE_STRING ) ) ( (lv_period_2_0= RULE_STRING ) ) )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2903:1: ( ( (lv_relChange_0_0= RULE_STRING ) ) ( (lv_absChange_1_0= RULE_STRING ) ) ( (lv_period_2_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2903:2: ( (lv_relChange_0_0= RULE_STRING ) ) ( (lv_absChange_1_0= RULE_STRING ) ) ( (lv_period_2_0= RULE_STRING ) )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2903:2: ( (lv_relChange_0_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2904:1: (lv_relChange_0_0= RULE_STRING )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2904:1: (lv_relChange_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2905:3: lv_relChange_0_0= RULE_STRING
+            {
+            lv_relChange_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleEventCriteria5232); 
+
+            			newLeafNode(lv_relChange_0_0, grammarAccess.getEventCriteriaAccess().getRelChangeSTRINGTerminalRuleCall_0_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getEventCriteriaRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"relChange",
+                    		lv_relChange_0_0, 
+                    		"STRING");
+            	    
+
+            }
+
+
+            }
+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2921:2: ( (lv_absChange_1_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2922:1: (lv_absChange_1_0= RULE_STRING )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2922:1: (lv_absChange_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2923:3: lv_absChange_1_0= RULE_STRING
+            {
+            lv_absChange_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleEventCriteria5254); 
+
+            			newLeafNode(lv_absChange_1_0, grammarAccess.getEventCriteriaAccess().getAbsChangeSTRINGTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getEventCriteriaRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"absChange",
+                    		lv_absChange_1_0, 
+                    		"STRING");
+            	    
+
+            }
+
+
+            }
+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2939:2: ( (lv_period_2_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2940:1: (lv_period_2_0= RULE_STRING )
+            {
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2940:1: (lv_period_2_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2941:3: lv_period_2_0= RULE_STRING
+            {
+            lv_period_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleEventCriteria5276); 
+
+            			newLeafNode(lv_period_2_0, grammarAccess.getEventCriteriaAccess().getPeriodSTRINGTerminalRuleCall_2_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getEventCriteriaRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"period",
+                    		lv_period_2_0, 
+                    		"STRING");
+            	    
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEventCriteria"
+
+
     // $ANTLR start "entryRuleAttrProperties"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2854:1: entryRuleAttrProperties returns [EObject current=null] : iv_ruleAttrProperties= ruleAttrProperties EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2965:1: entryRuleAttrProperties returns [EObject current=null] : iv_ruleAttrProperties= ruleAttrProperties EOF ;
     public final EObject entryRuleAttrProperties() throws RecognitionException {
         EObject current = null;
 
@@ -6264,17 +6482,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2855:2: (iv_ruleAttrProperties= ruleAttrProperties EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2856:2: iv_ruleAttrProperties= ruleAttrProperties EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2966:2: (iv_ruleAttrProperties= ruleAttrProperties EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2967:2: iv_ruleAttrProperties= ruleAttrProperties EOF
             {
              newCompositeNode(grammarAccess.getAttrPropertiesRule()); 
-            pushFollow(FOLLOW_ruleAttrProperties_in_entryRuleAttrProperties5138);
+            pushFollow(FOLLOW_ruleAttrProperties_in_entryRuleAttrProperties5317);
             iv_ruleAttrProperties=ruleAttrProperties();
 
             state._fsp--;
 
              current =iv_ruleAttrProperties; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttrProperties5148); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttrProperties5327); 
 
             }
 
@@ -6292,7 +6510,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttrProperties"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2863:1: ruleAttrProperties returns [EObject current=null] : ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2974:1: ruleAttrProperties returns [EObject current=null] : ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) ) ;
     public final EObject ruleAttrProperties() throws RecognitionException {
         EObject current = null;
 
@@ -6314,19 +6532,19 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2866:28: ( ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2867:1: ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2977:28: ( ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2978:1: ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2867:1: ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2867:2: ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2978:1: ( ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2978:2: ( (lv_description_0_0= RULE_STRING ) ) ( (lv_label_1_0= RULE_STRING ) ) ( (lv_unit_2_0= RULE_STRING ) ) ( (lv_standardUnit_3_0= RULE_STRING ) ) ( (lv_displayUnit_4_0= RULE_STRING ) ) ( (lv_format_5_0= RULE_STRING ) ) ( (lv_maxValue_6_0= RULE_STRING ) ) ( (lv_minValue_7_0= RULE_STRING ) ) ( (lv_maxAlarm_8_0= RULE_STRING ) ) ( (lv_minAlarm_9_0= RULE_STRING ) ) ( (lv_maxWarning_10_0= RULE_STRING ) ) ( (lv_minWarning_11_0= RULE_STRING ) ) ( (lv_deltaTime_12_0= RULE_STRING ) ) ( (lv_deltaValue_13_0= RULE_STRING ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2867:2: ( (lv_description_0_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2868:1: (lv_description_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2978:2: ( (lv_description_0_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2979:1: (lv_description_0_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2868:1: (lv_description_0_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2869:3: lv_description_0_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2979:1: (lv_description_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2980:3: lv_description_0_0= RULE_STRING
             {
-            lv_description_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5190); 
+            lv_description_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5369); 
 
             			newLeafNode(lv_description_0_0, grammarAccess.getAttrPropertiesAccess().getDescriptionSTRINGTerminalRuleCall_0_0()); 
             		
@@ -6346,13 +6564,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2885:2: ( (lv_label_1_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2886:1: (lv_label_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2996:2: ( (lv_label_1_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2997:1: (lv_label_1_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2886:1: (lv_label_1_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2887:3: lv_label_1_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2997:1: (lv_label_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2998:3: lv_label_1_0= RULE_STRING
             {
-            lv_label_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5212); 
+            lv_label_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5391); 
 
             			newLeafNode(lv_label_1_0, grammarAccess.getAttrPropertiesAccess().getLabelSTRINGTerminalRuleCall_1_0()); 
             		
@@ -6372,13 +6590,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2903:2: ( (lv_unit_2_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2904:1: (lv_unit_2_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3014:2: ( (lv_unit_2_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3015:1: (lv_unit_2_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2904:1: (lv_unit_2_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2905:3: lv_unit_2_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3015:1: (lv_unit_2_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3016:3: lv_unit_2_0= RULE_STRING
             {
-            lv_unit_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5234); 
+            lv_unit_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5413); 
 
             			newLeafNode(lv_unit_2_0, grammarAccess.getAttrPropertiesAccess().getUnitSTRINGTerminalRuleCall_2_0()); 
             		
@@ -6398,13 +6616,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2921:2: ( (lv_standardUnit_3_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2922:1: (lv_standardUnit_3_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3032:2: ( (lv_standardUnit_3_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3033:1: (lv_standardUnit_3_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2922:1: (lv_standardUnit_3_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2923:3: lv_standardUnit_3_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3033:1: (lv_standardUnit_3_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3034:3: lv_standardUnit_3_0= RULE_STRING
             {
-            lv_standardUnit_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5256); 
+            lv_standardUnit_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5435); 
 
             			newLeafNode(lv_standardUnit_3_0, grammarAccess.getAttrPropertiesAccess().getStandardUnitSTRINGTerminalRuleCall_3_0()); 
             		
@@ -6424,13 +6642,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2939:2: ( (lv_displayUnit_4_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2940:1: (lv_displayUnit_4_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3050:2: ( (lv_displayUnit_4_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3051:1: (lv_displayUnit_4_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2940:1: (lv_displayUnit_4_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2941:3: lv_displayUnit_4_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3051:1: (lv_displayUnit_4_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3052:3: lv_displayUnit_4_0= RULE_STRING
             {
-            lv_displayUnit_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5278); 
+            lv_displayUnit_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5457); 
 
             			newLeafNode(lv_displayUnit_4_0, grammarAccess.getAttrPropertiesAccess().getDisplayUnitSTRINGTerminalRuleCall_4_0()); 
             		
@@ -6450,13 +6668,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2957:2: ( (lv_format_5_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2958:1: (lv_format_5_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3068:2: ( (lv_format_5_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3069:1: (lv_format_5_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2958:1: (lv_format_5_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2959:3: lv_format_5_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3069:1: (lv_format_5_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3070:3: lv_format_5_0= RULE_STRING
             {
-            lv_format_5_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5300); 
+            lv_format_5_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5479); 
 
             			newLeafNode(lv_format_5_0, grammarAccess.getAttrPropertiesAccess().getFormatSTRINGTerminalRuleCall_5_0()); 
             		
@@ -6476,13 +6694,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2975:2: ( (lv_maxValue_6_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2976:1: (lv_maxValue_6_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3086:2: ( (lv_maxValue_6_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3087:1: (lv_maxValue_6_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2976:1: (lv_maxValue_6_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2977:3: lv_maxValue_6_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3087:1: (lv_maxValue_6_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3088:3: lv_maxValue_6_0= RULE_STRING
             {
-            lv_maxValue_6_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5322); 
+            lv_maxValue_6_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5501); 
 
             			newLeafNode(lv_maxValue_6_0, grammarAccess.getAttrPropertiesAccess().getMaxValueSTRINGTerminalRuleCall_6_0()); 
             		
@@ -6502,13 +6720,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2993:2: ( (lv_minValue_7_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2994:1: (lv_minValue_7_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3104:2: ( (lv_minValue_7_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3105:1: (lv_minValue_7_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2994:1: (lv_minValue_7_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:2995:3: lv_minValue_7_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3105:1: (lv_minValue_7_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3106:3: lv_minValue_7_0= RULE_STRING
             {
-            lv_minValue_7_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5344); 
+            lv_minValue_7_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5523); 
 
             			newLeafNode(lv_minValue_7_0, grammarAccess.getAttrPropertiesAccess().getMinValueSTRINGTerminalRuleCall_7_0()); 
             		
@@ -6528,13 +6746,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3011:2: ( (lv_maxAlarm_8_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3012:1: (lv_maxAlarm_8_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3122:2: ( (lv_maxAlarm_8_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3123:1: (lv_maxAlarm_8_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3012:1: (lv_maxAlarm_8_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3013:3: lv_maxAlarm_8_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3123:1: (lv_maxAlarm_8_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3124:3: lv_maxAlarm_8_0= RULE_STRING
             {
-            lv_maxAlarm_8_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5366); 
+            lv_maxAlarm_8_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5545); 
 
             			newLeafNode(lv_maxAlarm_8_0, grammarAccess.getAttrPropertiesAccess().getMaxAlarmSTRINGTerminalRuleCall_8_0()); 
             		
@@ -6554,13 +6772,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3029:2: ( (lv_minAlarm_9_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3030:1: (lv_minAlarm_9_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3140:2: ( (lv_minAlarm_9_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3141:1: (lv_minAlarm_9_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3030:1: (lv_minAlarm_9_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3031:3: lv_minAlarm_9_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3141:1: (lv_minAlarm_9_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3142:3: lv_minAlarm_9_0= RULE_STRING
             {
-            lv_minAlarm_9_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5388); 
+            lv_minAlarm_9_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5567); 
 
             			newLeafNode(lv_minAlarm_9_0, grammarAccess.getAttrPropertiesAccess().getMinAlarmSTRINGTerminalRuleCall_9_0()); 
             		
@@ -6580,13 +6798,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3047:2: ( (lv_maxWarning_10_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3048:1: (lv_maxWarning_10_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3158:2: ( (lv_maxWarning_10_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3159:1: (lv_maxWarning_10_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3048:1: (lv_maxWarning_10_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3049:3: lv_maxWarning_10_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3159:1: (lv_maxWarning_10_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3160:3: lv_maxWarning_10_0= RULE_STRING
             {
-            lv_maxWarning_10_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5410); 
+            lv_maxWarning_10_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5589); 
 
             			newLeafNode(lv_maxWarning_10_0, grammarAccess.getAttrPropertiesAccess().getMaxWarningSTRINGTerminalRuleCall_10_0()); 
             		
@@ -6606,13 +6824,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3065:2: ( (lv_minWarning_11_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3066:1: (lv_minWarning_11_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3176:2: ( (lv_minWarning_11_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3177:1: (lv_minWarning_11_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3066:1: (lv_minWarning_11_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3067:3: lv_minWarning_11_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3177:1: (lv_minWarning_11_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3178:3: lv_minWarning_11_0= RULE_STRING
             {
-            lv_minWarning_11_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5432); 
+            lv_minWarning_11_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5611); 
 
             			newLeafNode(lv_minWarning_11_0, grammarAccess.getAttrPropertiesAccess().getMinWarningSTRINGTerminalRuleCall_11_0()); 
             		
@@ -6632,13 +6850,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3083:2: ( (lv_deltaTime_12_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3084:1: (lv_deltaTime_12_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3194:2: ( (lv_deltaTime_12_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3195:1: (lv_deltaTime_12_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3084:1: (lv_deltaTime_12_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3085:3: lv_deltaTime_12_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3195:1: (lv_deltaTime_12_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3196:3: lv_deltaTime_12_0= RULE_STRING
             {
-            lv_deltaTime_12_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5454); 
+            lv_deltaTime_12_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5633); 
 
             			newLeafNode(lv_deltaTime_12_0, grammarAccess.getAttrPropertiesAccess().getDeltaTimeSTRINGTerminalRuleCall_12_0()); 
             		
@@ -6658,13 +6876,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3101:2: ( (lv_deltaValue_13_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3102:1: (lv_deltaValue_13_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3212:2: ( (lv_deltaValue_13_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3213:1: (lv_deltaValue_13_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3102:1: (lv_deltaValue_13_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3103:3: lv_deltaValue_13_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3213:1: (lv_deltaValue_13_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3214:3: lv_deltaValue_13_0= RULE_STRING
             {
-            lv_deltaValue_13_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5476); 
+            lv_deltaValue_13_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttrProperties5655); 
 
             			newLeafNode(lv_deltaValue_13_0, grammarAccess.getAttrPropertiesAccess().getDeltaValueSTRINGTerminalRuleCall_13_0()); 
             		
@@ -6705,7 +6923,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAdditionalFile"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3127:1: entryRuleAdditionalFile returns [EObject current=null] : iv_ruleAdditionalFile= ruleAdditionalFile EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3238:1: entryRuleAdditionalFile returns [EObject current=null] : iv_ruleAdditionalFile= ruleAdditionalFile EOF ;
     public final EObject entryRuleAdditionalFile() throws RecognitionException {
         EObject current = null;
 
@@ -6713,17 +6931,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3128:2: (iv_ruleAdditionalFile= ruleAdditionalFile EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3129:2: iv_ruleAdditionalFile= ruleAdditionalFile EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3239:2: (iv_ruleAdditionalFile= ruleAdditionalFile EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3240:2: iv_ruleAdditionalFile= ruleAdditionalFile EOF
             {
              newCompositeNode(grammarAccess.getAdditionalFileRule()); 
-            pushFollow(FOLLOW_ruleAdditionalFile_in_entryRuleAdditionalFile5517);
+            pushFollow(FOLLOW_ruleAdditionalFile_in_entryRuleAdditionalFile5696);
             iv_ruleAdditionalFile=ruleAdditionalFile();
 
             state._fsp--;
 
              current =iv_ruleAdditionalFile; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAdditionalFile5527); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAdditionalFile5706); 
 
             }
 
@@ -6741,7 +6959,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdditionalFile"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3136:1: ruleAdditionalFile returns [EObject current=null] : ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3247:1: ruleAdditionalFile returns [EObject current=null] : ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) ) ;
     public final EObject ruleAdditionalFile() throws RecognitionException {
         EObject current = null;
 
@@ -6751,19 +6969,19 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3139:28: ( ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3140:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3250:28: ( ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3251:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3140:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3140:2: ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3251:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3251:2: ( (lv_name_0_0= RULE_STRING ) ) ( (lv_path_1_0= RULE_STRING ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3140:2: ( (lv_name_0_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3141:1: (lv_name_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3251:2: ( (lv_name_0_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3252:1: (lv_name_0_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3141:1: (lv_name_0_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3142:3: lv_name_0_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3252:1: (lv_name_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3253:3: lv_name_0_0= RULE_STRING
             {
-            lv_name_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAdditionalFile5569); 
+            lv_name_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAdditionalFile5748); 
 
             			newLeafNode(lv_name_0_0, grammarAccess.getAdditionalFileAccess().getNameSTRINGTerminalRuleCall_0_0()); 
             		
@@ -6783,13 +7001,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3158:2: ( (lv_path_1_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3159:1: (lv_path_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3269:2: ( (lv_path_1_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3270:1: (lv_path_1_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3159:1: (lv_path_1_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3160:3: lv_path_1_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3270:1: (lv_path_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3271:3: lv_path_1_0= RULE_STRING
             {
-            lv_path_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAdditionalFile5591); 
+            lv_path_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAdditionalFile5770); 
 
             			newLeafNode(lv_path_1_0, grammarAccess.getAdditionalFileAccess().getPathSTRINGTerminalRuleCall_1_0()); 
             		
@@ -6830,7 +7048,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOverlodedPollPeriodObject"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3184:1: entryRuleOverlodedPollPeriodObject returns [EObject current=null] : iv_ruleOverlodedPollPeriodObject= ruleOverlodedPollPeriodObject EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3295:1: entryRuleOverlodedPollPeriodObject returns [EObject current=null] : iv_ruleOverlodedPollPeriodObject= ruleOverlodedPollPeriodObject EOF ;
     public final EObject entryRuleOverlodedPollPeriodObject() throws RecognitionException {
         EObject current = null;
 
@@ -6838,17 +7056,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3185:2: (iv_ruleOverlodedPollPeriodObject= ruleOverlodedPollPeriodObject EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3186:2: iv_ruleOverlodedPollPeriodObject= ruleOverlodedPollPeriodObject EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3296:2: (iv_ruleOverlodedPollPeriodObject= ruleOverlodedPollPeriodObject EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3297:2: iv_ruleOverlodedPollPeriodObject= ruleOverlodedPollPeriodObject EOF
             {
              newCompositeNode(grammarAccess.getOverlodedPollPeriodObjectRule()); 
-            pushFollow(FOLLOW_ruleOverlodedPollPeriodObject_in_entryRuleOverlodedPollPeriodObject5632);
+            pushFollow(FOLLOW_ruleOverlodedPollPeriodObject_in_entryRuleOverlodedPollPeriodObject5811);
             iv_ruleOverlodedPollPeriodObject=ruleOverlodedPollPeriodObject();
 
             state._fsp--;
 
              current =iv_ruleOverlodedPollPeriodObject; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOverlodedPollPeriodObject5642); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOverlodedPollPeriodObject5821); 
 
             }
 
@@ -6866,7 +7084,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOverlodedPollPeriodObject"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3193:1: ruleOverlodedPollPeriodObject returns [EObject current=null] : ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3304:1: ruleOverlodedPollPeriodObject returns [EObject current=null] : ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) ) ;
     public final EObject ruleOverlodedPollPeriodObject() throws RecognitionException {
         EObject current = null;
 
@@ -6877,19 +7095,19 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3196:28: ( ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3197:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3307:28: ( ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3308:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3197:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3197:2: ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3308:1: ( ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3308:2: ( (lv_name_0_0= RULE_STRING ) ) ( (lv_type_1_0= RULE_STRING ) ) ( (lv_pollPeriod_2_0= RULE_STRING ) )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3197:2: ( (lv_name_0_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3198:1: (lv_name_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3308:2: ( (lv_name_0_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3309:1: (lv_name_0_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3198:1: (lv_name_0_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3199:3: lv_name_0_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3309:1: (lv_name_0_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3310:3: lv_name_0_0= RULE_STRING
             {
-            lv_name_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5684); 
+            lv_name_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5863); 
 
             			newLeafNode(lv_name_0_0, grammarAccess.getOverlodedPollPeriodObjectAccess().getNameSTRINGTerminalRuleCall_0_0()); 
             		
@@ -6909,13 +7127,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3215:2: ( (lv_type_1_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3216:1: (lv_type_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3326:2: ( (lv_type_1_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3327:1: (lv_type_1_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3216:1: (lv_type_1_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3217:3: lv_type_1_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3327:1: (lv_type_1_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3328:3: lv_type_1_0= RULE_STRING
             {
-            lv_type_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5706); 
+            lv_type_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5885); 
 
             			newLeafNode(lv_type_1_0, grammarAccess.getOverlodedPollPeriodObjectAccess().getTypeSTRINGTerminalRuleCall_1_0()); 
             		
@@ -6935,13 +7153,13 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3233:2: ( (lv_pollPeriod_2_0= RULE_STRING ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3234:1: (lv_pollPeriod_2_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3344:2: ( (lv_pollPeriod_2_0= RULE_STRING ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3345:1: (lv_pollPeriod_2_0= RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3234:1: (lv_pollPeriod_2_0= RULE_STRING )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3235:3: lv_pollPeriod_2_0= RULE_STRING
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3345:1: (lv_pollPeriod_2_0= RULE_STRING )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3346:3: lv_pollPeriod_2_0= RULE_STRING
             {
-            lv_pollPeriod_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5728); 
+            lv_pollPeriod_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5907); 
 
             			newLeafNode(lv_pollPeriod_2_0, grammarAccess.getOverlodedPollPeriodObjectAccess().getPollPeriodSTRINGTerminalRuleCall_2_0()); 
             		
@@ -6982,7 +7200,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3259:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3370:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
     public final EObject entryRuleType() throws RecognitionException {
         EObject current = null;
 
@@ -6990,17 +7208,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3260:2: (iv_ruleType= ruleType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3261:2: iv_ruleType= ruleType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3371:2: (iv_ruleType= ruleType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3372:2: iv_ruleType= ruleType EOF
             {
              newCompositeNode(grammarAccess.getTypeRule()); 
-            pushFollow(FOLLOW_ruleType_in_entryRuleType5769);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType5948);
             iv_ruleType=ruleType();
 
             state._fsp--;
 
              current =iv_ruleType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType5779); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType5958); 
 
             }
 
@@ -7018,7 +7236,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3268:1: ruleType returns [EObject current=null] : (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3379:1: ruleType returns [EObject current=null] : (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
 
@@ -7084,10 +7302,10 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3271:28: ( (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3272:1: (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3382:28: ( (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3383:1: (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3272:1: (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3383:1: (this_VoidType_0= ruleVoidType | this_BooleanType_1= ruleBooleanType | this_ShortType_2= ruleShortType | this_UShortType_3= ruleUShortType | this_IntType_4= ruleIntType | this_UIntType_5= ruleUIntType | this_FloatType_6= ruleFloatType | this_DoubleType_7= ruleDoubleType | this_StringType_8= ruleStringType | this_CharArrayType_9= ruleCharArrayType | this_ShortArrayType_10= ruleShortArrayType | this_UShortArrayType_11= ruleUShortArrayType | this_IntArrayType_12= ruleIntArrayType | this_UIntArrayType_13= ruleUIntArrayType | this_FloatArrayType_14= ruleFloatArrayType | this_DoubleArrayType_15= ruleDoubleArrayType | this_StringArrayType_16= ruleStringArrayType | this_LongStringArrayType_17= ruleLongStringArrayType | this_DoubleStringArrayType_18= ruleDoubleStringArrayType | this_StateType_19= ruleStateType | this_ConstStringType_20= ruleConstStringType | this_BooleanArrayType_21= ruleBooleanArrayType | this_LongType_22= ruleLongType | this_ULongType_23= ruleULongType | this_UCharType_24= ruleUCharType | this_LongArrayType_25= ruleLongArrayType | this_ULongArrayType_26= ruleULongArrayType | this_DevIntType_27= ruleDevIntType | this_EncodedType_28= ruleEncodedType )
             int alt27=29;
             switch ( input.LA(1) ) {
             case 48:
@@ -7244,12 +7462,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             switch (alt27) {
                 case 1 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3273:5: this_VoidType_0= ruleVoidType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3384:5: this_VoidType_0= ruleVoidType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getVoidTypeParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleVoidType_in_ruleType5826);
+                    pushFollow(FOLLOW_ruleVoidType_in_ruleType6005);
                     this_VoidType_0=ruleVoidType();
 
                     state._fsp--;
@@ -7262,12 +7480,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3283:5: this_BooleanType_1= ruleBooleanType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3394:5: this_BooleanType_1= ruleBooleanType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getBooleanTypeParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleBooleanType_in_ruleType5853);
+                    pushFollow(FOLLOW_ruleBooleanType_in_ruleType6032);
                     this_BooleanType_1=ruleBooleanType();
 
                     state._fsp--;
@@ -7280,12 +7498,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3293:5: this_ShortType_2= ruleShortType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3404:5: this_ShortType_2= ruleShortType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getShortTypeParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleShortType_in_ruleType5880);
+                    pushFollow(FOLLOW_ruleShortType_in_ruleType6059);
                     this_ShortType_2=ruleShortType();
 
                     state._fsp--;
@@ -7298,12 +7516,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3303:5: this_UShortType_3= ruleUShortType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3414:5: this_UShortType_3= ruleUShortType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getUShortTypeParserRuleCall_3()); 
                         
-                    pushFollow(FOLLOW_ruleUShortType_in_ruleType5907);
+                    pushFollow(FOLLOW_ruleUShortType_in_ruleType6086);
                     this_UShortType_3=ruleUShortType();
 
                     state._fsp--;
@@ -7316,12 +7534,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3313:5: this_IntType_4= ruleIntType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3424:5: this_IntType_4= ruleIntType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getIntTypeParserRuleCall_4()); 
                         
-                    pushFollow(FOLLOW_ruleIntType_in_ruleType5934);
+                    pushFollow(FOLLOW_ruleIntType_in_ruleType6113);
                     this_IntType_4=ruleIntType();
 
                     state._fsp--;
@@ -7334,12 +7552,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3323:5: this_UIntType_5= ruleUIntType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3434:5: this_UIntType_5= ruleUIntType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getUIntTypeParserRuleCall_5()); 
                         
-                    pushFollow(FOLLOW_ruleUIntType_in_ruleType5961);
+                    pushFollow(FOLLOW_ruleUIntType_in_ruleType6140);
                     this_UIntType_5=ruleUIntType();
 
                     state._fsp--;
@@ -7352,12 +7570,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3333:5: this_FloatType_6= ruleFloatType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3444:5: this_FloatType_6= ruleFloatType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getFloatTypeParserRuleCall_6()); 
                         
-                    pushFollow(FOLLOW_ruleFloatType_in_ruleType5988);
+                    pushFollow(FOLLOW_ruleFloatType_in_ruleType6167);
                     this_FloatType_6=ruleFloatType();
 
                     state._fsp--;
@@ -7370,12 +7588,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3343:5: this_DoubleType_7= ruleDoubleType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3454:5: this_DoubleType_7= ruleDoubleType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getDoubleTypeParserRuleCall_7()); 
                         
-                    pushFollow(FOLLOW_ruleDoubleType_in_ruleType6015);
+                    pushFollow(FOLLOW_ruleDoubleType_in_ruleType6194);
                     this_DoubleType_7=ruleDoubleType();
 
                     state._fsp--;
@@ -7388,12 +7606,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3353:5: this_StringType_8= ruleStringType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3464:5: this_StringType_8= ruleStringType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getStringTypeParserRuleCall_8()); 
                         
-                    pushFollow(FOLLOW_ruleStringType_in_ruleType6042);
+                    pushFollow(FOLLOW_ruleStringType_in_ruleType6221);
                     this_StringType_8=ruleStringType();
 
                     state._fsp--;
@@ -7406,12 +7624,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3363:5: this_CharArrayType_9= ruleCharArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3474:5: this_CharArrayType_9= ruleCharArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getCharArrayTypeParserRuleCall_9()); 
                         
-                    pushFollow(FOLLOW_ruleCharArrayType_in_ruleType6069);
+                    pushFollow(FOLLOW_ruleCharArrayType_in_ruleType6248);
                     this_CharArrayType_9=ruleCharArrayType();
 
                     state._fsp--;
@@ -7424,12 +7642,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3373:5: this_ShortArrayType_10= ruleShortArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3484:5: this_ShortArrayType_10= ruleShortArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getShortArrayTypeParserRuleCall_10()); 
                         
-                    pushFollow(FOLLOW_ruleShortArrayType_in_ruleType6096);
+                    pushFollow(FOLLOW_ruleShortArrayType_in_ruleType6275);
                     this_ShortArrayType_10=ruleShortArrayType();
 
                     state._fsp--;
@@ -7442,12 +7660,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3383:5: this_UShortArrayType_11= ruleUShortArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3494:5: this_UShortArrayType_11= ruleUShortArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getUShortArrayTypeParserRuleCall_11()); 
                         
-                    pushFollow(FOLLOW_ruleUShortArrayType_in_ruleType6123);
+                    pushFollow(FOLLOW_ruleUShortArrayType_in_ruleType6302);
                     this_UShortArrayType_11=ruleUShortArrayType();
 
                     state._fsp--;
@@ -7460,12 +7678,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3393:5: this_IntArrayType_12= ruleIntArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3504:5: this_IntArrayType_12= ruleIntArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getIntArrayTypeParserRuleCall_12()); 
                         
-                    pushFollow(FOLLOW_ruleIntArrayType_in_ruleType6150);
+                    pushFollow(FOLLOW_ruleIntArrayType_in_ruleType6329);
                     this_IntArrayType_12=ruleIntArrayType();
 
                     state._fsp--;
@@ -7478,12 +7696,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 14 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3403:5: this_UIntArrayType_13= ruleUIntArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3514:5: this_UIntArrayType_13= ruleUIntArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getUIntArrayTypeParserRuleCall_13()); 
                         
-                    pushFollow(FOLLOW_ruleUIntArrayType_in_ruleType6177);
+                    pushFollow(FOLLOW_ruleUIntArrayType_in_ruleType6356);
                     this_UIntArrayType_13=ruleUIntArrayType();
 
                     state._fsp--;
@@ -7496,12 +7714,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 15 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3413:5: this_FloatArrayType_14= ruleFloatArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3524:5: this_FloatArrayType_14= ruleFloatArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getFloatArrayTypeParserRuleCall_14()); 
                         
-                    pushFollow(FOLLOW_ruleFloatArrayType_in_ruleType6204);
+                    pushFollow(FOLLOW_ruleFloatArrayType_in_ruleType6383);
                     this_FloatArrayType_14=ruleFloatArrayType();
 
                     state._fsp--;
@@ -7514,12 +7732,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 16 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3423:5: this_DoubleArrayType_15= ruleDoubleArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3534:5: this_DoubleArrayType_15= ruleDoubleArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getDoubleArrayTypeParserRuleCall_15()); 
                         
-                    pushFollow(FOLLOW_ruleDoubleArrayType_in_ruleType6231);
+                    pushFollow(FOLLOW_ruleDoubleArrayType_in_ruleType6410);
                     this_DoubleArrayType_15=ruleDoubleArrayType();
 
                     state._fsp--;
@@ -7532,12 +7750,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 17 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3433:5: this_StringArrayType_16= ruleStringArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3544:5: this_StringArrayType_16= ruleStringArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getStringArrayTypeParserRuleCall_16()); 
                         
-                    pushFollow(FOLLOW_ruleStringArrayType_in_ruleType6258);
+                    pushFollow(FOLLOW_ruleStringArrayType_in_ruleType6437);
                     this_StringArrayType_16=ruleStringArrayType();
 
                     state._fsp--;
@@ -7550,12 +7768,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 18 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3443:5: this_LongStringArrayType_17= ruleLongStringArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3554:5: this_LongStringArrayType_17= ruleLongStringArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getLongStringArrayTypeParserRuleCall_17()); 
                         
-                    pushFollow(FOLLOW_ruleLongStringArrayType_in_ruleType6285);
+                    pushFollow(FOLLOW_ruleLongStringArrayType_in_ruleType6464);
                     this_LongStringArrayType_17=ruleLongStringArrayType();
 
                     state._fsp--;
@@ -7568,12 +7786,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 19 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3453:5: this_DoubleStringArrayType_18= ruleDoubleStringArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3564:5: this_DoubleStringArrayType_18= ruleDoubleStringArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getDoubleStringArrayTypeParserRuleCall_18()); 
                         
-                    pushFollow(FOLLOW_ruleDoubleStringArrayType_in_ruleType6312);
+                    pushFollow(FOLLOW_ruleDoubleStringArrayType_in_ruleType6491);
                     this_DoubleStringArrayType_18=ruleDoubleStringArrayType();
 
                     state._fsp--;
@@ -7586,12 +7804,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 20 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3463:5: this_StateType_19= ruleStateType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3574:5: this_StateType_19= ruleStateType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getStateTypeParserRuleCall_19()); 
                         
-                    pushFollow(FOLLOW_ruleStateType_in_ruleType6339);
+                    pushFollow(FOLLOW_ruleStateType_in_ruleType6518);
                     this_StateType_19=ruleStateType();
 
                     state._fsp--;
@@ -7604,12 +7822,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 21 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3473:5: this_ConstStringType_20= ruleConstStringType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3584:5: this_ConstStringType_20= ruleConstStringType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getConstStringTypeParserRuleCall_20()); 
                         
-                    pushFollow(FOLLOW_ruleConstStringType_in_ruleType6366);
+                    pushFollow(FOLLOW_ruleConstStringType_in_ruleType6545);
                     this_ConstStringType_20=ruleConstStringType();
 
                     state._fsp--;
@@ -7622,12 +7840,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 22 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3483:5: this_BooleanArrayType_21= ruleBooleanArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3594:5: this_BooleanArrayType_21= ruleBooleanArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getBooleanArrayTypeParserRuleCall_21()); 
                         
-                    pushFollow(FOLLOW_ruleBooleanArrayType_in_ruleType6393);
+                    pushFollow(FOLLOW_ruleBooleanArrayType_in_ruleType6572);
                     this_BooleanArrayType_21=ruleBooleanArrayType();
 
                     state._fsp--;
@@ -7640,12 +7858,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 23 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3493:5: this_LongType_22= ruleLongType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3604:5: this_LongType_22= ruleLongType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getLongTypeParserRuleCall_22()); 
                         
-                    pushFollow(FOLLOW_ruleLongType_in_ruleType6420);
+                    pushFollow(FOLLOW_ruleLongType_in_ruleType6599);
                     this_LongType_22=ruleLongType();
 
                     state._fsp--;
@@ -7658,12 +7876,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 24 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3503:5: this_ULongType_23= ruleULongType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3614:5: this_ULongType_23= ruleULongType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getULongTypeParserRuleCall_23()); 
                         
-                    pushFollow(FOLLOW_ruleULongType_in_ruleType6447);
+                    pushFollow(FOLLOW_ruleULongType_in_ruleType6626);
                     this_ULongType_23=ruleULongType();
 
                     state._fsp--;
@@ -7676,12 +7894,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 25 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3513:5: this_UCharType_24= ruleUCharType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3624:5: this_UCharType_24= ruleUCharType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getUCharTypeParserRuleCall_24()); 
                         
-                    pushFollow(FOLLOW_ruleUCharType_in_ruleType6474);
+                    pushFollow(FOLLOW_ruleUCharType_in_ruleType6653);
                     this_UCharType_24=ruleUCharType();
 
                     state._fsp--;
@@ -7694,12 +7912,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 26 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3523:5: this_LongArrayType_25= ruleLongArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3634:5: this_LongArrayType_25= ruleLongArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getLongArrayTypeParserRuleCall_25()); 
                         
-                    pushFollow(FOLLOW_ruleLongArrayType_in_ruleType6501);
+                    pushFollow(FOLLOW_ruleLongArrayType_in_ruleType6680);
                     this_LongArrayType_25=ruleLongArrayType();
 
                     state._fsp--;
@@ -7712,12 +7930,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 27 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3533:5: this_ULongArrayType_26= ruleULongArrayType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3644:5: this_ULongArrayType_26= ruleULongArrayType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getULongArrayTypeParserRuleCall_26()); 
                         
-                    pushFollow(FOLLOW_ruleULongArrayType_in_ruleType6528);
+                    pushFollow(FOLLOW_ruleULongArrayType_in_ruleType6707);
                     this_ULongArrayType_26=ruleULongArrayType();
 
                     state._fsp--;
@@ -7730,12 +7948,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 28 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3543:5: this_DevIntType_27= ruleDevIntType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3654:5: this_DevIntType_27= ruleDevIntType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getDevIntTypeParserRuleCall_27()); 
                         
-                    pushFollow(FOLLOW_ruleDevIntType_in_ruleType6555);
+                    pushFollow(FOLLOW_ruleDevIntType_in_ruleType6734);
                     this_DevIntType_27=ruleDevIntType();
 
                     state._fsp--;
@@ -7748,12 +7966,12 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 29 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3553:5: this_EncodedType_28= ruleEncodedType
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3664:5: this_EncodedType_28= ruleEncodedType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getEncodedTypeParserRuleCall_28()); 
                         
-                    pushFollow(FOLLOW_ruleEncodedType_in_ruleType6582);
+                    pushFollow(FOLLOW_ruleEncodedType_in_ruleType6761);
                     this_EncodedType_28=ruleEncodedType();
 
                     state._fsp--;
@@ -7786,7 +8004,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVoidType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3569:1: entryRuleVoidType returns [EObject current=null] : iv_ruleVoidType= ruleVoidType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3680:1: entryRuleVoidType returns [EObject current=null] : iv_ruleVoidType= ruleVoidType EOF ;
     public final EObject entryRuleVoidType() throws RecognitionException {
         EObject current = null;
 
@@ -7794,17 +8012,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3570:2: (iv_ruleVoidType= ruleVoidType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3571:2: iv_ruleVoidType= ruleVoidType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3681:2: (iv_ruleVoidType= ruleVoidType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3682:2: iv_ruleVoidType= ruleVoidType EOF
             {
              newCompositeNode(grammarAccess.getVoidTypeRule()); 
-            pushFollow(FOLLOW_ruleVoidType_in_entryRuleVoidType6617);
+            pushFollow(FOLLOW_ruleVoidType_in_entryRuleVoidType6796);
             iv_ruleVoidType=ruleVoidType();
 
             state._fsp--;
 
              current =iv_ruleVoidType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVoidType6627); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVoidType6806); 
 
             }
 
@@ -7822,7 +8040,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVoidType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3578:1: ruleVoidType returns [EObject current=null] : ( () otherlv_1= 'void' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3689:1: ruleVoidType returns [EObject current=null] : ( () otherlv_1= 'void' ) ;
     public final EObject ruleVoidType() throws RecognitionException {
         EObject current = null;
 
@@ -7831,14 +8049,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3581:28: ( ( () otherlv_1= 'void' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3582:1: ( () otherlv_1= 'void' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3692:28: ( ( () otherlv_1= 'void' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3693:1: ( () otherlv_1= 'void' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3582:1: ( () otherlv_1= 'void' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3582:2: () otherlv_1= 'void'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3693:1: ( () otherlv_1= 'void' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3693:2: () otherlv_1= 'void'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3582:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3583:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3693:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3694:5: 
             {
 
                     current = forceCreateModelElement(
@@ -7848,7 +8066,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,48,FOLLOW_48_in_ruleVoidType6673); 
+            otherlv_1=(Token)match(input,48,FOLLOW_48_in_ruleVoidType6852); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getVoidTypeAccess().getVoidKeyword_1());
                 
@@ -7873,7 +8091,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3600:1: entryRuleBooleanType returns [EObject current=null] : iv_ruleBooleanType= ruleBooleanType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3711:1: entryRuleBooleanType returns [EObject current=null] : iv_ruleBooleanType= ruleBooleanType EOF ;
     public final EObject entryRuleBooleanType() throws RecognitionException {
         EObject current = null;
 
@@ -7881,17 +8099,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3601:2: (iv_ruleBooleanType= ruleBooleanType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3602:2: iv_ruleBooleanType= ruleBooleanType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3712:2: (iv_ruleBooleanType= ruleBooleanType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3713:2: iv_ruleBooleanType= ruleBooleanType EOF
             {
              newCompositeNode(grammarAccess.getBooleanTypeRule()); 
-            pushFollow(FOLLOW_ruleBooleanType_in_entryRuleBooleanType6709);
+            pushFollow(FOLLOW_ruleBooleanType_in_entryRuleBooleanType6888);
             iv_ruleBooleanType=ruleBooleanType();
 
             state._fsp--;
 
              current =iv_ruleBooleanType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanType6719); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanType6898); 
 
             }
 
@@ -7909,7 +8127,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3609:1: ruleBooleanType returns [EObject current=null] : ( () otherlv_1= 'boolean' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3720:1: ruleBooleanType returns [EObject current=null] : ( () otherlv_1= 'boolean' ) ;
     public final EObject ruleBooleanType() throws RecognitionException {
         EObject current = null;
 
@@ -7918,14 +8136,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3612:28: ( ( () otherlv_1= 'boolean' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3613:1: ( () otherlv_1= 'boolean' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3723:28: ( ( () otherlv_1= 'boolean' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3724:1: ( () otherlv_1= 'boolean' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3613:1: ( () otherlv_1= 'boolean' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3613:2: () otherlv_1= 'boolean'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3724:1: ( () otherlv_1= 'boolean' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3724:2: () otherlv_1= 'boolean'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3613:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3614:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3724:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3725:5: 
             {
 
                     current = forceCreateModelElement(
@@ -7935,7 +8153,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,49,FOLLOW_49_in_ruleBooleanType6765); 
+            otherlv_1=(Token)match(input,49,FOLLOW_49_in_ruleBooleanType6944); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getBooleanTypeAccess().getBooleanKeyword_1());
                 
@@ -7960,7 +8178,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleShortType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3631:1: entryRuleShortType returns [EObject current=null] : iv_ruleShortType= ruleShortType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3742:1: entryRuleShortType returns [EObject current=null] : iv_ruleShortType= ruleShortType EOF ;
     public final EObject entryRuleShortType() throws RecognitionException {
         EObject current = null;
 
@@ -7968,17 +8186,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3632:2: (iv_ruleShortType= ruleShortType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3633:2: iv_ruleShortType= ruleShortType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3743:2: (iv_ruleShortType= ruleShortType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3744:2: iv_ruleShortType= ruleShortType EOF
             {
              newCompositeNode(grammarAccess.getShortTypeRule()); 
-            pushFollow(FOLLOW_ruleShortType_in_entryRuleShortType6801);
+            pushFollow(FOLLOW_ruleShortType_in_entryRuleShortType6980);
             iv_ruleShortType=ruleShortType();
 
             state._fsp--;
 
              current =iv_ruleShortType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleShortType6811); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleShortType6990); 
 
             }
 
@@ -7996,7 +8214,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleShortType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3640:1: ruleShortType returns [EObject current=null] : ( () otherlv_1= 'short' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3751:1: ruleShortType returns [EObject current=null] : ( () otherlv_1= 'short' ) ;
     public final EObject ruleShortType() throws RecognitionException {
         EObject current = null;
 
@@ -8005,14 +8223,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3643:28: ( ( () otherlv_1= 'short' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3644:1: ( () otherlv_1= 'short' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3754:28: ( ( () otherlv_1= 'short' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3755:1: ( () otherlv_1= 'short' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3644:1: ( () otherlv_1= 'short' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3644:2: () otherlv_1= 'short'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3755:1: ( () otherlv_1= 'short' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3755:2: () otherlv_1= 'short'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3644:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3645:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3755:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3756:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8022,7 +8240,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,50,FOLLOW_50_in_ruleShortType6857); 
+            otherlv_1=(Token)match(input,50,FOLLOW_50_in_ruleShortType7036); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getShortTypeAccess().getShortKeyword_1());
                 
@@ -8047,7 +8265,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUShortType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3662:1: entryRuleUShortType returns [EObject current=null] : iv_ruleUShortType= ruleUShortType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3773:1: entryRuleUShortType returns [EObject current=null] : iv_ruleUShortType= ruleUShortType EOF ;
     public final EObject entryRuleUShortType() throws RecognitionException {
         EObject current = null;
 
@@ -8055,17 +8273,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3663:2: (iv_ruleUShortType= ruleUShortType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3664:2: iv_ruleUShortType= ruleUShortType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3774:2: (iv_ruleUShortType= ruleUShortType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3775:2: iv_ruleUShortType= ruleUShortType EOF
             {
              newCompositeNode(grammarAccess.getUShortTypeRule()); 
-            pushFollow(FOLLOW_ruleUShortType_in_entryRuleUShortType6893);
+            pushFollow(FOLLOW_ruleUShortType_in_entryRuleUShortType7072);
             iv_ruleUShortType=ruleUShortType();
 
             state._fsp--;
 
              current =iv_ruleUShortType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUShortType6903); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUShortType7082); 
 
             }
 
@@ -8083,7 +8301,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUShortType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3671:1: ruleUShortType returns [EObject current=null] : ( () otherlv_1= 'ushort' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3782:1: ruleUShortType returns [EObject current=null] : ( () otherlv_1= 'ushort' ) ;
     public final EObject ruleUShortType() throws RecognitionException {
         EObject current = null;
 
@@ -8092,14 +8310,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3674:28: ( ( () otherlv_1= 'ushort' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3675:1: ( () otherlv_1= 'ushort' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3785:28: ( ( () otherlv_1= 'ushort' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3786:1: ( () otherlv_1= 'ushort' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3675:1: ( () otherlv_1= 'ushort' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3675:2: () otherlv_1= 'ushort'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3786:1: ( () otherlv_1= 'ushort' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3786:2: () otherlv_1= 'ushort'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3675:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3676:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3786:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3787:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8109,7 +8327,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,51,FOLLOW_51_in_ruleUShortType6949); 
+            otherlv_1=(Token)match(input,51,FOLLOW_51_in_ruleUShortType7128); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getUShortTypeAccess().getUshortKeyword_1());
                 
@@ -8134,7 +8352,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3693:1: entryRuleIntType returns [EObject current=null] : iv_ruleIntType= ruleIntType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3804:1: entryRuleIntType returns [EObject current=null] : iv_ruleIntType= ruleIntType EOF ;
     public final EObject entryRuleIntType() throws RecognitionException {
         EObject current = null;
 
@@ -8142,17 +8360,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3694:2: (iv_ruleIntType= ruleIntType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3695:2: iv_ruleIntType= ruleIntType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3805:2: (iv_ruleIntType= ruleIntType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3806:2: iv_ruleIntType= ruleIntType EOF
             {
              newCompositeNode(grammarAccess.getIntTypeRule()); 
-            pushFollow(FOLLOW_ruleIntType_in_entryRuleIntType6985);
+            pushFollow(FOLLOW_ruleIntType_in_entryRuleIntType7164);
             iv_ruleIntType=ruleIntType();
 
             state._fsp--;
 
              current =iv_ruleIntType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntType6995); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntType7174); 
 
             }
 
@@ -8170,7 +8388,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3702:1: ruleIntType returns [EObject current=null] : ( () otherlv_1= 'int' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3813:1: ruleIntType returns [EObject current=null] : ( () otherlv_1= 'int' ) ;
     public final EObject ruleIntType() throws RecognitionException {
         EObject current = null;
 
@@ -8179,14 +8397,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3705:28: ( ( () otherlv_1= 'int' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3706:1: ( () otherlv_1= 'int' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3816:28: ( ( () otherlv_1= 'int' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3817:1: ( () otherlv_1= 'int' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3706:1: ( () otherlv_1= 'int' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3706:2: () otherlv_1= 'int'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3817:1: ( () otherlv_1= 'int' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3817:2: () otherlv_1= 'int'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3706:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3707:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3817:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3818:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8196,7 +8414,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,52,FOLLOW_52_in_ruleIntType7041); 
+            otherlv_1=(Token)match(input,52,FOLLOW_52_in_ruleIntType7220); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getIntTypeAccess().getIntKeyword_1());
                 
@@ -8221,7 +8439,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUIntType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3724:1: entryRuleUIntType returns [EObject current=null] : iv_ruleUIntType= ruleUIntType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3835:1: entryRuleUIntType returns [EObject current=null] : iv_ruleUIntType= ruleUIntType EOF ;
     public final EObject entryRuleUIntType() throws RecognitionException {
         EObject current = null;
 
@@ -8229,17 +8447,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3725:2: (iv_ruleUIntType= ruleUIntType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3726:2: iv_ruleUIntType= ruleUIntType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3836:2: (iv_ruleUIntType= ruleUIntType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3837:2: iv_ruleUIntType= ruleUIntType EOF
             {
              newCompositeNode(grammarAccess.getUIntTypeRule()); 
-            pushFollow(FOLLOW_ruleUIntType_in_entryRuleUIntType7077);
+            pushFollow(FOLLOW_ruleUIntType_in_entryRuleUIntType7256);
             iv_ruleUIntType=ruleUIntType();
 
             state._fsp--;
 
              current =iv_ruleUIntType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUIntType7087); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUIntType7266); 
 
             }
 
@@ -8257,7 +8475,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUIntType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3733:1: ruleUIntType returns [EObject current=null] : ( () otherlv_1= 'uint' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3844:1: ruleUIntType returns [EObject current=null] : ( () otherlv_1= 'uint' ) ;
     public final EObject ruleUIntType() throws RecognitionException {
         EObject current = null;
 
@@ -8266,14 +8484,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3736:28: ( ( () otherlv_1= 'uint' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3737:1: ( () otherlv_1= 'uint' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3847:28: ( ( () otherlv_1= 'uint' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3848:1: ( () otherlv_1= 'uint' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3737:1: ( () otherlv_1= 'uint' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3737:2: () otherlv_1= 'uint'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3848:1: ( () otherlv_1= 'uint' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3848:2: () otherlv_1= 'uint'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3737:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3738:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3848:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3849:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8283,7 +8501,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,53,FOLLOW_53_in_ruleUIntType7133); 
+            otherlv_1=(Token)match(input,53,FOLLOW_53_in_ruleUIntType7312); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getUIntTypeAccess().getUintKeyword_1());
                 
@@ -8308,7 +8526,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3755:1: entryRuleFloatType returns [EObject current=null] : iv_ruleFloatType= ruleFloatType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3866:1: entryRuleFloatType returns [EObject current=null] : iv_ruleFloatType= ruleFloatType EOF ;
     public final EObject entryRuleFloatType() throws RecognitionException {
         EObject current = null;
 
@@ -8316,17 +8534,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3756:2: (iv_ruleFloatType= ruleFloatType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3757:2: iv_ruleFloatType= ruleFloatType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3867:2: (iv_ruleFloatType= ruleFloatType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3868:2: iv_ruleFloatType= ruleFloatType EOF
             {
              newCompositeNode(grammarAccess.getFloatTypeRule()); 
-            pushFollow(FOLLOW_ruleFloatType_in_entryRuleFloatType7169);
+            pushFollow(FOLLOW_ruleFloatType_in_entryRuleFloatType7348);
             iv_ruleFloatType=ruleFloatType();
 
             state._fsp--;
 
              current =iv_ruleFloatType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatType7179); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatType7358); 
 
             }
 
@@ -8344,7 +8562,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3764:1: ruleFloatType returns [EObject current=null] : ( () otherlv_1= 'float' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3875:1: ruleFloatType returns [EObject current=null] : ( () otherlv_1= 'float' ) ;
     public final EObject ruleFloatType() throws RecognitionException {
         EObject current = null;
 
@@ -8353,14 +8571,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3767:28: ( ( () otherlv_1= 'float' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3768:1: ( () otherlv_1= 'float' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3878:28: ( ( () otherlv_1= 'float' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3879:1: ( () otherlv_1= 'float' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3768:1: ( () otherlv_1= 'float' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3768:2: () otherlv_1= 'float'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3879:1: ( () otherlv_1= 'float' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3879:2: () otherlv_1= 'float'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3768:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3769:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3879:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3880:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8370,7 +8588,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,54,FOLLOW_54_in_ruleFloatType7225); 
+            otherlv_1=(Token)match(input,54,FOLLOW_54_in_ruleFloatType7404); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFloatTypeAccess().getFloatKeyword_1());
                 
@@ -8395,7 +8613,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoubleType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3786:1: entryRuleDoubleType returns [EObject current=null] : iv_ruleDoubleType= ruleDoubleType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3897:1: entryRuleDoubleType returns [EObject current=null] : iv_ruleDoubleType= ruleDoubleType EOF ;
     public final EObject entryRuleDoubleType() throws RecognitionException {
         EObject current = null;
 
@@ -8403,17 +8621,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3787:2: (iv_ruleDoubleType= ruleDoubleType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3788:2: iv_ruleDoubleType= ruleDoubleType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3898:2: (iv_ruleDoubleType= ruleDoubleType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3899:2: iv_ruleDoubleType= ruleDoubleType EOF
             {
              newCompositeNode(grammarAccess.getDoubleTypeRule()); 
-            pushFollow(FOLLOW_ruleDoubleType_in_entryRuleDoubleType7261);
+            pushFollow(FOLLOW_ruleDoubleType_in_entryRuleDoubleType7440);
             iv_ruleDoubleType=ruleDoubleType();
 
             state._fsp--;
 
              current =iv_ruleDoubleType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleType7271); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleType7450); 
 
             }
 
@@ -8431,7 +8649,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoubleType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3795:1: ruleDoubleType returns [EObject current=null] : ( () otherlv_1= 'double' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3906:1: ruleDoubleType returns [EObject current=null] : ( () otherlv_1= 'double' ) ;
     public final EObject ruleDoubleType() throws RecognitionException {
         EObject current = null;
 
@@ -8440,14 +8658,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3798:28: ( ( () otherlv_1= 'double' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3799:1: ( () otherlv_1= 'double' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3909:28: ( ( () otherlv_1= 'double' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3910:1: ( () otherlv_1= 'double' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3799:1: ( () otherlv_1= 'double' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3799:2: () otherlv_1= 'double'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3910:1: ( () otherlv_1= 'double' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3910:2: () otherlv_1= 'double'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3799:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3800:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3910:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3911:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8457,7 +8675,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,55,FOLLOW_55_in_ruleDoubleType7317); 
+            otherlv_1=(Token)match(input,55,FOLLOW_55_in_ruleDoubleType7496); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDoubleTypeAccess().getDoubleKeyword_1());
                 
@@ -8482,7 +8700,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3817:1: entryRuleStringType returns [EObject current=null] : iv_ruleStringType= ruleStringType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3928:1: entryRuleStringType returns [EObject current=null] : iv_ruleStringType= ruleStringType EOF ;
     public final EObject entryRuleStringType() throws RecognitionException {
         EObject current = null;
 
@@ -8490,17 +8708,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3818:2: (iv_ruleStringType= ruleStringType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3819:2: iv_ruleStringType= ruleStringType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3929:2: (iv_ruleStringType= ruleStringType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3930:2: iv_ruleStringType= ruleStringType EOF
             {
              newCompositeNode(grammarAccess.getStringTypeRule()); 
-            pushFollow(FOLLOW_ruleStringType_in_entryRuleStringType7353);
+            pushFollow(FOLLOW_ruleStringType_in_entryRuleStringType7532);
             iv_ruleStringType=ruleStringType();
 
             state._fsp--;
 
              current =iv_ruleStringType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringType7363); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringType7542); 
 
             }
 
@@ -8518,7 +8736,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3826:1: ruleStringType returns [EObject current=null] : ( () otherlv_1= 'string' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3937:1: ruleStringType returns [EObject current=null] : ( () otherlv_1= 'string' ) ;
     public final EObject ruleStringType() throws RecognitionException {
         EObject current = null;
 
@@ -8527,14 +8745,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3829:28: ( ( () otherlv_1= 'string' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3830:1: ( () otherlv_1= 'string' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3940:28: ( ( () otherlv_1= 'string' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3941:1: ( () otherlv_1= 'string' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3830:1: ( () otherlv_1= 'string' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3830:2: () otherlv_1= 'string'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3941:1: ( () otherlv_1= 'string' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3941:2: () otherlv_1= 'string'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3830:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3831:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3941:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3942:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8544,7 +8762,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,56,FOLLOW_56_in_ruleStringType7409); 
+            otherlv_1=(Token)match(input,56,FOLLOW_56_in_ruleStringType7588); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getStringTypeAccess().getStringKeyword_1());
                 
@@ -8569,7 +8787,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCharArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3848:1: entryRuleCharArrayType returns [EObject current=null] : iv_ruleCharArrayType= ruleCharArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3959:1: entryRuleCharArrayType returns [EObject current=null] : iv_ruleCharArrayType= ruleCharArrayType EOF ;
     public final EObject entryRuleCharArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8577,17 +8795,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3849:2: (iv_ruleCharArrayType= ruleCharArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3850:2: iv_ruleCharArrayType= ruleCharArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3960:2: (iv_ruleCharArrayType= ruleCharArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3961:2: iv_ruleCharArrayType= ruleCharArrayType EOF
             {
              newCompositeNode(grammarAccess.getCharArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleCharArrayType_in_entryRuleCharArrayType7445);
+            pushFollow(FOLLOW_ruleCharArrayType_in_entryRuleCharArrayType7624);
             iv_ruleCharArrayType=ruleCharArrayType();
 
             state._fsp--;
 
              current =iv_ruleCharArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCharArrayType7455); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCharArrayType7634); 
 
             }
 
@@ -8605,7 +8823,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCharArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3857:1: ruleCharArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarCharArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3968:1: ruleCharArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarCharArray' ) ;
     public final EObject ruleCharArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8614,14 +8832,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3860:28: ( ( () otherlv_1= 'DevVarCharArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3861:1: ( () otherlv_1= 'DevVarCharArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3971:28: ( ( () otherlv_1= 'DevVarCharArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3972:1: ( () otherlv_1= 'DevVarCharArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3861:1: ( () otherlv_1= 'DevVarCharArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3861:2: () otherlv_1= 'DevVarCharArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3972:1: ( () otherlv_1= 'DevVarCharArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3972:2: () otherlv_1= 'DevVarCharArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3861:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3862:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3972:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3973:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8631,7 +8849,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,57,FOLLOW_57_in_ruleCharArrayType7501); 
+            otherlv_1=(Token)match(input,57,FOLLOW_57_in_ruleCharArrayType7680); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getCharArrayTypeAccess().getDevVarCharArrayKeyword_1());
                 
@@ -8656,7 +8874,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleShortArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3879:1: entryRuleShortArrayType returns [EObject current=null] : iv_ruleShortArrayType= ruleShortArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3990:1: entryRuleShortArrayType returns [EObject current=null] : iv_ruleShortArrayType= ruleShortArrayType EOF ;
     public final EObject entryRuleShortArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8664,17 +8882,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3880:2: (iv_ruleShortArrayType= ruleShortArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3881:2: iv_ruleShortArrayType= ruleShortArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3991:2: (iv_ruleShortArrayType= ruleShortArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3992:2: iv_ruleShortArrayType= ruleShortArrayType EOF
             {
              newCompositeNode(grammarAccess.getShortArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleShortArrayType_in_entryRuleShortArrayType7537);
+            pushFollow(FOLLOW_ruleShortArrayType_in_entryRuleShortArrayType7716);
             iv_ruleShortArrayType=ruleShortArrayType();
 
             state._fsp--;
 
              current =iv_ruleShortArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleShortArrayType7547); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleShortArrayType7726); 
 
             }
 
@@ -8692,7 +8910,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleShortArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3888:1: ruleShortArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarShortArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3999:1: ruleShortArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarShortArray' ) ;
     public final EObject ruleShortArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8701,14 +8919,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3891:28: ( ( () otherlv_1= 'DevVarShortArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3892:1: ( () otherlv_1= 'DevVarShortArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4002:28: ( ( () otherlv_1= 'DevVarShortArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4003:1: ( () otherlv_1= 'DevVarShortArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3892:1: ( () otherlv_1= 'DevVarShortArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3892:2: () otherlv_1= 'DevVarShortArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4003:1: ( () otherlv_1= 'DevVarShortArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4003:2: () otherlv_1= 'DevVarShortArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3892:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3893:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4003:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4004:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8718,7 +8936,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,58,FOLLOW_58_in_ruleShortArrayType7593); 
+            otherlv_1=(Token)match(input,58,FOLLOW_58_in_ruleShortArrayType7772); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getShortArrayTypeAccess().getDevVarShortArrayKeyword_1());
                 
@@ -8743,7 +8961,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUShortArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3910:1: entryRuleUShortArrayType returns [EObject current=null] : iv_ruleUShortArrayType= ruleUShortArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4021:1: entryRuleUShortArrayType returns [EObject current=null] : iv_ruleUShortArrayType= ruleUShortArrayType EOF ;
     public final EObject entryRuleUShortArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8751,17 +8969,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3911:2: (iv_ruleUShortArrayType= ruleUShortArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3912:2: iv_ruleUShortArrayType= ruleUShortArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4022:2: (iv_ruleUShortArrayType= ruleUShortArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4023:2: iv_ruleUShortArrayType= ruleUShortArrayType EOF
             {
              newCompositeNode(grammarAccess.getUShortArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleUShortArrayType_in_entryRuleUShortArrayType7629);
+            pushFollow(FOLLOW_ruleUShortArrayType_in_entryRuleUShortArrayType7808);
             iv_ruleUShortArrayType=ruleUShortArrayType();
 
             state._fsp--;
 
              current =iv_ruleUShortArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUShortArrayType7639); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUShortArrayType7818); 
 
             }
 
@@ -8779,7 +8997,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUShortArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3919:1: ruleUShortArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarUShortArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4030:1: ruleUShortArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarUShortArray' ) ;
     public final EObject ruleUShortArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8788,14 +9006,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3922:28: ( ( () otherlv_1= 'DevVarUShortArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3923:1: ( () otherlv_1= 'DevVarUShortArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4033:28: ( ( () otherlv_1= 'DevVarUShortArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4034:1: ( () otherlv_1= 'DevVarUShortArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3923:1: ( () otherlv_1= 'DevVarUShortArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3923:2: () otherlv_1= 'DevVarUShortArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4034:1: ( () otherlv_1= 'DevVarUShortArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4034:2: () otherlv_1= 'DevVarUShortArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3923:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3924:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4034:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4035:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8805,7 +9023,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,59,FOLLOW_59_in_ruleUShortArrayType7685); 
+            otherlv_1=(Token)match(input,59,FOLLOW_59_in_ruleUShortArrayType7864); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getUShortArrayTypeAccess().getDevVarUShortArrayKeyword_1());
                 
@@ -8830,7 +9048,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3941:1: entryRuleIntArrayType returns [EObject current=null] : iv_ruleIntArrayType= ruleIntArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4052:1: entryRuleIntArrayType returns [EObject current=null] : iv_ruleIntArrayType= ruleIntArrayType EOF ;
     public final EObject entryRuleIntArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8838,17 +9056,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3942:2: (iv_ruleIntArrayType= ruleIntArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3943:2: iv_ruleIntArrayType= ruleIntArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4053:2: (iv_ruleIntArrayType= ruleIntArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4054:2: iv_ruleIntArrayType= ruleIntArrayType EOF
             {
              newCompositeNode(grammarAccess.getIntArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleIntArrayType_in_entryRuleIntArrayType7721);
+            pushFollow(FOLLOW_ruleIntArrayType_in_entryRuleIntArrayType7900);
             iv_ruleIntArrayType=ruleIntArrayType();
 
             state._fsp--;
 
              current =iv_ruleIntArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntArrayType7731); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntArrayType7910); 
 
             }
 
@@ -8866,7 +9084,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3950:1: ruleIntArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarLongArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4061:1: ruleIntArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarLongArray' ) ;
     public final EObject ruleIntArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8875,14 +9093,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3953:28: ( ( () otherlv_1= 'DevVarLongArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3954:1: ( () otherlv_1= 'DevVarLongArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4064:28: ( ( () otherlv_1= 'DevVarLongArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4065:1: ( () otherlv_1= 'DevVarLongArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3954:1: ( () otherlv_1= 'DevVarLongArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3954:2: () otherlv_1= 'DevVarLongArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4065:1: ( () otherlv_1= 'DevVarLongArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4065:2: () otherlv_1= 'DevVarLongArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3954:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3955:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4065:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4066:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8892,7 +9110,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,60,FOLLOW_60_in_ruleIntArrayType7777); 
+            otherlv_1=(Token)match(input,60,FOLLOW_60_in_ruleIntArrayType7956); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getIntArrayTypeAccess().getDevVarLongArrayKeyword_1());
                 
@@ -8917,7 +9135,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUIntArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3972:1: entryRuleUIntArrayType returns [EObject current=null] : iv_ruleUIntArrayType= ruleUIntArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4083:1: entryRuleUIntArrayType returns [EObject current=null] : iv_ruleUIntArrayType= ruleUIntArrayType EOF ;
     public final EObject entryRuleUIntArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8925,17 +9143,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3973:2: (iv_ruleUIntArrayType= ruleUIntArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3974:2: iv_ruleUIntArrayType= ruleUIntArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4084:2: (iv_ruleUIntArrayType= ruleUIntArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4085:2: iv_ruleUIntArrayType= ruleUIntArrayType EOF
             {
              newCompositeNode(grammarAccess.getUIntArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleUIntArrayType_in_entryRuleUIntArrayType7813);
+            pushFollow(FOLLOW_ruleUIntArrayType_in_entryRuleUIntArrayType7992);
             iv_ruleUIntArrayType=ruleUIntArrayType();
 
             state._fsp--;
 
              current =iv_ruleUIntArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUIntArrayType7823); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUIntArrayType8002); 
 
             }
 
@@ -8953,7 +9171,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUIntArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3981:1: ruleUIntArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarULongArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4092:1: ruleUIntArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarULongArray' ) ;
     public final EObject ruleUIntArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -8962,14 +9180,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3984:28: ( ( () otherlv_1= 'DevVarULongArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3985:1: ( () otherlv_1= 'DevVarULongArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4095:28: ( ( () otherlv_1= 'DevVarULongArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4096:1: ( () otherlv_1= 'DevVarULongArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3985:1: ( () otherlv_1= 'DevVarULongArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3985:2: () otherlv_1= 'DevVarULongArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4096:1: ( () otherlv_1= 'DevVarULongArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4096:2: () otherlv_1= 'DevVarULongArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3985:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:3986:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4096:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4097:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8979,7 +9197,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,61,FOLLOW_61_in_ruleUIntArrayType7869); 
+            otherlv_1=(Token)match(input,61,FOLLOW_61_in_ruleUIntArrayType8048); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getUIntArrayTypeAccess().getDevVarULongArrayKeyword_1());
                 
@@ -9004,7 +9222,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4003:1: entryRuleFloatArrayType returns [EObject current=null] : iv_ruleFloatArrayType= ruleFloatArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4114:1: entryRuleFloatArrayType returns [EObject current=null] : iv_ruleFloatArrayType= ruleFloatArrayType EOF ;
     public final EObject entryRuleFloatArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9012,17 +9230,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4004:2: (iv_ruleFloatArrayType= ruleFloatArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4005:2: iv_ruleFloatArrayType= ruleFloatArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4115:2: (iv_ruleFloatArrayType= ruleFloatArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4116:2: iv_ruleFloatArrayType= ruleFloatArrayType EOF
             {
              newCompositeNode(grammarAccess.getFloatArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleFloatArrayType_in_entryRuleFloatArrayType7905);
+            pushFollow(FOLLOW_ruleFloatArrayType_in_entryRuleFloatArrayType8084);
             iv_ruleFloatArrayType=ruleFloatArrayType();
 
             state._fsp--;
 
              current =iv_ruleFloatArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatArrayType7915); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatArrayType8094); 
 
             }
 
@@ -9040,7 +9258,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4012:1: ruleFloatArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarFloatArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4123:1: ruleFloatArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarFloatArray' ) ;
     public final EObject ruleFloatArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9049,14 +9267,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4015:28: ( ( () otherlv_1= 'DevVarFloatArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4016:1: ( () otherlv_1= 'DevVarFloatArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4126:28: ( ( () otherlv_1= 'DevVarFloatArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4127:1: ( () otherlv_1= 'DevVarFloatArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4016:1: ( () otherlv_1= 'DevVarFloatArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4016:2: () otherlv_1= 'DevVarFloatArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4127:1: ( () otherlv_1= 'DevVarFloatArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4127:2: () otherlv_1= 'DevVarFloatArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4016:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4017:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4127:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4128:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9066,7 +9284,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,62,FOLLOW_62_in_ruleFloatArrayType7961); 
+            otherlv_1=(Token)match(input,62,FOLLOW_62_in_ruleFloatArrayType8140); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFloatArrayTypeAccess().getDevVarFloatArrayKeyword_1());
                 
@@ -9091,7 +9309,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoubleArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4034:1: entryRuleDoubleArrayType returns [EObject current=null] : iv_ruleDoubleArrayType= ruleDoubleArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4145:1: entryRuleDoubleArrayType returns [EObject current=null] : iv_ruleDoubleArrayType= ruleDoubleArrayType EOF ;
     public final EObject entryRuleDoubleArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9099,17 +9317,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4035:2: (iv_ruleDoubleArrayType= ruleDoubleArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4036:2: iv_ruleDoubleArrayType= ruleDoubleArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4146:2: (iv_ruleDoubleArrayType= ruleDoubleArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4147:2: iv_ruleDoubleArrayType= ruleDoubleArrayType EOF
             {
              newCompositeNode(grammarAccess.getDoubleArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleDoubleArrayType_in_entryRuleDoubleArrayType7997);
+            pushFollow(FOLLOW_ruleDoubleArrayType_in_entryRuleDoubleArrayType8176);
             iv_ruleDoubleArrayType=ruleDoubleArrayType();
 
             state._fsp--;
 
              current =iv_ruleDoubleArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleArrayType8007); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleArrayType8186); 
 
             }
 
@@ -9127,7 +9345,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoubleArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4043:1: ruleDoubleArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarDoubleArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4154:1: ruleDoubleArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarDoubleArray' ) ;
     public final EObject ruleDoubleArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9136,14 +9354,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4046:28: ( ( () otherlv_1= 'DevVarDoubleArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4047:1: ( () otherlv_1= 'DevVarDoubleArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4157:28: ( ( () otherlv_1= 'DevVarDoubleArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4158:1: ( () otherlv_1= 'DevVarDoubleArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4047:1: ( () otherlv_1= 'DevVarDoubleArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4047:2: () otherlv_1= 'DevVarDoubleArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4158:1: ( () otherlv_1= 'DevVarDoubleArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4158:2: () otherlv_1= 'DevVarDoubleArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4047:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4048:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4158:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4159:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9153,7 +9371,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,63,FOLLOW_63_in_ruleDoubleArrayType8053); 
+            otherlv_1=(Token)match(input,63,FOLLOW_63_in_ruleDoubleArrayType8232); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDoubleArrayTypeAccess().getDevVarDoubleArrayKeyword_1());
                 
@@ -9178,7 +9396,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4065:1: entryRuleStringArrayType returns [EObject current=null] : iv_ruleStringArrayType= ruleStringArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4176:1: entryRuleStringArrayType returns [EObject current=null] : iv_ruleStringArrayType= ruleStringArrayType EOF ;
     public final EObject entryRuleStringArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9186,17 +9404,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4066:2: (iv_ruleStringArrayType= ruleStringArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4067:2: iv_ruleStringArrayType= ruleStringArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4177:2: (iv_ruleStringArrayType= ruleStringArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4178:2: iv_ruleStringArrayType= ruleStringArrayType EOF
             {
              newCompositeNode(grammarAccess.getStringArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleStringArrayType_in_entryRuleStringArrayType8089);
+            pushFollow(FOLLOW_ruleStringArrayType_in_entryRuleStringArrayType8268);
             iv_ruleStringArrayType=ruleStringArrayType();
 
             state._fsp--;
 
              current =iv_ruleStringArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringArrayType8099); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringArrayType8278); 
 
             }
 
@@ -9214,7 +9432,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4074:1: ruleStringArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarStringArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4185:1: ruleStringArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarStringArray' ) ;
     public final EObject ruleStringArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9223,14 +9441,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4077:28: ( ( () otherlv_1= 'DevVarStringArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4078:1: ( () otherlv_1= 'DevVarStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4188:28: ( ( () otherlv_1= 'DevVarStringArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4189:1: ( () otherlv_1= 'DevVarStringArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4078:1: ( () otherlv_1= 'DevVarStringArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4078:2: () otherlv_1= 'DevVarStringArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4189:1: ( () otherlv_1= 'DevVarStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4189:2: () otherlv_1= 'DevVarStringArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4078:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4079:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4189:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4190:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9240,7 +9458,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,64,FOLLOW_64_in_ruleStringArrayType8145); 
+            otherlv_1=(Token)match(input,64,FOLLOW_64_in_ruleStringArrayType8324); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getStringArrayTypeAccess().getDevVarStringArrayKeyword_1());
                 
@@ -9265,7 +9483,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLongStringArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4096:1: entryRuleLongStringArrayType returns [EObject current=null] : iv_ruleLongStringArrayType= ruleLongStringArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4207:1: entryRuleLongStringArrayType returns [EObject current=null] : iv_ruleLongStringArrayType= ruleLongStringArrayType EOF ;
     public final EObject entryRuleLongStringArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9273,17 +9491,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4097:2: (iv_ruleLongStringArrayType= ruleLongStringArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4098:2: iv_ruleLongStringArrayType= ruleLongStringArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4208:2: (iv_ruleLongStringArrayType= ruleLongStringArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4209:2: iv_ruleLongStringArrayType= ruleLongStringArrayType EOF
             {
              newCompositeNode(grammarAccess.getLongStringArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleLongStringArrayType_in_entryRuleLongStringArrayType8181);
+            pushFollow(FOLLOW_ruleLongStringArrayType_in_entryRuleLongStringArrayType8360);
             iv_ruleLongStringArrayType=ruleLongStringArrayType();
 
             state._fsp--;
 
              current =iv_ruleLongStringArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLongStringArrayType8191); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLongStringArrayType8370); 
 
             }
 
@@ -9301,7 +9519,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLongStringArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4105:1: ruleLongStringArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarLongStringArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4216:1: ruleLongStringArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarLongStringArray' ) ;
     public final EObject ruleLongStringArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9310,14 +9528,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4108:28: ( ( () otherlv_1= 'DevVarLongStringArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4109:1: ( () otherlv_1= 'DevVarLongStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4219:28: ( ( () otherlv_1= 'DevVarLongStringArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4220:1: ( () otherlv_1= 'DevVarLongStringArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4109:1: ( () otherlv_1= 'DevVarLongStringArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4109:2: () otherlv_1= 'DevVarLongStringArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4220:1: ( () otherlv_1= 'DevVarLongStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4220:2: () otherlv_1= 'DevVarLongStringArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4109:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4110:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4220:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4221:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9327,7 +9545,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,65,FOLLOW_65_in_ruleLongStringArrayType8237); 
+            otherlv_1=(Token)match(input,65,FOLLOW_65_in_ruleLongStringArrayType8416); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getLongStringArrayTypeAccess().getDevVarLongStringArrayKeyword_1());
                 
@@ -9352,7 +9570,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoubleStringArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4127:1: entryRuleDoubleStringArrayType returns [EObject current=null] : iv_ruleDoubleStringArrayType= ruleDoubleStringArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4238:1: entryRuleDoubleStringArrayType returns [EObject current=null] : iv_ruleDoubleStringArrayType= ruleDoubleStringArrayType EOF ;
     public final EObject entryRuleDoubleStringArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9360,17 +9578,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4128:2: (iv_ruleDoubleStringArrayType= ruleDoubleStringArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4129:2: iv_ruleDoubleStringArrayType= ruleDoubleStringArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4239:2: (iv_ruleDoubleStringArrayType= ruleDoubleStringArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4240:2: iv_ruleDoubleStringArrayType= ruleDoubleStringArrayType EOF
             {
              newCompositeNode(grammarAccess.getDoubleStringArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleDoubleStringArrayType_in_entryRuleDoubleStringArrayType8273);
+            pushFollow(FOLLOW_ruleDoubleStringArrayType_in_entryRuleDoubleStringArrayType8452);
             iv_ruleDoubleStringArrayType=ruleDoubleStringArrayType();
 
             state._fsp--;
 
              current =iv_ruleDoubleStringArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleStringArrayType8283); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleStringArrayType8462); 
 
             }
 
@@ -9388,7 +9606,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoubleStringArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4136:1: ruleDoubleStringArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarDoubleStringArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4247:1: ruleDoubleStringArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarDoubleStringArray' ) ;
     public final EObject ruleDoubleStringArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9397,14 +9615,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4139:28: ( ( () otherlv_1= 'DevVarDoubleStringArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4140:1: ( () otherlv_1= 'DevVarDoubleStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4250:28: ( ( () otherlv_1= 'DevVarDoubleStringArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4251:1: ( () otherlv_1= 'DevVarDoubleStringArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4140:1: ( () otherlv_1= 'DevVarDoubleStringArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4140:2: () otherlv_1= 'DevVarDoubleStringArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4251:1: ( () otherlv_1= 'DevVarDoubleStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4251:2: () otherlv_1= 'DevVarDoubleStringArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4140:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4141:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4251:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4252:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9414,7 +9632,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,66,FOLLOW_66_in_ruleDoubleStringArrayType8329); 
+            otherlv_1=(Token)match(input,66,FOLLOW_66_in_ruleDoubleStringArrayType8508); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDoubleStringArrayTypeAccess().getDevVarDoubleStringArrayKeyword_1());
                 
@@ -9439,7 +9657,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStateType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4158:1: entryRuleStateType returns [EObject current=null] : iv_ruleStateType= ruleStateType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4269:1: entryRuleStateType returns [EObject current=null] : iv_ruleStateType= ruleStateType EOF ;
     public final EObject entryRuleStateType() throws RecognitionException {
         EObject current = null;
 
@@ -9447,17 +9665,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4159:2: (iv_ruleStateType= ruleStateType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4160:2: iv_ruleStateType= ruleStateType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4270:2: (iv_ruleStateType= ruleStateType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4271:2: iv_ruleStateType= ruleStateType EOF
             {
              newCompositeNode(grammarAccess.getStateTypeRule()); 
-            pushFollow(FOLLOW_ruleStateType_in_entryRuleStateType8365);
+            pushFollow(FOLLOW_ruleStateType_in_entryRuleStateType8544);
             iv_ruleStateType=ruleStateType();
 
             state._fsp--;
 
              current =iv_ruleStateType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStateType8375); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStateType8554); 
 
             }
 
@@ -9475,7 +9693,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStateType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4167:1: ruleStateType returns [EObject current=null] : ( () otherlv_1= 'DevState' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4278:1: ruleStateType returns [EObject current=null] : ( () otherlv_1= 'DevState' ) ;
     public final EObject ruleStateType() throws RecognitionException {
         EObject current = null;
 
@@ -9484,14 +9702,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4170:28: ( ( () otherlv_1= 'DevState' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4171:1: ( () otherlv_1= 'DevState' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4281:28: ( ( () otherlv_1= 'DevState' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4282:1: ( () otherlv_1= 'DevState' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4171:1: ( () otherlv_1= 'DevState' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4171:2: () otherlv_1= 'DevState'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4282:1: ( () otherlv_1= 'DevState' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4282:2: () otherlv_1= 'DevState'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4171:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4172:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4282:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4283:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9501,7 +9719,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,67,FOLLOW_67_in_ruleStateType8421); 
+            otherlv_1=(Token)match(input,67,FOLLOW_67_in_ruleStateType8600); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getStateTypeAccess().getDevStateKeyword_1());
                 
@@ -9526,7 +9744,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConstStringType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4189:1: entryRuleConstStringType returns [EObject current=null] : iv_ruleConstStringType= ruleConstStringType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4300:1: entryRuleConstStringType returns [EObject current=null] : iv_ruleConstStringType= ruleConstStringType EOF ;
     public final EObject entryRuleConstStringType() throws RecognitionException {
         EObject current = null;
 
@@ -9534,17 +9752,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4190:2: (iv_ruleConstStringType= ruleConstStringType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4191:2: iv_ruleConstStringType= ruleConstStringType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4301:2: (iv_ruleConstStringType= ruleConstStringType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4302:2: iv_ruleConstStringType= ruleConstStringType EOF
             {
              newCompositeNode(grammarAccess.getConstStringTypeRule()); 
-            pushFollow(FOLLOW_ruleConstStringType_in_entryRuleConstStringType8457);
+            pushFollow(FOLLOW_ruleConstStringType_in_entryRuleConstStringType8636);
             iv_ruleConstStringType=ruleConstStringType();
 
             state._fsp--;
 
              current =iv_ruleConstStringType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstStringType8467); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConstStringType8646); 
 
             }
 
@@ -9562,7 +9780,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstStringType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4198:1: ruleConstStringType returns [EObject current=null] : ( () otherlv_1= 'ConstDevString' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4309:1: ruleConstStringType returns [EObject current=null] : ( () otherlv_1= 'ConstDevString' ) ;
     public final EObject ruleConstStringType() throws RecognitionException {
         EObject current = null;
 
@@ -9571,14 +9789,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4201:28: ( ( () otherlv_1= 'ConstDevString' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4202:1: ( () otherlv_1= 'ConstDevString' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4312:28: ( ( () otherlv_1= 'ConstDevString' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4313:1: ( () otherlv_1= 'ConstDevString' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4202:1: ( () otherlv_1= 'ConstDevString' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4202:2: () otherlv_1= 'ConstDevString'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4313:1: ( () otherlv_1= 'ConstDevString' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4313:2: () otherlv_1= 'ConstDevString'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4202:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4203:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4313:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4314:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9588,7 +9806,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,68,FOLLOW_68_in_ruleConstStringType8513); 
+            otherlv_1=(Token)match(input,68,FOLLOW_68_in_ruleConstStringType8692); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getConstStringTypeAccess().getConstDevStringKeyword_1());
                 
@@ -9613,7 +9831,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4220:1: entryRuleBooleanArrayType returns [EObject current=null] : iv_ruleBooleanArrayType= ruleBooleanArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4331:1: entryRuleBooleanArrayType returns [EObject current=null] : iv_ruleBooleanArrayType= ruleBooleanArrayType EOF ;
     public final EObject entryRuleBooleanArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9621,17 +9839,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4221:2: (iv_ruleBooleanArrayType= ruleBooleanArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4222:2: iv_ruleBooleanArrayType= ruleBooleanArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4332:2: (iv_ruleBooleanArrayType= ruleBooleanArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4333:2: iv_ruleBooleanArrayType= ruleBooleanArrayType EOF
             {
              newCompositeNode(grammarAccess.getBooleanArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleBooleanArrayType_in_entryRuleBooleanArrayType8549);
+            pushFollow(FOLLOW_ruleBooleanArrayType_in_entryRuleBooleanArrayType8728);
             iv_ruleBooleanArrayType=ruleBooleanArrayType();
 
             state._fsp--;
 
              current =iv_ruleBooleanArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanArrayType8559); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanArrayType8738); 
 
             }
 
@@ -9649,7 +9867,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4229:1: ruleBooleanArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarBooleanArray' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4340:1: ruleBooleanArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarBooleanArray' ) ;
     public final EObject ruleBooleanArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9658,14 +9876,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4232:28: ( ( () otherlv_1= 'DevVarBooleanArray' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4233:1: ( () otherlv_1= 'DevVarBooleanArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4343:28: ( ( () otherlv_1= 'DevVarBooleanArray' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4344:1: ( () otherlv_1= 'DevVarBooleanArray' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4233:1: ( () otherlv_1= 'DevVarBooleanArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4233:2: () otherlv_1= 'DevVarBooleanArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4344:1: ( () otherlv_1= 'DevVarBooleanArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4344:2: () otherlv_1= 'DevVarBooleanArray'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4233:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4234:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4344:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4345:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9675,7 +9893,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,69,FOLLOW_69_in_ruleBooleanArrayType8605); 
+            otherlv_1=(Token)match(input,69,FOLLOW_69_in_ruleBooleanArrayType8784); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getBooleanArrayTypeAccess().getDevVarBooleanArrayKeyword_1());
                 
@@ -9700,7 +9918,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUCharType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4251:1: entryRuleUCharType returns [EObject current=null] : iv_ruleUCharType= ruleUCharType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4362:1: entryRuleUCharType returns [EObject current=null] : iv_ruleUCharType= ruleUCharType EOF ;
     public final EObject entryRuleUCharType() throws RecognitionException {
         EObject current = null;
 
@@ -9708,17 +9926,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4252:2: (iv_ruleUCharType= ruleUCharType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4253:2: iv_ruleUCharType= ruleUCharType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4363:2: (iv_ruleUCharType= ruleUCharType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4364:2: iv_ruleUCharType= ruleUCharType EOF
             {
              newCompositeNode(grammarAccess.getUCharTypeRule()); 
-            pushFollow(FOLLOW_ruleUCharType_in_entryRuleUCharType8641);
+            pushFollow(FOLLOW_ruleUCharType_in_entryRuleUCharType8820);
             iv_ruleUCharType=ruleUCharType();
 
             state._fsp--;
 
              current =iv_ruleUCharType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUCharType8651); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUCharType8830); 
 
             }
 
@@ -9736,7 +9954,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUCharType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4260:1: ruleUCharType returns [EObject current=null] : ( () otherlv_1= 'DevUChar' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4371:1: ruleUCharType returns [EObject current=null] : ( () otherlv_1= 'DevUChar' ) ;
     public final EObject ruleUCharType() throws RecognitionException {
         EObject current = null;
 
@@ -9745,14 +9963,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4263:28: ( ( () otherlv_1= 'DevUChar' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4264:1: ( () otherlv_1= 'DevUChar' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4374:28: ( ( () otherlv_1= 'DevUChar' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4375:1: ( () otherlv_1= 'DevUChar' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4264:1: ( () otherlv_1= 'DevUChar' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4264:2: () otherlv_1= 'DevUChar'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4375:1: ( () otherlv_1= 'DevUChar' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4375:2: () otherlv_1= 'DevUChar'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4264:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4265:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4375:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4376:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9762,7 +9980,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,70,FOLLOW_70_in_ruleUCharType8697); 
+            otherlv_1=(Token)match(input,70,FOLLOW_70_in_ruleUCharType8876); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getUCharTypeAccess().getDevUCharKeyword_1());
                 
@@ -9787,7 +10005,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLongType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4282:1: entryRuleLongType returns [EObject current=null] : iv_ruleLongType= ruleLongType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4393:1: entryRuleLongType returns [EObject current=null] : iv_ruleLongType= ruleLongType EOF ;
     public final EObject entryRuleLongType() throws RecognitionException {
         EObject current = null;
 
@@ -9795,17 +10013,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4283:2: (iv_ruleLongType= ruleLongType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4284:2: iv_ruleLongType= ruleLongType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4394:2: (iv_ruleLongType= ruleLongType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4395:2: iv_ruleLongType= ruleLongType EOF
             {
              newCompositeNode(grammarAccess.getLongTypeRule()); 
-            pushFollow(FOLLOW_ruleLongType_in_entryRuleLongType8733);
+            pushFollow(FOLLOW_ruleLongType_in_entryRuleLongType8912);
             iv_ruleLongType=ruleLongType();
 
             state._fsp--;
 
              current =iv_ruleLongType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLongType8743); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLongType8922); 
 
             }
 
@@ -9823,7 +10041,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLongType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4291:1: ruleLongType returns [EObject current=null] : ( () otherlv_1= 'DevLong64' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4402:1: ruleLongType returns [EObject current=null] : ( () otherlv_1= 'DevLong64' ) ;
     public final EObject ruleLongType() throws RecognitionException {
         EObject current = null;
 
@@ -9832,14 +10050,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4294:28: ( ( () otherlv_1= 'DevLong64' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4295:1: ( () otherlv_1= 'DevLong64' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4405:28: ( ( () otherlv_1= 'DevLong64' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4406:1: ( () otherlv_1= 'DevLong64' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4295:1: ( () otherlv_1= 'DevLong64' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4295:2: () otherlv_1= 'DevLong64'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4406:1: ( () otherlv_1= 'DevLong64' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4406:2: () otherlv_1= 'DevLong64'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4295:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4296:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4406:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4407:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9849,7 +10067,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,71,FOLLOW_71_in_ruleLongType8789); 
+            otherlv_1=(Token)match(input,71,FOLLOW_71_in_ruleLongType8968); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getLongTypeAccess().getDevLong64Keyword_1());
                 
@@ -9874,7 +10092,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleULongType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4313:1: entryRuleULongType returns [EObject current=null] : iv_ruleULongType= ruleULongType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4424:1: entryRuleULongType returns [EObject current=null] : iv_ruleULongType= ruleULongType EOF ;
     public final EObject entryRuleULongType() throws RecognitionException {
         EObject current = null;
 
@@ -9882,17 +10100,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4314:2: (iv_ruleULongType= ruleULongType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4315:2: iv_ruleULongType= ruleULongType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4425:2: (iv_ruleULongType= ruleULongType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4426:2: iv_ruleULongType= ruleULongType EOF
             {
              newCompositeNode(grammarAccess.getULongTypeRule()); 
-            pushFollow(FOLLOW_ruleULongType_in_entryRuleULongType8825);
+            pushFollow(FOLLOW_ruleULongType_in_entryRuleULongType9004);
             iv_ruleULongType=ruleULongType();
 
             state._fsp--;
 
              current =iv_ruleULongType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleULongType8835); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleULongType9014); 
 
             }
 
@@ -9910,7 +10128,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleULongType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4322:1: ruleULongType returns [EObject current=null] : ( () otherlv_1= 'DevULong64' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4433:1: ruleULongType returns [EObject current=null] : ( () otherlv_1= 'DevULong64' ) ;
     public final EObject ruleULongType() throws RecognitionException {
         EObject current = null;
 
@@ -9919,14 +10137,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4325:28: ( ( () otherlv_1= 'DevULong64' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4326:1: ( () otherlv_1= 'DevULong64' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4436:28: ( ( () otherlv_1= 'DevULong64' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4437:1: ( () otherlv_1= 'DevULong64' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4326:1: ( () otherlv_1= 'DevULong64' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4326:2: () otherlv_1= 'DevULong64'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4437:1: ( () otherlv_1= 'DevULong64' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4437:2: () otherlv_1= 'DevULong64'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4326:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4327:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4437:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4438:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9936,7 +10154,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,72,FOLLOW_72_in_ruleULongType8881); 
+            otherlv_1=(Token)match(input,72,FOLLOW_72_in_ruleULongType9060); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getULongTypeAccess().getDevULong64Keyword_1());
                 
@@ -9961,7 +10179,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLongArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4344:1: entryRuleLongArrayType returns [EObject current=null] : iv_ruleLongArrayType= ruleLongArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4455:1: entryRuleLongArrayType returns [EObject current=null] : iv_ruleLongArrayType= ruleLongArrayType EOF ;
     public final EObject entryRuleLongArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -9969,17 +10187,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4345:2: (iv_ruleLongArrayType= ruleLongArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4346:2: iv_ruleLongArrayType= ruleLongArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4456:2: (iv_ruleLongArrayType= ruleLongArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4457:2: iv_ruleLongArrayType= ruleLongArrayType EOF
             {
              newCompositeNode(grammarAccess.getLongArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleLongArrayType_in_entryRuleLongArrayType8917);
+            pushFollow(FOLLOW_ruleLongArrayType_in_entryRuleLongArrayType9096);
             iv_ruleLongArrayType=ruleLongArrayType();
 
             state._fsp--;
 
              current =iv_ruleLongArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLongArrayType8927); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLongArrayType9106); 
 
             }
 
@@ -9997,7 +10215,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLongArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4353:1: ruleLongArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarLong64Array' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4464:1: ruleLongArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarLong64Array' ) ;
     public final EObject ruleLongArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -10006,14 +10224,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4356:28: ( ( () otherlv_1= 'DevVarLong64Array' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4357:1: ( () otherlv_1= 'DevVarLong64Array' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4467:28: ( ( () otherlv_1= 'DevVarLong64Array' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4468:1: ( () otherlv_1= 'DevVarLong64Array' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4357:1: ( () otherlv_1= 'DevVarLong64Array' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4357:2: () otherlv_1= 'DevVarLong64Array'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4468:1: ( () otherlv_1= 'DevVarLong64Array' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4468:2: () otherlv_1= 'DevVarLong64Array'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4357:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4358:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4468:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4469:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10023,7 +10241,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,73,FOLLOW_73_in_ruleLongArrayType8973); 
+            otherlv_1=(Token)match(input,73,FOLLOW_73_in_ruleLongArrayType9152); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getLongArrayTypeAccess().getDevVarLong64ArrayKeyword_1());
                 
@@ -10048,7 +10266,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleULongArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4375:1: entryRuleULongArrayType returns [EObject current=null] : iv_ruleULongArrayType= ruleULongArrayType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4486:1: entryRuleULongArrayType returns [EObject current=null] : iv_ruleULongArrayType= ruleULongArrayType EOF ;
     public final EObject entryRuleULongArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -10056,17 +10274,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4376:2: (iv_ruleULongArrayType= ruleULongArrayType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4377:2: iv_ruleULongArrayType= ruleULongArrayType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4487:2: (iv_ruleULongArrayType= ruleULongArrayType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4488:2: iv_ruleULongArrayType= ruleULongArrayType EOF
             {
              newCompositeNode(grammarAccess.getULongArrayTypeRule()); 
-            pushFollow(FOLLOW_ruleULongArrayType_in_entryRuleULongArrayType9009);
+            pushFollow(FOLLOW_ruleULongArrayType_in_entryRuleULongArrayType9188);
             iv_ruleULongArrayType=ruleULongArrayType();
 
             state._fsp--;
 
              current =iv_ruleULongArrayType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleULongArrayType9019); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleULongArrayType9198); 
 
             }
 
@@ -10084,7 +10302,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleULongArrayType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4384:1: ruleULongArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarULong64Array' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4495:1: ruleULongArrayType returns [EObject current=null] : ( () otherlv_1= 'DevVarULong64Array' ) ;
     public final EObject ruleULongArrayType() throws RecognitionException {
         EObject current = null;
 
@@ -10093,14 +10311,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4387:28: ( ( () otherlv_1= 'DevVarULong64Array' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4388:1: ( () otherlv_1= 'DevVarULong64Array' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4498:28: ( ( () otherlv_1= 'DevVarULong64Array' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4499:1: ( () otherlv_1= 'DevVarULong64Array' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4388:1: ( () otherlv_1= 'DevVarULong64Array' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4388:2: () otherlv_1= 'DevVarULong64Array'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4499:1: ( () otherlv_1= 'DevVarULong64Array' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4499:2: () otherlv_1= 'DevVarULong64Array'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4388:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4389:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4499:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4500:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10110,7 +10328,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,74,FOLLOW_74_in_ruleULongArrayType9065); 
+            otherlv_1=(Token)match(input,74,FOLLOW_74_in_ruleULongArrayType9244); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getULongArrayTypeAccess().getDevVarULong64ArrayKeyword_1());
                 
@@ -10135,7 +10353,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDevIntType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4406:1: entryRuleDevIntType returns [EObject current=null] : iv_ruleDevIntType= ruleDevIntType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4517:1: entryRuleDevIntType returns [EObject current=null] : iv_ruleDevIntType= ruleDevIntType EOF ;
     public final EObject entryRuleDevIntType() throws RecognitionException {
         EObject current = null;
 
@@ -10143,17 +10361,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4407:2: (iv_ruleDevIntType= ruleDevIntType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4408:2: iv_ruleDevIntType= ruleDevIntType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4518:2: (iv_ruleDevIntType= ruleDevIntType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4519:2: iv_ruleDevIntType= ruleDevIntType EOF
             {
              newCompositeNode(grammarAccess.getDevIntTypeRule()); 
-            pushFollow(FOLLOW_ruleDevIntType_in_entryRuleDevIntType9101);
+            pushFollow(FOLLOW_ruleDevIntType_in_entryRuleDevIntType9280);
             iv_ruleDevIntType=ruleDevIntType();
 
             state._fsp--;
 
              current =iv_ruleDevIntType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDevIntType9111); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDevIntType9290); 
 
             }
 
@@ -10171,7 +10389,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDevIntType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4415:1: ruleDevIntType returns [EObject current=null] : ( () otherlv_1= 'DevInt' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4526:1: ruleDevIntType returns [EObject current=null] : ( () otherlv_1= 'DevInt' ) ;
     public final EObject ruleDevIntType() throws RecognitionException {
         EObject current = null;
 
@@ -10180,14 +10398,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4418:28: ( ( () otherlv_1= 'DevInt' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4419:1: ( () otherlv_1= 'DevInt' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4529:28: ( ( () otherlv_1= 'DevInt' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4530:1: ( () otherlv_1= 'DevInt' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4419:1: ( () otherlv_1= 'DevInt' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4419:2: () otherlv_1= 'DevInt'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4530:1: ( () otherlv_1= 'DevInt' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4530:2: () otherlv_1= 'DevInt'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4419:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4420:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4530:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4531:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10197,7 +10415,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,75,FOLLOW_75_in_ruleDevIntType9157); 
+            otherlv_1=(Token)match(input,75,FOLLOW_75_in_ruleDevIntType9336); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDevIntTypeAccess().getDevIntKeyword_1());
                 
@@ -10222,7 +10440,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEncodedType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4437:1: entryRuleEncodedType returns [EObject current=null] : iv_ruleEncodedType= ruleEncodedType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4548:1: entryRuleEncodedType returns [EObject current=null] : iv_ruleEncodedType= ruleEncodedType EOF ;
     public final EObject entryRuleEncodedType() throws RecognitionException {
         EObject current = null;
 
@@ -10230,17 +10448,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4438:2: (iv_ruleEncodedType= ruleEncodedType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4439:2: iv_ruleEncodedType= ruleEncodedType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4549:2: (iv_ruleEncodedType= ruleEncodedType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4550:2: iv_ruleEncodedType= ruleEncodedType EOF
             {
              newCompositeNode(grammarAccess.getEncodedTypeRule()); 
-            pushFollow(FOLLOW_ruleEncodedType_in_entryRuleEncodedType9193);
+            pushFollow(FOLLOW_ruleEncodedType_in_entryRuleEncodedType9372);
             iv_ruleEncodedType=ruleEncodedType();
 
             state._fsp--;
 
              current =iv_ruleEncodedType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEncodedType9203); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEncodedType9382); 
 
             }
 
@@ -10258,7 +10476,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEncodedType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4446:1: ruleEncodedType returns [EObject current=null] : ( () otherlv_1= 'DevEncoded' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4557:1: ruleEncodedType returns [EObject current=null] : ( () otherlv_1= 'DevEncoded' ) ;
     public final EObject ruleEncodedType() throws RecognitionException {
         EObject current = null;
 
@@ -10267,14 +10485,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4449:28: ( ( () otherlv_1= 'DevEncoded' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4450:1: ( () otherlv_1= 'DevEncoded' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4560:28: ( ( () otherlv_1= 'DevEncoded' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4561:1: ( () otherlv_1= 'DevEncoded' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4450:1: ( () otherlv_1= 'DevEncoded' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4450:2: () otherlv_1= 'DevEncoded'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4561:1: ( () otherlv_1= 'DevEncoded' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4561:2: () otherlv_1= 'DevEncoded'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4450:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4451:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4561:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4562:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10284,7 +10502,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,76,FOLLOW_76_in_ruleEncodedType9249); 
+            otherlv_1=(Token)match(input,76,FOLLOW_76_in_ruleEncodedType9428); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getEncodedTypeAccess().getDevEncodedKeyword_1());
                 
@@ -10309,7 +10527,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleShortVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4468:1: entryRuleShortVectorType returns [EObject current=null] : iv_ruleShortVectorType= ruleShortVectorType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4579:1: entryRuleShortVectorType returns [EObject current=null] : iv_ruleShortVectorType= ruleShortVectorType EOF ;
     public final EObject entryRuleShortVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10317,17 +10535,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4469:2: (iv_ruleShortVectorType= ruleShortVectorType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4470:2: iv_ruleShortVectorType= ruleShortVectorType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4580:2: (iv_ruleShortVectorType= ruleShortVectorType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4581:2: iv_ruleShortVectorType= ruleShortVectorType EOF
             {
              newCompositeNode(grammarAccess.getShortVectorTypeRule()); 
-            pushFollow(FOLLOW_ruleShortVectorType_in_entryRuleShortVectorType9285);
+            pushFollow(FOLLOW_ruleShortVectorType_in_entryRuleShortVectorType9464);
             iv_ruleShortVectorType=ruleShortVectorType();
 
             state._fsp--;
 
              current =iv_ruleShortVectorType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleShortVectorType9295); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleShortVectorType9474); 
 
             }
 
@@ -10345,7 +10563,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleShortVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4477:1: ruleShortVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<short>' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4588:1: ruleShortVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<short>' ) ;
     public final EObject ruleShortVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10354,14 +10572,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4480:28: ( ( () otherlv_1= 'vector<short>' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4481:1: ( () otherlv_1= 'vector<short>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4591:28: ( ( () otherlv_1= 'vector<short>' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4592:1: ( () otherlv_1= 'vector<short>' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4481:1: ( () otherlv_1= 'vector<short>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4481:2: () otherlv_1= 'vector<short>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4592:1: ( () otherlv_1= 'vector<short>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4592:2: () otherlv_1= 'vector<short>'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4481:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4482:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4592:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4593:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10371,7 +10589,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,77,FOLLOW_77_in_ruleShortVectorType9341); 
+            otherlv_1=(Token)match(input,77,FOLLOW_77_in_ruleShortVectorType9520); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getShortVectorTypeAccess().getVectorShortKeyword_1());
                 
@@ -10396,7 +10614,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4499:1: entryRuleIntVectorType returns [EObject current=null] : iv_ruleIntVectorType= ruleIntVectorType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4610:1: entryRuleIntVectorType returns [EObject current=null] : iv_ruleIntVectorType= ruleIntVectorType EOF ;
     public final EObject entryRuleIntVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10404,17 +10622,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4500:2: (iv_ruleIntVectorType= ruleIntVectorType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4501:2: iv_ruleIntVectorType= ruleIntVectorType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4611:2: (iv_ruleIntVectorType= ruleIntVectorType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4612:2: iv_ruleIntVectorType= ruleIntVectorType EOF
             {
              newCompositeNode(grammarAccess.getIntVectorTypeRule()); 
-            pushFollow(FOLLOW_ruleIntVectorType_in_entryRuleIntVectorType9377);
+            pushFollow(FOLLOW_ruleIntVectorType_in_entryRuleIntVectorType9556);
             iv_ruleIntVectorType=ruleIntVectorType();
 
             state._fsp--;
 
              current =iv_ruleIntVectorType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntVectorType9387); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntVectorType9566); 
 
             }
 
@@ -10432,7 +10650,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4508:1: ruleIntVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<int>' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4619:1: ruleIntVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<int>' ) ;
     public final EObject ruleIntVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10441,14 +10659,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4511:28: ( ( () otherlv_1= 'vector<int>' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4512:1: ( () otherlv_1= 'vector<int>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4622:28: ( ( () otherlv_1= 'vector<int>' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4623:1: ( () otherlv_1= 'vector<int>' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4512:1: ( () otherlv_1= 'vector<int>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4512:2: () otherlv_1= 'vector<int>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4623:1: ( () otherlv_1= 'vector<int>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4623:2: () otherlv_1= 'vector<int>'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4512:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4513:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4623:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4624:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10458,7 +10676,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,78,FOLLOW_78_in_ruleIntVectorType9433); 
+            otherlv_1=(Token)match(input,78,FOLLOW_78_in_ruleIntVectorType9612); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getIntVectorTypeAccess().getVectorIntKeyword_1());
                 
@@ -10483,7 +10701,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4530:1: entryRuleFloatVectorType returns [EObject current=null] : iv_ruleFloatVectorType= ruleFloatVectorType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4641:1: entryRuleFloatVectorType returns [EObject current=null] : iv_ruleFloatVectorType= ruleFloatVectorType EOF ;
     public final EObject entryRuleFloatVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10491,17 +10709,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4531:2: (iv_ruleFloatVectorType= ruleFloatVectorType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4532:2: iv_ruleFloatVectorType= ruleFloatVectorType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4642:2: (iv_ruleFloatVectorType= ruleFloatVectorType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4643:2: iv_ruleFloatVectorType= ruleFloatVectorType EOF
             {
              newCompositeNode(grammarAccess.getFloatVectorTypeRule()); 
-            pushFollow(FOLLOW_ruleFloatVectorType_in_entryRuleFloatVectorType9469);
+            pushFollow(FOLLOW_ruleFloatVectorType_in_entryRuleFloatVectorType9648);
             iv_ruleFloatVectorType=ruleFloatVectorType();
 
             state._fsp--;
 
              current =iv_ruleFloatVectorType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatVectorType9479); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatVectorType9658); 
 
             }
 
@@ -10519,7 +10737,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4539:1: ruleFloatVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<float>' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4650:1: ruleFloatVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<float>' ) ;
     public final EObject ruleFloatVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10528,14 +10746,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4542:28: ( ( () otherlv_1= 'vector<float>' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4543:1: ( () otherlv_1= 'vector<float>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4653:28: ( ( () otherlv_1= 'vector<float>' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4654:1: ( () otherlv_1= 'vector<float>' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4543:1: ( () otherlv_1= 'vector<float>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4543:2: () otherlv_1= 'vector<float>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4654:1: ( () otherlv_1= 'vector<float>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4654:2: () otherlv_1= 'vector<float>'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4543:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4544:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4654:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4655:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10545,7 +10763,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,79,FOLLOW_79_in_ruleFloatVectorType9525); 
+            otherlv_1=(Token)match(input,79,FOLLOW_79_in_ruleFloatVectorType9704); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFloatVectorTypeAccess().getVectorFloatKeyword_1());
                 
@@ -10570,7 +10788,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoubleVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4561:1: entryRuleDoubleVectorType returns [EObject current=null] : iv_ruleDoubleVectorType= ruleDoubleVectorType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4672:1: entryRuleDoubleVectorType returns [EObject current=null] : iv_ruleDoubleVectorType= ruleDoubleVectorType EOF ;
     public final EObject entryRuleDoubleVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10578,17 +10796,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4562:2: (iv_ruleDoubleVectorType= ruleDoubleVectorType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4563:2: iv_ruleDoubleVectorType= ruleDoubleVectorType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4673:2: (iv_ruleDoubleVectorType= ruleDoubleVectorType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4674:2: iv_ruleDoubleVectorType= ruleDoubleVectorType EOF
             {
              newCompositeNode(grammarAccess.getDoubleVectorTypeRule()); 
-            pushFollow(FOLLOW_ruleDoubleVectorType_in_entryRuleDoubleVectorType9561);
+            pushFollow(FOLLOW_ruleDoubleVectorType_in_entryRuleDoubleVectorType9740);
             iv_ruleDoubleVectorType=ruleDoubleVectorType();
 
             state._fsp--;
 
              current =iv_ruleDoubleVectorType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleVectorType9571); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleVectorType9750); 
 
             }
 
@@ -10606,7 +10824,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoubleVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4570:1: ruleDoubleVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<double>' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4681:1: ruleDoubleVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<double>' ) ;
     public final EObject ruleDoubleVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10615,14 +10833,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4573:28: ( ( () otherlv_1= 'vector<double>' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4574:1: ( () otherlv_1= 'vector<double>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4684:28: ( ( () otherlv_1= 'vector<double>' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4685:1: ( () otherlv_1= 'vector<double>' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4574:1: ( () otherlv_1= 'vector<double>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4574:2: () otherlv_1= 'vector<double>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4685:1: ( () otherlv_1= 'vector<double>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4685:2: () otherlv_1= 'vector<double>'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4574:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4575:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4685:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4686:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10632,7 +10850,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,80,FOLLOW_80_in_ruleDoubleVectorType9617); 
+            otherlv_1=(Token)match(input,80,FOLLOW_80_in_ruleDoubleVectorType9796); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDoubleVectorTypeAccess().getVectorDoubleKeyword_1());
                 
@@ -10657,7 +10875,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4592:1: entryRuleStringVectorType returns [EObject current=null] : iv_ruleStringVectorType= ruleStringVectorType EOF ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4703:1: entryRuleStringVectorType returns [EObject current=null] : iv_ruleStringVectorType= ruleStringVectorType EOF ;
     public final EObject entryRuleStringVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10665,17 +10883,17 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4593:2: (iv_ruleStringVectorType= ruleStringVectorType EOF )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4594:2: iv_ruleStringVectorType= ruleStringVectorType EOF
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4704:2: (iv_ruleStringVectorType= ruleStringVectorType EOF )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4705:2: iv_ruleStringVectorType= ruleStringVectorType EOF
             {
              newCompositeNode(grammarAccess.getStringVectorTypeRule()); 
-            pushFollow(FOLLOW_ruleStringVectorType_in_entryRuleStringVectorType9653);
+            pushFollow(FOLLOW_ruleStringVectorType_in_entryRuleStringVectorType9832);
             iv_ruleStringVectorType=ruleStringVectorType();
 
             state._fsp--;
 
              current =iv_ruleStringVectorType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringVectorType9663); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringVectorType9842); 
 
             }
 
@@ -10693,7 +10911,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringVectorType"
-    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4601:1: ruleStringVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<string>' ) ;
+    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4712:1: ruleStringVectorType returns [EObject current=null] : ( () otherlv_1= 'vector<string>' ) ;
     public final EObject ruleStringVectorType() throws RecognitionException {
         EObject current = null;
 
@@ -10702,14 +10920,14 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4604:28: ( ( () otherlv_1= 'vector<string>' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4605:1: ( () otherlv_1= 'vector<string>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4715:28: ( ( () otherlv_1= 'vector<string>' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4716:1: ( () otherlv_1= 'vector<string>' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4605:1: ( () otherlv_1= 'vector<string>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4605:2: () otherlv_1= 'vector<string>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4716:1: ( () otherlv_1= 'vector<string>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4716:2: () otherlv_1= 'vector<string>'
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4605:2: ()
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4606:5: 
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4716:2: ()
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4717:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10719,7 +10937,7 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,81,FOLLOW_81_in_ruleStringVectorType9709); 
+            otherlv_1=(Token)match(input,81,FOLLOW_81_in_ruleStringVectorType9888); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getStringVectorTypeAccess().getVectorStringKeyword_1());
                 
@@ -10950,172 +11168,179 @@ public class InternalPogoDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleInheritanceStatus_in_ruleAttribute4856 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleAttrProperties_in_ruleAttribute4877 = new BitSet(new long[]{0x00000C0000000000L});
     public static final BitSet FOLLOW_ruleBoolean_in_ruleAttribute4898 = new BitSet(new long[]{0x00000C0000000000L});
-    public static final BitSet FOLLOW_ruleBoolean_in_ruleAttribute4919 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_ruleAttribute4931 = new BitSet(new long[]{0x0000800000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute4948 = new BitSet(new long[]{0x0000800000000010L});
-    public static final BitSet FOLLOW_47_in_ruleAttribute4966 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute4983 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ruleFireEvents_in_entryRuleFireEvents5025 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFireEvents5035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_ruleFireEvents5081 = new BitSet(new long[]{0x00000C0000000000L});
-    public static final BitSet FOLLOW_ruleBoolean_in_ruleFireEvents5102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttrProperties_in_entryRuleAttrProperties5138 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttrProperties5148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5190 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5212 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5234 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5256 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5278 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5300 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5322 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5344 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5366 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5388 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5410 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5432 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5454 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdditionalFile_in_entryRuleAdditionalFile5517 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAdditionalFile5527 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAdditionalFile5569 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAdditionalFile5591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOverlodedPollPeriodObject_in_entryRuleOverlodedPollPeriodObject5632 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOverlodedPollPeriodObject5642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5684 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5706 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType5769 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType5779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVoidType_in_ruleType5826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_ruleType5853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleShortType_in_ruleType5880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUShortType_in_ruleType5907 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntType_in_ruleType5934 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUIntType_in_ruleType5961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatType_in_ruleType5988 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleType_in_ruleType6015 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringType_in_ruleType6042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCharArrayType_in_ruleType6069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleShortArrayType_in_ruleType6096 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUShortArrayType_in_ruleType6123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntArrayType_in_ruleType6150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUIntArrayType_in_ruleType6177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatArrayType_in_ruleType6204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleArrayType_in_ruleType6231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringArrayType_in_ruleType6258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongStringArrayType_in_ruleType6285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleStringArrayType_in_ruleType6312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStateType_in_ruleType6339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstStringType_in_ruleType6366 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanArrayType_in_ruleType6393 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongType_in_ruleType6420 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleULongType_in_ruleType6447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUCharType_in_ruleType6474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongArrayType_in_ruleType6501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleULongArrayType_in_ruleType6528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDevIntType_in_ruleType6555 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEncodedType_in_ruleType6582 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVoidType_in_entryRuleVoidType6617 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVoidType6627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleVoidType6673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_entryRuleBooleanType6709 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanType6719 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_ruleBooleanType6765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleShortType_in_entryRuleShortType6801 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleShortType6811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_ruleShortType6857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUShortType_in_entryRuleUShortType6893 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUShortType6903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleUShortType6949 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntType_in_entryRuleIntType6985 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntType6995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleIntType7041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUIntType_in_entryRuleUIntType7077 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUIntType7087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleUIntType7133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatType_in_entryRuleFloatType7169 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatType7179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_ruleFloatType7225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleType_in_entryRuleDoubleType7261 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleType7271 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_ruleDoubleType7317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringType_in_entryRuleStringType7353 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringType7363 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_ruleStringType7409 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCharArrayType_in_entryRuleCharArrayType7445 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCharArrayType7455 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_ruleCharArrayType7501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleShortArrayType_in_entryRuleShortArrayType7537 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleShortArrayType7547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_ruleShortArrayType7593 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUShortArrayType_in_entryRuleUShortArrayType7629 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUShortArrayType7639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_ruleUShortArrayType7685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntArrayType_in_entryRuleIntArrayType7721 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntArrayType7731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_60_in_ruleIntArrayType7777 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUIntArrayType_in_entryRuleUIntArrayType7813 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUIntArrayType7823 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_ruleUIntArrayType7869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatArrayType_in_entryRuleFloatArrayType7905 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatArrayType7915 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_62_in_ruleFloatArrayType7961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleArrayType_in_entryRuleDoubleArrayType7997 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleArrayType8007 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_ruleDoubleArrayType8053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringArrayType_in_entryRuleStringArrayType8089 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringArrayType8099 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_64_in_ruleStringArrayType8145 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongStringArrayType_in_entryRuleLongStringArrayType8181 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLongStringArrayType8191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_ruleLongStringArrayType8237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleStringArrayType_in_entryRuleDoubleStringArrayType8273 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleStringArrayType8283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_ruleDoubleStringArrayType8329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStateType_in_entryRuleStateType8365 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStateType8375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_67_in_ruleStateType8421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstStringType_in_entryRuleConstStringType8457 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstStringType8467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_ruleConstStringType8513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanArrayType_in_entryRuleBooleanArrayType8549 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanArrayType8559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_ruleBooleanArrayType8605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUCharType_in_entryRuleUCharType8641 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUCharType8651 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_70_in_ruleUCharType8697 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongType_in_entryRuleLongType8733 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLongType8743 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_ruleLongType8789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleULongType_in_entryRuleULongType8825 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleULongType8835 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_ruleULongType8881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongArrayType_in_entryRuleLongArrayType8917 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLongArrayType8927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_ruleLongArrayType8973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleULongArrayType_in_entryRuleULongArrayType9009 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleULongArrayType9019 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_ruleULongArrayType9065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDevIntType_in_entryRuleDevIntType9101 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDevIntType9111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_ruleDevIntType9157 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEncodedType_in_entryRuleEncodedType9193 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEncodedType9203 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_76_in_ruleEncodedType9249 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleShortVectorType_in_entryRuleShortVectorType9285 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleShortVectorType9295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_77_in_ruleShortVectorType9341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntVectorType_in_entryRuleIntVectorType9377 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntVectorType9387 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_78_in_ruleIntVectorType9433 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatVectorType_in_entryRuleFloatVectorType9469 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatVectorType9479 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_79_in_ruleFloatVectorType9525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleVectorType_in_entryRuleDoubleVectorType9561 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleVectorType9571 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_80_in_ruleDoubleVectorType9617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringVectorType_in_entryRuleStringVectorType9653 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringVectorType9663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_81_in_ruleStringVectorType9709 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleAttribute4919 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleEventCriteria_in_ruleAttribute4940 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleEventCriteria_in_ruleAttribute4961 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_ruleAttribute4973 = new BitSet(new long[]{0x0000800000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute4990 = new BitSet(new long[]{0x0000800000000010L});
+    public static final BitSet FOLLOW_47_in_ruleAttribute5008 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute5025 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_ruleFireEvents_in_entryRuleFireEvents5067 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFireEvents5077 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleFireEvents5123 = new BitSet(new long[]{0x00000C0000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleFireEvents5144 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEventCriteria_in_entryRuleEventCriteria5180 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEventCriteria5190 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleEventCriteria5232 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleEventCriteria5254 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleEventCriteria5276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttrProperties_in_entryRuleAttrProperties5317 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttrProperties5327 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5369 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5391 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5413 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5435 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5457 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5479 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5501 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5523 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5545 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5567 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5589 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5611 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5633 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttrProperties5655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAdditionalFile_in_entryRuleAdditionalFile5696 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAdditionalFile5706 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAdditionalFile5748 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAdditionalFile5770 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOverlodedPollPeriodObject_in_entryRuleOverlodedPollPeriodObject5811 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOverlodedPollPeriodObject5821 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5863 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5885 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleOverlodedPollPeriodObject5907 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType5948 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType5958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVoidType_in_ruleType6005 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_ruleType6032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleShortType_in_ruleType6059 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUShortType_in_ruleType6086 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntType_in_ruleType6113 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUIntType_in_ruleType6140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatType_in_ruleType6167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleType_in_ruleType6194 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringType_in_ruleType6221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCharArrayType_in_ruleType6248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleShortArrayType_in_ruleType6275 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUShortArrayType_in_ruleType6302 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntArrayType_in_ruleType6329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUIntArrayType_in_ruleType6356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatArrayType_in_ruleType6383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleArrayType_in_ruleType6410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringArrayType_in_ruleType6437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongStringArrayType_in_ruleType6464 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleStringArrayType_in_ruleType6491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStateType_in_ruleType6518 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstStringType_in_ruleType6545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanArrayType_in_ruleType6572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongType_in_ruleType6599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleULongType_in_ruleType6626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUCharType_in_ruleType6653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongArrayType_in_ruleType6680 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleULongArrayType_in_ruleType6707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDevIntType_in_ruleType6734 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEncodedType_in_ruleType6761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVoidType_in_entryRuleVoidType6796 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVoidType6806 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleVoidType6852 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_entryRuleBooleanType6888 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanType6898 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleBooleanType6944 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleShortType_in_entryRuleShortType6980 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleShortType6990 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleShortType7036 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUShortType_in_entryRuleUShortType7072 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUShortType7082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleUShortType7128 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntType_in_entryRuleIntType7164 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntType7174 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleIntType7220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUIntType_in_entryRuleUIntType7256 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUIntType7266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleUIntType7312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatType_in_entryRuleFloatType7348 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatType7358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_ruleFloatType7404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleType_in_entryRuleDoubleType7440 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleType7450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_ruleDoubleType7496 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringType_in_entryRuleStringType7532 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringType7542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_ruleStringType7588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCharArrayType_in_entryRuleCharArrayType7624 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCharArrayType7634 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_ruleCharArrayType7680 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleShortArrayType_in_entryRuleShortArrayType7716 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleShortArrayType7726 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleShortArrayType7772 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUShortArrayType_in_entryRuleUShortArrayType7808 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUShortArrayType7818 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_ruleUShortArrayType7864 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntArrayType_in_entryRuleIntArrayType7900 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntArrayType7910 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleIntArrayType7956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUIntArrayType_in_entryRuleUIntArrayType7992 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUIntArrayType8002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_ruleUIntArrayType8048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatArrayType_in_entryRuleFloatArrayType8084 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatArrayType8094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_ruleFloatArrayType8140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleArrayType_in_entryRuleDoubleArrayType8176 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleArrayType8186 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleDoubleArrayType8232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringArrayType_in_entryRuleStringArrayType8268 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringArrayType8278 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_64_in_ruleStringArrayType8324 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongStringArrayType_in_entryRuleLongStringArrayType8360 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLongStringArrayType8370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_ruleLongStringArrayType8416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleStringArrayType_in_entryRuleDoubleStringArrayType8452 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleStringArrayType8462 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_ruleDoubleStringArrayType8508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStateType_in_entryRuleStateType8544 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStateType8554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_67_in_ruleStateType8600 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstStringType_in_entryRuleConstStringType8636 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConstStringType8646 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_ruleConstStringType8692 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanArrayType_in_entryRuleBooleanArrayType8728 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanArrayType8738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_ruleBooleanArrayType8784 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUCharType_in_entryRuleUCharType8820 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUCharType8830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_70_in_ruleUCharType8876 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongType_in_entryRuleLongType8912 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLongType8922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_ruleLongType8968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleULongType_in_entryRuleULongType9004 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleULongType9014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_ruleULongType9060 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongArrayType_in_entryRuleLongArrayType9096 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLongArrayType9106 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_ruleLongArrayType9152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleULongArrayType_in_entryRuleULongArrayType9188 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleULongArrayType9198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_74_in_ruleULongArrayType9244 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDevIntType_in_entryRuleDevIntType9280 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDevIntType9290 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_ruleDevIntType9336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEncodedType_in_entryRuleEncodedType9372 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEncodedType9382 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_76_in_ruleEncodedType9428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleShortVectorType_in_entryRuleShortVectorType9464 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleShortVectorType9474 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_ruleShortVectorType9520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntVectorType_in_entryRuleIntVectorType9556 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntVectorType9566 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_78_in_ruleIntVectorType9612 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatVectorType_in_entryRuleFloatVectorType9648 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatVectorType9658 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_79_in_ruleFloatVectorType9704 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleVectorType_in_entryRuleDoubleVectorType9740 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleVectorType9750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_80_in_ruleDoubleVectorType9796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringVectorType_in_entryRuleStringVectorType9832 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringVectorType9842 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_81_in_ruleStringVectorType9888 = new BitSet(new long[]{0x0000000000000002L});
 
 }

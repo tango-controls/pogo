@@ -178,6 +178,11 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
         return createFireEventsAdapter();
       }
       @Override
+      public Adapter caseEventCriteria(EventCriteria object)
+      {
+        return createEventCriteriaAdapter();
+      }
+      @Override
       public Adapter caseAttrProperties(AttrProperties object)
       {
         return createAttrPropertiesAdapter();
@@ -685,6 +690,21 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFireEventsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.EventCriteria <em>Event Criteria</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.EventCriteria
+   * @generated
+   */
+  public Adapter createEventCriteriaAdapter()
   {
     return null;
   }
