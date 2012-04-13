@@ -1,0 +1,129 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppConstants»
+«EXTENSION fr::esrf::tango::pogo::cpp::_CppUtil»
+
+
+«DEFINE CppProject FOR PogoDeviceClass»
+«FILE vc10ProjectFileName(name+".sln")»Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server_static", "Server_static.vcxproj", "{A52909BB-E783-4522-BF2D-D9786023881D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class_lib", "Class_lib.vcxproj", "{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server_shared", "Server_shared.vcxproj", "{570AF151-36FC-4638-A23A-673975792A19}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class_dll", "Class_dll.vcxproj", "{F513547B-028B-42F8-BE76-A50FD3A3BA3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Debug|Win32.Build.0 = Debug|Win32
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Debug|x64.ActiveCfg = Debug|x64
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Debug|x64.Build.0 = Debug|x64
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Release|Win32.ActiveCfg = Release|Win32
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Release|Win32.Build.0 = Release|Win32
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Release|x64.ActiveCfg = Release|x64
+		{A52909BB-E783-4522-BF2D-D9786023881D}.Release|x64.Build.0 = Release|x64
+		{570AF151-36FC-4638-A23A-673975792A19}.Debug|Win32.ActiveCfg = Debug|Win32
+		{570AF151-36FC-4638-A23A-673975792A19}.Debug|Win32.Build.0 = Debug|Win32
+		{570AF151-36FC-4638-A23A-673975792A19}.Debug|x64.ActiveCfg = Debug|x64
+		{570AF151-36FC-4638-A23A-673975792A19}.Debug|x64.Build.0 = Debug|x64
+		{570AF151-36FC-4638-A23A-673975792A19}.Release|Win32.ActiveCfg = Release|Win32
+		{570AF151-36FC-4638-A23A-673975792A19}.Release|Win32.Build.0 = Release|Win32
+		{570AF151-36FC-4638-A23A-673975792A19}.Release|x64.ActiveCfg = Release|x64
+		{570AF151-36FC-4638-A23A-673975792A19}.Release|x64.Build.0 = Release|x64
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Debug|Win32.Build.0 = Debug|Win32
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Debug|x64.ActiveCfg = Debug|x64
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Debug|x64.Build.0 = Debug|x64
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Release|Win32.ActiveCfg = Release|Win32
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Release|Win32.Build.0 = Release|Win32
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Release|x64.ActiveCfg = Release|x64
+		{4C40E24A-E85F-4DD1-9E6D-F8B19CD7D2D4}.Release|x64.Build.0 = Release|x64
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Debug|Win32.Build.0 = Debug|Win32
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Debug|x64.ActiveCfg = Debug|x64
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Debug|x64.Build.0 = Debug|x64
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Release|Win32.ActiveCfg = Release|Win32
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Release|Win32.Build.0 = Release|Win32
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Release|x64.ActiveCfg = Release|x64
+		{F513547B-028B-42F8-BE76-A50FD3A3BA3F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+«ENDFILE»
+«ENDDEFINE»
+
+
+
+
+#=============================================================================
+#	Add Source files
+#=============================================================================
+«DEFINE addSourceFiles FOR PogoDeviceClass-»
+	<ClCompile Include="..\«name».cpp" />
+	<ClCompile Include="..\«name»Class.cpp" />
+	<ClCompile Include="..\«name»StateMachine.cpp" />
+«ENDDEFINE»
+
+#=============================================================================
+#	Add include files
+#=============================================================================
+«DEFINE addIncludeFiles(String tag) FOR PogoDeviceClass-»
+	<ClInclude Include="..\«name».h">«tag»</ClInclude>
+	<ClInclude Include="..\«name»Class.h">«tag»</ClInclude>
+«ENDDEFINE»
+
+#=============================================================================
+#	Add inheritance Source files if any
+#=============================================================================
+«DEFINE addInheritanceSourceFiles FOR PogoDeviceClass-»
+«IF description.hasInheritanceClass()-»
+«FOREACH description.inheritances AS inheritance-»
+«IF inheritance.isInheritanceClass()-»
+	<ClCompile Include="«inheritance.sourcePath»/«inheritance.classname».cpp" />
+	<ClCompile Include="«inheritance.sourcePath»/«inheritance.classname»Class.cpp" />
+	<ClCompile Include="«inheritance.sourcePath»/«inheritance.classname»StateMachine.cpp" />
+«ENDIF-»
+«ENDFOREACH-»
+«ENDIF-»
+«ENDDEFINE»
+
+#=============================================================================
+#	Add inheritance include files if any
+#=============================================================================
+«DEFINE addInheritanceIncludeFiles(String tag) FOR PogoDeviceClass-»
+«IF description.hasInheritanceClass()-»
+«FOREACH description.inheritances AS inheritance-»
+«IF inheritance.isInheritanceClass()-»
+	<ClInclude Include="«inheritance.sourcePath»/«inheritance.classname».h">«tag»</ClInclude>
+	<ClInclude Include="«inheritance.sourcePath»/«inheritance.classname»Class.h">«tag»</ClInclude>
+«ENDIF»
+«ENDFOREACH-»
+«ENDIF-»
+«ENDDEFINE»
+
+#=============================================================================
+#	Add include files path
+#	n nb bits (32/64)
+#=============================================================================
+«DEFINE addIncludePath(String n) FOR PogoDeviceClass-»
+      <AdditionalIncludeDirectories>
+..;$(TANGO_ROOT)\win«n»_vc10\win«n»\include;$(TANGO_ROOT)\classes\win«n»_vc10\win«n»\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)
+«EXPAND addInheritanceIncludePath»
+      </AdditionalIncludeDirectories>
+«ENDDEFINE»
+
+#=============================================================================
+#	Add include files path
+#	n nb bits (32/64)
+#=============================================================================
+«DEFINE addInheritanceIncludePath FOR PogoDeviceClass-»
+«FOREACH description.inheritances AS inheritance-»«IF inheritance.isInheritanceClass()-»«inheritance.sourcePath»;«ENDIF-»«ENDFOREACH-»
+«ENDDEFINE»

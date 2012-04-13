@@ -1,0 +1,192 @@
+import pogoDsl;
+
+javaDeviceName( PogoDeviceClass this ): name;
+javaDevicePackage( PogoDeviceClass this ): "org.myorganisation.tango.server."+name.toLowerCase();
+fqJavaDeviceClassName( PogoDeviceClass this ): javaDevicePackage()+"."+javaDeviceName();
+javaDeviceClassFileName( PogoDeviceClass this ): fqJavaDeviceClassName().replaceAll("\\.","/")+".java";
+
+removeUnderscore(String s): s.replaceAll("_","");
+vcsEscaped( String s ): "$"+s+"$";
+
+commandArginGen(Command cmd):
+	javaType(cmd.argin.type).toString() != "void"
+	?javaType(cmd.argin.type).toString()+ " "+cmd.name.toFirstLower()+ "In"
+	:"";
+
+isImage(String type):
+type.toLowerCase()=="image"?"[][]":"";
+
+isSpectrum(String type):
+type.toLowerCase()=="spectrum"?"[]":"";
+
+defaultPropValue(List s): s.size>0?"= "+ s:"";
+
+//	Property Type utilities
+String javaPropType(PropType this):			null;
+String javaPropType(BooleanType this):		"boolean";
+String javaPropType(ShortType this):		"short";
+String javaPropType(IntType this):			"long";
+String javaPropType(UShortType this):		"short";
+String javaPropType(UIntType this):			"long";
+String javaPropType(FloatType this):		"float";
+String javaPropType(DoubleType this):		"double";
+String javaPropType(StringType this):		"String";
+
+String javaPropType(ShortVectorType this):	"short[]";
+String javaPropType(IntVectorType this):	"long[]";
+String javaPropType(FloatVectorType this):	"float[]";
+String javaPropType(DoubleVectorType this):	"double[]";
+String javaPropType(StringVectorType this):	"String[]";
+
+
+//	Type utilities
+
+toTangoType(Type this):					null;
+toTangoType(VoidType this):				"void";
+toTangoType(BooleanType this):			"DevBoolean";
+toTangoType(ShortType this):			"DevShort";
+toTangoType(IntType this):				"DevLong";
+toTangoType(FloatType this):			"DevFloat";
+toTangoType(DoubleType this):			"DevDouble";
+toTangoType(UShortType this):			"DevUShort";
+toTangoType(UIntType this):				"DevULong";
+toTangoType(StringType this):			"DevString";
+toTangoType(CharArrayType this):		"DevVarCharArray";
+toTangoType(ShortArrayType this):		"DevVarShortArray";
+toTangoType(IntArrayType this):			"DevVarLongArray";
+toTangoType(FloatArrayType this):		"DevVarFloatArray";
+toTangoType(DoubleArrayType this):		"DevVarDoubleArray";
+toTangoType(UShortArrayType this):		"DevVarUShortArray";
+toTangoType(UIntArrayType this):		"DevVarULongArray";
+toTangoType(StringArrayType this):		"DevVarStringArray";
+toTangoType(LongStringArrayType this):	"DevVarLongStringArray";
+toTangoType(DoubleStringArrayType this):"DevVarDoubleStringArray";
+toTangoType(StateType this):			"DevState";
+toTangoType(ConstStringType this):		"ConstDevString";
+toTangoType(BooleanArrayType this):		"DevVarBooleanArray";
+toTangoType(UCharType this):			"DevUChar";
+toTangoType(LongType this):				"DevLong64";
+toTangoType(ULongType this):			"DevULong64";
+toTangoType(LongArrayType this):		"DevVarLong64Array";
+toTangoType(ULongArrayType this):		"DevVarULong64Array";
+toTangoType(DevIntType this):			"DevInt";
+toTangoType(EncodedType this):			"DevEncoded";
+
+
+javaType(Type this):				null;
+javaType(VoidType this):			"void";
+javaType(BooleanType this):			"boolean";
+javaType(BooleanArrayType this):	"boolean[]";
+javaType(ShortType this):			"short";
+javaType(UShortType this):			"short";
+javaType(ShortArrayType this):		"short[]";
+javaType(UShortArrayType this):		"short[]";
+javaType(IntType this):				"int";
+javaType(IntArrayType this):		"int[]";
+javaType(UIntType this):			"int";
+javaType(UIntArrayType this):		"int[]";
+javaType(LongType this):			"long";
+javaType(LongArrayType this):		"long[]";
+javaType(FloatType this):			"float";
+javaType(DoubleType this):			"double";
+javaType(StringType this):			"String";
+javaType(ConstStringType this):		"String";
+javaType(UCharType this):			"byte";
+javaType(CharArrayType this):		"byte[]";
+javaType(FloatArrayType this):		"float[]";
+javaType(DoubleArrayType this):		"double[]";
+javaType(StringArrayType this):		"String[]";
+javaType(LongStringArrayType this):	"DevVarLongStringArray";
+javaType(DoubleStringArrayType this):"DevVarDoubleStringArray";
+javaType(StateType this):			"DevState";
+javaType(ULongType this):			"long";
+javaType(ULongArrayType this):		"long[]";
+javaType(EncodedType this):			"DevEncoded";
+
+javaValue(Type this):					"unknown type: " + this;
+javaValue(VoidType this):				"";
+javaValue(BooleanType this):			"false";
+javaValue(ShortType this):			"0";
+javaValue(UShortType this):			"0";
+javaValue(FloatType this):			"0";
+javaValue(DoubleType this):			"0";
+javaValue(StringType this):			"\"\"";
+javaValue(IntType this):			"0";
+javaValue(UCharType this):			"0";
+javaValue(LongType this):				"0";
+javaValue(ULongType this):			"0";
+javaValue(UIntType this):			"0";
+javaValue(StateType this):			"DevState.ON";
+javaValue(ConstStringType this):		"\"\"";
+javaValue(IntArrayType this):		"new int[0]";
+javaValue(UIntArrayType this):		"new int[0]";
+javaValue(CharArrayType this):		"new byte[0]";
+javaValue(ShortArrayType this):		"new short[0]";
+javaValue(FloatArrayType this):		"new float[0]";
+javaValue(DoubleArrayType this):		"new double[0]";
+javaValue(UShortArrayType this):		"new short[0]";
+javaValue(StringArrayType this):		"new String[0]";
+javaValue(LongStringArrayType this):	"new DevVarLongStringArray()";
+javaValue(DoubleStringArrayType this):"new DevVarDoubleStringArray()";
+javaValue(BooleanArrayType this):		"new boolean[0]";
+javaValue(LongArrayType this):		"new long[0]";
+javaValue(ULongArrayType this):		"new long[0]";
+javaValue(EncodedType this):			"new DevEncoded()";
+
+javaAttrValue(Type this, String attrType):					
+"unknown type: " + this;
+javaAttrValue(BooleanType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"false":(attrType.toLowerCase()=="spectrum"?"new boolean[0]":"new boolean[0][0]");
+javaAttrValue(ShortType this, String attrType):		
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new short[0]":"new short[0][0]");
+javaAttrValue(UShortType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new short[0]":"new short[0][0]");
+javaAttrValue(FloatType this, String attrType):		
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new float[0]":"new float[0][0]");
+javaAttrValue(DoubleType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new double[0]":"new double[0][0]");
+javaAttrValue(StringType this, String attrType):
+attrType.toLowerCase()=="scalar"?"\"\"":(attrType.toLowerCase()=="spectrum"?"new String[0]":"new String[0][0]");	
+javaAttrValue(IntType this, String attrType):
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new int[0]":"new int[0][0]");
+javaAttrValue(UCharType this, String attrType):			
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new byte[0]":"new byte[0][0]");
+javaAttrValue(LongType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new long[0]":"new long[0][0]");	
+javaAttrValue(ULongType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new long[0]":"new long[0][0]");	
+javaAttrValue(UIntType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"0":(attrType.toLowerCase()=="spectrum"?"new int[0]":"new int[0][0]");
+javaAttrValue(StateType this, String attrType):	
+attrType.toLowerCase()=="scalar"?"DevState.ON":(attrType.toLowerCase()=="spectrum"?"new DevState[0]":"new DevState[0][0]");		
+javaAttrValue(EncodedType this, String attrType):			
+"new DevEncoded()";
+
+
+
+displayLevel(String s): s== "EXPERT"? ", displayLevel=DispLevel._EXPERT":"";
+isMemorized(String s): s== "true"? ", isMemorized=true":"";
+isMemorizedAtInit(String s): s== "true"? ", isMemorizedAtInit=true":"";
+polledPeriod(String s): s.length>0? ", isPolled = true, pollingPeriod = "+ s:"";
+
+attrPropToString(String name, String s, boolean addComma): s.length>0? name+" = \""+ s+"\""+ (addComma? ", ":"") : "" ;
+
+attributePropertiesValues(AttrProperties props): 
+attrPropToString("description",props.description, true)
++ attrPropToString("label",props.label, true)
++ attrPropToString("displayUnit",props.displayUnit, true)
++ attrPropToString("standardUnit",props.standardUnit, true)
++ attrPropToString("unit",props.unit, true)
++ attrPropToString("format",props.format, true)
++ attrPropToString("minAlarm",props.minAlarm, true)
++ attrPropToString("maxAlarm",props.maxAlarm, true)
++ attrPropToString("minValue",props.minValue, true)
++ attrPropToString("maxValue",props.maxValue, true)
++ attrPropToString("minWarning",props.minWarning, true)
++ attrPropToString("maxWarning",props.maxWarning, true)
++ attrPropToString("deltaTime",props.deltaTime, false);
+
+attributeProperties(AttrProperties props):  
+attributePropertiesValues(props).length > 0? 
+	"@AttributeProperties("+ attributePropertiesValues(props)+")"
+	: "";

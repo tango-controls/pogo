@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.emf.mwe.ui.MWELaunchConfigType">
+<booleanAttribute key="java_debug" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-pxmiFile=model/PowerSupply.xmi&#10;-ptargetLanguage=multicpp"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="fr.esrf.tango.pogo.tests"/>
+<booleanAttribute key="org.eclipse.jdt.launching.STOP_IN_MAIN" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms40m&#10;-Xmx256m"/>
+<stringAttribute key="startWorkflow" value="/fr.esrf.tango.pogo.generator/src/fr/esrf/tango/pogo/generatorFromXMI.mwe"/>
+</launchConfiguration>
