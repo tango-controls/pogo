@@ -119,7 +119,6 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 
 //	=========================================================
 //	Define the attribute creation for attribute_factory 
-//&& att.status.inherited=="false"-
 //	=========================================================
 «DEFINE attributeCreation FOR PogoDeviceClass-»
 «FOREACH attributes AS att-»
@@ -216,6 +215,7 @@ void «name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 //	Define a little method to retreive Tango::Attr * object by name
 //	=========================================================
 «DEFINE getAttributeByName FOR PogoDeviceClass-»
+«IF description.hasInheritanceClass()-»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::methodHeader(
 		name + "Class::get_attr_by_name",
 		"returns Tango::Attr * object found by name")-»
@@ -228,6 +228,7 @@ Tango::Attr *«name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_lis
 	//	Attr does not exist
 	return NULL;
 }
+«ENDIF-»
 «ENDDEFINE»
 
 
@@ -264,14 +265,10 @@ void «name»Class::command_factory()
 {
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea("Class::command_factory_before")»
 «IF description.hasInheritanceClass()-»
+	//	Call command_factory for inherited class
 	«description.getInheritance().classname»_ns::«description.getInheritance().classname»Class::command_factory();
 «ENDIF-»
-«IF description.inheritances.size>0 &&
-	description.inheritances.get(0).classname.startsWith("Device_")==false-»
-	«description.inheritances.get(0).classname»_ns::«description.inheritances.get(0).classname»Class::command_factory();
-«ENDIF-»
-«EXPAND createCommands»
-«EXPAND overloadCommandPollingPeriod»
+«EXPAND createAllCommands»
 «EXPAND fr::esrf::tango::pogo::cpp::Common::ProtectedArea(
 				"Class::command_factory_after")»
 }
@@ -281,19 +278,42 @@ void «name»Class::command_factory()
 //	=========================================================
 //	Define code to create commands
 //	=========================================================
-«DEFINE createCommands FOR PogoDeviceClass»
+«DEFINE createAllCommands FOR PogoDeviceClass»
 «FOREACH commands AS cmd-»
-	«IF cmd.status.inherited=="false" && cmd.status.concreteHere=="true"-»
-	//	Create «cmd.name» command object
-	«cmd.name»Class	*p«cmd.name»Cmd =
-		new «cmd.name»Class("«cmd.name»",
-			«cmd.argin.type.cppTypeEnum()», «cmd.argout.type.cppTypeEnum()»,
-			"«cmd.argin.description.inOneLine()»",
-			"«cmd.argout.description.inOneLine()»",
-			«cmd.cppDisplayLevel()»);
-	«cmd.cppSetPollingPeriod()»command_list.push_back(p«cmd.name»Cmd);
-	«ENDIF-»
+«IF cmd.status.concreteHere=="true"-»
+«IF cmd.status.inherited=="true"-»
+	//	Get inherited Command object «cmd.name» if already created
+	try
+	{
+		get_cmd_by_name("«cmd.name»")«EXPAND overloadCommandPollingPeriod(cmd)-»;
+	}
+	catch (Tango::DevFailed &e)
+	{
+		«EXPAND createCommand(cmd, "\t\t")-»
+	}
+«ELSE-»
+	«EXPAND createCommand(cmd, "\t")»
+«ENDIF»
+«ENDIF-»
 «ENDFOREACH»
+«ENDDEFINE»
+
+
+//	=========================================================
+//	Define code to create specified command
+//	=========================================================
+«DEFINE createCommand(Command cmd, String tab) FOR PogoDeviceClass»
+«tab»//	Create «cmd.name» command object
+«tab»«cmd.name»Class	*p«cmd.name»Cmd =
+«tab»	new «cmd.name»Class("«cmd.name»",
+«tab»		«cmd.argin.type.cppTypeEnum()», «cmd.argout.type.cppTypeEnum()»,
+«tab»		"«cmd.argin.description.inOneLine()»",
+«tab»		"«cmd.argout.description.inOneLine()»",
+«tab»		«cmd.cppDisplayLevel()»);
+«IF cmd.polledPeriod!=null && cmd.polledPeriod!="0"-»
+«tab»p«cmd.name»Cmd->set_polling_period(«cmd.polledPeriod»);
+«ENDIF-»
+«tab»command_list.push_back(p«cmd.name»Cmd);
 «ENDDEFINE»
 
 
@@ -301,11 +321,8 @@ void «name»Class::command_factory()
 //	=========================================================
 //	Define code to overload polling period if any
 //	=========================================================
-«DEFINE overloadCommandPollingPeriod FOR PogoDeviceClass-»
-«FOREACH  overlodedPollPeriodObject AS obj-»«IF obj.type=="command"-»
-	//	Overload polling period for «obj.name»
-	Tango::Command &«obj.name»Cmd = get_cmd_by_name("«obj.name»");
-	«obj.name»Cmd.set_polling_period(«obj.pollPeriod»);«ENDIF»
+«DEFINE overloadCommandPollingPeriod(Command cmd) FOR PogoDeviceClass-»
+«FOREACH  overlodedPollPeriodObject AS obj-»
+«IF obj.type=="command" && obj.name==cmd.name-».set_polling_period(«obj.pollPeriod»)«ENDIF-»
 «ENDFOREACH-»
 «ENDDEFINE»
-
