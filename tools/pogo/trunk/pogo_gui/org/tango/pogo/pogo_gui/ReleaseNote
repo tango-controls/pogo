@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.0.2 - 03/05/2012:
+	Bug on abstract command inherited fixed.
+
 Pogo-8.0.1 - 05/04/2012:
 	Pb with inherited object when DevRestart command received fixed.
 	Event criteria management added for attributes (new Tango 8 feature)

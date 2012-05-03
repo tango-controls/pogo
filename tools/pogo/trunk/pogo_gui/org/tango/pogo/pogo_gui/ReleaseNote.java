@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Apr 05 13:32:25 CEST 2012)</Center><Br>\n" + 
+		"	(Generated Thu May 03 09:27:29 CEST 2012)</Center><Br>\n" + 
+		"<li><b>Pogo-8.0.2 - 03/05/2012:</b><Br>\n" + 
+		"&nbsp; &nbsp; Bug on abstract command inherited fixed.<Br>\n" + 
 		"<li><b>Pogo-8.0.1 - 05/04/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Pb with inherited object when DevRestart command received fixed.<Br>\n" + 
 		"&nbsp; &nbsp; Event criteria management added for attributes (new Tango 8 feature)<Br>\n" + 
