@@ -134,9 +134,9 @@ declareCmdArgin(Command this):
 		:	argin.type.cppType().toString()+" argin");
 
 cppSetPollingPeriod(Command this):
-	polledPeriod ==null
+	polledPeriod==null || polledPeriod=="0"
 	? null
-	: "p"+name+"Cmd->set_polling_period("+polledPeriod+");\n\t";
+	: "p"+name+"Cmd->set_polling_period("+polledPeriod+");";
 
 cppDisplayLevel(Command this):
 		displayLevel==null
