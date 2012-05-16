@@ -1,7 +1,7 @@
 import pogoDsl;
 
 javaDeviceName( PogoDeviceClass this ): name;
-javaDevicePackage( PogoDeviceClass this ): "org.myorganisation.tango.server."+name.toLowerCase();
+javaDevicePackage( PogoDeviceClass this ): "org.tango."+name.toLowerCase();
 fqJavaDeviceClassName( PogoDeviceClass this ): javaDevicePackage()+"."+javaDeviceName();
 javaDeviceClassFileName( PogoDeviceClass this ): fqJavaDeviceClassName().replaceAll("\\.","/")+".java";
 
@@ -19,7 +19,13 @@ type.toLowerCase()=="image"?"[][]":"";
 isSpectrum(String type):
 type.toLowerCase()=="spectrum"?"[]":"";
 
-defaultPropValue(List s): s.size>0?"= "+ s:"";
+defaultPropValue(List s): s.size>0?", defaultValue = \""+ s+"\"":"";
+
+comments(String this, String tag):	//	Comment a String with more than one line
+	replaceAll("\n", "\n"+tag+"// ");
+
+declareAttributeMember(Attribute this):
+	dataType.javaType().toString() + attType.isImage() + attType.isSpectrum() + " " + name.toFirstLower().removeUnderscore();
 
 //	Property Type utilities
 String javaPropType(PropType this):			null;
@@ -76,7 +82,7 @@ toTangoType(EncodedType this):			"DevEncoded";
 javaType(Type this):				null;
 javaType(VoidType this):			"void";
 javaType(BooleanType this):			"boolean";
-javaType(BooleanArrayType this):	"boolean[]";
+javaType(BooleanArrayType this):		"boolean[]";
 javaType(ShortType this):			"short";
 javaType(UShortType this):			"short";
 javaType(ShortArrayType this):		"short[]";
@@ -91,7 +97,7 @@ javaType(FloatType this):			"float";
 javaType(DoubleType this):			"double";
 javaType(StringType this):			"String";
 javaType(ConstStringType this):		"String";
-javaType(UCharType this):			"byte";
+javaType(UCharType this):		"byte";
 javaType(CharArrayType this):		"byte[]";
 javaType(FloatArrayType this):		"float[]";
 javaType(DoubleArrayType this):		"double[]";
@@ -167,7 +173,8 @@ javaAttrValue(EncodedType this, String attrType):
 displayLevel(String s): s== "EXPERT"? ", displayLevel=DispLevel._EXPERT":"";
 isMemorized(String s): s== "true"? ", isMemorized=true":"";
 isMemorizedAtInit(String s): s== "true"? ", isMemorizedAtInit=true":"";
-polledPeriod(String s): s.length>0? ", isPolled = true, pollingPeriod = "+ s:"";
+polledPeriod(String s): s.length>0 && s!="0" ?
+		 ", isPolled = true, pollingPeriod = "+ s:"";
 
 attrPropToString(String name, String s, boolean addComma): s.length>0? name+" = \""+ s+"\""+ (addComma? ", ":"") : "" ;
 
