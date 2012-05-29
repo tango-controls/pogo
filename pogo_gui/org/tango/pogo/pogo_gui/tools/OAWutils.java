@@ -49,6 +49,7 @@ import org.eclipse.emf.mwe.core.WorkflowEngine;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.issues.IssuesImpl;
 import org.eclipse.emf.mwe.core.issues.MWEDiagnostic;
+import org.tango.pogo.pogo_gui.PogoConst;
 import org.tango.pogo.pogo_gui.PropertyDialog;
 
 import java.io.File;
@@ -161,7 +162,6 @@ public class OAWutils {
             return sys.getClasses().get(0);         //  A single device classes project
     }
     //========================================================================
-
     /**
      * Generate xmi file for PogoDeviceClass object and code associeted.
      *
@@ -172,9 +172,11 @@ public class OAWutils {
     @SuppressWarnings({"unchecked"})
     public void generate(PogoDeviceClass pogo_class) throws DevFailed {
         PogoSystem sys = buildPogoSystem(pogo_class);
-        String prExcludes = Utils.getExcludeFilesAndDir(
-                pogo_class.getDescription().getSourcePath(),
-                pogo_class.getDescription().getLanguage());
+        String prExcludes;
+        if (pogo_class.getDescription().getLanguage().equals(PogoConst.strLang[PogoConst.Java]))
+            prExcludes = "org.tango."+pogo_class.getName().toLowerCase();
+        else
+            prExcludes = Utils.getExcludeFilesAndDir(pogo_class.getDescription().getSourcePath());
         //System.out.println("\n-----------------------------------------------------------------");
         //System.out.println("Excluded : "+prExcludes);
         //System.out.println("-----------------------------------------------------------------\\n");
@@ -228,8 +230,7 @@ public class OAWutils {
     @SuppressWarnings({"unchecked"})
     public void generate(PogoMultiClasses multiClasses) throws DevFailed {
         PogoSystem sys = factory.createPogoSystem();
-        String prExcludes = Utils.getExcludeFilesAndDir(
-                multiClasses.getSourcePath(), "cpp");
+        String prExcludes = Utils.getExcludeFilesAndDir(multiClasses.getSourcePath());
 
         reverseClassOrder(multiClasses);
         sys.getMultiClasses().add(multiClasses);
