@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu May 03 09:27:29 CEST 2012)</Center><Br>\n" + 
+		"	(Generated Tue May 29 10:53:01 CEST 2012)</Center><Br>\n" + 
+		"<li><b>Pogo-8.0.3 - 29/05/2012:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve vc10 project.<Br>\n" + 
+		"&nbsp; &nbsp; Modify file filter for java classes.<Br>\n" + 
 		"<li><b>Pogo-8.0.2 - 03/05/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Bug on abstract command inherited fixed.<Br>\n" + 
 		"<li><b>Pogo-8.0.1 - 05/04/2012:</b><Br>\n" + 

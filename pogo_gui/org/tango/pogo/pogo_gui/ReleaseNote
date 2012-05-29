@@ -8,6 +8,10 @@
 #
 #-======================================================================
 
+Pogo-8.0.3 - 29/05/2012:
+	Improve vc10 project.
+	Modify file filter for java classes.
+
 Pogo-8.0.2 - 03/05/2012:
 	Bug on abstract command inherited fixed.
 
