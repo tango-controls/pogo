@@ -581,19 +581,19 @@ public class Utils {
     //===============================================================
     /**
      * Check the files to be excluded by XPand scans
+     * it is used for cpp and python (java is org.tango.xxx)
      *
      * @param rootDir the directory to be checked (output code)
-     * @param lang language to be generated
      * @return list of files to be excluded by XPand scans
      */
     //===============================================================
-    static public String getExcludeFilesAndDir(String rootDir, String lang) {
+    static public String getExcludeFilesAndDir(String rootDir) {
         //  Define what will be generated
         //  ToDo
-        String[] geneFiles = {".cpp", ".h", ".java", ".py",
+        String[] geneFiles = {".cpp", ".h", ".py",
                 "Makefile", "Makefile.multi",
                 ".sln", ".vcproj"};
-        String[] geneDirs = {"", "vc8_proj", "vc9_proj", "vc10_proj", };
+        String[] geneDirs = { "", "vc8_proj", "vc9_proj", "vc10_proj",};
 
         ArrayList<String> excluded = new ArrayList<String>();
         for (String dir : geneDirs) {
@@ -605,7 +605,8 @@ public class Utils {
             String[] fileNames = d.list();
             if (fileNames != null) {
                 for (String fileName : fileNames) {
-                   //  Check if fileName must be generated
+                   System.out.println(fileName);
+                  //  Check if fileName must be generated
                     boolean generates = couldBeGenerated(fileName, geneFiles);
                     //if (!generates)
                     //    generates = couldBeGenerated(fileName, geneDirs);
@@ -620,8 +621,7 @@ public class Utils {
         //  Convert to String
         StringBuilder sb = new StringBuilder();
         for (String fileName : excluded) {
-            if (!(lang.equals(PogoConst.strLang[PogoConst.Java]) && fileName.equals("org")))
-                sb.append(fileName).append(", ");
+            sb.append(fileName).append(", ");
         }
         //  Remove last ", " if any
         String str = sb.toString();
