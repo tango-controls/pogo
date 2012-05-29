@@ -33,20 +33,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -107,12 +111,12 @@
       </Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>omniORB4_rtd.lib;omniDynamic4_rtd.lib;COS4_rtd.lib;omnithread_rtd.lib;tangod.lib;log4tangod.lib;comctl32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("d","_rt")-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName)d.dll</OutputFile>
       <Version>1.0</Version>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(TANGO_ROOT)\win32_vc10\win32_dll\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND  VC10_Project::addLibPath("32", "_dll")»
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -144,12 +148,12 @@
       </Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>omniORB4_rtd.lib;omniDynamic4_rtd.lib;COS4_rtd.lib;omnithread_rtd.lib;tangod.lib;log4tangod.lib;comctl32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("d","_rt")-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName)d.dll</OutputFile>
       <Version>1.0</Version>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(TANGO_ROOT)\win64_vc10\win64_dll\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND  VC10_Project::addLibPath("64", "_dll")»
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -177,11 +181,11 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>omniORB4_rt.lib;omniDynamic4_rt.lib;COS4_rt.lib;omnithread_rt.lib;tango.lib;log4tango.lib;comctl32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("","_rt")-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(TANGO_ROOT)\win32_vc10\win32_dll\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND  VC10_Project::addLibPath("32", "_dll")»
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <LinkTimeCodeGeneration>
@@ -209,11 +213,11 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>omniORB4_rt.lib;omniDynamic4_rt.lib;COS4_rt.lib;omnithread_rt.lib;tango.lib;log4tango.lib;comctl32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("","_rt")-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(TANGO_ROOT)\win64_vc10\win64_dll\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND  VC10_Project::addLibPath("64", "_dll")»
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <LinkTimeCodeGeneration>
