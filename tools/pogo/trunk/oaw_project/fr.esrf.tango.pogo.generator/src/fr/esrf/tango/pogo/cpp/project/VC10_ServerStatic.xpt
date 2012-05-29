@@ -33,16 +33,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -67,22 +70,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\win32\debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bin\win64\debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\obj\win32\debug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\obj\win64\debug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\win32\vc10\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bin\win64\vc10\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\obj\win32\vc10\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\obj\win64\vc10\</IntDir>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreImportLibrary>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\win32\release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bin\win64\release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\win32\release\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64\release\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\win32\vc10\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bin\win64\vc10\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\win32\vc10\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64\vc10\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">«name»</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">«name»</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -106,10 +110,10 @@
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>«name»d.lib;omniORB4d.lib;omniDynamic4d.lib;COS4d.lib;omnithreadd.lib;tangod.lib;log4tangod.lib;comctl32.lib;ws2_32.lib;mswsock.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("d","")-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\win32\debug;$(TANGO_ROOT)\win32_vc10\win32\lib;$(TANGO_ROOT)\classes\win32_vc10\win32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND VC10_Project::addLibPath("32","")-»
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -142,10 +146,10 @@
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>«name»d.lib;omniORB4d.lib;omniDynamic4d.lib;COS4d.lib;omnithreadd.lib;tangod.lib;log4tangod.lib;comctl32.lib;ws2_32.lib;mswsock.lib;advapi32.lib;zmqd.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("d","")-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\win64\debug;$(TANGO_ROOT)\win64_vc10\win64\lib;$(TANGO_ROOT)\classes\win64_vc10\win64\lib;C:\zmq-3.0.2\win64\lib\vc10;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND VC10_Project::addLibPath("64","")-»
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -175,9 +179,9 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>«name».lib;omniORB4.lib;omniDynamic4.lib;COS4.lib;omnithread.lib;tango.lib;log4tango.lib;comctl32.lib;ws2_32.lib;mswsock.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("","")-»
       <OutputFile>$(OutDir)«name».exe</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\win32\release;$(TANGO_ROOT)\win32_vc10\win32\lib;$(TANGO_ROOT)\classes\win32_vc10\win32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND VC10_Project::addLibPath("32","")-»
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>
@@ -209,9 +213,9 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>«name».lib;omniORB4.lib;omniDynamic4.lib;COS4.lib;omnithread.lib;tango.lib;log4tango.lib;comctl32.lib;ws2_32.lib;mswsock.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      «EXPAND VC10_Project::addLibraries("","")-»
       <OutputFile>$(OutDir)«name».exe</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\win64\release;$(TANGO_ROOT)\win64_vc10\win64\lib;$(TANGO_ROOT)\classes\win64_vc10\win64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      «EXPAND VC10_Project::addLibPath("64","")-»
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>

@@ -280,7 +280,7 @@ void «name»Class::command_factory()
 //	=========================================================
 «DEFINE createAllCommands FOR PogoDeviceClass»
 «FOREACH commands AS cmd-»
-«IF cmd.status.concreteHere=="true"-»
+«IF cmd.status.concreteHere=="true" && cmd.name!="State" && cmd.name!="Status"-»
 «IF cmd.status.inherited=="true"-»
 	//	Get inherited Command object «cmd.name» if already created
 	try

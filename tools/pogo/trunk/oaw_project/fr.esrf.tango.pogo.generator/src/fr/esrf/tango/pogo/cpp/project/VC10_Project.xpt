@@ -115,11 +115,10 @@ EndGlobal
 #=============================================================================
 «DEFINE addIncludePath(String n) FOR PogoDeviceClass-»
       <AdditionalIncludeDirectories>
-..;$(TANGO_ROOT)\win«n»_vc10\win«n»\include;$(TANGO_ROOT)\classes\win«n»_vc10\win«n»\include;TemplateAbstractPath;%(AdditionalIncludeDirectories)
+..;$(TANGO_ROOT)\win«n»\include\vc10;$(TANGO_ROOT)\classes\win«n»\include\vc10;TemplateAbstractPath;%(AdditionalIncludeDirectories)
 «EXPAND addInheritanceIncludePath»
       </AdditionalIncludeDirectories>
 «ENDDEFINE»
-
 #=============================================================================
 #	Add include files path
 #	n nb bits (32/64)
@@ -127,3 +126,58 @@ EndGlobal
 «DEFINE addInheritanceIncludePath FOR PogoDeviceClass-»
 «FOREACH description.inheritances AS inheritance-»«IF inheritance.isInheritanceClass()-»«inheritance.sourcePath»;«ENDIF-»«ENDFOREACH-»
 «ENDDEFINE»
+
+
+
+
+
+
+
+#=============================================================================
+#	Add lib files path
+#	n nb bits (32/64)
+#   dll "" for static   "_dll" for dll
+#=============================================================================
+«DEFINE addTangoLibPath(String n, String dll) FOR PogoDeviceClass-»
+$(TANGO_ROOT)\win«n»\lib\vc10;$(TANGO_ROOT)\classes\win«n»\lib\vc10
+«ENDDEFINE»
+#=============================================================================
+#	Add lib files path
+#	n nb bits (32/64)
+#   dll "" for static   "_dll" for dll
+#=============================================================================
+«DEFINE addLibPath(String n, String dll) FOR PogoDeviceClass-»
+      <AdditionalLibraryDirectories>
+		..\lib\win«n»«dll»\vc10;«EXPAND addTangoLibPath(n,dll)-»;%(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+«ENDDEFINE»
+
+
+#=============================================================================
+#	Add Tango libraries
+#	s	"d" for debug  "" for release
+#	rt	"rt" for dll   "" for static
+#=============================================================================
+«DEFINE addTangoLibraries(String s, String rt) FOR PogoDeviceClass-»
+«name»«s».lib;omniORB4«rt»«s».lib;omniDynamic4«rt»«s».lib;COS4«rt»«s».lib;omnithread«rt»«s».lib;tango«s».lib;log4tango«s».lib;zmq«s».lib
+«ENDDEFINE»
+
+#=============================================================================
+#	Add Windows libraries
+#	s	"d" for debug  "" for release
+#=============================================================================
+«DEFINE addWindowsLibraries FOR PogoDeviceClass-»
+comctl32.lib;ws2_32.lib;mswsock.lib;advapi32.lib
+«ENDDEFINE»
+
+#=============================================================================
+#	Add libraries
+#	s	"d" for debug  "" for release
+#	rt	"rt" for dll   "" for static
+#=============================================================================
+«DEFINE addLibraries(String s, String rt) FOR PogoDeviceClass-»
+      <AdditionalDependencies>
+      	«EXPAND addTangoLibraries(s, rt)-»;«EXPAND addWindowsLibraries-»;%(AdditionalDependencies)
+	  </AdditionalDependencies>
+«ENDDEFINE»
+
