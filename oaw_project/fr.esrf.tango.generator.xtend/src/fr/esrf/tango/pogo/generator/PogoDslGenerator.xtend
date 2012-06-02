@@ -7,16 +7,21 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.google.inject.Inject
-import fr.esrf.tango.pogo.generator.graphviz.GraphvizDiagram
+import fr.esrf.tango.pogo.generator.python.PythonDevice
+//import fr.esrf.tango.pogo.generator.graphviz.GraphvizDiagram
 
 class PogoDslGenerator implements IGenerator {
 	@Inject
 	JavaDevice javaDeviceGenerator
 	@Inject
-	GraphvizDiagram diagramGenerator
+	PythonDevice pythonDeviceGenerator
+	@Inject
+//	GraphvizDiagram diagramGenerator
 	
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		javaDeviceGenerator.doGenerate(resource,fsa)
-		diagramGenerator.doGenerate(resource,fsa)
+		pythonDeviceGenerator.doGenerate(resource,fsa)
+//		diagramGenerator.doGenerate(resource,fsa)
 	}
 }
