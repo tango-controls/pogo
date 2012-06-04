@@ -48,6 +48,13 @@ import fr.esrf.tango.pogo.pogoDsl.VoidType
 class CppUtil {
 	def cvsEscaped (String s) { "$" + s + "  $" }
 	def cppHeaderFileName(PogoDeviceClass cls) { cls.name + ".h" }
+
+	/**
+ 	 * TODO: Obsolete! Do not use
+ 	 */
+ 	def concatString(String s1, String s2) {
+ 		s1 + s2;
+ 	}
 	
 	/**
 	 * Convert name to data member name (first char to lower case
