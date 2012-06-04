@@ -1,0 +1,18 @@
+<workflow>
+
+  <property name='targetLanguage' />
+  <property name='targetDir' value='src-gen/'/>
+
+  <component class='org.eclipse.xpand2.Generator' id="pogogenerator">
+     <metaModel id='mm' class='org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel'/>
+     <expand value='fr::esrf::tango::pogo::Main::main("${targetLanguage}") FOR theModel'/>
+     <prSrcPaths value="${targetDir}"/>
+     <prDefaultExcludes value="false"/> <!-- don't use the build-in set of ignore patterns -->
+     <prExcludes value="${prExcludes}"/>
+     <genPath value='${targetDir}'/>
+     <resourceManager class="org.eclipse.xtend.expression.ResourceManagerDefaultImpl">
+     	<fileEncoding value="ISO-8859-1"/>
+     </resourceManager>
+  </component>
+  
+</workflow>

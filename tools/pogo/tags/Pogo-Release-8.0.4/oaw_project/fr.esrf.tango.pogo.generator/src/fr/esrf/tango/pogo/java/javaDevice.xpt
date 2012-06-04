@@ -1,0 +1,342 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::java::javaUtils»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
+«DEFINE javaFile FOR PogoDeviceClass»
+«FILE javaDeviceClassFileName()»
+package «javaDevicePackage()»;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.ext.XLogger;
+import org.slf4j.ext.XLoggerFactory;
+import org.tango.DeviceState;
+import org.tango.server.InvocationContext;
+import org.tango.server.ServerManager;
+import org.tango.server.annotation.AroundInvoke;
+import org.tango.server.annotation.Attribute;
+import org.tango.server.annotation.AttributeProperties;
+import org.tango.server.annotation.ClassProperty;
+import org.tango.server.annotation.Command;
+import org.tango.server.annotation.Delete;
+import org.tango.server.annotation.Device;
+import org.tango.server.annotation.DeviceProperty;
+import org.tango.server.annotation.DynamicManagement;
+import org.tango.server.annotation.Init;
+import org.tango.server.annotation.State;
+import org.tango.server.annotation.StateMachine;
+import org.tango.server.annotation.Status;
+import org.tango.server.dynamic.DynamicManager;
+import org.tango.utils.DevFailedUtils;
+
+import fr.esrf.Tango.DevEncoded;
+import fr.esrf.Tango.DevFailed;
+import fr.esrf.Tango.DevState;
+import fr.esrf.Tango.DevVarDoubleStringArray;
+import fr.esrf.Tango.DispLevel;
+
+«EXPAND pr(javaDeviceName()+".imports", "put your own import packages","")»
+
+
+/**
+ *	Description: «description.description»
+ *	
+ * @author	«vcsEscaped("Author")»
+ * @version	 «vcsEscaped("Revision")»
+ */
+@Device
+public class «javaDeviceName()» {
+
+    private static final Logger logger = LoggerFactory.getLogger(«javaDeviceName()».class);
+    private static final XLogger xlogger = XLoggerFactory.getXLogger(«javaDeviceName()».class);
+«EXPAND pr( javaDeviceName()+".variables", "put static variables here", "    ")»
+«EXPAND propertyDeclarations»
+«EXPAND attributeDeclarations»
+«EXPAND declarations»
+«EXPAND initDevice»
+«EXPAND deleteDevice»
+«EXPAND aroundInvoke»
+«EXPAND executeCommands»
+«FOREACH attributes AS attr-»
+«EXPAND readAttribute(attr)-»
+«EXPAND writeAttribute(attr)-»
+«ENDFOREACH-»
+«EXPAND propertyManagement»
+«EXPAND state_status»
+«EXPAND dynamicManager»
+«EXPAND pr( javaDeviceName()+".methods", "put your own methods here", "	" )»
+«EXPAND mainMethod»
+}
+
+«ENDFILE»
+«ENDDEFINE»
+
+
+
+//====================================================================
+//	Definition methods
+//====================================================================
+
+//
+//	Definition for property declarations
+//
+«DEFINE propertyDeclarations FOR PogoDeviceClass»
+«FOREACH classProperties AS prop »
+	/**
+	 * Class Property «prop.name» <br>
+	 * «prop.description»
+	 */
+	@ClassProperty(name = "«prop.name»", description = "«prop.description»" «defaultPropValue(prop.DefaultPropValue)»)
+	private «prop.type.javaPropType()» «prop.name.toFirstLower()»;
+«ENDFOREACH-»
+
+«FOREACH deviceProperties AS prop »
+	/**
+	 * Device Property «prop.name» <br>
+	 * «prop.description»
+	 */
+	@DeviceProperty(name = "«prop.name»", description="«prop.description»" «defaultPropValue(prop.DefaultPropValue)»)
+	private «prop.type.javaPropType()» «prop.name.toFirstLower()»;
+«ENDFOREACH-»
+«ENDDEFINE»
+
+//
+//	Definition for attribute properties
+//
+«DEFINE attributeDeclarations FOR PogoDeviceClass»
+«FOREACH attributes AS attr»
+«IF attr.isDynamic != "true"-»	
+	/**
+	 * Attribute «attr.name», «attr.dataType.toTangoType().toString()», «attr.attType», «attr.rwType»<br>
+	 * description: «attr.properties.description»
+	 */
+	@Attribute(name = "«attr.name»"«displayLevel(attr.displayLevel)»«isMemorized(attr.memorized)»«polledPeriod(attr.polledPeriod)»)
+	«attributeProperties(attr.properties)»
+	«IF attr.writeExcludedStates.size>0-»@StateMachine(deniedStates={«FOREACH attr.writeExcludedStates AS state »DeviceState.«state»,«ENDFOREACH-»})
+	«ENDIF-»
+	private «javaType(attr.dataType).toString()»«isImage(attr.attType)»«isSpectrum(attr.attType)» «removeUnderscore(attr.name.toFirstLower())» = «javaAttrValue(attr.dataType, attr.attType)»;
+«ENDIF-»
+«ENDFOREACH-»
+«ENDDEFINE»
+
+//
+//	Definition for declarations
+//
+«DEFINE declarations FOR PogoDeviceClass»
+	/**
+     * The state of the device
+     */
+    @State
+    private DevState state = DevState.ON;
+
+    /**
+     * The status of the device
+     */
+    @Status
+    private String status = "";
+	
+	/**
+     * dynamic command and attribute management. Will be injected by the framework.
+     */
+    @DynamicManagement
+    private DynamicManager dynamicManager;
+«EXPAND pr( javaDeviceName()+".private", "put private variables here", "	" )-»
+«ENDDEFINE»
+
+//
+//	Definition for initDevice method
+//
+«DEFINE initDevice FOR PogoDeviceClass»
+	/**
+     * Initialize the device.
+     * 
+     * @throws DevFailed
+     */
+    @Init(lazyLoading = false)
+    public final void initDevice() throws DevFailed {
+		xlogger.entry();
+		logger.debug("init");
+«EXPAND pr( javaDeviceName()+".initDevice", "put your device initialization code here" )-»
+		xlogger.exit();
+    }
+«ENDDEFINE»
+
+//
+//	Definition for deleteDevice method
+//
+«DEFINE deleteDevice FOR PogoDeviceClass»
+	/**
+     * all resources may be closed here. Collections may be also cleared.
+     * 
+     * @throws DevFailed
+     */
+    @Delete
+    public final void deleteDevice() throws DevFailed {
+		xlogger.entry();
+«EXPAND pr(javaDeviceName()+".deleteDevice", "put your device clearing code here" )-»
+		xlogger.exit();
+    }
+«ENDDEFINE»
+
+//
+//	Definition for aroundInvoke method
+//
+«DEFINE aroundInvoke FOR PogoDeviceClass»
+	/**
+ 	 *	Method called before and after command and attribute calls.
+ 	 */
+	@AroundInvoke
+    public final void aroundInvoke(final InvocationContext ctx) throws DevFailed {
+		xlogger.entry(ctx);
+«EXPAND pr( javaDeviceName()+".aroundInvoke", "put aroundInvoke code here" )-»
+		xlogger.exit();
+    }
+«ENDDEFINE»
+
+//
+//	Definition for execute command method
+//
+«DEFINE executeCommands FOR PogoDeviceClass»
+«FOREACH commands AS command»«IF command.name != "State" && command.name != "Status"-»
+	/**
+	 *	Execute command "«command.name»". <br>
+	 *	description: «command.description»
+	 *  @param «command.name.toFirstLower()+ "In"»  «command.argin.type.toTangoType().toString()», «command.argin.description» 
+	 *  @return «command.argout.type.toTangoType().toString()», «command.argout.description»
+	 */
+	@Command(name = "«command.name»",inTypeDesc="«command.argin.description»", outTypeDesc="«command.argout.description»"«displayLevel(command.displayLevel)»«polledPeriod(command.polledPeriod)»)
+	«IF command.excludedStates.size>0-» 
+	@StateMachine(deniedStates={«FOREACH command.excludedStates AS state»DeviceState.«state»,«ENDFOREACH-»})
+	«ENDIF-»
+	public «javaType(command.argout.type).toString()» «removeUnderscore(command.name.toFirstLower())»(«commandArginGen(command)») throws DevFailed {
+		xlogger.entry();
+«EXPAND pr( javaDeviceName()+"."+command.name.toFirstLower(), "put command code here" )»
+		xlogger.exit();
+		return «javaValue(command.argout.type)»;
+	}
+«ENDIF»«ENDFOREACH-»
+«ENDDEFINE»
+
+//
+//	Definition for read attribute method
+//
+«DEFINE readAttribute(Attribute attr) FOR PogoDeviceClass»
+«IF attr.isDynamic !="true" && attr.rwType!="WRITE"-»	
+	/**
+     * Read attribute «attr.name»
+     * 
+     * @return attribute value
+     */
+	public «javaType(attr.dataType).toString()»«isImage(attr.attType)»«isSpectrum(attr.attType)» get«removeUnderscore(attr.name.toFirstUpper())»(){
+		xlogger.entry();
+«EXPAND pr( javaDeviceName()+".get"+attr.name, "put read attribute code here" )-»
+		xlogger.exit();
+		return «removeUnderscore(attr.name.toFirstLower())»;
+	}
+«ENDIF-»
+«ENDDEFINE»
+
+//
+//	Definition for write attribute method
+//
+«DEFINE writeAttribute(Attribute attr) FOR PogoDeviceClass»
+«IF attr.isDynamic !="true" && attr.rwType!="READ"-»	
+	/**
+	 * Write attribute «attr.name»
+	 * @param  «removeUnderscore(attr.name.toFirstLower())» value to write
+	 */
+	public void set«removeUnderscore(attr.name.toFirstUpper())»(«javaType(attr.dataType).toString()»«isImage(attr.attType)»«isSpectrum(attr.attType)» «removeUnderscore(attr.name.toFirstLower())»){
+		xlogger.entry();
+		this.«removeUnderscore(attr.name.toFirstLower())» = «removeUnderscore(attr.name.toFirstLower())»;
+		«EXPAND pr( javaDeviceName()+".set"+attr.name, "put write attribute code here" )-»
+		xlogger.exit();
+	}
+«ENDIF-»
+«ENDDEFINE»
+
+//
+//	Definition for write property management method
+//
+«DEFINE propertyManagement FOR PogoDeviceClass»
+«FOREACH deviceProperties AS prop-»
+	/**
+	 * set property «prop.name»
+	 * @param  «prop.name.toFirstLower()»
+	 */
+	public void set«prop.name»(«prop.type.javaPropType()» «prop.name.toFirstLower()») {
+		this.«prop.name.toFirstLower()» = «prop.name.toFirstLower()»;
+«EXPAND pr( javaDeviceName()+".set"+prop.name, "check property value here" )-»
+	}
+«ENDFOREACH-»
+	
+«FOREACH classProperties AS prop-»
+	/**
+	 * set property «prop.name»
+	 * @param  «prop.name.toFirstLower()»
+	 */
+	public void set«prop.name»(«prop.type.javaPropType()» «prop.name.toFirstLower()») {
+«EXPAND pr( javaDeviceName()+".set"+prop.name, "check property value here" )-»
+		this.«prop.name.toFirstLower()» = «prop.name.toFirstLower()-»;
+	}
+«ENDFOREACH-»
+«ENDDEFINE»
+
+
+//
+//	Definitions for state and status management
+//
+«DEFINE state_status FOR PogoDeviceClass»
+	public final DevState getState() throws DevFailed {
+«EXPAND pr( javaDeviceName()+".getState", "put state code here" )»
+		return state;
+	}
+
+    public void setState(final DevState state) {
+		this.state = state;
+    }
+
+    public final String getStatus() {
+«EXPAND pr( javaDeviceName()+".getStatus", "put status code here" )-»
+		return status;
+    }
+
+    public void setStatus(final String status) {
+		this.status = status;
+    }
+«ENDDEFINE»
+
+
+//
+//	Definitions for dynamic manager
+//
+«DEFINE dynamicManager FOR PogoDeviceClass»
+	public void setDynamicManager(final DynamicManager dynamicManager) {
+		this.dynamicManager = dynamicManager;
+		«EXPAND pr( javaDeviceName()+".setDynamicManager", "put your code here" )-»
+    }
+«ENDDEFINE»
+
+//
+//	Definitions for the main method
+//
+«DEFINE mainMethod FOR PogoDeviceClass»
+	/**
+     * Starts the server.
+     */
+	public static void main(final String[] args) {
+		ServerManager.getInstance().start(args, «javaDeviceName()».class);
+    }
+«ENDDEFINE»
+
+//
+//	Definitions for Protected area
+//
+«DEFINE pr(String id, String desc, String indent) FOR Object-»
+«indent»«PROTECT CSTART '/*' CEND '*/' ID id»
+«indent»// «desc.comments(indent)»
+«indent»«ENDPROTECT»
+«ENDDEFINE»
+
+//	The Default one
+«DEFINE pr(String id, String desc) FOR Object-»
+«EXPAND pr(id, desc, "		")-»
+«ENDDEFINE»

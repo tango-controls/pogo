@@ -1,0 +1,7 @@
+«IMPORT pogoDsl»
+
+«DEFINE main FOR PogoDeviceClass»
+	
+	«EXPAND javaDevice::javaFile»
+ 
+«ENDDEFINE»
