@@ -14,8 +14,8 @@ import fr.esrf.tango.pogo.generator.java.JavaDevice
 class PogoDslGenerator implements IGenerator {
 	@Inject
 	fr.esrf.tango.pogo.generator.cpp.cppMain cppDeviceGenerator
-	@Inject
-	fr.esrf.tango.pogo.generator.java.JavaDevice javaDeviceGenerator
+//	@Inject
+//	fr.esrf.tango.pogo.generator.java.JavaDevice javaDeviceGenerator
 //	@Inject
 //	PythonDevice pythonDeviceGenerator
 //	@Inject
@@ -24,7 +24,7 @@ class PogoDslGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		cppDeviceGenerator.doGenerate(resource,fsa)
-		javaDeviceGenerator.doGenerate(resource,fsa)
+//		javaDeviceGenerator.doGenerate(resource,fsa)
 //		pythonDeviceGenerator.doGenerate(resource,fsa)
 //		diagramGenerator.doGenerate(resource,fsa)
 	}

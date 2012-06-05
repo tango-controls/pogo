@@ -12,15 +12,17 @@ import fr.esrf.tango.pogo.pogoDsl.Attribute
 class HeaderDevice implements IGenerator {
 	@Inject
 	extension CppUtil
+	@Inject
+	extension Headers
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile(cls.cppHeaderFileName, cls.generateDeviceHeaderFile)
+			fsa.generateFile(cls.name+".h", cls.generateDeviceHeaderFile)
 		}
 	}
 	
 	def generateDeviceHeaderFile (PogoDeviceClass cls) '''
-		«cls.fileHeader»
+		«cls.deviceHeaderFileHeader»
 		
 		#ifndef «cls.name»_H
 		#define «cls.name»_H
