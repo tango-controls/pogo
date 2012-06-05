@@ -15,7 +15,7 @@ class PogoDslGenerator implements IGenerator {
 	@Inject
 	fr.esrf.tango.pogo.generator.cpp.cppMain cppDeviceGenerator
 	@Inject
-	JavaDevice javaDeviceGenerator
+	fr.esrf.tango.pogo.generator.java.JavaDevice javaDeviceGenerator
 //	@Inject
 //	PythonDevice pythonDeviceGenerator
 //	@Inject
