@@ -1,49 +1,16 @@
-package fr.esrf.tango.pogo.generator.cpp;
+package fr.esrf.tango.pogo.generator.cpp.global;
 
+import com.google.inject.Inject;
+import fr.esrf.tango.pogo.generator.cpp.global.Typedefinitions;
 import fr.esrf.tango.pogo.pogoDsl.Argument;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
-import fr.esrf.tango.pogo.pogoDsl.BooleanArrayType;
-import fr.esrf.tango.pogo.pogoDsl.BooleanType;
-import fr.esrf.tango.pogo.pogoDsl.CharArrayType;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.Command;
-import fr.esrf.tango.pogo.pogoDsl.ConstStringType;
-import fr.esrf.tango.pogo.pogoDsl.DevIntType;
-import fr.esrf.tango.pogo.pogoDsl.DoubleArrayType;
-import fr.esrf.tango.pogo.pogoDsl.DoubleStringArrayType;
-import fr.esrf.tango.pogo.pogoDsl.DoubleType;
-import fr.esrf.tango.pogo.pogoDsl.DoubleVectorType;
-import fr.esrf.tango.pogo.pogoDsl.EncodedType;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
-import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
-import fr.esrf.tango.pogo.pogoDsl.FloatType;
-import fr.esrf.tango.pogo.pogoDsl.FloatVectorType;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
-import fr.esrf.tango.pogo.pogoDsl.IntArrayType;
-import fr.esrf.tango.pogo.pogoDsl.IntType;
-import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
-import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
-import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
-import fr.esrf.tango.pogo.pogoDsl.LongType;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
-import fr.esrf.tango.pogo.pogoDsl.PropType;
-import fr.esrf.tango.pogo.pogoDsl.ShortArrayType;
-import fr.esrf.tango.pogo.pogoDsl.ShortType;
-import fr.esrf.tango.pogo.pogoDsl.ShortVectorType;
-import fr.esrf.tango.pogo.pogoDsl.StateType;
-import fr.esrf.tango.pogo.pogoDsl.StringArrayType;
-import fr.esrf.tango.pogo.pogoDsl.StringType;
-import fr.esrf.tango.pogo.pogoDsl.StringVectorType;
 import fr.esrf.tango.pogo.pogoDsl.Type;
-import fr.esrf.tango.pogo.pogoDsl.UCharType;
-import fr.esrf.tango.pogo.pogoDsl.UIntArrayType;
-import fr.esrf.tango.pogo.pogoDsl.UIntType;
-import fr.esrf.tango.pogo.pogoDsl.ULongArrayType;
-import fr.esrf.tango.pogo.pogoDsl.ULongType;
-import fr.esrf.tango.pogo.pogoDsl.UShortArrayType;
-import fr.esrf.tango.pogo.pogoDsl.UShortType;
-import fr.esrf.tango.pogo.pogoDsl.VoidType;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.eclipse.xtext.xbase.lib.IntegerExtensions;
@@ -52,11 +19,8 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class CppUtil {
-  public String cvsEscaped(final String s) {
-    String _operator_plus = StringExtensions.operator_plus("$", s);
-    String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "  $");
-    return _operator_plus_1;
-  }
+  @Inject
+  private Typedefinitions _typedefinitions;
   
   /**
    * TODO: Obsolete! Do not use
@@ -88,6 +52,46 @@ public class CppUtil {
   }
   
   /**
+   * Define the signature for command execution method
+   */
+  public String commandExecutionMethodSignature(final PogoDeviceClass cls, final Command cmd, final boolean declare) {
+    String _xifexpression = null;
+    if (declare) {
+      Argument _argout = cmd.getArgout();
+      Type _type = _argout.getType();
+      String _cppType = this._typedefinitions.cppType(_type);
+      String _operator_plus = StringExtensions.operator_plus(_cppType, " ");
+      String _execMethod = cmd.getExecMethod();
+      String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, _execMethod);
+      String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, "(");
+      Argument _argin = cmd.getArgin();
+      Type _type_1 = _argin.getType();
+      String _cppType_1 = this._typedefinitions.cppType(_type_1);
+      String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, _cppType_1);
+      String _operator_plus_4 = StringExtensions.operator_plus(_operator_plus_3, " argin);");
+      _xifexpression = _operator_plus_4;
+    } else {
+      Argument _argout_1 = cmd.getArgout();
+      Type _type_2 = _argout_1.getType();
+      String _cppType_2 = this._typedefinitions.cppType(_type_2);
+      String _operator_plus_5 = StringExtensions.operator_plus(_cppType_2, " ");
+      String _name = cls.getName();
+      String _operator_plus_6 = StringExtensions.operator_plus(_operator_plus_5, _name);
+      String _operator_plus_7 = StringExtensions.operator_plus(_operator_plus_6, "::");
+      String _execMethod_1 = cmd.getExecMethod();
+      String _operator_plus_8 = StringExtensions.operator_plus(_operator_plus_7, _execMethod_1);
+      String _operator_plus_9 = StringExtensions.operator_plus(_operator_plus_8, "(");
+      Argument _argin_1 = cmd.getArgin();
+      Type _type_3 = _argin_1.getType();
+      String _cppType_3 = this._typedefinitions.cppType(_type_3);
+      String _operator_plus_10 = StringExtensions.operator_plus(_operator_plus_9, _cppType_3);
+      String _operator_plus_11 = StringExtensions.operator_plus(_operator_plus_10, " argin)");
+      _xifexpression = _operator_plus_11;
+    }
+    return _xifexpression;
+  }
+  
+  /**
    * Comment a String with more than one line
    */
   public String inVector(final String s, final String vectName) {
@@ -111,26 +115,48 @@ public class CppUtil {
    * Define cpp protected areas
    */
   public String startProtedtedArea(final PogoDeviceClass clazz, final String method) {
-    String _name = clazz.getName();
-    String _operator_plus = StringExtensions.operator_plus("/*----- PROTECTED REGION ID(", _name);
-    String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "::");
-    String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, method);
-    String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, ") ENABLED START -----*/\n\n");
-    return _operator_plus_3;
+    String _xifexpression = null;
+    boolean _startsWith = method.startsWith(".");
+    if (_startsWith) {
+      String _name = clazz.getName();
+      String _operator_plus = StringExtensions.operator_plus("/*----- PROTECTED REGION ID(", _name);
+      String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, method);
+      String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, ") ENABLED START -----*/\n");
+      _xifexpression = _operator_plus_2;
+    } else {
+      String _name_1 = clazz.getName();
+      String _operator_plus_3 = StringExtensions.operator_plus("/*----- PROTECTED REGION ID(", _name_1);
+      String _operator_plus_4 = StringExtensions.operator_plus(_operator_plus_3, "::");
+      String _operator_plus_5 = StringExtensions.operator_plus(_operator_plus_4, method);
+      String _operator_plus_6 = StringExtensions.operator_plus(_operator_plus_5, ") ENABLED START -----*/\n");
+      _xifexpression = _operator_plus_6;
+    }
+    return _xifexpression;
   }
   
   public String closeProtedtedArea(final PogoDeviceClass clazz, final String method) {
-    String _name = clazz.getName();
-    String _operator_plus = StringExtensions.operator_plus("/*----- PROTECTED REGION END -----*/\t//\t", _name);
-    String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "::");
-    String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, method);
-    String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, "\n");
-    return _operator_plus_3;
+    String _xifexpression = null;
+    boolean _startsWith = method.startsWith(".");
+    if (_startsWith) {
+      String _name = clazz.getName();
+      String _operator_plus = StringExtensions.operator_plus("/*----- PROTECTED REGION END -----*/\t//\t", _name);
+      String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, method);
+      String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, "\n");
+      _xifexpression = _operator_plus_2;
+    } else {
+      String _name_1 = clazz.getName();
+      String _operator_plus_3 = StringExtensions.operator_plus("/*----- PROTECTED REGION END -----*/\t//\t", _name_1);
+      String _operator_plus_4 = StringExtensions.operator_plus(_operator_plus_3, "::");
+      String _operator_plus_5 = StringExtensions.operator_plus(_operator_plus_4, method);
+      String _operator_plus_6 = StringExtensions.operator_plus(_operator_plus_5, "\n");
+      _xifexpression = _operator_plus_6;
+    }
+    return _xifexpression;
   }
   
   public String protedtedArea(final PogoDeviceClass clazz, final String method, final String comments) {
     String _startProtedtedArea = this.startProtedtedArea(clazz, method);
-    String _operator_plus = StringExtensions.operator_plus(_startProtedtedArea, "\t//\t");
+    String _operator_plus = StringExtensions.operator_plus(_startProtedtedArea, "\n\t//\t");
     String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, comments);
     String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, "\n\n");
     String _closeProtedtedArea = this.closeProtedtedArea(clazz, method);
@@ -147,7 +173,7 @@ public class CppUtil {
       if (ObjectExtensions.operator_equals(__valOfSwitchOver,"Spectrum")) {
         matched=true;
         String _maxX = attr.getMaxX();
-        String _operator_plus = StringExtensions.operator_plus(" max = ", _maxX);
+        String _operator_plus = StringExtensions.operator_plus("  max = ", _maxX);
         _switchResult = _operator_plus;
       }
     }
@@ -155,7 +181,7 @@ public class CppUtil {
       if (ObjectExtensions.operator_equals(__valOfSwitchOver,"Image")) {
         matched=true;
         String _maxX_1 = attr.getMaxX();
-        String _operator_plus_1 = StringExtensions.operator_plus(" max = ", _maxX_1);
+        String _operator_plus_1 = StringExtensions.operator_plus("  max = ", _maxX_1);
         String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, " x ");
         String _maxY = attr.getMaxY();
         String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, _maxY);
@@ -341,12 +367,12 @@ public class CppUtil {
   public String writeAttrValueDeclaration(final Attribute att) {
     String _xifexpression = null;
     Type _dataType = att.getDataType();
-    String _cppType = this.cppType(_dataType);
+    String _cppType = this._typedefinitions.cppType(_dataType);
     String _string = _cppType.toString();
     boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_string, "Tango::DevString");
     if (_operator_notEquals) {
       Type _dataType_1 = att.getDataType();
-      String _cppType_1 = this.cppType(_dataType_1);
+      String _cppType_1 = this._typedefinitions.cppType(_dataType_1);
       String _string_1 = _cppType_1.toString();
       _xifexpression = _string_1;
     } else {
@@ -414,7 +440,7 @@ public class CppUtil {
     String _xifexpression = null;
     Argument _argin = cmd.getArgin();
     Type _type = _argin.getType();
-    String _cppType = this.cppType(_type);
+    String _cppType = this._typedefinitions.cppType(_type);
     boolean _operator_equals = ObjectExtensions.operator_equals(_cppType, "void");
     if (_operator_equals) {
       _xifexpression = null;
@@ -422,13 +448,13 @@ public class CppUtil {
       String _xifexpression_1 = null;
       Argument _argin_1 = cmd.getArgin();
       Type _type_1 = _argin_1.getType();
-      String _cppType_1 = this.cppType(_type_1);
+      String _cppType_1 = this._typedefinitions.cppType(_type_1);
       String _string = _cppType_1.toString();
       boolean _endsWith = _string.endsWith("Array");
       if (_endsWith) {
         Argument _argin_2 = cmd.getArgin();
         Type _type_2 = _argin_2.getType();
-        String _cppType_2 = this.cppType(_type_2);
+        String _cppType_2 = this._typedefinitions.cppType(_type_2);
         String _string_1 = _cppType_2.toString();
         String _operator_plus = StringExtensions.operator_plus("const ", _string_1);
         String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "\t*argin;\n\textract(in_any, argin);");
@@ -436,7 +462,7 @@ public class CppUtil {
       } else {
         Argument _argin_3 = cmd.getArgin();
         Type _type_3 = _argin_3.getType();
-        String _cppType_3 = this.cppType(_type_3);
+        String _cppType_3 = this._typedefinitions.cppType(_type_3);
         String _string_2 = _cppType_3.toString();
         String _operator_plus_2 = StringExtensions.operator_plus(_string_2, "\targin;\n\textract(in_any, argin);");
         _xifexpression_1 = _operator_plus_2;
@@ -454,14 +480,14 @@ public class CppUtil {
     boolean _operator_and = false;
     Argument _argin = cmd.getArgin();
     Type _type = _argin.getType();
-    String _cppType = this.cppType(_type);
+    String _cppType = this._typedefinitions.cppType(_type);
     boolean _operator_equals = ObjectExtensions.operator_equals(_cppType, "void");
     if (!_operator_equals) {
       _operator_and = false;
     } else {
       Argument _argout = cmd.getArgout();
       Type _type_1 = _argout.getType();
-      String _cppType_1 = this.cppType(_type_1);
+      String _cppType_1 = this._typedefinitions.cppType(_type_1);
       boolean _operator_equals_1 = ObjectExtensions.operator_equals(_cppType_1, "void");
       _operator_and = BooleanExtensions.operator_and(_operator_equals, _operator_equals_1);
     }
@@ -479,14 +505,14 @@ public class CppUtil {
       boolean _operator_and_1 = false;
       Argument _argin_1 = cmd.getArgin();
       Type _type_2 = _argin_1.getType();
-      String _cppType_2 = this.cppType(_type_2);
+      String _cppType_2 = this._typedefinitions.cppType(_type_2);
       boolean _operator_notEquals = ObjectExtensions.operator_notEquals(_cppType_2, "void");
       if (!_operator_notEquals) {
         _operator_and_1 = false;
       } else {
         Argument _argout_1 = cmd.getArgout();
         Type _type_3 = _argout_1.getType();
-        String _cppType_3 = this.cppType(_type_3);
+        String _cppType_3 = this._typedefinitions.cppType(_type_3);
         boolean _operator_equals_2 = ObjectExtensions.operator_equals(_cppType_3, "void");
         _operator_and_1 = BooleanExtensions.operator_and(_operator_notEquals, _operator_equals_2);
       }
@@ -504,14 +530,14 @@ public class CppUtil {
         boolean _operator_and_2 = false;
         Argument _argin_2 = cmd.getArgin();
         Type _type_4 = _argin_2.getType();
-        String _cppType_4 = this.cppType(_type_4);
+        String _cppType_4 = this._typedefinitions.cppType(_type_4);
         boolean _operator_equals_3 = ObjectExtensions.operator_equals(_cppType_4, "void");
         if (!_operator_equals_3) {
           _operator_and_2 = false;
         } else {
           Argument _argout_2 = cmd.getArgout();
           Type _type_5 = _argout_2.getType();
-          String _cppType_5 = this.cppType(_type_5);
+          String _cppType_5 = this._typedefinitions.cppType(_type_5);
           boolean _operator_notEquals_1 = ObjectExtensions.operator_notEquals(_cppType_5, "void");
           _operator_and_2 = BooleanExtensions.operator_and(_operator_equals_3, _operator_notEquals_1);
         }
@@ -542,18 +568,18 @@ public class CppUtil {
   public String declareArgumentWithPointer(final Argument arg) {
     String _xifexpression = null;
     Type _type = arg.getType();
-    String _cppType = this.cppType(_type);
+    String _cppType = this._typedefinitions.cppType(_type);
     String _string = _cppType.toString();
     boolean _endsWith = _string.endsWith("Array");
     if (_endsWith) {
       Type _type_1 = arg.getType();
-      String _cppType_1 = this.cppType(_type_1);
+      String _cppType_1 = this._typedefinitions.cppType(_type_1);
       String _string_1 = _cppType_1.toString();
       String _operator_plus = StringExtensions.operator_plus(_string_1, " *");
       _xifexpression = _operator_plus;
     } else {
       Type _type_2 = arg.getType();
-      String _cppType_2 = this.cppType(_type_2);
+      String _cppType_2 = this._typedefinitions.cppType(_type_2);
       String _string_2 = _cppType_2.toString();
       String _operator_plus_1 = StringExtensions.operator_plus(_string_2, " ");
       _xifexpression = _operator_plus_1;
@@ -565,7 +591,7 @@ public class CppUtil {
     String _xifexpression = null;
     Argument _argin = cmd.getArgin();
     Type _type = _argin.getType();
-    String _cppType = this.cppType(_type);
+    String _cppType = this._typedefinitions.cppType(_type);
     boolean _operator_equals = ObjectExtensions.operator_equals(_cppType, "void");
     if (_operator_equals) {
       _xifexpression = null;
@@ -573,13 +599,13 @@ public class CppUtil {
       String _xifexpression_1 = null;
       Argument _argin_1 = cmd.getArgin();
       Type _type_1 = _argin_1.getType();
-      String _cppType_1 = this.cppType(_type_1);
+      String _cppType_1 = this._typedefinitions.cppType(_type_1);
       String _string = _cppType_1.toString();
       boolean _endsWith = _string.endsWith("Array");
       if (_endsWith) {
         Argument _argin_2 = cmd.getArgin();
         Type _type_2 = _argin_2.getType();
-        String _cppType_2 = this.cppType(_type_2);
+        String _cppType_2 = this._typedefinitions.cppType(_type_2);
         String _string_1 = _cppType_2.toString();
         String _operator_plus = StringExtensions.operator_plus("const ", _string_1);
         String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, " *argin");
@@ -587,7 +613,7 @@ public class CppUtil {
       } else {
         Argument _argin_3 = cmd.getArgin();
         Type _type_3 = _argin_3.getType();
-        String _cppType_3 = this.cppType(_type_3);
+        String _cppType_3 = this._typedefinitions.cppType(_type_3);
         String _string_2 = _cppType_3.toString();
         String _operator_plus_2 = StringExtensions.operator_plus(_string_2, " argin");
         _xifexpression_1 = _operator_plus_2;
@@ -724,532 +750,5 @@ public class CppUtil {
     String _upperCase = _classname.toUpperCase();
     String _operator_plus = StringExtensions.operator_plus(_upperCase, s);
     return _operator_plus;
-  }
-  
-  /**
-   * Property Type utilities
-   */
-  public String cppPropType(final PropType propType) {
-    String _switchResult = null;
-    boolean matched = false;
-    if (!matched) {
-      if (propType instanceof BooleanType) {
-        final BooleanType _booleanType = (BooleanType)propType;
-        matched=true;
-        _switchResult = "Tango::DevBoolean";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof ShortType) {
-        final ShortType _shortType = (ShortType)propType;
-        matched=true;
-        _switchResult = "Tango::DevShort";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof IntType) {
-        final IntType _intType = (IntType)propType;
-        matched=true;
-        _switchResult = "Tango::DevLong";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof UShortType) {
-        final UShortType _uShortType = (UShortType)propType;
-        matched=true;
-        _switchResult = "Tango::DevUShort";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof UIntType) {
-        final UIntType _uIntType = (UIntType)propType;
-        matched=true;
-        _switchResult = "Tango::DevULong";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof FloatType) {
-        final FloatType _floatType = (FloatType)propType;
-        matched=true;
-        _switchResult = "Tango::DevFloat";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof DoubleType) {
-        final DoubleType _doubleType = (DoubleType)propType;
-        matched=true;
-        _switchResult = "Tango::DevDouble";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof StringType) {
-        final StringType _stringType = (StringType)propType;
-        matched=true;
-        _switchResult = "string";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof ShortVectorType) {
-        final ShortVectorType _shortVectorType = (ShortVectorType)propType;
-        matched=true;
-        _switchResult = "vector<Tango::DevShort>";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof IntVectorType) {
-        final IntVectorType _intVectorType = (IntVectorType)propType;
-        matched=true;
-        _switchResult = "vector<Tango::DevLong>";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof FloatVectorType) {
-        final FloatVectorType _floatVectorType = (FloatVectorType)propType;
-        matched=true;
-        _switchResult = "vector<Tango::DevFloat>";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof DoubleVectorType) {
-        final DoubleVectorType _doubleVectorType = (DoubleVectorType)propType;
-        matched=true;
-        _switchResult = "vector<Tango::DevDouble>";
-      }
-    }
-    if (!matched) {
-      if (propType instanceof StringVectorType) {
-        final StringVectorType _stringVectorType = (StringVectorType)propType;
-        matched=true;
-        _switchResult = "vector<string>";
-      }
-    }
-    if (!matched) {
-      _switchResult = null;
-    }
-    return _switchResult;
-  }
-  
-  /**
-   * Type utilities
-   */
-  public String cppType(final Type type) {
-    String _switchResult = null;
-    boolean matched = false;
-    if (!matched) {
-      if (type instanceof VoidType) {
-        final VoidType _voidType = (VoidType)type;
-        matched=true;
-        _switchResult = "void";
-      }
-    }
-    if (!matched) {
-      if (type instanceof BooleanType) {
-        final BooleanType _booleanType = (BooleanType)type;
-        matched=true;
-        _switchResult = "Tango::DevBoolean";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ShortType) {
-        final ShortType _shortType = (ShortType)type;
-        matched=true;
-        _switchResult = "Tango::DevShort";
-      }
-    }
-    if (!matched) {
-      if (type instanceof IntType) {
-        final IntType _intType = (IntType)type;
-        matched=true;
-        _switchResult = "Tango::DevLong";
-      }
-    }
-    if (!matched) {
-      if (type instanceof FloatType) {
-        final FloatType _floatType = (FloatType)type;
-        matched=true;
-        _switchResult = "Tango::DevFloat";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DoubleType) {
-        final DoubleType _doubleType = (DoubleType)type;
-        matched=true;
-        _switchResult = "Tango::DevDouble";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UShortType) {
-        final UShortType _uShortType = (UShortType)type;
-        matched=true;
-        _switchResult = "Tango::DevUShort";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UIntType) {
-        final UIntType _uIntType = (UIntType)type;
-        matched=true;
-        _switchResult = "Tango::DevULong";
-      }
-    }
-    if (!matched) {
-      if (type instanceof StringType) {
-        final StringType _stringType = (StringType)type;
-        matched=true;
-        _switchResult = "Tango::DevString";
-      }
-    }
-    if (!matched) {
-      if (type instanceof CharArrayType) {
-        final CharArrayType _charArrayType = (CharArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarCharArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ShortArrayType) {
-        final ShortArrayType _shortArrayType = (ShortArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarShortArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof IntArrayType) {
-        final IntArrayType _intArrayType = (IntArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarLongArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof FloatArrayType) {
-        final FloatArrayType _floatArrayType = (FloatArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarFloatArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DoubleArrayType) {
-        final DoubleArrayType _doubleArrayType = (DoubleArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarDoubleArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UShortArrayType) {
-        final UShortArrayType _uShortArrayType = (UShortArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarUShortArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UIntArrayType) {
-        final UIntArrayType _uIntArrayType = (UIntArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarULongArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof StringArrayType) {
-        final StringArrayType _stringArrayType = (StringArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarStringArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof LongStringArrayType) {
-        final LongStringArrayType _longStringArrayType = (LongStringArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarLongStringArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DoubleStringArrayType) {
-        final DoubleStringArrayType _doubleStringArrayType = (DoubleStringArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarDoubleStringArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof StateType) {
-        final StateType _stateType = (StateType)type;
-        matched=true;
-        _switchResult = "Tango::DevState";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ConstStringType) {
-        final ConstStringType _constStringType = (ConstStringType)type;
-        matched=true;
-        _switchResult = "Tango::ConstDevString";
-      }
-    }
-    if (!matched) {
-      if (type instanceof BooleanArrayType) {
-        final BooleanArrayType _booleanArrayType = (BooleanArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarBooleanArray";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UCharType) {
-        final UCharType _uCharType = (UCharType)type;
-        matched=true;
-        _switchResult = "Tango::DevUChar";
-      }
-    }
-    if (!matched) {
-      if (type instanceof LongType) {
-        final LongType _longType = (LongType)type;
-        matched=true;
-        _switchResult = "Tango::DevLong64";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ULongType) {
-        final ULongType _uLongType = (ULongType)type;
-        matched=true;
-        _switchResult = "Tango::DevULong64";
-      }
-    }
-    if (!matched) {
-      if (type instanceof LongArrayType) {
-        final LongArrayType _longArrayType = (LongArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarLong64Array";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ULongArrayType) {
-        final ULongArrayType _uLongArrayType = (ULongArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DevVarULong64Array";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DevIntType) {
-        final DevIntType _devIntType = (DevIntType)type;
-        matched=true;
-        _switchResult = "Tango::DevInt";
-      }
-    }
-    if (!matched) {
-      if (type instanceof EncodedType) {
-        final EncodedType _encodedType = (EncodedType)type;
-        matched=true;
-        _switchResult = "Tango::DevEncoded";
-      }
-    }
-    return _switchResult;
-  }
-  
-  /**
-   * Type enum
-   */
-  public String cppTypeEnum(final Type type) {
-    String _switchResult = null;
-    boolean matched = false;
-    if (!matched) {
-      if (type instanceof VoidType) {
-        final VoidType _voidType = (VoidType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_VOID";
-      }
-    }
-    if (!matched) {
-      if (type instanceof BooleanType) {
-        final BooleanType _booleanType = (BooleanType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_BOOLEAN";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ShortType) {
-        final ShortType _shortType = (ShortType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_SHORT";
-      }
-    }
-    if (!matched) {
-      if (type instanceof IntType) {
-        final IntType _intType = (IntType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_LONG";
-      }
-    }
-    if (!matched) {
-      if (type instanceof FloatType) {
-        final FloatType _floatType = (FloatType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_FLOAT";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DoubleType) {
-        final DoubleType _doubleType = (DoubleType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_DOUBLE";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UShortType) {
-        final UShortType _uShortType = (UShortType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_USHORT";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UIntType) {
-        final UIntType _uIntType = (UIntType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_ULONG";
-      }
-    }
-    if (!matched) {
-      if (type instanceof StringType) {
-        final StringType _stringType = (StringType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_STRING";
-      }
-    }
-    if (!matched) {
-      if (type instanceof CharArrayType) {
-        final CharArrayType _charArrayType = (CharArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_CHARARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ShortArrayType) {
-        final ShortArrayType _shortArrayType = (ShortArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_SHORTARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof IntArrayType) {
-        final IntArrayType _intArrayType = (IntArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_LONGARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof FloatArrayType) {
-        final FloatArrayType _floatArrayType = (FloatArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_FLOATARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DoubleArrayType) {
-        final DoubleArrayType _doubleArrayType = (DoubleArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_DOUBLEARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UShortArrayType) {
-        final UShortArrayType _uShortArrayType = (UShortArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_USHORTARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UIntArrayType) {
-        final UIntArrayType _uIntArrayType = (UIntArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_ULONGARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof StringArrayType) {
-        final StringArrayType _stringArrayType = (StringArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_STRINGARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof LongStringArrayType) {
-        final LongStringArrayType _longStringArrayType = (LongStringArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_LONGSTRINGARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DoubleStringArrayType) {
-        final DoubleStringArrayType _doubleStringArrayType = (DoubleStringArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_DOUBLESTRINGARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof StateType) {
-        final StateType _stateType = (StateType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_STATE";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ConstStringType) {
-        final ConstStringType _constStringType = (ConstStringType)type;
-        matched=true;
-        _switchResult = "Tango::CONST_DEV_STRING";
-      }
-    }
-    if (!matched) {
-      if (type instanceof BooleanArrayType) {
-        final BooleanArrayType _booleanArrayType = (BooleanArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_BOOLEANARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof UCharType) {
-        final UCharType _uCharType = (UCharType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_UCHAR";
-      }
-    }
-    if (!matched) {
-      if (type instanceof LongType) {
-        final LongType _longType = (LongType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_LONG64";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ULongType) {
-        final ULongType _uLongType = (ULongType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_ULONG64";
-      }
-    }
-    if (!matched) {
-      if (type instanceof LongArrayType) {
-        final LongArrayType _longArrayType = (LongArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_LONG64ARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof ULongArrayType) {
-        final ULongArrayType _uLongArrayType = (ULongArrayType)type;
-        matched=true;
-        _switchResult = "Tango::DEVVAR_ULONG64ARRAY";
-      }
-    }
-    if (!matched) {
-      if (type instanceof DevIntType) {
-        final DevIntType _devIntType = (DevIntType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_INT";
-      }
-    }
-    if (!matched) {
-      if (type instanceof EncodedType) {
-        final EncodedType _encodedType = (EncodedType)type;
-        matched=true;
-        _switchResult = "Tango::DEV_ENCODED";
-      }
-    }
-    return _switchResult;
   }
 }

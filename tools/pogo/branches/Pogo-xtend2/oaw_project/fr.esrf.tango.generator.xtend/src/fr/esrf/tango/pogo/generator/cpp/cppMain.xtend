@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.resource.Resource
 class cppMain implements IGenerator {
 
 	@Inject
-	extension HeaderDevice
+	extension DeviceInclude
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
