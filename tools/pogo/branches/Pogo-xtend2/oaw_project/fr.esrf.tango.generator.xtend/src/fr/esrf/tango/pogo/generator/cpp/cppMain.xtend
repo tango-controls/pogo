@@ -12,17 +12,12 @@ class cppMain implements IGenerator {
 
 	@Inject
 	extension HeaderDevice
-	@Inject
-	extension CppUtil
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-
-// how to set filestogenerate? commented out for now - AG 4jul12
-//			if (cls.description.filestogenerate.contains("cpp")) {
-//				cls.generateDeviceHeaderFile
-//			}
-			fsa.generateFile(cls.cppHeaderFileName, cls.generateDeviceHeaderFile)
+			if (cls.description.language.toLowerCase.equals("cpp")) {
+				fsa.generateFile(cls.name+".h", cls.generateDeviceHeaderFile)
+			}
 		}
 	}
 }
