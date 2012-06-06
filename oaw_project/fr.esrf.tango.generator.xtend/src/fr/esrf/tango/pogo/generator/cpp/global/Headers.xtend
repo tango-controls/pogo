@@ -11,35 +11,32 @@ class Headers {
 	@Inject
 	extension CppUtil
 	@Inject
-	extension Typedefinitions
+	extension TypeDefinitions
 
 	def cvsEscaped (String s) { "$" + s + "  $" }
 
 	//======================================================
-	/*
-	 * File headers
-	 */
+	// header for device.h
 	//======================================================
-	/*	
-	 * header for device.h
-	 */
-	def deviceHeaderFileName(PogoDeviceClass clazz) {
+	def deviceIncludeFileName(PogoDeviceClass clazz) {
 		clazz.name+".h"
 	}
-	def deviceHeaderFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceHeaderFileName(clazz),
+	def deviceIncludeFileHeader(PogoDeviceClass clazz) {
+		fileHeader(deviceIncludeFileName(clazz),
 			"Include file for the " + clazz.name + " class",
 			 clazz.description.title
 		)
 	}
-	/*	
-	 * header for deviceClass.h
-	 */
-	def deviceClassHeaderFileName(PogoDeviceClass clazz) {
+
+
+	//======================================================
+	// header for deviceClass.h
+	//======================================================
+	def deviceClassIncludeFileName(PogoDeviceClass clazz) {
 		clazz.name + "Class.h"
 	}
-	def deviceClassHeaderFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceClassHeaderFileHeader(clazz),
+	def deviceClassIncludeFileHeader(PogoDeviceClass clazz) {
+		fileHeader(deviceClassIncludeFileHeader(clazz),
 			"Include for the " + clazz.name +" root class.\n"+
 			"This class is the singleton class for\n"+
 			" the " + clazz.name + " device class.\n"+
@@ -48,22 +45,26 @@ class Headers {
 			 clazz.description.title
 		)
 	}
-	/*
-	 * header for device.cpp
-	 */
+
+
+	//======================================================
+	// header for device.cpp
+	//======================================================
 	def deviceSourceFileName(PogoDeviceClass clazz) {
 		clazz.name + ".cpp"
 	}
 	def deviceSourceFileHeader(PogoDeviceClass clazz) {
 		fileHeader(deviceSourceFileName(clazz), 
-			"C++ source for the Danfysik9000 and its commands.\n"+clazz.description.description,
-			 clazz.description.title
+			"C++ source for the " + clazz.name + " and its commands.\n" +
+			clazz.description.description,
+			clazz.description.title
 		)
 	}
 	
-	/*	
-	 * header for deviceClass.cpp
-	 */
+	
+	//======================================================
+	// header for deviceClass.cpp
+	//======================================================
 	def deviceClassSourceFileName(PogoDeviceClass clazz) {
 		clazz.name + "Class.cpp"
 	}
@@ -74,13 +75,13 @@ class Headers {
 			" the " + clazz.name + " device class.\n"+
 			"It contains all properties and methods which the \n" +
 			clazz.name + " requires only once e.g. the commands.",
-			 clazz.description.title
+			clazz.description.title
 		)
 	}
-
-	/*	
-	 * header for StateMachine.cpp
-	 */
+	
+	//======================================================
+	// header for StateMachine.cpp
+	//======================================================
 	def stateMachineFileName(PogoDeviceClass clazz) {
 		clazz.name + "StateMachine.cpp"
 	}
@@ -90,10 +91,23 @@ class Headers {
 			 clazz.description.title
 		)
 	}
-	/*	
-	 * generic file header
-	 */
+	
+	//======================================================
+	// RcsId for .cpp files
+	//======================================================
+	def rcsId(String filename) {
+		if (filename.endsWith(".cpp"))
+			"static const char *RcsId = " + "Id:".cvsEscaped + ";\n"
+		else
+			""
+	}
+	
+	
+	//======================================================
+	// generic file header
+	//======================================================
 	def fileHeader(String fileName, String description, String title) {
+		rcsId(fileName) +
 		"//=============================================================================\n" +
 		"//\n"+
 		"// file :        "+ fileName + "\n" +
