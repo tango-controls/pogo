@@ -88,7 +88,7 @@ class CppUtil {
 	def protedtedArea(PogoDeviceClass clazz, String method, String code, boolean comments) {
 		if (comments)
 			startProtedtedArea(clazz, method)+ "\n" +
-				"	//	" + code.comments("	//	") + "\n\n" +
+				"//	" + code.comments("	//	") + "\n\n" +
 				closeProtedtedArea(clazz, method)
 		else
 			startProtedtedArea(clazz, method) +
