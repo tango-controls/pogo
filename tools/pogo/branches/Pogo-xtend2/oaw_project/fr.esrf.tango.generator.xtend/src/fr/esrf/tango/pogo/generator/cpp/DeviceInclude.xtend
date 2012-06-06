@@ -31,13 +31,14 @@ class DeviceInclude implements IGenerator {
 	def generateDeviceIncludeFile (PogoDeviceClass cls) '''
 		«cls.fileHeader»
 		
-		/** «cls.name» class description:
+		/**
+		 *  «cls.name» class description:
 		 *    «cls.description.description.comments("*    ")»
 		 */
 		
 		namespace «cls.name»_ns
 		{
-		«cls.protedtedArea("extraClassDeclarations", "Add your extra class declarations", true)»
+		«cls.protedtedArea("Additional Class Declarations", "Additional Class Declarations", true)»
 		
 		class «cls.name» : public «deviceImpl»
 		{

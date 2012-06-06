@@ -32,7 +32,8 @@ class DeviceSource implements IGenerator {
 	def generateDeviceSourceFile (PogoDeviceClass cls) '''
 		«cls.fileHeader»
 		
-		/** «cls.name» class description:
+		/**
+		 *  «cls.name» class description:
 		 *    «cls.description.description.comments("*    ")»
 		 */
 		
@@ -43,6 +44,7 @@ class DeviceSource implements IGenerator {
 		{
 		«cls.protedtedArea("namespace_starting", "static initializations", true)»
 		«cls.constructors»
+		«cls.globalMethods»
 		
 		} //	namespace
 	'''
@@ -54,7 +56,6 @@ class DeviceSource implements IGenerator {
 		«cls.protedtedArea(".cpp",
 			cls.deviceSourceFileHeader+
 			"\n\n" +
-			"#include <tango.h>\n"+
 			"#include <"+cls.name+".h>\n"+
 			"#include <"+cls.name+"Class.h>", false)»
 	'''
@@ -102,6 +103,105 @@ class DeviceSource implements IGenerator {
 		}
 	'''
 	
+	//======================================================
+	// Define init_device() and get_device_properies() methods
+	//======================================================
+	def globalMethods(PogoDeviceClass cls) '''
+		//--------------------------------------------------------
+		/**
+		 *	Method      : «cls.name»::init_device()
+		 *	Description : //	will be called at device initialization.
+		 */
+		//--------------------------------------------------------
+		void «cls.name»::init_device()
+		{
+			DEBUG_STREAM << "«cls.name»::init_device() create device " << device_name << endl;
+			«cls.protedtedArea("init_device_before", "Initialization before get_device_property() call", true)»
+			
+			«IF cls.deviceProperties.size>0»
+			//	Get the device properties from database
+			get_device_properies();
+			«ELSE»
+			//	No device property to be read from database
+			«ENDIF»
+
+			«cls.protedtedArea("init_device", "Initialize device", true)»
+		}
+		«IF cls.deviceProperties.size>0»
+		//--------------------------------------------------------
+		/**
+		 *	Method      : «cls.name»::get_device_property()
+		 *	Description : Read database to initialize property data members.
+		 */
+		//--------------------------------------------------------
+		void «cls.name»::get_device_property()
+		{
+			«cls.protedtedArea("get_device_property_before", "Initialize property data members", true)»
+		
+			//	Read device properties from database.
+			Tango::DbData	dev_prop;
+			«FOR Property property : cls.deviceProperties»
+				dev_prp.push_back(Tango::DbDatum("«property.name»"));
+			«ENDFOR»
+		
+			//	is there at least one property to be read ?
+			if (dev_prop.size()>0)
+			{
+				//	Call database and extract values
+				if (Tango::Util::instance()->_UseDb==true)
+					get_db_device()->get_property(dev_prop);
+			
+				//	get instance on «cls.name»Class to get class property
+				Tango::DbDatum	def_prop, cl_prop;
+				«cls.name»Class	*ds_class =
+					(static_cast<«cls.name»Class *>(get_device_class()));
+				int	i = -1;
+		
+				«FOR Property property : cls.deviceProperties»
+				//	Try to initialize «property.name» from class property
+				cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+				if (cl_prop.is_empty()==false)	cl_prop  >>  «property.name.toLowerCase»;
+				else {
+					//	Try to initialize «property.name» from default device value
+					def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+					if (def_prop.is_empty()==false)	def_prop  >>  «property.name.toLowerCase»;
+				}
+				//	And try to extract «property.name» value from database
+				if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  «property.name.toLowerCase»;
+
+				«ENDFOR»
+			}
+		
+			«cls.protedtedArea("get_device_property_after", "Check device property data members init", true)»
+		}
+
+		//--------------------------------------------------------
+		/**
+		 *	Method      : «cls.name»::always_executed_hook()
+		 *	Description : method always executed before any command is executed
+		 */
+		//--------------------------------------------------------
+		void «cls.name»::always_executed_hook()
+		{
+			INFO_STREAM << "«cls.name»::always_executed_hook()  " << device_name << endl;
+			«cls.protedtedArea("always_executed_hook", "code always executed before all requests", true)»
+		}
+
+		//--------------------------------------------------------
+		/**
+		 *	Method      : «cls.name»::read_attr_hardware()
+		 *	Description : Hardware acquisition for attributes.
+		 */
+		//--------------------------------------------------------
+		void «cls.name»::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
+		{
+			DEBUG_STREAM << "«cls.name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
+			«cls.protedtedArea("read_attr_hardware", "Add your own code", true)»
+		}
+		«ENDIF»
+		
+	'''
+		
 	//======================================================
 	// Define managed attribute table
 	//======================================================

@@ -13,7 +13,8 @@ class Headers {
 	@Inject
 	extension TypeDefinitions
 
-	def cvsEscaped (String s) { "$" + s + "  $" }
+	def cvsEscaped (String s)       { "$"   + s + "  $"   }
+	def cvsEscapedForVar (String s) { "\"$" + s + "  $\"" }
 
 	//======================================================
 	// header for device.h
@@ -56,7 +57,10 @@ class Headers {
 	def deviceSourceFileHeader(PogoDeviceClass clazz) {
 		fileHeader(deviceSourceFileName(clazz), 
 			"C++ source for the " + clazz.name + " and its commands.\n" +
-			clazz.description.description,
+			"The class is derived from Device. It represents the\n" +
+			"CORBA servant object which will be accessed from the\n" +
+			"network. All commands which can be executed on the\n" +
+			clazz.name + " are implemented in this file.",
 			clazz.description.title
 		)
 	}
@@ -97,7 +101,7 @@ class Headers {
 	//======================================================
 	def rcsId(String filename) {
 		if (filename.endsWith(".cpp"))
-			"static const char *RcsId = " + "Id:".cvsEscaped + ";\n"
+			"static const char *RcsId = " + "Id:".cvsEscapedForVar + ";\n"
 		else
 			""
 	}
