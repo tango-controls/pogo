@@ -13,7 +13,15 @@ import com.google.inject.Inject
 class CppUtil {
 
 	@Inject
-	extension Typedefinitions
+	extension TypeDefinitions
+
+	/*
+	 * Define the DeviceImpl used to generate
+	 */
+	def deviceImpl() {
+		"Tango::Device_4Impl"
+	}
+
 
 	/**
  	 * TODO: Obsolete! Do not use
@@ -77,10 +85,15 @@ class CppUtil {
 		else
 			"/*----- PROTECTED REGION END -----*/	//	" + clazz.name + "::" + method + "\n"
 	}
-	def protedtedArea(PogoDeviceClass clazz, String method, String comments) {
-		startProtedtedArea(clazz, method)+
-		"\n	//	" + comments + "\n\n" +
-		closeProtedtedArea(clazz, method)
+	def protedtedArea(PogoDeviceClass clazz, String method, String code, boolean comments) {
+		if (comments)
+			startProtedtedArea(clazz, method)+ "\n" +
+				"	//	" + code.comments("	//	") + "\n\n" +
+				closeProtedtedArea(clazz, method)
+		else
+			startProtedtedArea(clazz, method) +
+			code + "\n\n" +
+			closeProtedtedArea(clazz, method)
 	}
 
 

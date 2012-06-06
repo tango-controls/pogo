@@ -38,7 +38,7 @@ import fr.esrf.tango.pogo.pogoDsl.UShortType
 import fr.esrf.tango.pogo.pogoDsl.VoidType
 
 
-class Typedefinitions {
+class TypeDefinitions {
 	/**
 	 * Property Type utilities
 	 */

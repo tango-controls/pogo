@@ -17,24 +17,19 @@ class DeviceInclude implements IGenerator {
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Typedefinitions
+	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile(cls.deviceHeaderFileName, cls.generateDeviceHeaderFile)
+			fsa.generateFile(cls.deviceIncludeFileName, cls.generateDeviceIncludeFile)
 		}
 	}
 	
-	def generateDeviceHeaderFile (PogoDeviceClass cls) '''
-		«cls.startProtedtedArea(".h")»
-		«cls.deviceHeaderFileHeader»
-		
-		#ifndef «cls.name»_H
-		#define «cls.name»_H
-		
-		#include <tango.h>
-		
-		«cls.closeProtedtedArea(".h")»
+	/*
+	 * Define device include file to be generated
+	 */
+	def generateDeviceIncludeFile (PogoDeviceClass cls) '''
+		«cls.fileHeader»
 		
 		/** «cls.name» class description:
 		 *    «cls.description.description.comments("*    ")»
@@ -42,12 +37,12 @@ class DeviceInclude implements IGenerator {
 		
 		namespace «cls.name»_ns
 		{
-		«cls.protedtedArea("extraClassDeclarations", "Add your extra class declarations")»
+		«cls.protedtedArea("extraClassDeclarations", "Add your extra class declarations", true)»
 		
-		class «cls.name» : public Tango::Device_4Impl
+		class «cls.name» : public «deviceImpl»
 		{
 
-		«cls.protedtedArea("Data Members", "Add your own data members")»
+		«cls.protedtedArea("Data Members", "Add your own data members", true)»
 		
 		«cls.declareDevicePropertyDataMembers»
 		«cls.declareAttributeDataMembers»
@@ -55,16 +50,28 @@ class DeviceInclude implements IGenerator {
 		«cls.declareGlobals»
 		«cls.declareAttributes»
 		«cls.declareCommands»
-		«cls.protedtedArea("Additional Method prototypes", "Additional Method prototypes")»
+		«cls.protedtedArea("Additional Method prototypes", "Additional Method prototypes", true)»
 		};
 		
-		«cls.protedtedArea("Additional Classes definitions", "Additional Classes definitions")»
+		«cls.protedtedArea("Additional Classes definitions", "Additional Classes definitions", true)»
 
 		}	//	End of namespace
 		
 		#endif   //	«cls.name»_H
 	'''
 
+	//======================================================
+	// define the header file
+	//======================================================
+	def fileHeader (PogoDeviceClass cls) '''
+		«cls.protedtedArea(".h",
+			cls.deviceIncludeFileHeader+
+			"\n\n" +
+			"#ifndef " + cls.name + "_H\n"+
+			"#define " + cls.name + "_H\n\n"+
+			"#include <tango.h>\n", false)»
+	'''
+	
 
 	//======================================================
 	// Data members for device property declarations
