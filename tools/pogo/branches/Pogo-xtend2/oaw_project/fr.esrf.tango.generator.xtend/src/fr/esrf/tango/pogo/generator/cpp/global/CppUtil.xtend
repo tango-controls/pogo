@@ -44,17 +44,6 @@ class CppUtil {
 		s.replaceAll("\n", "\n"+tag);
 	}
 
-	/*
-	 * Define the signature for command execution method
-	 */
-	def commandExecutionMethodSignature(PogoDeviceClass cls, Command cmd, boolean declare) {
-		if (declare)
-			cmd.argout.type.cppType + " " +  cmd.execMethod + "("  + cmd.argin.type.cppType + " argin);"
-		else
-			cmd.argout.type.cppType + " " + cls.name +
-				"::" + cmd.execMethod + "("  + cmd.argin.type.cppType + " argin)"
-	}
-	
 	/**
 	 * Comment a String with more than one line
 	 */
@@ -73,7 +62,7 @@ class CppUtil {
 	/**
 	 * Define cpp protected areas
 	 */
-	def startProtedtedArea(PogoDeviceClass clazz, String method) {
+	def startProtectedArea(PogoDeviceClass clazz, String method) {
 		if (method.startsWith("."))
 			"/*----- PROTECTED REGION ID(" + clazz.name + method + ") ENABLED START -----*/\n"
 		else
@@ -85,13 +74,13 @@ class CppUtil {
 		else
 			"/*----- PROTECTED REGION END -----*/	//	" + clazz.name + "::" + method + "\n"
 	}
-	def protedtedArea(PogoDeviceClass clazz, String method, String code, boolean comments) {
+	def protectedArea(PogoDeviceClass clazz, String method, String code, boolean comments) {
 		if (comments)
-			startProtedtedArea(clazz, method)+ "\n" +
+			startProtectedArea(clazz, method)+ "\n" +
 				"//	" + code.comments("	//	") + "\n\n" +
 				closeProtedtedArea(clazz, method)
 		else
-			startProtedtedArea(clazz, method) +
+			startProtectedArea(clazz, method) +
 			code + "\n\n" +
 			closeProtedtedArea(clazz, method)
 	}
@@ -188,67 +177,6 @@ class CppUtil {
 			"return false;\n\t}"; 
 	}
 
-
-//	Command utilities
-	def protectedID(PogoDeviceClass cls, Command cmd) {
-		cls.name + "::"+cmd.execMethod;
-	}
-
-	def argoutDescription(Command cmd) {
-		if (cmd.argout.description == "")
-			"none"
-		else
-			cmd.argout.description
-	}
-
-	/**
-	 * dserverClass.cpp command execute method
-	 */
-	def executeCmdExtract(Command cmd) {
-		if (cmd.argin.type.cppType()=="void")
-			null
-		else {
-			if (cmd.argin.type.cppType().toString().endsWith("Array"))
-				"const " + cmd.argin.type.cppType().toString()+
-				"	*argin;\n	extract(in_any, argin);"
-			else
-				cmd.argin.type.cppType().toString()+
-				"	argin;\n	extract(in_any, argin);"
-		}
-	}
-
-	/**
-	 * dserverClass.cpp command execute method
-	 */
-	def executeCmdInsert(PogoDeviceClass cls, Command cmd) {
-	//	Depends on if argout and/or argin type is void
-		if (cmd.argin.type.cppType()=="void" && cmd.argout.type.cppType()=="void")
-			"((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"());"
-			+"\n	return new CORBA::Any();"
-
-		else {
-			if (cmd.argin.type.cppType()!="void" && cmd.argout.type.cppType()=="void")
-				"((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"(argin));"+
-				"\n	return new CORBA::Any();"
-
-			else {
-				if (cmd.argin.type.cppType()=="void" && cmd.argout.type.cppType()!="void")
-					"return insert((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"());"
-				else //	cmd.argin.type.cppType()!="void" && cmd.argout.type.cppType()!="void"
-					"return insert((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"(argin));"
-					
-			}
-		
-		}
-	}
-
-	def declareArgumentWithPointer(Argument arg) {
-		//	Check if pointer needed
-		if (arg.type.cppType().toString().endsWith("Array"))
-			arg.type.cppType().toString() + " *"
-		else arg.type.cppType().toString() + " ";
-	
-	}
 
 
 	def declareCmdArgin(Command cmd) {
