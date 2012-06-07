@@ -11,20 +11,25 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Property
 
 
+//======================================================
+// Define device source file to be generated
+//======================================================
 class DeviceSource implements IGenerator {
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.CppUtil
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
+	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
+	@Inject
+	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 			fsa.generateFile(cls.deviceSourceFileName, cls.generateDeviceSourceFile)
 		}
 	}
-	
+
 
 	//======================================================
 	// Define device source file to be generated
@@ -45,7 +50,9 @@ class DeviceSource implements IGenerator {
 		«cls.protectedArea("namespace_starting", "static initializations", true)»
 		«cls.constructors»
 		«cls.globalMethods»
-		
+		«cls.attributeMethods»
+		«cls.commandMethods»
+
 		«cls.protectedArea("namespace_ending", "Additional Methods", true)»
 		} //	namespace
 	'''
@@ -108,12 +115,8 @@ class DeviceSource implements IGenerator {
 	// Define init_device() and get_device_properies() methods
 	//======================================================
 	def globalMethods(PogoDeviceClass cls) '''
-		//--------------------------------------------------------
-		/**
-		 *	Method      : «cls.name»::init_device()
-		 *	Description : //	will be called at device initialization.
-		 */
-		//--------------------------------------------------------
+
+		«cls.simpleMethodHeader("init_device", "will be called at device initialization.")»
 		void «cls.name»::init_device()
 		{
 			DEBUG_STREAM << "«cls.name»::init_device() create device " << device_name << endl;
@@ -128,13 +131,9 @@ class DeviceSource implements IGenerator {
 
 			«cls.protectedArea("init_device", "Initialize device", true)»
 		}
+		
 		«IF cls.deviceProperties.size>0»
-		//--------------------------------------------------------
-		/**
-		 *	Method      : «cls.name»::get_device_property()
-		 *	Description : Read database to initialize property data members.
-		 */
-		//--------------------------------------------------------
+		«cls.simpleMethodHeader("get_device_property", "Read database to initialize property data members.")»
 		void «cls.name»::get_device_property()
 		{
 			«cls.protectedArea("get_device_property_before", "Initialize property data members", true)»
@@ -191,6 +190,33 @@ class DeviceSource implements IGenerator {
 		}
 		«ENDIF»
 		
+	'''
+	//======================================================
+	// Define attribute related methods
+	//======================================================
+	def attributeMethods(PogoDeviceClass cls) '''
+		«FOR Attribute attribute : cls.attributes»
+			«IF attribute.rwType.contains("READ")»
+				«attribute.attributeMethodHeader("Read")»
+				«cls.readAttributeMethod(attribute)»
+			«ENDIF»
+			«IF attribute.rwType.contains("WRITE")»
+				«attribute.attributeMethodHeader("Write")»
+				«cls.writeAttributeMethod(attribute)»
+			«ENDIF»
+		«ENDFOR»
+	'''
+		
+	//======================================================
+	// Define Command related methods
+	//======================================================
+	def commandMethods(PogoDeviceClass cls) '''
+		«FOR Command command : cls.commands»
+			//--------------------------------------------------------
+			«command.commandExecutionMethodHeader»
+			//--------------------------------------------------------
+			«cls.commandExecutionMethod(command)»
+		«ENDFOR»
 	'''
 		
 	//======================================================

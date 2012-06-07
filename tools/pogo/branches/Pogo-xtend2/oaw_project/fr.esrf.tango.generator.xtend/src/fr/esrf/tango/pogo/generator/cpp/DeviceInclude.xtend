@@ -23,13 +23,15 @@ class DeviceInclude implements IGenerator {
 	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
+	@Inject
+	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 			fsa.generateFile(cls.deviceIncludeFileName, cls.generateDeviceIncludeFile)
 		}
 	}
-	
+
 	//======================================================
 	// Define device include file to be generated
 	//======================================================
@@ -193,12 +195,12 @@ class DeviceInclude implements IGenerator {
 			virtual void read_attr_hardware(vector<long> &attr_list);
 
 			«FOR Attribute attr : cls.attributes»
-				«attr.attributeReadMethodHeader»
+				«attr.attributePrototypeMethodHeader»
 				«IF attr.rwType.contains("READ")»
-					virtual void read_«attr.name»(Tango::Attribute &attr);
+					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
 				«ENDIF»
 				«IF attr.rwType.contains("WRITE")»
-					virtual void write_«attr.name»(Tango::WAttribute &attr;
+					virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
 				«ENDIF»
 				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 			«ENDFOR»

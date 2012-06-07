@@ -53,7 +53,7 @@ class DeviceClassInclude implements IGenerator {
 				
 				«cls.propertyMethods»
 			
-			}
+			};
 		}	//	End of namespace
 		
 		#endif   //	«cls.name»_H

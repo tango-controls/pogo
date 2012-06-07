@@ -18,6 +18,9 @@ class Commands {
 	@Inject
 	extension TypeDefinitions
 
+	@Inject
+	extension CppUtil
+
 
 
 
@@ -27,21 +30,32 @@ class Commands {
 	def commandExecutionMethodSignature(PogoDeviceClass cls, Command cmd, boolean declare) {
 		if (declare)
 			//	Method prototype
-			cmd.argout.type.cppType + " " +  cmd.execMethod + cmd.argin.type.arginDeclaration
+			cmd.argout.type.argoutDeclaration +  cmd.execMethod + cmd.argin.type.arginDeclaration + ";"
 		else
 			//	method signature
-			cmd.argout.type.cppType + " " + cls.name +
+			cmd.argout.type.argoutDeclaration + cls.name +
 				"::" + cmd.execMethod + cmd.argin.type.arginDeclaration
 	}
 	
 	//======================================================
-	// Manage teh argin declaration
+	// Manage the argin declaration
 	//======================================================
-	def arginDeclaration(Type arginType) {
-		if (arginType.cppType.equals("void"))
-			"();"
-		else
-			"("  + arginType.cppType + " argin);"
+	def arginDeclaration(Type type) {
+		if (type.cppType.equals("void"))
+			 "()"
+		else if (type.cppType.endsWith("Array"))
+			 "(const " + type.cppType + " *argin)"
+		else "(" + type.cppType + " argin)"
+	}
+	//======================================================
+	// Manage the argout declaration
+	//======================================================
+	def argoutDeclaration(Type type) {
+		if (type.cppType.equals("void"))
+			 "void "
+		else if (type.cppType.endsWith("Array"))
+			 type.cppType + " *"
+		else type.cppType + " "
 	}
 
 
@@ -49,11 +63,49 @@ class Commands {
 	//	Output argument description 
 	//======================================================
 	def argoutDescription(Command cmd) {
-		if (cmd.argout.description == "")
+		if (cmd.argout.description.empty)
 			"none"
 		else
 			cmd.argout.description
 	}
+
+	//======================================================
+	// Define the command execution method
+	//======================================================
+	def commandExecutionMethod(PogoDeviceClass cls, Command command) '''
+		«cls.commandExecutionMethodSignature(command, false)»
+		{
+			DEBUG_STREAM << "MultiCellGauges::«command.name»()  - " << device_name << endl;
+			«cls.openProtectedArea(command.execMethod)»
+			
+			«IF command.name.equals("State")»
+				Tango::DevState	argout = Tango::UNKNOWN; // replace by your own algorithm
+			«ELSEIF command.name.equals("Status")»
+				string	status = "Device is OK";
+			«ELSE»
+				«IF command.argout.type.cppType.equals("void")==false»
+					«command.argout.type.argoutDeclaration»argout;
+					//	Add your own code
+				«ENDIF»
+			«ENDIF»
+			
+			«cls.closeProtectedArea(command.execMethod)»
+			«IF command.name.equals("State")»
+				set_state(argout);    // Give the state to Tango.
+				if (argout!=Tango::ALARM)
+					DeviceImpl::dev_state();
+				return get_state();  // Return it after Tango management.
+			«ELSEIF command.name.equals("Status")»
+				set_status(status);               // Give the status to Tango.
+				return DeviceImpl::dev_status();  // Return it.
+			«ELSE»
+				«IF command.argout.type.cppType.equals("void")==false»
+					return argout;
+				«ENDIF»
+			«ENDIF»
+		}
+	'''
+
 
 	//======================================================
 	// dserverClass.cpp command execute method
