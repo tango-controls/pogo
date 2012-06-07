@@ -11,6 +11,9 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Property
 
 
+//======================================================
+//	Define device include file to be generated
+//======================================================
 class DeviceInclude implements IGenerator {
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.CppUtil
@@ -18,6 +21,8 @@ class DeviceInclude implements IGenerator {
 	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
+	@Inject
+	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
@@ -25,9 +30,9 @@ class DeviceInclude implements IGenerator {
 		}
 	}
 	
-	/*
-	 * Define device include file to be generated
-	 */
+	//======================================================
+	// Define device include file to be generated
+	//======================================================
 	def generateDeviceIncludeFile (PogoDeviceClass cls) '''
 		«cls.fileHeader»
 		
@@ -38,12 +43,12 @@ class DeviceInclude implements IGenerator {
 		
 		namespace «cls.name»_ns
 		{
-		«cls.protedtedArea("Additional Class Declarations", "Additional Class Declarations", true)»
+		«cls.protectedArea("Additional Class Declarations", "Additional Class Declarations", true)»
 		
 		class «cls.name» : public «deviceImpl»
 		{
 
-		«cls.protedtedArea("Data Members", "Add your own data members", true)»
+		«cls.protectedArea("Data Members", "Add your own data members", true)»
 		
 		«cls.declareDevicePropertyDataMembers»
 		«cls.declareAttributeDataMembers»
@@ -51,10 +56,10 @@ class DeviceInclude implements IGenerator {
 		«cls.declareGlobals»
 		«cls.declareAttributes»
 		«cls.declareCommands»
-		«cls.protedtedArea("Additional Method prototypes", "Additional Method prototypes", true)»
+		«cls.protectedArea("Additional Method prototypes", "Additional Method prototypes", true)»
 		};
 		
-		«cls.protedtedArea("Additional Classes definitions", "Additional Classes definitions", true)»
+		«cls.protectedArea("Additional Classes definitions", "Additional Classes definitions", true)»
 
 		}	//	End of namespace
 		
@@ -65,7 +70,7 @@ class DeviceInclude implements IGenerator {
 	// define the header file
 	//======================================================
 	def fileHeader (PogoDeviceClass cls) '''
-		«cls.protedtedArea(".h",
+		«cls.protectedArea(".h",
 			cls.deviceIncludeFileHeader+
 			"\n\n" +
 			"#ifndef " + cls.name + "_H\n"+

@@ -16,12 +16,18 @@ class cppMain implements IGenerator {
 	extension DeviceInclude
 	@Inject
 	extension DeviceSource
+	@Inject
+	extension DeviceClassInclude
+	@Inject
+	extension DeviceClassSource
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 			if (cls.description.language.toLowerCase.equals("cpp")) {
 				fsa.generateFile(cls.deviceIncludeFileName, cls.generateDeviceIncludeFile)
 				fsa.generateFile(cls.deviceSourceFileName, cls.generateDeviceSourceFile)
+				fsa.generateFile(cls.deviceClassIncludeFileName, cls.generateDeviceClassIncludeFile)
+				fsa.generateFile(cls.deviceClassSourceFileName, cls.generateDeviceClassSourceFile)
 			}
 		}
 	}

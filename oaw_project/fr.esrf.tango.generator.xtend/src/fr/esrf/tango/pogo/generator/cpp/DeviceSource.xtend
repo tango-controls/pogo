@@ -42,10 +42,11 @@ class DeviceSource implements IGenerator {
 		
 		namespace «cls.name»_ns
 		{
-		«cls.protedtedArea("namespace_starting", "static initializations", true)»
+		«cls.protectedArea("namespace_starting", "static initializations", true)»
 		«cls.constructors»
 		«cls.globalMethods»
 		
+		«cls.protectedArea("namespace_ending", "Additional Methods", true)»
 		} //	namespace
 	'''
 
@@ -53,7 +54,7 @@ class DeviceSource implements IGenerator {
 	// define the header file
 	//======================================================
 	def fileHeader (PogoDeviceClass cls) '''
-		«cls.protedtedArea(".cpp",
+		«cls.protectedArea(".cpp",
 			cls.deviceSourceFileHeader+
 			"\n\n" +
 			"#include <"+cls.name+".h>\n"+
@@ -76,19 +77,19 @@ class DeviceSource implements IGenerator {
 		«cls.name»::«cls.name»(Tango::DeviceClass *cl, string &s)
 		 : «deviceImpl»(cl, s.c_str())
 		{
-			«cls.protedtedArea("constructor_1", "init_device();", false)»
+			«cls.protectedArea("constructor_1", "init_device();", false)»
 		}
 		//--------------------------------------------------------
 		«cls.name»::«cls.name»(Tango::DeviceClass *cl, const char *s)
 		 : «deviceImpl»(cl, s)
 		{
-			«cls.protedtedArea("constructor_2", "init_device();", false)»
+			«cls.protectedArea("constructor_2", "init_device();", false)»
 		}
 		//--------------------------------------------------------
 		«cls.name»::«cls.name»(Tango::DeviceClass *cl, const char *s, const char *d)
 		 : «deviceImpl»(cl, s, d)
 		{
-			«cls.protedtedArea("constructor_3", "init_device();", false)»
+			«cls.protectedArea("constructor_3", "init_device();", false)»
 		}
 		//--------------------------------------------------------
 		/**
@@ -99,7 +100,7 @@ class DeviceSource implements IGenerator {
 		void «cls.name»::delete_device()
 		{
 			DEBUG_STREAM << "«cls.name»::delete_device() " << device_name << endl;
-			«cls.protedtedArea("delete_device", "Delete device allocated objects", true)»
+			«cls.protectedArea("delete_device", "Delete device allocated objects", true)»
 		}
 	'''
 	
@@ -116,16 +117,16 @@ class DeviceSource implements IGenerator {
 		void «cls.name»::init_device()
 		{
 			DEBUG_STREAM << "«cls.name»::init_device() create device " << device_name << endl;
-			«cls.protedtedArea("init_device_before", "Initialization before get_device_property() call", true)»
+			«cls.protectedArea("init_device_before", "Initialization before get_device_property() call", true)»
 			
 			«IF cls.deviceProperties.size>0»
 			//	Get the device properties from database
-			get_device_properies();
+			get_device_property();
 			«ELSE»
 			//	No device property to be read from database
 			«ENDIF»
 
-			«cls.protedtedArea("init_device", "Initialize device", true)»
+			«cls.protectedArea("init_device", "Initialize device", true)»
 		}
 		«IF cls.deviceProperties.size>0»
 		//--------------------------------------------------------
@@ -136,12 +137,12 @@ class DeviceSource implements IGenerator {
 		//--------------------------------------------------------
 		void «cls.name»::get_device_property()
 		{
-			«cls.protedtedArea("get_device_property_before", "Initialize property data members", true)»
+			«cls.protectedArea("get_device_property_before", "Initialize property data members", true)»
 		
 			//	Read device properties from database.
 			Tango::DbData	dev_prop;
 			«FOR Property property : cls.deviceProperties»
-				dev_prp.push_back(Tango::DbDatum("«property.name»"));
+				dev_prop.push_back(Tango::DbDatum("«property.name»"));
 			«ENDFOR»
 		
 			//	is there at least one property to be read ?
@@ -160,43 +161,33 @@ class DeviceSource implements IGenerator {
 				«FOR Property property : cls.deviceProperties»
 				//	Try to initialize «property.name» from class property
 				cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-				if (cl_prop.is_empty()==false)	cl_prop  >>  «property.name.toLowerCase»;
+				if (cl_prop.is_empty()==false)	cl_prop  >>  «property.name.dataMemberName»;
 				else {
 					//	Try to initialize «property.name» from default device value
 					def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-					if (def_prop.is_empty()==false)	def_prop  >>  «property.name.toLowerCase»;
+					if (def_prop.is_empty()==false)	def_prop  >>  «property.name.dataMemberName»;
 				}
 				//	And try to extract «property.name» value from database
-				if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  «property.name.toLowerCase»;
+				if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  «property.name.dataMemberName»;
 
 				«ENDFOR»
 			}
 		
-			«cls.protedtedArea("get_device_property_after", "Check device property data members init", true)»
+			«cls.protectedArea("get_device_property_after", "Check device property data members init", true)»
 		}
 
-		//--------------------------------------------------------
-		/**
-		 *	Method      : «cls.name»::always_executed_hook()
-		 *	Description : method always executed before any command is executed
-		 */
-		//--------------------------------------------------------
+		«cls.simpleMethodHeader("always_executed_hook", "method always executed before any command is executed")»
 		void «cls.name»::always_executed_hook()
 		{
 			INFO_STREAM << "«cls.name»::always_executed_hook()  " << device_name << endl;
-			«cls.protedtedArea("always_executed_hook", "code always executed before all requests", true)»
+			«cls.protectedArea("always_executed_hook", "code always executed before all requests", true)»
 		}
 
-		//--------------------------------------------------------
-		/**
-		 *	Method      : «cls.name»::read_attr_hardware()
-		 *	Description : Hardware acquisition for attributes.
-		 */
-		//--------------------------------------------------------
+		«cls.simpleMethodHeader("read_attr_hardware", "Hardware acquisition for attributes")»
 		void «cls.name»::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
 		{
 			DEBUG_STREAM << "«cls.name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
-			«cls.protedtedArea("read_attr_hardware", "Add your own code", true)»
+			«cls.protectedArea("read_attr_hardware", "Add your own code", true)»
 		}
 		«ENDIF»
 		

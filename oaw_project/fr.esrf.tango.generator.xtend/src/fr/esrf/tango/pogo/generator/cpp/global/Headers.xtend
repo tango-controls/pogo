@@ -37,7 +37,7 @@ class Headers {
 		clazz.name + "Class.h"
 	}
 	def deviceClassIncludeFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceClassIncludeFileHeader(clazz),
+		fileHeader(deviceClassIncludeFileName(clazz),
 			"Include for the " + clazz.name +" root class.\n"+
 			"This class is the singleton class for\n"+
 			" the " + clazz.name + " device class.\n"+
@@ -145,6 +145,21 @@ class Headers {
 	 * Methods headers
 	 */
 	//======================================================
+	//======================================================
+	//	Simple method header
+	//======================================================
+	def simpleMethodHeader(PogoDeviceClass cls, String method, String description) {
+		"//--------------------------------------------------------\n" +
+		"/**\n" +
+		" *	Method      : "+ cls.name + "::" + method + "()\n" +
+		" *	Description : " + description + "\n" +
+		" */\n" +
+		"//--------------------------------------------------------"
+	}
+
+	//======================================================
+	//	Attribute method header
+	//======================================================
 	def attributeReadMethodHeader(Attribute attr) {
 		"/**\n" +
 		" *	Attribute " + attr.name + " related mehods\n" +
@@ -156,6 +171,9 @@ class Headers {
 	}
 
 
+	//======================================================
+	//	Command method header
+	//======================================================
 	def commandExecutionMethodHeader(Command cmd) {
 		"/**\n" +
 		" *	Command " + cmd.name + " related mehods\n" +
