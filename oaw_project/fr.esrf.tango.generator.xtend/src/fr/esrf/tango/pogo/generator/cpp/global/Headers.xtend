@@ -19,13 +19,13 @@ class Headers {
 	//======================================================
 	// header for device.h
 	//======================================================
-	def deviceIncludeFileName(PogoDeviceClass clazz) {
-		clazz.name+".h"
+	def deviceIncludeFileName(PogoDeviceClass cls) {
+		cls.name+".h"
 	}
-	def deviceIncludeFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceIncludeFileName(clazz),
-			"Include file for the " + clazz.name + " class",
-			 clazz.description.title
+	def deviceIncludeFileHeader(PogoDeviceClass cls) {
+		fileHeader(deviceIncludeFileName(cls),
+			"Include file for the " + cls.name + " class",
+			 cls.description.title
 		)
 	}
 
@@ -33,17 +33,17 @@ class Headers {
 	//======================================================
 	// header for deviceClass.h
 	//======================================================
-	def deviceClassIncludeFileName(PogoDeviceClass clazz) {
-		clazz.name + "Class.h"
+	def deviceClassIncludeFileName(PogoDeviceClass cls) {
+		cls.name + "Class.h"
 	}
-	def deviceClassIncludeFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceClassIncludeFileName(clazz),
-			"Include for the " + clazz.name +" root class.\n"+
+	def deviceClassIncludeFileHeader(PogoDeviceClass cls) {
+		fileHeader(deviceClassIncludeFileName(cls),
+			"Include for the " + cls.name +" root class.\n"+
 			"This class is the singleton class for\n"+
-			" the " + clazz.name + " device class.\n"+
+			" the " + cls.name + " device class.\n"+
 			"It contains all properties and methods which the \n" +
-			clazz.name + " requires only once e.g. the commands.",
-			 clazz.description.title
+			cls.name + " requires only once e.g. the commands.",
+			 cls.description.title
 		)
 	}
 
@@ -51,17 +51,17 @@ class Headers {
 	//======================================================
 	// header for device.cpp
 	//======================================================
-	def deviceSourceFileName(PogoDeviceClass clazz) {
-		clazz.name + ".cpp"
+	def deviceSourceFileName(PogoDeviceClass cls) {
+		cls.name + ".cpp"
 	}
-	def deviceSourceFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceSourceFileName(clazz), 
-			"C++ source for the " + clazz.name + " and its commands.\n" +
+	def deviceSourceFileHeader(PogoDeviceClass cls) {
+		fileHeader(deviceSourceFileName(cls), 
+			"C++ source for the " + cls.name + " and its commands.\n" +
 			"The class is derived from Device. It represents the\n" +
 			"CORBA servant object which will be accessed from the\n" +
 			"network. All commands which can be executed on the\n" +
-			clazz.name + " are implemented in this file.",
-			clazz.description.title
+			cls.name + " are implemented in this file.",
+			cls.description.title
 		)
 	}
 	
@@ -69,33 +69,56 @@ class Headers {
 	//======================================================
 	// header for deviceClass.cpp
 	//======================================================
-	def deviceClassSourceFileName(PogoDeviceClass clazz) {
-		clazz.name + "Class.cpp"
+	def deviceClassSourceFileName(PogoDeviceClass cls) {
+		cls.name + "Class.cpp"
 	}
-	def deviceClassSourceFileHeader(PogoDeviceClass clazz) {
-		fileHeader(deviceClassSourceFileName(clazz),
-			"C++ source for the " + clazz.name +" root class.\n"+
+	def deviceClassSourceFileHeader(PogoDeviceClass cls) {
+		fileHeader(deviceClassSourceFileName(cls),
+			"C++ source for the " + cls.name +" root class.\n"+
 			"This class is the singleton class for\n"+
-			" the " + clazz.name + " device class.\n"+
+			" the " + cls.name + " device class.\n"+
 			"It contains all properties and methods which the \n" +
-			clazz.name + " requires only once e.g. the commands.",
-			clazz.description.title
+			cls.name + " requires only once e.g. the commands.",
+			cls.description.title
 		)
 	}
 	
 	//======================================================
 	// header for StateMachine.cpp
 	//======================================================
-	def stateMachineFileName(PogoDeviceClass clazz) {
-		clazz.name + "StateMachine.cpp"
+	def stateMachineFileName(PogoDeviceClass cls) {
+		cls.name + "StateMachine.cpp"
 	}
-	def stateMachineFileHeader(PogoDeviceClass clazz) {
-		fileHeader(stateMachineFileName(clazz),
-			"State machine file for the " + clazz.name + " class",
-			 clazz.description.title
+	def stateMachineFileHeader(PogoDeviceClass cls) {
+		fileHeader(stateMachineFileName(cls),
+			"State machine file for the " + cls.name + " class",
+			 cls.description.title
 		)
 	}
+
+	//======================================================
+	// header for ClassFactory.cpp
+	//======================================================
+	def ClassFactoryFileHeader(PogoDeviceClass cls) {
+		fileHeader("ClassFactory.cpp",
+			"C++ source for the class_factory method of the DServer\n" +
+			"device class. This method is responsible for the creation of\n" +
+			"all class singleton for a device server. It is called\n" +
+			"at device server startup.",
+			 cls.description.title)
+	}
 	
+	//======================================================
+	// header for main.cpp
+	//======================================================
+	def mainFileHeader(PogoDeviceClass cls) {
+		fileHeader("main.cpp",
+			"C++ source for the " + cls.name + " device server main.\n"  +
+			"The main rule is to initialise (and create) the Tango\n" +
+			"system and to create the DServerClass singleton.\n" +
+			"The main should be the same for every Tango device server.",
+			 cls.description.title)
+	}
 	//======================================================
 	// RcsId for .cpp files
 	//======================================================
@@ -158,9 +181,24 @@ class Headers {
 	}
 
 	//======================================================
-	//	Attribute method header
+	//	Read attribute method header
 	//======================================================
-	def attributeReadMethodHeader(Attribute attr) {
+	def attributeMethodHeader(Attribute attr, String rw) {
+		"//--------------------------------------------------------\n" +
+		"/**\n" +
+		" *	" + rw +" attribute " + attr.name + " related mehod\n" +
+		" *	Description: " + attr.properties.description.comments("	 *		") + "\n" +
+		" *\n" +
+		" *	Data type:	" + attr.dataType.cppType + "\n" +
+		" *	Attr type:	" + attr.attType + attr.attTypeDimentions + "\n" + 
+		" */\n"	+
+		"//--------------------------------------------------------\n"
+	}	
+
+	//======================================================
+	//	Attribute declaration method header
+	//======================================================
+	def attributePrototypeMethodHeader(Attribute attr) {
 		"/**\n" +
 		" *	Attribute " + attr.name + " related mehods\n" +
 		" *	Description: " + attr.properties.description.comments("	 *		") + "\n" +
@@ -176,7 +214,7 @@ class Headers {
 	//======================================================
 	def commandExecutionMethodHeader(Command cmd) {
 		"/**\n" +
-		" *	Command " + cmd.name + " related mehods\n" +
+		" *	Command " + cmd.name + " related mehod\n" +
 		" *	Description: " + cmd.description.comments("	 *		") + "\n" +
 		" *\n" +
 		" *	@param argin " + cmd.argin.description + "\n" +

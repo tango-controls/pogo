@@ -62,13 +62,13 @@ class CppUtil {
 	/**
 	 * Define cpp protected areas
 	 */
-	def startProtectedArea(PogoDeviceClass clazz, String method) {
+	def openProtectedArea(PogoDeviceClass clazz, String method) {
 		if (method.startsWith("."))
 			"/*----- PROTECTED REGION ID(" + clazz.name + method + ") ENABLED START -----*/\n"
 		else
 			"/*----- PROTECTED REGION ID(" + clazz.name + "::" + method + ") ENABLED START -----*/\n"
 	}
-	def closeProtedtedArea(PogoDeviceClass clazz, String method) {
+	def closeProtectedArea(PogoDeviceClass clazz, String method) {
 		if (method.startsWith("."))
 			"/*----- PROTECTED REGION END -----*/	//	" + clazz.name + method + "\n"
 		else
@@ -76,13 +76,13 @@ class CppUtil {
 	}
 	def protectedArea(PogoDeviceClass clazz, String method, String code, boolean comments) {
 		if (comments)
-			startProtectedArea(clazz, method)+ "\n" +
+			openProtectedArea(clazz, method)+ "\n" +
 				"//	" + code.comments("	//	") + "\n\n" +
-				closeProtedtedArea(clazz, method)
+				closeProtectedArea(clazz, method)
 		else
-			startProtectedArea(clazz, method) +
+			openProtectedArea(clazz, method) +
 			code + "\n\n" +
-			closeProtedtedArea(clazz, method)
+			closeProtectedArea(clazz, method)
 	}
 
 
@@ -177,15 +177,6 @@ class CppUtil {
 			"return false;\n\t}"; 
 	}
 
-
-
-	def declareCmdArgin(Command cmd) {
-		if (cmd.argin.type.cppType()=="void")
-			null
-		else if (cmd.argin.type.cppType().toString().endsWith("Array"))
-			"const " + cmd.argin.type.cppType().toString()+" *argin"
-		else cmd.argin.type.cppType().toString()+" argin"
-	}
 
 	def cppSetPollingPeriod(Command cmd) {
 		if (cmd.polledPeriod ==null)
