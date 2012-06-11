@@ -110,7 +110,7 @@
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <Link>
-      «EXPAND VC10_Project::addLibraries("d","")-»
+      «EXPAND VC10_Project::addLibraries("d","", true)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       «EXPAND VC10_Project::addLibPath("32","")-»
@@ -146,7 +146,7 @@
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <Link>
-      «EXPAND VC10_Project::addLibraries("d","")-»
+      «EXPAND VC10_Project::addLibraries("d","", true)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       «EXPAND VC10_Project::addLibPath("64","")-»
@@ -179,7 +179,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("","")-»
+      «EXPAND VC10_Project::addLibraries("","", true)-»
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       «EXPAND VC10_Project::addLibPath("32","")-»
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -213,7 +213,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("","")-»
+      «EXPAND VC10_Project::addLibraries("","", true)-»
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       «EXPAND VC10_Project::addLibPath("64","")-»
       <GenerateDebugInformation>false</GenerateDebugInformation>

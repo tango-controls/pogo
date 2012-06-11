@@ -70,16 +70,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\dll\win32\debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\dll\win64\debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\lib\win32\vc10_dll\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\lib\win64\vc10_dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\obj\win32_dll\debug\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\obj\win64_dll\debug\</IntDir>
     <PreLinkEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PreLinkEventUseInBuild>
     <PreLinkEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</PreLinkEventUseInBuild>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\dll\win32\release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\dll\win64\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\lib\win32\vc10_dll\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\lib\win64\vc10_dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\win32_obj\release\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64_obj\release\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
@@ -111,7 +111,7 @@
       </Command>
     </PreLinkEvent>
     <Link>
-      «EXPAND VC10_Project::addLibraries("d","_rt")-»
+      «EXPAND VC10_Project::addLibraries("d","_rt", false)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName)d.dll</OutputFile>
       <Version>1.0</Version>
@@ -148,7 +148,7 @@
       </Command>
     </PreLinkEvent>
     <Link>
-      «EXPAND VC10_Project::addLibraries("d","_rt")-»
+      «EXPAND VC10_Project::addLibraries("d","_rt", false)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName)d.dll</OutputFile>
       <Version>1.0</Version>
@@ -181,7 +181,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("","_rt")-»
+      «EXPAND VC10_Project::addLibraries("","_rt", false)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -213,7 +213,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("","_rt")-»
+      «EXPAND VC10_Project::addLibraries("","_rt", false)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)$(SolutionName).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
