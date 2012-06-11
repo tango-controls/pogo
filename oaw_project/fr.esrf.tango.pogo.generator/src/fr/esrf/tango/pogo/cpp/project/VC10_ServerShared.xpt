@@ -121,7 +121,7 @@
       <Culture>0x040c</Culture>
     </ResourceCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("","_rt")-»
+      «EXPAND VC10_Project::addLibraries("","_rt", true)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -165,7 +165,7 @@
       <Culture>0x040c</Culture>
     </ResourceCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("","_rt")-»
+      «EXPAND VC10_Project::addLibraries("","_rt", true)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -208,7 +208,7 @@
       <Culture>0x040c</Culture>
     </ResourceCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("d","_rt")-»
+      «EXPAND VC10_Project::addLibraries("d","_rt", true)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -250,7 +250,7 @@
       <Culture>0x040c</Culture>
     </ResourceCompile>
     <Link>
-      «EXPAND VC10_Project::addLibraries("d","_rt")-»
+      «EXPAND VC10_Project::addLibraries("d","_rt", true)-»
       <ShowProgress>NotSet</ShowProgress>
       <OutputFile>$(OutDir)«name».exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>

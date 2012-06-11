@@ -139,7 +139,7 @@ EndGlobal
 #   dll "" for static   "_dll" for dll
 #=============================================================================
 «DEFINE addTangoLibPath(String n, String dll) FOR PogoDeviceClass-»
-$(TANGO_ROOT)\win«n»\lib\vc10;$(TANGO_ROOT)\classes\win«n»\lib\vc10
+$(TANGO_ROOT)\win«n»\lib\vc10«dll»;$(TANGO_ROOT)\classes\win«n»\lib\vc10«dll»
 «ENDDEFINE»
 #=============================================================================
 #	Add lib files path
@@ -148,7 +148,7 @@ $(TANGO_ROOT)\win«n»\lib\vc10;$(TANGO_ROOT)\classes\win«n»\lib\vc10
 #=============================================================================
 «DEFINE addLibPath(String n, String dll) FOR PogoDeviceClass-»
       <AdditionalLibraryDirectories>
-		..\lib\win«n»«dll»\vc10;«EXPAND addTangoLibPath(n,dll)-»;%(AdditionalLibraryDirectories)
+		..\lib\win«n»\vc10«dll»;«EXPAND addTangoLibPath(n,dll)-»;%(AdditionalLibraryDirectories)
       </AdditionalLibraryDirectories>
 «ENDDEFINE»
 
@@ -159,7 +159,7 @@ $(TANGO_ROOT)\win«n»\lib\vc10;$(TANGO_ROOT)\classes\win«n»\lib\vc10
 #	rt	"rt" for dll   "" for static
 #=============================================================================
 «DEFINE addTangoLibraries(String s, String rt) FOR PogoDeviceClass-»
-«name»«s».lib;omniORB4«rt»«s».lib;omniDynamic4«rt»«s».lib;COS4«rt»«s».lib;omnithread«rt»«s».lib;tango«s».lib;log4tango«s».lib;zmq«s».lib
+omniORB4«rt»«s».lib;omniDynamic4«rt»«s».lib;COS4«rt»«s».lib;omnithread«rt»«s».lib;tango«s».lib;log4tango«s».lib;zmq«s».lib
 «ENDDEFINE»
 
 #=============================================================================
@@ -174,10 +174,11 @@ comctl32.lib;ws2_32.lib;mswsock.lib;advapi32.lib
 #	Add libraries
 #	s	"d" for debug  "" for release
 #	rt	"rt" for dll   "" for static
+#	itself add this device class if true
 #=============================================================================
-«DEFINE addLibraries(String s, String rt) FOR PogoDeviceClass-»
+«DEFINE addLibraries(String s, String rt, boolean itself) FOR PogoDeviceClass-»
       <AdditionalDependencies>
-      	«EXPAND addTangoLibraries(s, rt)-»;«EXPAND addWindowsLibraries-»;%(AdditionalDependencies)
+      	«IF itself»«name»«s».lib;«ENDIF»«EXPAND addTangoLibraries(s, rt)-»;«EXPAND addWindowsLibraries-»;%(AdditionalDependencies)
 	  </AdditionalDependencies>
 «ENDDEFINE»
 
