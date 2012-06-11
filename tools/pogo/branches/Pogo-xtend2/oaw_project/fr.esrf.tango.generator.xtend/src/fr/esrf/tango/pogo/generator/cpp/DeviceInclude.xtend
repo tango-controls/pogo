@@ -9,6 +9,10 @@ import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Property
+import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
+import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
+import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 
 
 //======================================================
@@ -16,7 +20,9 @@ import fr.esrf.tango.pogo.pogoDsl.Property
 //======================================================
 class DeviceInclude implements IGenerator {
 	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.CppUtil
+	extension StringUtils
+	@Inject
+	extension ProtectedArea
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 	@Inject
@@ -47,7 +53,7 @@ class DeviceInclude implements IGenerator {
 		{
 		«cls.protectedArea("Additional Class Declarations", "Additional Class Declarations", true)»
 		
-		class «cls.name» : public «deviceImpl»
+		class «cls.name» : public «DeviceImpl»
 		{
 
 		«cls.protectedArea("Data Members", "Add your own data members", true)»
@@ -89,7 +95,7 @@ class DeviceInclude implements IGenerator {
 			//	Device property data members
 			public:
 				«FOR Property property : cls.deviceProperties»
-					//	«property.name»:	«property.description»
+					//	«property.name»:	«property.description.comments("//  ")»
 					«property.type.cppPropType»	«property.name.dataMemberName»;
 				«ENDFOR»
 		«ENDIF»
@@ -217,10 +223,11 @@ class DeviceInclude implements IGenerator {
 		«IF cls.commands.size()>0»
 		//	Command related methods
 		public:
-			«FOR Command cmd : cls.commands»
-				«IF cmd.status.concreteHere.equals("true")»
-					«cmd.commandExecutionMethodHeader»
-					«cls.commandExecutionMethodSignature(cmd, true)»
+			«FOR Command command : cls.commands»
+				«IF command.status.concreteHere.equals("true")»
+					«command.commandExecutionMethodHeader»
+					«cls.commandExecutionMethodSignature(command, true)»
+					virtual bool is_«command.name»_allowed(const CORBA::Any &any);
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»

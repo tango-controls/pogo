@@ -6,12 +6,13 @@ import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
+import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 
 class Headers {
 	@Inject
-	extension CppUtil
-	@Inject
 	extension TypeDefinitions
+	@Inject
+	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	def cvsEscaped (String s)       { "$"   + s + "  $"   }
 	def cvsEscapedForVar (String s) { "\"$" + s + "  $\"" }
@@ -175,10 +176,20 @@ class Headers {
 		"//--------------------------------------------------------\n" +
 		"/**\n" +
 		" *	Method      : "+ cls.name + "::" + method + "()\n" +
-		" *	Description : " + description + "\n" +
+		" *	Description : " + description.comments(" *                ") + "\n" +
 		" */\n" +
 		"//--------------------------------------------------------"
 	}
+	//======================================================
+	def simpleMethodHeaderClass(PogoDeviceClass cls, String method, String description) {
+		"//--------------------------------------------------------\n" +
+		"/**\n" +
+		" *	Method      : "+ cls.name + "Class::" + method + "()\n" +
+		" *	Description : " + description.comments(" *                ") + "\n" +
+		" */\n" +
+		"//--------------------------------------------------------"
+	}
+
 
 	//======================================================
 	//	Read attribute method header

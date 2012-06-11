@@ -10,6 +10,7 @@ import fr.esrf.tango.pogo.pogoDsl.FireEvents
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
+import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 
 //======================================================
 //	Command utilities
@@ -19,7 +20,7 @@ class Commands {
 	extension TypeDefinitions
 
 	@Inject
-	extension CppUtil
+	extension ProtectedArea
 
 
 
@@ -30,11 +31,11 @@ class Commands {
 	def commandExecutionMethodSignature(PogoDeviceClass cls, Command cmd, boolean declare) {
 		if (declare)
 			//	Method prototype
-			cmd.argout.type.argoutDeclaration +  cmd.execMethod + cmd.argin.type.arginDeclaration + ";"
+			cmd.argout.type.argoutDeclaration +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration + ");"
 		else
 			//	method signature
 			cmd.argout.type.argoutDeclaration + cls.name +
-				"::" + cmd.execMethod + cmd.argin.type.arginDeclaration
+				"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +")"
 	}
 	
 	//======================================================
@@ -42,10 +43,10 @@ class Commands {
 	//======================================================
 	def arginDeclaration(Type type) {
 		if (type.cppType.equals("void"))
-			 "()"
+			 ""
 		else if (type.cppType.endsWith("Array"))
-			 "(const " + type.cppType + " *argin)"
-		else "(" + type.cppType + " argin)"
+			 "const " + type.cppType + " *argin"
+		else type.cppType + " argin"
 	}
 	//======================================================
 	// Manage the argout declaration
@@ -123,6 +124,83 @@ class Commands {
 		}
 	}
 
+	//======================================================
+	// Define command classes
+	//======================================================
+	def commandClass(PogoDeviceClass cls, Command command) '''
+		//	Command «command.name» class definition
+		class «command.name»Class : public Tango::Command
+		{
+		public:
+			«command.name»Class(const char   *name,
+			               Tango::CmdArgType in,
+						   Tango::CmdArgType out,
+						   const char        *in_desc,
+						   const char        *out_desc,
+						   Tango::DispLevel  level)
+			:Command(name,in,out,in_desc,out_desc, level)	{};
+		
+			«command.name»Class(const char   *name,
+			               Tango::CmdArgType in,
+						   Tango::CmdArgType out)
+			:Command(name,in,out)	{};
+			~«command.name»Class() {};
+			
+			virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+			virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+			{return (static_cast<«cls.name» *>(dev))->is_«command.name»_allowed(any);}
+		};
+		
+	'''
+	
+	//==============================================================
+	// Define command class execution method (for DeviceClass.cpp)
+	//==============================================================
+	def classExecuteMethod(PogoDeviceClass cls, Command command) '''
+		//--------------------------------------------------------
+		/**
+		 * method : 		«command.name»Class::execute()
+		 * description : 	method to trigger the execution of the command.
+		 *
+		 * @param	device	The device on which the command must be executed
+		 * @param	in_any	The command input data
+		 *
+		 *	returns The command output data (packed in the Any object)
+		 */
+		//--------------------------------------------------------
+		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, TANGO_UNUSED(const CORBA::Any &in_any))
+		{
+			cout2 << "«command.name»Class::execute(): arrived" << endl;
+			«command.extractArgin»
+			«cls.returnArgout(command)»
+		}
+
+	'''
+	//======================================================
+	def extractArgin(Command cmd) {
+		if (cmd.argin.type.cppType.equals("void"))
+			""
+		else 
+			cmd.argin.type.arginDeclaration + ";\n" +
+			"extract(in_any, argin);"
+	}
+	//======================================================
+	def arginParam(Command cmd) {
+		if(cmd.argin.type.cppType.equals("void")) "" else "argin"
+	}
+	//======================================================
+	def returnArgout(PogoDeviceClass cls, Command cmd) '''
+		«IF cmd.argout.type.cppType.equals("void")»
+			((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
+			return new CORBA::Any();
+		«ELSE»
+			return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
+		«ENDIF»
+	'''
+
+	//======================================================
+	
+	
 	/**
 	 * dserverClass.cpp command execute method
 	 */

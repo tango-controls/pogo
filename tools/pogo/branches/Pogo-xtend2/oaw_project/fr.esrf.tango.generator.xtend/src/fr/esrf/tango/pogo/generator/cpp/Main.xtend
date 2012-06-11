@@ -6,6 +6,8 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
+import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
+import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 
 
 //======================================================
@@ -13,7 +15,7 @@ import org.eclipse.emf.ecore.resource.Resource
 //======================================================
 class Main implements IGenerator {
 	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.CppUtil
+	extension ProtectedArea
 	@Inject
 	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 
