@@ -38,11 +38,11 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 	@Provides
 	public JavaIoFileSystemAccess createJavaIoFileSystemAccess(ProtectedRegionSupport support) {
 		// comments in Java and C++ are the same, so we just add the file extensions for C++ to the Java parser
-		support.addParser(RegionParserFactory.createJavaParser(new PogoPR(),false), ".java", "cxx", "h");
-	  support.addParser(RegionParserFactory.createXmlParser(), ".xml", ".xsd");
-	  support.addParser(createPythonParser(), "py");
-	  BidiJavaIoFileSystemAccess fsa = new BidiJavaIoFileSystemAccess(support);
-	  // fsa.setFilter(...); // (optional)
+		support.addParser(RegionParserFactory.createJavaParser(new PogoPR(),false), ".java", ".cpp", ".h");
+		support.addParser(RegionParserFactory.createXmlParser(), ".xml", ".xsd");
+		support.addParser(createPythonParser(), "py");
+		BidiJavaIoFileSystemAccess fsa = new BidiJavaIoFileSystemAccess(support);
+		// fsa.setFilter(...); // (optional)
 	  return fsa;
 	}
 	
