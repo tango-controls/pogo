@@ -111,7 +111,7 @@ class DeviceInclude implements IGenerator {
 			public:
 				«FOR Attribute attr : cls.attributes»
 					«IF attr.status.concreteHere.equals("true") &&
-						 attr.rwType.contains("READ")»
+						 attr.rwType.isRead»
 							«attr.dataType.cppType»	*attr_«attr.name»_read;
 					«ENDIF»
 				«ENDFOR»
@@ -194,23 +194,23 @@ class DeviceInclude implements IGenerator {
 		«IF cls.attributes.size()>0»
 		//	Attribute methods
 		public:
-			/**
-			 *	Method      : «cls.name»::read_attr_hardware()
-			 *	Description : Hardware acquisition for attributes.
-			 */
+			«cls.simpleMethodHeader("read_attr_hardware", "Hardware acquisition for attributes.")»
 			virtual void read_attr_hardware(vector<long> &attr_list);
 
 			«FOR Attribute attr : cls.attributes»
 				«attr.attributePrototypeMethodHeader»
-				«IF attr.rwType.contains("READ")»
+				«IF attr.rwType.isRead»
 					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
 				«ENDIF»
-				«IF attr.rwType.contains("WRITE")»
+				«IF attr.rwType.isWrite»
 					virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
 				«ENDIF»
 				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 			«ENDFOR»
 		«ENDIF»
+		
+		«cls.simpleMethodHeader("add_dynamic_attributes", "Add dynamic attributes if any.")»
+		void add_dynamic_attributes();
 
 
 

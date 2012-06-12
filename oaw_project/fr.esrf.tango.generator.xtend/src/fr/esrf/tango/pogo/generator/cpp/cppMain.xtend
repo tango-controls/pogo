@@ -21,6 +21,8 @@ class cppMain implements IGenerator {
 	@Inject
 	extension DeviceClassSource
 	@Inject
+	extension DeviceStateMachine
+	@Inject
 	extension ClassFactory
 	@Inject
 	extension Main
@@ -32,6 +34,7 @@ class cppMain implements IGenerator {
 				fsa.generateFile(cls.deviceSourceFileName,       cls.generateDeviceSourceFile)
 				fsa.generateFile(cls.deviceClassIncludeFileName, cls.generateDeviceClassIncludeFile)
 				fsa.generateFile(cls.deviceClassSourceFileName,  cls.generateDeviceClassSourceFile)
+				fsa.generateFile(cls.stateMachineFileName,       cls.generateStateMachineSourceFile)
 				fsa.generateFile("ClassFactory.cpp",             cls.generateClassFactoryFile)
 				fsa.generateFile("main.cpp",                     cls.generateMainFile)
 			}

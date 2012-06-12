@@ -104,9 +104,11 @@ class Properties {
 			«cls.protectedAreaClass("get_class_property_after", "Check class property data members init", true)»
 
 			//	Put the value (depends on OS) in cl_prop to be set as default value for device property..
-			for (unsigned int i=0 ; i<cl_prop.size() ; i++)
-				if (cl_prop[i].name == "LogFileHome")
-					cl_prop[i]  <<  logFileHome;
+			«FOR Property property : cls.classProperties»
+				for (unsigned int i=0 ; i<cl_prop.size() ; i++)
+					if (cl_prop[i].name == "«property.name»")
+						cl_prop[i]  <<  «property.name.dataMemberName»;
+			«ENDFOR»
 		}
 	'''
 
@@ -152,12 +154,14 @@ class Properties {
 		«ENDIF»
 		
 		«cls.setDefaultPropertiesForWizard»
+
+		«cls.writeClassProperties»
 	'''
 
 	//==========================================================
 	// Define class property wizzard related for DeviceClass.cpp
 	//==========================================================
-	def setDefaultPropertyForWizard(Property property)  '''
+	def setDefaultPropertyForWizard(Property property, String target)  '''
 		prop_name = "«property.name»";
 		prop_desc = "«property.description.oneLineString»";
 		prop_def  = "«property.defaultPropValue.list2String»";
@@ -170,12 +174,34 @@ class Properties {
 			Tango::DbDatum	data(prop_name);
 			data << vect_data ;
 			cl_def_prop.push_back(data);
-			add_wiz_class_prop(prop_name, prop_desc,  prop_def);
+			add_wiz_«target»_prop(prop_name, prop_desc,  prop_def);
 		}
 		else
-			add_wiz_class_prop(prop_name, prop_desc);
+			add_wiz_«target»_prop(prop_name, prop_desc);
 	'''
 	
+	//==========================================================
+	//	Define write_class_proerty method
+	//==========================================================
+	def writeClassProperties(PogoDeviceClass cls)  '''
+		«cls.simpleMethodHeaderClass("write_class_proerty", "Set class description fields as property in database")»
+		void «cls.name»Class::write_class_property()
+		{
+			//	First time, check if database used
+			if (Tango::Util::_UseDb == false)
+				return;
+		
+			Tango::DbData	data;
+			string	classname = get_name();
+			string	header;
+			string::size_type	start, end;
+
+		}
+	'''
+
+
+	//==========================================================
+	//	Define set default values for wizard method
 	//==========================================================
 	def setDefaultPropertiesForWizard(PogoDeviceClass cls)  '''
 		//--------------------------------------------------------
@@ -196,12 +222,12 @@ class Properties {
 
 			//	Set Default Class Properties
 			«FOR Property property : cls.classProperties»
-				«property.setDefaultPropertyForWizard»
+				«property.setDefaultPropertyForWizard("class")»
 			«ENDFOR»
 
 			//	Set Default device Properties
 			«FOR Property property : cls.deviceProperties»
-				«property.setDefaultPropertyForWizard»
+				«property.setDefaultPropertyForWizard("dev")»
 			«ENDFOR»
 		}
 	'''

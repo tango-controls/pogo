@@ -164,6 +164,15 @@ class DeviceSource implements IGenerator {
 				«cls.writeAttributeMethod(attribute)»
 			«ENDIF»
 		«ENDFOR»
+		
+		«cls.simpleMethodHeader("add_dynamic_attributes", "Create the dynamic attributes if any\nfor specified device.")»
+		void «cls.name»::add_dynamic_attributes()
+		{
+
+			«cls.protectedArea("add_dynamic_attributes", "Add your own code to create and add dynamic attributes if any", true)»
+
+		}
+		
 	'''
 		
 	//======================================================
