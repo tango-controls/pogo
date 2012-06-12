@@ -8,7 +8,6 @@ import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
-import fr.esrf.tango.pogo.pogoDsl.Property
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 
@@ -37,12 +36,27 @@ class DeviceClassSource implements IGenerator {
 	//======================================================
 	def generateDeviceClassSourceFile (PogoDeviceClass cls) '''
 		«cls.fileHeader»
-		
+
 		namespace «cls.name»_ns
 		{
 		«cls.constructors»
 		«cls.commandRelatedMethods»
+
+		//===================================================================
+		//	Properties management
+		//===================================================================
+
 		«cls.propertyRelatedMethod»
+
+		//===================================================================
+		//	Factory methods
+		//===================================================================
+		«cls.deviceFactory»
+		«cls.attributeFactory»
+		«cls.commandFactory»
+		«cls.dynamicAttributeMethods»
+
+		«cls.protectedAreaClass("Additional Methods")»
 		} //	namespace
 	'''
 
@@ -95,7 +109,152 @@ class DeviceClassSource implements IGenerator {
 
 	
 	//==========================================================
-	// Define singleto constructor, get_intance and init methods
+	// Define attribute factory
+	//==========================================================
+	def attributeFactory(PogoDeviceClass cls) '''
+		«cls.simpleMethodHeaderClass("attribute_factory", "Create the attribute object(s)\nand store them in the attribute list")»
+		void «cls.name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
+		{
+			«cls.protectedArea("attribute_factory_before", "Add your own code", true)»
+		
+			«FOR Attribute attribute : cls.attributes»
+				«attribute.attributeFactory»
+			«ENDFOR»
+		}
+	'''
+	//==========================================================
+	// Define command factory
+	//==========================================================
+	def commandFactory(PogoDeviceClass cls) '''
+		«cls.simpleMethodHeaderClass("command_factory", "Create the command object(s)\nand store them in the command list")»
+		void «cls.name»Class::command_factory()
+		{
+			«cls.protectedArea("command_factory_before", "Add your own code", true)»
+			«FOR Command command : cls.commands»
+				«command.commandFactory»
+			«ENDFOR»
+			«cls.protectedArea("command_factory_after", "Add your own code", true)»
+		}
+	'''
+
+	//==========================================================
+	// Define device factory
+	//==========================================================
+	def deviceFactory(PogoDeviceClass cls) '''
+
+		«cls.simpleMethodHeaderClass("device_factory","Create the device object(s)\nand store them in the device list")»
+		void «cls.name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
+		{
+			«cls.protectedArea("device_factory_before", "Add your own code", true)»
+		
+			//	Create devices and add it into the device list
+			for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
+			{
+				cout4 << "Device name : " << (*devlist_ptr)[i].in() << endl;
+				device_list.push_back(new «cls.name»(this, (*devlist_ptr)[i]));							 
+			}
+		
+			//	Manage dynamic attributes if any
+			erase_dynamic_attributes(devlist_ptr, get_class_attr()->get_attr_list());
+		
+			//	Export devices to the outside world
+			for (unsigned long i=1 ; i<=devlist_ptr->length() ; i++)
+			{
+				//	Add dynamic attributes if any
+				«cls.name» *dev = static_cast<«cls.name» *>(device_list[device_list.size()-i]);
+				dev->add_dynamic_attributes();
+		
+				//	Check before if database used.
+				if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))
+					export_device(dev);
+				else
+					export_device(dev, dev->get_name().c_str());
+			}
+		
+			«cls.protectedArea("device_factory_after", "Add your own code", true)»
+		}
+	'''
+
+
+
+	//==========================================================
+	// Define dynamic attribuites relatedMthods
+	//==========================================================
+	def dynamicAttributeMethods(PogoDeviceClass cls) '''
+
+
+		//===================================================================
+		//	Dynamic attributes related methods
+		//===================================================================
+		
+		//--------------------------------------------------------
+		/**
+		 * method : 		«cls.name»Class::create_static_attribute_list
+		 * description : 	Create the a list of static attributes
+		 *
+		 * @param	att_list	the ceated attribute list 
+		 */
+		//--------------------------------------------------------
+		void «cls.name»Class::create_static_attribute_list(vector<Tango::Attr *> &att_list)
+		{
+			for (unsigned long i=0 ; i<att_list.size() ; i++)
+			{
+				string att_name(att_list[i]->get_name());
+				transform(att_name.begin(), att_name.end(), att_name.begin(), ::tolower);
+				defaultAttList.push_back(att_name);
+			}
+		
+			cout2 << defaultAttList.size() << " attributes in default list" << endl;
+		
+			«cls.protectedAreaClass("create_static_att_list")»
+		}
+		
+		
+		//--------------------------------------------------------
+		/**
+		 * method : 		«cls.name»Class::erase_dynamic_attributes
+		 * description : 	delete the dynamic attributes if any.
+		 *
+		 * @param	devlist_ptr	the device list pointer
+		 * @param	list of all attributes
+		 */
+		//--------------------------------------------------------
+		void «cls.name»Class::erase_dynamic_attributes(const Tango::DevVarStringArray *devlist_ptr, vector<Tango::Attr *> &att_list)
+		{
+			Tango::Util *tg = Tango::Util::instance();
+		
+			for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
+			{	
+				Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((string)(*devlist_ptr)[i]).c_str());
+				«cls.name» *dev = static_cast<«cls.name» *> (dev_impl);
+				
+				vector<Tango::Attribute *> &dev_att_list = dev->get_device_attr()->get_attribute_list();
+				vector<Tango::Attribute *>::iterator ite_att;
+				for (ite_att=dev_att_list.begin() ; ite_att != dev_att_list.end() ; ++ite_att)
+				{
+					string att_name((*ite_att)->get_name_lower());
+					if ((att_name == "state") || (att_name == "status"))
+						continue;
+					vector<string>::iterator ite_str = find(defaultAttList.begin(), defaultAttList.end(), att_name);
+					if (ite_str == defaultAttList.end())
+					{
+						cout2 << att_name << " is a UNWANTED dynamic attribute for device " << (*devlist_ptr)[i] << endl;
+						Tango::Attribute &att = dev->get_device_attr()->get_attr_by_name(att_name.c_str());
+						dev->remove_attribute(att_list[att.get_attr_idx()],true);
+						--ite_att;
+					}
+				}
+			}
+			/*----- PROTECTED REGION ID(«cls.name»::Class::erase_dynamic_attributes) ENABLED START -----*/
+		
+			/*----- PROTECTED REGION END -----*/	//	«cls.name»::Class::erase_dynamic_attributes
+		
+		}
+	'''
+
+
+	//==========================================================
+	// Define singleton constructor, get_intance and init methods
 	//==========================================================
 	def constructors(PogoDeviceClass cls) '''
 		//===================================================================
@@ -118,7 +277,7 @@ class DeviceClassSource implements IGenerator {
 			get_class_property();
 			write_class_property();
 		
-			«cls.protectedAreaClass("constructor", "", false)»
+			«cls.protectedAreaClass("constructor")»
 		
 			cout2 << "Leaving «cls.name»Class constructor" << endl;
 		}
@@ -131,7 +290,7 @@ class DeviceClassSource implements IGenerator {
 		//--------------------------------------------------------
 		«cls.name»Class::~«cls.name»Class()
 		{
-			«cls.protectedAreaClass("destructor", "", false)»
+			«cls.protectedAreaClass("destructor")»
 
 			_instance = NULL;
 		}

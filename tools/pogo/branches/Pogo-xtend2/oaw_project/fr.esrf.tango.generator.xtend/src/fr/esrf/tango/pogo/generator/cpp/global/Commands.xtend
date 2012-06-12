@@ -11,6 +11,7 @@ import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 
 //======================================================
 //	Command utilities
@@ -18,10 +19,10 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 class Commands {
 	@Inject
 	extension TypeDefinitions
-
 	@Inject
 	extension ProtectedArea
-
+	@Inject
+	extension StringUtils
 
 
 
@@ -200,39 +201,20 @@ class Commands {
 
 	//======================================================
 	
-	
-	/**
-	 * dserverClass.cpp command execute method
-	 */
-	def executeCmdInsert(PogoDeviceClass cls, Command cmd) {
-	//	Depends on if argout and/or argin type is void
-		if (cmd.argin.type.cppType()=="void" && cmd.argout.type.cppType()=="void")
-			"((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"());"
-			+"\n	return new CORBA::Any();"
 
-		else {
-			if (cmd.argin.type.cppType()!="void" && cmd.argout.type.cppType()=="void")
-				"((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"(argin));"+
-				"\n	return new CORBA::Any();"
-
-			else {
-				if (cmd.argin.type.cppType()=="void" && cmd.argout.type.cppType()!="void")
-					"return insert((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"());"
-				else //	cmd.argin.type.cppType()!="void" && cmd.argout.type.cppType()!="void"
-					"return insert((static_cast<"+cls.name+" *>(device))->"+cmd.execMethod+"(argin));"
-					
-			}
-		
-		}
-	}
-
-	def declareArgumentWithPointer(Argument arg) {
-		//	Check if pointer needed
-		if (arg.type.cppType().toString().endsWith("Array"))
-			arg.type.cppType().toString() + " *"
-		else arg.type.cppType().toString() + " ";
-	
-	}
-
-
+	//======================================================
+	//	Define the command factory
+	//======================================================
+	def commandFactory(Command command) '''
+		«IF command.status.concreteHere.isTrue &&
+			command.name.equals("State")==false && command.name.equals("Status")==false»
+				«command.name»Class	*p«command.name»Cmd =
+					new «command.name»Class("«command.name»",
+						«command.argin.type.cppTypeEnum», «command.argout.type.cppTypeEnum»,
+						"«command.argin.description.oneLineString»",
+						"«command.argout.description.oneLineString»",
+						Tango::«command.displayLevel»);
+				command_list.push_back(p«command.name»Cmd);
+		«ENDIF»
+	'''
 }
