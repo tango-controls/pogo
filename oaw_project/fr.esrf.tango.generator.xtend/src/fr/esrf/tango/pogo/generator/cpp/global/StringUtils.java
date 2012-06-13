@@ -1,11 +1,16 @@
 package fr.esrf.tango.pogo.generator.cpp.global;
 
 import org.eclipse.emf.common.util.EList;
+import java.util.ArrayList;
 
+import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.State;
+
 
 public class StringUtils {
 
+	
 	//===========================================================
 	/*
 	 * Define the DeviceImpl used to generate
@@ -20,7 +25,7 @@ public class StringUtils {
 	 * convert string to boolean
 	 */
 	//===========================================================
-	public boolean isTrue(String str) {
+	public static boolean isTrue(String str) {
 		return (str!=null && str.equals("true"));
 	}
 	//===========================================================
@@ -28,7 +33,7 @@ public class StringUtils {
 	 * returns true if has been set
 	 */
 	//===========================================================
-	public boolean isSet(String str) {
+	public static boolean isSet(String str) {
 		return (str!=null && !str.isEmpty());
 	}
 	//===========================================================
@@ -98,6 +103,18 @@ public class StringUtils {
 	}
 	
 	
+	//======================================================
+	//	Attribute utilities
+	//======================================================
+	public static String attTypeDimentions(Attribute attr) {
+		if (attr.getAttType().equals("Spectrum"))
+			return " max = " + attr.getMaxX();
+		else
+		if (attr.getAttType().equals("Image"))
+			return  " max = " + attr.getMaxX() + " x " + attr.getMaxY();
+		else
+			return "";
+	}
 	//===========================================================
 	//===========================================================
 	public boolean isRead(String str) {
@@ -108,6 +125,10 @@ public class StringUtils {
 		return isSet(str) && str.contains("WRITE");
 	}
 	//===========================================================
+	
+	
+	
+	
 	//===========================================================
 	/**
 	 * build the states table
@@ -115,17 +136,96 @@ public class StringUtils {
 	//===========================================================
 	public static String statesTable(EList<State> states) {
 
-		//	The longest state name is 7 chars -> '|' on 10
-		StringBuffer	sb = new StringBuffer("//  States   |  Description \n");
-		sb.append("//--------------------------------------\n");
+		//	Build a list of state columns to build the table
+		ArrayList<String[]>	list = new ArrayList<String[]>();
+		list.add(new String[] { "================================================================" });
+		list.add(new String[] { "States", "Description" });
+		list.add(new String[] { "================================================================" });
 		for (State state : states) {
-			sb.append("// ").append(state.getName());
-			for (int i=state.getName().length() ; i<10 ; i++) {
-				sb.append(' ');
-			}
-			sb.append("| ").append(state.getDescription()).append('\n');
+			list.add(new String[] { state.getName(), state.getDescription() });
+		}
+		return buildTable(list);
+	}
+	//===========================================================
+	/**
+	 * build the commands table
+	 */
+	//===========================================================
+	public static String commandsTable(EList<Command> commands) {
+
+		//	Build a list of command columns to build the table
+		ArrayList<String[]>	list = new ArrayList<String[]>();
+		list.add(new String[] { "================================================================" });
+		list.add(new String[] { "  The following table gives the correspondence" });
+		list.add(new String[] { "  between command and method names." });
+		list.add(new String[] { "" });
+		list.add(new String[] { "Command name", "Method name" });
+		list.add(new String[] { "================================================================" });
+		for (Command command : commands) {
+			list.add(new String[] { command.getName(), command.getExecMethod() });
+		}
+		list.add(new String[] { "================================================================" });
+		return buildTable(list);
+	}
+	/**
+	 * build the commands table
+	 */
+	//===========================================================
+	public  String attributesTable(EList<Attribute> attributes) {
+
+		String title = "  Attributes managed ";
+		if (attributes.size()>1)
+			title += "are:";
+		else
+			title += "is:";
+		//	Build a list of command columns to build the table
+		ArrayList<String[]>	list = new ArrayList<String[]>();
+		list.add(new String[] { "================================================================" });
+		list.add(new String[] { title });
+		list.add(new String[] { "================================================================" });
+		for (Attribute attribute : attributes) {
+			//	Build description
+			String	desc = TypeDefinitions.cppType(attribute.getDataType()) + "	" +
+						attribute.getAttType();
+			if (attribute.getAttType().equals("Scalar")==false)
+				desc += "  (" + attTypeDimentions(attribute) + ")";
+
+			list.add(new String[] { attribute.getName(), desc });
+		}
+		list.add(new String[] { "================================================================" });
+		return buildTable(list);
+	}
+	//===========================================================
+	//===========================================================
+	private static String buildTable(ArrayList<String[]> list) {
+		StringBuffer	sb = new StringBuffer();
+		//	Get the longest first element
+		int	length = 0;
+		for (String[] array : list) {
+			if (array.length>1)
+				if (array[0].length()>length)
+					length = array[0].length();
 		}
 		
+		for (String[] array : list) {
+			if (array.length>1) {
+				sb.append("//  ").append(buildTab(array[0], length)).append("  |  ").append(array[1]);
+			}
+			else
+				sb.append("//").append(array[0]);
+			sb.append('\n');
+		}
 		return sb.toString();
 	}
+
+	//===========================================================
+	private static String buildTab(String str, int nbChar) {
+		StringBuffer	sb = new StringBuffer(str);
+		for (int i=str.length() ; i<nbChar ; i++) {
+			sb.append(' ');
+		}
+		return sb.toString();
+	}
+	//===========================================================
+
 }

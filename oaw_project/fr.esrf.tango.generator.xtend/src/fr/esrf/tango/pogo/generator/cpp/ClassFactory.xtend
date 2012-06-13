@@ -14,10 +14,8 @@ import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 // Define ClassFactory.cpp file to be generated
 //======================================================
 class ClassFactory implements IGenerator {
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension ProtectedArea
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {

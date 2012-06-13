@@ -18,18 +18,12 @@ import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 // Define device source file to be generated
 //======================================================
 class DeviceSource implements IGenerator {
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension StringUtils
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Properties
+	@Inject	extension ProtectedArea
+	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Properties
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
@@ -49,8 +43,9 @@ class DeviceSource implements IGenerator {
 		 *    «cls.description.description.comments("*    ")»
 		 */
 		
-		«cls.description.comments.commandsTable»
-		«cls.attributeTable»
+		«cls.commands.commandsTable»
+
+		«cls.attributes.attributesTable»
 		
 		namespace «cls.name»_ns
 		{
@@ -186,18 +181,6 @@ class DeviceSource implements IGenerator {
 				//--------------------------------------------------------
 				«cls.commandExecutionMethod(command)»
 			«ENDIF»
-		«ENDFOR»
-	'''
-		
-	//======================================================
-	// Define managed attribute table
-	//======================================================
-	def attributeTable(PogoDeviceClass cls) '''
-		
-		//	Attributes managed are:
-		//-------------------------
-		«FOR Attribute attr : cls.attributes»
-			//  «attr.name»
 		«ENDFOR»
 	'''
 }

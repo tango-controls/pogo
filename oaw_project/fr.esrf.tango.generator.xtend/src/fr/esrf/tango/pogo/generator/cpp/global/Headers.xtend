@@ -2,17 +2,13 @@ package fr.esrf.tango.pogo.generator.cpp.global
 
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
 
 class Headers {
-	@Inject
-	extension TypeDefinitions
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	def cvsEscaped (String s)       { "$"   + s + "  $"   }
 	def cvsEscapedForVar (String s) { "\"$" + s + "  $\"" }
