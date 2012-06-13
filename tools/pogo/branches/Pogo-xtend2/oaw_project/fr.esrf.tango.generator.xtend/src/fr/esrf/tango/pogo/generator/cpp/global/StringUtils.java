@@ -3,8 +3,10 @@ package fr.esrf.tango.pogo.generator.cpp.global;
 import org.eclipse.emf.common.util.EList;
 import java.util.ArrayList;
 
+import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
+import fr.esrf.tango.pogo.pogoDsl.Inheritance;
 import fr.esrf.tango.pogo.pogoDsl.State;
 
 
@@ -231,5 +233,34 @@ public class StringUtils {
 		return sb.toString();
 	}
 	//===========================================================
+
+	//===========================================================
+	//	Build a string with specified strings for Makefile
+	//===========================================================
+	private String buildFileListForMakefile(ArrayList<String> list, String startTag, String endTag) {
+		StringBuffer	sb = new StringBuffer();
+		for (int i=0 ; i<list.size();i++) {
+			sb.append(startTag).append(list.get(i)).append(endTag);
+			if (i<list.size()-1)
+				sb.append(" \\").append('\n');
+		}
+		return sb.toString();
+	}
+	//===========================================================
+	public String buildAdditionalFileListForMakefile(EList<AdditionalFile> list, String startTag, String endTag) {
+		ArrayList<String>	files = new ArrayList<String>();
+		for (AdditionalFile file : list)
+			files.add(file.getName());
+		return buildFileListForMakefile(files, startTag, endTag);
+	}
+	//===========================================================
+	public String buildInheritanceFileListForMakefile(EList<Inheritance> list, String startTag, String endTag) {
+		ArrayList<String>	files = new ArrayList<String>();
+		for (Inheritance inheritance : list)
+			files.add(inheritance.getClassname());
+		return buildFileListForMakefile(files, startTag, endTag);
+	}
+
+
 
 }
