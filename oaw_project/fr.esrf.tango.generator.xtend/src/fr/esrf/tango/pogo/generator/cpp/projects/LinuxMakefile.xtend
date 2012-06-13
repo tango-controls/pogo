@@ -6,12 +6,18 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
+import fr.esrf.tango.pogo.pogoDsl.Inheritance
+import com.google.inject.Inject
 
 
 //======================================================
 // Define ClassFactory.cpp file to be generated
 //======================================================
 class LinuxMakefile implements IGenerator {
+	
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
@@ -83,7 +89,8 @@ class LinuxMakefile implements IGenerator {
 		#	- ../bin for others
 		#
 		OUTPUT_DIR = ./bin/$(BIN_DIR)
-		
+
+		«cls.addInheritanceDefinitions»
 		
 		
 		#=============================================================================
@@ -92,7 +99,7 @@ class LinuxMakefile implements IGenerator {
 		#   - '-I ../include' and '-I .' are automatically appended in all cases
 		#
 		#
-		INC_DIR_USER= -I . 
+		INC_DIR_USER= -I . «cls.addInheritancIncludeFiles»
 		
 		
 		#=============================================================================
@@ -161,9 +168,7 @@ class LinuxMakefile implements IGenerator {
 		            $(OBJDIR)/main.o \
 		            $(ADDITIONAL_OBJS) 
 		
-		
-		#------------  Object files for additional files  ------------
-		ADDITIONAL_OBJS = 
+		«cls.addAdditionalObjectFiles»
 		
 		#=============================================================================
 		#	include common targets
@@ -174,4 +179,70 @@ class LinuxMakefile implements IGenerator {
 		#PROTECTED REGION END#
 	'''
 
+	//=============================================================================
+	// Add Additional object files if any (Utils, threads, ...)
+	//=============================================================================
+ 	def addAdditionalObjectFiles(PogoDeviceClass cls) '''
+ 		«IF cls.additionalFiles.size>0»
+			#------------ Object files for additional files ------------
+			ADDITIONAL_OBJS = \
+				«cls.additionalFiles.buildAdditionalFileListForMakefile("		$(OBJDIR)/", ".o")»
+		«ENDIF»
+	'''
+
+
+
+	//=============================================================================
+ 	// Define the definition for inherited classes
+ 	//=============================================================================
+	def addInheritanceDefinitions(PogoDeviceClass cls) '''
+		«IF cls.hasInheritanceClass»
+			#=============================================================================
+			# Following are names, pathes and files of the inherited classes used by project
+			#
+			«FOR Inheritance inheritance : cls.description.inheritances»
+				«IF inheritance.isInheritanceClass»
+					#------------ Inheritance from «inheritance.classname» class ------------
+					«inheritance.classname.toUpperCase()»_CLASS = «inheritance.classname»
+					«inheritance.classname.toUpperCase()»_HOME = «inheritance.sourcePath»
+				«ENDIF»
+			«ENDFOR»
+		«ENDIF»
+	'''
+
+	//=============================================================================
+ 	// Add inheritance include files if any
+ 	//=============================================================================
+ 	def addInheritancIncludeFiles(PogoDeviceClass cls) '''
+	 	«FOR Inheritance inheritance : cls.description.inheritances»
+	 		«IF inheritance.isInheritanceClass»\
+				-I $(«inheritance.classname.toUpperCase()»_HOME)
+			«ENDIF»
+ 		«ENDFOR»
+ 	'''
+
+
+	//=============================================================================
+	//	Add inheritance object files if any
+	//=============================================================================
+	def addInheritancObjectFiles(PogoDeviceClass cls) '''
+		«IF cls.hasInheritanceClass»
+			«FOR Inheritance inheritance : cls.description.inheritances»
+				«IF inheritance.isInheritanceClass» \
+		            $(SVC_«inheritance.classname.toUpperCase()»_OBJ)
+		        «ENDIF»
+			«ENDFOR»
+		
+			«FOR Inheritance inheritance : cls.description.inheritances»
+				«IF inheritance.isInheritanceClass»
+
+					#------------  Object files for «inheritance.classname» class  ------------
+					SVC_«inheritance.classname.toUpperCase()»_OBJ = \
+							$(OBJDIR)/«inheritance.classname».o \
+							$(OBJDIR)/«inheritance.classname»Class.o \
+							$(OBJDIR)/«inheritance.classname»StateMachine.o
+				«ENDIF»
+			«ENDFOR»
+		«ENDIF»
+	'''
 }
