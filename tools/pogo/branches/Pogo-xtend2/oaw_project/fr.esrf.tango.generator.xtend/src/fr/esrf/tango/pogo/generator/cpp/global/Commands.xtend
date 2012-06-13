@@ -1,17 +1,12 @@
 package fr.esrf.tango.pogo.generator.cpp.global
 
-import fr.esrf.tango.pogo.pogoDsl.Argument
 import fr.esrf.tango.pogo.pogoDsl.Type
-import fr.esrf.tango.pogo.pogoDsl.Attribute
-import fr.esrf.tango.pogo.pogoDsl.ClassDescription
 import fr.esrf.tango.pogo.pogoDsl.Command
-import fr.esrf.tango.pogo.pogoDsl.Inheritance
-import fr.esrf.tango.pogo.pogoDsl.FireEvents
-import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
 
 //======================================================
 //	Command utilities
@@ -23,7 +18,6 @@ class Commands {
 	extension ProtectedArea
 	@Inject
 	extension StringUtils
-
 
 
 	//======================================================
@@ -217,4 +211,5 @@ class Commands {
 				command_list.push_back(p«command.name»Cmd);
 		«ENDIF»
 	'''
+
 }

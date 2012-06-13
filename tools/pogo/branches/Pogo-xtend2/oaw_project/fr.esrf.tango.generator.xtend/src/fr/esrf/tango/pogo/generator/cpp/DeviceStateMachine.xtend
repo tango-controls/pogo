@@ -18,12 +18,9 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 // Define Device state machine .cpp file to be generated
 //======================================================
 class DeviceStateMachine implements IGenerator {
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension StringUtils
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension ProtectedArea
+	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {

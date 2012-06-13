@@ -10,22 +10,14 @@ import org.eclipse.emf.ecore.resource.Resource
 
 class cppMain implements IGenerator {
 
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject
-	extension DeviceInclude
-	@Inject
-	extension DeviceSource
-	@Inject
-	extension DeviceClassInclude
-	@Inject
-	extension DeviceClassSource
-	@Inject
-	extension DeviceStateMachine
-	@Inject
-	extension ClassFactory
-	@Inject
-	extension Main
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension DeviceInclude
+	@Inject	extension DeviceSource
+	@Inject	extension DeviceClassInclude
+	@Inject	extension DeviceClassSource
+	@Inject	extension DeviceStateMachine
+	@Inject	extension ClassFactory
+	@Inject	extension Main
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {

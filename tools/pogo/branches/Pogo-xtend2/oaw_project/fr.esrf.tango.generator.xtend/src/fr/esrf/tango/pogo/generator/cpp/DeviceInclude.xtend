@@ -13,24 +13,19 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
 
 
 //======================================================
 //	Define device include file to be generated
 //======================================================
 class DeviceInclude implements IGenerator {
-	@Inject
-	extension StringUtils
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
-	@Inject
-	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
+	@Inject	extension StringUtils
+	@Inject	extension ProtectedArea
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {

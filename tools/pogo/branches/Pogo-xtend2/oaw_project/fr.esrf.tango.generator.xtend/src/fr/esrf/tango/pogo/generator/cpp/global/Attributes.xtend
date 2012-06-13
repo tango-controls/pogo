@@ -5,29 +5,17 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
 
 //======================================================
 //	Attribute utilities
 //======================================================
 class Attributes {
-	@Inject
-	extension TypeDefinitions
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension StringUtils
+	@Inject	extension TypeDefinitions
+	@Inject	extension ProtectedArea
+	@Inject	extension StringUtils
 
 
-	//======================================================
-	//	Attribute utilities
-	//======================================================
-	def attTypeDimentions(Attribute attr) {
-		switch (attr.attType) {
-			case "Spectrum": "  max = " + attr.maxX
-			case "Image":    "  max = " + attr.maxX + " x " + attr.maxY
-			default: null
-		}
-	}
 	//======================================================
 	//	General methods
 	//======================================================
