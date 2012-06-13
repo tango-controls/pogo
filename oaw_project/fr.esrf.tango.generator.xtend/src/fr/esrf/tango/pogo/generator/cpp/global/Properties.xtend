@@ -11,12 +11,9 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.
 //	Attribute utilities
 //======================================================
 class Properties {
-	@Inject 
-	extension StringUtils
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension Headers
+	@Inject extension StringUtils
+	@Inject	extension ProtectedArea
+	@Inject	extension Headers
 
 
 	//======================================================

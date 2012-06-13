@@ -162,11 +162,15 @@ public class StringUtils {
 		list.add(new String[] { "Command name", "Method name" });
 		list.add(new String[] { "================================================================" });
 		for (Command command : commands) {
-			list.add(new String[] { command.getName(), command.getExecMethod() });
+			if (isTrue(command.getStatus().getConcreteHere()))
+				list.add(new String[] { command.getName(), command.getExecMethod() });
+			else
+				list.add(new String[] { command.getName(), "Inherited (no method)" });
 		}
 		list.add(new String[] { "================================================================" });
 		return buildTable(list);
 	}
+	//===========================================================
 	/**
 	 * build the commands table
 	 */
