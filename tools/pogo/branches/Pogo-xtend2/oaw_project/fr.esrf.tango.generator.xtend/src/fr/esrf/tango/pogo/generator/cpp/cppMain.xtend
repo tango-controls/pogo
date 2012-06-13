@@ -6,6 +6,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
+import fr.esrf.tango.pogo.generator.cpp.projects.LinuxMakefile
 
 
 class cppMain implements IGenerator {
@@ -18,6 +19,8 @@ class cppMain implements IGenerator {
 	@Inject	extension DeviceStateMachine
 	@Inject	extension ClassFactory
 	@Inject	extension Main
+	
+	@Inject	extension LinuxMakefile
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
@@ -29,6 +32,10 @@ class cppMain implements IGenerator {
 				fsa.generateFile(cls.stateMachineFileName,       cls.generateStateMachineSourceFile)
 				fsa.generateFile("ClassFactory.cpp",             cls.generateClassFactoryFile)
 				fsa.generateFile("main.cpp",                     cls.generateMainFile)
+
+				if (cls.description.filestogenerate.contains("Makefile")) {
+					fsa.generateFile("Makefile",             cls.generateLinuxMakefile)
+				}
 			}
 		}
 	}

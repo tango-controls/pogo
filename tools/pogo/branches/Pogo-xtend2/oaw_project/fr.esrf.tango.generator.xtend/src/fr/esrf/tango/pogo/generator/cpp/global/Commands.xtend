@@ -12,12 +12,8 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.
 //	Command utilities
 //======================================================
 class Commands {
-	@Inject
-	extension TypeDefinitions
-	@Inject
-	extension ProtectedArea
-	@Inject
-	extension StringUtils
+	@Inject	extension ProtectedArea
+	@Inject	extension StringUtils
 
 
 	//======================================================
