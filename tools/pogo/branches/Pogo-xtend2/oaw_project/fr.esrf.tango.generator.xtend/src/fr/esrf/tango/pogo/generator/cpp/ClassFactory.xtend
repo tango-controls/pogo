@@ -18,9 +18,6 @@ class ClassFactory implements IGenerator {
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile("ClassFactory.cpp", cls.generateClassFactoryFile)
-		}
 	}
 
 

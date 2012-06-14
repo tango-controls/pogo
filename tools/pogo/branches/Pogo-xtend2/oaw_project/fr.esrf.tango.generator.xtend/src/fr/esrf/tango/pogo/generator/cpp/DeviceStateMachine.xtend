@@ -23,9 +23,6 @@ class DeviceStateMachine implements IGenerator {
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile(cls.stateMachineFileName, cls.generateStateMachineSourceFile)
-		}
 	}
 
 

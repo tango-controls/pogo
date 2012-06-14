@@ -204,6 +204,11 @@ class Properties {
 			«cls.description.description.string2Vector("str_desc")»
 			description << str_desc;
 			data.push_back(description);
+
+			//	put cvs or svn location
+			string	filename("«cls.name»");
+			filename += "Class.cpp";
+
 			// check for cvs information
 			string	src_path(CvsPath);
 			start = src_path.find("/");
