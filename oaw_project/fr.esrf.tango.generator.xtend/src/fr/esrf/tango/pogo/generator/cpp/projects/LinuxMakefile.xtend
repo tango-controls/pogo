@@ -12,7 +12,7 @@ import com.google.inject.Inject
 
 
 //======================================================
-// Define ClassFactory.cpp file to be generated
+// Define linux Makefile file to be generated
 //======================================================
 class LinuxMakefile implements IGenerator {
 	
@@ -20,14 +20,11 @@ class LinuxMakefile implements IGenerator {
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile("Makefile", cls.generateLinuxMakefile)
-		}
 	}
 
 
 	//======================================================
-	// Define ClassFactory.cpp file to be generated
+	// Define Linux Makefile code to be generated
 	//======================================================
 	def generateLinuxMakefile (PogoDeviceClass cls) '''
 		#PROTECTED REGION ID(«cls.name»::Makefile) ENABLED START#

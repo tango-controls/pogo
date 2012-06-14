@@ -23,14 +23,10 @@ class DeviceInclude implements IGenerator {
 	@Inject	extension StringUtils
 	@Inject	extension ProtectedArea
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile(cls.deviceIncludeFileName, cls.generateDeviceIncludeFile)
-		}
 	}
 
 	//======================================================

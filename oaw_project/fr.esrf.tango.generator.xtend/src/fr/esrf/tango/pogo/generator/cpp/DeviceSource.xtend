@@ -26,9 +26,6 @@ class DeviceSource implements IGenerator {
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Properties
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
-			fsa.generateFile(cls.deviceSourceFileName, cls.generateDeviceSourceFile)
-		}
 	}
 
 
