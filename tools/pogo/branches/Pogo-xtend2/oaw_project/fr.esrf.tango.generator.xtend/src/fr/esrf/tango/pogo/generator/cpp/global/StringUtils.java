@@ -52,13 +52,13 @@ public class StringUtils {
 	 */
 	//===========================================================
 	public String list2String(EList<String> list) {
-		String str = "";
+		StringBuffer sb = new StringBuffer();
 		for (int i=0 ; i<list.size(); i++) {
-			str += list.get(i);
+			sb.append(list.get(i));
 			if (i<list.size()-1)
-				str += "\\n"; 
+				sb.append("\\n"); 
 		}
-		return str;
+		return sb.toString();
 	}
 	//===========================================================
 	/*
@@ -76,6 +76,24 @@ public class StringUtils {
 			start = end +1;
 		}
 		sb.append(text.substring(start));
+		return sb.toString();
+	}
+	//===========================================================
+	/*
+	 * Convert a multi lines string to a multi push_back(line) 
+	 */
+	//===========================================================
+	public String string2Vector(String text, String vectorName) {
+		StringBuffer	sb = new StringBuffer();
+		int	start = 0;
+		int end;
+		while ((end=text.indexOf('\n', start))>0){
+			sb.append(vectorName).append(".push_back(\"");
+			sb.append(text.substring(start, end)).append("\");\n");		
+			start = end +1;
+		}
+		sb.append(vectorName).append(".push_back(\"");
+		sb.append(text.substring(start)).append("\");\n");		
 		return sb.toString();
 	}
 	//===========================================================

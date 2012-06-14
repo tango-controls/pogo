@@ -22,10 +22,10 @@ class Commands {
 	def commandExecutionMethodSignature(PogoDeviceClass cls, Command cmd, boolean declare) {
 		if (declare)
 			//	Method prototype
-			cmd.argout.type.argoutDeclaration +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration + ");"
+			cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration + ");"
 		else
 			//	method signature
-			cmd.argout.type.argoutDeclaration + cls.name +
+			cmd.argout.type.argoutDeclarationForSignature + cls.name +
 				"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +")"
 	}
 	
@@ -42,12 +42,26 @@ class Commands {
 	//======================================================
 	// Manage the argout declaration
 	//======================================================
-	def argoutDeclaration(Type type) {
+	def argoutDeclarationForSignature(Type type) {
 		if (type.cppType.equals("void"))
 			 "void "
 		else if (type.cppType.endsWith("Array"))
 			 type.cppType + " *"
 		else type.cppType + " "
+	}
+	//======================================================
+	//======================================================
+	def argoutDeclaration(Command command) {
+		if (command.name.equals("State") || command.name.equals("Status") ||
+			command.argout.type.cppType.equals("void") ) {
+				""
+		}
+		else {
+			if (command.argout.type.cppType.endsWith("Array"))
+				command.argout.type.cppType + " *argout;"
+			else
+				command.argout.type.cppType + " argout;"
+		}
 	}
 
 
@@ -67,6 +81,7 @@ class Commands {
 	def commandExecutionMethod(PogoDeviceClass cls, Command command) '''
 		«cls.commandExecutionMethodSignature(command, false)»
 		{
+			«command.argoutDeclaration»
 			DEBUG_STREAM << "MultiCellGauges::«command.name»()  - " << device_name << endl;
 			«cls.openProtectedArea(command.execMethod)»
 			
@@ -74,12 +89,8 @@ class Commands {
 				Tango::DevState	argout = Tango::UNKNOWN; // replace by your own algorithm
 			«ELSEIF command.name.equals("Status")»
 				string	status = "Device is OK";
-			«ELSE»
-				«IF command.argout.type.cppType.equals("void")==false»
-					«command.argout.type.argoutDeclaration»argout;
-					//	Add your own code
-				«ENDIF»
 			«ENDIF»
+			//	Add your own code
 			
 			«cls.closeProtectedArea(command.execMethod)»
 			«IF command.name.equals("State")»
@@ -147,6 +158,14 @@ class Commands {
 	//==============================================================
 	// Define command class execution method (for DeviceClass.cpp)
 	//==============================================================
+	def classExecuteMethodArgin(Command command) '''
+		«IF command.argin.type.cppType.equals("void")»
+			TANGO_UNUSED(const CORBA::Any &in_any)
+		«ELSE»
+			const CORBA::Any &in_any
+		«ENDIF»
+	'''
+	//==============================================================
 	def classExecuteMethod(PogoDeviceClass cls, Command command) '''
 		//--------------------------------------------------------
 		/**
@@ -159,7 +178,7 @@ class Commands {
 		 *	returns The command output data (packed in the Any object)
 		 */
 		//--------------------------------------------------------
-		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, TANGO_UNUSED(const CORBA::Any &in_any))
+		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, «command.classExecuteMethodArgin»)
 		{
 			cout2 << "«command.name»Class::execute(): arrived" << endl;
 			«command.extractArgin»

@@ -180,7 +180,7 @@ class Properties {
 	//	Define write_class_proerty method
 	//==========================================================
 	def writeClassProperties(PogoDeviceClass cls)  '''
-		«cls.simpleMethodHeaderClass("write_class_proerty", "Set class description fields as property in database")»
+		«cls.simpleMethodHeaderClass("write_class_property", "Set class description fields as property in database")»
 		void «cls.name»Class::write_class_property()
 		{
 			//	First time, check if database used
@@ -192,6 +192,121 @@ class Properties {
 			string	header;
 			string::size_type	start, end;
 
+			//	Put title
+			Tango::DbDatum	title("ProjectTitle");
+			string	str_title("«cls.description.title»");
+			title << str_title;
+			data.push_back(title);
+		
+			//	Put Description
+			Tango::DbDatum	description("Description");
+			vector<string>	str_desc;
+			«cls.description.description.string2Vector("str_desc")»
+			description << str_desc;
+			data.push_back(description);
+			// check for cvs information
+			string	src_path(CvsPath);
+			start = src_path.find("/");
+			if (start!=string::npos)
+			{
+				end   = src_path.find(filename);
+				if (end>start)
+				{
+					string	strloc = src_path.substr(start, end-start);
+					//	Check if specific repository
+					start = strloc.find("/cvsroot/");
+					if (start!=string::npos && start>0)
+					{
+						string	repository = strloc.substr(0, start);
+						if (repository.find("/segfs/")!=string::npos)
+							strloc = "ESRF:" + strloc.substr(start, strloc.length()-start);
+					}
+					Tango::DbDatum	cvs_loc("cvs_location");
+					cvs_loc << strloc;
+					data.push_back(cvs_loc);
+				}
+			}
+
+			// check for svn information
+			else
+			{
+				string	src_path(SvnPath);
+				start = src_path.find("://");
+				if (start!=string::npos)
+				{
+					end = src_path.find(filename);
+					if (end>start)
+					{
+						header = "$HeadURL: ";
+						start = header.length();
+						string	strloc = src_path.substr(start, (end-start));
+						
+						Tango::DbDatum	svn_loc("svn_location");
+						svn_loc << strloc;
+						data.push_back(svn_loc);
+					}
+				}
+			}
+		
+			//	Get CVS or SVN revision tag
+			
+			// CVS tag
+			string	tagname(TagName);
+			header = "$Name: ";
+			start = header.length();
+			string	endstr(" $");
+			
+			end   = tagname.find(endstr);
+			if (end!=string::npos && end>start)
+			{
+				string	strtag = tagname.substr(start, end-start);
+				Tango::DbDatum	cvs_tag("cvs_tag");
+				cvs_tag << strtag;
+				data.push_back(cvs_tag);
+			}
+			
+			// SVN tag
+			string	svnpath(SvnPath);
+			header = "$HeadURL: ";
+			start = header.length();
+			
+			end   = svnpath.find(endstr);
+			if (end!=string::npos && end>start)
+			{
+				string	strloc = svnpath.substr(start, end-start);
+				
+				string tagstr ("/tags/");
+				start = strloc.find(tagstr);
+				if ( start!=string::npos )
+				{
+					start = start + tagstr.length();
+					end   = strloc.find(filename);
+					string	strtag = strloc.substr(start, end-start-1);
+					
+					Tango::DbDatum	svn_tag("svn_tag");
+					svn_tag << strtag;
+					data.push_back(svn_tag);
+				}
+			}
+		
+			//	Get URL location
+			string	httpServ(HttpServer);
+			if (httpServ.length()>0)
+			{
+				Tango::DbDatum	db_doc_url("doc_url");
+				db_doc_url << httpServ;
+				data.push_back(db_doc_url);
+			}
+		
+			//  Put inheritance
+			Tango::DbDatum	inher_datum("InheritedFrom");
+			vector<string> inheritance;
+			inheritance.push_back("«DeviceImpl»");
+			inher_datum << inheritance;
+			data.push_back(inher_datum);
+		
+			//	Call database and and values
+			get_db_class()->put_property(data);
 		}
 	'''
 
@@ -200,15 +315,10 @@ class Properties {
 	//	Define set default values for wizard method
 	//==========================================================
 	def setDefaultPropertiesForWizard(PogoDeviceClass cls)  '''
-		//--------------------------------------------------------
-		/**
-		 *	Method      : «cls.name»::«cls.name»Class::set_default_property()
-		 *	Description : Set default property (class and device) for wizard.
-		 *	              For each property, add to wizard property name and description.
-		 *	              If default value has been set, add it to wizard property and
-		 *	              store it in a DbDatum.
-		 */
-		//--------------------------------------------------------
+		«cls.simpleMethodHeaderClass("set_default_property", "Set default property (class and device) for wizard.\n"+
+			"For each property, add to wizard property name and description.\n"+
+			"If default value has been set, add it to wizard property and\nstore it in a DbDatum."
+		)»
 		void «cls.name»Class::set_default_property()
 		{
 			string	prop_name;
