@@ -120,6 +120,14 @@ class Headers {
 	// RcsId for .cpp files
 	//======================================================
 	def rcsId(String filename) {
+		if (filename.endsWith("Class.cpp")) {
+			"static const char *RcsId      = " + "Id:".cvsEscapedForVar + ";\n"       +
+			"static const char *TagName    = " + "Name:".cvsEscapedForVar + ";\n"     +
+			"static const char *CvsPath    = " + "Source:".cvsEscapedForVar + ";\n"   +
+			"static const char *SvnPath    = " + "HeadURL:".cvsEscapedForVar + ";\n"  +
+			"static const char *HttpServer = \"http://www.esrf.eu/computing/cs/tango/tango_doc/ds_doc/\";\n";
+		}
+		else
 		if (filename.endsWith(".cpp"))
 			"static const char *RcsId = " + "Id:".cvsEscapedForVar + ";\n"
 		else

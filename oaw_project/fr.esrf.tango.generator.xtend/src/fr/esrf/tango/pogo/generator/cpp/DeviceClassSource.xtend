@@ -35,12 +35,15 @@ class DeviceClassSource implements IGenerator {
 		namespace «cls.name»_ns
 		{
 		«cls.constructors»
+
+		//===================================================================
+		//	Command execution method calls
+		//===================================================================
 		«cls.commandRelatedMethods»
 
 		//===================================================================
 		//	Properties management
 		//===================================================================
-
 		«cls.propertyRelatedMethod»
 
 		//===================================================================
@@ -110,11 +113,16 @@ class DeviceClassSource implements IGenerator {
 		«cls.simpleMethodHeaderClass("attribute_factory", "Create the attribute object(s)\nand store them in the attribute list")»
 		void «cls.name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 		{
-			«cls.protectedArea("attribute_factory_before", "Add your own code", true)»
+			«cls.protectedAreaClass("attribute_factory_before", "Add your own code", true)»
 		
 			«FOR Attribute attribute : cls.attributes»
 				«attribute.attributeFactory»
 			«ENDFOR»
+			
+			//	Create a list of static attributes
+			create_static_attribute_list(get_class_attr()->get_attr_list());
+
+			«cls.protectedAreaClass("attribute_factory_after", "Add your own code", true)»
 		}
 	'''
 	//==========================================================
@@ -124,11 +132,11 @@ class DeviceClassSource implements IGenerator {
 		«cls.simpleMethodHeaderClass("command_factory", "Create the command object(s)\nand store them in the command list")»
 		void «cls.name»Class::command_factory()
 		{
-			«cls.protectedArea("command_factory_before", "Add your own code", true)»
+			«cls.protectedAreaClass("command_factory_before", "Add your own code", true)»
 			«FOR Command command : cls.commands»
 				«command.commandFactory»
 			«ENDFOR»
-			«cls.protectedArea("command_factory_after", "Add your own code", true)»
+			«cls.protectedAreaClass("command_factory_after", "Add your own code", true)»
 		}
 	'''
 
@@ -140,7 +148,7 @@ class DeviceClassSource implements IGenerator {
 		«cls.simpleMethodHeaderClass("device_factory","Create the device object(s)\nand store them in the device list")»
 		void «cls.name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
 		{
-			«cls.protectedArea("device_factory_before", "Add your own code", true)»
+			«cls.protectedAreaClass("device_factory_before", "Add your own code", true)»
 		
 			//	Create devices and add it into the device list
 			for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
@@ -166,7 +174,7 @@ class DeviceClassSource implements IGenerator {
 					export_device(dev, dev->get_name().c_str());
 			}
 		
-			«cls.protectedArea("device_factory_after", "Add your own code", true)»
+			«cls.protectedAreaClass("device_factory_after", "Add your own code", true)»
 		}
 	'''
 
@@ -240,10 +248,7 @@ class DeviceClassSource implements IGenerator {
 					}
 				}
 			}
-			/*----- PROTECTED REGION ID(«cls.name»::Class::erase_dynamic_attributes) ENABLED START -----*/
-		
-			/*----- PROTECTED REGION END -----*/	//	«cls.name»::Class::erase_dynamic_attributes
-		
+			«cls.protectedAreaClass("erase_dynamic_attributes")»		
 		}
 	'''
 

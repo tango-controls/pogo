@@ -57,7 +57,7 @@ class DeviceStateMachine implements IGenerator {
 	// define the header file
 	//======================================================
 	def fileHeader (PogoDeviceClass cls) '''
-		«cls.openProtectedArea(cls.stateMachineFileName)»
+		«(cls.name+"StateMachine").openProtectedArea(".cpp")»
 		«cls.stateMachineFileHeader»
 		
 		#include <«cls.name».h>

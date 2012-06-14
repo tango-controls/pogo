@@ -62,7 +62,7 @@ class DeviceInclude implements IGenerator {
 		«cls.protectedArea("Additional Method prototypes", "Additional Method prototypes", true)»
 		};
 		
-		«cls.protectedArea("Additional Classes definitions", "Additional Classes definitions", true)»
+		«cls.protectedArea("Additional Classes Definitions", "Additional Classes Definitions", true)»
 
 		}	//	End of namespace
 		
@@ -204,8 +204,8 @@ class DeviceInclude implements IGenerator {
 			«ENDFOR»
 		«ENDIF»
 		
-		«cls.simpleMethodHeader("add_dynamic_attributes", "Add dynamic attributes if any.")»
-		void add_dynamic_attributes();
+			«cls.simpleMethodHeader("add_dynamic_attributes", "Add dynamic attributes if any.")»
+			void add_dynamic_attributes();
 
 
 
@@ -222,7 +222,9 @@ class DeviceInclude implements IGenerator {
 				«IF command.status.concreteHere.equals("true")»
 					«command.commandExecutionMethodHeader»
 					«cls.commandExecutionMethodSignature(command, true)»
-					virtual bool is_«command.name»_allowed(const CORBA::Any &any);
+					«IF command.name.equals("State")==false && command.name.equals("Status")==false»
+						virtual bool is_«command.name»_allowed(const CORBA::Any &any);
+					«ENDIF»
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»
