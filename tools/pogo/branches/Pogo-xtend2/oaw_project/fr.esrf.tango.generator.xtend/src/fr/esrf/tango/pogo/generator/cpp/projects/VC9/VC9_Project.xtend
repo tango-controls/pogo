@@ -193,7 +193,7 @@ class VC9_Project implements IGenerator {
 	'''
 
 	//=============================================================================
- 	// Define the ServerStatic file
+ 	// Define the ClasDll file
  	//=============================================================================
 	def generateVC9_ServerStatic (PogoDeviceClass cls) '''
 		<?xml version="1.0" encoding="Windows-1252"?>
@@ -330,6 +330,313 @@ class VC9_Project implements IGenerator {
 					UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}" >
 					«"ClassFactory.cpp".buildFileLine»
 					«"main.cpp".buildFileLine»
+				</Filter>
+			</Files>
+			<Globals>
+			</Globals>
+		</VisualStudioProject>
+	'''
+	
+	
+	//=============================================================================
+ 	// Define the ClassDll file
+ 	//=============================================================================
+	def generateVC9_ClassDll (PogoDeviceClass cls) '''
+		<?xml version="1.0" encoding="Windows-1252"?>
+		<VisualStudioProject
+			ProjectType="Visual C++"
+			Version="9,00"
+			Name="Class_dll"
+			ProjectGUID="{F513547B-028B-42F8-BE76-A50FD3A3BA3F}"
+			RootNamespace="$(SolutionName)_dll"
+			Keyword="Win32Proj"
+			TargetFrameworkVersion="131072"
+			>
+			<Platforms>
+				<Platform Name="Win32" />
+			</Platforms>
+			<ToolFiles>
+			</ToolFiles>
+			<Configurations>
+				<Configuration
+					Name="Debug|Win32"
+					OutputDirectory="..\dll\win32\debug"
+					IntermediateDirectory="..\obj\win32_dll\debug"
+					ConfigurationType="2"
+					CharacterSet="1" >
+					<Tool Name="VCPreBuildEventTool" />
+					<Tool Name="VCCustomBuildTool" />
+					<Tool Name="VCXMLDataGeneratorTool" />
+					<Tool Name="VCWebServiceProxyGeneratorTool" />
+					<Tool Name="VCMIDLTool" />
+					<Tool Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories="..;&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\include&quot;;&quot;$(TANGO_ROOT)\classes\win32_vc9\win32_dll\include&quot;;&quot;TemplateAbstractPath&quot;"
+						PreprocessorDefinitions="_DEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE"
+						StringPooling="false"
+						MinimalRebuild="true"
+						BasicRuntimeChecks="3"
+						RuntimeLibrary="3"
+						UsePrecompiledHeader="0"
+						AssemblerListingLocation="$(IntDir)/"
+						ObjectFile="$(IntDir)/"
+						ProgramDataBaseFileName="$(TargetDir)$(TargetName).pdb"
+						WarningLevel="2"
+						Detect64BitPortabilityProblems="false"
+						DebugInformationFormat="4"
+					/>
+					<Tool Name="VCManagedResourceCompilerTool" />
+					<Tool Name="VCResourceCompilerTool" />
+					<Tool Name="VCPreLinkEventTool"
+						CommandLine=""
+						ExcludedFromBuild="false" />
+					<Tool Name="VCLinkerTool"
+						AdditionalDependencies="omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib log4tangod.lib comctl32.lib ws2_32.lib"
+						ShowProgress="0"
+						OutputFile="$(OutDir)/$(SolutionName)d.dll"
+						Version="1.0"
+						LinkIncremental="2"
+						SuppressStartupBanner="true"
+						AdditionalLibraryDirectories="&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\lib&quot;"
+						ModuleDefinitionFile=""
+						GenerateDebugInformation="true"
+						SubSystem="1"
+						RandomizedBaseAddress="1"
+						DataExecutionPrevention="0"
+						TargetMachine="1"
+					/>
+					<Tool Name="VCALinkTool" />
+					<Tool Name="VCManifestTool" />
+					<Tool Name="VCXDCMakeTool" />
+					<Tool Name="VCBscMakeTool" />
+					<Tool Name="VCFxCopTool" />
+					<Tool Name="VCAppVerifierTool" />
+					<Tool Name="VCPostBuildEventTool" />
+				</Configuration>
+				<Configuration
+					Name="Release|Win32"
+					OutputDirectory="..\dll\win32\release"
+					IntermediateDirectory="..\obj\win32_obj\release"
+					ConfigurationType="2"
+					CharacterSet="1"
+					WholeProgramOptimization="1" >
+					<Tool Name="VCPreBuildEventTool" />
+					<Tool Name="VCCustomBuildTool" />
+					<Tool Name="VCXMLDataGeneratorTool" />
+					<Tool Name="VCWebServiceProxyGeneratorTool" />
+					<Tool Name="VCMIDLTool" />
+					<Tool Name="VCCLCompilerTool"
+						Optimization="0"
+						WholeProgramOptimization="false"
+						AdditionalIncludeDirectories="..;&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\include&quot;;&quot;$(TANGO_ROOT)\classes\win32_vc9\win32_dll\include&quot;;&quot;TemplateAbstractPath&quot;"
+						PreprocessorDefinitions="NDEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE"
+						MinimalRebuild="true"
+						BasicRuntimeChecks="3"
+						RuntimeLibrary="2"
+						UsePrecompiledHeader="0"
+						AssemblerListingLocation="$(IntDir)/"
+						ObjectFile="$(IntDir)/"
+						ProgramDataBaseFileName="$(IntDir)/"
+						WarningLevel="2"
+						Detect64BitPortabilityProblems="false"
+						DebugInformationFormat="4"
+					/>
+					<Tool Name="VCManagedResourceCompilerTool" />
+					<Tool Name="VCResourceCompilerTool" />
+					<Tool Name="VCPreLinkEventTool" />
+					<Tool Name="VCLinkerTool"
+						AdditionalDependencies="omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omnithread_rt.lib tango.lib log4tango.lib comctl32.lib ws2_32.lib"
+						ShowProgress="0"
+						OutputFile="$(OutDir)/$(SolutionName).dll"
+						LinkIncremental="2"
+						SuppressStartupBanner="true"
+						AdditionalLibraryDirectories="&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\lib&quot;"
+						GenerateDebugInformation="false"
+						SubSystem="1"
+						LinkTimeCodeGeneration="0"
+						RandomizedBaseAddress="1"
+						DataExecutionPrevention="0"
+						TargetMachine="1" />
+					<Tool Name="VCALinkTool" />
+					<Tool Name="VCManifestTool" />
+					<Tool Name="VCXDCMakeTool" />
+					<Tool Name="VCBscMakeTool" />
+					<Tool Name="VCFxCopTool" />
+					<Tool Name="VCAppVerifierTool" />
+					<Tool Name="VCPostBuildEventTool" />
+				</Configuration>
+			</Configurations>
+			<References>
+			</References>
+			<Files>
+				<Filter
+					Name="Source Files"
+					Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+					UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}" >
+					«cls.sourceFileList»
+				</Filter>
+				<Filter
+					Name="Header Files"
+					Filter="h;hpp;hxx;hm;inl;inc;xsd"
+					UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}" >
+					«cls.includeFileList»
+				</Filter>
+			</Files>
+			<Globals>
+			</Globals>
+		</VisualStudioProject>
+	'''
+	//======================================================
+	// Define VC9 server shared file to be generated
+	//======================================================
+	def generateVC9_ServerShared (PogoDeviceClass cls) '''
+		<?xml version="1.0" encoding="Windows-1252"?>
+		<VisualStudioProject
+			ProjectType="Visual C++"
+			Version="9,00"
+			Name="Server_shared"
+			ProjectGUID="{570AF151-36FC-4638-A23A-673975792A19}"
+			RootNamespace="Server_shared"
+			TargetFrameworkVersion="131072"
+			>
+			<Platforms>
+				<Platform Name="Win32" />
+			</Platforms>
+			<ToolFiles>
+			</ToolFiles>
+			<Configurations>
+				<Configuration
+					Name="Release|Win32"
+					OutputDirectory="..\bin\win32_shared\release"
+					IntermediateDirectory="..\obj\win32_dll\release"
+					ConfigurationType="1"
+					InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+					UseOfMFC="0"
+					ATLMinimizesCRunTimeLibraryUsage="false"
+					CharacterSet="2"
+					>
+					<Tool Name="VCPreBuildEventTool" />
+					<Tool Name="VCCustomBuildTool" />
+					<Tool Name="VCXMLDataGeneratorTool" />
+					<Tool Name="VCWebServiceProxyGeneratorTool" />
+					<Tool Name="VCMIDLTool"
+						TypeLibraryName="$(IntDir)/$(TargetName).tlb"
+						HeaderFileName="" />
+					<Tool Name="VCCLCompilerTool"
+						Optimization="2"
+						InlineFunctionExpansion="1"
+						AdditionalIncludeDirectories="..;&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\include&quot;;&quot;$(TANGO_ROOT)\classes\win32_vc9\win32_dll\include&quot;;&quot;TemplateAbstractPath&quot;"
+						PreprocessorDefinitions="NDEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE"
+						StringPooling="true"
+						RuntimeLibrary="2"
+						EnableFunctionLevelLinking="true"
+						RuntimeTypeInfo="true"
+						PrecompiledHeaderFile=""
+						AssemblerListingLocation="$(IntDir)/"
+						ObjectFile="$(IntDir)/"
+						ProgramDataBaseFileName="$(IntDir)/"
+						WarningLevel="2"
+						SuppressStartupBanner="true"
+						CompileAs="0"
+					/>
+					<Tool Name="VCManagedResourceCompilerTool" />
+					<Tool Name="VCResourceCompilerTool"
+						PreprocessorDefinitions="NDEBUG"
+						Culture="1036" />
+					<Tool Name="VCPreLinkEventTool" />
+					<Tool Name="VCLinkerTool"
+						AdditionalDependencies="$(SolutionName).lib omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omniThread_rt.lib tango.lib zmq.lib log4tango.lib comctl32.lib ws2_32.lib"
+						ShowProgress="0"
+						OutputFile="$(OutDir)\$(SolutionName).exe"
+						LinkIncremental="1"
+						SuppressStartupBanner="true"
+						AdditionalLibraryDirectories="&quot;..\dll\win32\release&quot;;&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\lib&quot;;&quot;$(TANGO_ROOT)\classes\win32_vc9\win32_dll\lib&quot;"
+						GenerateDebugInformation="false"
+						ProgramDatabaseFile=""
+						SubSystem="1"
+						RandomizedBaseAddress="1"
+						DataExecutionPrevention="0"
+						TargetMachine="1"
+					/>
+					<Tool Name="VCALinkTool" />
+					<Tool Name="VCManifestTool" />
+					<Tool Name="VCXDCMakeTool" />
+					<Tool Name="VCBscMakeTool" />
+					<Tool Name="VCFxCopTool" />
+					<Tool Name="VCAppVerifierTool" />
+					<Tool Name="VCPostBuildEventTool" />
+				</Configuration>
+				<Configuration
+					Name="Debug|Win32"
+					OutputDirectory="..\bin\win32_shared\debug"
+					IntermediateDirectory="..\obj\win32_dll\debug"
+					ConfigurationType="1"
+					InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+					UseOfMFC="0"
+					ATLMinimizesCRunTimeLibraryUsage="false"
+					CharacterSet="2"
+					>
+					<Tool Name="VCPreBuildEventTool" />
+					<Tool Name="VCCustomBuildTool" />
+					<Tool Name="VCXMLDataGeneratorTool" />
+					<Tool Name="VCWebServiceProxyGeneratorTool" />
+					<Tool Name="VCMIDLTool"
+						TypeLibraryName="$(IntDir)/$(TargetName).tlb"
+						HeaderFileName="" />
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories="..;&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\include&quot;;&quot;$(TANGO_ROOT)\classes\win32_vc9\win32_dll\include&quot;;&quot;TemplateAbstractPath&quot;"
+						PreprocessorDefinitions="_DEBUG;LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;WIN32;_CONSOLE"
+						BasicRuntimeChecks="3"
+						RuntimeLibrary="3"
+						RuntimeTypeInfo="true"
+						PrecompiledHeaderFile=""
+						AssemblerListingLocation="$(IntDir)/"
+						ObjectFile="$(IntDir)/"
+						ProgramDataBaseFileName="$(TargetDir)$(TargetName).pdb"
+						BrowseInformation="1"
+						WarningLevel="2"
+						SuppressStartupBanner="true"
+						DebugInformationFormat="4"
+						CompileAs="0"
+					/>
+					<Tool Name="VCManagedResourceCompilerTool" />
+					<Tool Name="VCResourceCompilerTool"
+						PreprocessorDefinitions="_DEBUG"
+						Culture="1036" />
+					<Tool Name="VCPreLinkEventTool" />
+					<Tool
+						Name="VCLinkerTool"
+						AdditionalDependencies="$(SolutionName)d.lib omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib zmqd.lib log4tangod.lib comctl32.lib ws2_32.lib"
+						ShowProgress="0"
+						OutputFile="$(OutDir)\$(SolutionName).exe"
+						LinkIncremental="2"
+						SuppressStartupBanner="true"
+						AdditionalLibraryDirectories="&quot;..\dll\win32\debug&quot;;&quot;$(TANGO_ROOT)\win32_vc9\win32_dll\lib&quot;;&quot;$(TANGO_ROOT)\classes\win32_vc9\win32_dll\lib&quot;"
+						GenerateDebugInformation="true"
+						SubSystem="1"
+						RandomizedBaseAddress="1"
+						DataExecutionPrevention="0"
+						TargetMachine="1"
+					/>
+					<Tool Name="VCALinkTool" />
+					<Tool Name="VCManifestTool" />
+					<Tool Name="VCXDCMakeTool" />
+					<Tool Name="VCBscMakeTool" />
+					<Tool Name="VCFxCopTool" />
+					<Tool Name="VCAppVerifierTool" />
+					<Tool Name="VCPostBuildEventTool" />
+				</Configuration>
+			</Configurations>
+			<References>
+			</References>
+			<Files>
+				<Filter Name="Source Files">
+					«"ClassFactory.cpp".buildFileLine»
+					«"main.cpp".buildFileLine»
+				</Filter>
+				<Filter Name="Header Files">
 				</Filter>
 			</Files>
 			<Globals>
