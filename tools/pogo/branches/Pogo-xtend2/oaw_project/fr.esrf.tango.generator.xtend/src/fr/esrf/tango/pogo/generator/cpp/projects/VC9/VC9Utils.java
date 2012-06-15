@@ -22,7 +22,7 @@ public class VC9Utils {
 		StringBuffer	sb = new StringBuffer();
 		
 		sb.append(buildFileLine(cls.getName()+".cpp"));
-		sb.append(buildFileLine(cls.getName()+"Clas.cpp"));
+		sb.append(buildFileLine(cls.getName()+"Class.cpp"));
 		sb.append(buildFileLine(cls.getName()+"StateMachine.cpp"));
 		for (AdditionalFile file : cls.getAdditionalFiles())
 			sb.append(buildFileLine(file.getName()));
@@ -42,9 +42,10 @@ public class VC9Utils {
 	}
 	//===========================================================
 	//===========================================================
-	private String buildFileLine(String fileName) {
+	public String buildFileLine(String fileName) {
 		StringBuffer	sb = new StringBuffer();
+
 		sb.append("<File RelativePath=\"..\\").append(fileName).append("\"> </File>\n");
-		return sb.toString();
+	return sb.toString();
 	}
 }
