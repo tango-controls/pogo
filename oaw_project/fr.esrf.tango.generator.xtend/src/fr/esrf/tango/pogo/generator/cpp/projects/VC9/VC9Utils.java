@@ -24,8 +24,11 @@ public class VC9Utils {
 		sb.append(buildFileLine(cls.getName()+".cpp"));
 		sb.append(buildFileLine(cls.getName()+"Class.cpp"));
 		sb.append(buildFileLine(cls.getName()+"StateMachine.cpp"));
-		for (AdditionalFile file : cls.getAdditionalFiles())
-			sb.append(buildFileLine(file.getName()));
+		for (AdditionalFile file : cls.getAdditionalFiles()) {
+			String fileName = getOnlyFileName(file.getPath());
+			if (fileName!=null)
+				sb.append(buildFileLine(fileName));
+		}
 		return sb.toString();
 	}
 	//===========================================================
@@ -48,4 +51,17 @@ public class VC9Utils {
 		sb.append("<File RelativePath=\"..\\").append(fileName).append("\"> </File>\n");
 	return sb.toString();
 	}
+	//===========================================================
+	//===========================================================
+	private String getOnlyFileName(String pathName) {
+		int pos = pathName.lastIndexOf('/');
+		if (pos<0)
+			pos = pathName.lastIndexOf('\\');
+		if (pos<0)
+			return null;
+		else
+			return pathName.substring(pos+1);
+	}
+	//===========================================================
+	//===========================================================
 }

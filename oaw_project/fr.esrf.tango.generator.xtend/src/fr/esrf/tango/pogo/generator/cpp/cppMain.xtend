@@ -42,9 +42,11 @@ class cppMain implements IGenerator {
 					fsa.generateFile("Makefile",             cls.generateLinuxMakefile)
 				}
 				if (cls.description.filestogenerate.contains("VC9")) {
-					fsa.generateFile("vc9_proj/"+cls.name+".sln", cls.generateVC9_Project)
-					fsa.generateFile("vc9_proj/Class_lib.vcproj", cls.generateVC9_ClassLib)
+					fsa.generateFile("vc9_proj/"+cls.name+".sln",     cls.generateVC9_Project)
+					fsa.generateFile("vc9_proj/Class_lib.vcproj",     cls.generateVC9_ClassLib)
 					fsa.generateFile("vc9_proj/Server_static.vcproj", cls.generateVC9_ServerStatic)
+					fsa.generateFile("vc9_proj/Class_dll.vcproj",     cls.generateVC9_ClassDll)
+					fsa.generateFile("vc9_proj/Server_shared.vcproj", cls.generateVC9_ServerShared)
 				}
 			}
 		}
