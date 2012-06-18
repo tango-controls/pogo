@@ -6,7 +6,6 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9Utils.*
-import fr.esrf.tango.pogo.pogoDsl.Inheritance
 import com.google.inject.Inject
 
 
@@ -193,7 +192,7 @@ class VC9_Project implements IGenerator {
 	'''
 
 	//=============================================================================
- 	// Define the ClasDll file
+ 	// Define the Server static file
  	//=============================================================================
 	def generateVC9_ServerStatic (PogoDeviceClass cls) '''
 		<?xml version="1.0" encoding="Windows-1252"?>
