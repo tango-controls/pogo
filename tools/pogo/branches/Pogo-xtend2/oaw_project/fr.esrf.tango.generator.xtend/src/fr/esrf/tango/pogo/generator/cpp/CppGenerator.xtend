@@ -31,17 +31,23 @@ class CppGenerator implements IGenerator {
 			//println(cls.description.filestogenerate)
 			//println("Lannguage="+cls.description.language)
 			if (cls.description.language.toLowerCase.equals("cpp")) {
-				fsa.generateFile(cls.deviceIncludeFileName,      cls.generateDeviceIncludeFile)
-				fsa.generateFile(cls.deviceSourceFileName,       cls.generateDeviceSourceFile)
-				fsa.generateFile(cls.deviceClassIncludeFileName, cls.generateDeviceClassIncludeFile)
-				fsa.generateFile(cls.deviceClassSourceFileName,  cls.generateDeviceClassSourceFile)
-				fsa.generateFile(cls.stateMachineFileName,       cls.generateStateMachineSourceFile)
-				fsa.generateFile("ClassFactory.cpp",             cls.generateClassFactoryFile)
-				fsa.generateFile("main.cpp",                     cls.generateMainFile)
-
+				//	Code files
+				if (cls.description.filestogenerate.contains("Code files")) {
+					fsa.generateFile(cls.deviceIncludeFileName,      cls.generateDeviceIncludeFile)
+					fsa.generateFile(cls.deviceSourceFileName,       cls.generateDeviceSourceFile)
+					fsa.generateFile(cls.deviceClassIncludeFileName, cls.generateDeviceClassIncludeFile)
+					fsa.generateFile(cls.deviceClassSourceFileName,  cls.generateDeviceClassSourceFile)
+					fsa.generateFile(cls.stateMachineFileName,       cls.generateStateMachineSourceFile)
+					fsa.generateFile("ClassFactory.cpp",             cls.generateClassFactoryFile)
+					fsa.generateFile("main.cpp",                     cls.generateMainFile)
+				}
+				
+				//	Linux Makefile
 				if (cls.description.filestogenerate.contains("Makefile")) {
 					fsa.generateFile("Makefile",             cls.generateLinuxMakefile)
 				}
+				
+				//	Widows projects
 				if (cls.description.filestogenerate.contains("VC9")) {
 					fsa.generateFile("vc9_proj/"+cls.name+".sln",     cls.generateVC9_Project)
 					fsa.generateFile("vc9_proj/Class_lib.vcproj",     cls.generateVC9_ClassLib)
