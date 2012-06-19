@@ -99,6 +99,7 @@ class DeviceSource implements IGenerator {
 		{
 			DEBUG_STREAM << "«cls.name»::delete_device() " << device_name << endl;
 			«cls.protectedArea("delete_device", "Delete device allocated objects", true)»
+			«cls.attributes.deleteAttributeDataMembers»
 		}
 	'''
 	
@@ -123,6 +124,7 @@ class DeviceSource implements IGenerator {
 			«ELSE»
 				//	No device property to be read from database
 			«ENDIF»
+			«cls.attributes.allocateAttributeDataMembers»
 
 			«cls.protectedArea("init_device", "Initialize device", true)»
 		}
@@ -179,6 +181,7 @@ class DeviceSource implements IGenerator {
 		}
 		
 	'''
+
 	//======================================================
 	// Define attribute related methods
 	//======================================================

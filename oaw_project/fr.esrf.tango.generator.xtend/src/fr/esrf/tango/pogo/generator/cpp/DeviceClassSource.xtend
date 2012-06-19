@@ -271,7 +271,9 @@ class DeviceClassSource implements IGenerator {
 		{
 			cout2 << "Entering «cls.name»Class constructor" << endl;
 			set_default_property();
-			get_class_property();
+			«IF cls.classProperties.size>0»
+				get_class_property();
+			«ENDIF»
 			write_class_property();
 		
 			«cls.protectedAreaClass("constructor")»

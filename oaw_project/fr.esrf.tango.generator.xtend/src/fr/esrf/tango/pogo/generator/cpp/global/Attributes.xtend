@@ -6,6 +6,7 @@ import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import org.eclipse.emf.common.util.EList
 
 //======================================================
 //	Attribute utilities
@@ -35,8 +36,22 @@ class Attributes {
 			", " + attribute.maxX
 		}
 		else
-		if (attribute.attType.toLowerCase.equals("Scalar")) {
+		if (attribute.attType.toLowerCase.equals("Image")) {
 			", " + attribute.maxX +", " + attribute.maxY
+		}
+	}
+	//======================================================
+	def readAttrubuteSizeForAllocation(Attribute attribute) {
+		if (attribute.attType.toLowerCase.equals("scalar")) {
+			"[1]"
+		}
+		else
+		if (attribute.attType.toLowerCase.equals("spectrum")) {
+			"[" + attribute.maxX + "]"
+		}
+		else
+		if (attribute.attType.toLowerCase.equals("Image")) {
+			"[" + attribute.maxX +"*" + attribute.maxY + "]"
 		}
 	}
 	//======================================================
@@ -44,8 +59,42 @@ class Attributes {
 		 "attr_" + attribute.name + "_read"
 	}
 	
-	
-	
+	//======================================================
+	//	Delete attribute data member
+	//======================================================
+	def deleteAttributeDataMember(Attribute attribute) {
+		"delete[] " +  attribute.readAttrubuteDataMember + ";"
+	}
+	//======================================================
+	//	Delete attribute data members
+	//======================================================
+	def deleteAttributeDataMembers(EList<Attribute> attributes) '''
+		«FOR Attribute attribute : attributes»
+			«IF isTrue(attribute.allocReadMember)»
+				«attribute.deleteAttributeDataMember»
+			«ENDIF»
+		«ENDFOR»
+	'''
+
+	//======================================================
+	//	Allocate attribute data member
+	//======================================================
+	def allocateAttributeDataMember(Attribute attribute) {
+		attribute.readAttrubuteDataMember + " = new " + 
+				attribute.dataType.cppType + attribute.readAttrubuteSizeForAllocation + ";"
+	}
+	//======================================================
+	//	Allocate attribute data members
+	//======================================================
+	def allocateAttributeDataMembers(EList<Attribute> attributes) '''
+
+		«FOR Attribute attribute : attributes»
+			«IF attribute.allocReadMember.isTrue»
+				«attribute.allocateAttributeDataMember»
+			«ENDIF»
+		«ENDFOR»
+	'''
+
 	//======================================================
 	// Define read attribute related method
 	//======================================================
