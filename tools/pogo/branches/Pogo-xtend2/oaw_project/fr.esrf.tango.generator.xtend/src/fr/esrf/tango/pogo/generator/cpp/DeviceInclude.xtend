@@ -105,7 +105,7 @@ class DeviceInclude implements IGenerator {
 			//	Attribute data members
 			public:
 				«FOR Attribute attr : cls.attributes»
-					«IF attr.status.concreteHere.equals("true") &&
+					«IF isTrue(attr.status.concreteHere) &&
 						 attr.rwType.isRead»
 							«attr.dataType.cppType»	*attr_«attr.name»_read;
 					«ENDIF»
@@ -224,7 +224,7 @@ class DeviceInclude implements IGenerator {
 		//	Command related methods
 		public:
 			«FOR Command command : cls.commands»
-				«IF command.status.concreteHere.equals("true")»
+				«IF isTrue(command.status.concreteHere)»
 					«command.commandExecutionMethodHeader»
 					«cls.commandExecutionMethodSignature(command, true)»
 					«IF command.name.equals("State")==false && command.name.equals("Status")==false»
