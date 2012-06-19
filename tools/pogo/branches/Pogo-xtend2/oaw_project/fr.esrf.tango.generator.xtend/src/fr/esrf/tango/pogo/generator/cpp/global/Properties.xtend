@@ -55,6 +55,10 @@ class Properties {
 				}
 				//	And try to extract «property.name» value from database
 				if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  «property.name.dataMemberName»;
+				«IF isTrue(property.mandatory)»
+					//	Property StartDsPath is mandatory, check if has been defined in database.
+					check_mandatory_property(cl_prop, dev_prop[i]);
+				«ENDIF»
 
 				«ENDFOR»
 			}

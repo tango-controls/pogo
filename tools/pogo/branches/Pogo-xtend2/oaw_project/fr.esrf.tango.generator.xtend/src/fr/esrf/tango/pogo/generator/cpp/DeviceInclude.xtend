@@ -89,6 +89,10 @@ class DeviceInclude implements IGenerator {
 					//	«property.name»:	«property.description.comments("//  ")»
 					«property.type.cppPropType»	«property.name.dataMemberName»;
 				«ENDFOR»
+				«IF cls.deviceProperties.hasMandatoryProperty»
+
+					bool	mandatoryNotDefined;
+				«ENDIF»
 		«ENDIF»
 		
 	'''
@@ -172,7 +176,12 @@ class DeviceInclude implements IGenerator {
 			 */
 			virtual void always_executed_hook();
 
-
+			«IF cls.deviceProperties.hasMandatoryProperty»
+				/**
+				 *	Check if mandatory property has been set
+				 */
+				 void check_mandatory_property(Tango::DbDatum &class_prop, Tango::DbDatum &dev_prop);
+			«ENDIF»
 
 	'''
 
