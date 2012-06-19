@@ -114,10 +114,14 @@ class DeviceSource implements IGenerator {
 			«cls.protectedArea("init_device_before", "Initialization before get_device_property() call", true)»
 			
 			«IF cls.deviceProperties.size>0»
-			//	Get the device properties from database
-			get_device_property();
+				//	Get the device properties from database
+				get_device_property();
+				«IF cls.deviceProperties.hasMandatoryProperty»
+				if (mandatoryNotDefined)
+					return;
+				«ENDIF»
 			«ELSE»
-			//	No device property to be read from database
+				//	No device property to be read from database
 			«ENDIF»
 
 			«cls.protectedArea("init_device", "Initialize device", true)»
@@ -125,12 +129,45 @@ class DeviceSource implements IGenerator {
 		
 		«IF cls.deviceProperties.size>0»
 			«cls.getDevicePropertiesMethod»
+			«IF cls.deviceProperties.hasMandatoryProperty»
+				«cls.simpleMethodHeader("check_mandatory_property", "For mandatory properties check if defined in database.")»
+				void «cls.name»::check_mandatory_property(Tango::DbDatum &class_prop, Tango::DbDatum &dev_prop)
+				{
+					//	Check if all properties are empty
+					if (class_prop.is_empty() && dev_prop.is_empty())
+					{
+						TangoSys_OMemStream	tms;
+						tms << endl <<"Property \'" << dev_prop.name;
+						if (Tango::Util::instance()->_UseDb==true)
+							tms << "\' is mandatory but not defined in database";
+						else
+							tms << "\' is mandatory but cannot be defined without database";
+						string	status(get_status());
+						status += tms.str();
+						set_status(status);
+						mandatoryNotDefined = true;
+						«cls.protectedArea("check_mandatory_property",
+							"cerr << tms.str() << \" for \" << device_name << endl;", false)»
+					}
+				}
+
+			«ENDIF»
 		«ENDIF»
 		
 		«cls.simpleMethodHeader("always_executed_hook", "method always executed before any command is executed")»
 		void «cls.name»::always_executed_hook()
 		{
 			INFO_STREAM << "«cls.name»::always_executed_hook()  " << device_name << endl;
+			«IF cls.deviceProperties.hasMandatoryProperty»
+				if (mandatoryNotDefined)
+				{
+					string	status(get_status());
+					Tango::Except::throw_exception(
+								(const char *)"PROPERTY_NOT_SET",
+								status.c_str(),
+								(const char *)"«cls.name»::always_executed_hook()");
+				}
+			«ENDIF»
 			«cls.protectedArea("always_executed_hook", "code always executed before all requests", true)»
 		}
 

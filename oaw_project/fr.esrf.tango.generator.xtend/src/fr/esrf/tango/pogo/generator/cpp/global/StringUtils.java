@@ -7,6 +7,7 @@ import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
+import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.State;
 
 
@@ -21,7 +22,7 @@ public class StringUtils {
 	public String DeviceImpl() {
 		return "Tango::Device_4Impl";
 	}
-	
+
 	//===========================================================
 	/**
 	 * convert string to boolean
@@ -122,6 +123,16 @@ public class StringUtils {
 		return sb.toString();
 	}
 	
+	
+	//======================================================
+	//	Check if at least one property is mandatory
+	//======================================================
+	public boolean hasMandatoryProperty(EList<Property> properties) {
+		for (Property property : properties)
+			if (isTrue(property.getMandatory()))
+				return true;
+		return false;
+	}
 	
 	//======================================================
 	//	Attribute utilities
