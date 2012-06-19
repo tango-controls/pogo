@@ -103,12 +103,6 @@ class Properties {
 			«ENDFOR»
 			«cls.protectedAreaClass("get_class_property_after", "Check class property data members init", true)»
 
-			//	Put the value (depends on OS) in cl_prop to be set as default value for device property..
-			«FOR Property property : cls.classProperties»
-				for (unsigned int i=0 ; i<cl_prop.size() ; i++)
-					if (cl_prop[i].name == "«property.name»")
-						cl_prop[i]  <<  «property.name.dataMemberName»;
-			«ENDFOR»
 		}
 	'''
 
