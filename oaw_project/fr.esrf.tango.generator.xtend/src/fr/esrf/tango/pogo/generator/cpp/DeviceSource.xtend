@@ -209,7 +209,7 @@ class DeviceSource implements IGenerator {
 	//======================================================
 	def commandMethods(PogoDeviceClass cls) '''
 		«FOR Command command : cls.commands»
-			«IF command.status.concreteHere.equals("true")»
+			«IF isTrue(command.status.concreteHere)»
 				//--------------------------------------------------------
 				«command.commandExecutionMethodHeader»
 				//--------------------------------------------------------
