@@ -202,7 +202,7 @@ class Headers {
 		"//--------------------------------------------------------\n" +
 		"/**\n" +
 		" *	" + rw +" attribute " + attr.name + " related mehod\n" +
-		" *	Description: " + attr.properties.description.comments("	 *		") + "\n" +
+		" *	Description: " + attr.properties.description.comments(" *               ") + "\n" +
 		" *\n" +
 		" *	Data type:	" + attr.dataType.cppType + "\n" +
 		" *	Attr type:	" + attr.attType + attr.attTypeDimentions + "\n" + 
@@ -216,7 +216,7 @@ class Headers {
 	def attributePrototypeMethodHeader(Attribute attr) {
 		"/**\n" +
 		" *	Attribute " + attr.name + " related mehods\n" +
-		" *	Description: " + attr.properties.description.comments("	 *		") + "\n" +
+		" *	Description: " + attr.properties.description.comments(" *               ") + "\n" +
 		" *\n" +
 		" *	Data type:	" + attr.dataType.cppType + "\n" +
 		" *	Attr type:	" + attr.attType + attr.attTypeDimentions + "\n" + 
@@ -230,7 +230,7 @@ class Headers {
 	def commandExecutionMethodHeader(Command cmd) {
 		"/**\n" +
 		" *	Command " + cmd.name + " related mehod\n" +
-		" *	Description: " + cmd.description.comments("	 *		") + "\n" +
+		" *	Description: " + cmd.description.comments(" *               ") + "\n" +
 		" *\n" +
 		" *	@param argin " + cmd.argin.description + "\n" +
 		" *	@returns " + cmd.argout.description + "\n" +
