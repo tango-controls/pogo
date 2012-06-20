@@ -1,11 +1,8 @@
 package fr.esrf.tango.pogo.generator.cpp
 
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
@@ -17,13 +14,11 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 //======================================================
 // Define Device state machine .cpp file to be generated
 //======================================================
-class DeviceStateMachine implements IGenerator {
+class DeviceStateMachine {
+	
 	@Inject	extension ProtectedArea
 	@Inject	extension StringUtils
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-	}
 
 
 	//======================================================

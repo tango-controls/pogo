@@ -1,10 +1,7 @@
 package fr.esrf.tango.pogo.generator.cpp.projects.VC10
 
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9Utils.*
 import com.google.inject.Inject
 
@@ -12,13 +9,9 @@ import com.google.inject.Inject
 //======================================================
 // Define VC 10 Project to be generated
 //======================================================
-class VC10_Project implements IGenerator {
+class VC10_Project {
 	
 	@Inject	extension VC10Utils
-
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-	}
-
 
 	//======================================================
 	// Define VC10 project file to be generated

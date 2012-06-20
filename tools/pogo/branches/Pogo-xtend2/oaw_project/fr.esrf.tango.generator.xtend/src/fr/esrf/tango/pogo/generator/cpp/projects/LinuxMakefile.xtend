@@ -1,10 +1,7 @@
 package fr.esrf.tango.pogo.generator.cpp.projects
 
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import org.eclipse.emf.ecore.resource.Resource
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import fr.esrf.tango.pogo.pogoDsl.Inheritance
@@ -14,14 +11,10 @@ import com.google.inject.Inject
 //======================================================
 // Define linux Makefile file to be generated
 //======================================================
-class LinuxMakefile implements IGenerator {
+class LinuxMakefile {
 	
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
-
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-	}
-
 
 	//======================================================
 	// Define Linux Makefile code to be generated
