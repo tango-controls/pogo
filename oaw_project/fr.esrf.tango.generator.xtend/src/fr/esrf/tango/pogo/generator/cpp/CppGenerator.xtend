@@ -56,7 +56,7 @@ class CppGenerator implements IGenerator {
 					fsa.generateFile("vc9_proj/Server_shared.vcproj", cls.generateVC9_ServerShared)
 				}
 				if (cls.description.filestogenerate.contains("VC10")) {
-					fsa.generateFile("vc10_proj/"+cls.name+".sln",     cls.generateVC10_Project)
+					fsa.generateFile("vc10_proj/"+cls.name+".sln",      cls.generateVC10_Project)
 					fsa.generateFile("vc10_proj/Class_lib.vcxproj",     cls.generateVC10_ClassLib)
 					fsa.generateFile("vc10_proj/Server_static.vcxproj", cls.generateVC10_ServerStatic)
 					fsa.generateFile("vc10_proj/Class_dll.vcxproj",     cls.generateVC10_ClassDll)
