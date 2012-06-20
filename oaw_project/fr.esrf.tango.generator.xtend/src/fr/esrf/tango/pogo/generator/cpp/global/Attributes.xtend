@@ -201,22 +201,22 @@ class Attributes {
 		«attribute.setProperty("delta_t", attribute.properties.deltaTime)»
 		«attribute.setProperty("delta_val", attribute.properties.deltaValue)»
 		«IF attribute.eventCriteria!=null»
-			«attribute.setEventProprty("set_event_period", attribute.eventCriteria.period)»
-			«attribute.setEventProprty("set_event_rel_change", attribute.eventCriteria.relChange)»
-			«attribute.setEventProprty("set_event_abs_change", attribute.eventCriteria.absChange)»
+			«attribute.setEventProprty("event_period", attribute.eventCriteria.period)»
+			«attribute.setEventProprty("event_rel_change", attribute.eventCriteria.relChange)»
+			«attribute.setEventProprty("event_abs_change", attribute.eventCriteria.absChange)»
 		«ENDIF»
 		«IF attribute.evArchiveCriteria!=null»
-			«attribute.setEventProprty("set_event_period", attribute.evArchiveCriteria.period)»
-			«attribute.setEventProprty("set_event_rel_change", attribute.evArchiveCriteria.relChange)»
-			«attribute.setEventProprty("set_event_abs_change", attribute.evArchiveCriteria.absChange)»
+			«attribute.setEventProprty("archive_event_period", attribute.evArchiveCriteria.period)»
+			«attribute.setEventProprty("archive_event_rel_change", attribute.evArchiveCriteria.relChange)»
+			«attribute.setEventProprty("archive_event_abs_change", attribute.evArchiveCriteria.absChange)»
 		«ENDIF»
-		«attribute.setEventCriteria»
 
 		«attribute.name.toLowerCase»->set_default_properties(«attribute.name.toLowerCase»_prop);
 		«attribute.setExtendedProprty("polling_period", attribute.polledPeriod, "Not Polled")»
 		«attribute.setExtendedProprty("disp_level", attribute.displayLevel, "Tango::OPERATOR")»
 		«attribute.setMemorized(attribute.memorized, "Not Memorized")»
 		«attribute.setExtendedProprty("memorized_init", attribute.memorizedAtInit, "Not set to hardware at init")»
+		«attribute.setEventCriteria»
 		att_list.push_back(«attribute.name.toLowerCase»);
 	'''
 	//======================================================
@@ -242,14 +242,14 @@ class Attributes {
 	//======================================================
 	def setEventProprty(Attribute attribute, String propertyName, String strValue) '''
 		«IF strValue.isSet»
-			«attribute.name.toLowerCase»->set_«propertyName»("«strValue»");
+			«attribute.name.toLowerCase»_prop.set_«propertyName»("«strValue»");
 		«ENDIF»
 	'''
 	//======================================================
 	def setEventCriteria(Attribute attribute) '''
 		«IF attribute.dataReadyEvent!=null»
 			«IF attribute.dataReadyEvent.fire.isTrue»
-				«attribute.name.toLowerCase»->set_change_event(«attribute.dataReadyEvent.fire»);
+				«attribute.name.toLowerCase»->set_data_ready_event(«attribute.dataReadyEvent.fire»);
 			«ENDIF»
 		«ENDIF»
 		«IF attribute.changeEvent!=null»
