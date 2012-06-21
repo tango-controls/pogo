@@ -109,6 +109,7 @@ class DeviceClassSource {
 		
 			«FOR Attribute attribute : cls.attributes»
 				«attribute.attributeFactory»
+
 			«ENDFOR»
 			
 			//	Create a list of static attributes

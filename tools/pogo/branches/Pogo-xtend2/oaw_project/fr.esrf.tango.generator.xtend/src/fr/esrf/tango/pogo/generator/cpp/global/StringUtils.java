@@ -136,13 +136,25 @@ public class StringUtils {
 	}
 	
 	//======================================================
+	public boolean isScalar(Attribute attr) {
+		return (attr.getAttType().equals("Scalar"));
+	}
+	//======================================================
+	public boolean isSpectrum(Attribute attr) {
+		return (attr.getAttType().equals("Spectrum"));
+	}
+	//======================================================
+	public boolean isImage(Attribute attr) {
+		return (attr.getAttType().equals("Image"));
+	}
+	//======================================================
 	//	Attribute utilities
 	//======================================================
-	public static String attTypeDimentions(Attribute attr) {
-		if (attr.getAttType().equals("Spectrum"))
+	public String attTypeDimentions(Attribute attr) {
+		if (isSpectrum(attr))
 			return " max = " + attr.getMaxX();
 		else
-		if (attr.getAttType().equals("Image"))
+		if (isImage(attr))
 			return  " max = " + attr.getMaxX() + " x " + attr.getMaxY();
 		else
 			return "";
@@ -158,7 +170,54 @@ public class StringUtils {
 	}
 	//===========================================================
 	
-	
+	//===========================================================
+	public String strType(Attribute attribute) {
+		return TypeDefinitions.cppType(attribute.getDataType());
+	}
+
+	//===========================================================
+	//	Dynamic attribute headers and signatures
+	//===========================================================
+	public String addDynamicAttributeHeaderComment(Attribute attribute) {
+		 String comment = " *  parameter attname: attribute name to be cretated and added.\n";
+		 if (isScalar(attribute) == false)
+			 comment += " *  parameter ptr:     memory buffer used to set attribute value.\n" +
+			            " *                     If NULL or not specified, buffer will be allocated.";
+		 return comment;
+	}
+	//===========================================================
+	public String removeDynamicAttributeHeaderComment(Attribute attribute) {
+		 String comment = " *  parameter attname: attribute name to be removed and added.\n";
+		 if (isScalar(attribute) == false)
+			 comment += " *  parameter free_it: memory buffer will be freed if true or not specified.";
+		 return comment;
+	}
+	//===========================================================
+	public String addDynamicAttributeSignature(PogoDeviceClass cls, Attribute attribute, boolean prototype) {
+		String	signature = "void ";
+		if (prototype==false)
+			signature += cls.getName() + "::";
+		signature += "add_" + attribute.getName() + "_dynamic_attribute(string attname";
+		if (isScalar(attribute) == false)
+			signature += ", " + strType(attribute) + " *ptr";
+		signature += ")";
+		if (prototype)
+			signature += ";";
+		return signature;
+	}
+	//===========================================================
+	public String removeDynamicAttributeSignature(PogoDeviceClass cls, Attribute attribute, boolean prototype) {
+		String	signature = "void ";
+		if (prototype==false)
+			signature += cls.getName() + "::";
+		signature += "remove_" + attribute.getName() + "_dynamic_attribute(string attname";
+		if (isScalar(attribute) == false)
+			signature += ", bool free_it";
+		signature += ")";
+		if (prototype)
+			signature += ";";
+		return signature;
+	}
 	
 	
 	//===========================================================
@@ -290,7 +349,4 @@ public class StringUtils {
 			files.add(inheritance.getClassname());
 		return buildFileListForMakefile(files, startTag, endTag);
 	}
-
-
-
 }

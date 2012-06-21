@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList
 class Attributes {
 	@Inject	extension ProtectedArea
 	@Inject	extension StringUtils
+	@Inject	extension TypeDefinitions
 
 
 	//======================================================
@@ -153,23 +154,23 @@ class Attributes {
 	// Define attribute class inheritance
 	//======================================================
 	def inheritance(Attribute attribute) {
-		if (attribute.attType.equals("Scalar"))
+		if (attribute.isScalar)
 			"Attr"
 		else
-		if (attribute.attType.equals("Spectrum"))
+		if (attribute.isSpectrum)
 			"SpectrumAttr"
 		else
-		if (attribute.attType.equals("Image"))
+		if (attribute.isImage)
 			"ImageAttr"
 	}
 	//======================================================
 	// Define attribute Constructor
 	//======================================================
 	def Constructor(Attribute attribute) '''
-			«IF attribute.attType.equals("Scalar")»
+			«IF attribute.isScalar»
 			«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
 					«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
-		«ELSEIF attribute.attType.equals("Spectrum")»
+		«ELSEIF attribute.isSpectrum»
 			«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
 					«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
 		«ELSE»
@@ -180,10 +181,17 @@ class Attributes {
 
 	//======================================================
 	// Define attribute Constructor
+	//	If cls not null -> dynamic attribute
 	//======================================================
 	def attributeFactory(Attribute attribute) '''
+		«attribute.attributeFactory(null)»
+	'''
 		
+	def attributeFactory(Attribute attribute, PogoDeviceClass cls) '''
 		//	Attribute : «attribute.name»
+		«IF cls!=null»
+			«attribute.allocateDynamicAttrubutePointer»
+		«ENDIF»
 		«attribute.name»Attrib	*«attribute.name.toLowerCase» = new «attribute.name»Attrib();
 		Tango::UserDefaultAttrProp	«attribute.name.toLowerCase»_prop;
 		«attribute.setProperty("description", attribute.properties.description)»
@@ -211,13 +219,21 @@ class Attributes {
 			«attribute.setEventProprty("archive_event_abs_change", attribute.evArchiveCriteria.absChange)»
 		«ENDIF»
 
+		«IF cls!=null»
+			«cls.protectedArea("att_" + attribute.name + "_dynamic_attribute", "", false)»
+		«ENDIF»
 		«attribute.name.toLowerCase»->set_default_properties(«attribute.name.toLowerCase»_prop);
 		«attribute.setExtendedProprty("polling_period", attribute.polledPeriod, "Not Polled")»
 		«attribute.setExtendedProprty("disp_level", attribute.displayLevel, "Tango::OPERATOR")»
 		«attribute.setMemorized(attribute.memorized, "Not Memorized")»
 		«attribute.setExtendedProprty("memorized_init", attribute.memorizedAtInit, "Not set to hardware at init")»
 		«attribute.setEventCriteria»
-		att_list.push_back(«attribute.name.toLowerCase»);
+		«IF cls==null»
+			att_list.push_back(«attribute.name.toLowerCase»);
+		«ELSE»
+			«attribute.name»_data.insert(make_pair(attname, «attribute.defaultValue»));
+			add_attribute(«attribute.name.toLowerCase»);
+		«ENDIF»
 	'''
 	//======================================================
 	def setProperty(Attribute attribute, String propertyName, String strValue) '''
@@ -271,6 +287,18 @@ class Attributes {
 			«attribute.name.toLowerCase»->set_memorized();
 		«ELSE»
 			//	«comment»
+		«ENDIF»
+	'''
+	//======================================================
+	//	Allocate memory for dynamic atrrbute 
+	//======================================================
+	def allocateDynamicAttrubutePointer(Attribute attribute) '''
+		«IF attribute.isSpectrum»
+			if (ptr==NULL)
+				ptr = new «attribute.dataType.cppType»[«attribute.maxX»];
+		«ELSEIF attribute.isImage»
+			if (ptr==NULL)
+				ptr = new «attribute.dataType.cppType»[«attribute.maxX»*«attribute.maxY»];
 		«ENDIF»
 	'''
 }
