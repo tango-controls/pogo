@@ -19,7 +19,7 @@
 	«EXPAND readAttributeHeader(att)»
 	«EXPAND readAttributeMethod(att)»
 «IF att.rwType.contains("WRITE")-»
-	«EXPAND writeAttributeHeader(att)»
+	«EXPAND writeAttributeHeader(att)-»
 	«EXPAND writeAttributeMethod(att)»
 «ENDIF»«ENDIF-»
 «ENDFOREACH»
@@ -99,7 +99,8 @@ void «name»::read_«att.name»(Tango::Attribute &attr)
 //	=========================================================
 //	Define The method to execute a write attribute
 //	=========================================================
-«DEFINE writeAttributeMethod(Attribute att) FOR PogoDeviceClass»void «name»::write_«att.name»(Tango::WAttribute &attr)
+«DEFINE writeAttributeMethod(Attribute att) FOR PogoDeviceClass»
+void «name»::write_«att.name»(Tango::WAttribute &attr)
 {
 	DEBUG_STREAM << "«name»::write_«att.name»(Tango::Attribute &attr) entering... " << endl;
 	«IF att.attType.contains("Scalar")»
