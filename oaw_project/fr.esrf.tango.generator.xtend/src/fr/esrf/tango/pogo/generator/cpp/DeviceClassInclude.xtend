@@ -37,6 +37,13 @@ class DeviceClassInclude {
 			//=========================================
 			«cls.attributeClasses»
 		«ENDIF»
+		«IF cls.dynamicAttributes.size>0»
+
+			//=========================================
+			//	Define classes for dynamic attributes
+			//=========================================
+			«cls.dynamicattributeClasses»
+		«ENDIF»
 		«IF cls.commands.size>2»
 			
 			//=========================================
@@ -87,6 +94,15 @@ class DeviceClassInclude {
 	//======================================================
 	def attributeClasses(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
+			«cls.attributeClass(attribute)»
+		«ENDFOR»
+	'''
+	
+	//======================================================
+	//	Define dynamic attribute Classes 
+	//======================================================
+	def dynamicattributeClasses(PogoDeviceClass cls) '''
+		«FOR Attribute attribute : cls.dynamicAttributes»
 			«cls.attributeClass(attribute)»
 		«ENDFOR»
 	'''

@@ -19,6 +19,7 @@ class CppGenerator implements IGenerator {
 	@Inject	extension DeviceClassInclude
 	@Inject	extension DeviceClassSource
 	@Inject	extension DeviceStateMachine
+	@Inject	extension DynamicAttributeUtils
 	@Inject	extension ClassFactory
 	@Inject	extension Main
 	
@@ -40,6 +41,10 @@ class CppGenerator implements IGenerator {
 					fsa.generateFile(cls.stateMachineFileName,       cls.generateStateMachineSourceFile)
 					fsa.generateFile("ClassFactory.cpp",             cls.generateClassFactoryFile)
 					fsa.generateFile("main.cpp",                     cls.generateMainFile)
+
+					if (cls.dynamicAttributes.size>0) {
+						fsa.generateFile(cls.dynamicAttrUtilsFileName,       cls.generateDynamicAttrUtilsFile)
+					}
 				}
 				
 				//	Linux Makefile

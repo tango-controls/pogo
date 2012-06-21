@@ -203,7 +203,31 @@ class DeviceInclude  {
 				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 			«ENDFOR»
 		«ENDIF»
-		
+
+		«IF cls.dynamicAttributes.size()>0»
+			//	Dynamic attribute methods
+			public:
+			«FOR Attribute attr : cls.dynamicAttributes»
+			
+				«attr.attributePrototypeMethodHeader»
+				«IF attr.rwType.isRead»
+					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
+				«ENDIF»
+				«IF attr.rwType.isWrite»
+					virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
+				«ENDIF»
+				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
+				«cls.addDynamicAttributeSignature(attr, true)»
+				«cls.removeDynamicAttributeSignature(attr, true)»
+				«attr.dataType.cppType» *get_«attr.name»_data_ptr(string &name);
+				«IF attr.isScalar»
+					map<string,«attr.dataType.cppType»>	   «attr.name»_data;
+				«ELSE»
+					map<string,«attr.dataType.cppType» *>	   «attr.name»_data;
+				«ENDIF»
+			«ENDFOR»
+		«ENDIF»
+
 			«cls.simpleMethodHeader("add_dynamic_attributes", "Add dynamic attributes if any.")»
 			void add_dynamic_attributes();
 

@@ -7,8 +7,11 @@ import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import com.google.inject.Inject
 
 class Headers {
+
+	@Inject	extension StringUtils
 
 	def cvsEscaped (String s)       { "$"   + s + "  $"   }
 	def cvsEscapedForVar (String s) { "\"$" + s + "  $\"" }
@@ -93,6 +96,18 @@ class Headers {
 		)
 	}
 
+	//======================================================
+	// header for DynamicAttrUtils.cpp
+	//======================================================
+	def dynamicAttrUtilsFileName(PogoDeviceClass cls) {
+		cls.name + "DynAttrUtils.cpp"
+	}
+	def dynamicAttrUtilsFileHeader(PogoDeviceClass cls) {
+		fileHeader(dynamicAttrUtilsFileName(cls),
+			"Dynamic attributes utilities file for the " + cls.name + " class",
+			 cls.description.title
+		)
+	}
 	//======================================================
 	// header for ClassFactory.cpp
 	//======================================================

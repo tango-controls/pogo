@@ -1,5 +1,6 @@
 package fr.esrf.tango.pogo.generator.cpp.global;
 
+import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.BooleanArrayType;
 import fr.esrf.tango.pogo.pogoDsl.BooleanType;
 import fr.esrf.tango.pogo.pogoDsl.CharArrayType;
@@ -130,6 +131,27 @@ public class TypeDefinitions {
 		if (type instanceof DevIntType)				return "Tango::DEV_INT";
 		if (type instanceof EncodedType)			return "Tango::DEV_ENCODED";
 		return "";
+	}
+
+	//===========================================================
+	//===========================================================
+	public String defaultValue(Attribute attribute) {
+		Type type = attribute.getDataType();
+		String	att = attribute.getAttType().toLowerCase();
+		
+		if (type instanceof VoidType)		return "";
+		if (type instanceof BooleanType)	return (att.equals("scalar"))? "false" : "ptr";
+		if (type instanceof ShortType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof IntType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof FloatType)		return (att.equals("scalar"))? "0.0"   : "ptr";
+		if (type instanceof DoubleType)		return (att.equals("scalar"))? "0.0"   : "ptr";
+		if (type instanceof UShortType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof UIntType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof StringType)		return (att.equals("scalar"))? "\"\""      : "ptr";
+		if (type instanceof DevIntType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof StateType)		return (att.equals("scalar"))? "Tango::UNKNOWN" : "ptr";
+		if (type instanceof EncodedType)	return "ptr";
+		return "0";
 	}
 
 }
