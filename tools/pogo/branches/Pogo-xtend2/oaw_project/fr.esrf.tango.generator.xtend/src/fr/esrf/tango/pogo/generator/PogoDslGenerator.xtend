@@ -9,14 +9,13 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import com.google.inject.Inject
 //import fr.esrf.tango.pogo.generator.java.JavaDevice
 import fr.esrf.tango.pogo.generator.python.PythonDevice
+import fr.esrf.tango.pogo.generator.cpp.CppGenerator
 
 class PogoDslGenerator implements IGenerator {
-	@Inject
-	fr.esrf.tango.pogo.generator.cpp.CppGenerator cppDeviceGenerator
-//	@Inject
-//	fr.esrf.tango.pogo.generator.java.JavaDevice javaDeviceGenerator
-//	@Inject
-	PythonDevice pythonDevice
+	
+	@Inject CppGenerator cppDeviceGenerator
+	@Inject PythonDevice pythonDevice
+//	@Inject fr.esrf.tango.pogo.generator.java.JavaDevice javaDeviceGenerator
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		cppDeviceGenerator.doGenerate(resource,fsa)
