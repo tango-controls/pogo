@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList
 //======================================================
 class Attributes {
 	@Inject	extension ProtectedArea
-	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 	@Inject	extension TypeDefinitions
 
 
@@ -106,10 +106,23 @@ class Attributes {
 			«cls.protectedArea(attribute.readAttrubuteMethod,
 				"//	Set the attribute value\n" +
 				"attr.set_value("+attribute.readAttrubuteDataMember+
-				attribute.readAttrubuteSize + ");", false)»
+					attribute.readAttrubuteSize + ");", false)»
 		}
 	'''
 	
+	//======================================================
+	// Define read dynamic attribute related method
+	//======================================================
+	def readDynamicAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
+		void «cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr)
+		{
+			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << endl;
+			«attribute.strType»	*att_value = get_«attribute.name»_data_ptr(attr.get_name());
+			«cls.protectedArea(attribute.readAttrubuteMethod,
+				"//	Set the attribute value\n" +
+				"attr.set_value(att_value" + attribute.readAttrubuteSize + ");", false)»
+		}
+	'''
 	
 	//======================================================
 	// Define write attribute related method
@@ -118,8 +131,16 @@ class Attributes {
 		void «cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr)
 		{
 			DEBUG_STREAM << "«cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr) entering... " << endl;
-			//	Retrieve write value
-			«attribute.dataType.cppType»	w_val;
+			«IF attribute.isScalar»
+				//	Retrieve write value
+				«attribute.strType»	w_val;
+			«ELSE»
+				//	Retrieve number of write values
+				int	w_length = attr.get_write_value_length();
+
+				//	Retrieve pointer on write values (Do not delete !)
+				const «attribute.strType»	*w_val;
+			«ENDIF»
 			attr.get_write_value(w_val);
 			«cls.protectedArea(attribute.writeAttrubuteMethod, "", false)»
 		}
@@ -136,11 +157,11 @@ class Attributes {
 		public:
 			«attribute.Constructor»
 			~«attribute.name»Attrib() {};
-			«IF attribute.rwType.isRead»
+			«IF attribute.isRead»
 				virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
 					{(static_cast<«cls.name» *>(dev))->read_«attribute.name»(att);}
 			«ENDIF»
-			«IF attribute.rwType.isWrite»
+			«IF attribute.isWrite»
 				virtual void write(Tango::DeviceImpl *dev,Tango::WAttribute &att)
 					{(static_cast<«cls.name» *>(dev))->write_«attribute.name»(att);}
 			«ENDIF»

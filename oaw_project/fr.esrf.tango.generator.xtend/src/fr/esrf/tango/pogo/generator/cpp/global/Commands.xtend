@@ -13,7 +13,7 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.
 //======================================================
 class Commands {
 	@Inject	extension ProtectedArea
-	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 
 
 	//======================================================
