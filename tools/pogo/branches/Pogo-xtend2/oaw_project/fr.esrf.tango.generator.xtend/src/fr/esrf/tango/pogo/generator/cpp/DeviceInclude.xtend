@@ -17,7 +17,7 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.
 //	Define device include file to be generated
 //======================================================
 class DeviceInclude  {
-	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 	@Inject	extension ProtectedArea
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
@@ -100,8 +100,7 @@ class DeviceInclude  {
 			//	Attribute data members
 			public:
 				«FOR Attribute attr : cls.attributes»
-					«IF isTrue(attr.status.concreteHere) &&
-						 attr.rwType.isRead»
+					«IF isTrue(attr.status.concreteHere) && attr.isRead»
 							«attr.dataType.cppType»	*attr_«attr.name»_read;
 					«ENDIF»
 				«ENDFOR»
@@ -193,14 +192,16 @@ class DeviceInclude  {
 			virtual void read_attr_hardware(vector<long> &attr_list);
 
 			«FOR Attribute attr : cls.attributes»
-				«attr.attributePrototypeMethodHeader»
-				«IF attr.rwType.isRead»
-					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
+				«IF attr.isConcreteHere»
+					«attr.attributePrototypeMethodHeader»
+					«IF attr.isRead»
+						virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
+					«ENDIF»
+					«IF attr.isWrite»
+						virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
+					«ENDIF»
+					virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 				«ENDIF»
-				«IF attr.rwType.isWrite»
-					virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
-				«ENDIF»
-				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 			«ENDFOR»
 		«ENDIF»
 
@@ -210,10 +211,10 @@ class DeviceInclude  {
 			«FOR Attribute attr : cls.dynamicAttributes»
 			
 				«attr.attributePrototypeMethodHeader»
-				«IF attr.rwType.isRead»
+				«IF attr.isRead»
 					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
 				«ENDIF»
-				«IF attr.rwType.isWrite»
+				«IF attr.isWrite»
 					virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
 				«ENDIF»
 				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);

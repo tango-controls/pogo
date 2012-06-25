@@ -17,7 +17,7 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 class DeviceStateMachine {
 	
 	@Inject	extension ProtectedArea
-	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
 
 
@@ -103,6 +103,9 @@ class DeviceStateMachine {
 		«FOR Attribute attribute : cls.attributes»
 			«cls.attributeStateMachine(attribute)»
 		«ENDFOR»
+		«FOR Attribute attribute : cls.dynamicAttributes»
+			«cls.attributeStateMachine(attribute)»
+		«ENDFOR»
 	'''
 
 
@@ -114,7 +117,7 @@ class DeviceStateMachine {
 		«cls.simpleMethodHeader("is_"+attribute.name+"_allowed", "Execution allowed for "+attribute.name+" attribute")»
 		bool «cls.name»::is_«attribute.name»_allowed(TANGO_UNUSED(Tango::AttReqType type))
 		{
-			«IF attribute.rwType.isWrite»
+			«IF attribute.isWrite»
 				«IF attribute.writeExcludedStates.empty»
 					//	Not any excluded states for «attribute.name» attribute in Write access.
 					«cls.protectedArea(attribute.name+"StateAllowed_WRITE")»
@@ -130,13 +133,13 @@ class DeviceStateMachine {
 						}
 						return true;
 					}
-					«IF attribute.rwType.isRead»
+					«IF attribute.isRead»
 					else
 					«ENDIF»
 				«ENDIF»
 			«ENDIF»
 
-			«IF attribute.rwType.isRead»
+			«IF attribute.isRead»
 				«IF attribute.readExcludedStates.empty»
 					//	Not any excluded states for «attribute.name» attribute in read access.
 					«cls.protectedArea(attribute.name+"StateAllowed_READ")»

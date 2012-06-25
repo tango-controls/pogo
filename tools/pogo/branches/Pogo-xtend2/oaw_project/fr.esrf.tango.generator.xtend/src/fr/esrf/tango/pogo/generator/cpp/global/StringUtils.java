@@ -161,15 +161,23 @@ public class StringUtils {
 	}
 	//===========================================================
 	//===========================================================
-	public boolean isRead(String str) {
+	public boolean isRead(Attribute attribute) {
+		String	str = attribute.getRwType();
 		return isSet(str) && str.contains("READ");
 	}
 	//===========================================================
-	public boolean isWrite(String str) {
+	public boolean isWrite(Attribute attribute) {
+		String	str = attribute.getRwType();
 		return isSet(str) && str.contains("WRITE");
 	}
 	//===========================================================
-	
+	public boolean isConcreteHere(Attribute attribute) {
+		return (attribute.getStatus()!=null &&
+				attribute.getStatus().getConcreteHere()!=null &&
+				attribute.getStatus().getConcreteHere().equals("true"));
+	}
+	//===========================================================
+
 	//===========================================================
 	public String strType(Attribute attribute) {
 		return TypeDefinitions.cppType(attribute.getDataType());

@@ -16,7 +16,7 @@ import fr.esrf.tango.pogo.pogoDsl.Attribute
 class DynamicAttributeUtils {
 	@Inject	extension ProtectedArea
 	@Inject	extension Headers
-	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
 
 	//======================================================

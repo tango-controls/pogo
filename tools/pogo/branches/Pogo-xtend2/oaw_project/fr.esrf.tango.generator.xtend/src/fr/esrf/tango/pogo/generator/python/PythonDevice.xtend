@@ -12,7 +12,7 @@ import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 
 class PythonDevice implements IGenerator {
 	@Inject	extension PythonUtils
-	@Inject extension StringUtils
+	@Inject extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 	@Inject extension ProtectedArea
 	override void doGenerate(Resource resource, IFileSystemAccess fsa){
 		for(cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))){
@@ -103,10 +103,10 @@ class PythonDevice implements IGenerator {
 			#==================================================================
 			
 			«FOR attr: cls.attributes»
-				«IF attr.rwType.isRead»
+				«IF attr.isRead»
 					«attr.readAttributeMethod»
 				«ENDIF»
-				«IF attr.rwType.isWrite»
+				«IF attr.isWrite»
 					«attr.writeAttributeMethod»
 				«ENDIF»
 				«attr.attributeMethodStateMachine»

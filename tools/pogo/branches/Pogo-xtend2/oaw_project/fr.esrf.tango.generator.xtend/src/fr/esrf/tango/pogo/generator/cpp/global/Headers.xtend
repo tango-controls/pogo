@@ -11,7 +11,7 @@ import com.google.inject.Inject
 
 class Headers {
 
-	@Inject	extension StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 
 	def cvsEscaped (String s)       { "$"   + s + "  $"   }
 	def cvsEscapedForVar (String s) { "\"$" + s + "  $\"" }

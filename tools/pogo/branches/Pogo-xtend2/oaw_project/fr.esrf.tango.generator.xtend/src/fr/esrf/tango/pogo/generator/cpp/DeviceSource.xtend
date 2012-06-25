@@ -9,6 +9,10 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+import fr.esrf.tango.pogo.generator.cpp.global.Headers
+import fr.esrf.tango.pogo.generator.cpp.global.Commands
+import fr.esrf.tango.pogo.generator.cpp.global.Attributes
+import fr.esrf.tango.pogo.generator.cpp.global.Properties
 
 
 //======================================================
@@ -16,11 +20,11 @@ import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 //======================================================
 class DeviceSource {
 	@Inject	extension ProtectedArea
-	@Inject	extension StringUtils
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Properties
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+	@Inject	extension Headers
+	@Inject	extension Commands
+	@Inject	extension Attributes
+	@Inject	extension Properties
 
 
 	//======================================================
@@ -181,16 +185,28 @@ class DeviceSource {
 	//======================================================
 	def attributeMethods(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
-			«IF attribute.rwType.contains("READ")»
-				«attribute.attributeMethodHeader("Read")»
-				«cls.readAttributeMethod(attribute)»
+			«IF attribute.isConcreteHere»
+				«IF attribute.isRead»
+					«attribute.attributeMethodHeader("Read")»
+					«cls.readAttributeMethod(attribute)»
+				«ENDIF»
+				«IF attribute.isWrite»
+					«attribute.attributeMethodHeader("Write")»
+					«cls.writeAttributeMethod(attribute)»
+				«ENDIF»
 			«ENDIF»
-			«IF attribute.rwType.contains("WRITE")»
+		«ENDFOR»
+		
+		«FOR Attribute attribute : cls.dynamicAttributes»
+			«IF attribute.isRead»
+				«attribute.attributeMethodHeader("Read")»
+				«cls.readDynamicAttributeMethod(attribute)»
+			«ENDIF»
+			«IF attribute.isWrite»
 				«attribute.attributeMethodHeader("Write")»
 				«cls.writeAttributeMethod(attribute)»
 			«ENDIF»
 		«ENDFOR»
-		
 		«cls.simpleMethodHeader("add_dynamic_attributes", "Create the dynamic attributes if any\nfor specified device.")»
 		void «cls.name»::add_dynamic_attributes()
 		{

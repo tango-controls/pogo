@@ -154,7 +154,7 @@ class LinuxMakefile {
 		            $(OBJDIR)/$(PACKAGE_NAME).o \
 		            $(OBJDIR)/$(PACKAGE_NAME)Class.o \
 		            $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
-		            $(OBJDIR)/ClassFactory.o  \
+		            «cls.dynamicAttrObjects»$(OBJDIR)/ClassFactory.o  \
 		            $(OBJDIR)/main.o \
 		            $(ADDITIONAL_OBJS) 
 		
@@ -170,6 +170,17 @@ class LinuxMakefile {
 	'''
 
 	//=============================================================================
+	// Add dynamic attribute util iof any
+	//=============================================================================
+ 	def dynamicAttrObjects(PogoDeviceClass cls) '''
+ 		«IF cls.dynamicAttributes.size>0»
+ 			$(OBJDIR)/$(PACKAGE_NAME)DynAttrUtils.o \
+ 		«ENDIF»
+ 	'''
+ 
+ 
+ 
+ 	//=============================================================================
 	// Add Additional object files if any (Utils, threads, ...)
 	//=============================================================================
  	def addAdditionalObjectFiles(PogoDeviceClass cls) '''
