@@ -6,12 +6,14 @@ import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 
 //======================================================
 //	Attribute utilities
 //======================================================
 class Properties {
-	@Inject extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+	@Inject extension StringUtils
+	@Inject extension InheritanceUtils
 	@Inject	extension ProtectedArea
 	@Inject	extension Headers
 
@@ -167,7 +169,7 @@ class Properties {
 		{
 			Tango::DbDatum	data(prop_name);
 			data << vect_data ;
-			cl_def_prop.push_back(data);
+			dev_def_prop.push_back(data);
 			add_wiz_«target»_prop(prop_name, prop_desc,  prop_def);
 		}
 		else
@@ -181,6 +183,7 @@ class Properties {
 		«cls.simpleMethodHeaderClass("write_class_property", "Set class description fields as property in database")»
 		void «cls.name»Class::write_class_property()
 		{
+		«IF cls.isConcreteClass»
 			//	First time, check if database used
 			if (Tango::Util::_UseDb == false)
 				return;
@@ -310,6 +313,7 @@ class Properties {
 		
 			//	Call database and and values
 			get_db_class()->put_property(data);
+		«ENDIF»
 		}
 	'''
 
