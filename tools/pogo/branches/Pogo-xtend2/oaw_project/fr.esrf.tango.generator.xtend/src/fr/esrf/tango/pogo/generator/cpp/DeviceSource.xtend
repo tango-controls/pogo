@@ -8,7 +8,7 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+import fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
 import fr.esrf.tango.pogo.generator.cpp.global.Headers
 import fr.esrf.tango.pogo.generator.cpp.global.Commands
 import fr.esrf.tango.pogo.generator.cpp.global.Attributes
@@ -25,6 +25,7 @@ class DeviceSource {
 	@Inject	extension Commands
 	@Inject	extension Attributes
 	@Inject	extension Properties
+	@Inject	extension InheritanceUtils
 
 
 	//======================================================
@@ -74,19 +75,19 @@ class DeviceSource {
 		«cls.simpleMethodHeader(cls.name,
 			 "Constructors for a Tango device\nimplementing the class" + cls.name)»
 		«cls.name»::«cls.name»(Tango::DeviceClass *cl, string &s)
-		 : «DeviceImpl»(cl, s.c_str())
+		 : «cls.inheritedClassName»(cl, s.c_str())
 		{
 			«cls.protectedArea("constructor_1", "init_device();", false)»
 		}
 		//--------------------------------------------------------
 		«cls.name»::«cls.name»(Tango::DeviceClass *cl, const char *s)
-		 : «DeviceImpl»(cl, s)
+		 : «cls.inheritedClassName»(cl, s)
 		{
 			«cls.protectedArea("constructor_2", "init_device();", false)»
 		}
 		//--------------------------------------------------------
 		«cls.name»::«cls.name»(Tango::DeviceClass *cl, const char *s, const char *d)
-		 : «DeviceImpl»(cl, s, d)
+		 : «cls.inheritedClassName»(cl, s, d)
 		{
 			«cls.protectedArea("constructor_3", "init_device();", false)»
 		}
@@ -98,6 +99,15 @@ class DeviceSource {
 			DEBUG_STREAM << "«cls.name»::delete_device() " << device_name << endl;
 			«cls.protectedArea("delete_device", "Delete device allocated objects", true)»
 			«cls.attributes.deleteAttributeDataMembers»
+			«IF cls.hasInheritanceClass»
+
+				if (Tango::Util::instance()->is_svr_shutting_down() == false  &&
+					Tango::Util::instance()->is_device_restarting(device_name)==false)
+				{
+					//	If not shutting down call delete device for inherited object
+					«cls.inheritedClassName»_ns::«cls.inheritedClassName»::delete_device();
+				}
+			«ENDIF»
 		}
 	'''
 	
@@ -112,7 +122,16 @@ class DeviceSource {
 			DEBUG_STREAM << "«cls.name»::init_device() create device " << device_name << endl;
 			«cls.protectedArea("init_device_before", "Initialization before get_device_property() call", true)»
 			
-			«IF cls.deviceProperties.size>0»
+			«IF cls.hasInheritanceClass»
+				if (Tango::Util::instance()->is_svr_starting() == false  &&
+					Tango::Util::instance()->is_device_restarting(device_name)==false)
+				{
+					//	If not starting up call init device for inherited object
+					«cls.inheritedClassName»_ns::«cls.inheritedClassName»::init_device();
+				}
+			«ENDIF»
+			«IF cls.deviceProperties.size>0 && isTrue(cls.description.hasConcreteProperty)»
+
 				//	Get the device properties from database
 				get_device_property();
 				«IF cls.deviceProperties.hasMandatoryProperty»
@@ -127,7 +146,7 @@ class DeviceSource {
 			«cls.protectedArea("init_device", "Initialize device", true)»
 		}
 		
-		«IF cls.deviceProperties.size>0»
+		«IF cls.deviceProperties.size>0 && isTrue(cls.description.hasConcreteProperty)»
 			«cls.getDevicePropertiesMethod»
 			«IF cls.deviceProperties.hasMandatoryProperty»
 				«cls.simpleMethodHeader("check_mandatory_property", "For mandatory properties check if defined in database.")»

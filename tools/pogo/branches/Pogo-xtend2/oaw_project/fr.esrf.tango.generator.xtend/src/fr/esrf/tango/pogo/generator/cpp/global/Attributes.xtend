@@ -6,6 +6,7 @@ import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import org.eclipse.emf.common.util.EList
 
 //======================================================
@@ -13,9 +14,9 @@ import org.eclipse.emf.common.util.EList
 //======================================================
 class Attributes {
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+	@Inject	extension StringUtils
 	@Inject	extension TypeDefinitions
-
+	@Inject	extension InheritanceUtils
 
 	//======================================================
 	//	General methods
@@ -71,8 +72,10 @@ class Attributes {
 	//======================================================
 	def deleteAttributeDataMembers(EList<Attribute> attributes) '''
 		«FOR Attribute attribute : attributes»
-			«IF isTrue(attribute.allocReadMember)»
-				«attribute.deleteAttributeDataMember»
+			«IF attribute.isConcreteHere»
+				«IF isTrue(attribute.allocReadMember)»
+					«attribute.deleteAttributeDataMember»
+				«ENDIF»
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -90,8 +93,10 @@ class Attributes {
 	def allocateAttributeDataMembers(EList<Attribute> attributes) '''
 
 		«FOR Attribute attribute : attributes»
-			«IF attribute.allocReadMember.isTrue»
-				«attribute.allocateAttributeDataMember»
+			«IF attribute.isConcreteHere»
+				«IF attribute.allocReadMember.isTrue»
+					«attribute.allocateAttributeDataMember»
+				«ENDIF»
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -205,7 +210,9 @@ class Attributes {
 	//	If cls not null -> dynamic attribute
 	//======================================================
 	def attributeFactory(Attribute attribute) '''
-		«attribute.attributeFactory(null)»
+		«IF attribute.concreteHere»
+			«attribute.attributeFactory(null)»
+		«ENDIF»
 	'''
 		
 	def attributeFactory(Attribute attribute, PogoDeviceClass cls) '''

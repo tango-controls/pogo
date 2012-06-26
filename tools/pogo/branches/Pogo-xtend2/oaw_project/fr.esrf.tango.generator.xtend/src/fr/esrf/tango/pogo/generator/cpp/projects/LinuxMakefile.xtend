@@ -20,7 +20,6 @@ class LinuxMakefile {
 	// Define Linux Makefile code to be generated
 	//======================================================
 	def generateLinuxMakefile (PogoDeviceClass cls) '''
-		#PROTECTED REGION ID(«cls.name»::Makefile) ENABLED START#
 		#=============================================================================
 		#
 		# file :        Makefile
@@ -147,17 +146,18 @@ class LinuxMakefile {
 		#=============================================================================
 		# SVC_OBJS is the list of all objects needed to make the output
 		#
-		SVC_INCL =  $(PACKAGE_NAME).h $(PACKAGE_NAME)Class.h
+		SVC_INCL =  $(PACKAGE_NAME).h $(PACKAGE_NAME)Class.h «cls.addInheritancIncludeReference»
 		
 		
 		SVC_OBJS =      \
-		            $(OBJDIR)/$(PACKAGE_NAME).o \
-		            $(OBJDIR)/$(PACKAGE_NAME)Class.o \
-		            $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
-		            «cls.dynamicAttrObjects»$(OBJDIR)/ClassFactory.o  \
-		            $(OBJDIR)/main.o \
-		            $(ADDITIONAL_OBJS) 
+		        $(OBJDIR)/$(PACKAGE_NAME).o \
+		        $(OBJDIR)/$(PACKAGE_NAME)Class.o \
+		        $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
+		        «cls.dynamicAttrObjects»«cls.inheritanceObjects»$(OBJDIR)/ClassFactory.o  \
+		        $(OBJDIR)/main.o \
+		        $(ADDITIONAL_OBJS) 
 		
+		«cls.addInheritanceObjectFiles»
 		«cls.addAdditionalObjectFiles»
 		
 		#=============================================================================
@@ -165,10 +165,40 @@ class LinuxMakefile {
 		#
 		include $(MAKE_ENV)/common_target.opt
 		
-		
-		#PROTECTED REGION END#
+		«IF cls.hasInheritanceClass»
+
+
+			#=============================================================================
+			# Following are dependancies of the inherited classes used by project
+			#
+			«FOR Inheritance inher : cls.description.inheritances»
+				«IF inher.defaultDeviceImpl==false»
+
+					#------------  Object files dependancies for GenericPS class  ------------
+					«inher.inheritanceIncludesForMakefile»
+					
+					«inher.inheritanceObjectsDependanciesForMakefile»
+				«ENDIF»
+			«ENDFOR»
+
+			SVC_INHERITANCE_INCL =  $(«cls.inheritedClassName.toUpperCase»_INCL) 
+
+ 		«ENDIF»
+
 	'''
 
+ 	//=============================================================================
+	// Add dynamic attribute util iof any
+	//=============================================================================
+ 	def inheritanceObjects(PogoDeviceClass cls) '''
+ 		«IF cls.hasInheritanceClass»
+ 			«FOR Inheritance inher : cls.description.inheritances»
+ 				«IF inher.defaultDeviceImpl==false»
+ 					$(SVC_«inher.classname.toUpperCase»_OBJ) \
+ 				«ENDIF»
+ 			«ENDFOR»
+ 		«ENDIF»
+ 	'''
 	//=============================================================================
 	// Add dynamic attribute util iof any
 	//=============================================================================
@@ -205,7 +235,7 @@ class LinuxMakefile {
 				«IF inheritance.isInheritanceClass»
 					#------------ Inheritance from «inheritance.classname» class ------------
 					«inheritance.classname.toUpperCase()»_CLASS = «inheritance.classname»
-					«inheritance.classname.toUpperCase()»_HOME = «inheritance.sourcePath»
+					«inheritance.classname.toUpperCase()»_HOME  = «inheritance.sourcePath»
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»
@@ -217,7 +247,28 @@ class LinuxMakefile {
  	def addInheritancIncludeFiles(PogoDeviceClass cls) '''
 	 	«FOR Inheritance inheritance : cls.description.inheritances»
 	 		«IF inheritance.isInheritanceClass»\
-				-I $(«inheritance.classname.toUpperCase()»_HOME)
+              -I $(«inheritance.classname.toUpperCase()»_HOME)
+			«ENDIF»
+ 		«ENDFOR»
+ 	'''
+	//=============================================================================
+ 	// Add inheritance include files reference if any
+ 	//=============================================================================
+ 	def addInheritancIncludeReference(PogoDeviceClass cls) '''
+	 	«FOR Inheritance inheritance : cls.description.inheritances»
+	 		«IF inheritance.isInheritanceClass»
+				 $(SVC_INHERITANCE_INCL) 
+			«ENDIF»
+ 		«ENDFOR»
+ 	'''
+ 
+	//=============================================================================
+ 	// Add inheritance include files definition if any
+ 	//=============================================================================
+ 	def addInheritancIncludeDefinition(PogoDeviceClass cls) '''
+	 	«FOR Inheritance inheritance : cls.description.inheritances»
+	 		«IF inheritance.isInheritanceClass»
+				SVC_INHERITANCE_INCL:	$(«inheritance.classname.toUpperCase()»_HOME
 			«ENDIF»
  		«ENDFOR»
  	'''

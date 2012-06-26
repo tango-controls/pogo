@@ -14,13 +14,13 @@ import fr.esrf.tango.pogo.pogoDsl.State;
 
 public class StringUtils {
 
-	
+
 	//===========================================================
 	/*
 	 * Define the DeviceImpl used to generate
 	 */
 	//===========================================================
-	public String DeviceImpl() {
+	public static String DeviceImpl() {
 		return "Tango::Device_4Impl";
 	}
 
@@ -31,6 +31,14 @@ public class StringUtils {
 	//===========================================================
 	public static boolean isTrue(String str) {
 		return (str!=null && str.equals("true"));
+	}
+	//===========================================================
+	/**
+	 * convert string to boolean
+	 */
+	//===========================================================
+	public static boolean isFalse(String str) {
+		return !isTrue(str);
 	}
 	//===========================================================
 	/**
@@ -171,12 +179,6 @@ public class StringUtils {
 		return isSet(str) && str.contains("WRITE");
 	}
 	//===========================================================
-	public boolean isConcreteHere(Attribute attribute) {
-		return (attribute.getStatus()!=null &&
-				attribute.getStatus().getConcreteHere()!=null &&
-				attribute.getStatus().getConcreteHere().equals("true"));
-	}
-	//===========================================================
 
 	//===========================================================
 	public String strType(Attribute attribute) {
@@ -250,8 +252,9 @@ public class StringUtils {
 	 * build the commands table
 	 */
 	//===========================================================
-	public static String commandsTable(EList<Command> commands) {
+	public String commandsTable(EList<Command> commands) {
 
+		InheritanceUtils	inher = new InheritanceUtils();
 		//	Build a list of command columns to build the table
 		ArrayList<String[]>	list = new ArrayList<String[]>();
 		list.add(new String[] { "================================================================" });
@@ -261,7 +264,7 @@ public class StringUtils {
 		list.add(new String[] { "Command name", "Method name" });
 		list.add(new String[] { "================================================================" });
 		for (Command command : commands) {
-			if (isTrue(command.getStatus().getConcreteHere()))
+			if (inher.isConcreteHere(command))
 				list.add(new String[] { command.getName(), command.getExecMethod() });
 			else
 				list.add(new String[] { command.getName(), "Inherited (no method)" });

@@ -6,7 +6,13 @@ import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
+import fr.esrf.tango.pogo.generator.cpp.global.Properties
+import fr.esrf.tango.pogo.generator.cpp.global.Attributes
+import fr.esrf.tango.pogo.generator.cpp.global.Commands
+import fr.esrf.tango.pogo.generator.cpp.global.Headers
+import fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
 
 
 //======================================================
@@ -15,10 +21,11 @@ import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 class DeviceClassInclude {
 
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Properties
+	@Inject	extension Headers
+	@Inject	extension Commands
+	@Inject	extension Attributes
+	@Inject	extension Properties
+	@Inject	extension InheritanceUtils
 	
 	//======================================================
 	// Define device include file to be generated
@@ -56,18 +63,18 @@ class DeviceClassInclude {
 		 *	The «cls.name»Class singleton definition
 		 */
 		
-		class
 		#ifdef _TG_WINDOWS_
-			__declspec(dllexport)
+		class __declspec(dllexport)  «cls.name»Class : public «cls.inheritedClassNameForDeviceClass»
+		#else
+		class «cls.name»Class : public «cls.inheritedClassNameForDeviceClass»
 		#endif
-		«cls.name»Class : public Tango::DeviceClass
 		{
 			«cls.protectedAreaClass("dditionnal DServer data members", "", false)»
 
 			«cls.classPropertyDeclarations»
 			«cls.publicMethodPrototypes»
 			«cls.protectedMethodPrototypes»
-			«privateMethodPrototypes»
+			«cls.privateMethodPrototypes»
 		};
 		
 		}	//	End of namespace
@@ -85,6 +92,7 @@ class DeviceClassInclude {
 			"#ifndef " + cls.name + "Class_H\n"+
 			"#define " + cls.name + "Class_H\n\n"+
 			"#include <tango.h>\n"+
+			cls.inheritanceIncludeList(true) +
 			"#include <" + cls.name + ".h>\n",
 			 false)»
 	'''
@@ -94,7 +102,9 @@ class DeviceClassInclude {
 	//======================================================
 	def attributeClasses(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
-			«cls.attributeClass(attribute)»
+			«IF attribute.isConcreteHere»
+				«cls.attributeClass(attribute)»
+			«ENDIF»
 		«ENDFOR»
 	'''
 	
@@ -112,8 +122,10 @@ class DeviceClassInclude {
 	//======================================================
 	def commandClasses(PogoDeviceClass cls) '''
 		«FOR Command command : cls.commands»
-			«IF command.name.equals("State")==false && command.name.equals("Status")==false»
-				«cls.commandClass(command)»
+			«IF command.concreteHere»
+				«IF command.name.equals("State")==false && command.name.equals("Status")==false»
+					«cls.commandClass(command)»
+				«ENDIF»
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -123,7 +135,8 @@ class DeviceClassInclude {
 	// Define public methods prototypes
 	//======================================================
 	def publicMethodPrototypes(PogoDeviceClass cls) '''
-		//	Method prototypes
+		
+			//	Method prototypes
 			static «cls.name»Class *init(const char *);
 			static «cls.name»Class *instance();
 			~«cls.name»Class();
@@ -153,12 +166,14 @@ class DeviceClassInclude {
 	//======================================================
 	// Define private methods prototypes
 	//======================================================
-	def privateMethodPrototypes() '''
+	def privateMethodPrototypes(PogoDeviceClass cls) '''
 		private:
 			void device_factory(const Tango::DevVarStringArray *);
-			void create_static_attribute_list(vector<Tango::Attr *> &);
-			void erase_dynamic_attributes(const Tango::DevVarStringArray *,vector<Tango::Attr *> &);
-			vector<string>	defaultAttList;
-			Tango::Attr *get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname);
+			«IF cls.concreteClass»
+				void create_static_attribute_list(vector<Tango::Attr *> &);
+				void erase_dynamic_attributes(const Tango::DevVarStringArray *,vector<Tango::Attr *> &);
+				vector<string>	defaultAttList;
+				Tango::Attr *get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname);
+			«ENDIF»
 	'''
 }

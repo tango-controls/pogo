@@ -74,11 +74,11 @@ class Headers {
 	}
 	def deviceClassSourceFileHeader(PogoDeviceClass cls) {
 		fileHeader(deviceClassSourceFileName(cls),
-			"C++ source for the " + cls.name +" root class.\n"+
-			"This class is the singleton class for\n"+
-			" the " + cls.name + " device class.\n"+
-			"It contains all properties and methods which the \n" +
-			cls.name + " requires only once e.g. the commands.",
+			"C++ source for the " + cls.name + "Class.\n" + 
+			"A singleton class derived from DeviceClass.\n"+ 
+			"It implements the command and attribute list\n" +
+			"and all properties and methods required\n" +
+			"by the " + cls.name + " once per process.",
 			cls.description.title
 		)
 	}

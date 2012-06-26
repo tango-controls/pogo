@@ -65,9 +65,8 @@ class DeviceStateMachine {
 	//======================================================
 	def commandsStateMachine(PogoDeviceClass cls) '''
 		«FOR Command command : cls.commands»
-			«IF command.status.concreteHere.isTrue &&
-				command.name.equals("State")==false && command.name.equals("Status")==false»
-					«cls.commandStateMachine(command)»
+			«IF command.name.equals("State")==false && command.name.equals("Status")==false»
+				«cls.commandStateMachine(command)»
 			«ENDIF»
 		«ENDFOR»
 	'''

@@ -7,15 +7,21 @@ import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
+import fr.esrf.tango.pogo.generator.cpp.global.Headers
+import fr.esrf.tango.pogo.generator.cpp.global.Attributes
+import fr.esrf.tango.pogo.generator.cpp.global.Commands
+import fr.esrf.tango.pogo.generator.cpp.global.Properties
+import fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
 
 
 class DeviceClassSource {
 
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Properties
+	@Inject	extension Headers
+	@Inject	extension Attributes
+	@Inject	extension Commands
+	@Inject	extension Properties
+	@Inject	extension InheritanceUtils
 
 
 	//======================================================
@@ -61,7 +67,6 @@ class DeviceClassSource {
 		«cls.protectedAreaClass(".cpp",
 			cls.deviceClassSourceFileHeader+
 			"\n\n" +
-			"#include <"+cls.name+".h>\n"+
 			"#include <"+cls.name+"Class.h>", false)»
 
 		//-------------------------------------------------------------------
@@ -90,8 +95,10 @@ class DeviceClassSource {
 	def commandRelatedMethods(PogoDeviceClass cls) '''
 		«IF cls.commands.size>2»
 			«FOR Command command : cls.commands»
-				«IF command.name.equals("State")==false && command.name.equals("Status")==false»
-					«cls.classExecuteMethod(command)»
+				«IF command.isConcreteHere»
+					«IF command.name.equals("State")==false && command.name.equals("Status")==false»
+						«cls.classExecuteMethod(command)»
+					«ENDIF»
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»
@@ -106,15 +113,28 @@ class DeviceClassSource {
 		void «cls.name»Class::attribute_factory(vector<Tango::Attr *> &att_list)
 		{
 			«cls.protectedAreaClass("attribute_factory_before", "Add your own code", true)»
+			«IF cls.hasInheritanceClass»
+				//	Call atribute_factory for inherited class
+				«cls.name»_ns::«cls.name»Class::attribute_factory(att_list);
+			«ENDIF»
 		
 			«FOR Attribute attribute : cls.attributes»
-				«attribute.attributeFactory»
+				«IF attribute.inherited»
+					//	Attribute : «attribute.name» - Check if not concrete in inherited class
+					Tango::Attr *«attribute.name»Attr = get_attr_object_by_name(att_list, "«attribute.name»");
+					if («attribute.name»Attr == NULL)
+					{
+						«attribute.attributeFactory»
+					}
+				«ELSE»
+					«attribute.attributeFactory»
+				«ENDIF»
 
 			«ENDFOR»
-			
-			//	Create a list of static attributes
-			create_static_attribute_list(get_class_attr()->get_attr_list());
-
+			«IF cls.concreteClass»
+				//	Create a list of static attributes
+				create_static_attribute_list(get_class_attr()->get_attr_list());
+			«ENDIF»
 			«cls.protectedAreaClass("attribute_factory_after", "Add your own code", true)»
 		}
 	'''
@@ -127,7 +147,23 @@ class DeviceClassSource {
 		{
 			«cls.protectedAreaClass("command_factory_before", "Add your own code", true)»
 			«FOR Command command : cls.commands»
-				«command.commandFactory»
+				«IF command.isConcreteHere &&
+					command.name.equals("State")==false && command.name.equals("Status")==false»
+					«IF command.inherited»
+						//	Get inherited Command object «command.name» if already created
+						try
+						{
+							get_cmd_by_name("«command.name»");
+						}
+						catch (Tango::DevFailed &e)
+						{
+							//	Create «command.name» command object
+							«command.commandFactory»
+						}
+					«ELSE»
+						«command.commandFactory»
+					«ENDIF»
+				«ENDIF»
 			«ENDFOR»
 			«cls.protectedAreaClass("command_factory_after", "Add your own code", true)»
 		}
@@ -141,6 +177,7 @@ class DeviceClassSource {
 		«cls.simpleMethodHeaderClass("device_factory","Create the device object(s)\nand store them in the device list")»
 		void «cls.name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
 		{
+		«IF cls.isConcreteClass»
 			«cls.protectedAreaClass("device_factory_before", "Add your own code", true)»
 		
 			//	Create devices and add it into the device list
@@ -168,6 +205,9 @@ class DeviceClassSource {
 			}
 		
 			«cls.protectedAreaClass("device_factory_after", "Add your own code", true)»
+		«ELSE»
+			//	This class is not concrete and cannot implement devices
+		«ENDIF»
 		}
 	'''
 
@@ -178,71 +218,84 @@ class DeviceClassSource {
 	//==========================================================
 	def dynamicAttributeMethods(PogoDeviceClass cls) '''
 
-
-		//===================================================================
-		//	Dynamic attributes related methods
-		//===================================================================
-		
-		//--------------------------------------------------------
-		/**
-		 * method : 		«cls.name»Class::create_static_attribute_list
-		 * description : 	Create the a list of static attributes
-		 *
-		 * @param	att_list	the ceated attribute list 
-		 */
-		//--------------------------------------------------------
-		void «cls.name»Class::create_static_attribute_list(vector<Tango::Attr *> &att_list)
-		{
-			for (unsigned long i=0 ; i<att_list.size() ; i++)
+		«IF cls.concreteClass»
+			//===================================================================
+			//	Dynamic attributes related methods
+			//===================================================================
+			
+			//--------------------------------------------------------
+			/**
+			 * method : 		«cls.name»Class::create_static_attribute_list
+			 * description : 	Create the a list of static attributes
+			 *
+			 * @param	att_list	the ceated attribute list 
+			 */
+			//--------------------------------------------------------
+			void «cls.name»Class::create_static_attribute_list(vector<Tango::Attr *> &att_list)
 			{
-				string att_name(att_list[i]->get_name());
-				transform(att_name.begin(), att_name.end(), att_name.begin(), ::tolower);
-				defaultAttList.push_back(att_name);
-			}
-		
-			cout2 << defaultAttList.size() << " attributes in default list" << endl;
-		
-			«cls.protectedAreaClass("create_static_att_list")»
-		}
-		
-		
-		//--------------------------------------------------------
-		/**
-		 * method : 		«cls.name»Class::erase_dynamic_attributes
-		 * description : 	delete the dynamic attributes if any.
-		 *
-		 * @param	devlist_ptr	the device list pointer
-		 * @param	list of all attributes
-		 */
-		//--------------------------------------------------------
-		void «cls.name»Class::erase_dynamic_attributes(const Tango::DevVarStringArray *devlist_ptr, vector<Tango::Attr *> &att_list)
-		{
-			Tango::Util *tg = Tango::Util::instance();
-		
-			for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
-			{	
-				Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((string)(*devlist_ptr)[i]).c_str());
-				«cls.name» *dev = static_cast<«cls.name» *> (dev_impl);
-				
-				vector<Tango::Attribute *> &dev_att_list = dev->get_device_attr()->get_attribute_list();
-				vector<Tango::Attribute *>::iterator ite_att;
-				for (ite_att=dev_att_list.begin() ; ite_att != dev_att_list.end() ; ++ite_att)
+				for (unsigned long i=0 ; i<att_list.size() ; i++)
 				{
-					string att_name((*ite_att)->get_name_lower());
-					if ((att_name == "state") || (att_name == "status"))
-						continue;
-					vector<string>::iterator ite_str = find(defaultAttList.begin(), defaultAttList.end(), att_name);
-					if (ite_str == defaultAttList.end())
+					string att_name(att_list[i]->get_name());
+					transform(att_name.begin(), att_name.end(), att_name.begin(), ::tolower);
+					defaultAttList.push_back(att_name);
+				}
+			
+				cout2 << defaultAttList.size() << " attributes in default list" << endl;
+			
+				«cls.protectedAreaClass("create_static_att_list")»
+			}
+			
+			
+			//--------------------------------------------------------
+			/**
+			 * method : 		«cls.name»Class::erase_dynamic_attributes
+			 * description : 	delete the dynamic attributes if any.
+			 *
+			 * @param	devlist_ptr	the device list pointer
+			 * @param	list of all attributes
+			 */
+			//--------------------------------------------------------
+			void «cls.name»Class::erase_dynamic_attributes(const Tango::DevVarStringArray *devlist_ptr, vector<Tango::Attr *> &att_list)
+			{
+				Tango::Util *tg = Tango::Util::instance();
+			
+				for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
+				{	
+					Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((string)(*devlist_ptr)[i]).c_str());
+					«cls.name» *dev = static_cast<«cls.name» *> (dev_impl);
+					
+					vector<Tango::Attribute *> &dev_att_list = dev->get_device_attr()->get_attribute_list();
+					vector<Tango::Attribute *>::iterator ite_att;
+					for (ite_att=dev_att_list.begin() ; ite_att != dev_att_list.end() ; ++ite_att)
 					{
-						cout2 << att_name << " is a UNWANTED dynamic attribute for device " << (*devlist_ptr)[i] << endl;
-						Tango::Attribute &att = dev->get_device_attr()->get_attr_by_name(att_name.c_str());
-						dev->remove_attribute(att_list[att.get_attr_idx()],true);
-						--ite_att;
+						string att_name((*ite_att)->get_name_lower());
+						if ((att_name == "state") || (att_name == "status"))
+							continue;
+						vector<string>::iterator ite_str = find(defaultAttList.begin(), defaultAttList.end(), att_name);
+						if (ite_str == defaultAttList.end())
+						{
+							cout2 << att_name << " is a UNWANTED dynamic attribute for device " << (*devlist_ptr)[i] << endl;
+							Tango::Attribute &att = dev->get_device_attr()->get_attr_by_name(att_name.c_str());
+							dev->remove_attribute(att_list[att.get_attr_idx()],true);
+							--ite_att;
+						}
 					}
 				}
+				«cls.protectedAreaClass("erase_dynamic_attributes")»		
 			}
-			«cls.protectedAreaClass("erase_dynamic_attributes")»		
-		}
+
+			«cls.simpleMethodHeaderClass("get_attr_by_name", "returns Tango::Attr * object found by name")»
+			Tango::Attr *«cls.name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname)
+			{
+				vector<Tango::Attr *>::iterator it;
+				for (it=att_list.begin() ; it<att_list.end() ; it++)
+					if ((*it)->get_name()==attname)
+						return (*it);
+				//	Attr does not exist
+				return NULL;
+			}
+
+		«ENDIF»
 	'''
 
 
@@ -263,7 +316,7 @@ class DeviceClassSource {
 		 * @param s	The class name
 		 */
 		//--------------------------------------------------------
-		«cls.name»Class::«cls.name»Class(string &s):DeviceClass(s)
+		«cls.name»Class::«cls.name»Class(string &s):«cls.inheritedClassNameForDeviceClass»(s)
 		{
 			cout2 << "Entering «cls.name»Class constructor" << endl;
 			set_default_property();

@@ -9,19 +9,25 @@ import fr.esrf.tango.pogo.pogoDsl.Property
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
+import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+import fr.esrf.tango.pogo.generator.cpp.global.Headers
+import fr.esrf.tango.pogo.generator.cpp.global.Commands
+import fr.esrf.tango.pogo.generator.cpp.global.Attributes
+import fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
 
 
 //======================================================
 //	Define device include file to be generated
 //======================================================
 class DeviceInclude  {
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+	@Inject	extension StringUtils
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Commands
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Attributes
+	@Inject	extension Headers
+	@Inject	extension Commands
+	@Inject	extension Attributes
+	@Inject	extension InheritanceUtils
 
 
 	//======================================================
@@ -39,7 +45,7 @@ class DeviceInclude  {
 		{
 		«cls.protectedArea("Additional Class Declarations", "Additional Class Declarations", true)»
 		
-		class «cls.name» : public «DeviceImpl»
+		class «cls.name» : public «cls.inheritedClassNameForDevice»
 		{
 
 		«cls.protectedArea("Data Members", "Add your own data members", true)»
@@ -69,7 +75,8 @@ class DeviceInclude  {
 			"\n\n" +
 			"#ifndef " + cls.name + "_H\n"+
 			"#define " + cls.name + "_H\n\n"+
-			"#include <tango.h>\n", false)»
+			"#include <tango.h>\n" +
+			cls.inheritanceIncludeList(false), false)»
 	'''
 	
 
@@ -81,8 +88,10 @@ class DeviceInclude  {
 			//	Device property data members
 			public:
 				«FOR Property property : cls.deviceProperties»
-					//	«property.name»:	«property.description.comments("//  ")»
-					«property.type.cppPropType»	«property.name.dataMemberName»;
+					«IF property.concreteHere»
+						//	«property.name»:	«property.description.comments("//  ")»
+						«property.type.cppPropType»	«property.name.dataMemberName»;
+					«ENDIF»
 				«ENDFOR»
 				«IF cls.deviceProperties.hasMandatoryProperty»
 
@@ -159,7 +168,7 @@ class DeviceInclude  {
 			 *	Initialize the device
 			 */
 			virtual void init_device();
-			«IF cls.deviceProperties.size>0»
+			«IF cls.deviceProperties.size>0 && isTrue(cls.description.hasConcreteProperty)»
 				/**
 				 *	Read the device properties from database
 				 */
@@ -192,16 +201,13 @@ class DeviceInclude  {
 			virtual void read_attr_hardware(vector<long> &attr_list);
 
 			«FOR Attribute attr : cls.attributes»
-				«IF attr.isConcreteHere»
-					«attr.attributePrototypeMethodHeader»
-					«IF attr.isRead»
-						virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr);
-					«ENDIF»
-					«IF attr.isWrite»
-						virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr);
-					«ENDIF»
-					virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
+				«attr.attributePrototypeMethodHeader»
+				«IF attr.isRead»
+					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr)«attr.checkAbstractForProto»;
 				«ENDIF»
+				«IF attr.isWrite»
+				«ENDIF»
+				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 			«ENDFOR»
 		«ENDIF»
 
@@ -244,7 +250,7 @@ class DeviceInclude  {
 		//	Command related methods
 		public:
 			«FOR Command command : cls.commands»
-				«IF isTrue(command.status.concreteHere)»
+				«IF command.isAbstract || command.isConcreteHere»
 					«command.commandExecutionMethodHeader»
 					«cls.commandExecutionMethodSignature(command, true)»
 					«IF command.name.equals("State")==false && command.name.equals("Status")==false»

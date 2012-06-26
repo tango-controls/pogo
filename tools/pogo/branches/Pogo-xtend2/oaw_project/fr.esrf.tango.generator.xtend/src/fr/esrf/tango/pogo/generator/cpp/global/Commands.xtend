@@ -6,6 +6,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
 
 //======================================================
@@ -13,8 +14,8 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.
 //======================================================
 class Commands {
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
-
+	@Inject	extension StringUtils
+	@Inject	extension InheritanceUtils
 
 	//======================================================
 	// Define the signature for command execution method
@@ -22,7 +23,8 @@ class Commands {
 	def commandExecutionMethodSignature(PogoDeviceClass cls, Command cmd, boolean declare) {
 		if (declare)
 			//	Method prototype
-			cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration + ");"
+			"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
+						 ")" + cmd.checkAbstractForProto  + ";"
 		else
 			//	method signature
 			cmd.argout.type.argoutDeclarationForSignature + cls.name +
@@ -160,9 +162,9 @@ class Commands {
 	//==============================================================
 	def classExecuteMethodArgin(Command command) '''
 		«IF command.argin.type.cppType.equals("void")»
-			TANGO_UNUSED(const CORBA::Any &in_any)
+			TANGO_UNUSED(const CORBA::Any &in_any))
 		«ELSE»
-			const CORBA::Any &in_any
+			const CORBA::Any &in_any)
 		«ENDIF»
 	'''
 	//==============================================================
@@ -178,7 +180,7 @@ class Commands {
 		 *	returns The command output data (packed in the Any object)
 		 */
 		//--------------------------------------------------------
-		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, «command.classExecuteMethodArgin»)
+		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, «command.classExecuteMethodArgin»
 		{
 			cout2 << "«command.name»Class::execute(): arrived" << endl;
 			«command.extractArgin»
@@ -215,16 +217,13 @@ class Commands {
 	//	Define the command factory
 	//======================================================
 	def commandFactory(Command command) '''
-		«IF command.status.concreteHere.isTrue &&
-			command.name.equals("State")==false && command.name.equals("Status")==false»
-				«command.name»Class	*p«command.name»Cmd =
-					new «command.name»Class("«command.name»",
-						«command.argin.type.cppTypeEnum», «command.argout.type.cppTypeEnum»,
-						"«command.argin.description.oneLineString»",
-						"«command.argout.description.oneLineString»",
-						Tango::«command.displayLevel»);
-				command_list.push_back(p«command.name»Cmd);
-		«ENDIF»
+		«command.name»Class	*p«command.name»Cmd =
+			new «command.name»Class("«command.name»",
+				«command.argin.type.cppTypeEnum», «command.argout.type.cppTypeEnum»,
+				"«command.argin.description.oneLineString»",
+				"«command.argout.description.oneLineString»",
+				Tango::«command.displayLevel»);
+		command_list.push_back(p«command.name»Cmd);
 	'''
 
 }
