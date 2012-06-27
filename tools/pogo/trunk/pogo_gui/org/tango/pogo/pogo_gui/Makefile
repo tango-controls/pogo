@@ -11,11 +11,12 @@
 #-======================================================================
 
 
-RELEASE    = 8.0.2
+RELEASE    = 8.0.7
 CVS_MODULE = pogo_oaw
 
 TANGO_HOME	=	/segfs/tango
 PACK_HOME	=	$(TANGO_HOME)/tools
+POGO_DOC	=	$(TANGO_HOME)/tools/pogo/pogo_oaw/doc
 DOC_HOME    =	$(TANGO_HOME)/doc/www/tango/tango_doc/tools_doc/pogo_doc/
 JAR_DIR		=	$(TANGO_JAR_HOME)/appli
 
@@ -85,7 +86,8 @@ doc:
 clean:
 	rm -R $(BIN_DIR)/pogo/pogo_gui
 
-ECLIPSE_JAR_DIR=/users/verdier/pogo_jar/jar
+#ECLIPSE_JAR_DIR=/users/verdier/pogo_jar/jar
+ECLIPSE_JAR_DIR=/segfs/tango/tools/pogo/bin
 TARGET_JAR_DIR=/segfs/tango/release/java/appli
 JAR_FILE=org.tango.pogo
 install:
@@ -110,10 +112,10 @@ source_release:
 	ls -l $(SRC_REL_PATH)/$(JAR_FILE)*
 
 
-DOC_HOME=/segfs/tango/tools/pogo/doc
-TARGET_DOC_HOME=maya:/www/doc/computing/cs/tango/tango_doc/tools_doc/pogo_doc
+TARGET_DOC_HOME=webserv02:/www/doc/computing/cs/tango/tango_doc/tools_doc/pogo_doc
 install_doc:
-	rcp  -r $(DOC_HOME)/*       $(TARGET_DOC_HOME)
+	cp -R $(POGO_DOC)/*         $(DOC_HOME)
+	scp  -r $(DOC_HOME)/*       $(TARGET_DOC_HOME)
 
 #	rcp  $(DOC_HOME)/img/*   $(TARGET_DOC_HOME)/img
 

@@ -210,6 +210,7 @@ public class InheritanceUtils {
             new_attr.setDataType(OAWutils.createType(inher_attr.getDataType()));
             new_attr.setMaxX(inher_attr.getMaxX());
             new_attr.setMaxY(inher_attr.getMaxY());
+            new_attr.setAllocReadMember(inher_attr.getAllocReadMember());
 
             //	Attribute properties.
             AttrProperties new_prop = OAWutils.factory.createAttrProperties();

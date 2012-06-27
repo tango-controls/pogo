@@ -8,6 +8,18 @@
 #
 #-======================================================================
 
+Pogo-8.0.7 - 27/06/2012:
+	Problem in allocation data member when inherited fixed.
+
+Pogo-8.0.6 - 21/06/2012:
+	Problem in write dynamic attribute fixed.
+
+Pogo-8.0.5 - 11/06/2012:
+	VC 10 pb with dll fixed.
+
+Pogo-8.0.4 - 04/06/2012:
+	zmq.lib added to vc9 project.
+
 Pogo-8.0.3 - 29/05/2012:
 	Improve vc10 project.
 	Modify file filter for java classes.
