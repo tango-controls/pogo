@@ -335,12 +335,16 @@ class Properties {
 
 			//	Set Default Class Properties
 			«FOR Property property : cls.classProperties»
-				«property.setDefaultPropertyForWizard("class")»
+				«IF property.concreteHere»
+					«property.setDefaultPropertyForWizard("class")»
+				«ENDIF»
 			«ENDFOR»
 
 			//	Set Default device Properties
 			«FOR Property property : cls.deviceProperties»
-				«property.setDefaultPropertyForWizard("dev")»
+				«IF property.concreteHere»
+					«property.setDefaultPropertyForWizard("dev")»
+				«ENDIF»
 			«ENDFOR»
 		}
 	'''

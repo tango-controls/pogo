@@ -103,7 +103,7 @@ class DeviceClassInclude {
 	def attributeClasses(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
 			«IF attribute.isConcreteHere»
-				«cls.attributeClass(attribute)»
+				«cls.attributeClass(attribute, false)»
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -113,7 +113,7 @@ class DeviceClassInclude {
 	//======================================================
 	def dynamicattributeClasses(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.dynamicAttributes»
-			«cls.attributeClass(attribute)»
+			«cls.attributeClass(attribute, true)»
 		«ENDFOR»
 	'''
 	

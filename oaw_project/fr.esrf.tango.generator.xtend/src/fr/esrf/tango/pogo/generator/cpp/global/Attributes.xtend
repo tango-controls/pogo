@@ -8,6 +8,7 @@ import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import org.eclipse.emf.common.util.EList
+import com.google.common.primitives.Booleans$BooleanArrayAsList
 
 //======================================================
 //	Attribute utilities
@@ -155,12 +156,12 @@ class Attributes {
 	//======================================================
 	// Define attribute classes
 	//======================================================
-	def attributeClass(PogoDeviceClass cls, Attribute attribute) '''
+	def attributeClass(PogoDeviceClass cls, Attribute attribute, boolean dynamic) '''
 		//	Attribute «attribute.name» class definition
 		class «attribute.name»Attrib: public Tango::«attribute.inheritance»
 		{
 		public:
-			«attribute.Constructor»
+			«attribute.Constructor(dynamic)»
 			~«attribute.name»Attrib() {};
 			«IF attribute.isRead»
 				virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
@@ -192,16 +193,29 @@ class Attributes {
 	//======================================================
 	// Define attribute Constructor
 	//======================================================
-	def Constructor(Attribute attribute) '''
+	def Constructor(Attribute attribute, boolean dynamic) '''
+		«IF dynamic»
 			«IF attribute.isScalar»
-			«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
-					«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
-		«ELSEIF attribute.isSpectrum»
-			«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
-					«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
+				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
+			«ELSEIF attribute.isSpectrum»
+				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
+			«ELSE»
+				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX», «attribute.maxY») {};
+			«ENDIF»
 		«ELSE»
-			«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
-					«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX», «attribute.maxY») {};
+			«IF attribute.isScalar»
+				«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
+			«ELSEIF attribute.isSpectrum»
+				«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
+			«ELSE»
+				«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX», «attribute.maxY») {};
+			«ENDIF»
 		«ENDIF»
 	'''
 
@@ -219,8 +233,10 @@ class Attributes {
 		//	Attribute : «attribute.name»
 		«IF cls!=null»
 			«attribute.allocateDynamicAttrubutePointer»
+			«attribute.name»Attrib	*«attribute.name.toLowerCase» = new «attribute.name»Attrib(attname);
+		«ELSE»
+			«attribute.name»Attrib	*«attribute.name.toLowerCase» = new «attribute.name»Attrib();
 		«ENDIF»
-		«attribute.name»Attrib	*«attribute.name.toLowerCase» = new «attribute.name»Attrib();
 		Tango::UserDefaultAttrProp	«attribute.name.toLowerCase»_prop;
 		«attribute.setProperty("description", attribute.properties.description)»
 		«attribute.setProperty("label", attribute.properties.label)»

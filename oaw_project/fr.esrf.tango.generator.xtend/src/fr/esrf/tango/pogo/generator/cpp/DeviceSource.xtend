@@ -229,9 +229,14 @@ class DeviceSource {
 		«cls.simpleMethodHeader("add_dynamic_attributes", "Create the dynamic attributes if any\nfor specified device.")»
 		void «cls.name»::add_dynamic_attributes()
 		{
-
+			«IF cls.dynamicAttributes.size>0»
+				//	Example to add dynamic attribute:
+				«FOR Attribute attribute : cls.dynamicAttributes»
+					//	add_«attribute.name»_dynamic_attribute("My«attribute.name»Attribute");
+				«ENDFOR»
+				
+			«ENDIF»
 			«cls.protectedArea("add_dynamic_attributes", "Add your own code to create and add dynamic attributes if any", true)»
-
 		}
 		
 	'''
