@@ -208,8 +208,11 @@ public class StringUtils {
 		if (prototype==false)
 			signature += cls.getName() + "::";
 		signature += "add_" + attribute.getName() + "_dynamic_attribute(string attname";
-		if (isScalar(attribute) == false)
+		if (isScalar(attribute) == false) {
 			signature += ", " + strType(attribute) + " *ptr";
+			if (prototype)
+				signature += "=NULL";
+		}
 		signature += ")";
 		if (prototype)
 			signature += ";";
@@ -221,8 +224,11 @@ public class StringUtils {
 		if (prototype==false)
 			signature += cls.getName() + "::";
 		signature += "remove_" + attribute.getName() + "_dynamic_attribute(string attname";
-		if (isScalar(attribute) == false)
+		if (isScalar(attribute) == false) {
 			signature += ", bool free_it";
+			if (prototype)
+				signature += "=true";
+		}
 		signature += ")";
 		if (prototype)
 			signature += ";";

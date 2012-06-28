@@ -206,6 +206,7 @@ class DeviceInclude  {
 					virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr)«attr.checkAbstractForProto»;
 				«ENDIF»
 				«IF attr.isWrite»
+					virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr)«attr.checkAbstractForProto»;
 				«ENDIF»
 				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 			«ENDFOR»

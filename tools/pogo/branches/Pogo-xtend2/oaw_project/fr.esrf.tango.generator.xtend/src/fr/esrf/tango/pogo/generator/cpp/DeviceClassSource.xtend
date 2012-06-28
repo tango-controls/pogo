@@ -115,9 +115,9 @@ class DeviceClassSource {
 			«cls.protectedAreaClass("attribute_factory_before", "Add your own code", true)»
 			«IF cls.hasInheritanceClass»
 				//	Call atribute_factory for inherited class
-				«cls.name»_ns::«cls.name»Class::attribute_factory(att_list);
+				«cls.inheritedClassNameForDeviceClass»::attribute_factory(att_list);
+
 			«ENDIF»
-		
 			«FOR Attribute attribute : cls.attributes»
 				«IF attribute.inherited»
 					//	Attribute : «attribute.name» - Check if not concrete in inherited class
@@ -146,6 +146,11 @@ class DeviceClassSource {
 		void «cls.name»Class::command_factory()
 		{
 			«cls.protectedAreaClass("command_factory_before", "Add your own code", true)»
+			«IF cls.hasInheritanceClass»
+				//	Call command_factory for inherited class
+				«cls.inheritedClassNameForDeviceClass»::command_factory();
+			
+			«ENDIF»
 			«FOR Command command : cls.commands»
 				«IF command.isConcreteHere &&
 					command.name.equals("State")==false && command.name.equals("Status")==false»
