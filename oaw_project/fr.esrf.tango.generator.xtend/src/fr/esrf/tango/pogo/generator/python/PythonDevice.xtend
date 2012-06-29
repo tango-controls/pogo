@@ -16,12 +16,13 @@ class PythonDevice implements IGenerator {
 	@Inject extension ProtectedArea
 	override void doGenerate(Resource resource, IFileSystemAccess fsa){
 		for(cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))){
-			fsa.generateFile(cls.name.toLowerCase + '.py', cls.generate_pythonFile)
+			if (cls.description.language.toLowerCase.equals("python")) {
+				fsa.generateFile(cls.name.toLowerCase + '.py', cls.generate_pythonFile)
+			}
 		}
 	}
 	
 	def generate_pythonFile(PogoDeviceClass cls)'''
-		«IF cls.description.language.toLowerCase.equals("python")»
 			#!/usr/bin/env python
 			# -*- coding:utf-8 -*- 
 			
@@ -197,6 +198,5 @@ class PythonDevice implements IGenerator {
 			
 			if __name__ == '__main__':
 			    main()
-		«ENDIF»
 	'''
 }
