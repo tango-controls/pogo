@@ -5,7 +5,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.CppTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import org.eclipse.emf.common.util.EList
 import com.google.common.primitives.Booleans$BooleanArrayAsList
@@ -16,7 +16,7 @@ import com.google.common.primitives.Booleans$BooleanArrayAsList
 class Attributes {
 	@Inject	extension ProtectedArea
 	@Inject	extension StringUtils
-	@Inject	extension TypeDefinitions
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.CppTypeDefinitions
 	@Inject	extension InheritanceUtils
 
 	//======================================================

@@ -182,7 +182,7 @@ public class StringUtils {
 
 	//===========================================================
 	public String strType(Attribute attribute) {
-		return TypeDefinitions.cppType(attribute.getDataType());
+		return CppTypeDefinitions.cppType(attribute.getDataType());
 	}
 
 	//===========================================================
@@ -297,7 +297,7 @@ public class StringUtils {
 		list.add(new String[] { "================================================================" });
 		for (Attribute attribute : attributes) {
 			//	Build description
-			String	desc = TypeDefinitions.cppType(attribute.getDataType()) + "	" +
+			String	desc = CppTypeDefinitions.cppType(attribute.getDataType()) + "	" +
 						attribute.getAttType();
 			if (attribute.getAttType().equals("Scalar")==false)
 				desc += "  (" + attTypeDimentions(attribute) + ")";

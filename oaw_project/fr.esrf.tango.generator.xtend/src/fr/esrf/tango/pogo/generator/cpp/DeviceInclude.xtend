@@ -9,7 +9,7 @@ import fr.esrf.tango.pogo.pogoDsl.Property
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
-import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.CppTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
 import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 import fr.esrf.tango.pogo.generator.cpp.global.Headers

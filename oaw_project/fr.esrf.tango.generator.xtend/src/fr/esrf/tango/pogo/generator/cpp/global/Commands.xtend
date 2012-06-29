@@ -7,7 +7,7 @@ import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.CppTypeDefinitions.*
 
 //======================================================
 //	Command utilities

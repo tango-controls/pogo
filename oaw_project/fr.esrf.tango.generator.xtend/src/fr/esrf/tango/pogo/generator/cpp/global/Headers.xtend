@@ -6,7 +6,7 @@ import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.TypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.global.CppTypeDefinitions.*
 import com.google.inject.Inject
 
 class Headers {
