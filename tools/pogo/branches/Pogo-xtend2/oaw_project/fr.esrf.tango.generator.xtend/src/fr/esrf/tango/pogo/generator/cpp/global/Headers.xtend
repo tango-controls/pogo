@@ -56,7 +56,7 @@ class Headers {
 	}
 	def deviceSourceFileHeader(PogoDeviceClass cls) {
 		fileHeader(deviceSourceFileName(cls), 
-			"C++ source for the " + cls.name + " and its commands.\n" +
+			"C++ source for the " + cls.name + " class and its commands.\n" +
 			"The class is derived from Device. It represents the\n" +
 			"CORBA servant object which will be accessed from the\n" +
 			"network. All commands which can be executed on the\n" +
