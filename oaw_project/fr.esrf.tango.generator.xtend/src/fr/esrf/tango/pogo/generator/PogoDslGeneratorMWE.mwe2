@@ -8,7 +8,7 @@ var modelPath
 
 Workflow {
 	bean = StandaloneSetup {
-//		platformUri = ".."
+		platformUri = ".."
 		registerGeneratedEPackage = "fr.esrf.tango.pogo.pogoDsl.PogoDslPackage"
 	}
 	
