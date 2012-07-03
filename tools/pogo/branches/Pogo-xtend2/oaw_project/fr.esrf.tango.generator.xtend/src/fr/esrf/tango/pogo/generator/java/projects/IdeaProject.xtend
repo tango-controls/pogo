@@ -1,27 +1,35 @@
 package fr.esrf.tango.pogo.generator.java.projects
 
+import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
-import fr.esrf.tango.pogo.generator.java.JavaAttribute
-import fr.esrf.tango.pogo.generator.java.JavaCommand
-import com.google.inject.Inject
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
-import fr.esrf.tango.pogo.generator.cpp.global.Headers
-import fr.esrf.tango.pogo.pogoDsl.Property
 
-class IdeaProject {
+class IdeaProject  implements IGenerator {
 
-//	@Inject extension JavaUtils
-	@Inject extension JavaAttribute
-	@Inject extension JavaCommand
-	@Inject extension StringUtils
-	@Inject extension Headers
+	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+			if (cls.description.filestogenerate.contains("IntelliJIDEA")) {
+				fsa.generateFile(cls.name + ".iml",     cls.generateIdeaProjectMain)
+				fsa.generateFile(".idea/ant.xml",       cls.generateIdeaProjectAnt)
+				fsa.generateFile(".idea/compiler.xml",  cls.generateIdeaProjectCompiler);
+				fsa.generateFile(".idea/encodings.xml", cls.generateIdeaProjectEncoding);
+				fsa.generateFile(".idea/misc.xml",      cls.generateIdeaProjectMisc);
+				fsa.generateFile(".idea/modules.xml",   cls.generateIdeaProjectModules);
+				fsa.generateFile(".idea/uiDesigner.xml",cls.generateIdeaProjectUiDesigner);
+				fsa.generateFile(".idea/vcs.xml",       cls.generateIdeaProjectVcs);
+				fsa.generateFile(".idea/workspace.xml", cls.generateIdeaProjectWorkspace);
+				fsa.generateFile(".idea/copyright/profiles_settings.xml", cls.generateIdeaProjectProfile);
+				fsa.generateFile(".idea/scopes/scope_settings.xml",       cls.generateIdeaProjectScope);
+			}
+		}
+	}	
 
-	
 	//======================================================
 	// define the ItelliJIDEA project files
 	//======================================================
