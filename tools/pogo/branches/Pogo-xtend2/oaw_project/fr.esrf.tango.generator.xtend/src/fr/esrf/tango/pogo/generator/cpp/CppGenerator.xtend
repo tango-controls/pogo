@@ -13,7 +13,7 @@ import fr.esrf.tango.pogo.generator.cpp.projects.VC10.VC10_Project
 
 class CppGenerator implements IGenerator {
 
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.Headers
 	@Inject	extension DeviceInclude
 	@Inject	extension DeviceSource
 	@Inject	extension DeviceClassInclude

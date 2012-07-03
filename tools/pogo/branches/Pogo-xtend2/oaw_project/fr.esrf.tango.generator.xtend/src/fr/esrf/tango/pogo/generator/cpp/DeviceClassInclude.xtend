@@ -5,14 +5,14 @@ import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
-import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
-import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
-import fr.esrf.tango.pogo.generator.cpp.global.Properties
-import fr.esrf.tango.pogo.generator.cpp.global.Attributes
-import fr.esrf.tango.pogo.generator.cpp.global.Commands
-import fr.esrf.tango.pogo.generator.cpp.global.Headers
-import fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
+import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
+import fr.esrf.tango.pogo.generator.cpp.utils.Properties
+import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
+import fr.esrf.tango.pogo.generator.cpp.utils.Commands
+import fr.esrf.tango.pogo.generator.cpp.utils.Headers
+import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
 
 
 //======================================================

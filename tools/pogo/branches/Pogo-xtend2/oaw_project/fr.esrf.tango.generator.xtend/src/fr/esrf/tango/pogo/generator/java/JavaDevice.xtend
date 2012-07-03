@@ -11,10 +11,9 @@ import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import fr.esrf.tango.pogo.generator.java.JavaAttribute
 import fr.esrf.tango.pogo.generator.java.JavaCommand
 import com.google.inject.Inject
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
-import fr.esrf.tango.pogo.generator.cpp.global.Headers
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import fr.esrf.tango.pogo.generator.common.StringUtils
+import fr.esrf.tango.pogo.generator.common.Headers
 import fr.esrf.tango.pogo.pogoDsl.Property
 
 class JavaDevice  implements IGenerator {

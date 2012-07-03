@@ -2,14 +2,14 @@ package fr.esrf.tango.pogo.generator.java;
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils;
+import fr.esrf.tango.pogo.generator.common.StringUtils;
 
 
 
 public class ProtectedArea {
 
 	//======================================================================
-	// Define cpp protected areas for device
+	// Define java protected areas for device
 	//======================================================================
 	public String openProtectedArea(PogoDeviceClass cls, String method) {
 		return openProtectedArea(cls.getName(), method);

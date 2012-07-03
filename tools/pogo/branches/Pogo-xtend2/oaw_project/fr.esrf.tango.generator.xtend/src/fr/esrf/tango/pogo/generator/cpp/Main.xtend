@@ -3,8 +3,8 @@ package fr.esrf.tango.pogo.generator.cpp
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
-import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
+import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 
 
 //======================================================
@@ -12,7 +12,7 @@ import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
 //======================================================
 class Main {
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.Headers
 
 	//======================================================
 	// Define main.cpp file to be generated
