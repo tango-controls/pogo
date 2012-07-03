@@ -1,5 +1,9 @@
 package fr.esrf.tango.pogo.generator.java
 
+import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
@@ -13,7 +17,7 @@ import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
 import fr.esrf.tango.pogo.generator.cpp.global.Headers
 import fr.esrf.tango.pogo.pogoDsl.Property
 
-class JavaDevice {
+class JavaDevice  implements IGenerator {
 
 	@Inject extension JavaUtils
 	@Inject extension JavaAttribute
@@ -22,6 +26,14 @@ class JavaDevice {
 	@Inject extension StringUtils
 	@Inject extension Headers
 
+	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+			//	Code files
+			if (cls.description.filestogenerate.contains("Code files")) {
+				fsa.generateFile(cls.javaDeviceClassFileName,     cls.generateJavaDeviceFile)
+			}
+		}
+	}
 	def generateJavaDeviceFile (PogoDeviceClass cls) '''
 		«cls.javaHeader»
 
