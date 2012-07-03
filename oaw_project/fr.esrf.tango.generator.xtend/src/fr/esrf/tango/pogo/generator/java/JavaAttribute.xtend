@@ -5,11 +5,8 @@ import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import com.google.inject.Inject
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
-import fr.esrf.tango.pogo.generator.cpp.global.Headers
-import fr.esrf.tango.pogo.pogoDsl.Property
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import fr.esrf.tango.pogo.generator.common.StringUtils
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 
 class JavaAttribute {
@@ -17,7 +14,6 @@ class JavaAttribute {
 	@Inject extension JavaUtils
 	@Inject extension ProtectedArea
 	@Inject extension StringUtils
-	@Inject extension Headers
 
 
 	//======================================================
@@ -40,7 +36,7 @@ class JavaAttribute {
 	//======================================================
 	def declareAttributeMember(PogoDeviceClass cls, Attribute attribute) '''
 		/**
-		 * Attribute «attribute.name», «attribute.strType», «attribute.attType», «attribute.rwType»
+		 * Attribute «attribute.name», «attribute.strJavaType», «attribute.attType», «attribute.rwType»
 		 * description:
 		 * «attribute.properties.description.comments("* ")»
 		 */

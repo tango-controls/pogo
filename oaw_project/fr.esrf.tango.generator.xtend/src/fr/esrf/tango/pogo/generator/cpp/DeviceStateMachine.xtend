@@ -3,10 +3,9 @@ package fr.esrf.tango.pogo.generator.cpp
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
+import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 
@@ -17,8 +16,8 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 class DeviceStateMachine {
 	
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.Headers
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.Headers
 
 
 	//======================================================

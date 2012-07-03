@@ -8,7 +8,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 
 class IdeaProject  implements IGenerator {
 

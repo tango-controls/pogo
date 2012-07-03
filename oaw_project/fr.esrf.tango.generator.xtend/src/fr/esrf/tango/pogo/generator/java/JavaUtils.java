@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.common.util.EList;
 
-import fr.esrf.tango.pogo.generator.cpp.global.StringUtils;
+import fr.esrf.tango.pogo.generator.common.StringUtils;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.Property;

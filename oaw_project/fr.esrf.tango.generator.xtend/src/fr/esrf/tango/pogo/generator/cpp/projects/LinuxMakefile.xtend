@@ -2,8 +2,8 @@ package fr.esrf.tango.pogo.generator.cpp.projects
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
 import fr.esrf.tango.pogo.pogoDsl.Inheritance
 import com.google.inject.Inject
 
@@ -13,8 +13,8 @@ import com.google.inject.Inject
 //======================================================
 class LinuxMakefile {
 	
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
 
 	//======================================================
 	// Define Linux Makefile code to be generated

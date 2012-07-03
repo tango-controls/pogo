@@ -5,14 +5,14 @@ import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
-import static extension fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils.*
-import fr.esrf.tango.pogo.generator.cpp.global.ProtectedArea
-import fr.esrf.tango.pogo.generator.cpp.global.InheritanceUtils
-import fr.esrf.tango.pogo.generator.cpp.global.Headers
-import fr.esrf.tango.pogo.generator.cpp.global.Commands
-import fr.esrf.tango.pogo.generator.cpp.global.Attributes
-import fr.esrf.tango.pogo.generator.cpp.global.Properties
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
+import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
+import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
+import fr.esrf.tango.pogo.generator.cpp.utils.Headers
+import fr.esrf.tango.pogo.generator.cpp.utils.Commands
+import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
+import fr.esrf.tango.pogo.generator.cpp.utils.Properties
 
 
 //======================================================
@@ -20,7 +20,7 @@ import fr.esrf.tango.pogo.generator.cpp.global.Properties
 //======================================================
 class DeviceSource {
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.global.StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
 	@Inject	extension Headers
 	@Inject	extension Commands
 	@Inject	extension Attributes
@@ -47,7 +47,7 @@ class DeviceSource {
 		{
 		«cls.protectedArea("namespace_starting", "static initializations", true)»
 		«cls.constructors»
-		«cls.globalMethods»
+		«cls.utilsMethods»
 		«cls.attributeMethods»
 		«cls.commandMethods»
 
@@ -114,7 +114,7 @@ class DeviceSource {
 	//======================================================
 	// Define init_device() and get_device_properies() methods
 	//======================================================
-	def globalMethods(PogoDeviceClass cls) '''
+	def utilsMethods(PogoDeviceClass cls) '''
 
 		«cls.simpleMethodHeader("init_device", "will be called at device initialization.")»
 		void «cls.name»::init_device()
