@@ -29,7 +29,8 @@ class JavaDevice  implements IGenerator {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 			//	Code files
 			if (cls.description.filestogenerate.contains("Code files")) {
-				fsa.generateFile(cls.javaDeviceClassFileName,     cls.generateJavaDeviceFile)
+				println("Generating " + cls.javaDeviceClassFileName(true))
+				fsa.generateFile(cls.javaDeviceClassFileName(true),     cls.generateJavaDeviceFile)
 			}
 		}
 	}
@@ -98,15 +99,15 @@ class JavaDevice  implements IGenerator {
 	// define the header file and imports
 	//======================================================
 	def javaHeader(PogoDeviceClass cls) '''
-		«cls.openProtectedArea(cls.name+".java")»
-		«cls.javaDeviceClassFileName.fileHeader(
+		«cls.openProtectedArea(".java")»
+		«cls.javaDeviceClassFileName(false).fileHeader(
 			"Java source for the " + cls.name + " class and its commands.\n" +
 			"The class is derived from Device. It represents the\n" +
 			"CORBA servant object which will be accessed from the\n" +
 			"network. All commands which can be executed on the\n" +
 			cls.name + " are implemented in this file.",  cls.description.title)»
 
-		«cls.closeProtectedArea(cls.name+".java")»
+		«cls.closeProtectedArea(".java")»
 
 		package «cls.javaDevicePackage»;
 

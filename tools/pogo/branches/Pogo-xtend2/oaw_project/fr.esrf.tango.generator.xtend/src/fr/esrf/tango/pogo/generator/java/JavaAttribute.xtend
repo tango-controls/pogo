@@ -38,9 +38,11 @@ class JavaAttribute {
 		/**
 		 * Attribute «attribute.name», «attribute.strJavaType», «attribute.attType», «attribute.rwType»
 		 * description:
-		 * «attribute.properties.description.comments("* ")»
+		 *     «attribute.properties.description.comments("*     ")»
 		 */
-		@Attribute(name = "«attribute.name»")«attribute.declareProperties»«attribute.stateMachine»
+		«attribute.declareParameters»
+		«attribute.declareProperties»
+		«attribute.stateMachine»
 		private «attribute.strFullJavaType» «attribute.name.dataMemberName»«attribute.allocation»;
 	'''
 
