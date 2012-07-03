@@ -10,72 +10,8 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 
-public class JavaUtils {
+public class JavaUtils extends StringUtils {
 
-	//===========================================================
-	/**
-	 * returns true if has been set
-	 */
-	//===========================================================
-	public static boolean isSet(String str) {
-		return (str!=null && !str.isEmpty());
-	}
-	//===========================================================
-	/*
-	 * Convert multi lines text to a one line text
-	 */
-	//===========================================================
-	public String oneLineString(String text) {
-		//return str.replaceAll("\n", "\\n");	-> does not work
-
-		StringBuffer	sb = new StringBuffer();
-		int	start = 0;
-		int end;
-		while ((end=text.indexOf('\n', start))>0){
-			sb.append(text.substring(start, end)).append("\\n");
-			start = end +1;
-		}
-		sb.append(text.substring(start));
-		return sb.toString();
-	}
-	//===========================================================
-	public String strJavaType(Attribute attribute) {
-		return JavaTypeDefinitions.javaType(attribute.getDataType());
-	}
-	//===========================================================
-	public String strFullJavaType(Attribute attribute) {
-		if (attribute.getAttType().equals("Scalar"))
-			return JavaTypeDefinitions.javaType(attribute.getDataType());
-		else
-			return JavaTypeDefinitions.javaType(attribute.getDataType()) + "[]";
-	}
-	//===========================================================
-	public String strJavaType(Property property) {
-		return JavaTypeDefinitions.javaPropType(property.getType());
-	}
-	//===========================================================
-	public String strArginType(Command command) {
-		return JavaTypeDefinitions.javaType(command.getArgin().getType());
-	}
-	//===========================================================
-	public String strArgoutType(Command command) {
-		return JavaTypeDefinitions.javaType(command.getArgout().getType());
-	}
-	//===========================================================
-	//===========================================================
-	public String allocation(Attribute attribute) {
-		if (attribute.getAttType().equals("Spectrum"))
-			return " = new " +
-				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
-						attribute.getMaxX() + "]";
-		else
-		if (attribute.getAttType().equals("Image"))
-			return " = new " +
-				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
-						attribute.getMaxX() + "*" + attribute.getMaxY() + "]";
-		else
-			return "";
-	}
 	//===========================================================
 	/**
 	 * Returns the device class package name
@@ -105,9 +41,53 @@ public class JavaUtils {
 	 * @return the full qualified name the for device class file
 	 */
 	//===========================================================
-	public String javaDeviceClassFileName( PogoDeviceClass cls ) {
-		return fullQualifiedJavaDeviceClassName(cls).replaceAll("\\.","/") + ".java";
+	public String javaDeviceClassFileName( PogoDeviceClass cls, boolean full ) {
+		if (full)
+			return fullQualifiedJavaDeviceClassName(cls).replaceAll("\\.","/") + ".java";
+		else
+			return cls.getName() + ".java";
 	} 
+	//===========================================================
+	public String strJavaType(Attribute attribute) {
+		return JavaTypeDefinitions.javaType(attribute.getDataType());
+	}
+	//===========================================================
+	public String strFullJavaType(Attribute attribute) {
+		if (isScalar(attribute))
+			return JavaTypeDefinitions.javaType(attribute.getDataType());
+		else
+		if (isSpectrum(attribute))
+			return JavaTypeDefinitions.javaType(attribute.getDataType()) + "[]";
+		else
+			return JavaTypeDefinitions.javaType(attribute.getDataType()) + "[][]";
+	}
+	//===========================================================
+	public String strJavaType(Property property) {
+		return JavaTypeDefinitions.javaPropType(property.getType());
+	}
+	//===========================================================
+	public String strArginType(Command command) {
+		return JavaTypeDefinitions.javaType(command.getArgin().getType());
+	}
+	//===========================================================
+	public String strArgoutType(Command command) {
+		return JavaTypeDefinitions.javaType(command.getArgout().getType());
+	}
+	//===========================================================
+	//===========================================================
+	public String allocation(Attribute attribute) {
+		if (attribute.getAttType().equals("Spectrum"))
+			return " = new " +
+				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
+						attribute.getMaxX() + "]";
+		else
+		if (attribute.getAttType().equals("Image"))
+			return " = new " +
+				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
+						attribute.getMaxX() + "][" + attribute.getMaxY() + "]";
+		else
+			return "";
+	}
 	
 	//===========================================================
 	/**
@@ -132,6 +112,37 @@ public class JavaUtils {
 		}
 	}
 
+	//===========================================================
+	/**
+	 * Returns the attribute parameters with expected format
+	 * @param attribute the specified attribute
+	 * @return the attribute parameters with expected format
+	 */
+	//===========================================================
+	public String declareParameters(Attribute attribute) {
+		//	Put in a list parameters value only if has been set
+		ArrayList<String>	list = new ArrayList<String>();
+
+		if (isTrue(attribute.getMemorized())) {
+			list.add("isMemorized=true");
+		}
+		if (isSet(attribute.getDisplayLevel())) {
+			if (attribute.getDisplayLevel().equals("EXPERT"))
+				list.add("displayLevel=DispLevel._"+attribute.getDisplayLevel());
+		}
+		if (isSet(attribute.getPolledPeriod())) {
+			if (attribute.getPolledPeriod().equals("0")==false) {
+				list.add("isPolled=true");
+				list.add("pollingPeriod=" + attribute.getPolledPeriod());
+			}
+		}
+		
+		String head = "@Attribute(name=\"" + attribute.getName() + "\"";
+		if (list.isEmpty())
+			return head + ")";
+		else
+			return head + ", " + propertiesInOneLine(list) + ")";
+	}
 	//===========================================================
 	/**
 	 * Returns the attribute properties with expected format
@@ -171,11 +182,11 @@ public class JavaUtils {
 			list.add("delta_t=\"" + attribute.getProperties().getDeltaTime() + "\"");
 		if (isSet(attribute.getProperties().getDeltaValue()))
 			list.add("delta_val=\"" + attribute.getProperties().getDeltaValue() + "\"");
-	
+		
 		if (list.isEmpty())
 			return "";
 		else
-			return "\n@AttributeProperties(" + propertiesInOneLine(list) + ")";
+			return "@AttributeProperties(" + propertiesInOneLine(list) + ")";
 	}
 	
 	//===========================================================
@@ -189,7 +200,7 @@ public class JavaUtils {
 		if (list.isEmpty())
 			return "";
 		else
-			return "\n@StateMachine(deniedStates={" + propertiesInOneLine(list) + "})";
+			return "@StateMachine(deniedStates={" + propertiesInOneLine(list) + "})";
 
 	}
 	//===========================================================
