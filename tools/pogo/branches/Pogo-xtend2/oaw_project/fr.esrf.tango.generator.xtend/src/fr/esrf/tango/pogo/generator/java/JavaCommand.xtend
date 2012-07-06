@@ -41,7 +41,8 @@ class JavaCommand {
 		 * description: «command.description.comments("*              ")»
 		 «command.headerParameters»
 		 */
-		@Command(name="«command.name.toFirstLower»", inTypeDesc="«command.argin.description.oneLineString»", outTypeDesc="«command.argout.description.oneLineString»")
+		«command.declareParameters»
+		«command.stateMachine»
 		public «command.strArgoutType» «command.name»(«command.strArginTypeDeclare») throws DevFailed {
 			xlogger.entry();
 			«command.strArgoutTypeDeclare»

@@ -30,10 +30,36 @@ public class JavaUtils extends StringUtils {
 	 * @return the full qualified name the for device class 
 	 */
 	//===========================================================
-	public String fullQualifiedJavaDeviceClassName( PogoDeviceClass cls ){
-		return javaDevicePackage(cls) + "." + cls.getName();
+	public String fullQualifiedJavaDeviceClassName(PogoDeviceClass cls) {
+		return fullQualifiedJavaDeviceClassName(cls, cls.getName());
+	} 
+	//===========================================================
+	/**
+	 * Returns the full qualified name the for device class 
+	 * @param className =the class to get file name
+	 * @return the full qualified name the for device class 
+	 */
+	//===========================================================
+	public String fullQualifiedJavaDeviceClassName(PogoDeviceClass cls, String className){
+		return javaDevicePackage(cls) + "." + className;
 	} 
 	
+	//===========================================================
+	/**
+	 * Returns the full qualified name the for device class file
+	 * @param cls	the class object
+	 * @param full  if false return name without path
+	 * @return the full qualified name the for device class file
+	 */
+	//===========================================================
+	public String javaDeviceClassFileName( PogoDeviceClass cls, boolean full ) {
+		if (full) {
+			String	fullName = fullQualifiedJavaDeviceClassName(cls);
+			return fullName.replaceAll("\\.","/") + ".java";
+		}
+		else
+			return cls.getName() + ".java";
+	} 
 	//===========================================================
 	/**
 	 * Returns the full qualified name the for device class file
@@ -41,12 +67,10 @@ public class JavaUtils extends StringUtils {
 	 * @return the full qualified name the for device class file
 	 */
 	//===========================================================
-	public String javaDeviceClassFileName( PogoDeviceClass cls, boolean full ) {
-		if (full)
-			return fullQualifiedJavaDeviceClassName(cls).replaceAll("\\.","/") + ".java";
-		else
-			return cls.getName() + ".java";
-	} 
+	public String javaDynamicAttributeFileName( PogoDeviceClass cls, String attributeName) {
+		String	fullName = fullQualifiedJavaDeviceClassName(cls, attributeName);
+		return fullName.replaceAll("\\.","/") + ".java";
+	}
 	//===========================================================
 	public String strJavaType(Attribute attribute) {
 		return JavaTypeDefinitions.javaType(attribute.getDataType());
@@ -114,6 +138,51 @@ public class JavaUtils extends StringUtils {
 
 	//===========================================================
 	/**
+	 * Returns the command parameters with expected format
+	 * @param command the specified command
+	 * @return the command parameters with expected format
+	 */
+	//===========================================================
+	public String declareParameters(Command command) {
+		//	Put in a list parameters value only if has been set
+		ArrayList<String>	list = new ArrayList<String>();
+
+		if (isSet(command.getDisplayLevel())) {
+			if (command.getDisplayLevel().equals("EXPERT"))
+				list.add("displayLevel=DispLevel._"+command.getDisplayLevel());
+		}
+		if (isSet(command.getPolledPeriod())) {
+			if (command.getPolledPeriod().equals("0")==false) {
+				list.add("isPolled=true");
+				list.add("pollingPeriod=" + command.getPolledPeriod());
+			}
+		}
+		
+		String head = "@Command(name=\"" + command.getName() + "\", "  +
+				"inTypeDesc=\""  + oneLineString(command.getArgin().getDescription())  + "\", " +
+				"outTypeDesc=\"" + oneLineString(command.getArgout().getDescription()) + "\"";
+		//	Add parameters only if any
+		if (list.isEmpty())
+			return head + ")";
+		else
+			return head + ", " + propertiesInOneLine(list) + ")";
+	}
+	//===========================================================
+	//===========================================================
+	public String stateMachine(Command command) {
+
+		ArrayList<String>	list = new ArrayList<String>();
+		for (String state : command.getExcludedStates())
+			list.add("DeviceState."+state);
+
+		if (list.isEmpty())
+			return "";
+		else
+			return "@StateMachine(deniedStates={" + propertiesInOneLine(list) + "})";
+
+	}
+	//===========================================================
+	/**
 	 * Returns the attribute parameters with expected format
 	 * @param attribute the specified attribute
 	 * @return the attribute parameters with expected format
@@ -125,6 +194,9 @@ public class JavaUtils extends StringUtils {
 
 		if (isTrue(attribute.getMemorized())) {
 			list.add("isMemorized=true");
+			if (isTrue(attribute.getMemorizedAtInit())) {
+				list.add("isMemorizedAtInit=true");
+			}
 		}
 		if (isSet(attribute.getDisplayLevel())) {
 			if (attribute.getDisplayLevel().equals("EXPERT"))
@@ -138,6 +210,7 @@ public class JavaUtils extends StringUtils {
 		}
 		
 		String head = "@Attribute(name=\"" + attribute.getName() + "\"";
+		//	Add parameters only if any
 		if (list.isEmpty())
 			return head + ")";
 		else
@@ -201,6 +274,20 @@ public class JavaUtils extends StringUtils {
 			return "";
 		else
 			return "@StateMachine(deniedStates={" + propertiesInOneLine(list) + "})";
+
+	}
+	//===========================================================
+	//===========================================================
+	public String stateMachineForDynamic(Attribute attribute) {
+
+		ArrayList<String>	list = new ArrayList<String>();
+		for (String state : attribute.getReadExcludedStates())
+			list.add("DeviceState."+state);
+
+		if (list.isEmpty())
+			return "";
+		else
+			return "stateMachine.setDeniedStates(" + propertiesInOneLine(list) + ");";
 
 	}
 	//===========================================================
@@ -279,4 +366,27 @@ public class JavaUtils extends StringUtils {
 			sb.append(' ');
 		return sb.toString();
 	}
+	//===========================================================
+	//===========================================================
+	String setDynamicAttributeConfig(String setWhat, String strValue) {
+		return setDynamicAttributeConfig(setWhat, strValue, "");
+	}
+	//===========================================================
+	//===========================================================
+	String setDynamicAttributeConfig(String setWhat, String strValue, String valueHeader) {
+		if (isSet(strValue))
+			return "config.set" + setWhat + "(" + valueHeader + strValue + ");";
+		else
+			return "";
+	}
+	//===========================================================
+	//===========================================================
+	String setDynamicAttributePropertyConfig(String setWhat, String strValue) {
+		if (isSet(strValue))
+			return "properties.set" + setWhat + "(\"" + oneLineString(strValue) + "\");";
+		else
+			return "";
+	}
+	//===========================================================
+	//===========================================================
 }
