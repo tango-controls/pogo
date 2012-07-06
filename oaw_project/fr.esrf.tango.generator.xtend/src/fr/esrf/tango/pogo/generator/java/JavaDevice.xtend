@@ -9,17 +9,20 @@ import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import fr.esrf.tango.pogo.generator.java.JavaAttribute
+import fr.esrf.tango.pogo.generator.java.JavaDynamicAttribute
 import fr.esrf.tango.pogo.generator.java.JavaCommand
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import fr.esrf.tango.pogo.generator.common.StringUtils
 import fr.esrf.tango.pogo.generator.common.Headers
 import fr.esrf.tango.pogo.pogoDsl.Property
+import fr.esrf.tango.pogo.pogoDsl.Attribute
 
 class JavaDevice  implements IGenerator {
 
 	@Inject extension JavaUtils
 	@Inject extension JavaAttribute
+	@Inject extension JavaDynamicAttribute
 	@Inject extension JavaCommand
 	@Inject extension ProtectedArea
 	@Inject extension StringUtils
@@ -31,6 +34,12 @@ class JavaDevice  implements IGenerator {
 			if (cls.description.filestogenerate.contains("Code files")) {
 				println("Generating " + cls.javaDeviceClassFileName(true))
 				fsa.generateFile(cls.javaDeviceClassFileName(true),     cls.generateJavaDeviceFile)
+				
+				//	Check for dynamic attributes
+				if (cls.dynamicAttributes.empty==false)
+					for (Attribute attribute : cls.dynamicAttributes)
+						fsa.generateFile(cls.javaDynamicAttributeFileName(attribute.name),
+											cls.generateJavaDynamicAttributeClassFile(attribute))
 			}
 		}
 	}
@@ -47,7 +56,11 @@ class JavaDevice  implements IGenerator {
 		
 		    private static final Logger logger = LoggerFactory.getLogger(«cls.name».class);
 		    private static final XLogger xlogger = XLoggerFactory.getXLogger(«cls.name».class);
-		    «cls.protectedArea("variables", "put static variables here", true)»
+			//========================================================
+			//	Programmer's data members
+			//========================================================
+		    «cls.protectedArea("variables", "Put static variables here", true)»
+			«cls.protectedArea("private", "Put private variables here", true)»
 		
 			//========================================================
 			//	Property data members and related methods
@@ -55,10 +68,6 @@ class JavaDevice  implements IGenerator {
 			«cls.addClassProperties»
 			«cls.addDeviceProperties»
 
-			//========================================================
-			//	Programmer's data members
-			//========================================================
-			«cls.protectedArea("private", "Put private variables here", true)»
 
 			//========================================================
 			//	Miscellaneous methods
@@ -72,17 +81,21 @@ class JavaDevice  implements IGenerator {
 			«cls.dynamicManagerMethod»
 
 
-			//========================================================
-			//	Attribute data members and related methods
-			//========================================================
-			«cls.attributeMethods»
+			«IF cls.attributes.size>0»
+				//========================================================
+				//	Attribute data members and related methods
+				//========================================================
+				«cls.attributeMethods»
+			«ENDIF»
 
-			//========================================================
-			//	Command data members and related methods
-			//========================================================
-			«cls.stateAndStatusMethods»
-			
-			«cls.executeCommandMethods»
+			«IF cls.commands.size>0»
+				//========================================================
+				//	Command data members and related methods
+				//========================================================
+				«cls.stateAndStatusMethods»
+				
+				«cls.executeCommandMethods»
+			«ENDIF»
 
 			//========================================================
 			//	Programmer's methods
@@ -93,6 +106,7 @@ class JavaDevice  implements IGenerator {
 			«cls.mainMethod»
 		}
 	'''
+
 	
 	
 	//======================================================
@@ -259,6 +273,9 @@ class JavaDevice  implements IGenerator {
 	// define code for main method
 	//======================================================
 	def mainMethod(PogoDeviceClass cls) '''
+
+
+
 
 		/**
 		 * Starts the server.

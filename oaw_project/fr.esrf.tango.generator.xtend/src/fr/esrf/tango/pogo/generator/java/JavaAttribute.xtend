@@ -72,7 +72,6 @@ class JavaAttribute {
 		 */
 		public void set«attribute.name»(«attribute.strFullJavaType» «attribute.name.dataMemberName»){
 			xlogger.entry();
-			this.«attribute.name.dataMemberName» = «attribute.name.dataMemberName»;
 			«cls.protectedArea("set" + attribute.name, "Put write attribute code here", true)»
 			xlogger.exit();
 		}
