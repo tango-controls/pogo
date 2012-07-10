@@ -31,15 +31,17 @@ class JavaDevice  implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 			//	Code files
-			if (cls.description.filestogenerate.contains("Code files")) {
-				println("Generating " + cls.javaDeviceClassFileName(true))
-				fsa.generateFile(cls.javaDeviceClassFileName(true),     cls.generateJavaDeviceFile)
-				
-				//	Check for dynamic attributes
-				if (cls.dynamicAttributes.empty==false)
-					for (Attribute attribute : cls.dynamicAttributes)
-						fsa.generateFile(cls.javaDynamicAttributeFileName(attribute.name),
-											cls.generateJavaDynamicAttributeClassFile(attribute))
+			if (cls.description.language.toLowerCase.equals("java")) {
+					if (cls.description.filestogenerate.contains("Code files")) {
+					println("Generating " + cls.javaDeviceClassFileName(true))
+					fsa.generateFile(cls.javaDeviceClassFileName(true),     cls.generateJavaDeviceFile)
+					
+					//	Check for dynamic attributes
+					if (cls.dynamicAttributes.empty==false)
+						for (Attribute attribute : cls.dynamicAttributes)
+							fsa.generateFile(cls.javaDynamicAttributeFileName(attribute.name),
+												cls.generateJavaDynamicAttributeClassFile(attribute))
+				}
 			}
 		}
 	}
