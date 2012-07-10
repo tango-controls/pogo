@@ -23,7 +23,7 @@ class LinuxMakefile {
 	// Define Linux Makefile code to be generated
 	//======================================================
 	def generateLinuxMakefileMultiClasses (PogoMultiClasses multi) '''
-		«multi.preferences.makefileHeader(multi.name)»
+		«multi.name.makefileHeader()»
 		«multi.makeEnv()»
 
 		«multi.name.addMiscellaneousDefinitions»
@@ -54,7 +54,7 @@ class LinuxMakefile {
 	// Define Linux Makefile code to be generated
 	//======================================================
 	def generateLinuxMakefile (PogoDeviceClass cls) '''
-		«cls.preferences.makefileHeader(cls.name)»
+		«cls.name.makefileHeader()»
 		«cls.makeEnv()»
 
 		«cls.name.addMiscellaneousDefinitions»
