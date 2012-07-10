@@ -605,8 +605,8 @@ public class Utils {
             String[] fileNames = d.list();
             if (fileNames != null) {
                 for (String fileName : fileNames) {
-                   System.out.println(fileName);
-                  //  Check if fileName must be generated
+                    //System.out.println(fileName);
+                    //  Check if fileName must be generated
                     boolean generates = couldBeGenerated(fileName, geneFiles);
                     //if (!generates)
                     //    generates = couldBeGenerated(fileName, geneDirs);
