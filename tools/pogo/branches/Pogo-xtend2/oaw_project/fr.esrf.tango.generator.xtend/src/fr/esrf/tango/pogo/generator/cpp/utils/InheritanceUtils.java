@@ -5,6 +5,7 @@ import org.eclipse.emf.common.util.EList;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
+import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 
@@ -113,6 +114,17 @@ public class InheritanceUtils {
 		return inherSize>0 &&
 				isInheritanceClass(cls.getDescription().getInheritances().get(inherSize-1));
 	}
+	//===========================================================
+	/**
+	 *	Return true at least the first one is not the Tango DeviceImpl
+	 */
+	//===========================================================
+	public boolean hasInheritanceClass(OneClassSimpleDef cls) {
+
+		int	inherSize = cls.getInheritances().size();
+		return inherSize>0 &&
+				isInheritanceClass(cls.getInheritances().get(inherSize-1));
+	}
 	
 	//===========================================================
 	public boolean isInherited(Property property) {
@@ -204,29 +216,6 @@ public class InheritanceUtils {
 	//===========================================================
 	public String inheritanceNameForMakefile(Inheritance inheritance) {
 		return inheritance.getClassname().toUpperCase();
-	}
-	//===========================================================
-	public String inheritanceIncludesForMakefile(Inheritance inher) {
-		StringBuffer	sb = new StringBuffer();
-		sb.append(inher.getClassname().toUpperCase()+"_INCL = ");
-		sb.append("$(" + inher.getClassname().toUpperCase() + "_HOME)/" + inher.getClassname() + ".h ");
-		sb.append("$(" + inher.getClassname().toUpperCase() + "_HOME)/" + inher.getClassname() + "Class.h");
-		return sb.toString();
-	}
-	//===========================================================
-	public String inheritanceObjectsDependanciesForMakefile(Inheritance inheritance) {
-		StringBuffer	sb = new StringBuffer();
-		sb.append(buildObjectFileDependancies(inheritance.getClassname(), "") + "\n");
-		sb.append(buildObjectFileDependancies(inheritance.getClassname(), "Class") + "\n");
-		sb.append(buildObjectFileDependancies(inheritance.getClassname(), "StateMachine"));
-		return sb.toString();
-	}
-	//===========================================================
-	private String buildObjectFileDependancies(String className, String extention) {
-		return "$(OBJDIR)/" + className + extention + ".o: $(" + className.toUpperCase()+"_HOME)/"+
-					className + extention + ".cpp $(" + className.toUpperCase() + "_INCL)\n" +
-					"	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + className + extention + ".o";
-
 	}
 	//===========================================================
 	public String addInheritanceObjectFiles(PogoDeviceClass cls) {

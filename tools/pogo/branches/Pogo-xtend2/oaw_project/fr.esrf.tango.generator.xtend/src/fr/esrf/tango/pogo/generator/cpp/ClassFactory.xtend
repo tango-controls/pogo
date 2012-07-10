@@ -5,6 +5,8 @@ import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
+import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
+import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef
 
 
 //======================================================
@@ -37,6 +39,28 @@ class ClassFactory {
 			add_class(«cls.name»_ns::«cls.name»Class::init("«cls.name»"));
 		}
 		«cls.closeProtectedArea("ClassFactory.cpp")»
+	'''
+	//======================================================
+	// Define MultiClassFactory.cpp file tfor multi class project
+	//======================================================
+	def generateMultiClassesFactoryFile (PogoMultiClasses cls) '''
+		«cls.ClassFactoryFileHeader»
+		
+		#include <tango.h>
+		«FOR OneClassSimpleDef clazz : cls.classes»
+			#include <«clazz.classname»Class.h>
+		«ENDFOR»
+		
+		/**
+		 *	Create Class singletons and store them in DServer object.
+		 */
+		
+		void Tango::DServer::class_factory()
+		{
+			«FOR OneClassSimpleDef clazz : cls.classes»
+				add_class(«clazz.classname»_ns::«clazz.classname»Class::init("«clazz.classname»"));
+			«ENDFOR»
+		}
 	'''
 
 }
