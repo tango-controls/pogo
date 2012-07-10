@@ -22,6 +22,17 @@ public class JavaUtils extends StringUtils {
 	public String javaDevicePackage (PogoDeviceClass cls) {
 		return "org.tango."+cls.getName().toLowerCase();
 	}
+	//===========================================================
+	/**
+	 * Returns the source file path (from package)
+	 * @param cls	the class object
+	 * @return the source file path (from package)
+	 */
+	//===========================================================
+	public String javaDeviceSourceFile(PogoDeviceClass cls) {
+		String pack =  javaDevicePackage(cls);
+		return pack.replaceAll("\\.","/");
+	} 
 	
 	//===========================================================
 	/**
