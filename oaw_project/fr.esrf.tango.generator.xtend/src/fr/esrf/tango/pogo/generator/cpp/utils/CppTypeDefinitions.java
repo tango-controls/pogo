@@ -149,6 +149,8 @@ public class CppTypeDefinitions {
 		if (type instanceof UIntType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof StringType)		return (att.equals("scalar"))? "\"\""  : "ptr";
 		if (type instanceof DevIntType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof LongType)		return (att.equals("scalar"))? "0"     : "ptr";
+		if (type instanceof ULongType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof StateType)		return (att.equals("scalar"))? "Tango::UNKNOWN" : "ptr";
 		if (type instanceof EncodedType)	return "ptr";
 		return "0";

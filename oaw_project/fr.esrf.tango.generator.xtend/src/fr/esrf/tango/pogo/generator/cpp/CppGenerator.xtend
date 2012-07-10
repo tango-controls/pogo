@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.generator.cpp.projects.LinuxMakefile
 import fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9_Project
 import fr.esrf.tango.pogo.generator.cpp.projects.VC10.VC10_Project
+import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
 
 
 class CppGenerator implements IGenerator {
@@ -28,6 +29,9 @@ class CppGenerator implements IGenerator {
 	@Inject	extension VC10_Project
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		//
+		//	Generate cpp files for PogoDeviceClass objects
+		//
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 			//println(cls.description.filestogenerate)
 			//println("Lannguage="+cls.description.language)
@@ -72,5 +76,17 @@ class CppGenerator implements IGenerator {
 				}
 			}
 		}
+		//
+		//	Generate cpp files for PogoMultiClasses  objects
+		//
+		for (cls : allContentsIterable(resource).filter(typeof(PogoMultiClasses))) {
+			//	Multi class
+			if (cls.filestogenerate.contains("Code files")) {
+				println("PogoMultiClasses")
+				fsa.generateFile("MultiClassesFactory.cpp",   cls.generateMultiClassesFactoryFile)
+				fsa.generateFile("Makefile.multi",            cls.generateLinuxMakefileMultiClasses)
+			}
+		}
 	}
+	
 }
