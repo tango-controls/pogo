@@ -17,7 +17,7 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Jun 27 15:05:43 CEST 2012)</Center><Br>\n" + 
+		"	(Generated Fri Jun 29 15:04:40 CEST 2012)</Center><Br>\n" + 
 		"<li><b>Pogo-8.0.7 - 27/06/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Problem in allocation data member when inherited fixed.<Br>\n" + 
 		"<li><b>Pogo-8.0.6 - 21/06/2012:</b><Br>\n" + 
