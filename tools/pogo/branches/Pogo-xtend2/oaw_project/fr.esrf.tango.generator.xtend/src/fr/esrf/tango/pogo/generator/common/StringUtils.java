@@ -131,6 +131,25 @@ public class StringUtils {
 		return sb.toString();
 	}
 	
+	//===========================================================
+	/**
+	 * build a "if" content from the specified list.
+	 * 		used by PythonUtils
+	 * @param list
+	 * @return the "if" content from the specified list
+	 */
+	//===========================================================
+	public String ifContentFromListPython(EList<String> list) {
+		StringBuffer	sb = new StringBuffer();
+		sb.append("self.get_state() in [");
+		for (int i=0 ; i<list.size(); i++) {
+			sb.append("PyTango.DevState.").append(list.get(i));
+			if (i<list.size()-1)
+				sb.append(" ,\n	");
+		}
+		sb.append("]");
+		return sb.toString();
+	}
 	
 	//======================================================
 	//	Check if at least one property is mandatory
