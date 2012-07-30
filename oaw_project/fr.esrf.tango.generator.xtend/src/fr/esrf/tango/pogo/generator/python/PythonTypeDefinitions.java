@@ -1,6 +1,7 @@
 package fr.esrf.tango.pogo.generator.python;
 
 
+import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.BooleanArrayType;
 import fr.esrf.tango.pogo.pogoDsl.BooleanType;
 import fr.esrf.tango.pogo.pogoDsl.CharArrayType;
@@ -82,7 +83,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof StringArrayType)		return "PyTango.DevVarStringArray";
 		if (type instanceof LongStringArrayType)	return "PyTango.DevVarLongStringArray";
 		if (type instanceof DoubleStringArrayType)	return "PyTango.DevVarDoubleStringArray";
-		if (type instanceof StateType)				return "PyTango.DevState";
+		if (type instanceof StateType)				return "PyTango.CmdArgType.DevState";
 		if (type instanceof ConstStringType)		return "PyTango.ConstDevString";
 		if (type instanceof BooleanArrayType)		return "PyTango.DevVarBooleanArray";
 		if (type instanceof UCharType)				return "PyTango.DevUChar";
@@ -130,6 +131,60 @@ public class PythonTypeDefinitions {
 		if (type instanceof EncodedType)			return "Tango::DEV_ENCODED";
 		return "";
 	}
+	
+	/**
+	 * Type utilities
+	 */
+	public static String defaultValue (Type type) {
+		if (type instanceof VoidType)				return "";
+		if (type instanceof BooleanType)			return "False";
+		if (type instanceof ShortType)				return "0";
+		if (type instanceof IntType)				return "0";
+		if (type instanceof FloatType)				return "0.0";
+		if (type instanceof DoubleType)				return "0.0";
+		if (type instanceof UShortType)				return "0";
+		if (type instanceof UIntType)				return "0";
+		if (type instanceof StringType)				return "''";
+		if (type instanceof CharArrayType)			return "['']";
+		if (type instanceof ShortArrayType)			return "[0]";
+		if (type instanceof IntArrayType)			return "[0]";
+		if (type instanceof FloatArrayType)			return "[0.0]";
+		if (type instanceof DoubleArrayType)		return "[0.0]";
+		if (type instanceof UShortArrayType)		return "[0]";
+		if (type instanceof UIntArrayType)			return "[0]";
+		if (type instanceof StringArrayType)		return "['']";
+		if (type instanceof LongStringArrayType)	return "[0],['']";
+		if (type instanceof DoubleStringArrayType)	return "[0.0],['']";
+		if (type instanceof StateType)				return "PyTango.DevState.UNKNOWN";
+		if (type instanceof ConstStringType)		return "''";
+		if (type instanceof BooleanArrayType)		return "[False]";
+		if (type instanceof UCharType)				return "";
+		if (type instanceof LongType)				return "0";
+		if (type instanceof ULongType)				return "0";
+		if (type instanceof LongArrayType)			return "[0]";
+		if (type instanceof ULongArrayType)			return "[0]";
+		if (type instanceof DevIntType)				return "0";
+		if (type instanceof EncodedType)			return "''";
+		return "''";
+	}
 
-
+	
+	/**
+	 * Type utilities
+	 */
+	public static String defaultValueDim (Attribute attr) {
+		if (attr.getAttType().equals("Spectrum"))
+		{
+			return "[" + defaultValue(attr.getDataType()) + "]";
+		}
+		if (attr.getAttType().equals("Scalar"))
+		{
+			return defaultValue(attr.getDataType());
+		}
+		if (attr.getAttType().equals("Image"))
+		{
+			return "[[" + defaultValue(attr.getDataType()) + "]]";
+		}
+		return "";
+	}
 }
