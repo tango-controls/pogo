@@ -7,14 +7,12 @@ import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
-import fr.esrf.tango.pogo.generator.common.StringUtils
 import fr.esrf.tango.pogo.pogoDsl.Command
 
 class JavaCommand {
 
 	@Inject extension JavaUtils
 	@Inject extension ProtectedArea
-	@Inject extension StringUtils
 
 
 	
