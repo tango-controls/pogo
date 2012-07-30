@@ -87,6 +87,10 @@ public class Utils {
     public ImageIcon open_icon;
     public ImageIcon save_icon;
 
+    public ImageIcon cppLogo;
+    public ImageIcon javaLogo;
+    public ImageIcon pythonLogo;
+
     //===============================================================
     //===============================================================
     private Utils() {
@@ -116,6 +120,10 @@ public class Utils {
         new_icon = getIcon("new_icon.gif", 1.0);
         open_icon = getIcon("open_icon.gif", 1.0);
         save_icon = getIcon("save_icon.gif", 1.0);
+
+        cppLogo    = getIcon("CppLogo.gif",    0.66);
+        javaLogo   = getIcon("JavaLogo.gif",   0.12);
+        pythonLogo = getIcon("PythonLogo.gif", 0.33);
     }
 
     //===============================================================
