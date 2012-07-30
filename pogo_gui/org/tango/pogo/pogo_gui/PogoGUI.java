@@ -86,6 +86,7 @@ public class PogoGUI extends JFrame {
     private static final int TOP_GENE = 3;
 
     private ClassPanels class_panels;
+    private JLabel      languageLabel;
 
     public static boolean dbg_java = false;
     public static boolean dbg_python = false;
@@ -320,6 +321,11 @@ public class PogoGUI extends JFrame {
         addTopPanelButton(utils.image_icon, "Add ImageAttribute", true);
         addTopPanelButton(utils.state_icon, "Add State", true);
 
+        lbl = new JLabel("           ");
+        topPanel.add(lbl);
+        languageLabel = new JLabel("");
+        topPanel.add(languageLabel);
+
         homeDir = System.getenv("SOURCE_PATH");
         if (homeDir == null) {
             homeDir = System.getProperty("SOURCE_PATH");
@@ -333,6 +339,17 @@ public class PogoGUI extends JFrame {
         //pogo6Filter.setExtensionListInDescription(false);
     }
 
+    //=======================================================
+    //=======================================================
+    public void setLanguageLogo(String language) {
+        if (language.toLowerCase().equals("cpp"))
+            languageLabel.setIcon(Utils.getInstance().cppLogo);
+        else
+        if (language.toLowerCase().equals("java"))
+            languageLabel.setIcon(Utils.getInstance().javaLogo);
+        else
+            languageLabel.setIcon(Utils.getInstance().pythonLogo);
+    }
     //=======================================================
     //=======================================================
     private void addTopPanelButton(ImageIcon icon, String tip, final boolean isPalette) {
