@@ -77,6 +77,7 @@ public class GenerateDialog extends JDialog {
         rBtn.add(vc8Btn);
         rBtn.add(vc9Btn);
         rBtn.add(vc10Btn);
+        rBtn.add(ideaProjectBtn);
         rBtn.add(eclipseProjectBtn);
         rBtn.add(pomBtn);
         rBtn.add(htmlBtn);
@@ -124,13 +125,14 @@ public class GenerateDialog extends JDialog {
         javax.swing.JButton detailsBtn = new javax.swing.JButton();
         vc10Btn = new javax.swing.JRadioButton();
         windowsLabel = new javax.swing.JLabel();
-        javax.swing.JLabel linuxLabel = new javax.swing.JLabel();
+        linuxLabel = new javax.swing.JLabel();
         docLabel = new javax.swing.JLabel();
         javax.swing.JLabel classLabel = new javax.swing.JLabel();
         javaProjectLabel = new javax.swing.JLabel();
         pomBtn = new javax.swing.JRadioButton();
         eclipseProjectBtn = new javax.swing.JRadioButton();
         vc9Btn = new javax.swing.JRadioButton();
+        ideaProjectBtn = new javax.swing.JRadioButton();
 
         setTitle("Generation Preference  Window");
         setBackground(new java.awt.Color(198, 178, 168));
@@ -339,7 +341,7 @@ public class GenerateDialog extends JDialog {
 
         pomBtn.setText("pom.xml");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
@@ -348,7 +350,7 @@ public class GenerateDialog extends JDialog {
 
         eclipseProjectBtn.setText("Eclipse Project");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
@@ -363,6 +365,15 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(vc9Btn, gridBagConstraints);
+
+        ideaProjectBtn.setText("IntelliJIDEA Project");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(ideaProjectBtn, gridBagConstraints);
 
         getContentPane().add(buttonsPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -555,6 +566,7 @@ public class GenerateDialog extends JDialog {
             vc10Btn.setEnabled(false);
             javaProjectLabel.setVisible(false);
             eclipseProjectBtn.setVisible(false);
+            ideaProjectBtn.setVisible(false);
             pomBtn.setVisible(false);
         }
         int lang = Utils.getLanguage(devclass.getPogoDeviceClass().getDescription().getLanguage());
@@ -562,31 +574,37 @@ public class GenerateDialog extends JDialog {
             case PogoConst.Cpp:
                 makefileBtn.setVisible(true);
                 windowsLabel.setVisible(true);
+                linuxLabel.setVisible(true);
                 vc8Btn.setVisible(true);
                 vc9Btn.setVisible(true);
                 vc10Btn.setVisible(true);
                 javaProjectLabel.setVisible(false);
                 eclipseProjectBtn.setVisible(false);
+                ideaProjectBtn.setVisible(false);
                 pomBtn.setVisible(false);
                 break;
             case PogoConst.Java:
                 makefileBtn.setVisible(true);
                 windowsLabel.setVisible(false);
+                linuxLabel.setVisible(true);
                 vc8Btn.setVisible(false);
                 vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
                 javaProjectLabel.setVisible(true);
                 eclipseProjectBtn.setVisible(true);
+                ideaProjectBtn.setVisible(true);
                 pomBtn.setVisible(true);
                 break;
             case PogoConst.Python:
                 makefileBtn.setVisible(false);
                 windowsLabel.setVisible(false);
+                linuxLabel.setVisible(false);
                 vc8Btn.setVisible(false);
                 vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
                 javaProjectLabel.setVisible(false);
                 eclipseProjectBtn.setVisible(false);
+                ideaProjectBtn.setVisible(false);
                 pomBtn.setVisible(false);
                 break;
         }
@@ -615,6 +633,7 @@ public class GenerateDialog extends JDialog {
         outPathText.requestFocus();
 
         windowsLabel.setVisible(false);
+        linuxLabel.setVisible(false);
         vc8Btn.setVisible(false);
         vc9Btn.setVisible(false);
         vc10Btn.setVisible(false);
@@ -756,7 +775,9 @@ public class GenerateDialog extends JDialog {
     private javax.swing.JLabel docLabel;
     private javax.swing.JRadioButton eclipseProjectBtn;
     private javax.swing.JRadioButton htmlBtn;
+    private javax.swing.JRadioButton ideaProjectBtn;
     private javax.swing.JLabel javaProjectLabel;
+    private javax.swing.JLabel linuxLabel;
     private javax.swing.JRadioButton makefileBtn;
     private javax.swing.JTextField outPathText;
     private javax.swing.JRadioButton pomBtn;

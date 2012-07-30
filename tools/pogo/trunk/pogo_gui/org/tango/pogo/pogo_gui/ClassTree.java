@@ -101,6 +101,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             Utils.getInstance().stopSplashRefresher();
             editClass();
         }
+        parent.setLanguageLogo(pogo_class.getDescription().getLanguage());
     }
 
     //===============================================================
@@ -619,8 +620,11 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         if (dialog.showDialog() == JOptionPane.OK_OPTION) {
             deviceClass = dialog.getInputs();
             root.setUserObject(new PogoRoot(deviceClass.getPogoDeviceClass()));
-            if (!dialog.hasForcedToGenerate())
+            if (!dialog.hasForcedToGenerate()) {
+                parent.setLanguageLogo(
+                        deviceClass.getPogoDeviceClass().getDescription().getLanguage());
                 setModified(true);
+            }
             repaint();
         }
     }
@@ -1608,7 +1612,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         //===========================================================
         private String toInfoString() {
 
-            String title = "Class name:  " + name;
+            String title = language + " Class :  " + name;
             if (isAbstract)
                 title += "  (class is abstract !)";
 
@@ -1933,7 +1937,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             "Add Item",
             "Add Dynamic Item",
             "Paste",
-            "Sort Items",
+            "Sort Item",
             "Summarize",
 
             //  Item menu
