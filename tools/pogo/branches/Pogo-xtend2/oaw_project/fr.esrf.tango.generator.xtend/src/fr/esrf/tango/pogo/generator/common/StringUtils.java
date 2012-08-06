@@ -1,13 +1,12 @@
 package fr.esrf.tango.pogo.generator.common;
 
 import org.eclipse.emf.common.util.EList;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
-import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
-import fr.esrf.tango.pogo.pogoDsl.Inheritance;
-import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.State;
 
@@ -240,6 +239,7 @@ public class StringUtils {
 	}
 
 	//===========================================================
+	//===========================================================
 	private static String buildTab(String str, int nbChar) {
 		StringBuffer	sb = new StringBuffer(str);
 		for (int i=str.length() ; i<nbChar ; i++) {
@@ -248,4 +248,92 @@ public class StringUtils {
 		return sb.toString();
 	}
 	//===========================================================
+	//===========================================================
+
+
+
+
+
+
+
+    //===============================================================
+    //===============================================================
+	public void insertInProtectedRegion(String fileName, String key, String textToInsert) throws Exception{
+		String	code = readFile(fileName);
+		int	start = code.indexOf("PROTECTED REGION ID(" + key + ") ENABLED START");
+		if (start>0) {
+			start = code.indexOf("\n", start)+1;
+			int end = code.indexOf("PROTECTED REGION END", start);
+			end = code.lastIndexOf("\n", end);
+			
+			code = code.substring(0, start) + textToInsert + code.substring(end);
+			writeFile(fileName, code);
+		}
+		else
+			System.err.println("PROTECTED REGION ID(" + key + ") ENABLED START" + " not found !!");
+	}
+    //===============================================================
+    //===============================================================
+	public String getProtectedRegionContent(String fileName, String key) throws Exception{
+		String	code = readFile(fileName);
+		int	start = code.indexOf("PROTECTED REGION ID(" + key + ") ENABLED START");
+		if (start>0) {
+			start = code.indexOf("\n", start)+1;
+			int end = code.indexOf("PROTECTED REGION END", start);
+			end = code.lastIndexOf("\n", end);
+			return code.substring(start, end);
+		}
+		else
+			return null;
+	}
+    //===============================================================
+    /**
+     * Open a file and return text read.
+     *
+     * @param filename file to be read.
+     * @return the file content read.
+     * @throws fr.esrf.Tango.DevFailed in case of failure during read file.
+     */
+    //===============================================================
+    public static String readFile(String filename) throws Exception {
+        String str = "";
+        FileInputStream fid = new FileInputStream(filename);
+        int nb = fid.available();
+        byte[] inStr = new byte[nb];
+        nb = fid.read(inStr);
+        fid.close();
+
+        if (nb > 0)
+            str = takeOffWindowsChar(inStr);
+        return str;
+    }
+    //===============================================================
+    /**
+     * Take off Cr eventually added by Windows editor.
+     *
+     * @param b_in specified byte array to be modified.
+     * @return the modified byte array as String.
+     */
+    //===============================================================
+    protected static String takeOffWindowsChar(byte[] b_in) {
+        //	Take off Cr (0x0d) eventually added by Windows editor
+        int nb = 0;
+        for (byte b : b_in)
+            if (b != 13)
+                nb++;
+        byte[] b_out = new byte[nb];
+        for (int i = 0, j = 0; i < b_in.length; i++)
+            if (b_in[i] != 13)
+                b_out[j++] = b_in[i];
+        return new String(b_out);
+    }
+    //===============================================================
+    //===============================================================
+    public static void writeFile(String filename, String code) throws Exception {
+        FileOutputStream fidout = new FileOutputStream(filename);
+        fidout.write(code.getBytes());
+        fidout.close();
+    }
+    //===============================================================
+    //===============================================================
 }
