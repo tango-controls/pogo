@@ -16,9 +16,9 @@ class HtmlIndex  implements IGenerator {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 
 			if (cls.description.filestogenerate.contains("html")) {
-					println("Generating doc_html/index.html")
+					printTrace("Generating doc_html/index.html")
 					fsa.generateFile("doc_html/index.html",        cls.generateHtmlIndexFile)
-					println("Generating doc_html/TitleBanner.html")
+					printTrace("Generating doc_html/TitleBanner.html")
 					fsa.generateFile("doc_html/TitleBanner.html",  cls.generateHtmlTitleBannerFile)
 			}
 		}

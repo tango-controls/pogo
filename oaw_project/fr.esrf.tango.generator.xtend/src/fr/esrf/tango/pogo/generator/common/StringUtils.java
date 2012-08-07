@@ -40,6 +40,21 @@ public class StringUtils {
 	}
 	//===========================================================
 	/**
+	 * Print trace text if TRACE=true exported
+	 */
+	//===========================================================
+	private static boolean trace;
+	private static boolean traceNotSet = true;
+	public static void printTrace(String s) {
+		if (traceNotSet) {
+			trace = isTrue(System.getenv("TRACE"));
+			traceNotSet = false;
+		}
+		if (trace)
+			System.out.println(s);
+	}
+	//===========================================================
+	/**
 	 * returns true if has been set
 	 */
 	//===========================================================

@@ -17,10 +17,11 @@ class HtmlCommands  implements IGenerator {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 
 			if (cls.description.filestogenerate.contains("html")) {
-				println("Generating doc_html/Commands.html")
+				printTrace("Generating doc_html/Commands.html")
 				fsa.generateFile("doc_html/Commands.html", cls.generateHtmlCommandsFile(true))
+				
 				for (Command command : cls.commands) {
-					println("Generating doc_html/Cmd" + command.name + ".html")
+					printTrace("Generating doc_html/Cmd" + command.name + ".html")
 					fsa.generateFile("doc_html/Cmd" + command.name + ".html", cls.generateHtmlOneCommandFile(command, true))
 				}
 			}

@@ -17,10 +17,11 @@ class HtmlAttributes  implements IGenerator {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 
 			if (cls.description.filestogenerate.contains("html")) {
-				println("Generating doc_html/Attributes.html")
+				printTrace("Generating doc_html/Attributes.html")
 				fsa.generateFile("doc_html/Attributes.html", cls.generateHtmlAttributesFile(true))
+				
 				for (Attribute attribute : cls.attributes) {
-					println("Generating doc_html/Attr" + attribute.name + ".html")
+					printTrace("Generating doc_html/Attr" + attribute.name + ".html")
 					fsa.generateFile("doc_html/Attr" + attribute.name + ".html", cls.generateHtmlOneAttributeFile(attribute, true))
 				}
 			}

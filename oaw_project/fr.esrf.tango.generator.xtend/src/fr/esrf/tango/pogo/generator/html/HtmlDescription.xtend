@@ -18,13 +18,13 @@ class HtmlDescription  implements IGenerator {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
 
 			if (cls.description.filestogenerate.contains("html")) {
-					println("Generating doc_html/Description.html")
+					printTrace("Generating doc_html/Description.html")
 					fsa.generateFile("doc_html/Description.html",    cls.generateHtmlDescriptionFile(true))
-					println("Generating doc_html/Properties.html")
+					printTrace("Generating doc_html/Properties.html")
 					fsa.generateFile("doc_html/Properties.html",     cls.generateHtmlPropertiesFile(true))
-					println("Generating doc_html/States.html")
+					printTrace("Generating doc_html/States.html")
 					fsa.generateFile("doc_html/States.html",         cls.generateHtmlStatesFile(true))
-					println("Generating doc_html/FullDocument.html")
+					printTrace("Generating doc_html/FullDocument.html")
 					fsa.generateFile("doc_html/FullDocument.html",   cls.generateHtmlFullDocumentFile)
 
 					cls.retrieveProtectedDescriptionPart

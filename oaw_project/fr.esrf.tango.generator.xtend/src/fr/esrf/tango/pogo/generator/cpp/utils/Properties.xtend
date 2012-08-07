@@ -169,7 +169,7 @@ class Properties {
 		{
 			Tango::DbDatum	data(prop_name);
 			data << vect_data ;
-			dev_def_prop.push_back(data);
+			«IF target.equals("class")»cl«ELSE»dev«ENDIF»_def_prop.push_back(data);
 			add_wiz_«target»_prop(prop_name, prop_desc,  prop_def);
 		}
 		else

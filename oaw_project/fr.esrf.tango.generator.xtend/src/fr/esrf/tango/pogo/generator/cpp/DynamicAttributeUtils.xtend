@@ -5,7 +5,6 @@ import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
-import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes

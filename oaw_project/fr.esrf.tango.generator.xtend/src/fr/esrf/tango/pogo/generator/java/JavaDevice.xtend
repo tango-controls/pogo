@@ -33,14 +33,16 @@ class JavaDevice  implements IGenerator {
 			//	Code files
 			if (cls.description.language.toLowerCase.equals("java")) {
 					if (cls.description.filestogenerate.contains("Code files")) {
-					println("Generating " + cls.javaDeviceClassFileName(true))
+					printTrace("Generating " + cls.javaDeviceClassFileName(true))
 					fsa.generateFile(cls.javaDeviceClassFileName(true),     cls.generateJavaDeviceFile)
 					
 					//	Check for dynamic attributes
 					if (cls.dynamicAttributes.empty==false)
-						for (Attribute attribute : cls.dynamicAttributes)
+						for (Attribute attribute : cls.dynamicAttributes) {
+							printTrace("Generating " + cls.javaDynamicAttributeFileName(attribute.name))
 							fsa.generateFile(cls.javaDynamicAttributeFileName(attribute.name),
 												cls.generateJavaDynamicAttributeClassFile(attribute))
+						}
 				}
 			}
 		}
