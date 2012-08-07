@@ -10,6 +10,7 @@ import fr.esrf.tango.pogo.generator.cpp.projects.LinuxMakefile
 import fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9_Project
 import fr.esrf.tango.pogo.generator.cpp.projects.VC10.VC10_Project
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 
 
 class CppGenerator implements IGenerator {
@@ -38,26 +39,42 @@ class CppGenerator implements IGenerator {
 			if (cls.description.language.toLowerCase.equals("cpp")) {
 				//	Code files
 				if (cls.description.filestogenerate.contains("Code files")) {
+					printTrace("Generating " + cls.deviceIncludeFileName)
 					fsa.generateFile(cls.deviceIncludeFileName,      cls.generateDeviceIncludeFile)
+					
+					printTrace("Generating " + cls.deviceSourceFileName)
 					fsa.generateFile(cls.deviceSourceFileName,       cls.generateDeviceSourceFile)
+					
+					printTrace("Generating " + cls.deviceClassIncludeFileName)
 					fsa.generateFile(cls.deviceClassIncludeFileName, cls.generateDeviceClassIncludeFile)
+					
+					printTrace("Generating " + cls.deviceClassSourceFileName)
 					fsa.generateFile(cls.deviceClassSourceFileName,  cls.generateDeviceClassSourceFile)
+					
+					printTrace("Generating " + cls.stateMachineFileName)
 					fsa.generateFile(cls.stateMachineFileName,       cls.generateStateMachineSourceFile)
+					
+					printTrace("Generating ClassFactory.cpp")
 					fsa.generateFile("ClassFactory.cpp",             cls.generateClassFactoryFile)
+					
+					printTrace("Generating main.cpp")
 					fsa.generateFile("main.cpp",                     cls.generateMainFile)
 
 					if (cls.dynamicAttributes.size>0) {
+						printTrace("Generating " + cls.dynamicAttrUtilsFileName)
 						fsa.generateFile(cls.dynamicAttrUtilsFileName,       cls.generateDynamicAttrUtilsFile)
 					}
 				}
 				
 				//	Linux Makefile
 				if (cls.description.filestogenerate.contains("Makefile")) {
-					fsa.generateFile("Makefile",             cls.generateLinuxMakefile)
+					printTrace("Generating " + cls.generateLinuxMakefile)
+					fsa.generateFile("Makefile",  cls.generateLinuxMakefile)
 				}
 				
 				//	Widows projects
 				if (cls.description.filestogenerate.contains("VC9")) {
+					printTrace("Generating VC9 project in vc9_proj")
 					fsa.generateFile("vc9_proj/"+cls.name+".sln",     cls.generateVC9_Project)
 					fsa.generateFile("vc9_proj/Class_lib.vcproj",     cls.generateVC9_ClassLib)
 					fsa.generateFile("vc9_proj/Server_static.vcproj", cls.generateVC9_ServerStatic)
@@ -65,6 +82,7 @@ class CppGenerator implements IGenerator {
 					fsa.generateFile("vc9_proj/Server_shared.vcproj", cls.generateVC9_ServerShared)
 				}
 				if (cls.description.filestogenerate.contains("VC10")) {
+					printTrace("Generating VC10 project in vc10_proj")
 					fsa.generateFile("vc10_proj/"+cls.name+".sln",      cls.generateVC10_Project)
 					fsa.generateFile("vc10_proj/Class_lib.vcxproj",     cls.generateVC10_ClassLib)
 					fsa.generateFile("vc10_proj/Server_static.vcxproj", cls.generateVC10_ServerStatic)
@@ -82,8 +100,10 @@ class CppGenerator implements IGenerator {
 		for (cls : allContentsIterable(resource).filter(typeof(PogoMultiClasses))) {
 			//	Multi class
 			if (cls.filestogenerate.contains("Code files")) {
-				println("PogoMultiClasses")
+				println("Generating MultiClassesFactory.cpp")
 				fsa.generateFile("MultiClassesFactory.cpp",   cls.generateMultiClassesFactoryFile)
+				
+				println("Generating Makefile.multi")
 				fsa.generateFile("Makefile.multi",            cls.generateLinuxMakefileMultiClasses)
 			}
 		}

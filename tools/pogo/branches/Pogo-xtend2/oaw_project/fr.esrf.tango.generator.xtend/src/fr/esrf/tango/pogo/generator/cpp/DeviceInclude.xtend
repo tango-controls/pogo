@@ -11,7 +11,6 @@ import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
-import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
