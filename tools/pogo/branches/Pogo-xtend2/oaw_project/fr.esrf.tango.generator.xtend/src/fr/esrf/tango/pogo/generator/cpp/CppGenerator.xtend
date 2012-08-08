@@ -68,7 +68,7 @@ class CppGenerator implements IGenerator {
 				
 				//	Linux Makefile
 				if (cls.description.filestogenerate.contains("Makefile")) {
-					printTrace("Generating " + cls.generateLinuxMakefile)
+					printTrace("Generating Makefile")
 					fsa.generateFile("Makefile",  cls.generateLinuxMakefile)
 				}
 				
