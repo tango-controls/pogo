@@ -182,36 +182,42 @@ class DeviceClassSource {
 		«cls.simpleMethodHeaderClass("device_factory","Create the device object(s)\nand store them in the device list")»
 		void «cls.name»Class::device_factory(const Tango::DevVarStringArray *devlist_ptr)
 		{
-		«IF cls.isConcreteClass»
-			«cls.protectedAreaClass("device_factory_before", "Add your own code", true)»
-		
-			//	Create devices and add it into the device list
-			for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
-			{
-				cout4 << "Device name : " << (*devlist_ptr)[i].in() << endl;
-				device_list.push_back(new «cls.name»(this, (*devlist_ptr)[i]));							 
-			}
-		
-			//	Manage dynamic attributes if any
-			erase_dynamic_attributes(devlist_ptr, get_class_attr()->get_attr_list());
-		
-			//	Export devices to the outside world
-			for (unsigned long i=1 ; i<=devlist_ptr->length() ; i++)
-			{
-				//	Add dynamic attributes if any
-				«cls.name» *dev = static_cast<«cls.name» *>(device_list[device_list.size()-i]);
-				dev->add_dynamic_attributes();
-		
-				//	Check before if database used.
-				if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))
-					export_device(dev);
-				else
-					export_device(dev, dev->get_name().c_str());
-			}
-		
-			«cls.protectedAreaClass("device_factory_after", "Add your own code", true)»
+		«IF cls.name.toLowerCase.equals("database")»
+			device_list.push_back(new DataBase(this, DataBase::db_name.c_str(),
+												"TANGO database device server"));
+			export_device(device_list[0],"database");
 		«ELSE»
-			//	This class is not concrete and cannot implement devices
+			«IF cls.isConcreteClass»
+				«cls.protectedAreaClass("device_factory_before", "Add your own code", true)»
+			
+				//	Create devices and add it into the device list
+				for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
+				{
+					cout4 << "Device name : " << (*devlist_ptr)[i].in() << endl;
+					device_list.push_back(new «cls.name»(this, (*devlist_ptr)[i]));							 
+				}
+			
+				//	Manage dynamic attributes if any
+				erase_dynamic_attributes(devlist_ptr, get_class_attr()->get_attr_list());
+			
+				//	Export devices to the outside world
+				for (unsigned long i=1 ; i<=devlist_ptr->length() ; i++)
+				{
+					//	Add dynamic attributes if any
+					«cls.name» *dev = static_cast<«cls.name» *>(device_list[device_list.size()-i]);
+					dev->add_dynamic_attributes();
+			
+					//	Check before if database used.
+					if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))
+						export_device(dev);
+					else
+						export_device(dev, dev->get_name().c_str());
+				}
+			
+				«cls.protectedAreaClass("device_factory_after", "Add your own code", true)»
+			«ELSE»
+				//	This class is not concrete and cannot implement devices
+			«ENDIF»
 		«ENDIF»
 		}
 	'''
