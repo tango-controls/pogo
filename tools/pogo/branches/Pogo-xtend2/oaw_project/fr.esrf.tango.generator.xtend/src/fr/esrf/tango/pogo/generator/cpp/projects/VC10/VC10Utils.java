@@ -47,6 +47,13 @@ public class VC10Utils {
 		sb.append(buildFileLine(cls.getName()+".cpp"));
 		sb.append(buildFileLine(cls.getName()+"Class.cpp"));
 		sb.append(buildFileLine(cls.getName()+"StateMachine.cpp"));
+
+		//	Add dynamic attribute tools file if needed
+		if (cls.getDynamicAttributes().size()>0) {
+			sb.append(buildFileLine(cls.getName()+"DynAttrUtils.cpp"));
+		}
+
+		//	Add programmer's files if any
 		for (AdditionalFile file : cls.getAdditionalFiles()) {
 			String fileName = getOnlyFileName(file.getPath());
 			if (fileName!=null)
@@ -86,11 +93,6 @@ public class VC10Utils {
 			return null;
 		else
 			return pathName.substring(pos+1);
-	}
-	//===========================================================
-	//===========================================================
-	private String win(int nBits) {
-		return  (nBits==64)? "x64" : "Win32";
 	}
 	//===========================================================
 	//===========================================================
