@@ -58,7 +58,7 @@ class HtmlIndex  implements IGenerator {
 			       <td ALIGN="center"> <a href="Commands.html"     target="document">  Commands    </a></td>
 			       <td ALIGN="center"> <a href="Attributes.html"   target="document">  Attributes  </a></td>
 			       <td ALIGN="center"> <a href="States.html"       target="document">  States      </a></td>
-			       <td ALIGN="center"> <a href="FullDocument.html" target="new">  Printable   </a></td>
+			       <td ALIGN="center"> <a href="FullDocument.html" target="new">       Printable   </a></td>
 				</table>
 			</center>
 		</html>
