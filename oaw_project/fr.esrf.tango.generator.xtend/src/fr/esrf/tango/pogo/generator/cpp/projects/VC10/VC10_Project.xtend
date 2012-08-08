@@ -248,7 +248,6 @@ class VC10_Project {
 		  </ItemDefinitionGroup>
 		  <ItemGroup>
 			«cls.sourceFileList»
-			«IF cls.dynamicAttributes.size>0»«(cls.name+"DynAttrUtils.cpp").buildFileLine»«ENDIF»
 		  </ItemGroup>
 		  <ItemGroup>
 			«cls.includeFileList»
