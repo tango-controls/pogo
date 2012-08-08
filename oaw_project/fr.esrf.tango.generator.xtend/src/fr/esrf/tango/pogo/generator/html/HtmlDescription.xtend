@@ -127,30 +127,45 @@ class HtmlDescription  implements IGenerator {
 		«cls.htmlFileHeader»
 		«generateHtmlTangoBannerFile»
 		<hr>
+		<br>
+		«cls.htmlFullDocummentTitleAndContents»
 		<br><br>
-		«htmlPageTitle(cls.name + " Tango " + cls.description.language + " Class")»
-		<br><br>
+		<a name="description"> </a>
 		«cls.generateHtmlDescriptionFile(false)»
 		<br><br>
 		<hr>
+		<a name="properties"> </a>
 		«cls.generateHtmlPropertiesFile(false)»
 		<br><br>
 		<hr>
+		<a name="commands"> </a>
 		«cls.generateHtmlCommandsFile(false)»
 		«FOR command : cls.commands»
 			<br><br><hr>
+			<a name="cmd«command.name»"> </a>
 			«cls.generateHtmlOneCommandFile(command, false)»
 		«ENDFOR»
 		<br><br>
 		<hr>
+		<a name="attributes"> </a>
 		«cls.generateHtmlAttributesFile(false)»
 		«FOR attribute : cls.attributes»
 			<br><br>
 			<hr>
+			<a name="attr«attribute.name»"> </a>
 			«cls.generateHtmlOneAttributeFile(attribute, false)»
 		«ENDFOR»
 		<br><br>
 		<hr>
+		«FOR attribute : cls.dynamicAttributes»
+			<br><br>
+			<hr>
+			<a name="attr«attribute.name»"> </a>
+			«cls.generateHtmlOneAttributeFile(attribute, false)»
+		«ENDFOR»
+		<br><br>
+		<hr>
+		<a name="states"> </a>
 		«cls.generateHtmlStatesFile(false)»
 		</body>
 		</html>

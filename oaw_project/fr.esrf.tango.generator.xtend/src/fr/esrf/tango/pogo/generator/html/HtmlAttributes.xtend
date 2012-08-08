@@ -24,6 +24,10 @@ class HtmlAttributes  implements IGenerator {
 					printTrace("Generating doc_html/Attr" + attribute.name + ".html")
 					fsa.generateFile("doc_html/Attr" + attribute.name + ".html", cls.generateHtmlOneAttributeFile(attribute, true))
 				}
+				for (Attribute attribute : cls.dynamicAttributes) {
+					printTrace("Generating doc_html/Attr" + attribute.name + ".html")
+					fsa.generateFile("doc_html/Attr" + attribute.name + ".html", cls.generateHtmlOneAttributeFile(attribute, true))
+				}
 			}
 		}
 	}
@@ -33,7 +37,11 @@ class HtmlAttributes  implements IGenerator {
 	def generateHtmlAttributesFile(PogoDeviceClass cls, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("Attributes")»«ENDIF»
 		<br><br><br><br>
-		«cls.attributes.htmlAttributesTable»
+		«cls.attributes.htmlAttributesTable(false)»
+		<br><br>
+		<hr>
+		<br><br>
+		«cls.dynamicAttributes.htmlAttributesTable(true)»
 		«IF withHeader»
 			</body>
 			</html>
@@ -45,7 +53,11 @@ class HtmlAttributes  implements IGenerator {
 	def generateHtmlOneAttributeFile(PogoDeviceClass cls, Attribute attribute, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("Attribute " + attribute.name)»«ENDIF»
 		<br><br><br>
-		«htmlTitle("Attribute " + attribute.name + " :")»
+		«IF attribute.isDynamic.isTrue»
+			«htmlTitle("Dynamic attribute " + attribute.name + " :")»
+		«ELSE»
+			«htmlTitle("Attribute " + attribute.name + " :")»
+		«ENDIF»
 		<ul>
 			«attribute.properties.description.htmlStringWithBreak»
 		</ul>

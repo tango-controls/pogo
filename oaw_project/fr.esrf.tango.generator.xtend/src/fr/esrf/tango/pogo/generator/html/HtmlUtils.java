@@ -172,6 +172,16 @@ public class HtmlUtils extends StringUtils {
 	}
 	//===========================================================
 	//===========================================================
+	private String htmlTableCell(EList<String> list) {
+		StringBuffer	sb = new StringBuffer("<font size=\"-1\"> ");
+		for (String str : list) {
+			sb.append(" <li> ").append(str).append(" </li> ");
+		}
+		sb.append("</font>");
+		return htmlTableCell(sb.toString());
+	}
+	//===========================================================
+	//===========================================================
 	String htmlTableLine(String[] array) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\t<tr>\n");
@@ -270,34 +280,62 @@ public class HtmlUtils extends StringUtils {
 		String	argout = CppTypeDefinitions.cppTypeEnum(command.getArgout().getType());
 		String	abstr  = isTrue((command.getStatus().getConcreteHere()))? "false": "true";
 		String title = command.getName() + " Definition";
+		String	poll   = "Not polled";
+		if (isSet(command.getPolledPeriod()))
+			if (command.getPolledPeriod().equals("0")==false)
+				poll = command.getPolledPeriod();
+
 		StringBuffer sb = new StringBuffer(htmlTableHeader(new String[0] , title));
 		sb.append(htmlTableLine(
-				new String[] { "Input Argument", argin }));
+				new String[] { "Input Argument", argin, htmlStringWithBreak(command.getArgin().getDescription()) }));
 		sb.append(htmlTableLine(
-				new String[] { "Output Argument", argout }));
+				new String[] { "Output Argument", argout, htmlStringWithBreak(command.getArgout().getDescription()) }));
 		sb.append(htmlTableLine(
-				new String[] { "DisplayLevel", command.getDisplayLevel() }));
+				new String[] { "DisplayLevel", command.getDisplayLevel(), ".."  }));
 		sb.append(htmlTableLine(
-				new String[] { "Inherited", command.getStatus().getInherited() }));
+				new String[] { "Inherited", command.getStatus().getInherited(), ".."  }));
 		sb.append(htmlTableLine(
-				new String[] { "Abstract", abstr }));
+				new String[] { "Abstract", abstr, ".."  }));
+		sb.append(htmlTableLine(
+				new String[] { "Polling Period", poll, ".." }));
+
+		sb.append("<Tr BGCOLOR=\"#CCCCFF\"><Td><Hr></Td><Td><Hr></Td><Td><Hr></Td></Tr>\n");
+
+		//	Excluded state
+		if (command.getExcludedStates().size()==0) {
+			sb.append(htmlTableLine(
+					new String[] { "Command allowed for", "All states", ".."  }));
+		}
+		else {
+			sb.append("\t<tr>\n");
+			sb.append(htmlTableCell("Command NOT allowed for"));
+			sb.append(htmlTableCell(command.getExcludedStates()));
+			sb.append(htmlTableCell(".."));
+			sb.append("\t</tr>\n");
+		}
 		sb.append("</table>");
 		return sb.toString();
 	}
 	//===========================================================
 	//===========================================================
-
 	
 	
 	//===========================================================
 	private static final String[]	attributeHeaders =
 		{ "Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description" }; 
 	//===========================================================
-	String htmlAttributesTable(EList<Attribute> attributes) {
+	String htmlAttributesTable(EList<Attribute> attributes, boolean dynamic) {
 		
-		if (attributes.size()==0)
-			return htmlTitle("There is no attributes defined.");
-		StringBuffer sb = new StringBuffer(htmlTableHeader(attributeHeaders, "Device Attributes"));
+		
+		if (attributes.size()==0) {
+			if (dynamic)
+				return htmlTitle("There is no dynamic attribute defined.");
+			else
+				return htmlTitle("There is no attribute defined.");
+		}
+		
+		String	title = (dynamic)? "Device Dynamic Attributes" : "Device Attributes";
+		StringBuffer sb = new StringBuffer(htmlTableHeader(attributeHeaders, title));
 
 		for (Attribute attribute : attributes) {
 			//	Build name with a link on attribute description file
@@ -323,6 +361,19 @@ public class HtmlUtils extends StringUtils {
 	}
 	//===========================================================
 	//===========================================================
+	private String attrSize(Attribute attribute) {
+		if (attribute.getAttType().equals("Scalar"))
+			return "";
+		else
+		if (attribute.getAttType().equals("Spectrum"))
+			return "  ( " + attribute.getMaxX() + " )";
+		else
+			//	Image
+			return "  ( " + attribute.getMaxX() +
+					" x " + attribute.getMaxY() + " )";
+	}
+	//===========================================================
+	//===========================================================
 	String htmlOneAttributeDefinitionTable(Attribute attribute) {
 		
 		String title   = "Attribute Definition";
@@ -335,13 +386,11 @@ public class HtmlUtils extends StringUtils {
 		
 		StringBuffer sb = new StringBuffer(htmlTableHeader(new String[0] , title));
 		sb.append(htmlTableLine(
-				new String[] { "Attribute Type", attribute.getAttType() }));
+				new String[] { "Attribute Type", attribute.getAttType() + attrSize(attribute) }));
 		sb.append(htmlTableLine(
 				new String[] { "R/W Type", attribute.getRwType() }));
 		sb.append(htmlTableLine(
 				new String[] { "Data Type", dataType }));
-		sb.append(htmlTableLine(
-				new String[] { "Read allowed for", "All states" }));
 		sb.append(htmlTableLine(
 				new String[] { "Display Level", attribute.getDisplayLevel() }));
 		sb.append(htmlTableLine(
@@ -350,6 +399,41 @@ public class HtmlUtils extends StringUtils {
 				new String[] { "Abstract", abstr }));
 		sb.append(htmlTableLine(
 				new String[] { "Polling Period", poll }));
+		sb.append(htmlTableLine(
+				new String[] { "Memorized", getValue(attribute.getMemorized()) }));
+		if (isTrue(attribute.getMemorized()))
+			sb.append(htmlTableLine(
+						new String[] { "Write hardware at init.", getValue(attribute.getMemorizedAtInit()) }));
+
+		sb.append("<Tr BGCOLOR=\"#CCCCFF\"><Td><Hr></Td><Td><Hr></Td></Tr>\n");
+
+		//	Read excluded state
+		if (attribute.getRwType().contains("READ")) {
+			if (attribute.getReadExcludedStates().size()==0) {
+				sb.append(htmlTableLine(
+						new String[] { "Read allowed for", "All states" }));
+			}
+			else {
+				sb.append("\t<tr>\n");
+				sb.append(htmlTableCell("Read NOT allowed for"));
+				sb.append(htmlTableCell(attribute.getReadExcludedStates()));
+				sb.append("\t</tr>\n");
+			}
+		}			
+		//	Write excluded state
+		if (attribute.getRwType().contains("WRITE")) {
+			if (attribute.getWriteExcludedStates().size()==0) {
+				sb.append(htmlTableLine(
+						new String[] { "Write allowed for", "All states" }));
+			}
+			else {
+				sb.append("\t<tr>\n");
+				sb.append(htmlTableCell("Write NOT allowed for"));
+				sb.append(htmlTableCell(attribute.getWriteExcludedStates()));
+				sb.append("\t</tr>\n");
+			}
+		}			
+
 		sb.append("</table>");
 		return sb.toString();
 	}
@@ -464,6 +548,49 @@ public class HtmlUtils extends StringUtils {
 		}
 		return htmlTableLine( array );
 	}
+	//===========================================================
+	//===========================================================
+	String htmlFullDocummentTitleAndContents(PogoDeviceClass cls) {
+
+		StringBuffer sb = new StringBuffer(htmlPageTitle(cls.getName() +
+				" Tango " + cls.getDescription().getLanguage() + " Class"));
+		sb.append("	<br><br>\n");
+		sb.append("	<ul>\n");
+		sb.append("		" + htmlTitle("Contents :"));
+		sb.append("\n		<ul>\n");
+		sb.append("			<li> <a href=\"FullDocument.html#description\">  Description  </a>\n");
+		sb.append("			<li> <a href=\"FullDocument.html#properties\">   Properties   </a>\n");
+		
+		//	Commands
+		sb.append("			<li> <a href=\"FullDocument.html#commands\">     Commands     </a>\n");
+		sb.append("			<ul>\n");
+		for (Command command : cls.getCommands())
+			sb.append("				<li> <a href=\"FullDocument.html#cmd" + command.getName() + "\"> " + command.getName() + " </a>\n");
+		sb.append("			</ul>\n");
+		
+		//	Attributes
+		sb.append("			<li> <a href=\"FullDocument.html#attributes\">   Attributes   </a>\n");
+		sb.append("			<ul>\n");
+		for (Attribute attribute : cls.getAttributes())
+			sb.append("				<li> <a href=\"FullDocument.html#attr" + attribute.getName() + "\"> " + attribute.getName() + " </a>\n");
+		for (Attribute attribute : cls.getDynamicAttributes())
+			sb.append("				<li> <a href=\"FullDocument.html#attr" + attribute.getName() + "\"> " + attribute.getName() + " (dynamic) </a>\n");
+		sb.append("			</ul>\n");
+		
+		//	States
+		sb.append("			<li> <a href=\"FullDocument.html#states\">       States       </a>\n");
+		sb.append("		</ul>\n");
+		sb.append("	</ul>\n");
+		sb.append("	<hr>\n");
+
+		return sb.toString();
+	}
+	//===========================================================
+	//===========================================================
+
+	
+	
+	
 	//===========================================================
 	//===========================================================
 	void retrieveProtectedDescriptionPart(PogoDeviceClass cls) {
