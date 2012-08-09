@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getClassname <em>Classname</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getSourcePath <em>Source Path</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getHasDynamic <em>Has Dynamic</em>}</li>
@@ -34,32 +33,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OneClassSimpleDef extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Pogo Revision</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Pogo Revision</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Pogo Revision</em>' attribute.
-   * @see #setPogoRevision(String)
-   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getOneClassSimpleDef_PogoRevision()
-   * @model
-   * @generated
-   */
-  String getPogoRevision();
-
-  /**
-   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogoRevision <em>Pogo Revision</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pogo Revision</em>' attribute.
-   * @see #getPogoRevision()
-   * @generated
-   */
-  void setPogoRevision(String value);
-
   /**
    * Returns the value of the '<em><b>Classname</b></em>' attribute.
    * <!-- begin-user-doc -->

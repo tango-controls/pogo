@@ -843,7 +843,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (
-	 *         pogoRevision=ID 
 	 *         classname=STRING 
 	 *         sourcePath=STRING 
 	 *         hasDynamic=Boolean 
@@ -908,6 +907,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (
+	 *         pogoRevision=ID 
 	 *         name=ID 
 	 *         sourcePath=STRING 
 	 *         description=STRING 
