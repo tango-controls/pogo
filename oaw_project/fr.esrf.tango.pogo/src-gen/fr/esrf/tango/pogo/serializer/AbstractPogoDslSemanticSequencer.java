@@ -491,10 +491,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (name=STRING path=STRING)
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    path[1, 1]
 	 */
 	protected void sequence_AdditionalFile(EObject context, AdditionalFile semanticObject) {
 		if(errorAcceptor != null) {
@@ -514,10 +510,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (type=Type description=STRING)
-	 *
-	 * Features:
-	 *    type[1, 1]
-	 *    description[1, 1]
 	 */
 	protected void sequence_Argument(EObject context, Argument semanticObject) {
 		if(errorAcceptor != null) {
@@ -552,22 +544,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         deltaTime=STRING 
 	 *         deltaValue=STRING
 	 *     )
-	 *
-	 * Features:
-	 *    description[1, 1]
-	 *    label[1, 1]
-	 *    unit[1, 1]
-	 *    standardUnit[1, 1]
-	 *    displayUnit[1, 1]
-	 *    format[1, 1]
-	 *    maxValue[1, 1]
-	 *    minValue[1, 1]
-	 *    maxAlarm[1, 1]
-	 *    minAlarm[1, 1]
-	 *    maxWarning[1, 1]
-	 *    minWarning[1, 1]
-	 *    deltaTime[1, 1]
-	 *    deltaValue[1, 1]
 	 */
 	protected void sequence_AttrProperties(EObject context, AttrProperties semanticObject) {
 		if(errorAcceptor != null) {
@@ -646,30 +622,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         readExcludedStates+=STRING* 
 	 *         writeExcludedStates+=STRING*
 	 *     )
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    attType[1, 1]
-	 *    dataType[1, 1]
-	 *    rwType[1, 1]
-	 *    displayLevel[1, 1]
-	 *    polledPeriod[1, 1]
-	 *    maxX[1, 1]
-	 *    maxY[1, 1]
-	 *    associatedAttr[1, 1]
-	 *    memorized[1, 1]
-	 *    memorizedAtInit[1, 1]
-	 *    changeEvent[1, 1]
-	 *    archiveEvent[1, 1]
-	 *    dataReadyEvent[1, 1]
-	 *    status[1, 1]
-	 *    properties[1, 1]
-	 *    allocReadMember[1, 1]
-	 *    isDynamic[1, 1]
-	 *    eventCriteria[1, 1]
-	 *    evArchiveCriteria[1, 1]
-	 *    readExcludedStates[0, *]
-	 *    writeExcludedStates[0, *]
 	 */
 	protected void sequence_Attribute(EObject context, Attribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -693,21 +645,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         hasAbstractAttribute=Boolean 
 	 *         descriptionHtmlExists=Boolean
 	 *     )
-	 *
-	 * Features:
-	 *    description[1, 1]
-	 *    title[1, 1]
-	 *    sourcePath[1, 1]
-	 *    inheritances[1, 1]
-	 *    language[1, 1]
-	 *    filestogenerate[1, 1]
-	 *    identification[1, 1]
-	 *    comments[1, 1]
-	 *    hasMandatoryProperty[1, 1]
-	 *    hasConcreteProperty[1, 1]
-	 *    hasAbstractCommand[1, 1]
-	 *    hasAbstractAttribute[1, 1]
-	 *    descriptionHtmlExists[1, 1]
 	 */
 	protected void sequence_ClassDescription(EObject context, ClassDescription semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -727,17 +664,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         manufacturer=STRING 
 	 *         reference=STRING
 	 *     )
-	 *
-	 * Features:
-	 *    contact[1, 1]
-	 *    author[1, 1]
-	 *    emailDomain[1, 1]
-	 *    classFamily[1, 1]
-	 *    siteSpecific[1, 1]
-	 *    platform[1, 1]
-	 *    bus[1, 1]
-	 *    manufacturer[1, 1]
-	 *    reference[1, 1]
 	 */
 	protected void sequence_ClassIdentification(EObject context, ClassIdentification semanticObject) {
 		if(errorAcceptor != null) {
@@ -788,17 +714,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         polledPeriod=STRING 
 	 *         excludedStates+=STRING*
 	 *     )
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    argin[1, 1]
-	 *    argout[1, 1]
-	 *    description[1, 1]
-	 *    status[1, 1]
-	 *    execMethod[1, 1]
-	 *    displayLevel[1, 1]
-	 *    polledPeriod[1, 1]
-	 *    excludedStates[0, *]
 	 */
 	protected void sequence_Command(EObject context, Command semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -808,9 +723,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     commandsTable=STRING
-	 *
-	 * Features:
-	 *    commandsTable[1, 1]
 	 */
 	protected void sequence_Comments(EObject context, Comments semanticObject) {
 		if(errorAcceptor != null) {
@@ -827,11 +739,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (relChange=STRING absChange=STRING period=STRING)
-	 *
-	 * Features:
-	 *    relChange[1, 1]
-	 *    absChange[1, 1]
-	 *    period[1, 1]
 	 */
 	protected void sequence_EventCriteria(EObject context, EventCriteria semanticObject) {
 		if(errorAcceptor != null) {
@@ -854,10 +761,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (fire=Boolean libCheckCriteria=Boolean)
-	 *
-	 * Features:
-	 *    fire[1, 1]
-	 *    libCheckCriteria[1, 1]
 	 */
 	protected void sequence_FireEvents(EObject context, FireEvents semanticObject) {
 		if(errorAcceptor != null) {
@@ -877,9 +780,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     importURI=STRING
-	 *
-	 * Features:
-	 *    importURI[1, 1]
 	 */
 	protected void sequence_Import(EObject context, Import semanticObject) {
 		if(errorAcceptor != null) {
@@ -896,13 +796,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (abstract=Boolean inherited=Boolean concrete=Boolean concreteHere=Boolean hasChanged=STRING)
-	 *
-	 * Features:
-	 *    abstract[1, 1]
-	 *    inherited[1, 1]
-	 *    concrete[1, 1]
-	 *    concreteHere[1, 1]
-	 *    hasChanged[1, 1]
 	 */
 	protected void sequence_InheritanceStatus(EObject context, InheritanceStatus semanticObject) {
 		if(errorAcceptor != null) {
@@ -931,10 +824,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (classname=STRING sourcePath=STRING)
-	 *
-	 * Features:
-	 *    classname[1, 1]
-	 *    sourcePath[1, 1]
 	 */
 	protected void sequence_Inheritance(EObject context, Inheritance semanticObject) {
 		if(errorAcceptor != null) {
@@ -954,21 +843,15 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (
+	 *         pogoRevision=ID 
 	 *         classname=STRING 
 	 *         sourcePath=STRING 
+	 *         hasDynamic=Boolean 
 	 *         pogo6=Boolean 
 	 *         inheritances+=Inheritance 
 	 *         parentClasses+=STRING 
 	 *         additionalFiles+=AdditionalFile*
 	 *     )
-	 *
-	 * Features:
-	 *    classname[1, 1]
-	 *    sourcePath[1, 1]
-	 *    pogo6[1, 1]
-	 *    inheritances[1, 1]
-	 *    parentClasses[1, 1]
-	 *    additionalFiles[0, *]
 	 */
 	protected void sequence_OneClassSimpleDef(EObject context, OneClassSimpleDef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -978,11 +861,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (name=STRING type=STRING pollPeriod=STRING)
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    type[1, 1]
-	 *    pollPeriod[1, 1]
 	 */
 	protected void sequence_OverlodedPollPeriodObject(EObject context, OverlodedPollPeriodObject semanticObject) {
 		if(errorAcceptor != null) {
@@ -1008,6 +886,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         name=ID 
 	 *         isAbstract?='abstract'? 
 	 *         baseClass=[PogoDeviceClass|ID]? 
+	 *         pogoRevision=ID 
 	 *         institute=ID 
 	 *         description=ClassDescription 
 	 *         classProperties+=Property* 
@@ -1020,22 +899,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         additionalFiles+=AdditionalFile* 
 	 *         overlodedPollPeriodObject+=OverlodedPollPeriodObject*
 	 *     )
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    isAbstract[0, 1]
-	 *    baseClass[0, 1]
-	 *    institute[1, 1]
-	 *    description[1, 1]
-	 *    classProperties[0, *]
-	 *    deviceProperties[0, *]
-	 *    commands[0, *]
-	 *    attributes[0, *]
-	 *    dynamicAttributes[0, *]
-	 *    states[0, *]
-	 *    preferences[1, 1]
-	 *    additionalFiles[0, *]
-	 *    overlodedPollPeriodObject[0, *]
 	 */
 	protected void sequence_PogoDeviceClass(EObject context, PogoDeviceClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1053,15 +916,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         filestogenerate=STRING 
 	 *         preferences=Preferences
 	 *     )
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    sourcePath[1, 1]
-	 *    description[1, 1]
-	 *    title[1, 1]
-	 *    classes[1, 1]
-	 *    filestogenerate[1, 1]
-	 *    preferences[1, 1]
 	 */
 	protected void sequence_PogoMultiClasses(EObject context, PogoMultiClasses semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1071,11 +925,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (imports+=Import* classes+=PogoDeviceClass* multiClasses+=PogoMultiClasses*)
-	 *
-	 * Features:
-	 *    imports[0, *]
-	 *    classes[0, *]
-	 *    multiClasses[0, *]
 	 */
 	protected void sequence_PogoSystem(EObject context, PogoSystem semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1085,12 +934,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (docHome=STRING makefileHome=STRING installHome=STRING htmlVersion=Boolean)
-	 *
-	 * Features:
-	 *    docHome[1, 1]
-	 *    makefileHome[1, 1]
-	 *    installHome[1, 1]
-	 *    htmlVersion[1, 1]
 	 */
 	protected void sequence_Preferences(EObject context, Preferences semanticObject) {
 		if(errorAcceptor != null) {
@@ -1116,8 +959,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {BooleanType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, BooleanType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1127,8 +968,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {DoubleType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, DoubleType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1138,8 +977,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {DoubleVectorType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, DoubleVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1149,8 +986,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {FloatType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, FloatType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1160,8 +995,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {FloatVectorType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, FloatVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1171,8 +1004,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {IntType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, IntType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1182,8 +1013,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {IntVectorType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, IntVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1193,8 +1022,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {ShortType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, ShortType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1204,8 +1031,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {ShortVectorType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, ShortVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1215,8 +1040,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {StringType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, StringType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1226,8 +1049,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {StringVectorType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, StringVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1237,8 +1058,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {UIntType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, UIntType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1248,8 +1067,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {UShortType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_PropType(EObject context, UShortType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1266,14 +1083,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         description=STRING 
 	 *         DefaultPropValue+=STRING*
 	 *     )
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    type[1, 1]
-	 *    status[1, 1]
-	 *    mandatory[1, 1]
-	 *    description[1, 1]
-	 *    DefaultPropValue[0, *]
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1283,11 +1092,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     (name=ID description=STRING status=InheritanceStatus)
-	 *
-	 * Features:
-	 *    name[1, 1]
-	 *    description[1, 1]
-	 *    status[1, 1]
 	 */
 	protected void sequence_State(EObject context, State semanticObject) {
 		if(errorAcceptor != null) {
@@ -1310,8 +1114,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {BooleanArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, BooleanArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1321,8 +1123,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {CharArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, CharArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1332,8 +1132,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {ConstStringType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, ConstStringType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1343,8 +1141,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {DevIntType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, DevIntType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1354,8 +1150,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {DoubleArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, DoubleArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1365,8 +1159,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {DoubleStringArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, DoubleStringArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1376,8 +1168,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {EncodedType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, EncodedType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1387,8 +1177,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {FloatArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, FloatArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1398,8 +1186,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {IntArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, IntArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1409,8 +1195,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {LongArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, LongArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1420,8 +1204,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {LongStringArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, LongStringArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1431,8 +1213,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {LongType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, LongType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1442,8 +1222,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {ShortArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, ShortArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1453,8 +1231,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {StateType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, StateType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1464,8 +1240,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {StringArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, StringArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1475,8 +1249,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {UCharType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, UCharType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1486,8 +1258,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {UIntArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, UIntArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1497,8 +1267,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {ULongArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, ULongArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1508,8 +1276,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {ULongType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, ULongType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1519,8 +1285,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {UShortArrayType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, UShortArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1530,8 +1294,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	/**
 	 * Constraint:
 	 *     {VoidType}
-	 *
-	 * Features:
 	 */
 	protected void sequence_Type(EObject context, VoidType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

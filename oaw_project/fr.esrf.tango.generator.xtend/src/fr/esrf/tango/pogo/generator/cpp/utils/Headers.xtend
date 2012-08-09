@@ -141,6 +141,17 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			 cls.description.title)
 	}
 
+	//======================================================
+	// header for main.cpp
+	//======================================================
+	def mainFileHeader(PogoMultiClasses multi) {
+		fileHeader("main.cpp",
+			"C++ source for the " + multi.name + " device server main.\n"  +
+			"The main rule is to initialise (and create) the Tango\n" +
+			"system and to create the DServerClass singleton.\n" +
+			"The main should be the same for every Tango device server.",
+			 multi.title)
+	}
 
 	//======================================================
 	/*

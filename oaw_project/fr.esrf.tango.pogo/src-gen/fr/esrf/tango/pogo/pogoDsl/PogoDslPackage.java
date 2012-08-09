@@ -226,13 +226,22 @@ public interface PogoDslPackage extends EPackage
   int ONE_CLASS_SIMPLE_DEF = 3;
 
   /**
+   * The feature id for the '<em><b>Pogo Revision</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__POGO_REVISION = 0;
+
+  /**
    * The feature id for the '<em><b>Classname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF__CLASSNAME = 0;
+  int ONE_CLASS_SIMPLE_DEF__CLASSNAME = 1;
 
   /**
    * The feature id for the '<em><b>Source Path</b></em>' attribute.
@@ -241,7 +250,16 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF__SOURCE_PATH = 1;
+  int ONE_CLASS_SIMPLE_DEF__SOURCE_PATH = 2;
+
+  /**
+   * The feature id for the '<em><b>Has Dynamic</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC = 3;
 
   /**
    * The feature id for the '<em><b>Pogo6</b></em>' attribute.
@@ -250,7 +268,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF__POGO6 = 2;
+  int ONE_CLASS_SIMPLE_DEF__POGO6 = 4;
 
   /**
    * The feature id for the '<em><b>Inheritances</b></em>' containment reference list.
@@ -259,7 +277,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF__INHERITANCES = 3;
+  int ONE_CLASS_SIMPLE_DEF__INHERITANCES = 5;
 
   /**
    * The feature id for the '<em><b>Parent Classes</b></em>' attribute list.
@@ -268,7 +286,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES = 4;
+  int ONE_CLASS_SIMPLE_DEF__PARENT_CLASSES = 6;
 
   /**
    * The feature id for the '<em><b>Additional Files</b></em>' containment reference list.
@@ -277,7 +295,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES = 5;
+  int ONE_CLASS_SIMPLE_DEF__ADDITIONAL_FILES = 7;
 
   /**
    * The number of structural features of the '<em>One Class Simple Def</em>' class.
@@ -286,7 +304,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ONE_CLASS_SIMPLE_DEF_FEATURE_COUNT = 6;
+  int ONE_CLASS_SIMPLE_DEF_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl <em>Pogo Device Class</em>}' class.
@@ -326,13 +344,22 @@ public interface PogoDslPackage extends EPackage
   int POGO_DEVICE_CLASS__BASE_CLASS = 2;
 
   /**
+   * The feature id for the '<em><b>Pogo Revision</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_DEVICE_CLASS__POGO_REVISION = 3;
+
+  /**
    * The feature id for the '<em><b>Institute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__INSTITUTE = 3;
+  int POGO_DEVICE_CLASS__INSTITUTE = 4;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' containment reference.
@@ -341,7 +368,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__DESCRIPTION = 4;
+  int POGO_DEVICE_CLASS__DESCRIPTION = 5;
 
   /**
    * The feature id for the '<em><b>Class Properties</b></em>' containment reference list.
@@ -350,7 +377,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__CLASS_PROPERTIES = 5;
+  int POGO_DEVICE_CLASS__CLASS_PROPERTIES = 6;
 
   /**
    * The feature id for the '<em><b>Device Properties</b></em>' containment reference list.
@@ -359,7 +386,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__DEVICE_PROPERTIES = 6;
+  int POGO_DEVICE_CLASS__DEVICE_PROPERTIES = 7;
 
   /**
    * The feature id for the '<em><b>Commands</b></em>' containment reference list.
@@ -368,7 +395,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__COMMANDS = 7;
+  int POGO_DEVICE_CLASS__COMMANDS = 8;
 
   /**
    * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -377,7 +404,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__ATTRIBUTES = 8;
+  int POGO_DEVICE_CLASS__ATTRIBUTES = 9;
 
   /**
    * The feature id for the '<em><b>Dynamic Attributes</b></em>' containment reference list.
@@ -386,7 +413,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES = 9;
+  int POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES = 10;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -395,7 +422,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__STATES = 10;
+  int POGO_DEVICE_CLASS__STATES = 11;
 
   /**
    * The feature id for the '<em><b>Preferences</b></em>' containment reference.
@@ -404,7 +431,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__PREFERENCES = 11;
+  int POGO_DEVICE_CLASS__PREFERENCES = 12;
 
   /**
    * The feature id for the '<em><b>Additional Files</b></em>' containment reference list.
@@ -413,7 +440,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__ADDITIONAL_FILES = 12;
+  int POGO_DEVICE_CLASS__ADDITIONAL_FILES = 13;
 
   /**
    * The feature id for the '<em><b>Overloded Poll Period Object</b></em>' containment reference list.
@@ -422,7 +449,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT = 13;
+  int POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT = 14;
 
   /**
    * The number of structural features of the '<em>Pogo Device Class</em>' class.
@@ -431,7 +458,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS_FEATURE_COUNT = 14;
+  int POGO_DEVICE_CLASS_FEATURE_COUNT = 15;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl <em>Class Description</em>}' class.
@@ -2522,6 +2549,17 @@ public interface PogoDslPackage extends EPackage
   EClass getOneClassSimpleDef();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogoRevision <em>Pogo Revision</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Pogo Revision</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogoRevision()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EAttribute getOneClassSimpleDef_PogoRevision();
+
+  /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getClassname <em>Classname</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2542,6 +2580,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getOneClassSimpleDef_SourcePath();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getHasDynamic <em>Has Dynamic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Dynamic</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getHasDynamic()
+   * @see #getOneClassSimpleDef()
+   * @generated
+   */
+  EAttribute getOneClassSimpleDef_HasDynamic();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogo6 <em>Pogo6</em>}'.
@@ -2629,6 +2678,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EReference getPogoDeviceClass_BaseClass();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPogoRevision <em>Pogo Revision</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Pogo Revision</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPogoRevision()
+   * @see #getPogoDeviceClass()
+   * @generated
+   */
+  EAttribute getPogoDeviceClass_PogoRevision();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getInstitute <em>Institute</em>}'.
@@ -4543,6 +4603,14 @@ public interface PogoDslPackage extends EPackage
     EClass ONE_CLASS_SIMPLE_DEF = eINSTANCE.getOneClassSimpleDef();
 
     /**
+     * The meta object literal for the '<em><b>Pogo Revision</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_CLASS_SIMPLE_DEF__POGO_REVISION = eINSTANCE.getOneClassSimpleDef_PogoRevision();
+
+    /**
      * The meta object literal for the '<em><b>Classname</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4557,6 +4625,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute ONE_CLASS_SIMPLE_DEF__SOURCE_PATH = eINSTANCE.getOneClassSimpleDef_SourcePath();
+
+    /**
+     * The meta object literal for the '<em><b>Has Dynamic</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC = eINSTANCE.getOneClassSimpleDef_HasDynamic();
 
     /**
      * The meta object literal for the '<em><b>Pogo6</b></em>' attribute feature.
@@ -4623,6 +4699,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EReference POGO_DEVICE_CLASS__BASE_CLASS = eINSTANCE.getPogoDeviceClass_BaseClass();
+
+    /**
+     * The meta object literal for the '<em><b>Pogo Revision</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_DEVICE_CLASS__POGO_REVISION = eINSTANCE.getPogoDeviceClass_PogoRevision();
 
     /**
      * The meta object literal for the '<em><b>Institute</b></em>' attribute feature.

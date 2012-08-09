@@ -109,6 +109,8 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 				"#\n";
 		for (OneClassSimpleDef cls : multi.getClasses()) {
 			code += addClassDefinition(cls.getClassname(), cls.getSourcePath());
+			
+			//	Add inheritance class if any
 			for (Inheritance inheritance : cls.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
 					code += "#------------ Inheritance from " + cls.getClassname() + " class ------------\n";
@@ -190,6 +192,12 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		code += "SVC_"  + cls.getClassname().toUpperCase() + "_OBJS = \\\n";
 		code += addObjectFileList(cls.getClassname());
 
+		//	Add dynamic attribute tools file if needed.
+		if (isTrue(cls.getHasDynamic())) {
+			code += " \\\n";
+			code += "		$(OBJDIR)/" + cls.getClassname() + "DynAttrUtils.o"; 
+		}
+
 		//	Additional files
 		for (AdditionalFile file : cls.getAdditionalFiles()) {
 			code += " \\\n";
@@ -225,15 +233,24 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 			code += dependanciesObject(cls.getClassname(), "");
 			code += dependanciesObject(cls.getClassname(), "Class");
 			code += dependanciesObject(cls.getClassname(), "StateMachine");
+
+			//	Add dynamic attribute tools file if needed.
+			if (isTrue(cls.getHasDynamic())) {
+				code += dependanciesObject(cls.getClassname(), "DynAttrUtils");
+			}
+
+			//	Additional files
+			for (AdditionalFile file : cls.getAdditionalFiles()) {
+				code += dependanciesObjectAddFile(cls.getClassname(), file.getName());
+			}
+
+			//	Inheritance files
 			for (Inheritance inheritance : cls.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
 					code += dependanciesObject(inheritance.getClassname(), "");
 					code += dependanciesObject(inheritance.getClassname(), "Class");
 					code += dependanciesObject(inheritance.getClassname(), "StateMachine");
 				}
-			}
-			for (AdditionalFile file : cls.getAdditionalFiles()) {
-				code += dependanciesObjectAddFile(cls.getClassname(), file.getName());
 			}
 			code += "\n";
 		}

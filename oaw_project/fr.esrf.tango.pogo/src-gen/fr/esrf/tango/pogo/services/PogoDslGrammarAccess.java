@@ -177,81 +177,101 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class OneClassSimpleDefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OneClassSimpleDef");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cClassnameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cClassnameSTRINGTerminalRuleCall_0_0 = (RuleCall)cClassnameAssignment_0.eContents().get(0);
-		private final Assignment cSourcePathAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cSourcePathSTRINGTerminalRuleCall_1_0 = (RuleCall)cSourcePathAssignment_1.eContents().get(0);
-		private final Assignment cPogo6Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPogo6BooleanParserRuleCall_2_0 = (RuleCall)cPogo6Assignment_2.eContents().get(0);
-		private final Keyword cInheritancesKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cInheritancesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cInheritancesInheritanceParserRuleCall_4_0 = (RuleCall)cInheritancesAssignment_4.eContents().get(0);
-		private final Keyword cParentClassesKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cParentClassesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cParentClassesSTRINGTerminalRuleCall_6_0 = (RuleCall)cParentClassesAssignment_6.eContents().get(0);
-		private final Keyword cAdditionalFilesKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cAdditionalFilesAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_8_0 = (RuleCall)cAdditionalFilesAssignment_8.eContents().get(0);
+		private final Assignment cPogoRevisionAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cPogoRevisionIDTerminalRuleCall_0_0 = (RuleCall)cPogoRevisionAssignment_0.eContents().get(0);
+		private final Assignment cClassnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cClassnameSTRINGTerminalRuleCall_1_0 = (RuleCall)cClassnameAssignment_1.eContents().get(0);
+		private final Assignment cSourcePathAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cSourcePathSTRINGTerminalRuleCall_2_0 = (RuleCall)cSourcePathAssignment_2.eContents().get(0);
+		private final Assignment cHasDynamicAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cHasDynamicBooleanParserRuleCall_3_0 = (RuleCall)cHasDynamicAssignment_3.eContents().get(0);
+		private final Assignment cPogo6Assignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cPogo6BooleanParserRuleCall_4_0 = (RuleCall)cPogo6Assignment_4.eContents().get(0);
+		private final Keyword cInheritancesKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cInheritancesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInheritancesInheritanceParserRuleCall_6_0 = (RuleCall)cInheritancesAssignment_6.eContents().get(0);
+		private final Keyword cParentClassesKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cParentClassesAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cParentClassesSTRINGTerminalRuleCall_8_0 = (RuleCall)cParentClassesAssignment_8.eContents().get(0);
+		private final Keyword cAdditionalFilesKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cAdditionalFilesAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_10_0 = (RuleCall)cAdditionalFilesAssignment_10.eContents().get(0);
 		
 		////
 		////	One class simple definition
 		////
 		//OneClassSimpleDef:
-		//	classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=Inheritance //	inheritance class definitions
+		//	pogoRevision= //	To check Pogo revision when xmi has been created
+		//	ID classname=STRING sourcePath=STRING hasDynamic=Boolean pogo6=Boolean "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 		//	"parentClasses:" parentClasses+=STRING //	Used only by graphical display
 		//	"additionalFiles:" additionalFiles+=AdditionalFile* //	Programmer's additional files to be added in Makefile (utils, threads,...)
 		//;
 		public ParserRule getRule() { return rule; }
 
-		//classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=Inheritance //	inheritance class definitions
+		//pogoRevision= //	To check Pogo revision when xmi has been created
+		//ID classname=STRING sourcePath=STRING hasDynamic=Boolean pogo6=Boolean "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 		//"parentClasses:" parentClasses+=STRING //	Used only by graphical display
 		//"additionalFiles:" additionalFiles+=AdditionalFile* //	Programmer's additional files to be added in Makefile (utils, threads,...)
 		public Group getGroup() { return cGroup; }
 
+		//pogoRevision= //	To check Pogo revision when xmi has been created
+		//ID
+		public Assignment getPogoRevisionAssignment_0() { return cPogoRevisionAssignment_0; }
+
+		////	To check Pogo revision when xmi has been created
+		//ID
+		public RuleCall getPogoRevisionIDTerminalRuleCall_0_0() { return cPogoRevisionIDTerminalRuleCall_0_0; }
+
 		//classname=STRING
-		public Assignment getClassnameAssignment_0() { return cClassnameAssignment_0; }
+		public Assignment getClassnameAssignment_1() { return cClassnameAssignment_1; }
 
 		//STRING
-		public RuleCall getClassnameSTRINGTerminalRuleCall_0_0() { return cClassnameSTRINGTerminalRuleCall_0_0; }
+		public RuleCall getClassnameSTRINGTerminalRuleCall_1_0() { return cClassnameSTRINGTerminalRuleCall_1_0; }
 
 		//sourcePath=STRING
-		public Assignment getSourcePathAssignment_1() { return cSourcePathAssignment_1; }
+		public Assignment getSourcePathAssignment_2() { return cSourcePathAssignment_2; }
 
 		//STRING
-		public RuleCall getSourcePathSTRINGTerminalRuleCall_1_0() { return cSourcePathSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getSourcePathSTRINGTerminalRuleCall_2_0() { return cSourcePathSTRINGTerminalRuleCall_2_0; }
 
-		//pogo6=Boolean
-		public Assignment getPogo6Assignment_2() { return cPogo6Assignment_2; }
+		//hasDynamic=Boolean
+		public Assignment getHasDynamicAssignment_3() { return cHasDynamicAssignment_3; }
 
 		//Boolean
-		public RuleCall getPogo6BooleanParserRuleCall_2_0() { return cPogo6BooleanParserRuleCall_2_0; }
+		public RuleCall getHasDynamicBooleanParserRuleCall_3_0() { return cHasDynamicBooleanParserRuleCall_3_0; }
+
+		//pogo6=Boolean
+		public Assignment getPogo6Assignment_4() { return cPogo6Assignment_4; }
+
+		//Boolean
+		public RuleCall getPogo6BooleanParserRuleCall_4_0() { return cPogo6BooleanParserRuleCall_4_0; }
 
 		//"inheritances:"
-		public Keyword getInheritancesKeyword_3() { return cInheritancesKeyword_3; }
+		public Keyword getInheritancesKeyword_5() { return cInheritancesKeyword_5; }
 
 		//inheritances+=Inheritance
-		public Assignment getInheritancesAssignment_4() { return cInheritancesAssignment_4; }
+		public Assignment getInheritancesAssignment_6() { return cInheritancesAssignment_6; }
 
 		//Inheritance
-		public RuleCall getInheritancesInheritanceParserRuleCall_4_0() { return cInheritancesInheritanceParserRuleCall_4_0; }
+		public RuleCall getInheritancesInheritanceParserRuleCall_6_0() { return cInheritancesInheritanceParserRuleCall_6_0; }
 
 		//"parentClasses:"
-		public Keyword getParentClassesKeyword_5() { return cParentClassesKeyword_5; }
+		public Keyword getParentClassesKeyword_7() { return cParentClassesKeyword_7; }
 
 		//parentClasses+=STRING
-		public Assignment getParentClassesAssignment_6() { return cParentClassesAssignment_6; }
+		public Assignment getParentClassesAssignment_8() { return cParentClassesAssignment_8; }
 
 		//STRING
-		public RuleCall getParentClassesSTRINGTerminalRuleCall_6_0() { return cParentClassesSTRINGTerminalRuleCall_6_0; }
+		public RuleCall getParentClassesSTRINGTerminalRuleCall_8_0() { return cParentClassesSTRINGTerminalRuleCall_8_0; }
 
 		//"additionalFiles:"
-		public Keyword getAdditionalFilesKeyword_7() { return cAdditionalFilesKeyword_7; }
+		public Keyword getAdditionalFilesKeyword_9() { return cAdditionalFilesKeyword_9; }
 
 		//additionalFiles+=AdditionalFile*
-		public Assignment getAdditionalFilesAssignment_8() { return cAdditionalFilesAssignment_8; }
+		public Assignment getAdditionalFilesAssignment_10() { return cAdditionalFilesAssignment_10; }
 
 		//AdditionalFile
-		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_8_0() { return cAdditionalFilesAdditionalFileParserRuleCall_8_0; }
+		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_10_0() { return cAdditionalFilesAdditionalFileParserRuleCall_10_0; }
 	}
 
 	public class PogoDeviceClassElements extends AbstractParserRuleElementFinder {
@@ -268,44 +288,47 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cBaseClassPogoDeviceClassCrossReference_3_1_0 = (CrossReference)cBaseClassAssignment_3_1.eContents().get(0);
 		private final RuleCall cBaseClassPogoDeviceClassIDTerminalRuleCall_3_1_0_1 = (RuleCall)cBaseClassPogoDeviceClassCrossReference_3_1_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cInstituteAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cInstituteIDTerminalRuleCall_5_0 = (RuleCall)cInstituteAssignment_5.eContents().get(0);
-		private final Keyword cDescriptionKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cDescriptionAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cDescriptionClassDescriptionParserRuleCall_7_0 = (RuleCall)cDescriptionAssignment_7.eContents().get(0);
-		private final Keyword cClassPropertiesKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cClassPropertiesAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cClassPropertiesPropertyParserRuleCall_9_0 = (RuleCall)cClassPropertiesAssignment_9.eContents().get(0);
-		private final Keyword cDevicePropertiesKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cDevicePropertiesAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cDevicePropertiesPropertyParserRuleCall_11_0 = (RuleCall)cDevicePropertiesAssignment_11.eContents().get(0);
-		private final Keyword cCommandsKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Assignment cCommandsAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cCommandsCommandParserRuleCall_13_0 = (RuleCall)cCommandsAssignment_13.eContents().get(0);
-		private final Keyword cAttributesKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Assignment cAttributesAssignment_15 = (Assignment)cGroup.eContents().get(15);
-		private final RuleCall cAttributesAttributeParserRuleCall_15_0 = (RuleCall)cAttributesAssignment_15.eContents().get(0);
-		private final Keyword cDynamicAttributesKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Assignment cDynamicAttributesAssignment_17 = (Assignment)cGroup.eContents().get(17);
-		private final RuleCall cDynamicAttributesAttributeParserRuleCall_17_0 = (RuleCall)cDynamicAttributesAssignment_17.eContents().get(0);
-		private final Keyword cStatesKeyword_18 = (Keyword)cGroup.eContents().get(18);
-		private final Assignment cStatesAssignment_19 = (Assignment)cGroup.eContents().get(19);
-		private final RuleCall cStatesStateParserRuleCall_19_0 = (RuleCall)cStatesAssignment_19.eContents().get(0);
-		private final Assignment cPreferencesAssignment_20 = (Assignment)cGroup.eContents().get(20);
-		private final RuleCall cPreferencesPreferencesParserRuleCall_20_0 = (RuleCall)cPreferencesAssignment_20.eContents().get(0);
-		private final Keyword cAdditionalFilesKeyword_21 = (Keyword)cGroup.eContents().get(21);
-		private final Assignment cAdditionalFilesAssignment_22 = (Assignment)cGroup.eContents().get(22);
-		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_22_0 = (RuleCall)cAdditionalFilesAssignment_22.eContents().get(0);
-		private final Keyword cOverlodedPollPeriodObjectKeyword_23 = (Keyword)cGroup.eContents().get(23);
-		private final Assignment cOverlodedPollPeriodObjectAssignment_24 = (Assignment)cGroup.eContents().get(24);
-		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_24.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_25 = (Keyword)cGroup.eContents().get(25);
+		private final Assignment cPogoRevisionAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cPogoRevisionIDTerminalRuleCall_5_0 = (RuleCall)cPogoRevisionAssignment_5.eContents().get(0);
+		private final Assignment cInstituteAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInstituteIDTerminalRuleCall_6_0 = (RuleCall)cInstituteAssignment_6.eContents().get(0);
+		private final Keyword cDescriptionKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cDescriptionAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cDescriptionClassDescriptionParserRuleCall_8_0 = (RuleCall)cDescriptionAssignment_8.eContents().get(0);
+		private final Keyword cClassPropertiesKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cClassPropertiesAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cClassPropertiesPropertyParserRuleCall_10_0 = (RuleCall)cClassPropertiesAssignment_10.eContents().get(0);
+		private final Keyword cDevicePropertiesKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cDevicePropertiesAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cDevicePropertiesPropertyParserRuleCall_12_0 = (RuleCall)cDevicePropertiesAssignment_12.eContents().get(0);
+		private final Keyword cCommandsKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Assignment cCommandsAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cCommandsCommandParserRuleCall_14_0 = (RuleCall)cCommandsAssignment_14.eContents().get(0);
+		private final Keyword cAttributesKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cAttributesAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cAttributesAttributeParserRuleCall_16_0 = (RuleCall)cAttributesAssignment_16.eContents().get(0);
+		private final Keyword cDynamicAttributesKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cDynamicAttributesAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cDynamicAttributesAttributeParserRuleCall_18_0 = (RuleCall)cDynamicAttributesAssignment_18.eContents().get(0);
+		private final Keyword cStatesKeyword_19 = (Keyword)cGroup.eContents().get(19);
+		private final Assignment cStatesAssignment_20 = (Assignment)cGroup.eContents().get(20);
+		private final RuleCall cStatesStateParserRuleCall_20_0 = (RuleCall)cStatesAssignment_20.eContents().get(0);
+		private final Assignment cPreferencesAssignment_21 = (Assignment)cGroup.eContents().get(21);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_21_0 = (RuleCall)cPreferencesAssignment_21.eContents().get(0);
+		private final Keyword cAdditionalFilesKeyword_22 = (Keyword)cGroup.eContents().get(22);
+		private final Assignment cAdditionalFilesAssignment_23 = (Assignment)cGroup.eContents().get(23);
+		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_23_0 = (RuleCall)cAdditionalFilesAssignment_23.eContents().get(0);
+		private final Keyword cOverlodedPollPeriodObjectKeyword_24 = (Keyword)cGroup.eContents().get(24);
+		private final Assignment cOverlodedPollPeriodObjectAssignment_25 = (Assignment)cGroup.eContents().get(25);
+		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_25_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_25.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26 = (Keyword)cGroup.eContents().get(26);
 		
 		////==============================================
 		////	Class definition
 		////==============================================
 		//PogoDeviceClass:
-		//	"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" institute= //	For future specific features 
+		//	"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" pogoRevision= //	To check Pogo revision when xmi has been created
+		//	ID institute= //	For future specific features 
 		//	ID //	Class information
 		//	"description:" description=ClassDescription //	Class property list
 		//	"classProperties:" classProperties+=Property* //	Device Property list
@@ -319,7 +342,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" institute= //	For future specific features 
+		//"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" pogoRevision= //	To check Pogo revision when xmi has been created
+		//ID institute= //	For future specific features 
 		//ID //	Class information
 		//"description:" description=ClassDescription //	Class property list
 		//"classProperties:" classProperties+=Property* //	Device Property list
@@ -366,114 +390,122 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
+		//pogoRevision= //	To check Pogo revision when xmi has been created
+		//ID
+		public Assignment getPogoRevisionAssignment_5() { return cPogoRevisionAssignment_5; }
+
+		////	To check Pogo revision when xmi has been created
+		//ID
+		public RuleCall getPogoRevisionIDTerminalRuleCall_5_0() { return cPogoRevisionIDTerminalRuleCall_5_0; }
+
 		//institute= //	For future specific features 
 		//ID
-		public Assignment getInstituteAssignment_5() { return cInstituteAssignment_5; }
+		public Assignment getInstituteAssignment_6() { return cInstituteAssignment_6; }
 
 		////	For future specific features 
 		//ID
-		public RuleCall getInstituteIDTerminalRuleCall_5_0() { return cInstituteIDTerminalRuleCall_5_0; }
+		public RuleCall getInstituteIDTerminalRuleCall_6_0() { return cInstituteIDTerminalRuleCall_6_0; }
 
 		////	Class information
 		//"description:"
-		public Keyword getDescriptionKeyword_6() { return cDescriptionKeyword_6; }
+		public Keyword getDescriptionKeyword_7() { return cDescriptionKeyword_7; }
 
 		//description=ClassDescription
-		public Assignment getDescriptionAssignment_7() { return cDescriptionAssignment_7; }
+		public Assignment getDescriptionAssignment_8() { return cDescriptionAssignment_8; }
 
 		//ClassDescription
-		public RuleCall getDescriptionClassDescriptionParserRuleCall_7_0() { return cDescriptionClassDescriptionParserRuleCall_7_0; }
+		public RuleCall getDescriptionClassDescriptionParserRuleCall_8_0() { return cDescriptionClassDescriptionParserRuleCall_8_0; }
 
 		////	Class property list
 		//"classProperties:"
-		public Keyword getClassPropertiesKeyword_8() { return cClassPropertiesKeyword_8; }
+		public Keyword getClassPropertiesKeyword_9() { return cClassPropertiesKeyword_9; }
 
 		//classProperties+=Property*
-		public Assignment getClassPropertiesAssignment_9() { return cClassPropertiesAssignment_9; }
+		public Assignment getClassPropertiesAssignment_10() { return cClassPropertiesAssignment_10; }
 
 		//Property
-		public RuleCall getClassPropertiesPropertyParserRuleCall_9_0() { return cClassPropertiesPropertyParserRuleCall_9_0; }
+		public RuleCall getClassPropertiesPropertyParserRuleCall_10_0() { return cClassPropertiesPropertyParserRuleCall_10_0; }
 
 		////	Device Property list
 		//"deviceProperties:"
-		public Keyword getDevicePropertiesKeyword_10() { return cDevicePropertiesKeyword_10; }
+		public Keyword getDevicePropertiesKeyword_11() { return cDevicePropertiesKeyword_11; }
 
 		//deviceProperties+=Property*
-		public Assignment getDevicePropertiesAssignment_11() { return cDevicePropertiesAssignment_11; }
+		public Assignment getDevicePropertiesAssignment_12() { return cDevicePropertiesAssignment_12; }
 
 		//Property
-		public RuleCall getDevicePropertiesPropertyParserRuleCall_11_0() { return cDevicePropertiesPropertyParserRuleCall_11_0; }
+		public RuleCall getDevicePropertiesPropertyParserRuleCall_12_0() { return cDevicePropertiesPropertyParserRuleCall_12_0; }
 
 		////	Device command list
 		//"commands:"
-		public Keyword getCommandsKeyword_12() { return cCommandsKeyword_12; }
+		public Keyword getCommandsKeyword_13() { return cCommandsKeyword_13; }
 
 		//commands+=Command*
-		public Assignment getCommandsAssignment_13() { return cCommandsAssignment_13; }
+		public Assignment getCommandsAssignment_14() { return cCommandsAssignment_14; }
 
 		//Command
-		public RuleCall getCommandsCommandParserRuleCall_13_0() { return cCommandsCommandParserRuleCall_13_0; }
+		public RuleCall getCommandsCommandParserRuleCall_14_0() { return cCommandsCommandParserRuleCall_14_0; }
 
 		////	Device static attribute list
 		//"attributes:"
-		public Keyword getAttributesKeyword_14() { return cAttributesKeyword_14; }
+		public Keyword getAttributesKeyword_15() { return cAttributesKeyword_15; }
 
 		//attributes+=Attribute*
-		public Assignment getAttributesAssignment_15() { return cAttributesAssignment_15; }
+		public Assignment getAttributesAssignment_16() { return cAttributesAssignment_16; }
 
 		//Attribute
-		public RuleCall getAttributesAttributeParserRuleCall_15_0() { return cAttributesAttributeParserRuleCall_15_0; }
+		public RuleCall getAttributesAttributeParserRuleCall_16_0() { return cAttributesAttributeParserRuleCall_16_0; }
 
 		////	Device dynamic attribute list
 		//"dynamicAttributes:"
-		public Keyword getDynamicAttributesKeyword_16() { return cDynamicAttributesKeyword_16; }
+		public Keyword getDynamicAttributesKeyword_17() { return cDynamicAttributesKeyword_17; }
 
 		//dynamicAttributes+=Attribute*
-		public Assignment getDynamicAttributesAssignment_17() { return cDynamicAttributesAssignment_17; }
+		public Assignment getDynamicAttributesAssignment_18() { return cDynamicAttributesAssignment_18; }
 
 		//Attribute
-		public RuleCall getDynamicAttributesAttributeParserRuleCall_17_0() { return cDynamicAttributesAttributeParserRuleCall_17_0; }
+		public RuleCall getDynamicAttributesAttributeParserRuleCall_18_0() { return cDynamicAttributesAttributeParserRuleCall_18_0; }
 
 		////	Device state list
 		//"states:"
-		public Keyword getStatesKeyword_18() { return cStatesKeyword_18; }
+		public Keyword getStatesKeyword_19() { return cStatesKeyword_19; }
 
 		//states+=State*
-		public Assignment getStatesAssignment_19() { return cStatesAssignment_19; }
+		public Assignment getStatesAssignment_20() { return cStatesAssignment_20; }
 
 		//State
-		public RuleCall getStatesStateParserRuleCall_19_0() { return cStatesStateParserRuleCall_19_0; }
+		public RuleCall getStatesStateParserRuleCall_20_0() { return cStatesStateParserRuleCall_20_0; }
 
 		//preferences= //	Preferences (for programer, for site or at run time)
 		//Preferences
-		public Assignment getPreferencesAssignment_20() { return cPreferencesAssignment_20; }
+		public Assignment getPreferencesAssignment_21() { return cPreferencesAssignment_21; }
 
 		////	Preferences (for programer, for site or at run time)
 		//Preferences
-		public RuleCall getPreferencesPreferencesParserRuleCall_20_0() { return cPreferencesPreferencesParserRuleCall_20_0; }
+		public RuleCall getPreferencesPreferencesParserRuleCall_21_0() { return cPreferencesPreferencesParserRuleCall_21_0; }
 
 		////	Programmer's additional files to be added in Makefile (utils, threads,...)
 		//"additionalFiles:"
-		public Keyword getAdditionalFilesKeyword_21() { return cAdditionalFilesKeyword_21; }
+		public Keyword getAdditionalFilesKeyword_22() { return cAdditionalFilesKeyword_22; }
 
 		//additionalFiles+=AdditionalFile*
-		public Assignment getAdditionalFilesAssignment_22() { return cAdditionalFilesAssignment_22; }
+		public Assignment getAdditionalFilesAssignment_23() { return cAdditionalFilesAssignment_23; }
 
 		//AdditionalFile
-		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_22_0() { return cAdditionalFilesAdditionalFileParserRuleCall_22_0; }
+		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_23_0() { return cAdditionalFilesAdditionalFileParserRuleCall_23_0; }
 
 		////	Object list (Command or Attribute) where polling period has been overloaded
 		//"overlodedPollPeriodObject:"
-		public Keyword getOverlodedPollPeriodObjectKeyword_23() { return cOverlodedPollPeriodObjectKeyword_23; }
+		public Keyword getOverlodedPollPeriodObjectKeyword_24() { return cOverlodedPollPeriodObjectKeyword_24; }
 
 		//overlodedPollPeriodObject+=OverlodedPollPeriodObject*
-		public Assignment getOverlodedPollPeriodObjectAssignment_24() { return cOverlodedPollPeriodObjectAssignment_24; }
+		public Assignment getOverlodedPollPeriodObjectAssignment_25() { return cOverlodedPollPeriodObjectAssignment_25; }
 
 		//OverlodedPollPeriodObject
-		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_24_0; }
+		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_25_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_25_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_25() { return cRightCurlyBracketKeyword_25; }
+		public Keyword getRightCurlyBracketKeyword_26() { return cRightCurlyBracketKeyword_26; }
 	}
 
 	public class LanguageElements extends AbstractParserRuleElementFinder {
@@ -905,6 +937,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		////
 		////	Comments Definition (code generated by java Pogo and not by xtext/xpand)
 		////
+		////	!!!	Not used since xtend implementation !!!
 		//Comments:
 		//	commandsTable=STRING;
 		public ParserRule getRule() { return rule; }
@@ -2781,7 +2814,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	One class simple definition
 	////
 	//OneClassSimpleDef:
-	//	classname=STRING sourcePath=STRING pogo6=Boolean "inheritances:" inheritances+=Inheritance //	inheritance class definitions
+	//	pogoRevision= //	To check Pogo revision when xmi has been created
+	//	ID classname=STRING sourcePath=STRING hasDynamic=Boolean pogo6=Boolean "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 	//	"parentClasses:" parentClasses+=STRING //	Used only by graphical display
 	//	"additionalFiles:" additionalFiles+=AdditionalFile* //	Programmer's additional files to be added in Makefile (utils, threads,...)
 	//;
@@ -2797,7 +2831,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	Class definition
 	////==============================================
 	//PogoDeviceClass:
-	//	"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" institute= //	For future specific features 
+	//	"deviceclass" name=ID isAbstract?="abstract"? ("extends" baseClass=[PogoDeviceClass])? "{" pogoRevision= //	To check Pogo revision when xmi has been created
+	//	ID institute= //	For future specific features 
 	//	ID //	Class information
 	//	"description:" description=ClassDescription //	Class property list
 	//	"classProperties:" classProperties+=Property* //	Device Property list
@@ -2929,6 +2964,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////
 	////	Comments Definition (code generated by java Pogo and not by xtext/xpand)
 	////
+	////	!!!	Not used since xtend implementation !!!
 	//Comments:
 	//	commandsTable=STRING;
 	public CommentsElements getCommentsAccess() {

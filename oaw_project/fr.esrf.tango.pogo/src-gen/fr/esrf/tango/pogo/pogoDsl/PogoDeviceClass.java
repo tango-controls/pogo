@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getBaseClass <em>Base Class</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getInstitute <em>Institute</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getClassProperties <em>Class Properties</em>}</li>
@@ -117,6 +118,32 @@ public interface PogoDeviceClass extends EObject
    * @generated
    */
   void setBaseClass(PogoDeviceClass value);
+
+  /**
+   * Returns the value of the '<em><b>Pogo Revision</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pogo Revision</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pogo Revision</em>' attribute.
+   * @see #setPogoRevision(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_PogoRevision()
+   * @model
+   * @generated
+   */
+  String getPogoRevision();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPogoRevision <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pogo Revision</em>' attribute.
+   * @see #getPogoRevision()
+   * @generated
+   */
+  void setPogoRevision(String value);
 
   /**
    * Returns the value of the '<em><b>Institute</b></em>' attribute.

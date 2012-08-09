@@ -34,8 +34,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getClassname <em>Classname</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getSourcePath <em>Source Path</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getHasDynamic <em>Has Dynamic</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getPogo6 <em>Pogo6</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getInheritances <em>Inheritances</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getParentClasses <em>Parent Classes</em>}</li>
@@ -47,6 +49,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implements OneClassSimpleDef
 {
+  /**
+   * The default value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPogoRevision()
+   * @generated
+   * @ordered
+   */
+  protected static final String POGO_REVISION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPogoRevision()
+   * @generated
+   * @ordered
+   */
+  protected String pogoRevision = POGO_REVISION_EDEFAULT;
+
   /**
    * The default value of the '{@link #getClassname() <em>Classname</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -86,6 +108,26 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected String sourcePath = SOURCE_PATH_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getHasDynamic() <em>Has Dynamic</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHasDynamic()
+   * @generated
+   * @ordered
+   */
+  protected static final String HAS_DYNAMIC_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getHasDynamic() <em>Has Dynamic</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHasDynamic()
+   * @generated
+   * @ordered
+   */
+  protected String hasDynamic = HAS_DYNAMIC_EDEFAULT;
 
   /**
    * The default value of the '{@link #getPogo6() <em>Pogo6</em>}' attribute.
@@ -163,6 +205,29 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getPogoRevision()
+  {
+    return pogoRevision;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPogoRevision(String newPogoRevision)
+  {
+    String oldPogoRevision = pogoRevision;
+    pogoRevision = newPogoRevision;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION, oldPogoRevision, pogoRevision));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getClassname()
   {
     return classname;
@@ -202,6 +267,29 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
     sourcePath = newSourcePath;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH, oldSourcePath, sourcePath));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getHasDynamic()
+  {
+    return hasDynamic;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasDynamic(String newHasDynamic)
+  {
+    String oldHasDynamic = hasDynamic;
+    hasDynamic = newHasDynamic;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC, oldHasDynamic, hasDynamic));
   }
 
   /**
@@ -297,10 +385,14 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
+        return getPogoRevision();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         return getClassname();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH:
         return getSourcePath();
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC:
+        return getHasDynamic();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO6:
         return getPogo6();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__INHERITANCES:
@@ -324,11 +416,17 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
+        setPogoRevision((String)newValue);
+        return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         setClassname((String)newValue);
         return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH:
         setSourcePath((String)newValue);
+        return;
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC:
+        setHasDynamic((String)newValue);
         return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO6:
         setPogo6((String)newValue);
@@ -359,11 +457,17 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
+        setPogoRevision(POGO_REVISION_EDEFAULT);
+        return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         setClassname(CLASSNAME_EDEFAULT);
         return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH:
         setSourcePath(SOURCE_PATH_EDEFAULT);
+        return;
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC:
+        setHasDynamic(HAS_DYNAMIC_EDEFAULT);
         return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO6:
         setPogo6(POGO6_EDEFAULT);
@@ -391,10 +495,14 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
+        return POGO_REVISION_EDEFAULT == null ? pogoRevision != null : !POGO_REVISION_EDEFAULT.equals(pogoRevision);
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         return CLASSNAME_EDEFAULT == null ? classname != null : !CLASSNAME_EDEFAULT.equals(classname);
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH:
         return SOURCE_PATH_EDEFAULT == null ? sourcePath != null : !SOURCE_PATH_EDEFAULT.equals(sourcePath);
+      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__HAS_DYNAMIC:
+        return HAS_DYNAMIC_EDEFAULT == null ? hasDynamic != null : !HAS_DYNAMIC_EDEFAULT.equals(hasDynamic);
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO6:
         return POGO6_EDEFAULT == null ? pogo6 != null : !POGO6_EDEFAULT.equals(pogo6);
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__INHERITANCES:
@@ -418,10 +526,14 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (classname: ");
+    result.append(" (pogoRevision: ");
+    result.append(pogoRevision);
+    result.append(", classname: ");
     result.append(classname);
     result.append(", sourcePath: ");
     result.append(sourcePath);
+    result.append(", hasDynamic: ");
+    result.append(hasDynamic);
     result.append(", pogo6: ");
     result.append(pogo6);
     result.append(", parentClasses: ");

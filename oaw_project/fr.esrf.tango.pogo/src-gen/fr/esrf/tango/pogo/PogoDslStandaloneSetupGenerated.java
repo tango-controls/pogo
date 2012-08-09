@@ -39,6 +39,5 @@ public class PogoDslStandaloneSetupGenerated implements ISetup {
 
 
 
-
 	}
 }
