@@ -17,8 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getClassname <em>Classname</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getSourcePath <em>Source Path</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getHasDynamic <em>Has Dynamic</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogo6 <em>Pogo6</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getInheritances <em>Inheritances</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getParentClasses <em>Parent Classes</em>}</li>
@@ -32,6 +34,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OneClassSimpleDef extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Pogo Revision</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pogo Revision</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pogo Revision</em>' attribute.
+   * @see #setPogoRevision(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getOneClassSimpleDef_PogoRevision()
+   * @model
+   * @generated
+   */
+  String getPogoRevision();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getPogoRevision <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pogo Revision</em>' attribute.
+   * @see #getPogoRevision()
+   * @generated
+   */
+  void setPogoRevision(String value);
+
   /**
    * Returns the value of the '<em><b>Classname</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -83,6 +111,32 @@ public interface OneClassSimpleDef extends EObject
    * @generated
    */
   void setSourcePath(String value);
+
+  /**
+   * Returns the value of the '<em><b>Has Dynamic</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Dynamic</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Dynamic</em>' attribute.
+   * @see #setHasDynamic(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getOneClassSimpleDef_HasDynamic()
+   * @model
+   * @generated
+   */
+  String getHasDynamic();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef#getHasDynamic <em>Has Dynamic</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Dynamic</em>' attribute.
+   * @see #getHasDynamic()
+   * @generated
+   */
+  void setHasDynamic(String value);
 
   /**
    * Returns the value of the '<em><b>Pogo6</b></em>' attribute.

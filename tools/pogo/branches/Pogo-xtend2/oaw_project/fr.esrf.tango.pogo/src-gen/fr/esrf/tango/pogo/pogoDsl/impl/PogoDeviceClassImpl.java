@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getBaseClass <em>Base Class</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getInstitute <em>Institute</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getClassProperties <em>Class Properties</em>}</li>
@@ -109,6 +110,26 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected PogoDeviceClass baseClass;
+
+  /**
+   * The default value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPogoRevision()
+   * @generated
+   * @ordered
+   */
+  protected static final String POGO_REVISION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPogoRevision()
+   * @generated
+   * @ordered
+   */
+  protected String pogoRevision = POGO_REVISION_EDEFAULT;
 
   /**
    * The default value of the '{@link #getInstitute() <em>Institute</em>}' attribute.
@@ -338,6 +359,29 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
     baseClass = newBaseClass;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_DEVICE_CLASS__BASE_CLASS, oldBaseClass, baseClass));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getPogoRevision()
+  {
+    return pogoRevision;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPogoRevision(String newPogoRevision)
+  {
+    String oldPogoRevision = pogoRevision;
+    pogoRevision = newPogoRevision;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_DEVICE_CLASS__POGO_REVISION, oldPogoRevision, pogoRevision));
   }
 
   /**
@@ -622,6 +666,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__BASE_CLASS:
         if (resolve) return getBaseClass();
         return basicGetBaseClass();
+      case PogoDslPackage.POGO_DEVICE_CLASS__POGO_REVISION:
+        return getPogoRevision();
       case PogoDslPackage.POGO_DEVICE_CLASS__INSTITUTE:
         return getInstitute();
       case PogoDslPackage.POGO_DEVICE_CLASS__DESCRIPTION:
@@ -667,6 +713,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return;
       case PogoDslPackage.POGO_DEVICE_CLASS__BASE_CLASS:
         setBaseClass((PogoDeviceClass)newValue);
+        return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__POGO_REVISION:
+        setPogoRevision((String)newValue);
         return;
       case PogoDslPackage.POGO_DEVICE_CLASS__INSTITUTE:
         setInstitute((String)newValue);
@@ -732,6 +781,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__BASE_CLASS:
         setBaseClass((PogoDeviceClass)null);
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__POGO_REVISION:
+        setPogoRevision(POGO_REVISION_EDEFAULT);
+        return;
       case PogoDslPackage.POGO_DEVICE_CLASS__INSTITUTE:
         setInstitute(INSTITUTE_EDEFAULT);
         return;
@@ -785,6 +837,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return isAbstract != IS_ABSTRACT_EDEFAULT;
       case PogoDslPackage.POGO_DEVICE_CLASS__BASE_CLASS:
         return baseClass != null;
+      case PogoDslPackage.POGO_DEVICE_CLASS__POGO_REVISION:
+        return POGO_REVISION_EDEFAULT == null ? pogoRevision != null : !POGO_REVISION_EDEFAULT.equals(pogoRevision);
       case PogoDslPackage.POGO_DEVICE_CLASS__INSTITUTE:
         return INSTITUTE_EDEFAULT == null ? institute != null : !INSTITUTE_EDEFAULT.equals(institute);
       case PogoDslPackage.POGO_DEVICE_CLASS__DESCRIPTION:
@@ -826,6 +880,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
     result.append(name);
     result.append(", isAbstract: ");
     result.append(isAbstract);
+    result.append(", pogoRevision: ");
+    result.append(pogoRevision);
     result.append(", institute: ");
     result.append(institute);
     result.append(')');

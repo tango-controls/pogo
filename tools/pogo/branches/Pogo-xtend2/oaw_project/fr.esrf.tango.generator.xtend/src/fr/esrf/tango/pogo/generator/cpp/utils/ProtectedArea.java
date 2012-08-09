@@ -1,6 +1,7 @@
 package fr.esrf.tango.pogo.generator.cpp.utils;
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
+import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 
 
 
@@ -70,5 +71,18 @@ public class ProtectedArea {
 	public String protectedAreaClass(PogoDeviceClass cls, String method) {
 		return	openProtectedArea(cls.getName()+"Class", method)+ "\n" +
 				closeProtectedArea(cls.getName()+"Class", method);
+	}
+
+
+
+	//======================================================================
+	// Define cpp protected areas for Multi Classes
+	//======================================================================
+	public String openProtectedArea(PogoMultiClasses multi, String method) {
+		return openProtectedArea("multi-"+multi.getName(), method);
+	}
+	//======================================================================
+	public String closeProtectedArea(PogoMultiClasses multi, String method) {
+		return closeProtectedArea("multi-"+multi.getName(), method);
 	}
 }

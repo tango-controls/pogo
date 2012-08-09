@@ -2,6 +2,7 @@ package fr.esrf.tango.pogo.generator.common;
 
 import org.eclipse.emf.common.util.EList;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -348,6 +349,11 @@ public class StringUtils {
         FileOutputStream fidout = new FileOutputStream(filename);
         fidout.write(code.getBytes());
         fidout.close();
+    }
+    //===============================================================
+    //===============================================================
+    public static boolean fileExists(String fileName) {
+    	return new File(fileName).exists();
     }
     //===============================================================
     //===============================================================

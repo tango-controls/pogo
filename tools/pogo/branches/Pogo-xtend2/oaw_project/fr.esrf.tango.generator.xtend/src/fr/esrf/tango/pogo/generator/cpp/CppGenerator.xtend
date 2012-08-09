@@ -97,14 +97,20 @@ class CppGenerator implements IGenerator {
 		//
 		//	Generate cpp files for PogoMultiClasses  objects
 		//
-		for (cls : allContentsIterable(resource).filter(typeof(PogoMultiClasses))) {
+		for (multi : allContentsIterable(resource).filter(typeof(PogoMultiClasses))) {
 			//	Multi class
-			if (cls.filestogenerate.contains("Code files")) {
-				println("Generating MultiClassesFactory.cpp")
-				fsa.generateFile("MultiClassesFactory.cpp",   cls.generateMultiClassesFactoryFile)
+			if (multi.filestogenerate.contains("Code files")) {
+				printTrace("Generating MultiClassesFactory.cpp")
+				fsa.generateFile("MultiClassesFactory.cpp",   multi.generateMultiClassesFactoryFile)
 				
-				println("Generating Makefile.multi")
-				fsa.generateFile("Makefile.multi",            cls.generateLinuxMakefileMultiClasses)
+				// Do override the main for simple class if exists
+				if (fileExists(multi.sourcePath + "/main.cpp")==false) {
+					printTrace("Generating main.cpp")
+					fsa.generateFile("main.cpp",                  multi.generateMainFile)
+				}
+
+				printTrace("Generating Makefile.multi")
+				fsa.generateFile("Makefile.multi",            multi.generateLinuxMakefileMultiClasses)
 			}
 		}
 	}

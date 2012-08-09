@@ -4,7 +4,9 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
+import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
 
 
 //======================================================
@@ -20,7 +22,20 @@ class Main {
 	def generateMainFile (PogoDeviceClass cls) '''
 		«cls.openProtectedArea("main.cpp")»
 		«cls.mainFileHeader»
-		
+		«mainCode»
+
+		«cls.closeProtectedArea("main.cpp")»
+	'''
+
+	//======================================================
+	// Define main.cpp file to be generated
+	//======================================================
+	def generateMainFile (PogoMultiClasses multi) '''
+		«multi.mainFileHeader»
+		«mainCode»
+	'''
+
+	def mainCode() '''
 		#include <tango.h>
 		
 		int main(int argc,char *argv[])
@@ -56,7 +71,5 @@ class Main {
 			Tango::Util::instance()->server_cleanup();
 			return(0);
 		}
-		«cls.closeProtectedArea("main.cpp")»
 	'''
-
 }
