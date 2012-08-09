@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getClassname <em>Classname</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getSourcePath <em>Source Path</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl#getHasDynamic <em>Has Dynamic</em>}</li>
@@ -49,26 +48,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implements OneClassSimpleDef
 {
-  /**
-   * The default value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPogoRevision()
-   * @generated
-   * @ordered
-   */
-  protected static final String POGO_REVISION_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPogoRevision()
-   * @generated
-   * @ordered
-   */
-  protected String pogoRevision = POGO_REVISION_EDEFAULT;
-
   /**
    * The default value of the '{@link #getClassname() <em>Classname</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -198,29 +177,6 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   protected EClass eStaticClass()
   {
     return PogoDslPackage.Literals.ONE_CLASS_SIMPLE_DEF;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getPogoRevision()
-  {
-    return pogoRevision;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPogoRevision(String newPogoRevision)
-  {
-    String oldPogoRevision = pogoRevision;
-    pogoRevision = newPogoRevision;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION, oldPogoRevision, pogoRevision));
   }
 
   /**
@@ -385,8 +341,6 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
-        return getPogoRevision();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         return getClassname();
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH:
@@ -416,9 +370,6 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
-        setPogoRevision((String)newValue);
-        return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         setClassname((String)newValue);
         return;
@@ -457,9 +408,6 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
-        setPogoRevision(POGO_REVISION_EDEFAULT);
-        return;
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         setClassname(CLASSNAME_EDEFAULT);
         return;
@@ -495,8 +443,6 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__POGO_REVISION:
-        return POGO_REVISION_EDEFAULT == null ? pogoRevision != null : !POGO_REVISION_EDEFAULT.equals(pogoRevision);
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__CLASSNAME:
         return CLASSNAME_EDEFAULT == null ? classname != null : !CLASSNAME_EDEFAULT.equals(classname);
       case PogoDslPackage.ONE_CLASS_SIMPLE_DEF__SOURCE_PATH:
@@ -526,9 +472,7 @@ public class OneClassSimpleDefImpl extends MinimalEObjectImpl.Container implemen
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (pogoRevision: ");
-    result.append(pogoRevision);
-    result.append(", classname: ");
+    result.append(" (classname: ");
     result.append(classname);
     result.append(", sourcePath: ");
     result.append(sourcePath);

@@ -17,6 +17,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Import/importURI"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//PogoMultiClasses">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/pogoRevision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/sourcePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/description"/>
@@ -26,7 +27,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoMultiClasses/preferences"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//OneClassSimpleDef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/pogoRevision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/classname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/sourcePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OneClassSimpleDef/hasDynamic"/>

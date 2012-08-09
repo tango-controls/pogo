@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getPogoRevision <em>Pogo Revision</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getSourcePath <em>Source Path</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getDescription <em>Description</em>}</li>
@@ -47,6 +48,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implements PogoMultiClasses
 {
+  /**
+   * The default value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPogoRevision()
+   * @generated
+   * @ordered
+   */
+  protected static final String POGO_REVISION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPogoRevision() <em>Pogo Revision</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPogoRevision()
+   * @generated
+   * @ordered
+   */
+  protected String pogoRevision = POGO_REVISION_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -186,6 +207,29 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
   protected EClass eStaticClass()
   {
     return PogoDslPackage.Literals.POGO_MULTI_CLASSES;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getPogoRevision()
+  {
+    return pogoRevision;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPogoRevision(String newPogoRevision)
+  {
+    String oldPogoRevision = pogoRevision;
+    pogoRevision = newPogoRevision;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_MULTI_CLASSES__POGO_REVISION, oldPogoRevision, pogoRevision));
   }
 
   /**
@@ -393,6 +437,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
+      case PogoDslPackage.POGO_MULTI_CLASSES__POGO_REVISION:
+        return getPogoRevision();
       case PogoDslPackage.POGO_MULTI_CLASSES__NAME:
         return getName();
       case PogoDslPackage.POGO_MULTI_CLASSES__SOURCE_PATH:
@@ -422,6 +468,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
+      case PogoDslPackage.POGO_MULTI_CLASSES__POGO_REVISION:
+        setPogoRevision((String)newValue);
+        return;
       case PogoDslPackage.POGO_MULTI_CLASSES__NAME:
         setName((String)newValue);
         return;
@@ -458,6 +507,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
+      case PogoDslPackage.POGO_MULTI_CLASSES__POGO_REVISION:
+        setPogoRevision(POGO_REVISION_EDEFAULT);
+        return;
       case PogoDslPackage.POGO_MULTI_CLASSES__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -493,6 +545,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
+      case PogoDslPackage.POGO_MULTI_CLASSES__POGO_REVISION:
+        return POGO_REVISION_EDEFAULT == null ? pogoRevision != null : !POGO_REVISION_EDEFAULT.equals(pogoRevision);
       case PogoDslPackage.POGO_MULTI_CLASSES__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case PogoDslPackage.POGO_MULTI_CLASSES__SOURCE_PATH:
@@ -522,7 +576,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (pogoRevision: ");
+    result.append(pogoRevision);
+    result.append(", name: ");
     result.append(name);
     result.append(", sourcePath: ");
     result.append(sourcePath);

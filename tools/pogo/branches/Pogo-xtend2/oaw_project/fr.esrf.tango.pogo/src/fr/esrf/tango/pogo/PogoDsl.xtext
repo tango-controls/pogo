@@ -13,6 +13,7 @@ Import:
 //	Multi Classes definition
 //==============================================
 PogoMultiClasses:
+	pogoRevision = ID						//	To check Pogo revision when xmi has been created
 	"multiclasses" name=ID
 	"{"
 		sourcePath  = STRING
@@ -30,7 +31,6 @@ PogoMultiClasses:
 //	One class simple definition
 //
 OneClassSimpleDef:
-	pogoRevision = ID						//	To check Pogo revision when xmi has been created
 	classname  = STRING
 	sourcePath = STRING
 	hasDynamic = Boolean
@@ -38,7 +38,7 @@ OneClassSimpleDef:
 	"inheritances:"
 	   	(inheritances+=Inheritance)			//	inheritance class definitions
 	"parentClasses:"
-		(parentClasses+=STRING)	//	Used only by graphical display
+		(parentClasses+=STRING)				//	Used only by graphical display
 	"additionalFiles:"
 		(additionalFiles+=AdditionalFile)*	//	Programmer's additional files to be added in Makefile (utils, threads,...)
 ;

@@ -195,15 +195,33 @@ rulePogoMultiClasses returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='multiclasses' 
+((
+(
+		lv_pogoRevision_0_0=RULE_ID
+		{
+			newLeafNode(lv_pogoRevision_0_0, grammarAccess.getPogoMultiClassesAccess().getPogoRevisionIDTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPogoMultiClassesRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"pogoRevision",
+        		lv_pogoRevision_0_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_1='multiclasses' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_0());
+    	newLeafNode(otherlv_1, grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_1());
     }
 (
 (
-		lv_name_1_0=RULE_ID
+		lv_name_2_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_2_0, grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -212,20 +230,20 @@ rulePogoMultiClasses returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_2_0, 
         		"ID");
 	    }
 
 )
-)	otherlv_2='{' 
+)	otherlv_3='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_3, grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_3());
     }
 (
 (
-		lv_sourcePath_3_0=RULE_STRING
+		lv_sourcePath_4_0=RULE_STRING
 		{
-			newLeafNode(lv_sourcePath_3_0, grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0()); 
+			newLeafNode(lv_sourcePath_4_0, grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_4_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -234,16 +252,16 @@ rulePogoMultiClasses returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"sourcePath",
-        		lv_sourcePath_3_0, 
+        		lv_sourcePath_4_0, 
         		"STRING");
 	    }
 
 )
 )(
 (
-		lv_description_4_0=RULE_STRING
+		lv_description_5_0=RULE_STRING
 		{
-			newLeafNode(lv_description_4_0, grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
+			newLeafNode(lv_description_5_0, grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_5_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -252,16 +270,16 @@ rulePogoMultiClasses returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"description",
-        		lv_description_4_0, 
+        		lv_description_5_0, 
         		"STRING");
 	    }
 
 )
 )(
 (
-		lv_title_5_0=RULE_STRING
+		lv_title_6_0=RULE_STRING
 		{
-			newLeafNode(lv_title_5_0, grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0()); 
+			newLeafNode(lv_title_6_0, grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_6_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -270,28 +288,28 @@ rulePogoMultiClasses returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"title",
-        		lv_title_5_0, 
+        		lv_title_6_0, 
         		"STRING");
 	    }
 
 )
-)	otherlv_6='classes:' 
+)	otherlv_7='classes:' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_6());
+    	newLeafNode(otherlv_7, grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_7());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_7_0()); 
+	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_8_0()); 
 	    }
-		lv_classes_7_0=ruleOneClassSimpleDef		{
+		lv_classes_8_0=ruleOneClassSimpleDef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoMultiClassesRule());
 	        }
        		add(
        			$current, 
        			"classes",
-        		lv_classes_7_0, 
+        		lv_classes_8_0, 
         		"OneClassSimpleDef");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -299,9 +317,9 @@ rulePogoMultiClasses returns [EObject current=null]
 )
 )(
 (
-		lv_filestogenerate_8_0=RULE_STRING
+		lv_filestogenerate_9_0=RULE_STRING
 		{
-			newLeafNode(lv_filestogenerate_8_0, grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0()); 
+			newLeafNode(lv_filestogenerate_9_0, grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_9_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -310,7 +328,7 @@ rulePogoMultiClasses returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"filestogenerate",
-        		lv_filestogenerate_8_0, 
+        		lv_filestogenerate_9_0, 
         		"STRING");
 	    }
 
@@ -318,24 +336,24 @@ rulePogoMultiClasses returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_9_0()); 
+	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_10_0()); 
 	    }
-		lv_preferences_9_0=rulePreferences		{
+		lv_preferences_10_0=rulePreferences		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoMultiClassesRule());
 	        }
        		set(
        			$current, 
        			"preferences",
-        		lv_preferences_9_0, 
+        		lv_preferences_10_0, 
         		"Preferences");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_10='}' 
+)	otherlv_11='}' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_10());
+    	newLeafNode(otherlv_11, grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_11());
     }
 )
 ;
@@ -360,27 +378,9 @@ ruleOneClassSimpleDef returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_pogoRevision_0_0=RULE_ID
+		lv_classname_0_0=RULE_STRING
 		{
-			newLeafNode(lv_pogoRevision_0_0, grammarAccess.getOneClassSimpleDefAccess().getPogoRevisionIDTerminalRuleCall_0_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getOneClassSimpleDefRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"pogoRevision",
-        		lv_pogoRevision_0_0, 
-        		"ID");
-	    }
-
-)
-)(
-(
-		lv_classname_1_0=RULE_STRING
-		{
-			newLeafNode(lv_classname_1_0, grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_1_0()); 
+			newLeafNode(lv_classname_0_0, grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -389,16 +389,16 @@ ruleOneClassSimpleDef returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"classname",
-        		lv_classname_1_0, 
+        		lv_classname_0_0, 
         		"STRING");
 	    }
 
 )
 )(
 (
-		lv_sourcePath_2_0=RULE_STRING
+		lv_sourcePath_1_0=RULE_STRING
 		{
-			newLeafNode(lv_sourcePath_2_0, grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_2_0()); 
+			newLeafNode(lv_sourcePath_1_0, grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -407,7 +407,7 @@ ruleOneClassSimpleDef returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"sourcePath",
-        		lv_sourcePath_2_0, 
+        		lv_sourcePath_1_0, 
         		"STRING");
 	    }
 
@@ -415,16 +415,16 @@ ruleOneClassSimpleDef returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicBooleanParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicBooleanParserRuleCall_2_0()); 
 	    }
-		lv_hasDynamic_3_0=ruleBoolean		{
+		lv_hasDynamic_2_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOneClassSimpleDefRule());
 	        }
        		set(
        			$current, 
        			"hasDynamic",
-        		lv_hasDynamic_3_0, 
+        		lv_hasDynamic_2_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -433,52 +433,52 @@ ruleOneClassSimpleDef returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_3_0()); 
 	    }
-		lv_pogo6_4_0=ruleBoolean		{
+		lv_pogo6_3_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOneClassSimpleDefRule());
 	        }
        		set(
        			$current, 
        			"pogo6",
-        		lv_pogo6_4_0, 
+        		lv_pogo6_3_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_5='inheritances:' 
+)	otherlv_4='inheritances:' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_5());
+    	newLeafNode(otherlv_4, grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_4());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_5_0()); 
 	    }
-		lv_inheritances_6_0=ruleInheritance		{
+		lv_inheritances_5_0=ruleInheritance		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOneClassSimpleDefRule());
 	        }
        		add(
        			$current, 
        			"inheritances",
-        		lv_inheritances_6_0, 
+        		lv_inheritances_5_0, 
         		"Inheritance");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_7='parentClasses:' 
+)	otherlv_6='parentClasses:' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_7());
+    	newLeafNode(otherlv_6, grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_6());
     }
 (
 (
-		lv_parentClasses_8_0=RULE_STRING
+		lv_parentClasses_7_0=RULE_STRING
 		{
-			newLeafNode(lv_parentClasses_8_0, grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_8_0()); 
+			newLeafNode(lv_parentClasses_7_0, grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_7_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -487,28 +487,28 @@ ruleOneClassSimpleDef returns [EObject current=null]
        		addWithLastConsumed(
        			$current, 
        			"parentClasses",
-        		lv_parentClasses_8_0, 
+        		lv_parentClasses_7_0, 
         		"STRING");
 	    }
 
 )
-)	otherlv_9='additionalFiles:' 
+)	otherlv_8='additionalFiles:' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesKeyword_9());
+    	newLeafNode(otherlv_8, grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesKeyword_8());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_10_0()); 
+	        newCompositeNode(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_9_0()); 
 	    }
-		lv_additionalFiles_10_0=ruleAdditionalFile		{
+		lv_additionalFiles_9_0=ruleAdditionalFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOneClassSimpleDefRule());
 	        }
        		add(
        			$current, 
        			"additionalFiles",
-        		lv_additionalFiles_10_0, 
+        		lv_additionalFiles_9_0, 
         		"AdditionalFile");
 	        afterParserOrEnumRuleCall();
 	    }
