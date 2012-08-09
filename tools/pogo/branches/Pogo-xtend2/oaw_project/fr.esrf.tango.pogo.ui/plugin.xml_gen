@@ -71,6 +71,19 @@
         </page>
     </extension>
     <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="fr.esrf.tango.pogo.ui.PogoDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="fr.esrf.tango.pogo.PogoDsl"
+            name="PogoDsl">
+            <keywordReference id="fr.esrf.tango.pogo.ui.keyword_PogoDsl"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
         point="org.eclipse.ui.keywords">
         <keyword
             id="fr.esrf.tango.pogo.ui.keyword_PogoDsl"
@@ -179,11 +192,10 @@
             class="fr.esrf.tango.pogo.ui.PogoDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
       </markerResolutionGenerator>
    </extension>
-
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="fr.esrf.tango.pogo.ui.PogoDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RenameElementHandler"
+			class="fr.esrf.tango.pogo.ui.PogoDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
@@ -205,6 +217,15 @@
          </command>
       </menuContribution>
    </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+	    <page
+	        category="fr.esrf.tango.pogo.PogoDsl"
+	        class="fr.esrf.tango.pogo.ui.PogoDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="fr.esrf.tango.pogo.PogoDsl.refactoring"
+	        name="Refactoring">
+	        <keywordReference id="fr.esrf.tango.pogo.ui.keyword_PogoDsl"/>
+	    </page>
+	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="fr.esrf.tango.pogo.PogoDsl.compare.contentViewers"
