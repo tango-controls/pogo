@@ -6967,7 +6967,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
                 int alt12=2;
                 int LA12_0 = input.LA(1);
 
-                if ( (LA12_0==26) ) {
+                if ( (LA12_0==RULE_ID) ) {
                     alt12=1;
                 }
 
@@ -7206,21 +7206,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__0__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2487:1: rule__PogoMultiClasses__Group__0__Impl : ( 'multiclasses' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2487:1: rule__PogoMultiClasses__Group__0__Impl : ( ( rule__PogoMultiClasses__PogoRevisionAssignment_0 ) ) ;
     public final void rule__PogoMultiClasses__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2491:1: ( ( 'multiclasses' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2492:1: ( 'multiclasses' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2491:1: ( ( ( rule__PogoMultiClasses__PogoRevisionAssignment_0 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2492:1: ( ( rule__PogoMultiClasses__PogoRevisionAssignment_0 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2492:1: ( 'multiclasses' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2493:1: 'multiclasses'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2492:1: ( ( rule__PogoMultiClasses__PogoRevisionAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2493:1: ( rule__PogoMultiClasses__PogoRevisionAssignment_0 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_0()); 
-            match(input,26,FOLLOW_26_in_rule__PogoMultiClasses__Group__0__Impl5411); 
-             after(grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_0()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getPogoRevisionAssignment_0()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2494:1: ( rule__PogoMultiClasses__PogoRevisionAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2494:2: rule__PogoMultiClasses__PogoRevisionAssignment_0
+            {
+            pushFollow(FOLLOW_rule__PogoMultiClasses__PogoRevisionAssignment_0_in_rule__PogoMultiClasses__Group__0__Impl5410);
+            rule__PogoMultiClasses__PogoRevisionAssignment_0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getPogoMultiClassesAccess().getPogoRevisionAssignment_0()); 
 
             }
 
@@ -7243,21 +7253,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__1"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2506:1: rule__PogoMultiClasses__Group__1 : rule__PogoMultiClasses__Group__1__Impl rule__PogoMultiClasses__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2504:1: rule__PogoMultiClasses__Group__1 : rule__PogoMultiClasses__Group__1__Impl rule__PogoMultiClasses__Group__2 ;
     public final void rule__PogoMultiClasses__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2510:1: ( rule__PogoMultiClasses__Group__1__Impl rule__PogoMultiClasses__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2511:2: rule__PogoMultiClasses__Group__1__Impl rule__PogoMultiClasses__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2508:1: ( rule__PogoMultiClasses__Group__1__Impl rule__PogoMultiClasses__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2509:2: rule__PogoMultiClasses__Group__1__Impl rule__PogoMultiClasses__Group__2
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__1__Impl_in_rule__PogoMultiClasses__Group__15442);
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__1__Impl_in_rule__PogoMultiClasses__Group__15440);
             rule__PogoMultiClasses__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__2_in_rule__PogoMultiClasses__Group__15445);
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__2_in_rule__PogoMultiClasses__Group__15443);
             rule__PogoMultiClasses__Group__2();
 
             state._fsp--;
@@ -7281,31 +7291,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__1__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2518:1: rule__PogoMultiClasses__Group__1__Impl : ( ( rule__PogoMultiClasses__NameAssignment_1 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2516:1: rule__PogoMultiClasses__Group__1__Impl : ( 'multiclasses' ) ;
     public final void rule__PogoMultiClasses__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2522:1: ( ( ( rule__PogoMultiClasses__NameAssignment_1 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2523:1: ( ( rule__PogoMultiClasses__NameAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2520:1: ( ( 'multiclasses' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2521:1: ( 'multiclasses' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2523:1: ( ( rule__PogoMultiClasses__NameAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2524:1: ( rule__PogoMultiClasses__NameAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2521:1: ( 'multiclasses' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2522:1: 'multiclasses'
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getNameAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2525:1: ( rule__PogoMultiClasses__NameAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2525:2: rule__PogoMultiClasses__NameAssignment_1
-            {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__NameAssignment_1_in_rule__PogoMultiClasses__Group__1__Impl5472);
-            rule__PogoMultiClasses__NameAssignment_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getPogoMultiClassesAccess().getNameAssignment_1()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_1()); 
+            match(input,26,FOLLOW_26_in_rule__PogoMultiClasses__Group__1__Impl5471); 
+             after(grammarAccess.getPogoMultiClassesAccess().getMulticlassesKeyword_1()); 
 
             }
 
@@ -7366,21 +7366,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__2__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2547:1: rule__PogoMultiClasses__Group__2__Impl : ( '{' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2547:1: rule__PogoMultiClasses__Group__2__Impl : ( ( rule__PogoMultiClasses__NameAssignment_2 ) ) ;
     public final void rule__PogoMultiClasses__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2551:1: ( ( '{' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2552:1: ( '{' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2551:1: ( ( ( rule__PogoMultiClasses__NameAssignment_2 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2552:1: ( ( rule__PogoMultiClasses__NameAssignment_2 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2552:1: ( '{' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2553:1: '{'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2552:1: ( ( rule__PogoMultiClasses__NameAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2553:1: ( rule__PogoMultiClasses__NameAssignment_2 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,27,FOLLOW_27_in_rule__PogoMultiClasses__Group__2__Impl5533); 
-             after(grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_2()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getNameAssignment_2()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2554:1: ( rule__PogoMultiClasses__NameAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2554:2: rule__PogoMultiClasses__NameAssignment_2
+            {
+            pushFollow(FOLLOW_rule__PogoMultiClasses__NameAssignment_2_in_rule__PogoMultiClasses__Group__2__Impl5532);
+            rule__PogoMultiClasses__NameAssignment_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getPogoMultiClassesAccess().getNameAssignment_2()); 
 
             }
 
@@ -7403,21 +7413,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__3"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2566:1: rule__PogoMultiClasses__Group__3 : rule__PogoMultiClasses__Group__3__Impl rule__PogoMultiClasses__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2564:1: rule__PogoMultiClasses__Group__3 : rule__PogoMultiClasses__Group__3__Impl rule__PogoMultiClasses__Group__4 ;
     public final void rule__PogoMultiClasses__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2570:1: ( rule__PogoMultiClasses__Group__3__Impl rule__PogoMultiClasses__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2571:2: rule__PogoMultiClasses__Group__3__Impl rule__PogoMultiClasses__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2568:1: ( rule__PogoMultiClasses__Group__3__Impl rule__PogoMultiClasses__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2569:2: rule__PogoMultiClasses__Group__3__Impl rule__PogoMultiClasses__Group__4
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__3__Impl_in_rule__PogoMultiClasses__Group__35564);
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__3__Impl_in_rule__PogoMultiClasses__Group__35562);
             rule__PogoMultiClasses__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__4_in_rule__PogoMultiClasses__Group__35567);
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__4_in_rule__PogoMultiClasses__Group__35565);
             rule__PogoMultiClasses__Group__4();
 
             state._fsp--;
@@ -7441,31 +7451,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__3__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2578:1: rule__PogoMultiClasses__Group__3__Impl : ( ( rule__PogoMultiClasses__SourcePathAssignment_3 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2576:1: rule__PogoMultiClasses__Group__3__Impl : ( '{' ) ;
     public final void rule__PogoMultiClasses__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2582:1: ( ( ( rule__PogoMultiClasses__SourcePathAssignment_3 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2583:1: ( ( rule__PogoMultiClasses__SourcePathAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2580:1: ( ( '{' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2581:1: ( '{' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2583:1: ( ( rule__PogoMultiClasses__SourcePathAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2584:1: ( rule__PogoMultiClasses__SourcePathAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2581:1: ( '{' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2582:1: '{'
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getSourcePathAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2585:1: ( rule__PogoMultiClasses__SourcePathAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2585:2: rule__PogoMultiClasses__SourcePathAssignment_3
-            {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__SourcePathAssignment_3_in_rule__PogoMultiClasses__Group__3__Impl5594);
-            rule__PogoMultiClasses__SourcePathAssignment_3();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getPogoMultiClassesAccess().getSourcePathAssignment_3()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_3()); 
+            match(input,27,FOLLOW_27_in_rule__PogoMultiClasses__Group__3__Impl5593); 
+             after(grammarAccess.getPogoMultiClassesAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
 
@@ -7526,31 +7526,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__4__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2607:1: rule__PogoMultiClasses__Group__4__Impl : ( ( rule__PogoMultiClasses__DescriptionAssignment_4 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2607:1: rule__PogoMultiClasses__Group__4__Impl : ( ( rule__PogoMultiClasses__SourcePathAssignment_4 ) ) ;
     public final void rule__PogoMultiClasses__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2611:1: ( ( ( rule__PogoMultiClasses__DescriptionAssignment_4 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2612:1: ( ( rule__PogoMultiClasses__DescriptionAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2611:1: ( ( ( rule__PogoMultiClasses__SourcePathAssignment_4 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2612:1: ( ( rule__PogoMultiClasses__SourcePathAssignment_4 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2612:1: ( ( rule__PogoMultiClasses__DescriptionAssignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2613:1: ( rule__PogoMultiClasses__DescriptionAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2612:1: ( ( rule__PogoMultiClasses__SourcePathAssignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2613:1: ( rule__PogoMultiClasses__SourcePathAssignment_4 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getDescriptionAssignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2614:1: ( rule__PogoMultiClasses__DescriptionAssignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2614:2: rule__PogoMultiClasses__DescriptionAssignment_4
+             before(grammarAccess.getPogoMultiClassesAccess().getSourcePathAssignment_4()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2614:1: ( rule__PogoMultiClasses__SourcePathAssignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2614:2: rule__PogoMultiClasses__SourcePathAssignment_4
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__DescriptionAssignment_4_in_rule__PogoMultiClasses__Group__4__Impl5654);
-            rule__PogoMultiClasses__DescriptionAssignment_4();
+            pushFollow(FOLLOW_rule__PogoMultiClasses__SourcePathAssignment_4_in_rule__PogoMultiClasses__Group__4__Impl5654);
+            rule__PogoMultiClasses__SourcePathAssignment_4();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPogoMultiClassesAccess().getDescriptionAssignment_4()); 
+             after(grammarAccess.getPogoMultiClassesAccess().getSourcePathAssignment_4()); 
 
             }
 
@@ -7611,31 +7611,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__5__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2636:1: rule__PogoMultiClasses__Group__5__Impl : ( ( rule__PogoMultiClasses__TitleAssignment_5 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2636:1: rule__PogoMultiClasses__Group__5__Impl : ( ( rule__PogoMultiClasses__DescriptionAssignment_5 ) ) ;
     public final void rule__PogoMultiClasses__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2640:1: ( ( ( rule__PogoMultiClasses__TitleAssignment_5 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2641:1: ( ( rule__PogoMultiClasses__TitleAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2640:1: ( ( ( rule__PogoMultiClasses__DescriptionAssignment_5 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2641:1: ( ( rule__PogoMultiClasses__DescriptionAssignment_5 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2641:1: ( ( rule__PogoMultiClasses__TitleAssignment_5 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2642:1: ( rule__PogoMultiClasses__TitleAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2641:1: ( ( rule__PogoMultiClasses__DescriptionAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2642:1: ( rule__PogoMultiClasses__DescriptionAssignment_5 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getTitleAssignment_5()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2643:1: ( rule__PogoMultiClasses__TitleAssignment_5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2643:2: rule__PogoMultiClasses__TitleAssignment_5
+             before(grammarAccess.getPogoMultiClassesAccess().getDescriptionAssignment_5()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2643:1: ( rule__PogoMultiClasses__DescriptionAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2643:2: rule__PogoMultiClasses__DescriptionAssignment_5
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__TitleAssignment_5_in_rule__PogoMultiClasses__Group__5__Impl5714);
-            rule__PogoMultiClasses__TitleAssignment_5();
+            pushFollow(FOLLOW_rule__PogoMultiClasses__DescriptionAssignment_5_in_rule__PogoMultiClasses__Group__5__Impl5714);
+            rule__PogoMultiClasses__DescriptionAssignment_5();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPogoMultiClassesAccess().getTitleAssignment_5()); 
+             after(grammarAccess.getPogoMultiClassesAccess().getDescriptionAssignment_5()); 
 
             }
 
@@ -7696,21 +7696,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__6__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2665:1: rule__PogoMultiClasses__Group__6__Impl : ( 'classes:' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2665:1: rule__PogoMultiClasses__Group__6__Impl : ( ( rule__PogoMultiClasses__TitleAssignment_6 ) ) ;
     public final void rule__PogoMultiClasses__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2669:1: ( ( 'classes:' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2670:1: ( 'classes:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2669:1: ( ( ( rule__PogoMultiClasses__TitleAssignment_6 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2670:1: ( ( rule__PogoMultiClasses__TitleAssignment_6 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2670:1: ( 'classes:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2671:1: 'classes:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2670:1: ( ( rule__PogoMultiClasses__TitleAssignment_6 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2671:1: ( rule__PogoMultiClasses__TitleAssignment_6 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_6()); 
-            match(input,28,FOLLOW_28_in_rule__PogoMultiClasses__Group__6__Impl5775); 
-             after(grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_6()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getTitleAssignment_6()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2672:1: ( rule__PogoMultiClasses__TitleAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2672:2: rule__PogoMultiClasses__TitleAssignment_6
+            {
+            pushFollow(FOLLOW_rule__PogoMultiClasses__TitleAssignment_6_in_rule__PogoMultiClasses__Group__6__Impl5774);
+            rule__PogoMultiClasses__TitleAssignment_6();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getPogoMultiClassesAccess().getTitleAssignment_6()); 
 
             }
 
@@ -7733,21 +7743,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__7"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2684:1: rule__PogoMultiClasses__Group__7 : rule__PogoMultiClasses__Group__7__Impl rule__PogoMultiClasses__Group__8 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2682:1: rule__PogoMultiClasses__Group__7 : rule__PogoMultiClasses__Group__7__Impl rule__PogoMultiClasses__Group__8 ;
     public final void rule__PogoMultiClasses__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2688:1: ( rule__PogoMultiClasses__Group__7__Impl rule__PogoMultiClasses__Group__8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2689:2: rule__PogoMultiClasses__Group__7__Impl rule__PogoMultiClasses__Group__8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2686:1: ( rule__PogoMultiClasses__Group__7__Impl rule__PogoMultiClasses__Group__8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2687:2: rule__PogoMultiClasses__Group__7__Impl rule__PogoMultiClasses__Group__8
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__7__Impl_in_rule__PogoMultiClasses__Group__75806);
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__7__Impl_in_rule__PogoMultiClasses__Group__75804);
             rule__PogoMultiClasses__Group__7__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__8_in_rule__PogoMultiClasses__Group__75809);
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__8_in_rule__PogoMultiClasses__Group__75807);
             rule__PogoMultiClasses__Group__8();
 
             state._fsp--;
@@ -7771,31 +7781,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__7__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2696:1: rule__PogoMultiClasses__Group__7__Impl : ( ( rule__PogoMultiClasses__ClassesAssignment_7 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2694:1: rule__PogoMultiClasses__Group__7__Impl : ( 'classes:' ) ;
     public final void rule__PogoMultiClasses__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2700:1: ( ( ( rule__PogoMultiClasses__ClassesAssignment_7 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2701:1: ( ( rule__PogoMultiClasses__ClassesAssignment_7 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2698:1: ( ( 'classes:' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2699:1: ( 'classes:' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2701:1: ( ( rule__PogoMultiClasses__ClassesAssignment_7 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2702:1: ( rule__PogoMultiClasses__ClassesAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2699:1: ( 'classes:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2700:1: 'classes:'
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getClassesAssignment_7()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2703:1: ( rule__PogoMultiClasses__ClassesAssignment_7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2703:2: rule__PogoMultiClasses__ClassesAssignment_7
-            {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__ClassesAssignment_7_in_rule__PogoMultiClasses__Group__7__Impl5836);
-            rule__PogoMultiClasses__ClassesAssignment_7();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getPogoMultiClassesAccess().getClassesAssignment_7()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_7()); 
+            match(input,28,FOLLOW_28_in_rule__PogoMultiClasses__Group__7__Impl5835); 
+             after(grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_7()); 
 
             }
 
@@ -7856,31 +7856,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__8__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2725:1: rule__PogoMultiClasses__Group__8__Impl : ( ( rule__PogoMultiClasses__FilestogenerateAssignment_8 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2725:1: rule__PogoMultiClasses__Group__8__Impl : ( ( rule__PogoMultiClasses__ClassesAssignment_8 ) ) ;
     public final void rule__PogoMultiClasses__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2729:1: ( ( ( rule__PogoMultiClasses__FilestogenerateAssignment_8 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2730:1: ( ( rule__PogoMultiClasses__FilestogenerateAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2729:1: ( ( ( rule__PogoMultiClasses__ClassesAssignment_8 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2730:1: ( ( rule__PogoMultiClasses__ClassesAssignment_8 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2730:1: ( ( rule__PogoMultiClasses__FilestogenerateAssignment_8 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2731:1: ( rule__PogoMultiClasses__FilestogenerateAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2730:1: ( ( rule__PogoMultiClasses__ClassesAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2731:1: ( rule__PogoMultiClasses__ClassesAssignment_8 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateAssignment_8()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2732:1: ( rule__PogoMultiClasses__FilestogenerateAssignment_8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2732:2: rule__PogoMultiClasses__FilestogenerateAssignment_8
+             before(grammarAccess.getPogoMultiClassesAccess().getClassesAssignment_8()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2732:1: ( rule__PogoMultiClasses__ClassesAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2732:2: rule__PogoMultiClasses__ClassesAssignment_8
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__FilestogenerateAssignment_8_in_rule__PogoMultiClasses__Group__8__Impl5896);
-            rule__PogoMultiClasses__FilestogenerateAssignment_8();
+            pushFollow(FOLLOW_rule__PogoMultiClasses__ClassesAssignment_8_in_rule__PogoMultiClasses__Group__8__Impl5896);
+            rule__PogoMultiClasses__ClassesAssignment_8();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateAssignment_8()); 
+             after(grammarAccess.getPogoMultiClassesAccess().getClassesAssignment_8()); 
 
             }
 
@@ -7941,31 +7941,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__9__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2754:1: rule__PogoMultiClasses__Group__9__Impl : ( ( rule__PogoMultiClasses__PreferencesAssignment_9 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2754:1: rule__PogoMultiClasses__Group__9__Impl : ( ( rule__PogoMultiClasses__FilestogenerateAssignment_9 ) ) ;
     public final void rule__PogoMultiClasses__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2758:1: ( ( ( rule__PogoMultiClasses__PreferencesAssignment_9 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2759:1: ( ( rule__PogoMultiClasses__PreferencesAssignment_9 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2758:1: ( ( ( rule__PogoMultiClasses__FilestogenerateAssignment_9 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2759:1: ( ( rule__PogoMultiClasses__FilestogenerateAssignment_9 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2759:1: ( ( rule__PogoMultiClasses__PreferencesAssignment_9 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2760:1: ( rule__PogoMultiClasses__PreferencesAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2759:1: ( ( rule__PogoMultiClasses__FilestogenerateAssignment_9 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2760:1: ( rule__PogoMultiClasses__FilestogenerateAssignment_9 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getPreferencesAssignment_9()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2761:1: ( rule__PogoMultiClasses__PreferencesAssignment_9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2761:2: rule__PogoMultiClasses__PreferencesAssignment_9
+             before(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateAssignment_9()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2761:1: ( rule__PogoMultiClasses__FilestogenerateAssignment_9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2761:2: rule__PogoMultiClasses__FilestogenerateAssignment_9
             {
-            pushFollow(FOLLOW_rule__PogoMultiClasses__PreferencesAssignment_9_in_rule__PogoMultiClasses__Group__9__Impl5956);
-            rule__PogoMultiClasses__PreferencesAssignment_9();
+            pushFollow(FOLLOW_rule__PogoMultiClasses__FilestogenerateAssignment_9_in_rule__PogoMultiClasses__Group__9__Impl5956);
+            rule__PogoMultiClasses__FilestogenerateAssignment_9();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPogoMultiClassesAccess().getPreferencesAssignment_9()); 
+             after(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateAssignment_9()); 
 
             }
 
@@ -7988,17 +7988,22 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__10"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2771:1: rule__PogoMultiClasses__Group__10 : rule__PogoMultiClasses__Group__10__Impl ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2771:1: rule__PogoMultiClasses__Group__10 : rule__PogoMultiClasses__Group__10__Impl rule__PogoMultiClasses__Group__11 ;
     public final void rule__PogoMultiClasses__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2775:1: ( rule__PogoMultiClasses__Group__10__Impl )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2776:2: rule__PogoMultiClasses__Group__10__Impl
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2775:1: ( rule__PogoMultiClasses__Group__10__Impl rule__PogoMultiClasses__Group__11 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2776:2: rule__PogoMultiClasses__Group__10__Impl rule__PogoMultiClasses__Group__11
             {
             pushFollow(FOLLOW_rule__PogoMultiClasses__Group__10__Impl_in_rule__PogoMultiClasses__Group__105986);
             rule__PogoMultiClasses__Group__10__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__11_in_rule__PogoMultiClasses__Group__105989);
+            rule__PogoMultiClasses__Group__11();
 
             state._fsp--;
 
@@ -8021,21 +8026,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PogoMultiClasses__Group__10__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2782:1: rule__PogoMultiClasses__Group__10__Impl : ( '}' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2783:1: rule__PogoMultiClasses__Group__10__Impl : ( ( rule__PogoMultiClasses__PreferencesAssignment_10 ) ) ;
     public final void rule__PogoMultiClasses__Group__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2786:1: ( ( '}' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2787:1: ( '}' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2787:1: ( ( ( rule__PogoMultiClasses__PreferencesAssignment_10 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2788:1: ( ( rule__PogoMultiClasses__PreferencesAssignment_10 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2787:1: ( '}' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2788:1: '}'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2788:1: ( ( rule__PogoMultiClasses__PreferencesAssignment_10 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2789:1: ( rule__PogoMultiClasses__PreferencesAssignment_10 )
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_10()); 
-            match(input,29,FOLLOW_29_in_rule__PogoMultiClasses__Group__10__Impl6014); 
-             after(grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_10()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getPreferencesAssignment_10()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2790:1: ( rule__PogoMultiClasses__PreferencesAssignment_10 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2790:2: rule__PogoMultiClasses__PreferencesAssignment_10
+            {
+            pushFollow(FOLLOW_rule__PogoMultiClasses__PreferencesAssignment_10_in_rule__PogoMultiClasses__Group__10__Impl6016);
+            rule__PogoMultiClasses__PreferencesAssignment_10();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getPogoMultiClassesAccess().getPreferencesAssignment_10()); 
 
             }
 
@@ -8057,22 +8072,92 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__PogoMultiClasses__Group__10__Impl"
 
 
+    // $ANTLR start "rule__PogoMultiClasses__Group__11"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2800:1: rule__PogoMultiClasses__Group__11 : rule__PogoMultiClasses__Group__11__Impl ;
+    public final void rule__PogoMultiClasses__Group__11() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2804:1: ( rule__PogoMultiClasses__Group__11__Impl )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2805:2: rule__PogoMultiClasses__Group__11__Impl
+            {
+            pushFollow(FOLLOW_rule__PogoMultiClasses__Group__11__Impl_in_rule__PogoMultiClasses__Group__116046);
+            rule__PogoMultiClasses__Group__11__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__PogoMultiClasses__Group__11"
+
+
+    // $ANTLR start "rule__PogoMultiClasses__Group__11__Impl"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2811:1: rule__PogoMultiClasses__Group__11__Impl : ( '}' ) ;
+    public final void rule__PogoMultiClasses__Group__11__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2815:1: ( ( '}' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2816:1: ( '}' )
+            {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2816:1: ( '}' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2817:1: '}'
+            {
+             before(grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_11()); 
+            match(input,29,FOLLOW_29_in_rule__PogoMultiClasses__Group__11__Impl6074); 
+             after(grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_11()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__PogoMultiClasses__Group__11__Impl"
+
+
     // $ANTLR start "rule__OneClassSimpleDef__Group__0"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2823:1: rule__OneClassSimpleDef__Group__0 : rule__OneClassSimpleDef__Group__0__Impl rule__OneClassSimpleDef__Group__1 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2854:1: rule__OneClassSimpleDef__Group__0 : rule__OneClassSimpleDef__Group__0__Impl rule__OneClassSimpleDef__Group__1 ;
     public final void rule__OneClassSimpleDef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2827:1: ( rule__OneClassSimpleDef__Group__0__Impl rule__OneClassSimpleDef__Group__1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2828:2: rule__OneClassSimpleDef__Group__0__Impl rule__OneClassSimpleDef__Group__1
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2858:1: ( rule__OneClassSimpleDef__Group__0__Impl rule__OneClassSimpleDef__Group__1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2859:2: rule__OneClassSimpleDef__Group__0__Impl rule__OneClassSimpleDef__Group__1
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__0__Impl_in_rule__OneClassSimpleDef__Group__06067);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__0__Impl_in_rule__OneClassSimpleDef__Group__06129);
             rule__OneClassSimpleDef__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__1_in_rule__OneClassSimpleDef__Group__06070);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__1_in_rule__OneClassSimpleDef__Group__06132);
             rule__OneClassSimpleDef__Group__1();
 
             state._fsp--;
@@ -8096,31 +8181,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__0__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2835:1: rule__OneClassSimpleDef__Group__0__Impl : ( ( rule__OneClassSimpleDef__PogoRevisionAssignment_0 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2866:1: rule__OneClassSimpleDef__Group__0__Impl : ( ( rule__OneClassSimpleDef__ClassnameAssignment_0 ) ) ;
     public final void rule__OneClassSimpleDef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2839:1: ( ( ( rule__OneClassSimpleDef__PogoRevisionAssignment_0 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2840:1: ( ( rule__OneClassSimpleDef__PogoRevisionAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2870:1: ( ( ( rule__OneClassSimpleDef__ClassnameAssignment_0 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2871:1: ( ( rule__OneClassSimpleDef__ClassnameAssignment_0 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2840:1: ( ( rule__OneClassSimpleDef__PogoRevisionAssignment_0 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2841:1: ( rule__OneClassSimpleDef__PogoRevisionAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2871:1: ( ( rule__OneClassSimpleDef__ClassnameAssignment_0 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2872:1: ( rule__OneClassSimpleDef__ClassnameAssignment_0 )
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getPogoRevisionAssignment_0()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2842:1: ( rule__OneClassSimpleDef__PogoRevisionAssignment_0 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2842:2: rule__OneClassSimpleDef__PogoRevisionAssignment_0
+             before(grammarAccess.getOneClassSimpleDefAccess().getClassnameAssignment_0()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2873:1: ( rule__OneClassSimpleDef__ClassnameAssignment_0 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2873:2: rule__OneClassSimpleDef__ClassnameAssignment_0
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__PogoRevisionAssignment_0_in_rule__OneClassSimpleDef__Group__0__Impl6097);
-            rule__OneClassSimpleDef__PogoRevisionAssignment_0();
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__ClassnameAssignment_0_in_rule__OneClassSimpleDef__Group__0__Impl6159);
+            rule__OneClassSimpleDef__ClassnameAssignment_0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getPogoRevisionAssignment_0()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getClassnameAssignment_0()); 
 
             }
 
@@ -8143,21 +8228,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__1"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2852:1: rule__OneClassSimpleDef__Group__1 : rule__OneClassSimpleDef__Group__1__Impl rule__OneClassSimpleDef__Group__2 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2883:1: rule__OneClassSimpleDef__Group__1 : rule__OneClassSimpleDef__Group__1__Impl rule__OneClassSimpleDef__Group__2 ;
     public final void rule__OneClassSimpleDef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2856:1: ( rule__OneClassSimpleDef__Group__1__Impl rule__OneClassSimpleDef__Group__2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2857:2: rule__OneClassSimpleDef__Group__1__Impl rule__OneClassSimpleDef__Group__2
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2887:1: ( rule__OneClassSimpleDef__Group__1__Impl rule__OneClassSimpleDef__Group__2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2888:2: rule__OneClassSimpleDef__Group__1__Impl rule__OneClassSimpleDef__Group__2
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__1__Impl_in_rule__OneClassSimpleDef__Group__16127);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__1__Impl_in_rule__OneClassSimpleDef__Group__16189);
             rule__OneClassSimpleDef__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__2_in_rule__OneClassSimpleDef__Group__16130);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__2_in_rule__OneClassSimpleDef__Group__16192);
             rule__OneClassSimpleDef__Group__2();
 
             state._fsp--;
@@ -8181,31 +8266,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__1__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2864:1: rule__OneClassSimpleDef__Group__1__Impl : ( ( rule__OneClassSimpleDef__ClassnameAssignment_1 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2895:1: rule__OneClassSimpleDef__Group__1__Impl : ( ( rule__OneClassSimpleDef__SourcePathAssignment_1 ) ) ;
     public final void rule__OneClassSimpleDef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2868:1: ( ( ( rule__OneClassSimpleDef__ClassnameAssignment_1 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2869:1: ( ( rule__OneClassSimpleDef__ClassnameAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2899:1: ( ( ( rule__OneClassSimpleDef__SourcePathAssignment_1 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2900:1: ( ( rule__OneClassSimpleDef__SourcePathAssignment_1 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2869:1: ( ( rule__OneClassSimpleDef__ClassnameAssignment_1 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2870:1: ( rule__OneClassSimpleDef__ClassnameAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2900:1: ( ( rule__OneClassSimpleDef__SourcePathAssignment_1 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2901:1: ( rule__OneClassSimpleDef__SourcePathAssignment_1 )
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getClassnameAssignment_1()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2871:1: ( rule__OneClassSimpleDef__ClassnameAssignment_1 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2871:2: rule__OneClassSimpleDef__ClassnameAssignment_1
+             before(grammarAccess.getOneClassSimpleDefAccess().getSourcePathAssignment_1()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2902:1: ( rule__OneClassSimpleDef__SourcePathAssignment_1 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2902:2: rule__OneClassSimpleDef__SourcePathAssignment_1
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__ClassnameAssignment_1_in_rule__OneClassSimpleDef__Group__1__Impl6157);
-            rule__OneClassSimpleDef__ClassnameAssignment_1();
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__SourcePathAssignment_1_in_rule__OneClassSimpleDef__Group__1__Impl6219);
+            rule__OneClassSimpleDef__SourcePathAssignment_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getClassnameAssignment_1()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getSourcePathAssignment_1()); 
 
             }
 
@@ -8228,21 +8313,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__2"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2881:1: rule__OneClassSimpleDef__Group__2 : rule__OneClassSimpleDef__Group__2__Impl rule__OneClassSimpleDef__Group__3 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2912:1: rule__OneClassSimpleDef__Group__2 : rule__OneClassSimpleDef__Group__2__Impl rule__OneClassSimpleDef__Group__3 ;
     public final void rule__OneClassSimpleDef__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2885:1: ( rule__OneClassSimpleDef__Group__2__Impl rule__OneClassSimpleDef__Group__3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2886:2: rule__OneClassSimpleDef__Group__2__Impl rule__OneClassSimpleDef__Group__3
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2916:1: ( rule__OneClassSimpleDef__Group__2__Impl rule__OneClassSimpleDef__Group__3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2917:2: rule__OneClassSimpleDef__Group__2__Impl rule__OneClassSimpleDef__Group__3
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__2__Impl_in_rule__OneClassSimpleDef__Group__26187);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__2__Impl_in_rule__OneClassSimpleDef__Group__26249);
             rule__OneClassSimpleDef__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__3_in_rule__OneClassSimpleDef__Group__26190);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__3_in_rule__OneClassSimpleDef__Group__26252);
             rule__OneClassSimpleDef__Group__3();
 
             state._fsp--;
@@ -8266,31 +8351,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__2__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2893:1: rule__OneClassSimpleDef__Group__2__Impl : ( ( rule__OneClassSimpleDef__SourcePathAssignment_2 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2924:1: rule__OneClassSimpleDef__Group__2__Impl : ( ( rule__OneClassSimpleDef__HasDynamicAssignment_2 ) ) ;
     public final void rule__OneClassSimpleDef__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2897:1: ( ( ( rule__OneClassSimpleDef__SourcePathAssignment_2 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2898:1: ( ( rule__OneClassSimpleDef__SourcePathAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2928:1: ( ( ( rule__OneClassSimpleDef__HasDynamicAssignment_2 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2929:1: ( ( rule__OneClassSimpleDef__HasDynamicAssignment_2 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2898:1: ( ( rule__OneClassSimpleDef__SourcePathAssignment_2 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2899:1: ( rule__OneClassSimpleDef__SourcePathAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2929:1: ( ( rule__OneClassSimpleDef__HasDynamicAssignment_2 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2930:1: ( rule__OneClassSimpleDef__HasDynamicAssignment_2 )
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getSourcePathAssignment_2()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2900:1: ( rule__OneClassSimpleDef__SourcePathAssignment_2 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2900:2: rule__OneClassSimpleDef__SourcePathAssignment_2
+             before(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicAssignment_2()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2931:1: ( rule__OneClassSimpleDef__HasDynamicAssignment_2 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2931:2: rule__OneClassSimpleDef__HasDynamicAssignment_2
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__SourcePathAssignment_2_in_rule__OneClassSimpleDef__Group__2__Impl6217);
-            rule__OneClassSimpleDef__SourcePathAssignment_2();
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__HasDynamicAssignment_2_in_rule__OneClassSimpleDef__Group__2__Impl6279);
+            rule__OneClassSimpleDef__HasDynamicAssignment_2();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getSourcePathAssignment_2()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicAssignment_2()); 
 
             }
 
@@ -8313,21 +8398,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__3"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2910:1: rule__OneClassSimpleDef__Group__3 : rule__OneClassSimpleDef__Group__3__Impl rule__OneClassSimpleDef__Group__4 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2941:1: rule__OneClassSimpleDef__Group__3 : rule__OneClassSimpleDef__Group__3__Impl rule__OneClassSimpleDef__Group__4 ;
     public final void rule__OneClassSimpleDef__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2914:1: ( rule__OneClassSimpleDef__Group__3__Impl rule__OneClassSimpleDef__Group__4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2915:2: rule__OneClassSimpleDef__Group__3__Impl rule__OneClassSimpleDef__Group__4
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2945:1: ( rule__OneClassSimpleDef__Group__3__Impl rule__OneClassSimpleDef__Group__4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2946:2: rule__OneClassSimpleDef__Group__3__Impl rule__OneClassSimpleDef__Group__4
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__3__Impl_in_rule__OneClassSimpleDef__Group__36247);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__3__Impl_in_rule__OneClassSimpleDef__Group__36309);
             rule__OneClassSimpleDef__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__4_in_rule__OneClassSimpleDef__Group__36250);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__4_in_rule__OneClassSimpleDef__Group__36312);
             rule__OneClassSimpleDef__Group__4();
 
             state._fsp--;
@@ -8351,31 +8436,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__3__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2922:1: rule__OneClassSimpleDef__Group__3__Impl : ( ( rule__OneClassSimpleDef__HasDynamicAssignment_3 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2953:1: rule__OneClassSimpleDef__Group__3__Impl : ( ( rule__OneClassSimpleDef__Pogo6Assignment_3 ) ) ;
     public final void rule__OneClassSimpleDef__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2926:1: ( ( ( rule__OneClassSimpleDef__HasDynamicAssignment_3 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2927:1: ( ( rule__OneClassSimpleDef__HasDynamicAssignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2957:1: ( ( ( rule__OneClassSimpleDef__Pogo6Assignment_3 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2958:1: ( ( rule__OneClassSimpleDef__Pogo6Assignment_3 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2927:1: ( ( rule__OneClassSimpleDef__HasDynamicAssignment_3 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2928:1: ( rule__OneClassSimpleDef__HasDynamicAssignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2958:1: ( ( rule__OneClassSimpleDef__Pogo6Assignment_3 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2959:1: ( rule__OneClassSimpleDef__Pogo6Assignment_3 )
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicAssignment_3()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2929:1: ( rule__OneClassSimpleDef__HasDynamicAssignment_3 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2929:2: rule__OneClassSimpleDef__HasDynamicAssignment_3
+             before(grammarAccess.getOneClassSimpleDefAccess().getPogo6Assignment_3()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2960:1: ( rule__OneClassSimpleDef__Pogo6Assignment_3 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2960:2: rule__OneClassSimpleDef__Pogo6Assignment_3
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__HasDynamicAssignment_3_in_rule__OneClassSimpleDef__Group__3__Impl6277);
-            rule__OneClassSimpleDef__HasDynamicAssignment_3();
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Pogo6Assignment_3_in_rule__OneClassSimpleDef__Group__3__Impl6339);
+            rule__OneClassSimpleDef__Pogo6Assignment_3();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicAssignment_3()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getPogo6Assignment_3()); 
 
             }
 
@@ -8398,21 +8483,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__4"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2939:1: rule__OneClassSimpleDef__Group__4 : rule__OneClassSimpleDef__Group__4__Impl rule__OneClassSimpleDef__Group__5 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2970:1: rule__OneClassSimpleDef__Group__4 : rule__OneClassSimpleDef__Group__4__Impl rule__OneClassSimpleDef__Group__5 ;
     public final void rule__OneClassSimpleDef__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2943:1: ( rule__OneClassSimpleDef__Group__4__Impl rule__OneClassSimpleDef__Group__5 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2944:2: rule__OneClassSimpleDef__Group__4__Impl rule__OneClassSimpleDef__Group__5
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2974:1: ( rule__OneClassSimpleDef__Group__4__Impl rule__OneClassSimpleDef__Group__5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2975:2: rule__OneClassSimpleDef__Group__4__Impl rule__OneClassSimpleDef__Group__5
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__4__Impl_in_rule__OneClassSimpleDef__Group__46307);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__4__Impl_in_rule__OneClassSimpleDef__Group__46369);
             rule__OneClassSimpleDef__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__5_in_rule__OneClassSimpleDef__Group__46310);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__5_in_rule__OneClassSimpleDef__Group__46372);
             rule__OneClassSimpleDef__Group__5();
 
             state._fsp--;
@@ -8436,31 +8521,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__4__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2951:1: rule__OneClassSimpleDef__Group__4__Impl : ( ( rule__OneClassSimpleDef__Pogo6Assignment_4 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2982:1: rule__OneClassSimpleDef__Group__4__Impl : ( 'inheritances:' ) ;
     public final void rule__OneClassSimpleDef__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2955:1: ( ( ( rule__OneClassSimpleDef__Pogo6Assignment_4 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2956:1: ( ( rule__OneClassSimpleDef__Pogo6Assignment_4 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2986:1: ( ( 'inheritances:' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2987:1: ( 'inheritances:' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2956:1: ( ( rule__OneClassSimpleDef__Pogo6Assignment_4 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2957:1: ( rule__OneClassSimpleDef__Pogo6Assignment_4 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2987:1: ( 'inheritances:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2988:1: 'inheritances:'
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getPogo6Assignment_4()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2958:1: ( rule__OneClassSimpleDef__Pogo6Assignment_4 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2958:2: rule__OneClassSimpleDef__Pogo6Assignment_4
-            {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Pogo6Assignment_4_in_rule__OneClassSimpleDef__Group__4__Impl6337);
-            rule__OneClassSimpleDef__Pogo6Assignment_4();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getOneClassSimpleDefAccess().getPogo6Assignment_4()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_4()); 
+            match(input,30,FOLLOW_30_in_rule__OneClassSimpleDef__Group__4__Impl6400); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_4()); 
 
             }
 
@@ -8483,21 +8558,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__5"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2968:1: rule__OneClassSimpleDef__Group__5 : rule__OneClassSimpleDef__Group__5__Impl rule__OneClassSimpleDef__Group__6 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3001:1: rule__OneClassSimpleDef__Group__5 : rule__OneClassSimpleDef__Group__5__Impl rule__OneClassSimpleDef__Group__6 ;
     public final void rule__OneClassSimpleDef__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2972:1: ( rule__OneClassSimpleDef__Group__5__Impl rule__OneClassSimpleDef__Group__6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2973:2: rule__OneClassSimpleDef__Group__5__Impl rule__OneClassSimpleDef__Group__6
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3005:1: ( rule__OneClassSimpleDef__Group__5__Impl rule__OneClassSimpleDef__Group__6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3006:2: rule__OneClassSimpleDef__Group__5__Impl rule__OneClassSimpleDef__Group__6
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__5__Impl_in_rule__OneClassSimpleDef__Group__56367);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__5__Impl_in_rule__OneClassSimpleDef__Group__56431);
             rule__OneClassSimpleDef__Group__5__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__6_in_rule__OneClassSimpleDef__Group__56370);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__6_in_rule__OneClassSimpleDef__Group__56434);
             rule__OneClassSimpleDef__Group__6();
 
             state._fsp--;
@@ -8521,21 +8596,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__5__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2980:1: rule__OneClassSimpleDef__Group__5__Impl : ( 'inheritances:' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3013:1: rule__OneClassSimpleDef__Group__5__Impl : ( ( rule__OneClassSimpleDef__InheritancesAssignment_5 ) ) ;
     public final void rule__OneClassSimpleDef__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2984:1: ( ( 'inheritances:' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2985:1: ( 'inheritances:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3017:1: ( ( ( rule__OneClassSimpleDef__InheritancesAssignment_5 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3018:1: ( ( rule__OneClassSimpleDef__InheritancesAssignment_5 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2985:1: ( 'inheritances:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2986:1: 'inheritances:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3018:1: ( ( rule__OneClassSimpleDef__InheritancesAssignment_5 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3019:1: ( rule__OneClassSimpleDef__InheritancesAssignment_5 )
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_5()); 
-            match(input,30,FOLLOW_30_in_rule__OneClassSimpleDef__Group__5__Impl6398); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getInheritancesKeyword_5()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesAssignment_5()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3020:1: ( rule__OneClassSimpleDef__InheritancesAssignment_5 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3020:2: rule__OneClassSimpleDef__InheritancesAssignment_5
+            {
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__InheritancesAssignment_5_in_rule__OneClassSimpleDef__Group__5__Impl6461);
+            rule__OneClassSimpleDef__InheritancesAssignment_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOneClassSimpleDefAccess().getInheritancesAssignment_5()); 
 
             }
 
@@ -8558,21 +8643,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__6"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:2999:1: rule__OneClassSimpleDef__Group__6 : rule__OneClassSimpleDef__Group__6__Impl rule__OneClassSimpleDef__Group__7 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3030:1: rule__OneClassSimpleDef__Group__6 : rule__OneClassSimpleDef__Group__6__Impl rule__OneClassSimpleDef__Group__7 ;
     public final void rule__OneClassSimpleDef__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3003:1: ( rule__OneClassSimpleDef__Group__6__Impl rule__OneClassSimpleDef__Group__7 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3004:2: rule__OneClassSimpleDef__Group__6__Impl rule__OneClassSimpleDef__Group__7
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3034:1: ( rule__OneClassSimpleDef__Group__6__Impl rule__OneClassSimpleDef__Group__7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3035:2: rule__OneClassSimpleDef__Group__6__Impl rule__OneClassSimpleDef__Group__7
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__6__Impl_in_rule__OneClassSimpleDef__Group__66429);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__6__Impl_in_rule__OneClassSimpleDef__Group__66491);
             rule__OneClassSimpleDef__Group__6__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__7_in_rule__OneClassSimpleDef__Group__66432);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__7_in_rule__OneClassSimpleDef__Group__66494);
             rule__OneClassSimpleDef__Group__7();
 
             state._fsp--;
@@ -8596,31 +8681,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__6__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3011:1: rule__OneClassSimpleDef__Group__6__Impl : ( ( rule__OneClassSimpleDef__InheritancesAssignment_6 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3042:1: rule__OneClassSimpleDef__Group__6__Impl : ( 'parentClasses:' ) ;
     public final void rule__OneClassSimpleDef__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3015:1: ( ( ( rule__OneClassSimpleDef__InheritancesAssignment_6 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3016:1: ( ( rule__OneClassSimpleDef__InheritancesAssignment_6 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3046:1: ( ( 'parentClasses:' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3047:1: ( 'parentClasses:' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3016:1: ( ( rule__OneClassSimpleDef__InheritancesAssignment_6 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3017:1: ( rule__OneClassSimpleDef__InheritancesAssignment_6 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3047:1: ( 'parentClasses:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3048:1: 'parentClasses:'
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesAssignment_6()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3018:1: ( rule__OneClassSimpleDef__InheritancesAssignment_6 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3018:2: rule__OneClassSimpleDef__InheritancesAssignment_6
-            {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__InheritancesAssignment_6_in_rule__OneClassSimpleDef__Group__6__Impl6459);
-            rule__OneClassSimpleDef__InheritancesAssignment_6();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getOneClassSimpleDefAccess().getInheritancesAssignment_6()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_6()); 
+            match(input,31,FOLLOW_31_in_rule__OneClassSimpleDef__Group__6__Impl6522); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_6()); 
 
             }
 
@@ -8643,21 +8718,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__7"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3028:1: rule__OneClassSimpleDef__Group__7 : rule__OneClassSimpleDef__Group__7__Impl rule__OneClassSimpleDef__Group__8 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3061:1: rule__OneClassSimpleDef__Group__7 : rule__OneClassSimpleDef__Group__7__Impl rule__OneClassSimpleDef__Group__8 ;
     public final void rule__OneClassSimpleDef__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3032:1: ( rule__OneClassSimpleDef__Group__7__Impl rule__OneClassSimpleDef__Group__8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3033:2: rule__OneClassSimpleDef__Group__7__Impl rule__OneClassSimpleDef__Group__8
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3065:1: ( rule__OneClassSimpleDef__Group__7__Impl rule__OneClassSimpleDef__Group__8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3066:2: rule__OneClassSimpleDef__Group__7__Impl rule__OneClassSimpleDef__Group__8
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__7__Impl_in_rule__OneClassSimpleDef__Group__76489);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__7__Impl_in_rule__OneClassSimpleDef__Group__76553);
             rule__OneClassSimpleDef__Group__7__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__8_in_rule__OneClassSimpleDef__Group__76492);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__8_in_rule__OneClassSimpleDef__Group__76556);
             rule__OneClassSimpleDef__Group__8();
 
             state._fsp--;
@@ -8681,21 +8756,31 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__7__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3040:1: rule__OneClassSimpleDef__Group__7__Impl : ( 'parentClasses:' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3073:1: rule__OneClassSimpleDef__Group__7__Impl : ( ( rule__OneClassSimpleDef__ParentClassesAssignment_7 ) ) ;
     public final void rule__OneClassSimpleDef__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3044:1: ( ( 'parentClasses:' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3045:1: ( 'parentClasses:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3077:1: ( ( ( rule__OneClassSimpleDef__ParentClassesAssignment_7 ) ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3078:1: ( ( rule__OneClassSimpleDef__ParentClassesAssignment_7 ) )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3045:1: ( 'parentClasses:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3046:1: 'parentClasses:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3078:1: ( ( rule__OneClassSimpleDef__ParentClassesAssignment_7 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3079:1: ( rule__OneClassSimpleDef__ParentClassesAssignment_7 )
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_7()); 
-            match(input,31,FOLLOW_31_in_rule__OneClassSimpleDef__Group__7__Impl6520); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesKeyword_7()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesAssignment_7()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3080:1: ( rule__OneClassSimpleDef__ParentClassesAssignment_7 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3080:2: rule__OneClassSimpleDef__ParentClassesAssignment_7
+            {
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__ParentClassesAssignment_7_in_rule__OneClassSimpleDef__Group__7__Impl6583);
+            rule__OneClassSimpleDef__ParentClassesAssignment_7();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesAssignment_7()); 
 
             }
 
@@ -8718,21 +8803,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__8"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3059:1: rule__OneClassSimpleDef__Group__8 : rule__OneClassSimpleDef__Group__8__Impl rule__OneClassSimpleDef__Group__9 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3090:1: rule__OneClassSimpleDef__Group__8 : rule__OneClassSimpleDef__Group__8__Impl rule__OneClassSimpleDef__Group__9 ;
     public final void rule__OneClassSimpleDef__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3063:1: ( rule__OneClassSimpleDef__Group__8__Impl rule__OneClassSimpleDef__Group__9 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3064:2: rule__OneClassSimpleDef__Group__8__Impl rule__OneClassSimpleDef__Group__9
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3094:1: ( rule__OneClassSimpleDef__Group__8__Impl rule__OneClassSimpleDef__Group__9 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3095:2: rule__OneClassSimpleDef__Group__8__Impl rule__OneClassSimpleDef__Group__9
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__8__Impl_in_rule__OneClassSimpleDef__Group__86551);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__8__Impl_in_rule__OneClassSimpleDef__Group__86613);
             rule__OneClassSimpleDef__Group__8__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__9_in_rule__OneClassSimpleDef__Group__86554);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__9_in_rule__OneClassSimpleDef__Group__86616);
             rule__OneClassSimpleDef__Group__9();
 
             state._fsp--;
@@ -8756,31 +8841,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__8__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3071:1: rule__OneClassSimpleDef__Group__8__Impl : ( ( rule__OneClassSimpleDef__ParentClassesAssignment_8 ) ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3102:1: rule__OneClassSimpleDef__Group__8__Impl : ( 'additionalFiles:' ) ;
     public final void rule__OneClassSimpleDef__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3075:1: ( ( ( rule__OneClassSimpleDef__ParentClassesAssignment_8 ) ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3076:1: ( ( rule__OneClassSimpleDef__ParentClassesAssignment_8 ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3106:1: ( ( 'additionalFiles:' ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3107:1: ( 'additionalFiles:' )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3076:1: ( ( rule__OneClassSimpleDef__ParentClassesAssignment_8 ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3077:1: ( rule__OneClassSimpleDef__ParentClassesAssignment_8 )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3107:1: ( 'additionalFiles:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3108:1: 'additionalFiles:'
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesAssignment_8()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3078:1: ( rule__OneClassSimpleDef__ParentClassesAssignment_8 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3078:2: rule__OneClassSimpleDef__ParentClassesAssignment_8
-            {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__ParentClassesAssignment_8_in_rule__OneClassSimpleDef__Group__8__Impl6581);
-            rule__OneClassSimpleDef__ParentClassesAssignment_8();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesAssignment_8()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesKeyword_8()); 
+            match(input,32,FOLLOW_32_in_rule__OneClassSimpleDef__Group__8__Impl6644); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesKeyword_8()); 
 
             }
 
@@ -8803,22 +8878,17 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__9"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3088:1: rule__OneClassSimpleDef__Group__9 : rule__OneClassSimpleDef__Group__9__Impl rule__OneClassSimpleDef__Group__10 ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3121:1: rule__OneClassSimpleDef__Group__9 : rule__OneClassSimpleDef__Group__9__Impl ;
     public final void rule__OneClassSimpleDef__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3092:1: ( rule__OneClassSimpleDef__Group__9__Impl rule__OneClassSimpleDef__Group__10 )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3093:2: rule__OneClassSimpleDef__Group__9__Impl rule__OneClassSimpleDef__Group__10
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3125:1: ( rule__OneClassSimpleDef__Group__9__Impl )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3126:2: rule__OneClassSimpleDef__Group__9__Impl
             {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__9__Impl_in_rule__OneClassSimpleDef__Group__96611);
+            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__9__Impl_in_rule__OneClassSimpleDef__Group__96675);
             rule__OneClassSimpleDef__Group__9__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__10_in_rule__OneClassSimpleDef__Group__96614);
-            rule__OneClassSimpleDef__Group__10();
 
             state._fsp--;
 
@@ -8841,21 +8911,76 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__OneClassSimpleDef__Group__9__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3100:1: rule__OneClassSimpleDef__Group__9__Impl : ( 'additionalFiles:' ) ;
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3132:1: rule__OneClassSimpleDef__Group__9__Impl : ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_9 )* ) ;
     public final void rule__OneClassSimpleDef__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3104:1: ( ( 'additionalFiles:' ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3105:1: ( 'additionalFiles:' )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3136:1: ( ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_9 )* ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3137:1: ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_9 )* )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3105:1: ( 'additionalFiles:' )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3106:1: 'additionalFiles:'
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3137:1: ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_9 )* )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3138:1: ( rule__OneClassSimpleDef__AdditionalFilesAssignment_9 )*
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesKeyword_9()); 
-            match(input,32,FOLLOW_32_in_rule__OneClassSimpleDef__Group__9__Impl6642); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesKeyword_9()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAssignment_9()); 
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3139:1: ( rule__OneClassSimpleDef__AdditionalFilesAssignment_9 )*
+            loop13:
+            do {
+                int alt13=2;
+                int LA13_0 = input.LA(1);
+
+                if ( (LA13_0==RULE_STRING) ) {
+                    int LA13_2 = input.LA(2);
+
+                    if ( (LA13_2==RULE_STRING) ) {
+                        int LA13_3 = input.LA(3);
+
+                        if ( (LA13_3==RULE_STRING) ) {
+                            int LA13_4 = input.LA(4);
+
+                            if ( (LA13_4==RULE_STRING) ) {
+                                int LA13_6 = input.LA(5);
+
+                                if ( (LA13_6==EOF||LA13_6==RULE_STRING) ) {
+                                    alt13=1;
+                                }
+
+
+                            }
+
+
+                        }
+                        else if ( (LA13_3==EOF) ) {
+                            alt13=1;
+                        }
+
+
+                    }
+
+
+                }
+
+
+                switch (alt13) {
+            	case 1 :
+            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3139:2: rule__OneClassSimpleDef__AdditionalFilesAssignment_9
+            	    {
+            	    pushFollow(FOLLOW_rule__OneClassSimpleDef__AdditionalFilesAssignment_9_in_rule__OneClassSimpleDef__Group__9__Impl6702);
+            	    rule__OneClassSimpleDef__AdditionalFilesAssignment_9();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop13;
+                }
+            } while (true);
+
+             after(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAssignment_9()); 
 
             }
 
@@ -8875,131 +9000,6 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         return ;
     }
     // $ANTLR end "rule__OneClassSimpleDef__Group__9__Impl"
-
-
-    // $ANTLR start "rule__OneClassSimpleDef__Group__10"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3119:1: rule__OneClassSimpleDef__Group__10 : rule__OneClassSimpleDef__Group__10__Impl ;
-    public final void rule__OneClassSimpleDef__Group__10() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3123:1: ( rule__OneClassSimpleDef__Group__10__Impl )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3124:2: rule__OneClassSimpleDef__Group__10__Impl
-            {
-            pushFollow(FOLLOW_rule__OneClassSimpleDef__Group__10__Impl_in_rule__OneClassSimpleDef__Group__106673);
-            rule__OneClassSimpleDef__Group__10__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__OneClassSimpleDef__Group__10"
-
-
-    // $ANTLR start "rule__OneClassSimpleDef__Group__10__Impl"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3130:1: rule__OneClassSimpleDef__Group__10__Impl : ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_10 )* ) ;
-    public final void rule__OneClassSimpleDef__Group__10__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3134:1: ( ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_10 )* ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3135:1: ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_10 )* )
-            {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3135:1: ( ( rule__OneClassSimpleDef__AdditionalFilesAssignment_10 )* )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3136:1: ( rule__OneClassSimpleDef__AdditionalFilesAssignment_10 )*
-            {
-             before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAssignment_10()); 
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3137:1: ( rule__OneClassSimpleDef__AdditionalFilesAssignment_10 )*
-            loop13:
-            do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
-
-                if ( (LA13_0==RULE_STRING) ) {
-                    int LA13_2 = input.LA(2);
-
-                    if ( (LA13_2==RULE_STRING) ) {
-                        int LA13_3 = input.LA(3);
-
-                        if ( (LA13_3==EOF) ) {
-                            alt13=1;
-                        }
-                        else if ( (LA13_3==RULE_STRING) ) {
-                            int LA13_5 = input.LA(4);
-
-                            if ( (LA13_5==RULE_STRING) ) {
-                                int LA13_6 = input.LA(5);
-
-                                if ( (LA13_6==EOF||LA13_6==RULE_STRING) ) {
-                                    alt13=1;
-                                }
-
-
-                            }
-
-
-                        }
-
-
-                    }
-
-
-                }
-
-
-                switch (alt13) {
-            	case 1 :
-            	    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:3137:2: rule__OneClassSimpleDef__AdditionalFilesAssignment_10
-            	    {
-            	    pushFollow(FOLLOW_rule__OneClassSimpleDef__AdditionalFilesAssignment_10_in_rule__OneClassSimpleDef__Group__10__Impl6700);
-            	    rule__OneClassSimpleDef__AdditionalFilesAssignment_10();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop13;
-                }
-            } while (true);
-
-             after(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAssignment_10()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__OneClassSimpleDef__Group__10__Impl"
 
 
     // $ANTLR start "rule__PogoDeviceClass__Group__0"
@@ -25370,9 +25370,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Import__ImportURIAssignment_1"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__NameAssignment_1"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9582:1: rule__PogoMultiClasses__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__PogoMultiClasses__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__PogoRevisionAssignment_0"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9582:1: rule__PogoMultiClasses__PogoRevisionAssignment_0 : ( RULE_ID ) ;
+    public final void rule__PogoMultiClasses__PogoRevisionAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25383,9 +25383,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9587:1: ( RULE_ID )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9588:1: RULE_ID
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_119343); 
-             after(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_1_0()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getPogoRevisionIDTerminalRuleCall_0_0()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoMultiClasses__PogoRevisionAssignment_019343); 
+             after(grammarAccess.getPogoMultiClassesAccess().getPogoRevisionIDTerminalRuleCall_0_0()); 
 
             }
 
@@ -25404,25 +25404,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__NameAssignment_1"
+    // $ANTLR end "rule__PogoMultiClasses__PogoRevisionAssignment_0"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__SourcePathAssignment_3"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9597:1: rule__PogoMultiClasses__SourcePathAssignment_3 : ( RULE_STRING ) ;
-    public final void rule__PogoMultiClasses__SourcePathAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__NameAssignment_2"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9597:1: rule__PogoMultiClasses__NameAssignment_2 : ( RULE_ID ) ;
+    public final void rule__PogoMultiClasses__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9601:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9602:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9601:1: ( ( RULE_ID ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9602:1: ( RULE_ID )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9602:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9603:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9602:1: ( RULE_ID )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9603:1: RULE_ID
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_319374); 
-             after(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_3_0()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_2_0()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_219374); 
+             after(grammarAccess.getPogoMultiClassesAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
 
@@ -25441,12 +25441,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__SourcePathAssignment_3"
+    // $ANTLR end "rule__PogoMultiClasses__NameAssignment_2"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__DescriptionAssignment_4"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9612:1: rule__PogoMultiClasses__DescriptionAssignment_4 : ( RULE_STRING ) ;
-    public final void rule__PogoMultiClasses__DescriptionAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__SourcePathAssignment_4"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9612:1: rule__PogoMultiClasses__SourcePathAssignment_4 : ( RULE_STRING ) ;
+    public final void rule__PogoMultiClasses__SourcePathAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25457,9 +25457,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9617:1: ( RULE_STRING )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9618:1: RULE_STRING
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_419405); 
-             after(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_4_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_419405); 
+             after(grammarAccess.getPogoMultiClassesAccess().getSourcePathSTRINGTerminalRuleCall_4_0()); 
 
             }
 
@@ -25478,12 +25478,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__DescriptionAssignment_4"
+    // $ANTLR end "rule__PogoMultiClasses__SourcePathAssignment_4"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__TitleAssignment_5"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9627:1: rule__PogoMultiClasses__TitleAssignment_5 : ( RULE_STRING ) ;
-    public final void rule__PogoMultiClasses__TitleAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__DescriptionAssignment_5"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9627:1: rule__PogoMultiClasses__DescriptionAssignment_5 : ( RULE_STRING ) ;
+    public final void rule__PogoMultiClasses__DescriptionAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25494,9 +25494,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9632:1: ( RULE_STRING )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9633:1: RULE_STRING
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_519436); 
-             after(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_5_0()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_5_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_519436); 
+             after(grammarAccess.getPogoMultiClassesAccess().getDescriptionSTRINGTerminalRuleCall_5_0()); 
 
             }
 
@@ -25515,29 +25515,66 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__TitleAssignment_5"
+    // $ANTLR end "rule__PogoMultiClasses__DescriptionAssignment_5"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__ClassesAssignment_7"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9642:1: rule__PogoMultiClasses__ClassesAssignment_7 : ( ruleOneClassSimpleDef ) ;
-    public final void rule__PogoMultiClasses__ClassesAssignment_7() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__TitleAssignment_6"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9642:1: rule__PogoMultiClasses__TitleAssignment_6 : ( RULE_STRING ) ;
+    public final void rule__PogoMultiClasses__TitleAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9646:1: ( ( ruleOneClassSimpleDef ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9647:1: ( ruleOneClassSimpleDef )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9646:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9647:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9647:1: ( ruleOneClassSimpleDef )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9648:1: ruleOneClassSimpleDef
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9647:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9648:1: RULE_STRING
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_7_0()); 
-            pushFollow(FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_719467);
+             before(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_6_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_619467); 
+             after(grammarAccess.getPogoMultiClassesAccess().getTitleSTRINGTerminalRuleCall_6_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__PogoMultiClasses__TitleAssignment_6"
+
+
+    // $ANTLR start "rule__PogoMultiClasses__ClassesAssignment_8"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9657:1: rule__PogoMultiClasses__ClassesAssignment_8 : ( ruleOneClassSimpleDef ) ;
+    public final void rule__PogoMultiClasses__ClassesAssignment_8() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9661:1: ( ( ruleOneClassSimpleDef ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9662:1: ( ruleOneClassSimpleDef )
+            {
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9662:1: ( ruleOneClassSimpleDef )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9663:1: ruleOneClassSimpleDef
+            {
+             before(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_8_0()); 
+            pushFollow(FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_819498);
             ruleOneClassSimpleDef();
 
             state._fsp--;
 
-             after(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_7_0()); 
+             after(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_8_0()); 
 
             }
 
@@ -25556,25 +25593,25 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__ClassesAssignment_7"
+    // $ANTLR end "rule__PogoMultiClasses__ClassesAssignment_8"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__FilestogenerateAssignment_8"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9657:1: rule__PogoMultiClasses__FilestogenerateAssignment_8 : ( RULE_STRING ) ;
-    public final void rule__PogoMultiClasses__FilestogenerateAssignment_8() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__FilestogenerateAssignment_9"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9672:1: rule__PogoMultiClasses__FilestogenerateAssignment_9 : ( RULE_STRING ) ;
+    public final void rule__PogoMultiClasses__FilestogenerateAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9661:1: ( ( RULE_STRING ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9662:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9676:1: ( ( RULE_STRING ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9677:1: ( RULE_STRING )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9662:1: ( RULE_STRING )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9663:1: RULE_STRING
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9677:1: ( RULE_STRING )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9678:1: RULE_STRING
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_819498); 
-             after(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_8_0()); 
+             before(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_9_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_919529); 
+             after(grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_9_0()); 
 
             }
 
@@ -25593,29 +25630,29 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__FilestogenerateAssignment_8"
+    // $ANTLR end "rule__PogoMultiClasses__FilestogenerateAssignment_9"
 
 
-    // $ANTLR start "rule__PogoMultiClasses__PreferencesAssignment_9"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9672:1: rule__PogoMultiClasses__PreferencesAssignment_9 : ( rulePreferences ) ;
-    public final void rule__PogoMultiClasses__PreferencesAssignment_9() throws RecognitionException {
+    // $ANTLR start "rule__PogoMultiClasses__PreferencesAssignment_10"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9687:1: rule__PogoMultiClasses__PreferencesAssignment_10 : ( rulePreferences ) ;
+    public final void rule__PogoMultiClasses__PreferencesAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9676:1: ( ( rulePreferences ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9677:1: ( rulePreferences )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9691:1: ( ( rulePreferences ) )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9692:1: ( rulePreferences )
             {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9677:1: ( rulePreferences )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9678:1: rulePreferences
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9692:1: ( rulePreferences )
+            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9693:1: rulePreferences
             {
-             before(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_9_0()); 
-            pushFollow(FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_919529);
+             before(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_10_0()); 
+            pushFollow(FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_1019560);
             rulePreferences();
 
             state._fsp--;
 
-             after(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_9_0()); 
+             after(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_10_0()); 
 
             }
 
@@ -25634,49 +25671,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PogoMultiClasses__PreferencesAssignment_9"
+    // $ANTLR end "rule__PogoMultiClasses__PreferencesAssignment_10"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__PogoRevisionAssignment_0"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9687:1: rule__OneClassSimpleDef__PogoRevisionAssignment_0 : ( RULE_ID ) ;
-    public final void rule__OneClassSimpleDef__PogoRevisionAssignment_0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9691:1: ( ( RULE_ID ) )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9692:1: ( RULE_ID )
-            {
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9692:1: ( RULE_ID )
-            // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9693:1: RULE_ID
-            {
-             before(grammarAccess.getOneClassSimpleDefAccess().getPogoRevisionIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__OneClassSimpleDef__PogoRevisionAssignment_019560); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getPogoRevisionIDTerminalRuleCall_0_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__OneClassSimpleDef__PogoRevisionAssignment_0"
-
-
-    // $ANTLR start "rule__OneClassSimpleDef__ClassnameAssignment_1"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9702:1: rule__OneClassSimpleDef__ClassnameAssignment_1 : ( RULE_STRING ) ;
-    public final void rule__OneClassSimpleDef__ClassnameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__ClassnameAssignment_0"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9702:1: rule__OneClassSimpleDef__ClassnameAssignment_0 : ( RULE_STRING ) ;
+    public final void rule__OneClassSimpleDef__ClassnameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25687,9 +25687,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9707:1: ( RULE_STRING )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9708:1: RULE_STRING
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_119591); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_1_0()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_019591); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getClassnameSTRINGTerminalRuleCall_0_0()); 
 
             }
 
@@ -25708,12 +25708,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__ClassnameAssignment_1"
+    // $ANTLR end "rule__OneClassSimpleDef__ClassnameAssignment_0"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__SourcePathAssignment_2"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9717:1: rule__OneClassSimpleDef__SourcePathAssignment_2 : ( RULE_STRING ) ;
-    public final void rule__OneClassSimpleDef__SourcePathAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__SourcePathAssignment_1"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9717:1: rule__OneClassSimpleDef__SourcePathAssignment_1 : ( RULE_STRING ) ;
+    public final void rule__OneClassSimpleDef__SourcePathAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25724,9 +25724,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9722:1: ( RULE_STRING )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9723:1: RULE_STRING
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_219622); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_2_0()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_119622); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getSourcePathSTRINGTerminalRuleCall_1_0()); 
 
             }
 
@@ -25745,12 +25745,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__SourcePathAssignment_2"
+    // $ANTLR end "rule__OneClassSimpleDef__SourcePathAssignment_1"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__HasDynamicAssignment_3"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9732:1: rule__OneClassSimpleDef__HasDynamicAssignment_3 : ( ruleBoolean ) ;
-    public final void rule__OneClassSimpleDef__HasDynamicAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__HasDynamicAssignment_2"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9732:1: rule__OneClassSimpleDef__HasDynamicAssignment_2 : ( ruleBoolean ) ;
+    public final void rule__OneClassSimpleDef__HasDynamicAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25761,13 +25761,13 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9737:1: ( ruleBoolean )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9738:1: ruleBoolean
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicBooleanParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__HasDynamicAssignment_319653);
+             before(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicBooleanParserRuleCall_2_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__HasDynamicAssignment_219653);
             ruleBoolean();
 
             state._fsp--;
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicBooleanParserRuleCall_3_0()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getHasDynamicBooleanParserRuleCall_2_0()); 
 
             }
 
@@ -25786,12 +25786,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__HasDynamicAssignment_3"
+    // $ANTLR end "rule__OneClassSimpleDef__HasDynamicAssignment_2"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__Pogo6Assignment_4"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9747:1: rule__OneClassSimpleDef__Pogo6Assignment_4 : ( ruleBoolean ) ;
-    public final void rule__OneClassSimpleDef__Pogo6Assignment_4() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__Pogo6Assignment_3"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9747:1: rule__OneClassSimpleDef__Pogo6Assignment_3 : ( ruleBoolean ) ;
+    public final void rule__OneClassSimpleDef__Pogo6Assignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25802,13 +25802,13 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9752:1: ( ruleBoolean )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9753:1: ruleBoolean
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_419684);
+             before(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_319684);
             ruleBoolean();
 
             state._fsp--;
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_4_0()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getPogo6BooleanParserRuleCall_3_0()); 
 
             }
 
@@ -25827,12 +25827,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__Pogo6Assignment_4"
+    // $ANTLR end "rule__OneClassSimpleDef__Pogo6Assignment_3"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__InheritancesAssignment_6"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9762:1: rule__OneClassSimpleDef__InheritancesAssignment_6 : ( ruleInheritance ) ;
-    public final void rule__OneClassSimpleDef__InheritancesAssignment_6() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__InheritancesAssignment_5"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9762:1: rule__OneClassSimpleDef__InheritancesAssignment_5 : ( ruleInheritance ) ;
+    public final void rule__OneClassSimpleDef__InheritancesAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25843,13 +25843,13 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9767:1: ( ruleInheritance )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9768:1: ruleInheritance
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_6_0()); 
-            pushFollow(FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_619715);
+             before(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_5_0()); 
+            pushFollow(FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_519715);
             ruleInheritance();
 
             state._fsp--;
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_6_0()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getInheritancesInheritanceParserRuleCall_5_0()); 
 
             }
 
@@ -25868,12 +25868,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__InheritancesAssignment_6"
+    // $ANTLR end "rule__OneClassSimpleDef__InheritancesAssignment_5"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__ParentClassesAssignment_8"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9777:1: rule__OneClassSimpleDef__ParentClassesAssignment_8 : ( RULE_STRING ) ;
-    public final void rule__OneClassSimpleDef__ParentClassesAssignment_8() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__ParentClassesAssignment_7"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9777:1: rule__OneClassSimpleDef__ParentClassesAssignment_7 : ( RULE_STRING ) ;
+    public final void rule__OneClassSimpleDef__ParentClassesAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25884,9 +25884,9 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9782:1: ( RULE_STRING )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9783:1: RULE_STRING
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_8_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_819746); 
-             after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_8_0()); 
+             before(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_7_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_719746); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getParentClassesSTRINGTerminalRuleCall_7_0()); 
 
             }
 
@@ -25905,12 +25905,12 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__ParentClassesAssignment_8"
+    // $ANTLR end "rule__OneClassSimpleDef__ParentClassesAssignment_7"
 
 
-    // $ANTLR start "rule__OneClassSimpleDef__AdditionalFilesAssignment_10"
-    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9792:1: rule__OneClassSimpleDef__AdditionalFilesAssignment_10 : ( ruleAdditionalFile ) ;
-    public final void rule__OneClassSimpleDef__AdditionalFilesAssignment_10() throws RecognitionException {
+    // $ANTLR start "rule__OneClassSimpleDef__AdditionalFilesAssignment_9"
+    // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9792:1: rule__OneClassSimpleDef__AdditionalFilesAssignment_9 : ( ruleAdditionalFile ) ;
+    public final void rule__OneClassSimpleDef__AdditionalFilesAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -25921,13 +25921,13 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9797:1: ( ruleAdditionalFile )
             // ../fr.esrf.tango.pogo.ui/src-gen/fr/esrf/tango/pogo/ui/contentassist/antlr/internal/InternalPogoDsl.g:9798:1: ruleAdditionalFile
             {
-             before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_10_0()); 
-            pushFollow(FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_1019777);
+             before(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_9_0()); 
+            pushFollow(FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_919777);
             ruleAdditionalFile();
 
             state._fsp--;
 
-             after(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_10_0()); 
+             after(grammarAccess.getOneClassSimpleDefAccess().getAdditionalFilesAdditionalFileParserRuleCall_9_0()); 
 
             }
 
@@ -25946,7 +25946,7 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__OneClassSimpleDef__AdditionalFilesAssignment_10"
+    // $ANTLR end "rule__OneClassSimpleDef__AdditionalFilesAssignment_9"
 
 
     // $ANTLR start "rule__PogoDeviceClass__NameAssignment_1"
@@ -30674,83 +30674,83 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleULongArrayType_in_rule__Type__Alternatives5007 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDevIntType_in_rule__Type__Alternatives5024 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEncodedType_in_rule__Type__Alternatives5041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoSystem__Group__0__Impl_in_rule__PogoSystem__Group__05071 = new BitSet(new long[]{0x0000000204000000L});
+    public static final BitSet FOLLOW_rule__PogoSystem__Group__0__Impl_in_rule__PogoSystem__Group__05071 = new BitSet(new long[]{0x0000000200000020L});
     public static final BitSet FOLLOW_rule__PogoSystem__Group__1_in_rule__PogoSystem__Group__05074 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PogoSystem__ImportsAssignment_0_in_rule__PogoSystem__Group__0__Impl5101 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_rule__PogoSystem__Group__1__Impl_in_rule__PogoSystem__Group__15132 = new BitSet(new long[]{0x0000000204000000L});
+    public static final BitSet FOLLOW_rule__PogoSystem__Group__1__Impl_in_rule__PogoSystem__Group__15132 = new BitSet(new long[]{0x0000000200000020L});
     public static final BitSet FOLLOW_rule__PogoSystem__Group__2_in_rule__PogoSystem__Group__15135 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PogoSystem__ClassesAssignment_1_in_rule__PogoSystem__Group__1__Impl5162 = new BitSet(new long[]{0x0000000200000002L});
     public static final BitSet FOLLOW_rule__PogoSystem__Group__2__Impl_in_rule__PogoSystem__Group__25193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoSystem__MultiClassesAssignment_2_in_rule__PogoSystem__Group__2__Impl5220 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_rule__PogoSystem__MultiClassesAssignment_2_in_rule__PogoSystem__Group__2__Impl5220 = new BitSet(new long[]{0x0000000000000022L});
     public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__05257 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__05260 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_25_in_rule__Import__Group__0__Impl5288 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__15319 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Import__ImportURIAssignment_1_in_rule__Import__Group__1__Impl5346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__0__Impl_in_rule__PogoMultiClasses__Group__05380 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__0__Impl_in_rule__PogoMultiClasses__Group__05380 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__1_in_rule__PogoMultiClasses__Group__05383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__PogoMultiClasses__Group__0__Impl5411 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__1__Impl_in_rule__PogoMultiClasses__Group__15442 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__2_in_rule__PogoMultiClasses__Group__15445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__NameAssignment_1_in_rule__PogoMultiClasses__Group__1__Impl5472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__2__Impl_in_rule__PogoMultiClasses__Group__25502 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__PogoRevisionAssignment_0_in_rule__PogoMultiClasses__Group__0__Impl5410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__1__Impl_in_rule__PogoMultiClasses__Group__15440 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__2_in_rule__PogoMultiClasses__Group__15443 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__PogoMultiClasses__Group__1__Impl5471 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__2__Impl_in_rule__PogoMultiClasses__Group__25502 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__3_in_rule__PogoMultiClasses__Group__25505 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__PogoMultiClasses__Group__2__Impl5533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__3__Impl_in_rule__PogoMultiClasses__Group__35564 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__4_in_rule__PogoMultiClasses__Group__35567 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__SourcePathAssignment_3_in_rule__PogoMultiClasses__Group__3__Impl5594 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__NameAssignment_2_in_rule__PogoMultiClasses__Group__2__Impl5532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__3__Impl_in_rule__PogoMultiClasses__Group__35562 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__4_in_rule__PogoMultiClasses__Group__35565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__PogoMultiClasses__Group__3__Impl5593 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__4__Impl_in_rule__PogoMultiClasses__Group__45624 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__5_in_rule__PogoMultiClasses__Group__45627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__DescriptionAssignment_4_in_rule__PogoMultiClasses__Group__4__Impl5654 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__5__Impl_in_rule__PogoMultiClasses__Group__55684 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__SourcePathAssignment_4_in_rule__PogoMultiClasses__Group__4__Impl5654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__5__Impl_in_rule__PogoMultiClasses__Group__55684 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__6_in_rule__PogoMultiClasses__Group__55687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__TitleAssignment_5_in_rule__PogoMultiClasses__Group__5__Impl5714 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__6__Impl_in_rule__PogoMultiClasses__Group__65744 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__DescriptionAssignment_5_in_rule__PogoMultiClasses__Group__5__Impl5714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__6__Impl_in_rule__PogoMultiClasses__Group__65744 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__7_in_rule__PogoMultiClasses__Group__65747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rule__PogoMultiClasses__Group__6__Impl5775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__7__Impl_in_rule__PogoMultiClasses__Group__75806 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__8_in_rule__PogoMultiClasses__Group__75809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__ClassesAssignment_7_in_rule__PogoMultiClasses__Group__7__Impl5836 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__TitleAssignment_6_in_rule__PogoMultiClasses__Group__6__Impl5774 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__7__Impl_in_rule__PogoMultiClasses__Group__75804 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__8_in_rule__PogoMultiClasses__Group__75807 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__PogoMultiClasses__Group__7__Impl5835 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__8__Impl_in_rule__PogoMultiClasses__Group__85866 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__9_in_rule__PogoMultiClasses__Group__85869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__FilestogenerateAssignment_8_in_rule__PogoMultiClasses__Group__8__Impl5896 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__9__Impl_in_rule__PogoMultiClasses__Group__95926 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__ClassesAssignment_8_in_rule__PogoMultiClasses__Group__8__Impl5896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__9__Impl_in_rule__PogoMultiClasses__Group__95926 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__10_in_rule__PogoMultiClasses__Group__95929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__PreferencesAssignment_9_in_rule__PogoMultiClasses__Group__9__Impl5956 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__10__Impl_in_rule__PogoMultiClasses__Group__105986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_rule__PogoMultiClasses__Group__10__Impl6014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__0__Impl_in_rule__OneClassSimpleDef__Group__06067 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__1_in_rule__OneClassSimpleDef__Group__06070 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__PogoRevisionAssignment_0_in_rule__OneClassSimpleDef__Group__0__Impl6097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__1__Impl_in_rule__OneClassSimpleDef__Group__16127 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__2_in_rule__OneClassSimpleDef__Group__16130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__ClassnameAssignment_1_in_rule__OneClassSimpleDef__Group__1__Impl6157 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__2__Impl_in_rule__OneClassSimpleDef__Group__26187 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__3_in_rule__OneClassSimpleDef__Group__26190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__SourcePathAssignment_2_in_rule__OneClassSimpleDef__Group__2__Impl6217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__3__Impl_in_rule__OneClassSimpleDef__Group__36247 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__4_in_rule__OneClassSimpleDef__Group__36250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__HasDynamicAssignment_3_in_rule__OneClassSimpleDef__Group__3__Impl6277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__4__Impl_in_rule__OneClassSimpleDef__Group__46307 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__5_in_rule__OneClassSimpleDef__Group__46310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Pogo6Assignment_4_in_rule__OneClassSimpleDef__Group__4__Impl6337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__5__Impl_in_rule__OneClassSimpleDef__Group__56367 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__6_in_rule__OneClassSimpleDef__Group__56370 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rule__OneClassSimpleDef__Group__5__Impl6398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__6__Impl_in_rule__OneClassSimpleDef__Group__66429 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__7_in_rule__OneClassSimpleDef__Group__66432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__InheritancesAssignment_6_in_rule__OneClassSimpleDef__Group__6__Impl6459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__7__Impl_in_rule__OneClassSimpleDef__Group__76489 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__8_in_rule__OneClassSimpleDef__Group__76492 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__OneClassSimpleDef__Group__7__Impl6520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__8__Impl_in_rule__OneClassSimpleDef__Group__86551 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__9_in_rule__OneClassSimpleDef__Group__86554 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__ParentClassesAssignment_8_in_rule__OneClassSimpleDef__Group__8__Impl6581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__9__Impl_in_rule__OneClassSimpleDef__Group__96611 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__10_in_rule__OneClassSimpleDef__Group__96614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_rule__OneClassSimpleDef__Group__9__Impl6642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__10__Impl_in_rule__OneClassSimpleDef__Group__106673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OneClassSimpleDef__AdditionalFilesAssignment_10_in_rule__OneClassSimpleDef__Group__10__Impl6700 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__FilestogenerateAssignment_9_in_rule__PogoMultiClasses__Group__9__Impl5956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__10__Impl_in_rule__PogoMultiClasses__Group__105986 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__11_in_rule__PogoMultiClasses__Group__105989 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__PreferencesAssignment_10_in_rule__PogoMultiClasses__Group__10__Impl6016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PogoMultiClasses__Group__11__Impl_in_rule__PogoMultiClasses__Group__116046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_rule__PogoMultiClasses__Group__11__Impl6074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__0__Impl_in_rule__OneClassSimpleDef__Group__06129 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__1_in_rule__OneClassSimpleDef__Group__06132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__ClassnameAssignment_0_in_rule__OneClassSimpleDef__Group__0__Impl6159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__1__Impl_in_rule__OneClassSimpleDef__Group__16189 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__2_in_rule__OneClassSimpleDef__Group__16192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__SourcePathAssignment_1_in_rule__OneClassSimpleDef__Group__1__Impl6219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__2__Impl_in_rule__OneClassSimpleDef__Group__26249 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__3_in_rule__OneClassSimpleDef__Group__26252 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__HasDynamicAssignment_2_in_rule__OneClassSimpleDef__Group__2__Impl6279 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__3__Impl_in_rule__OneClassSimpleDef__Group__36309 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__4_in_rule__OneClassSimpleDef__Group__36312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Pogo6Assignment_3_in_rule__OneClassSimpleDef__Group__3__Impl6339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__4__Impl_in_rule__OneClassSimpleDef__Group__46369 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__5_in_rule__OneClassSimpleDef__Group__46372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_rule__OneClassSimpleDef__Group__4__Impl6400 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__5__Impl_in_rule__OneClassSimpleDef__Group__56431 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__6_in_rule__OneClassSimpleDef__Group__56434 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__InheritancesAssignment_5_in_rule__OneClassSimpleDef__Group__5__Impl6461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__6__Impl_in_rule__OneClassSimpleDef__Group__66491 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__7_in_rule__OneClassSimpleDef__Group__66494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rule__OneClassSimpleDef__Group__6__Impl6522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__7__Impl_in_rule__OneClassSimpleDef__Group__76553 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__8_in_rule__OneClassSimpleDef__Group__76556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__ParentClassesAssignment_7_in_rule__OneClassSimpleDef__Group__7__Impl6583 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__8__Impl_in_rule__OneClassSimpleDef__Group__86613 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__9_in_rule__OneClassSimpleDef__Group__86616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_rule__OneClassSimpleDef__Group__8__Impl6644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__Group__9__Impl_in_rule__OneClassSimpleDef__Group__96675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__OneClassSimpleDef__AdditionalFilesAssignment_9_in_rule__OneClassSimpleDef__Group__9__Impl6702 = new BitSet(new long[]{0x0000000000000012L});
     public static final BitSet FOLLOW_rule__PogoDeviceClass__Group__0__Impl_in_rule__PogoDeviceClass__Group__06753 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_rule__PogoDeviceClass__Group__1_in_rule__PogoDeviceClass__Group__06756 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_33_in_rule__PogoDeviceClass__Group__0__Impl6784 = new BitSet(new long[]{0x0000000000000002L});
@@ -31273,21 +31273,21 @@ public class InternalPogoDslParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rulePogoDeviceClass_in_rule__PogoSystem__ClassesAssignment_119250 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePogoMultiClasses_in_rule__PogoSystem__MultiClassesAssignment_219281 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__Import__ImportURIAssignment_119312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_119343 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_319374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_419405 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_519436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_719467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_819498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_919529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__OneClassSimpleDef__PogoRevisionAssignment_019560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_119591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_219622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__HasDynamicAssignment_319653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_419684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_619715 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_819746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_1019777 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoMultiClasses__PogoRevisionAssignment_019343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PogoMultiClasses__NameAssignment_219374 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__SourcePathAssignment_419405 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__DescriptionAssignment_519436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__TitleAssignment_619467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOneClassSimpleDef_in_rule__PogoMultiClasses__ClassesAssignment_819498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PogoMultiClasses__FilestogenerateAssignment_919529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePreferences_in_rule__PogoMultiClasses__PreferencesAssignment_1019560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ClassnameAssignment_019591 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__SourcePathAssignment_119622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__HasDynamicAssignment_219653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_rule__OneClassSimpleDef__Pogo6Assignment_319684 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInheritance_in_rule__OneClassSimpleDef__InheritancesAssignment_519715 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__OneClassSimpleDef__ParentClassesAssignment_719746 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAdditionalFile_in_rule__OneClassSimpleDef__AdditionalFilesAssignment_919777 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__NameAssignment_119808 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_81_in_rule__PogoDeviceClass__IsAbstractAssignment_219844 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__PogoDeviceClass__BaseClassAssignment_3_119887 = new BitSet(new long[]{0x0000000000000002L});
