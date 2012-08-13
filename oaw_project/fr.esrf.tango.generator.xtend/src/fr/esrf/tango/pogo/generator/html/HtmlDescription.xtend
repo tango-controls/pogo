@@ -44,9 +44,9 @@ class HtmlDescription  implements IGenerator {
 				«cls.description.description.htmlStringWithBreak»
 				
 				«IF withHeader»
-					<!---  /*PROTECTED REGION ID(./doc_html/index.html) ENABLED START*/  --->
+					<!---  /*PROTECTED REGION ID(index.html) ENABLED START*/  --->
 				«ELSE»
-					<!---  /*PROTECTED REGION ID(./doc_html/FullDocument.html) ENABLED START*/  --->
+					<!---  /*PROTECTED REGION ID(FullDocument.html) ENABLED START*/  --->
 				«ENDIF»
 					<!--- Add your own documentation, pictures, links,.... --->
 					
