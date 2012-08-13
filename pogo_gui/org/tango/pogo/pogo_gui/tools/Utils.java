@@ -124,6 +124,9 @@ public class Utils {
         cppLogo    = getIcon("CppLogo.gif",    0.66);
         javaLogo   = getIcon("JavaLogo.gif",   0.12);
         pythonLogo = getIcon("PythonLogo.gif", 0.33);
+
+        //  Initialize pogoGuiRevision
+        getPogoGuiRevision();
     }
 
     //===============================================================
@@ -134,6 +137,35 @@ public class Utils {
         return instance;
     }
 
+    //===============================================================
+    //===============================================================
+    private static double   pogoGuiRevision = -1.0;
+    public static double getPogoGuiRevision() {
+        
+        //  Check if already done
+        if (pogoGuiRevision<0) {
+            StringTokenizer stk = new StringTokenizer(PogoConst.revNumber);
+            stk.nextToken(); // Release
+            String  s = stk.nextToken();    //  Rel number
+            int end = s.indexOf('.');
+            if (end>0) {
+                //  Check if second '.'
+                end = s.indexOf('.', end+1);
+                if (end>0) {
+                    s = s.substring(0, end);
+                }
+                try {
+                    pogoGuiRevision = Double.parseDouble(s);
+                }
+                catch (NumberFormatException e) {
+                    System.err.println("When trying to get PogoGuiRevision :\n" + e);
+                }
+            }
+            System.out.println("********* Pogo GUI Release : " +
+                    pogoGuiRevision + " *********");
+        }
+        return pogoGuiRevision;
+    }
     //===============================================================
     //===============================================================
     public ImageIcon getIcon(String filename, double ratio) {

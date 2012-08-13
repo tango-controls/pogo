@@ -38,6 +38,8 @@ package org.tango.pogo.pogo_gui.tools;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
+import fr.esrf.tango.pogo.pogoDsl.Attribute;
+import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -47,7 +49,6 @@ import java.util.ArrayList;
 
 public class ParserTool {
     //===============================================================
-
     /**
      * Open a file and return text read.
      *
@@ -74,7 +75,6 @@ public class ParserTool {
         return str;
     }
     //===============================================================
-
     /**
      * Take off Cr eventually added by Windows editor.
      *
@@ -156,7 +156,6 @@ public class ParserTool {
         writeFile(path + '/' + fileName, newCode);
     }
     //===============================================================
-
     /**
      * Convert html file to java String
      *
@@ -307,21 +306,297 @@ public class ParserTool {
 
     //===============================================================
     //===============================================================
-    public static void main(String[] args) {
-        if (args.length < 2)
-            displaySyntax();
-        try {
-            if (args[0].equals("-html"))
-                convertHTML(args[1]);
-            else if (args[0].equals("-xmi-clean")) {
-                //removeXmiKey("htmlInheritance", args[1]);
-                //removeXmiKey("concreteHere", args[1]);
-                //renameXmiKey("concreteHere", "MyNewKeyWordAndBlaBlaBla", args[1]);
+    public static void convertProtectedAreaKey(String srcKey, String newKey, String fileName) throws DevFailed {
+        //  Rea=d file and split lines (do not use StringTokenizer to do not loose empty lines
+        boolean modified = false;
+        String code = readFile(fileName);
+        ArrayList<String> lines = new ArrayList<String>();
+        int startLine = 0;
+        int endLine;
+        while ((endLine=code.indexOf('\n', startLine))>0) {
+            //  For each line
+            String line = code.substring(startLine, endLine);
+            int start;
+            //  check if Protected area
+            if (line.contains(" PROTECTED REGION ")) {
+                //System.out.println(line);
+                //  Check if key exists
+                if ((start = line.indexOf(srcKey)) > 0) {
+                    int end = start + srcKey.length();
+
+                    //  Replace it
+                    line = line.substring(0, start) + newKey + line.substring(end);
+                    modified = true;
+                }
             }
+            lines.add(line);
+            startLine = endLine+1;
+        }
+        lines.add(code.substring(startLine));
+
+        if (modified) {
+            //  Reconstruct code and save it if modified
+            StringBuilder   sb = new StringBuilder();
+            for (String line : lines) {
+                sb.append(line).append('\n');
+            }
+            writeFile(fileName, sb.toString().trim());
+            System.out.println("Replaced \""+srcKey + "\"  by  \"" + newKey + "\" \t in "+fileName);
+        }
+    }
+    //===============================================================
+    //===============================================================
+    public static void convertProtectedAreaKeyForStateMachine(
+            ArrayList<String> attributeNames, String fileName, boolean toXtend) throws DevFailed {
+        //  Rea=d file and split lines (do not use StringTokenizer to do not loose empty lines
+        boolean modified = false;
+        String code = readFile(fileName);
+        ArrayList<String> lines = new ArrayList<String>();
+        int startLine = 0;
+        int endLine;
+        while ((endLine=code.indexOf('\n', startLine))>0) {
+            //  For each line
+            String line = code.substring(startLine, endLine);
+            int start;
+            //  check if Protected area
+            if (line.contains(" PROTECTED REGION ")) {
+                //System.out.println(line);
+                
+                for (String attributeName : attributeNames) {
+                    String  srcKey = "read_"+attributeName+"StateAllowed_READ";
+                    String  newKey = attributeName+"StateAllowed";
+                    if (!toXtend) {
+                        //  Swap keys to go back to old pogo
+                        String  tmp = newKey;
+                        newKey = srcKey;
+                        srcKey = tmp;
+                    }
+
+                    //  Check if key exists
+                    if ((start = line.indexOf(srcKey)) > 0) {
+                        int end = start + srcKey.length();
+
+                        //  Replace it
+                        line = line.substring(0, start) + newKey + line.substring(end);
+                        modified = true;
+                    }
+                }
+            }
+            lines.add(line);
+            startLine = endLine+1;
+        }
+        lines.add(code.substring(startLine));
+
+        if (modified) {
+            //  Reconstruct code and save it if modified
+            StringBuilder   sb = new StringBuilder();
+            for (String line : lines) {
+                sb.append(line).append('\n');
+            }
+            writeFile(fileName, sb.toString().trim());
+            System.out.println("Replaced protected region keys in "+fileName);
+        }
+    }
+    //===============================================================
+    /**
+     * When Pogo templates moved from XPand to XTend,
+     * compatibility was not fully supported.
+     * This method convert for 8.0 to 8.1  or 8.1 to 8.0
+     * @param cls   specified class to convert.
+     * @param toXTend   covert to XTend compatibility if true, to XPand otherwise.
+     */
+    //===============================================================
+    void convertForXTendCompatibility(PogoDeviceClass cls, boolean toXTend) {
+
+        try {
+            if (toXTend) {
+
+                //  Keys have changed when templates moved
+                //      from Xpand   to   Xtend
+                String  fileHeader = cls.getDescription().getSourcePath() +
+                        "/" + cls.getName();
+                //  Int DevClass.cpp
+                {
+                    String  fileName = fileHeader +"Class.cpp";
+                    String  srcKey = cls.getName()+"::Class::";
+                    String  newKey = cls.getName()+"Class::";
+                    convertProtectedAreaKey(srcKey, newKey, fileName);
+                }
+                //  In DevClass.h
+                {
+                    String  fileName = fileHeader + "Class.h";
+                    String  srcKey = cls.getName()+"::";
+                    String  newKey = cls.getName()+"Class::";
+                    convertProtectedAreaKey(srcKey, newKey, fileName);
+                }
+                //  In DevStateMachine.cpp
+                {
+                    String  fileName = fileHeader + "StateMachine.cpp";
+                    ArrayList<String>   attributeNames = new ArrayList<String>();
+                    for (Attribute attribute : cls.getAttributes()) {
+                        attributeNames.add(attribute.getName());
+                    }
+                    convertProtectedAreaKeyForStateMachine(attributeNames, fileName, true);
+                }
+            }
+            else {
+                //  Back to XPand compatibility (Pogo 8.0.x)
+                new Back2Height(cls);
+            }
+        }
+        catch(DevFailed e) {
+            System.err.println(e.errors[0].desc);
+        }
+    }
+     //===============================================================
+    //===============================================================
+    public static void main(String[] args) {
+        try {
+            if (args.length >=2) {
+                if (args[0].equals("-html"))
+                    convertHTML(args[1]);
+                else if (args[0].equals("-xmi-clean")) {
+                }
+            }
+            else
+                displaySyntax();
         } catch (DevFailed e) {
             Except.print_exception_stack(e);
         } catch (Exception e) {
             System.err.println(e);
+        }
+    }
+    //===============================================================
+    //===============================================================
+
+
+
+
+
+
+
+    //===============================================================
+    //===============================================================
+    public void startBack2Height(String fileName) {
+        try {
+            new Back2Height(fileName);
+        }
+        catch (DevFailed e) {
+            Except.print_exception(e);
+        }
+    }
+    //===============================================================
+    //  Back from Pogo 8.1.xx to Pogo-0.xx
+    //===============================================================
+    private class Back2Height {
+        private PogoDeviceClass cls = null;
+        private String className;
+        private String  path = ".";
+        private String  xmiFileName;
+        //===============================================================
+        private Back2Height(PogoDeviceClass cls) throws DevFailed {
+            className = cls.getName();
+            path      = cls.getDescription().getSourcePath();
+            xmiFileName = path + "/" + className + ".xmi";
+            convert();
+        }
+         //===============================================================
+        private Back2Height(String xmiFileName) throws DevFailed {
+
+            this.xmiFileName = xmiFileName;
+            //  truncate for path and class names.
+            int pos = xmiFileName.lastIndexOf('/');
+            if (pos<0)
+                pos = xmiFileName.lastIndexOf('\\');
+            int end = xmiFileName.lastIndexOf('.');
+
+
+            if (pos>0) {
+                path = xmiFileName.substring(0, pos);
+                className = xmiFileName.substring(pos+1, end);
+            }
+            else
+                className = xmiFileName.substring(0, end);
+            convert();
+        }
+        //===============================================================
+        private void convert() throws DevFailed {
+            System.out.println("Path = " + path);
+            System.out.println("ClassName = " + className);
+
+            //  Remove new keys(s) in xmi file ans check it
+            System.out.println("cleaning " + xmiFileName);
+            removeXmiKey("pogoRevision", xmiFileName);
+            if (cls==null)
+                cls = OAWutils.getInstance().loadDeviceClassModel(xmiFileName, false);
+
+            //  Update DevClass.cpp for protected regions
+            String  fileName = path + "/" + className + "Class.cpp";
+            manageDevClassCpp(fileName);
+
+            //  Update DevClass.h for protected regions
+            fileName = path + "/" + className + "Class.h";
+            manageDevClassH(fileName);
+
+            //  Update DevStateMachine.cpp
+            fileName = path + '/' + className + "StateMachine.cpp";
+            ArrayList<String>   attributeNames = new ArrayList<String>();
+            for (Attribute attribute : cls.getAttributes()) {
+                attributeNames.add(attribute.getName());
+            }
+            convertProtectedAreaKeyForStateMachine(attributeNames, fileName, true);
+        }
+        //===============================================================
+        private void manageDevClassCpp(String fileName) throws DevFailed {
+
+            System.out.println("cleaning protected regions in " + fileName);
+            String  srcKey = className + "Class::";
+            String  newKey = className + "::Class::";
+            ParserTool.convertProtectedAreaKey(srcKey, newKey, fileName);
+        }
+        //===============================================================
+        private void manageDevClassH(String fileName) throws DevFailed {
+
+            System.out.println("cleaning protected regions in " + fileName);
+            boolean modified = false;
+            String  code = readFile(fileName);
+            ArrayList<String> lines = new ArrayList<String>();
+            int startLine = 0;
+            int endLine;
+            int cnt = 0;
+            String  srcKey = className+"Class";
+            while ((endLine=code.indexOf('\n', startLine))>0) {
+                //  For each line
+                String line = code.substring(startLine, endLine);
+                //  check if Protected area
+                if (line.contains(" PROTECTED REGION ")) {
+                    //System.out.println(line);
+                    cnt++;
+                    int start;
+                   //  Check if key exists
+                    if ((start = line.indexOf(srcKey)) > 0  && cnt>=3) {
+                        System.out.println("Replace " + srcKey + " by " + className);
+
+                        int end = start + srcKey.length();
+
+                        //  Replace it
+                        line = line.substring(0, start) + className + line.substring(end);
+                        modified = true;
+                    }
+                }
+                lines.add(line);
+                startLine = endLine+1;
+            }
+            lines.add(code.substring(startLine));
+            if (modified) {
+                //  Reconstruct code and save it if modified
+                StringBuilder   sb = new StringBuilder();
+                for (String line : lines) {
+                    sb.append(line).append('\n');
+                }
+                writeFile(fileName, sb.toString().trim());
+                System.out.println("Replaced \""+srcKey + "\"  by  \"" + className + "\" \t in "+fileName);
+            }
         }
     }
     //===============================================================
