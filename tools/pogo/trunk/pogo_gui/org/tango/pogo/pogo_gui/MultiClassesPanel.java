@@ -87,8 +87,9 @@ public class MultiClassesPanel extends JFrame {
 
         customizeMenus();
         initOwnComponents();
-        if (fileName != null)
-            loadXmiFile(fileName);
+        //if (fileName != null)
+        //    loadXmiFile(fileName);
+        checkLoadAtStartup(fileName);
 
         //  Set the PogoGUI instance to do not close this when PogoGUI is closed !!!
         PogoGUI.multiClassesPanel = this;
@@ -97,6 +98,30 @@ public class MultiClassesPanel extends JFrame {
         ATKGraphicsUtils.centerFrameOnScreen(this);
     }
 
+    //===========================================================
+    //===========================================================
+    private void checkLoadAtStartup(String filename) {
+        try {
+            if (filename != null && filename.length() > 0)
+                loadXmiFile(filename);
+            else {
+
+                /**********
+                String xmiFile = Utils.getXmiFile();
+                if (xmiFile != null) {
+                    openItemActionPerformed(null);
+                } else
+                if (PogoProperty.loadPrevious) {
+                    if (PogoProperty.projectHistory.size() > 0)
+                        loadXmiFile(PogoProperty.multiClassProjectHistory.get(0));
+                }
+                ***************/
+            }
+        }
+        catch(DevFailed e) {
+            System.err.println(e.errors[0].desc);
+        }
+    }
     //=======================================================
     //=======================================================
     private void initOwnComponents() {
@@ -116,6 +141,7 @@ public class MultiClassesPanel extends JFrame {
         }
         chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
         chooser.setFileFilter(pogoFilter);
+        setIconImage(Utils.getInstance().root_icon.getImage());
 
 
         Utils utils = Utils.getInstance();
@@ -432,6 +458,8 @@ public class MultiClassesPanel extends JFrame {
     //=======================================================
     //=======================================================
     private int generateFiles() {
+        if (tree==null)
+            return JOptionPane.CANCEL_OPTION;
         try {
             PogoMultiClasses multiClasses = tree.getServer();
             GenerateDialog dialog = new GenerateDialog(this);

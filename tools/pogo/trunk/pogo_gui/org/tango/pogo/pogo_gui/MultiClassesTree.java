@@ -358,11 +358,20 @@ public class MultiClassesTree extends JTree implements TangoConst {
                     if (!file.isDirectory()) {
                         String fileName = file.getAbsolutePath();
                         DeviceClass deviceClass = loadedClasses.getDeviceClass(fileName);
-                        DefaultMutableTreeNode parentNode = getSelectedNode();
-                        DefaultMutableTreeNode node = new DefaultMutableTreeNode(deviceClass);
-                        treeModel.insertNodeInto(node, parentNode, parentNode.getChildCount());
-                        setModified(true);
-                        expandChildren(parentNode);
+                        //  Check if C++ class.
+                        String language =
+                                deviceClass.getPogoDeviceClass().getDescription().getLanguage();
+                        if (language.toLowerCase().equals("cpp")) {
+                            DefaultMutableTreeNode parentNode = getSelectedNode();
+                            DefaultMutableTreeNode node = new DefaultMutableTreeNode(deviceClass);
+                            treeModel.insertNodeInto(node, parentNode, parentNode.getChildCount());
+                            setModified(true);
+                            expandChildren(parentNode);
+                        }
+                        else
+                            Except.throw_exception("NOT_SUPPRTED",
+                                language + " classes are not supported by multi classes manager !",
+                                "MultiClasesPanel.addClass()");
                     }
                 }
             }
@@ -460,9 +469,11 @@ public class MultiClassesTree extends JTree implements TangoConst {
                     exists = true;
                 }
             }
+
             if (!exists) {
                 pogoClasses.add(0, _class);
             }
+            
         }
         for (DeviceClass pc : pogoClasses) {
             System.out.println(pc.getPogoDeviceClass().getName());
@@ -499,6 +510,16 @@ public class MultiClassesTree extends JTree implements TangoConst {
             for (String parentClass : devClass.getParentClasses()) {
                 simple.getParentClasses().add(parentClass);
             }
+            //  Check if dynamic attributes
+            // ToDo
+            /*
+            if (Utils.getPogoGuiRevision()>=8.1) {
+                if (pogoClass.getDynamicAttributes().size()>0) {
+                    simple.setHasDynamic("true");
+                }
+            }
+			*/
+            
             if (devClass.isOldPogoModel())
                 simple.setPogo6("true");
             definitions.add(simple);

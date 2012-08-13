@@ -70,6 +70,10 @@ public class GenerateDialog extends JDialog {
         super(parent, true);
         initComponents();
 
+        //  Templates not yet ready
+        eclipseProjectBtn.setVisible(false);
+        pomBtn.setVisible(false);
+
         rBtn = new ArrayList<JRadioButton>();
         rBtn.add(xmiBtn);
         rBtn.add(codeBtn);
@@ -206,6 +210,11 @@ public class GenerateDialog extends JDialog {
 
         xmiBtn.setSelected(true);
         xmiBtn.setText("XMI   file");
+        xmiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xmiBtnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -536,7 +545,7 @@ public class GenerateDialog extends JDialog {
 
         JOptionPane.showMessageDialog(this,
                 message,
-                "Deteails Window", JOptionPane.INFORMATION_MESSAGE);
+                "Details Window", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_detailsBtnActionPerformed
 
     //======================================================
@@ -546,6 +555,14 @@ public class GenerateDialog extends JDialog {
             doClose(JOptionPane.CANCEL_OPTION);
         }
     }//GEN-LAST:event_outPathTextKeyPressed
+
+    //======================================================
+    //======================================================
+    @SuppressWarnings("UnusedParameters")
+    private void xmiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xmiBtnActionPerformed
+        //  XMI must be generated every time
+        xmiBtn.setSelected(true);
+    }//GEN-LAST:event_xmiBtnActionPerformed
 
     //======================================================
     //======================================================
@@ -591,9 +608,9 @@ public class GenerateDialog extends JDialog {
                 vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
                 javaProjectLabel.setVisible(true);
-                eclipseProjectBtn.setVisible(true);
+                //eclipseProjectBtn.setVisible(true);
                 ideaProjectBtn.setVisible(true);
-                pomBtn.setVisible(true);
+                //pomBtn.setVisible(true);
                 break;
             case PogoConst.Python:
                 makefileBtn.setVisible(false);
@@ -641,6 +658,11 @@ public class GenerateDialog extends JDialog {
         htmlBtn.setVisible(false);
         makefileBtn.setVisible(true);
         warningPanel.setVisible(false);
+
+        javaProjectLabel.setVisible(false);
+        eclipseProjectBtn.setVisible(false);
+        ideaProjectBtn.setVisible(false);
+        pomBtn.setVisible(false);
 
         pack();
         setVisible(true);
