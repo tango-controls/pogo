@@ -1,0 +1,12 @@
+This directory ./lib is reserved for the jars required to compile
+the pogo gui. The following jars are required:
+
+ATKcore.jar
+ATKwidget.jar
+Pogo.jar (Pogo-6)
+TangORB.jar
+
+These jars are available from the Tango download site.
+
+Please get them for yourself! Until you have them you will
+not be able to compile.
