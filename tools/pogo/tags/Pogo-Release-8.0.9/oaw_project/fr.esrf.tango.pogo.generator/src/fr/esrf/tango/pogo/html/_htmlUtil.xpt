@@ -1,0 +1,29 @@
+«IMPORT pogoDsl»
+«EXTENSION fr::esrf::tango::pogo::html::_HtmlUtil»
+
+
+«DEFINE htmlTableHeader(String title, List list) FOR PogoDeviceClass»
+	<Table Border=2 Cellpadding=3 CELLSPACING=0>
+	<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+	<Td COLSPAN=«list.size»> <Font Size=+1> <Center><b>
+		  «title»
+	</b></Font></Center></td>
+	«IF list.size>0-»
+	<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+	«FOREACH list AS colTitle-»
+		<Td><Center><b>
+			«colTitle»
+		</b></Center></td>
+	«ENDFOREACH-»
+	«ENDIF-»
+	</Tr>
+«ENDDEFINE»
+
+«DEFINE htmlProtectedArea(String name) FOR PogoDeviceClass»
+«startComment()» «PROTECT CSTART '/*' CEND '*/' ID name » «endComment()»
+	<!--- Add your own documentation, pictures, links,.... --->
+	<ul>
+
+	</ul>
+«startComment()» «ENDPROTECT» «endComment()»
+«ENDDEFINE»
