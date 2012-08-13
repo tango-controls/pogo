@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/ATKCore.jar"/>
+	<classpathentry kind="lib" path="lib/ATKWidget.jar"/>
+	<classpathentry kind="lib" path="lib/Pogo.jar"/>
+	<classpathentry kind="lib" path="lib/TangORB.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fr.esrf.tango.pogo"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
