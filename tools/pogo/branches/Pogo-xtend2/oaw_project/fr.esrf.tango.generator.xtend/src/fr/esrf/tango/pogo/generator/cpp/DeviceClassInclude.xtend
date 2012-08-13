@@ -69,7 +69,7 @@ class DeviceClassInclude {
 		class «cls.name»Class : public «cls.inheritedClassNameForDeviceClass»
 		#endif
 		{
-			«cls.protectedAreaClass("dditionnal DServer data members", "", false)»
+			«cls.protectedAreaClass("Additionnal DServer data members", "", false)»
 
 			«cls.classPropertyDeclarations»
 			«cls.publicMethodPrototypes»
