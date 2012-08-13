@@ -49,6 +49,10 @@ import org.eclipse.emf.mwe.core.WorkflowEngine;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.issues.IssuesImpl;
 import org.eclipse.emf.mwe.core.issues.MWEDiagnostic;
+//import org.eclipse.emf.mwe2.language.Mwe2StandaloneSetup;
+//import org.eclipse.emf.mwe2.launch.runtime.Mwe2Runner;
+
+//import com.google.inject.Injector;
 import org.tango.pogo.pogo_gui.PogoConst;
 import org.tango.pogo.pogo_gui.PropertyDialog;
 
@@ -78,7 +82,7 @@ public class OAWutils {
     //========================================================================
 
     private static final String backend =
-            "fr/esrf/tango/pogo/backend.mwe";
+    		"fr/esrf/tango/pogo/backend.mwe";
 
     //  Do not remove, it seems to more than a simple assignment
     @SuppressWarnings({"UnusedDeclaration"})
@@ -110,8 +114,13 @@ public class OAWutils {
         return pmc;
     }
     //========================================================================
+    //========================================================================
+    public PogoDeviceClass loadDeviceClassModel(String xmiFile) throws DevFailed {
+    	return loadDeviceClassModel(xmiFile, true);
+    }
 
-    /**
+    //========================================================================
+   /**
      * Read the xmi file and returns the PogoDeviceClass model found.
      *
      * @param xmiFile xmi file name.
@@ -119,11 +128,13 @@ public class OAWutils {
      * @throws DevFailed in case of I/O error or bad xmi file.
      */
     //========================================================================
-    public PogoDeviceClass loadDeviceClassModel(String xmiFile) throws DevFailed {
+    public PogoDeviceClass loadDeviceClassModel(String xmiFile, boolean checkVersion) throws DevFailed {
         //  Before everything, update xmi file for compatibility.
-        ParserTool.removeXmiKey("htmlInheritance", xmiFile);
-        //ParserTool.renameXmiKey("Key1", "Key2", xmiFile);
-
+    	if (checkVersion) {
+    		ParserTool.removeXmiKey("htmlInheritance", xmiFile);
+    		new ParserTool().startBack2Height(xmiFile);
+    	}
+ 
         //  OK, Now can be loaded
         Object pogoObj = loadTheModel(xmiFile);
         if (!(pogoObj instanceof PogoDeviceClass))
@@ -183,18 +194,18 @@ public class OAWutils {
 
         //	Generate XMI file if requested.
         String gene = pogo_class.getDescription().getFilestogenerate().toLowerCase();
-        int pos = gene.indexOf("xmi");
-        if (pos >= 0) {
-            String xmi_file = pogo_class.getDescription().getSourcePath() + "/" +
+        String xmiFileName = pogo_class.getDescription().getSourcePath() + "/" +
                     pogo_class.getName() + ".xmi";
+       int pos = gene.indexOf("xmi");
+        if (pos >= 0) {
             ResourceSet resourceSet = new ResourceSetImpl();
             Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
-            URI fileURI = URI.createFileURI(new File(xmi_file).getAbsolutePath());
+            URI fileURI = URI.createFileURI(new File(xmiFileName).getAbsolutePath());
             Resource resource = resourceSet.createResource(fileURI);
             resource.getContents().add(sys);
             try {
                 resource.save(Collections.EMPTY_MAP);
-                System.out.println(xmi_file + " generated");
+                System.out.println(xmiFileName + " generated");
             } catch (IOException e) {
                 Except.throw_exception("IOException",
                         e.toString(), "DeviceClass.generate()");
@@ -214,6 +225,7 @@ public class OAWutils {
             params.put("targetDir", pogo_class.getDescription().getSourcePath());
             params.put("targetLanguage", pogo_class.getDescription().getLanguage());
             params.put("theModel", sys);
+            //params.put("modelPath", xmiFileName);
             params.put("prExcludes", prExcludes);
 
             runWorkflow(params);
@@ -236,15 +248,15 @@ public class OAWutils {
         sys.getMultiClasses().add(multiClasses);
 
         //	Generate XMI file if requested.
-        String xmi_file = multiClasses.getSourcePath() + "/" + multiClasses.getName() + ".multi.xmi";
+        String xmiFileName = multiClasses.getSourcePath() + "/" + multiClasses.getName() + ".multi.xmi";
         ResourceSet resourceSet = new ResourceSetImpl();
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
-        URI fileURI = URI.createFileURI(new File(xmi_file).getAbsolutePath());
+        URI fileURI = URI.createFileURI(new File(xmiFileName).getAbsolutePath());
         Resource resource = resourceSet.createResource(fileURI);
         resource.getContents().add(sys);
         try {
             resource.save(Collections.EMPTY_MAP);
-            System.out.println(xmi_file + " generated");
+            System.out.println(xmiFileName + " generated");
         } catch (IOException e) {
             Except.throw_exception("IOException",
                     e.toString(), "DeviceClass.generate()");
@@ -279,6 +291,43 @@ public class OAWutils {
             return "Sub-directory Problem:";
     }
 
+    //========================================================================
+    //========================================================================
+         	/*
+   private void runWorkflow(Map params) throws DevFailed {
+    	
+        Injector injector = new Mwe2StandaloneSetup().createInjectorAndDoEMFRegistration();
+        Mwe2Runner mweRunner = injector.getInstance(Mwe2Runner.class);
+        @SuppressWarnings({"unchecked"})
+        final boolean configOK = true;
+        if (configOK) {
+        	mweRunner.run(URI.createURI(backend), params);
+            final Issues issues = new IssuesImpl();
+            runner.executeWorkflow(params, issues);
+
+            if (issues.hasWarnings()) {
+                //  Get the last one (it is a Stack)
+                MWEDiagnostic[] warn = issues.getWarnings();
+                int lastIdx = warn.length - 1;
+                System.err.println("----------> Message: " + warn[lastIdx].getMessage());
+                System.err.println("----------> Element: " + warn[lastIdx].getElement());
+            }
+            if (issues.hasErrors()) {
+                //  Get the last one (it is a Stack)
+                MWEDiagnostic[] errors = issues.getErrors();
+                int lastIdx = errors.length - 1;
+                String message = errors[lastIdx].getMessage().trim();
+
+                if (message.endsWith("is not unique"))
+                    message = buildSubDirMessage(message);
+
+                Except.throw_exception("Running WorkFlow Error",
+                        message,
+                        "DeviceClass.runWorkFlow() -> " + errors[lastIdx].getElement());
+            }
+        }
+    }
+            */
     //========================================================================
     //========================================================================
     private void runWorkflow(Map params) throws DevFailed {
