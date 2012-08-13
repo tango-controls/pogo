@@ -29,7 +29,7 @@
 		<link>
 			<name>code</name>
 			<type>2</type>
-			<location>/mntdirect/_segfs/tango/tools/pogo/pogo_oaw</location>
+			<location>/home/goetz/workspaces-3.7/xtext/pogo_gui</location>
 		</link>
 	</linkedResources>
 </projectDescription>
