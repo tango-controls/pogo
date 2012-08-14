@@ -98,7 +98,6 @@ public class PogoEditor {
         }
     }
     //===============================================================
-
     /**
      * Search if exe file to edit exeit in path (lines)
      *
@@ -122,7 +121,6 @@ public class PogoEditor {
         return editor != null;
     }
     //===============================================================
-
     /**
      * Returns the line number where signature has been found
      *
@@ -155,11 +153,11 @@ public class PogoEditor {
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})    //  Used only to know that it is for property
-    private int getLineNumber(String filename, String classname, int lang, Property prop, boolean is_dev) {
+    private int getLineNumber(String filename, String className, int lang, Property prop, boolean is_dev) {
         String signature = null;
         switch (lang) {
             case PogoConst.Cpp:
-                signature = "void " + classname;
+                signature = "void " + className;
                 if (!is_dev)
                     signature += "Class";
                 signature += "::get_";
@@ -170,19 +168,12 @@ public class PogoEditor {
                 signature += "_property(";
                 //signature = prop.getName();
                 break;
-        }
-        if (signature == null)
-            return -1;
-        return getLineNumber(filename, signature);
-    }
-
-    //===============================================================
-    //===============================================================
-    private int getLineNumber(String filename, String classname, int lang, Command cmd) {
-        String signature = null;
-        switch (lang) {
-            case PogoConst.Cpp:
-                signature = classname + "::" + cmd.getExecMethod() + "(";
+            case PogoConst.Java:
+                signature = "@" + ((is_dev)? "Device" : "Class") +
+                        "Property(name=\"" + prop.getName() + "\"";
+                break;
+            case PogoConst.Python:
+                signature = "\'" + prop.getName() + "\':";
                 break;
         }
         if (signature == null)
@@ -192,11 +183,40 @@ public class PogoEditor {
 
     //===============================================================
     //===============================================================
-    private int getLineNumber(String filename, String classname, int lang, Attribute attribute) {
+    private int getLineNumber(String filename, String className, int lang, Command cmd) {
         String signature = null;
         switch (lang) {
             case PogoConst.Cpp:
-                signature = classname + "::read_" + attribute.getName() + "(Tango::Attribute &attr)";
+                signature = className + "::" + cmd.getExecMethod() + "(";
+                break;
+            case PogoConst.Java:
+                signature = "* Execute command \"" + cmd.getName() + "\"";
+                break;
+            case PogoConst.Python:
+                signature = "def " + cmd.getName() + "(self):" ;
+                break;
+       }
+        if (signature == null)
+            return -1;
+        return getLineNumber(filename, signature);
+    }
+
+    //===============================================================
+    //===============================================================
+    private int getLineNumber(String filename, String className, int lang, Attribute attribute) {
+        String signature = null;
+        switch (lang) {
+            case PogoConst.Cpp:
+                signature = className + "::read_" + attribute.getName() + "(Tango::Attribute &attr)";
+                break;
+            case PogoConst.Java:
+                if (Utils.isTrue(attribute.getIsDynamic()))
+                    signature = "public AttributeValue getValue() throws DevFailed {";
+                else
+                    signature = "@Attribute(name=\"" + attribute.getName() + "\"" ;
+                break;
+            case PogoConst.Python:
+                signature = "def read_" + attribute.getName() + "(self, attr):" ;
                 break;
         }
         if (signature == null)
@@ -206,11 +226,17 @@ public class PogoEditor {
 
     //===============================================================
     //===============================================================
-    private int getLineNumber(String filename, String classname, int lang) {
+    private int getLineNumber(String filename, String className, int lang) {
         String signature = null;
         switch (lang) {
             case PogoConst.Cpp:
-                signature = "namespace " + classname + "_ns";
+                signature = "namespace " + className + "_ns";
+                break;
+            case PogoConst.Java:
+                signature = "public class " + className + " {";
+                break;
+            case PogoConst.Python:
+                signature = "class " + className + " {";
                 break;
         }
         if (signature == null)
@@ -218,7 +244,6 @@ public class PogoEditor {
         return getLineNumber(filename, signature);
     }
     //===============================================================
-
     /**
      * Edit code for specified property
      *
@@ -228,14 +253,13 @@ public class PogoEditor {
      * @throws IOException if read file failed.
      */
     //===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})    //  Used only to know that it is for property
     public void editFile(String[] data, Property prop, boolean is_dev)
             throws IOException {
         if (editor == null) {
             System.err.println("no editor available.");
             return;
         }
-        String classname = data[0];
+        String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
         String filename = null;
@@ -243,18 +267,24 @@ public class PogoEditor {
         switch (lang) {
             case PogoConst.Cpp:
                 if (is_dev)
-                    filename = path + "/" + classname + ".cpp";
+                    filename = path + "/" + className + ".cpp";
                 else
-                    filename = path + "/" + classname + "Class.cpp";
+                    filename = path + "/" + className + "Class.cpp";
+                break;
+            case PogoConst.Java:
+                filename = path + "/org/tango/" + className.toLowerCase() + "/" +
+                        className + ".java";
+                break;
+            case PogoConst.Python:
+                filename = path + "/" + className.toLowerCase() + ".py";
                 break;
         }
         if (filename != null) {
-            int linenum = getLineNumber(filename, classname, lang, prop, is_dev);
+            int linenum = getLineNumber(filename, className, lang, prop, is_dev);
             startEditor(filename, linenum);
         }
     }
     //===============================================================
-
     /**
      * Edit code for specified attribute
      *
@@ -269,23 +299,33 @@ public class PogoEditor {
             System.err.println("no editor available.");
             return;
         }
-        String classname = data[0];
+        String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
         String filename = null;
 
         switch (lang) {
             case PogoConst.Cpp:
-                filename = path + "/" + classname + ".cpp";
+                filename = path + "/" + className + ".cpp";
+                break;
+            case PogoConst.Java:
+                filename = path + "/org/tango/" + className.toLowerCase() + "/";
+                if (Utils.isTrue(attribute.getIsDynamic()))
+                    filename += attribute.getName();
+                else
+                    filename += className;
+                filename += ".java";
+                break;
+            case PogoConst.Python:
+                filename = path + "/" + className.toLowerCase() + ".py";
                 break;
         }
         if (filename != null) {
-            int linenum = getLineNumber(filename, classname, lang, attribute);
+            int linenum = getLineNumber(filename, className, lang, attribute);
             startEditor(filename, linenum);
         }
     }
     //===============================================================
-
     /**
      * Edit code for specified command
      *
@@ -301,23 +341,29 @@ public class PogoEditor {
             return;
         }
 
-        String classname = data[0];
+        String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
         String filename = null;
 
         switch (lang) {
             case PogoConst.Cpp:
-                filename = path + "/" + classname + ".cpp";
+                filename = path + "/" + className + ".cpp";
+                break;
+            case PogoConst.Java:
+                filename = path + "/org/tango/" + className.toLowerCase() + "/" +
+                        className + ".java";
+                break;
+            case PogoConst.Python:
+                filename = path + "/" + className.toLowerCase() + ".py";
                 break;
         }
         if (filename != null) {
-            int linenum = getLineNumber(filename, classname, lang, cmd);
+            int linenum = getLineNumber(filename, className, lang, cmd);
             startEditor(filename, linenum);
         }
     }
     //===============================================================
-
     /**
      * Edit code for specified state
      *
@@ -334,18 +380,25 @@ public class PogoEditor {
             return;
         }
 
-        String classname = data[0];
+        String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
         String filename = null;
 
         switch (lang) {
             case PogoConst.Cpp:
-                filename = path + "/" + classname + "StateMachine.cpp";
+                filename = path + "/" + className + "StateMachine.cpp";
+                break;
+            case PogoConst.Java:
+                filename = path + "/org/tango/" + className.toLowerCase() + "/" +
+                            className + ".java";
+                break;
+            case PogoConst.Python:
+                filename = path + "/" + className.toLowerCase() + ".py";
                 break;
         }
         if (filename != null) {
-            int linenum = getLineNumber(filename, classname, lang);
+            int linenum = getLineNumber(filename, className, lang);
             startEditor(filename, linenum);
         }
     }
