@@ -168,7 +168,7 @@ class JavaDevice  implements IGenerator {
 			 * Class Property «property.name»
 			 * «property.description.comments("* ")»
 			 */
-			@ClassProperty(name = "«property.name»", description = "«property.description.oneLineString»" «property.defaultValue»)
+			@ClassProperty(name="«property.name»", description="«property.description.oneLineString»" «property.defaultValue»)
 			private «property.strJavaType» «property.name.dataMemberName»;
 			/**
 			 * set property «property.name»
@@ -191,7 +191,7 @@ class JavaDevice  implements IGenerator {
 			 * Device Property «property.name»
 			 * «property.description.comments("* ")»
 			 */
-			@DeviceProperty(name = "«property.name»", description = "«property.description.oneLineString»" «property.defaultValue»)
+			@DeviceProperty(name="«property.name»", description="«property.description.oneLineString»" «property.defaultValue»)
 			private «property.strJavaType» «property.name.dataMemberName»;
 			/**
 			 * set property «property.name»
