@@ -37,10 +37,7 @@ package org.tango.pogo.pogo_gui.tools;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
-import fr.esrf.tango.pogo.pogoDsl.Attribute;
-import fr.esrf.tango.pogo.pogoDsl.Command;
-import fr.esrf.tango.pogo.pogoDsl.Property;
-import fr.esrf.tango.pogo.pogoDsl.State;
+import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
 import fr.esrf.tangoatk.widget.util.JSmoothProgressBar;
 import fr.esrf.tangoatk.widget.util.Splash;
@@ -403,12 +400,16 @@ public class Utils {
                         "Utils.checkNameSyntax()");
         }
 
-        //	First char must be a capital letter
-        String first = name.substring(0, 1).toUpperCase();
-        name = first + name.substring(1);
+        char firstChar = name.toUpperCase().charAt(0);
+       if (!PogoProperty.attrFree) {
 
-        char c = name.charAt(0);
-        if (c < 'A' || c > 'Z')    //	First char must be a letter
+            //	First char must be a capital letter
+            String first = name.substring(0, 1).toUpperCase();
+            name = first + name.substring(1);
+        }
+
+        //	First char must be a letter
+        if (firstChar < 'A' || firstChar > 'Z')
             Except.throw_exception("SyntaxError",
                     name + ":\nSyntax error in name: The first char must be a letter",
                     "Utils.checkNameSyntax()");
@@ -702,6 +703,34 @@ public class Utils {
             }
         }
         return null;
+    }
+    //===============================================================
+    /**
+     * Manage the doc_html location in "." or ".."
+     * @param pogoClass the specified class.
+     * @param beforeProcessing  before/after processing to know the way ro move
+     */
+    //===============================================================
+    static void manageHtmlDirectory(PogoDeviceClass pogoClass, boolean beforeProcessing) {
+        String defaultLocation  = "./doc_html";
+        if (!PogoProperty.docHome.equals(defaultLocation)) {   //  Not the default location
+            if (pogoClass.getDescription().getFilestogenerate().contains("html")) {
+                File    defaultLocationFile = new File(
+                        pogoClass.getDescription().getSourcePath()+"/"+defaultLocation);
+                File    expectedLocationFile = new File(
+                        pogoClass.getDescription().getSourcePath()+"/"+PogoProperty.docHome);
+                if (beforeProcessing) {
+                    //  try to move from location to default
+                    if (expectedLocationFile.renameTo(defaultLocationFile))
+                        System.err.println("Failed to move html dir to " + defaultLocation);
+                }
+                else {
+                    //  try to move from location to default
+                    if (defaultLocationFile.renameTo(expectedLocationFile))
+                        System.err.println("Failed to move html dir to " + expectedLocationFile);
+                }
+            }
+        }
     }
     //===============================================================
     //===============================================================

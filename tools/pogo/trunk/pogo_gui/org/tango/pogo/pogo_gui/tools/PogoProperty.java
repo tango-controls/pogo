@@ -66,6 +66,7 @@ public class PogoProperty {
     public static ArrayList<String> platformNames = new ArrayList<String>();
     public static ArrayList<String> busNames = new ArrayList<String>();
     private static final String docHomeProp = "doc_home";
+    private static final String attrFreeProp = "attr_free";
     private static final String makefileHomeProp = "makefile_home";
     private static final String installHomeProp = "install_home";
 
@@ -78,6 +79,7 @@ public class PogoProperty {
 
     public static String siteName = null;
     public static String docHome = "./doc_html";
+    public static boolean attrFree = false;
     public static String makefileHome = "$(TANGO_HOME)";
     public static String installHome = "$(TANGO_HOME)";
     public static ArrayList<String> siteClassFamilies = new ArrayList<String>();
@@ -152,6 +154,8 @@ public class PogoProperty {
             ArrayList<String> vs = loadProperties(sitePropFilename);
             siteName = getStringProperty(siteNameProp, vs);
             docHome = checkOverwritingPropertyString(docHomeProp, docHome, vs);
+            String s = Boolean.toString(attrFree);
+            attrFree = checkOverwritingPropertyString(attrFreeProp, s, vs).equals("true");
             makefileHome = checkOverwritingPropertyString(makefileHomeProp, makefileHome, vs);
             siteClassFamilies = getStringListProperty(siteClassFamiliesProp, vs);
         } catch (Exception e) {
@@ -232,11 +236,13 @@ public class PogoProperty {
         ArrayList<String> vs = new ArrayList<String>();
         String str;
         while ((str = br.readLine()) != null) {
-            //System.out.println(str);
             str = str.trim();
-            if (!str.startsWith("#"))
-                if (str.length() > 0)
+            if (!str.startsWith("#")) {
+                if (str.length() > 0) {
                     vs.add(str);
+                    //System.out.println("vs:"+str);
+                }
+            }
         }
         br.close();
 
@@ -309,6 +315,7 @@ public class PogoProperty {
             displayProperty(busNamesProp, busNames);
         }
         displayProperty(docHomeProp, docHome);
+        displayProperty(attrFreeProp, Boolean.toString(attrFree));
         displayProperty(makefileHomeProp, makefileHome);
         displayProperty(installHomeProp, installHome);
         displayProperty(siteNameProp, siteName);
