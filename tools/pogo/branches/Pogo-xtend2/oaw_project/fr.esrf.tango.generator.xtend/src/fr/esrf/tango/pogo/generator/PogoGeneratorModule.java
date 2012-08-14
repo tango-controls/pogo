@@ -62,16 +62,37 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 	//===================================================================================
 	private class pogoPathFilter implements IPathFilter {
 		
-		//===================================================================================
 		private ArrayList<String>	generatedFiles = new ArrayList<String>();
+		private boolean isWindows;
+		//===================================================================================
 		pogoPathFilter() {
 			
+	        String os = System.getProperty("os.name");
+	        isWindows = os.toLowerCase().startsWith("windows");
+
 			//	Build the list of generated files.
 			String	targetDir = System.getProperty("targetDir");
 			String	className = System.getProperty("className");
 			String	language  = System.getProperty("targetLanguage");
-			System.out.println(targetDir + "/" + className + " : " + language);
 			
+			if (isWindows) {
+				//	Replace '\' by '/' if any in targetDir
+				StringBuffer	sb = new StringBuffer();
+				int	start = 0;
+				int end;
+				while ((end=targetDir.indexOf('\\', start))>=0){
+					sb.append(targetDir.substring(start, end)).append('/');
+					start = end +1;
+				}
+				sb.append(targetDir.substring(start));
+				targetDir = sb.toString();
+
+				int	p = targetDir.indexOf(':');
+				if (p>0)
+					targetDir = targetDir.substring(p+1);
+			}
+			fr.esrf.tango.pogo.generator.common.StringUtils.printTrace(targetDir + "/" + className + " : " + language);
+
 			generatedFiles.clear();
 			if (language.toLowerCase().equals("cpp"))
 				fillGeneratedFilesListForCpp(targetDir, className);
@@ -89,6 +110,14 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 		public boolean accept(URI uri) {
 
 			String fileName = uri.getPath();
+			
+			//	remove "X:" (disk unit for Windows)
+			if (isWindows) {
+				int	p = fileName.indexOf(':');
+				if (p>0)
+					fileName = fileName.substring(p+1);
+			}
+			//System.out.println("Check filter for " + fileName);
 		
 			for (String generateFile : generatedFiles) {
 				if (generateFile.contains("*")) {
@@ -105,9 +134,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 				}
 					
 			}
-			//System.out.println(fileName + "  Not found !");
 			return false;
-			//return uri.getPath().endsWith("Makefile");
 		}
 		//===================================================================================
 		private void fillGeneratedFilesListForCpp(String targetDir, String className) {
