@@ -19,13 +19,13 @@ class HtmlDescription  implements IGenerator {
 
 			if (cls.description.filestogenerate.contains("html")) {
 					printTrace("Generating doc_html/Description.html")
-					fsa.generateFile("doc_html/Description.html",    cls.generateHtmlDescriptionFile(true))
+					fsa.generateFile("doc_html/ClassDescription.html", cls.generateHtmlDescriptionFile(true))
 					printTrace("Generating doc_html/Properties.html")
-					fsa.generateFile("doc_html/Properties.html",     cls.generateHtmlPropertiesFile(true))
+					fsa.generateFile("doc_html/Properties.html",       cls.generateHtmlPropertiesFile(true))
 					printTrace("Generating doc_html/States.html")
-					fsa.generateFile("doc_html/States.html",         cls.generateHtmlStatesFile(true))
+					fsa.generateFile("doc_html/States.html",           cls.generateHtmlStatesFile(true))
 					printTrace("Generating doc_html/FullDocument.html")
-					fsa.generateFile("doc_html/FullDocument.html",   cls.generateHtmlFullDocumentFile)
+					fsa.generateFile("doc_html/FullDocument.html",     cls.generateHtmlFullDocumentFile)
 
 					cls.retrieveProtectedDescriptionPart
 			}
@@ -37,27 +37,11 @@ class HtmlDescription  implements IGenerator {
 	def generateHtmlDescriptionFile(PogoDeviceClass cls, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("Description")»«ENDIF»
 		<ul>
-			<br><br>
-			«htmlTitle("Class Description :")»
-			<br><br>
-			<ul>
-				«cls.description.description.htmlStringWithBreak»
-				
-				«IF withHeader»
-					<!---  /*PROTECTED REGION ID(index.html) ENABLED START*/  --->
-				«ELSE»
-					<!---  /*PROTECTED REGION ID(FullDocument.html) ENABLED START*/  --->
-				«ENDIF»
-					<!--- Add your own documentation, pictures, links,.... --->
-					
-				<!---  /*PROTECTED REGION END*/  --->
-				
-			</ul>
 			<br><br><br>
 			<table border="0" width="100%">
 				<Tr>
-					<td> «htmlTitle("Class Identification :")» </td>
-					<td> «htmlTitle("Class Inheritance :")» </td>
+					<td> «htmlTitle(cls.name + " Class Identification :")» </td>
+					<td> «htmlTitle(cls.name + " Class Inheritance :")» </td>
 				</tr>
 				<td><ul>
 					<table border="0">
@@ -85,6 +69,23 @@ class HtmlDescription  implements IGenerator {
 					«cls.htmlInheritance»
 				</td>
 			</Table>
+			<br><br><br>
+			«htmlTitle(cls.name + " Class Description :")»
+			<br><br>
+			<ul>
+				«cls.description.description.htmlStringWithBreak»
+				
+				«cls.addDescriptionFromPogo6IfExists»
+				«IF withHeader»
+					<!---  /*PROTECTED REGION ID(index.html) ENABLED START*/  --->
+				«ELSE»
+					<!---  /*PROTECTED REGION ID(FullDocument.html) ENABLED START*/  --->
+				«ENDIF»
+					<!--- Add your own documentation, pictures, links,.... --->
+					
+				<!---  /*PROTECTED REGION END*/  --->
+				
+			</ul>
 		</ul>
 		«IF withHeader»
 			</body>
@@ -114,7 +115,7 @@ class HtmlDescription  implements IGenerator {
 	def generateHtmlStatesFile(PogoDeviceClass cls, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("States")»«ENDIF»
 		<br><br><br><br>
-		«cls.states.htmlStatesTable»
+		«cls.states.htmlStatesTable(cls.name)»
 		«IF withHeader»
 			</body>
 			</html>

@@ -33,7 +33,7 @@ class HtmlCommands  implements IGenerator {
 	def generateHtmlCommandsFile(PogoDeviceClass cls, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("Commands")»«ENDIF»
 		<br><br><br><br>
-		«cls.commands.htmlCommandsTable»
+		«cls.commands.htmlCommandsTable(cls.name)»
 		«IF withHeader»
 			</body>
 			</html>

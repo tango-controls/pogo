@@ -40,8 +40,8 @@ class HtmlIndex  implements IGenerator {
 		<!--- Definition for the 4 frames window ----------->
 		    <frameset rows="58,65,*,65">
 		        <frame src="http://www.esrf.fr/computing/cs/tango/TangoBanner.html"   name="header">
-		        <frame src="TitleBanner.html" name="title">
-		        <frame src="Description.html" name="document">
+		        <frame src="TitleBanner.html"        name="title">
+		        <frame src="ClassDescription.html"   name="document">
 		        <frame src="http://www.esrf.fr/computing/cs/tango/SrcForgeBanner.html" name="footer" >
 		    </frameset>
 		</html>
@@ -53,12 +53,12 @@ class HtmlIndex  implements IGenerator {
 			<center>
 				«htmlTitle(cls.name + " Tango " + cls.description.language + " Class")»
 				<table BORDER="1" WIDTH="100%" CELLSPACING=0>
-			       <td ALIGN="center"> <a href="Description.html"  target="document">  Description </a></td>
-			       <td ALIGN="center"> <a href="Properties.html"   target="document">  Properties  </a></td>
-			       <td ALIGN="center"> <a href="Commands.html"     target="document">  Commands    </a></td>
-			       <td ALIGN="center"> <a href="Attributes.html"   target="document">  Attributes  </a></td>
-			       <td ALIGN="center"> <a href="States.html"       target="document">  States      </a></td>
-			       <td ALIGN="center"> <a href="FullDocument.html" target="new">       Printable   </a></td>
+			       <td ALIGN="center"> <a href="ClassDescription.html" target="document">  Description </a></td>
+			       <td ALIGN="center"> <a href="Properties.html"       target="document">  Properties  </a></td>
+			       <td ALIGN="center"> <a href="Commands.html"         target="document">  Commands    </a></td>
+			       <td ALIGN="center"> <a href="Attributes.html"       target="document">  Attributes  </a></td>
+			       <td ALIGN="center"> <a href="States.html"           target="document">  States      </a></td>
+			       <td ALIGN="center"> <a href="FullDocument.html"     target="new">       Printable   </a></td>
 				</table>
 			</center>
 		</html>

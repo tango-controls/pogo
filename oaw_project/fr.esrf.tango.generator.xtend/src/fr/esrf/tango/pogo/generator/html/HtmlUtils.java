@@ -1,5 +1,7 @@
 package fr.esrf.tango.pogo.generator.html;
 
+import java.io.File;
+
 import org.eclipse.emf.common.util.EList;
 
 import fr.esrf.tango.pogo.generator.common.StringUtils;
@@ -35,12 +37,13 @@ public class HtmlUtils extends StringUtils {
 	//===========================================================
 	//===========================================================
 	String htmlFileHeader(PogoDeviceClass cls, String item) {
+		String singleCote = "&lsquo;";
 		String s = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n" +
 			"<html>\n" +
 			"<head>\n" +
 			"<title> " + cls.getName() + " Tango Class ";
 		if (item==null)
-			s += "User s Guide";
+			s += "User" + singleCote + "s Guide";
 		else
 			s += item;
 		s += " </title>\n" +
@@ -220,12 +223,12 @@ public class HtmlUtils extends StringUtils {
 	private static final String[]	stateHeaders =
 		{ "Name", "Description", };
 	//===========================================================
-	String htmlStatesTable(EList<State> states) {
+	String htmlStatesTable(EList<State> states, String className) {
 		
 		if (states.size()==0)
 			return htmlTitle("There is no state defined");
 
-		StringBuffer sb = new StringBuffer(htmlTableHeader(stateHeaders, "Device States"));
+		StringBuffer sb = new StringBuffer(htmlTableHeader(stateHeaders, className + " Class States"));
 		for (State state : states) {
 			
 			String	desc = htmlStringWithBreak(state.getDescription(), "\t\t\t");
@@ -244,11 +247,11 @@ public class HtmlUtils extends StringUtils {
 	private static final String[]	commandHeaders =
 		{ "Name", "Input type", "Output type", "Level", "Description" };
 	//===========================================================
-	String htmlCommandsTable(EList<Command> commands) {
+	String htmlCommandsTable(EList<Command> commands, String className) {
 		
 		if (commands.size()==0)
 			return htmlTitle("There is no command defined.");
-		StringBuffer sb = new StringBuffer(htmlTableHeader(commandHeaders, "Device Commands"));
+		StringBuffer sb = new StringBuffer(htmlTableHeader(commandHeaders, className +" Class Commands"));
 		for (Command command : commands) {
 			
 			//	Build name with a link on command description file
@@ -324,7 +327,7 @@ public class HtmlUtils extends StringUtils {
 	private static final String[]	attributeHeaders =
 		{ "Name", "Inherited", "Abstract", "Attr. type", "R/W type", "Data type", "Level", "Description" }; 
 	//===========================================================
-	String htmlAttributesTable(EList<Attribute> attributes, boolean dynamic) {
+	String htmlAttributesTable(EList<Attribute> attributes, String className, boolean dynamic) {
 		
 		
 		if (attributes.size()==0) {
@@ -334,7 +337,7 @@ public class HtmlUtils extends StringUtils {
 				return htmlTitle("There is no attribute defined.");
 		}
 		
-		String	title = (dynamic)? "Device Dynamic Attributes" : "Device Attributes";
+		String	title = className  + " Class" + ((dynamic)? " Dynamic Attributes" : " Attributes");
 		StringBuffer sb = new StringBuffer(htmlTableHeader(attributeHeaders, title));
 
 		for (Attribute attribute : attributes) {
@@ -593,10 +596,41 @@ public class HtmlUtils extends StringUtils {
 	
 	//===========================================================
 	//===========================================================
+	String addDescriptionFromPogo6IfExists(PogoDeviceClass cls) {
+		String	fileName = cls.getDescription().getSourcePath() + "/doc_html/Description.html";
+		if (new File(fileName).exists()) {
+			try {
+				String code = readFile(fileName);
+				//	Try to remove header and bla bla
+				int pos = code.indexOf("user_guide.pdf");
+				if (pos>0) {
+					return code.substring(code.indexOf("\n", pos)+1);
+				}
+				else {
+					pos = code.toUpperCase().indexOf("<HR WIDTH=\"100%\">");
+					if (pos>0) {
+						return code.substring(code.indexOf("\n", pos)+1);
+					}
+					else {
+						pos = code.toUpperCase().indexOf("</TABLE>");
+						if (pos>0) {
+							return code.substring(code.indexOf("\n", pos)+1);
+						}
+					}
+				}
+			}
+			catch(Exception e) {
+				System.err.println(e);
+			}
+		}
+		return "";
+	}
+	//===========================================================
+	//===========================================================
 	void retrieveProtectedDescriptionPart(PogoDeviceClass cls) {
 		try {
 			//	Get protected region from Description.html 
-			String	fileName = cls.getDescription().getSourcePath() + "/doc_html/Description.html";
+			String	fileName = cls.getDescription().getSourcePath() + "/doc_html/ClassDescription.html";
 			String	prText = getProtectedRegionContent(fileName, "./doc_html/index.html");
 			if (prText!=null) {
 				//System.out.println(prText);

@@ -103,8 +103,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			if (language.toLowerCase().equals("python"))
 				fillGeneratedFilesListForPython(targetDir, className);
 			//	Add html file for all languages
-			generatedFiles.add(targetDir+"/doc_html/Description.html");
-			generatedFiles.add(targetDir+"/../doc_html/Description.html");
+			generatedFiles.add(targetDir+"/doc_html/ClassDescription.html");
 		}
 		//===================================================================================
 		public boolean accept(URI uri) {

@@ -37,11 +37,11 @@ class HtmlAttributes  implements IGenerator {
 	def generateHtmlAttributesFile(PogoDeviceClass cls, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("Attributes")»«ENDIF»
 		<br><br><br><br>
-		«cls.attributes.htmlAttributesTable(false)»
+		«cls.attributes.htmlAttributesTable(cls.name, false)»
 		<br><br>
 		<hr>
 		<br><br>
-		«cls.dynamicAttributes.htmlAttributesTable(true)»
+		«cls.dynamicAttributes.htmlAttributesTable(cls.name, true)»
 		«IF withHeader»
 			</body>
 			</html>
