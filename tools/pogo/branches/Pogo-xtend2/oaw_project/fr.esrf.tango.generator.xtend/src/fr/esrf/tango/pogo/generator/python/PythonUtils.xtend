@@ -50,7 +50,9 @@ class PythonUtils {
             return True
 	        
 	        
-		'''def commandMethodStateMachine(Command cmd) '''
+		'''
+		
+	def commandMethodStateMachine(Command cmd) '''
 #------------------------------------------------------------------
 #	Is «cmd.name» command allowed
 #------------------------------------------------------------------
@@ -93,7 +95,8 @@ class PythonUtils {
     def pythonPropertyClass(Property prop) ''''«prop.name»':
     [«prop.type.pythonPropType»«IF !prop.description.empty»,
     "«prop.description»"«ENDIF»«IF !prop.defaultPropValue.empty»,
-    «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSE»«prop.defaultPropValue»«ENDIF»«ENDIF»],
+    «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
+    [] «ENDIF»],
     '''
     
     def pythonCommandClass(Command cmd) '''        '«cmd.name»':
@@ -110,18 +113,20 @@ class PythonUtils {
     def pythonAttributeClass(Attribute attr) ''''«attr.name»':
     [[«attr.dataType.pythonType»,
     PyTango.«attr.attType.toUpperCase»,
-    PyTango.«attr.rwType.toUpperCase»«IF attr.image», «attr.maxX», «attr.maxY»
-    «ELSE»«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF !attr.properties.label.empty || 
-    !attr.properties.unit.empty || !attr.properties.standardUnit.empty || !attr.properties.format.empty || 
+    PyTango.«attr.rwType.toUpperCase»«IF attr.image», «attr.maxX», «attr.maxY»«ELSE
+    »«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF !attr.properties.label.empty || !attr.properties.unit.empty ||
+    !attr.properties.standardUnit.empty ||!attr.properties.displayUnit.empty || !attr.properties.format.empty || 
     !attr.properties.maxValue.empty|| !attr.properties.minValue.empty || !attr.properties.maxAlarm.empty || 
     !attr.properties.minAlarm.empty || !attr.properties.maxWarning.empty || !attr.properties.minWarning.empty || 
     !attr.properties.deltaTime.empty || !attr.properties.deltaValue.empty || !attr.properties.description.empty ||
-    attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0")»,
+    attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0") || attr.eventCriteria!=null ||
+    attr.eventCriteria!=null || !attr.memorized.empty»,
     {
     «IF !attr.properties.label.empty»    'label':"«attr.properties.label»",«ENDIF»
     «IF !attr.properties.unit.empty»    'unit':"«attr.properties.unit»",«ENDIF»
-    «IF !attr.properties.standardUnit.empty»    'standard unit':"«attr.properties.standardUnit»",«ENDIF»
-    «IF !attr.properties.format.empty»    'label':"«attr.properties.format»",«ENDIF»
+    «IF !attr.properties.standardUnit.empty»    'standard unit':«attr.properties.standardUnit»,«ENDIF»
+    «IF !attr.properties.displayUnit.empty»    'display unit':"«attr.properties.displayUnit»",«ENDIF»
+    «IF !attr.properties.format.empty»    'format':"«attr.properties.format»",«ENDIF»
     «IF !attr.properties.maxValue.empty»    'max value':«attr.properties.maxValue»,«ENDIF»
     «IF !attr.properties.minValue.empty»    'min value':«attr.properties.minValue»,«ENDIF»
     «IF !attr.properties.maxAlarm.empty»    'max alarm':«attr.properties.maxAlarm»,«ENDIF»
@@ -130,10 +135,36 @@ class PythonUtils {
     «IF !attr.properties.minWarning.empty»    'min warning':«attr.properties.minWarning»,«ENDIF»
     «IF !attr.properties.deltaTime.empty»    'delta time':«attr.properties.deltaTime»,«ENDIF»
     «IF !attr.properties.deltaValue.empty»    'delta value':«attr.properties.deltaValue»,«ENDIF»
-    «IF !attr.properties.description.empty»    'description':"«attr.properties.description.oneLineString»"«ENDIF»
+    «IF !attr.properties.description.empty»    'description':"«attr.properties.description.oneLineString»",«ENDIF»
     «IF !attr.polledPeriod.equals("0")»    'Polling period':«attr.polledPeriod»,«ENDIF»
     «IF attr.displayLevel.equals("EXPERT")»    'Display level':PyTango.DispLevel.EXPERT,«ENDIF»
+    «IF attr.eventCriteria!=null»«IF !attr.eventCriteria.period.empty»    'period':'«attr.eventCriteria.period»',«ENDIF»
+    «IF !attr.eventCriteria.relChange.empty»    'rel_change':'«attr.eventCriteria.relChange»',«ENDIF»
+    «IF !attr.eventCriteria.absChange.empty»    'abs_change':'«attr.eventCriteria.absChange»',«ENDIF»«ENDIF»
+    «IF attr.evArchiveCriteria!=null»«IF !attr.evArchiveCriteria.period.empty»    'archive_period':'«attr.evArchiveCriteria.period»',«ENDIF»
+    «IF !attr.evArchiveCriteria.relChange.empty»    'archive_rel_change':'«attr.evArchiveCriteria.relChange»',«ENDIF»
+    «IF !attr.evArchiveCriteria.absChange.empty»    'archive_abs_change':'«attr.evArchiveCriteria.absChange»',«ENDIF»«ENDIF»
+    «IF attr.write»«IF !attr.memorized.empty»    'Memorized':"«IF attr.memorizedAtInit.empty»false«ELSE»true«ENDIF»",«ENDIF»«ENDIF»
     } ],
     «ELSE»],«ENDIF»
     '''
+    
+    //======================================================
+	def setEventCriteria(Attribute attribute) '''
+		«IF attribute.dataReadyEvent!=null»
+			«IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
+				«attribute.name.toLowerCase».set_data_ready_event(«attribute.dataReadyEvent.fire»);
+			«ENDIF»
+		«ENDIF»
+		«IF attribute.changeEvent!=null»
+			«IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
+				«attribute.name.toLowerCase».set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
+			«ENDIF»
+		«ENDIF»
+		«IF attribute.archiveEvent!=null»
+			«IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
+				«attribute.name.toLowerCase».set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
+			«ENDIF»
+		«ENDIF»
+	'''
 }
