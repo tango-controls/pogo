@@ -84,7 +84,7 @@ class Commands {
 		«cls.commandExecutionMethodSignature(command, false)»
 		{
 			«command.argoutDeclaration»
-			DEBUG_STREAM << "MultiCellGauges::«command.name»()  - " << device_name << endl;
+			DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << endl;
 			«cls.openProtectedArea(command.execMethod)»
 			
 			«IF command.name.equals("State")»
