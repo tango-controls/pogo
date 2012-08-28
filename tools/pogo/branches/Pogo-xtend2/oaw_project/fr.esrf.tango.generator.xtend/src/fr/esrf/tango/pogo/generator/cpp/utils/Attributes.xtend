@@ -30,15 +30,15 @@ class Attributes {
 	}
 	//======================================================
 	def readAttrubuteSize(Attribute attribute) {
-		if (attribute.attType.toLowerCase.equals("scalar")) {
+		if (attribute.scalar) {
 			""
 		}
 		else
-		if (attribute.attType.toLowerCase.equals("spectrum")) {
+		if (attribute.spectrum) {
 			", " + attribute.maxX
 		}
 		else
-		if (attribute.attType.toLowerCase.equals("Image")) {
+		if (attribute.image) {
 			", " + attribute.maxX +", " + attribute.maxY
 		}
 	}
