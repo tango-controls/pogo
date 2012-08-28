@@ -44,15 +44,15 @@ class Attributes {
 	}
 	//======================================================
 	def readAttrubuteSizeForAllocation(Attribute attribute) {
-		if (attribute.attType.toLowerCase.equals("scalar")) {
+		if (attribute.scalar) {
 			"[1]"
 		}
 		else
-		if (attribute.attType.toLowerCase.equals("spectrum")) {
+		if (attribute.spectrum) {
 			"[" + attribute.maxX + "]"
 		}
 		else
-		if (attribute.attType.toLowerCase.equals("image")) {
+		if (attribute.image) {
 			"[" + attribute.maxX +"*" + attribute.maxY + "]"
 		}
 	}

@@ -14,8 +14,10 @@ class PythonDevice implements IGenerator {
 	@Inject	extension PythonUtils
 	@Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
 	override void doGenerate(Resource resource, IFileSystemAccess fsa){
+		//println("doGenerate for python")
 		for(cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))){
 			if (cls.description.language.toLowerCase.equals("python")) {
+				println("doGenerate for python " + cls.name)
 				fsa.generateFile(cls.name.toLowerCase + '.py', cls.generate_pythonFile)
 			}
 		}
