@@ -52,7 +52,7 @@ class Attributes {
 			"[" + attribute.maxX + "]"
 		}
 		else
-		if (attribute.attType.toLowerCase.equals("Image")) {
+		if (attribute.attType.toLowerCase.equals("image")) {
 			"[" + attribute.maxX +"*" + attribute.maxY + "]"
 		}
 	}
