@@ -36,7 +36,8 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 		support.addParser(RegionParserFactory.createXmlParser(), ".xml", ".xsd");
 		support.addParser(createPythonParser(), "py");		
 		BidiJavaIoFileSystemAccess fsa = new BidiJavaIoFileSystemAccess(support);
-		fsa.setFilter(new pogoPathFilter());
+		if (System.getProperty("targetDir")!=null)
+			fsa.setFilter(new pogoPathFilter());
 	  return fsa;
 	}
 	
@@ -84,6 +85,9 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			fr.esrf.tango.pogo.generator.common.StringUtils.printTrace(targetDir + "/" + className + " : " + language);
 
 			generatedFiles.clear();
+			if (language.toLowerCase().equals("Multicpp"))
+				fillGeneratedFilesListForMultiClasesCpp(targetDir, className);
+			else
 			if (language.toLowerCase().equals("cpp"))
 				fillGeneratedFilesListForCpp(targetDir, className);
 			else
@@ -127,6 +131,11 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			return false;
 		}
 		//===================================================================================
+		private void fillGeneratedFilesListForMultiClasesCpp(String targetDir, String className) {
+			generatedFiles.add(targetDir+"/MultiClassFactory.cpp");
+			generatedFiles.add(targetDir+"/Makefile.multi");
+		}
+		//===================================================================================
 		private void fillGeneratedFilesListForCpp(String targetDir, String className) {
 			generatedFiles.add(targetDir+"/"+className + ".h");
 			generatedFiles.add(targetDir+"/"+className + ".cpp");
@@ -135,10 +144,8 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			generatedFiles.add(targetDir+"/"+className + "StateMachine.cpp");
 			generatedFiles.add(targetDir+"/"+className + "DynAttrUtils.cpp");
 			generatedFiles.add(targetDir+"/ClassFactory.cpp");
-			generatedFiles.add(targetDir+"/MultiClassFactory.cpp");
 			generatedFiles.add(targetDir+"/main.cpp");
 			generatedFiles.add(targetDir+"/Makefile");
-			generatedFiles.add(targetDir+"/Makefile.multi");
 		}
 		//===================================================================================
 		private void fillGeneratedFilesListForJava(String targetDir, String className) {
