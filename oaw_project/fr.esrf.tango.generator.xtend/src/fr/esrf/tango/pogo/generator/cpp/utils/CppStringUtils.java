@@ -152,10 +152,14 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 				if (array[0].length()>length)
 					length = array[0].length();
 		}
+		String	emptyTab = "//  ";
+		for (int i=0 ; i<length ; i++)
+			emptyTab += " ";
 		
 		for (String[] array : list) {
 			if (array.length>1) {
-				sb.append("//  ").append(buildTab(array[0], length)).append("  |  ").append(array[1]);
+				String	comments = comments(array[1], emptyTab+"  |  ");
+				sb.append("//  ").append(buildTab(array[0], length)).append("  |  ").append(comments);
 			}
 			else
 				sb.append("//").append(array[0]);
