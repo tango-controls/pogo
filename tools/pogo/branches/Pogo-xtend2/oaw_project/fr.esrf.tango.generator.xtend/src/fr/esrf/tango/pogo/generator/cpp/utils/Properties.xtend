@@ -26,7 +26,12 @@ class Properties {
 		void «cls.name»::get_device_property()
 		{
 			«cls.protectedArea("get_device_property_before", "Initialize property data members", true)»
-		
+
+			«IF cls.deviceProperties.hasMandatoryProperty»
+				mandatoryNotDefined = false;
+			«ENDIF»
+			set_status("Initializing....");
+
 			//	Read device properties from database.
 			Tango::DbData	dev_prop;
 			«FOR Property property : cls.deviceProperties»

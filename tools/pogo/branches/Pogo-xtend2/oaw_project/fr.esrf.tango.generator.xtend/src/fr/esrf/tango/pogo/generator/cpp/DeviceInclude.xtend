@@ -193,11 +193,11 @@ class DeviceInclude  {
 	// Attribute declarations
 	//======================================================
 	def declareAttributes(PogoDeviceClass cls) '''
-		«IF cls.attributes.size()>0»
 		//	Attribute methods
 		public:
 			«cls.simpleMethodHeader("read_attr_hardware", "Hardware acquisition for attributes.")»
 			virtual void read_attr_hardware(vector<long> &attr_list);
+		«IF cls.attributes.size()>0»
 
 			«FOR Attribute attr : cls.attributes»
 				«attr.attributePrototypeMethodHeader»
