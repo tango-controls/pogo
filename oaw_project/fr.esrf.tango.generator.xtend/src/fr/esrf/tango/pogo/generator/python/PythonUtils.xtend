@@ -11,6 +11,7 @@ import static extension fr.esrf.tango.pogo.generator.python.ProtectedArea.*
 class PythonUtils {
 	@Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
 	@Inject	extension ProtectedArea
+	@Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions	
 		
 	def commentMultiLinesPython(PogoDeviceClass cls){
 		cls.description.description.replaceAll("\n","\n#\t\t\t\t");
@@ -20,36 +21,46 @@ class PythonUtils {
 		str.replaceAll("\n","\n#\t\t\t\t");
 	}
 	
+	def hasAttrPropertySet(Attribute attr){
+		if (!attr.properties.label.empty || !attr.properties.unit.empty ||
+	    !attr.properties.standardUnit.empty ||!attr.properties.displayUnit.empty || !attr.properties.format.empty || 
+	    !attr.properties.maxValue.empty|| !attr.properties.minValue.empty || !attr.properties.maxAlarm.empty || 
+	    !attr.properties.minAlarm.empty || !attr.properties.maxWarning.empty || !attr.properties.minWarning.empty || 
+	    !attr.properties.deltaTime.empty || !attr.properties.deltaValue.empty || !attr.properties.description.empty ||
+	    attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0") || attr.eventCriteria!=null ||
+	    attr.eventCriteria!=null)
+	    {
+    		return true;
+    	}
+    	else
+    		return false;
+	}
+	
+	def hasCmdPropertySet(Command cmd){
+		if (cmd.displayLevel.equals("EXPERT") || !cmd.polledPeriod.equals("0"))
+	    {
+    		return true;
+    	}
+    	else
+    		return false;
+	}
+	
 	def commandExecution(PogoDeviceClass cls, Command cmd) '''
 #------------------------------------------------------------------
 #	«cmd.name» command:
 #------------------------------------------------------------------
-    def «cmd.name»(self«IF cmd.argout.type.pythonType != 'PyTango.DevVoid'», argin«ENDIF»):
+    def «cmd.name»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
         """ «cmd.description»
 	    
-        :param argin: «cmd.argin.description»
+        :param «IF !cmd.argin.type.voidType»argin«ENDIF»: «cmd.argin.description»
         :type: «cmd.argin.type.pythonType»
         :return: «cmd.argout.description»
         :rtype: «cmd.argout.type.pythonType» """
         self.debug_stream("In " + self.get_name() +  ".«cmd.name»()")
-        «IF cmd.argout.type.pythonType != 'PyTango.DevVoid'»argout = «cmd.argout.type.defaultValue»«ENDIF»
+        «IF !cmd.argout.type.voidType»argout = «cmd.argout.type.defaultValue»«ENDIF»
         «protectedArea(cls, cmd.name)»
-        «IF cmd.argout.type.pythonType != 'PyTango.DevVoid'»return argout«ENDIF»
-
-		'''
-	
-	def commandMethodStateMachine2(Command cmd) '''
-#------------------------------------------------------------------
-#	Is «cmd.name» command allowed
-#------------------------------------------------------------------
-    def is_«cmd.name»_allowed(self):
-        self.debug_stream("In " + self.get_name() + ".is_«cmd.name»_allowed()")
-        if («cmd.excludedStates.ifContentFromListPython»):
-            return False
-        else:
-            return True
-	        
-	        
+        «IF !cmd.argout.type.voidType»return argout«ENDIF»
+        
 		'''
 		
 	def commandMethodStateMachine(Command cmd) '''
@@ -70,6 +81,7 @@ class PythonUtils {
         data=attr.get_write_value()
         self.debug_stream("Attribute value = " + str(data))
         «protectedArea(cls, attribute.name + "_write")»
+        
 	'''
 		
 	def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
@@ -90,6 +102,7 @@ class PythonUtils {
     def is_«attribute.name»_allowed(self, attr):
         self.debug_stream("In " + self.get_name() + ".is_«attribute.name»_allowed()")
         return not(«attribute.readExcludedStates.ifContentFromListPython»)
+        
 	'''
 
     def pythonPropertyClass(Property prop) ''''«prop.name»':
@@ -100,12 +113,11 @@ class PythonUtils {
     '''
     
     def pythonCommandClass(Command cmd) '''        '«cmd.name»':
-            [[«cmd.argin.type.pythonType»«IF !cmd.argin.description.empty» , "«cmd.argin.description.oneLineString»"«ELSE» , "none"«ENDIF»],
-            [«cmd.argout.type.pythonType»«IF !cmd.argout.description.empty» , "«cmd.argout.description.oneLineString»"«ELSE» , "none"«ENDIF»]«IF cmd.displayLevel.equals("EXPERT") || 
-    !cmd.polledPeriod.equals("0")»,
+            [[«cmd.argin.type.pythonType», "«getArgDescription(cmd.argin.description.oneLineString)»"],
+            [«cmd.argout.type.pythonType», "«getArgDescription(cmd.argout.description.oneLineString)»"]«IF cmd.hasCmdPropertySet»,
             {
-    «IF cmd.displayLevel.equals("EXPERT")»            'Display level':PyTango.DispLevel.EXPERT,«ENDIF»
-    «IF !cmd.polledPeriod.equals("0")»            'Polling Period':«cmd.polledPeriod»,«ENDIF»
+            «setAttrProperty("Polling period", cmd.polledPeriod)»
+            «setAttrProperty("Display level", cmd.displayLevel)»
             } ],
     «ELSE»],«ENDIF»
     '''
@@ -114,37 +126,34 @@ class PythonUtils {
     [[«attr.dataType.pythonType»,
     PyTango.«attr.attType.toUpperCase»,
     PyTango.«attr.rwType.toUpperCase»«IF attr.image», «attr.maxX», «attr.maxY»«ELSE
-    »«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF !attr.properties.label.empty || !attr.properties.unit.empty ||
-    !attr.properties.standardUnit.empty ||!attr.properties.displayUnit.empty || !attr.properties.format.empty || 
-    !attr.properties.maxValue.empty|| !attr.properties.minValue.empty || !attr.properties.maxAlarm.empty || 
-    !attr.properties.minAlarm.empty || !attr.properties.maxWarning.empty || !attr.properties.minWarning.empty || 
-    !attr.properties.deltaTime.empty || !attr.properties.deltaValue.empty || !attr.properties.description.empty ||
-    attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0") || attr.eventCriteria!=null ||
-    attr.eventCriteria!=null || !attr.memorized.empty»,
+    »«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF attr.hasAttrPropertySet»,
     {
-    «IF !attr.properties.label.empty»    'label':"«attr.properties.label»",«ENDIF»
-    «IF !attr.properties.unit.empty»    'unit':"«attr.properties.unit»",«ENDIF»
-    «IF !attr.properties.standardUnit.empty»    'standard unit':«attr.properties.standardUnit»,«ENDIF»
-    «IF !attr.properties.displayUnit.empty»    'display unit':"«attr.properties.displayUnit»",«ENDIF»
-    «IF !attr.properties.format.empty»    'format':"«attr.properties.format»",«ENDIF»
-    «IF !attr.properties.maxValue.empty»    'max value':«attr.properties.maxValue»,«ENDIF»
-    «IF !attr.properties.minValue.empty»    'min value':«attr.properties.minValue»,«ENDIF»
-    «IF !attr.properties.maxAlarm.empty»    'max alarm':«attr.properties.maxAlarm»,«ENDIF»
-    «IF !attr.properties.minAlarm.empty»    'min alarm':«attr.properties.minAlarm»,«ENDIF»
-    «IF !attr.properties.maxWarning.empty»    'max warning':«attr.properties.maxWarning»,«ENDIF»
-    «IF !attr.properties.minWarning.empty»    'min warning':«attr.properties.minWarning»,«ENDIF»
-    «IF !attr.properties.deltaTime.empty»    'delta time':«attr.properties.deltaTime»,«ENDIF»
-    «IF !attr.properties.deltaValue.empty»    'delta value':«attr.properties.deltaValue»,«ENDIF»
-    «IF !attr.properties.description.empty»    'description':"«attr.properties.description.oneLineString»",«ENDIF»
-    «IF !attr.polledPeriod.equals("0")»    'Polling period':«attr.polledPeriod»,«ENDIF»
-    «IF attr.displayLevel.equals("EXPERT")»    'Display level':PyTango.DispLevel.EXPERT,«ENDIF»
-    «IF attr.eventCriteria!=null»«IF !attr.eventCriteria.period.empty»    'period':'«attr.eventCriteria.period»',«ENDIF»
-    «IF !attr.eventCriteria.relChange.empty»    'rel_change':'«attr.eventCriteria.relChange»',«ENDIF»
-    «IF !attr.eventCriteria.absChange.empty»    'abs_change':'«attr.eventCriteria.absChange»',«ENDIF»«ENDIF»
-    «IF attr.evArchiveCriteria!=null»«IF !attr.evArchiveCriteria.period.empty»    'archive_period':'«attr.evArchiveCriteria.period»',«ENDIF»
-    «IF !attr.evArchiveCriteria.relChange.empty»    'archive_rel_change':'«attr.evArchiveCriteria.relChange»',«ENDIF»
-    «IF !attr.evArchiveCriteria.absChange.empty»    'archive_abs_change':'«attr.evArchiveCriteria.absChange»',«ENDIF»«ENDIF»
-    «IF attr.write»«IF !attr.memorized.empty»    'Memorized':"«IF attr.memorizedAtInit.empty»false«ELSE»true«ENDIF»",«ENDIF»«ENDIF»
+    «setAttrProperty("label", attr.properties.label)»
+    «setAttrProperty("unit", attr.properties.unit)»
+    «setAttrProperty("standard unit", attr.properties.standardUnit)»
+    «setAttrProperty("display unit", attr.properties.displayUnit)»
+    «setAttrProperty("format", attr.properties.format)»
+    «setAttrProperty("max value", attr.properties.maxValue)»
+    «setAttrProperty("min value", attr.properties.minValue)»
+    «setAttrProperty("max alarm", attr.properties.maxAlarm)»
+    «setAttrProperty("min alarm", attr.properties.minAlarm)»
+    «setAttrProperty("max warning", attr.properties.maxWarning)»
+    «setAttrProperty("min warning", attr.properties.minWarning)»
+    «setAttrProperty("delta time", attr.properties.deltaTime)»
+    «setAttrProperty("delta value", attr.properties.deltaValue)»
+    «setAttrProperty("description", attr.properties.description.oneLineString)»
+    «setAttrProperty("Polling period", attr.polledPeriod)»
+    «setAttrProperty("Display level", attr.displayLevel)»
+    «IF attr.eventCriteria!=null»
+    «setAttrProperty("period", attr.eventCriteria.period)»
+    «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
+    «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
+    «ENDIF»
+    «IF attr.evArchiveCriteria!=null»
+    «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
+    «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
+    «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
+    «ENDIF»
     } ],
     «ELSE»],«ENDIF»
     '''
@@ -153,17 +162,17 @@ class PythonUtils {
 	def setEventCriteria(Attribute attribute) '''
 		«IF attribute.dataReadyEvent!=null»
 			«IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
-				«attribute.name.toLowerCase».set_data_ready_event(«attribute.dataReadyEvent.fire»);
+			    «attribute.name».set_data_ready_event(«attribute.dataReadyEvent.fire»);
 			«ENDIF»
 		«ENDIF»
 		«IF attribute.changeEvent!=null»
 			«IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
-				«attribute.name.toLowerCase».set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
+			     «attribute.name».set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
 			«ENDIF»
 		«ENDIF»
 		«IF attribute.archiveEvent!=null»
 			«IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
-				«attribute.name.toLowerCase».set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
+			     «attribute.name».set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
 			«ENDIF»
 		«ENDIF»
 	'''

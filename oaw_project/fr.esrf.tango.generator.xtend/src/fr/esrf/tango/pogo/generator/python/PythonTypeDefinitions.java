@@ -187,4 +187,61 @@ public class PythonTypeDefinitions {
 		}
 		return "";
 	}
+	
+	/**
+	 * attribute configuration utilities
+	 */
+	public String setAttrProperty(String propertyName, String strValue)
+	{
+		if (propertyName.equals("Display level"))
+		{
+			if (strValue.equals("EXPERT") || strValue.equals("PyTango.DispLevel.EXPERT"))
+			{
+				return "    \'" + propertyName + "\': PyTango.DispLevel.EXPERT,";
+			}
+			else
+				return "";
+		}
+		else
+		{
+			if (propertyName.equals("Polling period"))
+			{
+				if (!strValue.equals("0"))
+				{
+					return "    \'" + propertyName + "\': \"" + strValue + "\",";
+				}
+				else
+					return "";
+			}
+			else
+			{
+				if (strValue.length() > 0)
+					return "    \'" + propertyName + "\': \"" + strValue + "\",";
+				else
+					return "";
+			}
+		}
+	}
+	
+	public String getArgDescription(String strValue)
+	{
+		if (strValue.length() > 0)
+		{
+			return "" + strValue + "";
+		}
+		else
+			return "none";
+	}
+
+	
+	
+	public boolean isVoidType(Type my_type){
+		if (my_type instanceof VoidType)
+	    {
+    		return true;
+    	}
+    	else
+    		return false;
+	}
+	
 }

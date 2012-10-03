@@ -59,7 +59,7 @@ __docformat__ = 'restructuredtext'
 import PyTango
 import sys
 # Add additional import
-«cls.protectedArea("additinonal_import")»
+«cls.protectedArea("additionnal_import")»
 
 ##############################################################################
 ## Device States Description
@@ -97,20 +97,17 @@ class «cls.name» (PyTango.Device_4Impl):
     def init_device(self):
         self.debug_stream("In " + self.get_name() + ".init_device()")
         self.get_device_properties(self.get_device_class())
-		«FOR attr: cls.attributes»
-        «IF attr.read»        self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
-		«ENDFOR»
-		# Code for adding Dynamic attributes - move it where you want
-        «FOR attr : cls.dynamicAttributes»
-        «IF attr.scalar»attr = PyTango.Attr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase»)«ENDIF»
-        «IF attr.spectrum»attr = PyTango.SpectrumAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX»)«ENDIF»
-        «IF attr.image»attr = PyTango.ImageAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX», «attr.maxY»)«ENDIF»
+«FOR attr: cls.attributes»
+«IF attr.read»        self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
+«ENDFOR»
+«FOR attr : cls.dynamicAttributes»
+«IF true»        # Code for adding dynamically «attr.name» - move it where you want«ENDIF»
+«IF attr.scalar»        attr = PyTango.Attr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase»)«ENDIF»
+«IF attr.spectrum»        attr = PyTango.SpectrumAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX»)«ENDIF»
+«IF attr.image»        attr = PyTango.ImageAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX», «attr.maxY»)«ENDIF»
         self.add_attribute(attr,«IF attr.read»self.read_«attr.name»«ELSE»None«ENDIF», «IF attr.write»self.write_«attr.name»«ELSE»None«ENDIF», None)
-        «IF attr.read»self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
-        «ENDFOR»
-        «FOR attr: cls.attributes»
-        «attr.setEventCriteria»
-        «ENDFOR»
+«IF attr.read»        self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
+«ENDFOR»
 		«cls.protectedArea("init_device")»
 
 #------------------------------------------------------------------
