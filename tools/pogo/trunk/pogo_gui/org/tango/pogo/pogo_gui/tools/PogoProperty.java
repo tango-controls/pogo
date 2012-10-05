@@ -46,10 +46,7 @@ import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 import org.tango.pogo.pogo_gui.PogoConst;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 
@@ -116,11 +113,45 @@ public class PogoProperty {
     //===============================================================
     //===============================================================
     private PogoProperty() throws DevFailed {
+	
+		checkEnvironment();
+	
         loadDefaultProperties();
         loadSiteProperties();
         loadPogoRcProperties();
     }
 
+    //===============================================================
+    /**
+     * Check the class path from environment.
+     * Some Eclipse classes failed if at least one path is empty or does not exist.
+     * This method get the classpath, and keep only the existing ones.
+     */
+    //===============================================================
+	private void checkEnvironment() {
+		String classpath = System.getProperty("java.class.path");
+        //System.out.println("java.class.path=" + classpath);
+
+        //  Get each path
+        StringTokenizer stk = new StringTokenizer(classpath, ":");
+        classpath = "";
+        while (stk.hasMoreTokens()) {
+            String  s = stk.nextToken();
+            //  Check if exists
+            File f = new File(s);
+            if (f.exists())
+                classpath += s + ":";
+            else
+                System.err.println(s + " found in classpath,  does not exist !!!");
+        }
+        if (classpath.endsWith(":")) {
+            //  Remove it
+            classpath = classpath.substring(0, classpath.length()-1);
+        }
+		//System.out.println("java.class.path=" + classpath);
+		System.setProperty("java.class.path", classpath);
+
+	}
     //===============================================================
     //===============================================================
     private void loadDefaultProperties() throws DevFailed {
