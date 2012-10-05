@@ -47,6 +47,12 @@ class JavaDevice  implements IGenerator {
 			}
 		}
 	}
+
+
+
+	//======================================================
+	// define the java file for class
+	//======================================================
 	def generateJavaDeviceFile (PogoDeviceClass cls) '''
 		«cls.javaHeader»
 
@@ -129,33 +135,33 @@ class JavaDevice  implements IGenerator {
 
 		package «cls.javaDevicePackage»;
 
-		import org.slf4j.Logger;
-		import org.slf4j.LoggerFactory;
-		import org.slf4j.ext.XLogger;
-		import org.slf4j.ext.XLoggerFactory;
-		import org.tango.DeviceState;
-		import org.tango.server.InvocationContext;
-		import org.tango.server.ServerManager;
-		import org.tango.server.annotation.AroundInvoke;
-		import org.tango.server.annotation.Attribute;
-		import org.tango.server.annotation.AttributeProperties;
-		import org.tango.server.annotation.ClassProperty;
-		import org.tango.server.annotation.Command;
-		import org.tango.server.annotation.Delete;
-		import org.tango.server.annotation.Device;
-		import org.tango.server.annotation.DeviceProperty;
-		import org.tango.server.annotation.DynamicManagement;
-		import org.tango.server.annotation.Init;
-		import org.tango.server.annotation.State;
-		import org.tango.server.annotation.StateMachine;
-		import org.tango.server.annotation.Status;
-		import org.tango.server.dynamic.DynamicManager;
-		import org.tango.utils.DevFailedUtils;
-		
-		//	Import Tango IDL types
-		import fr.esrf.Tango.*;
-
-		«cls.protectedArea("imports", "Add your own import packages", true)»
+		«cls.protectedArea("imports", 
+				"import org.slf4j.Logger;\n" +
+				"import org.slf4j.LoggerFactory;\n" +
+				"import org.slf4j.ext.XLogger;\n" +
+				"import org.slf4j.ext.XLoggerFactory;\n" +
+				"import org.tango.DeviceState;\n" +
+				"import org.tango.server.InvocationContext;\n" +
+				"import org.tango.server.ServerManager;\n" +
+				"import org.tango.server.annotation.AroundInvoke;\n" +
+				"import org.tango.server.annotation.Attribute;\n" +
+				"import org.tango.server.annotation.AttributeProperties;\n" +
+				"import org.tango.server.annotation.ClassProperty;\n" +
+				"import org.tango.server.annotation.Command;\n" +
+				"import org.tango.server.annotation.Delete;\n" +
+				"import org.tango.server.annotation.Device;\n" +
+				"import org.tango.server.annotation.DeviceProperty;\n" +
+				"import org.tango.server.annotation.DynamicManagement;\n" +
+				"import org.tango.server.annotation.Init;\n" +
+				"import org.tango.server.annotation.State;\n" +
+				"import org.tango.server.annotation.StateMachine;\n" +
+				"import org.tango.server.annotation.Status;\n" +
+				"import org.tango.server.dynamic.DynamicManager;\n" +
+				"import org.tango.utils.DevFailedUtils;\n" +
+				"\n" +
+				"//	Import Tango IDL types\n" +
+				"import fr.esrf.Tango.*;",
+				false)»
 	'''
 
 
@@ -172,7 +178,7 @@ class JavaDevice  implements IGenerator {
 			private «property.strJavaType» «property.name.dataMemberName»;
 			/**
 			 * set property «property.name»
-			 * @param  «property.name.dataMemberName»
+			 * @param  «property.name.dataMemberName»  see description above.
 			 */
 			public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
 				«cls.protectedArea("set" + property.name, "Check property value here", true)»
@@ -195,7 +201,7 @@ class JavaDevice  implements IGenerator {
 			private «property.strJavaType» «property.name.dataMemberName»;
 			/**
 			 * set property «property.name»
-			 * @param  «property.name.dataMemberName»
+			 * @param  «property.name.dataMemberName»  see description above.
 			 */
 			public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
 				«cls.protectedArea("set" + property.name, "Check property value here", true)»
@@ -265,7 +271,7 @@ class JavaDevice  implements IGenerator {
 		@DynamicManagement
 		private DynamicManager dynamicManager;
 		/**
-		 * Returns the DynamicManager instance 
+		 * @param dynamicManager the DynamicManager instance 
 		 */
 		public void setDynamicManager(final DynamicManager dynamicManager) {
 			this.dynamicManager = dynamicManager;

@@ -45,7 +45,7 @@ class LinuxMakefile   implements IGenerator{
 		MINOR_VERS   = 0
 		RELEASE      = Release_$(MAJOR_VERS)_$(MINOR_VERS)
 		
-		INSTANCE     = pv
+		INSTANCE     = test
 
 		
 		#=============================================================================
