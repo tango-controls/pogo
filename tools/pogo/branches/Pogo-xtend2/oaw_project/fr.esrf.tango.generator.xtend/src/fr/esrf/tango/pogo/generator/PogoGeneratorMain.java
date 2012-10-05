@@ -79,6 +79,9 @@ public class PogoGeneratorMain {
 			if (languages.contains(TYPE_JAVA)) {
 				launchArgs.add("-pgenerateJava=true");
 			}
+			if (languages.contains(TYPE_PYTHON)) {
+				launchArgs.add("-pgeneratePython=true");
+			}
 		}
 		try {
 			Mwe2Launcher.main(launchArgs.toArray(new String[0]));
