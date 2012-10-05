@@ -357,7 +357,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	//===========================================================
 	public String strArgoutTypeReturn(Command command) {
-		String type = JavaTypeDefinitions.javaType(command.getArgin().getType());
+		String type = JavaTypeDefinitions.javaType(command.getArgout().getType());
 		if (type.equals("void"))
 			return "";
 		else
