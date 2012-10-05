@@ -9,49 +9,75 @@ import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinition
 import static extension fr.esrf.tango.pogo.generator.python.ProtectedArea.*
 
 class PythonUtils {
-	@Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
-	@Inject	extension ProtectedArea
-	@Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions	
-		
-	def commentMultiLinesPython(PogoDeviceClass cls){
-		cls.description.description.replaceAll("\n","\n#\t\t\t\t");
-	}
-	
-	def commentMultiLinesPythonStr(String str){
-		str.replaceAll("\n","\n#\t\t\t\t");
-	}
-	
-	def hasAttrPropertySet(Attribute attr){
-		if (!attr.properties.label.empty || !attr.properties.unit.empty ||
-	    !attr.properties.standardUnit.empty ||!attr.properties.displayUnit.empty || !attr.properties.format.empty || 
-	    !attr.properties.maxValue.empty|| !attr.properties.minValue.empty || !attr.properties.maxAlarm.empty || 
-	    !attr.properties.minAlarm.empty || !attr.properties.maxWarning.empty || !attr.properties.minWarning.empty || 
-	    !attr.properties.deltaTime.empty || !attr.properties.deltaValue.empty || !attr.properties.description.empty ||
-	    attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0") || attr.eventCriteria!=null ||
-	    attr.eventCriteria!=null)
-	    {
-    		return true;
+    @Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
+    @Inject    extension ProtectedArea
+    @Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions    
+        
+    def commentMultiLinesPython(PogoDeviceClass cls){
+        cls.description.description.replaceAll("\n","\n#                ");
+    }
+    
+    def commentMultiLinesPythonStr(String str){
+        str.replaceAll("\n","\n#                ");
+    }
+    
+    def isMemorized(Attribute attr)
+    {
+    	if (attr.write)
+    	{
+    		if (!attr.memorized.empty)
+    		{
+    			if(attr.memorizedAtInit == "true")
+    			{
+    				return "    \'Memorized\':\"true\"";
+    			}
+    			else
+    			{
+    				return "    \'Memorized\':\"true_without_hard_applied\"";
+    			}
+    		}
+    		else
+    		{
+    			return "";
+    		}
     	}
     	else
-    		return false;
-	}
-	
-	def hasCmdPropertySet(Command cmd){
-		if (cmd.displayLevel.equals("EXPERT") || !cmd.polledPeriod.equals("0"))
-	    {
-    		return true;
+    	{
+    		return "";
     	}
-    	else
-    		return false;
-	}
-	
-	def commandExecution(PogoDeviceClass cls, Command cmd) '''
+    }
+    
+    def hasAttrPropertySet(Attribute attr){
+        if (!attr.properties.label.empty || !attr.properties.unit.empty ||
+        !attr.properties.standardUnit.empty ||!attr.properties.displayUnit.empty || !attr.properties.format.empty || 
+        !attr.properties.maxValue.empty|| !attr.properties.minValue.empty || !attr.properties.maxAlarm.empty || 
+        !attr.properties.minAlarm.empty || !attr.properties.maxWarning.empty || !attr.properties.minWarning.empty || 
+        !attr.properties.deltaTime.empty || !attr.properties.deltaValue.empty || !attr.properties.description.empty ||
+        attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0") || attr.eventCriteria!=null ||
+        attr.eventCriteria!=null)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    def hasCmdPropertySet(Command cmd){
+        if (cmd.displayLevel.equals("EXPERT") || !cmd.polledPeriod.equals("0"))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    def commandExecution(PogoDeviceClass cls, Command cmd) '''
 #------------------------------------------------------------------
-#	«cmd.name» command:
+#    «cmd.name» command:
 #------------------------------------------------------------------
     def «cmd.name»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
         """ «cmd.description»
-	    
+        
         :param «IF !cmd.argin.type.voidType»argin«ENDIF»: «cmd.argin.description»
         :type: «cmd.argin.type.pythonType»
         :return: «cmd.argout.description»
@@ -61,20 +87,20 @@ class PythonUtils {
         «protectedArea(cls, cmd.name)»
         «IF !cmd.argout.type.voidType»return argout«ENDIF»
         
-		'''
-		
-	def commandMethodStateMachine(Command cmd) '''
+        '''
+        
+    def commandMethodStateMachine(Command cmd) '''
 #------------------------------------------------------------------
-#	Is «cmd.name» command allowed
+#    Is «cmd.name» command allowed
 #------------------------------------------------------------------
     def is_«cmd.name»_allowed(self):
         self.debug_stream("In " + self.get_name() + ".is_«cmd.name»_allowed()")
         return not(«cmd.excludedStates.ifContentFromListPython»)
-		'''
-	
-	def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
+        '''
+    
+    def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 #------------------------------------------------------------------
-#	Write «attribute.name» attribute
+#    Write «attribute.name» attribute
 #------------------------------------------------------------------
     def write_«attribute.name»(self, attr):
         self.debug_stream("In " + self.get_name() + ".write_«attribute.name»()")
@@ -82,34 +108,34 @@ class PythonUtils {
         self.debug_stream("Attribute value = " + str(data))
         «protectedArea(cls, attribute.name + "_write")»
         
-	'''
-		
-	def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
+    '''
+        
+    def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 #------------------------------------------------------------------
-#	Read «attribute.name» attribute
+#    Read «attribute.name» attribute
 #------------------------------------------------------------------
     def read_«attribute.name»(self, attr):
         self.debug_stream("In " + self.get_name() + ".read_«attribute.name»()")
         «protectedArea(cls, attribute.name + "_read")»
         attr.set_value(self.attr_«attribute.name»_read)
         
-	'''
-	
-	def attributeMethodStateMachine(Attribute attribute) '''
+    '''
+    
+    def attributeMethodStateMachine(Attribute attribute) '''
 #------------------------------------------------------------------
-#	Is «attribute.name» attribute allowed
+#    Is «attribute.name» attribute allowed
 #------------------------------------------------------------------
     def is_«attribute.name»_allowed(self, attr):
         self.debug_stream("In " + self.get_name() + ".is_«attribute.name»_allowed()")
         return not(«attribute.readExcludedStates.ifContentFromListPython»)
         
-	'''
+    '''
 
-    def pythonPropertyClass(Property prop) ''''«prop.name»':
-    [«prop.type.pythonPropType»«IF !prop.description.empty»,
-    "«prop.description»"«ENDIF»«IF !prop.defaultPropValue.empty»,
-    «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
-    [] «ENDIF»],
+    def pythonPropertyClass(Property prop) '''        '«prop.name»':
+            [«prop.type.pythonPropType»«IF !prop.description.empty»,
+            "«prop.description»"«ENDIF»«IF !prop.defaultPropValue.empty»,
+            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
+            [] «ENDIF»],
     '''
     
     def pythonCommandClass(Command cmd) '''        '«cmd.name»':
@@ -122,58 +148,58 @@ class PythonUtils {
     «ELSE»],«ENDIF»
     '''
     
-    def pythonAttributeClass(Attribute attr) ''''«attr.name»':
-    [[«attr.dataType.pythonType»,
-    PyTango.«attr.attType.toUpperCase»,
-    PyTango.«attr.rwType.toUpperCase»«IF attr.image», «attr.maxX», «attr.maxY»«ELSE
-    »«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF attr.hasAttrPropertySet»,
-    {
-    «setAttrProperty("label", attr.properties.label)»
-    «setAttrProperty("unit", attr.properties.unit)»
-    «setAttrProperty("standard unit", attr.properties.standardUnit)»
-    «setAttrProperty("display unit", attr.properties.displayUnit)»
-    «setAttrProperty("format", attr.properties.format)»
-    «setAttrProperty("max value", attr.properties.maxValue)»
-    «setAttrProperty("min value", attr.properties.minValue)»
-    «setAttrProperty("max alarm", attr.properties.maxAlarm)»
-    «setAttrProperty("min alarm", attr.properties.minAlarm)»
-    «setAttrProperty("max warning", attr.properties.maxWarning)»
-    «setAttrProperty("min warning", attr.properties.minWarning)»
-    «setAttrProperty("delta time", attr.properties.deltaTime)»
-    «setAttrProperty("delta value", attr.properties.deltaValue)»
-    «setAttrProperty("description", attr.properties.description.oneLineString)»
-    «setAttrProperty("Polling period", attr.polledPeriod)»
-    «setAttrProperty("Display level", attr.displayLevel)»
-    «IF attr.eventCriteria!=null»
-    «setAttrProperty("period", attr.eventCriteria.period)»
-    «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
-    «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
-    «ENDIF»
-    «IF attr.evArchiveCriteria!=null»
-    «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
-    «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
-    «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
-    «ENDIF»
-    } ],
-    «ELSE»],«ENDIF»
+    def pythonAttributeClass(Attribute attr) '''        '«attr.name»':
+            [[«attr.dataType.pythonType»,
+            PyTango.«attr.attType.toUpperCase»,
+            PyTango.«attr.rwType.toUpperCase»«IF attr.image», «attr.maxX», «attr.maxY»«ELSE»«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF attr.hasAttrPropertySet»,
+            {
+            «setAttrProperty("label", attr.properties.label)»
+            «setAttrProperty("unit", attr.properties.unit)»
+            «setAttrProperty("standard unit", attr.properties.standardUnit)»
+            «setAttrProperty("display unit", attr.properties.displayUnit)»
+            «setAttrProperty("format", attr.properties.format)»
+            «setAttrProperty("max value", attr.properties.maxValue)»
+            «setAttrProperty("min value", attr.properties.minValue)»
+            «setAttrProperty("max alarm", attr.properties.maxAlarm)»
+            «setAttrProperty("min alarm", attr.properties.minAlarm)»
+            «setAttrProperty("max warning", attr.properties.maxWarning)»
+            «setAttrProperty("min warning", attr.properties.minWarning)»
+            «setAttrProperty("delta time", attr.properties.deltaTime)»
+            «setAttrProperty("delta value", attr.properties.deltaValue)»
+            «setAttrProperty("description", attr.properties.description.oneLineString)»
+            «setAttrProperty("Polling period", attr.polledPeriod)»
+            «setAttrProperty("Display level", attr.displayLevel)»
+            «IF attr.eventCriteria!=null»
+            «setAttrProperty("period", attr.eventCriteria.period)»
+            «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
+            «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
+            «ENDIF»
+            «IF attr.evArchiveCriteria!=null»
+            «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
+            «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
+            «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
+            «ENDIF»
+            «attr.isMemorized»
+            } ],
+            «ELSE»],«ENDIF»
     '''
     
     //======================================================
-	def setEventCriteria(Attribute attribute) '''
-		«IF attribute.dataReadyEvent!=null»
-			«IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
-			    «attribute.name».set_data_ready_event(«attribute.dataReadyEvent.fire»);
-			«ENDIF»
-		«ENDIF»
-		«IF attribute.changeEvent!=null»
-			«IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
-			     «attribute.name».set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
-			«ENDIF»
-		«ENDIF»
-		«IF attribute.archiveEvent!=null»
-			«IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
-			     «attribute.name».set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
-			«ENDIF»
-		«ENDIF»
-	'''
+    def setEventCriteria(Attribute attribute) '''
+        «IF attribute.dataReadyEvent!=null»
+            «IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
+                «attribute.name».set_data_ready_event(«attribute.dataReadyEvent.fire»);
+            «ENDIF»
+        «ENDIF»
+        «IF attribute.changeEvent!=null»
+            «IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
+                 «attribute.name».set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
+            «ENDIF»
+        «ENDIF»
+        «IF attribute.archiveEvent!=null»
+            «IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
+                 «attribute.name».set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
+            «ENDIF»
+        «ENDIF»
+    '''
 }

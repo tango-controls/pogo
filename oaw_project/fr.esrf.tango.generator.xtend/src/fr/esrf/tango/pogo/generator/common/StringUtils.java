@@ -160,7 +160,7 @@ public class StringUtils {
 		for (int i=0 ; i<list.size(); i++) {
 			sb.append("PyTango.DevState.").append(list.get(i));
 			if (i<list.size()-1)
-				sb.append(" ,\n	");
+				sb.append(",\n    ");
 		}
 		sb.append("]");
 		return sb.toString();
