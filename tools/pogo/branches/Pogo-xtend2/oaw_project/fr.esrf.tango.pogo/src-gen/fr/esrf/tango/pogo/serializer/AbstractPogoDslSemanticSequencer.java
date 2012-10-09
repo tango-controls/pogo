@@ -639,6 +639,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         filestogenerate=STRING 
 	 *         identification=ClassIdentification 
 	 *         comments=Comments 
+	 *         license=STRING 
 	 *         hasMandatoryProperty=Boolean 
 	 *         hasConcreteProperty=Boolean 
 	 *         hasAbstractCommand=Boolean 
@@ -912,6 +913,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         sourcePath=STRING 
 	 *         description=STRING 
 	 *         title=STRING 
+	 *         license=STRING 
 	 *         classes+=OneClassSimpleDef 
 	 *         filestogenerate=STRING 
 	 *         preferences=Preferences

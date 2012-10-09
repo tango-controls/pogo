@@ -76,7 +76,7 @@ class LinuxMakefile   implements IGenerator{
 		#=============================================================================
 		# Jar file generation
 		#
-		JAR_NAME = «cls.name.toLowerCase».jar
+		JAR_NAME = «cls.name.toLowerCase»-$(MAJOR_VERS).$(MINOR_VERS).jar
 		jar:	classes
 			cd $(BIN_DIR); jar cvf  $(JAR_NAME) $(SOURCE_FILES)/*.class
 			mv $(BIN_DIR)/$(JAR_NAME) .

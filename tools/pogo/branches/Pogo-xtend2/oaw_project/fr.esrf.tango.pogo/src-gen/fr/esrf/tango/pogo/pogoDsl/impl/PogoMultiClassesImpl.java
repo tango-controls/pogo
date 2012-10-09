@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getSourcePath <em>Source Path</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getLicense <em>License</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getPreferences <em>Preferences</em>}</li>
@@ -147,6 +148,26 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String title = TITLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLicense() <em>License</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLicense()
+   * @generated
+   * @ordered
+   */
+  protected static final String LICENSE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLicense() <em>License</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLicense()
+   * @generated
+   * @ordered
+   */
+  protected String license = LICENSE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
@@ -329,6 +350,29 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getLicense()
+  {
+    return license;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLicense(String newLicense)
+  {
+    String oldLicense = license;
+    license = newLicense;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_MULTI_CLASSES__LICENSE, oldLicense, license));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<OneClassSimpleDef> getClasses()
   {
     if (classes == null)
@@ -447,6 +491,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
         return getDescription();
       case PogoDslPackage.POGO_MULTI_CLASSES__TITLE:
         return getTitle();
+      case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
+        return getLicense();
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         return getClasses();
       case PogoDslPackage.POGO_MULTI_CLASSES__FILESTOGENERATE:
@@ -482,6 +528,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
         return;
       case PogoDslPackage.POGO_MULTI_CLASSES__TITLE:
         setTitle((String)newValue);
+        return;
+      case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
+        setLicense((String)newValue);
         return;
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         getClasses().clear();
@@ -522,6 +571,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.POGO_MULTI_CLASSES__TITLE:
         setTitle(TITLE_EDEFAULT);
         return;
+      case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
+        setLicense(LICENSE_EDEFAULT);
+        return;
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         getClasses().clear();
         return;
@@ -555,6 +607,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case PogoDslPackage.POGO_MULTI_CLASSES__TITLE:
         return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+      case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
+        return LICENSE_EDEFAULT == null ? license != null : !LICENSE_EDEFAULT.equals(license);
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         return classes != null && !classes.isEmpty();
       case PogoDslPackage.POGO_MULTI_CLASSES__FILESTOGENERATE:
@@ -586,6 +640,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
     result.append(description);
     result.append(", title: ");
     result.append(title);
+    result.append(", license: ");
+    result.append(license);
     result.append(", filestogenerate: ");
     result.append(filestogenerate);
     result.append(')');

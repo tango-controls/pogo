@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getIdentification <em>Identification</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getComments <em>Comments</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getLicense <em>License</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasMandatoryProperty <em>Has Mandatory Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasConcreteProperty <em>Has Concrete Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
@@ -183,6 +184,26 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected Comments comments;
+
+  /**
+   * The default value of the '{@link #getLicense() <em>License</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLicense()
+   * @generated
+   * @ordered
+   */
+  protected static final String LICENSE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLicense() <em>License</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLicense()
+   * @generated
+   * @ordered
+   */
+  protected String license = LICENSE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getHasMandatoryProperty() <em>Has Mandatory Property</em>}' attribute.
@@ -535,6 +556,29 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getLicense()
+  {
+    return license;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLicense(String newLicense)
+  {
+    String oldLicense = license;
+    license = newLicense;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.CLASS_DESCRIPTION__LICENSE, oldLicense, license));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getHasMandatoryProperty()
   {
     return hasMandatoryProperty;
@@ -691,6 +735,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return getIdentification();
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         return getComments();
+      case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
+        return getLicense();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         return getHasMandatoryProperty();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY:
@@ -740,6 +786,9 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return;
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         setComments((Comments)newValue);
+        return;
+      case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
+        setLicense((String)newValue);
         return;
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         setHasMandatoryProperty((String)newValue);
@@ -794,6 +843,9 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         setComments((Comments)null);
         return;
+      case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
+        setLicense(LICENSE_EDEFAULT);
+        return;
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         setHasMandatoryProperty(HAS_MANDATORY_PROPERTY_EDEFAULT);
         return;
@@ -839,6 +891,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return identification != null;
       case PogoDslPackage.CLASS_DESCRIPTION__COMMENTS:
         return comments != null;
+      case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
+        return LICENSE_EDEFAULT == null ? license != null : !LICENSE_EDEFAULT.equals(license);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         return HAS_MANDATORY_PROPERTY_EDEFAULT == null ? hasMandatoryProperty != null : !HAS_MANDATORY_PROPERTY_EDEFAULT.equals(hasMandatoryProperty);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY:
@@ -874,6 +928,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
     result.append(language);
     result.append(", filestogenerate: ");
     result.append(filestogenerate);
+    result.append(", license: ");
+    result.append(license);
     result.append(", hasMandatoryProperty: ");
     result.append(hasMandatoryProperty);
     result.append(", hasConcreteProperty: ");

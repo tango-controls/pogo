@@ -400,4 +400,17 @@ public class JavaUtils extends StringUtils {
 	}
 	//===========================================================
 	//===========================================================
+	public static String getJserverJarFile() {
+		String jarFile   = System.getenv("JSERVER_JAR_FILE");
+		if (jarFile!=null)
+			return jarFile;
+
+		String tangoRoot = System.getenv("TANGO_ROOT");
+		if (tangoRoot==null)
+			return "%TANGO_ROOT%/share/tango/java/JTangoServer.jar";
+		return tangoRoot + "/share/tango/java/JTangoServer.jar";
+	}
+	
+	//===========================================================
+	//===========================================================
 }

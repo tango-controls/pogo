@@ -129,7 +129,9 @@ class JavaDevice  implements IGenerator {
 			"The class is derived from Device. It represents the\n" +
 			"CORBA servant object which will be accessed from the\n" +
 			"network. All commands which can be executed on the\n" +
-			cls.name + " are implemented in this file.",  cls.description.title)»
+			cls.name + " are implemented in this file.",
+			cls.description.title,
+			cls.description.license)»
 
 		«cls.closeProtectedArea(".java")»
 

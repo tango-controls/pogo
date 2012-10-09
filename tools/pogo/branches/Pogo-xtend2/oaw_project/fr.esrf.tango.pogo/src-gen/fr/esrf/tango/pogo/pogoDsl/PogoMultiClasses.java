@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getSourcePath <em>Source Path</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getTitle <em>Title</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getLicense <em>License</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getClasses <em>Classes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getPreferences <em>Preferences</em>}</li>
@@ -163,6 +164,32 @@ public interface PogoMultiClasses extends EObject
    * @generated
    */
   void setTitle(String value);
+
+  /**
+   * Returns the value of the '<em><b>License</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>License</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>License</em>' attribute.
+   * @see #setLicense(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoMultiClasses_License()
+   * @model
+   * @generated
+   */
+  String getLicense();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getLicense <em>License</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>License</em>' attribute.
+   * @see #getLicense()
+   * @generated
+   */
+  void setLicense(String value);
 
   /**
    * Returns the value of the '<em><b>Classes</b></em>' containment reference list.
