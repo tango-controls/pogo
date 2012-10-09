@@ -31,7 +31,7 @@ class Headers {
 	//======================================================
 	// generic file header
 	//======================================================
-	def fileHeader(String fileName, String description, String title, String licence) {
+	def fileHeader(String fileName, String description, String title, String license) {
 		rcsId(fileName) +
 		"//=============================================================================\n" +
 		"//\n" +
@@ -40,7 +40,7 @@ class Headers {
 		"// description : " + description.comments("//               ") + "\n" +
 		"//\n" +
 		"// project :     " + title + "\n" +
-		"//\n" + licenseText(licence, "// ") +
+		"//\n" + licenseText(license, "// ") +
 		"// "  + "Author:".cvsEscaped + "\n" +
 		"//\n" + 
 		"// "  + "Revision:".cvsEscaped + "\n" +
