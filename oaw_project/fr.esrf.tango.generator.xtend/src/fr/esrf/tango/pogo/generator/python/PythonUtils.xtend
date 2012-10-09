@@ -7,10 +7,11 @@ import fr.esrf.tango.pogo.pogoDsl.Property
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.python.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 
 class PythonUtils {
     @Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
-    @Inject    extension ProtectedArea
+    @Inject extension ProtectedArea
     @Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions    
         
     def commentMultiLinesPython(PogoDeviceClass cls){
@@ -21,54 +22,46 @@ class PythonUtils {
         str.replaceAll("\n","\n#                ");
     }
     
-    def isMemorized(Attribute attr)
-    {
-    	if (attr.write)
-    	{
-    		if (!attr.memorized.empty)
-    		{
-    			if(attr.memorizedAtInit == "true")
-    			{
-    				return "    \'Memorized\':\"true\"";
-    			}
-    			else
-    			{
-    				return "    \'Memorized\':\"true_without_hard_applied\"";
-    			}
+    def isMemorized(Attribute attr) {
+    	if (attr.write)	{
+    		if (attr.memorized!=null) {
+    			if (attr.memorized == "true") {
+	    			if(attr.memorizedAtInit == "true") {
+	    				return "    \'Memorized\':\"true\""; 
+	    			}
+	    			else {
+	    				return "    \'Memorized\':\"true_without_hard_applied\"";
+	    			}
+	    		}
     		}
-    		else
-    		{
-    			return "";
-    		}
-    	}
-    	else
-    	{
-    		return "";
-    	}
+		}
+   		return "";
     }
     
     def hasAttrPropertySet(Attribute attr){
-        if (!attr.properties.label.empty || !attr.properties.unit.empty ||
-        !attr.properties.standardUnit.empty ||!attr.properties.displayUnit.empty || !attr.properties.format.empty || 
-        !attr.properties.maxValue.empty|| !attr.properties.minValue.empty || !attr.properties.maxAlarm.empty || 
-        !attr.properties.minAlarm.empty || !attr.properties.maxWarning.empty || !attr.properties.minWarning.empty || 
-        !attr.properties.deltaTime.empty || !attr.properties.deltaValue.empty || !attr.properties.description.empty ||
-        attr.displayLevel.equals("EXPERT") || !attr.polledPeriod.equals("0") || attr.eventCriteria!=null ||
-        attr.eventCriteria!=null)
-        {
-            return true;
-        }
-        else
-            return false;
+        return (
+        	!attr.properties.label.empty       ||
+        	!attr.properties.unit.empty        ||
+	        !attr.properties.standardUnit.empty||
+	        !attr.properties.displayUnit.empty ||
+	        !attr.properties.format.empty      || 
+	        !attr.properties.maxValue.empty    ||
+	        !attr.properties.minValue.empty    ||
+	        !attr.properties.maxAlarm.empty    || 
+        	!attr.properties.minAlarm.empty    ||
+        	!attr.properties.maxWarning.empty  ||
+        	!attr.properties.minWarning.empty  ||
+        	!attr.properties.deltaTime.empty   ||
+        	!attr.properties.deltaValue.empty  ||
+        	!attr.properties.description.empty ||
+        	attr.displayLevel.equals("EXPERT") ||
+        	!attr.polledPeriod.equals("0")     ||
+        	attr.eventCriteria!=null           ||
+	        attr.eventCriteria!=null);
     }
     
     def hasCmdPropertySet(Command cmd){
-        if (cmd.displayLevel.equals("EXPERT") || !cmd.polledPeriod.equals("0"))
-        {
-            return true;
-        }
-        else
-            return false;
+        return (cmd.displayLevel.equals("EXPERT") || !cmd.polledPeriod.equals("0"));
     }
     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
@@ -148,10 +141,22 @@ class PythonUtils {
     «ELSE»],«ENDIF»
     '''
     
+    def String pythonAttributeSize(Attribute attr) {
+    	if (attr.image) {
+    		return ", «attr.maxX», «attr.maxY";
+   		}
+    	else
+    	if (attr.spectrum) {
+    		return ", «attr.maxX";
+    	}
+    	else
+			return "";
+    }
+    
     def pythonAttributeClass(Attribute attr) '''        '«attr.name»':
             [[«attr.dataType.pythonType»,
             PyTango.«attr.attType.toUpperCase»,
-            PyTango.«attr.rwType.toUpperCase»«IF attr.image», «attr.maxX», «attr.maxY»«ELSE»«IF attr.spectrum», «attr.maxX»«ENDIF»«ENDIF»]«IF attr.hasAttrPropertySet»,
+            PyTango.«attr.rwType.toUpperCase»«pythonAttributeSize(attr)»]«IF attr.hasAttrPropertySet»,
             {
             «setAttrProperty("label", attr.properties.label)»
             «setAttrProperty("unit", attr.properties.unit)»
@@ -170,15 +175,15 @@ class PythonUtils {
             «setAttrProperty("Polling period", attr.polledPeriod)»
             «setAttrProperty("Display level", attr.displayLevel)»
             «IF attr.eventCriteria!=null»
-            «setAttrProperty("period", attr.eventCriteria.period)»
-            «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
-            «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
+                «setAttrProperty("period", attr.eventCriteria.period)»
+                «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
+                «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
             «ENDIF»
             «IF attr.evArchiveCriteria!=null»
-            «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
-            «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
-            «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
-            «ENDIF»
+                «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
+                «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
+                «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
+             «ENDIF»
             «attr.isMemorized»
             } ],
             «ELSE»],«ENDIF»
