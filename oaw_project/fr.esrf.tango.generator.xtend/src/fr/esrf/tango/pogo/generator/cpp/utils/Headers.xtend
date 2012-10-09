@@ -9,7 +9,6 @@ import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
 import com.google.inject.Inject
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
-import fr.esrf.tango.pogo.pogoDsl.Preferences
 
 class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 
@@ -24,7 +23,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 	def deviceIncludeFileHeader(PogoDeviceClass cls) {
 		fileHeader(deviceIncludeFileName(cls),
 			"Include file for the " + cls.name + " class",
-			 cls.description.title
+			 cls.description.title,
+			cls.description.license
 		)
 	}
 
@@ -42,7 +42,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			" the " + cls.name + " device class.\n"+
 			"It contains all properties and methods which the \n" +
 			cls.name + " requires only once e.g. the commands.",
-			 cls.description.title
+			 cls.description.title,
+			cls.description.license
 		)
 	}
 
@@ -60,7 +61,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"CORBA servant object which will be accessed from the\n" +
 			"network. All commands which can be executed on the\n" +
 			cls.name + " are implemented in this file.",
-			cls.description.title
+			cls.description.title,
+			cls.description.license
 		)
 	}
 	
@@ -78,7 +80,9 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"It implements the command and attribute list\n" +
 			"and all properties and methods required\n" +
 			"by the " + cls.name + " once per process.",
-			cls.description.title
+			cls.description.title,
+			cls.description.license
+			
 		)
 	}
 	
@@ -91,7 +95,9 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 	def stateMachineFileHeader(PogoDeviceClass cls) {
 		fileHeader(stateMachineFileName(cls),
 			"State machine file for the " + cls.name + " class",
-			 cls.description.title
+			cls.description.title,
+			cls.description.license
+			 
 		)
 	}
 
@@ -104,7 +110,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 	def dynamicAttrUtilsFileHeader(PogoDeviceClass cls) {
 		fileHeader(dynamicAttrUtilsFileName(cls),
 			"Dynamic attributes utilities file for the " + cls.name + " class",
-			 cls.description.title
+			cls.description.title,
+			cls.description.license
 		)
 	}
 	//======================================================
@@ -116,7 +123,9 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"device class. This method is responsible for the creation of\n" +
 			"all class singleton for a device server. It is called\n" +
 			"at device server startup.",
-			 cls.description.title)
+			cls.description.title,
+			cls.description.license
+		 )
 	}
 	//======================================================
 	// header for MultiClassFactory.cpp
@@ -126,7 +135,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"C++ source for the class_factory method of the DServer\n" +
 			"device class. This method is responsible for the creation of\n" +
 			"all class singleton for a device server. It is called\n" +
-			"at device server startup.", "")
+			"at device server startup.", "",
+			cls.license)
 	}
 	
 	//======================================================
@@ -138,7 +148,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"The main rule is to initialise (and create) the Tango\n" +
 			"system and to create the DServerClass singleton.\n" +
 			"The main should be the same for every Tango device server.",
-			 cls.description.title)
+			 cls.description.title,
+			cls.description.license)
 	}
 
 	//======================================================
@@ -150,7 +161,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"The main rule is to initialise (and create) the Tango\n" +
 			"system and to create the DServerClass singleton.\n" +
 			"The main should be the same for every Tango device server.",
-			 multi.title)
+			 multi.title,
+			multi.license)
 	}
 
 	//======================================================

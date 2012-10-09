@@ -54,7 +54,8 @@ class JavaDynamicAttribute {
 		«(attribute.name+".java").fileHeader(
 			"Java source for the dynamic attribute " + attribute.name +".\n" +
 			"this attribute belongs to the " + cls.name + " class.",
-			cls.description.title)»
+			cls.description.title,
+			cls.description.license)»
 
 		«cls.closeProtectedArea(attribute.name+".java")»
 

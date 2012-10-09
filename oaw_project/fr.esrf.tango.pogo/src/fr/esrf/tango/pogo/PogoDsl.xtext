@@ -19,6 +19,7 @@ PogoMultiClasses:
 		sourcePath  = STRING
 		description = STRING
 		title       = STRING
+		license     = STRING
 		"classes:"
 	    	(classes+=OneClassSimpleDef)
 	
@@ -106,6 +107,7 @@ ClassDescription:
 	filestogenerate= STRING			//	File(s) to generate (code, makefile,....)
 	identification = ClassIdentification
 	comments       = Comments
+	license        = STRING
 	hasMandatoryProperty  = Boolean
 	hasConcreteProperty   = Boolean
 	hasAbstractCommand    = Boolean

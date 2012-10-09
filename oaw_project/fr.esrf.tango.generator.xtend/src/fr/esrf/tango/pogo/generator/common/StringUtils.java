@@ -92,6 +92,8 @@ public class StringUtils {
 	public String oneLineString(String text) {
 		//return str.replaceAll("\n", "\\n");	-> does not work
 
+		if (text==null)
+			return "";
 		StringBuffer	sb = new StringBuffer();
 		int	start = 0;
 		int end;
@@ -356,5 +358,37 @@ public class StringUtils {
     	return new File(fileName).exists();
     }
     //===============================================================
+    //===============================================================
+    
+    
+	//======================================================
+	//	GPL license
+	//======================================================
+	public static String licenseText(String licence, String commentTag) {
+		if (licence!=null && licence.equals("none"))
+			return "";
+		
+		String str = "";	//	default IS GPL
+		if (licence!=null && licence.equals("LGPL"))
+			str = "Lesser ";
+
+		return  commentTag + comments(
+				"This file is part of Tango device class.\n" +
+				"\n"+
+				"Tango is free software: you can redistribute it and/or modify\n" +
+				"it under the terms of the GNU " + str + "General Public License as published by\n" +
+				"the Free Software Foundation, either version 3 of the License, or\n" +
+				"(at your option) any later version.\n" +
+				"\n" +
+				"Tango is distributed in the hope that it will be useful,\n" +
+				"but WITHOUT ANY WARRANTY; without even the implied warranty of\n" +
+				"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" +
+				"GNU " + str + "General Public License for more details.\n" +
+				"\n" +
+				"You should have received a copy of the GNU " + str + "General Public License\n" +
+				"along with Tango.  If not, see <http://www.gnu.org/licenses/>.\n",
+					commentTag)+"\n";
+	}
+   //===============================================================
     //===============================================================
 }

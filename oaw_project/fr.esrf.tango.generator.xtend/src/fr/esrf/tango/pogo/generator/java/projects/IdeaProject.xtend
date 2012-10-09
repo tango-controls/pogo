@@ -50,7 +50,7 @@ class IdeaProject  implements IGenerator {
 		    <orderEntry type="module-library">
 		      <library>
 		        <CLASSES>
-		          <root url="jar://$MODULE_DIR$/../../../../../../../release/java/lib/JTangoServer-1.0.0-alpha-all.jar!/" />
+		          <root url="jar://«getJserverJarFile»!/" />
 		        </CLASSES>
 		        <JAVADOC />
 		        <SOURCES />
