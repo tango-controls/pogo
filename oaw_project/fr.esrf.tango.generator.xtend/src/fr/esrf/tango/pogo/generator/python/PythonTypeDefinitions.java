@@ -1,6 +1,9 @@
 package fr.esrf.tango.pogo.generator.python;
 
 
+import org.eclipse.emf.common.util.EList;
+
+import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.BooleanArrayType;
 import fr.esrf.tango.pogo.pogoDsl.BooleanType;
@@ -15,12 +18,14 @@ import fr.esrf.tango.pogo.pogoDsl.EncodedType;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
 import fr.esrf.tango.pogo.pogoDsl.FloatType;
 import fr.esrf.tango.pogo.pogoDsl.FloatVectorType;
+import fr.esrf.tango.pogo.pogoDsl.Inheritance;
 import fr.esrf.tango.pogo.pogoDsl.IntArrayType;
 import fr.esrf.tango.pogo.pogoDsl.IntType;
 import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
 import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
+import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PropType;
 import fr.esrf.tango.pogo.pogoDsl.ShortArrayType;
 import fr.esrf.tango.pogo.pogoDsl.ShortType;
@@ -244,4 +249,112 @@ public class PythonTypeDefinitions {
     		return false;
 	}
 	
+
+	public String inheritedPythonClassName(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "PyTango.Device_4Impl";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "PyTango.Device_4Impl";
+			else
+				return className;
+		}
+	}
+	
+	public String inheritedAdditionalImport(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return "import " + className;
+		}
+	}
+	
+	private boolean isDefaultDeviceImpl(String className) {
+		
+		return (className.startsWith("Device_") && className.endsWith("Impl"));
+	}
+	
+	public String inheritanceAttrList(PogoDeviceClass cls){
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return "attr_list.update(" + className + "Class.attr_list";
+		}
+	}
+	
+	public String inheritanceCmdList(PogoDeviceClass cls){
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return "cmd_list.update(" + className + "Class.cmd_list";
+		}
+	}
+	
+	public String inheritanceClassPropertyList(PogoDeviceClass cls){
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return "class_property_list.update(" + className + "Class.class_property_list";
+		}
+	}
+	
+	public String inheritanceDevicePropertyList(PogoDeviceClass cls){
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return "device_property_list.update(" + className + "Class.device_property_list";
+		}
+	}
+	
+
+	public String inheritedPythonDeviceClassName(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "PyTango.DeviceClass";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "PyTango.DeviceClass";
+			else
+				return className + "Class";
+		}
+	}
+	
+	public String setAttrVal(Attribute attr){
+		return "attr.set_value(self.attr_" + attr.getName() + "_read)";
+	}
 }

@@ -33,7 +33,7 @@ public class ProtectedArea {
 	public String protectedArea(PogoDeviceClass cls, String method, String code, boolean comments) {
 		if (comments)
 			return	openProtectedArea(cls, method)+ "\n" +
-					"//	" + StringUtils.comments(code, "	//	") + "\n\n" +
+					"#	" + StringUtils.comments(code, "	#	") + "\n\n" +
 					closeProtectedArea(cls, method);
 		else
 			return	openProtectedArea(cls, method) +

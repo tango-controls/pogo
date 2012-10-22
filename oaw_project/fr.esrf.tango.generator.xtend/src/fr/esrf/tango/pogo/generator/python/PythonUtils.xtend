@@ -21,43 +21,53 @@ class PythonUtils {
     def commentMultiLinesPythonStr(String str){
         str.replaceAll("\n","\n#                ");
     }
+    def commentCmdParamMultiLines(String str){
+    	if (str.contains("\n"))
+    	{
+    		return "\n    " + str.replaceAll("\n","\n    ");
+    	}
+    	else
+    	{
+    		return str;
+    	}
+    }
     
     def isMemorized(Attribute attr) {
-    	if (attr.write)	{
-    		if (attr.memorized!=null) {
-    			if (attr.memorized == "true") {
-	    			if(attr.memorizedAtInit == "true") {
-	    				return "    \'Memorized\':\"true\""; 
-	    			}
-	    			else {
-	    				return "    \'Memorized\':\"true_without_hard_applied\"";
-	    			}
-	    		}
-    		}
-		}
-   		return "";
+        if (attr.write)    {
+            if (attr.memorized!=null) {
+                if (attr.memorized == "true") {
+                    if(attr.memorizedAtInit == "true") {
+                        return "    \'Memorized\':\"true\""; 
+                    }
+                    else {
+                        return "    \'Memorized\':\"true_without_hard_applied\"";
+                    }
+                }
+            }
+        }
+           return "";
     }
     
     def hasAttrPropertySet(Attribute attr){
         return (
-        	!attr.properties.label.empty       ||
-        	!attr.properties.unit.empty        ||
-	        !attr.properties.standardUnit.empty||
-	        !attr.properties.displayUnit.empty ||
-	        !attr.properties.format.empty      || 
-	        !attr.properties.maxValue.empty    ||
-	        !attr.properties.minValue.empty    ||
-	        !attr.properties.maxAlarm.empty    || 
-        	!attr.properties.minAlarm.empty    ||
-        	!attr.properties.maxWarning.empty  ||
-        	!attr.properties.minWarning.empty  ||
-        	!attr.properties.deltaTime.empty   ||
-        	!attr.properties.deltaValue.empty  ||
-        	!attr.properties.description.empty ||
-        	attr.displayLevel.equals("EXPERT") ||
-        	!attr.polledPeriod.equals("0")     ||
-        	attr.eventCriteria!=null           ||
-	        attr.eventCriteria!=null);
+            !attr.properties.label.empty       ||
+            !attr.properties.unit.empty        ||
+            !attr.properties.standardUnit.empty||
+            !attr.properties.displayUnit.empty ||
+            !attr.properties.format.empty      || 
+            !attr.properties.maxValue.empty    ||
+            !attr.properties.minValue.empty    ||
+            !attr.properties.maxAlarm.empty    || 
+            !attr.properties.minAlarm.empty    ||
+            !attr.properties.maxWarning.empty  ||
+            !attr.properties.minWarning.empty  ||
+            !attr.properties.deltaTime.empty   ||
+            !attr.properties.deltaValue.empty  ||
+            !attr.properties.description.empty ||
+            attr.displayLevel.equals("EXPERT") ||
+            !attr.polledPeriod.equals("0")     ||
+            attr.eventCriteria!=null           ||
+            attr.eventCriteria!=null);
     }
     
     def hasCmdPropertySet(Command cmd){
@@ -65,63 +75,51 @@ class PythonUtils {
     }
     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
-#------------------------------------------------------------------
-#    «cmd.name» command:
-#------------------------------------------------------------------
-    def «cmd.name»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-        """ «cmd.description»
-        
-        :param «IF !cmd.argin.type.voidType»argin«ENDIF»: «cmd.argin.description»
-        :type: «cmd.argin.type.pythonType»
-        :return: «cmd.argout.description»
-        :rtype: «cmd.argout.type.pythonType» """
-        self.debug_stream("In " + self.get_name() +  ".«cmd.name»()")
-        «IF !cmd.argout.type.voidType»argout = «cmd.argout.type.defaultValue»«ENDIF»
-        «protectedArea(cls, cmd.name)»
-        «IF !cmd.argout.type.voidType»return argout«ENDIF»
-        
+		def «cmd.name»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
+		    """ «cmd.description»
+		    
+		    :param «IF !cmd.argin.type.voidType»argin«ENDIF»: «cmd.argin.description.commentCmdParamMultiLines»
+		    :type: «cmd.argin.type.pythonType»
+		    :return: «cmd.argout.description.commentCmdParamMultiLines»
+		    :rtype: «cmd.argout.type.pythonType» """
+		    self.debug_stream("In «cmd.name»()")
+		    «IF !cmd.argout.type.voidType»argout = «cmd.argout.type.defaultValue»«ENDIF»
+		    «protectedArea(cls, cmd.name)»
+		    «IF !cmd.argout.type.voidType»return argout«ENDIF»
+		    
         '''
         
-    def commandMethodStateMachine(Command cmd) '''
-#------------------------------------------------------------------
-#    Is «cmd.name» command allowed
-#------------------------------------------------------------------
-    def is_«cmd.name»_allowed(self):
-        self.debug_stream("In " + self.get_name() + ".is_«cmd.name»_allowed()")
-        return not(«cmd.excludedStates.ifContentFromListPython»)
-        '''
+    def commandMethodStateMachine(PogoDeviceClass cls, Command cmd) '''
+		def is_«cmd.name»_allowed(self):
+		    self.debug_stream("In is_«cmd.name»_allowed()")
+		    state_ok = not(«cmd.excludedStates.ifContentFromListPython»)
+		    «protectedArea(cls, "is_" + cmd.name + "_allowed")»
+		    return state_ok
+		    
+    '''
     
     def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
-#------------------------------------------------------------------
-#    Write «attribute.name» attribute
-#------------------------------------------------------------------
-    def write_«attribute.name»(self, attr):
-        self.debug_stream("In " + self.get_name() + ".write_«attribute.name»()")
-        data=attr.get_write_value()
-        self.debug_stream("Attribute value = " + str(data))
-        «protectedArea(cls, attribute.name + "_write")»
-        
+		def write_«attribute.name»(self, attr):
+		    self.debug_stream("In write_«attribute.name»()")
+		    data=attr.get_write_value()
+		    «protectedArea(cls, attribute.name + "_write")»
+		    
     '''
         
     def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
-#------------------------------------------------------------------
-#    Read «attribute.name» attribute
-#------------------------------------------------------------------
-    def read_«attribute.name»(self, attr):
-        self.debug_stream("In " + self.get_name() + ".read_«attribute.name»()")
-        «protectedArea(cls, attribute.name + "_read")»
-        attr.set_value(self.attr_«attribute.name»_read)
-        
+		def read_«attribute.name»(self, attr):
+		    self.debug_stream("In read_«attribute.name»()")
+		    «protectedArea(cls, attribute.name + "_read", attribute.setAttrVal, false)»
+		    
     '''
     
-    def attributeMethodStateMachine(Attribute attribute) '''
-#------------------------------------------------------------------
-#    Is «attribute.name» attribute allowed
-#------------------------------------------------------------------
-    def is_«attribute.name»_allowed(self, attr):
-        self.debug_stream("In " + self.get_name() + ".is_«attribute.name»_allowed()")
-        return not(«attribute.readExcludedStates.ifContentFromListPython»)
-        
+    def attributeMethodStateMachine(PogoDeviceClass cls, Attribute attribute) '''
+		def is_«attribute.name»_allowed(self, attr):
+		    self.debug_stream("In is_«attribute.name»_allowed()")
+		    state_ok = not(«attribute.readExcludedStates.ifContentFromListPython»)
+		    «protectedArea(cls, "is_" + attribute.name + "_allowed")»
+		    return state_ok
+		    
     '''
 
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
@@ -142,15 +140,15 @@ class PythonUtils {
     '''
     
     def String pythonAttributeSize(Attribute attr) {
-    	if (attr.image) {
-    		return ", «attr.maxX», «attr.maxY";
-   		}
-    	else
-    	if (attr.spectrum) {
-    		return ", «attr.maxX";
-    	}
-    	else
-			return "";
+        if (attr.image) {
+            return ", " + attr.maxX + ", " + attr.maxY;
+        }
+        else
+        if (attr.spectrum) {
+            return ", " + attr.maxX;
+        }
+        else
+            return "";
     }
     
     def pythonAttributeClass(Attribute attr) '''        '«attr.name»':
