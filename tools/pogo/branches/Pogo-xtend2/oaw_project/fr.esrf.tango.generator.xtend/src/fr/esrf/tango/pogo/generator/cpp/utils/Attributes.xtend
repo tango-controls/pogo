@@ -268,8 +268,7 @@ class Attributes {
 		«attribute.name.toLowerCase»->set_default_properties(«attribute.name.toLowerCase»_prop);
 		«attribute.setExtendedProprty("polling_period", attribute.polledPeriod, "Not Polled")»
 		«attribute.setExtendedProprty("disp_level", attribute.displayLevel, "Tango::OPERATOR")»
-		«attribute.setMemorized(attribute.memorized, "Not Memorized")»
-		«attribute.setExtendedProprty("memorized_init", attribute.memorizedAtInit, "Not set to hardware at init")»
+		«attribute.setAttributeMemorized("Not Memorized")»
 		«attribute.setEventCriteria»
 		«IF cls==null»
 			att_list.push_back(«attribute.name.toLowerCase»);
@@ -325,9 +324,14 @@ class Attributes {
 
 	//======================================================
 	//	Do not add parameter true :-)
-	def setMemorized(Attribute attribute, String strValue, String comment) '''
-		«IF strValue.isSet»
+	def setAttributeMemorized(Attribute attribute, String comment) '''
+		«IF attribute.memorized.isSet»
 			«attribute.name.toLowerCase»->set_memorized();
+			«IF attribute.memorizedAtInit.isSet»
+				«attribute.name.toLowerCase»->set_memorized_init(«attribute.memorizedAtInit»);
+			«ELSE»
+				«attribute.name.toLowerCase»->set_memorized_init(false);
+			«ENDIF»
 		«ELSE»
 			//	«comment»
 		«ENDIF»
