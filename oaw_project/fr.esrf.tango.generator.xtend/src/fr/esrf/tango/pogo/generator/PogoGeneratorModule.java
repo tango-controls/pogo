@@ -117,6 +117,9 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 					int	pos = generateFile.indexOf('*');
 					String head = generateFile.substring(0, pos);
 					String end  = generateFile.substring(pos+1);
+					if (fileName.indexOf("/", pos+1)>0)  {//	Sub-directory
+						return false;
+					}
 					if (fileName.startsWith(head) && fileName.endsWith(end)) {
 						return true;
 					}
@@ -154,7 +157,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 		}
 		//===================================================================================
 		private void fillGeneratedFilesListForPython(String targetDir, String className) {
-			generatedFiles.add(targetDir+"/"+className.toLowerCase() + ".py");
+			generatedFiles.add(targetDir+"/"+className + ".py");
 		}
 		//===================================================================================
 	}
