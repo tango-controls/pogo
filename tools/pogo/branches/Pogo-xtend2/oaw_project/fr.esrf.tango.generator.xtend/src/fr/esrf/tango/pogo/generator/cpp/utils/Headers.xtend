@@ -198,7 +198,7 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 	def attributeMethodHeader(Attribute attr, String rw) {
 		"//--------------------------------------------------------\n" +
 		"/**\n" +
-		" *	" + rw +" attribute " + attr.name + " related mehod\n" +
+		" *	" + rw +" attribute " + attr.name + " related method\n" +
 		" *	Description: " + attr.properties.description.comments(" *               ") + "\n" +
 		" *\n" +
 		" *	Data type:	" + attr.dataType.cppType + "\n" +
@@ -212,7 +212,7 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 	//======================================================
 	def attributePrototypeMethodHeader(Attribute attr) {
 		"/**\n" +
-		" *	Attribute " + attr.name + " related mehods\n" +
+		" *	Attribute " + attr.name + " related methods\n" +
 		" *	Description: " + attr.properties.description.comments(" *               ") + "\n" +
 		" *\n" +
 		" *	Data type:	" + attr.dataType.cppType + "\n" +
@@ -226,11 +226,11 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 	//======================================================
 	def commandExecutionMethodHeader(Command cmd) {
 		"/**\n" +
-		" *	Command " + cmd.name + " related mehod\n" +
+		" *	Command " + cmd.name + " related method\n" +
 		" *	Description: " + cmd.description.comments(" *               ") + "\n" +
 		" *\n" +
-		" *	@param argin " + cmd.argin.description + "\n" +
-		" *	@returns " + cmd.argout.description + "\n" +
+		" *	@param argin " + cmd.argin.description.comments(" *               ") + "\n" +
+		" *	@returns " + cmd.argout.description.comments(" *           ") + "\n" +
 		" */\n"		
 	}
 
