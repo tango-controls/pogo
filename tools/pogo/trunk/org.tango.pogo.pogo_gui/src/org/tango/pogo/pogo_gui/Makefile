@@ -11,8 +11,7 @@
 #-======================================================================
 
 
-#RELEASE    = 8.0.9
-RELEASE    = 8.1.1
+RELEASE    = 8.1.2
 
 
 TANGO_HOME	=	/segfs/tango
@@ -88,8 +87,8 @@ clean:
 	rm  $(BIN_DIR)/org/tango/pogo/pogo_gui/*.class
 	rm  $(BIN_DIR)/org/tango/pogo/pogo_gui/tools/*.class
 
-#ECLIPSE_JAR_DIR=/users/verdier/pogo_jar/jar
-ECLIPSE_JAR_DIR=/segfs/tango/tools/pogo/jar
+ECLIPSE_JAR_DIR=/users/verdier/pogo_jar
+#ECLIPSE_JAR_DIR=/segfs/tango/tools/pogo/jar
 TARGET_JAR_DIR=/segfs/tango/release/java/appli
 #TARGET_JAR_DIR=.
 JAR_FILE=org.tango.pogo

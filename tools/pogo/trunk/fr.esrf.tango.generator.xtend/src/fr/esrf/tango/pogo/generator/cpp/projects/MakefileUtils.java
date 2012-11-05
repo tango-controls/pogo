@@ -293,7 +293,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		String code = 
 			"$(OBJDIR)/" + classname + sufix + ".o:"+
 				"  $(" +  classHomeDir(classname) + ")/"+classname+sufix+".cpp $("+classIncludeDir(classname)+")\n";
-		code += "	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/" + classname + sufix + ".o\n";
+		code += "	$(CC) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + classname + sufix + ".o\n";
 		return code;
 	}
 	//======================================================
@@ -301,7 +301,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		String code = 
 			"$(OBJDIR)/" + filename + ".o:"+
 				"  $(" +  classHomeDir(classname) + ")/"+filename+".cpp $("+classIncludeDir(classname)+")\n";
-		code += "	$(CC) $(CFLAGS) -c $< -o $(OBJDIR)/" + filename + ".o\n";
+		code += "	$(CC) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + filename + ".o\n";
 		return code;
 	}
 	//======================================================
@@ -367,10 +367,15 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		for (Inheritance inher : cls.getDescription().getInheritances()) {
 			if (inheritanceUtils.isInheritanceClass(inher)) {
 				code += "\n" +
-						"#------------  Object files dependancies for GenericPS class  ------------\n";
+						"#------------  Object files dependancies for " +inher.getClassname()+" class  ------------\n";
 				code += classIncludeDir(inher.getClassname()) + " = \\\n";
 				code += "		$(" + classHomeDir(inher.getClassname()) + ")/" + inher.getClassname() + ".h \\\n"; 
 				code += "		$(" + classHomeDir(inher.getClassname()) + ")/" + inher.getClassname() + "Class.h\n";
+				code += dependanciesObject(inher.getClassname(), "");
+				code += dependanciesObject(inher.getClassname(), "Class");
+				code += dependanciesObject(inher.getClassname(), "StateMachine");
+
+				/*
 				for (Inheritance inheritance : cls.getDescription().getInheritances()) {
 					if (inheritanceUtils.isInheritanceClass(inheritance)) {
 						code += dependanciesObject(inheritance.getClassname(), "");
@@ -378,6 +383,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 						code += dependanciesObject(inheritance.getClassname(), "StateMachine");
 					}
 				}
+				*/
 				for (AdditionalFile file : cls.getAdditionalFiles()) {
 					code += dependanciesObjectAddFile(cls.getName(), file.getName());
 				}
@@ -410,11 +416,14 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
  	String inheritanceObjects(PogoDeviceClass cls) {
  		String code = "";
  		if (inheritanceUtils.hasInheritanceClass(cls)) {
+ 			code = "$(SVC_INHERITANCE_OBJ) \\\n";
+ 			/*
  			for (Inheritance inheritance : cls.getDescription().getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
  					code = "$(SVC_" + inheritance.getClassname().toUpperCase() + "_OBJ) \\\n";
 				}
  			}
+ 			*/
  		}
  		return code;
  	}

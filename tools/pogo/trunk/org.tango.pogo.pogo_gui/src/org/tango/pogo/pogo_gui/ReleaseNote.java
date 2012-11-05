@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Oct 23 11:19:14 CEST 2012)</Center><Br>\n" + 
+		"	(Generated Mon Nov 05 15:05:39 CET 2012)</Center><Br>\n" + 
+		"<li><b>Pogo-8.1.2 - 05/11/2012:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem on inheritance.<Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem on remove dynamic attribute.<Br>\n" + 
 		"<li><b>Pogo-8.1.1 - 23/10/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Problems in python due to generated file name fixed.<Br>\n" + 
 		"&nbsp; &nbsp; Remove the Soleil special case.<Br>\n" + 

@@ -129,28 +129,30 @@ public class PogoProperty {
      */
     //===============================================================
 	private void checkEnvironment() {
-		String classpath = System.getProperty("java.class.path");
+        String classpath = System.getProperty("java.class.path");
         //System.out.println("java.class.path=" + classpath);
 
-        //  Get each path
-        StringTokenizer stk = new StringTokenizer(classpath, ":");
-        classpath = "";
-        while (stk.hasMoreTokens()) {
-            String  s = stk.nextToken();
-            //  Check if exists
-            File f = new File(s);
-            if (f.exists())
-                classpath += s + ":";
-            else
-                System.err.println(s + " found in classpath,  does not exist !!!");
+        //  I tried to do it for Win, but does not work
+        if (Utils.osIsUnix()) {
+            //  Get each path
+            StringTokenizer stk = new StringTokenizer(classpath, ":");
+            classpath = "";
+            while (stk.hasMoreTokens()) {
+                String  s = stk.nextToken();
+                //  Check if exists
+                File f = new File(s);
+                if (f.exists())
+                    classpath += s + ":";
+                else
+                    System.err.println(s + " found in classpath,  does not exist !!!");
+            }
+            if (classpath.endsWith(":")) {
+                //  Remove it
+                classpath = classpath.substring(0, classpath.length()-1);
+            }
         }
-        if (classpath.endsWith(":")) {
-            //  Remove it
-            classpath = classpath.substring(0, classpath.length()-1);
-        }
-		//System.out.println("java.class.path=" + classpath);
-		System.setProperty("java.class.path", classpath);
-
+        //System.out.println("java.class.path=" + classpath);
+        System.setProperty("java.class.path", classpath);
 	}
     //===============================================================
     //===============================================================
