@@ -8,6 +8,9 @@ import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
+import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
+import fr.esrf.tango.pogo.generator.cpp.utils.Headers
+import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
 
 
 //======================================================
@@ -16,9 +19,9 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 class DeviceStateMachine {
 	
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.Headers
-
+	@Inject	extension CppStringUtils
+	@Inject	extension Headers
+	@Inject	extension InheritanceUtils
 
 	//======================================================
 	// Define ClassFactory.cpp file to be generated
@@ -65,7 +68,9 @@ class DeviceStateMachine {
 	def commandsStateMachine(PogoDeviceClass cls) '''
 		«FOR Command command : cls.commands»
 			«IF command.name.equals("State")==false && command.name.equals("Status")==false»
-				«cls.commandStateMachine(command)»
+				«IF command.overrides==false»
+					«cls.commandStateMachine(command)»
+				«ENDIF»
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -99,7 +104,9 @@ class DeviceStateMachine {
 	//======================================================
 	def attributesStateMachine(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
-			«cls.attributeStateMachine(attribute)»
+			«IF attribute.overrides==false»
+				«cls.attributeStateMachine(attribute)»
+			«ENDIF»
 		«ENDFOR»
 		«FOR Attribute attribute : cls.dynamicAttributes»
 			«cls.attributeStateMachine(attribute)»

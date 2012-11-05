@@ -169,9 +169,19 @@ public class InheritanceUtils {
 				CppStringUtils.isTrue(attribute.getStatus().getConcreteHere())==false;
 	}
 	//===========================================================
+	public boolean overrides(Attribute attribute) {
+		return CppStringUtils.isTrue(attribute.getStatus().getConcrete()) &&
+				CppStringUtils.isTrue(attribute.getStatus().getConcreteHere())==false;
+	}
+	//===========================================================
 	public boolean isAbstract(Command command) {
 		return CppStringUtils.isTrue(command.getStatus().getAbstract()) &&
 				CppStringUtils.isTrue(command.getStatus().getInherited())==false &&
+				CppStringUtils.isTrue(command.getStatus().getConcreteHere())==false;
+	}
+	//===========================================================
+	public boolean overrides(Command command) {
+		return CppStringUtils.isTrue(command.getStatus().getConcrete()) &&
 				CppStringUtils.isTrue(command.getStatus().getConcreteHere())==false;
 	}
 	//===========================================================
@@ -221,6 +231,13 @@ public class InheritanceUtils {
 	public String addInheritanceObjectFiles(PogoDeviceClass cls) {
 
 		StringBuffer	sb = new StringBuffer();
+		sb.append("SVC_INHERITANCE_OBJ =  \\\n");
+		for (Inheritance inheritance : cls.getDescription().getInheritances()) {
+			if (isDefaultDeviceImpl(inheritance)==false) {
+				sb.append("        ").append("$(SVC_").append(inheritance.getClassname().toUpperCase()).append("_OBJ) \\\n");
+			}
+		}
+		sb.append("\n");
 		for (Inheritance inheritance : cls.getDescription().getInheritances()) {
 			if (isDefaultDeviceImpl(inheritance)==false) {
 				sb.append("#------------  Object files for GenericPS class  ------------\n");

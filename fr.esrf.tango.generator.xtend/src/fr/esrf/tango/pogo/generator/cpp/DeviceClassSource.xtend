@@ -287,7 +287,7 @@ class DeviceClassSource {
 						{
 							cout2 << att_name << " is a UNWANTED dynamic attribute for device " << (*devlist_ptr)[i] << endl;
 							Tango::Attribute &att = dev->get_device_attr()->get_attr_by_name(att_name.c_str());
-							dev->remove_attribute(att_list[att.get_attr_idx()],true);
+							dev->remove_attribute(att_list[att.get_attr_idx()], true, false);
 							--ite_att;
 						}
 					}

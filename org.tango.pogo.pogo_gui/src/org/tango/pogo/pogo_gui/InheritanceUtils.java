@@ -75,18 +75,26 @@ public class InheritanceUtils {
     private String cloneAncestor(DeviceClass orig, DeviceClass devClass) {
         StringBuilder sb = new StringBuilder();
 
-        //  First time, check if devClass must best be updated from ancestors
+        //  First time, check if devClass must be updated from ancestors
+        DeviceClass _class = devClass;
         if (devClass.getAncestors().size() > 0) {
-            for (int i = devClass.getAncestors().size() - 1; i >= 0; i--) {
+            for (int i=devClass.getAncestors().size() - 1  ; i>=0  ; i--) {
                 DeviceClass ancestor = devClass.getAncestors().get(i);
+                cloneAncestor(_class, ancestor);
+                _class = ancestor;
+                /*
                 if (i > 0)
-                    sb.append(cloneAncestor(devClass.getAncestors().get(i - 1), ancestor));
+                    sb.append(cloneAncestor(devClass.getAncestors().get(i-1), ancestor));
                 else
                     sb.append(cloneAncestor(devClass, ancestor));
+                */
             }
         }
+
         //  Then really clone items
         if (orig != null) {
+            System.out.println(orig.getPogoDeviceClass().getName() + " inherits from " + devClass.getPogoDeviceClass()
+                    .getName());
             cloneProperties(orig, devClass, false);
             cloneProperties(orig, devClass, true);
             sb.append(cloneCommands(orig, devClass));
@@ -244,7 +252,11 @@ public class InheritanceUtils {
             InheritanceStatus status = OAWutils.factory.createInheritanceStatus();
             status.setAbstract(inher_attr.getStatus().getAbstract());
             status.setInherited("true");
-            status.setConcrete(inher_attr.getStatus().getConcrete());
+            if (Utils.isTrue(inher_attr.getStatus().getConcrete()) ||
+                Utils.isTrue(inher_attr.getStatus().getConcreteHere()) )
+                status.setConcrete("true");
+            else
+                status.setConcrete("false");
             new_attr.setStatus(status);
 
             //	Manage exclude states

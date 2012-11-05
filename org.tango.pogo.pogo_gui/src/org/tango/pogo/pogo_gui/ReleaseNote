@@ -8,6 +8,10 @@
 #
 #-======================================================================
 
+Pogo-8.1.2 - 05/11/2012:
+	Fix a problem on inheritance.
+	Fix a problem on remove dynamic attribute.
+
 Pogo-8.1.1 - 23/10/2012:
 	Problems in python due to generated file name fixed.
 	Remove the Soleil special case.
