@@ -169,7 +169,7 @@ public class InheritanceUtils {
 				CppStringUtils.isTrue(attribute.getStatus().getConcreteHere())==false;
 	}
 	//===========================================================
-	public boolean overrides(Attribute attribute) {
+	public boolean alreadyOverloaded(Attribute attribute) {
 		return CppStringUtils.isTrue(attribute.getStatus().getConcrete()) &&
 				CppStringUtils.isTrue(attribute.getStatus().getConcreteHere())==false;
 	}

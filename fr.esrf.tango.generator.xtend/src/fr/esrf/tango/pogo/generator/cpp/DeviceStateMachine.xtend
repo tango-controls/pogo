@@ -104,7 +104,7 @@ class DeviceStateMachine {
 	//======================================================
 	def attributesStateMachine(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
-			«IF attribute.overrides==false»
+			«IF attribute.alreadyOverloaded==false»
 				«cls.attributeStateMachine(attribute)»
 			«ENDIF»
 		«ENDFOR»

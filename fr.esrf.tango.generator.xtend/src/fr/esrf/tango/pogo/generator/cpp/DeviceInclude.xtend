@@ -200,7 +200,7 @@ class DeviceInclude  {
 		«IF cls.attributes.size()>0»
 
 			«FOR Attribute attr : cls.attributes»
-				«IF attr.overrides==false»
+				«IF attr.alreadyOverloaded==false»
 					«attr.attributePrototypeMethodHeader»
 					«IF attr.isRead»
 						virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr)«attr.checkAbstractForProto»;
