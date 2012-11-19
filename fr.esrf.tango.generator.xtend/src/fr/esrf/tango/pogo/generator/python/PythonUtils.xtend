@@ -124,7 +124,7 @@ class PythonUtils {
 
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
             [«prop.type.pythonPropType»«IF !prop.description.empty»,
-            "«prop.description»"«ENDIF»«IF !prop.defaultPropValue.empty»,
+            "«prop.description.oneLineString»"«ENDIF»«IF !prop.defaultPropValue.empty»,
             «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
             [] «ENDIF»],
     '''
