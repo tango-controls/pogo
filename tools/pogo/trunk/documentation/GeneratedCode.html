@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+<Title> Pogo 7 - The new Tango class generator </Title>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#7F00FF" ALINK="#FF0000">
+
+    <center><h2><u>Generated Code</u></h2></Center>
+    <Br>
+    <Br>
+    <Br>
+    <!--- Generated code --->
+    <Font SIZE="+1"> <b><u> The main differences with Pogo-6 code are: </u></b> </Font>
+    <ul>
+        <li> The source code will not be read when you re-open your project.<Br>
+            Only the <b><i> <a href=Warnings.html> .xmi </a></i></b> will be re-loaded.<Br>
+            <Br>
+        <li> Your own code must be added only between specific tags:<Br>
+            On following example, only the grey part will not be overwritten at next code generation.<Br><Br>
+            <img src=img/Pogo-protected.jpg><Br>
+            <Br>
+    </ul>
+    <Br>
+    <Br>
+    <Font SIZE="+1"> <b> Generated code: </b> </Font>
+    <ul>
+        <li> <A HREF="GeneratedCode.html#c++">     C++ code  </a>    <Br>
+        <li> <A HREF="GeneratedCode.html#python">  Python code  </a>    <Br>
+        <li> <A HREF="GeneratedCode.html#java">    Java code  </a>    <Br>
+    </ul>
+    <Br>
+    <Br>
+    <Br>
+
+    <a name="c++"></a>
+    <Font SIZE="+1"> <b><u> C++ Generated files : </u></b> </Font>
+    <ul>
+        If no inheritance has been specified,
+        the generated classes will inherit from Device_4Impl (Tango-7.x.x or above).<Br>
+        The generated code structure will look like to the Pogo-6 code.<Br>
+
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <Tr>
+                <Td> <b> MyObject.h </b> </Td>
+                <Td> Containing created class data members and prototypes.</Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObject.cpp </b> </Td>
+                <Td> Containing created class methods for init, commands, read/write attributes, .....</Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObjectClass.h </b> </Td>
+                <Td>
+                    Containing data members and prototypes for MyObjectClass.cpp.<Br>
+                    Containing also the Command and Attribute class definitions.
+                </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObjectClass.cpp </b> </Td>
+                <Td>
+                    A singleton  class derived from DeviceClass.<Br>
+                    It implements the command and attribute lists and all properties<Br>
+                    and methods required by the created class once per process.
+                </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObjectStateMachine.cpp </b> </Td>
+                <Td> Containing created class methods for the state machine. </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> ClassFactory.cpp </b> </Td>
+                <Td>
+                    Containing created class methods creating used class. </Br>
+                    In case of multi class server, add other class(es) in the factory.
+                </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> main.cpp </b> </Td>
+                <Td>
+                    Start point of the device server <Br>
+                    Most of the time, not touched by the programmer.
+                </Td>
+            </Tr>
+        </table>
+        <Br/>
+        <Br>
+        <Br>
+        <li> A method called <b> add_dynamic_attributes() </b> has been added to the MyObject.cpp.<br>
+            It will be called at startup to create dynamic attributes if any.<br>
+            It is NOT generated if the class is abstract !
+    </ul>
+    <Br>
+    <Br>
+    <Br>
+    <Br>
+    <Br>
+
+    <a name="python"></a>
+    <Font SIZE="+1"> <b><u> Python Generated files : </u></b> </Font>
+    <ul>
+        If no inheritance has been specified,
+        the generated classes will inherit from Device_4Impl (Tango-7.x.x or above).<Br>
+        The generated code structure will look like to the Pogo-6 code.<Br>
+        <br>
+        The python templates have been implemented by Sebastien Gara at <a href="http://www.nexeya.com/" target="new">
+        Nexeya </a><Br>
+        <Br>
+        <Br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <Tr>
+                <Td> <b> MyObject.py </b> </Td>
+                <Td> Containing created class python code.</Td>
+            </Tr>
+        </table>
+    </ul>
+    <Br>
+    <Br>
+    <Br>
+
+    <a name="java"></a>
+    <Font SIZE="+1"> <b><u> Java Generated files : </u></b> </Font>
+    <ul>
+        The generated Java classes are not compatible with the server API from TangORB. <Br>
+        They are compatible only with the new design from Gwenaelle Abeille at <a
+                href="http://www.synchrotron-soleil.fr/" target="new">Soleil</a>.<br>
+        See <b>Devices in Java</b> at:
+             <a href=http://www.tango-controls.org/download> http://www.tango-controls.org/download </a><br><br>
+        This API is still under development.<br>
+        Inheritance and event system are not available. <Br>
+        <Br>
+        <Br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <Tr>
+                <Td> <b> org.tango.myobject.MyObject.java </b> </Td>
+                <Td> Containing created class java code.</Td>
+            </Tr>
+            <Tr>
+                <Td> <b> org.tango.myobject.MyDynamicAttribute.java </b> </Td>
+                <Td> Containing created java code for dynamic attribute class if any.</Td>
+            </Tr>
+        </table>
+    </ul>
+</body>
+</html>
+
