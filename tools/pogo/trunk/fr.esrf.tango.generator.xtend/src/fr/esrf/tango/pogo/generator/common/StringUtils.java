@@ -390,5 +390,11 @@ public class StringUtils {
 					commentTag)+"\n";
 	}
    //===============================================================
-    //===============================================================
+   //===============================================================
+	public static String getIncludePath() {
+		String tangoInclude = System.getenv("TANGO_INCLUDE");
+		if (tangoInclude==null)
+			return "$TANGO_ROOT/include";
+		return tangoInclude;
+	}
 }

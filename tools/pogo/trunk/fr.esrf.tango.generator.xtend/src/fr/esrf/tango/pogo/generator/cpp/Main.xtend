@@ -56,7 +56,7 @@ class Main {
 				cout << "Ready to accept request" << endl;
 				tg->server_run();
 			}
-			catch (bad_alloc)
+			catch (bad_alloc &)
 			{
 				cout << "Can't allocate memory to store device object !!!" << endl;
 				cout << "Exiting" << endl;

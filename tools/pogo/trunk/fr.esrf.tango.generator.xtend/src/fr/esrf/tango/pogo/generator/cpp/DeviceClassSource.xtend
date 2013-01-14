@@ -373,7 +373,7 @@ class DeviceClassSource {
 					string s(name);
 					_instance = new «cls.name»Class(s);
 				}
-				catch (bad_alloc)
+				catch (bad_alloc &)
 				{
 					throw;
 				}		
