@@ -144,7 +144,11 @@ class Attributes {
 				int	w_length = attr.get_write_value_length();
 
 				//	Retrieve pointer on write values (Do not delete !)
-				const «attribute.strType»	*w_val;
+				«IF attribute.strType.contains("String")»
+					const Tango::ConstDevString	*w_val;
+				«ELSE»
+					const «attribute.strType»	*w_val;
+				«ENDIF»
 			«ENDIF»
 			attr.get_write_value(w_val);
 			«cls.protectedArea(attribute.writeAttrubuteMethod, "", false)»
