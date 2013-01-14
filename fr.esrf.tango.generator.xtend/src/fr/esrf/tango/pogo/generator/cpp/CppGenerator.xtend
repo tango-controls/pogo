@@ -11,6 +11,7 @@ import fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9_Project
 import fr.esrf.tango.pogo.generator.cpp.projects.VC10.VC10_Project
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import fr.esrf.tango.pogo.generator.common.EclipseProjects
 
 
 class CppGenerator implements IGenerator {
@@ -28,6 +29,7 @@ class CppGenerator implements IGenerator {
 	@Inject	extension LinuxMakefile
 	@Inject	extension VC9_Project
 	@Inject	extension VC10_Project
+	@Inject extension EclipseProjects
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		//
@@ -60,9 +62,10 @@ class CppGenerator implements IGenerator {
 					printTrace("Generating main.cpp")
 					fsa.generateFile("main.cpp",                     cls.generateMainFile)
 
+					//	Dynamic atributes if any
 					if (cls.dynamicAttributes.size>0) {
 						printTrace("Generating " + cls.dynamicAttrUtilsFileName)
-						fsa.generateFile(cls.dynamicAttrUtilsFileName,       cls.generateDynamicAttrUtilsFile)
+						fsa.generateFile(cls.dynamicAttrUtilsFileName,cls.generateDynamicAttrUtilsFile)
 					}
 				}
 				
@@ -70,6 +73,13 @@ class CppGenerator implements IGenerator {
 				if (cls.description.filestogenerate.contains("Makefile")) {
 					printTrace("Generating Makefile")
 					fsa.generateFile("Makefile",  cls.generateLinuxMakefile)
+				}
+				
+				//	Eclipse Project
+				if (cls.description.filestogenerate.toLowerCase.contains("eclipse")) {
+					printTrace("Generating Eclipse project")
+					fsa.generateFile(".project",  cls.generateEclipseProject)
+					fsa.generateFile(".cproject", cls.generateCppEclipseProject)
 				}
 				
 				//	Widows projects
