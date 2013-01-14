@@ -200,7 +200,7 @@ public class OAWutils {
             System.out.println(xmiFileName + " generated");
         } catch (IOException e) {
             Except.throw_exception("IOException",
-                    e.toString(), "DeviceClass.generate()");
+                    e.toString(), "OAWutils.generate()");
         }
 
         //	Start the code generation

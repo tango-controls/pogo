@@ -42,6 +42,9 @@ import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -93,7 +96,6 @@ public class PogoGUI extends JFrame {
 
     public static MultiClassesPanel multiClassesPanel = null;
     //=======================================================
-
     /**
      * Creates new form PogoGUI
      *
@@ -107,7 +109,6 @@ public class PogoGUI extends JFrame {
         checkLoadAtStartup(filename);
     }
     //=======================================================
-
     /**
      * Creates new form PogoGUI and display DeviceClass object
      *
@@ -129,7 +130,6 @@ public class PogoGUI extends JFrame {
         class_panels.get(0).getTree().setModified(forceModified);
     }
     //=======================================================
-
     /**
      * Creates new form PogoGUI and load device class
      *

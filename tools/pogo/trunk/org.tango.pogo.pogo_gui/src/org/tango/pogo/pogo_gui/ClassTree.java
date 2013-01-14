@@ -1919,7 +1919,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     }//	End of Renderer Class
 
     //==============================================================================
-//==============================================================================
+    //==============================================================================
     static private final int EDIT_CLASS = 0;
     static private final int ADD_ITEM = 1;
     static private final int ADD_DYN_ITEM = 2;
@@ -1960,7 +1960,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             buildBtnPopupMenu();
         }
         //=======================================================
-
         /**
          * Create a Popup menu for class edition
          */
@@ -2002,7 +2001,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             }
         }
         //======================================================
-
         /**
          * Show menu on root
          *
