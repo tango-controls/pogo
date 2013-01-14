@@ -22,6 +22,8 @@ export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/cpp
 
 SUPER_HOME=/segfs/tango/templates/AbstractClasses
 
+JSERVER_JAR_FILE=y:/tango/release/java/lib/JTangoServer.jar
+export JSERVER_JAR_FILE
 
 java  -DSUPER_HOME=$SUPER_HOME \
 	org.tango.pogo.pogo_gui.Pogo  $*

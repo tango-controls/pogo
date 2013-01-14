@@ -514,7 +514,6 @@ public class DeviceClass {
         oaw.generate(pogo_class);
 
         //	Insert code for deleted and rename objects
-        //  ToDo
         if (deleted != null)
             if (deleted.size() > 0) {
                 deleted.insertCode(getSourceFile(lang));

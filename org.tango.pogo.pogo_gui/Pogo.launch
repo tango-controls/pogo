@@ -8,6 +8,7 @@
 </listAttribute>
 <mapAttribute key="org.eclipse.debug.core.environmentVariables">
 <mapEntry key="JSERVER_JAR_FILE" value="y:/tango/release/java/lib/JTangoServer.jar"/>
+<mapEntry key="TANGO_INCLUDE" value="/segfs/tango/release/debian6/include"/>
 <mapEntry key="TANGO_ROOT" value="y:/tango/release"/>
 <mapEntry key="TRACE" value="true"/>
 </mapAttribute>

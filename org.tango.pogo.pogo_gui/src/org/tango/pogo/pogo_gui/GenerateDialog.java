@@ -71,7 +71,7 @@ public class GenerateDialog extends JDialog {
         initComponents();
 
         //  Templates not yet ready
-        eclipseProjectBtn.setVisible(false);
+        //eclipseProjectBtn.setVisible(false);
         pomBtn.setVisible(false);
 
         rBtn = new ArrayList<JRadioButton>();
@@ -595,8 +595,8 @@ public class GenerateDialog extends JDialog {
                 vc8Btn.setVisible(true);
                 vc9Btn.setVisible(true);
                 vc10Btn.setVisible(true);
-                javaProjectLabel.setVisible(false);
-                eclipseProjectBtn.setVisible(false);
+                javaProjectLabel.setVisible(true);
+                eclipseProjectBtn.setVisible(true);
                 ideaProjectBtn.setVisible(false);
                 pomBtn.setVisible(false);
                 break;
@@ -608,7 +608,7 @@ public class GenerateDialog extends JDialog {
                 vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
                 javaProjectLabel.setVisible(true);
-                //eclipseProjectBtn.setVisible(true);
+                eclipseProjectBtn.setVisible(false);
                 ideaProjectBtn.setVisible(true);
                 //pomBtn.setVisible(true);
                 break;
