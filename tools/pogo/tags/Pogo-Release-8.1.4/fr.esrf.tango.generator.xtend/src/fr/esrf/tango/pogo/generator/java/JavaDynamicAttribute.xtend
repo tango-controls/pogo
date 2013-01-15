@@ -1,0 +1,193 @@
+package fr.esrf.tango.pogo.generator.java
+
+import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
+import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
+import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
+import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
+import com.google.inject.Inject
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import fr.esrf.tango.pogo.pogoDsl.Attribute
+import fr.esrf.tango.pogo.generator.common.Headers
+
+class JavaDynamicAttribute {
+
+	@Inject extension JavaUtils
+	@Inject extension Headers
+	@Inject extension ProtectedArea
+
+	//======================================================
+	// define code to declare attributes class
+	//======================================================
+	def generateJavaDynamicAttributeClassFile(PogoDeviceClass cls, Attribute attribute) '''
+		«cls.header(attribute)»
+
+		/**
+		 * Dynamic attribute «attribute.name», «attribute.strJavaType», «attribute.attType», «attribute.rwType»
+		 * description:
+		 *     «attribute.properties.description.comments("*     ")»
+		 */
+		public class «attribute.name» implements org.tango.server.attribute.IAttributeBehavior {
+
+			/**	The attribute name */
+			private String  attributeName;
+
+			«cls.protectedArea(attribute.name+"." + "dataMembers", "Put your data member declarations", true)»
+
+			«cls.constructor(attribute)»
+
+			«cls.getConfigurationMethod(attribute)»
+
+			«cls.stateMachineMethod(attribute)»
+
+			«cls.getValueMethod(attribute)»
+
+			«cls.setValueMethod(attribute)»
+
+			«cls.protectedArea(attribute.name+"." + "methods", "Put your own methods", true)»
+		}
+	'''
+	//======================================================
+	// define code for file header
+	//======================================================
+	def header(PogoDeviceClass cls, Attribute attribute) '''
+		«cls.openProtectedArea(attribute.name+".java")»
+		«(attribute.name+".java").fileHeader(
+			"Java source for the dynamic attribute " + attribute.name +".\n" +
+			"this attribute belongs to the " + cls.name + " class.",
+			cls.description.title,
+			cls.description.license)»
+
+		«cls.closeProtectedArea(attribute.name+".java")»
+
+		package «cls.javaDevicePackage»;
+
+		import org.tango.DeviceState;
+		import org.tango.server.StateMachineBehavior;
+		import org.tango.server.attribute.AttributeValue;
+		import org.tango.server.attribute.AttributeConfiguration;
+		import org.tango.server.attribute.AttributePropertiesImpl;
+
+		//	Import Tango IDL types
+		import fr.esrf.Tango.*;
+
+	'''
+
+	//======================================================
+	// define code for constructor
+	//======================================================
+	def constructor(PogoDeviceClass cls, Attribute attribute) '''
+		/**
+		 * Dynamic attribute «attribute.name» constructor
+		 * @param attributeName The dynamic attribute name
+		 */
+		public «attribute.name»(String attributeName) {
+			this.attributeName = attributeName;
+		}
+	'''
+
+
+	//======================================================
+	// define code for getConfiguration() method
+	//======================================================
+	def getConfigurationMethod(PogoDeviceClass cls, Attribute attribute) '''
+		/**
+		 * Build and return the configuration for dynamic attribute DynTest.
+		 * @return the configuration for dynamic attribute DynTest.
+		 * @throws DevFailed in case of configuration error.
+		 */
+		@Override
+		public AttributeConfiguration getConfiguration() throws DevFailed {
+			AttributeConfiguration  config = new AttributeConfiguration();
+			«setDynamicAttributeConfig("Name", "attributeName")»
+			«setDynamicAttributeConfig("Type", attribute.strJavaType + ".class")»
+			«setDynamicAttributeConfig("Format", attribute.attType.toUpperCase, "AttrDataFormat.")»
+			«setDynamicAttributeConfig("Writable", attribute.rwType, "AttrWriteType.")»
+			«setDynamicAttributeConfig("DispLevel", attribute.displayLevel, "DispLevel.")»
+			«IF attribute.polledPeriod!=null && attribute.polledPeriod!="0"»
+				«setDynamicAttributeConfig("Polled", "true")»
+				«setDynamicAttributeConfig("PollingPeriod", attribute.polledPeriod)»
+			«ENDIF»
+			«setDynamicAttributeConfig("Memorized", attribute.memorized)»
+			«setDynamicAttributeConfig("MemorizedAtInit", attribute.memorizedAtInit)»
+			«IF attribute.properties!=null»
+
+				«attribute.buildSetProperties»
+			«ENDIF»
+			return config;
+		}
+	'''
+	//======================================================
+	// define code to set properties for getConfigurationMethod() method
+	//======================================================
+	def buildSetProperties(Attribute attribute) '''
+		//	Set attribute properties
+		AttributePropertiesImpl	properties = new AttributePropertiesImpl();
+		«setDynamicAttributePropertyConfig("Description",  attribute.properties.description)»
+		«setDynamicAttributePropertyConfig("Label",        attribute.properties.label)»
+		«setDynamicAttributePropertyConfig("Unit",         attribute.properties.unit)»
+		«setDynamicAttributePropertyConfig("StandardUnit", attribute.properties.standardUnit)»
+		«setDynamicAttributePropertyConfig("DisplayUnit",  attribute.properties.displayUnit)»
+		«setDynamicAttributePropertyConfig("Format",       attribute.properties.format)»
+		«setDynamicAttributePropertyConfig("MaxValue",     attribute.properties.maxValue)»
+		«setDynamicAttributePropertyConfig("MinValue",     attribute.properties.minValue)»
+		«setDynamicAttributePropertyConfig("MaxAlarm",     attribute.properties.maxAlarm)»
+		«setDynamicAttributePropertyConfig("MinAlarm",     attribute.properties.minAlarm)»
+		«setDynamicAttributePropertyConfig("MaxWarning",   attribute.properties.maxWarning)»
+		«setDynamicAttributePropertyConfig("MinWarning",   attribute.properties.minWarning)»
+		«setDynamicAttributePropertyConfig("DeltaT",       attribute.properties.deltaTime)»
+		«setDynamicAttributePropertyConfig("DeltaVal",     attribute.properties.deltaValue)»
+		«setDynamicAttributeConfig("AttributeProperties", "properties")»
+	'''
+
+	//======================================================
+	// define code for stateMachine() method
+	//======================================================
+	def stateMachineMethod(PogoDeviceClass cls, Attribute attribute) '''
+		/**
+		 * Get dynamic attribute state machine
+		 * @return the attribute state machine
+		 * @throws DevFailed if the state machine computation failed.
+		 */
+		@Override
+		public StateMachineBehavior getStateMachine() throws DevFailed {
+			StateMachineBehavior stateMachine = new StateMachineBehavior();
+			«attribute.stateMachineForDynamic»
+			«cls.protectedArea(attribute.name+"." + "getStateMachine")»
+			return stateMachine;
+		}
+	'''
+
+
+	//======================================================
+	// define code for getValue() method
+	//======================================================
+	def getValueMethod(PogoDeviceClass cls, Attribute attribute) '''
+		/**
+		 * Get dynamic attribute value
+		 * @return the attribute value
+		 * @throws DevFailed if the read value failed.
+		 */
+		@Override
+		public AttributeValue getValue() throws DevFailed {
+			«attribute.strFullJavaType»	readValue;
+			«cls.protectedArea(attribute.name+"." + "getValue")»
+			return new AttributeValue(readValue);
+		}
+	'''
+
+	//======================================================
+	// define code for setValue() method
+	//======================================================
+	def setValueMethod(PogoDeviceClass cls, Attribute attribute) '''
+		/**
+		 * Set dynamic attribute value
+		 * @param writeValue the attribute value
+		 * @throws DevFailed if the set value failed.
+		 */
+		@Override
+		public void setValue(AttributeValue writeValue) throws DevFailed {
+			«cls.protectedArea(attribute.name+"." + "setValue",
+				"System.out.println(\"Writing \" + writeValue + \"to hardware\");", false)»
+		}
+	'''
+}
