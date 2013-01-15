@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Nov 19 07:47:16 CET 2012)</Center><Br>\n" + 
+		"	(Generated Tue Jan 15 09:08:40 CET 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.1.4 - 15/01/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Eclipse project added for C++ classes.<Br>\n" + 
+		"&nbsp; &nbsp; Add a popup menu on main window to change language.<Br>\n" + 
+		"&nbsp; &nbsp; Problem in string spectrum write attribute fixed.<Br>\n" + 
 		"<li><b>Pogo-8.1.3 - 19/11/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix problem in class/device property description for python.<Br>\n" + 
 		"<li><b>Pogo-8.1.2 - 05/11/2012:</b><Br>\n" + 
@@ -28,11 +32,11 @@ public interface ReleaseNote
 		"&nbsp; &nbsp; Remove the Soleil special case.<Br>\n" + 
 		"&nbsp; &nbsp; Problem links to sub-directory in java fixed.<Br>\n" + 
 		"<li><b>Pogo-8.1.0 - 22/10/2012:</b><Br>\n" + 
-		"&nbsp; &nbsp; XTend replace XPand to define templates.<Br>\n" + 
+		"&nbsp; &nbsp; XTend replaces XPand to define templates.<Br>\n" + 
 		"&nbsp; &nbsp; C++ and html templates have been re written using xtend.<Br>\n" + 
 		"&nbsp; &nbsp; Java and Python generators are now available.<Br>\n" + 
 		"<li><b>Pogo-8.0.8 - 10/08/2012:</b><Br>\n" + 
-		"&nbsp; &nbsp; Add methods for futue compatibility.<Br>\n" + 
+		"&nbsp; &nbsp; Add methods for future compatibility.<Br>\n" + 
 		"<li><b>Pogo-8.0.7 - 07/08/2012:</b><Br>\n" + 
 		"&nbsp; &nbsp; Pb in generate dialog for multi class project fixed.<Br>\n" + 
 		"<li><b>Pogo-8.0.7 - 27/06/2012:</b><Br>\n" + 

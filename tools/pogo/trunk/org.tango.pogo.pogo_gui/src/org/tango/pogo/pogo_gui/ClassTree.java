@@ -78,8 +78,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     private boolean modified = false;
     private boolean isInheritedClass;
 
-    static private Object copiedItem = null;
-
+    private static Object copiedItem = null;
     //===============================================================
     //===============================================================
     public ClassTree(PogoGUI parent, DeviceClass deviceClass, boolean isInheritedClass) {
@@ -610,7 +609,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         setSelectionPath(new TreePath(path));
     }
     //===============================================================
-
     /**
      * Edit selected object
      */
@@ -629,7 +627,11 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
     }
     //===============================================================
-
+    //===============================================================
+    public void setClassLanguage(int lnguage) {
+        deviceClass.getPogoDeviceClass().getDescription().setLanguage(PogoConst.strLang[lnguage]);
+    }
+    //===============================================================
     /**
      * Copy selected object to be pasted.
      */
@@ -639,7 +641,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     }
 
     //===============================================================
-
     /**
      * Paste the copiedItem object
      */

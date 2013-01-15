@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 8.1.3
+RELEASE    = 8.1.4
 
 
 TANGO_HOME	=	/segfs/tango
@@ -29,7 +29,6 @@ SVN_TAG_REV    = Release-$(RELEASE)
 #
 #------------------------------------------------------------------
 
-#BIN_DIR   = $(TANGO_HOME)/tools/pogo/bin
 BIN_DIR   =  ../../../../../bin
 JAVAFLAGS =  -d $(BIN_DIR)
 JAVAC     =  javac -g $(JAVAFLAGS)
@@ -58,7 +57,6 @@ utils:
 
 exe:
 	@./go
-
 
 
 MAIN_CLASS=		$(PACKAGE)GUI
