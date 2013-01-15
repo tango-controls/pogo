@@ -250,7 +250,6 @@ public class Pogo {
             if (!found)
                 sourcefiles.add(arg);
         }
-        System.out.println("action = "+ action);
         return action;
     }
 

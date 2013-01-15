@@ -90,6 +90,8 @@ public class PogoGUI extends JFrame {
 
     private ClassPanels class_panels;
     private JLabel      languageLabel;
+    private LanguagePopupMenu   languageMenu;
+    private boolean hasInheritance = false;
 
     public static boolean dbg_java = false;
     public static boolean dbg_python = false;
@@ -334,10 +336,17 @@ public class PogoGUI extends JFrame {
         addTopPanelButton(utils.image_icon, "Add ImageAttribute", true);
         addTopPanelButton(utils.state_icon, "Add State", true);
 
+        //  Add a label to display language (and menu to change it)
         lbl = new JLabel("           ");
         topPanel.add(lbl);
         languageLabel = new JLabel("");
         topPanel.add(languageLabel);
+        languageMenu = new LanguagePopupMenu(languageLabel);
+        languageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                languageMenu.showMenu(evt);
+            }
+        });
 
         homeDir = System.getenv("SOURCE_PATH");
         if (homeDir == null) {
@@ -1346,6 +1355,7 @@ public class PogoGUI extends JFrame {
             for (int i = ancestors.size() - 1; i >= 0; i--) {
                 addPanel(ancestors.get(i));
             }
+            hasInheritance = (ancestors.size()>0);
 
             //  Build inheritance panel
             getContentPane().remove(inherPanel);
@@ -1385,6 +1395,7 @@ public class PogoGUI extends JFrame {
 
 
     //===============================================================
+    //===============================================================
     private class SetVisibleLater extends Thread {
         private Component component;
 
@@ -1399,5 +1410,75 @@ public class PogoGUI extends JFrame {
             component.setVisible(true);
         }
     }
+    //===============================================================
+    //===============================================================
+
+
+
+
+
+
+    //===============================================================
+    //===============================================================
+
+    private class LanguagePopupMenu extends JPopupMenu {
+        private JLabel  label;
+        private final int OFFSET = 2;    //	Label And separator
+
+        private String[] menuLabels = {
+                PogoConst.strLang[0],
+                PogoConst.strLang[1],
+                PogoConst.strLang[2],
+        };
+
+        //===========================================================
+        private LanguagePopupMenu(JLabel label) {
+            this.label = label;
+            JLabel  title = new JLabel("Language");
+            title.setFont(new java.awt.Font("Dialog", 1, 16));
+            add(title);
+            add(new JPopupMenu.Separator());
+
+            for (String menuLabel : menuLabels) {
+                if (menuLabel == null)
+                    add(new Separator());
+                else {
+                    JMenuItem btn = new JMenuItem(menuLabel);
+                    btn.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent evt) {
+                            menuActionPerformed(evt);
+                        }
+                    });
+                    add(btn);
+                }
+            }
+        }
+        //===========================================================
+        public void showMenu(MouseEvent evt) {
+            //  If has inheritance -> cannot change language
+            if (hasInheritance)
+                return;
+            int mask = evt.getModifiers();
+            if ((mask & MouseEvent.BUTTON3_MASK)!=0)
+                show(label, evt.getX(), evt.getY());
+        }
+        //===========================================================
+        private void menuActionPerformed(ActionEvent evt) {
+            //	Check component source
+            Object obj = evt.getSource();
+            int cmdidx = 0;
+            for (int i = 0; i < menuLabels.length; i++)
+                if (getComponent(OFFSET + i) == obj)
+                    cmdidx = i;
+            ClassTree tree = class_panels.getSelectedTree();
+            if (tree!=null) {
+                tree.setClassLanguage(cmdidx);
+                setLanguageLogo(PogoConst.strLang[cmdidx]);
+                tree.setModified(true);
+            }
+        }
+        //===========================================================
+    }
+    //===============================================================
     //===============================================================
 }
