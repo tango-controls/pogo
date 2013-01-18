@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.1.5 - 18/01/2013:
+	Problem in command using DevEncoded fixed.
+
 Pogo-8.1.4 - 15/01/2013:
 	Eclipse project added for C++ classes.
 	Add a popup menu on main window to change language.

@@ -37,7 +37,7 @@ class Commands {
 	def arginDeclaration(Type type) {
 		if (type.cppType.equals("void"))
 			 ""
-		else if (type.cppType.endsWith("Array"))
+		else if (type.cppType.endsWith("Array") || type.cppType.contains("Encoded"))
 			 "const " + type.cppType + " *argin"
 		else type.cppType + " argin"
 	}
@@ -47,7 +47,7 @@ class Commands {
 	def argoutDeclarationForSignature(Type type) {
 		if (type.cppType.equals("void"))
 			 "void "
-		else if (type.cppType.endsWith("Array"))
+		else if (type.cppType.endsWith("Array") || type.cppType.contains("Encoded"))
 			 type.cppType + " *"
 		else type.cppType + " "
 	}
@@ -59,7 +59,8 @@ class Commands {
 				""
 		}
 		else {
-			if (command.argout.type.cppType.endsWith("Array"))
+			if (command.argout.type.cppType.endsWith("Array") ||
+				command.argout.type.cppType.contains("Encoded"))
 				command.argout.type.cppType + " *argout;"
 			else
 				command.argout.type.cppType + " argout;"

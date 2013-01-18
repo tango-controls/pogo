@@ -11,12 +11,12 @@
 #-======================================================================
 
 
-RELEASE    = 8.1.4
+RELEASE    = 8.1.5
 
 
 TANGO_HOME	=	/segfs/tango
 PACK_HOME	=	$(TANGO_HOME)/tools
-POGO_DOC	=	$(TANGO_HOME)/tools/pogo/pogo_oaw/doc
+POGO_DOC	=	$(HOME)/workspace/documentation
 DOC_HOME    =	$(TANGO_HOME)/doc/www/tango/tango_doc/tools_doc/pogo_doc/
 JAR_DIR		=	$(TANGO_JAR_HOME)/appli
 
