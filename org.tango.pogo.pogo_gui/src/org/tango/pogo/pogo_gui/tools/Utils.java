@@ -141,16 +141,15 @@ public class Utils {
         
         //  Check if already done
         if (pogoGuiRevision<0) {
-            StringTokenizer stk = new StringTokenizer(PogoConst.revNumber);
-            stk.nextToken(); // Release
-            String  s = stk.nextToken();    //  Rel number
+           StringTokenizer stk = new StringTokenizer(PogoConst.revNumber);
+           String  s = stk.nextToken();    //  Rel number
             int end = s.indexOf('.');
             if (end>0) {
                 //  Check if second '.'
                 end = s.indexOf('.', end+1);
                 if (end>0) {
                     s = s.substring(0, end);
-                }
+               }
                 try {
                     pogoGuiRevision = Double.parseDouble(s);
                 }
@@ -159,7 +158,7 @@ public class Utils {
                 }
             }
             System.out.println("********* Pogo GUI Release : " +
-                    pogoGuiRevision + " *********");
+                    pogoGuiRevision + ".x *********");
         }
         return pogoGuiRevision;
     }
