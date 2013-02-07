@@ -8,6 +8,13 @@
 #
 #-======================================================================
 
+Pogo-8.1.7 - 07/04/2013:
+	Fix problem in include path in VC9 projects.
+
+Pogo-8.1.6 - 06/04/2013:
+	Fix a problem with bad char in VC9 project.
+	Change lib and include pathes in VC9 projects.
+
 Pogo-8.1.5 - 18/01/2013:
 	Problem in command using DevEncoded fixed.
 
