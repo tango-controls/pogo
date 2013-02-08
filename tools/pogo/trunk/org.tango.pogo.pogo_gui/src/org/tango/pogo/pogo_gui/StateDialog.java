@@ -63,7 +63,6 @@ public class StateDialog extends JDialog {
     private InheritanceStatus orig_status;
     private int retVal = JOptionPane.OK_OPTION;
     //===============================================================
-
     /**
      * Initializes the Form
      *
@@ -289,7 +288,7 @@ public class StateDialog extends JDialog {
     public State getState() {
         State state = OAWutils.factory.createState();
         state.setName(typeComboBox.getSelectedItem().toString());
-        state.setDescription(descText.getText());
+        state.setDescription(Utils.strReplaceSpecialCharToCode(descText.getText()));
         //	Inheritance status
         state.setStatus(orig_status);
         return state;
