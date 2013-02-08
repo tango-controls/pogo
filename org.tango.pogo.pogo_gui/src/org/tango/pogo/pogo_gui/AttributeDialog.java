@@ -1630,12 +1630,14 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             attr.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
 
         //	memorized
-        if (attr.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
-                attr.getRwType().equals(AttrRWtypeArray[WRITE])) {
-            if (memorizedBtn.getSelectedObjects() != null) {
-                attr.setMemorized("true");
-                if (memorizedInitBtn.getSelectedObjects() != null)
-                    attr.setMemorizedAtInit("true");
+        if (attType.toLowerCase().equals("scalar")) {
+            if (attr.getRwType().equals(AttrRWtypeArray[READ_WRITE]) ||
+                    attr.getRwType().equals(AttrRWtypeArray[WRITE])) {
+                if (memorizedBtn.getSelectedObjects() != null) {
+                    attr.setMemorized("true");
+                    if (memorizedInitBtn.getSelectedObjects() != null)
+                        attr.setMemorizedAtInit("true");
+                }
             }
         }
 
