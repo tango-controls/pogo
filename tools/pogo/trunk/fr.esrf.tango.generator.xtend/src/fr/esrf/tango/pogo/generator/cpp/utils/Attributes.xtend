@@ -277,6 +277,7 @@ class Attributes {
 		«IF cls==null»
 			att_list.push_back(«attribute.name.toLowerCase»);
 		«ELSE»
+			«attribute.declareIfNeeded»
 			«attribute.name»_data.insert(make_pair(attname, «attribute.defaultValue»));
 			add_attribute(«attribute.name.toLowerCase»);
 		«ENDIF»
