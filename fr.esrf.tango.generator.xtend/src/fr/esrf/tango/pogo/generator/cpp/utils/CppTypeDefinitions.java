@@ -135,6 +135,15 @@ public class CppTypeDefinitions {
 
 	//===========================================================
 	//===========================================================
+	public String declareIfNeeded(Attribute attribute) {
+		Type type = attribute.getDataType();
+		if (type instanceof StringType)	//	Build an empty array
+			return "char array[1];\n" + "array[0] = \'\\0\';";
+		else
+			return "";
+	}
+	//===========================================================
+	//===========================================================
 	public String defaultValue(Attribute attribute) {
 		Type type = attribute.getDataType();
 		String	att = attribute.getAttType().toLowerCase();
@@ -147,7 +156,7 @@ public class CppTypeDefinitions {
 		if (type instanceof DoubleType)		return (att.equals("scalar"))? "0.0"   : "ptr";
 		if (type instanceof UShortType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof UIntType)		return (att.equals("scalar"))? "0"     : "ptr";
-		if (type instanceof StringType)		return (att.equals("scalar"))? "\"\""  : "ptr";
+		if (type instanceof StringType)		return (att.equals("scalar"))? "array" : "ptr";
 		if (type instanceof DevIntType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof LongType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof ULongType)		return (att.equals("scalar"))? "0"     : "ptr";
