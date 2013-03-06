@@ -30,7 +30,6 @@ class Properties {
 			«IF cls.deviceProperties.hasMandatoryProperty»
 				mandatoryNotDefined = false;
 			«ENDIF»
-			set_status("Initializing....");
 
 			//	Read device properties from database.
 			Tango::DbData	dev_prop;
