@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.1.9 - 04/03/2013:
+	Fix problem on string dynamic attribute does not compile due to a mix of const char * and char * data type
+
 Pogo-8.1.8 - 08/02/2013:
 	Check for special char on state description.
 	Force to not memorized for spectrum/image attribute cloned from a scalar one.

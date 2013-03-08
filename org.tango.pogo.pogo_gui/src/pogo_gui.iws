@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="201d0116-b6da-4daa-8e4f-0420473a6a76" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoConst.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoConst.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.ipr" afterPath="$PROJECT_DIR$/pogo_gui.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.iws" afterPath="$PROJECT_DIR$/pogo_gui.iws" />
     </list>
     <ignored path="pogo_gui.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/PogoGUI.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1362666823689" ignored="false" />
+    <file path="Y:/tango/javaapi/common/src/fr/esrf/TangoApi/DbServerStructure.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1362666633893" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +29,13 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/InheritanceUtils.java" line="97" class="org.tango.pogo.pogo_gui.InheritanceUtils" package="org.tango.pogo.pogo_gui">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -35,7 +45,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -43,6 +54,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -58,6 +70,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -70,6 +83,7 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="pogo_gui" />
   </component>
@@ -89,9 +103,79 @@
           <file leaf-file-name="PogoGUI.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1449" column="25" selection-start="58891" selection-end="58891" vertical-scroll-proportion="0.27921405">
+                <state line="1438" column="63" selection-start="58474" selection-end="58474" vertical-scroll-proportion="0.3340206">
                   <folding>
-                    <element signature="e#0#60240#0" expanded="true" />
+                    <element signature="e#11533#11748#0" expanded="true" />
+                    <element signature="e#11729#11730#0" expanded="true" />
+                    <element signature="e#14978#15265#0" expanded="true" />
+                    <element signature="e#15254#15255#0" expanded="true" />
+                    <element signature="e#18157#18340#0" expanded="true" />
+                    <element signature="e#18329#18330#0" expanded="true" />
+                    <element signature="e#18517#18697#0" expanded="true" />
+                    <element signature="e#18686#18687#0" expanded="true" />
+                    <element signature="e#18801#18982#0" expanded="true" />
+                    <element signature="e#18971#18972#0" expanded="true" />
+                    <element signature="e#19248#19433#0" expanded="true" />
+                    <element signature="e#19422#19423#0" expanded="true" />
+                    <element signature="e#19662#19845#0" expanded="true" />
+                    <element signature="e#19834#19835#0" expanded="true" />
+                    <element signature="e#19952#20133#0" expanded="true" />
+                    <element signature="e#20122#20123#0" expanded="true" />
+                    <element signature="e#20272#20453#0" expanded="true" />
+                    <element signature="e#20442#20443#0" expanded="true" />
+                    <element signature="e#20551#20740#0" expanded="true" />
+                    <element signature="e#20729#20730#0" expanded="true" />
+                    <element signature="e#20904#21087#0" expanded="true" />
+                    <element signature="e#21076#21077#0" expanded="true" />
+                    <element signature="e#21201#21384#0" expanded="true" />
+                    <element signature="e#21373#21374#0" expanded="true" />
+                    <element signature="e#21504#21689#0" expanded="true" />
+                    <element signature="e#21678#21679#0" expanded="true" />
+                    <element signature="e#21819#22007#0" expanded="true" />
+                    <element signature="e#21996#21997#0" expanded="true" />
+                    <element signature="e#22153#22345#0" expanded="true" />
+                    <element signature="e#22334#22335#0" expanded="true" />
+                    <element signature="e#22555#22737#0" expanded="true" />
+                    <element signature="e#22726#22727#0" expanded="true" />
+                    <element signature="e#22920#23102#0" expanded="true" />
+                    <element signature="e#23091#23092#0" expanded="true" />
+                    <element signature="e#23223#23407#0" expanded="true" />
+                    <element signature="e#23396#23397#0" expanded="true" />
+                    <element signature="e#23518#23700#0" expanded="true" />
+                    <element signature="e#23689#23690#0" expanded="true" />
+                    <element signature="e#23850#24032#0" expanded="true" />
+                    <element signature="e#24021#24022#0" expanded="true" />
+                    <element signature="e#24247#24428#0" expanded="true" />
+                    <element signature="e#24417#24418#0" expanded="true" />
+                    <element signature="e#24545#24728#0" expanded="true" />
+                    <element signature="e#24717#24718#0" expanded="true" />
+                    <element signature="e#24851#25033#0" expanded="true" />
+                    <element signature="e#25022#25023#0" expanded="true" />
+                    <element signature="e#25649#25689#0" expanded="true" />
+                    <element signature="e#27523#27563#0" expanded="true" />
+                    <element signature="e#27877#27917#0" expanded="true" />
+                    <element signature="e#30826#30866#0" expanded="true" />
+                    <element signature="e#33209#33249#0" expanded="true" />
+                    <element signature="e#34365#34405#0" expanded="true" />
+                    <element signature="e#34893#34933#0" expanded="true" />
+                    <element signature="e#35422#35462#0" expanded="true" />
+                    <element signature="e#36534#36574#0" expanded="true" />
+                    <element signature="e#37878#37918#0" expanded="true" />
+                    <element signature="e#38356#38396#0" expanded="true" />
+                    <element signature="e#39096#39136#0" expanded="true" />
+                    <element signature="e#39484#39524#0" expanded="true" />
+                    <element signature="e#40310#40350#0" expanded="true" />
+                    <element signature="e#40702#40742#0" expanded="true" />
+                    <element signature="e#41111#41151#0" expanded="true" />
+                    <element signature="e#45352#45392#0" expanded="true" />
+                    <element signature="e#45732#45772#0" expanded="true" />
+                    <element signature="e#46159#46199#0" expanded="true" />
+                    <element signature="e#46590#46630#0" expanded="true" />
+                    <element signature="e#47017#47057#0" expanded="true" />
+                    <element signature="e#47440#47480#0" expanded="true" />
+                    <element signature="e#47871#47911#0" expanded="true" />
+                    <element signature="e#58810#59005#0" expanded="true" />
+                    <element signature="e#58982#58983#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -140,7 +224,7 @@
           <file leaf-file-name="AttributeDialog.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1482" column="59" selection-start="68190" selection-end="68217" vertical-scroll-proportion="-29.0">
+                <state line="1482" column="59" selection-start="68190" selection-end="68217" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -149,11 +233,15 @@
           <file leaf-file-name="StateDialog.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="274" column="52" selection-start="9928" selection-end="9928" vertical-scroll-proportion="0.33333334">
+                <state line="151" column="54" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.45371312">
                   <folding>
-                    <element signature="e#7983#8023#0" expanded="true" />
-                    <element signature="e#8277#8317#0" expanded="true" />
-                    <element signature="e#9045#9085#0" expanded="true" />
+                    <element signature="e#5060#5238#0" expanded="true" />
+                    <element signature="e#5227#5228#0" expanded="true" />
+                    <element signature="e#5444#5626#0" expanded="true" />
+                    <element signature="e#5615#5616#0" expanded="true" />
+                    <element signature="e#7982#8022#0" expanded="true" />
+                    <element signature="e#8276#8316#0" expanded="true" />
+                    <element signature="e#9044#9084#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -177,11 +265,6 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
-  <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
-    <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -191,9 +274,9 @@
         <option value="$PROJECT_DIR$/doc/GeneratedCode.html" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java" />
-        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Pogo.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java" />
       </list>
     </option>
@@ -230,6 +313,7 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -283,33 +367,27 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RunManager" selected="Application.Pogo">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -317,11 +395,20 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
@@ -348,30 +435,7 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
@@ -390,12 +454,7 @@
         <option name="JVMPI" value="false" />
         <option name="INTERPRETED" value="false" />
       </RunnerSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <module name="" />
@@ -415,12 +474,7 @@
       </option>
       <envs />
       <patterns />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="Pogo" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.tango.pogo.pogo_gui.Pogo" />
@@ -461,7 +515,12 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="true">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -476,6 +535,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
     <configuration useDefault="false">C:\Users\verdier\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
@@ -507,10 +567,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="6" width="1918" height="1166" extended-state="1" />
+    <frame x="1" y="6" width="1918" height="1166" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39980158" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -522,12 +583,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15704264" sideWeight="0.6706349" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1567888" sideWeight="0.6709613" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903865" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -554,7 +615,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -564,8 +624,13 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -588,6 +653,35 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1482" column="59" selection-start="68190" selection-end="68217" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="274" column="52" selection-start="9928" selection-end="9928" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#5060#5238#0" expanded="true" />
+            <element signature="e#5227#5228#0" expanded="true" />
+            <element signature="e#5444#5626#0" expanded="true" />
+            <element signature="e#5615#5616#0" expanded="true" />
+            <element signature="e#7982#8022#0" expanded="true" />
+            <element signature="e#8276#8316#0" expanded="true" />
+            <element signature="e#9044#9084#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="347" column="56" selection-start="12818" selection-end="12849" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="527" column="0" selection-start="23225" selection-end="23225" vertical-scroll-proportion="0.2955975" />
@@ -610,31 +704,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="57" selection-start="6035" selection-end="6035" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1449" column="25" selection-start="58891" selection-end="58891" vertical-scroll-proportion="0.27921405">
-          <folding>
-            <element signature="e#0#60240#0" expanded="true" />
-          </folding>
+        <state line="150" column="57" selection-start="6035" selection-end="6035" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/InheritanceUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="85" selection-start="3487" selection-end="3487" vertical-scroll-proportion="0.0" />
+        <state line="95" column="85" selection-start="3487" selection-end="3487" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="660" column="0" selection-start="27922" selection-end="27922" vertical-scroll-proportion="0.0" />
+        <state line="660" column="0" selection-start="27922" selection-end="27922" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="610" column="50" selection-start="26653" selection-end="26653" vertical-scroll-proportion="0.0" />
+        <state line="610" column="50" selection-start="26653" selection-end="26653" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java">
@@ -653,18 +746,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1482" column="59" selection-start="68190" selection-end="68217" vertical-scroll-proportion="-29.0">
+        <state line="1482" column="59" selection-start="68190" selection-end="68217" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1438" column="63" selection-start="58474" selection-end="58474" vertical-scroll-proportion="0.3340206">
+          <folding>
+            <element signature="e#11533#11748#0" expanded="true" />
+            <element signature="e#11729#11730#0" expanded="true" />
+            <element signature="e#14978#15265#0" expanded="true" />
+            <element signature="e#15254#15255#0" expanded="true" />
+            <element signature="e#18157#18340#0" expanded="true" />
+            <element signature="e#18329#18330#0" expanded="true" />
+            <element signature="e#18517#18697#0" expanded="true" />
+            <element signature="e#18686#18687#0" expanded="true" />
+            <element signature="e#18801#18982#0" expanded="true" />
+            <element signature="e#18971#18972#0" expanded="true" />
+            <element signature="e#19248#19433#0" expanded="true" />
+            <element signature="e#19422#19423#0" expanded="true" />
+            <element signature="e#19662#19845#0" expanded="true" />
+            <element signature="e#19834#19835#0" expanded="true" />
+            <element signature="e#19952#20133#0" expanded="true" />
+            <element signature="e#20122#20123#0" expanded="true" />
+            <element signature="e#20272#20453#0" expanded="true" />
+            <element signature="e#20442#20443#0" expanded="true" />
+            <element signature="e#20551#20740#0" expanded="true" />
+            <element signature="e#20729#20730#0" expanded="true" />
+            <element signature="e#20904#21087#0" expanded="true" />
+            <element signature="e#21076#21077#0" expanded="true" />
+            <element signature="e#21201#21384#0" expanded="true" />
+            <element signature="e#21373#21374#0" expanded="true" />
+            <element signature="e#21504#21689#0" expanded="true" />
+            <element signature="e#21678#21679#0" expanded="true" />
+            <element signature="e#21819#22007#0" expanded="true" />
+            <element signature="e#21996#21997#0" expanded="true" />
+            <element signature="e#22153#22345#0" expanded="true" />
+            <element signature="e#22334#22335#0" expanded="true" />
+            <element signature="e#22555#22737#0" expanded="true" />
+            <element signature="e#22726#22727#0" expanded="true" />
+            <element signature="e#22920#23102#0" expanded="true" />
+            <element signature="e#23091#23092#0" expanded="true" />
+            <element signature="e#23223#23407#0" expanded="true" />
+            <element signature="e#23396#23397#0" expanded="true" />
+            <element signature="e#23518#23700#0" expanded="true" />
+            <element signature="e#23689#23690#0" expanded="true" />
+            <element signature="e#23850#24032#0" expanded="true" />
+            <element signature="e#24021#24022#0" expanded="true" />
+            <element signature="e#24247#24428#0" expanded="true" />
+            <element signature="e#24417#24418#0" expanded="true" />
+            <element signature="e#24545#24728#0" expanded="true" />
+            <element signature="e#24717#24718#0" expanded="true" />
+            <element signature="e#24851#25033#0" expanded="true" />
+            <element signature="e#25022#25023#0" expanded="true" />
+            <element signature="e#25649#25689#0" expanded="true" />
+            <element signature="e#27523#27563#0" expanded="true" />
+            <element signature="e#27877#27917#0" expanded="true" />
+            <element signature="e#30826#30866#0" expanded="true" />
+            <element signature="e#33209#33249#0" expanded="true" />
+            <element signature="e#34365#34405#0" expanded="true" />
+            <element signature="e#34893#34933#0" expanded="true" />
+            <element signature="e#35422#35462#0" expanded="true" />
+            <element signature="e#36534#36574#0" expanded="true" />
+            <element signature="e#37878#37918#0" expanded="true" />
+            <element signature="e#38356#38396#0" expanded="true" />
+            <element signature="e#39096#39136#0" expanded="true" />
+            <element signature="e#39484#39524#0" expanded="true" />
+            <element signature="e#40310#40350#0" expanded="true" />
+            <element signature="e#40702#40742#0" expanded="true" />
+            <element signature="e#41111#41151#0" expanded="true" />
+            <element signature="e#45352#45392#0" expanded="true" />
+            <element signature="e#45732#45772#0" expanded="true" />
+            <element signature="e#46159#46199#0" expanded="true" />
+            <element signature="e#46590#46630#0" expanded="true" />
+            <element signature="e#47017#47057#0" expanded="true" />
+            <element signature="e#47440#47480#0" expanded="true" />
+            <element signature="e#47871#47911#0" expanded="true" />
+            <element signature="e#58810#59005#0" expanded="true" />
+            <element signature="e#58982#58983#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="274" column="52" selection-start="9928" selection-end="9928" vertical-scroll-proportion="0.33333334">
+        <state line="151" column="54" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.45371312">
           <folding>
-            <element signature="e#7983#8023#0" expanded="true" />
-            <element signature="e#8277#8317#0" expanded="true" />
-            <element signature="e#9045#9085#0" expanded="true" />
+            <element signature="e#5060#5238#0" expanded="true" />
+            <element signature="e#5227#5228#0" expanded="true" />
+            <element signature="e#5444#5626#0" expanded="true" />
+            <element signature="e#5615#5616#0" expanded="true" />
+            <element signature="e#7982#8022#0" expanded="true" />
+            <element signature="e#8276#8316#0" expanded="true" />
+            <element signature="e#9044#9084#0" expanded="true" />
           </folding>
         </state>
       </provider>
