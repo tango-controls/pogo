@@ -6,7 +6,7 @@
 //
 // $Author: verdier $
 //
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011,2012,2013
 //						European Synchrotron Radiation Facility
 //                      BP 220, Grenoble 38043
 //                      FRANCE
@@ -44,6 +44,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
@@ -249,33 +250,33 @@ public class PogoGUI extends JFrame {
     private void customizeMenus() throws DevFailed {
         fileMenu.setMnemonic('F');
         newItem.setMnemonic('N');
-        newItem.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK));
+        newItem.setAccelerator(KeyStroke.getKeyStroke('N', InputEvent.CTRL_MASK));
         openItem.setMnemonic('O');
-        openItem.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK));
+        openItem.setAccelerator(KeyStroke.getKeyStroke('O', InputEvent.CTRL_MASK));
         generateItem.setMnemonic('G');
-        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', Event.CTRL_MASK));
+        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', InputEvent.CTRL_MASK));
         exitItem.setMnemonic('E');
-        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', Event.CTRL_MASK));
+        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', InputEvent.CTRL_MASK));
 
         editMenu.setMnemonic('E');
         stateMachineItem.setMnemonic('M');
-        stateMachineItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK));
+        stateMachineItem.setAccelerator(KeyStroke.getKeyStroke('M', InputEvent.CTRL_MASK));
         deleteItem.setMnemonic('D');
         deleteItem.setAccelerator(KeyStroke.getKeyStroke(Event.DELETE, 0));
 
         moveUpItem.setMnemonic('U');
-        moveUpItem.setAccelerator(KeyStroke.getKeyStroke('U', Event.CTRL_MASK));
+        moveUpItem.setAccelerator(KeyStroke.getKeyStroke('U', InputEvent.CTRL_MASK));
         moveDownItem.setMnemonic('D');
-        moveDownItem.setAccelerator(KeyStroke.getKeyStroke('D', Event.CTRL_MASK));
+        moveDownItem.setAccelerator(KeyStroke.getKeyStroke('D', InputEvent.CTRL_MASK));
 
         preferencesItem.setMnemonic('P');
-        preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', Event.CTRL_MASK));
+        preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', InputEvent.CTRL_MASK));
 
         toolsMenu.setMnemonic('T');
         if (!Utils.osIsUnix())
             toolsMenu.setVisible(false);
         multiItem.setMnemonic('M');
-        multiItem.setAccelerator(KeyStroke.getKeyStroke('M', Event.CTRL_MASK | Event.SHIFT_MASK));
+        multiItem.setAccelerator(KeyStroke.getKeyStroke('M', InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
 
         helpMenu.setMnemonic('H');
         colorItem.setMnemonic('C');
@@ -1435,7 +1436,7 @@ public class PogoGUI extends JFrame {
         private LanguagePopupMenu(JLabel label) {
             this.label = label;
             JLabel  title = new JLabel("Language");
-            title.setFont(new java.awt.Font("Dialog", 1, 16));
+            title.setFont(new java.awt.Font("Dialog", Font.BOLD, 16));
             add(title);
             add(new JPopupMenu.Separator());
 
