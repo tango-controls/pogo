@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Feb 08 13:13:36 CET 2013)</Center><Br>\n" + 
+		"	(Generated Mon Mar 04 16:43:54 CET 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.1.9 - 04/03/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix problem on string dynamic attribute does not compile due to a mix of const char * and char * data type<Br>\n" + 
 		"<li><b>Pogo-8.1.8 - 08/02/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Check for special char on state description.<Br>\n" + 
 		"&nbsp; &nbsp; Force to not memorized for spectrum/image attribute cloned from a scalar one.<Br>\n" + 
