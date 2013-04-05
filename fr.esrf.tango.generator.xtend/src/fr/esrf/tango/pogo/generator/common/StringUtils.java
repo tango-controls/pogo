@@ -99,6 +99,22 @@ public class StringUtils {
 	}
 	//===========================================================
 	/**
+	 * returns string value as integer
+	 */
+	//===========================================================
+	public static int getIntegerValue(String str) {
+		if  (isSet(str)==false)
+			return -1;
+		else
+			try {
+				return Integer.parseInt(str);
+			}
+			catch (Exception e) {
+				return -1;
+			}
+	}
+	//===========================================================
+	/**
 	 * Convert name to data member name (first char to lower case
 	 */
 	//===========================================================

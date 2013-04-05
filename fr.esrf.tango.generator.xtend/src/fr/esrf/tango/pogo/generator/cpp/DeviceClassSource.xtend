@@ -201,8 +201,13 @@ class DeviceClassSource {
 							«command.commandFactory»
 						}
 					«ELSE»
+						//	Command «command.name»
 						«command.commandFactory»
 					«ENDIF»
+				«ENDIF»
+
+				«IF command.name.equals("State") || command.name.equals("Status")»
+					«command.checkStateStatusPolling»
 				«ENDIF»
 			«ENDFOR»
 			«cls.protectedAreaClass("command_factory_after", "Add your own code", true)»
