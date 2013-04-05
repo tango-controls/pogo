@@ -305,7 +305,11 @@ class Attributes {
 			«cls.protectedArea("att_" + attribute.name + "_dynamic_attribute", "", false)»
 		«ENDIF»
 		«attribute.name.toLowerCase»->set_default_properties(«attribute.name.toLowerCase»_prop);
-		«attribute.setExtendedProprty("polling_period", attribute.polledPeriod, "Not Polled")»
+		«IF attribute.polledPeriod.integerValue>0»
+			«attribute.setExtendedProprty("polling_period", attribute.polledPeriod, "Not Polled")»
+		«ELSE»
+			//	Not Polled
+		«ENDIF»
 		«attribute.setExtendedProprty("disp_level", attribute.displayLevel, "Tango::OPERATOR")»
 		«attribute.setAttributeMemorized("Not Memorized")»
 		«attribute.setEventCriteria»

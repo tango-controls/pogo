@@ -8,6 +8,10 @@
 #
 #-======================================================================
 
+Pogo-8.1.10 - 05/04/2013:
+	State/Status polling problem fixed.
+	Problem on makefile for multi classes with inheritance fixed.
+
 Pogo-8.1.9 - 04/03/2013:
 	Fix problem on string dynamic attribute does not compile due to a mix of const char * and char * data type
 

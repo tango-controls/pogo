@@ -41,6 +41,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
+import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
 
@@ -49,7 +50,7 @@ import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinition
 //======================================================
 class Commands {
 	@Inject	extension ProtectedArea
-	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.common.StringUtils
 	@Inject	extension InheritanceUtils
 
 	//======================================================
@@ -262,4 +263,13 @@ class Commands {
 		command_list.push_back(p«command.name»Cmd);
 	'''
 
+	//	Add code for State and status polling if needed
+	def checkStateStatusPolling(Command command) '''
+		«IF command.polledPeriod.getIntegerValue > 0»
+			//	Set polling perod for command «command.name»
+			Tango::Command	&«command.name.toLowerCase»Cmd = get_cmd_by_name("«command.name»");
+			«command.name.toLowerCase»Cmd.set_polling_period(«command.polledPeriod»);
+
+		«ENDIF»
+	'''
 }

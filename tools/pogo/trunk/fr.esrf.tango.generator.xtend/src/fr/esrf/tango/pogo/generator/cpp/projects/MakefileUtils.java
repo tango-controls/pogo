@@ -251,12 +251,28 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	}
 	//======================================================
 	//======================================================
+	private static ArrayList<String>	inheritedObjectFiles = new ArrayList<String>();
 	private String addObjectFileList(String classname) {
+		String	classObjectFile = classname +".o";
 		String code = "";
+
+		//	If class already declared, do not re-do it (e.g. inheritance)
+		if (alreadyDeclared(classObjectFile, inheritedObjectFiles))
+			return "";
+		
 		code += "		$(OBJDIR)/" + classname +".o \\\n";
 		code += "		$(OBJDIR)/" + classname +"Class.o \\\n";
 		code += "		$(OBJDIR)/" + classname +"StateMachine.o";
+		inheritedObjectFiles.add(classObjectFile);
 		return code;
+	}
+	//======================================================
+	//======================================================
+	private boolean alreadyDeclared(String str, ArrayList<String> list) {
+		for (String s : list)
+			if (s.equals(str))
+				return true;
+		return false;
 	}
 	//======================================================
 	//======================================================
@@ -282,9 +298,12 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 			//	Inheritance files
 			for (Inheritance inheritance : cls.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += dependanciesObject(inheritance.getClassname(), "");
-					code += dependanciesObject(inheritance.getClassname(), "Class");
-					code += dependanciesObject(inheritance.getClassname(), "StateMachine");
+					if (alreadyDeclared(inheritance.getClassname(), inheritedDependanciesFiles)==false) {
+						code += dependanciesObject(inheritance.getClassname(), "");
+						code += dependanciesObject(inheritance.getClassname(), "Class");
+						code += dependanciesObject(inheritance.getClassname(), "StateMachine");
+						inheritedDependanciesFiles.add(inheritance.getClassname());
+					}
 				}
 			}
 			code += "\n";
@@ -293,6 +312,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	}
 	//======================================================
 	//======================================================
+	private static ArrayList<String>	inheritedDependanciesFiles = new ArrayList<String>();
 	String dependanciesIncludes(String classname, EList<Inheritance> inheritances) {
 		String code = "";
 		if (inheritances!=null) {
