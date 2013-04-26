@@ -55,6 +55,7 @@ import java.util.ArrayList;
  * A Dialog Class to get the Attribute parameters.
  */
 //===============================================================
+@SuppressWarnings("MagicConstant")
 public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.PogoConst {
     private int retVal = JOptionPane.OK_OPTION;
     private PogoGUI pogo_gui;
@@ -1355,7 +1356,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     //======================================================
     //======================================================
     private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
-        // TODO add your handling code here:
 
         //  Check if event panel
         JTabbedPane tabbedPane = (JTabbedPane) evt.getSource();
@@ -1765,6 +1765,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
                     case READ_WITH_WRITE:
                         assAttrTF.setVisible(true);
                         assAttrLBL.setVisible(true);
+                        assAttrTF.setText(attribute.getAssociatedAttr());
                         break;
                     case WRITE:
                     case READ_WRITE:

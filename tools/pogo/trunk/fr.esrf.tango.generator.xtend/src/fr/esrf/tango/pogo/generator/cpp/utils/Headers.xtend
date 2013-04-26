@@ -40,14 +40,14 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
-import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
+import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
 import com.google.inject.Inject
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
 
 class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 
-	@Inject	extension fr.esrf.tango.pogo.generator.common.StringUtils
+	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
 
 	//======================================================
 	// header for device.h
@@ -217,6 +217,15 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		"//--------------------------------------------------------"
 	}
 	//======================================================
+	def simpleMethodHeader1(PogoDeviceClass cls, String method, String description) {
+		"//--------------------------------------------------------\n" +
+		"/*\n" +
+		" *	Method      : "+ cls.name + "::" + method + "()\n" +
+		" *	Description : " + description.comments(" *                ") + "\n" +
+		" */\n" +
+		"//--------------------------------------------------------"
+	}
+	//======================================================
 	def simpleMethodHeaderClass(PogoDeviceClass cls, String method, String description) {
 		"//--------------------------------------------------------\n" +
 		"/**\n" +
@@ -263,9 +272,7 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		"/**\n" +
 		" *	Command " + cmd.name + " related method\n" +
 		" *	Description: " + cmd.description.comments(" *               ") + "\n" +
-		" *\n" +
-		" *	@param argin " + cmd.argin.description.comments(" *               ") + "\n" +
-		" *	@returns " + cmd.argout.description.comments(" *           ") + "\n" +
+		" *\n" + cmd.commandParameterHeader +
 		" */\n"		
 	}
 

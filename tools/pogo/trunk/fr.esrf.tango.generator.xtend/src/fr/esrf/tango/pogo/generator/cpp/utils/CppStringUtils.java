@@ -38,6 +38,7 @@ package fr.esrf.tango.pogo.generator.cpp.utils;
 import org.eclipse.emf.common.util.EList;
 import java.util.ArrayList;
 
+import fr.esrf.tango.pogo.generator.common.StringUtils;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
@@ -210,5 +211,30 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 		return sb.toString();
 	}
 	//===========================================================
+	public static String readWithWrite(Attribute attribute) {
+		if (attribute.getRwType().contains("WITH_WRITE"))
+			return ", \"" + attribute.getAssociatedAttr() + "\"";
+		else
+			return "";
+	}
+	//===========================================================
 
+	//===========================================================
+	public static String commandParameterHeader(Command command) {
+		String	str = "";
+		if (CppTypeDefinitions.cppType(command.getArgin().getType()).equals("void")==false) {
+			str += " *	@param argin " +
+					StringUtils.comments(command.getArgin().getDescription(), " *               ") + "\n";
+		}
+		if (CppTypeDefinitions.cppType(command.getArgout().getType()).equals("void")==false) {
+			str += " *	@returns " +
+					StringUtils.comments(command.getArgout().getDescription(), " *           ") + "\n";
+		}
+
+		return str;
+	}
+	
+	//===========================================================
+	
+	
 }

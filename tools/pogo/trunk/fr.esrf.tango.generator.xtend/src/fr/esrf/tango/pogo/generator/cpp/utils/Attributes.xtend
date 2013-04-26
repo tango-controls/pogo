@@ -246,7 +246,7 @@ class Attributes {
 		«ELSE»
 			«IF attribute.isScalar»
 				«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
-						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
+						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType»«attribute.readWithWrite») {};
 			«ELSEIF attribute.isSpectrum»
 				«attribute.name»Attrib():«attribute.inheritance»("«attribute.name»",
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
@@ -256,7 +256,7 @@ class Attributes {
 			«ENDIF»
 		«ENDIF»
 	'''
-
+	
 	//======================================================
 	// Define attribute Constructor
 	//	If cls not null -> dynamic attribute
