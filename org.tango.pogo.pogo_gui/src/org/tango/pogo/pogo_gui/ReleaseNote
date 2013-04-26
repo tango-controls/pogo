@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.1.11 - 26/04/2013:
+	Problem on READ_WITH_WRITE fixed.
+
 Pogo-8.1.10 - 05/04/2013:
 	State/Status polling problem fixed.
 	Problem on makefile for multi classes with inheritance fixed.

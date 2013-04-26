@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Apr 05 13:21:11 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Fri Apr 26 09:30:21 CEST 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.1.11 - 26/04/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Problem on READ_WITH_WRITE fixed.<Br>\n" + 
 		"<li><b>Pogo-8.1.10 - 05/04/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; State/Status polling problem fixed.<Br>\n" + 
 		"&nbsp; &nbsp; Problem on makefile for multi classes with inheritance fixed.<Br>\n" + 

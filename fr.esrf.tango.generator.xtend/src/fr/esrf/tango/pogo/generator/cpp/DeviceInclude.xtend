@@ -194,27 +194,27 @@ class DeviceInclude  {
 	def declareGlobals(PogoDeviceClass cls) '''
 		//	Miscellaneous methods
 		public:
-			/**
+			/*
 			 *	will be called at device destruction or at init command.
 			 */
 			void delete_device();
-			/**
+			/*
 			 *	Initialize the device
 			 */
 			virtual void init_device();
 			«IF cls.deviceProperties.size>0 && isTrue(cls.description.hasConcreteProperty)»
-				/**
+				/*
 				 *	Read the device properties from database
 				 */
 				void get_device_property();
 			«ENDIF»
-			/**
+			/*
 			 *	Always executed method before execution command method.
 			 */
 			virtual void always_executed_hook();
 
 			«IF cls.deviceProperties.hasMandatoryProperty»
-				/**
+				/*
 				 *	Check if mandatory property has been set
 				 */
 				 void check_mandatory_property(Tango::DbDatum &class_prop, Tango::DbDatum &dev_prop);
@@ -230,7 +230,7 @@ class DeviceInclude  {
 	def declareAttributes(PogoDeviceClass cls) '''
 		//	Attribute methods
 		public:
-			«cls.simpleMethodHeader("read_attr_hardware", "Hardware acquisition for attributes.")»
+			«cls.simpleMethodHeader1("read_attr_hardware", "Hardware acquisition for attributes.")»
 			virtual void read_attr_hardware(vector<long> &attr_list);
 		«IF cls.attributes.size()>0»
 
