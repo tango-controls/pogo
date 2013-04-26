@@ -43,6 +43,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
+import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.State;
 
@@ -266,6 +267,7 @@ public class StringUtils {
 	}
 	//===========================================================
 
+	
 	
 	//===========================================================
 	/**
