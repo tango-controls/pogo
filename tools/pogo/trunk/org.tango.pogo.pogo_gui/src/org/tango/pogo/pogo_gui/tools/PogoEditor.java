@@ -37,11 +37,13 @@ package org.tango.pogo.pogo_gui.tools;
 
 
 /**
- *	This class is able tocheck if editor is available and start it.
+ *	This class is able to check if shellEditor is available and start it.
  *
  * @author verdier
  */
 
+import fr.esrf.Tango.DevFailed;
+import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Property;
@@ -50,6 +52,7 @@ import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.PogoConst;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -58,7 +61,7 @@ import java.util.ArrayList;
 
 public class PogoEditor {
     private static PogoEditor instance = null;
-    private static String editor = null;
+    private static String shellEditor = null;
     private static final String[] exeFiles = {
             "nedit-client",
             "nedit-nc",
@@ -79,22 +82,32 @@ public class PogoEditor {
         //	Check only under Ux like
         String os = System.getProperty("os.name");
         System.out.println("Running under " + os);
-        if (!os.toLowerCase().startsWith("windows")) {
-            String path = System.getenv("PATH");
-            StringTokenizer stk = new StringTokenizer(path, ":");
-            ArrayList<String> lines = new ArrayList<String>();
-            while (stk.hasMoreTokens())
-                lines.add(stk.nextToken());
+        if (os.toLowerCase().startsWith("shellEditor")) {
+            shellEditor = null;
+        }
+        else {
+            shellEditor = System.getenv("EDITOR");
+            if (shellEditor !=null && shellEditor.equals("nedit")) {
+                //  Try to find nedit client executable
+                String path = System.getenv("PATH");
+                StringTokenizer stk = new StringTokenizer(path, ":");
+                ArrayList<String> lines = new ArrayList<String>();
+                while (stk.hasMoreTokens())
+                    lines.add(stk.nextToken());
 
-            //	Check exe files in order from $PATH
-            for (String exeFile : exeFiles)
-                if ((editor = getEditorExeFile(exeFile, lines)) != null)
-                    break;
-
-            if (editor != null)
-                System.out.println("using " + editor + " editor");
+                //	Check exe files in order from $PATH
+                for (String exeFile : exeFiles)
+                    if ((shellEditor = getEditorExeFile(exeFile, lines)) != null)
+                        break;
+                if (shellEditor != null)
+                    System.out.println("using " + shellEditor + " shellEditor");
+                else
+                    System.out.println("no shellEditor available.");
+            }
             else
-                System.out.println("no editor available.");
+                shellEditor = null;
+            if (shellEditor==null)
+                System.out.println("will Launch default desktop editor....");
         }
     }
     //===============================================================
@@ -114,12 +127,13 @@ public class PogoEditor {
         }
         return null;    //	Not found
     }
-
     //===============================================================
     //===============================================================
+    /*
     public boolean isAvailable() {
-        return editor != null;
+        return shellEditor != null;
     }
+    */
     //===============================================================
     /**
      * Returns the line number where signature has been found
@@ -250,15 +264,10 @@ public class PogoEditor {
      * @param data   class definition (0-class name, 1-path, 3 language)
      * @param prop   specified property
      * @param is_dev is a device property if true, otherwise is a class property
-     * @throws IOException if read file failed.
+     * @throws DevFailed if read file failed.
      */
     //===============================================================
-    public void editFile(String[] data, Property prop, boolean is_dev)
-            throws IOException {
-        if (editor == null) {
-            System.err.println("no editor available.");
-            return;
-        }
+    public void editFile(String[] data, Property prop, boolean is_dev) throws DevFailed {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -290,15 +299,10 @@ public class PogoEditor {
      *
      * @param data      class definition (0-class name, 1-path, 3 language)
      * @param attribute specified attribute
-     * @throws IOException if read file failed.
+     * @throws DevFailed if read file failed.
      */
     //===============================================================
-    public void editFile(String[] data, Attribute attribute)
-            throws IOException {
-        if (editor == null) {
-            System.err.println("no editor available.");
-            return;
-        }
+    public void editFile(String[] data, Attribute attribute) throws DevFailed {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -331,16 +335,10 @@ public class PogoEditor {
      *
      * @param data class definition (0-class name, 1-path, 3 language)
      * @param cmd  specified command
-     * @throws IOException if read file failed.
+     * @throws DevFailed if read file failed.
      */
     //===============================================================
-    public void editFile(String[] data, Command cmd)
-            throws IOException {
-        if (editor == null) {
-            System.err.println("no editor available.");
-            return;
-        }
-
+    public void editFile(String[] data, Command cmd)  throws DevFailed {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -369,17 +367,11 @@ public class PogoEditor {
      *
      * @param data  class definition (0-class name, 1-path, 3 language)
      * @param state specified state
-     * @throws IOException if read file failed.
+     * @throws DevFailed if read file failed.
      */
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})    //  Used only to know that it is for state
-    public void editFile(String[] data, State state)
-            throws IOException {
-        if (editor == null) {
-            System.err.println("no editor available.");
-            return;
-        }
-
+    public void editFile(String[] data, State state)  throws DevFailed {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -405,11 +397,52 @@ public class PogoEditor {
 
     //===============================================================
     //===============================================================
-    private void startEditor(String filename, int linenum) throws IOException {
-        if (linenum >= 0) {
-            String shell_cmd = editor + " -noask -line " + linenum + " " + filename;
-            Utils.executeShellCmdAndReturn(shell_cmd);
+    private void startEditor(String filename, int lineNumber) throws DevFailed {
+
+        if (shellEditor == null) {
+            launchDesktopEditor(filename);
         }
+        else
+        if (lineNumber >= 0) {
+            String shell_cmd = shellEditor + " -noask -line " + lineNumber + " " + filename;
+            try {
+                Utils.executeShellCmdAndReturn(shell_cmd);
+            }
+            catch (IOException e) {
+                Except.throw_exception("CannotLaunchEditor",
+                                        e.toString(), "PogoEditor.startEditor()");
+            }
+        }
+    }
+    //===============================================================
+    //===============================================================
+
+
+    //===============================================================
+    //===============================================================
+    private void launchDesktopEditor(String fileName) throws DevFailed {
+        // Verify if class Desktop is supported :
+        if (Desktop.isDesktopSupported()) {
+            // get desktop instance
+            Desktop desktop = Desktop.getDesktop();
+            // Verify if browse feature is supported
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                try {
+                    // launch associated application
+                    desktop.open(new File(fileName));
+                } catch (Exception e) {
+                    ErrorPane.showErrorMessage(new JFrame(), null, e);
+                }
+            }
+            else
+                Except.throw_exception("NoDesktopEditor",
+                        "Desktop.Action.EDIT not supported",
+                        "PogoEditor.launchDesktopEditor()");
+        }
+        else
+            Except.throw_exception("NoDesktopEditor",
+                    "Desktop  not supported",
+                    "PogoEditor.launchDesktopEditor()");
     }
     //===============================================================
     //===============================================================
@@ -423,9 +456,9 @@ public class PogoEditor {
          String	dir = "/segfs/tango/tools/pogo/test/cpp/test_oaw-1/Holec";
          try
          {
-             PogoEditor	editor = PogoEditor.getInstance();
-             if (editor.isAvailable())
-                 editor.editFile(dir, "Holec", PogoConst.SCALAR_ATTRIBUTE, "Current");
+             PogoEditor	shellEditor = PogoEditor.getInstance();
+             if (shellEditor.isAvailable())
+                 shellEditor.editFile(dir, "Holec", PogoConst.SCALAR_ATTRIBUTE, "Current");
          }
          catch(Exception e)
          {
