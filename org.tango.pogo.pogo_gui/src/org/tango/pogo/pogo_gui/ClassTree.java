@@ -428,6 +428,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Object selection = getSelectedObject();
         if (selection == null)
             return;
+
         try {
             PogoRoot pg_root = (PogoRoot) root.getUserObject();
             String[] data = new String[]{pg_root.name, pg_root.path, pg_root.language};
@@ -450,8 +451,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 State state = ((PogoState) selection).value;
                 PogoEditor.getInstance().editFile(data, state);
             }
-        } catch (IOException e) {
-            ErrorPane.showErrorMessage(this, null, e);
         } catch (DevFailed e) {
             ErrorPane.showErrorMessage(this, null, e);
         }
@@ -1967,7 +1966,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         //=======================================================
         private void buildBtnPopupMenu() {
             title = new JLabel();
-            title.setFont(new java.awt.Font("Dialog", 1, 16));
+            title.setFont(new java.awt.Font("Dialog", Font.BOLD, 16));
             add(title);
             add(new JPopupMenu.Separator());
 
@@ -2099,8 +2098,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 edit_code = Utils.isTrue(((PogoAttribute) obj).value.getStatus().getConcreteHere());
             else
                 edit_code = Utils.isTrue(((PogoState) obj).value.getStatus().getConcreteHere());
-            getComponent(OFFSET + EDIT_SRC_CODE).setEnabled(edit_code &&
-                    PogoEditor.getInstance().isAvailable());
+            getComponent(OFFSET + EDIT_SRC_CODE).setEnabled(edit_code);
+                    //edit_code && PogoEditor.getInstance().isAvailable());
 
             show(tree, evt.getX(), evt.getY());
         }
