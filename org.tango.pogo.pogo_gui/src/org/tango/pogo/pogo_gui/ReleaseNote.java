@@ -17,7 +17,7 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu May 02 16:13:24 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Fri May 03 07:51:36 CEST 2013)</Center><Br>\n" + 
 		"<li><b>Pogo-8.1.12 - 02/05/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve edit source file feature.<Br>\n" + 
 		"<li><b>Pogo-8.1.11 - 26/04/2013:</b><Br>\n" + 

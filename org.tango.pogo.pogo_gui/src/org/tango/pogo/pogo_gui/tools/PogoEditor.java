@@ -87,25 +87,32 @@ public class PogoEditor {
         }
         else {
             shellEditor = System.getenv("EDITOR");
-            if (shellEditor !=null && shellEditor.equals("nedit")) {
-                //  Try to find nedit client executable
-                String path = System.getenv("PATH");
-                StringTokenizer stk = new StringTokenizer(path, ":");
-                ArrayList<String> lines = new ArrayList<String>();
-                while (stk.hasMoreTokens())
-                    lines.add(stk.nextToken());
+            if (shellEditor !=null) {
+                if (shellEditor.equals("nedit")) {
+                    //  Try to find nedit client executable
+                    String path = System.getenv("PATH");
+                    StringTokenizer stk = new StringTokenizer(path, ":");
+                    ArrayList<String> lines = new ArrayList<String>();
+                    while (stk.hasMoreTokens())
+                        lines.add(stk.nextToken());
 
-                //	Check exe files in order from $PATH
-                for (String exeFile : exeFiles)
-                    if ((shellEditor = getEditorExeFile(exeFile, lines)) != null)
-                        break;
-                if (shellEditor != null)
-                    System.out.println("using " + shellEditor + " shellEditor");
+                    //	Check exe files in order from $PATH
+                    for (String exeFile : exeFiles)
+                        if ((shellEditor = getEditorExeFile(exeFile, lines)) != null)
+                            break;
+                    if (shellEditor != null)
+                        System.out.println("using " + shellEditor + " editor");
+                    else
+                        System.out.println("no shellEditor available.");
+
+                }
                 else
-                    System.out.println("no shellEditor available.");
+                if (shellEditor.equals("gedit")) {
+                    System.out.println("using " + shellEditor + " editor");
+                }
+                else
+                    shellEditor = null;
             }
-            else
-                shellEditor = null;
             if (shellEditor==null)
                 System.out.println("will Launch default desktop editor....");
         }
@@ -404,7 +411,11 @@ public class PogoEditor {
         }
         else
         if (lineNumber >= 0) {
-            String shell_cmd = shellEditor + " -noask -line " + lineNumber + " " + filename;
+            String shell_cmd;
+            if (shellEditor.contains("gedit"))
+                shell_cmd = shellEditor + " +" + lineNumber + " " + filename;
+            else
+                shell_cmd = shellEditor + " -noask -line " + lineNumber + " " + filename;
             try {
                 Utils.executeShellCmdAndReturn(shell_cmd);
             }
