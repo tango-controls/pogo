@@ -65,8 +65,7 @@ public class PogoEditor {
     private static final String[] exeFiles = {
             "nedit-client",
             "nedit-nc",
-            "nc",
-    };
+        };
 
     //===============================================================
     //===============================================================
@@ -107,7 +106,7 @@ public class PogoEditor {
 
                 }
                 else
-                if (shellEditor.equals("gedit")) {
+                if (shellEditor.equals("gedit") || shellEditor.equals("geany") ) {
                     System.out.println("using " + shellEditor + " editor");
                 }
                 else
@@ -412,10 +411,10 @@ public class PogoEditor {
         else
         if (lineNumber >= 0) {
             String shell_cmd;
-            if (shellEditor.contains("gedit"))
-                shell_cmd = shellEditor + " +" + lineNumber + " " + filename;
-            else
+            if (shellEditor.startsWith("nedit"))
                 shell_cmd = shellEditor + " -noask -line " + lineNumber + " " + filename;
+            else
+                shell_cmd = shellEditor + " +" + lineNumber + " " + filename;
             try {
                 Utils.executeShellCmdAndReturn(shell_cmd);
             }

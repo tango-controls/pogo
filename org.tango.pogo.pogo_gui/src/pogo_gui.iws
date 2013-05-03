@@ -34,7 +34,7 @@
     <file path="N:/pogo_jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ru.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1366966052211" ignored="false" />
     <file path="N:/pogo_jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1366966052211" ignored="false" />
     <file path="/ClassTree.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1367501718257" ignored="false" />
-    <file path="/PogoEditor.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1367559338355" ignored="false" />
+    <file path="/PogoEditor.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1367563138356" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,10 +172,10 @@
           <file leaf-file-name="PogoEditor.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoEditor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="415" column="45" selection-start="15680" selection-end="15680" vertical-scroll-proportion="0.3220339">
+                <state line="67" column="4" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.33898306">
                   <folding>
-                    <element signature="e#6231#6271#0" expanded="true" />
-                    <element signature="e#14271#14311#0" expanded="true" />
+                    <element signature="e#6249#6289#0" expanded="true" />
+                    <element signature="e#14289#14329#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -698,10 +698,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="415" column="45" selection-start="15680" selection-end="15680" vertical-scroll-proportion="0.3220339">
+        <state line="67" column="4" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.33898306">
           <folding>
-            <element signature="e#6231#6271#0" expanded="true" />
-            <element signature="e#14271#14311#0" expanded="true" />
+            <element signature="e#6249#6289#0" expanded="true" />
+            <element signature="e#14289#14329#0" expanded="true" />
           </folding>
         </state>
       </provider>
