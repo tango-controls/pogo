@@ -177,6 +177,10 @@ public class OAWutils {
      */
     //========================================================================
     public void generate(PogoDeviceClass pogoClass) throws DevFailed {
+        //	to prevent null pointer
+        if (pogoClass.getDescription().getIdentification()==null)
+        	pogoClass.getDescription().setIdentification(factory.createClassIdentification());
+
         PogoSystem sys = buildPogoSystem(pogoClass);
 
         //  Force Pogo release before save
@@ -185,7 +189,7 @@ public class OAWutils {
         //	Generate XMI file.
         String xmiFileName = pogoClass.getDescription().getSourcePath() + "/" +
                     pogoClass.getName() + ".xmi";
-
+        
         //  Special case for Windows (due to  disk:/.../..)
         if (!Utils.osIsUnix())
             xmiFileName = "//" + xmiFileName;

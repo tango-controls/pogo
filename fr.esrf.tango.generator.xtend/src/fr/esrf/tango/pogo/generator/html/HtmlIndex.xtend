@@ -59,6 +59,7 @@ class HtmlIndex  implements IGenerator {
 		}
 	}
 	
+	
 	def generateHtmlIndexFile (PogoDeviceClass cls) '''
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<HTML>
@@ -73,12 +74,19 @@ class HtmlIndex  implements IGenerator {
 		
 		
 		<!--- Definition for the 4 frames window ----------->
-		    <frameset rows="58,65,*,65">
-		        <frame src="http://www.esrf.fr/computing/cs/tango/TangoBanner.html"   name="header">
-		        <frame src="TitleBanner.html"        name="title">
-		        <frame src="ClassDescription.html"   name="document">
-		        <frame src="http://www.esrf.fr/computing/cs/tango/SrcForgeBanner.html" name="footer" >
-		    </frameset>
+		«IF fromClasses2www»
+			<frameset rows="65,*">
+			    <frame src="TitleBanner.html"        name="title">
+			    <frame src="ClassDescription.html"   name="document">
+			</frameset>
+		«ELSE»
+			<frameset rows="58,65,*,65">
+			    <frame src="http://www.esrf.fr/computing/cs/tango/TangoBanner.html"   name="header">
+			    <frame src="TitleBanner.html"        name="title">
+			    <frame src="ClassDescription.html"   name="document">
+			    <frame src="http://www.esrf.fr/computing/cs/tango/SrcForgeBanner.html" name="footer" >
+			</frameset>
+		«ENDIF»
 		</html>
 	'''
 
