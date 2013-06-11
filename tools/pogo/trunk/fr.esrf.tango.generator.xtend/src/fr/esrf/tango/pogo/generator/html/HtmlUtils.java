@@ -36,6 +36,8 @@
 package fr.esrf.tango.pogo.generator.html;
 
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -174,16 +176,21 @@ public class HtmlUtils extends StringUtils {
 		//	Start to build
 		StringBuffer	sb = new StringBuffer("<ul><li> <a href=" +
 				"\"" + tangoDoc + "\" target=\"new\"> Tango::DeviceImpl</a></li>\n");
-		
-		for (int i=0 ; i<inheritances.size() ; i++) {
-			Inheritance	inheritance = inheritances.get(i);
-			if (util.isInheritanceClass(inheritance))
-				sb.append("<ul> <li> ").append(inheritance.getClassname()).append("</li>\n");
+
+		if (inheritances!=null) {
+			for (int i=0 ; i<inheritances.size() ; i++) {
+				Inheritance	inheritance = inheritances.get(i);
+				if (util.isInheritanceClass(inheritance))
+					sb.append("<ul> <li> ").append(inheritance.getClassname()).append("</li>\n");
+			}
+			sb.append("<ul> <li> ").append(cls.getName()).append("</li>\n");
+			for (int i=0 ; i< 6-inheritances.size() ; i++) {
+				sb.append("<br>\n");
+			}
 		}
-		sb.append("<ul> <li> ").append(cls.getName()).append("</li>\n");
-		for (int i=0 ; i< 6-inheritances.size() ; i++) {
-			sb.append("<br>\n");
-		}		
+		else {
+			sb.append("<ul><li> ").append(cls.getName()).append(" <.li>\n</ul></ul>\n<br><br><br><br><br>");
+		}
 		return sb.toString();
 	}
 	//===========================================================
@@ -244,12 +251,13 @@ public class HtmlUtils extends StringUtils {
 		StringBuffer sb = new StringBuffer(htmlTableHeader(propertyHeaders, title));
 		for (Property property : properties) {
 			
-			String	desc = htmlStringWithBreak(property.getDescription(), "\t\t\t");
+			String	desc = checkSpecialChars(property.getDescription());
+			desc = htmlStringWithBreak(desc, "\t\t\t");
 			String	strType = JavaTypeDefinitions.javaPropType(property.getType());
 			String	defValues = htmlList2String(property.getDefaultPropValue(), "\t\t\t");
 
 			sb.append(htmlTableLine(
-					new String[] { property.getName(), desc, strType, defValues }));
+					new String[] { property.getName(), desc, strType, checkSpecialChars(defValues) }));
 		}
 		sb.append("</table>");
 		return sb.toString();
@@ -266,7 +274,8 @@ public class HtmlUtils extends StringUtils {
 		StringBuffer sb = new StringBuffer(htmlTableHeader(stateHeaders, className + " Class States"));
 		for (State state : states) {
 			
-			String	desc = htmlStringWithBreak(state.getDescription(), "\t\t\t");
+			String	desc = checkSpecialChars(state.getDescription());
+			desc = htmlStringWithBreak(desc, "\t\t\t");
 			sb.append(htmlTableLine(
 					new String[] { state.getName(), desc }));
 		}
@@ -292,7 +301,8 @@ public class HtmlUtils extends StringUtils {
 			//	Build name with a link on command description file
 			String	name = "<a href=\"Cmd" + command.getName() + ".html\"> " + command.getName() +" </a>";
 			//	Build description
-			String	desc = htmlStringWithBreak(command.getDescription(), "\t\t\t");
+			String	desc = checkSpecialChars(command.getDescription());
+			desc = htmlStringWithBreak(desc, "\t\t\t");
 			if (desc.length()==0)
 				desc = "None.";
 
@@ -324,10 +334,12 @@ public class HtmlUtils extends StringUtils {
 				poll = command.getPolledPeriod();
 
 		StringBuffer sb = new StringBuffer(htmlTableHeader(new String[0] , title));
+		String arginDesc= checkSpecialChars(command.getArgin().getDescription());
+		String argoutDesc= checkSpecialChars(command.getArgout().getDescription());
 		sb.append(htmlTableLine(
-				new String[] { "Input Argument", argin, htmlStringWithBreak(command.getArgin().getDescription()) }));
+				new String[] { "Input Argument", argin, htmlStringWithBreak(arginDesc) }));
 		sb.append(htmlTableLine(
-				new String[] { "Output Argument", argout, htmlStringWithBreak(command.getArgout().getDescription()) }));
+				new String[] { "Output Argument", argout, htmlStringWithBreak(argoutDesc) }));
 		sb.append(htmlTableLine(
 				new String[] { "DisplayLevel", command.getDisplayLevel(), ".."  }));
 		sb.append(htmlTableLine(
@@ -379,7 +391,8 @@ public class HtmlUtils extends StringUtils {
 			//	Build name with a link on attribute description file
 			String	name = "<a href=\"Attr" + attribute.getName() + ".html\"> " + attribute.getName() +" </a>";
 			//	Build description
-			String	desc = htmlStringWithBreak(attribute.getProperties().getDescription(), "\t\t\t");
+			String	desc = checkSpecialChars(attribute.getProperties().getDescription());
+			desc = htmlStringWithBreak(desc, "\t\t\t");
 			String	dataType  = CppTypeDefinitions.cppTypeEnum(attribute.getDataType());
 			String	abstr  = isTrue((attribute.getStatus().getConcreteHere()))? "false": "true";
 
@@ -484,7 +497,7 @@ public class HtmlUtils extends StringUtils {
 		
 		AttrProperties	properties = attribute.getProperties();
 		sb.append(htmlTableLine(
-				new String[] { "label", properties.getLabel() }));
+				new String[] { "label", checkSpecialChars(properties.getLabel()) }));
 		sb.append(htmlTableLine(
 				new String[] { "unit", properties.getUnit() }));
 		sb.append(htmlTableLine(
@@ -637,21 +650,38 @@ public class HtmlUtils extends StringUtils {
 			try {
 				String code = readFile(fileName);
 				//	Try to remove header and bla bla
-				int pos = code.indexOf("user_guide.pdf");
-				if (pos>0) {
-					return code.substring(code.indexOf("\n", pos)+1);
+				int start = code.indexOf("user_guide.pdf");
+				if (start>0) {
+					start = code.indexOf("\n", start)+1;
 				}
 				else {
-					pos = code.toUpperCase().indexOf("<HR WIDTH=\"100%\">");
-					if (pos>0) {
-						return code.substring(code.indexOf("\n", pos)+1);
+					start = code.toUpperCase().indexOf("<HR WIDTH=\"100%\">");
+					if (start>0) {
+						start = code.indexOf("\n", start)+1;
 					}
 					else {
-						pos = code.toUpperCase().indexOf("</TABLE>");
-						if (pos>0) {
-							return code.substring(code.indexOf("\n", pos)+1);
+						start = code.toUpperCase().indexOf("</TABLE>");
+						if (start>0) {
+							start = code.indexOf("\n", start)+1;
 						}
 					}
+				}
+				if (start>0) {
+					int end = code.indexOf("<!--- html Footer --->", start);
+					if (end<0) {
+						end = code.indexOf("ESRF - Software Engineering Group");	//	very old pogo
+						if (end<0)
+							return code.substring(start);
+						else {
+							int end2 = code.toLowerCase().lastIndexOf("<center>", end);
+							if (end2<0)
+								return code.substring(start, end);
+							else
+								return code.substring(start, end2);
+						}
+					}
+					else
+						return code.substring(start, end);
 				}
 			}
 			catch(Exception e) {
@@ -675,7 +705,7 @@ public class HtmlUtils extends StringUtils {
 			}
 		}
 		catch (Exception e) {
-			System.err.println(e);
+			System.out.println("No Documentation.html file found !");
 		}
 	}
  	//===========================================================
@@ -683,6 +713,65 @@ public class HtmlUtils extends StringUtils {
 	static boolean isFromClasses2www() {
 		String str = System.getenv("Classes2www");
 		return (str!=null && str.equals("true"));
+	}
+ 	//===========================================================
+	//===========================================================
+	static String generateHtmlTangoBannerFile() {
+		String code = "";
+        try {
+            URL url = new URL("http://www.esrf.fr/computing/cs/tango/TangoBanner.html");
+            InputStream inputStream = url.openStream();
+            int nb = inputStream.available();
+            byte[] inStr = new byte[nb];
+            nb = inputStream.read(inStr);
+            if (nb>0) {
+	            String fullCode = new String(inStr).toLowerCase();
+	            int start = fullCode.indexOf("<table");
+	            if (start>0) {
+	            	int end = fullCode.indexOf("</body>");
+	            	if (end>0) {
+	            		code = fullCode.substring(start, end);
+	            	}
+	            }
+            }
+        }
+        catch (Exception e) {
+        	//	Noting found
+        }
+        return code;
+	}
+	
+ 	//===========================================================
+	/*
+	 * Check if special characters and replace if any.
+	 */
+	//===========================================================
+	static String checkSpecialChars(String desc) {
+		if (desc.isEmpty())	return desc;
+		int pos = 0;
+		while ((pos=desc.indexOf('&', pos))>=0) {
+			desc = desc.substring(0, pos) + "&amp;" + desc.substring(pos+1);
+			pos +=2;
+		}
+		while ((pos=desc.indexOf('\''))>=0) {
+			desc = desc.substring(0, pos) + "`" + desc.substring(pos+1);
+		}
+		while ((pos=desc.indexOf('\"'))>=0) {
+			desc = desc.substring(0, pos) + "&quot;" + desc.substring(pos+1);
+		}
+		while ((pos=desc.indexOf(" >"))>=0) {
+			desc = desc.substring(0, pos) + "&gt; " + desc.substring(pos+2);
+		}
+		while ((pos=desc.indexOf("< "))>=0) {
+			desc = desc.substring(0, pos) + "&lt; " + desc.substring(pos+2);
+		}
+		while ((pos=desc.indexOf("/*"))>=0) {
+			desc = desc.substring(0, pos) + "/ *" + desc.substring(pos+2);
+		}
+		while ((pos=desc.indexOf("*/"))>=0) {
+			desc = desc.substring(0, pos) + "* /" + desc.substring(pos+2);
+		}
+		return desc;
 	}
  	//===========================================================
 	//===========================================================

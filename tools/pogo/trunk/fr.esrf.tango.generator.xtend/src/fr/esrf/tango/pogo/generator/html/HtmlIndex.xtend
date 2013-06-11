@@ -73,13 +73,14 @@ class HtmlIndex  implements IGenerator {
 		    </HEAD>
 		
 		
-		<!--- Definition for the 4 frames window ----------->
 		«IF fromClasses2www»
+			<!--- Definition for the 2 frames window ----------->
 			<frameset rows="65,*">
 			    <frame src="TitleBanner.html"        name="title">
 			    <frame src="ClassDescription.html"   name="document">
 			</frameset>
 		«ELSE»
+			<!--- Definition for the 4 frames window ----------->
 			<frameset rows="58,65,*,65">
 			    <frame src="http://www.esrf.fr/computing/cs/tango/TangoBanner.html"   name="header">
 			    <frame src="TitleBanner.html"        name="title">
