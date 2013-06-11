@@ -126,6 +126,7 @@ public class OAWutils {
     public PogoDeviceClass loadDeviceClassModel(String xmiFile, boolean checkVersion) throws DevFailed {
         //  Before everything, update xmi file for compatibility.
         if (checkVersion) {
+        	ParserTool.renameXmiKey("<inheritance ", "<inheritances ", xmiFile);
         }
 
         //  OK, Now can be loaded
@@ -213,11 +214,12 @@ public class OAWutils {
         params.put("targetLanguage", pogoClass.getDescription().getLanguage());
         params.put("modelPath", xmiFileName);
 
-        //  Put info to in system properties to be used by:
+        //  Put info to system properties to be used by:
         // /fr.esrf.tango.generator.xtend/src/fr/esrf/tango/pogo/generator/PogoGeneratorModule.java
         System.setProperty("targetDir", pogoClass.getDescription().getSourcePath());
         System.setProperty("className", pogoClass.getName());
-        System.setProperty("targetLanguage", pogoClass.getDescription().getLanguage());
+        System.setProperty("targetLanguage", // do not parse code file if not generated !
+                (generateCodeFiles(pogoClass.getDescription()))? pogoClass.getDescription().getLanguage() : "");
 
 
         Utils.manageHtmlDirectory(pogoClass, true);
@@ -231,6 +233,12 @@ public class OAWutils {
             throw e;
         }
         Utils.manageHtmlDirectory(pogoClass, false);
+    }
+    //========================================================================
+    //========================================================================
+    private boolean generateCodeFiles(ClassDescription classDescription) {
+        String  str = classDescription.getFilestogenerate().toLowerCase();
+        return str.contains("code files");
     }
     //========================================================================
     /**
@@ -326,7 +334,8 @@ public class OAWutils {
         pogoClass.setPreferences(pref);
 
         //  If from classes2www, give info to xpand/xtend
-        //  to add link on version.html file. 
+        //  to add link on version.html file. (Not used any more)
+		/*
         String env = System.getenv("Classes2www");
         if (env != null)
             if (env.equals("true"))

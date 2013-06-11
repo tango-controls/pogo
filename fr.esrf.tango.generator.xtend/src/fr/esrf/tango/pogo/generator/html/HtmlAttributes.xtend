@@ -94,7 +94,7 @@ class HtmlAttributes  implements IGenerator {
 			«htmlTitle("Attribute " + attribute.name + " :")»
 		«ENDIF»
 		<ul>
-			«attribute.properties.description.htmlStringWithBreak»
+			«attribute.properties.description.checkSpecialChars.htmlStringWithBreak»
 		</ul>
 		<br><br><br>
 		<Table Border=0 Cellpadding=0 CELLSPACING=20>

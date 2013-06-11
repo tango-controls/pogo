@@ -76,13 +76,15 @@ class HtmlCommands  implements IGenerator {
 	'''
 
 	//==================================================================
+	/*
+	 */
 	//==================================================================
 	def generateHtmlOneCommandFile(PogoDeviceClass cls, Command command, boolean withHeader) '''
 		«IF withHeader»«cls.htmlFileHeader("Command " + command.name)»«ENDIF»
 		<br><br><br>
 		«htmlTitle("Command " + command.name + " :")»
 		<ul>
-			«command.description.htmlStringWithBreak»
+			«command.description.checkSpecialChars.htmlStringWithBreak»
 		</ul>
 		<br><br><br>
 		«command.htmlOneCommandTable»

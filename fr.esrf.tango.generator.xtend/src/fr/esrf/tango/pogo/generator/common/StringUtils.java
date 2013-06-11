@@ -84,7 +84,7 @@ public class StringUtils {
 	private static boolean traceNotSet = true;
 	public static void printTrace(String s) {
 		if (traceNotSet) {
-			trace = isTrue(System.getenv("TRACE"));
+			trace = isTrue(System.getenv("XTendTrace"));
 			traceNotSet = false;
 		}
 		if (trace)

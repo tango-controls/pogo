@@ -79,7 +79,6 @@ public class Pogo {
         sourcefiles.add(filename);
     }
     //===============================================================
-
     /**
      * Return the DeviceClass object loaded (mainly used by class2www classes)
      *
@@ -89,9 +88,7 @@ public class Pogo {
     public DeviceClass getDeviceClass() {
         return deviceClass;
     }
-
     //===============================================================
-
     /**
      * Check if generate doe/doc has failed
      *
@@ -102,7 +99,6 @@ public class Pogo {
         return (devFailed != null);
     }
     //===============================================================
-
     /**
      * @return DevFailed Object if generate doe/doc has failed
      */
@@ -111,7 +107,6 @@ public class Pogo {
         return devFailed;
     }
     //===============================================================
-
     /**
      * Generate source files for specified inputs.
      */
@@ -141,7 +136,6 @@ public class Pogo {
         }
     }
     //===============================================================
-
     /**
      * Generate doc files for specified inputs.
      */

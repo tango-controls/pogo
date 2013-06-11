@@ -61,7 +61,8 @@ class HtmlDescription  implements IGenerator {
 					fsa.generateFile("doc_html/States.html",           cls.generateHtmlStatesFile(true))
 					printTrace("Generating doc_html/FullDocument.html")
 					fsa.generateFile("doc_html/FullDocument.html",     cls.generateHtmlFullDocumentFile)
-
+					
+					printTrace("Try to manage Documentation.html from pogo-6 if any")
 					cls.retrieveProtectedDescriptionPart
 			}
 		}
@@ -79,26 +80,30 @@ class HtmlDescription  implements IGenerator {
 					<td> «htmlTitle(cls.name + " Class Inheritance :")» </td>
 				</tr>
 				<td><ul>
-					<table border="0">
-						<Tr>
-							<td> Contact </td><td> : at «htmlIdContact(cls.description.identification)»</td>
-						</tr>
-						<tr>
-							<td> Class Family </td><td> : «htmlClassFamily(cls.description.identification)»
-						</tr>
-						<tr>
-							<td> Platform </td><td> : «cls.description.identification.platform» </td>
-						</tr>
-						<tr>
-							<td> Bus </td><td> : «cls.description.identification.bus» </td>
-						</tr>
-						<tr>
-							<td> Manufacturer </td><td> : «cls.description.identification.manufacturer» </td>
-						</tr>
-						<tr>
-							<td> Manufacturer ref.</td><td> : «cls.description.identification.reference» </td>
-						</tr>
-					</Table>
+					«IF cls.description.identification==null»
+						Class has no identification card !
+					«ELSE»
+						<table border="0">
+							<Tr>
+								<td> Contact </td><td> : at «htmlIdContact(cls.description.identification)»</td>
+							</tr>
+							<tr>
+								<td> Class Family </td><td> : «htmlClassFamily(cls.description.identification)»
+							</tr>
+							<tr>
+								<td> Platform </td><td> : «cls.description.identification.platform» </td>
+							</tr>
+							<tr>
+								<td> Bus </td><td> : «cls.description.identification.bus» </td>
+							</tr>
+							<tr>
+								<td> Manufacturer </td><td> : «cls.description.identification.manufacturer» </td>
+							</tr>
+							<tr>
+								<td> Manufacturer ref.</td><td> : «cls.description.identification.reference» </td>
+							</tr>
+						</Table>
+					«ENDIF»
 				</ul></td>
 				<td>
 					«cls.htmlInheritance»
@@ -108,7 +113,7 @@ class HtmlDescription  implements IGenerator {
 			«htmlTitle(cls.name + " Class Description :")»
 			<br><br>
 			<ul>
-				«cls.description.description.htmlStringWithBreak»
+				«cls.description.description.checkSpecialChars.htmlStringWithBreak»
 				
 				«cls.addDescriptionFromPogo6IfExists»
 				«IF withHeader»
@@ -210,6 +215,7 @@ class HtmlDescription  implements IGenerator {
 
 	//==================================================================
 	//==================================================================
+	/*
 	def generateHtmlTangoBannerFile() '''
 	    <table border="0" width="100%" cellspacing="0" cellpadding="0" >
 	        <td align="center">
@@ -245,5 +251,6 @@ class HtmlDescription  implements IGenerator {
 	                <IMG SRC="http://www.esrf.fr/computing/cs/tango/frm-2.jpg" border=0 Height="28"></a>
 	        </td>
 	    </table>
-	'''
+	''' 
+	*/
 }

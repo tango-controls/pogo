@@ -268,34 +268,36 @@ public class ParserTool {
     public static void renameXmiKey(String srcKey, String newKey, String fileName) throws DevFailed {
         //  Rea=d file and split lines
         boolean modified = false;
-        srcKey = " " + srcKey + "=";
+        boolean startingLine = srcKey.startsWith("<");
+        if (!startingLine) //	if key does not start the line
+        	srcKey = " " + srcKey + "=";
         String code = readFile(fileName);
         StringTokenizer stk = new StringTokenizer(code, "\n");
-        ArrayList<String> v = new ArrayList<String>();
+        ArrayList<String> lines = new ArrayList<String>();
         while (stk.hasMoreTokens()) {
             //  For each line
             String line = stk.nextToken();
             int start;
             //  Check if key exists
-            if ((start = line.indexOf(srcKey)) > 0) {
+            if ((start=line.indexOf(srcKey)) >= 0) {
+                System.out.println("--------> replace " + srcKey + " by " + newKey);
                 int end = start + srcKey.length();
-                if (end < 0) {
-                    System.err.println("XMI syntax error !!!");
-                    return;
-                }
+
                 //  Rename it
-                start++; // For space char at beginning
-                end--;
+                if (!startingLine) {
+                	start++; // For space char at beginning
+                	end--;
+                }
                 line = line.substring(0, start) + newKey + line.substring(end);
                 modified = true;
             }
-            v.add(line);
+            lines.add(line);
         }
 
         //  Reconstruct code and save it if modified
         if (modified) {
             StringBuilder sb = new StringBuilder();
-            for (String s : v)
+            for (String s : lines)
                 sb.append(s).append("\n");
             code = sb.toString();
             //  Remove last '\n'

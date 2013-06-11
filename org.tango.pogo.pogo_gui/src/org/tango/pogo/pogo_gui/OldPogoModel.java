@@ -87,7 +87,7 @@ public class OldPogoModel {
         try {
             System.out.println("Trying to load " + filename);
             if (System.getProperty("TEMPL_HOME") == null)
-                System.setProperty("TEMPL_HOME", "");    //	Cehcked by old classes.
+                System.setProperty("TEMPL_HOME", "");    //	Checked by old classes.
             old_model = new pogo.gene.PogoClass(filename);
 
             //	Set the device class description
@@ -103,13 +103,20 @@ public class OldPogoModel {
             String inherPath = System.getProperty("SUPER_HOME");
             if (inherPath == null)
                 inherPath = "";
-            String inherClass = old_model.inherited_from;
-            int pos = inherClass.lastIndexOf('/');
-            if (pos < 0)
-                pos = inherClass.lastIndexOf('\\'); //	from windows ?
-            if (pos > 0) {
-                inherPath = inherClass.substring(0, pos);
-                inherClass = inherClass.substring(pos + 1);
+            String inherClass;
+            if (old_model.inherited_from!=null) {
+	            inherClass = old_model.inherited_from;
+	            int pos = inherClass.lastIndexOf('/');
+	            if (pos < 0)
+	                pos = inherClass.lastIndexOf('\\'); //	from windows ?
+	            if (pos > 0) {
+	                inherPath = inherClass.substring(0, pos);
+	                inherClass = inherClass.substring(pos + 1);
+	            }
+            }
+            else {
+            	inherClass = "Device_Impl";
+            	old_model.inherited_from = "Device_Impl";
             }
             inheritance.setClassname(inherClass);
             inheritance.setSourcePath(inherPath);
@@ -1354,7 +1361,10 @@ public class OldPogoModel {
                 new_parser.write();
             }
         } catch (DevFailed e) {
-            System.err.println("Cannot add description: " + e.errors[0].desc);
+			if (e.errors[0].desc.contains("FileNotFoundException"))
+	            System.out.println("Cannot add Description.html ! (not found)");
+			else
+	            System.err.println("Cannot add description !" + e.errors[0].desc);
         }
     }
     //===============================================================

@@ -54,7 +54,8 @@ class PythonDevice implements IGenerator {
     override void doGenerate(Resource resource, IFileSystemAccess fsa){
         //println("doGenerate for python")
         for(cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))){
-            if (cls.description.language.toLowerCase.equals("python")) {
+            if (cls.description.filestogenerate.toLowerCase.contains("code files") &&
+            	cls.description.language.toLowerCase.equals("python") )    {
                 println("doGenerate for python " + cls.name)
                 fsa.generateFile(cls.name + '.py', cls.generate_pythonFile)
             }
