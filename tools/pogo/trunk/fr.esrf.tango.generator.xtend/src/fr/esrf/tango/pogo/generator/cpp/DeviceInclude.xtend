@@ -232,18 +232,22 @@ class DeviceInclude  {
 		public:
 			«cls.simpleMethodHeader1("read_attr_hardware", "Hardware acquisition for attributes.")»
 			virtual void read_attr_hardware(vector<long> &attr_list);
+			«IF cls.hasWritableAttribute && useTango812»
+				«cls.simpleMethodHeader1("write_attr_hardware", "Hardware writing for attributes.")»
+				virtual void write_attr_hardware(vector<long> &attr_list);
+			«ENDIF»
 		«IF cls.attributes.size()>0»
 
 			«FOR Attribute attr : cls.attributes»
 				«IF attr.alreadyOverloaded==false»
 					«attr.attributePrototypeMethodHeader»
-					«IF attr.isRead»
-						virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr)«attr.checkAbstractForProto»;
-					«ENDIF»
-					«IF attr.isWrite»
-						virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr)«attr.checkAbstractForProto»;
-					«ENDIF»
-					virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
+						«IF attr.isRead»
+							virtual void «attr.readAttrubuteMethod»(Tango::Attribute &attr)«attr.checkAbstractForProto»;
+						«ENDIF»
+						«IF attr.isWrite»
+							virtual void «attr.writeAttrubuteMethod»(Tango::WAttribute &attr)«attr.checkAbstractForProto»;
+						«ENDIF»
+						virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»

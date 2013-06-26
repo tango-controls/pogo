@@ -44,6 +44,7 @@ import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.Type;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
@@ -79,6 +80,7 @@ public class CommandDialog extends JDialog {
     private PogoGUI pogo_gui;
     private InheritanceStatus orig_status = null;
     private boolean isStateStatus = false;
+    private Command command;
     //===============================================================
     /**
      * Creates new form CommandDialog
@@ -89,6 +91,7 @@ public class CommandDialog extends JDialog {
     //===============================================================
     public CommandDialog(PogoGUI parent, Command cmd) {
         super(parent, true);
+        this.command = cmd;
         pogo_gui = parent;
         initComponents();
         setCommand(cmd);
@@ -717,6 +720,14 @@ public class CommandDialog extends JDialog {
             cmd.setPolledPeriod(polledTxt.getText());
         else
             cmd.setPolledPeriod("0");
+
+        //  Excluded states
+        if (command!=null) {
+            EList<String> srcRxcluded = command.getExcludedStates();
+            EList<String> newExcluded = cmd.getExcludedStates();
+            for (String s : srcRxcluded)
+                newExcluded.add(s);
+        }
         return cmd;
     }
 

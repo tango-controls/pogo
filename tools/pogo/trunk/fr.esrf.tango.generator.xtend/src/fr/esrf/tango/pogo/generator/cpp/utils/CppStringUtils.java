@@ -218,6 +218,16 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 			return "";
 	}
 	//===========================================================
+	public static boolean hasWritableAttribute(PogoDeviceClass cls) {
+		EList<Attribute>	attributes = cls.getAttributes();
+		for (Attribute attribute : attributes) {
+			String	str = attribute.getRwType();
+			if (isSet(str) && str.contains("WRITE"))
+				return true;
+		}
+		return false;
+	}
+	//===========================================================
 
 	//===========================================================
 	public static String commandParameterHeader(Command command) {
