@@ -51,12 +51,21 @@ import fr.esrf.tango.pogo.pogoDsl.State;
 public class StringUtils {
 
 	//===========================================================
+	//===========================================================
+	public static boolean useTango812() {
+		String	is812 = System.getProperty("_812_");
+		return (is812!=null && is812.equals("true"));
+	}
+	//===========================================================
 	/*
 	 * Define the DeviceImpl used to generate
 	 */
 	//===========================================================
 	public static String DeviceImpl() {
-		return "Tango::Device_4Impl";
+		if (useTango812())
+			return "TANGO_BASE_CLASS";
+		else
+			return "Tango::Device_4Impl";
 	}
 
 	//===========================================================

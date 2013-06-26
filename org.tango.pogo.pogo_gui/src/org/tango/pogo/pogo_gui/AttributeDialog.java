@@ -41,6 +41,7 @@ import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
@@ -1708,6 +1709,18 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
                 Utils.strBoolean(dataReadyEvtCode.getSelectedObjects() != null));
         dataReadyEvents.setLibCheckCriteria("true");
         attr.setDataReadyEvent(dataReadyEvents);
+
+        //  Excluded states
+        if (attribute!=null) {
+            EList<String> srcReadRxcluded = attribute.getReadExcludedStates();
+            EList<String> newReadExcluded = attr.getReadExcludedStates();
+            for (String s : srcReadRxcluded)
+                newReadExcluded.add(s);
+            EList<String> srcWriteRxcluded = attribute.getWriteExcludedStates();
+            EList<String> newWriteExcluded = attr.getWriteExcludedStates();
+            for (String s : srcWriteRxcluded)
+                newWriteExcluded.add(s);
+        }
         return attr;
     }
     //===============================================================

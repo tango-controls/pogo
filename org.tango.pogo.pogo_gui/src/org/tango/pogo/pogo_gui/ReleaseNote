@@ -8,7 +8,12 @@
 #
 #-======================================================================
 
-Pogo-8.1.13 - 3/05/2013:
+Pogo-8.1.14 - 26/06/2013:
+	Add Tango-8.1.2 specific features.
+	Fix a problem with state machine when attribute is modified.
+	Improve documentation generation to be used by Class2www classes.
+
+Pogo-8.1.13 - 03/05/2013:
 	Improve documentation generation to be used by Class2www cleasses.
 
 Pogo-8.1.12 - 02/05/2013:
