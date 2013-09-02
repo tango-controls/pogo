@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 8.1.14
+RELEASE    = 8.1.15
 
 
 TANGO_HOME	=	/segfs/tango
@@ -114,7 +114,8 @@ source_release:
 
 TARGET_DOC_HOME=webserv02:/www/doc/computing/cs/tango/tango_doc/tools_doc/pogo_doc
 install_doc:
-	cp -R $(POGO_DOC)/*         $(DOC_HOME)
+	cp $(POGO_DOC)/*.html         $(DOC_HOME)
+	cp $(POGO_DOC)/img/*         $(DOC_HOME)/img
 	scp  -r $(DOC_HOME)/*       $(TARGET_DOC_HOME)
 
 #	rcp  $(DOC_HOME)/img/*   $(TARGET_DOC_HOME)/img
