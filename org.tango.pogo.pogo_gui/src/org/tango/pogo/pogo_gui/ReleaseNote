@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.1.15 - 02/09/2013:
+	Improve get<Attribute> method for java class.
+
 Pogo-8.1.14 - 26/06/2013:
 	Add Tango-8.1.2 specific features.
 	Fix a problem with state machine when attribute is modified.
