@@ -6,27 +6,30 @@
 #
 #	Class families for all sites
 #
-org.tango.pogo.class_families:	Miscellaneous
-								AbstractClasses
+org.tango.pogo.class_families:	AcceleratorComponents
 								Acquisition
-								Application
-								BeamDiag
+								BeamDiagnostics
+								BeamlineComponents
 								Calculation
 								Communication
-								Controllers
+								CounterTimer
 								InputOutput
-								Instrumentation
-								Interlock
+								MagneticDevices
+								MeasureInstruments
 								Motion
+								OtherInstruments
 								PowerSupply
-								Process
 								RadioProtection
-								Sequencer
+								SampleEnvironment
+								Security
 								Simulators
-								Storage
+								SoftwareSystem
+								StandardInterfaces
+								System
+								Temperature
 								Training
 								Vacuum
-								System
+
 
 
 
