@@ -17,11 +17,13 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Jun 26 13:57:33 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Mon Sep 02 14:44:18 CEST 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.1.15 - 02/09/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve get<Attribute> method for java class.<Br>\n" + 
 		"<li><b>Pogo-8.1.14 - 26/06/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Add Tango-8.1.2 specific features.<Br>\n" + 
 		"&nbsp; &nbsp; Fix a problem with state machine when attribute is modified.<Br>\n" + 
-		"&nbsp; &nbsp; Improve documentation generation to be used by Class2www cleasses.<Br>\n" + 
+		"&nbsp; &nbsp; Improve documentation generation to be used by Class2www classes.<Br>\n" + 
 		"<li><b>Pogo-8.1.13 - 03/05/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve documentation generation to be used by Class2www cleasses.<Br>\n" + 
 		"<li><b>Pogo-8.1.12 - 02/05/2013:</b><Br>\n" + 
