@@ -90,11 +90,13 @@ class JavaAttribute {
 		 * 
 		 * @return attribute value
 		 */
-		public «attribute.strFullJavaType» get«attribute.name»() {
+		public org.tango.server.attribute.AttributeValue get«attribute.name»() throws DevFailed {
 			xlogger.entry();
+			org.tango.server.attribute.AttributeValue attributeValue =
+				new org.tango.server.attribute.AttributeValue(«attribute.name.dataMemberName»);
 			«cls.protectedArea("get"+attribute.name, "Put read attribute code here", true)»
 			xlogger.exit();
-			return «attribute.name.dataMemberName»;
+			return attributeValue;
 		}
 	'''
 	//======================================================
@@ -105,7 +107,7 @@ class JavaAttribute {
 		 * Write attribute «attribute.name»
 		 * @param  «attribute.name.dataMemberName» value to write
 		 */
-		public void set«attribute.name»(«attribute.strFullJavaType» «attribute.name.dataMemberName»){
+		public void set«attribute.name»(«attribute.strFullJavaType» «attribute.name.dataMemberName») throws DevFailed {
 			xlogger.entry();
 			«cls.protectedArea("set" + attribute.name, "Put write attribute code here", true)»
 			xlogger.exit();
