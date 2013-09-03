@@ -288,7 +288,7 @@ class JavaDevice  implements IGenerator {
 		/**
 		 * Method called before and after command and attribute calls.
 		 * @param ctx the invocation context
-		 * @throws DevFailed if something fails during the this method execution.
+		 * @throws DevFailed if something fails during this method execution.
 		 */
 		@AroundInvoke
 		public final void aroundInvoke(final InvocationContext ctx) throws DevFailed {
