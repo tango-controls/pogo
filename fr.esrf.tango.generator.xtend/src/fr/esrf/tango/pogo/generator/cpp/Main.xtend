@@ -73,8 +73,19 @@ class Main {
 	def mainCode() '''
 		#include <tango.h>
 		
+		// Check if crash reporting is used.
+		#if defined(ENABLE_CRASH_REPORT)
+		#  include <crashreporting/crash_report.h>
+		#else
+		#  define DECLARE_CRASH_HANDLER
+		#  define INSTALL_CRASH_HANDLER
+		#endif
+		
+		DECLARE_CRASH_HANDLER;
+
 		int main(int argc,char *argv[])
 		{
+			INSTALL_CRASH_HANDLER
 			try
 			{
 				// Initialise the device server
