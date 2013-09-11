@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.1.16 - 11/09/2013:
+	Crash reporting management added on main.cpp.
+
 Pogo-8.1.15 - 02/09/2013:
 	Improve get<Attribute> method for java class.
 
