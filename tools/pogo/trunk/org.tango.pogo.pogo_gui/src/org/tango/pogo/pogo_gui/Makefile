@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 8.1.15
+RELEASE    = 8.1.16
 
 
 TANGO_HOME	=	/segfs/tango
@@ -44,7 +44,7 @@ DOC_HEADER = "<h1>POGO Classes</h1>"
 
 all:	 GUI exe
 
-full:	constants	utils	GUI
+full:	atk constants	utils	GUI
 
 GUI:
 	$(JAVAC) *.java
