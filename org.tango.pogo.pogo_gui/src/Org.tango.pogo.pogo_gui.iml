@@ -9,18 +9,18 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="properties" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://N:/pogo_jar/org.tango.pogo.jar!/" />
+          <root url="jar://N:/pogo/jar/org.tango.pogo.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://N:/pogo_jar/org.tango.pogo.jar!/bundle-source" />
+          <root url="jar://N:/pogo/jar/org.tango.pogo.jar!/bundle-source" />
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="properties" level="project" />
   </component>
 </module>
 

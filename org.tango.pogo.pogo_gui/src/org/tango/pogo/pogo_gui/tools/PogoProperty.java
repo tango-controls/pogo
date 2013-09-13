@@ -46,6 +46,8 @@ import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
 import org.tango.pogo.pogo_gui.PogoConst;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
@@ -63,7 +65,6 @@ public class PogoProperty {
     public static ArrayList<String> platformNames = new ArrayList<String>();
     public static ArrayList<String> busNames = new ArrayList<String>();
     private static final String docHomeProp = "doc_home";
-    private static final String attrFreeProp = "attr_free";
     private static final String makefileHomeProp = "makefile_home";
     private static final String installHomeProp = "install_home";
 
@@ -76,7 +77,6 @@ public class PogoProperty {
 
     public static String siteName = null;
     public static String docHome = "./doc_html";
-    public static boolean attrFree = false; //  Not used any more
     public static String makefileHome = "$(TANGO_HOME)";
     public static String installHome = "$(TANGO_HOME)";
     public static ArrayList<String> siteClassFamilies = new ArrayList<String>();
@@ -187,8 +187,6 @@ public class PogoProperty {
             ArrayList<String> vs = loadProperties(sitePropFilename);
             siteName = getStringProperty(siteNameProp, vs);
             docHome = checkOverwritingPropertyString(docHomeProp, docHome, vs);
-            String s = Boolean.toString(attrFree);
-            attrFree = checkOverwritingPropertyString(attrFreeProp, s, vs).equals("true");
             makefileHome = checkOverwritingPropertyString(makefileHomeProp, makefileHome, vs);
             siteClassFamilies = getStringListProperty(siteClassFamiliesProp, vs);
         } catch (Exception e) {
@@ -231,10 +229,10 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private String checkOverwritingPropertyString(String propname, String propvalue, ArrayList<String> vs) {
-        String tmp = getStringProperty(propname, vs);
-        if (tmp != null) propvalue = tmp;
-        return propvalue;
+    private String checkOverwritingPropertyString(String propertyName, String propertyValue, ArrayList<String> propertyList) {
+        String tmp = getStringProperty(propertyName, propertyList);
+        if (tmp != null) propertyValue = tmp;
+        return propertyValue;
     }
 
     //===============================================================
@@ -323,9 +321,9 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private String getStringProperty(String propname, ArrayList<String> vs) {
-        for (String s : vs)
-            if (s.startsWith(packname + "." + propname)) {
+    private String getStringProperty(String propertyName, ArrayList<String> propertyList) {
+        for (String s : propertyList)
+            if (s.startsWith(packname + "." + propertyName)) {
                 int pos = s.indexOf(':');
                 if (pos > 0) {
                     String str = s.substring(pos + 1).trim();
@@ -348,7 +346,6 @@ public class PogoProperty {
             displayProperty(busNamesProp, busNames);
         }
         displayProperty(docHomeProp, docHome);
-        displayProperty(attrFreeProp, Boolean.toString(attrFree));
         displayProperty(makefileHomeProp, makefileHome);
         displayProperty(installHomeProp, installHome);
         displayProperty(siteNameProp, siteName);
@@ -465,23 +462,40 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    public void updateSitePropertyFile() throws DevFailed {
+    public boolean updateSitePropertyFile(Component parent) throws DevFailed {
         java.net.URL url =
                 getClass().getResource(sitePropFilename);
-        //System.out.println("URL file="+url.getFile());
+        String  fileName = null;
+        boolean alreadyExists = true;
+        //  If save directory is unknown
         if (url == null) {
-            Except.throw_exception("LOAD_PROPERTY_FAILED",
-                    "URL for property file (" + sitePropFilename + ") is null !",
-                    "PogoProperty.loadProperties()");
-            return;    //  impossible but removing warning
+            alreadyExists = false;
+            Utils.popupError(new JFrame(),
+                    "URL for property file (" + sitePropFilename + ") is unknown !\n\n"+
+                    "Select a directory to write property file.\n" +
+                    "It will have to be added in  your CLASSPATH environment.");
+
+            //  OPeb a JFileChooser to select it
+            JFileChooser    fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            if (fileChooser.showDialog(parent, "Target Dir.") == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                if (file != null && file.isDirectory()) {
+                    fileName = file.getAbsolutePath() + sitePropFilename;
+                }
+            }
+            else
+                return false;
         }
-        String filename = url.toString();
-        if (filename.startsWith("file:"))
-            filename = filename.substring("file:".length());
+        else {
+            fileName = url.toString();
+            if (fileName.startsWith("file:"))
+                fileName = fileName.substring("file:".length());
+        }
 
 
         //  Read file
-        String code = ParserTool.readFile(filename);
+        String code = ParserTool.readFile(fileName);
         boolean writeIt = false;
         //  Insert Site name
         int start = code.indexOf(siteNameProp);
@@ -514,9 +528,19 @@ public class PogoProperty {
 
         //  Then write file.
         if (writeIt) {
-            System.out.println("writing  " + filename);
-            ParserTool.writeFile(filename, code);
+            System.out.println("writing  " + fileName);
+            ParserTool.writeFile(fileName, code);
+            if (!alreadyExists) {
+                //  If first generating time display message
+                JOptionPane.showMessageDialog(parent,
+                        "File "+ fileName + "has been written\n\n" +
+                        "Add the directory to your CLASSPATH environment to be re-loaded by Pogo !",
+                        "Help Window",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            }
         }
+        return true;
     }
     //===============================================================
     //===============================================================

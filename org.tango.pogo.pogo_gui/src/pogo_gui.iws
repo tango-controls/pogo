@@ -2,6 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="201d0116-b6da-4daa-8e4f-0420473a6a76" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.form" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.form" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Org.tango.pogo.pogo_gui.iml" afterPath="$PROJECT_DIR$/Org.tango.pogo.pogo_gui.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.form" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/classpath" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/go" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.ipr" afterPath="$PROJECT_DIR$/pogo_gui.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.iws" afterPath="$PROJECT_DIR$/pogo_gui.iws" />
     </list>
     <ignored path="pogo_gui.iws" />
@@ -40,6 +55,11 @@
     <file path="Y:/tango/tools/classes2www/classes2www/SvnUtils.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1369988813013" ignored="false" />
     <file path="/AttributeDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1372237357035" ignored="false" />
     <file path="/CommandDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1372237680589" ignored="false" />
+    <file path="/PogoProperty.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379060368033" ignored="false" />
+    <file path="/fragment.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379057227105" ignored="false" />
+    <file path="/PogoConfiguration.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379059858638" ignored="false" />
+    <file path="/GenerateDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379071003615" ignored="false" />
+    <file path="/StateMachineDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379071281669" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,11 +136,25 @@
     <splitter split-orientation="horizontal" split-proportion="0.45183775">
       <split-first>
         <leaf>
-          <file leaf-file-name="PogoProperty.java" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="PogoProperty.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="151" column="13" selection-start="6075" selection-end="6075" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="79" column="0" selection-start="2895" selection-end="2895" vertical-scroll-proportion="-0.26464647">
+                  <folding>
+                    <element signature="e#2012#2020#0" expanded="true" />
+                    <element signature="e#2161#2169#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PogoConfiguration.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="201" column="13" selection-start="7748" selection-end="7748" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#1725#1759#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -128,16 +162,16 @@
           <file leaf-file-name="PogoGUI.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1457" column="7" selection-start="59167" selection-end="59167" vertical-scroll-proportion="0.0">
+                <state line="659" column="34" selection-start="25933" selection-end="25945" vertical-scroll-proportion="-12.84">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="OAWutils.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="OAWutils.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/OAWutils.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="764" column="46" selection-start="32757" selection-end="32757" vertical-scroll-proportion="0.13989638">
+                <state line="764" column="46" selection-start="32757" selection-end="32757" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -165,51 +199,31 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AttributeDialog.java" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="AttributeDialog.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1723" column="0" selection-start="78369" selection-end="78920" vertical-scroll-proportion="0.0">
+                <state line="58" column="0" selection-start="1953" selection-end="1953" vertical-scroll-proportion="0.13737373">
                   <folding>
-                    <element signature="e#1862#1896#0" expanded="true" />
-                    <element signature="e#13089#13129#0" expanded="true" />
-                    <element signature="e#13468#13508#0" expanded="true" />
-                    <element signature="e#54873#54913#0" expanded="true" />
-                    <element signature="e#59021#59061#0" expanded="true" />
-                    <element signature="e#59420#59460#0" expanded="true" />
-                    <element signature="e#59825#59865#0" expanded="true" />
-                    <element signature="e#60836#60876#0" expanded="true" />
-                    <element signature="e#61826#61866#0" expanded="true" />
-                    <element signature="e#62164#62204#0" expanded="true" />
-                    <element signature="e#62504#62544#0" expanded="true" />
-                    <element signature="e#64520#64557#0" expanded="true" />
-                    <element signature="e#65337#65374#0" expanded="true" />
+                    <element signature="e#23464#23647#0" expanded="true" />
+                    <element signature="e#23636#23637#0" expanded="true" />
+                    <element signature="e#26111#26292#0" expanded="true" />
+                    <element signature="e#26281#26282#0" expanded="true" />
+                    <element signature="e#28511#28695#0" expanded="true" />
+                    <element signature="e#28684#28685#0" expanded="true" />
+                    <element signature="e#29502#29686#0" expanded="true" />
+                    <element signature="e#29675#29676#0" expanded="true" />
+                    <element signature="e#61195#61235#0" expanded="true" />
+                    <element signature="e#62863#62903#0" expanded="true" />
+                    <element signature="e#65696#65733#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CommandDialog.java" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="CommandDialog.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="728" column="19" selection-start="30074" selection-end="30074" vertical-scroll-proportion="0.8596491">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="StateMachineDialog.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="395" column="46" selection-start="14595" selection-end="14625" vertical-scroll-proportion="-17.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GenerateDialog.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="611" column="48" selection-start="26714" selection-end="26714" vertical-scroll-proportion="0.0">
+                <state line="342" column="0" selection-start="13392" selection-end="13392" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -246,18 +260,20 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/InheritanceUtils.java" />
-        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceClass.java" />
         <option value="$PROJECT_DIR$/doc/GeneratedCode.html" />
-        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Pogo.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoEditor.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/OAWutils.java" />
-        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" />
       </list>
     </option>
   </component>
@@ -266,6 +282,25 @@
     <option name="y" value="-8" />
     <option name="width" value="1932" />
     <option name="height" value="1186" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Probable bugs</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>MagicConstant</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -326,22 +361,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pogo_gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pogo_gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="N:/pogo/jar/org.tango.pogo.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.Pogo">
@@ -468,8 +523,31 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="1">
+    <configuration default="false" name="PogoConfiguration" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.tango.pogo.pogo_gui.tools.PogoConfiguration" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Org.tango.pogo.pogo_gui" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.Pogo" />
+      <item index="1" class="java.lang.String" itemvalue="Application.PogoConfiguration" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -532,13 +610,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1186" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1186" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32783705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32750243" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39941692" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -546,10 +624,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944608" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15614973" sideWeight="0.54130226" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.54898155" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15614973" sideWeight="0.45189506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15614973" sideWeight="0.6715258" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -618,11 +696,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="20" selection-start="2393" selection-end="2400" vertical-scroll-proportion="0.69317025" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoConst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="17" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.017561983" />
@@ -633,23 +706,9 @@
         <state line="251" column="9" selection-start="9256" selection-end="9256" vertical-scroll-proportion="0.3502066" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="13" selection-start="6075" selection-end="6075" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/InheritanceUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="96" column="32" selection-start="3563" selection-end="3563" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="611" column="48" selection-start="26714" selection-end="26714" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -675,23 +734,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1457" column="7" selection-start="59167" selection-end="59167" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="13" selection-start="1683" selection-end="1683" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="395" column="46" selection-start="14595" selection-end="14625" vertical-scroll-proportion="-17.0">
           <folding />
         </state>
       </provider>
@@ -703,38 +748,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/OAWutils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1723" column="0" selection-start="78369" selection-end="78920" vertical-scroll-proportion="0.0">
+        <state line="764" column="46" selection-start="32757" selection-end="32757" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="659" column="34" selection-start="25933" selection-end="25945" vertical-scroll-proportion="-12.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="201" column="13" selection-start="7748" selection-end="7748" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#1862#1896#0" expanded="true" />
-            <element signature="e#13089#13129#0" expanded="true" />
-            <element signature="e#13468#13508#0" expanded="true" />
-            <element signature="e#54873#54913#0" expanded="true" />
-            <element signature="e#59021#59061#0" expanded="true" />
-            <element signature="e#59420#59460#0" expanded="true" />
-            <element signature="e#59825#59865#0" expanded="true" />
-            <element signature="e#60836#60876#0" expanded="true" />
-            <element signature="e#61826#61866#0" expanded="true" />
-            <element signature="e#62164#62204#0" expanded="true" />
-            <element signature="e#62504#62544#0" expanded="true" />
-            <element signature="e#64520#64557#0" expanded="true" />
-            <element signature="e#65337#65374#0" expanded="true" />
+            <element signature="e#1725#1759#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2895" selection-end="2895" vertical-scroll-proportion="-0.26464647">
+          <folding>
+            <element signature="e#2012#2020#0" expanded="true" />
+            <element signature="e#2161#2169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="319" column="64" selection-start="11615" selection-end="11615" vertical-scroll-proportion="2.3444445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="0" selection-start="1721" selection-end="1727" vertical-scroll-proportion="0.18888889">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="728" column="19" selection-start="30074" selection-end="30074" vertical-scroll-proportion="0.8596491">
+        <state line="342" column="0" selection-start="13392" selection-end="13392" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/OAWutils.java">
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="764" column="46" selection-start="32757" selection-end="32757" vertical-scroll-proportion="0.13989638">
-          <folding />
+        <state line="58" column="0" selection-start="1953" selection-end="1953" vertical-scroll-proportion="0.13737373">
+          <folding>
+            <element signature="e#23464#23647#0" expanded="true" />
+            <element signature="e#23636#23637#0" expanded="true" />
+            <element signature="e#26111#26292#0" expanded="true" />
+            <element signature="e#26281#26282#0" expanded="true" />
+            <element signature="e#28511#28695#0" expanded="true" />
+            <element signature="e#28684#28685#0" expanded="true" />
+            <element signature="e#29502#29686#0" expanded="true" />
+            <element signature="e#29675#29676#0" expanded="true" />
+            <element signature="e#61195#61235#0" expanded="true" />
+            <element signature="e#62863#62903#0" expanded="true" />
+            <element signature="e#65696#65733#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
