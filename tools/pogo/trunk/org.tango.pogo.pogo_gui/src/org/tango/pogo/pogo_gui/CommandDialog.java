@@ -270,8 +270,6 @@ public class CommandDialog extends JDialog {
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel centerPanel = new javax.swing.JPanel();
-        javax.swing.JLabel descLbl = new javax.swing.JLabel();
-        javax.swing.JPanel toipPanel = new javax.swing.JPanel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
         nameComboBox = new javax.swing.JComboBox();
         abstractBtn = new javax.swing.JRadioButton();
@@ -289,6 +287,7 @@ public class CommandDialog extends JDialog {
         javax.swing.JPanel levelPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         levelBtn = new javax.swing.JRadioButton();
+        javax.swing.JLabel descLbl = new javax.swing.JLabel();
         javax.swing.JScrollPane descScrollPane = new javax.swing.JScrollPane();
         descText = new javax.swing.JTextArea();
         javax.swing.JScrollPane arginScrollPane = new javax.swing.JScrollPane();
@@ -322,25 +321,23 @@ public class CommandDialog extends JDialog {
 
         centerPanel.setLayout(new java.awt.GridBagLayout());
 
-        descLbl.setFont(new java.awt.Font("Arial", 1, 12));
-        descLbl.setText("Command description:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
-        centerPanel.add(descLbl, gridBagConstraints);
-
-        nameLbl.setFont(new java.awt.Font("Arial", 1, 12));
+        nameLbl.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nameLbl.setText("Command Name:");
-        toipPanel.add(nameLbl);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        centerPanel.add(nameLbl, gridBagConstraints);
 
         nameComboBox.setEditable(true);
-        nameComboBox.setFont(new java.awt.Font("Arial", 1, 12));
-        toipPanel.add(nameComboBox);
+        nameComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        centerPanel.add(nameComboBox, gridBagConstraints);
 
-        abstractBtn.setFont(new java.awt.Font("Arial", 1, 12));
-        abstractBtn.setText("Abstract");
+        abstractBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        abstractBtn.setText("Abstract Command");
         abstractBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         abstractBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         abstractBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
@@ -349,10 +346,15 @@ public class CommandDialog extends JDialog {
                 abstractBtnActionPerformed(evt);
             }
         });
-        toipPanel.add(abstractBtn);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
+        centerPanel.add(abstractBtn, gridBagConstraints);
 
-        overloadBtn.setFont(new java.awt.Font("Arial", 1, 12));
-        overloadBtn.setText("Overload");
+        overloadBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        overloadBtn.setText("Overload Command");
         overloadBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         overloadBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         overloadBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
@@ -361,36 +363,34 @@ public class CommandDialog extends JDialog {
                 overloadBtnActionPerformed(evt);
             }
         });
-        toipPanel.add(overloadBtn);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 15, 20, 20);
-        centerPanel.add(toipPanel, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
+        centerPanel.add(overloadBtn, gridBagConstraints);
 
-        arginLbl.setFont(new java.awt.Font("Arial", 1, 12));
+        arginLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         arginLbl.setText("Input Argument:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 10);
         centerPanel.add(arginLbl, gridBagConstraints);
 
-        argoutLbl.setFont(new java.awt.Font("Arial", 1, 12));
+        argoutLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         argoutLbl.setText("Output Argument:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 10);
         centerPanel.add(argoutLbl, gridBagConstraints);
 
-        arginComboBox.setFont(new java.awt.Font("Arial", 1, 12));
+        arginComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         arginComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 arginComboBoxActionPerformed(evt);
@@ -398,12 +398,12 @@ public class CommandDialog extends JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
         centerPanel.add(arginComboBox, gridBagConstraints);
 
-        argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12));
+        argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -421,6 +421,7 @@ public class CommandDialog extends JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         centerPanel.add(arginDescBtn, gridBagConstraints);
 
@@ -434,12 +435,13 @@ public class CommandDialog extends JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         centerPanel.add(argoutDescBtn, gridBagConstraints);
 
-        polledBtn.setFont(new java.awt.Font("Arial", 1, 12));
-        polledBtn.setText("Polled");
+        polledBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        polledBtn.setText("Polled  ");
         polledBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         polledBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         polledBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -450,35 +452,45 @@ public class CommandDialog extends JDialog {
         polledPanel.add(polledBtn);
 
         polledTxt.setColumns(8);
-        polledTxt.setFont(new java.awt.Font("Arial", 1, 12));
+        polledTxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         polledPanel.add(polledTxt);
 
         polledLbl.setText("ms");
         polledPanel.add(polledLbl);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 15, 0);
         centerPanel.add(polledPanel, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Controlled by : ");
         levelPanel.add(jLabel1);
 
-        levelBtn.setFont(new java.awt.Font("Arial", 1, 12));
+        levelBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         levelBtn.setText("Expert Only");
         levelPanel.add(levelBtn);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         centerPanel.add(levelPanel, gridBagConstraints);
 
-        descScrollPane.setPreferredSize(new java.awt.Dimension(326, 100));
+        descLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        descLbl.setText("Command description:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
+        centerPanel.add(descLbl, gridBagConstraints);
+
+        descScrollPane.setPreferredSize(new java.awt.Dimension(326, 150));
 
         descText.setColumns(35);
         descText.setRows(1);
@@ -486,13 +498,17 @@ public class CommandDialog extends JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 40, 10, 10);
         centerPanel.add(descScrollPane, gridBagConstraints);
 
-        arginScrollPane.setPreferredSize(new java.awt.Dimension(246, 60));
+        arginScrollPane.setPreferredSize(new java.awt.Dimension(246, 70));
 
         arginDescText.setColumns(30);
         arginDescText.setRows(2);
@@ -503,10 +519,11 @@ public class CommandDialog extends JDialog {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
         centerPanel.add(arginScrollPane, gridBagConstraints);
 
-        argoutScrollPane.setPreferredSize(new java.awt.Dimension(246, 60));
+        argoutScrollPane.setPreferredSize(new java.awt.Dimension(246, 70));
 
         argoutDescText.setColumns(30);
         argoutDescText.setRows(2);
@@ -514,9 +531,10 @@ public class CommandDialog extends JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 40, 0, 0);
         centerPanel.add(argoutScrollPane, gridBagConstraints);
 

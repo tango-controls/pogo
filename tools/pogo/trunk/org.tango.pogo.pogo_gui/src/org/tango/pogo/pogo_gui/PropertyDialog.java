@@ -231,7 +231,7 @@ public class PropertyDialog extends JDialog {
             }
         });
 
-        titleLbl.setFont(new java.awt.Font("Dialog", 1, 18));
+        titleLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         titleLbl.setText("Dialog Title");
         titlePanel.add(titleLbl);
 
@@ -257,32 +257,37 @@ public class PropertyDialog extends JDialog {
 
         centerPanel.setLayout(new java.awt.GridBagLayout());
 
+        nameLbl.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nameLbl.setText("Property Name:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 10);
         centerPanel.add(nameLbl, gridBagConstraints);
 
         nameTxt.setColumns(20);
+        nameTxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         centerPanel.add(nameTxt, gridBagConstraints);
 
+        descLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         descLbl.setText("Property description:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 10);
         centerPanel.add(descLbl, gridBagConstraints);
 
         scrollPane.setPreferredSize(new java.awt.Dimension(200, 100));
 
         descTxt.setColumns(20);
+        descTxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         descTxt.setRows(5);
         scrollPane.setViewportView(descTxt);
 
@@ -290,9 +295,13 @@ public class PropertyDialog extends JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
         centerPanel.add(scrollPane, gridBagConstraints);
 
+        arginLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         arginLbl.setText("Propery Type :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -301,6 +310,7 @@ public class PropertyDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 10);
         centerPanel.add(arginLbl, gridBagConstraints);
 
+        valueLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         valueLbl.setText("Default Value :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -309,6 +319,7 @@ public class PropertyDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
         centerPanel.add(valueLbl, gridBagConstraints);
 
+        typeComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -342,6 +353,7 @@ public class PropertyDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         centerPanel.add(valueBtn, gridBagConstraints);
 
+        mandatoryBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         mandatoryBtn.setText("Mandatory in Database");
         mandatoryBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         mandatoryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -355,9 +367,10 @@ public class PropertyDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
         centerPanel.add(mandatoryBtn, gridBagConstraints);
 
-        scrollPane2.setPreferredSize(new java.awt.Dimension(166, 60));
+        scrollPane2.setPreferredSize(new java.awt.Dimension(166, 100));
 
         valueTxt.setColumns(20);
+        valueTxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         valueTxt.setRows(5);
         scrollPane2.setViewportView(valueTxt);
 
@@ -366,6 +379,7 @@ public class PropertyDialog extends JDialog {
         gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 30, 10, 0);
         centerPanel.add(scrollPane2, gridBagConstraints);
 
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);

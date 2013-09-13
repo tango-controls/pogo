@@ -59,7 +59,6 @@ public class GenerateDialog extends JDialog {
     private ArrayList<JRadioButton> rBtn;
 
     //===================================================================
-
     /**
      * Initializes the Form
      *
@@ -97,7 +96,6 @@ public class GenerateDialog extends JDialog {
     }
 
     //===================================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -389,7 +387,6 @@ public class GenerateDialog extends JDialog {
 
 
     //=============================================================
-
     /**
      * Open a File Chooser Dialog to select the new output directory.
      *
@@ -421,7 +418,6 @@ public class GenerateDialog extends JDialog {
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
 
         //	Check if path exists and if it exists, if it is a directory
-        //----------------------------------------------------------------
         String path = outPathText.getText();
         File file = new File(path);
         if (file.exists()) {
@@ -443,11 +439,12 @@ public class GenerateDialog extends JDialog {
                         path + " is not a directory !",
                         "Error Window",
                         JOptionPane.ERROR_MESSAGE);
-        } else if (JOptionPane.showConfirmDialog(this,
-                path + " Does not exists !\n\n" +
-                        "   Would you like to create it ? ",
-                "Error Window",
-                JOptionPane.ERROR_MESSAGE) == JOptionPane.OK_OPTION) {
+        } else
+        if (JOptionPane.showConfirmDialog(this,
+                        path + " Does not exists !\n\n" +
+                                "   Would you like to create it ? ",
+                        "Error Window",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             //	The try to create a new directory
             try {
                 if (file.mkdir()) {

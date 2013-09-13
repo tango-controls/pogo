@@ -51,12 +51,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 //===============================================================
-
 /**
  * A Dialog Class to get the Attribute parameters.
  */
 //===============================================================
-@SuppressWarnings("MagicConstant")
 public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.PogoConst {
     private int retVal = JOptionPane.OK_OPTION;
     private PogoGUI pogo_gui;
@@ -506,7 +504,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(nameLbl, gridBagConstraints);
 
         attrTypeCB.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -517,7 +515,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(attrTypeCB, gridBagConstraints);
@@ -526,7 +524,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         attTypeLbl.setText("Attribute Type: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(attTypeLbl, gridBagConstraints);
@@ -536,15 +534,17 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 3);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         definitionPanel.add(nameText, gridBagConstraints);
 
         dataTypeLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         dataTypeLbl.setText("Data Type: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(dataTypeLbl, gridBagConstraints);
@@ -557,7 +557,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(dataTypeCB, gridBagConstraints);
@@ -566,7 +566,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         xDataLBL.setText("Maximum X data size");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(xDataLBL, gridBagConstraints);
@@ -575,7 +575,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         yDataLBL.setText("Maximum Y data size: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(yDataLBL, gridBagConstraints);
@@ -585,7 +585,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         xDataTF.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(xDataTF, gridBagConstraints);
@@ -595,7 +595,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         yDataTF.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(yDataTF, gridBagConstraints);
@@ -608,7 +608,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         definitionPanel.add(rwTypeCB, gridBagConstraints);
@@ -617,7 +617,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         assAttrLBL.setText("Associated Attribute:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
         definitionPanel.add(assAttrLBL, gridBagConstraints);
@@ -627,7 +627,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         assAttrTF.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 3);
         definitionPanel.add(assAttrTF, gridBagConstraints);
@@ -636,13 +636,13 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         rwTypeLBL.setText("Read/Write Type: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         definitionPanel.add(rwTypeLBL, gridBagConstraints);
 
         abstractBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        abstractBtn.setText("Abstract");
+        abstractBtn.setText("Abstract Attribute");
         abstractBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         abstractBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         abstractBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
@@ -652,13 +652,15 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 10);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
         definitionPanel.add(abstractBtn, gridBagConstraints);
 
         overloadBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        overloadBtn.setText("Overload");
+        overloadBtn.setText("Overload Attribute");
         overloadBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         overloadBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         overloadBtn.setMargin(new java.awt.Insets(2, 12, 2, 12));
@@ -668,16 +670,18 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 10);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
         definitionPanel.add(overloadBtn, gridBagConstraints);
 
         allocateLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         allocateLbl.setText("Allocate:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 10);
         definitionPanel.add(allocateLbl, gridBagConstraints);
@@ -687,7 +691,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         allocateBtn.setText("Read data member");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 3);
         definitionPanel.add(allocateBtn, gridBagConstraints);

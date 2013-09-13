@@ -85,7 +85,7 @@ clean:
 	rm  $(BIN_DIR)/org/tango/pogo/pogo_gui/*.class
 	rm  $(BIN_DIR)/org/tango/pogo/pogo_gui/tools/*.class
 
-ECLIPSE_JAR_DIR=/users/verdier/pogo_jar
+ECLIPSE_JAR_DIR=/users/verdier/pogo/jar
 #ECLIPSE_JAR_DIR=/segfs/tango/tools/pogo/jar
 TARGET_JAR_DIR=/segfs/tango/release/java/appli
 #TARGET_JAR_DIR=.

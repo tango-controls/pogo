@@ -40,6 +40,7 @@ import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.ArrayList;
@@ -55,10 +56,11 @@ import java.util.ArrayList;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class PogoConfiguration extends JDialog {
+    private Component   parent;
     private int retVal = JOptionPane.CANCEL_OPTION;
     //===============================================================
-
     /**
      * Creates new form PogoConfiguration
      *
@@ -67,6 +69,7 @@ public class PogoConfiguration extends JDialog {
     //===============================================================
     public PogoConfiguration(JFrame parent) {
         super(parent, true);
+        this.parent = parent;
         initComponents();
         titleLabel.setToolTipText(Utils.buildToolTip("Class Families",
                 "If you use your own repository with specific class families\n" +
@@ -77,7 +80,6 @@ public class PogoConfiguration extends JDialog {
         ATKGraphicsUtils.centerDialog(this);
     }
     //===============================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -194,9 +196,10 @@ public class PogoConfiguration extends JDialog {
         //  Write families in file
         try {
             PogoProperty.siteName = siteLabel.getText();
-            PogoProperty.getInstance().updateSitePropertyFile();
-            retVal = JOptionPane.OK_OPTION;
-            doClose();
+            if (PogoProperty.getInstance().updateSitePropertyFile(this)) {
+                retVal = JOptionPane.OK_OPTION;
+                doClose();
+            }
         } catch (Exception e) {
             ErrorPane.showErrorMessage(this, null, e);
         }
@@ -294,23 +297,26 @@ public class PogoConfiguration extends JDialog {
     @SuppressWarnings({"UnusedDeclaration"})
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
 
-        JOptionPane.showMessageDialog(new JFrame(),
+        JOptionPane.showMessageDialog(this,
                 "If you use your own repository with specific class families,\n" +
-                        "entre your site name and use the list to add or remove your \n" +
+                        "enter your site name and use the list to add or remove your \n" +
                         "specific families.",
                 "Help Window",
                 JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_helpBtnActionPerformed
     //===============================================================
-
     /**
      * Closes the dialog
      */
     //===============================================================
     private void doClose() {
-        setVisible(false);
-        dispose();
+        if (parent==null)
+            System.exit(0);
+        else {
+            setVisible(false);
+            dispose();
+        }
     }
 
 
@@ -395,7 +401,8 @@ public class PogoConfiguration extends JDialog {
     //===============================================================
     public static void main(String args[]) {
         try {
-            new PogoConfiguration(new JFrame()).showDialog();
+            PogoProperty.init();
+            new PogoConfiguration(null).showDialog();
         } catch (Exception e) {
             ErrorPane.showErrorMessage(new JFrame(), null, e);
             System.exit(0);

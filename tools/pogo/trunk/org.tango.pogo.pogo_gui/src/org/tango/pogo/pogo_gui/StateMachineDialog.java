@@ -124,7 +124,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     //===============================================================
     private void addColumnHeader(int y, String str1, String str2, EList<State> states) {
-        Font font = new Font("Dialog", 1, 16);
+        Font font = new Font("Dialog", Font.BOLD, 16);
         int x = 0;
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.WEST;
@@ -317,7 +317,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
-        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18));
+        titleLabel.setFont(new java.awt.Font("Dialog", Font.BOLD, 18));
         titleLabel.setText("State Machine");
         jPanel2.add(titleLabel);
 
