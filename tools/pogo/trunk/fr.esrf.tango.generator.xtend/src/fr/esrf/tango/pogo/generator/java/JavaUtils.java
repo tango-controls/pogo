@@ -255,22 +255,30 @@ public class JavaUtils extends StringUtils {
 			}
 		}
 		//	Event management
-		if (isTrue(attribute.getDataReadyEvent().getFire())) {
-			list.add("pushDataReadyEvent=true");
-		}
-		if (isTrue(attribute.getArchiveEvent().getFire())) {
-			list.add("pushArchiveEvent=true");
-			if (isTrue(attribute.getArchiveEvent().getLibCheckCriteria())) {
-				list.add("checkArchiveEvent=true");
-			}
-		}
-		if (isTrue(attribute.getChangeEvent().getFire())) {
-			list.add("pushChangeEvent=true");
-			if (isTrue(attribute.getChangeEvent().getLibCheckCriteria())) {
-				list.add("checkChangeEvent=true");
+		if (attribute.getDataReadyEvent()!=null) {
+			if (isTrue(attribute.getDataReadyEvent().getFire())) {
+				list.add("pushDataReadyEvent=true");
 			}
 		}
 		
+		if (attribute.getArchiveEvent()!=null) {
+			if (isTrue(attribute.getArchiveEvent().getFire())) {
+				list.add("pushArchiveEvent=true");
+				if (isTrue(attribute.getArchiveEvent().getLibCheckCriteria())) {
+					list.add("checkArchiveEvent=true");
+				}
+			}
+		}
+
+		if (attribute.getChangeEvent()!=null) {
+			if (isTrue(attribute.getChangeEvent().getFire())) {
+				list.add("pushChangeEvent=true");
+				if (isTrue(attribute.getChangeEvent().getLibCheckCriteria())) {
+					list.add("checkChangeEvent=true");
+				}
+			}
+		}
+
 		String head = "@Attribute(name=\"" + attribute.getName() + "\"";
 		//	Add parameters only if any
 		if (list.isEmpty())
