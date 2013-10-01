@@ -2,8 +2,11 @@ JAR_FILE=$HOME/pogo/jar/org.tango.pogo.jar
 SITE_PROP=$TANGO_HOME/tools/pogo/properties.test
 BIN_DIR=../../../../../bin
 
+TANGO_LIB_DIR=$TANGO_HOME/release/java/lib
+TANGO_LIBS=$TANGO_LIB_DIR/TangORB.jar:$TANGO_LIB_DIR/ATKCore.jar:$TANGO_LIB_DIR/ATKWidget.jar
 
-CLASSPATH=$SITE_PROP:$JAR_FILE
+
+CLASSPATH=$SITE_PROP:$JAR_FILE:$TANGO_LIBS
 echo "CLASSPATH=$CLASSPATH"
 
 

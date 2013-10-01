@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="201d0116-b6da-4daa-8e4f-0420473a6a76" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.form" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.form" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/CommandDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/GenerateDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Org.tango.pogo.pogo_gui.iml" afterPath="$PROJECT_DIR$/Org.tango.pogo.pogo_gui.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.form" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PropertyDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateMachineDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/classpath" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/go" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.ipr" afterPath="$PROJECT_DIR$/pogo_gui.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.iws" afterPath="$PROJECT_DIR$/pogo_gui.iws" />
     </list>
     <ignored path="pogo_gui.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -610,7 +596,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1186" extended-state="1" />
+    <frame x="-8" y="-8" width="1932" height="1186" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
