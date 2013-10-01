@@ -17,9 +17,12 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Sep 13 15:18:09 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Tue Oct 01 13:56:05 CEST 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.1.18 - 01/10/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Change boolean attribute java method name.<Br>\n" + 
+		"&nbsp; &nbsp; Add push event management for java.<Br>\n" + 
 		"<li><b>Pogo-8.1.17 - 13/09/2013:</b><Br>\n" + 
-		"&nbsp; &nbsp; Improve properties and Attribute/Command/Property dialogs<Br>\n" + 
+		"&nbsp; &nbsp; Improve properties and Attribute/Command/Property dialogs.<Br>\n" + 
 		"<li><b>Pogo-8.1.16 - 11/09/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Crash reporting management added on main.cpp.<Br>\n" + 
 		"<li><b>Pogo-8.1.15 - 02/09/2013:</b><Br>\n" + 

@@ -254,6 +254,22 @@ public class JavaUtils extends StringUtils {
 				list.add("pollingPeriod=" + attribute.getPolledPeriod());
 			}
 		}
+		//	Event management
+		if (isTrue(attribute.getDataReadyEvent().getFire())) {
+			list.add("pushDataReadyEvent=true");
+		}
+		if (isTrue(attribute.getArchiveEvent().getFire())) {
+			list.add("pushArchiveEvent=true");
+			if (isTrue(attribute.getArchiveEvent().getLibCheckCriteria())) {
+				list.add("checkArchiveEvent=true");
+			}
+		}
+		if (isTrue(attribute.getChangeEvent().getFire())) {
+			list.add("pushChangeEvent=true");
+			if (isTrue(attribute.getChangeEvent().getLibCheckCriteria())) {
+				list.add("checkChangeEvent=true");
+			}
+		}
 		
 		String head = "@Attribute(name=\"" + attribute.getName() + "\"";
 		//	Add parameters only if any
@@ -446,6 +462,22 @@ public class JavaUtils extends StringUtils {
 		return tangoRoot + "/share/tango/java/JTangoServer.jar";
 	}
 	
+	//===========================================================
+	//===========================================================
+	public static String attributeMethodName(Attribute attribute, Boolean read) {
+		String attName = attribute.getName().substring(0, 1).toUpperCase() + 
+				attribute.getName().substring(1);
+		String s;
+		if (read) {
+			if (attribute.getDataType().toString().contains("Boolean"))
+				s = "is";
+			else
+				s = "get";
+		}
+		else
+			s = "set";
+		return s + attName;
+	}
 	//===========================================================
 	//===========================================================
 }
