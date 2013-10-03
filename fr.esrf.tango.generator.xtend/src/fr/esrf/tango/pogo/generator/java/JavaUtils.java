@@ -257,7 +257,7 @@ public class JavaUtils extends StringUtils {
 		//	Event management
 		if (attribute.getDataReadyEvent()!=null) {
 			if (isTrue(attribute.getDataReadyEvent().getFire())) {
-				list.add("pushDataReadyEvent=true");
+				list.add("pushDataReady=true");
 			}
 		}
 		
@@ -265,7 +265,7 @@ public class JavaUtils extends StringUtils {
 			if (isTrue(attribute.getArchiveEvent().getFire())) {
 				list.add("pushArchiveEvent=true");
 				if (isTrue(attribute.getArchiveEvent().getLibCheckCriteria())) {
-					list.add("checkArchiveEvent=true");
+					list.add("checkArchivingEvent=true");
 				}
 			}
 		}

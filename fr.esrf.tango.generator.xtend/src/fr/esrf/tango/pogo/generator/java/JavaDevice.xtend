@@ -193,11 +193,17 @@ class JavaDevice  implements IGenerator {
 				"import org.tango.server.annotation.State;\n" +
 				"import org.tango.server.annotation.StateMachine;\n" +
 				"import org.tango.server.annotation.Status;\n" +
+				"import org.tango.server.annotation.DeviceManagement;\n" +
 				"import org.tango.server.dynamic.DynamicManager;\n" +
+				"import org.tango.server.device.DeviceManager;\n" +
+				"import org.tango.server.dynamic.DynamicManager;\n" +
+				"import org.tango.server.events.EventManager;\n" +
+				"import org.tango.server.events.EventType;\n" +
 				"import org.tango.utils.DevFailedUtils;\n" +
 				"\n" +
 				"//	Import Tango IDL types\n" +
-				"import fr.esrf.Tango.*;",
+				"import fr.esrf.Tango.*;\n" +
+				"import fr.esrf.Tango.Except;",
 				false)»
 	'''
 
@@ -260,7 +266,7 @@ class JavaDevice  implements IGenerator {
 		@Init(lazyLoading = false)
 		public final void initDevice() throws DevFailed {
 			xlogger.entry();
-			logger.debug("init");
+			logger.debug("init device " + deviceManager.getName());
 			«cls.protectedArea("initDevice", "Put your device initialization code here", true)»
 			xlogger.exit();
 		}
@@ -313,6 +319,15 @@ class JavaDevice  implements IGenerator {
 		public void setDynamicManager(final DynamicManager dynamicManager) {
 			this.dynamicManager = dynamicManager;
 			«cls.protectedArea("setDynamicManager", "Put your code here", true)»
+		}
+
+		/**
+		 * Device management. Will be injected by the framework.
+		 */
+		@DeviceManagement
+		DeviceManager deviceManager;
+		public void setDeviceManager(DeviceManager deviceManager){
+			this.deviceManager= deviceManager ;
 		}
 	'''
 
