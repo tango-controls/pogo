@@ -192,6 +192,9 @@ public class JavaUtils extends StringUtils {
 	public String declareParameters(Command command) {
 		//	Put in a list parameters value only if has been set
 		ArrayList<String>	list = new ArrayList<String>();
+		list.add("name=\"" + command.getName() + "\"");
+		list.add("inTypeDesc=\""  + oneLineString(command.getArgin().getDescription())  + "\"");
+		list.add("outTypeDesc=\"" + oneLineString(command.getArgout().getDescription()) + "\"");
 
 		if (isSet(command.getDisplayLevel())) {
 			if (command.getDisplayLevel().equals("EXPERT"))
@@ -204,14 +207,7 @@ public class JavaUtils extends StringUtils {
 			}
 		}
 		
-		String head = "@Command(name=\"" + command.getName() + "\", "  +
-				"inTypeDesc=\""  + oneLineString(command.getArgin().getDescription())  + "\", " +
-				"outTypeDesc=\"" + oneLineString(command.getArgout().getDescription()) + "\"";
-		//	Add parameters only if any
-		if (list.isEmpty())
-			return head + ")";
-		else
-			return head + ", " + propertiesInOneLine(list) + ")";
+		return propertiesInOneLine("@Command(", list, ")");
 	}
 	//===========================================================
 	//===========================================================
@@ -224,7 +220,7 @@ public class JavaUtils extends StringUtils {
 		if (list.isEmpty())
 			return "";
 		else
-			return "@StateMachine(deniedStates={" + propertiesInOneLine(list) + "})";
+			return propertiesInOneLine("@StateMachine(deniedStates={", list, "})");
 
 	}
 	//===========================================================
@@ -238,6 +234,8 @@ public class JavaUtils extends StringUtils {
 		//	Put in a list parameters value only if has been set
 		ArrayList<String>	list = new ArrayList<String>();
 
+		list.add("name=\"" + attribute.getName() + "\"");
+		
 		if (isTrue(attribute.getMemorized())) {
 			list.add("isMemorized=true");
 			if (isTrue(attribute.getMemorizedAtInit())) {
@@ -279,12 +277,7 @@ public class JavaUtils extends StringUtils {
 			}
 		}
 
-		String head = "@Attribute(name=\"" + attribute.getName() + "\"";
-		//	Add parameters only if any
-		if (list.isEmpty())
-			return head + ")";
-		else
-			return head + ", " + propertiesInOneLine(list) + ")";
+		return propertiesInOneLine("@Attribute(",  list, ")");
 	}
 	//===========================================================
 	/**
@@ -304,9 +297,9 @@ public class JavaUtils extends StringUtils {
 		if (isSet(attribute.getProperties().getUnit()))
 			list.add("unit=\"" + attribute.getProperties().getUnit() + "\"");
 		if (isSet(attribute.getProperties().getStandardUnit()))
-			list.add("standard_unit=\"" + attribute.getProperties().getStandardUnit() + "\"");
+			list.add("standardUnit=\"" + attribute.getProperties().getStandardUnit() + "\"");
 		if (isSet(attribute.getProperties().getDisplayUnit()))
-			list.add("display_unit=\"" + attribute.getProperties().getDisplayUnit() + "\"");
+			list.add("displayUnit=\"" + attribute.getProperties().getDisplayUnit() + "\"");
 		if (isSet(attribute.getProperties().getFormat()))
 			list.add("format=\"" + attribute.getProperties().getFormat() + "\"");
 		if (isSet(attribute.getProperties().getMaxValue()))
@@ -314,22 +307,40 @@ public class JavaUtils extends StringUtils {
 		if (isSet(attribute.getProperties().getMinValue()))
 			list.add("minValue=\"" + attribute.getProperties().getMinValue() + "\"");
 		if (isSet(attribute.getProperties().getMaxAlarm()))
-			list.add("max_alarm=\"" + attribute.getProperties().getMaxAlarm() + "\"");
+			list.add("maxAlarm=\"" + attribute.getProperties().getMaxAlarm() + "\"");
 		if (isSet(attribute.getProperties().getMinAlarm()))
-			list.add("min_alarm=\"" + attribute.getProperties().getMinAlarm() + "\"");
+			list.add("minAlarm=\"" + attribute.getProperties().getMinAlarm() + "\"");
 		if (isSet(attribute.getProperties().getMaxWarning()))
-			list.add("max_warning=\"" + attribute.getProperties().getMaxWarning() + "\"");
+			list.add("maxWarning=\"" + attribute.getProperties().getMaxWarning() + "\"");
 		if (isSet(attribute.getProperties().getMinWarning()))
-			list.add("min_warning=\"" + attribute.getProperties().getMinWarning() + "\"");
+			list.add("minWarning=\"" + attribute.getProperties().getMinWarning() + "\"");
 		if (isSet(attribute.getProperties().getDeltaTime()))
-			list.add("delta_t=\"" + attribute.getProperties().getDeltaTime() + "\"");
+			list.add("deltaTime=\"" + attribute.getProperties().getDeltaTime() + "\"");
 		if (isSet(attribute.getProperties().getDeltaValue()))
-			list.add("delta_val=\"" + attribute.getProperties().getDeltaValue() + "\"");
+			list.add("deltaValue=\"" + attribute.getProperties().getDeltaValue() + "\"");
 		
+		//	Event properties
+		if (attribute.getEventCriteria()!=null) {
+			if (isSet(attribute.getEventCriteria().getPeriod()))
+				list.add("periodicEvent=\"" + attribute.getEventCriteria().getPeriod() + "\"");
+			if (isSet(attribute.getEventCriteria().getAbsChange()))
+				list.add("changeEventAbsolute=\"" + attribute.getEventCriteria().getAbsChange() + "\"");
+			if (isSet(attribute.getEventCriteria().getRelChange()))
+				list.add("changeEventRelative=\"" + attribute.getEventCriteria().getRelChange() + "\"");
+		}
+		if (attribute.getEvArchiveCriteria()!=null) {
+			if (isSet(attribute.getEvArchiveCriteria().getPeriod()))
+				list.add("archiveEventPeriod=\"" + attribute.getEvArchiveCriteria().getPeriod() + "\"");
+			if (isSet(attribute.getEvArchiveCriteria().getAbsChange()))
+				list.add("archiveEventAbsolute=\"" + attribute.getEvArchiveCriteria().getAbsChange() + "\"");
+			if (isSet(attribute.getEvArchiveCriteria().getRelChange()))
+				list.add("archiveEventRelative=\"" + attribute.getEvArchiveCriteria().getRelChange() + "\"");
+		}
+
 		if (list.isEmpty())
 			return "";
 		else
-			return "@AttributeProperties(" + propertiesInOneLine(list) + ")";
+			return propertiesInOneLine("@AttributeProperties(", list, ")");
 	}
 	
 	//===========================================================
@@ -343,7 +354,7 @@ public class JavaUtils extends StringUtils {
 		if (list.isEmpty())
 			return "";
 		else
-			return "@StateMachine(deniedStates={" + propertiesInOneLine(list) + "})";
+			return propertiesInOneLine("@StateMachine(deniedStates={", list, "})");
 
 	}
 	//===========================================================
@@ -357,7 +368,7 @@ public class JavaUtils extends StringUtils {
 		if (list.isEmpty())
 			return "";
 		else
-			return "stateMachine.setDeniedStates(" + propertiesInOneLine(list) + ");";
+			return  propertiesInOneLine("stateMachine.setDeniedStates(", list, ");");
 
 	}
 	//===========================================================
@@ -367,15 +378,34 @@ public class JavaUtils extends StringUtils {
 	 * @return the properties with expected format
 	 */
 	//===========================================================
-	public String propertiesInOneLine(ArrayList<String> list) {
+	public String propertiesInOneLine(String header, ArrayList<String> list, String ending) {
 
 		//	append all set properties with comma separator (not at end !)
-		StringBuffer	sb = new StringBuffer();
+		//	And a break line when too long
+		StringBuffer	sb = new StringBuffer(header);
+		int	length = header.length();
 		for (int i=0 ; i<list.size() ; i++) {
 			sb.append(list.get(i));
-			if (i<list.size()-1)
-				sb.append(", ");
+			length += list.get(i).length();
+			
+			//	is end of list ?
+			if (i<list.size()-1) {
+				sb.append(",");
+				length++;
+				//	is end of line ?
+				if (length<76) { //	80 - '\t'
+					sb.append(" ");
+					length++;
+				}
+				else {
+					sb.append("\n");
+					for (int x=0 ; x<header.length() ; x++)
+						sb.append(" ");
+					length = header.length();
+				}
+			}
 		}
+		sb.append(ending);
 		return sb.toString();
 	}
 
