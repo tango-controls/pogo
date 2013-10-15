@@ -8,6 +8,10 @@
 #
 #-======================================================================
 
+Pogo-8.2.1 - 15/10/2013:
+	Fix problems in multiple classes server Makefile.
+	Add new Tango logo.
+
 Pogo-8.2.0 - 14/10/2013:
 	Add event management for java.
 

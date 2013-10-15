@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Oct 14 16:46:26 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Tue Oct 15 15:20:13 CEST 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.2.1 - 15/10/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix problems in multiple classes server Makefile.<Br>\n" + 
+		"&nbsp; &nbsp; Add new Tango logo.<Br>\n" + 
 		"<li><b>Pogo-8.2.0 - 14/10/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Add event management for java.<Br>\n" + 
 		"<li><b>Pogo-8.1.18 - 01/10/2013:</b><Br>\n" + 
