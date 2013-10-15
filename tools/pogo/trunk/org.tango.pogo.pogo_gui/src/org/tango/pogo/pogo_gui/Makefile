@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 8.1.18
+RELEASE    = 8.2.0
 
 
 TANGO_HOME	=	/segfs/tango
@@ -96,6 +96,7 @@ install:
 	rm $(JAR_FILE).jar;   \
 	ln -s $(JAR_FILE)-$(RELEASE).jar  $(JAR_FILE).jar; \
 	ls -l $(JAR_FILE)*.jar
+	cp ReleaseNote $(TARGET_JAR_DIR)/ReleaseNote.txt
 
 #	mv $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar  $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE)-tmp.jar
 
