@@ -638,7 +638,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
 
         private final int TITLE = 0;
         private final int CLASS = 1;
-        private ImageIcon class_icon = Utils.getInstance().getIcon("TangoClass.gif", 0.4);
+        private ImageIcon class_icon = Utils.getInstance().getIcon("TangoClass.gif", 0.17);
 
         //===============================================================
         //===============================================================

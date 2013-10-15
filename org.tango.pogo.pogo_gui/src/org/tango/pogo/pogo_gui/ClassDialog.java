@@ -105,12 +105,9 @@ public class ClassDialog extends JDialog {
             origClassName = dc.getPogoDeviceClass().getName();
             //  remove the add inheritance class button
             addInheritanceBtn.setVisible(false);
-            if (PogoGUI.dbg_java) {
-                ClassDescription desc = dc.getPogoDeviceClass().getDescription();
-                if (desc != null)
-                    setLanguage(desc.getLanguage());
-            } else
-                setLanguage(Utils.getLanguage(PogoConst.Cpp));
+            ClassDescription desc = dc.getPogoDeviceClass().getDescription();
+            if (desc != null)
+                setLanguage(desc.getLanguage());
         }
 
         //	Fill fields with data if any
@@ -528,25 +525,9 @@ public class ClassDialog extends JDialog {
             if (btn == cppBtn) {
                 setLanguage(btn.getText());
             } else if (btn == javaBtn) {
-                if (PogoGUI.dbg_java) {
-                    setLanguage(btn.getText());
-                } else {
-                    btn.setSelected(false);
-                    JOptionPane.showMessageDialog(this,
-                            btn.getText() + " language is not available !",
-                            "Error Window",
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                setLanguage(btn.getText());
             } else if (btn == pythonBtn) {
-                if (PogoGUI.dbg_python) {
-                    setLanguage(btn.getText());
-                } else {
-                    btn.setSelected(false);
-                    JOptionPane.showMessageDialog(this,
-                            btn.getText() + " language is not available !",
-                            "Error Window",
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                setLanguage(btn.getText());
             }
     }//GEN-LAST:event_languageActionPerformed
 

@@ -57,6 +57,7 @@ public class Utils {
     private static Utils instance = null;
 
     private static ImageIcon tango_icon = null;
+    public ImageIcon logo_icon;
     public ImageIcon root_icon;
     public ImageIcon class_icon;
     public ImageIcon collec_icon;
@@ -92,7 +93,8 @@ public class Utils {
     //===============================================================
     private Utils() {
         root_icon = getIcon("TangoSplash.jpg", 0.2);
-        class_icon = getIcon("TangoClass.gif", 0.4);
+        class_icon = getIcon("TangoClass.gif", 0.12);
+        logo_icon = class_icon;
         collec_icon = getIcon("tools.gif");
         classprop_icon = getIcon("class.gif");
         cmd_icon = getIcon("command.gif");

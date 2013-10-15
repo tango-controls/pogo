@@ -138,6 +138,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	 */
 	//======================================================
 	String addClassesDefinitions(PogoMultiClasses multi) {
+		inheritedObjectFiles = new ArrayList<String>();
 		String code = 
 				"#=============================================================================\n" +
 				"# Tango Class list used by project\n" +
@@ -251,7 +252,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	}
 	//======================================================
 	//======================================================
-	private static ArrayList<String>	inheritedObjectFiles = new ArrayList<String>();
+	private static ArrayList<String>	inheritedObjectFiles;
 	private String addObjectFileList(String classname) {
 		String	classObjectFile = classname +".o";
 		String code = "";

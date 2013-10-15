@@ -153,7 +153,9 @@ class CppGenerator implements IGenerator {
 					printTrace("Generating main.cpp")
 					fsa.generateFile("main.cpp",                  multi.generateMainFile)
 				}
-
+			}
+			
+			if (multi.filestogenerate.contains("Makefile")) {
 				printTrace("Generating Makefile.multi")
 				fsa.generateFile("Makefile.multi",            multi.generateLinuxMakefileMultiClasses)
 			}
