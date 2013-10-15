@@ -126,7 +126,7 @@ public class MultiClassesPanel extends JFrame {
 
         //	Build users_tree to display info
         scrollPane = new JScrollPane();
-        scrollPane.setPreferredSize(new Dimension(350, 400));
+        scrollPane.setPreferredSize(new Dimension(350, 450));
         getContentPane().add(scrollPane, BorderLayout.CENTER);
 
         //  Initialize file chooser 
@@ -138,7 +138,7 @@ public class MultiClassesPanel extends JFrame {
         }
         chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
         chooser.setFileFilter(pogoFilter);
-        setIconImage(Utils.getInstance().root_icon.getImage());
+        setIconImage(Utils.getInstance().logo_icon.getImage());
 
 
         Utils utils = Utils.getInstance();

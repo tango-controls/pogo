@@ -94,9 +94,6 @@ public class PogoGUI extends JFrame {
     private LanguagePopupMenu   languageMenu;
     private boolean hasInheritance = false;
 
-    public static boolean dbg_java = false;
-    public static boolean dbg_python = false;
-
     public static MultiClassesPanel multiClassesPanel = null;
     //=======================================================
     /**
@@ -141,7 +138,6 @@ public class PogoGUI extends JFrame {
     //=======================================================
     public PogoGUI() throws DevFailed {
         useDisplay = true;
-        //MultiLineToolTipUI.initialize();
         initComponents();
         PogoProperty.init();
         initOwnComponents();
@@ -153,23 +149,11 @@ public class PogoGUI extends JFrame {
         class_panels.add(cp);
         tabbedPane.add(cp);
 
-        setIconImage(Utils.getInstance().root_icon.getImage());
+        setIconImage(Utils.getInstance().logo_icon.getImage());
         pack();
         setScreenPosition(this);
         setVisible(true);
         runningApplis.add(this);
-
-        String env = System.getenv("DBG_JAVA");
-        if (env != null)
-            if (env.toLowerCase().equals("true"))
-                dbg_java = true;
-        env = System.getenv("DBG_PYTHON");
-        if (env != null)
-            if (env.toLowerCase().equals("true"))
-                dbg_python = true;
-        
-        if (Utils.getPogoGuiRevision()>8.0)
-            dbg_java = dbg_python =true;
     }
 
     //===========================================================
@@ -230,18 +214,6 @@ public class PogoGUI extends JFrame {
         frame.setLocation(p);
     }
 
-    //=======================================================
-    //=======================================================
-    private void startOldPogo(String filename) {
-        //  Convert to vector for old pogo
-        java.util.Vector<JFrame>    v = new java.util.Vector<JFrame>();
-        for (JFrame frame : runningApplis)
-            v.add(frame);
-        pogo.appli.PogoAppli oldPogo = new pogo.appli.PogoAppli(filename, v);
-        setScreenPosition(oldPogo);
-        oldPogo.setVisible(true);
-        runningApplis.add(oldPogo);
-    }
     //=======================================================
     //=======================================================
 
@@ -1190,14 +1162,6 @@ public class PogoGUI extends JFrame {
             filename = f.getCanonicalFile().toString();
             manageRecentMenu(filename);
         } catch (IOException e) { /* */ }
-
-        if ((filename.endsWith(".java") && !dbg_java) ||
-                (filename.endsWith(".py") && !dbg_python)) {
-
-            System.out.println("-------> filename: " + filename + "   - Starting old Pogo");
-            startOldPogo(filename);
-            return;
-        }
 
         try {
             if (checkForNewFrame) {
