@@ -8,9 +8,11 @@
 #
 #-======================================================================
 
+Pogo-8.2.0 - 14/10/2013:
+	Add event management for java.
+
 Pogo-8.1.18 - 01/10/2013:
 	Change boolean attribute java method name.
-	Add push event management for java.
 
 Pogo-8.1.17 - 13/09/2013:
 	Improve properties and Attribute/Command/Property dialogs.
