@@ -96,9 +96,13 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         setSelectionPath(null);
 
         //  Check if class ID is not null (could be null from old Pogo)
-        if (deviceClass.getPogoDeviceClass().getDescription().getIdentification() == null) {
-            Utils.getInstance().stopSplashRefresher();
-            editClass();
+        ClassIdentification identification = deviceClass.getPogoDeviceClass().getDescription().getIdentification();
+        if (identification == null ||
+            !Utils.isSet(identification.getAuthor()) ||
+            !Utils.isSet(identification.getContact()) ||
+            !Utils.isSet(identification.getPlatform()) ) {
+                Utils.getInstance().stopSplashRefresher();
+                editClass();
         }
         parent.setLanguageLogo(pogo_class.getDescription().getLanguage());
     }

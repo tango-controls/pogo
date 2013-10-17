@@ -156,15 +156,22 @@ public class DeviceIdDialog extends JDialog {
 
             contactTxt.setText(id.getAuthor() + "@" + id.getEmailDomain());
             //  For compatibility with beta release.
-            if (id.getAuthor() == null || id.getAuthor().length() == 0)
+            if (Utils.isSet(id.getAuthor()))
                 contactTxt.setText(id.getContact());
+            else {
+                String mail = java.lang.System.getenv("EMAIL");
+                if (mail == null || mail.length() == 0)
+                    mail = PogoProperty.contactAddress;
+                contactTxt.setText(mail);
+            }
             platformComboBox.setSelectedItem(id.getPlatform());
             familyComboBox.setSelectedItem(id.getClassFamily());
             busComboBox.setSelectedItem(id.getBus());
             manufacturerTxt.setText(id.getManufacturer());
             referenceTxt.setText(id.getReference());
-            setReferenceVisible(id.getManufacturer().length() > 0 &&
-                    !id.getManufacturer().equals("none"));
+            if (id.getManufacturer()!=null)
+                setReferenceVisible(!id.getManufacturer().isEmpty() &&
+                        !id.getManufacturer().equals("none"));
         }
     }
 
@@ -488,8 +495,6 @@ public class DeviceIdDialog extends JDialog {
     //===============================================================
     //===============================================================
     public void checkInputs() throws DevFailed {
-        if (Utils.isTrue(System.getenv("TEST_MODE")))
-            return;
 
         //	Check if Contact email is coherent
         String contact = contactTxt.getText().trim();
