@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Oct 15 15:20:13 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Thu Oct 17 13:57:27 CEST 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.2.2 - 17/10/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a NullPointerException when class come from pogo-6 class without TangoClassID.txt file.<Br>\n" + 
 		"<li><b>Pogo-8.2.1 - 15/10/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix problems in multiple classes server Makefile.<Br>\n" + 
 		"&nbsp; &nbsp; Add new Tango logo.<Br>\n" + 
