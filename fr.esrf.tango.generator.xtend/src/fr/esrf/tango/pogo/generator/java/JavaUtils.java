@@ -156,6 +156,9 @@ public class JavaUtils extends StringUtils {
 				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
 						attribute.getMaxX() + "][" + attribute.getMaxY() + "]";
 		else
+		if (attribute.getDataType().toString().contains("String"))
+			return " = \"\"";
+		else
 			return "";
 	}
 	
