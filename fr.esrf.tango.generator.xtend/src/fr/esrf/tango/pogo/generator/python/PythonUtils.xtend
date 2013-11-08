@@ -48,6 +48,7 @@ class PythonUtils {
     @Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
     @Inject extension ProtectedArea
     @Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions    
+	@Inject	extension fr.esrf.tango.pogo.generator.python.PyUtils
         
     def commentMultiLinesPython(PogoDeviceClass cls){
         cls.description.description.replaceAll("\n","\n#                ");
@@ -110,17 +111,17 @@ class PythonUtils {
     }
     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
-		def «cmd.name»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
+		def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
 		    """ «cmd.description»
 		    
 		    :param «IF !cmd.argin.type.voidType»argin«ENDIF»: «cmd.argin.description.commentCmdParamMultiLines»
 		    :type: «cmd.argin.type.pythonType»
 		    :return: «cmd.argout.description.commentCmdParamMultiLines»
 		    :rtype: «cmd.argout.type.pythonType» """
-		    self.debug_stream("In «cmd.name»()")
+		    self.debug_stream("In «cmd.methodName»()")
 		    «IF !cmd.argout.type.voidType»argout = «cmd.argout.type.defaultValue»«ENDIF»
 		    «protectedArea(cls, cmd.name)»
-		    «IF !cmd.argout.type.voidType»return argout«ENDIF»
+		    «cmd.returnMethodCode»
 		    
         '''
         
@@ -151,7 +152,10 @@ class PythonUtils {
     def attributeMethodStateMachine(PogoDeviceClass cls, Attribute attribute) '''
 		def is_«attribute.name»_allowed(self, attr):
 		    self.debug_stream("In is_«attribute.name»_allowed()")
-		    state_ok = not(«attribute.readExcludedStates.ifContentFromListPython»)
+		    if attr==PyTango.AttReqType.READ_REQ:
+		        state_ok = not(«attribute.readExcludedStates.ifContentFromListPython»)
+		    else:
+		        state_ok = not(«attribute.writeExcludedStates.ifContentFromListPython»)
 		    «protectedArea(cls, "is_" + attribute.name + "_allowed")»
 		    return state_ok
 		    

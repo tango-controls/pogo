@@ -298,6 +298,10 @@ class PythonDevice implements IGenerator {
                 «IF !cmd.excludedStates.empty»
         «commandMethodStateMachine(cls, cmd)»
                 «ENDIF»
+            «ELSE»
+				«IF isTrue(cmd.status.concreteHere)»
+        «commandExecution(cls, cmd)»
+            	«ENDIF»
             «ENDIF»
         «ENDFOR»
         '''

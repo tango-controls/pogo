@@ -17,7 +17,13 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Oct 17 13:57:27 CEST 2013)</Center><Br>\n" + 
+		"	(Generated Fri Nov 08 09:18:55 CET 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.2.4 - 08/11/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve State and Status execute method code in Python classes.<Br>\n" + 
+		"&nbsp; &nbsp; Manage state machine for write attribute in Python classes.<Br>\n" + 
+		"<li><b>Pogo-8.2.3 - 06/11/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Problem to overload State and Status commands in Python classes fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Problem in String attribute initialization for Java classes fixed<Br>\n" + 
 		"<li><b>Pogo-8.2.2 - 17/10/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix a NullPointerException when class come from pogo-6 class without TangoClassID.txt file.<Br>\n" + 
 		"<li><b>Pogo-8.2.1 - 15/10/2013:</b><Br>\n" + 
