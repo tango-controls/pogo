@@ -122,6 +122,7 @@ public class PogoGUI extends JFrame {
 
         //	Build users_tree to display info
         class_panels.addPanels(deviceClass);
+        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
         reBuildTabbedPane = false;
         setTitle(applicationTitle(deviceClass));
 
@@ -662,6 +663,7 @@ public class PogoGUI extends JFrame {
         tabbedPane.removeAll();
 
         class_panels.addPanels(devclass);
+        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
         //class_panels.checkWarnings();
         reBuildTabbedPane = false;
     }
@@ -833,6 +835,7 @@ public class PogoGUI extends JFrame {
 
             //	Build users_tree to display info
             class_panels.addPanels(devclass);
+            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
             class_panels.checkWarnings();
             reBuildTabbedPane = false;
         }
@@ -1231,8 +1234,13 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     void fireClassHaveChanged() {
-        for (int i = 0; i < class_panels.size(); i++)
-            tabbedPane.setTitleAt(i, class_panels.get(i).toString());
+        for (int i=0 ; i<class_panels.size() ; i++) {
+            //tabbedPane.setTitleAt(i, class_panels.get(i).toString());
+            if (class_panels.get(i).isModified())
+                tabbedPane.setForegroundAt(i,Color.red);
+            else
+                tabbedPane.setForegroundAt(i,Color.black);
+        }
     }
     //=======================================================
     //=======================================================
@@ -1304,6 +1312,7 @@ public class PogoGUI extends JFrame {
             cp.setTree(devclass, this.size() > 0);
             add(cp);
             tabbedPane.add(cp);
+            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
         }
 
         //=======================================================
@@ -1317,7 +1326,7 @@ public class PogoGUI extends JFrame {
 
             //  manage inheritance elements
             ArrayList<DeviceClass> ancestors = devclass.getAncestors();
-            for (int i = ancestors.size() - 1; i >= 0; i--) {
+            for (int i=ancestors.size()-1 ; i>=0 ; i--) {
                 addPanel(ancestors.get(i));
             }
             hasInheritance = (ancestors.size()>0);
@@ -1385,7 +1394,6 @@ public class PogoGUI extends JFrame {
 
     //===============================================================
     //===============================================================
-
     private class LanguagePopupMenu extends JPopupMenu {
         private JLabel  label;
         private final int OFFSET = 2;    //	Label And separator

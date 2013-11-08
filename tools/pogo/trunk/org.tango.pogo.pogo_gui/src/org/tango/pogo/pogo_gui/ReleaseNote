@@ -8,6 +8,14 @@
 #
 #-======================================================================
 
+Pogo-8.2.4 - 08/11/2013:
+	Improve State and Status execute method code in Python classes.
+	Manage state machine for write attribute in Python classes.
+
+Pogo-8.2.3 - 06/11/2013:
+	Problem to overload State and Status commands in Python classes fixed.
+	Problem in String attribute initialization for Java classes fixed
+
 Pogo-8.2.2 - 17/10/2013:
 	Fix a NullPointerException when class come from pogo-6 class without TangoClassID.txt file.
 

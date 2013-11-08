@@ -92,6 +92,11 @@ public class ClassPanel extends JPanel {
 
     //=======================================================
     //=======================================================
+    public boolean isModified() {
+        return tree!=null && tree.getModified();
+    }
+    //=======================================================
+    //=======================================================
     public String toString() {
         String ret = name;
         if (tree != null && tree.getModified())
