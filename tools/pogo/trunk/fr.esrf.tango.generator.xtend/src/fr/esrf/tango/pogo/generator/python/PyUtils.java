@@ -75,7 +75,7 @@ public class PyUtils {
 					"return self.__status";
 		}
 		else {
-		    if (!command.getArgout().getType().toString().contains("void"))
+		    if (!command.getArgout().getType().toString().contains("Void"))
 		    	return "return argout";
 			return "";
 		}

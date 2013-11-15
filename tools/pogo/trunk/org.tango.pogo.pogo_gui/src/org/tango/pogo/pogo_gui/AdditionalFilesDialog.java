@@ -51,7 +51,6 @@ import java.util.Vector;
 
 
 //===============================================================
-
 /**
  * JDialog Class to display info
  *
@@ -118,7 +117,6 @@ public class AdditionalFilesDialog extends JDialog {
     }
 
     //===============================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -294,7 +292,6 @@ public class AdditionalFilesDialog extends JDialog {
         return returnValue;
     }
     //===============================================================
-
     /**
      * Closes the dialog
      */
