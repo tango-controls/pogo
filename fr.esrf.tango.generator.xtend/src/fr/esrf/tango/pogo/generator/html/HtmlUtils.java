@@ -161,8 +161,8 @@ public class HtmlUtils extends StringUtils {
 		InheritanceUtils	util = new InheritanceUtils();
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		
-		//	Build http tango doc address for link
-		String	tangoDoc = "http://www.esrf.fr/computing/cs/tango/tango_doc/kernel_doc/";
+		//	Build http Tango doc address for link
+		String	tangoDoc = "http://www.tango-controls.org/Documents/tango-kernel/";
 		String	language = cls.getDescription().getLanguage();
 		if (language.toLowerCase().equals("cpp"))
 			tangoDoc += "cpp_doc/";
@@ -170,7 +170,7 @@ public class HtmlUtils extends StringUtils {
 		if (language.toLowerCase().equals("java"))
 			tangoDoc += "tango_java_api/";
 		else
-		if (language.toLowerCase().equals("java"))
+		if (language.toLowerCase().equals("python"))
 			tangoDoc = "http://www.tango-controls.org/static/PyTango/latest/doc/html/index.html";
 		
 		//	Start to build
