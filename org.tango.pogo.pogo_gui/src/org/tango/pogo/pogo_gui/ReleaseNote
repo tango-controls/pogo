@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.2.5 - 15/11/2013:
+	Fix bug in void returning commands in python classes.
+
 Pogo-8.2.4 - 08/11/2013:
 	Improve State and Status execute method code in Python classes.
 	Manage state machine for write attribute in Python classes.

@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Nov 08 09:18:55 CET 2013)</Center><Br>\n" + 
+		"	(Generated Fri Nov 15 09:50:01 CET 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.2.5 - 15/11/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix bug in void returning commands in python classes.<Br>\n" + 
 		"<li><b>Pogo-8.2.4 - 08/11/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve State and Status execute method code in Python classes.<Br>\n" + 
 		"&nbsp; &nbsp; Manage state machine for write attribute in Python classes.<Br>\n" + 
