@@ -136,8 +136,9 @@ class DeviceSource {
 			«cls.attributes.deleteAttributeDataMembers»
 			«IF cls.hasInheritanceClass»
 
-				if (Tango::Util::instance()->is_svr_shutting_down() == false  &&
-					Tango::Util::instance()->is_device_restarting(device_name)==false)
+				if (Tango::Util::instance()->is_svr_shutting_down()==false  &&
+					Tango::Util::instance()->is_device_restarting(device_name)==false &&
+					Tango::Util::instance()->is_svr_starting()==false)
 				{
 					//	If not shutting down call delete device for inherited object
 					«cls.inheritedClassName»_ns::«cls.inheritedClassName»::delete_device();
