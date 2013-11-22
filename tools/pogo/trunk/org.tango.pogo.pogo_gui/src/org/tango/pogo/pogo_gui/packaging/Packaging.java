@@ -37,6 +37,7 @@ package org.tango.pogo.pogo_gui.packaging;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
+import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
@@ -81,19 +82,6 @@ public class Packaging {
     //===============================================================
     /**
      * Will create the packaging class for code generation
-     * @param className  Class name to create packaging.
-     * @param path  Path to create packaging code.
-     * @param author class Author
-     * @throws DevFailed If template files are not found.
-     */
-    //===============================================================
-    public Packaging(final String className, final String path, final String author) throws DevFailed {
-        initialize(className, path, author);
-        classes.add(new PackClass(className, path));
-    }
-    //===============================================================
-    /**
-     * Will create the packaging class for code generation
      * @param deviceClass  Class to create packaging.
      * @throws DevFailed If template files are not found.
      */
@@ -103,8 +91,11 @@ public class Packaging {
         String  path = deviceClass.getDescription().getSourcePath();
         String  author = deviceClass.getDescription().getIdentification().getAuthor() +
                 "@" + deviceClass.getDescription().getIdentification().getEmailDomain();
+
         initialize(className, path, author);
-        classes.add(new PackClass(className, path));
+        PackClass   _class = new PackClass(className, path);
+        _class.addAdditionalFiles(deviceClass.getAdditionalFiles());
+        classes.add(_class);
     }
     //===============================================================
     /**
@@ -120,7 +111,9 @@ public class Packaging {
         initialize(className, path, author);
         List<OneClassSimpleDef> simpleDefList = deviceClasses.getClasses();
         for (OneClassSimpleDef _class : simpleDefList) {
-            classes.add(new PackClass(_class.getClassname(), _class.getSourcePath()));
+            PackClass   packClass =new PackClass(_class.getClassname(), _class.getSourcePath());
+            packClass.addAdditionalFiles(_class.getAdditionalFiles());
+            classes.add(packClass);
         }
         multipleClasses = true;
     }
@@ -167,7 +160,7 @@ public class Packaging {
                 sb.append(file).append(nextLine);
 
             //  Get source files (without main and ClassFactory)
-            ArrayList<String> files = _class.getSources();
+            ArrayList<String> files = _class.sources;
             for (String file : files) {
                 sb.append(file).append(nextLine);
             }
@@ -201,16 +194,31 @@ public class Packaging {
     /**
      * Create links for specified files in specified path
      * @param path      specified path
+     * @param fileName specified file
+     * @param srcPath specified files path
+     * @throws DevFailed if link creation failed
+     */
+    //===============================================================
+    private void createSourceLinks(final String path,
+                                  final String fileName,
+                                  final String srcPath) throws DevFailed {
+        ArrayList<String>   list = new ArrayList<String>();
+        list.add(fileName);
+        createSourceLinks(path, list, srcPath);
+
+    }
+    //===============================================================
+    /**
+     * Create links for specified files in specified path
+     * @param path      specified path
      * @param fileNames specified files
      * @param srcPath specified files path
-     * @param filter will not link ClassFactory and main if true
      * @throws DevFailed if link creation failed
      */
     //===============================================================
     private void createSourceLinks(final String path,
                                   final ArrayList<String> fileNames,
-                                  final String srcPath,
-                                  final boolean filter) throws DevFailed {
+                                  final String srcPath) throws DevFailed {
 
         //  ToDo When 1.7 will be used --> use java.nio.file.Files.createLink()
 
@@ -221,10 +229,8 @@ public class Packaging {
             code += "cd  " + path + "\n\n";
             for (String fileName : fileNames) {
                 //  Delete old link if any, then create new one
-                if (!(filter &&  (fileName.equals("main.cpp") || fileName.equals("ClassFactory.cpp")))) {
-                    code += "rm -f  " + fileName + "\n";
-                    code += "ln -s  " + srcPath + "/" + fileName + "   " + fileName + "\n\n";
-                }
+                code += "rm -f  " + fileName + "\n";
+                code += "ln -s  " + srcPath + "/" + fileName + "   " + fileName + "\n\n";
             }
             //System.out.println(code);
             ParserTool.writeFile(scriptName, code);
@@ -267,26 +273,25 @@ public class Packaging {
             }
         }
 
-
         if (multipleClasses) {
             for (PackClass _class : classes) {
-                createSourceLinks(packagePath + "/src", _class.headers, _class.path, true);
-                createSourceLinks(packagePath + "/src", _class.sources, _class.path, true);
-                ArrayList<String> additionalFiles = new ArrayList<String>();
-                additionalFiles.add("MultiClassesFactory.cpp");
-                additionalFiles.add("main.cpp");
-                createSourceLinks(packagePath + "/src",  additionalFiles, "../..", false);
+                createSourceLinks(packagePath + "/src", _class.headers, _class.path);
+                createSourceLinks(packagePath + "/src", _class.getSources(), _class.path);
 
                 //  !!!!
                 _class.manageSerialSpecialCase();
             }
+            createSourceLinks(packagePath + "/src", "MultiClassesFactory.cpp", "../..");
         }
         else  {
-            createSourceLinks(packagePath + "/src", classes.get(0).headers, "../..", false);
-            createSourceLinks(packagePath + "/src", classes.get(0).sources, "../..", false);
+            createSourceLinks(packagePath + "/src", classes.get(0).headers, "../..");
+            createSourceLinks(packagePath + "/src", classes.get(0).getSources(), "../..");
+            createSourceLinks(packagePath + "/src", "ClassFactory.cpp", "../..");
             //  !!!!
             classes.get(0).manageSerialSpecialCase();
         }
+        createSourceLinks(packagePath + "/src", "main.cpp", "../..");
+
         System.out.println("Packaging for " + packageName +
                 " has been created in:\n" + packagePath);
     }
@@ -309,22 +314,6 @@ public class Packaging {
     //===============================================================
     public String getPackageName() {
         return packageName;
-    }
-    //===============================================================
-    //===============================================================
-    public static void main(String[] args) {
-        try {
-            //Packaging packaging = new Packaging("Starter",
-            //       "y:/tango/tools/pogo/test/cpp/starter", "verdier@esrf.fr");
-
-            Packaging packaging = new Packaging("MyGauge",
-                   "/segfs/tango/tools/pogo/test/cpp/my_gauge", "verdier@esrf.fr");
-            packaging.generate();
-        }
-        catch (DevFailed e ) {
-            Except.print_exception(e);
-            e.printStackTrace();
-        }
     }
     //===============================================================
     //===============================================================
@@ -364,7 +353,18 @@ public class Packaging {
             this.path = path;
 
             headers = Utils.getFileList(path, ".h");
-            sources = Utils.getFileList(path, ".cpp");
+            sources = new ArrayList<String>();
+            sources.add(name+".cpp");
+            sources.add(name+"Class.cpp");
+            sources.add(name+"StateMachine.cpp");
+        }
+        //===========================================================
+        private void addAdditionalFiles(List<AdditionalFile> additionalFiles) {
+            if (additionalFiles!=null) {
+                for (AdditionalFile file : additionalFiles) {
+                    sources.add(file.getName()+".cpp");
+                }
+            }
         }
         //===========================================================
         private void manageSerialSpecialCase() {
@@ -376,7 +376,7 @@ public class Packaging {
                     String  key = "EXTRA_DIST = ";
                     String  badFiles = "";
                     for (String badFile : badSerialFiles)
-                        badFiles += " src/" + badFile;
+                        badFiles += " src/" + badFile + " ";
                     int pos = code.indexOf(key);
                     if (pos>0) {
                         pos += key.length();
@@ -400,7 +400,7 @@ public class Packaging {
             //  Due to a bad design, 2 source files are used as include files :-)
             if (name.equals("Serial")) {
                 for (String badFile : badSerialFiles)
-                    list.remove(badFile);
+                    list.add(badFile);
             }
 
             return list;
