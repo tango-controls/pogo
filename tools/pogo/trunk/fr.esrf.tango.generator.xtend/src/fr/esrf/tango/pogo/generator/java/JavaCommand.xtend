@@ -73,6 +73,7 @@ class JavaCommand {
 		 * Execute command "«command.name»".
 		 * description: «command.description.comments("*              ")»
 		 «command.headerParameters»
+		 * @throws DevFailed if command execution failed.
 		 */
 		«command.declareParameters»
 		«command.stateMachine»

@@ -89,6 +89,7 @@ class JavaAttribute {
 		 * Read attribute «attribute.name»
 		 * 
 		 * @return attribute value
+		 * @throws DevFailed if read attribute failed.
 		 */
 		public org.tango.server.attribute.AttributeValue «attribute.attributeMethodName(true)»() throws DevFailed {
 			xlogger.entry();
@@ -106,6 +107,7 @@ class JavaAttribute {
 		/**
 		 * Write attribute «attribute.name»
 		 * @param  «attribute.name.dataMemberName» value to write
+		 * @throws DevFailed if read attribute failed.
 		 */
 		public void «attribute.attributeMethodName(false)»(«attribute.strFullJavaType» «attribute.name.dataMemberName») throws DevFailed {
 			xlogger.entry();

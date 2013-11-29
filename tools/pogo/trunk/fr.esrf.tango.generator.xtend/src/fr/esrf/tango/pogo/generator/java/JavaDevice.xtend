@@ -224,8 +224,8 @@ class JavaDevice  implements IGenerator {
 			 * @param  «property.name.dataMemberName»  see description above.
 			 */
 			public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
-				«cls.protectedArea("set" + property.name, "Check property value here", true)»
 				this.«property.name.dataMemberName» = «property.name.dataMemberName»;
+				«cls.protectedArea("set" + property.name, "Check property value here", true)»
 			}
 			
 		«ENDFOR»
@@ -247,8 +247,8 @@ class JavaDevice  implements IGenerator {
 			 * @param  «property.name.dataMemberName»  see description above.
 			 */
 			public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
-				«cls.protectedArea("set" + property.name, "Check property value here", true)»
 				this.«property.name.dataMemberName» = «property.name.dataMemberName»;
+				«cls.protectedArea("set" + property.name, "Check property value here", true)»
 			}
 			
 		«ENDFOR»
@@ -315,8 +315,9 @@ class JavaDevice  implements IGenerator {
 		private DynamicManager dynamicManager;
 		/**
 		 * @param dynamicManager the DynamicManager instance 
+		 * @throws DevFailed if something fails during this method execution.
 		 */
-		public void setDynamicManager(final DynamicManager dynamicManager) {
+		public void setDynamicManager(final DynamicManager dynamicManager) throws DevFailed {
 			this.dynamicManager = dynamicManager;
 			«cls.protectedArea("setDynamicManager", "Put your code here", true)»
 		}
