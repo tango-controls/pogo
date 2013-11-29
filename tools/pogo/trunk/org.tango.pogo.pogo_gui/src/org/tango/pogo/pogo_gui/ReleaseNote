@@ -8,6 +8,13 @@
 #
 #-======================================================================
 
+Pogo-8.3.0 - 29/11/2013:
+	First release with packaging feature.
+	Add javadoc throw tag for java classes.;
+
+Pogo-8.2.7 - 28/11/2013:
+	Fix a problem in property default values for java classes.
+
 Pogo-8.2.6 - 18/11/2013:
 	Fix problem in case of exception thrown by an inherited class during startup phase.
 	Update Tango kernel link for inheritance documentation.

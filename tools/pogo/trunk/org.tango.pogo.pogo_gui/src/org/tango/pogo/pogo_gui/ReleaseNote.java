@@ -17,9 +17,14 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Nov 18 16:09:46 CET 2013)</Center><Br>\n" + 
+		"	(Generated Fri Nov 29 15:13:42 CET 2013)</Center><Br>\n" + 
+		"<li><b>Pogo-8.3.0 - 29/11/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; First release with packaging feature.<Br>\n" + 
+		"&nbsp; &nbsp; Add javadoc throw tag for java classes.;<Br>\n" + 
+		"<li><b>Pogo-8.2.7 - 28/11/2013:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem in property default values for java classes.<Br>\n" + 
 		"<li><b>Pogo-8.2.6 - 18/11/2013:</b><Br>\n" + 
-		"&nbsp; &nbsp; Fix problem in case of exeception thrown by an inherited class during startup phase.<Br>\n" + 
+		"&nbsp; &nbsp; Fix problem in case of exception thrown by an inherited class during startup phase.<Br>\n" + 
 		"&nbsp; &nbsp; Update Tango kernel link for inheritance documentation.<Br>\n" + 
 		"<li><b>Pogo-8.2.5 - 15/11/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix bug in void returning commands in python classes.<Br>\n" + 

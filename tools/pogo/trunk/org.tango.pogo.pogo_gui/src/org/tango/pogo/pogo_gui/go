@@ -1,12 +1,11 @@
 JAR_FILE=$HOME/pogo/jar/org.tango.pogo.jar
 SITE_PROP=$TANGO_HOME/tools/pogo/properties.test
-BIN_DIR=../../../../../bin
-
-TANGO_LIB_DIR=$TANGO_HOME/release/java/lib
-TANGO_LIBS=$TANGO_LIB_DIR/TangORB.jar:$TANGO_LIB_DIR/ATKCore.jar:$TANGO_LIB_DIR/ATKWidget.jar
+BIN_DIR=../../../../../src:../../../../../bin
 
 
-CLASSPATH=$SITE_PROP:$BIN_DIR:$JAR_FILE:$TANGO_LIBS
+CLASSPATH=$SITE_PROP:$JAR_FILE
+CLASSPATH=$SITE_PROP:$BIN_DIR:$JAR_FILE
+
 echo "CLASSPATH=$CLASSPATH"
 
 
@@ -28,8 +27,10 @@ SUPER_HOME=/segfs/tango/templates/AbstractClasses
 JSERVER_JAR_FILE=y:/tango/release/java/lib/JTangoServer.jar
 export JSERVER_JAR_FILE
 
+export Packaging=true
+
 java  -DSUPER_HOME=$SUPER_HOME \
-	org.tango.pogo.pogo_gui.Pogo  $*
+            org.tango.pogo.pogo_gui.Pogo  $*
 
 
 # -src $SRC_FILE 

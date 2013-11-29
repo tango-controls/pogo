@@ -37,13 +37,63 @@ package org.tango.pogo.pogo_gui.packaging;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
+import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
+import org.tango.pogo.pogo_gui.tools.ParserTool;
 
 import java.io.*;
 import java.util.ArrayList;
 
 
-public class Utils {
-    private static String templatesPath = null;
+public class PackUtils {
+    //private static String templatesPath = null;
+    private static PackUtils instance = null;
+    //===============================================================
+    //===============================================================
+    private PackUtils() {
+
+    }
+    //===============================================================
+    //===============================================================
+    public static PackUtils getInstance() {
+        if (instance==null)
+            instance = new PackUtils();
+        return instance;
+    }
+    //===============================================================
+    //===============================================================
+    public boolean fileExistsInPackage(String fileName) {
+        java.net.URL url = getClass().getResource("/packaging/" + fileName);
+        return  (url != null);
+    }
+    //===============================================================
+    //===============================================================
+    public String readFileFromPackage(String fileName) throws DevFailed {
+        String str = "";
+        try {
+            java.net.URL url = getClass().getResource(fileName);
+            if (url == null) {
+                Except.throw_exception("LOAD_PACKAGING_FAILED",
+                        "URL for packaging file (" + fileName + ") is null !",
+                        "PackUtils.readFileFromPackage()");
+                return str; //  impossible but remove warning
+            }
+            InputStream is = url.openStream();
+            int size = is.available();
+            byte[]  bytes = new byte[size];
+            size = is.read(bytes);
+            if (size>0)
+                str = ParserTool.takeOffWindowsChar(bytes);
+        }
+        catch (DevFailed e) {
+            throw e;
+        }
+        catch (Exception e) {
+            Except.throw_exception("READ_FAILED",
+                    e.toString(),
+                    "PackUtils.readFileFromPackage()");
+        }
+        return str;
+    }
     //===============================================================
     /**
      * Returns the list of file found in specified path with specified extension (.cpp)
@@ -115,7 +165,6 @@ public class Utils {
                 InputStream errorStream = process.getErrorStream();
                 br = new BufferedReader(new InputStreamReader(errorStream));
                 while ((str = br.readLine()) != null) {
-                    System.out.println(str);
                     sb.append(str).append("\n");
                 }
                 Except.throw_exception("ExecutionFailed",
@@ -128,7 +177,7 @@ public class Utils {
                     "Failed to execute: " + command + "\n" + e,
                     "Packaging.executeShellCommand()");
         }
-        //System.out.println(sb);
+        //PackUtils..println(sb);
         return sb.toString();
     }
     //===============================================================
@@ -138,22 +187,12 @@ public class Utils {
      */
     //===============================================================
     public static boolean isAvailable() {
-        if (templatesPath ==null) {
-            templatesPath = System.getenv("PACKAGING_HOME");
-            if (templatesPath ==null)
-                templatesPath = System.getProperty("PACKAGING_HOME");
+        if (org.tango.pogo.pogo_gui.tools.Utils.osIsUnix()) {
+            String s = System.getenv("Packaging");
+            return (s!=null && s.equals("true"));
         }
-        return (templatesPath !=null);
-    }
-    //===============================================================
-    //===============================================================
-    static String getTemplatesPath() throws DevFailed{
-        if (templatesPath==null)
-            if (!isAvailable())
-                Except.throw_exception("NoInitialized",
-                        "PACKAGING_HOME is not set",
-                        "Utils.getTemplatesPath()");
-        return templatesPath;
+        else
+            return false;
     }
     //===============================================================
     /**
@@ -167,39 +206,6 @@ public class Utils {
         for (int i=0 ; i<str.length() ; i++)
             indent.append(" ");
         return  " \\\\\n" + indent;
-    }
-    //===============================================================
-    /**
-     * Copy specified source file to target file
-     * @param srcFile    Specified source file
-     * @param targetFile Specified target file
-     * @throws DevFailed if read source file or write target file failed.
-     */
-    //===============================================================
-    public static void copyFile(final String srcFile, final String targetFile) throws DevFailed {
-        try {
-            //  Read source file
-            FileInputStream inputStream = new FileInputStream(srcFile);
-            int nb = inputStream.available();
-            byte[] bytes = new byte[nb];
-            nb = inputStream.read(bytes);
-            inputStream.close();
-            if (nb == 0)
-                bytes = new byte[0];
-
-            //  Write target file
-            FileOutputStream outputStream = new FileOutputStream(targetFile);
-            outputStream.write(bytes);
-            outputStream.close();
-            if (!new File(targetFile).setExecutable(true))
-                System.err.println("Cannot set " + targetFile + " as executable !");
-            //System.out.println(srcFile + " ---> " + targetFile + "   done");
-
-        } catch (Exception e) {
-            Except.throw_exception("READ_FAILED",
-                    e.toString(), "Packaging.copyFile()");
-        }
-
     }
     //===============================================================
     /**
@@ -219,8 +225,55 @@ public class Utils {
                     Except.throw_exception("CannotCreate",
                             "Directory \'" + dirName + "\' cannot be created",
                             "Packaging.buildDirectories()");
-                System.out.println(path + " created.");
+                PackUtils.println(path + " created.");
             }
+        }
+    }
+    //===============================================================
+    //===============================================================
+    public static String buildConfigureList(ArrayList<String> list) {
+        String  str = " ";
+        for (String item : list) {
+            str += item + " ";
+        }
+        return str;
+    }
+    //===============================================================
+    //===============================================================
+    private static String replace(String code, String src, String target) {
+        int end;
+        int start;
+        while ((start=code.indexOf(src))>0) {
+            end = start + src.length();
+            code = code.substring(0, start) + target + code.substring(end);
+        }
+        return code;
+    }
+    //===============================================================
+    //===============================================================
+    public static String buildConfigureDefine(String s) {
+        s = s.toUpperCase();
+        s = replace(s, "/", "_");
+        s = replace(s, ".", "_");
+        return s;
+    }
+    //===============================================================
+    //===============================================================
+    public static String buildMailAddress(ClassDescription description) {
+        return description.getIdentification().getAuthor() +
+                "@" + description.getIdentification().getEmailDomain();
+    }
+    //===============================================================
+    //===============================================================
+    static boolean authorFileExists(String path) {
+        return new File(path+Packaging.PackageDir+"AUTHORS").exists();
+    }
+    //===============================================================
+    //===============================================================
+    public static void println(String str) {
+        String env = System.getenv("DEBUG");
+        if (env!=null && env.equals("true")) {
+            System.out.println(str);
         }
     }
     //===============================================================

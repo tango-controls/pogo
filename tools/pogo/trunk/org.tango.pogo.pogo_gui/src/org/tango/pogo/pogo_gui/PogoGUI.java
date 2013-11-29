@@ -38,6 +38,8 @@ package org.tango.pogo.pogo_gui;
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.tango.pogo.pogo_gui.packaging.ConfigurePackagingDialog;
+import org.tango.pogo.pogo_gui.packaging.Packaging;
 import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
@@ -46,8 +48,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 //=======================================================
@@ -386,6 +387,7 @@ public class PogoGUI extends JFrame {
         recentMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem dummyItem = new javax.swing.JMenuItem();
         generateItem = new javax.swing.JMenuItem();
+        packageItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem reLoadItem = new javax.swing.JMenuItem();
         exitItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
@@ -428,6 +430,11 @@ public class PogoGUI extends JFrame {
         getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
 
         fileMenu.setText("File");
+        fileMenu.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                fileMenuStateChanged(evt);
+            }
+        });
 
         newItem.setText("New");
         newItem.addActionListener(new java.awt.event.ActionListener() {
@@ -459,6 +466,15 @@ public class PogoGUI extends JFrame {
             }
         });
         fileMenu.add(generateItem);
+
+        packageItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        packageItem.setText("Export Package");
+        packageItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                packageItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(packageItem);
 
         reLoadItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         reLoadItem.setText("Re-Load project");
@@ -1147,6 +1163,45 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     //=======================================================
+    @SuppressWarnings("UnusedParameters")
+    private void packageItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageItemActionPerformed
+        ClassTree tree = class_panels.getSelectedTree();
+        if (tree == null)    //	No class defined in tree
+            return;
+        if (tree.getModified()) {
+            JOptionPane.showMessageDialog(new JFrame(),
+                    "Save your project by generating the xmi file before.",
+                    "Message Window",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        DeviceClass deviceClass = tree.getDeviceClass();
+        new ConfigurePackagingDialog(this, deviceClass.getPogoDeviceClass()).setVisible(true);
+    }//GEN-LAST:event_packageItemActionPerformed
+
+    //=======================================================
+    //=======================================================
+    @SuppressWarnings("UnusedParameters")
+    private void fileMenuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fileMenuStateChanged
+
+        //  At creation --> do nothing
+        if (class_panels==null)
+            return;
+
+        //  Check if Packaging is available (linux and C++)
+        boolean b = false;
+        if (Packaging.isAvailable()) {
+            ClassTree tree = class_panels.getSelectedTree();
+            if (tree != null)  {   //	a class is defined in tree
+                DeviceClass deviceClass = tree.getDeviceClass();
+                String language = deviceClass.getPogoDeviceClass().getDescription().getLanguage();
+                b = (language.equals(PogoConst.strLang[PogoConst.Cpp]));
+            }
+        }
+        packageItem.setVisible(b);
+    }//GEN-LAST:event_fileMenuStateChanged
+
+    //=======================================================
+    //=======================================================
     private void loadDeviceClassFromFile(String filename) {
         loadDeviceClassFromFile(filename, true);
     }
@@ -1261,6 +1316,7 @@ public class PogoGUI extends JFrame {
     private javax.swing.JMenuItem multiItem;
     private javax.swing.JMenuItem newItem;
     private javax.swing.JMenuItem openItem;
+    private javax.swing.JMenuItem packageItem;
     private javax.swing.JMenuItem preferencesItem;
     private javax.swing.JMenu recentMenu;
     private javax.swing.JMenuItem stateMachineItem;

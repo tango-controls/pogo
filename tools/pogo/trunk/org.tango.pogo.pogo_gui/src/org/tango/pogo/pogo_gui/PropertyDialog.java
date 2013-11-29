@@ -130,7 +130,7 @@ public class PropertyDialog extends JDialog {
         if (prop != null) {
             //	Manage inheritance status
             orig_status = prop.getStatus();
-            //abstractBtn.setSelected(Utils.isTrue(orig_status.getAbstract()));
+            //abstractBtn.setSelected(PackUtils.isTrue(orig_status.getAbstract()));
 
             if (Utils.isTrue(orig_status.getInherited())) {
                 setEditable(false);

@@ -37,48 +37,48 @@ package org.tango.pogo.pogo_gui.packaging;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoDs.Except;
-import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
-import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
-import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
-import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
+import fr.esrf.tango.pogo.pogoDsl.*;
 import org.tango.pogo.pogo_gui.tools.ParserTool;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
 public class Packaging {
     private ArrayList<PackClass> classes = new ArrayList<PackClass>();
+    private ArrayList<String> addedClasses = new ArrayList<String>();
     private String packageName;
     private String packageAuthor;
     private String packagePath;
+    private String packageVersion;
     private boolean multipleClasses = false;
 
 
     private PackFile[] packFiles = {
-            new PackFile("README",              MODIFY),
-            new PackFile("COPYING",             NOTHING),
-            new PackFile("NEWS",                NOTHING),
-            new PackFile("INSTALL",             NOTHING),
-            new PackFile("AUTHORS",             MODIFY),
-            new PackFile("ChangeLog",           NOTHING),
-            new PackFile("autogen.sh",          MODIFY),
-            new PackFile("configure.ac",        MODIFY),
-            new PackFile("Makefile.am",         MODIFY),
-            new PackFile("src/Makefile.am",     MODIFY,    ADD_CLASSES),
-            new PackFile("m4/gcc_release.m4",   NOTHING),
+            new PackFile("README",              MODIFY,   UPDATE),
+            new PackFile("COPYING",             NO_MODIF, NO_UPDATE),
+            new PackFile("NEWS",                NO_MODIF, NO_UPDATE),
+            new PackFile("INSTALL",             NO_MODIF, NO_UPDATE),
+            new PackFile("AUTHORS",             MODIFY,   NO_UPDATE),
+            new PackFile("ChangeLog",           NO_MODIF, NO_UPDATE),
+            new PackFile("autogen.sh",          MODIFY,   UPDATE),
+            new PackFile("configure.ac",        MODIFY,   UPDATE),
+            new PackFile("Makefile.am",         MODIFY,   UPDATE),
+            new PackFile("src/Makefile.am",     MODIFY,   UPDATE),
+            new PackFile("m4/gcc_release.m4",   NO_MODIF, NO_UPDATE),
     };
     private static final String[] directories = {
             "", "src", "build", "m4"
     };
 
-    private static final boolean NOTHING     = false;
-    private static final boolean MODIFY      = true;
-    private static final boolean NO_UPDATE   = false;
-    private static final boolean UPDATE      = true;
-    private static final boolean ADD_CLASSES = true;
+    private static final boolean NO_MODIF  = false;  // No modification from template
+    private static final boolean MODIFY    = true;   // Modifications from template
+    private static final boolean NO_UPDATE = false;  // No update if already exists
+    private static final boolean UPDATE    = true;   // Updated at each code generation
 
+    static final String PackageDir = "/packaging/";
     //===============================================================
     /**
      * Will create the packaging class for code generation
@@ -86,16 +86,16 @@ public class Packaging {
      * @throws DevFailed If template files are not found.
      */
     //===============================================================
-    public Packaging(final PogoDeviceClass deviceClass) throws DevFailed {
+    public Packaging(final PogoDeviceClass deviceClass, String packageVersion, String author) throws DevFailed {
+        this.packageVersion = packageVersion;
         String  className = deviceClass.getName();
         String  path = deviceClass.getDescription().getSourcePath();
-        String  author = deviceClass.getDescription().getIdentification().getAuthor() +
-                "@" + deviceClass.getDescription().getIdentification().getEmailDomain();
 
         initialize(className, path, author);
         PackClass   _class = new PackClass(className, path);
         _class.addAdditionalFiles(deviceClass.getAdditionalFiles());
         classes.add(_class);
+        manageInheritances(deviceClass.getDescription().getInheritances());
     }
     //===============================================================
     /**
@@ -104,18 +104,28 @@ public class Packaging {
      * @throws DevFailed If template files are not found.
      */
     //===============================================================
-    public Packaging(final PogoMultiClasses deviceClasses) throws DevFailed {
+    public Packaging(final PogoMultiClasses deviceClasses, String packageVersion, String author) throws DevFailed {
+        this.packageVersion = packageVersion;
         String  className = deviceClasses.getName();
         String  path = deviceClasses.getSourcePath();
-        String  author = "Unknown yet";
         initialize(className, path, author);
         List<OneClassSimpleDef> simpleDefList = deviceClasses.getClasses();
         for (OneClassSimpleDef _class : simpleDefList) {
             PackClass   packClass =new PackClass(_class.getClassname(), _class.getSourcePath());
             packClass.addAdditionalFiles(_class.getAdditionalFiles());
             classes.add(packClass);
+            manageInheritances(_class.getInheritances());
         }
         multipleClasses = true;
+    }
+    //===============================================================
+    //===============================================================
+    private void manageInheritances(List<Inheritance> inheritances) throws DevFailed {
+        for (Inheritance inheritance : inheritances) {
+            String name = inheritance.getClassname();
+            if (!(name.startsWith("Device") && name.endsWith("Impl")))
+                classes.add(new PackClass(name, inheritance.getSourcePath()));
+        }
     }
     //===============================================================
     //===============================================================
@@ -130,10 +140,9 @@ public class Packaging {
 
         //  Check if templates exist
         for (PackFile packFile : packFiles) {
-            String  filename = Utils.getTemplatesPath() + "/" + packFile.name;
-            if (!new File(filename).exists())
+            if (PackUtils.getInstance().fileExistsInPackage(PackageDir + packFile.name))
                 Except.throw_exception("TemplateNotFound",
-                        "Template file \'" + filename + "\' not found",
+                        "Template file \'" + packFile.name + "\' not found",
                         "Packaging.Packaging()");
         }
     }
@@ -141,29 +150,42 @@ public class Packaging {
     //===============================================================
     private void copyTemplates() throws DevFailed {
         for (PackFile packFile : packFiles) {
-            String srcFile = Utils.getTemplatesPath() + "/" + packFile.name;
-            String targetFile = packagePath + "/";
-            targetFile += packFile.name;
-            Utils.copyFile(srcFile, targetFile);
+            String targetFile = packagePath + "/" + packFile.name;
+
+            //  Check if already exists
+            packFile.alreadyExists = new File(targetFile).exists();
+            if (packFile.update || !packFile.alreadyExists) {
+                String code = PackUtils.getInstance().readFileFromPackage(PackageDir + packFile.name);
+                ParserTool.writeFile(targetFile, code);
+                if (packFile.name.endsWith(".sh"))  //  must be executable
+                    if (!new File(targetFile).setExecutable(true))
+                        System.err.println("Cannot set executable " + targetFile);
+            }
         }
     }
     //===============================================================
     //===============================================================
     private String addSourceReferences(String code) {
-        String  nextLine = Utils.buildNextLine(packageName+"_SOURCES = ");
+        String  nextLine = PackUtils.buildNextLine(packageName + "_SOURCES = ");
         StringBuilder   sb = new StringBuilder();
 
         //  For each class
         for (PackClass _class : classes) {
-            //  Add headers
-            for (String file : _class.headers)
-                sb.append(file).append(nextLine);
+            //  Check if already done
+            if (addedClasses.indexOf(_class.name)<0) {
+                //  Add headers
+                for (String file : _class.headers)
+                    sb.append(file).append(nextLine);
 
-            //  Get source files (without main and ClassFactory)
-            ArrayList<String> files = _class.sources;
-            for (String file : files) {
-                sb.append(file).append(nextLine);
+                //  Get source files (without main and ClassFactory)
+                ArrayList<String> files = _class.sources;
+                for (String file : files) {
+                    sb.append(file).append(nextLine);
+                }
+                addedClasses.add(_class.name);
             }
+            else
+                PackUtils.println(_class.name + " has already been added!");
         }
         String  factory = ((multipleClasses)? "MultiClassesFactory.cpp" :"ClassFactory.cpp");
         sb.append(factory).append(nextLine);
@@ -174,19 +196,23 @@ public class Packaging {
     }
     //===============================================================
     //===============================================================
-    private void updateTemplate(String fileName, boolean addClasses) throws DevFailed {
+    private void updateTemplate(String fileName) throws DevFailed {
         String  code = ParserTool.readFile(fileName);
-        if (addClasses)
+        if (fileName.endsWith("src/Makefile.am"))
             code = addSourceReferences(code);
 
         code = code.replaceAll("TEMPLATE_AUTHOR", packageAuthor);
+        code = code.replaceAll("TEMPLATE_VERSION", packageVersion);
         code = code.replaceAll("TEMPLATE_CLASS", packageName);
 
-        //   ToDo Replace by header/function to be checked
-        String  checkHeaders = "";
-        code = code.replaceAll("TEMPLATE_CHECK_HEADERS", checkHeaders);
-        String  checkFunctions = "";
-        code = code.replaceAll("TEMPLATE_CHECK_FUNCS", checkFunctions);
+        ParserTool.writeFile(fileName, code);
+    }
+    //===============================================================
+    //===============================================================
+    private void updateConfig(String fileName, ArrayList<String> headers, ArrayList<String> functions) throws DevFailed {
+        String  code = ParserTool.readFile(fileName);
+        code = code.replaceAll("TEMPLATE_CHECK_HEADERS", PackUtils.buildConfigureList(headers));
+        code = code.replaceAll("TEMPLATE_CHECK_FUNCS", PackUtils.buildConfigureList(functions));
 
         ParserTool.writeFile(fileName, code);
     }
@@ -205,7 +231,6 @@ public class Packaging {
         ArrayList<String>   list = new ArrayList<String>();
         list.add(fileName);
         createSourceLinks(path, list, srcPath);
-
     }
     //===============================================================
     /**
@@ -221,7 +246,6 @@ public class Packaging {
                                   final String srcPath) throws DevFailed {
 
         //  ToDo When 1.7 will be used --> use java.nio.file.Files.createLink()
-
         try {
             //  Build a script file and execute it to create links
             String scriptName = path + "/create_links";
@@ -232,14 +256,14 @@ public class Packaging {
                 code += "rm -f  " + fileName + "\n";
                 code += "ln -s  " + srcPath + "/" + fileName + "   " + fileName + "\n\n";
             }
-            //System.out.println(code);
+            //PackUtils.println(code);
             ParserTool.writeFile(scriptName, code);
 
             File    script = new File(scriptName);
             if (script.setExecutable(true)) {
-                System.out.println("execute " + scriptName);
+                PackUtils.println("execute " + scriptName);
                 try { Thread.sleep(100); } catch (InterruptedException e) { /* */ }
-                Utils.executeShellCommand(scriptName);
+                PackUtils.executeShellCommand(scriptName);
             }
             //noinspection ResultOfMethodCallIgnored
             script.delete();
@@ -263,13 +287,15 @@ public class Packaging {
      * @throws DevFailed if code generation failed.
      */
     //===============================================================
-    public void generate() throws DevFailed {
-        Utils.buildDirectories(directories, packagePath);
+    public void generate(ArrayList<String> headers, ArrayList<String> functions) throws DevFailed {
+        PackUtils.buildDirectories(directories, packagePath);
         copyTemplates();
 
         for (PackFile packFile : packFiles) {
-            if (packFile.modify) {
-                updateTemplate(packagePath + "/" + packFile.name, packFile.addClasses);
+            if (packFile.doUpdates()) {
+                updateTemplate(packagePath + "/" + packFile.name);
+                if (packFile.name.endsWith("configure.ac"))
+                    updateConfig(packagePath + "/" + packFile.name, headers, functions);
             }
         }
 
@@ -284,15 +310,20 @@ public class Packaging {
             createSourceLinks(packagePath + "/src", "MultiClassesFactory.cpp", "../..");
         }
         else  {
-            createSourceLinks(packagePath + "/src", classes.get(0).headers, "../..");
-            createSourceLinks(packagePath + "/src", classes.get(0).getSources(), "../..");
+            int cnt = 0;
+            for (PackClass _class : classes) {
+                String  srcPath = (cnt++==0)? "../.." : _class.path;
+                createSourceLinks(packagePath + "/src", _class.headers, srcPath);
+                createSourceLinks(packagePath + "/src", _class.getSources(), srcPath);
+
+                //  !!!!
+                _class.manageSerialSpecialCase();
+            }
             createSourceLinks(packagePath + "/src", "ClassFactory.cpp", "../..");
-            //  !!!!
-            classes.get(0).manageSerialSpecialCase();
         }
         createSourceLinks(packagePath + "/src", "main.cpp", "../..");
 
-        System.out.println("Packaging for " + packageName +
+        PackUtils.println("Packaging for " + packageName +
                 " has been created in:\n" + packagePath);
     }
 
@@ -303,7 +334,7 @@ public class Packaging {
      */
     //===============================================================
     public static boolean isAvailable() {
-        return Utils.isAvailable();
+        return PackUtils.isAvailable();
     }
     //===============================================================
     //===============================================================
@@ -326,19 +357,29 @@ public class Packaging {
     private class PackFile{
         String  name;
         boolean modify;
-        boolean addClasses = false;
+        boolean update = false;
+        boolean alreadyExists = false;
         //===========================================================
-        private PackFile(String name, boolean modify) {
-            this(name, modify, false);
-        }
-        //===========================================================
-        private PackFile(String name, boolean modify, boolean addClasses) {
+        private PackFile(String name, boolean modify, boolean update) {
             this.name = name;
             this.modify = modify;
-            this.addClasses = addClasses;
+            this.update = update;
+        }
+        //===========================================================
+        private boolean doUpdates() {
+            return (modify && !alreadyExists) || update;
         }
         //===========================================================
     }
+    //===============================================================
+    //===============================================================
+
+
+
+
+
+
+
     //===============================================================
     //===============================================================
     private class PackClass {
@@ -352,11 +393,15 @@ public class Packaging {
             this.name = name;
             this.path = path;
 
-            headers = Utils.getFileList(path, ".h");
+            headers = PackUtils.getFileList(path, ".h");
             sources = new ArrayList<String>();
             sources.add(name+".cpp");
             sources.add(name+"Class.cpp");
             sources.add(name+"StateMachine.cpp");
+
+            String  dynAttrFile = name+"DynAttrUtils.cpp";
+            if (new File(path+"/"+dynAttrFile).exists())
+                sources.add(dynAttrFile);
         }
         //===========================================================
         private void addAdditionalFiles(List<AdditionalFile> additionalFiles) {
@@ -372,7 +417,7 @@ public class Packaging {
             //  Due to a bad design, 2 source files are used as include files :-)
             if (name.equals("Serial")) {
                 try {
-                    String code = ParserTool.readFile(packagePath+"/Makefile.am");
+                    String code = ParserTool.readFile(packagePath + "/Makefile.am");
                     String  key = "EXTRA_DIST = ";
                     String  badFiles = "";
                     for (String badFile : badSerialFiles)
@@ -381,7 +426,7 @@ public class Packaging {
                     if (pos>0) {
                         pos += key.length();
                         code = code.substring(0, pos) + badFiles + code.substring(pos);
-                        ParserTool.writeFile(packagePath+"/Makefile.am", code);
+                        ParserTool.writeFile(packagePath + "/Makefile.am", code);
                     }
                 }
                 catch (DevFailed e) {
@@ -399,8 +444,7 @@ public class Packaging {
             //  For class Serial:
             //  Due to a bad design, 2 source files are used as include files :-)
             if (name.equals("Serial")) {
-                for (String badFile : badSerialFiles)
-                    list.add(badFile);
+                Collections.addAll(list, badSerialFiles);
             }
 
             return list;
