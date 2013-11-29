@@ -187,9 +187,13 @@ public class PackUtils {
      */
     //===============================================================
     public static boolean isAvailable() {
+        //noinspection RedundantIfStatement
         if (org.tango.pogo.pogo_gui.tools.Utils.osIsUnix()) {
+            return true;
+            /*
             String s = System.getenv("Packaging");
             return (s!=null && s.equals("true"));
+            */
         }
         else
             return false;
