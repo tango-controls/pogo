@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/org.tango.pogo.pogo_gui/src/org/tango/pogo/pogo_gui/Pogo.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="Classes2www" value="true"/>
+<mapEntry key="JSERVER_JAR_FILE" value="y:/tango/release/java/lib/JTangoServer.jar"/>
+<mapEntry key="TANGO_INCLUDE" value="/segfs/tango/release/debian6/include"/>
+<mapEntry key="TANGO_ROOT" value="y:/tango/release"/>
+<mapEntry key="XTendTrace" value="true"/>
+</mapAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.tango.pogo.pogo_gui.Pogo"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.tango.pogo.pogo_gui"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DSOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/&#10;-DDEBUG_MAKE=/segfs/tango/cppserver/env&#10;-D_812_=true&#10;-Dsrc=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/java/PowerSupply.xmi&#10;-Ddoc=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/java/PowerSupply.xmi"/>
+</launchConfiguration>
