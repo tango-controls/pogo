@@ -40,6 +40,8 @@ import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.tango.pogo.pogo_gui.packaging.ConfigurePackagingDialog;
+import org.tango.pogo.pogo_gui.packaging.Packaging;
 import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
@@ -94,6 +96,7 @@ public class MultiClassesPanel extends JFrame {
         //  Set the PogoGUI instance to do not close this when PogoGUI is closed !!!
         PogoGUI.multiClassesPanel = this;
 
+        packageItem.setVisible(Packaging.isAvailable());
         pack();
         ATKGraphicsUtils.centerFrameOnScreen(this);
     }
@@ -235,6 +238,7 @@ public class MultiClassesPanel extends JFrame {
         recentMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem dummyItem = new javax.swing.JMenuItem();
         generateItem = new javax.swing.JMenuItem();
+        packageItem = new javax.swing.JMenuItem();
         exitItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         addItem = new javax.swing.JMenuItem();
@@ -283,6 +287,15 @@ public class MultiClassesPanel extends JFrame {
             }
         });
         fileMenu.add(generateItem);
+
+        packageItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        packageItem.setText("Export Package");
+        packageItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                packageItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(packageItem);
 
         exitItem.setText("Exit");
         exitItem.addActionListener(new java.awt.event.ActionListener() {
@@ -553,7 +566,18 @@ public class MultiClassesPanel extends JFrame {
     }//GEN-LAST:event_helpItemActionPerformed
 
     //=======================================================
+    //=======================================================
+    @SuppressWarnings("UnusedParameters")
+    private void packageItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageItemActionPerformed
+        // TODO add your handling code here:
+        PogoMultiClasses multiClasses = tree.getServer();
+        if (multiClasses == null)    //	No class defined in tree
+            return;
+        new ConfigurePackagingDialog(this, multiClasses, tree.getAuthor()).setVisible(true);
 
+    }//GEN-LAST:event_packageItemActionPerformed
+
+    //=======================================================
     /**
      * Manage if modification(s) has been done, and propose to generate them.
      *
@@ -629,6 +653,7 @@ public class MultiClassesPanel extends JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem newItem;
     private javax.swing.JMenuItem openItem;
+    private javax.swing.JMenuItem packageItem;
     private javax.swing.JMenu recentMenu;
     private javax.swing.JMenuItem removeItem;
     private javax.swing.JPanel topPanel;

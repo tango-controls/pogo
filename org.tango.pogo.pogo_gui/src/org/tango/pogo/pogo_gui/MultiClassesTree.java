@@ -42,6 +42,7 @@ import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
+import org.tango.pogo.pogo_gui.packaging.PackUtils;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.TangoServer;
@@ -447,6 +448,16 @@ public class MultiClassesTree extends JTree implements TangoConst {
             return null;
     }
 
+    //===============================================================
+    //===============================================================
+    public String getAuthor() {
+        if (loadedClasses.isEmpty())
+            return "? ? ?";
+        else {
+            //  Return the first class author name
+            return PackUtils.buildMailAddress(loadedClasses.get(0).getPogoDeviceClass().getDescription());
+        }
+    }
     //===============================================================
     //===============================================================
     public PogoMultiClasses getServer() {

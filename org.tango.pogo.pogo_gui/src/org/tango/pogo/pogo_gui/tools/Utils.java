@@ -238,12 +238,6 @@ public class Utils {
 
     //============================================================================
     //============================================================================
-    public static String getLanguage(int lang) {
-        return PogoConst.strLang[lang];
-    }
-
-    //============================================================================
-    //============================================================================
     public static String getFileExtension(String lang) {
         return PogoConst.fileExtention[getLanguage(lang)];
     }
@@ -372,7 +366,7 @@ public class Utils {
                 name.length() == 0)
             Except.throw_exception("BAD_PARM",
                     "Name not valid !",
-                    "Utils.checkNameSyntax()");
+                    "PackUtils.checkNameSyntax()");
 
         //	check if one word
         StringTokenizer stk = new StringTokenizer(name);
@@ -389,7 +383,7 @@ public class Utils {
             if ((c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z') && c != '_')
                 Except.throw_exception("SyntaxError",
                         "Syntax error in name: Do not use '" + c + "' char.",
-                        "Utils.checkNameSyntax()");
+                        "PackUtils.checkNameSyntax()");
         }
 
         char firstChar = name.toUpperCase().charAt(0);
@@ -406,14 +400,14 @@ public class Utils {
         if (firstChar < 'A' || firstChar > 'Z')
             Except.throw_exception("SyntaxError",
                     name + ":\nSyntax error in name: The first char must be a letter",
-                    "Utils.checkNameSyntax()");
+                    "PackUtils.checkNameSyntax()");
 
         //	Check for NOT state or Status
         if (!isStateStatus)
             if (name.equals("State") || name.equals("Status"))
                 Except.throw_exception("SyntaxError",
                         name + "  is reserved",
-                        "Utils.checkNameSyntax()");
+                        "PackUtils.checkNameSyntax()");
 
         return name;
     }
@@ -611,78 +605,6 @@ public class Utils {
 
         // do not read output lines from command
         // Do not check its exit value
-    }
-
-    //===============================================================
-    /**
-     * Check the files to be excluded by XPand scans
-     * it is used for cpp and python (java is org.tango.xxx)
-     *
-     * @param rootDir the directory to be checked (output code)
-     * @return list of files to be excluded by XPand scans
-     */
-    //===============================================================
-    static public String getExcludeFilesAndDir(String rootDir) {
-        //  Define what will be generated
-        //  ToDo
-        String[] geneFiles = {".cpp", ".h", ".py",
-                "Makefile", "Makefile.multi",
-                ".sln", ".vcproj"};
-        String[] geneDirs = { "", "vc8_proj", "vc9_proj", "vc10_proj",};
-
-        ArrayList<String> excluded = new ArrayList<String>();
-        for (String dir : geneDirs) {
-            //  Get file list
-            String dirName = rootDir;
-            if (dir.length() > 0)
-                dirName += "/" + dir;
-            File d = new File(dirName);
-            String[] fileNames = d.list();
-            if (fileNames != null) {
-                for (String fileName : fileNames) {
-                    //System.out.println(fileName);
-                    //  Check if fileName must be generated
-                    boolean generates = couldBeGenerated(fileName, geneFiles);
-                    //if (!generates)
-                    //    generates = couldBeGenerated(fileName, geneDirs);
-
-                    if (!generates) {
-                        //  if not -> add it to excluded ones
-                        excluded.add(fileName);
-                    }
-                }
-            }
-        }
-        //  Convert to String
-        StringBuilder sb = new StringBuilder();
-        for (String fileName : excluded) {
-            sb.append(fileName).append(", ");
-        }
-        //  Remove last ", " if any
-        String str = sb.toString();
-        int pos = str.lastIndexOf(',');
-        if (pos > 0)
-            str = str.substring(0, pos);
-        return str;
-    }
-
-    //===============================================================
-    //===============================================================
-    static private boolean couldBeGenerated(String fileName, String[] generated) {
-        //  Check for hidden files
-        if (fileName.startsWith(".") ||
-                fileName.startsWith("#") ||
-                fileName.startsWith("~"))
-            return false;
-
-        //  Check if file must be generated.
-        boolean generates = false;
-        for (String s : generated) {
-          if (fileName.endsWith(s)) {
-               generates = true;
-            }
-        }
-        return generates;
     }
 
     //===============================================================

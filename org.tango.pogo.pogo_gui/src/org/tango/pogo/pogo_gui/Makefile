@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 8.2.6
+RELEASE    = 8.3.0
 
 
 TANGO_HOME	=	/segfs/tango
@@ -58,9 +58,17 @@ utils:
 exe:
 	@./go
 
+clean:
+	rm  -Rf $(BIN_DIR)/com
+	rm  -Rf $(BIN_DIR)/*.i*
+	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/hs_err*
+	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/*.form
+	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/tools/*.form
+	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/packacging/*.form
 
 MAIN_CLASS=		$(PACKAGE)GUI
 version:
+	make clean
 	echo "Updating date and revision number..."
 	upd_rev  -f PogoConst.java  -r $(RELEASE)
 	@java pogo.make_util.ReleaseNote2html -java "Pogo Release Note" org.tango.pogo.pogo_gui
@@ -72,18 +80,15 @@ jar:
 	@echo "------------------------------------"
 
 doc:
-	@javadoc 				\
-	-private 				\
-	-version -author		\
-	-nodeprecated			\
-	-windowtitle POGO		\
-	-header $(DOC_HEADER)	\
-	-d doc/pr_guide		\
+	@javadoc \
+	-private \
+	-version -author \
+	-nodeprecated \
+	-windowtitle POGO \
+	-header $(DOC_HEADER) \
+	-d doc/pr_guide	 \
 	*.java tools/*.java 
 
-clean:
-	rm  $(BIN_DIR)/org/tango/pogo/pogo_gui/*.class
-	rm  $(BIN_DIR)/org/tango/pogo/pogo_gui/tools/*.class
 
 ECLIPSE_JAR_DIR=/users/verdier/pogo/jar
 #ECLIPSE_JAR_DIR=/segfs/tango/tools/pogo/jar

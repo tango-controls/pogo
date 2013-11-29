@@ -82,7 +82,7 @@ public class ParserTool {
      * @return the modified byte array as String.
      */
     //===============================================================
-    private static String takeOffWindowsChar(byte[] b_in) {
+    public static String takeOffWindowsChar(byte[] b_in) {
         //	Take off Cr (0x0d) eventually added by Windows editor
         int nb = 0;
         for (byte b : b_in)
@@ -118,7 +118,9 @@ public class ParserTool {
     //===============================================================
     public static void writeFile(String filename, String code) throws DevFailed {
         try {
-            code = checkOsFormat(code);
+            String  s = System.getenv("LINUX");
+            if (s==null || !s.equals("true"))
+                code = checkOsFormat(code);
             FileOutputStream fidout = new FileOutputStream(filename);
             fidout.write(code.getBytes());
             fidout.close();
