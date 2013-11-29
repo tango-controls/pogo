@@ -174,13 +174,13 @@ public class JavaUtils extends StringUtils {
 		if (defaultValues==null || defaultValues.isEmpty())
 			return "";
 		else {
-			String	str = ", defaultValue=\"[";
+			String	str = ",\n        defaultValue= { ";
 			for (int i=0 ; i<defaultValues.size() ; i++) {
-				str += defaultValues.get(i);
+				str += "\"" + defaultValues.get(i) + "\"";
 				if (i<defaultValues.size()-1)
 					str += ", ";
 			}
-			str += "]\"";
+			str += " }";
 			return str;
 		}
 	}
