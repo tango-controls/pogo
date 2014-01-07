@@ -203,7 +203,7 @@ class JavaDevice  implements IGenerator {
 				"\n" +
 				"//	Import Tango IDL types\n" +
 				"import fr.esrf.Tango.*;\n" +
-				"import fr.esrf.Tango.Except;",
+				"import fr.esrf.TangoDs.Except;",
 				false)»
 	'''
 

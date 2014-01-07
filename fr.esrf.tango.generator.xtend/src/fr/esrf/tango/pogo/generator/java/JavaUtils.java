@@ -425,7 +425,6 @@ public class JavaUtils extends StringUtils {
 			params += "* @return " + StringUtils.comments(
 					command.getArgout().getDescription(), "*         ") + "\n";
 		}
-		params += "* @throws DevFailed if command execution failed.";
 		return params;
 	}
 	//===========================================================

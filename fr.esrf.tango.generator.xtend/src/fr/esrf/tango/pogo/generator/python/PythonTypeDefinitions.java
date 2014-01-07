@@ -327,7 +327,7 @@ public class PythonTypeDefinitions {
 			if (isDefaultDeviceImpl(className))
 				return "";
 			else
-				return "attr_list.update(" + className + "Class.attr_list";
+				return "attr_list.update(" + className + "Class.attr_list)";
 		}
 	}
 	
@@ -341,7 +341,7 @@ public class PythonTypeDefinitions {
 			if (isDefaultDeviceImpl(className))
 				return "";
 			else
-				return "cmd_list.update(" + className + "Class.cmd_list";
+				return "cmd_list.update(" + className + "Class.cmd_list)";
 		}
 	}
 	
@@ -355,7 +355,7 @@ public class PythonTypeDefinitions {
 			if (isDefaultDeviceImpl(className))
 				return "";
 			else
-				return "class_property_list.update(" + className + "Class.class_property_list";
+				return "class_property_list.update(" + className + "Class.class_property_list)";
 		}
 	}
 	
@@ -369,7 +369,7 @@ public class PythonTypeDefinitions {
 			if (isDefaultDeviceImpl(className))
 				return "";
 			else
-				return "device_property_list.update(" + className + "Class.device_property_list";
+				return "device_property_list.update(" + className + "Class.device_property_list)";
 		}
 	}
 	
