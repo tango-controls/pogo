@@ -176,7 +176,7 @@ class PythonDevice implements IGenerator {
     //====================================================
     def pythonConstructors(PogoDeviceClass cls)  '''
             def __init__(self,cl, name):
-                PyTango.Device_4Impl.__init__(self,cl,name)
+                «cls.inheritedConstructor»
                 self.debug_stream("In __init__()")
                 «cls.name».init_device(self)
                 «cls.protectedArea("__init__")»

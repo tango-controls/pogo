@@ -8,6 +8,12 @@
 #
 #-======================================================================
 
+Pogo-8.3.2 - 17/01/2014:
+	Fix anothr problem on python class with inheritance.
+
+Pogo-8.3.1 - 07/01/2014:
+	Fix a problem on python class with inheritance.
+
 Pogo-8.3.0 - 29/11/2013:
 	First release with packaging feature.
 	Add javadoc throw tag for java classes.;

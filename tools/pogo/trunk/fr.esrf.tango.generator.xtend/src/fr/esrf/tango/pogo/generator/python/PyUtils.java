@@ -40,6 +40,15 @@ public class PyUtils {
 	
 	//===========================================================
 	/**
+	 * Global DeviceImpl inheritance
+	 * @return used DeviceImpl inheritance
+	 */
+	//===========================================================
+	static String deviceImpl() {
+		return "PyTango.Device_4Impl";
+	}
+	//===========================================================
+	/**
 	 * Returns the method execution name for specified command (special case for State and Status) 
 	 * @param command the specified command
 	 * @return  the method execution name for specified command
@@ -65,13 +74,13 @@ public class PyUtils {
 		
 		if (command.getName().equals("State")) {
 			return	"if argout != PyTango.DevState.ALARM:\n" +
-					"    PyTango.Device_4Impl.dev_state(self)\n" +
+					"    " + PyUtils.deviceImpl() + ".dev_state(self)\n" +
 					"return self.get_state()";
 		}
 		else
 		if (command.getName().equals("Status")) {
 			return	"self.set_status(self.argout)\n" +
-					"self.__status = PyTango.Device_4Impl.dev_status(self)\n" +
+					"self.__status = " + PyUtils.deviceImpl() + ".dev_status(self)\n" +
 					"return self.__status";
 		}
 		else {
