@@ -17,9 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Jan 17 12:42:52 CET 2014)</Center><Br>\n" + 
+		"	(Generated Fri Jan 17 15:01:49 CET 2014)</Center><Br>\n" + 
 		"<li><b>Pogo-8.3.3 - 17/01/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix a bug in Pogo Multiple classes.<Br>\n" + 
+		"&nbsp; &nbsp; Modified linux Mafile for shared libs<Br>\n" + 
 		"<li><b>Pogo-8.3.2 - 17/01/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix another problem on python class with inheritance.<Br>\n" + 
 		"<li><b>Pogo-8.3.1 - 07/01/2014:</b><Br>\n" + 

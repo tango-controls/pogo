@@ -10,6 +10,7 @@
 
 Pogo-8.3.3 - 17/01/2014:
 	Fix a bug in Pogo Multiple classes.
+	Modified linux Mafile for shared libs
 
 Pogo-8.3.2 - 17/01/2014:
 	Fix another problem on python class with inheritance.
