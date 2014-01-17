@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="201d0116-b6da-4daa-8e4f-0420473a6a76" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/go" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.iws" afterPath="$PROJECT_DIR$/pogo_gui.iws" />
     </list>
     <ignored path="pogo_gui.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,30 +46,30 @@
     <file path="/GenerateDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379071003615" ignored="false" />
     <file path="/StateMachineDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379071281669" ignored="false" />
     <file path="/OldPogoModel.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381761797333" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLNamespace.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/Ecore.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/plugin.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/templates/emf-merge.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLType.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/EcoreXMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-api/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-simple/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270673" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/com.google.guava/guava/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_th.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant_HK.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ja.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ru.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ar_EG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_en.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLNamespace.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/Ecore.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/plugin.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/templates/emf-merge.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLType.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/EcoreXMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-api/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-simple/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/com.google.guava/guava/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_th.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant_HK.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ja.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ru.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ar_EG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_en.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
     <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ko.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_hi.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_es.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_fr.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_he_IL.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_hi.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_es.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_fr.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_he_IL.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
     <file path="Y:/tango/javaapi/JTangoServer/JTangoServer/src/main/java/org/tango/server/device/DeviceManager.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381826296397" ignored="false" />
     <file path="Y:/tango/javaapi/JTangoServer/JTangoServer/src/main/java/org/tango/server/events/EventManager.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381826296397" ignored="false" />
     <file path="Y:/tango/javaapi/JTangoServer/JTangoServer/src/main/java/org/tango/server/testserver/EventServer.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381826296397" ignored="false" />
@@ -240,7 +237,7 @@
           <file leaf-file-name="MultiClassesTree.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="579" column="79" selection-start="23757" selection-end="23757" vertical-scroll-proportion="0.4017946">
+                <state line="575" column="1" selection-start="23488" selection-end="23488" vertical-scroll-proportion="0.333998">
                   <folding />
                 </state>
               </provider>
@@ -860,7 +857,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="579" column="79" selection-start="23757" selection-end="23757" vertical-scroll-proportion="0.4017946">
+        <state line="575" column="1" selection-start="23488" selection-end="23488" vertical-scroll-proportion="0.333998">
           <folding />
         </state>
       </provider>
