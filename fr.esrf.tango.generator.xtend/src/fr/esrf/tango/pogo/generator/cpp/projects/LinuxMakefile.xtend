@@ -107,13 +107,17 @@ class LinuxMakefile {
 		
 		
 		SVC_OBJS =      \
+				$(LIB_OBJS) \
+				$(OBJDIR)/ClassFactory.o  \
+		        $(OBJDIR)/main.o
+		
+		LIB_OBJS = \
 		        $(OBJDIR)/$(PACKAGE_NAME).o \
 		        $(OBJDIR)/$(PACKAGE_NAME)Class.o \
 		        $(OBJDIR)/$(PACKAGE_NAME)StateMachine.o \
-		        «cls.dynamicAttrObjects»«cls.inheritanceObjects»$(OBJDIR)/ClassFactory.o  \
-		        $(OBJDIR)/main.o \
+				«cls.dynamicAttrObjects»«cls.inheritanceObjects»
 		        $(ADDITIONAL_OBJS) 
-		
+
 		«cls.addInheritanceObjectFiles»
 		«cls.addAdditionalObjectFiles»
 		
@@ -162,10 +166,11 @@ class LinuxMakefile {
 		#=============================================================================
 		# OUTPUT_DIR  is the directory which contains the build result.
 		# if not set, the standard location is :
-		#	- $HOME/DeviceServers if OUTPUT_TYPE is DEVICE
-		#	- ../bin for others
+		#	- ./shlib if OUTPUT_TYPE is SHARED_LIB
+		#	- ./lib   if OUTPUT_TYPE is STATIC_LIB
+		#	- ./bin for others
 		#
-		OUTPUT_DIR = ./bin/$(BIN_DIR)
+		#OUTPUT_DIR =
 	'''
 
 	//======================================================
