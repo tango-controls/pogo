@@ -21,6 +21,7 @@ export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/test_oaw
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/java
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/
+export SOURCE_PATH=/segfs/tango/cppserver/IO/wago
 
 SUPER_HOME=/segfs/tango/templates/AbstractClasses
 
