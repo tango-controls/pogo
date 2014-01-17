@@ -573,10 +573,6 @@ public class MultiClassesTree extends JTree implements TangoConst {
         private DeviceClass getDeviceClass(String xmiFile) throws DevFailed {
             String slash = System.getProperty("file.separator");
             String path = xmiFile.substring(0, xmiFile.lastIndexOf(slash));
-            System.out.println();
-            System.out.println(xmiFile);
-            System.out.println(xmiFile.lastIndexOf(slash)+1);
-            System.out.println(xmiFile.indexOf('.'));
             String className = xmiFile.substring(xmiFile.lastIndexOf(slash)+1, xmiFile.lastIndexOf('.'));
             for (DeviceClass dc : this)
                 if (dc.getPogoDeviceClass().getDescription().getSourcePath().equals(path) &&
