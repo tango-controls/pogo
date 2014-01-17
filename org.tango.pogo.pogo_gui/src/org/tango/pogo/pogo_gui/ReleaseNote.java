@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Nov 29 15:13:42 CET 2013)</Center><Br>\n" + 
+		"	(Generated Fri Jan 17 09:55:53 CET 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.3.2 - 17/01/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix anothr problem on python class with inheritance.<Br>\n" + 
+		"<li><b>Pogo-8.3.1 - 07/01/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem on python class with inheritance.<Br>\n" + 
 		"<li><b>Pogo-8.3.0 - 29/11/2013:</b><Br>\n" + 
 		"&nbsp; &nbsp; First release with packaging feature.<Br>\n" + 
 		"&nbsp; &nbsp; Add javadoc throw tag for java classes.;<Br>\n" + 

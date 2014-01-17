@@ -287,14 +287,28 @@ public class PythonTypeDefinitions {
 	public String inheritedPythonClassName(PogoDeviceClass cls) {
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
-			return "PyTango.Device_4Impl";
+			return PyUtils.deviceImpl();
 		else {
 			int	last = inheritances.size()-1;
 			String	className = inheritances.get(last).getClassname();
 			if (isDefaultDeviceImpl(className))
-				return "PyTango.Device_4Impl";
+				return PyUtils.deviceImpl();
 			else
 				return className;
+		}
+	}
+	
+	public String inheritedConstructor(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return PyUtils.deviceImpl() + "__init__(self,cl,name)";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return PyUtils.deviceImpl() + ".__init__(self,cl,name)";
+			else
+				return "super(" + cls.getName() + ",self).__init__(cl,name)";
 		}
 	}
 	
@@ -308,7 +322,7 @@ public class PythonTypeDefinitions {
 			if (isDefaultDeviceImpl(className))
 				return "";
 			else
-				return "import " + className;
+				return "from " + className + " import " + className + ", " + className + "Class\n";
 		}
 	}
 	
