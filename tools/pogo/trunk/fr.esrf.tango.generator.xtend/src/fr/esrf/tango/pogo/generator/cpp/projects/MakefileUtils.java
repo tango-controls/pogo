@@ -349,7 +349,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		String code = 
 			"$(OBJDIR)/" + classname + sufix + ".o:"+
 				"  $(" +  classHomeDir(classname) + ")/"+classname+sufix+".cpp $("+classIncludeDir(classname)+")\n";
-		code += "	$(CC) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + classname + sufix + ".o\n";
+		code += "	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + classname + sufix + ".o\n";
 		return code;
 	}
 	//======================================================
@@ -357,7 +357,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		String code = 
 			"$(OBJDIR)/" + filename + ".o:"+
 				"  $(" +  classHomeDir(classname) + ")/"+filename+".cpp $("+classIncludeDir(classname)+")\n";
-		code += "	$(CC) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + filename + ".o\n";
+		code += "	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + filename + ".o\n";
 		return code;
 	}
 	//======================================================
