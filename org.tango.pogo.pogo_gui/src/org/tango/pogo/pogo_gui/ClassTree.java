@@ -630,8 +630,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     }
     //===============================================================
     //===============================================================
-    public void setClassLanguage(int lnguage) {
-        deviceClass.getPogoDeviceClass().getDescription().setLanguage(PogoConst.strLang[lnguage]);
+    public void setClassLanguage(int language) {
+        //ToDo
+        ((PogoRoot) root.getUserObject()).language = PogoConst.strLang[language];
+        deviceClass.getPogoDeviceClass().getDescription().setLanguage(PogoConst.strLang[language]);
     }
     //===============================================================
     /**

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="201d0116-b6da-4daa-8e4f-0420473a6a76" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoConst.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoConst.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote.java" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" afterPath="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ReleaseNote" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pogo_gui.iws" afterPath="$PROJECT_DIR$/pogo_gui.iws" />
     </list>
     <ignored path="pogo_gui.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +38,7 @@
     <file path="N:/pogo_jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant_HK.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1366966052211" ignored="false" />
     <file path="N:/pogo_jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ru.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1366966052211" ignored="false" />
     <file path="N:/pogo_jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1366966052211" ignored="false" />
-    <file path="/ClassTree.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1382009778691" ignored="false" />
+    <file path="/ClassTree.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1390825916878" ignored="false" />
     <file path="/PogoEditor.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1367563138356" ignored="false" />
     <file path="/OAWutils.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1369984305306" ignored="false" />
     <file path="N:/pogo_jar/org.tango.pogo.jar!/bundle-source/com/google/inject/Injector.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1369988803744" ignored="false" />
@@ -46,30 +51,30 @@
     <file path="/GenerateDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379071003615" ignored="false" />
     <file path="/StateMachineDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1379071281669" ignored="false" />
     <file path="/OldPogoModel.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381761797333" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLNamespace.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/Ecore.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/plugin.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/templates/emf-merge.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLType.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/EcoreXMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-api/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-simple/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/com.google.guava/guava/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959130813" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_th.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant_HK.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ja.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ru.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ar_EG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_en.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLNamespace.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/Ecore.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/plugin.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/templates/emf-merge.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/XMLType.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/model/EcoreXMI.xsd" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762333" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-api/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762334" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/org.slf4j/slf4j-simple/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762334" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/META-INF/maven/com.google.guava/guava/pom.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762334" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_th.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant_HK.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ja.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ru.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ar_EG.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_en.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
     <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_ko.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385735270674" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_hi.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_es.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_fr.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
-    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_he_IL.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389959136195" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_hi.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_es.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_fr.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
+    <file path="N:/pogo/jar/org.tango.pogo.jar!/com/ibm/icu/impl/duration/impl/data/pfd_he_IL.xml" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1389969762873" ignored="false" />
     <file path="Y:/tango/javaapi/JTangoServer/JTangoServer/src/main/java/org/tango/server/device/DeviceManager.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381826296397" ignored="false" />
     <file path="Y:/tango/javaapi/JTangoServer/JTangoServer/src/main/java/org/tango/server/events/EventManager.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381826296397" ignored="false" />
     <file path="Y:/tango/javaapi/JTangoServer/JTangoServer/src/main/java/org/tango/server/testserver/EventServer.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1381826296397" ignored="false" />
@@ -86,6 +91,7 @@
     <file path="/ConfigureDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385133425892" ignored="false" />
     <file path="/ConfigurePackagingDialog.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385733733217" ignored="false" />
     <file path="/PackUtils.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1385734590342" ignored="false" />
+    <file path="Y:/tango/tools/admin/astor/src/admin/astor/tools/CtrlSystemInfo.java" changelist="201d0116-b6da-4daa-8e4f-0420473a6a76" time="1390825021888" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,8 +140,23 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" line="1503" class="org.tango.pogo.pogo_gui.PogoGUI.LanguagePopupMenu" package="org.tango.pogo.pogo_gui">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -156,11 +177,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PogoGUI.java" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="PogoGUI.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="668" column="29" selection-start="26613" selection-end="26671" vertical-scroll-proportion="0.01754386">
+                <state line="1504" column="57" selection-start="61910" selection-end="61935" vertical-scroll-proportion="0.0">
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ClassTree.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="633" column="11" selection-start="25292" selection-end="25307" vertical-scroll-proportion="0.36842105">
+                  <folding>
+                    <element signature="e#6813#6853#0" expanded="true" />
+                    <element signature="e#40414#40455#1" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -218,9 +251,7 @@
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/packaging/PackUtils.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="190" column="8" selection-start="7290" selection-end="7290" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="e#0#11296#0" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -234,10 +265,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MultiClassesTree.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="MultiClassesTree.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="575" column="1" selection-start="23488" selection-end="23488" vertical-scroll-proportion="0.333998">
+                <state line="575" column="1" selection-start="23488" selection-end="23488" vertical-scroll-proportion="0.016949153">
                   <folding />
                 </state>
               </provider>
@@ -266,7 +297,6 @@
       <list>
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassPanel.java" />
-        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/AdditionalFilesDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/Packaging.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/Utils.java" />
@@ -280,6 +310,7 @@
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/packaging/ConfigurePackagingDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/packaging/PackUtils.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java" />
       </list>
     </option>
   </component>
@@ -334,6 +365,7 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -386,7 +418,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -405,7 +436,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager" selected="Application.Pogo -multi">
+  <component name="RunManager" selected="Application.Pogo">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -418,19 +449,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -458,6 +476,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -678,7 +709,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.54898155" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.157754" sideWeight="0.6715258" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.157754" sideWeight="0.6005831" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -748,13 +779,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="53" selection-start="1987" selection-end="1987" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="595" column="23" selection-start="22291" selection-end="22291" vertical-scroll-proportion="0.017311608">
@@ -825,19 +849,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="668" column="29" selection-start="26613" selection-end="26671" vertical-scroll-proportion="0.01754386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/packaging/PackUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="190" column="8" selection-start="7290" selection-end="7290" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#11296#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -857,8 +872,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="575" column="1" selection-start="23488" selection-end="23488" vertical-scroll-proportion="0.333998">
+        <state line="575" column="1" selection-start="23488" selection-end="23488" vertical-scroll-proportion="0.016949153">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1504" column="57" selection-start="61910" selection-end="61935" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="633" column="11" selection-start="25292" selection-end="25307" vertical-scroll-proportion="0.36842105">
+          <folding>
+            <element signature="e#6813#6853#0" expanded="true" />
+            <element signature="e#40414#40455#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

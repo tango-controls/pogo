@@ -97,6 +97,8 @@ class PythonDevice implements IGenerator {
         
         
             «cls.pythonCommands»
+
+            «cls.protectedArea("programmer_methods")»
     '''
 
     //====================================================

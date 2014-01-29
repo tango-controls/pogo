@@ -8,6 +8,10 @@
 #
 #-======================================================================
 
+Pogo-8.3.4 - 27/01/2014:
+	Add a protected region for programmer methods in python class
+	Fix a problem in changing language.
+
 Pogo-8.3.3 - 17/01/2014:
 	Fix a bug in Pogo Multiple classes.
 	Modified linux Mafile for shared libs
