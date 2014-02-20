@@ -60,7 +60,7 @@ public class ClassDialog extends JDialog {
     private static int returnStatus;
     private DeviceClass devclass;
     private String origClassName = null;
-    private InheritancePanel inheritance_panel;
+    private InheritancePanel inheritancePanel;
     private JRadioButton[] langBtn;
     private boolean hasForcedGenerate = false;
     static private JFileChooser chooser = null;
@@ -84,11 +84,11 @@ public class ClassDialog extends JDialog {
      *
      * @param parent           The parent frame object
      * @param classTree        instance to do save in case of class name changed
-     * @param dc               The device class object to be edited
+     * @param deviceClass               The device class object to be edited
      * @param isInheritedClass true if this class is an inherited one
      */
     //===================================================================
-    public ClassDialog(JFrame parent, ClassTree classTree, DeviceClass dc, boolean isInheritedClass) {
+    public ClassDialog(JFrame parent, ClassTree classTree, DeviceClass deviceClass, boolean isInheritedClass) {
         super(parent, true);
         this.classTree = classTree;
         initComponents();
@@ -97,15 +97,15 @@ public class ClassDialog extends JDialog {
         langBtn[PogoConst.Java] = javaBtn;
         langBtn[PogoConst.Python] = pythonBtn;
 
-        if (dc == null)   //  Creating a new class
+        if (deviceClass == null)   //  Creating a new class
             this.devclass = new DeviceClass("", null);
         else {
             //	Edit the specified class
-            this.devclass = dc;
-            origClassName = dc.getPogoDeviceClass().getName();
+            this.devclass = deviceClass;
+            origClassName = deviceClass.getPogoDeviceClass().getName();
             //  remove the add inheritance class button
             addInheritanceBtn.setVisible(false);
-            ClassDescription desc = dc.getPogoDeviceClass().getDescription();
+            ClassDescription desc = deviceClass.getPogoDeviceClass().getDescription();
             if (desc != null)
                 setLanguage(desc.getLanguage());
         }
@@ -126,8 +126,8 @@ public class ClassDialog extends JDialog {
         //	Build a panel to display inheritance
         if (devclass.getPogoDeviceClass().getName().length() == 0)
             devclass.getPogoDeviceClass().setName("New Tango Class");
-        inheritance_panel = new InheritancePanel(devclass);
-        inheritanceScrollPane.setViewportView(inheritance_panel);
+        inheritancePanel = new InheritancePanel(devclass);
+        inheritanceScrollPane.setViewportView(inheritancePanel);
 
         if (isInheritedClass)
             nameText.setEditable(false);
@@ -168,7 +168,6 @@ public class ClassDialog extends JDialog {
     }
 
     //===================================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -564,7 +563,7 @@ public class ClassDialog extends JDialog {
                         devclass.addAncestor(dc);
 
                         //	Then Remove old inheritance panel
-                        inheritanceScrollPane.remove(inheritance_panel);
+                        inheritanceScrollPane.remove(inheritancePanel);
 
                         //  Check if Class name has been typed
                         String name = nameText.getText();
@@ -572,8 +571,8 @@ public class ClassDialog extends JDialog {
                             devclass.getPogoDeviceClass().setName(name);
 
                         //  Then build a new panel and display
-                        inheritance_panel = new InheritancePanel(devclass);
-                        inheritanceScrollPane.setViewportView(inheritance_panel);
+                        inheritancePanel = new InheritancePanel(devclass);
+                        inheritanceScrollPane.setViewportView(inheritancePanel);
                         addInheritanceBtn.setVisible(false);
                         
                         //  Set the language as inherited one
