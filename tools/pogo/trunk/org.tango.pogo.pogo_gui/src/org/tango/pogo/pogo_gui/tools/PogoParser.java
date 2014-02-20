@@ -157,12 +157,12 @@ public class PogoParser {
         if (code == null || code.length() == 0)
             return;    //	Nothing to insert.
 
-        String this_protected = start_protected;
+        StringBuilder thisProtected = new StringBuilder(start_protected);
         if (className != null && className.length() > 0)
-            this_protected += className + separator;
-        this_protected += method + ") " + start_protected_enabled;
+            thisProtected.append(className).append(separator);
+        thisProtected.append(method).append(") ").append(start_protected_enabled);
 
-        int[] indexes = indexesOfProtectedZone(this_protected);
+        int[] indexes = indexesOfProtectedZone(thisProtected.toString());
         if (indexes != null) {
             StringBuilder sb =
                     new StringBuilder(fileCode.substring(0, indexes[0]).trim()); // end of area
@@ -171,7 +171,7 @@ public class PogoParser {
             sb.append(fileCode.substring(indexes[1]));
             fileCode = sb.toString();
         } else
-            System.err.println(this_protected + " not found");
+            System.err.println(thisProtected + " not found");
     }
 
     //===============================================================

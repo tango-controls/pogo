@@ -246,7 +246,7 @@ public class Utils {
     /**
      * Build the execute method's name from command's name
      *
-     * @param commandName the conmand specified name.
+     * @param commandName the command specified name.
      * @return The method's name built.
      */
     //========================================================================
@@ -261,13 +261,12 @@ public class Utils {
         //---------------------------------------------------
         String str = "";
         for (int i = 0; i < commandName.length(); i++) {
-            if (commandName.charAt(i) >= 'A' && commandName.charAt(i) <= 'Z')//	if upperr case
-            {
-                if (i > 0)
+            if (commandName.charAt(i) >= 'A' && commandName.charAt(i) <= 'Z') { //	if upper case
+                if (i > 0) {
                     //	Check if previous char is not an upper case too
                     if (commandName.charAt(i - 1) < 'A' || commandName.charAt(i - 1) > 'Z')
                         str += '_';
-
+                }
                 //	Set it to lower case
                 //---------------------------
                 str += (char) (commandName.charAt(i) + ('a' - 'A'));

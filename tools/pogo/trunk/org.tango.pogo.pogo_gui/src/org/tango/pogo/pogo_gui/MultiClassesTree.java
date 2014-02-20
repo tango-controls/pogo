@@ -370,7 +370,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
                             expandChildren(parentNode);
                         }
                         else
-                            Except.throw_exception("NOT_SUPPRTED",
+                            Except.throw_exception("NOT_SUPPORTED",
                                 language + " classes are not supported by multi classes manager !",
                                 "MultiClasesPanel.addClass()");
                     }
@@ -422,7 +422,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
     //===============================================================
     private ArrayList<DeviceClass> getClasses(DefaultMutableTreeNode node) {
         ArrayList<DeviceClass> classes = new ArrayList<DeviceClass>();
-        for (int i = 0; i < node.getChildCount(); i++) {
+        for (int i=0 ; i<node.getChildCount() ; i++) {
             DefaultMutableTreeNode childNode =
                     (DefaultMutableTreeNode) node.getChildAt(i);
             DeviceClass _class = (DeviceClass) childNode.getUserObject();

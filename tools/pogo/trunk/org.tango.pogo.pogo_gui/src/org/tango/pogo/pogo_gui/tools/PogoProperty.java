@@ -96,6 +96,7 @@ public class PogoProperty {
     public static ArrayList<String> projectHistory = new ArrayList<String>();
     public static ArrayList<String> multiClassProjectHistory = new ArrayList<String>();
 
+    public static final Object  monitor = new Object();
     //===============================================================
     //===============================================================
     public static PogoProperty getInstance() {
@@ -105,8 +106,10 @@ public class PogoProperty {
     //===============================================================
     //===============================================================
     public static PogoProperty init() throws DevFailed {
-        if (instance == null)
-            instance = new PogoProperty();
+        synchronized (monitor) {
+            if (instance == null)
+                instance = new PogoProperty();
+        }
         return instance;
     }
 

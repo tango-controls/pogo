@@ -365,6 +365,7 @@ class PythonDevice implements IGenerator {
             try:
                 py = PyTango.Util(sys.argv)
                 py.add_class(«cls.name»Class,«cls.name»,'«cls.name»')
+                «cls.protectedArea("add_classes")»
         
                 U = PyTango.Util.instance()
                 U.server_init()

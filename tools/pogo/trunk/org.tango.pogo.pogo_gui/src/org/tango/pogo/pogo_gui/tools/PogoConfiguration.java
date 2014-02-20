@@ -243,7 +243,7 @@ public class PogoConfiguration extends JDialog {
             //  Check if already exists
             boolean found = false;
             for (String family : families)
-                if (family.toLowerCase().equals(new_family.toLowerCase()))
+                if (family.equalsIgnoreCase(new_family))
                     found = true;
 
             if (found) {
