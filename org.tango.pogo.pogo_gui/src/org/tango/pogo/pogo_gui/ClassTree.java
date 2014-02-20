@@ -954,46 +954,46 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         return false;
     }
     //===============================================================
-
     /**
      * Add a new object on specified collection
      *
      * @param itemClass Class item object
      */
     //===============================================================
-    @SuppressWarnings({"ConstantConditions"})
     void addItem(String itemClass) {
-        for (int i = 0; i < root.getChildCount(); i++) {
-            DefaultMutableTreeNode collecNode =
+
+        String  str = itemClass.toLowerCase();
+        for (int i=0 ; i<root.getChildCount() ; i++) {
+            DefaultMutableTreeNode collectionNode =
                     (DefaultMutableTreeNode) root.getChildAt(i);
             switch (i) {
                 case CLASS_PROPERTIES:
-                    if (itemClass.toLowerCase().indexOf("class prop") > 0)
-                        addItem(collecNode, false);
+                    if (str.contains("class prop"))
+                        addItem(collectionNode, false);
                     break;
                 case DEV_PROPERTIES:
-                    if (itemClass.toLowerCase().indexOf("device prop") > 0)
-                        addItem(collecNode, false);
+                    if (str.contains("device prop"))
+                        addItem(collectionNode, false);
                     break;
                 case COMMANDS:
-                    if (itemClass.toLowerCase().indexOf("command") > 0)
-                        addItem(collecNode, false);
+                    if (str.contains("command"))
+                        addItem(collectionNode, false);
                     break;
                 case STATES:
-                    if (itemClass.toLowerCase().indexOf("state") > 0)
+                    if (str.contains("state"))
                         addItem(false);
                     break;
                 case SCALAR_ATTRIBUTE:
-                    if (itemClass.toLowerCase().indexOf("scalar") > 0)
-                        addItem(collecNode, false);
+                    if (str.contains("scalar"))
+                        addItem(collectionNode, false);
                     break;
                 case SPECTRUM_ATTRIBUTE:
-                    if (itemClass.toLowerCase().indexOf("spectrum") > 0)
-                        addItem(collecNode, false);
+                    if (str.contains("spectrum"))
+                        addItem(collectionNode, false);
                     break;
                 case IMAGE_ATTRIBUTE:
-                    if (itemClass.toLowerCase().indexOf("image") > 0)
-                        addItem(collecNode, false);
+                    if (str.contains("image"))
+                        addItem(collectionNode, false);
                     break;
             }
         }
@@ -1205,7 +1205,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     private void checkForPollingPeriodOverloaded(PogoDeviceClass pogoDeviceClass) {
 
         ArrayList<DeviceClass>  ancestors  = deviceClass.getAncestors();
-        if (ancestors.size()==0)
+        if (ancestors.isEmpty())
             return; //  No ancestor -> Nothing overloaded.
 
         EList<OverlodedPollPeriodObject>    newPollPeriods =
@@ -1375,7 +1375,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             collecNode = getCollectionNode(DEV_PROPERTIES);
         else
             collecNode = getCollectionNode(CLASS_PROPERTIES);
-        for (int i = 0; i < collecNode.getChildCount(); i++) {
+        for (int i=0 ; i<collecNode.getChildCount() ; i++) {
             DefaultMutableTreeNode node =
                     (DefaultMutableTreeNode) collecNode.getChildAt(i);
             if (node.toString().equals(name))
@@ -1393,10 +1393,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             ArrayList<State>     vs = getAllStates();
             ArrayList<Attribute> va = getAllAttributes();
             ArrayList<Command>   vc = getAllCommands();
-            if (vs.size() == 0)
-                throw new Exception("Thre is no states defined !");
-            if (vc.size() == 0 && va.size() == 0)
-                throw new Exception("Thre is no commands and no attributes defined !");
+            if (vs.isEmpty())
+                throw new Exception("There is no states defined !");
+            if (vc.isEmpty() && va.isEmpty())
+                throw new Exception("There is no commands and no attributes defined !");
         } catch (Exception e) {
             ErrorPane.showErrorMessage(this, null, e);
             return;
@@ -2113,12 +2113,12 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         private void menuActionPerformed(ActionEvent evt) {
             //	Check component source
             Object obj = evt.getSource();
-            int cmdidx = 0;
+            int itemIndex = 0;
             for (int i = 0; i < menuLabels.length; i++)
                 if (getComponent(OFFSET + i) == obj)
-                    cmdidx = i;
+                    itemIndex = i;
 
-            switch (cmdidx) {
+            switch (itemIndex) {
                 case EDIT_CLASS:
                     editClass();
                     break;
@@ -2152,6 +2152,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     break;
                 case REMOVE_ITEM:
                     removeSelectedItem();
+                    break;
                 case EDIT_SRC_CODE:
                     editSourceCode();
                     break;

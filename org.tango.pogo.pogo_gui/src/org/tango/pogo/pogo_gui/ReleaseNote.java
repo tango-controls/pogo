@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Jan 27 13:36:01 CET 2014)</Center><Br>\n" + 
+		"	(Generated Thu Feb 20 10:44:45 CET 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.3.5 - 20/02/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Add a protected region in main method for python class<Br>\n" + 
 		"<li><b>Pogo-8.3.4 - 27/01/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Add a protected region for programmer methods in python class<Br>\n" + 
 		"&nbsp; &nbsp; Fix a problem in changing language.<Br>\n" + 

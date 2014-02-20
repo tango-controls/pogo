@@ -543,8 +543,9 @@ public class OldPogoModel {
             pogo.gene.DevState old_state = oldStates.stateAt(i);
             State state = OAWutils.factory.createState();
             String name = old_state.name;
-            if (name.startsWith("Tango::"))
-                name = name.substring("Tango::".length());
+            String namespace = "Tango::";
+            if (name.startsWith(namespace))
+                name = name.substring(namespace.length());
             state.setName(name);
             state.setDescription(old_state.description);
 

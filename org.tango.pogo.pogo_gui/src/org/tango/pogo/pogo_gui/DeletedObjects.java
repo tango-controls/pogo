@@ -115,7 +115,8 @@ public class DeletedObjects extends ArrayList<Object> {
                             comment = "Execute command \"" + cmd.getName();
                             renamed.code = parser.getDeletedObjectsCode(comment);
                             break;
-                        case PogoConst.Python:
+                        default:
+                        //case PogoConst.Python:
                             //  Do nothing (Cannot parse the end of method.
                             break;
                     }
@@ -134,7 +135,8 @@ public class DeletedObjects extends ArrayList<Object> {
                                 comment = "Write attribute " + att.getName();
                                 renamed.writeCode = parser.getDeletedObjectsCode(comment);
                                 break;
-                            case PogoConst.Python:
+                            default:
+                            //case PogoConst.Python:
                                 //  Do nothing (Cannot parse the end of method.
                                 break;
                         }

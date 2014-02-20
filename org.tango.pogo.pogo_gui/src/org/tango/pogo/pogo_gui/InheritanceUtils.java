@@ -549,29 +549,29 @@ public class InheritanceUtils {
         if (status == null)
             return "Inheritance status is null";
 
-        String dbg = "";
+        StringBuilder dbg = new StringBuilder();
         if (Utils.isTrue(System.getenv("DEBUG")))
-            dbg = "  " + Utils.isTrue(status.getAbstract()) + ", " +
-                    Utils.isTrue(status.getInherited()) + ", " +
-                    Utils.isTrue(status.getConcrete()) + ", " +
-                    Utils.isTrue(status.getConcreteHere()) + "  ";
+            dbg.append("  ").append(Utils.isTrue(status.getAbstract())).append(", ")
+                    .append(Utils.isTrue(status.getInherited())).append(", ")
+                    .append(Utils.isTrue(status.getConcrete())).append(", ")
+                    .append(Utils.isTrue(status.getConcreteHere())).append("  ");
 
-        String retStr = dbg;
+        StringBuilder retStr = new StringBuilder(dbg);
         if (Utils.isTrue(status.getConcreteHere())) {
             if (Utils.isTrue(status.getInherited()))
-                retStr += "Overload";
+                retStr.append("Overload");
             else
-                retStr += "Concrete";
+                retStr.append("Concrete");
         } else if (Utils.isTrue(status.getInherited())) {
             if (Utils.isTrue(status.getConcrete()))
-                retStr += "Inherited concrete";
+                retStr.append("Inherited concrete");
             else
-                retStr += "Inherited abstract";
+                retStr.append("Inherited abstract");
         } else if (Utils.isTrue(status.getAbstract()))
-            retStr += "Abstract";
+            retStr.append("Abstract");
         else
-            retStr += "??";
-        return retStr;
+            retStr.append("??");
+        return retStr.toString();
     }
 
     //===============================================================

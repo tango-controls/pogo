@@ -8,6 +8,9 @@
 #
 #-======================================================================
 
+Pogo-8.3.5 - 20/02/2014:
+	Add a protected region in main method for python class
+
 Pogo-8.3.4 - 27/01/2014:
 	Add a protected region for programmer methods in python class
 	Fix a problem in changing language.
