@@ -154,10 +154,9 @@ public class DeviceIdDialog extends JDialog {
                 familyComboBox.setModel(new DefaultComboBoxModel(toVector(PogoProperty.siteClassFamilies)));
             }
 
-            contactTxt.setText(id.getAuthor() + "@" + id.getEmailDomain());
             //  For compatibility with beta release.
             if (Utils.isSet(id.getAuthor()))
-                contactTxt.setText(id.getContact());
+                contactTxt.setText(id.getAuthor() + "@" + id.getEmailDomain());
             else {
                 String mail = java.lang.System.getenv("EMAIL");
                 if (mail == null || mail.length() == 0)
