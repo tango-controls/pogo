@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+<Title> Pogo 7 - The new Tango class generator </Title>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#7F00FF" ALINK="#FF0000">
+
+    <center><h2><u>Generated Code</u></h2></Center>
+    <br>
+    <br>
+    <br>
+    <!--- Generated code --->
+    <Font SIZE="+1"> <b><u> The main differences with Pogo-6 code are: </u></b> </Font>
+    <ul>
+        <li> The source code will not be read when you re-open your project.<br>
+            Only the <b><i> <a href=Warnings.html> .xmi </a></i></b> will be re-loaded.<br>
+            <br>
+        <li> Your own code must be added only between specific tags:<br>
+            On following example, only the grey part will not be overwritten at next code generation.<br><br>
+            <img src=img/Pogo-protected.jpg><br>
+            <br>
+    </ul>
+    <br>
+    <br>
+    <Font SIZE="+1"> <b> Generated code: </b> </Font>
+    <ul>
+        <li> <A HREF="GeneratedCode.html#c++">     C++ code   </a></li>
+        <li> <A HREF="GeneratedCode.html#python">  Python code</a></li>
+        <li> <A HREF="GeneratedCode.html#java">    Java code  </a></li>
+        <li> Projects:</li>
+        <ul>
+            <li> <A HREF="GeneratedCode.html#eclipse">  Eclipse project  </a></li>
+            <li> <A HREF="GeneratedCode.html#idea">     IntelliJIDEA project  </a></li>
+            <li> <A HREF="GeneratedCode.html#windows">  Windows projects  </a></li>
+        </ul>
+    </ul>
+    <br>
+    <br>
+    <br>
+
+    <a name="c++"></a>
+    <Font SIZE="+1"> <b><u> C++ Generated files : </u></b> </Font>
+    <ul>
+        If no inheritance has been specified,
+        the generated classes will inherit from Device_4Impl (Tango-7.x.x or above).<br>
+        The generated code structure will look like to the Pogo-6 code.<br>
+
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <Tr>
+                <Td> <b> MyObject.h </b> </Td>
+                <Td> Containing created class data members and prototypes.</Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObject.cpp </b> </Td>
+                <Td> Containing created class methods for init, commands, read/write attributes, .....</Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObjectClass.h </b> </Td>
+                <Td>
+                    Containing data members and prototypes for MyObjectClass.cpp.<br>
+                    Containing also the Command and Attribute class definitions.
+                </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObjectClass.cpp </b> </Td>
+                <Td>
+                    A singleton  class derived from DeviceClass.<br>
+                    It implements the command and attribute lists and all properties<br>
+                    and methods required by the created class once per process.
+                </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> MyObjectStateMachine.cpp </b> </Td>
+                <Td> Containing created class methods for the state machine. </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> ClassFactory.cpp </b> </Td>
+                <Td>
+                    Containing created class methods creating used class. <br>
+                    In case of multi class server, add other class(es) in the factory.
+                </Td>
+            </Tr>
+            <Tr>
+                <Td> <b> main.cpp </b> </Td>
+                <Td>
+                    Start point of the device server <br>
+                    Most of the time, not touched by the programmer.
+                </Td>
+            </Tr>
+        </table>
+        <br/>
+        <br>
+        <br>
+        <li> A method called <b> add_dynamic_attributes() </b> has been added to the MyObject.cpp.<br>
+            It will be called at startup to create dynamic attributes if any.<br>
+            It is NOT generated if the class is abstract !
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a name="python"></a>
+    <Font SIZE="+1"> <b><u> Python Generated files : </u></b> </Font>
+    <ul>
+        If no inheritance has been specified,
+        the generated classes will inherit from Device_4Impl (Tango-7.x.x or above).<br>
+        The generated code structure will look like to the Pogo-6 code.<br>
+        <br>
+        The python templates have been implemented by Sebastien Gara at <a href="http://www.nexeya.com/" target="new">
+        Nexeya </a><br>
+        <br>
+        <br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <Tr>
+                <Td> <b> MyObject.py </b> </Td>
+                <Td> Containing created class python code.</Td>
+            </Tr>
+        </table>
+    </ul>
+    <br>
+    <br>
+    <br>
+
+    <a name="java"></a>
+    <Font SIZE="+1"> <b><u> Java Generated files : </u></b> </Font>
+    <ul>
+        The generated Java classes are not compatible with the server API from TangORB. <br>
+        They are compatible only with the new design from Gwenaelle Abeille at <a
+                href="http://www.synchrotron-soleil.fr/" target="new">Soleil</a>.<br>
+        See <b>Devices in Java</b> at:
+             <a href=http://www.tango-controls.org/download> http://www.tango-controls.org/download </a><br><br>
+        This API is still under development.<br>
+        Inheritance and event system are not available. <br>
+        <br>
+        <br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <Tr>
+                <Td> <b> org.tango.myobject.MyObject.java </b> </Td>
+                <Td> Containing created class java code.</Td>
+            </Tr>
+            <Tr>
+                <Td> <b> org.tango.myobject.MyDynamicAttribute.java </b> </Td>
+                <Td> Containing created java code for dynamic attribute class if any.</Td>
+            </Tr>
+        </table>
+    </ul>
+    <br>
+    <br>
+    <br>
+
+    <a name="eclipse"></a>
+    <Font SIZE="+1"> <b><u> Eclipse project files : </u></b> </Font>
+    <ul>
+        To resolve Tango keywords, Eclipse needs Tango include files.<br>
+        The include path depends on installation and platform.<br>
+        Start Pogo with  <b><i>TANGO_INCLUDE</i></b> environment variable.<br>
+        Two files will be generated to be imported as Eclipse project.<br>
+        <br>
+        <br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <tr>
+                <td><b>.project</b></td>   <td> Global eclipse project </td>
+            </tr>
+            <tr>
+                <td><b>.cproject</b></td>  <td> Tango class project for C++ class</td>
+            </tr>
+        </table>
+    </ul>
+    <br>
+    <br>
+    <br>
+
+    <a name="idea"></a>
+    <Font SIZE="+1"> <b><u> IntelliJIDEA project files : </u></b> </Font>
+    <ul>
+        IntelliJIDEA is an IDE for java project.<br>
+        To resolve Tango keywords, IntelliJIDEA needs Tango server jar file.<br>
+        The JTangoServer.jar path depends on installation and platform.<br>
+        Start Pogo with  <b><i>JSERVER_JAR_FILE</i></b> environment variable.<br>
+        <br>
+        <br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <tr>
+                <td><b>MyObject.iml</b></td>   <td> Global IntelliJIDEA project </td>
+            </tr>
+            <tr>
+                <td><b>.idea/</b></td>  <td> a sub-directory containing all information about project </td>
+            </tr>
+        </table>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <a name="idea"></a>
+    <Font SIZE="+1"> <b><u> Windows project files : </u></b> </Font>
+    <ul>
+        Pogo supports <b> Visual C++</b> projects.<br>
+        It will generate files in a directory name vcxx_proj (where xx is the Visual C release. e.g. vc10_proj)<br>
+        Projects use the <b><i>TANGO_ROOT</i></b> environment variable to find include and library files.<br>
+        It provides 32/64 bits and debug/release modes for each solution.<br>
+        In this directory 5 files are generated..<br>
+        <br>
+        <br>
+        <table BORDER="1"  Cellpadding=10 CELLSPACING=4 >
+            <tr>
+                <td><b>MyObject.sln</b></td>   <td> Global solution project </td>
+            </tr>
+            <tr>
+                <td><b>Class_lib.vcxproj</b></td>
+                        <td> Project to create a static library for the class </td>
+            </tr>
+            <tr>
+                <td><b>Class_dll.vcxproj</b></td>
+                        <td> Project to create a dynamic-link library for the class </td>
+            </tr>
+            <tr>
+                <td><b>Server_static.vcxproj</b></td>
+                        <td> Project to create a static server (using static library)</td>
+            </tr>
+            <tr>
+                <td><b>Server_shared.vcxproj</b></td>
+                        <td> Project to create a dynamic server (using dll)</td>
+            </tr>
+        </table>
+    </ul>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
+
