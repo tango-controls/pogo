@@ -356,7 +356,7 @@ class PythonDevice implements IGenerator {
                 }
             «cls.inheritanceAttrList»
     '''
-        
+
     //====================================================
     //    Main method
     //====================================================
