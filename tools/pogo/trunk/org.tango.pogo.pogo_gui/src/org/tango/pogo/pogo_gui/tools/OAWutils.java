@@ -35,8 +35,6 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import org.eclipse.emf.common.util.EList;
@@ -91,26 +89,24 @@ public class OAWutils {
      *
      * @param xmiFile xmi file name.
      * @return the model loaded form xmi file.
-     * @throws DevFailed in case of I/O error or bad xmi file.
+     * @throws PogoException in case of I/O error or bad xmi file.
      */
     //========================================================================
-    public PogoMultiClasses loadMultiClassesModel(String xmiFile) throws DevFailed {
+    public PogoMultiClasses loadMultiClassesModel(String xmiFile) throws PogoException {
         //  Before everything, update xmi file for compatibility.
         //ParserTool.removeXmiKey("", xmiFile);
 
         //  OK, Now can be loaded
         Object pogoObj = loadTheModel(xmiFile);
         if (!(pogoObj instanceof PogoMultiClasses))
-            Except.throw_exception("BAD_FILE",
-                    "This is not a Pogo Multi Classes file !",
-                    "OAWutils.loadModel()");
+            throw new PogoException("This is not a Pogo Multi Classes file !");
         PogoMultiClasses pmc = (PogoMultiClasses) pogoObj;
         reverseClassOrder(pmc);
         return pmc;
     }
     //========================================================================
     //========================================================================
-    public PogoDeviceClass loadDeviceClassModel(String xmiFile) throws DevFailed {
+    public PogoDeviceClass loadDeviceClassModel(String xmiFile) throws PogoException {
             return loadDeviceClassModel(xmiFile, true);
     }
     //========================================================================
@@ -120,10 +116,10 @@ public class OAWutils {
      * @param xmiFile xmi file name.
      * @param checkVersion  will check for version compatibility if true
      * @return the model loaded form xmi file.
-     * @throws DevFailed in case of I/O error or bad xmi file.
+     * @throws PogoException in case of I/O error or bad xmi file.
      */
     //========================================================================
-    public PogoDeviceClass loadDeviceClassModel(String xmiFile, boolean checkVersion) throws DevFailed {
+    public PogoDeviceClass loadDeviceClassModel(String xmiFile, boolean checkVersion) throws PogoException {
         //  Before everything, update xmi file for compatibility.
         if (checkVersion) {
         	ParserTool.renameXmiKey("<inheritance ", "<inheritances ", xmiFile);
@@ -132,9 +128,7 @@ public class OAWutils {
         //  OK, Now can be loaded
         Object pogoObj = loadTheModel(xmiFile);
         if (!(pogoObj instanceof PogoDeviceClass))
-            Except.throw_exception("BAD_FILE",
-                    "This is not a Pogo Device Class file !",
-                    "OAWutils.loadModel()");
+            throw new PogoException("This is not a Pogo Device Class file !");
         return (PogoDeviceClass) pogoObj;
     }
     //========================================================================
@@ -143,10 +137,10 @@ public class OAWutils {
      *
      * @param xmiFileName xmi file name.
      * @return the model loaded form xmi file.
-     * @throws DevFailed in case of I/O error or bad xmi file.
+     * @throws PogoException in case of I/O error or bad xmi file.
      */
     //========================================================================
-    private Object loadTheModel(String xmiFileName) throws DevFailed {
+    private Object loadTheModel(String xmiFileName) throws PogoException {
 
         //  remove unused key(s)
         ParserTool.removeXmiKey("htmlInheritance", xmiFileName);
@@ -159,8 +153,7 @@ public class OAWutils {
             resource.load(null);
         } catch (final IOException e) {
             //e.printStackTrace();
-            Except.throw_exception("IOException",
-                    e.toString(), "DeviceClass.loadModel()");
+            throw new PogoException(e.toString());
         }
 
         PogoSystem sys = (PogoSystem) resource.getContents().get(0);
@@ -174,10 +167,10 @@ public class OAWutils {
      * Generate xmi file for PogoDeviceClass object and code associeted.
      *
      * @param pogoClass The model
-     * @throws DevFailed in case of I/O error
+     * @throws PogoException in case of I/O error
      */
     //========================================================================
-    public void generate(PogoDeviceClass pogoClass) throws DevFailed {
+    public void generate(PogoDeviceClass pogoClass) throws PogoException {
         //	to prevent null pointer
         if (pogoClass.getDescription().getIdentification()==null)
         	pogoClass.getDescription().setIdentification(factory.createClassIdentification());
@@ -204,8 +197,7 @@ public class OAWutils {
             resource.save(Collections.EMPTY_MAP);
             System.out.println(xmiFileName + " generated");
         } catch (IOException e) {
-            Except.throw_exception("IOException",
-                    e.toString(), "OAWutils.generate()");
+            throw new PogoException(e.toString());
         }
 
         //	Start the code generation
@@ -228,7 +220,7 @@ public class OAWutils {
                     "	from:\n" + xmiFileName);
             runWorkflow(params);
         }
-        catch(DevFailed e) {
+        catch(PogoException e) {
             Utils.manageHtmlDirectory(pogoClass, false);
             throw e;
         }
@@ -245,10 +237,10 @@ public class OAWutils {
      * Generate xmi file for PogoDeviceClass object and code associated.
      *
      * @param multiClasses The multi classes project
-     * @throws DevFailed in case of I/O error
+     * @throws PogoException in case of I/O error
      */
     //========================================================================
-    public void generate(PogoMultiClasses multiClasses) throws DevFailed {
+    public void generate(PogoMultiClasses multiClasses) throws PogoException {
         PogoSystem sys = factory.createPogoSystem();
 
         reverseClassOrder(multiClasses);
@@ -273,8 +265,7 @@ public class OAWutils {
             resource.save(Collections.EMPTY_MAP);
             System.out.println(xmiFileName + " generated");
         } catch (IOException e) {
-            Except.throw_exception("IOException",
-                    e.toString(), "DeviceClass.generate()");
+            throw new PogoException(e.toString());
         }
 
         //	Start the code generation
@@ -293,7 +284,7 @@ public class OAWutils {
     }
     //========================================================================
     //========================================================================
-	public void runWorkflow(HashMap<String, String> params) throws DevFailed {
+	public void runWorkflow(HashMap<String, String> params) throws PogoException {
         try {
             java.net.URL	url = getClass().getResource(backend);
             URI uri = URI.createURI(url.toString());
@@ -307,8 +298,7 @@ public class OAWutils {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Except.throw_exception("WORKFLOW_FAILED", e.toString(),
-                    "OAWutils.runWorkflow()");
+            throw new PogoException(e.toString());
         }
 	}
     //========================================================================
@@ -316,10 +306,10 @@ public class OAWutils {
      * Do a pre-processing for additional info (e.g.: comments, tables,....
      *
      * @param pogoClass Specified PogoDeviceClass object
-     * @throws DevFailed in case of changing protected area ID failed.
+     * @throws PogoException in case of changing protected area ID failed.
      */
     //========================================================================
-    private void doPreProcessing(PogoDeviceClass pogoClass) throws DevFailed {
+    private void doPreProcessing(PogoDeviceClass pogoClass) throws PogoException {
         //	Set the institute field (could have changed)
         String institute = System.getenv("INSTITUTE");
         if (institute == null)
@@ -587,7 +577,7 @@ public class OAWutils {
     }
     //========================================================================
     //========================================================================
-    private PogoSystem buildPogoSystem(PogoDeviceClass pogoClass) throws DevFailed {
+    private PogoSystem buildPogoSystem(PogoDeviceClass pogoClass) throws PogoException {
         PogoSystem sys = factory.createPogoSystem();
 
         //	pre-process the class for additional info

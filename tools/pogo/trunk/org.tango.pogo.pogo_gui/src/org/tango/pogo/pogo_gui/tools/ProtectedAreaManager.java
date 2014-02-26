@@ -42,9 +42,6 @@ package org.tango.pogo.pogo_gui.tools;
  * @author verdier
  */
 
-
-import fr.esrf.Tango.DevFailed;
-
 import java.util.ArrayList;
 
 public class ProtectedAreaManager {
@@ -52,7 +49,7 @@ public class ProtectedAreaManager {
 
     //===============================================================
     //===============================================================
-    public ProtectedAreaManager(String fileName) throws DevFailed {
+    public ProtectedAreaManager(String fileName) throws PogoException {
         String code = ParserTool.readFile(fileName);
         int start;
         int end = 0;
@@ -73,7 +70,7 @@ public class ProtectedAreaManager {
 
     //===============================================================
     //===============================================================
-    public void setClassName(String newClassName, String fileName) throws DevFailed {
+    public void setClassName(String newClassName, String fileName) throws PogoException {
         //  Get code
         String code = ParserTool.readFile(fileName);
 

@@ -47,7 +47,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 //===============================================================
-
 /**
  * Class Description: Basic Dialog Class to display info
  *
@@ -56,7 +55,6 @@ import java.util.ArrayList;
 //===============================================================
 
 
-@SuppressWarnings({"serial"})
 public class StateMachineDialog extends JDialog implements PogoConst {
     private PogoDeviceClass pogo_class;
     private int retVal = JOptionPane.OK_OPTION;
@@ -103,7 +101,6 @@ public class StateMachineDialog extends JDialog implements PogoConst {
 
 
     //===============================================================
-
     /**
      * Creates new form StateMachineDialog
      *

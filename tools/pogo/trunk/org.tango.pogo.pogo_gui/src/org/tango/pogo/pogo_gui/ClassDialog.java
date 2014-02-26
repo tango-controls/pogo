@@ -36,11 +36,10 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -388,8 +387,8 @@ public class ClassDialog extends JDialog {
             return;
         try {
             IDdialog.checkInputs();
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
             return;
         }
         nameText.setText(classname);
@@ -457,7 +456,7 @@ public class ClassDialog extends JDialog {
         } catch (Exception e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             Utils.getInstance().stopSplashRefresher();
-            ErrorPane.showErrorMessage(this, null, e);
+            PogoException.popup(this, e);
             return false;
         }
         return true;
@@ -578,9 +577,9 @@ public class ClassDialog extends JDialog {
                         //  Set the language as inherited one
                         setLanguage(dc.getPogoDeviceClass().getDescription().getLanguage());
 
-                    } catch (DevFailed e) {
-                        if (!e.errors[0].reason.equals("CANCEL"))
-                            ErrorPane.showErrorMessage(this, file.getAbsolutePath(), e);
+                    } catch (PogoException e) {
+                        if (!e.toString().equals("CANCEL"))
+                            e.popup(this);
                     }
                 }
             }

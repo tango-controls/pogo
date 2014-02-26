@@ -35,9 +35,7 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.packaging.ConfigurePackagingDialog;
 import org.tango.pogo.pogo_gui.packaging.Packaging;
 import org.tango.pogo.pogo_gui.tools.*;
@@ -102,10 +100,10 @@ public class PogoGUI extends JFrame {
      *
      * @param filename xmi file where device class is defined
      *                 (do not try to load if null).
-     * @throws fr.esrf.Tango.DevFailed in case of failure
+     * @throws PogoException in case of failure
      */
     //=======================================================
-    public PogoGUI(String filename) throws DevFailed {
+    public PogoGUI(String filename) throws PogoException {
         this();
         checkLoadAtStartup(filename);
     }
@@ -115,10 +113,10 @@ public class PogoGUI extends JFrame {
      *
      * @param deviceClass   DeviceClass object to be edited by Pogo
      * @param forceModified Force the edito modified value to this boolean value.
-     * @throws fr.esrf.Tango.DevFailed in case of failure
+     * @throws PogoException in case of failure
      */
     //=======================================================
-    public PogoGUI(DeviceClass deviceClass, boolean forceModified) throws DevFailed {
+    public PogoGUI(DeviceClass deviceClass, boolean forceModified) throws PogoException {
         this();
 
         //	Build users_tree to display info
@@ -135,10 +133,10 @@ public class PogoGUI extends JFrame {
     /**
      * Creates new form PogoGUI and load device class
      *
-     * @throws fr.esrf.Tango.DevFailed in case of failure
+     * @throws PogoException in case of failure
      */
     //=======================================================
-    public PogoGUI() throws DevFailed {
+    public PogoGUI() throws PogoException {
         useDisplay = true;
         initComponents();
         PogoProperty.init();
@@ -221,7 +219,7 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     //=======================================================
-    private void customizeMenus() throws DevFailed {
+    private void customizeMenus()  {
         fileMenu.setMnemonic('F');
         newItem.setMnemonic('N');
         newItem.setAccelerator(KeyStroke.getKeyStroke('N', InputEvent.CTRL_MASK));
@@ -812,7 +810,7 @@ public class PogoGUI extends JFrame {
                 Utils.getInstance().stopSplashRefresher();
                 cursor = new Cursor(Cursor.DEFAULT_CURSOR);
                 setCursor(cursor);
-                ErrorPane.showErrorMessage(this, null, e);
+                PogoException.popup(this, e);
                 return false;
             }
             cursor = new Cursor(Cursor.DEFAULT_CURSOR);
@@ -840,7 +838,7 @@ public class PogoGUI extends JFrame {
                     return;
                 } catch (Exception e) {
                     Utils.getInstance().stopSplashRefresher();
-                    ErrorPane.showErrorMessage(this, null, e);
+                    PogoException.popup(this, e);
                 }
 
             }
@@ -1021,7 +1019,7 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     //=======================================================
-    private DeviceClass generateFromOldAndReload(DeviceClass devclass, String filename) throws DevFailed {
+    private DeviceClass generateFromOldAndReload(DeviceClass devclass, String filename) throws PogoException {
         Utils.getInstance().stopSplashRefresher();
         Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
         setCursor(cursor);
@@ -1156,8 +1154,8 @@ public class PogoGUI extends JFrame {
             if (multiClassesPanel == null)
                 multiClassesPanel = new MultiClassesPanel(this, null);
             multiClassesPanel.setVisible(true);
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            PogoException.popup(this, e);
         }
     }//GEN-LAST:event_multiItemActionPerformed
 
@@ -1250,17 +1248,19 @@ public class PogoGUI extends JFrame {
             cursor = new Cursor(Cursor.DEFAULT_CURSOR);
             setCursor(cursor);
             Utils.getInstance().stopSplashRefresher();
-        } catch (DevFailed e) {
+        }
+        catch (PogoException e) {
             Utils.getInstance().stopSplashRefresher();
 
             if (startup)
-                System.err.println(e.errors[0].desc);
-            else if (!e.errors[0].reason.equals("CANCEL")) {
-                ErrorPane.showErrorMessage(this, filename, e);
+                System.err.println(e);
+            else if (!e.toString().equals("CANCEL")) {
+                PogoException.popup(this, e);
                 if (class_panels.getPanelNameAt(0) == null && runningApplis.size() > 1)
                     setVisible(false);
             }
         }
+
         cursor = new Cursor(Cursor.DEFAULT_CURSOR);
         setCursor(cursor);
         class_panels.checkWarnings();

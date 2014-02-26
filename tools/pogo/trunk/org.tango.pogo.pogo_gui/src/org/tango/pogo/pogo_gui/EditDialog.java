@@ -35,7 +35,6 @@
 
 package org.tango.pogo.pogo_gui;
 
-
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.tango.pogo.pogo_gui.tools.Utils;
 

@@ -36,8 +36,6 @@
 package org.tango.pogo.pogo_gui.tools;
 
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 
@@ -54,10 +52,10 @@ public class ParserTool {
      *
      * @param filename file to be read.
      * @return the file content read.
-     * @throws fr.esrf.Tango.DevFailed in case of failure during read file.
+     * @throws PogoException in case of failure during read file.
      */
     //===============================================================
-    public static String readFile(String filename) throws DevFailed {
+    public static String readFile(String filename) throws PogoException {
         String str = "";
         try {
             FileInputStream fid = new FileInputStream(filename);
@@ -69,8 +67,7 @@ public class ParserTool {
             if (nb > 0)
                 str = takeOffWindowsChar(inStr);
         } catch (Exception e) {
-            Except.throw_exception("READ_FAILED",
-                    e.toString(), "ParserTool.readFile()");
+            throw new PogoException(e.toString());
         }
         return str;
     }
@@ -116,7 +113,7 @@ public class ParserTool {
 
     //===============================================================
     //===============================================================
-    public static void writeFile(String filename, String code) throws DevFailed {
+    public static void writeFile(String filename, String code) throws PogoException {
         try {
             String  s = System.getenv("LINUX");
             if (s==null || !s.equals("true"))
@@ -125,15 +122,14 @@ public class ParserTool {
             fidout.write(code.getBytes());
             fidout.close();
         } catch (Exception e) {
-            Except.throw_exception("WRITE_FAILED",
-                    e.toString(), "ParserTool.readFile()");
+            throw new PogoException(e.toString());
         }
     }
 
     //===============================================================
     //===============================================================
     public static void modifyProtectedAreaID(String path, String fileName, String oldID, String newID)
-            throws DevFailed {
+            throws PogoException {
         oldID = "PROTECTED REGION ID(" + oldID + ") ENABLED START";
         newID = "PROTECTED REGION ID(" + newID + ") ENABLED START";
 
@@ -141,7 +137,7 @@ public class ParserTool {
         String code;
         try {
             code = readFile(path + '/' + fileName);
-        } catch (DevFailed e) {
+        } catch (PogoException e) {
             //  If failed -> do nothing
             return;
         }
@@ -162,10 +158,10 @@ public class ParserTool {
      * Convert html file to java String
      *
      * @param filename HTML specified file name
-     * @throws fr.esrf.Tango.DevFailed in case of failure during write file.
+     * @throws PogoException in case of failure during write file.
      */
     //===============================================================
-    public static void convertHTML(String filename) throws DevFailed {
+    public static void convertHTML(String filename) throws PogoException {
         try {
             String code = readFile(filename);
             StringBuffer sb = new StringBuffer();
@@ -191,8 +187,7 @@ public class ParserTool {
             code = sb.toString();
             System.out.println(code);
         } catch (Exception e) {
-            Except.throw_exception("READ_FAILED",
-                    e.toString(), "ParserTool.readFile()");
+            throw new PogoException(e.toString());
         }
     }
 
@@ -217,10 +212,10 @@ public class ParserTool {
      *
      * @param key      the key name to be removed
      * @param fileName the xmi file where key must be removed
-     * @throws DevFailed if read x,i failed
+     * @throws PogoException if read x,i failed
      */
     //===============================================================
-    public static void removeXmiKey(String key, String fileName) throws DevFailed {
+    public static void removeXmiKey(String key, String fileName) throws PogoException {
         //  Rea=d file and split lines
         boolean modified = false;
         key = " " + key + "=\"";
@@ -263,11 +258,11 @@ public class ParserTool {
      * @param srcKey   the old key name to be renamed
      * @param newKey   the new key name
      * @param fileName the xmi file where key must be removed
-     * @throws DevFailed if read x,i failed
+     * @throws PogoException if read x,i failed
      */
     //===============================================================
     @SuppressWarnings("UnusedDeclaration")
-    public static void renameXmiKey(String srcKey, String newKey, String fileName) throws DevFailed {
+    public static void renameXmiKey(String srcKey, String newKey, String fileName) throws PogoException {
         //  Rea=d file and split lines
         boolean modified = false;
         boolean startingLine = srcKey.startsWith("<");
@@ -310,7 +305,7 @@ public class ParserTool {
 
     //===============================================================
     //===============================================================
-    public static void convertProtectedAreaKey(String srcKey, String newKey, String fileName) throws DevFailed {
+    public static void convertProtectedAreaKey(String srcKey, String newKey, String fileName) throws PogoException {
         //  Rea=d file and split lines (do not use StringTokenizer to do not loose empty lines
         boolean modified = false;
         String code = readFile(fileName);
@@ -351,7 +346,7 @@ public class ParserTool {
     //===============================================================
     //===============================================================
     public static void convertProtectedAreaKeyForStateMachine(
-            ArrayList<String> attributeNames, String fileName, boolean toXtend) throws DevFailed {
+            ArrayList<String> attributeNames, String fileName, boolean toXtend) throws PogoException {
         //  Rea=d file and split lines (do not use StringTokenizer to do not loose empty lines
         boolean modified = false;
         String code = readFile(fileName);
@@ -448,8 +443,8 @@ public class ParserTool {
                 new Back2Height(cls);
             }
         }
-        catch(DevFailed e) {
-            System.err.println(e.errors[0].desc);
+        catch(PogoException e) {
+            System.err.println(e);
         }
     }
      //===============================================================
@@ -464,8 +459,8 @@ public class ParserTool {
             }
             else
                 displaySyntax();
-        } catch (DevFailed e) {
-            Except.print_exception_stack(e);
+        } catch (PogoException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -485,8 +480,8 @@ public class ParserTool {
         try {
             new Back2Height(fileName);
         }
-        catch (DevFailed e) {
-            Except.print_exception(e);
+        catch (PogoException e) {
+            System.err.println(e);
         }
     }
     //===============================================================
@@ -498,14 +493,14 @@ public class ParserTool {
         private String  path = ".";
         private String  xmiFileName;
         //===============================================================
-        private Back2Height(PogoDeviceClass cls) throws DevFailed {
+        private Back2Height(PogoDeviceClass cls) throws PogoException {
             className = cls.getName();
             path      = cls.getDescription().getSourcePath();
             xmiFileName = path + "/" + className + ".xmi";
             convert();
         }
          //===============================================================
-        private Back2Height(String xmiFileName) throws DevFailed {
+        private Back2Height(String xmiFileName) throws PogoException {
 
             this.xmiFileName = xmiFileName;
             //  truncate for path and class names.
@@ -524,7 +519,7 @@ public class ParserTool {
             convert();
         }
         //===============================================================
-        private void convert() throws DevFailed {
+        private void convert() throws PogoException {
             System.out.println("Path = " + path);
             System.out.println("ClassName = " + className);
 
@@ -551,7 +546,7 @@ public class ParserTool {
             convertProtectedAreaKeyForStateMachine(attributeNames, fileName, true);
         }
         //===============================================================
-        private void manageDevClassCpp(String fileName) throws DevFailed {
+        private void manageDevClassCpp(String fileName) throws PogoException {
 
             System.out.println("cleaning protected regions in " + fileName);
             String  srcKey = className + "Class::";
@@ -559,7 +554,7 @@ public class ParserTool {
             ParserTool.convertProtectedAreaKey(srcKey, newKey, fileName);
         }
         //===============================================================
-        private void manageDevClassH(String fileName) throws DevFailed {
+        private void manageDevClassH(String fileName) throws PogoException {
 
             System.out.println("cleaning protected regions in " + fileName);
             boolean modified = false;

@@ -36,12 +36,10 @@
 package org.tango.pogo.pogo_gui;
 
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -406,8 +404,8 @@ public class DeviceIdDialog extends JDialog {
 
         try {
             checkInputs();
-        } catch (Exception e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
             return;
         }
 
@@ -493,33 +491,25 @@ public class DeviceIdDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    public void checkInputs() throws DevFailed {
+    public void checkInputs() throws PogoException {
 
         //	Check if Contact email is coherent
         String contact = contactTxt.getText().trim();
         int pos = contact.indexOf('@');
         if (pos <= 0)
-            Except.throw_exception("SyntaxError",
-                    "email is not available",
-                    "DeviceId.CheckInputs()");
+            throw new PogoException("email is not available");
 
         int pos2 = contact.indexOf('.', pos);
         if (pos2 <= 0 || contact.length() - pos2 < 3)
-            Except.throw_exception("SyntaxError",
-                    "email is not available",
-                    "DeviceId.CheckInputs()");
+            throw new PogoException("email is not available");
 
         String family = (String) familyComboBox.getSelectedItem();
         if (family == null || family.trim().length() == 0)
-            Except.throw_exception("SyntaxError",
-                    "Class family is not available",
-                    "DeviceId.CheckInputs()");
+            throw new PogoException("Class family is not available");
 
         String bus = (String) busComboBox.getSelectedItem();
         if (bus == null || bus.trim().length() == 0)
-            Except.throw_exception("SyntaxError",
-                    "Bus is not available",
-                    "DeviceId.CheckInputs()");
+            throw new PogoException("Bus is not available");
 
         //System.out.println(getInputs());
     }

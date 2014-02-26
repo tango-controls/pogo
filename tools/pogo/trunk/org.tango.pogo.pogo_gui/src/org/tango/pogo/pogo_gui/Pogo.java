@@ -42,11 +42,9 @@ package org.tango.pogo.pogo_gui;
  * @author verdier
  */
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -63,18 +61,18 @@ public class Pogo {
     private static final String[] known_actions = {"-src", "-doc", "-multi", "-?"};
 
     private DeviceClass deviceClass = null;
-    private DevFailed devFailed = null;
+    private PogoException pogoException = null;
     private ArrayList<String> sourcefiles = new ArrayList<String>();
 
     //===============================================================
     //===============================================================
-    public Pogo() throws DevFailed {
+    public Pogo() throws PogoException {
         PogoProperty.init().displayProperties();    //	Load them
     }
 
     //===============================================================
     //===============================================================
-    public Pogo(String filename) throws DevFailed {
+    public Pogo(String filename) throws PogoException {
         this();
         sourcefiles.add(filename);
     }
@@ -96,15 +94,15 @@ public class Pogo {
      */
     //===============================================================
     public boolean hasFailed() {
-        return (devFailed != null);
+        return (pogoException != null);
     }
     //===============================================================
     /**
-     * @return DevFailed Object if generate doe/doc has failed
+     * @return PogoException Object if generate doe/doc has failed
      */
     //===============================================================
-    public DevFailed getDevFailed() {
-        return devFailed;
+    public PogoException getPogoException() {
+        return pogoException;
     }
     //===============================================================
     /**
@@ -127,12 +125,12 @@ public class Pogo {
                     OAWutils.getInstance().generate(pogoclass);
                 }
             }
-        } catch (DevFailed e) {
-            Except.print_exception(e);
-            devFailed = e;
+        } catch (PogoException e) {
+           System.err.println(e);
+            pogoException = e;
         } catch (Exception e) {
             e.printStackTrace();
-            devFailed = buildDevFailed(e.toString());
+            pogoException = new PogoException(e.toString());
         }
     }
     //===============================================================
@@ -161,12 +159,12 @@ public class Pogo {
                     deviceClass.generateDocFromOldModel(filename, null);   //  same place
                 }
             }
-        } catch (DevFailed e) {
-            Except.print_exception(e);
-            devFailed = e;
+        } catch (PogoException e) {
+            System.err.println(e);
+            pogoException = e;
         } catch (Exception e) {
             e.printStackTrace();
-            devFailed = buildDevFailed(e.toString());
+            pogoException = new PogoException(e.toString());
         }
     }
 
@@ -180,7 +178,7 @@ public class Pogo {
                 new PogoGUI(sourcefiles.get(0));
         } catch (Exception e) {
             Utils.getInstance().stopSplashRefresher();
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
+            PogoException.popup(new JFrame(), e);
             System.exit(-1);
         } catch (Error e) {
             Utils.getInstance().stopSplashRefresher();
@@ -196,16 +194,14 @@ public class Pogo {
     private void startPogoMulti() {
         try {
             if (!Utils.osIsUnix())
-                Except.throw_exception("BAD_OS",
-                        "Multi classes project is available only on Linux",
-                        "Pogo.startPogoMulti()");
+                throw new PogoException("Multi classes project is available only on Linux");
             if (sourcefiles.size() == 0)
                 new MultiClassesPanel(new JFrame(), null).setVisible(true);
             else
                 new MultiClassesPanel(new JFrame(), sourcefiles.get(0)).setVisible(true);
         } catch (Exception e) {
             Utils.getInstance().stopSplashRefresher();
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
+            PogoException.popup(new JFrame(), e);
             System.exit(-1);
         } catch (Error e) {
             Utils.getInstance().stopSplashRefresher();
@@ -216,17 +212,6 @@ public class Pogo {
         }
     }
 
-    //===============================================================
-    //===============================================================
-    private DevFailed buildDevFailed(String desc) {
-        try {
-            Except.throw_exception("POGO_FAILED",
-                    desc, "Pogo class");
-        } catch (DevFailed e) {
-            return e;
-        }
-        return null;    //  Cannot occur.
-    }
 
     //===============================================================
     //===============================================================
@@ -290,8 +275,8 @@ public class Pogo {
                 default:
                     pogo.startPogoGUI();
             }
-        } catch (DevFailed e) {
-            Except.print_exception(e);
+        } catch (PogoException e) {
+            System.err.println(e);
             System.exit(-1);
         } catch (Exception e) {
             e.printStackTrace();

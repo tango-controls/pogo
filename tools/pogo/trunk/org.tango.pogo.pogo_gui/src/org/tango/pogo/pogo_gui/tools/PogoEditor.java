@@ -42,13 +42,10 @@ package org.tango.pogo.pogo_gui.tools;
  * @author verdier
  */
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.State;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.PogoConst;
 
 import javax.swing.*;
@@ -154,7 +151,7 @@ public class PogoEditor {
         try {
             code = ParserTool.readFile(filename);
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
+            PogoException.popup(new JFrame(), e);
         }
 
         int start = 0;
@@ -270,10 +267,10 @@ public class PogoEditor {
      * @param data   class definition (0-class name, 1-path, 3 language)
      * @param prop   specified property
      * @param is_dev is a device property if true, otherwise is a class property
-     * @throws DevFailed if read file failed.
+     * @throws PogoException if read file failed.
      */
     //===============================================================
-    public void editFile(String[] data, Property prop, boolean is_dev) throws DevFailed {
+    public void editFile(String[] data, Property prop, boolean is_dev) throws PogoException {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -305,10 +302,10 @@ public class PogoEditor {
      *
      * @param data      class definition (0-class name, 1-path, 3 language)
      * @param attribute specified attribute
-     * @throws DevFailed if read file failed.
+     * @throws PogoException if read file failed.
      */
     //===============================================================
-    public void editFile(String[] data, Attribute attribute) throws DevFailed {
+    public void editFile(String[] data, Attribute attribute) throws PogoException {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -341,10 +338,10 @@ public class PogoEditor {
      *
      * @param data class definition (0-class name, 1-path, 3 language)
      * @param cmd  specified command
-     * @throws DevFailed if read file failed.
+     * @throws PogoException if read file failed.
      */
     //===============================================================
-    public void editFile(String[] data, Command cmd)  throws DevFailed {
+    public void editFile(String[] data, Command cmd)  throws PogoException {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -373,11 +370,11 @@ public class PogoEditor {
      *
      * @param data  class definition (0-class name, 1-path, 3 language)
      * @param state specified state
-     * @throws DevFailed if read file failed.
+     * @throws PogoException if read file failed.
      */
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})    //  Used only to know that it is for state
-    public void editFile(String[] data, State state)  throws DevFailed {
+    public void editFile(String[] data, State state)  throws PogoException {
         String className = data[0];
         String path = data[1];
         int lang = Utils.getLanguage(data[2]);
@@ -403,7 +400,7 @@ public class PogoEditor {
 
     //===============================================================
     //===============================================================
-    private void startEditor(String filename, int lineNumber) throws DevFailed {
+    private void startEditor(String filename, int lineNumber) throws PogoException {
 
         if (shellEditor == null) {
             launchDesktopEditor(filename);
@@ -419,8 +416,7 @@ public class PogoEditor {
                 Utils.executeShellCmdAndReturn(shell_cmd);
             }
             catch (IOException e) {
-                Except.throw_exception("CannotLaunchEditor",
-                                        e.toString(), "PogoEditor.startEditor()");
+                throw new PogoException(e.toString());
             }
         }
     }
@@ -430,7 +426,7 @@ public class PogoEditor {
 
     //===============================================================
     //===============================================================
-    private void launchDesktopEditor(String fileName) throws DevFailed {
+    private void launchDesktopEditor(String fileName) throws PogoException {
         // Verify if class Desktop is supported :
         if (Desktop.isDesktopSupported()) {
             // get desktop instance
@@ -441,18 +437,14 @@ public class PogoEditor {
                     // launch associated application
                     desktop.open(new File(fileName));
                 } catch (Exception e) {
-                    ErrorPane.showErrorMessage(new JFrame(), null, e);
+                    PogoException.popup(new JFrame(), e);
                 }
             }
             else
-                Except.throw_exception("NoDesktopEditor",
-                        "Desktop.Action.EDIT not supported",
-                        "PogoEditor.launchDesktopEditor()");
+                throw new PogoException("Desktop.Action.EDIT not supported");
         }
         else
-            Except.throw_exception("NoDesktopEditor",
-                    "Desktop  not supported",
-                    "PogoEditor.launchDesktopEditor()");
+            throw new PogoException("Desktop  not supported");
     }
     //===============================================================
     //===============================================================

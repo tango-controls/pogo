@@ -41,9 +41,6 @@ package org.tango.pogo.pogo_gui.tools;
  * @author verdier
  */
 
-
-import fr.esrf.Tango.DevFailed;
-
 import java.util.StringTokenizer;
 
 
@@ -57,14 +54,14 @@ public class PogoParser {
 
     //===============================================================
     //===============================================================
-    public PogoParser(String filename) throws DevFailed {
+    public PogoParser(String filename) throws PogoException {
         this.filename = filename;
         fileCode = ParserTool.readFile(filename);
     }
 
     //===============================================================
     //===============================================================
-    public void write() throws DevFailed {
+    public void write() throws PogoException {
         ParserTool.writeFile(filename, fileCode);
     }
 
@@ -282,7 +279,7 @@ public class PogoParser {
 
     //===============================================================
     //===============================================================
-    public void addObjFiles(String objFiles) throws DevFailed {
+    public void addObjFiles(String objFiles) throws PogoException {
         //	Check if already done
         if (fileCode.indexOf(objFiles) > 0)
             return;

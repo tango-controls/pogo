@@ -42,9 +42,9 @@ package org.tango.pogo.pogo_gui;
  * @author verdier
  */
 
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoParser;
 
 import java.util.ArrayList;
@@ -88,10 +88,10 @@ public class DeletedObjects extends ArrayList<Object> {
     /**
      * parse code for all deleted objects
      * @param filename  file to read code.
-     * @throws DevFailed in case of read file fails.
+     * @throws PogoException in case of read file fails.
      */
     //===============================================================
-    void readCode(String filename) throws DevFailed {
+    void readCode(String filename) throws PogoException {
         int lang = PogoConst.Cpp;
         if (filename.endsWith(".py")) {
             lang = PogoConst.Python;
@@ -142,8 +142,8 @@ public class DeletedObjects extends ArrayList<Object> {
                         }
                 }
             }
-        } catch (DevFailed e) {
-            if (!e.errors[0].desc.contains("FileNotFoundException"))
+        } catch (PogoException e) {
+            if (!e.toString().contains("FileNotFoundException"))
                 throw e;
         }
     }
@@ -151,10 +151,10 @@ public class DeletedObjects extends ArrayList<Object> {
     /**
      * Insert parsed code for all deleted objects
      * @param filename specified file
-     * @throws DevFailed in case of write file fails
+     * @throws PogoException in case of write file fails
      */
     //===============================================================
-    void insertCode(String filename) throws DevFailed {
+    void insertCode(String filename) throws PogoException {
         StringBuilder sb = new StringBuilder();
         for (Object obj : this) {
             OneDeleted deleted = (OneDeleted) obj;

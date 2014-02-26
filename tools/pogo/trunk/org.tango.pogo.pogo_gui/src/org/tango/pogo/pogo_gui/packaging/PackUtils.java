@@ -35,10 +35,9 @@
 
 package org.tango.pogo.pogo_gui.packaging;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import org.tango.pogo.pogo_gui.tools.ParserTool;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -67,15 +66,12 @@ public class PackUtils {
     }
     //===============================================================
     //===============================================================
-    public String readFileFromPackage(String fileName) throws DevFailed {
+    public String readFileFromPackage(String fileName) throws PogoException {
         String str = "";
         try {
             java.net.URL url = getClass().getResource(fileName);
             if (url == null) {
-                Except.throw_exception("LOAD_PACKAGING_FAILED",
-                        "URL for packaging file (" + fileName + ") is null !",
-                        "PackUtils.readFileFromPackage()");
-                return str; //  impossible but remove warning
+                throw new PogoException("URL for packaging file (" + fileName + ") is null !");
             }
             InputStream is = url.openStream();
             int size = is.available();
@@ -84,13 +80,11 @@ public class PackUtils {
             if (size>0)
                 str = ParserTool.takeOffWindowsChar(bytes);
         }
-        catch (DevFailed e) {
+        catch (PogoException e) {
             throw e;
         }
         catch (Exception e) {
-            Except.throw_exception("READ_FAILED",
-                    e.toString(),
-                    "PackUtils.readFileFromPackage()");
+            throw new PogoException(e.toString());
         }
         return str;
     }
@@ -100,10 +94,10 @@ public class PackUtils {
      * @param path      specified path
      * @param extension Specified extension
      * @return the list of file found in specified path with specified extension
-     * @throws DevFailed if path cannot be read
+     * @throws PogoException if path cannot be read
      */
     //===============================================================
-    public static ArrayList<String> getFileList(String path, String extension) throws DevFailed {
+    public static ArrayList<String> getFileList(String path, String extension) throws PogoException {
         ArrayList<String>   fileList = new ArrayList<String>();
         try {
             File inDir = new File(path);
@@ -123,9 +117,7 @@ public class PackUtils {
                 }
             }
         } catch (Exception e) {
-                Except.throw_exception("GetFileListFailed",
-                        e.toString(),
-                        "Packaging.getFileList()");
+                throw new PogoException(e.toString());
         }
 
         return fileList;
@@ -137,7 +129,7 @@ public class PackUtils {
      *	@param command	shell command to be executed.
      */
     //===============================================================
-    public static String executeShellCommand(String command) throws DevFailed {
+    public static String executeShellCommand(String command) throws PogoException {
         StringBuilder   sb = new StringBuilder();
         try {
             Process process = Runtime.getRuntime().exec(command);
@@ -167,15 +159,12 @@ public class PackUtils {
                 while ((str = br.readLine()) != null) {
                     sb.append(str).append("\n");
                 }
-                Except.throw_exception("ExecutionFailed",
-                        "The shell command\n" + command + "\nreturns : " + retVal + " !\n\n" + sb,
-                        "Packaging.executeShellCommand()");
+                throw new PogoException("The shell command\n"
+                        + command + "\nreturns : " + retVal + " !\n\n" + sb);
             }
         }
         catch (Exception e) {
-            Except.throw_exception("ExecutionFailed",
-                    "Failed to execute: " + command + "\n" + e,
-                    "Packaging.executeShellCommand()");
+            throw new PogoException("Failed to execute: " + command + "\n" + e);
         }
         //PackUtils..println(sb);
         return sb.toString();
@@ -216,19 +205,17 @@ public class PackUtils {
      * Build specified directories in spacified path
      * @param directories   Specified directories
      * @param path          Specified path
-     * @throws DevFailed    if a least one directory creation failed.
+     * @throws PogoException if a least one directory creation failed.
      */
     //===============================================================
-    public static void buildDirectories(final String[] directories, final String path) throws DevFailed {
+    public static void buildDirectories(final String[] directories, final String path) throws PogoException {
         //  create out path if not exists
         for (String directory : directories) {
             String    dirName = path +"/"+directory;
             File dir = new File(dirName);
             if (!dir.exists()) {
                 if (!dir.mkdir())
-                    Except.throw_exception("CannotCreate",
-                            "Directory \'" + dirName + "\' cannot be created",
-                            "Packaging.buildDirectories()");
+                    throw new PogoException("Directory \'" + dirName + "\' cannot be created");
                 PackUtils.println(path + " created.");
             }
         }

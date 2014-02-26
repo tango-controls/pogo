@@ -36,13 +36,11 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -1189,11 +1187,9 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             boolean overload = overloadBtn.getSelectedObjects() != null;
             name = Utils.checkNameSyntax(name, false);
             if (pogo_gui.itemAlreadyExists(name, PogoConst.SCALAR_ATTRIBUTE))
-                Except.throw_exception("AttributeExists",
-                        "Attribute \"" + name + "\" Already Exists !",
-                        "AttributeDislaog.okBtnActionPerformed()");
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+                throw new PogoException("Attribute \"" + name + "\" Already Exists !");
+        } catch (PogoException e) {
+            e.popup(this);
             return;
         }
         nameText.setText(name);

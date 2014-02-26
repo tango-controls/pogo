@@ -36,14 +36,12 @@
 package org.tango.pogo.pogo_gui;
 
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.*;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PogoEditor;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
@@ -436,9 +434,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             PogoRoot pg_root = (PogoRoot) root.getUserObject();
             String[] data = new String[]{pg_root.name, pg_root.path, pg_root.language};
             if (pg_root.path == null) {
-                Except.throw_exception("NOT_GENERATED",
-                        "Source files not generated !",
-                        "ClassTree.editSourceCode()");
+                throw new PogoException("Source files not generated !");
             }
             if (selection instanceof PogoProperty) {
                 Property prop = ((PogoProperty) selection).value;
@@ -454,8 +450,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 State state = ((PogoState) selection).value;
                 PogoEditor.getInstance().editFile(data, state);
             }
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
         }
     }
     //===============================================================
@@ -662,27 +658,22 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 boolean is_dev = collecNode == root.getChildAt(DEV_PROPERTIES);
                 String target = (is_dev) ? "Device " : "Class ";
                 if (propertyAlreadyExists(copiedItem.toString(), is_dev)) {
-                    Except.throw_exception("ALREADY_EXITS",
-                            target + "Property " + copiedItem + " already exists",
-                            "ClassTree.pasteItem()");
+                    throw new PogoException(target + "Property " +
+                            copiedItem + " already exists");
                 }
                 PogoProperty pp = (PogoProperty) copiedItem;
                 Property src = PropertyDialog.cloneProperty(pp.value);
                 newNode = new DefaultMutableTreeNode(new PogoProperty(src, is_dev));
             } else if (copiedItem instanceof PogoCommand) {
                 if (itemAlreadyExists(copiedItem.toString(), COMMANDS)) {
-                    Except.throw_exception("ALREADY_EXITS",
-                            "Command " + copiedItem + " already exists",
-                            "ClassTree.pasteItem()");
+                    throw new PogoException("Command " + copiedItem + " already exists");
                 }
                 PogoCommand pc = (PogoCommand) copiedItem;
                 Command src = CommandDialog.cloneCommand(pc.value);
                 newNode = new DefaultMutableTreeNode(new PogoCommand(src));
             } else if (copiedItem instanceof PogoAttribute) {
                 if (itemAlreadyExists(copiedItem.toString(), SCALAR_ATTRIBUTE)) {
-                    Except.throw_exception("ALREADY_EXITS",
-                            "Attribute " + copiedItem + " already exists",
-                            "ClassTree.pasteItem()");
+                    throw new PogoException("Attribute " + copiedItem + " already exists");
                 }
                 PogoAttribute pa = (PogoAttribute) copiedItem;
                 Attribute src = AttributeDialog.cloneAttribute(pa.value);
@@ -695,9 +686,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     collecNode = (DefaultMutableTreeNode) root.getChildAt(IMAGE_ATTRIBUTE);
             } else if (copiedItem instanceof PogoState) {
                 if (itemAlreadyExists(copiedItem.toString(), COMMANDS)) {
-                    Except.throw_exception("ALREADY_EXITS",
-                            "State " + copiedItem + " already exists",
-                            "ClassTree.pasteItem()");
+                    throw new PogoException("State " + copiedItem + " already exists");
                 }
                 PogoState ps = (PogoState) copiedItem;
                 State src = StateDialog.cloneState(ps.value);
@@ -710,8 +699,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 setModified(true);
                 editItem();
             }
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
         }
     }
     //===============================================================
@@ -1389,16 +1378,15 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     public void editStateMachine() {
         //  Check if a state machine can be defined.
-        try {
-            ArrayList<State>     vs = getAllStates();
-            ArrayList<Attribute> va = getAllAttributes();
-            ArrayList<Command>   vc = getAllCommands();
-            if (vs.isEmpty())
-                throw new Exception("There is no states defined !");
-            if (vc.isEmpty() && va.isEmpty())
-                throw new Exception("There is no commands and no attributes defined !");
-        } catch (Exception e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        ArrayList<State>     vs = getAllStates();
+        ArrayList<Attribute> va = getAllAttributes();
+        ArrayList<Command>   vc = getAllCommands();
+        if (vs.isEmpty()) {
+            PogoException.popup(this, "There is no states defined !");
+            return;
+        }
+        if (vc.isEmpty() && va.isEmpty()) {
+            PogoException.popup(this, "There is no commands and no attributes defined !");
             return;
         }
 

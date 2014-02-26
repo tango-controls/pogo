@@ -42,8 +42,6 @@ package org.tango.pogo.pogo_gui.tools;
  * @author verdier
  */
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,14 +71,11 @@ public class OldModelParser {
     //===============================================================
     //===============================================================
     public OldModelParser(String filename)
-            throws SecurityException,
-            IOException,
-            DevFailed {
+            throws SecurityException, IOException, PogoException {
         try {
             pogo_class = new pogo.gene.PogoClass(filename);
         } catch (pogo.gene.PogoException e) {
-            Except.throw_exception("PogoException",
-                    e.toString(), "OldModelParser::OldModelParser");
+            throw new PogoException(e.toString());
         }
         initialize(filename);
     }
@@ -88,9 +83,7 @@ public class OldModelParser {
     //===============================================================
     //===============================================================
     public OldModelParser(String filename, pogo.gene.PogoClass pogo_class)
-            throws SecurityException,
-            IOException,
-            DevFailed {
+            throws SecurityException, IOException, PogoException {
         this.pogo_class = pogo_class;
         initialize(filename);
     }
@@ -98,21 +91,17 @@ public class OldModelParser {
     //===============================================================
     //===============================================================
     private void initialize(String filename)
-            throws SecurityException,
-            IOException,
-            DevFailed {
+            throws SecurityException, IOException, PogoException {
         fileCode = ParserTool.readFile(filename);
         int start = fileCode.indexOf("namespace ");
         if (filename.endsWith("main.cpp") ||
                 filename.endsWith(".html"))
             return;    //	nothing to parse
         if (start < 0)
-            Except.throw_exception("BAD_SYNTAX",
-                    "namespace not found in " + filename, "OldModelParser::OldModelParser");
+            throw new PogoException("namespace not found in " + filename);
         start = fileCode.indexOf("{", start) + 2;
         if (start < 0)
-            Except.throw_exception("BAD_SYNTAX",
-                    "Namespace not found", "OldModelParser::OldModelParser");
+            throw new PogoException("Namespace not found");
 
         parseMethodCode(start);
     }

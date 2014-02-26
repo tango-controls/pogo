@@ -35,9 +35,7 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -201,7 +199,7 @@ public class PogoConfiguration extends JDialog {
                 doClose();
             }
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(this, null, e);
+            PogoException.popup(this, e);
         }
 
     }//GEN-LAST:event_okBtnActionPerformed
@@ -323,7 +321,7 @@ public class PogoConfiguration extends JDialog {
     //===============================================================
     //===============================================================
 
-    private void manageFamilyList() throws DevFailed {
+    private void manageFamilyList() throws PogoException {
         siteLabel.setText(PogoProperty.siteName);
 
         families = PogoProperty.siteClassFamilies;
@@ -376,7 +374,7 @@ public class PogoConfiguration extends JDialog {
             manageFamilyList();
             setVisible(true);
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
+            PogoException.popup(new JFrame(), e);
         }
         return retVal;
     }
@@ -404,7 +402,7 @@ public class PogoConfiguration extends JDialog {
             PogoProperty.init();
             new PogoConfiguration(null).showDialog();
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
+            PogoException.popup(new JFrame(), e);
             System.exit(0);
         }
     }

@@ -35,10 +35,9 @@
 
 package org.tango.pogo.pogo_gui.packaging;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import org.tango.pogo.pogo_gui.tools.ParserTool;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -83,10 +82,10 @@ public class Packaging {
     /**
      * Will create the packaging class for code generation
      * @param deviceClass  Class to create packaging.
-     * @throws DevFailed If template files are not found.
+     * @throws PogoException If template files are not found.
      */
     //===============================================================
-    public Packaging(final PogoDeviceClass deviceClass, String packageVersion, String author) throws DevFailed {
+    public Packaging(final PogoDeviceClass deviceClass, String packageVersion, String author) throws PogoException {
         this.packageVersion = packageVersion;
         String  className = deviceClass.getName();
         String  path = deviceClass.getDescription().getSourcePath();
@@ -101,10 +100,10 @@ public class Packaging {
     /**
      * Will create the packaging class for code generation
      * @param deviceClasses  Classes to create packaging.
-     * @throws DevFailed If template files are not found.
+     * @throws PogoException If template files are not found.
      */
     //===============================================================
-    public Packaging(final PogoMultiClasses deviceClasses, String packageVersion, String author) throws DevFailed {
+    public Packaging(final PogoMultiClasses deviceClasses, String packageVersion, String author) throws PogoException {
         this.packageVersion = packageVersion;
         String  className = deviceClasses.getName();
         String  path = deviceClasses.getSourcePath();
@@ -120,7 +119,7 @@ public class Packaging {
     }
     //===============================================================
     //===============================================================
-    private void manageInheritances(List<Inheritance> inheritances) throws DevFailed {
+    private void manageInheritances(List<Inheritance> inheritances) throws PogoException {
         for (Inheritance inheritance : inheritances) {
             String name = inheritance.getClassname();
             if (!(name.startsWith("Device") && name.endsWith("Impl")))
@@ -129,26 +128,22 @@ public class Packaging {
     }
     //===============================================================
     //===============================================================
-    private void initialize(final String name, final String path, final String author) throws DevFailed {
+    private void initialize(final String name, final String path, final String author) throws PogoException {
         packageName   = name;
         packagePath   = path + "/packaging";
         packageAuthor = author;
         if (!isAvailable())
-            Except.throw_exception("PropertyNotSet",
-                    "Property \'PACKAGING_HOME\' not set",
-                    "Packaging.Packaging()");
+            throw new PogoException("Property \'PACKAGING_HOME\' not set");
 
         //  Check if templates exist
         for (PackFile packFile : packFiles) {
             if (PackUtils.getInstance().fileExistsInPackage(PackageDir + packFile.name))
-                Except.throw_exception("TemplateNotFound",
-                        "Template file \'" + packFile.name + "\' not found",
-                        "Packaging.Packaging()");
+                throw new PogoException("Template file \'" + packFile.name + "\' not found");
         }
     }
     //===============================================================
     //===============================================================
-    private void copyTemplates() throws DevFailed {
+    private void copyTemplates() throws PogoException {
         for (PackFile packFile : packFiles) {
             String targetFile = packagePath + "/" + packFile.name;
 
@@ -196,7 +191,7 @@ public class Packaging {
     }
     //===============================================================
     //===============================================================
-    private void updateTemplate(String fileName) throws DevFailed {
+    private void updateTemplate(String fileName) throws PogoException {
         String  code = ParserTool.readFile(fileName);
         if (fileName.endsWith("src/Makefile.am"))
             code = addSourceReferences(code);
@@ -209,7 +204,7 @@ public class Packaging {
     }
     //===============================================================
     //===============================================================
-    private void updateConfig(String fileName, ArrayList<String> headers, ArrayList<String> functions) throws DevFailed {
+    private void updateConfig(String fileName, ArrayList<String> headers, ArrayList<String> functions) throws PogoException {
         String  code = ParserTool.readFile(fileName);
         code = code.replaceAll("TEMPLATE_CHECK_HEADERS", PackUtils.buildConfigureList(headers));
         code = code.replaceAll("TEMPLATE_CHECK_FUNCS", PackUtils.buildConfigureList(functions));
@@ -222,12 +217,12 @@ public class Packaging {
      * @param path      specified path
      * @param fileName specified file
      * @param srcPath specified files path
-     * @throws DevFailed if link creation failed
+     * @throws PogoException if link creation failed
      */
     //===============================================================
     private void createSourceLinks(final String path,
                                   final String fileName,
-                                  final String srcPath) throws DevFailed {
+                                  final String srcPath) throws PogoException {
         ArrayList<String>   list = new ArrayList<String>();
         list.add(fileName);
         createSourceLinks(path, list, srcPath);
@@ -238,12 +233,12 @@ public class Packaging {
      * @param path      specified path
      * @param fileNames specified files
      * @param srcPath specified files path
-     * @throws DevFailed if link creation failed
+     * @throws PogoException if link creation failed
      */
     //===============================================================
     private void createSourceLinks(final String path,
                                   final ArrayList<String> fileNames,
-                                  final String srcPath) throws DevFailed {
+                                  final String srcPath) throws PogoException {
 
         //  ToDo When 1.7 will be used --> use java.nio.file.Files.createLink()
         try {
@@ -269,9 +264,7 @@ public class Packaging {
             script.delete();
         }
         catch (Exception e) {
-            Except.throw_exception("LinkFailed",
-                    "Cannot create link: " + e,
-                    "Packaging.createSourceLinks()");
+            throw new PogoException("Cannot create link: " + e);
         }
     }
     //===============================================================
@@ -284,10 +277,10 @@ public class Packaging {
     //===============================================================
     /**
      * Star the code generation for packaging
-     * @throws DevFailed if code generation failed.
+     * @throws PogoException if code generation failed.
      */
     //===============================================================
-    public void generate(ArrayList<String> headers, ArrayList<String> functions) throws DevFailed {
+    public void generate(ArrayList<String> headers, ArrayList<String> functions) throws PogoException {
         PackUtils.buildDirectories(directories, packagePath);
         copyTemplates();
 
@@ -389,7 +382,7 @@ public class Packaging {
         private ArrayList<String>   headers;
         private ArrayList<String>   sources;
         //===========================================================
-        private PackClass(String name, String path) throws DevFailed {
+        private PackClass(String name, String path) throws PogoException {
             this.name = name;
             this.path = path;
 
@@ -429,8 +422,8 @@ public class Packaging {
                         ParserTool.writeFile(packagePath + "/Makefile.am", code);
                     }
                 }
-                catch (DevFailed e) {
-                    Except.print_exception(e);
+                catch (PogoException e) {
+                    System.err.println(e);
                 }
             }
         }

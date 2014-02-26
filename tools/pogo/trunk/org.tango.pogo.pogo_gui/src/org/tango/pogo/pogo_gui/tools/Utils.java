@@ -35,14 +35,12 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
+
 import fr.esrf.tangoatk.widget.util.JSmoothProgressBar;
 import fr.esrf.tangoatk.widget.util.Splash;
-import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.PogoConst;
+import org.eclipse.emf.common.util.EList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,6 +86,7 @@ public class Utils {
     public ImageIcon cppLogo;
     public ImageIcon javaLogo;
     public ImageIcon pythonLogo;
+    public ImageIcon errorIcon;
 
     //===============================================================
     //===============================================================
@@ -123,6 +122,8 @@ public class Utils {
         cppLogo    = getIcon("CppLogo.gif",    0.66);
         javaLogo   = getIcon("JavaLogo.gif",   0.12);
         pythonLogo = getIcon("PythonLogo.gif", 0.33);
+
+        errorIcon = getIcon("error.gif");
 
         //  Initialize pogoGuiRevision
         getPogoGuiRevision();
@@ -204,7 +205,6 @@ public class Utils {
         }
         return new ImageIcon(url);
     }
-
     //===============================================================
     //===============================================================
     public static String getRelativeFilename(String absFilename) {
@@ -242,7 +242,6 @@ public class Utils {
         return PogoConst.fileExtention[getLanguage(lang)];
     }
     //============================================================================
-
     /**
      * Build the execute method's name from command's name
      *
@@ -360,12 +359,10 @@ public class Utils {
 
     //===============================================================
     //===============================================================
-    public static String checkNameSyntax(String name, boolean isStateStatus) throws DevFailed {
+    public static String checkNameSyntax(String name, boolean isStateStatus) throws PogoException {
         if (name == null ||
                 name.length() == 0)
-            Except.throw_exception("BAD_PARM",
-                    "Name not valid !",
-                    "PackUtils.checkNameSyntax()");
+            throw new PogoException("Name (" + name + ") not valid !");
 
         //	check if one word
         StringTokenizer stk = new StringTokenizer(name);
@@ -380,9 +377,7 @@ public class Utils {
         for (int i = 0; i < name.length(); i++) {
             char c = name.charAt(i);
             if ((c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z') && c != '_')
-                Except.throw_exception("SyntaxError",
-                        "Syntax error in name: Do not use '" + c + "' char.",
-                        "PackUtils.checkNameSyntax()");
+                throw new PogoException("Syntax error in name: Do not use '" + c + "' char.");
         }
 
         char firstChar = name.toUpperCase().charAt(0);
@@ -397,16 +392,12 @@ public class Utils {
 
         //	First char must be a letter
         if (firstChar < 'A' || firstChar > 'Z')
-            Except.throw_exception("SyntaxError",
-                    name + ":\nSyntax error in name: The first char must be a letter",
-                    "PackUtils.checkNameSyntax()");
+            throw new PogoException(name + ":\nSyntax error in name: The first char must be a letter");
 
         //	Check for NOT state or Status
         if (!isStateStatus)
             if (name.equals("State") || name.equals("Status"))
-                Except.throw_exception("SyntaxError",
-                        name + "  is reserved",
-                        "PackUtils.checkNameSyntax()");
+                throw new PogoException(name + "  is reserved");
 
         return name;
     }
@@ -493,10 +484,10 @@ public class Utils {
     //===============================================================
     public static void popupError(Component component, String message) {
         try {
-            throw new Exception(message);
-        } catch (Exception e) {
+            throw new PogoException(message);
+        } catch (PogoException e) {
             Utils.getInstance().stopSplashRefresher();
-            ErrorPane.showErrorMessage(component, null, e);
+            e.popup(component);
         }
     }
     //===============================================================
@@ -581,7 +572,7 @@ public class Utils {
         try {
             executeShellCmdAndReturn(cmd);
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(new JFrame(), null, e);
+            PogoException.popup(new JFrame(), e.toString());
         }
     }
     //===============================================================
@@ -672,8 +663,8 @@ public class Utils {
                         ParserTool.writeFile(description.toString(), sb.toString());
                     }
                 }
-                catch(DevFailed e) {
-                    System.err.println(e.errors[0].desc);
+                catch(PogoException e) {
+                    System.err.println(e);
                 }
             }
         }

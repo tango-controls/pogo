@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Feb 20 10:44:45 CET 2014)</Center><Br>\n" + 
+		"	(Generated Wed Feb 26 09:52:13 CET 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.4.0 - 26/02/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Replace TangORB.jar and ATK*.jar by a tango_ulight.jar file,<Br>\n" + 
+		"&nbsp; &nbsp; containing only 2 tangorb classes and 5 atk classes,<Br>\n" + 
+		"&nbsp; &nbsp; to decrease the org.tango.pogo.jar size (~14 Mbytes).<Br>\n" + 
 		"<li><b>Pogo-8.3.5 - 20/02/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Add a protected region in main method for python class<Br>\n" + 
 		"<li><b>Pogo-8.3.4 - 27/01/2014:</b><Br>\n" + 
