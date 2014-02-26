@@ -35,17 +35,15 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.Argument;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.Type;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -556,22 +554,18 @@ public class CommandDialog extends JDialog {
 
 
             if (pogo_gui.itemAlreadyExists(name, PogoConst.COMMANDS))
-                Except.throw_exception("CommandExists",
-                        "Command \"" + name + "\" Already Exists !",
-                        "CommandDialog.okBtnActionPerformed()");
+                throw new PogoException("Command \"" + name + "\" Already Exists !");
 
             if (polledBtn.getSelectedObjects() != null) {
                 //noinspection NestedTryStatement
                 try {
                     Integer.parseInt(polledTxt.getText());
                 } catch (NumberFormatException e) {
-                    Except.throw_exception(e.toString(),
-                            "Bad polling period.",
-                            "CommandDialog.okBtnActionPerformed()");
+                    throw new PogoException("Bad polling period.");
                 }
             }
-        } catch (Exception e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
             return;
         }
         retVal = JOptionPane.OK_OPTION;
@@ -683,7 +677,7 @@ public class CommandDialog extends JDialog {
             //	Re-check name for syntax
             boolean overload = overloadBtn.getSelectedObjects() != null;
             name = Utils.checkNameSyntax(name, overload);
-        } catch (DevFailed e) {
+        } catch (PogoException e) {
             /*	Already verified */
         }
         cmd.setName(name);

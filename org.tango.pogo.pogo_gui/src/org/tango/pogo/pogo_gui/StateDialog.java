@@ -35,14 +35,12 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.State;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -237,13 +235,11 @@ public class StateDialog extends JDialog {
             //	Check if not already defined.
             String name = typeComboBox.getSelectedItem().toString();
             if (pogo_gui.itemAlreadyExists(name, PogoConst.STATES))
-                Except.throw_exception("StateExists",
-                        "State \"" + name + "\" Already Exists !",
-                        "StateDialog.okBtnActionPerformed()");
+                throw new PogoException("State \"" + name + "\" Already Exists !");
 
             doClose(JOptionPane.OK_OPTION);
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
         }
     }
 

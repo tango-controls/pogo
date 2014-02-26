@@ -42,8 +42,6 @@ package org.tango.pogo.pogo_gui.tools;
  * @author verdier
  */
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import org.tango.pogo.pogo_gui.PogoConst;
 
 import javax.swing.*;
@@ -105,7 +103,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    public static PogoProperty init() throws DevFailed {
+    public static PogoProperty init() throws PogoException {
         synchronized (monitor) {
             if (instance == null)
                 instance = new PogoProperty();
@@ -115,7 +113,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private PogoProperty() throws DevFailed {
+    private PogoProperty() throws PogoException {
 	
 		checkEnvironment();
 	
@@ -159,7 +157,7 @@ public class PogoProperty {
 	}
     //===============================================================
     //===============================================================
-    private void loadDefaultProperties() throws DevFailed {
+    private void loadDefaultProperties() throws PogoException {
         try {
             //	fill data members with default  properties if any
             ArrayList<String> vs = loadProperties(defPropFilename);
@@ -173,12 +171,10 @@ public class PogoProperty {
             busNames.add(0, "");
 
         } catch (Exception e) {
-            if (e instanceof DevFailed)
-                throw (DevFailed) e;
+            if (e instanceof PogoException)
+                throw (PogoException) e;
             else
-                Except.throw_exception("LOAD_PROPERTY_FAILED",
-                        e.toString(),
-                        "PogoProperty.loadProperties()");
+                throw new PogoException(e.toString());
         }
     }
 
@@ -223,10 +219,7 @@ public class PogoProperty {
                     multiClassProjectHistory.remove(0);
             }
         } catch (Exception e) {
-            if (e instanceof DevFailed)
-                System.err.println("\nWARNING:	" + ((DevFailed) e).errors[0].desc);
-            else
-                System.err.println("\nWARNING:	" + e);
+            System.err.println("\nWARNING:	" + e);
         }
     }
 
@@ -251,16 +244,13 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private ArrayList<String> loadProperties(String filename) throws DevFailed, IOException {
+    private ArrayList<String> loadProperties(String filename) throws PogoException, IOException {
         //	Get file URL and load it
         java.net.URL url =
                 getClass().getResource(filename);
         //System.out.println("URL file="+url.getFile());
         if (url == null) {
-            Except.throw_exception("LOAD_PROPERTY_FAILED",
-                    "URL for property file (" + filename + ") is null !",
-                    "PogoProperty.loadProperties()");
-            return null;    //  impossible but removing warning
+            throw new PogoException("URL for property file (" + filename + ") is null !");
         }
 
         InputStream is = url.openStream();
@@ -286,7 +276,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private ArrayList<String> loadPropertiesRC(String filename) throws DevFailed, IOException {
+    private ArrayList<String> loadPropertiesRC(String filename) throws PogoException, IOException {
         ArrayList<String> vs = new ArrayList<String>();
         String code = ParserTool.readFile(filename);
         StringTokenizer stk = new StringTokenizer(code, "\n");
@@ -438,11 +428,8 @@ public class PogoProperty {
         try {
             code = ParserTool.readFile(rc_file);
         } catch (Exception e) {
-            //	Display only a warning, but start normaly
-            if (e instanceof DevFailed)
-                System.err.println("\nWARNING:	" + ((DevFailed) e).errors[0].desc);
-            else
-                System.err.println("\nWARNING:	" + e);
+            //	Display only a warning, but start normally
+            System.err.println("\nWARNING:	" + e);
         }
 
 
@@ -453,11 +440,8 @@ public class PogoProperty {
                 System.out.println(rc_file + " updated");
             }
         } catch (Exception e) {
-            //	Display only a warning, but start normaly
-            if (e instanceof DevFailed)
-                System.err.println("\nWARNING:	" + ((DevFailed) e).errors[0].desc);
-            else
-                System.err.println("\nWARNING:	" + e);
+            //	Display only a warning, but start normally
+            System.err.println("\nWARNING:	" + e);
         }
     }
     //===============================================================
@@ -465,7 +449,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    public boolean updateSitePropertyFile(Component parent) throws DevFailed {
+    public boolean updateSitePropertyFile(Component parent) throws PogoException {
         java.net.URL url =
                 getClass().getResource(sitePropFilename);
         String  fileName = null;

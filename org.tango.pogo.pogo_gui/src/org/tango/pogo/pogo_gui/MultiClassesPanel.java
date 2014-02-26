@@ -36,10 +36,8 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.tango.pogo.pogo_gui.packaging.ConfigurePackagingDialog;
 import org.tango.pogo.pogo_gui.packaging.Packaging;
 import org.tango.pogo.pogo_gui.tools.*;
@@ -50,7 +48,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 //=======================================================
-
 /**
  * JFrame Class to display info
  *
@@ -73,16 +70,15 @@ public class MultiClassesPanel extends JFrame {
     private static final PogoFileFilter pogoFilter = new PogoFileFilter("xmi", "Multi Classes");
 
     //=======================================================
-
     /**
      * Creates new form MultiClassesPanel
      *
      * @param parent   JFrame parent instance
      * @param fileName xmi file to be loaded (if not null).
-     * @throws fr.esrf.Tango.DevFailed in case of Site Property not found
+     * @throws PogoException in case of Site Property not found
      */
     //=======================================================
-    public MultiClassesPanel(JFrame parent, String fileName) throws DevFailed {
+    public MultiClassesPanel(JFrame parent, String fileName) throws PogoException {
         this.parent = parent;
         initComponents();
         PogoProperty.init().displayProperties();    //	Load them
@@ -118,8 +114,8 @@ public class MultiClassesPanel extends JFrame {
                 }
             }
         }
-        catch(DevFailed e) {
-            System.err.println(e.errors[0].desc);
+        catch(PogoException e) {
+            System.err.println(e);
         }
     }
     //=======================================================
@@ -383,8 +379,8 @@ public class MultiClassesPanel extends JFrame {
             if (filename != null) {
                 try {
                     loadXmiFile(filename);
-                } catch (DevFailed e) {
-                    ErrorPane.showErrorMessage(this, null, e);
+                } catch (PogoException e) {
+                    e.popup(this);
                 }
             }
         }
@@ -396,8 +392,8 @@ public class MultiClassesPanel extends JFrame {
         try {
             String proj_name = ((JMenuItem) evt.getSource()).getText();
             loadXmiFile(proj_name);
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
         }
     }
 
@@ -416,8 +412,8 @@ public class MultiClassesPanel extends JFrame {
                     String filename = file.getAbsolutePath();
                     try {
                         loadXmiFile(filename);
-                    } catch (DevFailed e) {
-                        ErrorPane.showErrorMessage(this, null, e);
+                    } catch (PogoException e) {
+                        e.popup(this);
                     }
                 }
             }
@@ -426,7 +422,7 @@ public class MultiClassesPanel extends JFrame {
 
     //===============================================================
     //===============================================================
-    public PogoMultiClasses loadXmiFile(String xmiFileName) throws DevFailed {
+    public PogoMultiClasses loadXmiFile(String xmiFileName) throws PogoException {
         PogoMultiClasses pmc = OAWutils.getInstance().loadMultiClassesModel(xmiFileName);
         buildTree(pmc);
         manageRecentMenu(xmiFileName);
@@ -439,7 +435,7 @@ public class MultiClassesPanel extends JFrame {
         try {
             tree = new MultiClassesTree(this, pmc);
             scrollPane.setViewportView(tree);
-        } catch (DevFailed e) {
+        } catch (PogoException e) {
             /* Has been canceled */
         }
     }
@@ -488,9 +484,9 @@ public class MultiClassesPanel extends JFrame {
                 manageRecentMenu(projectFile);
                 return JOptionPane.OK_OPTION;
             }
-        } catch (DevFailed e) {
+        } catch (PogoException e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            ErrorPane.showErrorMessage(this, null, e);
+            e.popup(this);
         }
         return JOptionPane.CANCEL_OPTION;
     }//GEN-LAST:event_generateItemActionPerformed
@@ -513,8 +509,8 @@ public class MultiClassesPanel extends JFrame {
                 tree.setModified(true);
                 scrollPane.setViewportView(tree);
             }
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
         }
     }//GEN-LAST:event_newItemActionPerformed
 
@@ -569,7 +565,6 @@ public class MultiClassesPanel extends JFrame {
     //=======================================================
     @SuppressWarnings("UnusedParameters")
     private void packageItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageItemActionPerformed
-        // TODO add your handling code here:
         PogoMultiClasses multiClasses = tree.getServer();
         if (multiClasses == null)    //	No class defined in tree
             return;
@@ -636,8 +631,8 @@ public class MultiClassesPanel extends JFrame {
                 new MultiClassesPanel(new JFrame(), null).setVisible(true);
             else
                 new MultiClassesPanel(new JFrame(), args[0]).setVisible(true);
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(new Frame(), null, e);
+        } catch (PogoException e) {
+            e.popup(new Frame());
         }
     }
 

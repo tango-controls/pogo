@@ -35,8 +35,6 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.*;
@@ -76,11 +74,11 @@ public class OldPogoModel {
      * Create the object from the specified file.
      *
      * @param filename specified file to create object.
-     * @throws fr.esrf.Tango.DevFailed if cannot load old Pogo model
+     * @throws PogoException if cannot load old Pogo model
      */
     //===============================================================
     @SuppressWarnings({"ConstantConditions"})
-    public OldPogoModel(String filename) throws DevFailed {
+    public OldPogoModel(String filename) throws PogoException {
         new_model = OAWutils.factory.createPogoDeviceClass();
         new_model.setDescription(OAWutils.factory.createClassDescription());
 
@@ -159,9 +157,7 @@ public class OldPogoModel {
             System.out.println(filename + "  Loaded !!!");
         } catch (Exception e) {
             e.printStackTrace();
-            Except.throw_exception("Loading OLD Pogo Class Failed",
-                    e.toString() + "\n\n" + "Loading OLD Pogo Class Failed\n",
-                    "OldPogoModel.OldPogoModel()");
+            throw new PogoException(e.toString() + "\n\n" + "Loading OLD Pogo Class Failed\n");
         }
     }
 
@@ -372,10 +368,10 @@ public class OldPogoModel {
 
             new_parser.write();
             System.out.println("main.cpp  updated");
-        } catch (DevFailed e) {
+        } catch (PogoException e) {
             //  Continue even main.cpp is missing
             System.err.println("================================================================");
-            System.err.println("\t" + e.errors[0].desc);
+            System.err.println("\t" + e);
             System.err.println("================================================================");
         }
     }
@@ -1346,7 +1342,7 @@ public class OldPogoModel {
 
     //===============================================================
     //===============================================================
-    public void generateDocFromOldModel(String oldDescFilename, String targetDir) throws DevFailed, IOException {
+    public void generateDocFromOldModel(String oldDescFilename, String targetDir) throws PogoException, IOException {
         try {
             String newDescFilename = targetDir + "/index.html";
             System.out.println("Trying to add description from " + oldDescFilename + "\n to  " + newDescFilename);
@@ -1363,11 +1359,11 @@ public class OldPogoModel {
                     new_parser.insertInProtectedZone("", "./doc_html/index.html", code);
                 new_parser.write();
             }
-        } catch (DevFailed e) {
-			if (e.errors[0].desc.contains("FileNotFoundException"))
+        } catch (PogoException e) {
+			if (e.toString().contains("FileNotFoundException"))
 	            System.out.println("Cannot add Description.html ! (not found)");
 			else
-	            System.err.println("Cannot add description !" + e.errors[0].desc);
+	            System.err.println("Cannot add description !" + e);
         }
     }
     //===============================================================
@@ -1376,7 +1372,7 @@ public class OldPogoModel {
 
     //=======================================================
     //=======================================================
-    public static int checkForInheritance(JFrame parent, DeviceClass devclass) throws DevFailed {
+    public static int checkForInheritance(JFrame parent, DeviceClass devclass) throws PogoException {
         PogoDeviceClass pg = devclass.getPogoDeviceClass();
         String className = pg.getName();
         Inheritance inheritance =
@@ -1424,7 +1420,7 @@ public class OldPogoModel {
 
     //===============================================================
     //===============================================================
-    private static String getInheritanceDirectory(Inheritance inher) throws DevFailed {
+    private static String getInheritanceDirectory(Inheritance inher) throws PogoException {
         String className = inher.getClassname();
         //	Check if can be found from env.
         String path = InheritanceUtils.checkInheritanceFileFromEnv(null);

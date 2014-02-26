@@ -42,8 +42,6 @@ package org.tango.pogo.pogo_gui.tools;
  */
 
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
 
 public class CompatUtils {
     private String fileCode;
@@ -53,14 +51,14 @@ public class CompatUtils {
 
     //===============================================================
     //===============================================================
-    public CompatUtils(String filename) throws DevFailed {
+    public CompatUtils(String filename) throws PogoException {
         this.filename = filename;
         fileCode = ParserTool.readFile(filename);
     }
 
     //===============================================================
     //===============================================================
-    public void write() throws DevFailed {
+    public void write() throws PogoException {
         ParserTool.writeFile(filename, fileCode);
     }
 
@@ -122,8 +120,8 @@ public class CompatUtils {
             util.write();
             //System.out.println(util);
 
-        } catch (DevFailed e) {
-            Except.print_exception(e);
+        } catch (PogoException e) {
+            System.err.println(e);
         }
     }
     //===============================================================

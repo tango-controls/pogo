@@ -44,14 +44,12 @@ import java.io.File;
 
 
 //===============================================================
-
 /**
  * JDialog Class to display info
  *
  * @author Pascal Verdier
  */
 //===============================================================
-
 
 public class PreferencesDialog extends JDialog {
 

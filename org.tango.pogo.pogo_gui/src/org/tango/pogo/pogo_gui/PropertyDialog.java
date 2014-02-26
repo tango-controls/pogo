@@ -35,15 +35,14 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.TangoDs.Except;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslFactory;
 import fr.esrf.tango.pogo.pogoDsl.PropType;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
@@ -396,14 +395,12 @@ public class PropertyDialog extends JDialog {
             //	Check The inputs first
             String name = nameTxt.getText();
             if (name.length() == 0)
-                Except.throw_exception("Property name ?",
-                        "Property name ?",
-                        "PropertyDialog.okBtnActionPerformed()");
+                throw new PogoException("Property name ?");
 
             name = Utils.checkNameSyntax(name, true);
             nameTxt.setText(name);
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(this, null, e);
+            PogoException.popup(this, e);
             return;
         }
         retVal = JOptionPane.OK_OPTION;

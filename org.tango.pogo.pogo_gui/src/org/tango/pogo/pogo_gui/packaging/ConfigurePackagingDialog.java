@@ -35,11 +35,10 @@
 
 package org.tango.pogo.pogo_gui.packaging;
 
-import fr.esrf.Tango.DevFailed;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -370,9 +369,9 @@ public class ConfigurePackagingDialog extends JDialog {
             JOptionPane.showMessageDialog(this,
                     message, "Packaging", JOptionPane.INFORMATION_MESSAGE);
         }
-        catch (DevFailed e) {
+        catch (PogoException e) {
             setCursor(defaultCursor);
-            ErrorPane.showErrorMessage(this, "Packaging", e);
+            e.popup(this);
         }
 		doClose();
 	}//GEN-LAST:event_okBtnActionPerformed

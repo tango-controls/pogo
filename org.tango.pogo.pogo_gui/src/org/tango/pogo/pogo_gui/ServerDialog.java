@@ -44,7 +44,6 @@ import javax.swing.*;
 
 
 //===============================================================
-
 /**
  * JDialog Class to display info
  *

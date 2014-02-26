@@ -36,8 +36,6 @@
 package org.tango.pogo.pogo_gui.tools;
 
 
-import fr.esrf.Tango.DevFailed;
-
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.util.ArrayList;
@@ -297,7 +295,7 @@ public class PogoFileFilter extends FileFilter {
         String code;
         try {
             code = ParserTool.readFile(fileName);
-        } catch (DevFailed e) {
+        } catch (PogoException e) {
             return false;
         }
         return (code.contains("PROTECTED REGION ID"));

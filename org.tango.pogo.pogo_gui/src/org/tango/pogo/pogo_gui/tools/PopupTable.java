@@ -35,7 +35,6 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 
 import javax.swing.*;
@@ -47,7 +46,6 @@ import java.util.Enumeration;
 
 
 //===============================================================
-
 /**
  * Class Description:
  * Dialog Class to display generic data in a JTable inside a JDialog.

@@ -36,17 +36,10 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoDs.Except;
-import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.*;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.packaging.PackUtils;
-import org.tango.pogo.pogo_gui.tools.OAWutils;
-import org.tango.pogo.pogo_gui.tools.PogoProperty;
-import org.tango.pogo.pogo_gui.tools.TangoServer;
-import org.tango.pogo.pogo_gui.tools.Utils;
+import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import javax.swing.event.TreeExpansionEvent;
@@ -60,7 +53,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 
-public class MultiClassesTree extends JTree implements TangoConst {
+public class MultiClassesTree extends JTree {
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
     private MultiClassesTreePopupMenu menu;
@@ -74,7 +67,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
 
     //===============================================================
     //===============================================================
-    public MultiClassesTree(JFrame parent, PogoMultiClasses pmc) throws DevFailed {
+    public MultiClassesTree(JFrame parent, PogoMultiClasses pmc) throws PogoException {
         super();
         this.parent = parent;
 
@@ -87,7 +80,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
 
     //===============================================================
     //===============================================================
-    public MultiClassesTree(JFrame parent, TangoServer server) throws DevFailed {
+    public MultiClassesTree(JFrame parent, TangoServer server) throws PogoException {
         super();
         this.parent = parent;
 
@@ -113,7 +106,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
 
     //===============================================================
     //===============================================================
-    private void buildTree(TangoServer server) throws DevFailed {
+    private void buildTree(TangoServer server) throws PogoException {
         //  Create the nodes.
         root = new DefaultMutableTreeNode(server);
 
@@ -188,7 +181,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
 
     //===============================================================
     //===============================================================
-    private DeviceClass loadDeviceClass(OneClassSimpleDef _class) throws DevFailed {
+    private DeviceClass loadDeviceClass(OneClassSimpleDef _class) throws PogoException {
         String xmiFile = _class.getSourcePath() + "/" + _class.getClassname();
         if (Utils.isTrue(_class.getPogo6()))
             xmiFile += ".h";
@@ -200,12 +193,9 @@ public class MultiClassesTree extends JTree implements TangoConst {
             try {
                 deviceClass = loadedClasses.getDeviceClass(xmiFile);
                 if (!deviceClass.getPogoDeviceClass().getName().equals(_class.getClassname()))
-                    Except.throw_exception("BAD_FILE",
-                            _class.getClassname() + " file expected !",
-                            "MultiClassesTree.loadDeviceClass()");
-            } catch (DevFailed e) {
-
-                ErrorPane.showErrorMessage(this, null, e);
+                    throw new PogoException(_class.getClassname() + " file expected !");
+            } catch (PogoException e) {
+                e.popup(this);
 
                 //  Display chooser to select a new path
                 int retval = chooser.showOpenDialog(this);
@@ -217,8 +207,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
                         }
                     }
                 } else
-                    Except.throw_exception("NO_FILE",
-                            "Canceled", "MultiClassesTree.loadDeviceClass()");
+                    throw new PogoException("Canceled");
             }
         }
         return deviceClass;
@@ -227,7 +216,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
     //===============================================================
     //===============================================================
     private void createClassNodes(DefaultMutableTreeNode parentNode, EList<OneClassSimpleDef> classes)
-            throws DevFailed {
+            throws PogoException {
         String parentName = (parentNode == root) ? "root" : parentNode.toString();
         for (OneClassSimpleDef _class : classes) {
             EList<String> parentClasses = _class.getParentClasses();
@@ -302,8 +291,8 @@ public class MultiClassesTree extends JTree implements TangoConst {
         if (obj instanceof DeviceClass) {
             try {
                 editedClasses.addClass((DeviceClass) obj);
-            } catch (DevFailed e) {
-                ErrorPane.showErrorMessage(this, null, e);
+            } catch (PogoException e) {
+                e.popup(this);
             }
         }
     }
@@ -370,14 +359,13 @@ public class MultiClassesTree extends JTree implements TangoConst {
                             expandChildren(parentNode);
                         }
                         else
-                            Except.throw_exception("NOT_SUPPORTED",
-                                language + " classes are not supported by multi classes manager !",
-                                "MultiClasesPanel.addClass()");
+                            throw new PogoException(language +
+                                    " classes are not supported by multi classes manager !");
                     }
                 }
             }
-        } catch (DevFailed e) {
-            ErrorPane.showErrorMessage(this, null, e);
+        } catch (PogoException e) {
+            e.popup(this);
         }
     }
 
@@ -570,7 +558,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
     //===============================================================
     private class LoadedClasses extends ArrayList<DeviceClass> {
         //===========================================================
-        private DeviceClass getDeviceClass(String xmiFile) throws DevFailed {
+        private DeviceClass getDeviceClass(String xmiFile) throws PogoException {
             String slash = System.getProperty("file.separator");
             String path = xmiFile.substring(0, xmiFile.lastIndexOf(slash));
             String className = xmiFile.substring(xmiFile.lastIndexOf(slash)+1, xmiFile.lastIndexOf('.'));
@@ -606,7 +594,7 @@ public class MultiClassesTree extends JTree implements TangoConst {
     //===============================================================
     private class EditClasses extends ArrayList<PogoGUI> {
         //===========================================================
-        private void addClass(DeviceClass _class) throws DevFailed {
+        private void addClass(DeviceClass _class) throws PogoException {
             for (PogoGUI pogo : this) {
                 if (pogo.getMainClassName().equals(_class.toString())) {
                     pogo.setVisible(true);

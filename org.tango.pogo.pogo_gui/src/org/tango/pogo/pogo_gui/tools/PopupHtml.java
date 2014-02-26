@@ -35,10 +35,6 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-
-import fr.esrf.TangoDs.TangoConst;
-import fr.esrf.tangoatk.widget.util.ErrorPane;
-
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
@@ -55,7 +51,7 @@ import java.net.URL;
  * @author verdier
  */
 
-public class PopupHtml extends JDialog implements TangoConst {
+public class PopupHtml extends JDialog {
 
     protected JFrame parent;
     protected JEditorPane pane;
@@ -146,7 +142,7 @@ public class PopupHtml extends JDialog implements TangoConst {
             pane.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             pane.setPage(url);
         } catch (IOException e) {
-            ErrorPane.showErrorMessage(parent, null, e);
+            PogoException.popup(parent, e);
         }
         pane.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
@@ -163,7 +159,7 @@ public class PopupHtml extends JDialog implements TangoConst {
 
             urlstr = "file:" + urlFile;
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(parent, null, e);
+            PogoException.popup(parent, e);
             e.printStackTrace();
         }
         return urlstr;
@@ -187,7 +183,7 @@ public class PopupHtml extends JDialog implements TangoConst {
             if (!new File(urlFile).delete())
                 System.err.println("Cannot delete " + urlFile);
         } catch (Exception e) {
-            ErrorPane.showErrorMessage(parent, null, e);
+            PogoException.popup(parent, e);
         }
         setVisible(false);
         dispose();
