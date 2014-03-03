@@ -53,6 +53,8 @@
         eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
         eType="#//Command" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicCommands" upperBound="-1"
+        eType="#//Command" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//Attribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicAttributes" upperBound="-1"
@@ -149,6 +151,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="execMethod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="polledPeriod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDynamic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="excludedStates" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

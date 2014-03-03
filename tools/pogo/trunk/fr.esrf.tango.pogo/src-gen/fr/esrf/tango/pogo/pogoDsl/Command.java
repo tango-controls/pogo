@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getExecMethod <em>Exec Method</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getDisplayLevel <em>Display Level</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getPolledPeriod <em>Polled Period</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getIsDynamic <em>Is Dynamic</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Command#getExcludedStates <em>Excluded States</em>}</li>
  * </ul>
  * </p>
@@ -242,6 +243,32 @@ public interface Command extends EObject
    * @generated
    */
   void setPolledPeriod(String value);
+
+  /**
+   * Returns the value of the '<em><b>Is Dynamic</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Is Dynamic</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Dynamic</em>' attribute.
+   * @see #setIsDynamic(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getCommand_IsDynamic()
+   * @model
+   * @generated
+   */
+  String getIsDynamic();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.Command#getIsDynamic <em>Is Dynamic</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Dynamic</em>' attribute.
+   * @see #getIsDynamic()
+   * @generated
+   */
+  void setIsDynamic(String value);
 
   /**
    * Returns the value of the '<em><b>Excluded States</b></em>' attribute list.

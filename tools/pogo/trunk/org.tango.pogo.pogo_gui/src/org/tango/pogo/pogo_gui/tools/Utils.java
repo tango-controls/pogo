@@ -88,6 +88,8 @@ public class Utils {
     public ImageIcon pythonLogo;
     public ImageIcon errorIcon;
 
+    public static boolean tango9 = Utils.isTrue(System.getenv("TANGO_9"));
+
     //===============================================================
     //===============================================================
     private Utils() {

@@ -137,6 +137,9 @@ class DeviceClassSource {
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»
+		«FOR Command command : cls.dynamicCommands»
+			«cls.classExecuteMethod(command)»
+		«ENDFOR»
 	'''
 
 	
@@ -246,6 +249,7 @@ class DeviceClassSource {
 					//	Add dynamic attributes if any
 					«cls.name» *dev = static_cast<«cls.name» *>(device_list[device_list.size()-i]);
 					dev->add_dynamic_attributes();
+					dev->add_dynamic_commands();
 			
 					//	Check before if database used.
 					if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))

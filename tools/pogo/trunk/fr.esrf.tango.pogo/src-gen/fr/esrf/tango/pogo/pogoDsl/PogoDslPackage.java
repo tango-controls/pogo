@@ -407,13 +407,22 @@ public interface PogoDslPackage extends EPackage
   int POGO_DEVICE_CLASS__COMMANDS = 8;
 
   /**
+   * The feature id for the '<em><b>Dynamic Commands</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_DEVICE_CLASS__DYNAMIC_COMMANDS = 9;
+
+  /**
    * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__ATTRIBUTES = 9;
+  int POGO_DEVICE_CLASS__ATTRIBUTES = 10;
 
   /**
    * The feature id for the '<em><b>Dynamic Attributes</b></em>' containment reference list.
@@ -422,7 +431,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES = 10;
+  int POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES = 11;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -431,7 +440,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__STATES = 11;
+  int POGO_DEVICE_CLASS__STATES = 12;
 
   /**
    * The feature id for the '<em><b>Preferences</b></em>' containment reference.
@@ -440,7 +449,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__PREFERENCES = 12;
+  int POGO_DEVICE_CLASS__PREFERENCES = 13;
 
   /**
    * The feature id for the '<em><b>Additional Files</b></em>' containment reference list.
@@ -449,7 +458,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__ADDITIONAL_FILES = 13;
+  int POGO_DEVICE_CLASS__ADDITIONAL_FILES = 14;
 
   /**
    * The feature id for the '<em><b>Overloded Poll Period Object</b></em>' containment reference list.
@@ -458,7 +467,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT = 14;
+  int POGO_DEVICE_CLASS__OVERLODED_POLL_PERIOD_OBJECT = 15;
 
   /**
    * The number of structural features of the '<em>Pogo Device Class</em>' class.
@@ -467,7 +476,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_DEVICE_CLASS_FEATURE_COUNT = 15;
+  int POGO_DEVICE_CLASS_FEATURE_COUNT = 16;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl <em>Class Description</em>}' class.
@@ -1157,13 +1166,22 @@ public interface PogoDslPackage extends EPackage
   int COMMAND__POLLED_PERIOD = 7;
 
   /**
+   * The feature id for the '<em><b>Is Dynamic</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__IS_DYNAMIC = 8;
+
+  /**
    * The feature id for the '<em><b>Excluded States</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMAND__EXCLUDED_STATES = 8;
+  int COMMAND__EXCLUDED_STATES = 9;
 
   /**
    * The number of structural features of the '<em>Command</em>' class.
@@ -1172,7 +1190,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMAND_FEATURE_COUNT = 9;
+  int COMMAND_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ArgumentImpl <em>Argument</em>}' class.
@@ -2775,6 +2793,17 @@ public interface PogoDslPackage extends EPackage
   EReference getPogoDeviceClass_Commands();
 
   /**
+   * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicCommands <em>Dynamic Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Dynamic Commands</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicCommands()
+   * @see #getPogoDeviceClass()
+   * @generated
+   */
+  EReference getPogoDeviceClass_DynamicCommands();
+
+  /**
    * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAttributes <em>Attributes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3531,6 +3560,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getCommand_PolledPeriod();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.Command#getIsDynamic <em>Is Dynamic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Dynamic</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Command#getIsDynamic()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_IsDynamic();
 
   /**
    * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Command#getExcludedStates <em>Excluded States</em>}'.
@@ -4797,6 +4837,14 @@ public interface PogoDslPackage extends EPackage
     EReference POGO_DEVICE_CLASS__COMMANDS = eINSTANCE.getPogoDeviceClass_Commands();
 
     /**
+     * The meta object literal for the '<em><b>Dynamic Commands</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POGO_DEVICE_CLASS__DYNAMIC_COMMANDS = eINSTANCE.getPogoDeviceClass_DynamicCommands();
+
+    /**
      * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5379,6 +5427,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute COMMAND__POLLED_PERIOD = eINSTANCE.getCommand_PolledPeriod();
+
+    /**
+     * The meta object literal for the '<em><b>Is Dynamic</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__IS_DYNAMIC = eINSTANCE.getCommand_IsDynamic();
 
     /**
      * The meta object literal for the '<em><b>Excluded States</b></em>' attribute list feature.

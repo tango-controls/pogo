@@ -146,6 +146,10 @@
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="commands" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         </elements>
+        <elements xsi:type="xtext:Keyword" value="dynamicCommands:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="dynamicCommands" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        </elements>
         <elements xsi:type="xtext:Keyword" value="attributes:"/>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="attributes" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
@@ -473,6 +477,9 @@
         </elements>
         <elements xsi:type="xtext:Assignment" feature="polledPeriod" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="isDynamic" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="excludedStates:"/>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="excludedStates" operator="+=">

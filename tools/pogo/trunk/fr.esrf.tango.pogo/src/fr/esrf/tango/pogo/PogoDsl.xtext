@@ -98,8 +98,11 @@ PogoDeviceClass:
 		"deviceProperties:"						//	Device Property list
 			(deviceProperties+=Property)*
 
-		"commands:"								//	Device command list
+		"commands:"								//	Device static command list
 			(commands+=Command)*
+
+		"dynamicCommands:"						//	Device dynamic command list
+			(dynamicCommands+=Command)*
 
 		"attributes:"							//	Device static attribute list
 			(attributes+=Attribute)*
@@ -243,6 +246,7 @@ Command:
 		execMethod   = STRING 
 		displayLevel = DisplayLevel
 		polledPeriod = STRING
+		isDynamic    = Boolean
 		"excludedStates:"
 			(excludedStates+=STRING)*;
 

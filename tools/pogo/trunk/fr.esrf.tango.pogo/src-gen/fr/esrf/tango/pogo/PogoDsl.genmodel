@@ -46,6 +46,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/classProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/deviceProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/commands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/dynamicCommands"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/dynamicAttributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/states"/>
@@ -125,6 +126,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/execMethod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/displayLevel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/polledPeriod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/isDynamic"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Command/excludedStates"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Argument">

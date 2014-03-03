@@ -713,6 +713,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         execMethod=STRING 
 	 *         displayLevel=DisplayLevel 
 	 *         polledPeriod=STRING 
+	 *         isDynamic=Boolean 
 	 *         excludedStates+=STRING*
 	 *     )
 	 */
@@ -892,6 +893,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         classProperties+=Property* 
 	 *         deviceProperties+=Property* 
 	 *         commands+=Command* 
+	 *         dynamicCommands+=Command* 
 	 *         attributes+=Attribute* 
 	 *         dynamicAttributes+=Attribute* 
 	 *         states+=State* 

@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getExecMethod <em>Exec Method</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getDisplayLevel <em>Display Level</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getPolledPeriod <em>Polled Period</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getIsDynamic <em>Is Dynamic</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.CommandImpl#getExcludedStates <em>Excluded States</em>}</li>
  * </ul>
  * </p>
@@ -177,6 +178,26 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * @ordered
    */
   protected String polledPeriod = POLLED_PERIOD_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getIsDynamic() <em>Is Dynamic</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIsDynamic()
+   * @generated
+   * @ordered
+   */
+  protected static final String IS_DYNAMIC_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getIsDynamic() <em>Is Dynamic</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIsDynamic()
+   * @generated
+   * @ordered
+   */
+  protected String isDynamic = IS_DYNAMIC_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getExcludedStates() <em>Excluded States</em>}' attribute list.
@@ -473,6 +494,29 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getIsDynamic()
+  {
+    return isDynamic;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIsDynamic(String newIsDynamic)
+  {
+    String oldIsDynamic = isDynamic;
+    isDynamic = newIsDynamic;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.COMMAND__IS_DYNAMIC, oldIsDynamic, isDynamic));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getExcludedStates()
   {
     if (excludedStates == null)
@@ -528,6 +572,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         return getDisplayLevel();
       case PogoDslPackage.COMMAND__POLLED_PERIOD:
         return getPolledPeriod();
+      case PogoDslPackage.COMMAND__IS_DYNAMIC:
+        return getIsDynamic();
       case PogoDslPackage.COMMAND__EXCLUDED_STATES:
         return getExcludedStates();
     }
@@ -568,6 +614,9 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         return;
       case PogoDslPackage.COMMAND__POLLED_PERIOD:
         setPolledPeriod((String)newValue);
+        return;
+      case PogoDslPackage.COMMAND__IS_DYNAMIC:
+        setIsDynamic((String)newValue);
         return;
       case PogoDslPackage.COMMAND__EXCLUDED_STATES:
         getExcludedStates().clear();
@@ -611,6 +660,9 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
       case PogoDslPackage.COMMAND__POLLED_PERIOD:
         setPolledPeriod(POLLED_PERIOD_EDEFAULT);
         return;
+      case PogoDslPackage.COMMAND__IS_DYNAMIC:
+        setIsDynamic(IS_DYNAMIC_EDEFAULT);
+        return;
       case PogoDslPackage.COMMAND__EXCLUDED_STATES:
         getExcludedStates().clear();
         return;
@@ -644,6 +696,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         return DISPLAY_LEVEL_EDEFAULT == null ? displayLevel != null : !DISPLAY_LEVEL_EDEFAULT.equals(displayLevel);
       case PogoDslPackage.COMMAND__POLLED_PERIOD:
         return POLLED_PERIOD_EDEFAULT == null ? polledPeriod != null : !POLLED_PERIOD_EDEFAULT.equals(polledPeriod);
+      case PogoDslPackage.COMMAND__IS_DYNAMIC:
+        return IS_DYNAMIC_EDEFAULT == null ? isDynamic != null : !IS_DYNAMIC_EDEFAULT.equals(isDynamic);
       case PogoDslPackage.COMMAND__EXCLUDED_STATES:
         return excludedStates != null && !excludedStates.isEmpty();
     }
@@ -671,6 +725,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     result.append(displayLevel);
     result.append(", polledPeriod: ");
     result.append(polledPeriod);
+    result.append(", isDynamic: ");
+    result.append(isDynamic);
     result.append(", excludedStates: ");
     result.append(excludedStates);
     result.append(')');

@@ -59,12 +59,22 @@ class Commands {
 	def commandExecutionMethodSignature(PogoDeviceClass cls, Command cmd, boolean declare) {
 		if (declare)
 			//	Method prototype
-			"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
+			if (cmd.isDynamic=="true") {
+				"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
+						 ",Tango::Command &command)" + cmd.checkAbstractForProto  + ";"
+			} else {
+				"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
 						 ")" + cmd.checkAbstractForProto  + ";"
+			}
 		else
 			//	method signature
-			cmd.argout.type.argoutDeclarationForSignature + cls.name +
-				"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +")"
+			if (cmd.isDynamic=="true") {
+				cmd.argout.type.argoutDeclarationForSignature + cls.name +
+					"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +",Tango::Command &command)"
+			} else {
+				cmd.argout.type.argoutDeclarationForSignature + cls.name +
+					"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +")"
+			}
 	}
 	
 	//======================================================
@@ -121,7 +131,11 @@ class Commands {
 		«cls.commandExecutionMethodSignature(command, false)»
 		{
 			«command.argoutDeclaration»
-			DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << endl;
+			«IF command.isDynamic=="true"»
+				DEBUG_STREAM << "«cls.name»::" << command.get_name() << "  - " << device_name << endl;
+			«ELSE»
+				DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << endl;
+			«ENDIF»
 			«cls.openProtectedArea(command.execMethod)»
 			
 			«IF command.name.equals("State")»
@@ -240,10 +254,18 @@ class Commands {
 	//======================================================
 	def returnArgout(PogoDeviceClass cls, Command cmd) '''
 		«IF cmd.argout.type.cppType.equals("void")»
-			((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
+			«IF cmd.isDynamic=="true"»
+				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam», *this));
+			«ELSE»
+				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
+			«ENDIF»
 			return new CORBA::Any();
 		«ELSE»
-			return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
+			«IF cmd.isDynamic=="true"»
+				return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam», *this));
+			«ELSE»
+				return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
+			«ENDIF»
 		«ENDIF»
 	'''
 
@@ -261,6 +283,19 @@ class Commands {
 				"«command.argout.description.oneLineString»",
 				Tango::«command.displayLevel»);
 		command_list.push_back(p«command.name»Cmd);
+	'''
+
+	//======================================================
+	//	Define the factory for dynamic command
+	//======================================================
+	def dynamicCommandFactory(Command command) '''
+		«command.name»Class	*p«command.name»Cmd =
+			new «command.name»Class(cmdname.c_str(),
+				«command.argin.type.cppTypeEnum», «command.argout.type.cppTypeEnum»,
+				"«command.argin.description.oneLineString»",
+				"«command.argout.description.oneLineString»",
+				Tango::«command.displayLevel»);
+		add_command(p«command.name»Cmd, device);
 	'''
 
 	//	Add code for State and status polling if needed

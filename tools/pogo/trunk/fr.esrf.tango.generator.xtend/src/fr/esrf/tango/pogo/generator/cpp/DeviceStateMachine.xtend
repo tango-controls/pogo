@@ -109,6 +109,11 @@ class DeviceStateMachine {
 				«ENDIF»
 			«ENDIF»
 		«ENDFOR»
+		«FOR Command command : cls.dynamicCommands»
+			«IF command.overrides==false»
+				«cls.commandStateMachine(command)»
+			«ENDIF»
+		«ENDFOR»
 	'''
 	
 	//======================================================
