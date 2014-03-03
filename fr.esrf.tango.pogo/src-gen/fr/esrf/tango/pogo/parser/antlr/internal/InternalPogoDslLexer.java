@@ -64,6 +64,7 @@ public class InternalPogoDslLexer extends Lexer {
     public static final int T__47=47;
     public static final int T__81=81;
     public static final int T__44=44;
+    public static final int T__82=82;
     public static final int T__45=45;
     public static final int T__48=48;
     public static final int T__49=49;
@@ -423,10 +424,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:26:7: ( 'attributes:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:26:9: 'attributes:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:26:7: ( 'dynamicCommands:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:26:9: 'dynamicCommands:'
             {
-            match("attributes:"); 
+            match("dynamicCommands:"); 
 
 
             }
@@ -444,10 +445,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:27:7: ( 'dynamicAttributes:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:27:9: 'dynamicAttributes:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:27:7: ( 'attributes:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:27:9: 'attributes:'
             {
-            match("dynamicAttributes:"); 
+            match("attributes:"); 
 
 
             }
@@ -465,10 +466,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:28:7: ( 'states:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:28:9: 'states:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:28:7: ( 'dynamicAttributes:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:28:9: 'dynamicAttributes:'
             {
-            match("states:"); 
+            match("dynamicAttributes:"); 
 
 
             }
@@ -486,10 +487,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:29:7: ( 'overlodedPollPeriodObject:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:29:9: 'overlodedPollPeriodObject:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:29:7: ( 'states:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:29:9: 'states:'
             {
-            match("overlodedPollPeriodObject:"); 
+            match("states:"); 
 
 
             }
@@ -507,10 +508,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:30:7: ( 'Cpp' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:30:9: 'Cpp'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:30:7: ( 'overlodedPollPeriodObject:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:30:9: 'overlodedPollPeriodObject:'
             {
-            match("Cpp"); 
+            match("overlodedPollPeriodObject:"); 
 
 
             }
@@ -528,10 +529,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:31:7: ( 'Java' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:31:9: 'Java'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:31:7: ( 'Cpp' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:31:9: 'Cpp'
             {
-            match("Java"); 
+            match("Cpp"); 
 
 
             }
@@ -549,10 +550,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:32:7: ( 'Python' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:32:9: 'Python'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:32:7: ( 'Java' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:32:9: 'Java'
             {
-            match("Python"); 
+            match("Java"); 
 
 
             }
@@ -570,10 +571,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:33:7: ( 'OPERATOR' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:33:9: 'OPERATOR'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:33:7: ( 'Python' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:33:9: 'Python'
             {
-            match("OPERATOR"); 
+            match("Python"); 
 
 
             }
@@ -591,10 +592,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:34:7: ( 'EXPERT' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:34:9: 'EXPERT'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:34:7: ( 'OPERATOR' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:34:9: 'OPERATOR'
             {
-            match("EXPERT"); 
+            match("OPERATOR"); 
 
 
             }
@@ -612,10 +613,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:35:7: ( 'Scalar' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:35:9: 'Scalar'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:35:7: ( 'EXPERT' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:35:9: 'EXPERT'
             {
-            match("Scalar"); 
+            match("EXPERT"); 
 
 
             }
@@ -633,10 +634,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:36:7: ( 'Spectrum' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:36:9: 'Spectrum'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:36:7: ( 'Scalar' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:36:9: 'Scalar'
             {
-            match("Spectrum"); 
+            match("Scalar"); 
 
 
             }
@@ -654,10 +655,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:37:7: ( 'Image' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:37:9: 'Image'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:37:7: ( 'Spectrum' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:37:9: 'Spectrum'
             {
-            match("Image"); 
+            match("Spectrum"); 
 
 
             }
@@ -675,10 +676,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:38:7: ( 'READ' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:38:9: 'READ'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:38:7: ( 'Image' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:38:9: 'Image'
             {
-            match("READ"); 
+            match("Image"); 
 
 
             }
@@ -696,10 +697,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:39:7: ( 'WRITE' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:39:9: 'WRITE'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:39:7: ( 'READ' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:39:9: 'READ'
             {
-            match("WRITE"); 
+            match("READ"); 
 
 
             }
@@ -717,10 +718,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:40:7: ( 'READ_WRITE' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:40:9: 'READ_WRITE'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:40:7: ( 'WRITE' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:40:9: 'WRITE'
             {
-            match("READ_WRITE"); 
+            match("WRITE"); 
 
 
             }
@@ -738,10 +739,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:41:7: ( 'READ_WITH_WRITE' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:41:9: 'READ_WITH_WRITE'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:41:7: ( 'READ_WRITE' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:41:9: 'READ_WRITE'
             {
-            match("READ_WITH_WRITE"); 
+            match("READ_WRITE"); 
 
 
             }
@@ -759,10 +760,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:42:7: ( 'true' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:42:9: 'true'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:42:7: ( 'READ_WITH_WRITE' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:42:9: 'READ_WITH_WRITE'
             {
-            match("true"); 
+            match("READ_WITH_WRITE"); 
 
 
             }
@@ -780,10 +781,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:43:7: ( 'false' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:43:9: 'false'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:43:7: ( 'true' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:43:9: 'true'
             {
-            match("false"); 
+            match("true"); 
 
 
             }
@@ -801,10 +802,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:44:7: ( 'defaultPropValue:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:44:9: 'defaultPropValue:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:44:7: ( 'false' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:44:9: 'false'
             {
-            match("defaultPropValue:"); 
+            match("false"); 
 
 
             }
@@ -822,10 +823,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:45:7: ( 'excludedStates:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:45:9: 'excludedStates:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:45:7: ( 'defaultPropValue:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:45:9: 'defaultPropValue:'
             {
-            match("excludedStates:"); 
+            match("defaultPropValue:"); 
 
 
             }
@@ -843,10 +844,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:46:7: ( 'readExcludedStates:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:46:9: 'readExcludedStates:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:46:7: ( 'excludedStates:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:46:9: 'excludedStates:'
             {
-            match("readExcludedStates:"); 
+            match("excludedStates:"); 
 
 
             }
@@ -864,10 +865,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:47:7: ( 'writeExcludedStates:' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:47:9: 'writeExcludedStates:'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:47:7: ( 'readExcludedStates:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:47:9: 'readExcludedStates:'
             {
-            match("writeExcludedStates:"); 
+            match("readExcludedStates:"); 
 
 
             }
@@ -885,10 +886,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:48:7: ( 'void' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:48:9: 'void'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:48:7: ( 'writeExcludedStates:' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:48:9: 'writeExcludedStates:'
             {
-            match("void"); 
+            match("writeExcludedStates:"); 
 
 
             }
@@ -906,10 +907,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:49:7: ( 'boolean' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:49:9: 'boolean'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:49:7: ( 'void' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:49:9: 'void'
             {
-            match("boolean"); 
+            match("void"); 
 
 
             }
@@ -927,10 +928,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:50:7: ( 'short' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:50:9: 'short'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:50:7: ( 'boolean' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:50:9: 'boolean'
             {
-            match("short"); 
+            match("boolean"); 
 
 
             }
@@ -948,10 +949,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:51:7: ( 'ushort' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:51:9: 'ushort'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:51:7: ( 'short' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:51:9: 'short'
             {
-            match("ushort"); 
+            match("short"); 
 
 
             }
@@ -969,10 +970,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:52:7: ( 'int' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:52:9: 'int'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:52:7: ( 'ushort' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:52:9: 'ushort'
             {
-            match("int"); 
+            match("ushort"); 
 
 
             }
@@ -990,10 +991,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:53:7: ( 'uint' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:53:9: 'uint'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:53:7: ( 'int' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:53:9: 'int'
             {
-            match("uint"); 
+            match("int"); 
 
 
             }
@@ -1011,10 +1012,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:54:7: ( 'float' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:54:9: 'float'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:54:7: ( 'uint' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:54:9: 'uint'
             {
-            match("float"); 
+            match("uint"); 
 
 
             }
@@ -1032,10 +1033,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:55:7: ( 'double' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:55:9: 'double'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:55:7: ( 'float' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:55:9: 'float'
             {
-            match("double"); 
+            match("float"); 
 
 
             }
@@ -1053,10 +1054,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:56:7: ( 'string' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:56:9: 'string'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:56:7: ( 'double' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:56:9: 'double'
             {
-            match("string"); 
+            match("double"); 
 
 
             }
@@ -1074,10 +1075,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:57:7: ( 'DevVarCharArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:57:9: 'DevVarCharArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:57:7: ( 'string' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:57:9: 'string'
             {
-            match("DevVarCharArray"); 
+            match("string"); 
 
 
             }
@@ -1095,10 +1096,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:58:7: ( 'DevVarShortArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:58:9: 'DevVarShortArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:58:7: ( 'DevVarCharArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:58:9: 'DevVarCharArray'
             {
-            match("DevVarShortArray"); 
+            match("DevVarCharArray"); 
 
 
             }
@@ -1116,10 +1117,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:59:7: ( 'DevVarUShortArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:59:9: 'DevVarUShortArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:59:7: ( 'DevVarShortArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:59:9: 'DevVarShortArray'
             {
-            match("DevVarUShortArray"); 
+            match("DevVarShortArray"); 
 
 
             }
@@ -1137,10 +1138,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:60:7: ( 'DevVarLongArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:60:9: 'DevVarLongArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:60:7: ( 'DevVarUShortArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:60:9: 'DevVarUShortArray'
             {
-            match("DevVarLongArray"); 
+            match("DevVarUShortArray"); 
 
 
             }
@@ -1158,10 +1159,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:61:7: ( 'DevVarULongArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:61:9: 'DevVarULongArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:61:7: ( 'DevVarLongArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:61:9: 'DevVarLongArray'
             {
-            match("DevVarULongArray"); 
+            match("DevVarLongArray"); 
 
 
             }
@@ -1179,10 +1180,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:62:7: ( 'DevVarFloatArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:62:9: 'DevVarFloatArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:62:7: ( 'DevVarULongArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:62:9: 'DevVarULongArray'
             {
-            match("DevVarFloatArray"); 
+            match("DevVarULongArray"); 
 
 
             }
@@ -1200,10 +1201,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:63:7: ( 'DevVarDoubleArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:63:9: 'DevVarDoubleArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:63:7: ( 'DevVarFloatArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:63:9: 'DevVarFloatArray'
             {
-            match("DevVarDoubleArray"); 
+            match("DevVarFloatArray"); 
 
 
             }
@@ -1221,10 +1222,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:64:7: ( 'DevVarStringArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:64:9: 'DevVarStringArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:64:7: ( 'DevVarDoubleArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:64:9: 'DevVarDoubleArray'
             {
-            match("DevVarStringArray"); 
+            match("DevVarDoubleArray"); 
 
 
             }
@@ -1242,10 +1243,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:65:7: ( 'DevVarLongStringArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:65:9: 'DevVarLongStringArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:65:7: ( 'DevVarStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:65:9: 'DevVarStringArray'
             {
-            match("DevVarLongStringArray"); 
+            match("DevVarStringArray"); 
 
 
             }
@@ -1263,10 +1264,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:66:7: ( 'DevVarDoubleStringArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:66:9: 'DevVarDoubleStringArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:66:7: ( 'DevVarLongStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:66:9: 'DevVarLongStringArray'
             {
-            match("DevVarDoubleStringArray"); 
+            match("DevVarLongStringArray"); 
 
 
             }
@@ -1284,10 +1285,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:67:7: ( 'DevState' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:67:9: 'DevState'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:67:7: ( 'DevVarDoubleStringArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:67:9: 'DevVarDoubleStringArray'
             {
-            match("DevState"); 
+            match("DevVarDoubleStringArray"); 
 
 
             }
@@ -1305,10 +1306,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:68:7: ( 'ConstDevString' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:68:9: 'ConstDevString'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:68:7: ( 'DevState' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:68:9: 'DevState'
             {
-            match("ConstDevString"); 
+            match("DevState"); 
 
 
             }
@@ -1326,10 +1327,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:69:7: ( 'DevVarBooleanArray' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:69:9: 'DevVarBooleanArray'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:69:7: ( 'ConstDevString' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:69:9: 'ConstDevString'
             {
-            match("DevVarBooleanArray"); 
+            match("ConstDevString"); 
 
 
             }
@@ -1347,10 +1348,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:70:7: ( 'DevUChar' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:70:9: 'DevUChar'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:70:7: ( 'DevVarBooleanArray' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:70:9: 'DevVarBooleanArray'
             {
-            match("DevUChar"); 
+            match("DevVarBooleanArray"); 
 
 
             }
@@ -1368,10 +1369,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:71:7: ( 'DevLong64' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:71:9: 'DevLong64'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:71:7: ( 'DevUChar' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:71:9: 'DevUChar'
             {
-            match("DevLong64"); 
+            match("DevUChar"); 
 
 
             }
@@ -1389,10 +1390,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:72:7: ( 'DevULong64' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:72:9: 'DevULong64'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:72:7: ( 'DevLong64' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:72:9: 'DevLong64'
             {
-            match("DevULong64"); 
+            match("DevLong64"); 
 
 
             }
@@ -1410,10 +1411,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:73:7: ( 'DevVarLong64Array' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:73:9: 'DevVarLong64Array'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:73:7: ( 'DevULong64' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:73:9: 'DevULong64'
             {
-            match("DevVarLong64Array"); 
+            match("DevULong64"); 
 
 
             }
@@ -1431,10 +1432,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:74:7: ( 'DevVarULong64Array' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:74:9: 'DevVarULong64Array'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:74:7: ( 'DevVarLong64Array' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:74:9: 'DevVarLong64Array'
             {
-            match("DevVarULong64Array"); 
+            match("DevVarLong64Array"); 
 
 
             }
@@ -1452,10 +1453,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:75:7: ( 'DevInt' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:75:9: 'DevInt'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:75:7: ( 'DevVarULong64Array' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:75:9: 'DevVarULong64Array'
             {
-            match("DevInt"); 
+            match("DevVarULong64Array"); 
 
 
             }
@@ -1473,10 +1474,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:76:7: ( 'DevEncoded' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:76:9: 'DevEncoded'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:76:7: ( 'DevInt' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:76:9: 'DevInt'
             {
-            match("DevEncoded"); 
+            match("DevInt"); 
 
 
             }
@@ -1494,10 +1495,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:77:7: ( 'vector<short>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:77:9: 'vector<short>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:77:7: ( 'DevEncoded' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:77:9: 'DevEncoded'
             {
-            match("vector<short>"); 
+            match("DevEncoded"); 
 
 
             }
@@ -1515,10 +1516,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:78:7: ( 'vector<int>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:78:9: 'vector<int>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:78:7: ( 'vector<short>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:78:9: 'vector<short>'
             {
-            match("vector<int>"); 
+            match("vector<short>"); 
 
 
             }
@@ -1536,10 +1537,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:79:7: ( 'vector<float>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:79:9: 'vector<float>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:79:7: ( 'vector<int>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:79:9: 'vector<int>'
             {
-            match("vector<float>"); 
+            match("vector<int>"); 
 
 
             }
@@ -1557,10 +1558,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:80:7: ( 'vector<double>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:80:9: 'vector<double>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:80:7: ( 'vector<float>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:80:9: 'vector<float>'
             {
-            match("vector<double>"); 
+            match("vector<float>"); 
 
 
             }
@@ -1578,10 +1579,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:81:7: ( 'vector<string>' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:81:9: 'vector<string>'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:81:7: ( 'vector<double>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:81:9: 'vector<double>'
             {
-            match("vector<string>"); 
+            match("vector<double>"); 
 
 
             }
@@ -1594,15 +1595,36 @@ public class InternalPogoDslLexer extends Lexer {
     }
     // $ANTLR end "T__81"
 
+    // $ANTLR start "T__82"
+    public final void mT__82() throws RecognitionException {
+        try {
+            int _type = T__82;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:82:7: ( 'vector<string>' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:82:9: 'vector<string>'
+            {
+            match("vector<string>"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__82"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4823:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4823:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4863:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4863:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4823:11: ( '^' )?
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4863:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1611,7 +1633,7 @@ public class InternalPogoDslLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4823:11: '^'
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4863:11: '^'
                     {
                     match('^'); 
 
@@ -1629,7 +1651,7 @@ public class InternalPogoDslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4823:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4863:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1678,10 +1700,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4825:10: ( ( '0' .. '9' )+ )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4825:12: ( '0' .. '9' )+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4865:10: ( ( '0' .. '9' )+ )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4865:12: ( '0' .. '9' )+
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4825:12: ( '0' .. '9' )+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4865:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1695,7 +1717,7 @@ public class InternalPogoDslLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4825:13: '0' .. '9'
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4865:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1727,10 +1749,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1748,10 +1770,10 @@ public class InternalPogoDslLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1767,7 +1789,7 @@ public class InternalPogoDslLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -1783,7 +1805,7 @@ public class InternalPogoDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1808,10 +1830,10 @@ public class InternalPogoDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1827,7 +1849,7 @@ public class InternalPogoDslLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -1843,7 +1865,7 @@ public class InternalPogoDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4827:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4867:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1886,12 +1908,12 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4829:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4829:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4869:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4869:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4829:24: ( options {greedy=false; } : . )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4869:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1916,7 +1938,7 @@ public class InternalPogoDslLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4829:52: .
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4869:52: .
             	    {
             	    matchAny(); 
 
@@ -1946,12 +1968,12 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1964,7 +1986,7 @@ public class InternalPogoDslLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1984,7 +2006,7 @@ public class InternalPogoDslLexer extends Lexer {
                 }
             } while (true);
 
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:40: ( ( '\\r' )? '\\n' )?
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1993,9 +2015,9 @@ public class InternalPogoDslLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:41: ( '\\r' )? '\\n'
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:41: ( '\\r' )? '\\n'
                     {
-                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:41: ( '\\r' )?
+                    // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -2004,7 +2026,7 @@ public class InternalPogoDslLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4831:41: '\\r'
+                            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4871:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2036,10 +2058,10 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4833:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4833:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4873:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4873:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4833:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4873:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -2093,8 +2115,8 @@ public class InternalPogoDslLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4835:16: ( . )
-            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4835:18: .
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4875:16: ( . )
+            // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:4875:18: .
             {
             matchAny(); 
 
@@ -2109,8 +2131,8 @@ public class InternalPogoDslLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=78;
+        // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=79;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -2611,49 +2633,56 @@ public class InternalPogoDslLexer extends Lexer {
                 }
                 break;
             case 72 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:436: RULE_ID
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:436: T__82
+                {
+                mT__82(); 
+
+                }
+                break;
+            case 73 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:442: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 73 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:444: RULE_INT
+            case 74 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:450: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 74 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:453: RULE_STRING
+            case 75 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:459: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 75 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:465: RULE_ML_COMMENT
+            case 76 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:471: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 76 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:481: RULE_SL_COMMENT
+            case 77 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:487: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 77 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:497: RULE_WS
+            case 78 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:503: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 78 :
-                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:505: RULE_ANY_OTHER
+            case 79 :
+                // ../fr.esrf.tango.pogo/src-gen/fr/esrf/tango/pogo/parser/antlr/internal/InternalPogoDsl.g:1:511: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -2674,22 +2703,22 @@ public class InternalPogoDslLexer extends Lexer {
         "\5\47\1\u00f9\1\47\1\uffff\1\u00fb\1\uffff\1\u00fc\1\u00fd\2\47"+
         "\1\uffff\3\47\1\uffff\7\47\1\u010a\15\47\1\u0119\3\47\1\u011d\1"+
         "\uffff\2\47\1\u0120\1\47\1\u0122\1\u0123\1\47\1\uffff\1\47\3\uffff"+
-        "\4\47\1\u012b\5\47\1\u0137\1\47\1\uffff\16\47\1\uffff\1\u0147\1"+
-        "\47\2\uffff\2\47\1\uffff\1\47\2\uffff\5\47\1\uffff\1\u0155\1\uffff"+
-        "\13\47\1\uffff\3\47\1\uffff\4\47\1\u016a\6\47\1\uffff\3\47\1\u0174"+
-        "\1\u0175\4\47\5\uffff\11\47\1\u0185\1\u0186\6\47\1\uffff\2\47\1"+
-        "\uffff\11\47\2\uffff\4\47\2\uffff\11\47\2\uffff\1\47\1\u01a6\17"+
-        "\47\1\u01b6\14\47\1\u01c5\1\uffff\1\u01c6\5\47\1\uffff\1\u01cc\7"+
-        "\47\1\uffff\16\47\2\uffff\1\47\1\u01e4\3\47\1\uffff\1\47\1\uffff"+
-        "\24\47\2\uffff\32\47\1\uffff\6\47\1\u021e\25\47\1\uffff\1\47\1\uffff"+
-        "\1\u0235\2\47\1\u0238\5\47\1\u023e\6\47\2\uffff\4\47\1\uffff\2\47"+
-        "\1\uffff\1\u024b\2\47\1\u024e\1\47\1\uffff\2\47\1\u0252\3\47\2\uffff"+
-        "\4\47\1\uffff\1\u025a\1\u025b\1\uffff\2\47\1\u025e\1\uffff\1\u025f"+
-        "\2\47\1\uffff\3\47\2\uffff\1\u0265\1\47\2\uffff\1\47\1\u0268\1\47"+
-        "\1\uffff\1\47\1\uffff\2\47\1\uffff\1\47\1\uffff\3\47\1\u0271\2\47"+
-        "\1\uffff\2\47\1\u0276\1\47\1\uffff\1\47\1\uffff";
+        "\4\47\1\u012b\5\47\1\u0137\1\47\1\uffff\16\47\1\uffff\1\u0148\1"+
+        "\47\2\uffff\2\47\1\uffff\1\47\2\uffff\5\47\1\uffff\1\u0156\1\uffff"+
+        "\13\47\1\uffff\3\47\1\uffff\4\47\1\u016b\7\47\1\uffff\3\47\1\u0176"+
+        "\1\u0177\4\47\5\uffff\11\47\1\u0187\1\u0188\6\47\1\uffff\2\47\1"+
+        "\uffff\12\47\2\uffff\4\47\2\uffff\11\47\2\uffff\1\47\1\u01a9\20"+
+        "\47\1\u01ba\14\47\1\u01c9\1\uffff\1\u01ca\5\47\1\uffff\1\u01d0\10"+
+        "\47\1\uffff\16\47\2\uffff\1\47\1\u01e9\3\47\1\uffff\1\47\1\uffff"+
+        "\25\47\2\uffff\33\47\1\uffff\7\47\1\u0226\26\47\1\uffff\1\47\1\uffff"+
+        "\1\u023e\2\47\1\u0241\5\47\1\u0247\6\47\2\uffff\2\47\1\uffff\2\47"+
+        "\1\uffff\2\47\1\uffff\1\u0254\2\47\1\u0257\1\47\1\uffff\2\47\1\u025b"+
+        "\3\47\2\uffff\4\47\1\uffff\1\u0263\1\u0264\1\uffff\2\47\1\u0267"+
+        "\1\uffff\1\u0268\2\47\1\uffff\3\47\2\uffff\1\u026e\1\47\2\uffff"+
+        "\1\47\1\u0271\1\47\1\uffff\1\47\1\uffff\2\47\1\uffff\1\47\1\uffff"+
+        "\3\47\1\u027a\2\47\1\uffff\2\47\1\u027f\1\47\1\uffff\1\47\1\uffff";
     static final String DFA12_eofS =
-        "\u0279\uffff";
+        "\u0282\uffff";
     static final String DFA12_minS =
         "\1\0\1\155\1\165\1\uffff\1\154\1\uffff\1\141\1\142\1\145\1\170\1"+
         "\150\1\166\1\157\1\141\1\171\1\120\1\130\1\143\1\155\1\105\1\122"+
@@ -2719,32 +2748,33 @@ public class InternalPogoDslLexer extends Lexer {
         "\1\uffff\1\122\2\uffff\1\155\1\111\1\124\1\154\1\143\1\144\1\60"+
         "\1\uffff\2\150\1\114\1\157\1\154\2\157\1\145\1\162\1\147\1\66\1"+
         "\uffff\1\144\1\156\1\163\1\uffff\1\160\1\72\2\141\1\60\1\145\1\141"+
-        "\1\157\1\151\1\162\1\164\1\uffff\1\123\1\144\1\123\2\60\1\124\1"+
-        "\110\1\165\1\154\1\150\4\uffff\1\141\1\157\1\162\1\150\1\157\1\156"+
-        "\1\157\1\165\1\157\2\60\1\66\1\64\1\145\1\143\1\163\1\145\1\uffff"+
-        "\1\163\1\154\1\uffff\2\163\1\160\2\157\2\164\1\120\1\164\2\uffff"+
-        "\1\105\1\137\1\144\1\165\2\uffff\2\162\1\151\1\157\1\156\1\147\1"+
-        "\141\1\142\1\154\2\uffff\1\64\1\60\1\144\2\145\1\162\1\163\1\106"+
-        "\1\72\1\163\1\145\1\156\1\160\1\162\1\141\1\157\1\162\1\60\1\127"+
-        "\1\145\1\144\1\101\1\164\1\156\1\162\1\147\1\66\1\164\1\154\1\145"+
-        "\1\60\1\uffff\1\60\2\163\1\164\1\145\1\151\1\uffff\1\60\1\162\1"+
-        "\72\1\126\1\151\1\164\1\154\1\151\1\uffff\1\122\1\144\1\145\1\162"+
-        "\1\101\1\147\1\164\1\66\1\162\1\164\1\64\1\101\1\145\1\141\2\uffff"+
-        "\1\72\1\60\1\151\1\163\1\154\1\uffff\1\164\1\uffff\1\141\1\142\1"+
-        "\145\1\154\1\156\1\111\1\123\1\144\2\162\2\101\1\162\1\64\2\162"+
-        "\1\101\1\162\1\101\1\156\2\uffff\1\145\1\72\1\145\1\151\1\154\1"+
-        "\165\1\163\1\120\1\147\1\124\1\164\1\123\1\141\4\162\1\101\1\141"+
-        "\1\151\3\162\1\164\1\101\1\163\1\uffff\1\163\1\145\1\165\1\164\1"+
-        "\72\1\145\1\60\1\105\1\141\1\164\1\171\1\141\2\162\1\141\1\162\1"+
-        "\171\1\156\1\162\1\141\3\162\2\72\1\163\2\145\1\uffff\1\162\1\uffff"+
-        "\1\60\1\164\1\141\1\60\1\171\2\141\1\171\1\162\1\60\1\147\1\141"+
-        "\1\171\1\141\1\151\1\162\2\uffff\2\72\1\163\1\151\1\uffff\1\145"+
-        "\1\164\1\uffff\1\60\2\171\1\60\1\141\1\uffff\1\101\1\171\1\60\1"+
-        "\171\1\156\1\141\2\uffff\1\72\1\157\1\163\1\145\1\uffff\2\60\1\uffff"+
-        "\1\171\1\162\1\60\1\uffff\1\60\1\147\1\171\1\uffff\1\144\1\72\1"+
-        "\163\2\uffff\1\60\1\162\2\uffff\1\101\1\60\1\117\1\uffff\1\72\1"+
-        "\uffff\1\141\1\162\1\uffff\1\142\1\uffff\1\171\1\162\1\152\1\60"+
-        "\1\141\1\145\1\uffff\1\171\1\143\1\60\1\164\1\uffff\1\72\1\uffff";
+        "\1\157\1\151\1\162\1\157\1\164\1\uffff\1\123\1\144\1\123\2\60\1"+
+        "\124\1\110\1\165\1\154\1\150\4\uffff\1\141\1\157\1\162\1\150\1\157"+
+        "\1\156\1\157\1\165\1\157\2\60\1\66\1\64\1\145\1\143\1\163\1\145"+
+        "\1\uffff\1\163\1\154\1\uffff\2\163\1\160\2\157\1\155\2\164\1\120"+
+        "\1\164\2\uffff\1\105\1\137\1\144\1\165\2\uffff\2\162\1\151\1\157"+
+        "\1\156\1\147\1\141\1\142\1\154\2\uffff\1\64\1\60\1\144\2\145\1\162"+
+        "\1\163\1\106\1\72\1\163\1\145\1\156\1\160\1\155\1\162\1\141\1\157"+
+        "\1\162\1\60\1\127\1\145\1\144\1\101\1\164\1\156\1\162\1\147\1\66"+
+        "\1\164\1\154\1\145\1\60\1\uffff\1\60\2\163\1\164\1\145\1\151\1\uffff"+
+        "\1\60\1\162\1\72\1\126\1\141\1\151\1\164\1\154\1\151\1\uffff\1\122"+
+        "\1\144\1\145\1\162\1\101\1\147\1\164\1\66\1\162\1\164\1\64\1\101"+
+        "\1\145\1\141\2\uffff\1\72\1\60\1\151\1\163\1\154\1\uffff\1\164\1"+
+        "\uffff\1\141\1\156\1\142\1\145\1\154\1\156\1\111\1\123\1\144\2\162"+
+        "\2\101\1\162\1\64\2\162\1\101\1\162\1\101\1\156\2\uffff\1\145\1"+
+        "\72\1\145\1\151\1\154\1\144\1\165\1\163\1\120\1\147\1\124\1\164"+
+        "\1\123\1\141\4\162\1\101\1\141\1\151\3\162\1\164\1\101\1\163\1\uffff"+
+        "\1\163\1\145\1\165\1\163\1\164\1\72\1\145\1\60\1\105\1\141\1\164"+
+        "\1\171\1\141\2\162\1\141\1\162\1\171\1\156\1\162\1\141\3\162\2\72"+
+        "\1\163\1\145\1\72\1\145\1\uffff\1\162\1\uffff\1\60\1\164\1\141\1"+
+        "\60\1\171\2\141\1\171\1\162\1\60\1\147\1\141\1\171\1\141\1\151\1"+
+        "\162\2\uffff\2\72\1\uffff\1\163\1\151\1\uffff\1\145\1\164\1\uffff"+
+        "\1\60\2\171\1\60\1\141\1\uffff\1\101\1\171\1\60\1\171\1\156\1\141"+
+        "\2\uffff\1\72\1\157\1\163\1\145\1\uffff\2\60\1\uffff\1\171\1\162"+
+        "\1\60\1\uffff\1\60\1\147\1\171\1\uffff\1\144\1\72\1\163\2\uffff"+
+        "\1\60\1\162\2\uffff\1\101\1\60\1\117\1\uffff\1\72\1\uffff\1\141"+
+        "\1\162\1\uffff\1\142\1\uffff\1\171\1\162\1\152\1\60\1\141\1\145"+
+        "\1\uffff\1\171\1\143\1\60\1\164\1\uffff\1\72\1\uffff";
     static final String DFA12_maxS =
         "\1\uffff\1\156\1\165\1\uffff\1\157\1\uffff\1\141\1\164\1\171\1\170"+
         "\1\164\1\166\1\160\1\141\1\171\1\120\1\130\1\160\1\155\1\105\1\122"+
@@ -2770,55 +2800,56 @@ public class InternalPogoDslLexer extends Lexer {
         "\1\uffff\1\144\1\145\1\172\1\117\2\172\1\165\1\uffff\1\122\3\uffff"+
         "\1\143\1\170\1\74\1\156\1\172\1\125\1\164\1\141\1\156\1\147\1\172"+
         "\1\157\1\uffff\2\141\1\72\1\157\1\163\1\154\1\156\2\164\1\154\1"+
-        "\162\1\164\1\120\1\101\1\uffff\1\172\1\144\2\uffff\1\145\1\166\1"+
+        "\162\1\164\1\120\1\103\1\uffff\1\172\1\144\2\uffff\1\145\1\166\1"+
         "\uffff\1\122\2\uffff\1\155\1\111\1\124\1\154\1\143\1\163\1\172\1"+
         "\uffff\1\150\1\164\1\123\1\157\1\154\2\157\1\145\1\162\1\147\1\66"+
         "\1\uffff\1\144\1\156\1\163\1\uffff\1\160\1\72\2\141\1\172\1\145"+
-        "\1\141\1\157\1\151\1\162\1\164\1\uffff\1\123\1\144\1\123\2\172\1"+
-        "\124\1\110\1\165\1\154\1\164\4\uffff\1\141\1\157\1\162\1\150\1\157"+
-        "\1\156\1\157\1\165\1\157\2\172\1\66\1\64\1\145\1\143\1\163\1\145"+
-        "\1\uffff\1\163\1\154\1\uffff\2\163\1\160\2\157\2\164\1\120\1\164"+
-        "\2\uffff\1\105\1\137\1\144\1\165\2\uffff\2\162\1\151\1\157\1\156"+
-        "\1\147\1\141\1\142\1\154\2\uffff\1\64\1\172\1\144\2\145\1\162\1"+
-        "\163\1\106\1\72\1\163\1\145\1\156\1\160\1\162\1\141\1\157\1\162"+
-        "\1\172\1\127\1\145\1\144\1\101\1\164\1\156\1\162\1\147\1\123\1\164"+
-        "\1\154\1\145\1\172\1\uffff\1\172\2\163\1\164\1\145\1\151\1\uffff"+
-        "\1\172\1\162\1\72\1\126\1\151\1\164\1\154\1\151\1\uffff\1\122\1"+
-        "\144\1\145\1\162\1\101\1\147\1\164\1\101\1\162\1\164\1\64\1\101"+
-        "\1\145\1\141\2\uffff\1\72\1\172\1\151\1\163\1\154\1\uffff\1\164"+
-        "\1\uffff\1\141\1\142\1\145\1\154\1\156\1\111\1\123\1\144\2\162\2"+
-        "\101\1\162\1\64\2\162\1\101\1\162\1\123\1\156\2\uffff\1\145\1\72"+
-        "\1\145\1\151\1\154\1\165\1\163\1\120\1\147\1\124\1\164\1\123\1\141"+
-        "\4\162\1\101\1\141\1\151\3\162\1\164\1\101\1\163\1\uffff\1\163\1"+
-        "\145\1\165\1\164\1\72\1\145\1\172\1\105\1\141\1\164\1\171\1\141"+
-        "\2\162\1\141\1\162\1\171\1\156\1\162\1\141\3\162\2\72\1\163\2\145"+
-        "\1\uffff\1\162\1\uffff\1\172\1\164\1\141\1\172\1\171\2\141\1\171"+
-        "\1\162\1\172\1\147\1\141\1\171\1\141\1\151\1\162\2\uffff\2\72\1"+
-        "\163\1\151\1\uffff\1\145\1\164\1\uffff\1\172\2\171\1\172\1\141\1"+
-        "\uffff\1\101\1\171\1\172\1\171\1\156\1\141\2\uffff\1\72\1\157\1"+
-        "\163\1\145\1\uffff\2\172\1\uffff\1\171\1\162\1\172\1\uffff\1\172"+
-        "\1\147\1\171\1\uffff\1\144\1\72\1\163\2\uffff\1\172\1\162\2\uffff"+
-        "\1\101\1\172\1\117\1\uffff\1\72\1\uffff\1\141\1\162\1\uffff\1\142"+
-        "\1\uffff\1\171\1\162\1\152\1\172\1\141\1\145\1\uffff\1\171\1\143"+
-        "\1\172\1\164\1\uffff\1\72\1\uffff";
+        "\1\141\1\157\1\151\1\162\1\157\1\164\1\uffff\1\123\1\144\1\123\2"+
+        "\172\1\124\1\110\1\165\1\154\1\164\4\uffff\1\141\1\157\1\162\1\150"+
+        "\1\157\1\156\1\157\1\165\1\157\2\172\1\66\1\64\1\145\1\143\1\163"+
+        "\1\145\1\uffff\1\163\1\154\1\uffff\2\163\1\160\2\157\1\155\2\164"+
+        "\1\120\1\164\2\uffff\1\105\1\137\1\144\1\165\2\uffff\2\162\1\151"+
+        "\1\157\1\156\1\147\1\141\1\142\1\154\2\uffff\1\64\1\172\1\144\2"+
+        "\145\1\162\1\163\1\106\1\72\1\163\1\145\1\156\1\160\1\155\1\162"+
+        "\1\141\1\157\1\162\1\172\1\127\1\145\1\144\1\101\1\164\1\156\1\162"+
+        "\1\147\1\123\1\164\1\154\1\145\1\172\1\uffff\1\172\2\163\1\164\1"+
+        "\145\1\151\1\uffff\1\172\1\162\1\72\1\126\1\141\1\151\1\164\1\154"+
+        "\1\151\1\uffff\1\122\1\144\1\145\1\162\1\101\1\147\1\164\1\101\1"+
+        "\162\1\164\1\64\1\101\1\145\1\141\2\uffff\1\72\1\172\1\151\1\163"+
+        "\1\154\1\uffff\1\164\1\uffff\1\141\1\156\1\142\1\145\1\154\1\156"+
+        "\1\111\1\123\1\144\2\162\2\101\1\162\1\64\2\162\1\101\1\162\1\123"+
+        "\1\156\2\uffff\1\145\1\72\1\145\1\151\1\154\1\144\1\165\1\163\1"+
+        "\120\1\147\1\124\1\164\1\123\1\141\4\162\1\101\1\141\1\151\3\162"+
+        "\1\164\1\101\1\163\1\uffff\1\163\1\145\1\165\1\163\1\164\1\72\1"+
+        "\145\1\172\1\105\1\141\1\164\1\171\1\141\2\162\1\141\1\162\1\171"+
+        "\1\156\1\162\1\141\3\162\2\72\1\163\1\145\1\72\1\145\1\uffff\1\162"+
+        "\1\uffff\1\172\1\164\1\141\1\172\1\171\2\141\1\171\1\162\1\172\1"+
+        "\147\1\141\1\171\1\141\1\151\1\162\2\uffff\2\72\1\uffff\1\163\1"+
+        "\151\1\uffff\1\145\1\164\1\uffff\1\172\2\171\1\172\1\141\1\uffff"+
+        "\1\101\1\171\1\172\1\171\1\156\1\141\2\uffff\1\72\1\157\1\163\1"+
+        "\145\1\uffff\2\172\1\uffff\1\171\1\162\1\172\1\uffff\1\172\1\147"+
+        "\1\171\1\uffff\1\144\1\72\1\163\2\uffff\1\172\1\162\2\uffff\1\101"+
+        "\1\172\1\117\1\uffff\1\72\1\uffff\1\141\1\162\1\uffff\1\142\1\uffff"+
+        "\1\171\1\162\1\152\1\172\1\141\1\145\1\uffff\1\171\1\143\1\172\1"+
+        "\164\1\uffff\1\72\1\uffff";
     static final String DFA12_acceptS =
-        "\3\uffff\1\3\1\uffff\1\5\30\uffff\1\110\1\111\3\uffff\1\115\1\116"+
-        "\2\uffff\1\110\1\uffff\1\3\2\uffff\1\5\41\uffff\1\111\1\112\1\113"+
-        "\1\114\1\115\55\uffff\1\52\22\uffff\1\24\57\uffff\1\25\7\uffff\1"+
-        "\34\1\uffff\1\40\4\uffff\1\46\3\uffff\1\53\32\uffff\1\50\7\uffff"+
-        "\1\33\1\uffff\1\35\1\41\1\54\14\uffff\1\1\16\uffff\1\55\2\uffff"+
-        "\1\22\1\56\2\uffff\1\26\1\uffff\1\30\1\31\7\uffff\1\51\13\uffff"+
-        "\1\101\3\uffff\1\4\13\uffff\1\13\12\uffff\1\104\1\105\1\106\1\47"+
-        "\21\uffff\1\17\2\uffff\1\12\11\uffff\1\27\1\32\4\uffff\1\103\1\107"+
-        "\11\uffff\1\71\1\74\37\uffff\1\75\6\uffff\1\20\10\uffff\1\36\16"+
-        "\uffff\1\76\1\102\5\uffff\1\11\1\uffff\1\14\24\uffff\1\6\1\2\32"+
-        "\uffff\1\7\34\uffff\1\43\1\uffff\1\72\20\uffff\1\15\1\10\4\uffff"+
-        "\1\37\2\uffff\1\57\5\uffff\1\62\6\uffff\1\16\1\42\4\uffff\1\60\2"+
-        "\uffff\1\63\3\uffff\1\64\3\uffff\1\21\3\uffff\1\66\1\61\2\uffff"+
-        "\1\77\1\65\3\uffff\1\44\1\uffff\1\100\2\uffff\1\73\1\uffff\1\45"+
-        "\6\uffff\1\67\4\uffff\1\70\1\uffff\1\23";
+        "\3\uffff\1\3\1\uffff\1\5\30\uffff\1\111\1\112\3\uffff\1\116\1\117"+
+        "\2\uffff\1\111\1\uffff\1\3\2\uffff\1\5\41\uffff\1\112\1\113\1\114"+
+        "\1\115\1\116\55\uffff\1\53\22\uffff\1\25\57\uffff\1\26\7\uffff\1"+
+        "\35\1\uffff\1\41\4\uffff\1\47\3\uffff\1\54\32\uffff\1\51\7\uffff"+
+        "\1\34\1\uffff\1\36\1\42\1\55\14\uffff\1\1\16\uffff\1\56\2\uffff"+
+        "\1\23\1\57\2\uffff\1\27\1\uffff\1\31\1\32\7\uffff\1\52\13\uffff"+
+        "\1\102\3\uffff\1\4\14\uffff\1\13\12\uffff\1\105\1\106\1\107\1\50"+
+        "\21\uffff\1\17\2\uffff\1\12\12\uffff\1\30\1\33\4\uffff\1\104\1\110"+
+        "\11\uffff\1\72\1\75\40\uffff\1\76\6\uffff\1\21\11\uffff\1\37\16"+
+        "\uffff\1\77\1\103\5\uffff\1\11\1\uffff\1\14\25\uffff\1\6\1\2\33"+
+        "\uffff\1\7\36\uffff\1\44\1\uffff\1\73\20\uffff\1\15\1\10\2\uffff"+
+        "\1\20\2\uffff\1\40\2\uffff\1\60\5\uffff\1\63\6\uffff\1\16\1\43\4"+
+        "\uffff\1\61\2\uffff\1\64\3\uffff\1\65\3\uffff\1\22\3\uffff\1\67"+
+        "\1\62\2\uffff\1\100\1\66\3\uffff\1\45\1\uffff\1\101\2\uffff\1\74"+
+        "\1\uffff\1\46\6\uffff\1\70\4\uffff\1\71\1\uffff\1\24";
     static final String DFA12_specialS =
-        "\1\1\37\uffff\1\2\1\0\u0257\uffff}>";
+        "\1\1\37\uffff\1\0\1\2\u0260\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\44\2\43\2\44\1\43\22\44\1\43\1\44\1\40\4\44\1\41\7\44\1"+
             "\42\12\37\7\44\2\36\1\14\1\34\1\20\3\36\1\22\1\15\4\36\1\17"+
@@ -3106,30 +3137,29 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0143",
             "\1\u0144",
             "\1\u0145",
-            "\1\u0146",
+            "\1\u0147\1\uffff\1\u0146",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u0148",
-            "",
-            "",
             "\1\u0149",
-            "\1\u014a",
             "",
+            "",
+            "\1\u014a",
             "\1\u014b",
             "",
-            "",
             "\1\u014c",
+            "",
+            "",
             "\1\u014d",
             "\1\u014e",
             "\1\u014f",
             "\1\u0150",
-            "\1\u0154\1\uffff\1\u0153\2\uffff\1\u0152\11\uffff\1\u0151",
+            "\1\u0151",
+            "\1\u0155\1\uffff\1\u0154\2\uffff\1\u0153\11\uffff\1\u0152",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "",
-            "\1\u0156",
-            "\1\u0157\13\uffff\1\u0158",
-            "\1\u015a\6\uffff\1\u0159",
-            "\1\u015b",
+            "\1\u0157",
+            "\1\u0158\13\uffff\1\u0159",
+            "\1\u015b\6\uffff\1\u015a",
             "\1\u015c",
             "\1\u015d",
             "\1\u015e",
@@ -3137,39 +3167,39 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0160",
             "\1\u0161",
             "\1\u0162",
-            "",
             "\1\u0163",
+            "",
             "\1\u0164",
             "\1\u0165",
-            "",
             "\1\u0166",
+            "",
             "\1\u0167",
             "\1\u0168",
             "\1\u0169",
+            "\1\u016a",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u016b",
             "\1\u016c",
             "\1\u016d",
             "\1\u016e",
             "\1\u016f",
             "\1\u0170",
-            "",
             "\1\u0171",
             "\1\u0172",
+            "",
             "\1\u0173",
+            "\1\u0174",
+            "\1\u0175",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u0176",
-            "\1\u0177",
             "\1\u0178",
             "\1\u0179",
-            "\1\u017a\13\uffff\1\u017b",
+            "\1\u017a",
+            "\1\u017b",
+            "\1\u017c\13\uffff\1\u017d",
             "",
             "",
             "",
             "",
-            "\1\u017c",
-            "\1\u017d",
             "\1\u017e",
             "\1\u017f",
             "\1\u0180",
@@ -3177,20 +3207,20 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0182",
             "\1\u0183",
             "\1\u0184",
+            "\1\u0185",
+            "\1\u0186",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u0187",
-            "\1\u0188",
             "\1\u0189",
             "\1\u018a",
             "\1\u018b",
             "\1\u018c",
-            "",
             "\1\u018d",
             "\1\u018e",
             "",
             "\1\u018f",
             "\1\u0190",
+            "",
             "\1\u0191",
             "\1\u0192",
             "\1\u0193",
@@ -3198,30 +3228,30 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0195",
             "\1\u0196",
             "\1\u0197",
-            "",
-            "",
             "\1\u0198",
             "\1\u0199",
             "\1\u019a",
+            "",
+            "",
             "\1\u019b",
-            "",
-            "",
             "\1\u019c",
             "\1\u019d",
             "\1\u019e",
+            "",
+            "",
             "\1\u019f",
             "\1\u01a0",
             "\1\u01a1",
             "\1\u01a2",
             "\1\u01a3",
             "\1\u01a4",
-            "",
-            "",
             "\1\u01a5",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u01a6",
             "\1\u01a7",
+            "",
+            "",
             "\1\u01a8",
-            "\1\u01a9",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u01aa",
             "\1\u01ab",
             "\1\u01ac",
@@ -3234,66 +3264,66 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u01b3",
             "\1\u01b4",
             "\1\u01b5",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u01b6",
             "\1\u01b7",
             "\1\u01b8",
             "\1\u01b9",
-            "\1\u01ba",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u01bb",
             "\1\u01bc",
             "\1\u01bd",
             "\1\u01be",
-            "\1\u01c1\12\uffff\1\u01bf\21\uffff\1\u01c0",
+            "\1\u01bf",
+            "\1\u01c0",
+            "\1\u01c1",
             "\1\u01c2",
-            "\1\u01c3",
-            "\1\u01c4",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u01c5\12\uffff\1\u01c3\21\uffff\1\u01c4",
+            "\1\u01c6",
             "\1\u01c7",
             "\1\u01c8",
-            "\1\u01c9",
-            "\1\u01ca",
-            "\1\u01cb",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u01cb",
+            "\1\u01cc",
             "\1\u01cd",
             "\1\u01ce",
             "\1\u01cf",
-            "\1\u01d0",
+            "",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u01d1",
             "\1\u01d2",
             "\1\u01d3",
-            "",
             "\1\u01d4",
             "\1\u01d5",
             "\1\u01d6",
             "\1\u01d7",
             "\1\u01d8",
+            "",
             "\1\u01d9",
             "\1\u01da",
-            "\1\u01dc\12\uffff\1\u01db",
+            "\1\u01db",
+            "\1\u01dc",
             "\1\u01dd",
             "\1\u01de",
             "\1\u01df",
-            "\1\u01e0",
-            "\1\u01e1",
+            "\1\u01e1\12\uffff\1\u01e0",
             "\1\u01e2",
-            "",
-            "",
             "\1\u01e3",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u01e4",
             "\1\u01e5",
             "\1\u01e6",
             "\1\u01e7",
             "",
-            "\1\u01e8",
             "",
-            "\1\u01e9",
+            "\1\u01e8",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u01ea",
             "\1\u01eb",
             "\1\u01ec",
+            "",
             "\1\u01ed",
+            "",
             "\1\u01ee",
             "\1\u01ef",
             "\1\u01f0",
@@ -3307,16 +3337,16 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u01f8",
             "\1\u01f9",
             "\1\u01fa",
-            "\1\u01fb\21\uffff\1\u01fc",
+            "\1\u01fb",
+            "\1\u01fc",
             "\1\u01fd",
-            "",
-            "",
             "\1\u01fe",
             "\1\u01ff",
             "\1\u0200",
-            "\1\u0201",
-            "\1\u0202",
+            "\1\u0201\21\uffff\1\u0202",
             "\1\u0203",
+            "",
+            "",
             "\1\u0204",
             "\1\u0205",
             "\1\u0206",
@@ -3337,14 +3367,14 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0215",
             "\1\u0216",
             "\1\u0217",
-            "",
             "\1\u0218",
             "\1\u0219",
             "\1\u021a",
             "\1\u021b",
             "\1\u021c",
             "\1\u021d",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u021e",
+            "",
             "\1\u021f",
             "\1\u0220",
             "\1\u0221",
@@ -3352,7 +3382,7 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0223",
             "\1\u0224",
             "\1\u0225",
-            "\1\u0226",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0227",
             "\1\u0228",
             "\1\u0229",
@@ -3366,98 +3396,108 @@ public class InternalPogoDslLexer extends Lexer {
             "\1\u0231",
             "\1\u0232",
             "\1\u0233",
-            "",
             "\1\u0234",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u0235",
             "\1\u0236",
             "\1\u0237",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u0238",
             "\1\u0239",
             "\1\u023a",
             "\1\u023b",
             "\1\u023c",
+            "",
             "\1\u023d",
+            "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u023f",
             "\1\u0240",
-            "\1\u0241",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0242",
             "\1\u0243",
             "\1\u0244",
-            "",
-            "",
             "\1\u0245",
             "\1\u0246",
-            "\1\u0247",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0248",
-            "",
             "\1\u0249",
             "\1\u024a",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u024b",
             "\1\u024c",
             "\1\u024d",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "",
+            "\1\u024e",
             "\1\u024f",
             "",
             "\1\u0250",
             "\1\u0251",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "\1\u0252",
             "\1\u0253",
-            "\1\u0254",
+            "",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0255",
-            "",
-            "",
             "\1\u0256",
-            "\1\u0257",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0258",
+            "",
             "\1\u0259",
-            "",
+            "\1\u025a",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "",
             "\1\u025c",
             "\1\u025d",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u025e",
             "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "\1\u025f",
             "\1\u0260",
             "\1\u0261",
-            "",
             "\1\u0262",
-            "\1\u0263",
-            "\1\u0264",
-            "",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "\1\u0265",
             "\1\u0266",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "",
-            "",
-            "\1\u0267",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0269",
-            "",
             "\1\u026a",
             "",
             "\1\u026b",
             "\1\u026c",
-            "",
             "\1\u026d",
             "",
-            "\1\u026e",
+            "",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u026f",
+            "",
+            "",
             "\1\u0270",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0272",
+            "",
             "\1\u0273",
             "",
             "\1\u0274",
             "\1\u0275",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u0277",
             "",
+            "\1\u0276",
+            "",
+            "\1\u0277",
             "\1\u0278",
+            "\1\u0279",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u027b",
+            "\1\u027c",
+            "",
+            "\1\u027d",
+            "\1\u027e",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u0280",
+            "",
+            "\1\u0281",
             ""
     };
 
@@ -3491,17 +3531,17 @@ public class InternalPogoDslLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_33 = input.LA(1);
+                        int LA12_32 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_33>='\u0000' && LA12_33<='\uFFFF')) ) {s = 79;}
+                        if ( ((LA12_32>='\u0000' && LA12_32<='\uFFFF')) ) {s = 79;}
 
                         else s = 36;
 
@@ -3586,10 +3626,10 @@ public class InternalPogoDslLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA12_32 = input.LA(1);
+                        int LA12_33 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_32>='\u0000' && LA12_32<='\uFFFF')) ) {s = 79;}
+                        if ( ((LA12_33>='\u0000' && LA12_33<='\uFFFF')) ) {s = 79;}
 
                         else s = 36;
 

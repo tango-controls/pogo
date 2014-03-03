@@ -43,6 +43,8 @@ import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
+import fr.esrf.tango.pogo.generator.cpp.utils.Commands
+import fr.esrf.tango.pogo.pogoDsl.Command
 
 
 //======================================================
@@ -53,6 +55,7 @@ class DynamicAttributeUtils {
 	@Inject	extension Headers
 	@Inject	extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
 	@Inject	extension Attributes
+	@Inject	extension Commands
 
 	//======================================================
 	// Define DynamicAttributeUtils.cpp file to be generated
@@ -62,9 +65,13 @@ class DynamicAttributeUtils {
 
 		«cls.dynamicAttributes.attributesTable»
 		
+		//	For compatibility reason, this file («cls.name»DynAttrUtils)
+		//	manage also the dynamic command utilities.
+		«cls.dynamicCommands.commandsTable»
+		
 		namespace «cls.name»_ns
 		{
-		«cls.addAndRemoveMethods»
+		«cls.addAndRemoveAttributeMethods»
 
 
 		//============================================================
@@ -73,6 +80,9 @@ class DynamicAttributeUtils {
 		«FOR Attribute attribute : cls.dynamicAttributes»
 			«cls.dynamicAttributeTools(attribute)»
 		«ENDFOR»
+
+
+		«cls.addAndRemoveCommandMethods»
 
 		} //	namespace
 	'''
@@ -90,9 +100,9 @@ class DynamicAttributeUtils {
 
 
 	//======================================================
-	// define the add/remove methods
+	// define the add/remove attribute methods
 	//======================================================
-	def addAndRemoveMethods(PogoDeviceClass cls) '''
+	def addAndRemoveAttributeMethods(PogoDeviceClass cls) '''
 		//=============================================================
 		//	Add/Remove dynamic attribute methods
 		//=============================================================
@@ -102,8 +112,6 @@ class DynamicAttributeUtils {
 			«cls.removeDynamicAttribute(attribute)»
 		«ENDFOR»
 	'''
-
-
 
 	//======================================================
 	// define the add dynamic attribute method
@@ -187,4 +195,56 @@ class DynamicAttributeUtils {
 			«ENDIF»
 		}
 	'''
+
+
+	//======================================================
+	// define the add/remove command methods
+	//======================================================
+	def addAndRemoveCommandMethods(PogoDeviceClass cls) '''
+		//=============================================================
+		//	Add/Remove dynamic command methods
+		//=============================================================
+		
+		«FOR Command command : cls.dynamicCommands»
+			«cls.addDynamicCommand(command)»
+			«cls.removeDynamicCommand(command)»
+		«ENDFOR»
+	'''
+
+	//======================================================
+	// define the add dynamic command method
+	//======================================================
+	def addDynamicCommand(PogoDeviceClass cls, Command command) '''
+		//--------------------------------------------------------
+		/**
+		 *	Add a «command.name» dynamic command.
+		 *
+		«command.addDynamicCommandHeaderComment»
+		 */
+		//--------------------------------------------------------
+		«cls.addDynamicCommandSignature(command, false)»
+		{
+			«command.dynamicCommandFactory»
+		}
+	'''
+
+	//======================================================
+	// define the remove dynamic attribute method
+	//======================================================
+	def removeDynamicCommand(PogoDeviceClass cls, Command command) '''
+		//--------------------------------------------------------
+		/**
+		 *	remove a «command.name» dynamic command.
+		 *
+		«command.removeDynamicCommandHeaderComment»
+		 */
+		//--------------------------------------------------------
+		«cls.removeDynamicCommandSignature(command, false)»
+		{
+			remove_command(cmdname, true);
+		}
+	'''
+
+
+
 }

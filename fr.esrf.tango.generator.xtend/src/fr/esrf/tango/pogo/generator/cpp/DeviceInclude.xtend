@@ -301,6 +301,20 @@ class DeviceInclude  {
 			«ENDFOR»
 		«ENDIF»
 
+		«IF cls.dynamicCommands.size()>0»
+			//	Dynamic commands methods
+			public:
+				«FOR Command command : cls.dynamicCommands»
+					«command.commandExecutionMethodHeader»
+					«cls.commandExecutionMethodSignature(command, true)»
+					virtual bool is_«command.name»_allowed(const CORBA::Any &any);
+					«cls.addDynamicCommandSignature(command, true)»
+					«cls.removeDynamicCommandSignature(command, true)»
+				«ENDFOR»
+		«ENDIF»
+		
+			«cls.simpleMethodHeader("add_dynamic_commands", "Add dynamic commands if any.")»
+			void add_dynamic_commands();
 
 	'''
 }

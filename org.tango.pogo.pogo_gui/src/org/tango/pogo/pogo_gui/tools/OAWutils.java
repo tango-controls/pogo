@@ -670,7 +670,9 @@ public class OAWutils {
         cmd.setName(name);
         cmd.setExecMethod(Utils.buildCppExecuteMethodName(name));
         cmd.setDescription(src.getDescription());
-        //System.out.println(src.getName());
+        //  ToDo
+        if (Utils.tango9)
+           cmd.setIsDynamic(src.getIsDynamic());
 
         //	Argin/argout management
         Argument argin = factory.createArgument();
@@ -764,14 +766,14 @@ public class OAWutils {
         status.setConcreteHere(src_st.getConcreteHere());
 
         EList<String> src_excluded = src.getReadExcludedStates();
-        EList<String> new_excuded = attr.getReadExcludedStates();
+        EList<String> new_excluded = attr.getReadExcludedStates();
         for (String s : src_excluded)
-            new_excuded.add(s);
+            new_excluded.add(s);
 
         src_excluded = src.getWriteExcludedStates();
-        new_excuded = attr.getWriteExcludedStates();
+        new_excluded = attr.getWriteExcludedStates();
         for (String s : src_excluded)
-            new_excuded.add(s);
+            new_excluded.add(s);
 
         attr.setStatus(status);
         attr.setAllocReadMember(src.getAllocReadMember());

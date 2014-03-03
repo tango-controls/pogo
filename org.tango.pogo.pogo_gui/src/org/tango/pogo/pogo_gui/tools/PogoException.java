@@ -45,9 +45,7 @@ import java.util.StringTokenizer;
 public class  PogoException extends Exception {
     private String description;
     private StackTraceElement[] stackTraceElements;
-
-    @SuppressWarnings({"FieldCanBeLocal", "UnusedDeclaration"})
-    private String origin;  //  Not used any more.
+    private String origin;
     //===============================================================
     //===============================================================
     public PogoException(String desc) {
@@ -82,6 +80,14 @@ public class  PogoException extends Exception {
             errorPane = new ErrorPane((JFrame)null);
         ATKGraphicsUtils.centerDialog(errorPane);
         errorPane.setVisible(true);
+    }
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings("UnusedDeclaration") //   Externally used by class2www  package
+    public void print_exception() {
+        System.err.println("PogoException:");
+        System.err.println("    Description: "+ description);
+        System.err.println("    Origin:      "+ origin);
     }
     //===============================================================
     //===============================================================

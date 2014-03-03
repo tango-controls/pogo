@@ -312,24 +312,27 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommandsKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		private final Assignment cCommandsAssignment_14 = (Assignment)cGroup.eContents().get(14);
 		private final RuleCall cCommandsCommandParserRuleCall_14_0 = (RuleCall)cCommandsAssignment_14.eContents().get(0);
-		private final Keyword cAttributesKeyword_15 = (Keyword)cGroup.eContents().get(15);
-		private final Assignment cAttributesAssignment_16 = (Assignment)cGroup.eContents().get(16);
-		private final RuleCall cAttributesAttributeParserRuleCall_16_0 = (RuleCall)cAttributesAssignment_16.eContents().get(0);
-		private final Keyword cDynamicAttributesKeyword_17 = (Keyword)cGroup.eContents().get(17);
-		private final Assignment cDynamicAttributesAssignment_18 = (Assignment)cGroup.eContents().get(18);
-		private final RuleCall cDynamicAttributesAttributeParserRuleCall_18_0 = (RuleCall)cDynamicAttributesAssignment_18.eContents().get(0);
-		private final Keyword cStatesKeyword_19 = (Keyword)cGroup.eContents().get(19);
-		private final Assignment cStatesAssignment_20 = (Assignment)cGroup.eContents().get(20);
-		private final RuleCall cStatesStateParserRuleCall_20_0 = (RuleCall)cStatesAssignment_20.eContents().get(0);
-		private final Assignment cPreferencesAssignment_21 = (Assignment)cGroup.eContents().get(21);
-		private final RuleCall cPreferencesPreferencesParserRuleCall_21_0 = (RuleCall)cPreferencesAssignment_21.eContents().get(0);
-		private final Keyword cAdditionalFilesKeyword_22 = (Keyword)cGroup.eContents().get(22);
-		private final Assignment cAdditionalFilesAssignment_23 = (Assignment)cGroup.eContents().get(23);
-		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_23_0 = (RuleCall)cAdditionalFilesAssignment_23.eContents().get(0);
-		private final Keyword cOverlodedPollPeriodObjectKeyword_24 = (Keyword)cGroup.eContents().get(24);
-		private final Assignment cOverlodedPollPeriodObjectAssignment_25 = (Assignment)cGroup.eContents().get(25);
-		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_25_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_25.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_26 = (Keyword)cGroup.eContents().get(26);
+		private final Keyword cDynamicCommandsKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cDynamicCommandsAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cDynamicCommandsCommandParserRuleCall_16_0 = (RuleCall)cDynamicCommandsAssignment_16.eContents().get(0);
+		private final Keyword cAttributesKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cAttributesAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cAttributesAttributeParserRuleCall_18_0 = (RuleCall)cAttributesAssignment_18.eContents().get(0);
+		private final Keyword cDynamicAttributesKeyword_19 = (Keyword)cGroup.eContents().get(19);
+		private final Assignment cDynamicAttributesAssignment_20 = (Assignment)cGroup.eContents().get(20);
+		private final RuleCall cDynamicAttributesAttributeParserRuleCall_20_0 = (RuleCall)cDynamicAttributesAssignment_20.eContents().get(0);
+		private final Keyword cStatesKeyword_21 = (Keyword)cGroup.eContents().get(21);
+		private final Assignment cStatesAssignment_22 = (Assignment)cGroup.eContents().get(22);
+		private final RuleCall cStatesStateParserRuleCall_22_0 = (RuleCall)cStatesAssignment_22.eContents().get(0);
+		private final Assignment cPreferencesAssignment_23 = (Assignment)cGroup.eContents().get(23);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_23_0 = (RuleCall)cPreferencesAssignment_23.eContents().get(0);
+		private final Keyword cAdditionalFilesKeyword_24 = (Keyword)cGroup.eContents().get(24);
+		private final Assignment cAdditionalFilesAssignment_25 = (Assignment)cGroup.eContents().get(25);
+		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_25_0 = (RuleCall)cAdditionalFilesAssignment_25.eContents().get(0);
+		private final Keyword cOverlodedPollPeriodObjectKeyword_26 = (Keyword)cGroup.eContents().get(26);
+		private final Assignment cOverlodedPollPeriodObjectAssignment_27 = (Assignment)cGroup.eContents().get(27);
+		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_27_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_27.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_28 = (Keyword)cGroup.eContents().get(28);
 		
 		////==============================================
 		////	Class definition
@@ -340,8 +343,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	ID //	Class information
 		//	"description:" description=ClassDescription //	Class property list
 		//	"classProperties:" classProperties+=Property* //	Device Property list
-		//	"deviceProperties:" deviceProperties+=Property* //	Device command list
-		//	"commands:" commands+=Command* //	Device static attribute list
+		//	"deviceProperties:" deviceProperties+=Property* //	Device static command list
+		//	"commands:" commands+=Command* //	Device dynamic command list
+		//	"dynamicCommands:" dynamicCommands+=Command* //	Device static attribute list
 		//	"attributes:" attributes+=Attribute* //	Device dynamic attribute list
 		//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device state list
 		//	"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
@@ -355,8 +359,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ID //	Class information
 		//"description:" description=ClassDescription //	Class property list
 		//"classProperties:" classProperties+=Property* //	Device Property list
-		//"deviceProperties:" deviceProperties+=Property* //	Device command list
-		//"commands:" commands+=Command* //	Device static attribute list
+		//"deviceProperties:" deviceProperties+=Property* //	Device static command list
+		//"commands:" commands+=Command* //	Device dynamic command list
+		//"dynamicCommands:" dynamicCommands+=Command* //	Device static attribute list
 		//"attributes:" attributes+=Attribute* //	Device dynamic attribute list
 		//"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device state list
 		//"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
@@ -444,7 +449,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Property
 		public RuleCall getDevicePropertiesPropertyParserRuleCall_12_0() { return cDevicePropertiesPropertyParserRuleCall_12_0; }
 
-		////	Device command list
+		////	Device static command list
 		//"commands:"
 		public Keyword getCommandsKeyword_13() { return cCommandsKeyword_13; }
 
@@ -454,66 +459,76 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Command
 		public RuleCall getCommandsCommandParserRuleCall_14_0() { return cCommandsCommandParserRuleCall_14_0; }
 
+		////	Device dynamic command list
+		//"dynamicCommands:"
+		public Keyword getDynamicCommandsKeyword_15() { return cDynamicCommandsKeyword_15; }
+
+		//dynamicCommands+=Command*
+		public Assignment getDynamicCommandsAssignment_16() { return cDynamicCommandsAssignment_16; }
+
+		//Command
+		public RuleCall getDynamicCommandsCommandParserRuleCall_16_0() { return cDynamicCommandsCommandParserRuleCall_16_0; }
+
 		////	Device static attribute list
 		//"attributes:"
-		public Keyword getAttributesKeyword_15() { return cAttributesKeyword_15; }
+		public Keyword getAttributesKeyword_17() { return cAttributesKeyword_17; }
 
 		//attributes+=Attribute*
-		public Assignment getAttributesAssignment_16() { return cAttributesAssignment_16; }
+		public Assignment getAttributesAssignment_18() { return cAttributesAssignment_18; }
 
 		//Attribute
-		public RuleCall getAttributesAttributeParserRuleCall_16_0() { return cAttributesAttributeParserRuleCall_16_0; }
+		public RuleCall getAttributesAttributeParserRuleCall_18_0() { return cAttributesAttributeParserRuleCall_18_0; }
 
 		////	Device dynamic attribute list
 		//"dynamicAttributes:"
-		public Keyword getDynamicAttributesKeyword_17() { return cDynamicAttributesKeyword_17; }
+		public Keyword getDynamicAttributesKeyword_19() { return cDynamicAttributesKeyword_19; }
 
 		//dynamicAttributes+=Attribute*
-		public Assignment getDynamicAttributesAssignment_18() { return cDynamicAttributesAssignment_18; }
+		public Assignment getDynamicAttributesAssignment_20() { return cDynamicAttributesAssignment_20; }
 
 		//Attribute
-		public RuleCall getDynamicAttributesAttributeParserRuleCall_18_0() { return cDynamicAttributesAttributeParserRuleCall_18_0; }
+		public RuleCall getDynamicAttributesAttributeParserRuleCall_20_0() { return cDynamicAttributesAttributeParserRuleCall_20_0; }
 
 		////	Device state list
 		//"states:"
-		public Keyword getStatesKeyword_19() { return cStatesKeyword_19; }
+		public Keyword getStatesKeyword_21() { return cStatesKeyword_21; }
 
 		//states+=State*
-		public Assignment getStatesAssignment_20() { return cStatesAssignment_20; }
+		public Assignment getStatesAssignment_22() { return cStatesAssignment_22; }
 
 		//State
-		public RuleCall getStatesStateParserRuleCall_20_0() { return cStatesStateParserRuleCall_20_0; }
+		public RuleCall getStatesStateParserRuleCall_22_0() { return cStatesStateParserRuleCall_22_0; }
 
 		//preferences= //	Preferences (for programer, for site or at run time)
 		//Preferences
-		public Assignment getPreferencesAssignment_21() { return cPreferencesAssignment_21; }
+		public Assignment getPreferencesAssignment_23() { return cPreferencesAssignment_23; }
 
 		////	Preferences (for programer, for site or at run time)
 		//Preferences
-		public RuleCall getPreferencesPreferencesParserRuleCall_21_0() { return cPreferencesPreferencesParserRuleCall_21_0; }
+		public RuleCall getPreferencesPreferencesParserRuleCall_23_0() { return cPreferencesPreferencesParserRuleCall_23_0; }
 
 		////	Programmer's additional files to be added in Makefile (utils, threads,...)
 		//"additionalFiles:"
-		public Keyword getAdditionalFilesKeyword_22() { return cAdditionalFilesKeyword_22; }
+		public Keyword getAdditionalFilesKeyword_24() { return cAdditionalFilesKeyword_24; }
 
 		//additionalFiles+=AdditionalFile*
-		public Assignment getAdditionalFilesAssignment_23() { return cAdditionalFilesAssignment_23; }
+		public Assignment getAdditionalFilesAssignment_25() { return cAdditionalFilesAssignment_25; }
 
 		//AdditionalFile
-		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_23_0() { return cAdditionalFilesAdditionalFileParserRuleCall_23_0; }
+		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_25_0() { return cAdditionalFilesAdditionalFileParserRuleCall_25_0; }
 
 		////	Object list (Command or Attribute) where polling period has been overloaded
 		//"overlodedPollPeriodObject:"
-		public Keyword getOverlodedPollPeriodObjectKeyword_24() { return cOverlodedPollPeriodObjectKeyword_24; }
+		public Keyword getOverlodedPollPeriodObjectKeyword_26() { return cOverlodedPollPeriodObjectKeyword_26; }
 
 		//overlodedPollPeriodObject+=OverlodedPollPeriodObject*
-		public Assignment getOverlodedPollPeriodObjectAssignment_25() { return cOverlodedPollPeriodObjectAssignment_25; }
+		public Assignment getOverlodedPollPeriodObjectAssignment_27() { return cOverlodedPollPeriodObjectAssignment_27; }
 
 		//OverlodedPollPeriodObject
-		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_25_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_25_0; }
+		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_27_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_27_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_26() { return cRightCurlyBracketKeyword_26; }
+		public Keyword getRightCurlyBracketKeyword_28() { return cRightCurlyBracketKeyword_28; }
 	}
 
 	public class LanguageElements extends AbstractParserRuleElementFinder {
@@ -1306,20 +1321,22 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDisplayLevelDisplayLevelParserRuleCall_6_0 = (RuleCall)cDisplayLevelAssignment_6.eContents().get(0);
 		private final Assignment cPolledPeriodAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cPolledPeriodSTRINGTerminalRuleCall_7_0 = (RuleCall)cPolledPeriodAssignment_7.eContents().get(0);
-		private final Keyword cExcludedStatesKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cExcludedStatesAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cExcludedStatesSTRINGTerminalRuleCall_9_0 = (RuleCall)cExcludedStatesAssignment_9.eContents().get(0);
+		private final Assignment cIsDynamicAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cIsDynamicBooleanParserRuleCall_8_0 = (RuleCall)cIsDynamicAssignment_8.eContents().get(0);
+		private final Keyword cExcludedStatesKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cExcludedStatesAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cExcludedStatesSTRINGTerminalRuleCall_10_0 = (RuleCall)cExcludedStatesAssignment_10.eContents().get(0);
 		
 		////
 		////	Command Definition
 		////
 		//Command:
 		//	name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus execMethod=STRING
-		//	displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:" excludedStates+=STRING*;
+		//	displayLevel=DisplayLevel polledPeriod=STRING isDynamic=Boolean "excludedStates:" excludedStates+=STRING*;
 		public ParserRule getRule() { return rule; }
 
 		//name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus execMethod=STRING
-		//displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:" excludedStates+=STRING*
+		//displayLevel=DisplayLevel polledPeriod=STRING isDynamic=Boolean "excludedStates:" excludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1370,14 +1387,20 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getPolledPeriodSTRINGTerminalRuleCall_7_0() { return cPolledPeriodSTRINGTerminalRuleCall_7_0; }
 
+		//isDynamic=Boolean
+		public Assignment getIsDynamicAssignment_8() { return cIsDynamicAssignment_8; }
+
+		//Boolean
+		public RuleCall getIsDynamicBooleanParserRuleCall_8_0() { return cIsDynamicBooleanParserRuleCall_8_0; }
+
 		//"excludedStates:"
-		public Keyword getExcludedStatesKeyword_8() { return cExcludedStatesKeyword_8; }
+		public Keyword getExcludedStatesKeyword_9() { return cExcludedStatesKeyword_9; }
 
 		//excludedStates+=STRING*
-		public Assignment getExcludedStatesAssignment_9() { return cExcludedStatesAssignment_9; }
+		public Assignment getExcludedStatesAssignment_10() { return cExcludedStatesAssignment_10; }
 
 		//STRING
-		public RuleCall getExcludedStatesSTRINGTerminalRuleCall_9_0() { return cExcludedStatesSTRINGTerminalRuleCall_9_0; }
+		public RuleCall getExcludedStatesSTRINGTerminalRuleCall_10_0() { return cExcludedStatesSTRINGTerminalRuleCall_10_0; }
 	}
 
 	public class ArgumentElements extends AbstractParserRuleElementFinder {
@@ -2852,8 +2875,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	ID //	Class information
 	//	"description:" description=ClassDescription //	Class property list
 	//	"classProperties:" classProperties+=Property* //	Device Property list
-	//	"deviceProperties:" deviceProperties+=Property* //	Device command list
-	//	"commands:" commands+=Command* //	Device static attribute list
+	//	"deviceProperties:" deviceProperties+=Property* //	Device static command list
+	//	"commands:" commands+=Command* //	Device dynamic command list
+	//	"dynamicCommands:" dynamicCommands+=Command* //	Device static attribute list
 	//	"attributes:" attributes+=Attribute* //	Device dynamic attribute list
 	//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device state list
 	//	"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
@@ -3083,7 +3107,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////
 	//Command:
 	//	name=ID argin=Argument argout=Argument description=STRING status=InheritanceStatus execMethod=STRING
-	//	displayLevel=DisplayLevel polledPeriod=STRING "excludedStates:" excludedStates+=STRING*;
+	//	displayLevel=DisplayLevel polledPeriod=STRING isDynamic=Boolean "excludedStates:" excludedStates+=STRING*;
 	public CommandElements getCommandAccess() {
 		return (pCommand != null) ? pCommand : (pCommand = new CommandElements());
 	}

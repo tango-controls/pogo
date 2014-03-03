@@ -93,6 +93,13 @@ class DeviceClassInclude {
 			//=========================================
 			«cls.commandClasses»
 		«ENDIF»
+		«IF cls.dynamicCommands.size>0»
+			
+			//=========================================
+			//	Define classes for dynamic commands
+			//=========================================
+			«cls.dynamicCommandClasses»
+		«ENDIF»
 
 		/**
 		 *	The «cls.name»Class singleton definition
@@ -153,7 +160,7 @@ class DeviceClassInclude {
 	'''
 	
 	//======================================================
-	//	Define connand Classes 
+	//	Define command Classes 
 	//======================================================
 	def commandClasses(PogoDeviceClass cls) '''
 		«FOR Command command : cls.commands»
@@ -162,6 +169,16 @@ class DeviceClassInclude {
 					«cls.commandClass(command)»
 				«ENDIF»
 			«ENDIF»
+		«ENDFOR»
+	'''
+	
+	
+	//======================================================
+	//	Define command Classes 
+	//======================================================
+	def dynamicCommandClasses(PogoDeviceClass cls) '''
+		«FOR Command command : cls.dynamicCommands»
+			«cls.commandClass(command)»
 		«ENDFOR»
 	'''
 	

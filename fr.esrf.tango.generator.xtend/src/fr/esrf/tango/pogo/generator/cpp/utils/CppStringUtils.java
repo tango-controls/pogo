@@ -65,7 +65,7 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 	}
 	//===========================================================
 	public String removeDynamicAttributeHeaderComment(Attribute attribute) {
-		 String comment = " *  parameter attname: attribute name to be removed and added.\n";
+		 String comment = " *  parameter attname: attribute name to be removed.\n";
 		 if (isScalar(attribute) == false)
 			 comment += " *  parameter free_it: memory buffer will be freed if true or not specified.";
 		 return comment;
@@ -103,7 +103,41 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 		return signature;
 	}
 	
-	
+	//===========================================================
+	//	Dynamic commands headers and signatures
+	//===========================================================
+	public String addDynamicCommandHeaderComment(Command command) {
+		 String comment = " *  parameter cmdname: command name to be cretated and added.\n"+
+				 		  " *  parameter device:  Set this flag to true if the command must be added for only this device.\n";
+		 return comment;
+	}
+	//===========================================================
+	public String removeDynamicCommandHeaderComment(Command command) {
+		 String comment = " *  parameter cmdname: command name to be removed.\n";
+		 return comment;
+	}
+	//===========================================================
+	public String addDynamicCommandSignature(PogoDeviceClass cls, Command command, boolean prototype) {
+		String	signature = "void ";
+		if (prototype==false)
+			signature += cls.getName() + "::";
+		signature += "add_" + command.getName() + "_dynamic_command(string cmdname, bool device)";
+		if (prototype)
+			signature += ";";
+		return signature;
+	}
+	//===========================================================
+	public String removeDynamicCommandSignature(PogoDeviceClass cls, Command command, boolean prototype) {
+		String	signature = "void ";
+		if (prototype==false)
+			signature += cls.getName() + "::";
+		signature += "remove_" + command.getName() + "_dynamic_command(string cmdname)";
+		if (prototype)
+			signature += ";";
+		return signature;
+	}
+	//===========================================================
+
 	//===========================================================
 	/**
 	 * build the states table

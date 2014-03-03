@@ -79,6 +79,21 @@ public class CommandDialog extends JDialog {
     private InheritanceStatus orig_status = null;
     private boolean isStateStatus = false;
     private Command command;
+    private boolean isDynamic = false;
+    ///===================================================================
+    /**
+     * Initializes the Form for creation
+     *
+     * @param parent    the parent frame object
+     * @param isDynamic the created command will be a dynamic one
+     */
+    //===================================================================
+    public CommandDialog(PogoGUI parent, boolean isDynamic) {
+        this(parent, null);
+        this.isDynamic = isDynamic;
+        dynamicLbl.setVisible(isDynamic);
+        pack();
+    }
     //===============================================================
     /**
      * Creates new form CommandDialog
@@ -91,6 +106,9 @@ public class CommandDialog extends JDialog {
         super(parent, true);
         this.command = cmd;
         pogo_gui = parent;
+        if (command!=null)
+            isDynamic = Utils.isTrue(command.getIsDynamic());
+
         initComponents();
         setCommand(cmd);
         manageInheritanceStatus(cmd);
@@ -105,13 +123,18 @@ public class CommandDialog extends JDialog {
         if (cmd != null) {
             //	Manage inheritance status
             orig_status = cmd.getStatus();
+            if (isDynamic) {
+                overloadBtn.setVisible(false);
+                abstractBtn.setVisible(false);
+                setEditable(true);
+            } else
             if (Utils.isTrue(orig_status.getInherited())) {
                 //  Is inherited (cannot be created as abstract)
                 abstractBtn.setVisible(false);
                 overloadBtn.setVisible(true);
                 //  is Already overloaded
-                boolean oveload = Utils.isTrue(orig_status.getConcreteHere());
-                overloadBtn.setSelected(oveload);
+                boolean overload = Utils.isTrue(orig_status.getConcreteHere());
+                overloadBtn.setSelected(overload);
                 setEditable(false);
             } else {
                 //  Not inherited -> full edition
@@ -250,6 +273,11 @@ public class CommandDialog extends JDialog {
             nameComboBox.addItem(name);
             nameComboBox.setSelectedItem(name);
         }
+        if (isDynamic) {
+            abstractBtn.setVisible(false);
+            overloadBtn.setVisible(false);
+        }
+        dynamicLbl.setVisible(isDynamic);
     }
     //===============================================================
 
@@ -264,10 +292,8 @@ public class CommandDialog extends JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
-        javax.swing.JButton okBtn = new javax.swing.JButton();
-        javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel centerPanel = new javax.swing.JPanel();
+        dynamicLbl = new javax.swing.JLabel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
         nameComboBox = new javax.swing.JComboBox();
         abstractBtn = new javax.swing.JRadioButton();
@@ -292,6 +318,9 @@ public class CommandDialog extends JDialog {
         arginDescText = new javax.swing.JTextArea();
         javax.swing.JScrollPane argoutScrollPane = new javax.swing.JScrollPane();
         argoutDescText = new javax.swing.JTextArea();
+        javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
+        javax.swing.JButton okBtn = new javax.swing.JButton();
+        javax.swing.JButton cancelBtn = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -299,29 +328,21 @@ public class CommandDialog extends JDialog {
             }
         });
 
-        okBtn.setText("OK");
-        okBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtnActionPerformed(evt);
-            }
-        });
-        bottomPanel.add(okBtn);
-
-        cancelBtn.setText("Cancel");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
-        bottomPanel.add(cancelBtn);
-
-        getContentPane().add(bottomPanel, java.awt.BorderLayout.SOUTH);
-
         centerPanel.setLayout(new java.awt.GridBagLayout());
+
+        dynamicLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        dynamicLbl.setText("Dynamic Command (Add/Remove command will be done by code)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 16, 21, 6);
+        centerPanel.add(dynamicLbl, gridBagConstraints);
 
         nameLbl.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nameLbl.setText("Command Name:");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
@@ -330,6 +351,7 @@ public class CommandDialog extends JDialog {
         nameComboBox.setEditable(true);
         nameComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
         centerPanel.add(nameComboBox, gridBagConstraints);
@@ -346,7 +368,7 @@ public class CommandDialog extends JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
         centerPanel.add(abstractBtn, gridBagConstraints);
@@ -363,7 +385,7 @@ public class CommandDialog extends JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 20, 0);
         centerPanel.add(overloadBtn, gridBagConstraints);
@@ -382,7 +404,7 @@ public class CommandDialog extends JDialog {
         argoutLbl.setText("Output Argument:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 10);
@@ -404,7 +426,7 @@ public class CommandDialog extends JDialog {
         argoutComboBox.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
         centerPanel.add(argoutComboBox, gridBagConstraints);
@@ -433,7 +455,7 @@ public class CommandDialog extends JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         centerPanel.add(argoutDescBtn, gridBagConstraints);
@@ -458,7 +480,7 @@ public class CommandDialog extends JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 15, 0);
         centerPanel.add(polledPanel, gridBagConstraints);
@@ -473,7 +495,7 @@ public class CommandDialog extends JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         centerPanel.add(levelPanel, gridBagConstraints);
@@ -482,7 +504,7 @@ public class CommandDialog extends JDialog {
         descLbl.setText("Command description:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 10);
@@ -496,7 +518,7 @@ public class CommandDialog extends JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1;
@@ -529,7 +551,7 @@ public class CommandDialog extends JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
@@ -537,6 +559,24 @@ public class CommandDialog extends JDialog {
         centerPanel.add(argoutScrollPane, gridBagConstraints);
 
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
+
+        okBtn.setText("OK");
+        okBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtnActionPerformed(evt);
+            }
+        });
+        bottomPanel.add(okBtn);
+
+        cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+        bottomPanel.add(cancelBtn);
+
+        getContentPane().add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -657,7 +697,7 @@ public class CommandDialog extends JDialog {
         }
     }//GEN-LAST:event_arginComboBoxActionPerformed
 
-    /*
+
 	//===============================================================
 	/**
 	 *	Closes the dialog
@@ -707,23 +747,30 @@ public class CommandDialog extends JDialog {
         else
             cmd.setDisplayLevel(PogoConst.strLevel[PogoConst.EXPERT]);
 
-        //	Inheritance status
-        if (Utils.isTrue(orig_status.getInherited())) {
-            if (overloadBtn.getSelectedObjects() != null) {
-                orig_status.setConcrete("true");
-                orig_status.setConcreteHere("true");
-            } else {
-                orig_status.setConcreteHere("false");
-            }
+        //  Is it a dynamic attribute ?
+        if (isDynamic) {
+            cmd.setIsDynamic("true");
         } else {
-            if (abstractBtn.getSelectedObjects() != null) {
-                orig_status.setAbstract("true");
-                orig_status.setConcrete("false");
-                orig_status.setConcreteHere("false");
+            cmd.setIsDynamic("false");
+
+            //	Inheritance status
+            if (Utils.isTrue(orig_status.getInherited())) {
+                if (overloadBtn.getSelectedObjects() != null) {
+                    orig_status.setConcrete("true");
+                    orig_status.setConcreteHere("true");
+                } else {
+                    orig_status.setConcreteHere("false");
+                }
             } else {
-                orig_status.setAbstract("false");
-                orig_status.setConcrete("true");
-                orig_status.setConcreteHere("true");
+                if (abstractBtn.getSelectedObjects() != null) {
+                    orig_status.setAbstract("true");
+                    orig_status.setConcrete("false");
+                    orig_status.setConcreteHere("false");
+                } else {
+                    orig_status.setAbstract("false");
+                    orig_status.setConcrete("true");
+                    orig_status.setConcreteHere("true");
+                }
             }
         }
         cmd.setStatus(orig_status);
@@ -735,9 +782,9 @@ public class CommandDialog extends JDialog {
 
         //  Excluded states
         if (command!=null) {
-            EList<String> srcRxcluded = command.getExcludedStates();
+            EList<String> srcExcluded = command.getExcludedStates();
             EList<String> newExcluded = cmd.getExcludedStates();
-            for (String s : srcRxcluded)
+            for (String s : srcExcluded)
                 newExcluded.add(s);
         }
         return cmd;
@@ -751,21 +798,21 @@ public class CommandDialog extends JDialog {
 
         //	Inheritance status
         //  For a clone item, there is no inheritance.
-        InheritanceStatus inher_status = newCmd.getStatus();
-        if (!Utils.isTrue(inher_status.getAbstract())) {
-            inher_status.setAbstract("false");
-            inher_status.setInherited("false");
-            inher_status.setConcrete("true");
-            inher_status.setConcreteHere("true");
+        InheritanceStatus inheritanceStatus = newCmd.getStatus();
+        if (!Utils.isTrue(inheritanceStatus.getAbstract())) {
+            inheritanceStatus.setAbstract("false");
+            inheritanceStatus.setInherited("false");
+            inheritanceStatus.setConcrete("true");
+            inheritanceStatus.setConcreteHere("true");
         }
-        if (Utils.isTrue(inher_status.getInherited())) {
-            inher_status.setAbstract("false");
-            inher_status.setInherited("false");
-            inher_status.setConcrete("true");
-            inher_status.setConcreteHere("true");
+        if (Utils.isTrue(inheritanceStatus.getInherited())) {
+            inheritanceStatus.setAbstract("false");
+            inheritanceStatus.setInherited("false");
+            inheritanceStatus.setConcrete("true");
+            inheritanceStatus.setConcreteHere("true");
         }
 
-        newCmd.setStatus(inher_status);
+        newCmd.setStatus(inheritanceStatus);
         return newCmd;
     }
 
@@ -786,6 +833,7 @@ public class CommandDialog extends JDialog {
     private javax.swing.JButton argoutDescBtn;
     private javax.swing.JTextArea argoutDescText;
     private javax.swing.JTextArea descText;
+    private javax.swing.JLabel dynamicLbl;
     private javax.swing.JRadioButton levelBtn;
     private javax.swing.JComboBox nameComboBox;
     private javax.swing.JRadioButton overloadBtn;

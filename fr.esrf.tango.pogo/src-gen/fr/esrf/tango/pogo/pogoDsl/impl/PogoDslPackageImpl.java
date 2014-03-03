@@ -903,7 +903,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_Attributes()
+  public EReference getPogoDeviceClass_DynamicCommands()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(9);
   }
@@ -913,7 +913,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_DynamicAttributes()
+  public EReference getPogoDeviceClass_Attributes()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(10);
   }
@@ -923,7 +923,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_States()
+  public EReference getPogoDeviceClass_DynamicAttributes()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(11);
   }
@@ -933,7 +933,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_Preferences()
+  public EReference getPogoDeviceClass_States()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(12);
   }
@@ -943,7 +943,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_AdditionalFiles()
+  public EReference getPogoDeviceClass_Preferences()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(13);
   }
@@ -953,9 +953,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  public EReference getPogoDeviceClass_AdditionalFiles()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  {
+    return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(15);
   }
 
   /**
@@ -1603,9 +1613,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_ExcludedStates()
+  public EAttribute getCommand_IsDynamic()
   {
     return (EAttribute)commandEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommand_ExcludedStates()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -2576,6 +2596,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__CLASS_PROPERTIES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__DEVICE_PROPERTIES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__COMMANDS);
+    createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__DYNAMIC_COMMANDS);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__STATES);
@@ -2658,6 +2679,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(commandEClass, COMMAND__EXEC_METHOD);
     createEAttribute(commandEClass, COMMAND__DISPLAY_LEVEL);
     createEAttribute(commandEClass, COMMAND__POLLED_PERIOD);
+    createEAttribute(commandEClass, COMMAND__IS_DYNAMIC);
     createEAttribute(commandEClass, COMMAND__EXCLUDED_STATES);
 
     argumentEClass = createEClass(ARGUMENT);
@@ -2906,6 +2928,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getPogoDeviceClass_ClassProperties(), this.getProperty(), null, "classProperties", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_DeviceProperties(), this.getProperty(), null, "deviceProperties", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Commands(), this.getCommand(), null, "commands", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPogoDeviceClass_DynamicCommands(), this.getCommand(), null, "dynamicCommands", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_DynamicAttributes(), this.getAttribute(), null, "dynamicAttributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_States(), this.getState(), null, "states", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2988,6 +3011,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getCommand_ExecMethod(), ecorePackage.getEString(), "execMethod", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_DisplayLevel(), ecorePackage.getEString(), "displayLevel", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_PolledPeriod(), ecorePackage.getEString(), "polledPeriod", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_IsDynamic(), ecorePackage.getEString(), "isDynamic", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_ExcludedStates(), ecorePackage.getEString(), "excludedStates", null, 0, -1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(argumentEClass, Argument.class, "Argument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

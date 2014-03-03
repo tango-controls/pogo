@@ -9,6 +9,7 @@
 <mapAttribute key="org.eclipse.debug.core.environmentVariables">
 <mapEntry key="Classes2www" value="true"/>
 <mapEntry key="JSERVER_JAR_FILE" value="y:/tango/release/java/lib/JTangoServer.jar"/>
+<mapEntry key="TANGO_9" value="true"/>
 <mapEntry key="TANGO_INCLUDE" value="/segfs/tango/release/debian6/include"/>
 <mapEntry key="TANGO_ROOT" value="y:/tango/release"/>
 <mapEntry key="XTendTrace" value="true"/>
