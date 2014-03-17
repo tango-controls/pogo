@@ -81,11 +81,12 @@ class PythonUtils {
                 }
             }
         }
-           return "";
+        return "";
     }
     
     def hasAttrPropertySet(Attribute attr){
         return (
+        	!attr.memorized.empty              ||
             !attr.properties.label.empty       ||
             !attr.properties.unit.empty        ||
             !attr.properties.standardUnit.empty||
