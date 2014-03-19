@@ -93,9 +93,9 @@ class JavaAttribute {
 		 */
 		public org.tango.server.attribute.AttributeValue «attribute.attributeMethodName(true)»() throws DevFailed {
 			xlogger.entry();
+			«cls.protectedArea("get"+attribute.name, "Put read attribute code here", true)»
 			org.tango.server.attribute.AttributeValue attributeValue =
 				new org.tango.server.attribute.AttributeValue(«attribute.name.dataMemberName»);
-			«cls.protectedArea("get"+attribute.name, "Put read attribute code here", true)»
 			xlogger.exit();
 			return attributeValue;
 		}
