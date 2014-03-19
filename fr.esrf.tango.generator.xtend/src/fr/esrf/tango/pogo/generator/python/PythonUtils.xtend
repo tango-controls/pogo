@@ -86,7 +86,7 @@ class PythonUtils {
     
     def hasAttrPropertySet(Attribute attr){
         return (
-        	!attr.memorized.empty              ||
+        	(attr.memorized!=null && !attr.memorized.empty) ||
             !attr.properties.label.empty       ||
             !attr.properties.unit.empty        ||
             !attr.properties.standardUnit.empty||
