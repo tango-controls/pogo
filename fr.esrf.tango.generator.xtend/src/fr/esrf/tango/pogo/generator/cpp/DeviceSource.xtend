@@ -275,6 +275,7 @@ class DeviceSource {
 		{
 			«IF cls.dynamicAttributes.size>0»
 				//	Example to add dynamic attribute:
+				//	Copy inside the folowing protected area to instanciate at startup.
 				«FOR Attribute attribute : cls.dynamicAttributes»
 					//	add_«attribute.name»_dynamic_attribute("My«attribute.name»Attribute");
 				«ENDFOR»
@@ -310,6 +311,7 @@ class DeviceSource {
 		{
 			«IF cls.dynamicCommands.size>0»
 				//	Example to add dynamic command:
+				//	Copy inside the folowing protected area to instanciate at startup.
 				«FOR Command command : cls.dynamicCommands»
 					//	add_«command.name»_dynamic_command("My«command.name»Command", true);
 				«ENDFOR»
