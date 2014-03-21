@@ -34,7 +34,11 @@
 //-======================================================================
 package fr.esrf.tango.pogo.generator.python;
 
+import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
+
+import fr.esrf.tango.pogo.generator.common.StringUtils;
 
 public class PyUtils {
 	
@@ -88,5 +92,26 @@ public class PyUtils {
 		    	return "return argout";
 			return "";
 		}
+	}
+	//===========================================================
+	String addDynamicAttributeExample(PogoDeviceClass cls, Attribute attribute) {
+		StringBuilder	sb = new StringBuilder("self.add_attribute(");
+		sb.append("my").append(attribute.getName()).append(",");
+		if (StringUtils.isRead(attribute))
+			sb.append(cls.getName()).append(".read_").append(attribute.getName());
+		else
+			sb.append("None");
+		sb.append(", ");
+		if (StringUtils.isWrite(attribute))
+			sb.append(cls.getName()).append(".write_").append(attribute.getName());
+		else
+			sb.append("None");
+		sb.append(", ");
+		if (attribute.getReadExcludedStates().size()>0)
+			sb.append(cls.getName()).append(".is_").append(attribute.getName()).append("_allowed");
+		else
+			sb.append("None");
+		sb.append(")");
+		return sb.toString();
 	}
 }

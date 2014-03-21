@@ -265,12 +265,12 @@ public class StringUtils {
 	}
 	//===========================================================
 	//===========================================================
-	public boolean isRead(Attribute attribute) {
+	public static boolean isRead(Attribute attribute) {
 		String	str = attribute.getRwType();
 		return isSet(str) && str.contains("READ");
 	}
 	//===========================================================
-	public boolean isWrite(Attribute attribute) {
+	public static boolean isWrite(Attribute attribute) {
 		String	str = attribute.getRwType();
 		return isSet(str) && str.contains("WRITE");
 	}

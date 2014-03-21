@@ -245,4 +245,46 @@ class PythonUtils {
             «ENDIF»
         «ENDIF»
     '''
+    //======================================================
+    /**
+     * Code to generate dynamic attribute example.
+     */
+    //======================================================
+    def dynamicAttributeCreationExample(Attribute attr) '''
+        «IF attr.scalar»
+            my«attr.name» = PyTango.Attr('My«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase»)
+        «ENDIF»
+        «IF attr.spectrum»
+            my«attr.name» = PyTango.SpectrumAttr('My«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX»)
+        «ENDIF»
+        «IF attr.image»
+            my«attr.name» = PyTango.ImageAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX», «attr.maxY»)
+        «ENDIF»
+    '''
+    //======================================================
+    def dynamicAttributeDefaultValueExample(PogoDeviceClass cls, Attribute attr) '''
+        «IF attr.displayLevel.equals("EXPERT")»
+            my«attr.name».set_disp_level(PyTango.DispLevel.EXPERT)
+        «ENDIF»
+        «cls.addDynamicAttributeExample(attr)»
+        «IF attr.read»
+            self.attr_«attr.name»_read = «attr.defaultValueDim»
+        «ENDIF»
+    '''
+    //======================================================
+    def dynamicAttributeSetMemorizedExample(Attribute attribute) '''
+        «IF attribute.write»
+            «IF attribute.memorized!=null»
+                «IF attribute.memorized == "true"»
+                    my«attribute.name».set_memorized()
+                    «IF attribute.memorizedAtInit == "true"»
+                        my«attribute.name».set_memorized_init(True)
+                    «ELSE»
+                        my«attribute.name».set_memorized_init(False)
+                    «ENDIF»
+                «ENDIF»
+            «ENDIF»
+        «ENDIF»
+    '''
+    //======================================================
 }

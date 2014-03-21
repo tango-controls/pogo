@@ -244,27 +244,22 @@ class PythonDevice implements IGenerator {
         «IF !cls.dynamicAttributes.empty»
         def initialize_dynamic_attributes(self):
             self.debug_stream("In initialize_dynamic_attributes()")
-        «FOR attr : cls.dynamicAttributes»
-            «IF attr.scalar»    «attr.name» = PyTango.Attr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase»)«ENDIF»
-            «IF attr.spectrum»    «attr.name» = PyTango.SpectrumAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX»)«ENDIF»
-            «IF attr.image»    «attr.name» = PyTango.ImageAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX», «attr.maxY»)«ENDIF»
-            «IF attr.write»
-                «IF attr.memorized!=null»
-                    «IF attr.memorized == "true"»    «attr.name».set_memorized()
-                        «IF attr.memorizedAtInit == "true"»    «attr.name».set_memorized_init(True)
-                        «ELSE»    «attr.name».set_memorized_init(False)
-                        «ENDIF»
-                    «ENDIF»
-                «ENDIF»
-            «ENDIF»
-            «IF attr.displayLevel.equals("EXPERT")»    «attr.name».set_disp_level(PyTango.DispLevel.EXPERT)«ENDIF»
-                self.add_attribute(«attr.name»,«IF attr.read»«cls.name».read_«attr.name»«ELSE»None«ENDIF», «IF attr.write»«cls.name».write_«attr.name»«ELSE»None«ENDIF», «IF !attr.readExcludedStates.empty»«cls.name».is_«attr.name»_allowed«ELSE»None«ENDIF»)
-            «IF attr.read»    self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
-        «ENDFOR»
+            
+            #   Example to add dynamic attributes
+            #   Copy inside the folowing protected area to instanciate at startup.
+            
+            «FOR attr : cls.dynamicAttributes»
+                """   For Attribute «attr.name»
+                «attr.dynamicAttributeCreationExample»
+                «attr.dynamicAttributeSetMemorizedExample»
+                «cls.dynamicAttributeDefaultValueExample(attr)»"""
+                
+            «ENDFOR»
         «ENDIF»
             «cls.protectedArea("initialize_dynamic_attributes")»
                 
     '''
+
     //====================================================
     //    Dynamic Attributes for class
     //====================================================
