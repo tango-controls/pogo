@@ -692,17 +692,17 @@ public class OAWutils {
 
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
-        InheritanceStatus src_st = src.getStatus();
-        status.setAbstract(src_st.getAbstract());
-        status.setInherited(src_st.getInherited());
-        status.setConcrete(src_st.getConcrete());
-        status.setConcreteHere(src_st.getConcreteHere());
+        InheritanceStatus srcStatus = src.getStatus();
+        status.setAbstract(srcStatus.getAbstract());
+        status.setInherited(srcStatus.getInherited());
+        status.setConcrete(srcStatus.getConcrete());
+        status.setConcreteHere(srcStatus.getConcreteHere());
         cmd.setStatus(status);
 
-        EList<String> src_excluded = src.getExcludedStates();
-        EList<String> new_excuded = cmd.getExcludedStates();
-        for (String s : src_excluded)
-            new_excuded.add(s);
+        EList<String> srcExcluded = src.getExcludedStates();
+        EList<String> newExcluded = cmd.getExcludedStates();
+        for (String s : srcExcluded)
+            newExcluded.add(s);
 
         cmd.setPolledPeriod(src.getPolledPeriod());
         return cmd;

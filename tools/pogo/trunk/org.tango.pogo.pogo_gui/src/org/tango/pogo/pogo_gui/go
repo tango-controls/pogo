@@ -29,6 +29,7 @@ JSERVER_JAR_FILE=y:/tango/release/java/lib/JTangoServer.jar
 export JSERVER_JAR_FILE
 
 export Packaging=true
+export TANGO_9=true
 
 java  -DSUPER_HOME=$SUPER_HOME \
             org.tango.pogo.pogo_gui.Pogo  $*
