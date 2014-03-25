@@ -113,8 +113,8 @@ public class JavaUtils extends StringUtils {
 	 * @return the full qualified name the for device class file
 	 */
 	//===========================================================
-	public String javaDynamicAttributeFileName( PogoDeviceClass cls, String attributeName) {
-		String	fullName = fullQualifiedJavaDeviceClassName(cls, attributeName);
+	public String javaDynamicObjectFileName( PogoDeviceClass cls, String objectName) {
+		String	fullName = fullQualifiedJavaDeviceClassName(cls, objectName);
 		return fullName.replaceAll("\\.","/") + ".java";
 	}
 	//===========================================================
@@ -366,6 +366,20 @@ public class JavaUtils extends StringUtils {
 
 		ArrayList<String>	list = new ArrayList<String>();
 		for (String state : attribute.getReadExcludedStates())
+			list.add("DeviceState."+state);
+
+		if (list.isEmpty())
+			return "";
+		else
+			return  propertiesInOneLine("stateMachine.setDeniedStates(", list, ");");
+
+	}
+	//===========================================================
+	//===========================================================
+	public String stateMachineForDynamic(Command command) {
+
+		ArrayList<String>	list = new ArrayList<String>();
+		for (String state : command.getExcludedStates())
 			list.add("DeviceState."+state);
 
 		if (list.isEmpty())

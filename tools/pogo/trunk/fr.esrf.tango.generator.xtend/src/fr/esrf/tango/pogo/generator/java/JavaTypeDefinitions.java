@@ -168,6 +168,42 @@ public class JavaTypeDefinitions {
 		return "";
 	}
 
+	/**
+	 * Type Defined
+	 */
+	public static String javaTypeConstants (Type type) {
+		if (type instanceof VoidType)				return "TangoConst.Tango_DEV_VOID";
+		if (type instanceof BooleanType)			return "TangoConst.Tango_DEV_BOOLEAN";
+		if (type instanceof ShortType)				return "TangoConst.Tango_DEV_SHORT";
+		if (type instanceof IntType)				return "TangoConst.Tango_DEV_LONG";
+		if (type instanceof FloatType)				return "TangoConst.Tango_DEV_FLOAT";
+		if (type instanceof DoubleType)				return "TangoConst.Tango_DEV_DOUBLE";
+		if (type instanceof UShortType)				return "TangoConst.Tango_DEV_USHORT";
+		if (type instanceof UIntType)				return "TangoConst.Tango_DEV_ULONG";
+		if (type instanceof StringType)				return "TangoConst.Tango_DEV_STRING";
+		if (type instanceof CharArrayType)			return "TangoConst.Tango_DEVVAR_CHARARRAY";
+		if (type instanceof ShortArrayType)			return "TangoConst.Tango_DEVVAR_SHORTARRAY";
+		if (type instanceof IntArrayType)			return "TangoConst.Tango_DEVVAR_LONGARRAY";
+		if (type instanceof FloatArrayType)			return "TangoConst.Tango_DEVVAR_FLOATARRAY";
+		if (type instanceof DoubleArrayType)		return "TangoConst.Tango_DEVVAR_DOUBLEARRAY";
+		if (type instanceof UShortArrayType)		return "TangoConst.Tango_DEVVAR_USHORTARRAY";
+		if (type instanceof UIntArrayType)			return "TangoConst.Tango_DEVVAR_ULONGARRAY";
+		if (type instanceof StringArrayType)		return "TangoConst.Tango_DEVVAR_STRINGARRAY";
+		if (type instanceof LongStringArrayType)	return "TangoConst.Tango_DEVVAR_LONGSTRINGARRAY";
+		if (type instanceof DoubleStringArrayType)	return "TangoConst.Tango_DEVVAR_DOUBLESTRINGARRAY";
+		if (type instanceof StateType)				return "TangoConst.Tango_DEV_STATE";
+		if (type instanceof ConstStringType)		return "TangoConst.Tango_CONST_DEV_STRING";
+		if (type instanceof BooleanArrayType)		return "TangoConst.Tango_DEVVAR_BOOLEANARRAY";
+		if (type instanceof UCharType)				return "TangoConst.Tango_DEV_UCHAR";
+		if (type instanceof LongType)				return "TangoConst.Tango_DEV_LONG64";
+		if (type instanceof ULongType)				return "TangoConst.Tango_DEV_ULONG64";
+		if (type instanceof LongArrayType)			return "TangoConst.Tango_DEVVAR_LONG64ARRAY";
+		if (type instanceof ULongArrayType)			return "TangoConst.Tango_DEVVAR_ULONG64ARRAY";
+		if (type instanceof DevIntType)				return "TangoConst.Tango_DEV_INT";
+		if (type instanceof EncodedType)			return "TangoConst.Tango_DEV_ENCODED";
+		return "";
+	}
+
 	//===========================================================
 	//===========================================================
 	public String defaultValue(Attribute attribute) {
