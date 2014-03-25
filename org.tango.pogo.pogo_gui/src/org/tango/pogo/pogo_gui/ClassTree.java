@@ -226,111 +226,132 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     //===============================================================
     private void createCollectionClassNodes(PogoDeviceClass pogoClass) {
-        EList<Property> classprops = pogoClass.getClassProperties();
-        EList<Property> devprops = pogoClass.getDeviceProperties();
+
+        //  Create property nodes
+        EList<Property> classProperties = pogoClass.getClassProperties();
+        root.add(createPropertyBranch(classProperties, "Class"));
+        EList<Property> deviceProperties = pogoClass.getDeviceProperties();
+        root.add(createPropertyBranch(deviceProperties, "Device"));
+
+        //  Create command node
         EList<Command> commands = pogoClass.getCommands();
         EList<Command> dynamicCommands = pogoClass.getDynamicCommands();
-        EList<Attribute> attributes = pogoClass.getAttributes();
-        EList<Attribute> dynamicAttributes = pogoClass.getDynamicAttributes();
-        EList<State> states = pogoClass.getStates();
-
-        //	Check for State and Status commands
+        //	Add State and Status commands
         if (commands.size() == 0) {
             Command[] cmd = org.tango.pogo.pogo_gui.tools.OAWutils.createStateStatusCommand();
             commands.add(cmd[0]);
             commands.add(cmd[1]);
         }
+        root.add(createCommandBranch(commands, dynamicCommands));
 
+        //  Create attribute nodes
+        EList<Attribute> attributes = pogoClass.getAttributes();
+        EList<Attribute> dynamicAttributes = pogoClass.getDynamicAttributes();
+        DefaultMutableTreeNode[]    attributeNodes =
+                createAttributeBranch(attributes, dynamicAttributes);
+        root.add(attributeNodes[0]);
+        root.add(attributeNodes[1]);
+        root.add(attributeNodes[2]);
+
+        //  Create state node
+        EList<State> states = pogoClass.getStates();
+        root.add(createStateBranch(states));
+    }
+
+    //======================================================
+    //======================================================
+    private DefaultMutableTreeNode createPropertyBranch(EList<Property> properties, String target) {
         Utils utils = Utils.getInstance();
-        DefaultMutableTreeNode classprop_node =
+        DefaultMutableTreeNode propertiesNode =
                 new DefaultMutableTreeNode(
-                        new PogoCollection("Class Properties", utils.classprop_icon));
-        DefaultMutableTreeNode devprop_node =
-                new DefaultMutableTreeNode(
-                        new PogoCollection("Device Properties", utils.devprop_icon));
-        DefaultMutableTreeNode cmd_node =
-                new DefaultMutableTreeNode(
-                        new PogoCollection("Commands", utils.cmd_icon));
-        DefaultMutableTreeNode scalar_node =
-                new DefaultMutableTreeNode(
-                        new PogoCollection("Scalar Attributes", utils.scalar_icon));
-        DefaultMutableTreeNode spectrum_node =
-                new DefaultMutableTreeNode(
-                        new PogoCollection("Spectrum Attributes", utils.spectrum_icon));
-        DefaultMutableTreeNode image_node =
-                new DefaultMutableTreeNode(
-                        new PogoCollection("Image Attributes", utils.image_icon));
-        DefaultMutableTreeNode states_node =
-                new DefaultMutableTreeNode(
-                        new PogoCollection("States", utils.state_icon));
+                        new PogoCollection(target + " Properties", utils.classprop_icon));
 
-        for (Property prop : classprops) {
+        for (Property prop : properties) {
             DefaultMutableTreeNode node =
                     new DefaultMutableTreeNode(new PogoProperty(prop, false));
-            classprop_node.add(node);
+            propertiesNode.add(node);
         }
-        for (Property prop : devprops) {
-            DefaultMutableTreeNode node =
-                    new DefaultMutableTreeNode(new PogoProperty(prop, true));
-            devprop_node.add(node);
-        }
+        return propertiesNode;
+    }
+    //======================================================
+    //======================================================
+    private DefaultMutableTreeNode createCommandBranch(EList<Command> commands, EList<Command> dynamicCommands) {
+        Utils utils = Utils.getInstance();
+        DefaultMutableTreeNode commandsNode =
+                new DefaultMutableTreeNode(
+                        new PogoCollection("Commands", utils.cmd_icon));
         for (Command cmd : commands) {
             DefaultMutableTreeNode node =
                     new DefaultMutableTreeNode(new PogoCommand(cmd));
-            cmd_node.add(node);
+            commandsNode.add(node);
         }
         for (Command cmd : dynamicCommands) {
             DefaultMutableTreeNode node =
                     new DefaultMutableTreeNode(new PogoCommand(cmd));
-            cmd_node.add(node);
+            commandsNode.add(node);
         }
-        for (State state : states) {
-            DefaultMutableTreeNode node =
-                    new DefaultMutableTreeNode(new PogoState(state));
-            states_node.add(node);
-        }
+        return commandsNode;
+    }
+    //======================================================
+    //======================================================
+    private DefaultMutableTreeNode[] createAttributeBranch(EList<Attribute> attributes,
+                                                         EList<Attribute> dynamicAttributes) {
+        DefaultMutableTreeNode[]    nodes = new DefaultMutableTreeNode[3];
+        Utils utils = Utils.getInstance();
+        nodes[0] = new DefaultMutableTreeNode(
+                        new PogoCollection("Scalar Attributes", utils.scalar_icon));
+        nodes[1] = new DefaultMutableTreeNode(
+                        new PogoCollection("Spectrum Attributes", utils.spectrum_icon));
+        nodes[2] = new DefaultMutableTreeNode(
+                        new PogoCollection("Image Attributes", utils.image_icon));
+
         for (Attribute att : attributes) {
             PogoAttribute pa = new PogoAttribute(att);
-            DefaultMutableTreeNode node =
-                    new DefaultMutableTreeNode(pa);
+            DefaultMutableTreeNode node = new DefaultMutableTreeNode(pa);
             switch (pa.attType) {
                 case SCALAR_ATTRIBUTE:
-                    scalar_node.add(node);
+                    nodes[0].add(node);
                     break;
                 case SPECTRUM_ATTRIBUTE:
-                    spectrum_node.add(node);
+                    nodes[1].add(node);
                     break;
                 case IMAGE_ATTRIBUTE:
-                    image_node.add(node);
+                    nodes[2].add(node);
                     break;
             }
         }
         for (Attribute att : dynamicAttributes) {
             PogoAttribute pa = new PogoAttribute(att);
-            DefaultMutableTreeNode node =
-                    new DefaultMutableTreeNode(pa);
+            DefaultMutableTreeNode node = new DefaultMutableTreeNode(pa);
             switch (pa.attType) {
                 case SCALAR_ATTRIBUTE:
-                    scalar_node.add(node);
+                    nodes[0].add(node);
                     break;
                 case SPECTRUM_ATTRIBUTE:
-                    spectrum_node.add(node);
+                    nodes[1].add(node);
                     break;
                 case IMAGE_ATTRIBUTE:
-                    image_node.add(node);
+                    nodes[2].add(node);
                     break;
             }
         }
-
-        root.add(classprop_node);
-        root.add(devprop_node);
-        root.add(cmd_node);
-        root.add(scalar_node);
-        root.add(spectrum_node);
-        root.add(image_node);
-        root.add(states_node);
+        return nodes;
     }
+    //======================================================
+    //======================================================
+    private DefaultMutableTreeNode createStateBranch(EList<State> states) {
+        Utils utils = Utils.getInstance();
+        DefaultMutableTreeNode statesNode =
+                new DefaultMutableTreeNode(
+                        new PogoCollection("States", utils.state_icon));
 
+        for (State state : states) {
+            DefaultMutableTreeNode node =
+                    new DefaultMutableTreeNode(new PogoState(state));
+            statesNode.add(node);
+        }
+        return statesNode;
+    }
     //======================================================
     //======================================================
     private DefaultMutableTreeNode getSelectedNode() {
@@ -633,7 +654,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     //===============================================================
     public void setClassLanguage(int language) {
-        //ToDo
         ((PogoRoot) root.getUserObject()).language = PogoConst.strLang[language];
         deviceClass.getPogoDeviceClass().getDescription().setLanguage(PogoConst.strLang[language]);
     }
@@ -1125,51 +1145,52 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         devClass.setAncestors(deviceClass.getAncestors());
         PogoDeviceClass pg_class = devClass.getPogoDeviceClass();
 
-        PogoRoot pg_root = (PogoRoot) root.getUserObject();
+        PogoRoot pogoRoot = (PogoRoot) root.getUserObject();
         //  Check if class ID is not null (could be null from old Pogo)
-        if (pg_root.id == null) {
+        if (pogoRoot.id == null) {
             editClass();
-            pg_root = (PogoRoot) root.getUserObject();
-            if (pg_root.id == null)
+            pogoRoot = (PogoRoot) root.getUserObject();
+            if (pogoRoot.id == null)
                 return null;
         }
-        pg_class.setName(pg_root.name);
-        pg_class.getDescription().setDescription(pg_root.description);
-        pg_class.getDescription().setTitle(pg_root.title);
-        pg_class.getDescription().setSourcePath(pg_root.path);
-        pg_class.getDescription().setLicense(pg_root.license);
+
+        pg_class.setName(pogoRoot.name);
+        pg_class.getDescription().setDescription(pogoRoot.description);
+        pg_class.getDescription().setTitle(pogoRoot.title);
+        pg_class.getDescription().setSourcePath(pogoRoot.path);
+        pg_class.getDescription().setLicense(pogoRoot.license);
         pg_class.getDescription().setIdentification(
-                OAWutils.cloneClassIdentification(pg_root.id));
-        pg_class.getDescription().setLanguage(pg_root.language);
+                OAWutils.cloneClassIdentification(pogoRoot.id));
+        pg_class.getDescription().setLanguage(pogoRoot.language);
 
         //  Copy inheritances.
         EList<Inheritance> inheritances = pg_class.getDescription().getInheritances();
         inheritances.clear();
-        for (Inheritance inheritance : pg_root.inheritances) {
+        for (Inheritance inheritance : pogoRoot.inheritances) {
             Inheritance inher = OAWutils.factory.createInheritance();
             inher.setClassname(inheritance.getClassname());
             inher.setSourcePath(inheritance.getSourcePath());
             inheritances.add(inher);
         }
-        EList<Property> classprop = pg_class.getClassProperties();
-        EList<Property> devprop = pg_class.getDeviceProperties();
+        EList<Property> classProperties = pg_class.getClassProperties();
+        EList<Property> deviceProperties = pg_class.getDeviceProperties();
         EList<Command> commands = pg_class.getCommands();
-        EList<Command> DynCommands = pg_class.getDynamicCommands();
+        EList<Command> dynamicCommands = pg_class.getDynamicCommands();
         EList<Attribute> attributes = pg_class.getAttributes();
-        EList<Attribute> dynAttrib = pg_class.getDynamicAttributes();
+        EList<Attribute> dynamicAttributes = pg_class.getDynamicAttributes();
         EList<State> states = pg_class.getStates();
         for (int i = 0; i < root.getChildCount(); i++) {
             DefaultMutableTreeNode collecNode =
                     (DefaultMutableTreeNode) root.getChildAt(i);
             switch (i) {
                 case CLASS_PROPERTIES:
-                    setPropertyToPogoDeviceClass(classprop, collecNode);
+                    setPropertyToPogoDeviceClass(classProperties, collecNode);
                     break;
                 case DEV_PROPERTIES:
-                    setPropertyToPogoDeviceClass(devprop, collecNode);
+                    setPropertyToPogoDeviceClass(deviceProperties, collecNode);
                     break;
                 case COMMANDS:
-                    setCommandsToPogoDeviceClass(commands, DynCommands, collecNode);
+                    setCommandsToPogoDeviceClass(commands, dynamicCommands, collecNode);
                     break;
                 case STATES:
                     setStateToPogoDeviceClass(states, collecNode);
@@ -1177,9 +1198,16 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 case SCALAR_ATTRIBUTE:
                 case SPECTRUM_ATTRIBUTE:
                 case IMAGE_ATTRIBUTE:
-                    setAttributeToPogoDeviceClass(attributes, dynAttrib, collecNode);
+                    setAttributeToPogoDeviceClass(attributes, dynamicAttributes, collecNode);
             }
         }
+        //  ToDo Check if supported
+        if (pg_class.getDynamicCommands().size()>0 &&
+                pogoRoot.language.equals(PogoConst.strLang[PogoConst.Python])) {
+            Utils.popupError(this, "Dynamic commands are not supported in Python !");
+            return null;
+        }
+
         //  Update abstract class fields
         DeviceClass.checkIfAbstractClass(pg_class, true);
         //  Update additional file list

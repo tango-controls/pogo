@@ -701,7 +701,6 @@ public class PogoGUI extends JFrame {
         }
     }//GEN-LAST:event_exitForm
     //=======================================================
-
     /**
      * Manage if modification(s) has been done, and propose to generate them.
      *
@@ -782,30 +781,29 @@ public class PogoGUI extends JFrame {
     private boolean generateSourceFiles(ClassTree tree) {
         //	First time check output path
         GenerateDialog dialog = new GenerateDialog(this);
-        DeviceClass devclass = tree.getDeviceClass();
+        DeviceClass deviceClass = tree.getDeviceClass();
 
-        if (devclass == null)    //	No class defined in tree or cannot get it (ID is null)
+        if (deviceClass == null)    //	No class defined in tree or cannot get it (ID is null)
             return true;
-        if (dialog.showDialog(devclass) == JOptionPane.OK_OPTION) {
+        if (dialog.showDialog(deviceClass) == JOptionPane.OK_OPTION) {
             //	Then generate code and save
             Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
             setCursor(cursor);
             try {
-                devclass = dialog.getDevClass();
+                deviceClass = dialog.getDevClass();
                 Utils.getInstance().startSplashRefresher(
-                        "Generate class: " +
-                                devclass.getPogoDeviceClass().getName());
+                        "Generate class: " + deviceClass.getPogoDeviceClass().getName());
 
-                devclass.generate(tree.getDeletedObjects(),
+                deviceClass.generate(tree.getDeletedObjects(),
                         tree.getRenamedObjects());
 
                 Utils.getInstance().stopSplashRefresher();
 
                 //	Update ClassTree object.
                 tree.setModified(false);
-                tree.setSrcPath(devclass.getPogoDeviceClass().getDescription().getSourcePath());
+                tree.setSrcPath(deviceClass.getPogoDeviceClass().getDescription().getSourcePath());
 
-                manageRecentMenu(devclass.getProjectFilename());
+                manageRecentMenu(deviceClass.getProjectFilename());
             } catch (Exception e) {
                 Utils.getInstance().stopSplashRefresher();
                 cursor = new Cursor(Cursor.DEFAULT_CURSOR);

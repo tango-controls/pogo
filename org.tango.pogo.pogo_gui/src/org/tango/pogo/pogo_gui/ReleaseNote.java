@@ -17,7 +17,12 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Feb 26 09:52:13 CET 2014)</Center><Br>\n" + 
+		"	(Generated Tue Mar 25 10:13:23 CET 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.4.3 - 25/03/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve python dynamic attribute management.<Br>\n" + 
+		"<li><b>Pogo-8.4.2 - 19/03/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix problem in python when memorized attribute does not have property.<Br>\n" + 
+		"&nbsp; &nbsp; Fix problem on scalar attribute value.<Br>\n" + 
 		"<li><b>Pogo-8.4.0 - 26/02/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Replace TangORB.jar and ATK*.jar by a tango_ulight.jar file,<Br>\n" + 
 		"&nbsp; &nbsp; containing only 2 tangorb classes and 5 atk classes,<Br>\n" + 
@@ -29,7 +34,7 @@ public interface ReleaseNote
 		"&nbsp; &nbsp; Fix a problem in changing language.<Br>\n" + 
 		"<li><b>Pogo-8.3.3 - 17/01/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix a bug in Pogo Multiple classes.<Br>\n" + 
-		"&nbsp; &nbsp; Modified linux Mafile for shared libs<Br>\n" + 
+		"&nbsp; &nbsp; Modified linux Makefile for shared libs<Br>\n" + 
 		"<li><b>Pogo-8.3.2 - 17/01/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix another problem on python class with inheritance.<Br>\n" + 
 		"<li><b>Pogo-8.3.1 - 07/01/2014:</b><Br>\n" + 

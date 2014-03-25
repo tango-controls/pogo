@@ -8,6 +8,14 @@
 #
 #-======================================================================
 
+
+Pogo-8.4.3 - 25/03/2014:
+	Improve python dynamic attribute management.
+
+Pogo-8.4.2 - 19/03/2014:
+	Fix problem in python when memorized attribute does not have property.
+	Fix problem on scalar attribute value.
+
 Pogo-8.4.0 - 26/02/2014:
 	Replace TangORB.jar and ATK*.jar by a tango_ulight.jar file,
 	containing only 2 tangorb classes and 5 atk classes,
@@ -22,7 +30,7 @@ Pogo-8.3.4 - 27/01/2014:
 
 Pogo-8.3.3 - 17/01/2014:
 	Fix a bug in Pogo Multiple classes.
-	Modified linux Mafile for shared libs
+	Modified linux Makefile for shared libs
 
 Pogo-8.3.2 - 17/01/2014:
 	Fix another problem on python class with inheritance.
