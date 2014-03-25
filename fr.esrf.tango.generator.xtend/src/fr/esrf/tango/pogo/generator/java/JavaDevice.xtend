@@ -52,12 +52,14 @@ import fr.esrf.tango.pogo.generator.common.StringUtils
 import fr.esrf.tango.pogo.generator.common.Headers
 import fr.esrf.tango.pogo.pogoDsl.Property
 import fr.esrf.tango.pogo.pogoDsl.Attribute
+import fr.esrf.tango.pogo.pogoDsl.Command
 
 class JavaDevice  implements IGenerator {
 
 	@Inject extension JavaUtils
 	@Inject extension JavaAttribute
 	@Inject extension JavaDynamicAttribute
+	@Inject extension JavaDynamicCommand
 	@Inject extension JavaCommand
 	@Inject extension ProtectedArea
 	@Inject extension StringUtils
@@ -71,13 +73,22 @@ class JavaDevice  implements IGenerator {
 					printTrace("Generating " + cls.javaDeviceClassFileName(true))
 					fsa.generateFile(cls.javaDeviceClassFileName(true),     cls.generateJavaDeviceFile)
 					
+					//	Check for dynamic commands
+					if (cls.dynamicCommands.empty==false) {
+						for (Command command : cls.dynamicCommands) {
+							printTrace("Generating " + cls.javaDynamicObjectFileName(command.name))
+							fsa.generateFile(cls.javaDynamicObjectFileName(command.name),
+												cls.generateJavaDynamicCommandClassFile(command))
+						}
+					}
 					//	Check for dynamic attributes
-					if (cls.dynamicAttributes.empty==false)
+					if (cls.dynamicAttributes.empty==false) {
 						for (Attribute attribute : cls.dynamicAttributes) {
-							printTrace("Generating " + cls.javaDynamicAttributeFileName(attribute.name))
-							fsa.generateFile(cls.javaDynamicAttributeFileName(attribute.name),
+							printTrace("Generating " + cls.javaDynamicObjectFileName(attribute.name))
+							fsa.generateFile(cls.javaDynamicObjectFileName(attribute.name),
 												cls.generateJavaDynamicAttributeClassFile(attribute))
 						}
+					}
 				}
 			}
 		}

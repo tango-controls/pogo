@@ -61,7 +61,7 @@ class JavaDynamicAttribute {
 		 * description:
 		 *     «attribute.properties.description.comments("*     ")»
 		 */
-		public class «attribute.name» implements org.tango.server.attribute.IAttributeBehavior {
+		public class «attribute.name» implements IAttributeBehavior {
 
 			/**	The attribute name */
 			private String  attributeName;
@@ -98,6 +98,7 @@ class JavaDynamicAttribute {
 
 		import org.tango.DeviceState;
 		import org.tango.server.StateMachineBehavior;
+		import org.tango.server.attribute.IAttributeBehavior;
 		import org.tango.server.attribute.AttributeValue;
 		import org.tango.server.attribute.AttributeConfiguration;
 		import org.tango.server.attribute.AttributePropertiesImpl;
@@ -105,6 +106,9 @@ class JavaDynamicAttribute {
 		//	Import Tango IDL types
 		import fr.esrf.Tango.*;
 
+
+		«cls.protectedArea(attribute.name+"." + "addImports")»
+		
 	'''
 
 	//======================================================
@@ -126,8 +130,8 @@ class JavaDynamicAttribute {
 	//======================================================
 	def getConfigurationMethod(PogoDeviceClass cls, Attribute attribute) '''
 		/**
-		 * Build and return the configuration for dynamic attribute DynTest.
-		 * @return the configuration for dynamic attribute DynTest.
+		 * Build and return the configuration for dynamic attribute «attribute.name».
+		 * @return the configuration for dynamic attribute «attribute.name».
 		 * @throws DevFailed in case of configuration error.
 		 */
 		@Override
