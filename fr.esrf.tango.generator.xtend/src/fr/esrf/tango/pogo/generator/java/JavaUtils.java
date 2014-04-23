@@ -268,6 +268,9 @@ public class JavaUtils extends StringUtils {
 				if (isTrue(attribute.getArchiveEvent().getLibCheckCriteria())) {
 					list.add("checkArchivingEvent=true");
 				}
+				else {
+					list.add("checkArchivingEvent=false");					
+				}
 			}
 		}
 
@@ -276,6 +279,9 @@ public class JavaUtils extends StringUtils {
 				list.add("pushChangeEvent=true");
 				if (isTrue(attribute.getChangeEvent().getLibCheckCriteria())) {
 					list.add("checkChangeEvent=true");
+				}
+				else {
+					list.add("checkChangeEvent=false");					
 				}
 			}
 		}

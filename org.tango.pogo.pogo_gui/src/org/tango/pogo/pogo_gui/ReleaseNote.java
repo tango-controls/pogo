@@ -17,7 +17,12 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Mar 25 10:13:23 CET 2014)</Center><Br>\n" + 
+		"	(Generated Wed Apr 23 08:55:04 CEST 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.4.5 - 23/04/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Inverse order between allocation and mandatory test in init_device().<Br>\n" + 
+		"<li><b>Pogo-8.4.4 - 07/04/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem with pushEvent in java classes.<Br>\n" + 
+		"&nbsp; &nbsp; Remove evironment variable _812_ (tango-8.1.2)<Br>\n" + 
 		"<li><b>Pogo-8.4.3 - 25/03/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve python dynamic attribute management.<Br>\n" + 
 		"<li><b>Pogo-8.4.2 - 19/03/2014:</b><Br>\n" + 

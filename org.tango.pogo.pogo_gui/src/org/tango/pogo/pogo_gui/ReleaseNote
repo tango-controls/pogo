@@ -9,6 +9,13 @@
 #-======================================================================
 
 
+Pogo-8.4.5 - 23/04/2014:
+	Inverse order between allocation and mandatory test in init_device().
+
+Pogo-8.4.4 - 07/04/2014:
+	Fix a problem with pushEvent in java classes.
+	Remove evironment variable _812_ (tango-8.1.2)
+
 Pogo-8.4.3 - 25/03/2014:
 	Improve python dynamic attribute management.
 
