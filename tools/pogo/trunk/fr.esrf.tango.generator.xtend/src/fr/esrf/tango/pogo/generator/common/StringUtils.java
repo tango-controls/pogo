@@ -52,9 +52,9 @@ public class StringUtils {
 
 	//===========================================================
 	//===========================================================
-	public static boolean useTango812() {
-		String	is812 = System.getProperty("_812_");
-		return (is812!=null && is812.equals("true"));
+	public static boolean useTango9() {
+		String	str = System.getProperty("TANGO_9");
+		return (str!=null && str.equals("true"));
 	}
 	//===========================================================
 	/*
@@ -62,10 +62,7 @@ public class StringUtils {
 	 */
 	//===========================================================
 	public static String DeviceImpl() {
-		if (useTango812())
-			return "TANGO_BASE_CLASS";
-		else
-			return "Tango::Device_4Impl";
+		return "TANGO_BASE_CLASS";
 	}
 
 	//===========================================================

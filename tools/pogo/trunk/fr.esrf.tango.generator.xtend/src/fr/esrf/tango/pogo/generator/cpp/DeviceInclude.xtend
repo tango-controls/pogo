@@ -232,7 +232,7 @@ class DeviceInclude  {
 		public:
 			«cls.simpleMethodHeader1("read_attr_hardware", "Hardware acquisition for attributes.")»
 			virtual void read_attr_hardware(vector<long> &attr_list);
-			«IF cls.hasWritableAttribute && useTango812»
+			«IF cls.hasWritableAttribute»
 				«cls.simpleMethodHeader1("write_attr_hardware", "Hardware writing for attributes.")»
 				virtual void write_attr_hardware(vector<long> &attr_list);
 			«ENDIF»

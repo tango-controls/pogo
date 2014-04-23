@@ -82,6 +82,7 @@ class DeviceSource {
 		{
 		«cls.protectedArea("namespace_starting", "static initializations", true)»
 		«cls.constructors»
+		«cls.initDeviceMethod»
 		«cls.utilsMethods»
 		«cls.attributeMethods»
 		«cls.commandMethods»
@@ -148,9 +149,9 @@ class DeviceSource {
 	'''
 	
 	//======================================================
-	// Define init_device() and get_device_properies() methods
+	// Define init_device() method
 	//======================================================
-	def utilsMethods(PogoDeviceClass cls) '''
+	def initDeviceMethod(PogoDeviceClass cls) '''
 
 		«cls.simpleMethodHeader("init_device", "will be called at device initialization.")»
 		void «cls.name»::init_device()
@@ -170,18 +171,25 @@ class DeviceSource {
 
 				//	Get the device properties from database
 				get_device_property();
-				«IF cls.deviceProperties.hasMandatoryProperty»
-				if (mandatoryNotDefined)
-					return;
-				«ENDIF»
 			«ELSE»
 				//	No device property to be read from database
 			«ENDIF»
 			«cls.attributes.allocateAttributeDataMembers»
+			«IF cls.deviceProperties.hasMandatoryProperty»
+				//	No longer if mandatory property not set. 
+				if (mandatoryNotDefined)
+					return;
 
+			«ENDIF»
 			«cls.protectedArea("init_device", "Initialize device", true)»
 		}
-		
+
+	'''
+
+	//======================================================
+	// Define get_device_properies() and always_executed_hook() methods
+	//======================================================
+	def utilsMethods(PogoDeviceClass cls) '''
 		«IF cls.deviceProperties.size>0 && isTrue(cls.description.hasConcreteProperty)»
 			«cls.getDevicePropertiesMethod»
 			«IF cls.deviceProperties.hasMandatoryProperty»
@@ -238,7 +246,7 @@ class DeviceSource {
 			DEBUG_STREAM << "«cls.name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
 			«cls.protectedArea("read_attr_hardware", "Add your own code", true)»
 		}
-		«IF cls.hasWritableAttribute && useTango812»
+		«IF cls.hasWritableAttribute»
 		«cls.simpleMethodHeader("write_attr_hardware", "Hardware writing for attributes")»
 		void «cls.name»::write_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
 		{
@@ -298,26 +306,28 @@ class DeviceSource {
 				«cls.commandExecutionMethod(command)»
 			«ENDIF»
 		«ENDFOR»
-		«FOR Command command : cls.dynamicCommands»
-			«IF isTrue(command.status.concreteHere)»
-				//--------------------------------------------------------
-				«command.commandExecutionMethodHeader»
-				//--------------------------------------------------------
-				«cls.commandExecutionMethod(command)»
-			«ENDIF»
-		«ENDFOR»
-		«cls.simpleMethodHeader("add_dynamic_commands", "Create the dynamic commands if any\nfor specified device.")»
-		void «cls.name»::add_dynamic_commands()
-		{
-			«IF cls.dynamicCommands.size>0»
-				//	Example to add dynamic command:
-				//	Copy inside the folowing protected area to instanciate at startup.
-				«FOR Command command : cls.dynamicCommands»
-					//	add_«command.name»_dynamic_command("My«command.name»Command", true);
-				«ENDFOR»
-				
-			«ENDIF»
-			«cls.protectedArea("add_dynamic_commands", "Add your own code to create and add dynamic commands if any", true)»
-		}
+		«IF cls.dynamicCommands.size()>0»
+			«FOR Command command : cls.dynamicCommands»
+				«IF isTrue(command.status.concreteHere)»
+					//--------------------------------------------------------
+					«command.commandExecutionMethodHeader»
+					//--------------------------------------------------------
+					«cls.commandExecutionMethod(command)»
+				«ENDIF»
+			«ENDFOR»
+			«cls.simpleMethodHeader("add_dynamic_commands", "Create the dynamic commands if any\nfor specified device.")»
+			void «cls.name»::add_dynamic_commands()
+			{
+				«IF cls.dynamicCommands.size>0»
+					//	Example to add dynamic command:
+					//	Copy inside the folowing protected area to instanciate at startup.
+					«FOR Command command : cls.dynamicCommands»
+						//	add_«command.name»_dynamic_command("My«command.name»Command", true);
+					«ENDFOR»
+					
+				«ENDIF»
+				«cls.protectedArea("add_dynamic_commands", "Add your own code to create and add dynamic commands if any", true)»
+			}
+		«ENDIF»
 	'''
 }
