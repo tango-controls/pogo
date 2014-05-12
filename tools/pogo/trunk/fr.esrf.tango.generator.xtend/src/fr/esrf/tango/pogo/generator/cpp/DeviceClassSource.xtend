@@ -237,7 +237,7 @@ class DeviceClassSource {
 				for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
 				{
 					cout4 << "Device name : " << (*devlist_ptr)[i].in() << endl;
-					device_list.push_back(new «cls.name»(this, (*devlist_ptr)[i]));							 
+					device_list.push_back(new «cls.name»(this, (*devlist_ptr)[i]));
 				}
 			
 				//	Manage dynamic attributes if any
@@ -249,7 +249,9 @@ class DeviceClassSource {
 					//	Add dynamic attributes if any
 					«cls.name» *dev = static_cast<«cls.name» *>(device_list[device_list.size()-i]);
 					dev->add_dynamic_attributes();
-					dev->add_dynamic_commands();
+					«IF cls.dynamicCommands.size>0»
+						dev->add_dynamic_commands();
+					«ENDIF»
 			
 					//	Check before if database used.
 					if ((Tango::Util::_UseDb == true) && (Tango::Util::_FileDb == false))
