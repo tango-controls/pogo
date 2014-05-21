@@ -21,7 +21,7 @@ AC_PROG_LIBTOOL
 if test "$CXX" = "c++" -o "$CXX" = "g++"; then
    gcc_AC_HAVE_GCC_VERSION(3,4,0)
    if test "x$ac_cv_gcc_version_3_4_0" = "xno"; then
-      AC_MSG_ERROR([gcc release not supported. Use gcc 3.2.0 or above.], -1)
+      AC_MSG_ERROR([gcc release not supported. Use gcc 3.4.0 or above.], -1)
    fi
 fi
 
