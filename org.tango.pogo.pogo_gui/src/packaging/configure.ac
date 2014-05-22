@@ -1,18 +1,24 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.59)
-AC_INIT([TEMPLATE_CLASS], [TEMPLATE_VERSION], [TEMPLATE_AUTHOR])
+AC_PREREQ(2.68)
+AC_INIT([TEMPLATE_CLASS], [TEMPLATE_VERSION], [TEMPLATE_AUTHOR], [], [https://sourceforge.net/projects/tango-ds])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([-Wall])
+AM_INIT_AUTOMAKE([-Wall gnu dist-bzip2 1.11])
+AM_SILENT_RULES([yes])
 
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
-#LT_INIT
-AC_PROG_LIBTOOL
+AC_PROG_CPP
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AM_PROG_AR
+LT_INIT
+link_all_deplibs=yes
+link_all_deplibs_CXX=yes
 
 # Check gcc release
 # Determine whether we have gcc of a particular version or later,
@@ -27,17 +33,17 @@ fi
 
 # Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS([ TEMPLATE_CHECK_HEADERS ])
+AC_CHECK_HEADERS([TEMPLATE_CHECK_HEADERS])
 
 # Checks for library functions.
-AC_CHECK_FUNCS([ TEMPLATE_CHECK_FUNCS ])
+AC_CHECK_FUNCS([TEMPLATE_CHECK_FUNCS])
 
 # Dependencies
 PKG_CHECK_MODULES([TANGO], [tango >= 8.1.0])
 
 
-TANGO_VERSION=`eval pkg-config --modversion tango`
-TANGO_ROOT=`eval pkg-config --variable=prefix tango`
+AC_SUBST([TANGO_VERSION], [`pkg-config --modversion tango`])
+AC_SUBST([TANGO_ROOT], [`pkg-config --variable=prefix tango`])
 
 AC_CONFIG_FILES([
 	Makefile
