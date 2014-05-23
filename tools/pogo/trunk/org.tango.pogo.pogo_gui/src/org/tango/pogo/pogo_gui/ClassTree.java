@@ -184,7 +184,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     public void expandedPerfomed(TreeExpansionEvent evt) {
     }
     //======================================================
-
     /**
      * Manage event on clicked mouse on JTree object.
      *
@@ -482,7 +481,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
     }
     //===============================================================
-
     /**
      * Remove the selected object
      */
@@ -491,15 +489,14 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         removeSelectedItem(true, true);
     }
     //===============================================================
-
     /**
      * Remove the selected object
      *
-     * @param askConfirm Will ask to confirm before remove if true.
-     * @param setModif   call setModified(true) if true;
+     * @param askConfirm  Will ask to confirm before remove if true.
+     * @param setModified call setModified(true) if true;
      */
     //===============================================================
-    void removeSelectedItem(boolean askConfirm, boolean setModif) {
+    void removeSelectedItem(boolean askConfirm, boolean setModified ) {
         Object selection = getSelectedObject();
         if (selection == null)
             return;
@@ -549,7 +546,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             }
             DefaultMutableTreeNode node = getSelectedNode();
             treeModel.removeNodeFromParent(node);
-            if (setModif)
+            if (setModified )
                 setModified(true);
         }
         ((PogoRoot) root.getUserObject()).isAbstract = checkIfAbstractClass();
@@ -1612,7 +1609,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
 
     //===============================================================
-    /*
+    /**
       *	PogoClass (root) object definition
       */
     //===============================================================
@@ -1695,7 +1692,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     }
 
     //===============================================================
-    /*
+    /**
       *	PogoProperty object definition
       */
     //===============================================================
@@ -1994,14 +1991,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
         private ClassTreePopupMenu(JTree tree) {
             this.tree = tree;
-            buildBtnPopupMenu();
-        }
-        //=======================================================
-        /**
-         * Create a Popup menu for class edition
-         */
-        //=======================================================
-        private void buildBtnPopupMenu() {
             title = new JLabel();
             title.setFont(new java.awt.Font("Dialog", Font.BOLD, 16));
             add(title);

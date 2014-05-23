@@ -121,6 +121,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.ULONG_ARRAY_TYPE: return createULongArrayType();
       case PogoDslPackage.DEV_INT_TYPE: return createDevIntType();
       case PogoDslPackage.ENCODED_TYPE: return createEncodedType();
+      case PogoDslPackage.ENUM_TYPE: return createEnumType();
       case PogoDslPackage.SHORT_VECTOR_TYPE: return createShortVectorType();
       case PogoDslPackage.INT_VECTOR_TYPE: return createIntVectorType();
       case PogoDslPackage.FLOAT_VECTOR_TYPE: return createFloatVectorType();
@@ -723,6 +724,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     EncodedTypeImpl encodedType = new EncodedTypeImpl();
     return encodedType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnumType createEnumType()
+  {
+    EnumTypeImpl enumType = new EnumTypeImpl();
+    return enumType;
   }
 
   /**

@@ -520,6 +520,8 @@ public class OAWutils {
             return factory.createIntType();
         if (tangoType.equals("DevEncoded"))
             return factory.createEncodedType();
+        if (tangoType.equals("DevEnum"))
+            return factory.createEnumType();
         System.out.println(tangoType + " NOT FOUND !!!");
         return null;
     }
@@ -721,6 +723,12 @@ public class OAWutils {
             attr.setAssociatedAttr(src.getAssociatedAttr());
 
         attr.setDataType(cloneType(src.getDataType()));
+
+        EList<String> srcEnumLabels = src.getEnumLabels();
+        EList<String> newEnumLabels = attr.getEnumLabels();
+        for (String s : srcEnumLabels) {
+            newEnumLabels.add(s);
+        }
 
         attr.setMaxX(src.getMaxX());
         attr.setMaxY(src.getMaxY());

@@ -590,7 +590,7 @@ public class CommandDialog extends JDialog {
             //	Check The inputs first
             String name = (String) nameComboBox.getSelectedItem();
             boolean overload = overloadBtn.getSelectedObjects() != null;
-            name = Utils.checkNameSyntax(name, isStateStatus);
+            name = Utils.checkNameSyntax(name, "name", isStateStatus);
 
 
             if (pogo_gui.itemAlreadyExists(name, PogoConst.COMMANDS))
@@ -716,7 +716,7 @@ public class CommandDialog extends JDialog {
         try {
             //	Re-check name for syntax
             boolean overload = overloadBtn.getSelectedObjects() != null;
-            name = Utils.checkNameSyntax(name, overload);
+            name = Utils.checkNameSyntax(name, "name", overload);
         } catch (PogoException e) {
             /*	Already verified */
         }

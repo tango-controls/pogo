@@ -55,6 +55,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getIsDynamic <em>Is Dynamic</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getEventCriteria <em>Event Criteria</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getEvArchiveCriteria <em>Ev Archive Criteria</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getEnumLabels <em>Enum Labels</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getReadExcludedStates <em>Read Excluded States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.AttributeImpl#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
@@ -383,6 +384,16 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * @ordered
    */
   protected EventCriteria evArchiveCriteria;
+
+  /**
+   * The cached value of the '{@link #getEnumLabels() <em>Enum Labels</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnumLabels()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> enumLabels;
 
   /**
    * The cached value of the '{@link #getReadExcludedStates() <em>Read Excluded States</em>}' attribute list.
@@ -1090,6 +1101,20 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<String> getEnumLabels()
+  {
+    if (enumLabels == null)
+    {
+      enumLabels = new EDataTypeEList<String>(String.class, this, PogoDslPackage.ATTRIBUTE__ENUM_LABELS);
+    }
+    return enumLabels;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getReadExcludedStates()
   {
     if (readExcludedStates == null)
@@ -1193,6 +1218,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return getEventCriteria();
       case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
         return getEvArchiveCriteria();
+      case PogoDslPackage.ATTRIBUTE__ENUM_LABELS:
+        return getEnumLabels();
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         return getReadExcludedStates();
       case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
@@ -1271,6 +1298,10 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return;
       case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
         setEvArchiveCriteria((EventCriteria)newValue);
+        return;
+      case PogoDslPackage.ATTRIBUTE__ENUM_LABELS:
+        getEnumLabels().clear();
+        getEnumLabels().addAll((Collection<? extends String>)newValue);
         return;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         getReadExcludedStates().clear();
@@ -1354,6 +1385,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
         setEvArchiveCriteria((EventCriteria)null);
         return;
+      case PogoDslPackage.ATTRIBUTE__ENUM_LABELS:
+        getEnumLabels().clear();
+        return;
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         getReadExcludedStates().clear();
         return;
@@ -1414,6 +1448,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         return eventCriteria != null;
       case PogoDslPackage.ATTRIBUTE__EV_ARCHIVE_CRITERIA:
         return evArchiveCriteria != null;
+      case PogoDslPackage.ATTRIBUTE__ENUM_LABELS:
+        return enumLabels != null && !enumLabels.isEmpty();
       case PogoDslPackage.ATTRIBUTE__READ_EXCLUDED_STATES:
         return readExcludedStates != null && !readExcludedStates.isEmpty();
       case PogoDslPackage.ATTRIBUTE__WRITE_EXCLUDED_STATES:
@@ -1457,6 +1493,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     result.append(allocReadMember);
     result.append(", isDynamic: ");
     result.append(isDynamic);
+    result.append(", enumLabels: ");
+    result.append(enumLabels);
     result.append(", readExcludedStates: ");
     result.append(readExcludedStates);
     result.append(", writeExcludedStates: ");

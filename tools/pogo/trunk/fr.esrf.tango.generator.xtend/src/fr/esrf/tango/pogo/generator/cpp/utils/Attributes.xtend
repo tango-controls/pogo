@@ -211,6 +211,10 @@ class Attributes {
 			«ENDIF»
 			virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
 				{return (static_cast<«cls.name» *>(dev))->is_«attribute.name»_allowed(ty);}
+			«IF attribute.dataType.cppType.toString().contains("Enum")»
+				virtual bool same_type(const type_info &in_type) {return typeid(«attribute.name»Enum) == in_type;}
+				virtual string get_enum_type() {return string("«attribute.name»Enum");}
+			«ENDIF»
 		};
 		
 	'''
@@ -304,6 +308,7 @@ class Attributes {
 		«IF cls!=null»
 			«cls.protectedArea("att_" + attribute.name + "_dynamic_attribute", "", false)»
 		«ENDIF»
+		«attribute.manageEnumLabels»
 		«attribute.name.toLowerCase»->set_default_properties(«attribute.name.toLowerCase»_prop);
 		«IF attribute.polledPeriod.integerValue>0»
 			«attribute.setExtendedProprty("polling_period", attribute.polledPeriod, "Not Polled")»
@@ -345,6 +350,18 @@ class Attributes {
 	def setEventProprty(Attribute attribute, String propertyName, String strValue) '''
 		«IF strValue.isSet»
 			«attribute.name.toLowerCase»_prop.set_«propertyName»("«strValue»");
+		«ENDIF»
+	'''
+	//======================================================
+	def manageEnumLabels(Attribute attribute) '''
+		«IF attribute.dataType.cppType.toString().contains("Enum")»
+			«IF attribute.enumLabels!=null && attribute.enumLabels.size>0»
+				vector<string> labels;
+				«FOR String label : attribute.enumLabels»
+					labels.push_back("«label»");
+				«ENDFOR»
+				«attribute.name.toLowerCase»_prop.set_enum_labels(labels);
+			«ENDIF»
 		«ENDIF»
 	'''
 	//======================================================

@@ -1420,13 +1420,22 @@ public interface PogoDslPackage extends EPackage
   int ATTRIBUTE__EV_ARCHIVE_CRITERIA = 19;
 
   /**
+   * The feature id for the '<em><b>Enum Labels</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__ENUM_LABELS = 20;
+
+  /**
    * The feature id for the '<em><b>Read Excluded States</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__READ_EXCLUDED_STATES = 20;
+  int ATTRIBUTE__READ_EXCLUDED_STATES = 21;
 
   /**
    * The feature id for the '<em><b>Write Excluded States</b></em>' attribute list.
@@ -1435,7 +1444,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 21;
+  int ATTRIBUTE__WRITE_EXCLUDED_STATES = 22;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -1444,7 +1453,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = 22;
+  int ATTRIBUTE_FEATURE_COUNT = 23;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FireEventsImpl <em>Fire Events</em>}' class.
@@ -2328,6 +2337,25 @@ public interface PogoDslPackage extends EPackage
   int ENCODED_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.EnumTypeImpl <em>Enum Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.EnumTypeImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getEnumType()
+   * @generated
+   */
+  int ENUM_TYPE = 54;
+
+  /**
+   * The number of structural features of the '<em>Enum Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUM_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ShortVectorTypeImpl <em>Short Vector Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2335,7 +2363,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getShortVectorType()
    * @generated
    */
-  int SHORT_VECTOR_TYPE = 54;
+  int SHORT_VECTOR_TYPE = 55;
 
   /**
    * The number of structural features of the '<em>Short Vector Type</em>' class.
@@ -2354,7 +2382,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getIntVectorType()
    * @generated
    */
-  int INT_VECTOR_TYPE = 55;
+  int INT_VECTOR_TYPE = 56;
 
   /**
    * The number of structural features of the '<em>Int Vector Type</em>' class.
@@ -2373,7 +2401,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatVectorType()
    * @generated
    */
-  int FLOAT_VECTOR_TYPE = 56;
+  int FLOAT_VECTOR_TYPE = 57;
 
   /**
    * The number of structural features of the '<em>Float Vector Type</em>' class.
@@ -2392,7 +2420,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleVectorType()
    * @generated
    */
-  int DOUBLE_VECTOR_TYPE = 57;
+  int DOUBLE_VECTOR_TYPE = 58;
 
   /**
    * The number of structural features of the '<em>Double Vector Type</em>' class.
@@ -2411,7 +2439,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringVectorType()
    * @generated
    */
-  int STRING_VECTOR_TYPE = 58;
+  int STRING_VECTOR_TYPE = 59;
 
   /**
    * The number of structural features of the '<em>String Vector Type</em>' class.
@@ -3846,6 +3874,17 @@ public interface PogoDslPackage extends EPackage
   EReference getAttribute_EvArchiveCriteria();
 
   /**
+   * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getEnumLabels <em>Enum Labels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Enum Labels</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.Attribute#getEnumLabels()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_EnumLabels();
+
+  /**
    * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates <em>Read Excluded States</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4480,6 +4519,16 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EClass getEncodedType();
+
+  /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.EnumType <em>Enum Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Enum Type</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.EnumType
+   * @generated
+   */
+  EClass getEnumType();
 
   /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.ShortVectorType <em>Short Vector Type</em>}'.
@@ -5641,6 +5690,14 @@ public interface PogoDslPackage extends EPackage
     EReference ATTRIBUTE__EV_ARCHIVE_CRITERIA = eINSTANCE.getAttribute_EvArchiveCriteria();
 
     /**
+     * The meta object literal for the '<em><b>Enum Labels</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__ENUM_LABELS = eINSTANCE.getAttribute_EnumLabels();
+
+    /**
      * The meta object literal for the '<em><b>Read Excluded States</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6197,6 +6254,16 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EClass ENCODED_TYPE = eINSTANCE.getEncodedType();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.EnumTypeImpl <em>Enum Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.EnumTypeImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getEnumType()
+     * @generated
+     */
+    EClass ENUM_TYPE = eINSTANCE.getEnumType();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ShortVectorTypeImpl <em>Short Vector Type</em>}' class.

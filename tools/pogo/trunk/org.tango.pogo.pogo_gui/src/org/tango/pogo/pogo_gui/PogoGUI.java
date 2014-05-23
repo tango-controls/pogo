@@ -1084,7 +1084,7 @@ public class PogoGUI extends JFrame {
 
         //	And reload from new dir
         String env = System.getenv("TEST_MODE");
-        String dir = (Utils.isTrue(env) ? PogoConst.CONVERTION_DIR : "");    //	Same dir if no test
+        String dir = (Utils.isTrue(env) ? PogoConst.CONVERSION_DIR : "");    //	Same dir if no test
         String new_filename = Utils.getPath(filename) + dir +
                 "/" + devclass.getPogoDeviceClass().getName() + ".xmi";
         Utils.getInstance().startSplashRefresher(
@@ -1205,9 +1205,6 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     private void loadDeviceClassFromFile(String filename, boolean checkForNewFrame) {
-        //  Not called any more --> open a new JFrame !
-        //if (checkModifications()==JOptionPane.CANCEL_OPTION)
-        //    return;
 
         Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
         try {

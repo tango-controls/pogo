@@ -154,6 +154,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/isDynamic"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/eventCriteria"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//Attribute/evArchiveCriteria"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/enumLabels"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/readExcludedStates"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Attribute/writeExcludedStates"/>
     </genClasses>
@@ -221,6 +222,7 @@
     <genClasses ecoreClass="PogoDsl.ecore#//ULongArrayType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//DevIntType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//EncodedType"/>
+    <genClasses ecoreClass="PogoDsl.ecore#//EnumType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//ShortVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//IntVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//FloatVectorType"/>

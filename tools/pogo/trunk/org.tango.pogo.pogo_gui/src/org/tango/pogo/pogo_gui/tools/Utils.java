@@ -70,7 +70,7 @@ public class Utils {
     public ImageIcon image_exp_icon;
     public ImageIcon devprop_icon;
     public ImageIcon state_icon;
-    public ImageIcon inherite_icon;
+    public ImageIcon inherit_icon;
     public ImageIcon remove_icon;
 
     public ImageIcon abstract_icon;
@@ -108,7 +108,7 @@ public class Utils {
         image_exp_icon = getIcon("image_expert.gif", 0.25);
         devprop_icon = getIcon("device.gif");
         state_icon = getIcon("state.gif");
-        inherite_icon = getIcon("inherite.gif", 0.5);
+        inherit_icon = getIcon("inherite.gif", 0.5);
         remove_icon = getIcon("remove.gif");
 
         abstract_icon = getIcon("abstract.gif");
@@ -241,7 +241,7 @@ public class Utils {
     //============================================================================
     //============================================================================
     public static String getFileExtension(String lang) {
-        return PogoConst.fileExtention[getLanguage(lang)];
+        return PogoConst.fileExtension[getLanguage(lang)];
     }
     //============================================================================
     /**
@@ -361,10 +361,10 @@ public class Utils {
 
     //===============================================================
     //===============================================================
-    public static String checkNameSyntax(String name, boolean isStateStatus) throws PogoException {
+    public static String checkNameSyntax(String name, String type, boolean isStateStatus) throws PogoException {
         if (name == null ||
                 name.length() == 0)
-            throw new PogoException("Name (" + name + ") not valid !");
+            throw new PogoException(type+" (" + name + ") not valid !");
 
         //	check if one word
         StringTokenizer stk = new StringTokenizer(name);
@@ -379,22 +379,13 @@ public class Utils {
         for (int i = 0; i < name.length(); i++) {
             char c = name.charAt(i);
             if ((c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z') && c != '_')
-                throw new PogoException("Syntax error in name: Do not use '" + c + "' char.");
+                throw new PogoException("Syntax error in " + type + ": Do not use '" + c + "' char.");
         }
 
         char firstChar = name.toUpperCase().charAt(0);
-        /*  Not used any more
-        if (!PogoProperty.attrFree) {
-
-            //	First char must be a capital letter
-            String first = name.substring(0, 1).toUpperCase();
-            name = first + name.substring(1);
-        }
-        */
-
         //	First char must be a letter
         if (firstChar < 'A' || firstChar > 'Z')
-            throw new PogoException(name + ":\nSyntax error in name: The first char must be a letter");
+            throw new PogoException(name + ":\nSyntax error in " + type + ": The first char must be a letter");
 
         //	Check for NOT state or Status
         if (!isStateStatus)
@@ -697,7 +688,9 @@ public class Utils {
                     .append("</center></b><HR WIDTH=\"100%\">");
         }
         if (text != null && text.length() > 0) {
-            sb.append(Utils.strReplace(text, "\n", "<br>\n"));
+            text = Utils.strReplace(text, "\n", "<br>\n");
+            text = Utils.strReplace(text, "\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+            sb.append(text);
         }
         return sb.toString();
     }

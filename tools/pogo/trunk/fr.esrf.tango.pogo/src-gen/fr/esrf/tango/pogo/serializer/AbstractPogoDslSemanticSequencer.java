@@ -20,6 +20,7 @@ import fr.esrf.tango.pogo.pogoDsl.DoubleStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleVectorType;
 import fr.esrf.tango.pogo.pogoDsl.EncodedType;
+import fr.esrf.tango.pogo.pogoDsl.EnumType;
 import fr.esrf.tango.pogo.pogoDsl.EventCriteria;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
@@ -219,6 +220,13 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getEncodedTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_Type(context, (EncodedType) semanticObject); 
+					return; 
+				}
+				else break;
+			case PogoDslPackage.ENUM_TYPE:
+				if(context == grammarAccess.getEnumTypeRule() ||
+				   context == grammarAccess.getTypeRule()) {
+					sequence_Type(context, (EnumType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -619,6 +627,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         isDynamic=Boolean 
 	 *         eventCriteria=EventCriteria 
 	 *         evArchiveCriteria=EventCriteria 
+	 *         enumLabels+=STRING* 
 	 *         readExcludedStates+=STRING* 
 	 *         writeExcludedStates+=STRING*
 	 *     )
@@ -1174,6 +1183,15 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *     {EncodedType}
 	 */
 	protected void sequence_Type(EObject context, EncodedType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {EnumType}
+	 */
+	protected void sequence_Type(EObject context, EnumType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

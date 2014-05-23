@@ -245,7 +245,7 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		" *	" + rw +" attribute " + attr.name + " related method\n" +
 		" *	Description: " + attr.properties.description.comments(" *               ") + "\n" +
 		" *\n" +
-		" *	Data type:	" + attr.dataType.cppType + "\n" +
+		" *	Data type:	" + attr.dataType.cppType + attr.manageEnumForMethodHeader + "\n" +
 		" *	Attr type:	" + attr.attType + attr.attTypeDimentions + "\n" + 
 		" */\n"	+
 		"//--------------------------------------------------------\n"

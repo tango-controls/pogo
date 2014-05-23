@@ -188,6 +188,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="evArchiveCriteria" eType="#//EventCriteria"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumLabels" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="readExcludedStates" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="writeExcludedStates" unique="false"
@@ -257,6 +259,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ULongArrayType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="DevIntType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="EncodedType" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShortVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="IntVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="FloatVectorType" eSuperTypes="#//VectorType"/>

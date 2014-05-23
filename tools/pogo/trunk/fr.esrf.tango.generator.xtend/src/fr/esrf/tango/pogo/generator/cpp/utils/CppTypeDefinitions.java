@@ -63,6 +63,7 @@ import fr.esrf.tango.pogo.pogoDsl.StateType;
 import fr.esrf.tango.pogo.pogoDsl.StringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.StringType;
 import fr.esrf.tango.pogo.pogoDsl.StringVectorType;
+import fr.esrf.tango.pogo.pogoDsl.EnumType;
 import fr.esrf.tango.pogo.pogoDsl.Type;
 import fr.esrf.tango.pogo.pogoDsl.UCharType;
 import fr.esrf.tango.pogo.pogoDsl.UIntArrayType;
@@ -129,6 +130,7 @@ public class CppTypeDefinitions {
 		if (type instanceof ULongArrayType)			return "Tango::DevVarULong64Array";
 		if (type instanceof DevIntType)				return "Tango::DevInt";
 		if (type instanceof EncodedType)			return "Tango::DevEncoded";
+		if (type instanceof EnumType)				return "Tango::DevEnum";
 		return "";
 	}
 
@@ -165,6 +167,7 @@ public class CppTypeDefinitions {
 		if (type instanceof ULongArrayType)			return "Tango::DEVVAR_ULONG64ARRAY";
 		if (type instanceof DevIntType)				return "Tango::DEV_INT";
 		if (type instanceof EncodedType)			return "Tango::DEV_ENCODED";
+		if (type instanceof EnumType)				return "Tango::DEV_ENUM";
 		return "";
 	}
 
@@ -196,7 +199,8 @@ public class CppTypeDefinitions {
 		if (type instanceof LongType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof ULongType)		return (att.equals("scalar"))? "0"     : "ptr";
 		if (type instanceof StateType)		return (att.equals("scalar"))? "Tango::UNKNOWN" : "ptr";
-		if (type instanceof EncodedType)	return "ptr";
+		if (type instanceof EncodedType)	return "ptr";	//	Always scalar but pointer
+		if (type instanceof EnumType)		return "0";		//	Always scalar
 		return "0";
 	}
 

@@ -19,5 +19,5 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.tango.pogo.pogo_gui.Pogo"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.tango.pogo.pogo_gui"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DSOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/&#10;-DDEBUG_MAKE=/segfs/tango/cppserver/env&#10;-D_812_=true&#10;-Dsrc=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/java/PowerSupply.xmi&#10;-Ddoc=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/java/PowerSupply.xmi"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DSOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/&#10;-DDEBUG_MAKE=/segfs/tango/cppserver/env&#10;-D_812_=true&#10;-Dsrc=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/cpp/PowerSupply.xmi&#10;-Ddoc=/segfs/tango/tools/pogo/test/cpp/test_oaw-1/PowerSupply/java/PowerSupply.xmi"/>
 </launchConfiguration>

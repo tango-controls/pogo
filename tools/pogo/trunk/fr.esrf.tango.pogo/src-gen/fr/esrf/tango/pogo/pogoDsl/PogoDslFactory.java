@@ -512,6 +512,15 @@ public interface PogoDslFactory extends EFactory
   EncodedType createEncodedType();
 
   /**
+   * Returns a new object of class '<em>Enum Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Enum Type</em>'.
+   * @generated
+   */
+  EnumType createEnumType();
+
+  /**
    * Returns a new object of class '<em>Short Vector Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
