@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getIsDynamic <em>Is Dynamic</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getEventCriteria <em>Event Criteria</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getEvArchiveCriteria <em>Ev Archive Criteria</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getEnumLabels <em>Enum Labels</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getReadExcludedStates <em>Read Excluded States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.Attribute#getWriteExcludedStates <em>Write Excluded States</em>}</li>
  * </ul>
@@ -567,6 +568,22 @@ public interface Attribute extends EObject
    * @generated
    */
   void setEvArchiveCriteria(EventCriteria value);
+
+  /**
+   * Returns the value of the '<em><b>Enum Labels</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Enum Labels</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Enum Labels</em>' attribute list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getAttribute_EnumLabels()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getEnumLabels();
 
   /**
    * Returns the value of the '<em><b>Read Excluded States</b></em>' attribute list.

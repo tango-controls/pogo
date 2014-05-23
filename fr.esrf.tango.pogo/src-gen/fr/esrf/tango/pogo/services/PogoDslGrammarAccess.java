@@ -1474,12 +1474,15 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEventCriteriaEventCriteriaParserRuleCall_18_0 = (RuleCall)cEventCriteriaAssignment_18.eContents().get(0);
 		private final Assignment cEvArchiveCriteriaAssignment_19 = (Assignment)cGroup.eContents().get(19);
 		private final RuleCall cEvArchiveCriteriaEventCriteriaParserRuleCall_19_0 = (RuleCall)cEvArchiveCriteriaAssignment_19.eContents().get(0);
-		private final Keyword cReadExcludedStatesKeyword_20 = (Keyword)cGroup.eContents().get(20);
-		private final Assignment cReadExcludedStatesAssignment_21 = (Assignment)cGroup.eContents().get(21);
-		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_21_0 = (RuleCall)cReadExcludedStatesAssignment_21.eContents().get(0);
-		private final Keyword cWriteExcludedStatesKeyword_22 = (Keyword)cGroup.eContents().get(22);
-		private final Assignment cWriteExcludedStatesAssignment_23 = (Assignment)cGroup.eContents().get(23);
-		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_23_0 = (RuleCall)cWriteExcludedStatesAssignment_23.eContents().get(0);
+		private final Keyword cEnumLabelsKeyword_20 = (Keyword)cGroup.eContents().get(20);
+		private final Assignment cEnumLabelsAssignment_21 = (Assignment)cGroup.eContents().get(21);
+		private final RuleCall cEnumLabelsSTRINGTerminalRuleCall_21_0 = (RuleCall)cEnumLabelsAssignment_21.eContents().get(0);
+		private final Keyword cReadExcludedStatesKeyword_22 = (Keyword)cGroup.eContents().get(22);
+		private final Assignment cReadExcludedStatesAssignment_23 = (Assignment)cGroup.eContents().get(23);
+		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_23_0 = (RuleCall)cReadExcludedStatesAssignment_23.eContents().get(0);
+		private final Keyword cWriteExcludedStatesKeyword_24 = (Keyword)cGroup.eContents().get(24);
+		private final Assignment cWriteExcludedStatesAssignment_25 = (Assignment)cGroup.eContents().get(25);
+		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_25_0 = (RuleCall)cWriteExcludedStatesAssignment_25.eContents().get(0);
 		
 		////
 		////	Attribute Definition
@@ -1488,15 +1491,17 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel polledPeriod=STRING maxX=STRING
 		//	maxY=STRING associatedAttr=STRING memorized=Boolean memorizedAtInit=Boolean changeEvent=FireEvents
 		//	archiveEvent=FireEvents dataReadyEvent=FireEvents status=InheritanceStatus properties=AttrProperties
-		//	allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria
-		//	"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;
+		//	allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria "enumLabels:"
+		//	enumLabels+=STRING* "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
+		//	writeExcludedStates+=STRING*;
 		public ParserRule getRule() { return rule; }
 
 		//name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel polledPeriod=STRING maxX=STRING
 		//maxY=STRING associatedAttr=STRING memorized=Boolean memorizedAtInit=Boolean changeEvent=FireEvents
 		//archiveEvent=FireEvents dataReadyEvent=FireEvents status=InheritanceStatus properties=AttrProperties
-		//allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria
-		//"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*
+		//allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria "enumLabels:"
+		//enumLabels+=STRING* "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
+		//writeExcludedStates+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -1619,23 +1624,32 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EventCriteria
 		public RuleCall getEvArchiveCriteriaEventCriteriaParserRuleCall_19_0() { return cEvArchiveCriteriaEventCriteriaParserRuleCall_19_0; }
 
+		//"enumLabels:"
+		public Keyword getEnumLabelsKeyword_20() { return cEnumLabelsKeyword_20; }
+
+		//enumLabels+=STRING*
+		public Assignment getEnumLabelsAssignment_21() { return cEnumLabelsAssignment_21; }
+
+		//STRING
+		public RuleCall getEnumLabelsSTRINGTerminalRuleCall_21_0() { return cEnumLabelsSTRINGTerminalRuleCall_21_0; }
+
 		//"readExcludedStates:"
-		public Keyword getReadExcludedStatesKeyword_20() { return cReadExcludedStatesKeyword_20; }
+		public Keyword getReadExcludedStatesKeyword_22() { return cReadExcludedStatesKeyword_22; }
 
 		//readExcludedStates+=STRING*
-		public Assignment getReadExcludedStatesAssignment_21() { return cReadExcludedStatesAssignment_21; }
+		public Assignment getReadExcludedStatesAssignment_23() { return cReadExcludedStatesAssignment_23; }
 
 		//STRING
-		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_21_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_21_0; }
+		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_23_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_23_0; }
 
 		//"writeExcludedStates:"
-		public Keyword getWriteExcludedStatesKeyword_22() { return cWriteExcludedStatesKeyword_22; }
+		public Keyword getWriteExcludedStatesKeyword_24() { return cWriteExcludedStatesKeyword_24; }
 
 		//writeExcludedStates+=STRING*
-		public Assignment getWriteExcludedStatesAssignment_23() { return cWriteExcludedStatesAssignment_23; }
+		public Assignment getWriteExcludedStatesAssignment_25() { return cWriteExcludedStatesAssignment_25; }
 
 		//STRING
-		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_23_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_23_0; }
+		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_25_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_25_0; }
 	}
 
 	public class FireEventsElements extends AbstractParserRuleElementFinder {
@@ -1938,6 +1952,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cULongArrayTypeParserRuleCall_26 = (RuleCall)cAlternatives.eContents().get(26);
 		private final RuleCall cDevIntTypeParserRuleCall_27 = (RuleCall)cAlternatives.eContents().get(27);
 		private final RuleCall cEncodedTypeParserRuleCall_28 = (RuleCall)cAlternatives.eContents().get(28);
+		private final RuleCall cEnumTypeParserRuleCall_29 = (RuleCall)cAlternatives.eContents().get(29);
 		
 		////
 		////	types could be one of the types
@@ -1946,13 +1961,13 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	VoidType | BooleanType | ShortType | UShortType | IntType | UIntType | FloatType | DoubleType | StringType |
 		//	CharArrayType | ShortArrayType | UShortArrayType | IntArrayType | UIntArrayType | FloatArrayType | DoubleArrayType |
 		//	StringArrayType | LongStringArrayType | DoubleStringArrayType | StateType | ConstStringType | BooleanArrayType |
-		//	LongType | ULongType | UCharType | LongArrayType | ULongArrayType | DevIntType | EncodedType;
+		//	LongType | ULongType | UCharType | LongArrayType | ULongArrayType | DevIntType | EncodedType | EnumType;
 		public ParserRule getRule() { return rule; }
 
 		//VoidType | BooleanType | ShortType | UShortType | IntType | UIntType | FloatType | DoubleType | StringType |
 		//CharArrayType | ShortArrayType | UShortArrayType | IntArrayType | UIntArrayType | FloatArrayType | DoubleArrayType |
 		//StringArrayType | LongStringArrayType | DoubleStringArrayType | StateType | ConstStringType | BooleanArrayType |
-		//LongType | ULongType | UCharType | LongArrayType | ULongArrayType | DevIntType | EncodedType
+		//LongType | ULongType | UCharType | LongArrayType | ULongArrayType | DevIntType | EncodedType | EnumType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//VoidType
@@ -2041,6 +2056,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//EncodedType
 		public RuleCall getEncodedTypeParserRuleCall_28() { return cEncodedTypeParserRuleCall_28; }
+
+		//EnumType
+		public RuleCall getEnumTypeParserRuleCall_29() { return cEnumTypeParserRuleCall_29; }
 	}
 
 	public class VoidTypeElements extends AbstractParserRuleElementFinder {
@@ -2626,6 +2644,26 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getDevEncodedKeyword_1() { return cDevEncodedKeyword_1; }
 	}
 
+	public class EnumTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EnumType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cEnumTypeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDevEnumKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//EnumType:
+		//	{EnumType} "DevEnum";
+		public ParserRule getRule() { return rule; }
+
+		//{EnumType} "DevEnum"
+		public Group getGroup() { return cGroup; }
+
+		//{EnumType}
+		public Action getEnumTypeAction_0() { return cEnumTypeAction_0; }
+
+		//"DevEnum"
+		public Keyword getDevEnumKeyword_1() { return cDevEnumKeyword_1; }
+	}
+
 	public class ShortVectorTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ShortVectorType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -2786,6 +2824,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	private ULongArrayTypeElements pULongArrayType;
 	private DevIntTypeElements pDevIntType;
 	private EncodedTypeElements pEncodedType;
+	private EnumTypeElements pEnumType;
 	private ShortVectorTypeElements pShortVectorType;
 	private IntVectorTypeElements pIntVectorType;
 	private FloatVectorTypeElements pFloatVectorType;
@@ -3133,8 +3172,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	name=ID attType=AttrType dataType=Type rwType=RW_Type displayLevel=DisplayLevel polledPeriod=STRING maxX=STRING
 	//	maxY=STRING associatedAttr=STRING memorized=Boolean memorizedAtInit=Boolean changeEvent=FireEvents
 	//	archiveEvent=FireEvents dataReadyEvent=FireEvents status=InheritanceStatus properties=AttrProperties
-	//	allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria
-	//	"readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;
+	//	allocReadMember=Boolean isDynamic=Boolean eventCriteria=EventCriteria evArchiveCriteria=EventCriteria "enumLabels:"
+	//	enumLabels+=STRING* "readExcludedStates:" readExcludedStates+=STRING* "writeExcludedStates:"
+	//	writeExcludedStates+=STRING*;
 	public AttributeElements getAttributeAccess() {
 		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
 	}
@@ -3212,7 +3252,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	VoidType | BooleanType | ShortType | UShortType | IntType | UIntType | FloatType | DoubleType | StringType |
 	//	CharArrayType | ShortArrayType | UShortArrayType | IntArrayType | UIntArrayType | FloatArrayType | DoubleArrayType |
 	//	StringArrayType | LongStringArrayType | DoubleStringArrayType | StateType | ConstStringType | BooleanArrayType |
-	//	LongType | ULongType | UCharType | LongArrayType | ULongArrayType | DevIntType | EncodedType;
+	//	LongType | ULongType | UCharType | LongArrayType | ULongArrayType | DevIntType | EncodedType | EnumType;
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
 	}
@@ -3512,6 +3552,16 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getEncodedTypeRule() {
 		return getEncodedTypeAccess().getRule();
+	}
+
+	//EnumType:
+	//	{EnumType} "DevEnum";
+	public EnumTypeElements getEnumTypeAccess() {
+		return (pEnumType != null) ? pEnumType : (pEnumType = new EnumTypeElements());
+	}
+	
+	public ParserRule getEnumTypeRule() {
+		return getEnumTypeAccess().getRule();
 	}
 
 	//ShortVectorType:

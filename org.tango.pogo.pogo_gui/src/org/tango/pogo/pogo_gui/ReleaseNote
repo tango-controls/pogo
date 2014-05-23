@@ -236,7 +236,7 @@ Pogo-7.2.0 - 16/02/2011:
 
 Pogo-7.1.1 - 14/02/2011:
 	Does not generate Classfactory.cpp and main.cpp if clas is abstract.
-	Pb in commnads table fixed.
+	Pb in commands table fixed.
 
 Pogo-7.1.0 - 10/02/2011:
 	Class name change is now managed.

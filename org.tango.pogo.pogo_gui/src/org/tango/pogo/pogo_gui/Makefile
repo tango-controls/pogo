@@ -133,6 +133,6 @@ clean_headers:
 
 tag:
 	@echo "Tagging  $(PACKAGE)  for $(SVN_TAG_REV)"
-	svn copy  $(SVN_POGO_PATH)/trunk \
+	EDITOR=nedit; svn copy  $(SVN_POGO_PATH)/trunk \
 	          $(SVN_POGO_PATH)/tags/$(PACKAGE)-$(SVN_TAG_REV)
 

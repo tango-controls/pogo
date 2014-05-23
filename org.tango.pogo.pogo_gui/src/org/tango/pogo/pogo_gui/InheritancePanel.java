@@ -85,7 +85,7 @@ class InheritancePanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = y;
         JLabel lbl = new JLabel("");
-        lbl.setIcon(Utils.getInstance().inherite_icon);
+        lbl.setIcon(Utils.getInstance().inherit_icon);
         add(lbl, gbc);
     }
 

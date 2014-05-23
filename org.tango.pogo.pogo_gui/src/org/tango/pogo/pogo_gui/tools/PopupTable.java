@@ -72,9 +72,9 @@ public class PopupTable extends JDialog {
     /**
      * Creates new form PopupTable
      *
-     * @param    parent    parent component.
-     * @param    title    Widow title.
-     * @param    col        columns title.
+     * @param    parent   parent component.
+     * @param    title    Window title.
+     * @param    col      columns title.
      * @param    v        vector of String vectors.
      */
     //===============================================================
@@ -87,9 +87,9 @@ public class PopupTable extends JDialog {
     /**
      * Creates new form PopupTable
      *
-     * @param    parent    parent component.
-     * @param    title    Widow title.
-     * @param    col        columns title.
+     * @param    parent   parent component.
+     * @param    title    Window title.
+     * @param    col      columns title.
      * @param    v        vector of String vectors.
      */
     //===============================================================

@@ -420,11 +420,11 @@
         <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//VectorType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.61"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.62"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.63"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.64"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="InheritanceStatus">
@@ -564,6 +564,10 @@
         </elements>
         <elements xsi:type="xtext:Assignment" feature="evArchiveCriteria" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="enumLabels:"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="enumLabels" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="readExcludedStates:"/>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="readExcludedStates" operator="+=">
@@ -716,6 +720,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.56"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.57"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="VoidType">
@@ -1093,6 +1098,19 @@
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="DevEncoded"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="EnumType">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//EnumType"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.esrf.fr/tango/pogo/PogoDsl#//EnumType"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="DevEnum"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ShortVectorType">

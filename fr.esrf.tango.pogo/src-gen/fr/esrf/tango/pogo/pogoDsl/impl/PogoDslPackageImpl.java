@@ -23,6 +23,7 @@ import fr.esrf.tango.pogo.pogoDsl.DoubleStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleVectorType;
 import fr.esrf.tango.pogo.pogoDsl.EncodedType;
+import fr.esrf.tango.pogo.pogoDsl.EnumType;
 import fr.esrf.tango.pogo.pogoDsl.EventCriteria;
 import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
@@ -459,6 +460,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass encodedTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enumTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1873,7 +1881,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_ReadExcludedStates()
+  public EAttribute getAttribute_EnumLabels()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(20);
   }
@@ -1883,9 +1891,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_WriteExcludedStates()
+  public EAttribute getAttribute_ReadExcludedStates()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(21);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttribute_WriteExcludedStates()
+  {
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(22);
   }
 
   /**
@@ -2483,6 +2501,16 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getEnumType()
+  {
+    return enumTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getShortVectorType()
   {
     return shortVectorTypeEClass;
@@ -2707,6 +2735,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(attributeEClass, ATTRIBUTE__IS_DYNAMIC);
     createEReference(attributeEClass, ATTRIBUTE__EVENT_CRITERIA);
     createEReference(attributeEClass, ATTRIBUTE__EV_ARCHIVE_CRITERIA);
+    createEAttribute(attributeEClass, ATTRIBUTE__ENUM_LABELS);
     createEAttribute(attributeEClass, ATTRIBUTE__READ_EXCLUDED_STATES);
     createEAttribute(attributeEClass, ATTRIBUTE__WRITE_EXCLUDED_STATES);
 
@@ -2804,6 +2833,8 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
 
     encodedTypeEClass = createEClass(ENCODED_TYPE);
 
+    enumTypeEClass = createEClass(ENUM_TYPE);
+
     shortVectorTypeEClass = createEClass(SHORT_VECTOR_TYPE);
 
     intVectorTypeEClass = createEClass(INT_VECTOR_TYPE);
@@ -2883,6 +2914,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     uLongArrayTypeEClass.getESuperTypes().add(this.getType());
     devIntTypeEClass.getESuperTypes().add(this.getType());
     encodedTypeEClass.getESuperTypes().add(this.getType());
+    enumTypeEClass.getESuperTypes().add(this.getType());
     shortVectorTypeEClass.getESuperTypes().add(this.getVectorType());
     intVectorTypeEClass.getESuperTypes().add(this.getVectorType());
     floatVectorTypeEClass.getESuperTypes().add(this.getVectorType());
@@ -3039,6 +3071,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getAttribute_IsDynamic(), ecorePackage.getEString(), "isDynamic", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_EventCriteria(), this.getEventCriteria(), null, "eventCriteria", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_EvArchiveCriteria(), this.getEventCriteria(), null, "evArchiveCriteria", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_EnumLabels(), ecorePackage.getEString(), "enumLabels", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_ReadExcludedStates(), ecorePackage.getEString(), "readExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_WriteExcludedStates(), ecorePackage.getEString(), "writeExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -3135,6 +3168,8 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEClass(devIntTypeEClass, DevIntType.class, "DevIntType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(encodedTypeEClass, EncodedType.class, "EncodedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(enumTypeEClass, EnumType.class, "EnumType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(shortVectorTypeEClass, ShortVectorType.class, "ShortVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

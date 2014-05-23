@@ -279,6 +279,39 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 	}
 	
 	//===========================================================
-	
-	
+	public String manageEnumForMethodHeader(Attribute attribute) {
+		String	returnStr = "";
+		if (strType(attribute).contains("DevEnum")) {
+			returnStr = " (" + attribute.getName() + "Enum)";
+		}
+		return returnStr;
+	}
+	//===========================================================
+	public String buildEnum(Attribute attribute) {
+		if (strType(attribute).contains("DevEnum")) {
+			StringBuilder	sb = new StringBuilder("enum _" + attribute.getName() + "Enum {\n");
+			for (String label : attribute.getEnumLabels()) {
+				sb.append("\t").append(label2enum(label)).append(",\n");
+			}
+			sb.append("} ").append(";\n");
+			sb.append("typedef _").append(attribute.getName())
+				.append("Enum ").append(attribute.getName()).append("Enum;\n\n");
+			return sb.toString();
+		}
+		else
+			return "";
+		
+	}
+	//===========================================================
+	public String buildEnums(PogoDeviceClass pogoClass) {
+		StringBuilder	sb = new StringBuilder();
+		for (Attribute attribute : pogoClass.getAttributes()) {
+			sb.append(buildEnum(attribute));
+		}
+		for (Attribute attribute : pogoClass.getDynamicAttributes()) {
+			sb.append(buildEnum(attribute));
+		}
+		return sb.toString();
+	}
+	//===========================================================
 }

@@ -220,7 +220,7 @@ class DeviceSource {
 		«cls.simpleMethodHeader("always_executed_hook", "method always executed before any command is executed")»
 		void «cls.name»::always_executed_hook()
 		{
-			INFO_STREAM << "«cls.name»::always_executed_hook()  " << device_name << endl;
+			DEBUG_STREAM << "«cls.name»::always_executed_hook()  " << device_name << endl;
 			«IF cls.deviceProperties.hasMandatoryProperty»
 				if (mandatoryNotDefined)
 				{

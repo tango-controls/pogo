@@ -348,6 +348,11 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
         return createEncodedTypeAdapter();
       }
       @Override
+      public Adapter caseEnumType(EnumType object)
+      {
+        return createEnumTypeAdapter();
+      }
+      @Override
       public Adapter caseShortVectorType(ShortVectorType object)
       {
         return createShortVectorTypeAdapter();
@@ -1200,6 +1205,21 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEncodedTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.EnumType <em>Enum Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.EnumType
+   * @generated
+   */
+  public Adapter createEnumTypeAdapter()
   {
     return null;
   }

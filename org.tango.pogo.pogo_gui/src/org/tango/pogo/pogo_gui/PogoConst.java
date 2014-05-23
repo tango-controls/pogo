@@ -49,7 +49,7 @@ public interface PogoConst {
      * Revision number and date
      */
     public static String revNumber =
-            "8.4.5  -  Wed Apr 23 08:55:03 CEST 2014";
+            "8.4.5a  -  Thu Apr 24 09:47:49 CEST 2014";
 
     public static final int TANGO_PAGES = 0;
     public static final int POGO_PAGES = 1;
@@ -74,14 +74,14 @@ public interface PogoConst {
     public static final int IMAGE_ATTRIBUTE = 5;
     public static final int STATES = 6;
 
-    public static final String CONVERTION_DIR = "/new_src";
+    public static final String CONVERSION_DIR = "/new_src";
     public static final String[] strLevel = {"OPERATOR", "EXPERT"};
     public static final int OPERATOR = 0;
     public static final int EXPERT = 1;
 
     //	Languages
     public static final String[] strLang = {"Java", "Cpp", "Python"};
-    public static final String[] fileExtention = {"java", "cpp", "py"};
+    public static final String[] fileExtension = {"java", "cpp", "py"};
     public static final int Java = 0;
     public static final int Cpp = 1;
     public static final int Python = 2;
@@ -90,18 +90,19 @@ public interface PogoConst {
     //	Attributes
     public static final String[] AttrDataArray = {
             "DevBoolean",    //	0
-            "DevUChar",        //	1
-            "DevShort",        //	2
-            "DevUShort",    //	3
-            "DevLong",        //	4
-            "DevULong",        //	5
-            "DevLong64",    //	6
+            "DevUChar",      //	1
+            "DevShort",      //	2
+            "DevUShort",     //	3
+            "DevLong",       //	4
+            "DevULong",      //	5
+            "DevLong64",     //	6
             "DevULong64",    //	7
-            "DevFloat",        //	8
-            "DevDouble",    //	9
-            "DevString",    //	10
-            "DevState",        //	11
+            "DevFloat",      //	8
+            "DevDouble",     //	9
+            "DevString",     //	10
+            "DevState",      //	11
             "DevEncoded",    //	12
+            "DevEnum",       //	13
     };
     public static final String[] AttrRWtypeArray = {
             "READ",

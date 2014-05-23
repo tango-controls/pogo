@@ -77,6 +77,7 @@ class DeviceInclude  {
 		
 		namespace «cls.name»_ns
 		{
+		«cls.buildEnums»
 		«cls.protectedArea("Additional Class Declarations", "Additional Class Declarations", true)»
 		
 		class «cls.name» : public «cls.inheritedClassNameForDevice»

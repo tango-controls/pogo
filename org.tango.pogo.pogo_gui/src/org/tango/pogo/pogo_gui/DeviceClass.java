@@ -539,7 +539,7 @@ public class DeviceClass {
     public void generateFromOldModel(String filename, boolean recoverCode) throws PogoException {
         try {
             String path = Utils.getPath(filename);
-            path += PogoConst.CONVERTION_DIR;
+            path += PogoConst.CONVERSION_DIR;
             if (!new File(path).exists())
                 if (!new File(path).mkdir())
                     throw new PogoException("Cannot create path: " + path);

@@ -397,7 +397,7 @@ public class PropertyDialog extends JDialog {
             if (name.length() == 0)
                 throw new PogoException("Property name ?");
 
-            name = Utils.checkNameSyntax(name, true);
+            name = Utils.checkNameSyntax(name, "name" ,true);
             nameTxt.setText(name);
         } catch (Exception e) {
             PogoException.popup(this, e);

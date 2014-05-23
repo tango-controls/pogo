@@ -47,6 +47,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 //===============================================================
 /**
@@ -61,13 +62,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private int poll_period = 0;
 
     private Attribute attribute;
+    private String[]  enumLabels = null;
     private static final String defaultDataType = AttrDataArray[9];    //	Default is double
 
     private static final int EMPTY_FIELD = -1;
     private static final int NEGATIVE_FIELD = -2;
     private static final int INVALID_FIELD = -3;
-
-
     ///===================================================================
     /**
      * Initializes the Form for creation
@@ -115,18 +115,19 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     //===================================================================
     private void initOwnComponents() {
         //  init combo box
-        //-----------------------
         for (String s : AttrDataArray)
             dataTypeCB.addItem(s);
         dataTypeCB.setSelectedItem(defaultDataType);
         for (String s : AttrTypeArray)
             attrTypeCB.addItem(s);
+        if (!Utils.tango9)
+            dataTypeCB.removeItem("DevEnum");
+
         for (String s : AttrRWtypeArray)
             rwTypeCB.addItem(s);
 
         //	add components for polling ang and display level
         //	Add radio box for expert/operator
-        //-------------------------------------------------------------
         JLabel lbl;
         int y = 14;
         GridBagConstraints gbc = new GridBagConstraints();
@@ -147,7 +148,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         definitionPanel.add(levelBtn, gbc);
 
         //	Add radio box btn for attribute polled
-        //-------------------------------------------------------------
         polledBtn = new javax.swing.JRadioButton();
         polledBtn.setToolTipText(Utils.buildToolTip("Attribute polled"));
         polledBtn.setText("Polled");
@@ -221,6 +221,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gbc.gridy = y;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         definitionPanel.add(memorizedInitBtn, gbc);
+        enumDefinitionBtn.setVisible(false);
     }
 
     //===================================================================
@@ -256,8 +257,8 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             abstractBtn.setVisible(false);
             overloadBtn.setVisible(true);
             //  is Already overloaded
-            boolean oveload = Utils.isTrue(orig_status.getConcreteHere());
-            overloadBtn.setSelected(oveload);
+            boolean overload = Utils.isTrue(orig_status.getConcreteHere());
+            overloadBtn.setSelected(overload);
             setEditable(false);
         } else {
             //  Not inherited -> full edition
@@ -361,7 +362,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     }
 
     //===================================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -397,6 +397,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         javax.swing.JLabel allocateLbl = new javax.swing.JLabel();
         allocateBtn = new javax.swing.JRadioButton();
         dynamicLbl = new javax.swing.JLabel();
+        enumDefinitionBtn = new javax.swing.JButton();
         javax.swing.JPanel propertyPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
@@ -532,7 +533,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
@@ -702,6 +703,17 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 15, 0);
         definitionPanel.add(dynamicLbl, gridBagConstraints);
+
+        enumDefinitionBtn.setText("Enum Labels");
+        enumDefinitionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enumDefinitionBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        definitionPanel.add(enumDefinitionBtn, gridBagConstraints);
 
         tabbedPane.addTab("Definition", null, definitionPanel, "Attribute definition.");
 
@@ -1185,7 +1197,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         try {
             boolean overload = overloadBtn.getSelectedObjects() != null;
-            name = Utils.checkNameSyntax(name, false);
+            name = Utils.checkNameSyntax(name, "name", false);
             if (pogo_gui.itemAlreadyExists(name, PogoConst.SCALAR_ATTRIBUTE))
                 throw new PogoException("Attribute \"" + name + "\" Already Exists !");
         } catch (PogoException e) {
@@ -1426,6 +1438,35 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
     //======================================================
     //======================================================
+    public static String[] list2stringArray(EList<String> list) {
+        String[] array = new String[list.size()];
+        for (int i=0 ; i<list.size() ; i++)
+            array[i] = list.get(i);
+        return array;
+    }
+    //======================================================
+    //======================================================
+    @SuppressWarnings("UnusedParameters")
+    private void enumDefinitionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enumDefinitionBtnActionPerformed
+        // TODO add your handling code here:
+        if (attribute!=null) {
+            //  If not already initialized, do it
+            if (enumLabels==null) {
+                enumLabels = list2stringArray(attribute.getEnumLabels());
+            }
+        }
+
+        //  Start dialog to define enum labels
+        EnumDialog  enumDialog = new EnumDialog(this,
+                nameText.getText() + " enum attribute labels", enumLabels);
+        if (enumDialog.showDialog()==JOptionPane.OK_OPTION) {
+            enumLabels = enumDialog.getEnumLabels();
+            updateEnumLabelToolTip();
+        }
+    }//GEN-LAST:event_enumDefinitionBtnActionPerformed
+
+    //======================================================
+    //======================================================
     private void doClose(int retStatus) {
         retVal = retStatus;
         setVisible(false);
@@ -1598,6 +1639,13 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         String tangoDataType = (String) dataTypeCB.getSelectedItem();
         Type pogoDataType = OAWutils.tango2pogoType(tangoDataType);
         attr.setDataType(pogoDataType);
+        //  Manage Enum labels if attribute data type is DevEnum
+        if (tangoDataType.toLowerCase().contains("enum")) {
+            if (enumLabels!=null && enumLabels.length>0) {
+                EList<String>   labelList = attr.getEnumLabels();
+                Collections.addAll(labelList, enumLabels);
+            }
+        }
 
         attr.setMaxX(xDataTF.getText().trim());
         attr.setMaxY(yDataTF.getText().trim());
@@ -1724,11 +1772,23 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         return attr;
     }
     //===============================================================
+    //===============================================================
+    private void updateEnumLabelToolTip() {
+        if (enumLabels==null || enumLabels.length==0) {
+            enumDefinitionBtn.setToolTipText(
+                    Utils.buildToolTip("Labels not defined."));
+        }
+        else {
+            enumDefinitionBtn.setToolTipText(
+                    EnumDialog.enum2toolTip(enumLabels));
+        }
+    }
+    //===============================================================
     /**
      * Clone the specified attribute
      *
      * @param srcAttribute attribute to cloned.
-     * @return the new object copyed from the specied one.
+     * @return the new object copied from the specied one.
      */
     //===============================================================
     public static Attribute cloneAttribute(Attribute srcAttribute) {
@@ -1736,20 +1796,20 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         //	Inheritance status
         //  For a clone item, there is no inheritance.
-        InheritanceStatus inher_status = newAttribute.getStatus();
-        if (!Utils.isTrue(inher_status.getAbstract())) {
-            inher_status.setAbstract("false");
-            inher_status.setInherited("false");
-            inher_status.setConcrete("true");
-            inher_status.setConcreteHere("true");
+        InheritanceStatus inheritedStatus = newAttribute.getStatus();
+        if (!Utils.isTrue(inheritedStatus.getAbstract())) {
+            inheritedStatus.setAbstract("false");
+            inheritedStatus.setInherited("false");
+            inheritedStatus.setConcrete("true");
+            inheritedStatus.setConcreteHere("true");
         }
-        if (Utils.isTrue(inher_status.getInherited())) {
-            inher_status.setAbstract("false");
-            inher_status.setInherited("false");
-            inher_status.setConcrete("true");
-            inher_status.setConcreteHere("true");
+        if (Utils.isTrue(inheritedStatus.getInherited())) {
+            inheritedStatus.setAbstract("false");
+            inheritedStatus.setInherited("false");
+            inheritedStatus.setConcrete("true");
+            inheritedStatus.setConcreteHere("true");
         }
-        newAttribute.setStatus(inher_status);
+        newAttribute.setStatus(inheritedStatus);
         return newAttribute;
     }
     //======================================================
@@ -1758,6 +1818,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
      */
     //======================================================
     private void updateWindow() {
+        //  ToDo
         xDataTF.setVisible(false);
         yDataTF.setVisible(false);
         xDataLBL.setVisible(false);
@@ -1771,6 +1832,18 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         String dataType = dataTypeCB.getSelectedItem().toString();
         if (dataType.equals("DevEncoded"))
             attrTypeCB.setSelectedIndex(SCALAR);//    Attribute only scalar
+        else
+        if (dataType.equals("DevEnum")) {
+            attrTypeCB.setSelectedIndex(SCALAR);//    Attribute only scalar
+            if (attribute!=null) {
+                //  If not already initialized, do it
+                if (enumLabels==null) {
+                    enumLabels = list2stringArray(attribute.getEnumLabels());
+                }
+            }
+            updateEnumLabelToolTip();
+        }
+        enumDefinitionBtn.setVisible(dataType.equals("DevEnum"));
 
         switch (attrTypeCB.getSelectedIndex()) {
             case SCALAR:
@@ -1812,7 +1885,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         pack();
     }
     //======================================================
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton abstractBtn;
     private javax.swing.JRadioButton allocateBtn;
@@ -1841,6 +1913,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private javax.swing.JComboBox dataTypeCB;
     private javax.swing.JPanel definitionPanel;
     private javax.swing.JLabel dynamicLbl;
+    private javax.swing.JButton enumDefinitionBtn;
     private javax.swing.JTextField evAbsChangeTxt;
     private javax.swing.JTextField evArchAbsChangeTxt;
     private javax.swing.JTextField evArchPeriodTxt;
@@ -1871,7 +1944,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
 
     //===============================================================
-    /*
+    /**
       *	Manage the popup summary methods
       */
     //===============================================================

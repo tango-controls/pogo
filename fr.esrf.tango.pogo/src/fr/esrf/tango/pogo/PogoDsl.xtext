@@ -248,7 +248,9 @@ Command:
 		polledPeriod = STRING
 		isDynamic    = Boolean
 		"excludedStates:"
-			(excludedStates+=STRING)*;
+			(excludedStates+=STRING)*
+;
+
 
 Argument:
 	type=Type description=STRING; 
@@ -275,13 +277,16 @@ Attribute:
 	properties        = AttrProperties
 	allocReadMember   = Boolean
 	isDynamic         = Boolean
-	eventCriteria     = EventCriteria    	
-	evArchiveCriteria = EventCriteria    	
-
+	eventCriteria     = EventCriteria
+	evArchiveCriteria = EventCriteria
+	
+	"enumLabels:"
+		(enumLabels+=STRING)*
 	"readExcludedStates:"
 		(readExcludedStates+=STRING)*
 	"writeExcludedStates:"
-		(writeExcludedStates+=STRING)*;
+		(writeExcludedStates+=STRING)*
+;
 
 FireEvents:
 	fire             = Boolean
@@ -346,7 +351,8 @@ Type:
 	StateType      | ConstStringType| BooleanArrayType |
 	LongType       | ULongType      | UCharType        |
 	LongArrayType  | ULongArrayType |
-	DevIntType     | EncodedType;
+	DevIntType     | EncodedType    | EnumType
+;
 	
 //
 //	Tango type defined by IDL.
@@ -382,6 +388,7 @@ LongArrayType:			{LongArrayType} "DevVarLong64Array";
 ULongArrayType:			{ULongArrayType} "DevVarULong64Array";
 DevIntType:				{DevIntType} "DevInt";
 EncodedType:			{EncodedType} "DevEncoded";
+EnumType:				{EnumType} "DevEnum";
 
 ShortVectorType:		{ShortVectorType} 	"vector<short>";
 IntVectorType:			{IntVectorType} 	"vector<int>";

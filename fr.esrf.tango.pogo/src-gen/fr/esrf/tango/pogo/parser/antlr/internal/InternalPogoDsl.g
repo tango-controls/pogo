@@ -2908,15 +2908,37 @@ ruleAttribute returns [EObject current=null]
 	    }
 
 )
-)	otherlv_20='readExcludedStates:' 
+)	otherlv_20='enumLabels:' 
     {
-    	newLeafNode(otherlv_20, grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_20());
+    	newLeafNode(otherlv_20, grammarAccess.getAttributeAccess().getEnumLabelsKeyword_20());
     }
 (
 (
-		lv_readExcludedStates_21_0=RULE_STRING
+		lv_enumLabels_21_0=RULE_STRING
 		{
-			newLeafNode(lv_readExcludedStates_21_0, grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_21_0()); 
+			newLeafNode(lv_enumLabels_21_0, grammarAccess.getAttributeAccess().getEnumLabelsSTRINGTerminalRuleCall_21_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"enumLabels",
+        		lv_enumLabels_21_0, 
+        		"STRING");
+	    }
+
+)
+)*	otherlv_22='readExcludedStates:' 
+    {
+    	newLeafNode(otherlv_22, grammarAccess.getAttributeAccess().getReadExcludedStatesKeyword_22());
+    }
+(
+(
+		lv_readExcludedStates_23_0=RULE_STRING
+		{
+			newLeafNode(lv_readExcludedStates_23_0, grammarAccess.getAttributeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_23_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2925,20 +2947,20 @@ ruleAttribute returns [EObject current=null]
        		addWithLastConsumed(
        			$current, 
        			"readExcludedStates",
-        		lv_readExcludedStates_21_0, 
+        		lv_readExcludedStates_23_0, 
         		"STRING");
 	    }
 
 )
-)*	otherlv_22='writeExcludedStates:' 
+)*	otherlv_24='writeExcludedStates:' 
     {
-    	newLeafNode(otherlv_22, grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_22());
+    	newLeafNode(otherlv_24, grammarAccess.getAttributeAccess().getWriteExcludedStatesKeyword_24());
     }
 (
 (
-		lv_writeExcludedStates_23_0=RULE_STRING
+		lv_writeExcludedStates_25_0=RULE_STRING
 		{
-			newLeafNode(lv_writeExcludedStates_23_0, grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_23_0()); 
+			newLeafNode(lv_writeExcludedStates_25_0, grammarAccess.getAttributeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_25_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2947,7 +2969,7 @@ ruleAttribute returns [EObject current=null]
        		addWithLastConsumed(
        			$current, 
        			"writeExcludedStates",
-        		lv_writeExcludedStates_23_0, 
+        		lv_writeExcludedStates_25_0, 
         		"STRING");
 	    }
 
@@ -3797,6 +3819,16 @@ ruleType returns [EObject current=null]
     this_EncodedType_28=ruleEncodedType
     { 
         $current = $this_EncodedType_28.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getTypeAccess().getEnumTypeParserRuleCall_29()); 
+    }
+    this_EnumType_29=ruleEnumType
+    { 
+        $current = $this_EnumType_29.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -4697,6 +4729,37 @@ ruleEncodedType returns [EObject current=null]
 )	otherlv_1='DevEncoded' 
     {
     	newLeafNode(otherlv_1, grammarAccess.getEncodedTypeAccess().getDevEncodedKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleEnumType
+entryRuleEnumType returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getEnumTypeRule()); }
+	 iv_ruleEnumType=ruleEnumType 
+	 { $current=$iv_ruleEnumType.current; } 
+	 EOF 
+;
+
+// Rule EnumType
+ruleEnumType returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getEnumTypeAccess().getEnumTypeAction_0(),
+            $current);
+    }
+)	otherlv_1='DevEnum' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getEnumTypeAccess().getDevEnumKeyword_1());
     }
 )
 ;
