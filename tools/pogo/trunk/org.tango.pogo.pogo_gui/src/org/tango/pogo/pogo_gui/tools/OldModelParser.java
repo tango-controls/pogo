@@ -441,7 +441,6 @@ public class OldModelParser {
         return code.trim();
     }
     //===============================================================
-
     /**
      * In old model, the write value for attribute was put in a gloabl.
      * In new model it is put in a local variable.
@@ -454,6 +453,11 @@ public class OldModelParser {
      */
     //===============================================================
     public String manageWriteValue(String code, String attName) {
+        //  ToDo it only if environment variable is set as false
+        String s = System.getenv("MANAGE_WRITE_METHOD");
+        if (s==null || !s.equals("true")) {
+            return "\t// the variable w_val will not be used !\n" + code;
+        }
         if (code != null) {
             //  Remove get_write_value() method
             String oldVar = "attr_" + attName + "_write";
