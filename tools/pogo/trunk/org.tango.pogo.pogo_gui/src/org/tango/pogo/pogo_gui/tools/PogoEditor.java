@@ -84,7 +84,7 @@ public class PogoEditor {
         else {
             shellEditor = System.getenv("EDITOR");
             if (shellEditor !=null) {
-                if (shellEditor.equals("nedit")) {
+                if (shellEditor.startsWith("nedit")) {
                     //  Try to find nedit client executable
                     String path = System.getenv("PATH");
                     StringTokenizer stk = new StringTokenizer(path, ":");
@@ -284,8 +284,8 @@ public class PogoEditor {
                     filename = path + "/" + className + "Class.cpp";
                 break;
             case PogoConst.Java:
-                filename = path + "/org/tango/" + className.toLowerCase() + "/" +
-                        className + ".java";
+                filename = path + "/org/tango/" +
+                        className.toLowerCase() + "/" + className + ".java";
                 break;
             case PogoConst.Python:
                 filename = path + "/" + className + ".py";

@@ -111,7 +111,7 @@ public class AdditionalFilesDialog extends JDialog {
         additionalList.removeAll();
         Vector<String> strList = new Vector<String>();
         for (AdditionalFile file : fileList) {
-            strList.add(file.getPath() + "/" + file.getName() + "." + fileExtension);
+            strList.add(file.getPath());
         }
         additionalList.setListData(strList);
     }
@@ -130,14 +130,14 @@ public class AdditionalFilesDialog extends JDialog {
 
         javax.swing.JPanel topPanel = new javax.swing.JPanel();
         javax.swing.JLabel titleLabel = new javax.swing.JLabel();
-        javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
-        javax.swing.JButton okBtn = new javax.swing.JButton();
-        javax.swing.JButton cnacelBtn = new javax.swing.JButton();
         listScrollPane = new javax.swing.JScrollPane();
         additionalList = new javax.swing.JList();
         javax.swing.JPanel rightPanel = new javax.swing.JPanel();
         javax.swing.JButton addBtn = new javax.swing.JButton();
         removeBtn = new javax.swing.JButton();
+        javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
+        javax.swing.JButton okBtn = new javax.swing.JButton();
+        javax.swing.JButton cancelBtn = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -145,29 +145,11 @@ public class AdditionalFilesDialog extends JDialog {
             }
         });
 
-        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18));
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         titleLabel.setText("Programmer's  Additional  files");
         topPanel.add(titleLabel);
 
         getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
-
-        okBtn.setText("OK");
-        okBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtnActionPerformed(evt);
-            }
-        });
-        bottomPanel.add(okBtn);
-
-        cnacelBtn.setText("Cancel");
-        cnacelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnacelBtnActionPerformed(evt);
-            }
-        });
-        bottomPanel.add(cnacelBtn);
-
-        getContentPane().add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
         listScrollPane.setViewportView(additionalList);
 
@@ -201,6 +183,24 @@ public class AdditionalFilesDialog extends JDialog {
         rightPanel.add(removeBtn, gridBagConstraints);
 
         getContentPane().add(rightPanel, java.awt.BorderLayout.LINE_END);
+
+        okBtn.setText("OK");
+        okBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtnActionPerformed(evt);
+            }
+        });
+        bottomPanel.add(okBtn);
+
+        cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+        bottomPanel.add(cancelBtn);
+
+        getContentPane().add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,10 +280,10 @@ public class AdditionalFilesDialog extends JDialog {
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-    private void cnacelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnacelBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         returnValue = JOptionPane.CANCEL_OPTION;
         doClose();
-    }//GEN-LAST:event_cnacelBtnActionPerformed
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     //===============================================================
     //===============================================================

@@ -131,6 +131,10 @@ class LinuxMakefile {
 			«cls.inheritanceDependancies»
  		«ENDIF»
 
+ 		«IF cls.additionalFiles.empty==false»
+			«cls.additionalDependencies»
+ 		«ENDIF»
+
 	'''
 
 	//======================================================

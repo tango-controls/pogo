@@ -9,6 +9,12 @@
 #-======================================================================
 
 
+Pogo-8.4.7 - 18/06/2014:
+	Fix a problem in linuxMakefile for additional files.
+
+Pogo-8.4.6 - 12/06/2014:
+	Add an environment variable (MANAGE_WRITE_METHOD=false) to do not modify write_xxx method.
+
 Pogo-8.4.5 - 23/04/2014:
 	Inverse order between allocation and mandatory test in init_device().
 
