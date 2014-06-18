@@ -293,7 +293,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 
 			//	Additional files
 			for (AdditionalFile file : cls.getAdditionalFiles()) {
-				code += dependanciesObjectAddFile(cls.getClassname(), file.getName());
+				code += dependanciesObjectAddFile(cls.getClassname(), file.getName(), false);
 			}
 
 			//	Inheritance files
@@ -353,10 +353,13 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		return code;
 	}
 	//======================================================
-	private String dependanciesObjectAddFile(String classname, String filename) {
-		String code = 
-			"$(OBJDIR)/" + filename + ".o:"+
-				"  $(" +  classHomeDir(classname) + ")/"+filename+".cpp $("+classIncludeDir(classname)+")\n";
+	private String dependanciesObjectAddFile(String classname, String filename, boolean mainClass) {
+		String code = "$(OBJDIR)/" + filename + ".o:";
+		if (mainClass)	//	Do not manage path
+			code += "  "+filename+".cpp $(SVC_INCL)\n";
+		else
+			code += "  $(" +  classHomeDir(classname) + ")/"+filename+".cpp $("+classIncludeDir(classname)+")\n";
+
 		code += "	$(CXX) $(CXXFLAGS) -c $< -o $(OBJDIR)/" + filename + ".o\n";
 		return code;
 	}
@@ -431,18 +434,11 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 				code += dependanciesObject(inher.getClassname(), "Class");
 				code += dependanciesObject(inher.getClassname(), "StateMachine");
 
-				/*
-				for (Inheritance inheritance : cls.getDescription().getInheritances()) {
-					if (inheritanceUtils.isInheritanceClass(inheritance)) {
-						code += dependanciesObject(inheritance.getClassname(), "");
-						code += dependanciesObject(inheritance.getClassname(), "Class");
-						code += dependanciesObject(inheritance.getClassname(), "StateMachine");
-					}
-				}
-				*/
+				/*	ToDo additional for inheritance ?
 				for (AdditionalFile file : cls.getAdditionalFiles()) {
 					code += dependanciesObjectAddFile(cls.getName(), file.getName());
 				}
+				*/
 			}
 		}
 
@@ -494,6 +490,14 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 					"ADDITIONAL_OBJS = \\\n" +
 					buildAdditionalFileListForMakefile(cls.getAdditionalFiles(), "		$(OBJDIR)/", ".o");
  		}
+ 		return code;
+ 	}
+	//===========================================================
+ 	public String additionalDependencies(PogoDeviceClass cls) {
+ 		String code = "";
+ 		for (AdditionalFile file : cls.getAdditionalFiles()) {
+			code += dependanciesObjectAddFile(cls.getName(), file.getName(), true);
+		}
  		return code;
  	}
 	//===========================================================

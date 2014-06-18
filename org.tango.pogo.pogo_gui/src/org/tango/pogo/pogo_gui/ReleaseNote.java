@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Apr 24 09:47:49 CEST 2014)</Center><Br>\n" + 
+		"	(Generated Wed Jun 18 08:58:12 CEST 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.4.7 - 18/06/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem in linuxMakefile for additional files.<Br>\n" + 
+		"<li><b>Pogo-8.4.6 - 12/06/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Add an environment variable (MANAGE_WRITE_METHOD=false) to do not modify write_xxx method.<Br>\n" + 
 		"<li><b>Pogo-8.4.5 - 23/04/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Inverse order between allocation and mandatory test in init_device().<Br>\n" + 
 		"<li><b>Pogo-8.4.4 - 07/04/2014:</b><Br>\n" + 
@@ -184,7 +188,7 @@ public interface ReleaseNote
 		"&nbsp; &nbsp; Bug in multi lines attribute description fixed.<Br>\n" + 
 		"<li><b>Pogo-7.1.1 - 14/02/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Does not generate Classfactory.cpp and main.cpp if clas is abstract.<Br>\n" + 
-		"&nbsp; &nbsp; Pb in commnads table fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Pb in commands table fixed.<Br>\n" + 
 		"<li><b>Pogo-7.1.0 - 10/02/2011:</b><Br>\n" + 
 		"&nbsp; &nbsp; Class name change is now managed.<Br>\n" + 
 		"&nbsp; &nbsp; If a xmi file is in current directory, it is proposed to be loaded.<Br>\n" + 

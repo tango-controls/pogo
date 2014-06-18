@@ -22,6 +22,7 @@ export SOURCE_PATH=/segfs/tango/tools/pogo/test/java
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/
 export SOURCE_PATH=/segfs/tango/cppserver/IO/wago
+export SOURCE_PATH=/segfs/tango/tmp/pascal/theresa/Release_1_2
 
 SUPER_HOME=/segfs/tango/templates/AbstractClasses
 
@@ -29,7 +30,8 @@ JSERVER_JAR_FILE=y:/tango/release/java/lib/JTangoServer.jar
 export JSERVER_JAR_FILE
 
 export Packaging=true
-export TANGO_9=true
+#export TANGO_9=true
+export MANAGE_WRITE_METHOD=false
 
 java  -DSUPER_HOME=$SUPER_HOME \
             org.tango.pogo.pogo_gui.Pogo  $*

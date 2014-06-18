@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 8.4.5
+RELEASE    = 8.4.7
 
 
 TANGO_HOME	=	/segfs/tango
@@ -91,9 +91,7 @@ doc:
 
 
 ECLIPSE_JAR_DIR=/users/verdier/pogo/jar
-#ECLIPSE_JAR_DIR=/segfs/tango/tools/pogo/jar
 TARGET_JAR_DIR=/segfs/tango/release/java/appli
-#TARGET_JAR_DIR=.
 JAR_FILE=org.tango.pogo
 install:
 	@cp $(ECLIPSE_JAR_DIR)/$(JAR_FILE).jar $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar
@@ -105,7 +103,7 @@ install:
 
 #	mv $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar  $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE)-tmp.jar
 
-FTP_TARGET	=	maya:/ftp/pub/cs/tango/Pogo
+FTP_TARGET	=	webserv02:/ftp/pub/cs/tango/Pogo
 install_ftp:
 	@echo "scp $(JAR_FILE)-$(RELEASE).jar $(FTP_TARGET)"
 	@cd $(TARGET_JAR_DIR); scp $(JAR_FILE)-$(RELEASE).jar  $(FTP_TARGET)
