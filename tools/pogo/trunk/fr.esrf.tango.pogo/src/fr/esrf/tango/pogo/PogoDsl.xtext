@@ -110,6 +110,9 @@ PogoDeviceClass:
 		"dynamicAttributes:"					//	Device dynamic attribute list
 			(dynamicAttributes+=Attribute)*
 
+		"forwardedAttributes:"					//	Device fowarded attribute list
+			(forwardedAttributes+=ForwardedAttribute)*
+
 		"states:"								//	Device state list
 			(states+=State)*
 		
@@ -287,6 +290,13 @@ Attribute:
 	"writeExcludedStates:"
 		(writeExcludedStates+=STRING)*
 ;
+
+ForwardedAttribute:
+	name   = ID
+	label  = STRING
+	status            = InheritanceStatus
+;
+
 
 FireEvents:
 	fire             = Boolean

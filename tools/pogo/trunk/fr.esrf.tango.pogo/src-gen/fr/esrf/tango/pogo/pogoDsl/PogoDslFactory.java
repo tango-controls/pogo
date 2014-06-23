@@ -197,6 +197,15 @@ public interface PogoDslFactory extends EFactory
   Attribute createAttribute();
 
   /**
+   * Returns a new object of class '<em>Forwarded Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Forwarded Attribute</em>'.
+   * @generated
+   */
+  ForwardedAttribute createForwardedAttribute();
+
+  /**
    * Returns a new object of class '<em>Fire Events</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

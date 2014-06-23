@@ -29,6 +29,7 @@ import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
 import fr.esrf.tango.pogo.pogoDsl.FloatType;
 import fr.esrf.tango.pogo.pogoDsl.FloatVectorType;
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute;
 import fr.esrf.tango.pogo.pogoDsl.Import;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
@@ -215,6 +216,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass attributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forwardedAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -941,7 +949,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_States()
+  public EReference getPogoDeviceClass_ForwardedAttributes()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(12);
   }
@@ -951,7 +959,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_Preferences()
+  public EReference getPogoDeviceClass_States()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(13);
   }
@@ -961,7 +969,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_AdditionalFiles()
+  public EReference getPogoDeviceClass_Preferences()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(14);
   }
@@ -971,9 +979,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  public EReference getPogoDeviceClass_AdditionalFiles()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  {
+    return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(16);
   }
 
   /**
@@ -1911,6 +1929,46 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getForwardedAttribute()
+  {
+    return forwardedAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getForwardedAttribute_Name()
+  {
+    return (EAttribute)forwardedAttributeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getForwardedAttribute_Label()
+  {
+    return (EAttribute)forwardedAttributeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getForwardedAttribute_Status()
+  {
+    return (EReference)forwardedAttributeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getFireEvents()
   {
     return fireEventsEClass;
@@ -2627,6 +2685,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__DYNAMIC_COMMANDS);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES);
+    createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__STATES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__PREFERENCES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ADDITIONAL_FILES);
@@ -2738,6 +2797,11 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(attributeEClass, ATTRIBUTE__ENUM_LABELS);
     createEAttribute(attributeEClass, ATTRIBUTE__READ_EXCLUDED_STATES);
     createEAttribute(attributeEClass, ATTRIBUTE__WRITE_EXCLUDED_STATES);
+
+    forwardedAttributeEClass = createEClass(FORWARDED_ATTRIBUTE);
+    createEAttribute(forwardedAttributeEClass, FORWARDED_ATTRIBUTE__NAME);
+    createEAttribute(forwardedAttributeEClass, FORWARDED_ATTRIBUTE__LABEL);
+    createEReference(forwardedAttributeEClass, FORWARDED_ATTRIBUTE__STATUS);
 
     fireEventsEClass = createEClass(FIRE_EVENTS);
     createEAttribute(fireEventsEClass, FIRE_EVENTS__FIRE);
@@ -2963,6 +3027,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getPogoDeviceClass_DynamicCommands(), this.getCommand(), null, "dynamicCommands", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_DynamicAttributes(), this.getAttribute(), null, "dynamicAttributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPogoDeviceClass_ForwardedAttributes(), this.getForwardedAttribute(), null, "forwardedAttributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_States(), this.getState(), null, "states", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Preferences(), this.getPreferences(), null, "preferences", null, 0, 1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_AdditionalFiles(), this.getAdditionalFile(), null, "additionalFiles", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3074,6 +3139,11 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getAttribute_EnumLabels(), ecorePackage.getEString(), "enumLabels", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_ReadExcludedStates(), ecorePackage.getEString(), "readExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_WriteExcludedStates(), ecorePackage.getEString(), "writeExcludedStates", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forwardedAttributeEClass, ForwardedAttribute.class, "ForwardedAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getForwardedAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, ForwardedAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getForwardedAttribute_Label(), ecorePackage.getEString(), "label", null, 0, 1, ForwardedAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForwardedAttribute_Status(), this.getInheritanceStatus(), null, "status", null, 0, 1, ForwardedAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fireEventsEClass, FireEvents.class, "FireEvents", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFireEvents_Fire(), ecorePackage.getEString(), "fire", null, 0, 1, FireEvents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

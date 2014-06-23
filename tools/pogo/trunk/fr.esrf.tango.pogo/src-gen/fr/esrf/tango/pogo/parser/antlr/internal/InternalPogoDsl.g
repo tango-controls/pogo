@@ -801,23 +801,45 @@ rulePogoDeviceClass returns [EObject current=null]
 	    }
 
 )
-)*	otherlv_22='states:' 
+)*	otherlv_22='forwardedAttributes:' 
     {
-    	newLeafNode(otherlv_22, grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_21());
+    	newLeafNode(otherlv_22, grammarAccess.getPogoDeviceClassAccess().getForwardedAttributesKeyword_21());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_22_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getForwardedAttributesForwardedAttributeParserRuleCall_22_0()); 
 	    }
-		lv_states_23_0=ruleState		{
+		lv_forwardedAttributes_23_0=ruleForwardedAttribute		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
+	        }
+       		add(
+       			$current, 
+       			"forwardedAttributes",
+        		lv_forwardedAttributes_23_0, 
+        		"ForwardedAttribute");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_24='states:' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_23());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_24_0()); 
+	    }
+		lv_states_25_0=ruleState		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		add(
        			$current, 
        			"states",
-        		lv_states_23_0, 
+        		lv_states_25_0, 
         		"State");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -826,68 +848,68 @@ rulePogoDeviceClass returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_23_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_25_0()); 
 	    }
-		lv_preferences_24_0=rulePreferences		{
+		lv_preferences_26_0=rulePreferences		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		set(
        			$current, 
        			"preferences",
-        		lv_preferences_24_0, 
+        		lv_preferences_26_0, 
         		"Preferences");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_25='additionalFiles:' 
+)	otherlv_27='additionalFiles:' 
     {
-    	newLeafNode(otherlv_25, grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_24());
+    	newLeafNode(otherlv_27, grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_26());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_25_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_27_0()); 
 	    }
-		lv_additionalFiles_26_0=ruleAdditionalFile		{
+		lv_additionalFiles_28_0=ruleAdditionalFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		add(
        			$current, 
        			"additionalFiles",
-        		lv_additionalFiles_26_0, 
+        		lv_additionalFiles_28_0, 
         		"AdditionalFile");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_27='overlodedPollPeriodObject:' 
+)*	otherlv_29='overlodedPollPeriodObject:' 
     {
-    	newLeafNode(otherlv_27, grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_26());
+    	newLeafNode(otherlv_29, grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_28());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_27_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_29_0()); 
 	    }
-		lv_overlodedPollPeriodObject_28_0=ruleOverlodedPollPeriodObject		{
+		lv_overlodedPollPeriodObject_30_0=ruleOverlodedPollPeriodObject		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		add(
        			$current, 
        			"overlodedPollPeriodObject",
-        		lv_overlodedPollPeriodObject_28_0, 
+        		lv_overlodedPollPeriodObject_30_0, 
         		"OverlodedPollPeriodObject");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_29='}' 
+)*	otherlv_31='}' 
     {
-    	newLeafNode(otherlv_29, grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_28());
+    	newLeafNode(otherlv_31, grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_30());
     }
 )
 ;
@@ -2975,6 +2997,81 @@ ruleAttribute returns [EObject current=null]
 
 )
 )*)
+;
+
+
+
+
+
+// Entry rule entryRuleForwardedAttribute
+entryRuleForwardedAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getForwardedAttributeRule()); }
+	 iv_ruleForwardedAttribute=ruleForwardedAttribute 
+	 { $current=$iv_ruleForwardedAttribute.current; } 
+	 EOF 
+;
+
+// Rule ForwardedAttribute
+ruleForwardedAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_name_0_0=RULE_ID
+		{
+			newLeafNode(lv_name_0_0, grammarAccess.getForwardedAttributeAccess().getNameIDTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getForwardedAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_0, 
+        		"ID");
+	    }
+
+)
+)(
+(
+		lv_label_1_0=RULE_STRING
+		{
+			newLeafNode(lv_label_1_0, grammarAccess.getForwardedAttributeAccess().getLabelSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getForwardedAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"label",
+        		lv_label_1_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getForwardedAttributeAccess().getStatusInheritanceStatusParserRuleCall_2_0()); 
+	    }
+		lv_status_2_0=ruleInheritanceStatus		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getForwardedAttributeRule());
+	        }
+       		set(
+       			$current, 
+       			"status",
+        		lv_status_2_0, 
+        		"InheritanceStatus");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
 ;
 
 
