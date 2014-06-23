@@ -62,6 +62,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCommandAccess().getGroup(), "rule__Command__Group__0");
 					put(grammarAccess.getArgumentAccess().getGroup(), "rule__Argument__Group__0");
 					put(grammarAccess.getAttributeAccess().getGroup(), "rule__Attribute__Group__0");
+					put(grammarAccess.getForwardedAttributeAccess().getGroup(), "rule__ForwardedAttribute__Group__0");
 					put(grammarAccess.getFireEventsAccess().getGroup(), "rule__FireEvents__Group__0");
 					put(grammarAccess.getEventCriteriaAccess().getGroup(), "rule__EventCriteria__Group__0");
 					put(grammarAccess.getAttrPropertiesAccess().getGroup(), "rule__AttrProperties__Group__0");
@@ -96,6 +97,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getULongArrayTypeAccess().getGroup(), "rule__ULongArrayType__Group__0");
 					put(grammarAccess.getDevIntTypeAccess().getGroup(), "rule__DevIntType__Group__0");
 					put(grammarAccess.getEncodedTypeAccess().getGroup(), "rule__EncodedType__Group__0");
+					put(grammarAccess.getEnumTypeAccess().getGroup(), "rule__EnumType__Group__0");
 					put(grammarAccess.getShortVectorTypeAccess().getGroup(), "rule__ShortVectorType__Group__0");
 					put(grammarAccess.getIntVectorTypeAccess().getGroup(), "rule__IntVectorType__Group__0");
 					put(grammarAccess.getFloatVectorTypeAccess().getGroup(), "rule__FloatVectorType__Group__0");
@@ -133,10 +135,11 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPogoDeviceClassAccess().getDynamicCommandsAssignment_16(), "rule__PogoDeviceClass__DynamicCommandsAssignment_16");
 					put(grammarAccess.getPogoDeviceClassAccess().getAttributesAssignment_18(), "rule__PogoDeviceClass__AttributesAssignment_18");
 					put(grammarAccess.getPogoDeviceClassAccess().getDynamicAttributesAssignment_20(), "rule__PogoDeviceClass__DynamicAttributesAssignment_20");
-					put(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_22(), "rule__PogoDeviceClass__StatesAssignment_22");
-					put(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_23(), "rule__PogoDeviceClass__PreferencesAssignment_23");
-					put(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_25(), "rule__PogoDeviceClass__AdditionalFilesAssignment_25");
-					put(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectAssignment_27(), "rule__PogoDeviceClass__OverlodedPollPeriodObjectAssignment_27");
+					put(grammarAccess.getPogoDeviceClassAccess().getForwardedAttributesAssignment_22(), "rule__PogoDeviceClass__ForwardedAttributesAssignment_22");
+					put(grammarAccess.getPogoDeviceClassAccess().getStatesAssignment_24(), "rule__PogoDeviceClass__StatesAssignment_24");
+					put(grammarAccess.getPogoDeviceClassAccess().getPreferencesAssignment_25(), "rule__PogoDeviceClass__PreferencesAssignment_25");
+					put(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAssignment_27(), "rule__PogoDeviceClass__AdditionalFilesAssignment_27");
+					put(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectAssignment_29(), "rule__PogoDeviceClass__OverlodedPollPeriodObjectAssignment_29");
 					put(grammarAccess.getClassDescriptionAccess().getDescriptionAssignment_0(), "rule__ClassDescription__DescriptionAssignment_0");
 					put(grammarAccess.getClassDescriptionAccess().getTitleAssignment_1(), "rule__ClassDescription__TitleAssignment_1");
 					put(grammarAccess.getClassDescriptionAccess().getSourcePathAssignment_2(), "rule__ClassDescription__SourcePathAssignment_2");
@@ -213,8 +216,12 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeAccess().getIsDynamicAssignment_17(), "rule__Attribute__IsDynamicAssignment_17");
 					put(grammarAccess.getAttributeAccess().getEventCriteriaAssignment_18(), "rule__Attribute__EventCriteriaAssignment_18");
 					put(grammarAccess.getAttributeAccess().getEvArchiveCriteriaAssignment_19(), "rule__Attribute__EvArchiveCriteriaAssignment_19");
-					put(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_21(), "rule__Attribute__ReadExcludedStatesAssignment_21");
-					put(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_23(), "rule__Attribute__WriteExcludedStatesAssignment_23");
+					put(grammarAccess.getAttributeAccess().getEnumLabelsAssignment_21(), "rule__Attribute__EnumLabelsAssignment_21");
+					put(grammarAccess.getAttributeAccess().getReadExcludedStatesAssignment_23(), "rule__Attribute__ReadExcludedStatesAssignment_23");
+					put(grammarAccess.getAttributeAccess().getWriteExcludedStatesAssignment_25(), "rule__Attribute__WriteExcludedStatesAssignment_25");
+					put(grammarAccess.getForwardedAttributeAccess().getNameAssignment_0(), "rule__ForwardedAttribute__NameAssignment_0");
+					put(grammarAccess.getForwardedAttributeAccess().getLabelAssignment_1(), "rule__ForwardedAttribute__LabelAssignment_1");
+					put(grammarAccess.getForwardedAttributeAccess().getStatusAssignment_2(), "rule__ForwardedAttribute__StatusAssignment_2");
 					put(grammarAccess.getFireEventsAccess().getFireAssignment_0(), "rule__FireEvents__FireAssignment_0");
 					put(grammarAccess.getFireEventsAccess().getLibCheckCriteriaAssignment_1(), "rule__FireEvents__LibCheckCriteriaAssignment_1");
 					put(grammarAccess.getEventCriteriaAccess().getRelChangeAssignment_0(), "rule__EventCriteria__RelChangeAssignment_0");
