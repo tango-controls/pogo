@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicCommands <em>Dynamic Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getDynamicAttributes <em>Dynamic Attributes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getForwardedAttributes <em>Forwarded Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getPreferences <em>Preferences</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass#getAdditionalFiles <em>Additional Files</em>}</li>
@@ -293,6 +294,22 @@ public interface PogoDeviceClass extends EObject
    * @generated
    */
   EList<Attribute> getDynamicAttributes();
+
+  /**
+   * Returns the value of the '<em><b>Forwarded Attributes</b></em>' containment reference list.
+   * The list contents are of type {@link fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Forwarded Attributes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Forwarded Attributes</em>' containment reference list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoDeviceClass_ForwardedAttributes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ForwardedAttribute> getForwardedAttributes();
 
   /**
    * Returns the value of the '<em><b>States</b></em>' containment reference list.

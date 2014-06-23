@@ -26,6 +26,7 @@ import fr.esrf.tango.pogo.pogoDsl.FireEvents;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
 import fr.esrf.tango.pogo.pogoDsl.FloatType;
 import fr.esrf.tango.pogo.pogoDsl.FloatVectorType;
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute;
 import fr.esrf.tango.pogo.pogoDsl.Import;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
@@ -263,6 +264,12 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
 					sequence_PropType(context, (FloatVectorType) semanticObject); 
+					return; 
+				}
+				else break;
+			case PogoDslPackage.FORWARDED_ATTRIBUTE:
+				if(context == grammarAccess.getForwardedAttributeRule()) {
+					sequence_ForwardedAttribute(context, (ForwardedAttribute) semanticObject); 
 					return; 
 				}
 				else break;
@@ -790,6 +797,28 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     (name=ID label=STRING status=InheritanceStatus)
+	 */
+	protected void sequence_ForwardedAttribute(EObject context, ForwardedAttribute semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.FORWARDED_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.FORWARDED_ATTRIBUTE__NAME));
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.FORWARDED_ATTRIBUTE__LABEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.FORWARDED_ATTRIBUTE__LABEL));
+			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.FORWARDED_ATTRIBUTE__STATUS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.FORWARDED_ATTRIBUTE__STATUS));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getForwardedAttributeAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getForwardedAttributeAccess().getLabelSTRINGTerminalRuleCall_1_0(), semanticObject.getLabel());
+		feeder.accept(grammarAccess.getForwardedAttributeAccess().getStatusInheritanceStatusParserRuleCall_2_0(), semanticObject.getStatus());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     importURI=STRING
 	 */
 	protected void sequence_Import(EObject context, Import semanticObject) {
@@ -905,6 +934,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *         dynamicCommands+=Command* 
 	 *         attributes+=Attribute* 
 	 *         dynamicAttributes+=Attribute* 
+	 *         forwardedAttributes+=ForwardedAttribute* 
 	 *         states+=State* 
 	 *         preferences=Preferences 
 	 *         additionalFiles+=AdditionalFile* 

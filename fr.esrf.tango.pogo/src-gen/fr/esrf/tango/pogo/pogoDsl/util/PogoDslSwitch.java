@@ -210,6 +210,13 @@ public class PogoDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case PogoDslPackage.FORWARDED_ATTRIBUTE:
+      {
+        ForwardedAttribute forwardedAttribute = (ForwardedAttribute)theEObject;
+        T result = caseForwardedAttribute(forwardedAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case PogoDslPackage.FIRE_EVENTS:
       {
         FireEvents fireEvents = (FireEvents)theEObject;
@@ -857,6 +864,22 @@ public class PogoDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAttribute(Attribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Forwarded Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Forwarded Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForwardedAttribute(ForwardedAttribute object)
   {
     return null;
   }

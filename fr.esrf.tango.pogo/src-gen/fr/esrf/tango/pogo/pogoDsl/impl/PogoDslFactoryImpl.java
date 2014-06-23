@@ -86,6 +86,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.COMMAND: return createCommand();
       case PogoDslPackage.ARGUMENT: return createArgument();
       case PogoDslPackage.ATTRIBUTE: return createAttribute();
+      case PogoDslPackage.FORWARDED_ATTRIBUTE: return createForwardedAttribute();
       case PogoDslPackage.FIRE_EVENTS: return createFireEvents();
       case PogoDslPackage.EVENT_CRITERIA: return createEventCriteria();
       case PogoDslPackage.ATTR_PROPERTIES: return createAttrProperties();
@@ -339,6 +340,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     AttributeImpl attribute = new AttributeImpl();
     return attribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ForwardedAttribute createForwardedAttribute()
+  {
+    ForwardedAttributeImpl forwardedAttribute = new ForwardedAttributeImpl();
+    return forwardedAttribute;
   }
 
   /**

@@ -9,6 +9,7 @@ import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute;
 import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
@@ -51,6 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getDynamicCommands <em>Dynamic Commands</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getDynamicAttributes <em>Dynamic Attributes</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getForwardedAttributes <em>Forwarded Attributes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getStates <em>States</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getPreferences <em>Preferences</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoDeviceClassImpl#getAdditionalFiles <em>Additional Files</em>}</li>
@@ -221,6 +223,16 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected EList<Attribute> dynamicAttributes;
+
+  /**
+   * The cached value of the '{@link #getForwardedAttributes() <em>Forwarded Attributes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getForwardedAttributes()
+   * @generated
+   * @ordered
+   */
+  protected EList<ForwardedAttribute> forwardedAttributes;
 
   /**
    * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
@@ -555,6 +567,20 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<ForwardedAttribute> getForwardedAttributes()
+  {
+    if (forwardedAttributes == null)
+    {
+      forwardedAttributes = new EObjectContainmentEList<ForwardedAttribute>(ForwardedAttribute.class, this, PogoDslPackage.POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES);
+    }
+    return forwardedAttributes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<State> getStates()
   {
     if (states == null)
@@ -664,6 +690,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
         return ((InternalEList<?>)getDynamicAttributes()).basicRemove(otherEnd, msgs);
+      case PogoDslPackage.POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES:
+        return ((InternalEList<?>)getForwardedAttributes()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
@@ -711,6 +739,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return getAttributes();
       case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
         return getDynamicAttributes();
+      case PogoDslPackage.POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES:
+        return getForwardedAttributes();
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return getStates();
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
@@ -775,6 +805,10 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
         getDynamicAttributes().clear();
         getDynamicAttributes().addAll((Collection<? extends Attribute>)newValue);
+        return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES:
+        getForwardedAttributes().clear();
+        getForwardedAttributes().addAll((Collection<? extends ForwardedAttribute>)newValue);
         return;
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         getStates().clear();
@@ -841,6 +875,9 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
       case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
         getDynamicAttributes().clear();
         return;
+      case PogoDslPackage.POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES:
+        getForwardedAttributes().clear();
+        return;
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         getStates().clear();
         return;
@@ -891,6 +928,8 @@ public class PogoDeviceClassImpl extends MinimalEObjectImpl.Container implements
         return attributes != null && !attributes.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES:
         return dynamicAttributes != null && !dynamicAttributes.isEmpty();
+      case PogoDslPackage.POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES:
+        return forwardedAttributes != null && !forwardedAttributes.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__STATES:
         return states != null && !states.isEmpty();
       case PogoDslPackage.POGO_DEVICE_CLASS__PREFERENCES:
