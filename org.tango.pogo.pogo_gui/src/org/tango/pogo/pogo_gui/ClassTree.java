@@ -252,6 +252,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         root.add(attributeNodes[1]);
         root.add(attributeNodes[2]);
 
+        EList<ForwardedAttribute>   forwardedAttributes = pogoClass.getForwardedAttributes();
+        root.add(createForwardedBranch(forwardedAttributes));
+
         //  Create state node
         EList<State> states = pogoClass.getStates();
         root.add(createStateBranch(states));
@@ -353,6 +356,21 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     }
     //======================================================
     //======================================================
+    private DefaultMutableTreeNode createForwardedBranch(EList<ForwardedAttribute> attributes) {
+        Utils utils = Utils.getInstance();
+        DefaultMutableTreeNode forwardedNode =
+                new DefaultMutableTreeNode(
+                        new PogoCollection("Forwarded Attributes", utils.forwarded_icon));
+
+        for (ForwardedAttribute attribute : attributes) {
+            DefaultMutableTreeNode node =
+                    new DefaultMutableTreeNode(new PogoForwarded(attribute));
+            forwardedNode.add(node);
+        }
+        return forwardedNode;
+    }
+    //======================================================
+    //======================================================
     private DefaultMutableTreeNode getSelectedNode() {
         return (DefaultMutableTreeNode) getLastSelectedPathComponent();
     }
@@ -423,23 +441,28 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
     //===============================================================
     //===============================================================
-    private String[] nameAndCollecObject(Object object) {
-        String name = "Unknown name";
-        String item = "Unknown Item";
+    private boolean getRemoveConfirmation(Object object) {
+        String str = "\"---\"  --";
         if (object instanceof PogoProperty) {
-            name = ((PogoProperty) object).value.getName();
-            item = "Property";
-        } else if (object instanceof PogoCommand) {
-            name = ((PogoCommand) object).value.getName();
-            item = "Command";
-        } else if (object instanceof PogoAttribute) {
-            name = ((PogoAttribute) object).value.getName();
-            item = "Attribute";
-        } else if (object instanceof PogoState) {
-            name = ((PogoState) object).value.getName();
-            item = "State";
+            str = "\"Property\"  " + ((PogoProperty) object).value.getName();
         }
-        return new String[]{name, item};
+        else if (object instanceof PogoCommand) {
+            str = "\"Command\"  " + ((PogoCommand) object).value.getName();
+        }
+        else if (object instanceof PogoAttribute) {
+            str = "\"Attribute\"  " + ((PogoAttribute) object).value.getName();
+        }
+        else if (object instanceof PogoForwarded) {
+            str = "\"Forwarded Attribute\"  " + ((PogoForwarded) object).value.getName();
+        }
+        else if (object instanceof PogoState) {
+            str = "\"State\"  " + ((PogoState) object).value.getName();
+        }
+
+        return JOptionPane.showConfirmDialog(this,
+                "Remove  " + str + " ?",
+                "Confirmation Window",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION;
     }
 
     //===============================================================
@@ -500,12 +523,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Object selection = getSelectedObject();
         if (selection == null)
             return;
-        String[] naco = nameAndCollecObject(selection);
-        if (!askConfirm ||
-                JOptionPane.showConfirmDialog(this,
-                        "Remove  \"" + naco[0] + "\"  " + naco[1] + " ?",
-                        "Confirmation Window",
-                        JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+        if (!askConfirm || getRemoveConfirmation(selection)) {
 
             if (selection instanceof PogoProperty) {
                 Property prop = ((PogoProperty) selection).value;
@@ -519,7 +537,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 int idx = Utils.getPropertyIndex(properties, prop);
                 if (idx >= 0)
                     properties.remove(idx);
-            } else if (selection instanceof PogoCommand) {
+            }
+            else if (selection instanceof PogoCommand) {
                 Command cmd = ((PogoCommand) selection).value;
                 if (!InheritanceUtils.isRemovable(parent, cmd))
                     return;
@@ -528,7 +547,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 if (idx >= 0)
                     commands.remove(idx);
                 deleted_objects.add(cmd);
-            } else if (selection instanceof PogoAttribute) {
+            }
+            else if (selection instanceof PogoAttribute) {
                 Attribute att = ((PogoAttribute) selection).value;
                 if (!InheritanceUtils.isRemovable(parent, att))
                     return;
@@ -537,7 +557,15 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 if (idx >= 0)
                     attributes.remove(idx);
                 deleted_objects.add(att);
-            } else if (selection instanceof PogoState) {
+            }
+            else if (selection instanceof PogoForwarded) {
+                ForwardedAttribute attribute = ((PogoForwarded) selection).value;
+                EList<ForwardedAttribute> attributes = pogo_class.getForwardedAttributes();
+                int idx = Utils.getForwardedAttributeIndex(attributes, attribute);
+                if (idx >= 0)
+                    attributes.remove(idx);
+            }
+            else if (selection instanceof PogoState) {
                 State state = ((PogoState) selection).value;
                 EList<State> states = pogo_class.getStates();
                 int idx = Utils.getStateIndex(states, state);
@@ -837,7 +865,25 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 setModified(true);
             } else
                 return JOptionPane.CANCEL_OPTION;
-        } else if (obj instanceof PogoProperty) {
+        }
+        else if (obj instanceof PogoForwarded) {
+            ForwardedAttribute attribute = ((PogoForwarded) obj).value;
+            ForwardedAttributeDialog dlg = new ForwardedAttributeDialog(parent, attribute);
+            if (dlg.showDialog() == JOptionPane.OK_OPTION) {
+                EList<ForwardedAttribute> attributes = pogo_class.getForwardedAttributes();
+                int idx = Utils.getForwardedAttributeIndex(attributes, attribute);
+                attribute = dlg.getForwardedAttribute();
+                if (idx >= 0) {
+                    attributes.remove(idx);
+                    attributes.add(idx, attribute);
+                } else
+                    attributes.add(attribute);
+                getSelectedNode().setUserObject(new PogoForwarded(attribute));
+                setModified(true);
+            } else
+                return JOptionPane.CANCEL_OPTION;
+        }
+        else if (obj instanceof PogoProperty) {
             Property property = ((PogoProperty) obj).value;
             boolean is_dev = ((PogoProperty) obj).is_dev;
             PropertyDialog dlg = new PropertyDialog(parent, property, is_dev);
@@ -859,7 +905,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 setModified(true);
             } else
                 return JOptionPane.CANCEL_OPTION;
-        } else if (obj instanceof PogoCommand) {
+        }
+        else if (obj instanceof PogoCommand) {
             Command cmd = ((PogoCommand) obj).value;
             String name = cmd.getName();
             CommandDialog dlg = new CommandDialog(parent, cmd);
@@ -883,7 +930,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     renamed_objects.add(cmd, new_cmd);
             } else
                 return JOptionPane.CANCEL_OPTION;
-        } else if (obj instanceof PogoAttribute) {
+        }
+        else if (obj instanceof PogoAttribute) {
             Attribute attribute = ((PogoAttribute) obj).value;
             String name = attribute.getName();
             AttributeDialog dlg = new AttributeDialog(parent, attribute);
@@ -920,7 +968,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 String new_name = new_attribute.getName();
                 if (!name.equals(new_name))
                     renamed_objects.add(attribute, new_attribute);
-            } else
+            }
+            else
                 return JOptionPane.CANCEL_OPTION;
 
         }
@@ -993,7 +1042,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     break;
                 case STATES:
                     if (str.contains("state"))
-                        addItem(false);
+                        addItem(collectionNode, false);
                     break;
                 case SCALAR_ATTRIBUTE:
                     if (str.contains("scalar"))
@@ -1005,6 +1054,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     break;
                 case IMAGE_ATTRIBUTE:
                     if (str.contains("image"))
+                        addItem(collectionNode, false);
+                    break;
+                case FORWARDED_ATTRIBUTE:
+                    if (str.contains("forwarded"))
                         addItem(collectionNode, false);
                     break;
             }
@@ -1021,7 +1074,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         addItem(getSelectedNode(), isDynamic);
     }
     //===============================================================
-
     /**
      * Add a new object on specified collection
      *
@@ -1040,7 +1092,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 treeModel.insertNodeInto(new_node, collectionNode, collectionNode.getChildCount());
                 setModified(true);
             }
-        } else if (collectionNode.toString().indexOf("Properties") > 0) {
+        }
+        else if (collectionNode.toString().contains("Properties")) {
             boolean isDevice = (collectionNode.toString().indexOf("Device") == 0);
             PropertyDialog dlg = new PropertyDialog(parent, null, isDevice);
             if (dlg.showDialog() == JOptionPane.OK_OPTION) {
@@ -1053,7 +1106,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 treeModel.insertNodeInto(new_node, collectionNode, collectionNode.getChildCount());
                 setModified(true);
             }
-        } else if (collectionNode.toString().equals("States")) {
+        }
+        else if (collectionNode.toString().equals("States")) {
             StateDialog dlg = new StateDialog(parent, null);
             if (dlg.showDialog() == JOptionPane.OK_OPTION) {
                 State state = dlg.getState();
@@ -1062,7 +1116,19 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 treeModel.insertNodeInto(new_node, collectionNode, collectionNode.getChildCount());
                 setModified(true);
             }
-        } else if (collectionNode.toString().indexOf("Attribute") > 0) {
+        }
+        else if (collectionNode.toString().contains("Forwarded")) {
+            ForwardedAttributeDialog    dialog = new ForwardedAttributeDialog(parent, null);
+            if (dialog.showDialog()==JOptionPane.OK_OPTION) {
+                //  ToDo insert object
+                ForwardedAttribute attribute = dialog.getForwardedAttribute();
+                pogo_class.getForwardedAttributes().add(attribute);
+                new_node = new DefaultMutableTreeNode(new PogoForwarded(attribute));
+                treeModel.insertNodeInto(new_node, collectionNode, collectionNode.getChildCount());
+                setModified(true);
+            }
+        }
+        else if (collectionNode.toString().contains("Attribute")) {
             int attType;
             if (collectionNode.toString().startsWith("Scalar"))
                 attType = AttributeDialog.SCALAR;
@@ -1097,6 +1163,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         ((PogoRoot) root.getUserObject()).isAbstract = checkIfAbstractClass();
         repaint();
     }
+    //===============================================================
+    //===============================================================
     //===============================================================
     /**
      * Returns a vector of deleted objects.
@@ -1175,6 +1243,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         EList<Command> dynamicCommands = pg_class.getDynamicCommands();
         EList<Attribute> attributes = pg_class.getAttributes();
         EList<Attribute> dynamicAttributes = pg_class.getDynamicAttributes();
+        EList<ForwardedAttribute> forwardedAttributes = pg_class.getForwardedAttributes();
         EList<State> states = pg_class.getStates();
         for (int i = 0; i < root.getChildCount(); i++) {
             DefaultMutableTreeNode collecNode =
@@ -1192,6 +1261,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 case STATES:
                     setStateToPogoDeviceClass(states, collecNode);
                     break;
+                case FORWARDED_ATTRIBUTE:
+                    setForwardedToPogoDeviceClass(forwardedAttributes, collecNode);
+                    break;
                 case SCALAR_ATTRIBUTE:
                 case SPECTRUM_ATTRIBUTE:
                 case IMAGE_ATTRIBUTE:
@@ -1202,6 +1274,12 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         if (pg_class.getDynamicCommands().size()>0 &&
                 pogoRoot.language.equals(PogoConst.strLang[PogoConst.Python])) {
             Utils.popupError(this, "Dynamic commands are not supported in Python !");
+            return null;
+        }
+        if (pg_class.getForwardedAttributes().size()>0 &&
+                (pogoRoot.language.equals(PogoConst.strLang[PogoConst.Java]) ||
+                pogoRoot.language.equals(PogoConst.strLang[PogoConst.Python])) ) {
+            Utils.popupError(this, "Forwarded attributes are not supported in java and Python !");
             return null;
         }
 
@@ -1354,6 +1432,18 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             State state = ((PogoState) node.getUserObject()).value;
 
             states.add(OAWutils.cloneState(state));
+        }
+    }
+
+    //===============================================================
+    //===============================================================
+    private void setForwardedToPogoDeviceClass(EList<ForwardedAttribute> attributes, DefaultMutableTreeNode collecNode) {
+        for (int i=0 ; i<collecNode.getChildCount() ; i++) {
+            DefaultMutableTreeNode node =
+                    (DefaultMutableTreeNode) collecNode.getChildAt(i);
+            ForwardedAttribute forwardedAttribute = ((PogoForwarded) node.getUserObject()).value;
+
+            attributes.add(OAWutils.cloneForwardedAttribute(forwardedAttribute));
         }
     }
 
@@ -1840,6 +1930,49 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
     //===============================================================
     /**
+     *	PogoForwarded object definition
+     */
+    //===============================================================
+    private class PogoForwarded {
+        ForwardedAttribute value;
+
+        //===========================================================
+        private PogoForwarded(ForwardedAttribute value) {
+            this.value = value;
+        }
+
+        //===========================================================
+        private String toInfoString() {
+            String label = value.getLabel();
+            if (label != null && label.length() > 0)
+                label = Utils.strReplace(label, "\\n", "\n");
+            else
+                label = "No Label.";
+            return Utils.buildToolTip("Label:  " + value.getName(), label);
+        }
+
+        //===========================================================
+        private void manageDisplay(TangoRenderer renderer) {
+
+            InheritanceStatus status = value.getStatus();
+            renderer.setIcon(inherit_utils.getIcon(status));
+            renderer.setFont(inherit_utils.getLeafFont(status));
+            if (status != null && status.getHasChanged() != null)
+                renderer.setForeground(Color.red);
+            else
+                renderer.setForeground(Color.black);
+
+            renderer.setToolTipText(toInfoString());
+        }
+
+        //===========================================================
+        public String toString() {
+            return value.getName();
+        }
+        //===========================================================
+    }
+   //===============================================================
+    /**
      *	PogoState object definition
      */
     //===============================================================
@@ -1917,10 +2050,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             setBackgroundSelectionColor(Color.lightGray);
 
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) obj;
-            Object user_obj = node.getUserObject();
+            Object userObject = node.getUserObject();
             if (row == 0) {
                 //	ROOT
-                PogoRoot pr = (PogoRoot) user_obj;
+                PogoRoot pr = (PogoRoot) userObject;
                 if (pr.isAbstract)
                     setFont(rootFont_abstract);
                 else
@@ -1928,23 +2061,30 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 setIcon(utils.root_icon);
                 setToolTipText(pr.toInfoString());
             } else {
-                if (user_obj instanceof PogoProperty) {
-                    ((PogoProperty) user_obj).manageDisplay(this);
-                } else if (user_obj instanceof PogoCommand) {
-                    ((PogoCommand) user_obj).manageDisplay(this);
-                    if (Utils.isTrue(((PogoCommand) user_obj).value.getIsDynamic())) {
+                if (userObject instanceof PogoProperty) {
+                    ((PogoProperty) userObject).manageDisplay(this);
+                }
+                else if (userObject instanceof PogoCommand) {
+                    ((PogoCommand) userObject).manageDisplay(this);
+                    if (Utils.isTrue(((PogoCommand) userObject).value.getIsDynamic())) {
                         setBackgroundNonSelectionColor(dynamicBG);
                     }
-                } else if (user_obj instanceof PogoAttribute) {
-                    ((PogoAttribute) user_obj).manageDisplay(this);
-                    if (Utils.isTrue(((PogoAttribute) user_obj).value.getIsDynamic())) {
+                }
+                else if (userObject instanceof PogoAttribute) {
+                    ((PogoAttribute) userObject).manageDisplay(this);
+                    if (Utils.isTrue(((PogoAttribute) userObject).value.getIsDynamic())) {
                         setBackgroundNonSelectionColor(dynamicBG);
                     }
-                } else if (user_obj instanceof PogoState) {
-                    ((PogoState) user_obj).manageDisplay(this);
-                } else if (user_obj instanceof PogoCollection) {
+                }
+                else if (userObject instanceof PogoForwarded) {
+                    ((PogoForwarded) userObject).manageDisplay(this);
+                }
+                else if (userObject instanceof PogoState) {
+                    ((PogoState) userObject).manageDisplay(this);
+                }
+                else if (userObject instanceof PogoCollection) {
                     setFont(collecFont);
-                    setIcon(((PogoCollection) user_obj).icon);
+                    setIcon(((PogoCollection) userObject).icon);
                     setToolTipText(null);
                 }
             }
@@ -1954,17 +2094,28 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
     //==============================================================================
     //==============================================================================
-    static private final int EDIT_CLASS = 0;
-    static private final int ADD_ITEM = 1;
-    static private final int ADD_DYN_ITEM = 2;
-    static private final int PASTE_ITEM = 3;
-    static private final int SORT_ITEM = 4;
-    static private final int SUMMARIZE = 5;
-    static private final int EDIT_ITEM = 6;
-    static private final int COPY_ITEM = 7;
-    static private final int CLONE_ITEM = 8;
-    static private final int REMOVE_ITEM = 9;
-    static private final int EDIT_SRC_CODE = 10;
+
+
+
+
+
+    //==============================================================================
+    /**
+     * Tree popup menu definition
+     */
+    //==============================================================================
+    static private final int EDIT_CLASS    = 0;
+    static private final int ADD_ITEM      = 1;
+    static private final int ADD_DYN_ITEM  = 2;
+    static private final int ADD_FW_ATTR   = 3;
+    static private final int PASTE_ITEM    = 4;
+    static private final int SORT_ITEM     = 5;
+    static private final int SUMMARIZE     = 6;
+    static private final int EDIT_ITEM     = 7;
+    static private final int COPY_ITEM     = 8;
+    static private final int CLONE_ITEM    = 9;
+    static private final int REMOVE_ITEM   = 10;
+    static private final int EDIT_SRC_CODE = 11;
     static private final int OFFSET = 2;    //	Label And separator
 
     static private String[] menuLabels = {
@@ -1973,6 +2124,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             //  Collection menu
             "Add Item",
             "Add Dynamic Item",
+            "Add Forwarded Attribute",
             "Paste",
             "Sort Item",
             "Summarize",
@@ -2075,11 +2227,15 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             //	Reset all items
             for (int i = 0; i < menuLabels.length; i++)
                 getComponent(OFFSET + i).setVisible(false);
-
-            getComponent(OFFSET + ADD_ITEM).setVisible(true);
+                                                        // ToDo replace by true when tango 9
+            getComponent(OFFSET + ADD_ITEM).setVisible(!collection.name.contains("Forwarded"));
+                    //true);
             //  ToDo
-            getComponent(OFFSET + ADD_DYN_ITEM).setVisible(collection.name.contains("Attribute") ||
-                    (Utils.tango9 && collection.name.contains("Command")));
+            getComponent(OFFSET + ADD_DYN_ITEM).setVisible(!collection.name.contains("Forwarded") &&
+                    (collection.name.contains("Attribute") ||
+                    (Utils.tango9 && collection.name.contains("Command"))));
+            getComponent(OFFSET + ADD_FW_ATTR).setVisible(collection.name.contains("Forwarded")
+                     && Utils.tango9);
             getComponent(OFFSET + PASTE_ITEM).setVisible(canPaste());
             getComponent(OFFSET + SORT_ITEM).setVisible(true);
             getComponent(OFFSET + SUMMARIZE).setVisible(true);
@@ -2122,6 +2278,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 edit_code = Utils.isTrue(((PogoCommand) obj).value.getStatus().getConcreteHere());
             else if (obj instanceof PogoAttribute)
                 edit_code = Utils.isTrue(((PogoAttribute) obj).value.getStatus().getConcreteHere());
+            else if (obj instanceof PogoForwarded)
+                edit_code = Utils.isTrue(((PogoForwarded) obj).value.getStatus().getConcreteHere());
             else
                 edit_code = Utils.isTrue(((PogoState) obj).value.getStatus().getConcreteHere());
             getComponent(OFFSET + EDIT_SRC_CODE).setEnabled(edit_code);
@@ -2150,6 +2308,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     break;
                 case ADD_DYN_ITEM:
                     addItem(true);
+                    break;
+                case ADD_FW_ATTR:
+                    addItem(false);
                     break;
                 case PASTE_ITEM:
                     pasteItem();
@@ -2181,7 +2342,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
     }
     //======================================================
-
     /**
      * MyCompare class to sort collection
      */

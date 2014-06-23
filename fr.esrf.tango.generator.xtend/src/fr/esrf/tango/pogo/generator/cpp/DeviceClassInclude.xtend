@@ -48,6 +48,7 @@ import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 
 
 //======================================================
@@ -84,7 +85,14 @@ class DeviceClassInclude {
 			//=========================================
 			//	Define classes for dynamic attributes
 			//=========================================
-			«cls.dynamicattributeClasses»
+			«cls.dynamicAttributeClasses»
+		«ENDIF»
+		«IF cls.forwardedAttributes.size>0»
+
+			//=========================================
+			//	Define classes for forwarded attributes
+			//=========================================
+			«cls.forwardedAttributeClasses»
 		«ENDIF»
 		«IF cls.commands.size>2»
 			
@@ -153,9 +161,18 @@ class DeviceClassInclude {
 	//======================================================
 	//	Define dynamic attribute Classes 
 	//======================================================
-	def dynamicattributeClasses(PogoDeviceClass cls) '''
+	def dynamicAttributeClasses(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.dynamicAttributes»
 			«cls.attributeClass(attribute, true)»
+		«ENDFOR»
+	'''
+	
+	//======================================================
+	//	Define dynamic attribute Classes 
+	//======================================================
+	def forwardedAttributeClasses(PogoDeviceClass cls) '''
+		«FOR ForwardedAttribute attribute : cls.forwardedAttributes»
+			«attribute.forwardedAttributeClass()»
 		«ENDFOR»
 	'''
 	

@@ -881,6 +881,23 @@ public class OAWutils {
         state.setStatus(status);
         return state;
     }
+    //======================================================
+    //======================================================
+    public static ForwardedAttribute cloneForwardedAttribute(ForwardedAttribute src) {
+        ForwardedAttribute attribute = factory.createForwardedAttribute();
+        attribute.setName(src.getName());
+        attribute.setLabel(src.getLabel());
+
+        //	Inheritance status
+        InheritanceStatus status = factory.createInheritanceStatus();
+        InheritanceStatus src_st = src.getStatus();
+        status.setAbstract(src_st.getAbstract());
+        status.setInherited(src_st.getInherited());
+        status.setConcrete(src_st.getConcrete());
+        status.setConcreteHere(src_st.getConcreteHere());
+        attribute.setStatus(status);
+        return attribute;
+    }
 
     //========================================================================
     //========================================================================
