@@ -43,6 +43,7 @@ import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
 import org.eclipse.emf.common.util.EList
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 
 //======================================================
 //	Attribute utilities
@@ -215,6 +216,20 @@ class Attributes {
 				virtual bool same_type(const type_info &in_type) {return typeid(«attribute.name»Enum) == in_type;}
 				virtual string get_enum_type() {return string("«attribute.name»Enum");}
 			«ENDIF»
+		};
+		
+	'''
+
+	//======================================================
+	// Define forwarded attribute classes
+	//======================================================
+	def forwardedAttributeClass(ForwardedAttribute attribute) '''
+		//	Forwarded Attribute «attribute.name» class definition
+		class «attribute.name»Attrib: public Tango::FwdAttr
+		{
+		public:
+			«attribute.name»Attrib(const string &_n):FwdAttr(_n) {};
+			~«attribute.name»Attrib() {};
 		};
 		
 	'''

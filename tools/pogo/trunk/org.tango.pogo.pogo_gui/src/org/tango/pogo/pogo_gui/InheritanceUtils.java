@@ -72,7 +72,7 @@ public class InheritanceUtils {
 
     //===============================================================
     //===============================================================
-    private String cloneAncestor(DeviceClass orig, DeviceClass devClass) {
+    private String cloneAncestor(DeviceClass originalClass, DeviceClass devClass) {
         StringBuilder sb = new StringBuilder();
 
         //  First time, check if devClass must be updated from ancestors
@@ -82,43 +82,38 @@ public class InheritanceUtils {
                 DeviceClass ancestor = devClass.getAncestors().get(i);
                 cloneAncestor(_class, ancestor);
                 _class = ancestor;
-                /*
-                if (i > 0)
-                    sb.append(cloneAncestor(devClass.getAncestors().get(i-1), ancestor));
-                else
-                    sb.append(cloneAncestor(devClass, ancestor));
-                */
             }
         }
 
         //  Then really clone items
-        if (orig != null) {
-            System.out.println(orig.getPogoDeviceClass().getName() + " inherits from " + devClass.getPogoDeviceClass()
+        if (originalClass != null) {
+            System.out.println(originalClass.getPogoDeviceClass().getName() + " inherits from " + devClass.getPogoDeviceClass()
                     .getName());
-            cloneProperties(orig, devClass, false);
-            cloneProperties(orig, devClass, true);
-            sb.append(cloneCommands(orig, devClass));
-            sb.append(cloneAttributes(orig, devClass));
-            cloneStates(orig, devClass);
+            cloneProperties(originalClass, devClass, false);
+            cloneProperties(originalClass, devClass, true);
+            sb.append(cloneCommands(originalClass, devClass));
+            sb.append(cloneAttributes(originalClass, devClass));
+            cloneForwardedAttributes(originalClass, devClass);
+            cloneStates(originalClass, devClass);
         }
         return sb.toString();
     }
 
     //===============================================================
     //===============================================================
-    private void cloneProperties(DeviceClass devclass, DeviceClass ancestor, boolean is_dev) {
+    private void cloneProperties(DeviceClass devClass, DeviceClass ancestor, boolean is_dev) {
         if (trace)
             System.out.println("Cloning " + ((is_dev) ? "device" : "class") +
                     " properties from " + ancestor.getPogoDeviceClass().getName() +
-                    " to  " + devclass.getPogoDeviceClass().getName());
+                    " to  " + devClass.getPogoDeviceClass().getName());
 
         EList<Property> class_prop;
         EList<Property> ancestor_prop;
         if (is_dev) {
-            class_prop = devclass.getPogoDeviceClass().getDeviceProperties();
+            class_prop = devClass.getPogoDeviceClass().getDeviceProperties();
             ancestor_prop = ancestor.getPogoDeviceClass().getDeviceProperties();
         } else {
-            class_prop = devclass.getPogoDeviceClass().getClassProperties();
+            class_prop = devClass.getPogoDeviceClass().getClassProperties();
             ancestor_prop = ancestor.getPogoDeviceClass().getClassProperties();
         }
         for (Property inher_prop : ancestor_prop) {
@@ -161,12 +156,12 @@ public class InheritanceUtils {
 
     //===============================================================
     //===============================================================
-    private void cloneStates(DeviceClass devclass, DeviceClass ancestor) {
+    private void cloneStates(DeviceClass devClass, DeviceClass ancestor) {
         if (trace)
             System.out.println("Cloning states from " + ancestor.getPogoDeviceClass().getName() +
-                    " to  " + devclass.getPogoDeviceClass().getName());
+                    " to  " + devClass.getPogoDeviceClass().getName());
 
-        EList<State> class_states = devclass.getPogoDeviceClass().getStates();
+        EList<State> class_states = devClass.getPogoDeviceClass().getStates();
         EList<State> ancestor_states = ancestor.getPogoDeviceClass().getStates();
         for (State inher_state : ancestor_states) {
             State new_state = OAWutils.factory.createState();
@@ -197,16 +192,56 @@ public class InheritanceUtils {
                 class_states.add(new_state);
         }
     }
+    //===============================================================
+    //===============================================================
+    private void cloneForwardedAttributes(DeviceClass devClass, DeviceClass ancestor) {
+        if (trace)
+            System.out.println("Cloning forwarded attribute from " + ancestor.getPogoDeviceClass().getName() +
+                    " to  " + devClass.getPogoDeviceClass().getName());
+
+        EList<ForwardedAttribute> classForwardedList =
+                devClass.getPogoDeviceClass().getForwardedAttributes();
+        EList<ForwardedAttribute> ancestorForwardedList =
+                ancestor.getPogoDeviceClass().getForwardedAttributes();
+        for (ForwardedAttribute inheritedForwarded : ancestorForwardedList) {
+            ForwardedAttribute newForwarded = OAWutils.factory.createForwardedAttribute();
+            newForwarded.setName(inheritedForwarded.getName());
+            newForwarded.setLabel(inheritedForwarded.getLabel());
+
+            //	Check inheritance status
+            InheritanceStatus status = OAWutils.factory.createInheritanceStatus();
+            status.setAbstract("false");
+            status.setInherited("true");
+            status.setConcrete("true");
+            newForwarded.setStatus(status);
+            //  Check if FW attribute already exists
+            //System.out.println("   " + new_state.getName());
+            ForwardedAttribute forwarded_exists = null;
+            for (ForwardedAttribute attribute : classForwardedList) {
+                if (attribute.getName().equals(newForwarded.getName())) {
+                    forwarded_exists = attribute;
+
+                    //	Check if has changed **** Name cannot has been changed
+                }
+            }
+            if (forwarded_exists != null) {
+                int idx = classForwardedList.indexOf(forwarded_exists);
+                classForwardedList.remove(forwarded_exists);
+                classForwardedList.add(idx, newForwarded);
+            } else
+                classForwardedList.add(newForwarded);
+        }
+    }
 
     //===============================================================
     //===============================================================
-    private String cloneAttributes(DeviceClass devclass, DeviceClass ancestor) {
+    private String cloneAttributes(DeviceClass devClass, DeviceClass ancestor) {
         if (trace)
             System.out.println("Cloning attributes from " + ancestor.getPogoDeviceClass().getName() +
-                    " to  " + devclass.getPogoDeviceClass().getName());
+                    " to  " + devClass.getPogoDeviceClass().getName());
 
         StringBuilder sb = new StringBuilder();
-        EList<Attribute> class_attributes = devclass.getPogoDeviceClass().getAttributes();
+        EList<Attribute> class_attributes = devClass.getPogoDeviceClass().getAttributes();
         EList<Attribute> ancestor_attributes = ancestor.getPogoDeviceClass().getAttributes();
 
         for (Attribute inher_attr : ancestor_attributes) {
@@ -336,12 +371,12 @@ public class InheritanceUtils {
 
     //===============================================================
     //===============================================================
-    private String cloneCommands(DeviceClass devclass, DeviceClass ancestor) {
+    private String cloneCommands(DeviceClass devClass, DeviceClass ancestor) {
         if (trace)
             System.out.println("Cloning commands from " + ancestor.getPogoDeviceClass().getName() +
-                    " to  " + devclass.getPogoDeviceClass().getName());
+                    " to  " + devClass.getPogoDeviceClass().getName());
         StringBuilder sb = new StringBuilder();
-        EList<Command> class_commands = devclass.getPogoDeviceClass().getCommands();
+        EList<Command> class_commands = devClass.getPogoDeviceClass().getCommands();
         EList<Command> ancestor_commands = ancestor.getPogoDeviceClass().getCommands();
 
         for (Command inher_cmd : ancestor_commands) {
@@ -410,7 +445,6 @@ public class InheritanceUtils {
         return sb.toString();
     }
     //===============================================================
-
     /**
      * If a item already exists, some fields must not be inherited if set.
      *
@@ -429,7 +463,6 @@ public class InheritanceUtils {
             created.setPolledPeriod(existing.getPolledPeriod());
     }
     //===============================================================
-
     /**
      * If a item already exists, some fields must not be inherited if set.
      *

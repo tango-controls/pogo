@@ -6,6 +6,5 @@
 	<classpathentry kind="lib" path="/mntdirect/_segfs/tango/release/java/appli/Pogo.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/fr.esrf.tango.pogo"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/fr.esrf.tango.generator.xtend"/>
-	<classpathentry kind="lib" path="/mntdirect/_segfs/tango/javaapi/build-tango_ulight/tango_ulight-9.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

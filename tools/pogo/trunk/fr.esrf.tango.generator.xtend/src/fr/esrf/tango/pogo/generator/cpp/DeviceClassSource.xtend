@@ -47,6 +47,7 @@ import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Properties
 import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 
 
 class DeviceClassSource {
@@ -169,6 +170,10 @@ class DeviceClassSource {
 				«ENDIF»
 
 			«ENDFOR»
+			«FOR ForwardedAttribute attribute : cls.forwardedAttributes»
+				«attribute.forwardedAttributeFactory»
+			«ENDFOR»
+
 			«IF cls.concreteClass»
 				//	Create a list of static attributes
 				create_static_attribute_list(get_class_attr()->get_attr_list());
@@ -176,6 +181,16 @@ class DeviceClassSource {
 			«cls.protectedAreaClass("attribute_factory_after", "Add your own code", true)»
 		}
 	'''
+	//==========================================================
+	//==========================================================
+	def forwardedAttributeFactory(ForwardedAttribute attribute) '''
+		«attribute.name»Attrib *«attribute.name.toLowerCase» = new «attribute.name»Attrib("«attribute.name»");
+		Tango::UserDefaultFwdAttrProp  «attribute.name.toLowerCase»_prop;
+		«attribute.name.toLowerCase»_prop.set_label("«attribute.label»");
+		«attribute.name.toLowerCase»->set_default_properties(«attribute.name.toLowerCase»_prop);
+		att_list.push_back(«attribute.name.toLowerCase»);
+	'''
+	
 	//==========================================================
 	// Define command factory
 	//==========================================================

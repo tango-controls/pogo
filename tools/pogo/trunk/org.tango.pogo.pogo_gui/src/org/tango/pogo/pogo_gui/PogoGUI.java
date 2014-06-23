@@ -307,6 +307,7 @@ public class PogoGUI extends JFrame {
         addTopPanelButton(utils.scalar_icon, "Add ScalarAttribute", true);
         addTopPanelButton(utils.spectrum_icon, "Add Spectrum Attribute", true);
         addTopPanelButton(utils.image_icon, "Add ImageAttribute", true);
+        addTopPanelButton(utils.forwarded_icon, "Add Forwarded Attribute", true);
         addTopPanelButton(utils.state_icon, "Add State", true);
 
         //  Add a label to display language (and menu to change it)
@@ -643,8 +644,7 @@ public class PogoGUI extends JFrame {
     private void openItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openItemActionPerformed
 
         chooser.setFileFilter(pogoFilter);
-        int retval = chooser.showOpenDialog(this);
-        if (retval == JFileChooser.APPROVE_OPTION) {
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             if (file != null) {
                 if (!file.isDirectory()) {

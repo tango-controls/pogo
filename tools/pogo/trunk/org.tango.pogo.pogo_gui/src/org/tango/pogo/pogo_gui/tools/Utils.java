@@ -67,6 +67,7 @@ public class Utils {
     public ImageIcon spectrum_icon;
     public ImageIcon spectrum_exp_icon;
     public ImageIcon image_icon;
+    public ImageIcon forwarded_icon;
     public ImageIcon image_exp_icon;
     public ImageIcon devprop_icon;
     public ImageIcon state_icon;
@@ -106,6 +107,7 @@ public class Utils {
         spectrum_exp_icon = getIcon("spectrum_expert.gif");
         image_icon = getIcon("image.gif", 0.25);
         image_exp_icon = getIcon("image_expert.gif", 0.25);
+        forwarded_icon = getIcon("forward.gif", 0.20);
         devprop_icon = getIcon("device.gif");
         state_icon = getIcon("state.gif");
         inherit_icon = getIcon("inherite.gif", 0.5);
@@ -296,6 +298,18 @@ public class Utils {
         int idx = -1;
         int i = 0;
         for (Attribute att : list) {
+            if (att == attribute)
+                idx = i;
+            i++;
+        }
+        return idx;
+    }
+   //===============================================================
+    //===============================================================
+    public static int getForwardedAttributeIndex(EList<ForwardedAttribute> list, ForwardedAttribute attribute) {
+        int idx = -1;
+        int i = 0;
+        for (ForwardedAttribute att : list) {
             if (att == attribute)
                 idx = i;
             i++;
