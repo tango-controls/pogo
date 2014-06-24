@@ -68,6 +68,7 @@ public class Utils {
     public ImageIcon spectrum_exp_icon;
     public ImageIcon image_icon;
     public ImageIcon forwarded_icon;
+    public ImageIcon pipe_icon;
     public ImageIcon image_exp_icon;
     public ImageIcon devprop_icon;
     public ImageIcon state_icon;
@@ -108,6 +109,7 @@ public class Utils {
         image_icon = getIcon("image.gif", 0.25);
         image_exp_icon = getIcon("image_expert.gif", 0.25);
         forwarded_icon = getIcon("forward.gif", 0.20);
+        pipe_icon = getIcon("pipe.gif", 0.16);
         devprop_icon = getIcon("device.gif");
         state_icon = getIcon("state.gif");
         inherit_icon = getIcon("inherite.gif", 0.5);
