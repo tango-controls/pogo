@@ -460,7 +460,7 @@ public class PogoEditor {
          {
              PogoEditor	shellEditor = PogoEditor.getInstance();
              if (shellEditor.isAvailable())
-                 shellEditor.editFile(dir, "Holec", PogoConst.SCALAR_ATTRIBUTE, "Current");
+                 shellEditor.editFile(dir, "Holec", PogoConst.SCALAR_ATTRIBUTES, "Current");
          }
          catch(Exception e)
          {
