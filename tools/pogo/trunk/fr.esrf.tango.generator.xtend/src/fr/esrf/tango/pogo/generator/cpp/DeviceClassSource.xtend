@@ -184,6 +184,8 @@ class DeviceClassSource {
 	//==========================================================
 	//==========================================================
 	def forwardedAttributeFactory(ForwardedAttribute attribute) '''
+		
+		//	Forwarded attribute «attribute.name»
 		«attribute.name»Attrib *«attribute.name.toLowerCase» = new «attribute.name»Attrib("«attribute.name»");
 		Tango::UserDefaultFwdAttrProp  «attribute.name.toLowerCase»_prop;
 		«attribute.name.toLowerCase»_prop.set_label("«attribute.label»");
