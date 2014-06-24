@@ -307,9 +307,11 @@ public class PogoGUI extends JFrame {
         addTopPanelButton(utils.scalar_icon, "Add ScalarAttribute", true);
         addTopPanelButton(utils.spectrum_icon, "Add Spectrum Attribute", true);
         addTopPanelButton(utils.image_icon, "Add ImageAttribute", true);
-        addTopPanelButton(utils.forwarded_icon, "Add Forwarded Attribute", true);
+        if (Utils.tango9) {
+            addTopPanelButton(utils.forwarded_icon, "Add Forwarded Attribute", true);
+            addTopPanelButton(utils.pipe_icon, "Add Pipe", true);
+        }
         addTopPanelButton(utils.state_icon, "Add State", true);
-
         //  Add a label to display language (and menu to change it)
         lbl = new JLabel("           ");
         topPanel.add(lbl);

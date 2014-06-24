@@ -69,11 +69,12 @@ public interface PogoConst {
     public static final int CLASS_PROPERTIES = 0;
     public static final int DEV_PROPERTIES = 1;
     public static final int COMMANDS = 2;
-    public static final int SCALAR_ATTRIBUTE = 3;
-    public static final int SPECTRUM_ATTRIBUTE = 4;
-    public static final int IMAGE_ATTRIBUTE = 5;
-    public static final int FORWARDED_ATTRIBUTE = 6;
-    public static final int STATES = 7;
+    public static final int SCALAR_ATTRIBUTES = 3;
+    public static final int SPECTRUM_ATTRIBUTES = 4;
+    public static final int IMAGE_ATTRIBUTES = 5;
+    public static final int FORWARDED_ATTRIBUTES = 6;
+    public static final int PIPES = 7;
+    public static final int STATES = 8;
 
     public static final String CONVERSION_DIR = "/new_src";
     public static final String[] strLevel = {"OPERATOR", "EXPERT"};
