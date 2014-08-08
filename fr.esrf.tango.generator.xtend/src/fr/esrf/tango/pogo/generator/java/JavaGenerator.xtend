@@ -38,7 +38,6 @@ package fr.esrf.tango.pogo.generator.java
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.google.inject.Inject
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.generator.java.projects.LinuxMakefile
 import fr.esrf.tango.pogo.generator.java.projects.IdeaProject
@@ -62,7 +61,7 @@ class JavaGenerator implements IGenerator {
 		linuxMakefile.doGenerate(resource, fsa)
 		//	IntelliJIDEA project
 		ideaProject.doGenerate(resource, fsa)
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+		for (cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))) {
 			if (cls.description.language.toLowerCase.equals("java")) {
 				//	Eclipse Project
 				if (cls.description.filestogenerate.toLowerCase.contains("eclipse")) {

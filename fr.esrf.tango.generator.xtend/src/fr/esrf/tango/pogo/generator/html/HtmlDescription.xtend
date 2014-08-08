@@ -35,7 +35,6 @@
 
 package fr.esrf.tango.pogo.generator.html
 
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -50,7 +49,7 @@ class HtmlDescription  implements IGenerator {
 	@Inject extension HtmlAttributes
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+		for (cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))) {
 
 			if (cls.description.filestogenerate.contains("html")) {
 					printTrace("Generating doc_html/ClassDescription.html")

@@ -37,19 +37,14 @@ package fr.esrf.tango.pogo.generator.java
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
-import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
-import fr.esrf.tango.pogo.generator.common.StringUtils
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 
 class JavaAttribute {
 
 	@Inject extension JavaUtils
 	@Inject extension ProtectedArea
-	@Inject extension StringUtils
-
 
 	//======================================================
 	// define code to get and set attributes

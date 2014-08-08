@@ -35,20 +35,15 @@
 
 package fr.esrf.tango.pogo.generator.java
 
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
-import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import fr.esrf.tango.pogo.generator.java.JavaAttribute
 import fr.esrf.tango.pogo.generator.java.JavaDynamicAttribute
 import fr.esrf.tango.pogo.generator.java.JavaCommand
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
-import fr.esrf.tango.pogo.generator.common.StringUtils
 import fr.esrf.tango.pogo.generator.common.Headers
 import fr.esrf.tango.pogo.pogoDsl.Property
 import fr.esrf.tango.pogo.pogoDsl.Attribute
@@ -62,11 +57,10 @@ class JavaDevice  implements IGenerator {
 	@Inject extension JavaDynamicCommand
 	@Inject extension JavaCommand
 	@Inject extension ProtectedArea
-	@Inject extension StringUtils
 	@Inject extension Headers
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+		for (cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))) {
 			//	Code files
 			if (cls.description.language.toLowerCase.equals("java")) {
 					if (cls.description.filestogenerate.contains("Code files")) {

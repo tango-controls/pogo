@@ -36,8 +36,6 @@
 package fr.esrf.tango.pogo.generator.cpp.projects.VC9
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9Utils.*
 import com.google.inject.Inject
 
 

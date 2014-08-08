@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 

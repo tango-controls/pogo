@@ -38,10 +38,8 @@ package fr.esrf.tango.pogo.generator.cpp.utils
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
 import org.eclipse.emf.common.util.EList
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 

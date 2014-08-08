@@ -11,7 +11,8 @@
 #-======================================================================
 
 
-RELEASE    = 8.4.7
+#RELEASE    = 8.4.7
+RELEASE    = eclipse-3.7.1
 
 
 TANGO_HOME	=	/segfs/tango
@@ -63,6 +64,7 @@ clean:
 	rm  -Rf $(BIN_DIR)/*.i*
 	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/hs_err*
 	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/*.form
+	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/classpath
 	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/tools/*.form
 	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/packacging/*.form
 

@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import fr.esrf.tango.pogo.ui.internal.PogoDslActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class PogoDslExecutableExtensionFactory extends AbstractGuiceAwareExecuta
 
 	@Override
 	protected Bundle getBundle() {
-		return fr.esrf.tango.pogo.ui.internal.PogoDslActivator.getInstance().getBundle();
+		return PogoDslActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return fr.esrf.tango.pogo.ui.internal.PogoDslActivator.getInstance().getInjector("fr.esrf.tango.pogo.PogoDsl");
+		return PogoDslActivator.getInstance().getInjector(PogoDslActivator.FR_ESRF_TANGO_POGO_POGODSL);
 	}
 	
 }

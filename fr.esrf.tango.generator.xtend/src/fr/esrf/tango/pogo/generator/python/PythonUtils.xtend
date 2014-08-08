@@ -41,7 +41,6 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import fr.esrf.tango.pogo.pogoDsl.Property
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.python.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 
 class PythonUtils {

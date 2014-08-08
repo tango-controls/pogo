@@ -36,8 +36,6 @@
 package fr.esrf.tango.pogo.generator.java.projects
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.google.inject.Inject
@@ -55,7 +53,7 @@ class LinuxMakefile   implements IGenerator{
 	@Inject	extension JavaUtils
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+		for (cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))) {
 			if (cls.description.language.toLowerCase.equals("java")) {
 				if (cls.description.filestogenerate.contains("Makefile")) {
 					fsa.generateFile("Makefile", cls.generateLinuxMakefile)

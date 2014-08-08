@@ -37,7 +37,6 @@ package fr.esrf.tango.pogo.generator.cpp.utils
 
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*

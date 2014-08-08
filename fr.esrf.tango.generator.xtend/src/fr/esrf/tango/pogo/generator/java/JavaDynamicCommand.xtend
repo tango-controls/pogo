@@ -36,8 +36,6 @@
 package fr.esrf.tango.pogo.generator.java
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
-import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
 import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
