@@ -39,10 +39,7 @@ import fr.esrf.tango.pogo.pogoDsl.Type
 import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
 
 //======================================================

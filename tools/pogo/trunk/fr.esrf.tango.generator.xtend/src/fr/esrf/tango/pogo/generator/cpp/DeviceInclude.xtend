@@ -37,15 +37,12 @@ package fr.esrf.tango.pogo.generator.cpp
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Property
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea.*
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes

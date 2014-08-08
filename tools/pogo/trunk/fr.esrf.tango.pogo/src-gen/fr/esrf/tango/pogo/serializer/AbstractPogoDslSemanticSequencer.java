@@ -66,38 +66,18 @@ import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
-import org.eclipse.xtext.serializer.sequencer.AbstractSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
-@SuppressWarnings("restriction")
-public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer {
+@SuppressWarnings("all")
+public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
-	protected PogoDslGrammarAccess grammarAccess;
-	
-	@Inject
-	protected ISemanticSequencerDiagnosticProvider diagnosticProvider;
-	
-	@Inject
-	protected ITransientValueService transientValues;
-	
-	@Inject
-	@GenericSequencer
-	protected Provider<ISemanticSequencer> genericSequencerProvider;
-	
-	protected ISemanticSequencer genericSequencer;
-	
-	
-	@Override
-	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
-		super.init(sequencer, sequenceAcceptor, errorAcceptor);
-		this.genericSequencer = genericSequencerProvider.get();
-		this.genericSequencer.init(sequencer, sequenceAcceptor, errorAcceptor);
-	}
+	private PogoDslGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == PogoDslPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
@@ -128,7 +108,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.BOOLEAN_ARRAY_TYPE:
 				if(context == grammarAccess.getBooleanArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (BooleanArrayType) semanticObject); 
+					sequence_BooleanArrayType(context, (BooleanArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -137,14 +117,14 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_PropType(context, (BooleanType) semanticObject); 
+					sequence_BooleanType(context, (BooleanType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.CHAR_ARRAY_TYPE:
 				if(context == grammarAccess.getCharArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (CharArrayType) semanticObject); 
+					sequence_CharArrayType(context, (CharArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -175,28 +155,28 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.CONST_STRING_TYPE:
 				if(context == grammarAccess.getConstStringTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (ConstStringType) semanticObject); 
+					sequence_ConstStringType(context, (ConstStringType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.DEV_INT_TYPE:
 				if(context == grammarAccess.getDevIntTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (DevIntType) semanticObject); 
+					sequence_DevIntType(context, (DevIntType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.DOUBLE_ARRAY_TYPE:
 				if(context == grammarAccess.getDoubleArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (DoubleArrayType) semanticObject); 
+					sequence_DoubleArrayType(context, (DoubleArrayType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.DOUBLE_STRING_ARRAY_TYPE:
 				if(context == grammarAccess.getDoubleStringArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (DoubleStringArrayType) semanticObject); 
+					sequence_DoubleStringArrayType(context, (DoubleStringArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -205,7 +185,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_PropType(context, (DoubleType) semanticObject); 
+					sequence_DoubleType(context, (DoubleType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -213,21 +193,21 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getDoubleVectorTypeRule() ||
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
-					sequence_PropType(context, (DoubleVectorType) semanticObject); 
+					sequence_DoubleVectorType(context, (DoubleVectorType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.ENCODED_TYPE:
 				if(context == grammarAccess.getEncodedTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (EncodedType) semanticObject); 
+					sequence_EncodedType(context, (EncodedType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.ENUM_TYPE:
 				if(context == grammarAccess.getEnumTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (EnumType) semanticObject); 
+					sequence_EnumType(context, (EnumType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -246,7 +226,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.FLOAT_ARRAY_TYPE:
 				if(context == grammarAccess.getFloatArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (FloatArrayType) semanticObject); 
+					sequence_FloatArrayType(context, (FloatArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -255,7 +235,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_PropType(context, (FloatType) semanticObject); 
+					sequence_FloatType(context, (FloatType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -263,7 +243,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getFloatVectorTypeRule() ||
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
-					sequence_PropType(context, (FloatVectorType) semanticObject); 
+					sequence_FloatVectorType(context, (FloatVectorType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -294,7 +274,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.INT_ARRAY_TYPE:
 				if(context == grammarAccess.getIntArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (IntArrayType) semanticObject); 
+					sequence_IntArrayType(context, (IntArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -303,7 +283,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_PropType(context, (IntType) semanticObject); 
+					sequence_IntType(context, (IntType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -311,28 +291,28 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getIntVectorTypeRule() ||
 				   context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
-					sequence_PropType(context, (IntVectorType) semanticObject); 
+					sequence_IntVectorType(context, (IntVectorType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.LONG_ARRAY_TYPE:
 				if(context == grammarAccess.getLongArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (LongArrayType) semanticObject); 
+					sequence_LongArrayType(context, (LongArrayType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.LONG_STRING_ARRAY_TYPE:
 				if(context == grammarAccess.getLongStringArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (LongStringArrayType) semanticObject); 
+					sequence_LongStringArrayType(context, (LongStringArrayType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.LONG_TYPE:
 				if(context == grammarAccess.getLongTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (LongType) semanticObject); 
+					sequence_LongType(context, (LongType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -381,7 +361,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.SHORT_ARRAY_TYPE:
 				if(context == grammarAccess.getShortArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (ShortArrayType) semanticObject); 
+					sequence_ShortArrayType(context, (ShortArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -390,7 +370,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getShortTypeRule() ||
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_PropType(context, (ShortType) semanticObject); 
+					sequence_ShortType(context, (ShortType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -398,7 +378,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getShortVectorTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
-					sequence_PropType(context, (ShortVectorType) semanticObject); 
+					sequence_ShortVectorType(context, (ShortVectorType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -411,14 +391,14 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 			case PogoDslPackage.STATE_TYPE:
 				if(context == grammarAccess.getStateTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (StateType) semanticObject); 
+					sequence_StateType(context, (StateType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.STRING_ARRAY_TYPE:
 				if(context == grammarAccess.getStringArrayTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Type(context, (StringArrayType) semanticObject); 
+					sequence_StringArrayType(context, (StringArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -427,7 +407,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getStringTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_PropType(context, (StringType) semanticObject); 
+					sequence_StringType(context, (StringType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -435,21 +415,21 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				if(context == grammarAccess.getPropTypeRule() ||
 				   context == grammarAccess.getStringVectorTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
-					sequence_PropType(context, (StringVectorType) semanticObject); 
+					sequence_StringVectorType(context, (StringVectorType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.UCHAR_TYPE:
 				if(context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getUCharTypeRule()) {
-					sequence_Type(context, (UCharType) semanticObject); 
+					sequence_UCharType(context, (UCharType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.UINT_ARRAY_TYPE:
 				if(context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getUIntArrayTypeRule()) {
-					sequence_Type(context, (UIntArrayType) semanticObject); 
+					sequence_UIntArrayType(context, (UIntArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -458,28 +438,28 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getUIntTypeRule()) {
-					sequence_PropType(context, (UIntType) semanticObject); 
+					sequence_UIntType(context, (UIntType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.ULONG_ARRAY_TYPE:
 				if(context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getULongArrayTypeRule()) {
-					sequence_Type(context, (ULongArrayType) semanticObject); 
+					sequence_ULongArrayType(context, (ULongArrayType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.ULONG_TYPE:
 				if(context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getULongTypeRule()) {
-					sequence_Type(context, (ULongType) semanticObject); 
+					sequence_ULongType(context, (ULongType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.USHORT_ARRAY_TYPE:
 				if(context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getUShortArrayTypeRule()) {
-					sequence_Type(context, (UShortArrayType) semanticObject); 
+					sequence_UShortArrayType(context, (UShortArrayType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -488,14 +468,14 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getUShortTypeRule()) {
-					sequence_PropType(context, (UShortType) semanticObject); 
+					sequence_UShortType(context, (UShortType) semanticObject); 
 					return; 
 				}
 				else break;
 			case PogoDslPackage.VOID_TYPE:
 				if(context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getVoidTypeRule()) {
-					sequence_Type(context, (VoidType) semanticObject); 
+					sequence_VoidType(context, (VoidType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -646,6 +626,33 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     {BooleanArrayType}
+	 */
+	protected void sequence_BooleanArrayType(EObject context, BooleanArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {BooleanType}
+	 */
+	protected void sequence_BooleanType(EObject context, BooleanType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {CharArrayType}
+	 */
+	protected void sequence_CharArrayType(EObject context, CharArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         description=STRING 
 	 *         title=STRING 
@@ -756,6 +763,78 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     {ConstStringType}
+	 */
+	protected void sequence_ConstStringType(EObject context, ConstStringType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {DevIntType}
+	 */
+	protected void sequence_DevIntType(EObject context, DevIntType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {DoubleArrayType}
+	 */
+	protected void sequence_DoubleArrayType(EObject context, DoubleArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {DoubleStringArrayType}
+	 */
+	protected void sequence_DoubleStringArrayType(EObject context, DoubleStringArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {DoubleType}
+	 */
+	protected void sequence_DoubleType(EObject context, DoubleType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {DoubleVectorType}
+	 */
+	protected void sequence_DoubleVectorType(EObject context, DoubleVectorType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {EncodedType}
+	 */
+	protected void sequence_EncodedType(EObject context, EncodedType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {EnumType}
+	 */
+	protected void sequence_EnumType(EObject context, EnumType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (relChange=STRING absChange=STRING period=STRING)
 	 */
 	protected void sequence_EventCriteria(EObject context, EventCriteria semanticObject) {
@@ -792,6 +871,33 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 		feeder.accept(grammarAccess.getFireEventsAccess().getFireBooleanParserRuleCall_0_0(), semanticObject.getFire());
 		feeder.accept(grammarAccess.getFireEventsAccess().getLibCheckCriteriaBooleanParserRuleCall_1_0(), semanticObject.getLibCheckCriteria());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {FloatArrayType}
+	 */
+	protected void sequence_FloatArrayType(EObject context, FloatArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {FloatType}
+	 */
+	protected void sequence_FloatType(EObject context, FloatType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {FloatVectorType}
+	 */
+	protected void sequence_FloatVectorType(EObject context, FloatVectorType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -877,6 +983,60 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 		feeder.accept(grammarAccess.getInheritanceAccess().getClassnameSTRINGTerminalRuleCall_0_0(), semanticObject.getClassname());
 		feeder.accept(grammarAccess.getInheritanceAccess().getSourcePathSTRINGTerminalRuleCall_1_0(), semanticObject.getSourcePath());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {IntArrayType}
+	 */
+	protected void sequence_IntArrayType(EObject context, IntArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {IntType}
+	 */
+	protected void sequence_IntType(EObject context, IntType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {IntVectorType}
+	 */
+	protected void sequence_IntVectorType(EObject context, IntVectorType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LongArrayType}
+	 */
+	protected void sequence_LongArrayType(EObject context, LongArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LongStringArrayType}
+	 */
+	protected void sequence_LongStringArrayType(EObject context, LongStringArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LongType}
+	 */
+	protected void sequence_LongType(EObject context, LongType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1001,123 +1161,6 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     {BooleanType}
-	 */
-	protected void sequence_PropType(EObject context, BooleanType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {DoubleType}
-	 */
-	protected void sequence_PropType(EObject context, DoubleType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {DoubleVectorType}
-	 */
-	protected void sequence_PropType(EObject context, DoubleVectorType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {FloatType}
-	 */
-	protected void sequence_PropType(EObject context, FloatType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {FloatVectorType}
-	 */
-	protected void sequence_PropType(EObject context, FloatVectorType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {IntType}
-	 */
-	protected void sequence_PropType(EObject context, IntType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {IntVectorType}
-	 */
-	protected void sequence_PropType(EObject context, IntVectorType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {ShortType}
-	 */
-	protected void sequence_PropType(EObject context, ShortType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {ShortVectorType}
-	 */
-	protected void sequence_PropType(EObject context, ShortVectorType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {StringType}
-	 */
-	protected void sequence_PropType(EObject context, StringType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {StringVectorType}
-	 */
-	protected void sequence_PropType(EObject context, StringVectorType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {UIntType}
-	 */
-	protected void sequence_PropType(EObject context, UIntType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {UShortType}
-	 */
-	protected void sequence_PropType(EObject context, UShortType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (
 	 *         name=ID 
 	 *         type=PropType 
@@ -1128,6 +1171,42 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 *     )
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {ShortArrayType}
+	 */
+	protected void sequence_ShortArrayType(EObject context, ShortArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {ShortType}
+	 */
+	protected void sequence_ShortType(EObject context, ShortType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {ShortVectorType}
+	 */
+	protected void sequence_ShortVectorType(EObject context, ShortVectorType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {StateType}
+	 */
+	protected void sequence_StateType(EObject context, StateType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1156,144 +1235,27 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     {BooleanArrayType}
-	 */
-	protected void sequence_Type(EObject context, BooleanArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {CharArrayType}
-	 */
-	protected void sequence_Type(EObject context, CharArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {ConstStringType}
-	 */
-	protected void sequence_Type(EObject context, ConstStringType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {DevIntType}
-	 */
-	protected void sequence_Type(EObject context, DevIntType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {DoubleArrayType}
-	 */
-	protected void sequence_Type(EObject context, DoubleArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {DoubleStringArrayType}
-	 */
-	protected void sequence_Type(EObject context, DoubleStringArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {EncodedType}
-	 */
-	protected void sequence_Type(EObject context, EncodedType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {EnumType}
-	 */
-	protected void sequence_Type(EObject context, EnumType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {FloatArrayType}
-	 */
-	protected void sequence_Type(EObject context, FloatArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {IntArrayType}
-	 */
-	protected void sequence_Type(EObject context, IntArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {LongArrayType}
-	 */
-	protected void sequence_Type(EObject context, LongArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {LongStringArrayType}
-	 */
-	protected void sequence_Type(EObject context, LongStringArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {LongType}
-	 */
-	protected void sequence_Type(EObject context, LongType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {ShortArrayType}
-	 */
-	protected void sequence_Type(EObject context, ShortArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {StateType}
-	 */
-	protected void sequence_Type(EObject context, StateType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     {StringArrayType}
 	 */
-	protected void sequence_Type(EObject context, StringArrayType semanticObject) {
+	protected void sequence_StringArrayType(EObject context, StringArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {StringType}
+	 */
+	protected void sequence_StringType(EObject context, StringType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {StringVectorType}
+	 */
+	protected void sequence_StringVectorType(EObject context, StringVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1302,7 +1264,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     {UCharType}
 	 */
-	protected void sequence_Type(EObject context, UCharType semanticObject) {
+	protected void sequence_UCharType(EObject context, UCharType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1311,7 +1273,16 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     {UIntArrayType}
 	 */
-	protected void sequence_Type(EObject context, UIntArrayType semanticObject) {
+	protected void sequence_UIntArrayType(EObject context, UIntArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {UIntType}
+	 */
+	protected void sequence_UIntType(EObject context, UIntType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1320,7 +1291,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     {ULongArrayType}
 	 */
-	protected void sequence_Type(EObject context, ULongArrayType semanticObject) {
+	protected void sequence_ULongArrayType(EObject context, ULongArrayType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1329,7 +1300,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     {ULongType}
 	 */
-	protected void sequence_Type(EObject context, ULongType semanticObject) {
+	protected void sequence_ULongType(EObject context, ULongType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1338,7 +1309,16 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     {UShortArrayType}
 	 */
-	protected void sequence_Type(EObject context, UShortArrayType semanticObject) {
+	protected void sequence_UShortArrayType(EObject context, UShortArrayType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {UShortType}
+	 */
+	protected void sequence_UShortType(EObject context, UShortType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1347,7 +1327,7 @@ public class AbstractPogoDslSemanticSequencer extends AbstractSemanticSequencer 
 	 * Constraint:
 	 *     {VoidType}
 	 */
-	protected void sequence_Type(EObject context, VoidType semanticObject) {
+	protected void sequence_VoidType(EObject context, VoidType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -35,20 +35,16 @@
 
 package fr.esrf.tango.pogo.generator.java.projects
 
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
-import static extension fr.esrf.tango.pogo.generator.java.ProtectedArea.*
-import static extension fr.esrf.tango.pogo.generator.java.JavaTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 
 class IdeaProject  implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+		for (cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))) {
 			if (cls.description.language.toLowerCase.equals("java")) {
 				if (cls.description.filestogenerate.contains("IntelliJIDEA")) {
 					fsa.generateFile(cls.name + ".iml",     cls.generateIdeaProjectMain)

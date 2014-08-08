@@ -36,7 +36,6 @@
 package fr.esrf.tango.pogo.generator.common
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 
 //======================================================
 // Define linux Makefile file to be generated

@@ -39,7 +39,6 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
 import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.generator.cpp.projects.LinuxMakefile
 import fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9_Project
@@ -70,7 +69,7 @@ class CppGenerator implements IGenerator {
 		//
 		//	Generate cpp files for PogoDeviceClass objects
 		//
-		for (cls : allContentsIterable(resource).filter(typeof(PogoDeviceClass))) {
+		for (cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))) {
 			//println(cls.description.filestogenerate)
 			//println("Lannguage="+cls.description.language)
 			if (cls.description.language.toLowerCase.equals("cpp")) {
@@ -97,7 +96,7 @@ class CppGenerator implements IGenerator {
 					printTrace("Generating main.cpp")
 					fsa.generateFile("main.cpp",                     cls.generateMainFile)
 
-					//	Dynamic atributes if any
+					//	Dynamic attributes if any
 					if (cls.dynamicAttributes.size>0) {
 						printTrace("Generating " + cls.dynamicAttrUtilsFileName)
 						fsa.generateFile(cls.dynamicAttrUtilsFileName,cls.generateDynamicAttrUtilsFile)
@@ -142,7 +141,7 @@ class CppGenerator implements IGenerator {
 		//
 		//	Generate cpp files for PogoMultiClasses  objects
 		//
-		for (multi : allContentsIterable(resource).filter(typeof(PogoMultiClasses))) {
+		for (multi : resource.allContents.toIterable.filter(typeof(PogoMultiClasses))) {
 			//	Multi class
 			if (multi.filestogenerate.contains("Code files")) {
 				printTrace("Generating MultiClassesFactory.cpp")

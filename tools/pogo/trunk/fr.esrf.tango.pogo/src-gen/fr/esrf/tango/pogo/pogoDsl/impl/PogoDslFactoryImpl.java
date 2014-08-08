@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 
@@ -33,7 +30,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     try
     {
-      PogoDslFactory thePogoDslFactory = (PogoDslFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.esrf.fr/tango/pogo/PogoDsl"); 
+      PogoDslFactory thePogoDslFactory = (PogoDslFactory)EPackage.Registry.INSTANCE.getEFactory(PogoDslPackage.eNS_URI);
       if (thePogoDslFactory != null)
       {
         return thePogoDslFactory;

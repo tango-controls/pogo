@@ -36,10 +36,6 @@
 package fr.esrf.tango.pogo.generator.cpp.projects
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import static org.eclipse.xtext.xtend2.lib.ResourceExtensions.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils.*
-import static extension fr.esrf.tango.pogo.generator.cpp.projects.MakefileUtils.*
 import com.google.inject.Inject
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses

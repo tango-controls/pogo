@@ -12,6 +12,5 @@ Require-Bundle: fr.esrf.tango.pogo;bundle-version="2.0.0",
  net.danieldietrich.protectedregions.xtext;bundle-version="1.0.1",
  org.slf4j;bundle-version="1.6.5"
 Import-Package: org.eclipse.xtend2.lib,
- org.eclipse.xtext.xbase.lib,
- org.eclipse.xtext.xtend2.lib
+ org.eclipse.xtext.xbase.lib
 Bundle-ClassPath: .
