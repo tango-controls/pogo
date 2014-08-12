@@ -51,6 +51,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MultiClassesTree extends JTree {
@@ -182,16 +184,18 @@ public class MultiClassesTree extends JTree {
     //===============================================================
     //===============================================================
     private DeviceClass loadDeviceClass(OneClassSimpleDef _class) throws PogoException {
-        String xmiFile = _class.getSourcePath() + "/" + _class.getClassname();
+        String xmiFileName = _class.getSourcePath() + "/" + _class.getClassname();
         if (Utils.isTrue(_class.getPogo6()))
-            xmiFile += ".h";
+            xmiFileName += ".h";
         else
-            xmiFile += ".xmi";
+            xmiFileName += ".xmi";
         DeviceClass deviceClass = null;
 
+        File xmiFile = new File(xmiFileName);
         while (deviceClass == null) {
             try {
-                deviceClass = loadedClasses.getDeviceClass(xmiFile);
+                if (!xmiFile.exists()) throw new PogoException("No such file: " + xmiFile.getAbsolutePath());
+                deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
                 if (!deviceClass.getPogoDeviceClass().getName().equals(_class.getClassname()))
                     throw new PogoException(_class.getClassname() + " file expected !");
             } catch (PogoException e) {
@@ -200,12 +204,7 @@ public class MultiClassesTree extends JTree {
                 //  Display chooser to select a new path
                 int retval = chooser.showOpenDialog(this);
                 if (retval == JFileChooser.APPROVE_OPTION) {
-                    File file = chooser.getSelectedFile();
-                    if (file != null) {
-                        if (!file.isDirectory()) {
-                            xmiFile = file.getAbsolutePath();
-                        }
-                    }
+                    xmiFile = chooser.getSelectedFile();
                 } else
                     throw new PogoException("Canceled");
             }
@@ -344,25 +343,19 @@ public class MultiClassesTree extends JTree {
             //  Display chooser to select a new path
             if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 File file = chooser.getSelectedFile();
-                if (file != null) {
-                    if (!file.isDirectory()) {
-                        String fileName = file.getAbsolutePath();
-                        DeviceClass deviceClass = loadedClasses.getDeviceClass(fileName);
-                        //  Check if C++ class.
-                        String language =
-                                deviceClass.getPogoDeviceClass().getDescription().getLanguage();
-                        if (language.toLowerCase().equals("cpp")) {
-                            DefaultMutableTreeNode parentNode = getSelectedNode();
-                            DefaultMutableTreeNode node = new DefaultMutableTreeNode(deviceClass);
-                            treeModel.insertNodeInto(node, parentNode, parentNode.getChildCount());
-                            setModified(true);
-                            expandChildren(parentNode);
-                        }
-                        else
-                            throw new PogoException(language +
-                                    " classes are not supported by multi classes manager !");
-                    }
-                }
+                DeviceClass deviceClass = loadedClasses.getDeviceClass(file.getAbsolutePath());
+                //  Check if C++ class.
+                String language =
+                        deviceClass.getPogoDeviceClass().getDescription().getLanguage();
+                if (language.toLowerCase().equals("cpp")) {
+                    DefaultMutableTreeNode parentNode = getSelectedNode();
+                    DefaultMutableTreeNode node = new DefaultMutableTreeNode(deviceClass);
+                    treeModel.insertNodeInto(node, parentNode, parentNode.getChildCount());
+                    setModified(true);
+                    expandChildren(parentNode);
+                } else
+                    throw new PogoException(language +
+                            " classes are not supported by multi classes manager !");
             }
         } catch (PogoException e) {
             e.popup(this);
@@ -410,7 +403,7 @@ public class MultiClassesTree extends JTree {
     //===============================================================
     private ArrayList<DeviceClass> getClasses(DefaultMutableTreeNode node) {
         ArrayList<DeviceClass> classes = new ArrayList<DeviceClass>();
-        for (int i=0 ; i<node.getChildCount() ; i++) {
+        for (int i = 0; i < node.getChildCount(); i++) {
             DefaultMutableTreeNode childNode =
                     (DefaultMutableTreeNode) node.getChildAt(i);
             DeviceClass _class = (DeviceClass) childNode.getUserObject();
@@ -442,10 +435,11 @@ public class MultiClassesTree extends JTree {
         if (loadedClasses.isEmpty())
             return "? ? ?";
         else {
-            //  Return the first class author name
-            return PackUtils.buildMailAddress(loadedClasses.get(0).getPogoDeviceClass().getDescription());
+            //  Return the any class author name
+            return PackUtils.buildMailAddress(loadedClasses.getAny().getPogoDeviceClass().getDescription());
         }
     }
+
     //===============================================================
     //===============================================================
     public PogoMultiClasses getServer() {
@@ -472,7 +466,7 @@ public class MultiClassesTree extends JTree {
             if (!exists) {
                 pogoClasses.add(0, _class);
             }
-            
+
         }
         for (DeviceClass pc : pogoClasses) {
             System.out.println(pc.getPogoDeviceClass().getName());
@@ -511,8 +505,8 @@ public class MultiClassesTree extends JTree {
             }
             //  Check if dynamic attributes
             // ToDo
-            if (Utils.getPogoGuiRevision()>=8.1) {
-                if (pogoClass.getDynamicAttributes().size()>0) {
+            if (Utils.getPogoGuiRevision() >= 8.1) {
+                if (pogoClass.getDynamicAttributes().size() > 0) {
                     simple.setHasDynamic("true");
                 }
             }
@@ -553,30 +547,30 @@ public class MultiClassesTree extends JTree {
     //===============================================================
 
     /**
-     * A vector of DeviceClass to do not re-load class if already done.
+     * A cache of DeviceClasses.
      */
     //===============================================================
-    private class LoadedClasses extends ArrayList<DeviceClass> {
-        //===========================================================
-        private DeviceClass getDeviceClass(String xmiFile) throws PogoException {
-            String slash = System.getProperty("file.separator");
-            String path = xmiFile.substring(0, xmiFile.lastIndexOf(slash));
-            String className = xmiFile.substring(xmiFile.lastIndexOf(slash)+1, xmiFile.lastIndexOf('.'));
-            for (DeviceClass dc : this)
-                if (dc.getPogoDeviceClass().getDescription().getSourcePath().equals(path) &&
-                    dc.getPogoDeviceClass().getName().equals(className)  ) {
-                    System.out.println(xmiFile + " Already Loaded");
-                    return dc;
-                }
-            //  If not already loaded
-            DeviceClass dc = new DeviceClass(xmiFile);
-            add(dc);
-            return dc;
+    private static class LoadedClasses {
+        private final Map<String, DeviceClass> deviceClasses = new HashMap<String, DeviceClass>();
+
+        DeviceClass getAny() {
+            return deviceClasses.values().iterator().next();
+        }
+
+        boolean isEmpty() {
+            return deviceClasses.size() == 0;
         }
 
         //===========================================================
-        private void resetParentClasses() {
-            for (DeviceClass dc : this) {
+        DeviceClass getDeviceClass(String xmiFileName) throws PogoException {
+            DeviceClass result = deviceClasses.get(xmiFileName);
+            if (result == null) deviceClasses.put(xmiFileName, result = new DeviceClass(xmiFileName));
+            return result;
+        }
+
+        //===========================================================
+        void resetParentClasses() {
+            for (DeviceClass dc : deviceClasses.values()) {
                 dc.resetParentClasses();
             }
         }
