@@ -1,6 +1,7 @@
 package net.danieldietrich.protectedregions.xtext;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
@@ -69,10 +70,15 @@ public class BidiJavaIoFileSystemAccess extends JavaIoFileSystemAccess implement
 	@Override
 	public void generateFile(String fileName, String slot, CharSequence contents) {
 		URI uri = getUri(fileName, slot);
-		logger.debug("Generating {} at {} => {}", new Object[] { fileName, slot, uri });
+		//logger.debug("Generating {} at {} => {}", new Object[] { fileName, slot, uri });
 		CharSequence mergedContents = support.mergeRegions(this, fileName, slot, contents);
-		super.generateFile(fileName, slot, mergedContents);
+
+		//super.generateFile(fileName, slot, mergedContents);
+		//	Replace by my own class.
+		//	Since eclipse-4.4 the method generates a NullPointerException (?)
+		TangoFileUtils.writeFile(uri, mergedContents.toString());
 	}
+
 
 	//@Override
 	public IPathFilter getFilter() {
