@@ -277,7 +277,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
         for (Property prop : properties) {
             DefaultMutableTreeNode node =
-                    new DefaultMutableTreeNode(new PogoProperty(prop, false));
+                    new DefaultMutableTreeNode(new PogoProperty(prop, target.equals("Device")));
             propertiesNode.add(node);
         }
         return propertiesNode;
@@ -1182,8 +1182,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         repaint();
     }
     //===============================================================
-    //===============================================================
-    //===============================================================
     /**
      * Returns a vector of deleted objects.
      *
@@ -1288,7 +1286,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     setAttributeToPogoDeviceClass(attributes, dynamicAttributes, collectionNode);
                     break;
                 case PIPES:
-                    PogoException.popup(this, "Not yet available");
+                    //PogoException.popup(this, "Not yet available");
                     break;
             }
         }

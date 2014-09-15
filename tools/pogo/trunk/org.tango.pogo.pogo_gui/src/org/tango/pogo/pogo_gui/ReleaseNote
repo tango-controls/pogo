@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-8.4.8 - 29/08/2014:
+	Fix bugs on adding state and property type display.
+
 Pogo-8.4.7 - 18/06/2014:
 	Fix a problem in linuxMakefile for additional files.
 
