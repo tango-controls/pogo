@@ -279,6 +279,9 @@ class Commands {
 				"«command.argin.description.oneLineString»",
 				"«command.argout.description.oneLineString»",
 				Tango::«command.displayLevel»);
+		«IF command.polledPeriod.getIntegerValue > 0»
+			p«command.name»Cmd->set_polling_period(«command.polledPeriod»);
+		«ENDIF»
 		command_list.push_back(p«command.name»Cmd);
 	'''
 
@@ -292,6 +295,9 @@ class Commands {
 				"«command.argin.description.oneLineString»",
 				"«command.argout.description.oneLineString»",
 				Tango::«command.displayLevel»);
+		«IF command.polledPeriod.getIntegerValue > 0»
+			p«command.name»Cmd->set_polling_period(«command.polledPeriod»);
+		«ENDIF»
 		add_command(p«command.name»Cmd, device);
 	'''
 
