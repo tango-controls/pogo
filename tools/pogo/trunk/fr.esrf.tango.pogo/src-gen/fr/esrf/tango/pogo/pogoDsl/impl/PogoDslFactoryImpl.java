@@ -89,6 +89,7 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.ATTR_PROPERTIES: return createAttrProperties();
       case PogoDslPackage.ADDITIONAL_FILE: return createAdditionalFile();
       case PogoDslPackage.OVERLODED_POLL_PERIOD_OBJECT: return createOverlodedPollPeriodObject();
+      case PogoDslPackage.PIPE: return createPipe();
       case PogoDslPackage.TYPE: return createType();
       case PogoDslPackage.VOID_TYPE: return createVoidType();
       case PogoDslPackage.BOOLEAN_TYPE: return createBooleanType();
@@ -403,6 +404,17 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     OverlodedPollPeriodObjectImpl overlodedPollPeriodObject = new OverlodedPollPeriodObjectImpl();
     return overlodedPollPeriodObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Pipe createPipe()
+  {
+    PipeImpl pipe = new PipeImpl();
+    return pipe;
   }
 
   /**

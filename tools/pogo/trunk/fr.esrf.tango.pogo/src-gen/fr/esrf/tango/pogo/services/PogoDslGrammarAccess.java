@@ -325,18 +325,21 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cForwardedAttributesKeyword_21 = (Keyword)cGroup.eContents().get(21);
 		private final Assignment cForwardedAttributesAssignment_22 = (Assignment)cGroup.eContents().get(22);
 		private final RuleCall cForwardedAttributesForwardedAttributeParserRuleCall_22_0 = (RuleCall)cForwardedAttributesAssignment_22.eContents().get(0);
-		private final Keyword cStatesKeyword_23 = (Keyword)cGroup.eContents().get(23);
-		private final Assignment cStatesAssignment_24 = (Assignment)cGroup.eContents().get(24);
-		private final RuleCall cStatesStateParserRuleCall_24_0 = (RuleCall)cStatesAssignment_24.eContents().get(0);
-		private final Assignment cPreferencesAssignment_25 = (Assignment)cGroup.eContents().get(25);
-		private final RuleCall cPreferencesPreferencesParserRuleCall_25_0 = (RuleCall)cPreferencesAssignment_25.eContents().get(0);
-		private final Keyword cAdditionalFilesKeyword_26 = (Keyword)cGroup.eContents().get(26);
-		private final Assignment cAdditionalFilesAssignment_27 = (Assignment)cGroup.eContents().get(27);
-		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_27_0 = (RuleCall)cAdditionalFilesAssignment_27.eContents().get(0);
-		private final Keyword cOverlodedPollPeriodObjectKeyword_28 = (Keyword)cGroup.eContents().get(28);
-		private final Assignment cOverlodedPollPeriodObjectAssignment_29 = (Assignment)cGroup.eContents().get(29);
-		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_29_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_29.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_30 = (Keyword)cGroup.eContents().get(30);
+		private final Keyword cPipesKeyword_23 = (Keyword)cGroup.eContents().get(23);
+		private final Assignment cPipesAssignment_24 = (Assignment)cGroup.eContents().get(24);
+		private final RuleCall cPipesPipeParserRuleCall_24_0 = (RuleCall)cPipesAssignment_24.eContents().get(0);
+		private final Keyword cStatesKeyword_25 = (Keyword)cGroup.eContents().get(25);
+		private final Assignment cStatesAssignment_26 = (Assignment)cGroup.eContents().get(26);
+		private final RuleCall cStatesStateParserRuleCall_26_0 = (RuleCall)cStatesAssignment_26.eContents().get(0);
+		private final Assignment cPreferencesAssignment_27 = (Assignment)cGroup.eContents().get(27);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_27_0 = (RuleCall)cPreferencesAssignment_27.eContents().get(0);
+		private final Keyword cAdditionalFilesKeyword_28 = (Keyword)cGroup.eContents().get(28);
+		private final Assignment cAdditionalFilesAssignment_29 = (Assignment)cGroup.eContents().get(29);
+		private final RuleCall cAdditionalFilesAdditionalFileParserRuleCall_29_0 = (RuleCall)cAdditionalFilesAssignment_29.eContents().get(0);
+		private final Keyword cOverlodedPollPeriodObjectKeyword_30 = (Keyword)cGroup.eContents().get(30);
+		private final Assignment cOverlodedPollPeriodObjectAssignment_31 = (Assignment)cGroup.eContents().get(31);
+		private final RuleCall cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_31_0 = (RuleCall)cOverlodedPollPeriodObjectAssignment_31.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_32 = (Keyword)cGroup.eContents().get(32);
 		
 		////==============================================
 		////	Class definition
@@ -351,10 +354,11 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	"commands:" commands+=Command* //	Device dynamic command list
 		//	"dynamicCommands:" dynamicCommands+=Command* //	Device static attribute list
 		//	"attributes:" attributes+=Attribute* //	Device dynamic attribute list
-		//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device fowarded attribute list
-		//	"forwardedAttributes:" forwardedAttributes+=ForwardedAttribute* //	Device state list
-		//	"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
-		//	Preferences //	Programmer's additional files to be added in Makefile (utils, threads,...)
+		//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device forwarded attribute list
+		//	"forwardedAttributes:" forwardedAttributes+=ForwardedAttribute* //	Device pipe list
+		//	"pipes:" pipes+=Pipe* //	Device state list
+		//	"states:" states+=State* preferences= //	Preferences (for programmer, for site or at run time)
+		//	Preferences //	Programmer's additional files to be added in Makefile (utilities, threads,...)
 		//	"additionalFiles:" additionalFiles+=AdditionalFile* //	Object list (Command or Attribute) where polling period has been overloaded
 		//	"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}";
 		public ParserRule getRule() { return rule; }
@@ -368,10 +372,11 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"commands:" commands+=Command* //	Device dynamic command list
 		//"dynamicCommands:" dynamicCommands+=Command* //	Device static attribute list
 		//"attributes:" attributes+=Attribute* //	Device dynamic attribute list
-		//"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device fowarded attribute list
-		//"forwardedAttributes:" forwardedAttributes+=ForwardedAttribute* //	Device state list
-		//"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
-		//Preferences //	Programmer's additional files to be added in Makefile (utils, threads,...)
+		//"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device forwarded attribute list
+		//"forwardedAttributes:" forwardedAttributes+=ForwardedAttribute* //	Device pipe list
+		//"pipes:" pipes+=Pipe* //	Device state list
+		//"states:" states+=State* preferences= //	Preferences (for programmer, for site or at run time)
+		//Preferences //	Programmer's additional files to be added in Makefile (utilities, threads,...)
 		//"additionalFiles:" additionalFiles+=AdditionalFile* //	Object list (Command or Attribute) where polling period has been overloaded
 		//"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}"
 		public Group getGroup() { return cGroup; }
@@ -495,7 +500,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Attribute
 		public RuleCall getDynamicAttributesAttributeParserRuleCall_20_0() { return cDynamicAttributesAttributeParserRuleCall_20_0; }
 
-		////	Device fowarded attribute list
+		////	Device forwarded attribute list
 		//"forwardedAttributes:"
 		public Keyword getForwardedAttributesKeyword_21() { return cForwardedAttributesKeyword_21; }
 
@@ -505,46 +510,56 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ForwardedAttribute
 		public RuleCall getForwardedAttributesForwardedAttributeParserRuleCall_22_0() { return cForwardedAttributesForwardedAttributeParserRuleCall_22_0; }
 
+		////	Device pipe list
+		//"pipes:"
+		public Keyword getPipesKeyword_23() { return cPipesKeyword_23; }
+
+		//pipes+=Pipe*
+		public Assignment getPipesAssignment_24() { return cPipesAssignment_24; }
+
+		//Pipe
+		public RuleCall getPipesPipeParserRuleCall_24_0() { return cPipesPipeParserRuleCall_24_0; }
+
 		////	Device state list
 		//"states:"
-		public Keyword getStatesKeyword_23() { return cStatesKeyword_23; }
+		public Keyword getStatesKeyword_25() { return cStatesKeyword_25; }
 
 		//states+=State*
-		public Assignment getStatesAssignment_24() { return cStatesAssignment_24; }
+		public Assignment getStatesAssignment_26() { return cStatesAssignment_26; }
 
 		//State
-		public RuleCall getStatesStateParserRuleCall_24_0() { return cStatesStateParserRuleCall_24_0; }
+		public RuleCall getStatesStateParserRuleCall_26_0() { return cStatesStateParserRuleCall_26_0; }
 
-		//preferences= //	Preferences (for programer, for site or at run time)
+		//preferences= //	Preferences (for programmer, for site or at run time)
 		//Preferences
-		public Assignment getPreferencesAssignment_25() { return cPreferencesAssignment_25; }
+		public Assignment getPreferencesAssignment_27() { return cPreferencesAssignment_27; }
 
-		////	Preferences (for programer, for site or at run time)
+		////	Preferences (for programmer, for site or at run time)
 		//Preferences
-		public RuleCall getPreferencesPreferencesParserRuleCall_25_0() { return cPreferencesPreferencesParserRuleCall_25_0; }
+		public RuleCall getPreferencesPreferencesParserRuleCall_27_0() { return cPreferencesPreferencesParserRuleCall_27_0; }
 
-		////	Programmer's additional files to be added in Makefile (utils, threads,...)
+		////	Programmer's additional files to be added in Makefile (utilities, threads,...)
 		//"additionalFiles:"
-		public Keyword getAdditionalFilesKeyword_26() { return cAdditionalFilesKeyword_26; }
+		public Keyword getAdditionalFilesKeyword_28() { return cAdditionalFilesKeyword_28; }
 
 		//additionalFiles+=AdditionalFile*
-		public Assignment getAdditionalFilesAssignment_27() { return cAdditionalFilesAssignment_27; }
+		public Assignment getAdditionalFilesAssignment_29() { return cAdditionalFilesAssignment_29; }
 
 		//AdditionalFile
-		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_27_0() { return cAdditionalFilesAdditionalFileParserRuleCall_27_0; }
+		public RuleCall getAdditionalFilesAdditionalFileParserRuleCall_29_0() { return cAdditionalFilesAdditionalFileParserRuleCall_29_0; }
 
 		////	Object list (Command or Attribute) where polling period has been overloaded
 		//"overlodedPollPeriodObject:"
-		public Keyword getOverlodedPollPeriodObjectKeyword_28() { return cOverlodedPollPeriodObjectKeyword_28; }
+		public Keyword getOverlodedPollPeriodObjectKeyword_30() { return cOverlodedPollPeriodObjectKeyword_30; }
 
 		//overlodedPollPeriodObject+=OverlodedPollPeriodObject*
-		public Assignment getOverlodedPollPeriodObjectAssignment_29() { return cOverlodedPollPeriodObjectAssignment_29; }
+		public Assignment getOverlodedPollPeriodObjectAssignment_31() { return cOverlodedPollPeriodObjectAssignment_31; }
 
 		//OverlodedPollPeriodObject
-		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_29_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_29_0; }
+		public RuleCall getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_31_0() { return cOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_31_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_30() { return cRightCurlyBracketKeyword_30; }
+		public Keyword getRightCurlyBracketKeyword_32() { return cRightCurlyBracketKeyword_32; }
 	}
 
 	public class LanguageElements extends AbstractParserRuleElementFinder {
@@ -1972,6 +1987,107 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getPollPeriodSTRINGTerminalRuleCall_2_0() { return cPollPeriodSTRINGTerminalRuleCall_2_0; }
 	}
 
+	public class PipeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Pipe");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cDescriptionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDescriptionSTRINGTerminalRuleCall_1_0 = (RuleCall)cDescriptionAssignment_1.eContents().get(0);
+		private final Assignment cLabelAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLabelSTRINGTerminalRuleCall_2_0 = (RuleCall)cLabelAssignment_2.eContents().get(0);
+		private final Assignment cRwTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRwTypeRW_PipeTypeParserRuleCall_3_0 = (RuleCall)cRwTypeAssignment_3.eContents().get(0);
+		private final Assignment cDisplayLevelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDisplayLevelDisplayLevelParserRuleCall_4_0 = (RuleCall)cDisplayLevelAssignment_4.eContents().get(0);
+		private final Keyword cReadExcludedStatesKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cReadExcludedStatesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cReadExcludedStatesSTRINGTerminalRuleCall_6_0 = (RuleCall)cReadExcludedStatesAssignment_6.eContents().get(0);
+		private final Keyword cWriteExcludedStatesKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cWriteExcludedStatesAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cWriteExcludedStatesSTRINGTerminalRuleCall_8_0 = (RuleCall)cWriteExcludedStatesAssignment_8.eContents().get(0);
+		
+		////
+		////	Pipe definition
+		////
+		//Pipe:
+		//	name=STRING description=STRING label=STRING rwType=RW_PipeType displayLevel=DisplayLevel "readExcludedStates:"
+		//	readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;
+		public ParserRule getRule() { return rule; }
+
+		//name=STRING description=STRING label=STRING rwType=RW_PipeType displayLevel=DisplayLevel "readExcludedStates:"
+		//readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*
+		public Group getGroup() { return cGroup; }
+
+		//name=STRING
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+
+		//description=STRING
+		public Assignment getDescriptionAssignment_1() { return cDescriptionAssignment_1; }
+
+		//STRING
+		public RuleCall getDescriptionSTRINGTerminalRuleCall_1_0() { return cDescriptionSTRINGTerminalRuleCall_1_0; }
+
+		//label=STRING
+		public Assignment getLabelAssignment_2() { return cLabelAssignment_2; }
+
+		//STRING
+		public RuleCall getLabelSTRINGTerminalRuleCall_2_0() { return cLabelSTRINGTerminalRuleCall_2_0; }
+
+		//rwType=RW_PipeType
+		public Assignment getRwTypeAssignment_3() { return cRwTypeAssignment_3; }
+
+		//RW_PipeType
+		public RuleCall getRwTypeRW_PipeTypeParserRuleCall_3_0() { return cRwTypeRW_PipeTypeParserRuleCall_3_0; }
+
+		//displayLevel=DisplayLevel
+		public Assignment getDisplayLevelAssignment_4() { return cDisplayLevelAssignment_4; }
+
+		//DisplayLevel
+		public RuleCall getDisplayLevelDisplayLevelParserRuleCall_4_0() { return cDisplayLevelDisplayLevelParserRuleCall_4_0; }
+
+		//"readExcludedStates:"
+		public Keyword getReadExcludedStatesKeyword_5() { return cReadExcludedStatesKeyword_5; }
+
+		//readExcludedStates+=STRING*
+		public Assignment getReadExcludedStatesAssignment_6() { return cReadExcludedStatesAssignment_6; }
+
+		//STRING
+		public RuleCall getReadExcludedStatesSTRINGTerminalRuleCall_6_0() { return cReadExcludedStatesSTRINGTerminalRuleCall_6_0; }
+
+		//"writeExcludedStates:"
+		public Keyword getWriteExcludedStatesKeyword_7() { return cWriteExcludedStatesKeyword_7; }
+
+		//writeExcludedStates+=STRING*
+		public Assignment getWriteExcludedStatesAssignment_8() { return cWriteExcludedStatesAssignment_8; }
+
+		//STRING
+		public RuleCall getWriteExcludedStatesSTRINGTerminalRuleCall_8_0() { return cWriteExcludedStatesSTRINGTerminalRuleCall_8_0; }
+	}
+
+	public class RW_PipeTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RW_PipeType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cREADKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cREAD_WRITEKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//RW_PipeType:
+		//	"READ" | "READ_WRITE";
+		public ParserRule getRule() { return rule; }
+
+		//"READ" | "READ_WRITE"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"READ"
+		public Keyword getREADKeyword_0() { return cREADKeyword_0; }
+
+		//"READ_WRITE"
+		public Keyword getREAD_WRITEKeyword_1() { return cREAD_WRITEKeyword_1; }
+	}
+
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2847,6 +2963,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	private AttrPropertiesElements pAttrProperties;
 	private AdditionalFileElements pAdditionalFile;
 	private OverlodedPollPeriodObjectElements pOverlodedPollPeriodObject;
+	private PipeElements pPipe;
+	private RW_PipeTypeElements pRW_PipeType;
 	private TypeElements pType;
 	private VoidTypeElements pVoidType;
 	private BooleanTypeElements pBooleanType;
@@ -2988,10 +3106,11 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	"commands:" commands+=Command* //	Device dynamic command list
 	//	"dynamicCommands:" dynamicCommands+=Command* //	Device static attribute list
 	//	"attributes:" attributes+=Attribute* //	Device dynamic attribute list
-	//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device fowarded attribute list
-	//	"forwardedAttributes:" forwardedAttributes+=ForwardedAttribute* //	Device state list
-	//	"states:" states+=State* preferences= //	Preferences (for programer, for site or at run time)
-	//	Preferences //	Programmer's additional files to be added in Makefile (utils, threads,...)
+	//	"dynamicAttributes:" dynamicAttributes+=Attribute* //	Device forwarded attribute list
+	//	"forwardedAttributes:" forwardedAttributes+=ForwardedAttribute* //	Device pipe list
+	//	"pipes:" pipes+=Pipe* //	Device state list
+	//	"states:" states+=State* preferences= //	Preferences (for programmer, for site or at run time)
+	//	Preferences //	Programmer's additional files to be added in Makefile (utilities, threads,...)
 	//	"additionalFiles:" additionalFiles+=AdditionalFile* //	Object list (Command or Attribute) where polling period has been overloaded
 	//	"overlodedPollPeriodObject:" overlodedPollPeriodObject+=OverlodedPollPeriodObject* "}";
 	public PogoDeviceClassElements getPogoDeviceClassAccess() {
@@ -3324,6 +3443,30 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getOverlodedPollPeriodObjectRule() {
 		return getOverlodedPollPeriodObjectAccess().getRule();
+	}
+
+	////
+	////	Pipe definition
+	////
+	//Pipe:
+	//	name=STRING description=STRING label=STRING rwType=RW_PipeType displayLevel=DisplayLevel "readExcludedStates:"
+	//	readExcludedStates+=STRING* "writeExcludedStates:" writeExcludedStates+=STRING*;
+	public PipeElements getPipeAccess() {
+		return (pPipe != null) ? pPipe : (pPipe = new PipeElements());
+	}
+	
+	public ParserRule getPipeRule() {
+		return getPipeAccess().getRule();
+	}
+
+	//RW_PipeType:
+	//	"READ" | "READ_WRITE";
+	public RW_PipeTypeElements getRW_PipeTypeAccess() {
+		return (pRW_PipeType != null) ? pRW_PipeType : (pRW_PipeType = new RW_PipeTypeElements());
+	}
+	
+	public ParserRule getRW_PipeTypeRule() {
+		return getRW_PipeTypeAccess().getRule();
 	}
 
 	////

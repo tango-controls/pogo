@@ -46,7 +46,8 @@ import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Properties
 import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
-
+import fr.esrf.tango.pogo.pogoDsl.Pipe
+import fr.esrf.tango.pogo.generator.common.StringUtils;
 
 class DeviceClassSource {
 
@@ -56,7 +57,7 @@ class DeviceClassSource {
 	@Inject	extension Commands
 	@Inject	extension Properties
 	@Inject	extension InheritanceUtils
-
+	@Inject	extension StringUtils
 
 	//======================================================
 	// Define deviceClass source file to be generated
@@ -83,6 +84,7 @@ class DeviceClassSource {
 		//===================================================================
 		«cls.deviceFactory»
 		«cls.attributeFactory»
+		«cls.pipeFactory»
 		«cls.commandFactory»
 		«cls.dynamicAttributeMethods»
 
@@ -141,6 +143,26 @@ class DeviceClassSource {
 		«ENDFOR»
 	'''
 
+	//==========================================================
+	// Define pipe factory
+	//==========================================================
+	def pipeFactory(PogoDeviceClass cls) '''
+		«cls.simpleMethodHeaderClass("pipe_factory", "Create the pipe object(s)\nand store them in the pipe list")»
+		void «cls.name»Class::pipe_factory()
+		{
+			«cls.protectedAreaClass("pipe_factory_before", "Add your own code", true)»
+			Tango::UserDefaultPipeProp udpp;
+			«FOR Pipe pipe : cls.pipes»
+				«pipe.name»Class	*p«pipe.name» = new «pipe.name»Class("«pipe.name»",Tango::«pipe.displayLevel»);
+				udpp.set_description("«pipe.description.oneLineString»");
+				udpp.set_label("«pipe.label»");
+				p«pipe.name»->set_default_properties(udpp);
+				pipe_list.push_back(p«pipe.name»);
+
+			«ENDFOR»
+			«cls.protectedAreaClass("pipe_factory_after", "Add your own code", true)»
+		}
+	'''
 	
 	//==========================================================
 	// Define attribute factory

@@ -110,15 +110,18 @@ PogoDeviceClass:
 		"dynamicAttributes:"					//	Device dynamic attribute list
 			(dynamicAttributes+=Attribute)*
 
-		"forwardedAttributes:"					//	Device fowarded attribute list
+		"forwardedAttributes:"					//	Device forwarded attribute list
 			(forwardedAttributes+=ForwardedAttribute)*
+
+		"pipes:"								//	Device pipe list
+			(pipes+=Pipe)*
 
 		"states:"								//	Device state list
 			(states+=State)*
 		
-		preferences = Preferences				//	Preferences (for programer, for site or at run time)
+		preferences = Preferences				//	Preferences (for programmer, for site or at run time)
 
-		"additionalFiles:"						//	Programmer's additional files to be added in Makefile (utils, threads,...)
+		"additionalFiles:"						//	Programmer's additional files to be added in Makefile (utilities, threads,...)
 			(additionalFiles+=AdditionalFile)*
 
 		"overlodedPollPeriodObject:"			//	Object list (Command or Attribute) where polling period has been overloaded
@@ -341,6 +344,24 @@ OverlodedPollPeriodObject:
 	type       = STRING	//	command or attribute
 	pollPeriod = STRING
 ;
+
+
+//
+//	Pipe definition
+//
+Pipe:
+	name          = STRING
+	description   = STRING
+	label         = STRING
+	rwType        = RW_PipeType
+	displayLevel  = DisplayLevel
+	"readExcludedStates:"
+		(readExcludedStates+=STRING)*
+	"writeExcludedStates:"
+		(writeExcludedStates+=STRING)*
+;
+
+RW_PipeType: "READ"  |  "READ_WRITE";
 
 
 //

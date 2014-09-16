@@ -42,10 +42,7 @@ package org.tango.pogo.pogo_gui.tools;
  * @author verdier
  */
 
-import fr.esrf.tango.pogo.pogoDsl.Attribute;
-import fr.esrf.tango.pogo.pogoDsl.Command;
-import fr.esrf.tango.pogo.pogoDsl.Property;
-import fr.esrf.tango.pogo.pogoDsl.State;
+import fr.esrf.tango.pogo.pogoDsl.*;
 import org.tango.pogo.pogo_gui.PogoConst;
 
 import javax.swing.*;
@@ -243,6 +240,26 @@ public class PogoEditor {
 
     //===============================================================
     //===============================================================
+    private int getLineNumber(String filename, String className, int lang, Pipe pipe) {
+        String signature = null;
+        switch (lang) {
+            case PogoConst.Cpp:
+                signature = className + "::read_" + pipe.getName() + "(Tango::Pipe &pipe)";
+                break;
+            case PogoConst.Java:
+                signature = "@Pipe(name=\"" + pipe.getName() + "\"" ;
+                break;
+            case PogoConst.Python:
+                signature = "def read_" + pipe.getName() + "(self, pipe):" ;
+                break;
+        }
+        if (signature == null)
+            return -1;
+        return getLineNumber(filename, signature);
+    }
+
+    //===============================================================
+    //===============================================================
     private int getLineNumber(String filename, String className, int lang) {
         String signature = null;
         switch (lang) {
@@ -328,8 +345,40 @@ public class PogoEditor {
                 break;
         }
         if (filename != null) {
-            int linenum = getLineNumber(filename, className, lang, attribute);
-            startEditor(filename, linenum);
+            int lineNumber = getLineNumber(filename, className, lang, attribute);
+            startEditor(filename, lineNumber);
+        }
+    }
+    //===============================================================
+    /**
+     * Edit code for specified attribute
+     *
+     * @param data      class definition (0-class name, 1-path, 3 language)
+     * @param pipe specified attribute
+     * @throws PogoException if read file failed.
+     */
+    //===============================================================
+    public void editFile(String[] data, Pipe pipe) throws PogoException {
+        String className = data[0];
+        String path = data[1];
+        int lang = Utils.getLanguage(data[2]);
+        String filename = null;
+
+        switch (lang) {
+            case PogoConst.Cpp:
+                filename = path + "/" + className + ".cpp";
+                break;
+            case PogoConst.Java:
+                filename = path + "/org/tango/" + className.toLowerCase() + "/" + className;
+                filename += ".java";
+                break;
+            case PogoConst.Python:
+                filename = path + "/" + className + ".py";
+                break;
+        }
+        if (filename != null) {
+            int lineNumber = getLineNumber(filename, className, lang, pipe);
+            startEditor(filename, lineNumber);
         }
     }
     //===============================================================

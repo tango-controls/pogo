@@ -248,6 +248,15 @@ public interface PogoDslFactory extends EFactory
   OverlodedPollPeriodObject createOverlodedPollPeriodObject();
 
   /**
+   * Returns a new object of class '<em>Pipe</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pipe</em>'.
+   * @generated
+   */
+  Pipe createPipe();
+
+  /**
    * Returns a new object of class '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

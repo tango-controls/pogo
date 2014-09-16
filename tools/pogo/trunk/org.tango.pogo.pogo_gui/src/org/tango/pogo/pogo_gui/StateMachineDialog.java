@@ -35,10 +35,7 @@
 
 package org.tango.pogo.pogo_gui;
 
-import fr.esrf.tango.pogo.pogoDsl.Attribute;
-import fr.esrf.tango.pogo.pogoDsl.Command;
-import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
-import fr.esrf.tango.pogo.pogoDsl.State;
+import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.eclipse.emf.common.util.EList;
 
@@ -56,12 +53,14 @@ import java.util.ArrayList;
 
 
 public class StateMachineDialog extends JDialog implements PogoConst {
-    private PogoDeviceClass pogo_class;
+    private PogoDeviceClass pogoClass;
     private int retVal = JOptionPane.OK_OPTION;
     private Buttons buttons = new Buttons();
     private static final int COMMAND = 0;
     private static final int READ_ATTRIBUTE = 1;
     private static final int WRITE_ATTRIBUTE = 2;
+    private static final int READ_PIPE       = 3;
+    private static final int WRITE_PIPE      = 4;
 
     //===============================================================
     //===============================================================
@@ -110,7 +109,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     public StateMachineDialog(JFrame parent, PogoDeviceClass pogo_class) {
         super(parent, true);
-        this.pogo_class = pogo_class;
+        this.pogoClass = pogo_class;
         initComponents();
         createOwnComponents();
         titleLabel.setText(pogo_class.getName() + " State Machine");
@@ -193,7 +192,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
      */
     //===============================================================
     private void createOwnComponents() {
-        EList<State> states = pogo_class.getStates();
+        EList<State> states = pogoClass.getStates();
         int y = 0;
 
         //-------------------------
@@ -201,7 +200,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         //-------------------------
         addColumnHeader(y, "Select Allowed", "Commands", states);
         y += 2;
-        EList<Command> commands = pogo_class.getCommands();
+        EList<Command> commands = pogoClass.getCommands();
         for (Command command : commands) {
             if (!command.getName().equals("State") &&
                     !command.getName().equals("Status")) {
@@ -214,11 +213,23 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         //-------------------------
         addColumnHeader(y, "Select Allowed", "Attributes", states);
         y += 2;
-        EList<Attribute> attributes = pogo_class.getAttributes();
+        EList<Attribute> attributes = pogoClass.getAttributes();
         for (Attribute attribute : attributes) {
             addAttributeLine(y++, attribute, READ_ATTRIBUTE, states);
             if (!attribute.getRwType().equals(AttrRWtypeArray[READ]))
                 addAttributeLine(y++, attribute, WRITE_ATTRIBUTE, states);
+        }
+
+       //-------------------------
+        //	Pipes
+        //-------------------------
+        addColumnHeader(y, "Select Allowed", "Pipes", states);
+        y += 2;
+        EList<Pipe> pipes = pogoClass.getPipes();
+        for (Pipe pipe : pipes) {
+            addPipeLine(y++, pipe, READ_PIPE, states);
+            if (!pipe.getRwType().equals(AttrRWtypeArray[READ]))
+                addPipeLine(y++, pipe, WRITE_PIPE, states);
         }
 
         //  Dummy to have insets at bottom
@@ -261,6 +272,30 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         //	Create label with attribute name
         addLineHeader(y, "  " + att.getName() + rwStr);
         BtnLine line = new BtnLine(att.getName(), attType);
+
+        //	Create radio button and store instance in vector
+        int x = 1;
+        for (State state : states)
+            line.add(addAllowedButton(x++, y, state, excludedStates));
+
+        //	store radio button instances in a vector
+        buttons.add(line);
+    }
+    //===============================================================
+    //===============================================================
+    private void addPipeLine(int y, Pipe pipe, int attType, EList<State> states) {
+        String rwStr;
+        EList<String> excludedStates;
+        if (attType == READ_PIPE) {
+            rwStr = " (Read)";
+            excludedStates = pipe.getReadExcludedStates();
+        } else {
+            rwStr = " (Write)";
+            excludedStates = pipe.getWriteExcludedStates();
+        }
+        //	Create label with pipe name
+        addLineHeader(y, "  " + pipe.getName() + rwStr);
+        BtnLine line = new BtnLine(pipe.getName(), attType);
 
         //	Create radio button and store instance in vector
         int x = 1;
@@ -374,7 +409,8 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     //===============================================================
     public PogoDeviceClass getPogoClass() {
-        EList<Command> commands = pogo_class.getCommands();
+        //  Manage commands
+        EList<Command> commands = pogoClass.getCommands();
         for (Command command : commands) {
             BtnLine line = buttons.getLine(command.getName(), COMMAND);
             if (line != null) {
@@ -386,7 +422,8 @@ public class StateMachineDialog extends JDialog implements PogoConst {
             }
         }
 
-        EList<Attribute> attributes = pogo_class.getAttributes();
+        //  Manage attributes
+        EList<Attribute> attributes = pogoClass.getAttributes();
         for (Attribute attribute : attributes) {
             BtnLine line = buttons.getLine(attribute.getName(), READ_ATTRIBUTE);
             if (line != null) {
@@ -408,7 +445,31 @@ public class StateMachineDialog extends JDialog implements PogoConst {
                 }
             }
         }
-        return pogo_class;
+
+        //  Manage pipes
+        EList<Pipe> pipes = pogoClass.getPipes();
+        for (Pipe pipe : pipes) {
+            BtnLine line = buttons.getLine(pipe.getName(), READ_PIPE);
+            if (line != null) {
+                EList<String> read_excluded = pipe.getReadExcludedStates();
+                read_excluded.clear();
+                for (AllowedBtn btn : line)
+                    if (btn.getSelectedObjects() == null)
+                        read_excluded.add(btn.name);
+            }
+            //  Write part
+            if (pipe.getRwType().contains("WRITE")) {
+                line = buttons.getLine(pipe.getName(), WRITE_PIPE);
+                if (line != null) {
+                    EList<String> write_excluded = pipe.getWriteExcludedStates();
+                    write_excluded.clear();
+                    for (AllowedBtn btn : line)
+                        if (btn.getSelectedObjects() == null)
+                            write_excluded.add(btn.name);
+                }
+            }
+        }
+        return pogoClass;
     }
 
     //===============================================================

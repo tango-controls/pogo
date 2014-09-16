@@ -46,8 +46,9 @@ import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinition
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
+import fr.esrf.tango.pogo.generator.cpp.utils.Pipes
 import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
-
+import fr.esrf.tango.pogo.pogoDsl.Pipe
 
 //======================================================
 //	Define device include file to be generated
@@ -58,6 +59,7 @@ class DeviceInclude  {
 	@Inject	extension Headers
 	@Inject	extension Commands
 	@Inject	extension Attributes
+	@Inject	extension Pipes
 	@Inject	extension InheritanceUtils
 
 
@@ -87,6 +89,7 @@ class DeviceInclude  {
 		«cls.declareConstructors»
 		«cls.declareGlobals»
 		«cls.declareAttributes»
+		«cls.declarePipes»
 		«cls.declareCommands»
 		«cls.protectedArea("Additional Method prototypes", "Additional Method prototypes", true)»
 		};
@@ -281,6 +284,19 @@ class DeviceInclude  {
 
 	'''
 	
+	//======================================================
+	// Pipe declarations
+	//======================================================
+	def declarePipes(PogoDeviceClass cls) '''
+		«IF cls.pipes.size()>0»
+		//	pipe related methods
+		public:
+			«FOR Pipe pipe : cls.pipes»
+				«pipe.declareMethods»
+			«ENDFOR»
+		«ENDIF»
+
+	'''
 	//======================================================
 	// Command declarations
 	//======================================================

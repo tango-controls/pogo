@@ -45,8 +45,9 @@ import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
+import fr.esrf.tango.pogo.generator.cpp.utils.Pipes
 import fr.esrf.tango.pogo.generator.cpp.utils.Properties
-
+import fr.esrf.tango.pogo.pogoDsl.Pipe
 
 //======================================================
 // Define device source file to be generated
@@ -57,6 +58,7 @@ class DeviceSource {
 	@Inject	extension Headers
 	@Inject	extension Commands
 	@Inject	extension Attributes
+	@Inject	extension Pipes
 	@Inject	extension Properties
 	@Inject	extension InheritanceUtils
 
@@ -83,6 +85,7 @@ class DeviceSource {
 		«cls.initDeviceMethod»
 		«cls.utilsMethods»
 		«cls.attributeMethods»
+		«cls.pipeMethods»
 		«cls.commandMethods»
 
 		«cls.protectedArea("namespace_ending", "Additional Methods", true)»
@@ -234,6 +237,20 @@ class DeviceSource {
 
 	'''
 
+	//======================================================
+	// Define pipe related methods
+	//======================================================
+	def pipeMethods(PogoDeviceClass cls) '''
+		«IF cls.pipes.size()>0»
+			«FOR Pipe pipe: cls.pipes»
+				«cls.readPipeMethod(pipe)»
+				«IF pipe.rwType.contains("WRITE")»
+					«cls.writePipeMethod(pipe)»
+				«ENDIF»
+			«ENDFOR»
+		«ENDIF»
+	'''
+	
 	//======================================================
 	// Define attribute related methods
 	//======================================================
