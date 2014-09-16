@@ -45,7 +45,7 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils
-
+import fr.esrf.tango.pogo.pogoDsl.Pipe
 
 //======================================================
 // Define Device state machine .cpp file to be generated
@@ -72,6 +72,13 @@ class DeviceStateMachine {
 		//		Attributes Allowed Methods
 		//=================================================
 		«cls.attributesStateMachine»
+
+		«IF cls.pipes.size>0»
+			//=================================================
+			//		pipe Allowed Methods
+			//=================================================
+			«cls.pipeStateMachine»
+		«ENDIF»
 
 		//=================================================
 		//		Commands Allowed Methods
@@ -152,7 +159,6 @@ class DeviceStateMachine {
 		«ENDFOR»
 	'''
 
-
 	//======================================================
 	// define one attribute State Machine
 	//======================================================
@@ -203,6 +209,53 @@ class DeviceStateMachine {
 			«ENDIF»
 			return true;
 		}
+	'''
+
+	//======================================================
+	// define pipes State Machine
+	//======================================================
+	def pipeStateMachine(PogoDeviceClass cls) '''
+		«FOR Pipe pipe : cls.pipes»
+			«cls.simpleMethodHeader("is_"+pipe.name+"_allowed", "Execution allowed for "+pipe.name+" pipe")»
+			bool «cls.name»::is_«pipe.name»_allowed(TANGO_UNUSED(Tango::PipeReqType type))
+			{
+				«IF pipe.rwType.contains("WRITE")»
+					«IF pipe.writeExcludedStates.empty»
+						//	Not any excluded states for «pipe.name» pipe in Write access.
+						«cls.protectedArea(pipe.name+"StateAllowed_WRITE")»
+					«ELSE»
+						//	Check access type.
+						if ( type==Tango::WRITE_REQ )
+						{
+							//	Compare device state with not allowed states for WRITE 
+							if («pipe.writeExcludedStates.ifContentFromList»)
+							{
+							«cls.protectedArea(pipe.name+"StateAllowed_WRITE")»
+								return false;
+							}
+							return true;
+						}
+					«ENDIF»
+					else
+				«ENDIF»
+				«IF pipe.readExcludedStates.empty»
+					//	Not any excluded states for «pipe.name» pipe in read access.
+					«cls.protectedArea(pipe.name+"StateAllowed_READ")»
+				«ELSE»
+					//	Check access type.
+					if ( type==Tango::READ_REQ )
+					{
+						//	Compare device state with not allowed states for READ 
+						if («pipe.readExcludedStates.ifContentFromList»)
+						{
+						«cls.protectedArea(pipe.name+"StateAllowed_READ")»
+							return false;
+						}
+						return true;
+					}
+				«ENDIF»
+			}
+		«ENDFOR»
 	'''
 
 	

@@ -823,23 +823,45 @@ rulePogoDeviceClass returns [EObject current=null]
 	    }
 
 )
-)*	otherlv_24='states:' 
+)*	otherlv_24='pipes:' 
     {
-    	newLeafNode(otherlv_24, grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_23());
+    	newLeafNode(otherlv_24, grammarAccess.getPogoDeviceClassAccess().getPipesKeyword_23());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_24_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPipesPipeParserRuleCall_24_0()); 
 	    }
-		lv_states_25_0=ruleState		{
+		lv_pipes_25_0=rulePipe		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
+	        }
+       		add(
+       			$current, 
+       			"pipes",
+        		lv_pipes_25_0, 
+        		"Pipe");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_26='states:' 
+    {
+    	newLeafNode(otherlv_26, grammarAccess.getPogoDeviceClassAccess().getStatesKeyword_25());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getStatesStateParserRuleCall_26_0()); 
+	    }
+		lv_states_27_0=ruleState		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		add(
        			$current, 
        			"states",
-        		lv_states_25_0, 
+        		lv_states_27_0, 
         		"State");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -848,68 +870,68 @@ rulePogoDeviceClass returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_25_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getPreferencesPreferencesParserRuleCall_27_0()); 
 	    }
-		lv_preferences_26_0=rulePreferences		{
+		lv_preferences_28_0=rulePreferences		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		set(
        			$current, 
        			"preferences",
-        		lv_preferences_26_0, 
+        		lv_preferences_28_0, 
         		"Preferences");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_27='additionalFiles:' 
+)	otherlv_29='additionalFiles:' 
     {
-    	newLeafNode(otherlv_27, grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_26());
+    	newLeafNode(otherlv_29, grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesKeyword_28());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_27_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getAdditionalFilesAdditionalFileParserRuleCall_29_0()); 
 	    }
-		lv_additionalFiles_28_0=ruleAdditionalFile		{
+		lv_additionalFiles_30_0=ruleAdditionalFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		add(
        			$current, 
        			"additionalFiles",
-        		lv_additionalFiles_28_0, 
+        		lv_additionalFiles_30_0, 
         		"AdditionalFile");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_29='overlodedPollPeriodObject:' 
+)*	otherlv_31='overlodedPollPeriodObject:' 
     {
-    	newLeafNode(otherlv_29, grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_28());
+    	newLeafNode(otherlv_31, grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectKeyword_30());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_29_0()); 
+	        newCompositeNode(grammarAccess.getPogoDeviceClassAccess().getOverlodedPollPeriodObjectOverlodedPollPeriodObjectParserRuleCall_31_0()); 
 	    }
-		lv_overlodedPollPeriodObject_30_0=ruleOverlodedPollPeriodObject		{
+		lv_overlodedPollPeriodObject_32_0=ruleOverlodedPollPeriodObject		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoDeviceClassRule());
 	        }
        		add(
        			$current, 
        			"overlodedPollPeriodObject",
-        		lv_overlodedPollPeriodObject_30_0, 
+        		lv_overlodedPollPeriodObject_32_0, 
         		"OverlodedPollPeriodObject");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_31='}' 
+)*	otherlv_33='}' 
     {
-    	newLeafNode(otherlv_31, grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_30());
+    	newLeafNode(otherlv_33, grammarAccess.getPogoDeviceClassAccess().getRightCurlyBracketKeyword_32());
     }
 )
 ;
@@ -3610,6 +3632,195 @@ ruleOverlodedPollPeriodObject returns [EObject current=null]
 )
 ))
 ;
+
+
+
+
+
+// Entry rule entryRulePipe
+entryRulePipe returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getPipeRule()); }
+	 iv_rulePipe=rulePipe 
+	 { $current=$iv_rulePipe.current; } 
+	 EOF 
+;
+
+// Rule Pipe
+rulePipe returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_name_0_0=RULE_STRING
+		{
+			newLeafNode(lv_name_0_0, grammarAccess.getPipeAccess().getNameSTRINGTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPipeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		lv_description_1_0=RULE_STRING
+		{
+			newLeafNode(lv_description_1_0, grammarAccess.getPipeAccess().getDescriptionSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPipeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"description",
+        		lv_description_1_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		lv_label_2_0=RULE_STRING
+		{
+			newLeafNode(lv_label_2_0, grammarAccess.getPipeAccess().getLabelSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPipeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"label",
+        		lv_label_2_0, 
+        		"STRING");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPipeAccess().getRwTypeRW_PipeTypeParserRuleCall_3_0()); 
+	    }
+		lv_rwType_3_0=ruleRW_PipeType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPipeRule());
+	        }
+       		set(
+       			$current, 
+       			"rwType",
+        		lv_rwType_3_0, 
+        		"RW_PipeType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPipeAccess().getDisplayLevelDisplayLevelParserRuleCall_4_0()); 
+	    }
+		lv_displayLevel_4_0=ruleDisplayLevel		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPipeRule());
+	        }
+       		set(
+       			$current, 
+       			"displayLevel",
+        		lv_displayLevel_4_0, 
+        		"DisplayLevel");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_5='readExcludedStates:' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getPipeAccess().getReadExcludedStatesKeyword_5());
+    }
+(
+(
+		lv_readExcludedStates_6_0=RULE_STRING
+		{
+			newLeafNode(lv_readExcludedStates_6_0, grammarAccess.getPipeAccess().getReadExcludedStatesSTRINGTerminalRuleCall_6_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPipeRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"readExcludedStates",
+        		lv_readExcludedStates_6_0, 
+        		"STRING");
+	    }
+
+)
+)*	otherlv_7='writeExcludedStates:' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getPipeAccess().getWriteExcludedStatesKeyword_7());
+    }
+(
+(
+		lv_writeExcludedStates_8_0=RULE_STRING
+		{
+			newLeafNode(lv_writeExcludedStates_8_0, grammarAccess.getPipeAccess().getWriteExcludedStatesSTRINGTerminalRuleCall_8_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPipeRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"writeExcludedStates",
+        		lv_writeExcludedStates_8_0, 
+        		"STRING");
+	    }
+
+)
+)*)
+;
+
+
+
+
+
+// Entry rule entryRuleRW_PipeType
+entryRuleRW_PipeType returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getRW_PipeTypeRule()); } 
+	 iv_ruleRW_PipeType=ruleRW_PipeType 
+	 { $current=$iv_ruleRW_PipeType.current.getText(); }  
+	 EOF 
+;
+
+// Rule RW_PipeType
+ruleRW_PipeType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+	kw='READ' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getRW_PipeTypeAccess().getREADKeyword_0()); 
+    }
+
+    |
+	kw='READ_WRITE' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getRW_PipeTypeAccess().getREAD_WRITEKeyword_1()); 
+    }
+)
+    ;
 
 
 

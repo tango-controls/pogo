@@ -898,6 +898,38 @@ public class OAWutils {
         attribute.setStatus(status);
         return attribute;
     }
+    //======================================================
+    //======================================================
+    public static Pipe clonePipe(Pipe src) {
+        Pipe pipe = factory.createPipe();
+        pipe.setName(src.getName());
+        pipe.setLabel(src.getLabel());
+        pipe.setDescription(src.getDescription());
+        pipe.setDisplayLevel(src.getDisplayLevel());
+        pipe.setRwType(src.getRwType());
+
+        EList<String> srcExcluded = src.getReadExcludedStates();
+        EList<String> newExcluded = pipe.getReadExcludedStates();
+        for (String s : srcExcluded)
+            newExcluded.add(s);
+
+        srcExcluded = src.getWriteExcludedStates();
+        newExcluded = pipe.getWriteExcludedStates();
+        for (String s : srcExcluded)
+            newExcluded.add(s);
+
+        /*  Not manage until now
+        //	Inheritance status
+        InheritanceStatus status = factory.createInheritanceStatus();
+        InheritanceStatus src_st = src.getStatus();
+        status.setAbstract(src_st.getAbstract());
+        status.setInherited(src_st.getInherited());
+        status.setConcrete(src_st.getConcrete());
+        status.setConcreteHere(src_st.getConcreteHere());
+        pipe.setStatus(status);
+        */
+        return pipe;
+    }
 
     //========================================================================
     //========================================================================

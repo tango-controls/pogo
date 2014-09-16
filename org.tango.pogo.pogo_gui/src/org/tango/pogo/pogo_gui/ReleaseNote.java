@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Jun 18 08:58:12 CEST 2014)</Center><Br>\n" + 
+		"	(Generated Mon Sep 15 12:52:08 CEST 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-8.4.8 - 29/08/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix bugs on adding state and property type display.<Br>\n" + 
 		"<li><b>Pogo-8.4.7 - 18/06/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix a problem in linuxMakefile for additional files.<Br>\n" + 
 		"<li><b>Pogo-8.4.6 - 12/06/2014:</b><Br>\n" + 

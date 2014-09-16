@@ -249,6 +249,13 @@ public class PogoDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case PogoDslPackage.PIPE:
+      {
+        Pipe pipe = (Pipe)theEObject;
+        T result = casePipe(pipe);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case PogoDslPackage.TYPE:
       {
         Type type = (Type)theEObject;
@@ -957,6 +964,22 @@ public class PogoDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOverlodedPollPeriodObject(OverlodedPollPeriodObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pipe</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pipe</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePipe(Pipe object)
   {
     return null;
   }

@@ -38,6 +38,7 @@ import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
+import fr.esrf.tango.pogo.pogoDsl.Pipe;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
@@ -325,6 +326,12 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 			case PogoDslPackage.OVERLODED_POLL_PERIOD_OBJECT:
 				if(context == grammarAccess.getOverlodedPollPeriodObjectRule()) {
 					sequence_OverlodedPollPeriodObject(context, (OverlodedPollPeriodObject) semanticObject); 
+					return; 
+				}
+				else break;
+			case PogoDslPackage.PIPE:
+				if(context == grammarAccess.getPipeRule()) {
+					sequence_Pipe(context, (Pipe) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1082,6 +1089,23 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 	/**
 	 * Constraint:
 	 *     (
+	 *         name=STRING 
+	 *         description=STRING 
+	 *         label=STRING 
+	 *         rwType=RW_PipeType 
+	 *         displayLevel=DisplayLevel 
+	 *         readExcludedStates+=STRING* 
+	 *         writeExcludedStates+=STRING*
+	 *     )
+	 */
+	protected void sequence_Pipe(EObject context, Pipe semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
 	 *         name=ID 
 	 *         isAbstract?='abstract'? 
 	 *         baseClass=[PogoDeviceClass|ID]? 
@@ -1095,6 +1119,7 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 	 *         attributes+=Attribute* 
 	 *         dynamicAttributes+=Attribute* 
 	 *         forwardedAttributes+=ForwardedAttribute* 
+	 *         pipes+=Pipe* 
 	 *         states+=State* 
 	 *         preferences=Preferences 
 	 *         additionalFiles+=AdditionalFile* 

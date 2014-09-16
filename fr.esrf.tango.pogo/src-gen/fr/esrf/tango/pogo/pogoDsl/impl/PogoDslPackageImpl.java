@@ -38,6 +38,7 @@ import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
+import fr.esrf.tango.pogo.pogoDsl.Pipe;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslFactory;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
@@ -255,6 +256,13 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass overlodedPollPeriodObjectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pipeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -956,7 +964,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_States()
+  public EReference getPogoDeviceClass_Pipes()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(13);
   }
@@ -966,7 +974,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_Preferences()
+  public EReference getPogoDeviceClass_States()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(14);
   }
@@ -976,7 +984,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_AdditionalFiles()
+  public EReference getPogoDeviceClass_Preferences()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(15);
   }
@@ -986,9 +994,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  public EReference getPogoDeviceClass_AdditionalFiles()
   {
     return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPogoDeviceClass_OverlodedPollPeriodObject()
+  {
+    return (EReference)pogoDeviceClassEClass.getEStructuralFeatures().get(17);
   }
 
   /**
@@ -2256,6 +2274,86 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getPipe()
+  {
+    return pipeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_Name()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_Description()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_Label()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_RwType()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_DisplayLevel()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_ReadExcludedStates()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPipe_WriteExcludedStates()
+  {
+    return (EAttribute)pipeEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getType()
   {
     return typeEClass;
@@ -2683,6 +2781,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__DYNAMIC_ATTRIBUTES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__FORWARDED_ATTRIBUTES);
+    createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__PIPES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__STATES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__PREFERENCES);
     createEReference(pogoDeviceClassEClass, POGO_DEVICE_CLASS__ADDITIONAL_FILES);
@@ -2833,6 +2932,15 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(overlodedPollPeriodObjectEClass, OVERLODED_POLL_PERIOD_OBJECT__NAME);
     createEAttribute(overlodedPollPeriodObjectEClass, OVERLODED_POLL_PERIOD_OBJECT__TYPE);
     createEAttribute(overlodedPollPeriodObjectEClass, OVERLODED_POLL_PERIOD_OBJECT__POLL_PERIOD);
+
+    pipeEClass = createEClass(PIPE);
+    createEAttribute(pipeEClass, PIPE__NAME);
+    createEAttribute(pipeEClass, PIPE__DESCRIPTION);
+    createEAttribute(pipeEClass, PIPE__LABEL);
+    createEAttribute(pipeEClass, PIPE__RW_TYPE);
+    createEAttribute(pipeEClass, PIPE__DISPLAY_LEVEL);
+    createEAttribute(pipeEClass, PIPE__READ_EXCLUDED_STATES);
+    createEAttribute(pipeEClass, PIPE__WRITE_EXCLUDED_STATES);
 
     typeEClass = createEClass(TYPE);
 
@@ -3025,6 +3133,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getPogoDeviceClass_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_DynamicAttributes(), this.getAttribute(), null, "dynamicAttributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_ForwardedAttributes(), this.getForwardedAttribute(), null, "forwardedAttributes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPogoDeviceClass_Pipes(), this.getPipe(), null, "pipes", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_States(), this.getState(), null, "states", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_Preferences(), this.getPreferences(), null, "preferences", null, 0, 1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoDeviceClass_AdditionalFiles(), this.getAdditionalFile(), null, "additionalFiles", null, 0, -1, PogoDeviceClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3175,6 +3284,15 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getOverlodedPollPeriodObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, OverlodedPollPeriodObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOverlodedPollPeriodObject_Type(), ecorePackage.getEString(), "type", null, 0, 1, OverlodedPollPeriodObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOverlodedPollPeriodObject_PollPeriod(), ecorePackage.getEString(), "pollPeriod", null, 0, 1, OverlodedPollPeriodObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(pipeEClass, Pipe.class, "Pipe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPipe_Name(), ecorePackage.getEString(), "name", null, 0, 1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPipe_Description(), ecorePackage.getEString(), "description", null, 0, 1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPipe_Label(), ecorePackage.getEString(), "label", null, 0, 1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPipe_RwType(), ecorePackage.getEString(), "rwType", null, 0, 1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPipe_DisplayLevel(), ecorePackage.getEString(), "displayLevel", null, 0, 1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPipe_ReadExcludedStates(), ecorePackage.getEString(), "readExcludedStates", null, 0, -1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPipe_WriteExcludedStates(), ecorePackage.getEString(), "writeExcludedStates", null, 0, -1, Pipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

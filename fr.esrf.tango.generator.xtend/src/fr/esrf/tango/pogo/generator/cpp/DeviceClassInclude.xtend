@@ -42,11 +42,12 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.generator.cpp.utils.ProtectedArea
 import fr.esrf.tango.pogo.generator.cpp.utils.Properties
 import fr.esrf.tango.pogo.generator.cpp.utils.Attributes
+import fr.esrf.tango.pogo.generator.cpp.utils.Pipes
 import fr.esrf.tango.pogo.generator.cpp.utils.Commands
 import fr.esrf.tango.pogo.generator.cpp.utils.Headers
 import fr.esrf.tango.pogo.generator.cpp.utils.InheritanceUtils
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
-
+import fr.esrf.tango.pogo.pogoDsl.Pipe
 
 //======================================================
 //	Define deviceClass include file to be generated
@@ -57,6 +58,7 @@ class DeviceClassInclude {
 	@Inject	extension Headers
 	@Inject	extension Commands
 	@Inject	extension Attributes
+	@Inject	extension Pipes
 	@Inject	extension Properties
 	@Inject	extension InheritanceUtils
 	
@@ -90,6 +92,13 @@ class DeviceClassInclude {
 			//	Define classes for forwarded attributes
 			//=========================================
 			«cls.forwardedAttributeClasses»
+		«ENDIF»
+		«IF cls.pipes.size>0»
+
+			//=========================================
+			//	Define classes for pipes
+			//=========================================
+			«cls.pipeClasses»
 		«ENDIF»
 		«IF cls.commands.size>2»
 			
@@ -174,6 +183,15 @@ class DeviceClassInclude {
 	'''
 	
 	//======================================================
+	//	Define pipe Classes 
+	//======================================================
+	def pipeClasses(PogoDeviceClass cls) '''
+		«FOR Pipe pipe : cls.pipes»
+			«pipe.pipeClass(cls.getName)»
+		«ENDFOR»
+	'''
+	
+	//======================================================
 	//	Define command Classes 
 	//======================================================
 	def commandClasses(PogoDeviceClass cls) '''
@@ -221,6 +239,7 @@ class DeviceClassInclude {
 			static «cls.name»Class *_instance;
 			void command_factory();
 			void attribute_factory(vector<Tango::Attr *> &);
+			void pipe_factory();
 			void write_class_property();
 			void set_default_property();
 			void get_class_property();

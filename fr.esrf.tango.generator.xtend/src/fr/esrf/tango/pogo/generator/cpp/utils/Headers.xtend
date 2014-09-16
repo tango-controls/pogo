@@ -38,6 +38,7 @@ package fr.esrf.tango.pogo.generator.cpp.utils
 
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import fr.esrf.tango.pogo.pogoDsl.Attribute
+import fr.esrf.tango.pogo.pogoDsl.Pipe
 import fr.esrf.tango.pogo.pogoDsl.Command
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils.*
@@ -246,6 +247,18 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		" *\n" +
 		" *	Data type:	" + attr.dataType.cppType + attr.manageEnumForMethodHeader + "\n" +
 		" *	Attr type:	" + attr.attType + attr.attTypeDimentions + "\n" + 
+		" */\n"	+
+		"//--------------------------------------------------------\n"
+	}	
+
+	//======================================================
+	//	Read pipe method header
+	//======================================================
+	def pipeMethodHeader(Pipe pipe, String rw) {
+		"//--------------------------------------------------------\n" +
+		"/**\n" +
+		" *	" + rw +" pipe " + pipe.name + " related method\n" +
+		" *	Description: " + pipe.description.comments(" *               ") + "\n" +
 		" */\n"	+
 		"//--------------------------------------------------------\n"
 	}	

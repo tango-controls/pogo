@@ -49,6 +49,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/dynamicAttributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/forwardedAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/pipes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/states"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/preferences"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoDeviceClass/additionalFiles"/>
@@ -196,6 +197,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OverlodedPollPeriodObject/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OverlodedPollPeriodObject/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//OverlodedPollPeriodObject/pollPeriod"/>
+    </genClasses>
+    <genClasses ecoreClass="PogoDsl.ecore#//Pipe">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/rwType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/displayLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/readExcludedStates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//Pipe/writeExcludedStates"/>
     </genClasses>
     <genClasses ecoreClass="PogoDsl.ecore#//Type"/>
     <genClasses ecoreClass="PogoDsl.ecore#//VoidType"/>
