@@ -292,9 +292,7 @@ public class PipeDialog extends JDialog {
 	//===============================================================
 	//===============================================================
     public Pipe getPipe() {
-        if (pipe==null) {
-            pipe = OAWutils.factory.createPipe();
-        }
+        pipe = OAWutils.factory.createPipe();
         pipe.setName(nameText.getText().trim());
         pipe.setLabel(labelText.getText().trim());
         pipe.setDescription(descriptionText.getText().trim());

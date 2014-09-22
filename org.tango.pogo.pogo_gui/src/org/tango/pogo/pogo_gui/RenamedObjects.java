@@ -44,13 +44,14 @@ package org.tango.pogo.pogo_gui;
 
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.Pipe;
 import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoParser;
 
 import java.util.ArrayList;
 
 
-public class RenamedObjects extends ArrayList<Object> {
+public class RenamedObjects {
     //===============================================================
     //===============================================================
     private class OneRenamed {
@@ -77,6 +78,7 @@ public class RenamedObjects extends ArrayList<Object> {
         }
     }
 
+    private ArrayList<OneRenamed>   renamedList = new ArrayList<OneRenamed>();
     //===============================================================
     //===============================================================
     public RenamedObjects() {
@@ -86,8 +88,7 @@ public class RenamedObjects extends ArrayList<Object> {
     //===============================================================
     public void add(Object old_, Object new_) {
         //	Check if already exists (old name is a new name of already renamed)
-        for (Object obj : this) {
-            OneRenamed renamed = (OneRenamed) obj;
+        for (OneRenamed renamed : renamedList) {
             if (new_ instanceof Command && renamed.new_ instanceof Command) {
                 Command cmd1 = (Command) old_;
                 Command cmd2 = (Command) renamed.new_;
@@ -104,10 +105,18 @@ public class RenamedObjects extends ArrayList<Object> {
                     renamed.new_ = new_;
                     return;
                 }
+            } else if (new_ instanceof Pipe && renamed.new_ instanceof Pipe) {
+                Pipe pipe1 = (Pipe) old_;
+                Pipe pipe2 = (Pipe) renamed.new_;
+                if (pipe1.getName().equals(pipe2.getName())) {
+                    //	Found -> replace
+                    renamed.new_ = new_;
+                    return;
+                }
             }
         }
         //	Not found --> Add new object
-        add(new OneRenamed(old_, new_));
+        renamedList.add(new OneRenamed(old_, new_));
     }
     //===============================================================
     /**
@@ -132,8 +141,7 @@ public class RenamedObjects extends ArrayList<Object> {
 
         try {
             PogoParser parser = new PogoParser(filename);
-            for (Object obj : this) {
-                OneRenamed renamed = (OneRenamed) obj;
+            for (OneRenamed renamed : renamedList) {
                 String key = className + separator;
                 if (renamed.old_ instanceof Command) {
                     Command cmd = (Command) renamed.old_;
@@ -168,6 +176,23 @@ public class RenamedObjects extends ArrayList<Object> {
                             renamed.writeCode = parser.getProtectedCode(key + "set" + att.getName());
                             break;
                     }
+                } else
+                if (renamed.old_ instanceof Pipe) {
+                    Pipe pipe = (Pipe) renamed.old_;
+                    switch (lang) {
+                        case PogoConst.Cpp:
+                            renamed.code = parser.getProtectedCode(key + "read_" + pipe.getName());
+                            renamed.writeCode = parser.getProtectedCode(key + "write_" + pipe.getName());
+                            break;
+                        case PogoConst.Python:
+                            renamed.code = parser.getProtectedCode(key + pipe.getName() + "_read");
+                            renamed.writeCode = parser.getProtectedCode(key + pipe.getName() + "_write");
+                            break;
+                        case PogoConst.Java:
+                            renamed.code = parser.getProtectedCode(key + "get" + pipe.getName());
+                            renamed.writeCode = parser.getProtectedCode(key + "set" + pipe.getName());
+                            break;
+                    }
                 }
             }
         } catch (PogoException e) {
@@ -198,8 +223,7 @@ public class RenamedObjects extends ArrayList<Object> {
 
         PogoParser parser = new PogoParser(filename);
         boolean modified = false;
-        for (Object obj : this) {
-            OneRenamed renamed = (OneRenamed) obj;
+        for (OneRenamed renamed : renamedList) {
 
             //	Check if there is something to insert
             if (renamed.code != null &&
@@ -248,13 +272,48 @@ public class RenamedObjects extends ArrayList<Object> {
                                         "set" + att.getName(), renamed.writeCode, separator);
                             break;
                     }
+                } else if (renamed.new_ instanceof Pipe) {
+                    Pipe pipe = (Pipe) renamed.new_;
+                    switch (lang) {
+                        case PogoConst.Cpp:
+                            parser.replaceInProtectedZone(className,
+                                "read_" + pipe.getName(), renamed.code, separator);
+                            if (renamed.writeCode!=null)
+                                parser.replaceInProtectedZone(className,
+                                    "write_" + pipe.getName(), renamed.writeCode, separator);
+                            break;
+                        case PogoConst.Python:
+                            parser.replaceInProtectedZone(className,
+                                pipe.getName() + "_read", renamed.code, separator);
+                            if (renamed.writeCode!=null)
+                                parser.replaceInProtectedZone(className,
+                                        pipe.getName() + "_write", renamed.writeCode, separator);
+                            break;
+                        case PogoConst.Java:
+                            parser.replaceInProtectedZone(className,
+                                "get" + pipe.getName(), renamed.code, separator);
+                            if (renamed.writeCode!=null)
+                                parser.replaceInProtectedZone(className,
+                                        "set" + pipe.getName(), renamed.writeCode, separator);
+                            break;
+                    }
                 }
                 modified = true;
             }
         }
         if (modified)
             parser.write();
-        clear();
+        renamedList.clear();
+    }
+    //===============================================================
+    //===============================================================
+    public int size() {
+        return renamedList.size();
+    }
+    //===============================================================
+    //===============================================================
+    public void clear() {
+        renamedList.clear();
     }
     //===============================================================
     //===============================================================

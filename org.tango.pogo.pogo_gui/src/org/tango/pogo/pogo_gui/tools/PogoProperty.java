@@ -248,7 +248,7 @@ public class PogoProperty {
         //	Get file URL and load it
         java.net.URL url =
                 getClass().getResource(filename);
-        //System.out.println("URL file="+url.getFile());
+        System.out.println("Reading properties from " + url.getFile());
         if (url == null) {
             throw new PogoException("URL for property file (" + filename + ") is null !");
         }
