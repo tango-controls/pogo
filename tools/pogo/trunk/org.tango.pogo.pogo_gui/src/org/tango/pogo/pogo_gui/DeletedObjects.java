@@ -44,13 +44,14 @@ package org.tango.pogo.pogo_gui;
 
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Command;
+import fr.esrf.tango.pogo.pogoDsl.Pipe;
 import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoParser;
 
 import java.util.ArrayList;
 
 
-public class DeletedObjects extends ArrayList<Object> {
+public class DeletedObjects  {
 
     //===============================================================
     //===============================================================
@@ -73,7 +74,7 @@ public class DeletedObjects extends ArrayList<Object> {
                 return old_.toString();
         }
     }
-
+    private ArrayList<OneDeleted>  deletedList = new ArrayList<OneDeleted>();
     //===============================================================
     //===============================================================
     public DeletedObjects() {
@@ -82,7 +83,7 @@ public class DeletedObjects extends ArrayList<Object> {
     //===============================================================
     //===============================================================
     public boolean add(Object old_) {
-        return super.add(new OneDeleted(old_));
+        return deletedList.add(new OneDeleted(old_));
     }
     //===============================================================
     /**
@@ -102,8 +103,7 @@ public class DeletedObjects extends ArrayList<Object> {
         }
         try {
             PogoParser parser = new PogoParser(filename);
-            for (Object obj : this) {
-                OneDeleted renamed = (OneDeleted) obj;
+            for (OneDeleted renamed : deletedList) {
                 if (renamed.old_ instanceof Command) {
                     Command cmd = (Command) renamed.old_;
                     switch (lang) {
@@ -140,6 +140,26 @@ public class DeletedObjects extends ArrayList<Object> {
                                 //  Do nothing (Cannot parse the end of method.
                                 break;
                         }
+                } else if (renamed.old_ instanceof Pipe) {
+                    Pipe pipe = (Pipe) renamed.old_;
+                        switch (lang) {
+                            case PogoConst.Cpp:
+                                String comment = "Read pipe " + pipe.getName() + " related ";
+                                renamed.code = parser.getDeletedObjectsCode(comment);
+                                comment = "Write pipe " + pipe.getName() + " related ";
+                                renamed.writeCode = parser.getDeletedObjectsCode(comment);
+                                break;
+                            case PogoConst.Java:
+                                 comment = "Read pipe " + pipe.getName();
+                                renamed.code = parser.getDeletedObjectsCode(comment);
+                                comment = "Write pipe " + pipe.getName();
+                                renamed.writeCode = parser.getDeletedObjectsCode(comment);
+                                break;
+                            default:
+                            //case PogoConst.Python:
+                                //  Do nothing (Cannot parse the end of method.
+                                break;
+                        }
                 }
             }
         } catch (PogoException e) {
@@ -156,9 +176,7 @@ public class DeletedObjects extends ArrayList<Object> {
     //===============================================================
     void insertCode(String filename) throws PogoException {
         StringBuilder sb = new StringBuilder();
-        for (Object obj : this) {
-            OneDeleted deleted = (OneDeleted) obj;
-
+        for (OneDeleted deleted : deletedList) {
             //	Check if there is something to insert
             if (deleted.code != null &&
                     deleted.code.trim().length() > 0)
@@ -172,7 +190,17 @@ public class DeletedObjects extends ArrayList<Object> {
             parser.insertDeletedObjectsCode(sb.toString());
             parser.write();
         }
-        clear();
+        deletedList.clear();
+    }
+    //===============================================================
+    //===============================================================
+    public int size() {
+        return deletedList.size();
+    }
+    //===============================================================
+    //===============================================================
+    public void clear() {
+        deletedList.clear();
     }
     //===============================================================
     //===============================================================

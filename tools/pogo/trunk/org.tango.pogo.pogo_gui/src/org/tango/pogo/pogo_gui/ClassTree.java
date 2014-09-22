@@ -418,6 +418,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         if (selection instanceof PogoAttribute)
             return ((PogoAttribute) selection).value;
+        if (selection instanceof PogoPipe)
+            return ((PogoPipe) selection).value;
         if (selection instanceof PogoState)
             return ((PogoState) selection).value;
         return null;
@@ -595,6 +597,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 int idx = Utils.getPipeIndex(pipes, pipe);
                 if (idx >= 0)
                     pipes.remove(idx);
+                deleted_objects.add(pipe);
             }
             else if (selection instanceof PogoState) {
                 State state = ((PogoState) selection).value;
@@ -953,27 +956,27 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 return JOptionPane.CANCEL_OPTION;
         }
         else if (obj instanceof PogoCommand) {
-            Command cmd = ((PogoCommand) obj).value;
-            String name = cmd.getName();
-            CommandDialog dlg = new CommandDialog(parent, cmd);
+            Command command = ((PogoCommand) obj).value;
+            String name = command.getName();
+            CommandDialog dlg = new CommandDialog(parent, command);
             if (dlg.showDialog() == JOptionPane.OK_OPTION) {
                 EList<Command> commands = pogo_class.getCommands();
-                int idx = Utils.getCommandIndex(commands, cmd);
-                Command new_cmd = dlg.getCommand();
+                int idx = Utils.getCommandIndex(commands, command);
+                Command newCommand = dlg.getCommand();
                 if (idx >= 0) {    //	Exists
                     commands.remove(idx);
-                    commands.add(idx, new_cmd);
+                    commands.add(idx, newCommand);
                 } else
-                    commands.add(new_cmd);  //  else add at end
+                    commands.add(newCommand);  //  else add at end
 
-                getSelectedNode().setUserObject(new PogoCommand(new_cmd));
+                getSelectedNode().setUserObject(new PogoCommand(newCommand));
                 setModified(true);
-                new_cmd.getStatus().setHasChanged("false");
+                newCommand.getStatus().setHasChanged("false");
 
                 //	Check if name has changed
-                String new_name = new_cmd.getName();
-                if (!name.equals(new_name))
-                    renamed_objects.add(cmd, new_cmd);
+                String newName = newCommand.getName();
+                if (!name.equals(newName))
+                    renamed_objects.add(command, newCommand);
             } else
                 return JOptionPane.CANCEL_OPTION;
         }
@@ -983,17 +986,17 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             AttributeDialog dlg = new AttributeDialog(parent, attribute);
             String attTypeOrg = attribute.getAttType();
             if (dlg.showDialog() == JOptionPane.OK_OPTION) {
-                Attribute new_attribute = dlg.getAttribute();
-                String attType = new_attribute.getAttType();
+                Attribute newAttribute = dlg.getAttribute();
+                String attType = newAttribute.getAttType();
                 if (attType.equals(attTypeOrg))    //	Type has not changed
-                    ((PogoAttribute) obj).value = new_attribute;
+                    ((PogoAttribute) obj).value = newAttribute;
                 else {
                     //	Remove old one
                     DefaultMutableTreeNode node = getSelectedNode();
                     treeModel.removeNodeFromParent(node);
 
                     //	Create a new node in another collection
-                    PogoAttribute pa = new PogoAttribute(new_attribute);
+                    PogoAttribute pa = new PogoAttribute(newAttribute);
                     node = new DefaultMutableTreeNode(pa);
                     DefaultMutableTreeNode collecNode;
                     if (attType.equals("Scalar"))
@@ -1008,12 +1011,12 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     treeModel.insertNodeInto(node, collecNode, collecNode.getChildCount());
                 }
                 setModified(true);
-                new_attribute.getStatus().setHasChanged("false");
+                newAttribute.getStatus().setHasChanged("false");
 
                 //	Check if name has changed
-                String new_name = new_attribute.getName();
-                if (!name.equals(new_name))
-                    renamed_objects.add(attribute, new_attribute);
+                String newName = newAttribute.getName();
+                if (!name.equals(newName))
+                    renamed_objects.add(attribute, newAttribute);
             }
             else
                 return JOptionPane.CANCEL_OPTION;
@@ -1021,17 +1024,22 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         else if (obj instanceof PogoPipe) {
             Pipe pipe = ((PogoPipe) obj).value;
             PipeDialog dialog = new PipeDialog(parent, pipe);
+            String name = pipe.getName();
             if (dialog.showDialog() == JOptionPane.OK_OPTION) {
                 EList<Pipe> pipes = pogo_class.getPipes();
                 int idx = Utils.getPipeIndex(pipes, pipe);
-                pipe = dialog.getPipe();
+                Pipe newPipe = dialog.getPipe();
                 if (idx >= 0) {
                     pipes.remove(idx);
-                    pipes.add(idx, pipe);
+                    pipes.add(idx, newPipe);
                 } else
-                    pipes.add(pipe);
-                getSelectedNode().setUserObject(new PogoPipe(pipe));
+                    pipes.add(newPipe);
+                getSelectedNode().setUserObject(new PogoPipe(newPipe));
                 setModified(true);
+                //	Check if name has changed
+                String newName = newPipe.getName();
+                if (!name.equals(newName))
+                    renamed_objects.add(pipe, newPipe);
             } else
                 return JOptionPane.CANCEL_OPTION;
         }
