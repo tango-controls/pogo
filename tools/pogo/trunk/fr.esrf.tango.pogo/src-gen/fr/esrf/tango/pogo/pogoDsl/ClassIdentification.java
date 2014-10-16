@@ -2,6 +2,8 @@
  */
 package fr.esrf.tango.pogo.pogoDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getBus <em>Bus</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getManufacturer <em>Manufacturer</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getReference <em>Reference</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getKeyWords <em>Key Words</em>}</li>
  * </ul>
  * </p>
  *
@@ -263,5 +266,21 @@ public interface ClassIdentification extends EObject
    * @generated
    */
   void setReference(String value);
+
+  /**
+   * Returns the value of the '<em><b>Key Words</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Key Words</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Key Words</em>' attribute list.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getClassIdentification_KeyWords()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getKeyWords();
 
 } // ClassIdentification

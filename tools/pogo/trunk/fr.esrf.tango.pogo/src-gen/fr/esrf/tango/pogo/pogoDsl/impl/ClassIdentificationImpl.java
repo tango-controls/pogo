@@ -5,12 +5,18 @@ package fr.esrf.tango.pogo.pogoDsl.impl;
 import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getBus <em>Bus</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getManufacturer <em>Manufacturer</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassIdentificationImpl#getKeyWords <em>Key Words</em>}</li>
  * </ul>
  * </p>
  *
@@ -214,6 +221,16 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected String reference = REFERENCE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getKeyWords() <em>Key Words</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKeyWords()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> keyWords;
 
   /**
    * <!-- begin-user-doc -->
@@ -448,6 +465,20 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<String> getKeyWords()
+  {
+    if (keyWords == null)
+    {
+      keyWords = new EDataTypeEList<String>(String.class, this, PogoDslPackage.CLASS_IDENTIFICATION__KEY_WORDS);
+    }
+    return keyWords;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -471,6 +502,8 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
         return getManufacturer();
       case PogoDslPackage.CLASS_IDENTIFICATION__REFERENCE:
         return getReference();
+      case PogoDslPackage.CLASS_IDENTIFICATION__KEY_WORDS:
+        return getKeyWords();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -480,6 +513,7 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -511,6 +545,10 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
         return;
       case PogoDslPackage.CLASS_IDENTIFICATION__REFERENCE:
         setReference((String)newValue);
+        return;
+      case PogoDslPackage.CLASS_IDENTIFICATION__KEY_WORDS:
+        getKeyWords().clear();
+        getKeyWords().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -553,6 +591,9 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
       case PogoDslPackage.CLASS_IDENTIFICATION__REFERENCE:
         setReference(REFERENCE_EDEFAULT);
         return;
+      case PogoDslPackage.CLASS_IDENTIFICATION__KEY_WORDS:
+        getKeyWords().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -585,6 +626,8 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
         return MANUFACTURER_EDEFAULT == null ? manufacturer != null : !MANUFACTURER_EDEFAULT.equals(manufacturer);
       case PogoDslPackage.CLASS_IDENTIFICATION__REFERENCE:
         return REFERENCE_EDEFAULT == null ? reference != null : !REFERENCE_EDEFAULT.equals(reference);
+      case PogoDslPackage.CLASS_IDENTIFICATION__KEY_WORDS:
+        return keyWords != null && !keyWords.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -618,6 +661,8 @@ public class ClassIdentificationImpl extends MinimalEObjectImpl.Container implem
     result.append(manufacturer);
     result.append(", reference: ");
     result.append(reference);
+    result.append(", keyWords: ");
+    result.append(keyWords);
     result.append(')');
     return result.toString();
   }
