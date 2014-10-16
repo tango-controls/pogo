@@ -892,11 +892,13 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cManufacturerSTRINGTerminalRuleCall_7_0 = (RuleCall)cManufacturerAssignment_7.eContents().get(0);
 		private final Assignment cReferenceAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cReferenceSTRINGTerminalRuleCall_8_0 = (RuleCall)cReferenceAssignment_8.eContents().get(0);
+		private final Keyword cKeyWordsKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cKeyWordsAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cKeyWordsSTRINGTerminalRuleCall_10_0 = (RuleCall)cKeyWordsAssignment_10.eContents().get(0);
 		
 		////
 		////	Class identification
 		////
-		////	product reference if any 
 		//ClassIdentification:
 		//	contact= //	email address of the person in charge
 		//	STRING author= //	get from contact
@@ -905,8 +907,10 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	STRING siteSpecific= //	If specific for an institute, name of this institute
 		//	STRING platform= //	OS where it can run
 		//	STRING bus= //	Hardware bus to control.
-		//	STRING manufacturer= //	mannufacturer if any
-		//	STRING reference=STRING;
+		//	STRING manufacturer= //	manufacturer if any
+		//	STRING reference= //	product reference if any 
+		//	STRING //	List of key words
+		//	"keyWords:" keyWords+=STRING*;
 		public ParserRule getRule() { return rule; }
 
 		//contact= //	email address of the person in charge
@@ -916,8 +920,10 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING siteSpecific= //	If specific for an institute, name of this institute
 		//STRING platform= //	OS where it can run
 		//STRING bus= //	Hardware bus to control.
-		//STRING manufacturer= //	mannufacturer if any
-		//STRING reference=STRING
+		//STRING manufacturer= //	manufacturer if any
+		//STRING reference= //	product reference if any 
+		//STRING //	List of key words
+		//"keyWords:" keyWords+=STRING*
 		public Group getGroup() { return cGroup; }
 
 		//contact= //	email address of the person in charge
@@ -976,19 +982,31 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getBusSTRINGTerminalRuleCall_6_0() { return cBusSTRINGTerminalRuleCall_6_0; }
 
-		//manufacturer= //	mannufacturer if any
+		//manufacturer= //	manufacturer if any
 		//STRING
 		public Assignment getManufacturerAssignment_7() { return cManufacturerAssignment_7; }
 
-		////	mannufacturer if any
+		////	manufacturer if any
 		//STRING
 		public RuleCall getManufacturerSTRINGTerminalRuleCall_7_0() { return cManufacturerSTRINGTerminalRuleCall_7_0; }
 
-		//reference=STRING
+		//reference= //	product reference if any 
+		//STRING
 		public Assignment getReferenceAssignment_8() { return cReferenceAssignment_8; }
 
+		////	product reference if any 
 		//STRING
 		public RuleCall getReferenceSTRINGTerminalRuleCall_8_0() { return cReferenceSTRINGTerminalRuleCall_8_0; }
+
+		////	List of key words
+		//"keyWords:"
+		public Keyword getKeyWordsKeyword_9() { return cKeyWordsKeyword_9; }
+
+		//keyWords+=STRING*
+		public Assignment getKeyWordsAssignment_10() { return cKeyWordsAssignment_10; }
+
+		//STRING
+		public RuleCall getKeyWordsSTRINGTerminalRuleCall_10_0() { return cKeyWordsSTRINGTerminalRuleCall_10_0; }
 	}
 
 	public class CommentsElements extends AbstractParserRuleElementFinder {
@@ -1281,14 +1299,14 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		////	What has changed (dataType, attType, RWtype)
 		//InheritanceStatus:
 		//	abstract= //	is abstract or inherited from abstract
-		//	Boolean inherited= //	is hinerited
+		//	Boolean inherited= //	is inherited
 		//	Boolean concrete= //	is concrete or overloaded
 		//	Boolean concreteHere= //	is concrete or overloaded in this class
 		//	Boolean hasChanged=STRING;
 		public ParserRule getRule() { return rule; }
 
 		//abstract= //	is abstract or inherited from abstract
-		//Boolean inherited= //	is hinerited
+		//Boolean inherited= //	is inherited
 		//Boolean concrete= //	is concrete or overloaded
 		//Boolean concreteHere= //	is concrete or overloaded in this class
 		//Boolean hasChanged=STRING
@@ -1302,11 +1320,11 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Boolean
 		public RuleCall getAbstractBooleanParserRuleCall_0_0() { return cAbstractBooleanParserRuleCall_0_0; }
 
-		//inherited= //	is hinerited
+		//inherited= //	is inherited
 		//Boolean
 		public Assignment getInheritedAssignment_1() { return cInheritedAssignment_1; }
 
-		////	is hinerited
+		////	is inherited
 		//Boolean
 		public RuleCall getInheritedBooleanParserRuleCall_1_0() { return cInheritedBooleanParserRuleCall_1_0; }
 
@@ -3211,7 +3229,6 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////
 	////	Class identification
 	////
-	////	product reference if any 
 	//ClassIdentification:
 	//	contact= //	email address of the person in charge
 	//	STRING author= //	get from contact
@@ -3220,8 +3237,10 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	STRING siteSpecific= //	If specific for an institute, name of this institute
 	//	STRING platform= //	OS where it can run
 	//	STRING bus= //	Hardware bus to control.
-	//	STRING manufacturer= //	mannufacturer if any
-	//	STRING reference=STRING;
+	//	STRING manufacturer= //	manufacturer if any
+	//	STRING reference= //	product reference if any 
+	//	STRING //	List of key words
+	//	"keyWords:" keyWords+=STRING*;
 	public ClassIdentificationElements getClassIdentificationAccess() {
 		return (pClassIdentification != null) ? pClassIdentification : (pClassIdentification = new ClassIdentificationElements());
 	}
@@ -3319,7 +3338,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	What has changed (dataType, attType, RWtype)
 	//InheritanceStatus:
 	//	abstract= //	is abstract or inherited from abstract
-	//	Boolean inherited= //	is hinerited
+	//	Boolean inherited= //	is inherited
 	//	Boolean concrete= //	is concrete or overloaded
 	//	Boolean concreteHere= //	is concrete or overloaded in this class
 	//	Boolean hasChanged=STRING;

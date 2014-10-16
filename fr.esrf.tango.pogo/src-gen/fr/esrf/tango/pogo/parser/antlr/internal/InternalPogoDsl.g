@@ -1648,7 +1648,29 @@ ruleClassIdentification returns [EObject current=null]
 	    }
 
 )
-))
+)	otherlv_9='keyWords:' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getClassIdentificationAccess().getKeyWordsKeyword_9());
+    }
+(
+(
+		lv_keyWords_10_0=RULE_STRING
+		{
+			newLeafNode(lv_keyWords_10_0, grammarAccess.getClassIdentificationAccess().getKeyWordsSTRINGTerminalRuleCall_10_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassIdentificationRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"keyWords",
+        		lv_keyWords_10_0, 
+        		"STRING");
+	    }
+
+)
+)*)
 ;
 
 

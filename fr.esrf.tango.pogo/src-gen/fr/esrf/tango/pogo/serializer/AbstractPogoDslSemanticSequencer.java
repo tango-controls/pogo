@@ -693,42 +693,12 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 	 *         platform=STRING 
 	 *         bus=STRING 
 	 *         manufacturer=STRING 
-	 *         reference=STRING
+	 *         reference=STRING 
+	 *         keyWords+=STRING*
 	 *     )
 	 */
 	protected void sequence_ClassIdentification(EObject context, ClassIdentification semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__CONTACT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__CONTACT));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__AUTHOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__AUTHOR));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__EMAIL_DOMAIN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__EMAIL_DOMAIN));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__CLASS_FAMILY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__CLASS_FAMILY));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__SITE_SPECIFIC) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__SITE_SPECIFIC));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__PLATFORM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__PLATFORM));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__BUS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__BUS));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__MANUFACTURER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__MANUFACTURER));
-			if(transientValues.isValueTransient(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__REFERENCE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PogoDslPackage.Literals.CLASS_IDENTIFICATION__REFERENCE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getContactSTRINGTerminalRuleCall_0_0(), semanticObject.getContact());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getAuthorSTRINGTerminalRuleCall_1_0(), semanticObject.getAuthor());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getEmailDomainSTRINGTerminalRuleCall_2_0(), semanticObject.getEmailDomain());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getClassFamilySTRINGTerminalRuleCall_3_0(), semanticObject.getClassFamily());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getSiteSpecificSTRINGTerminalRuleCall_4_0(), semanticObject.getSiteSpecific());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getPlatformSTRINGTerminalRuleCall_5_0(), semanticObject.getPlatform());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getBusSTRINGTerminalRuleCall_6_0(), semanticObject.getBus());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getManufacturerSTRINGTerminalRuleCall_7_0(), semanticObject.getManufacturer());
-		feeder.accept(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_8_0(), semanticObject.getReference());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

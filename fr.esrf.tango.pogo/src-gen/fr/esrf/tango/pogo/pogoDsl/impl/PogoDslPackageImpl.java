@@ -1294,6 +1294,16 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getClassIdentification_KeyWords()
+  {
+    return (EAttribute)classIdentificationEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getComments()
   {
     return commentsEClass;
@@ -2817,6 +2827,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__BUS);
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__MANUFACTURER);
     createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__REFERENCE);
+    createEAttribute(classIdentificationEClass, CLASS_IDENTIFICATION__KEY_WORDS);
 
     commentsEClass = createEClass(COMMENTS);
     createEAttribute(commentsEClass, COMMENTS__COMMANDS_TABLE);
@@ -3169,6 +3180,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getClassIdentification_Bus(), ecorePackage.getEString(), "bus", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassIdentification_Manufacturer(), ecorePackage.getEString(), "manufacturer", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassIdentification_Reference(), ecorePackage.getEString(), "reference", null, 0, 1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getClassIdentification_KeyWords(), ecorePackage.getEString(), "keyWords", null, 0, -1, ClassIdentification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commentsEClass, Comments.class, "Comments", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getComments_CommandsTable(), ecorePackage.getEString(), "commandsTable", null, 0, 1, Comments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

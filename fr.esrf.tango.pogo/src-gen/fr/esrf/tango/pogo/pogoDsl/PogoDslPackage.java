@@ -767,13 +767,22 @@ public interface PogoDslPackage extends EPackage
   int CLASS_IDENTIFICATION__REFERENCE = 8;
 
   /**
+   * The feature id for the '<em><b>Key Words</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_IDENTIFICATION__KEY_WORDS = 9;
+
+  /**
    * The number of structural features of the '<em>Class Identification</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_IDENTIFICATION_FEATURE_COUNT = 9;
+  int CLASS_IDENTIFICATION_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.CommentsImpl <em>Comments</em>}' class.
@@ -3368,6 +3377,17 @@ public interface PogoDslPackage extends EPackage
   EAttribute getClassIdentification_Reference();
 
   /**
+   * Returns the meta object for the attribute list '{@link fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getKeyWords <em>Key Words</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Key Words</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassIdentification#getKeyWords()
+   * @see #getClassIdentification()
+   * @generated
+   */
+  EAttribute getClassIdentification_KeyWords();
+
+  /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.Comments <em>Comments</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5481,6 +5501,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute CLASS_IDENTIFICATION__REFERENCE = eINSTANCE.getClassIdentification_Reference();
+
+    /**
+     * The meta object literal for the '<em><b>Key Words</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_IDENTIFICATION__KEY_WORDS = eINSTANCE.getClassIdentification_KeyWords();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.CommentsImpl <em>Comments</em>}' class.
