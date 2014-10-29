@@ -57,7 +57,7 @@ import java.util.StringTokenizer;
 public class ClassDialog extends JDialog {
 
     private static int returnStatus;
-    private DeviceClass devclass;
+    private DeviceClass deviceClass;
     private String origClassName = null;
     private InheritancePanel inheritancePanel;
     private JRadioButton[] langBtn;
@@ -77,7 +77,6 @@ public class ClassDialog extends JDialog {
     private ClassTree classTree;
 
     //===================================================================
-
     /**
      * Initializes the ClassDialog object
      *
@@ -91,16 +90,19 @@ public class ClassDialog extends JDialog {
         super(parent, true);
         this.classTree = classTree;
         initComponents();
-        langBtn = new JRadioButton[3];
+        langBtn = new JRadioButton[4];
         langBtn[PogoConst.Cpp] = cppBtn;
         langBtn[PogoConst.Java] = javaBtn;
         langBtn[PogoConst.Python] = pythonBtn;
+        langBtn[PogoConst.PythonHL] = pythonHLBtn;
+        String  s = System.getenv("PythonHL");
+        pythonHLBtn.setVisible(s!=null && s.equals("true"));
 
         if (deviceClass == null)   //  Creating a new class
-            this.devclass = new DeviceClass("", null);
+            this.deviceClass = new DeviceClass("", null);
         else {
             //	Edit the specified class
-            this.devclass = deviceClass;
+            this.deviceClass = deviceClass;
             origClassName = deviceClass.getPogoDeviceClass().getName();
             //  remove the add inheritance class button
             addInheritanceBtn.setVisible(false);
@@ -110,7 +112,7 @@ public class ClassDialog extends JDialog {
         }
 
         //	Fill fields with data if any
-        PogoDeviceClass pogo_class = devclass.getPogoDeviceClass();
+        PogoDeviceClass pogo_class = this.deviceClass.getPogoDeviceClass();
         nameText.setText(pogo_class.getName());
         descText.setText(pogo_class.getDescription().getDescription());
         descText.setToolTipText(Utils.buildToolTip("Class Description",
@@ -123,9 +125,9 @@ public class ClassDialog extends JDialog {
         horizontalPanel.setLeftComponent(IDdialog.getCenterPanel());
 
         //	Build a panel to display inheritance
-        if (devclass.getPogoDeviceClass().getName().length() == 0)
-            devclass.getPogoDeviceClass().setName("New Tango Class");
-        inheritancePanel = new InheritancePanel(devclass);
+        if (this.deviceClass.getPogoDeviceClass().getName().length() == 0)
+            this.deviceClass.getPogoDeviceClass().setName("New Tango Class");
+        inheritancePanel = new InheritancePanel(this.deviceClass);
         inheritanceScrollPane.setViewportView(inheritancePanel);
 
         if (isInheritedClass)
@@ -196,6 +198,7 @@ public class ClassDialog extends JDialog {
         cppBtn = new javax.swing.JRadioButton();
         javaBtn = new javax.swing.JRadioButton();
         pythonBtn = new javax.swing.JRadioButton();
+        pythonHLBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel licenseLbl = new javax.swing.JLabel();
         licenseComboBox = new javax.swing.JComboBox();
         inheritanceScrollPane = new javax.swing.JScrollPane();
@@ -292,7 +295,6 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 0);
         centerPanel.add(descLbl, gridBagConstraints);
 
-        descScrollPane.setForeground(java.awt.Color.lightGray);
         descScrollPane.setPreferredSize(new java.awt.Dimension(500, 250));
 
         descText.setColumns(80);
@@ -346,6 +348,15 @@ public class ClassDialog extends JDialog {
         });
         languagePanel.add(pythonBtn);
 
+        pythonHLBtn.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        pythonHLBtn.setText("PythonHL");
+        pythonHLBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                languageActionPerformed(evt);
+            }
+        });
+        languagePanel.add(pythonHLBtn);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -373,7 +384,6 @@ public class ClassDialog extends JDialog {
 
         getContentPane().add(horizontalPanel, java.awt.BorderLayout.CENTER);
 
-        inheritanceScrollPane.setForeground(java.awt.Color.lightGray);
         inheritanceScrollPane.setPreferredSize(new java.awt.Dimension(230, 250));
         getContentPane().add(inheritanceScrollPane, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
@@ -405,7 +415,7 @@ public class ClassDialog extends JDialog {
             return true;
         if (origClassName == null)    //  it is a new one
             return true;
-        if (devclass.getPogoDeviceClass().getDescription().getSourcePath() == null)
+        if (deviceClass.getPogoDeviceClass().getDescription().getSourcePath() == null)
             return true;    //  Not already saved
         if (className.equals(origClassName))    //   no change
             return true;
@@ -510,23 +520,18 @@ public class ClassDialog extends JDialog {
             btn.setSelected(true);
 
         //  Check if inheritance -> cannot have another language.
-        if (devclass.getAncestors().size() > 0) {
+        if (deviceClass.getAncestors().size() > 0) {
             btn.setSelected(false);
             JOptionPane.showMessageDialog(this,
-                    devclass.getPogoDeviceClass().getName() + " inherits  for " +
-                            devclass.getAncestors().get(0).getPogoDeviceClass().getName() +
+                    deviceClass.getPogoDeviceClass().getName() + " inherits  for " +
+                            deviceClass.getAncestors().get(0).getPogoDeviceClass().getName() +
                             ".\n It must be generated in same language !",
                     "Error Window",
                     JOptionPane.ERROR_MESSAGE);
-        } else
+        } else {
             //	Check the language
-            if (btn == cppBtn) {
-                setLanguage(btn.getText());
-            } else if (btn == javaBtn) {
-                setLanguage(btn.getText());
-            } else if (btn == pythonBtn) {
-                setLanguage(btn.getText());
-            }
+            setLanguage(btn.getText());
+        }
     }//GEN-LAST:event_languageActionPerformed
 
     //===================================================================
@@ -559,7 +564,7 @@ public class ClassDialog extends JDialog {
                     try {
                         //	Try to load class
                         DeviceClass dc = new DeviceClass(file.getAbsolutePath());
-                        devclass.addAncestor(dc);
+                        deviceClass.addAncestor(dc);
 
                         //	Then Remove old inheritance panel
                         inheritanceScrollPane.remove(inheritancePanel);
@@ -567,10 +572,10 @@ public class ClassDialog extends JDialog {
                         //  Check if Class name has been typed
                         String name = nameText.getText();
                         if (name.length() > 0)
-                            devclass.getPogoDeviceClass().setName(name);
+                            deviceClass.getPogoDeviceClass().setName(name);
 
                         //  Then build a new panel and display
-                        inheritancePanel = new InheritancePanel(devclass);
+                        inheritancePanel = new InheritancePanel(deviceClass);
                         inheritanceScrollPane.setViewportView(inheritancePanel);
                         addInheritanceBtn.setVisible(false);
                         
@@ -619,19 +624,21 @@ public class ClassDialog extends JDialog {
     //===========================================================
     //===========================================================
     DeviceClass getInputs() {
-        PogoDeviceClass pogo_class = devclass.getPogoDeviceClass();
+        PogoDeviceClass pogo_class = deviceClass.getPogoDeviceClass();
         pogo_class.setName(nameText.getText());
         pogo_class.getDescription().setTitle(projectText.getText());
         pogo_class.getDescription().setDescription(descText.getText());
         pogo_class.getDescription().setIdentification(IDdialog.getInputs());
         pogo_class.getDescription().setLicense(licenseComboBox.getSelectedItem().toString());
-        if (pythonBtn.getSelectedObjects() != null)
+        if (pythonHLBtn.getSelectedObjects() != null)
+            pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.PythonHL]);
+        else if (pythonBtn.getSelectedObjects() != null)
             pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Python]);
         else if (javaBtn.getSelectedObjects() != null)
             pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Java]);
         else
             pogo_class.getDescription().setLanguage(PogoConst.strLang[PogoConst.Cpp]);
-        return devclass;
+        return deviceClass;
     }
     //===========================================================
 
@@ -692,5 +699,6 @@ public class ClassDialog extends JDialog {
     private javax.swing.JTextField nameText;
     private javax.swing.JTextField projectText;
     private javax.swing.JRadioButton pythonBtn;
+    private javax.swing.JRadioButton pythonHLBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -182,7 +182,7 @@ class DeviceInclude  {
 			«cls.name»(Tango::DeviceClass *cl,const char *s,const char *d);
 			/**
 			 * The device object destructor.
-			 */	
+			 */
 			~«cls.name»() {delete_device();};
 
 

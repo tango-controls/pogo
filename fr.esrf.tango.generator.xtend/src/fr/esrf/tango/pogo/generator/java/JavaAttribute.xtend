@@ -40,6 +40,7 @@ import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
+import java.util.jar.Attributes
 
 class JavaAttribute {
 
@@ -51,12 +52,19 @@ class JavaAttribute {
 	//======================================================
 	def attributeMethods(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
-			«cls.declareAttributeMember(attribute)»
-			«cls.getMethod(attribute)»
-			«IF attribute.rwType.contains("WRITE")»
-				«cls.setMethod(attribute)»
-			«ENDIF»
+			«IF attribute.concreteHere»
+				«IF attribute.dataType.toString.contains("Enum")»
+					//	Attribute is enum.
+					«cls.generateEnumAttributeClassFile(attribute)»
+				«ELSE»
+					«cls.declareAttributeMember(attribute)»
+					«cls.getMethod(attribute)»
+					«IF attribute.rwType.contains("WRITE")»
+						«cls.setMethod(attribute)»
+					«ENDIF»
+				«ENDIF»
 
+			«ENDIF»
 		«ENDFOR»
 	'''
 
@@ -112,4 +120,10 @@ class JavaAttribute {
 		}
 	'''
 
+	//======================================================
+	// define code for Enum attribute class file
+	//======================================================
+	def generateEnumAttributeClassFile(PogoDeviceClass cls, Attribute attribute) '''
+		
+	'''
 }

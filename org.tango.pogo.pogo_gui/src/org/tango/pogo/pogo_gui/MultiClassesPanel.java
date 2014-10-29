@@ -137,14 +137,14 @@ public class MultiClassesPanel extends JFrame {
         }
         chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
         chooser.setFileFilter(pogoFilter);
-        setIconImage(Utils.getInstance().logo_icon.getImage());
+        setIconImage(Utils.getInstance().logoIcon.getImage());
 
 
         Utils utils = Utils.getInstance();
-        addTopPanelButton(utils.reload_icon, "Reload Server");
-        addTopPanelButton(utils.new_icon, "New Server");
-        addTopPanelButton(utils.open_icon, "Open Server");
-        addTopPanelButton(utils.save_icon, "Generate Server");
+        addTopPanelButton(utils.reloadIcon, "Reload Server");
+        addTopPanelButton(utils.newIcon, "New Server");
+        addTopPanelButton(utils.openIcon, "Open Server");
+        addTopPanelButton(utils.saveIcon, "Generate Server");
     }
 
     //=======================================================

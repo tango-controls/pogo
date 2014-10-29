@@ -40,32 +40,63 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.generator.common.StringUtils;
 
 
-
+/**
+ * Java Protected Area
+ */
+ 
 public class ProtectedArea {
 
-	//======================================================================
-	// Define java protected areas for device
-	//======================================================================
+	/**
+	 * Open protected area
+	 * @param cls PogoDeviceClass
+	 * @param method the method name
+	 * @return string representing opened the protected area
+	 */
 	public String openProtectedArea(PogoDeviceClass cls, String method) {
 		return openProtectedArea(cls.getName(), method);
 	}
+	/**
+	 * Open protected area
+	 * @param className the class name
+	 * @param method the method name
+	 * @return string representing opened the protected area
+	 */
 	public String openProtectedArea(String className, String method) {
 		if (method.startsWith("."))	//	Not method, it is a file name
 			return "/*----- PROTECTED REGION ID(" + className + method + ") ENABLED START -----*/\n";
 		else
 			return "/*----- PROTECTED REGION ID(" + className + "." + method + ") ENABLED START -----*/\n";
 	}
-	//======================================================================
+
+	/**
+	 * CLose protected area
+	 * @param cls PogoDeviceClass
+	 * @param method the method name
+	 * @return string representing the closed protected area
+	 */
 	public String closeProtectedArea(PogoDeviceClass cls, String method) {
 		return closeProtectedArea(cls.getName(), method);
 	}
+	/**
+	 * Close protected area
+	 * @param className the class name
+	 * @param method the method name
+	 * @return string representing the protected area
+	 */
 	public String closeProtectedArea(String className, String method) {
 		if (method.startsWith("."))
 			return "/*----- PROTECTED REGION END -----*/	//	" + className + method + "\n";
 		else
 			return "/*----- PROTECTED REGION END -----*/	//	" + className + "." + method + "\n";
 	}
-	//======================================================================
+	/**
+	 * Insert a protected area
+	 * @param cls PogoDeviceClass
+	 * @param method the method name
+	 * @param code the code to be added in the protected area
+	 * @param comments indicates if it is comments or not
+	 * @return string representing the protected area
+	 */
 	public String protectedArea(PogoDeviceClass cls, String method, String code, boolean comments) {
 		if (comments)
 			return	openProtectedArea(cls, method)+ "\n" +
@@ -76,10 +107,14 @@ public class ProtectedArea {
 					code + "\n\n" +
 					closeProtectedArea(cls, method);
 	}
-	//======================================================================
+	/**
+	 * Insert a protected area
+	 * @param cls PogoDeviceClass
+	 * @param method the method name
+	 * @return string representing the protected area
+	 */
 	public String protectedArea(PogoDeviceClass cls, String method) {
 		return	openProtectedArea(cls.getName(), method)+ "\n" +
 				closeProtectedArea(cls.getName(), method);
 	}
-	//======================================================================
 }

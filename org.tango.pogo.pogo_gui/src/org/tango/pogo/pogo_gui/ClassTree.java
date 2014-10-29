@@ -252,12 +252,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         root.add(attributeNodes[1]);
         root.add(attributeNodes[2]);
 
-        if (Utils.tango9) {
-            EList<ForwardedAttribute>   forwardedAttributes = pogoClass.getForwardedAttributes();
-            root.add(createForwardedBranch(forwardedAttributes));
-            EList<Pipe>   pipes = pogoClass.getPipes();
-            root.add(createPipeBranch(pipes));
-        }
+        EList<ForwardedAttribute>   forwardedAttributes = pogoClass.getForwardedAttributes();
+        root.add(createForwardedBranch(forwardedAttributes));
+        EList<Pipe>   pipes = pogoClass.getPipes();
+        root.add(createPipeBranch(pipes));
 
         //  Create state node
         EList<State> states = pogoClass.getStates();
@@ -270,7 +268,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Utils utils = Utils.getInstance();
         DefaultMutableTreeNode propertiesNode =
                 new DefaultMutableTreeNode(
-                        new PogoCollection(target + " Properties", utils.classprop_icon));
+                        new PogoCollection(target + " Properties", utils.classPropertyIcon));
 
         for (Property prop : properties) {
             DefaultMutableTreeNode node =
@@ -285,7 +283,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Utils utils = Utils.getInstance();
         DefaultMutableTreeNode commandsNode =
                 new DefaultMutableTreeNode(
-                        new PogoCollection("Commands", utils.cmd_icon));
+                        new PogoCollection("Commands", utils.cmdIcon));
         for (Command cmd : commands) {
             DefaultMutableTreeNode node =
                     new DefaultMutableTreeNode(new PogoCommand(cmd));
@@ -305,11 +303,11 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         DefaultMutableTreeNode[]    nodes = new DefaultMutableTreeNode[3];
         Utils utils = Utils.getInstance();
         nodes[0] = new DefaultMutableTreeNode(
-                        new PogoCollection("Scalar Attributes", utils.scalar_icon));
+                        new PogoCollection("Scalar Attributes", utils.scalarIcon));
         nodes[1] = new DefaultMutableTreeNode(
-                        new PogoCollection("Spectrum Attributes", utils.spectrum_icon));
+                        new PogoCollection("Spectrum Attributes", utils.spectrumIcon));
         nodes[2] = new DefaultMutableTreeNode(
-                        new PogoCollection("Image Attributes", utils.image_icon));
+                        new PogoCollection("Image Attributes", utils.imageIcon));
 
         for (Attribute att : attributes) {
             PogoAttribute pa = new PogoAttribute(att);
@@ -349,7 +347,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Utils utils = Utils.getInstance();
         DefaultMutableTreeNode statesNode =
                 new DefaultMutableTreeNode(
-                        new PogoCollection("States", utils.state_icon));
+                        new PogoCollection("States", utils.stateIcon));
 
         for (State state : states) {
             DefaultMutableTreeNode node =
@@ -364,7 +362,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Utils utils = Utils.getInstance();
         DefaultMutableTreeNode forwardedNode =
                 new DefaultMutableTreeNode(
-                        new PogoCollection("Forwarded Attributes", utils.forwarded_icon));
+                        new PogoCollection("Forwarded Attributes", utils.forwardedIcon));
 
         for (ForwardedAttribute attribute : attributes) {
             DefaultMutableTreeNode node =
@@ -379,7 +377,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         Utils utils = Utils.getInstance();
         DefaultMutableTreeNode pipesNode =
                 new DefaultMutableTreeNode(
-                        new PogoCollection("Pipes", utils.pipe_icon));
+                        new PogoCollection("Pipes", utils.pipeIcon));
         for (Pipe pipe : pipes) {
             DefaultMutableTreeNode node =
                     new DefaultMutableTreeNode(new PogoPipe(pipe));
@@ -1760,7 +1758,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     }
     //===============================================================
     /**
-     * @return a liet with all States
+     * @return a list with all Pipes
      */
     //===============================================================
     private ArrayList<Pipe> getAllPipes() {
@@ -1946,7 +1944,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         private String toInfoString() {
             String desc;
             if (value.getProperties() == null ||
-                    value.getProperties().getDescription().length() == 0)
+                    value.getProperties().getDescription() == null ||
+                    value.getProperties().getDescription().isEmpty())
                 desc = "No Description.";
             else
                 desc = Utils.strReplace(value.getProperties().getDescription(), "\\n", "\n");
@@ -2080,7 +2079,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         //===========================================================
         private void manageDisplay(TangoRenderer renderer) {
             /* Do not manage pipe inheritance until now. */
-            renderer.setIcon(Utils.getInstance().overloaded_icon);
+            renderer.setIcon(Utils.getInstance().overloadedIcon);
             renderer.setFont(PogoConst.leafFont_concrete);
             renderer.setToolTipText(toInfoString());
         }
@@ -2175,7 +2174,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     setFont(rootFont_abstract);
                 else
                     setFont(rootFont_concrete);
-                setIcon(utils.root_icon);
+                setIcon(utils.rootIcon);
                 setToolTipText(pr.toInfoString());
             } else {
                 if (userObject instanceof PogoProperty) {
@@ -2352,10 +2351,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     //true);
             //  ToDo
             getComponent(OFFSET + ADD_DYN_ITEM).setVisible(!collection.name.contains("Forwarded") &&
-                    (collection.name.contains("Attribute") ||
-                    (Utils.tango9 && collection.name.contains("Command"))));
-            getComponent(OFFSET + ADD_FW_ATTR).setVisible(collection.name.contains("Forwarded")
-                     && Utils.tango9);
+                    (collection.name.contains("Attribute") || collection.name.contains("Command")));
+            getComponent(OFFSET + ADD_FW_ATTR).setVisible(collection.name.contains("Forwarded"));
             getComponent(OFFSET + PASTE_ITEM).setVisible(canPaste());
             getComponent(OFFSET + SORT_ITEM).setVisible(true);
             getComponent(OFFSET + SUMMARIZE).setVisible(true);

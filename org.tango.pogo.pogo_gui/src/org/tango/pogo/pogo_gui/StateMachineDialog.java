@@ -198,40 +198,45 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         //-------------------------
         //	Commands
         //-------------------------
-        addColumnHeader(y, "Select Allowed", "Commands", states);
-        y += 2;
         EList<Command> commands = pogoClass.getCommands();
-        for (Command command : commands) {
-            if (!command.getName().equals("State") &&
-                    !command.getName().equals("Status")) {
-                addCommandLine(y++, command, states);
+        if (commands.size()>2) {
+            addColumnHeader(y, "Select Allowed", "Commands", states);
+            y += 2;
+            for (Command command : commands) {
+                if (!command.getName().equals("State") &&
+                        !command.getName().equals("Status")) {
+                    addCommandLine(y++, command, states);
+                }
             }
         }
 
         //-------------------------
         //	Attributes
         //-------------------------
-        addColumnHeader(y, "Select Allowed", "Attributes", states);
-        y += 2;
         EList<Attribute> attributes = pogoClass.getAttributes();
-        for (Attribute attribute : attributes) {
-            addAttributeLine(y++, attribute, READ_ATTRIBUTE, states);
-            if (!attribute.getRwType().equals(AttrRWtypeArray[READ]))
-                addAttributeLine(y++, attribute, WRITE_ATTRIBUTE, states);
+        if (!attributes.isEmpty()) {
+            addColumnHeader(y, "Select Allowed", "Attributes", states);
+            y += 2;
+            for (Attribute attribute : attributes) {
+                addAttributeLine(y++, attribute, READ_ATTRIBUTE, states);
+                if (!attribute.getRwType().equals(AttrRWtypeArray[READ]))
+                    addAttributeLine(y++, attribute, WRITE_ATTRIBUTE, states);
+            }
         }
 
        //-------------------------
         //	Pipes
         //-------------------------
-        addColumnHeader(y, "Select Allowed", "Pipes", states);
-        y += 2;
         EList<Pipe> pipes = pogoClass.getPipes();
-        for (Pipe pipe : pipes) {
-            addPipeLine(y++, pipe, READ_PIPE, states);
-            if (!pipe.getRwType().equals(AttrRWtypeArray[READ]))
-                addPipeLine(y++, pipe, WRITE_PIPE, states);
+        if (!pipes.isEmpty()) {
+            addColumnHeader(y, "Select Allowed", "Pipes", states);
+            y += 2;
+            for (Pipe pipe : pipes) {
+                addPipeLine(y++, pipe, READ_PIPE, states);
+                if (!pipe.getRwType().equals(AttrRWtypeArray[READ]))
+                    addPipeLine(y++, pipe, WRITE_PIPE, states);
+            }
         }
-
         //  Dummy to have insets at bottom
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(20, 0, 0, 0);

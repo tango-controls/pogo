@@ -38,15 +38,13 @@ package org.tango.pogo.pogo_gui;
 
 import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
-import org.tango.pogo.pogo_gui.tools.OAWutils;
-import org.tango.pogo.pogo_gui.tools.PogoException;
-import org.tango.pogo.pogo_gui.tools.PogoProperty;
-import org.tango.pogo.pogo_gui.tools.Utils;
+import org.tango.pogo.pogo_gui.tools.*;
+import org.eclipse.emf.common.util.EList;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import java.awt.*;
 
 
 //===============================================================
@@ -54,7 +52,7 @@ import java.util.StringTokenizer;
 /**
  * JDialog Class to display and get device identification
  * It is kept as JDialog to be edited with netbeans,
- * but only centerPanel and data nmanagement are used
+ * but only centerPanel and data management are used
  *
  * @author Pascal Verdier
  */
@@ -63,6 +61,7 @@ import java.util.StringTokenizer;
 public class DeviceIdDialog extends JDialog {
     private int retVal = JOptionPane.OK_OPTION;
     private ClassIdentification id = null;
+    private ArrayList<String> keyWordList = new ArrayList<String>();
     private static final String HelpMessage =
             "During TANGO meeting in Kobe (Japan)\n" +
                     "It has been decided to create a\n" +
@@ -124,6 +123,7 @@ public class DeviceIdDialog extends JDialog {
             mail = PogoProperty.contactAddress;
         contactTxt.setText(mail);
         manufacturerTxt.setText("none");
+        buildKeyWordsTooltip();
 
         pack();
         setReferenceVisible(false);
@@ -169,15 +169,37 @@ public class DeviceIdDialog extends JDialog {
             if (id.getManufacturer()!=null)
                 setReferenceVisible(!id.getManufacturer().isEmpty() &&
                         !id.getManufacturer().equals("none"));
+
+            EList<String> keyWords = id.getKeyWords();
+            if (keyWords!=null) {
+                for (String keyWord : keyWords)
+                    keyWordList.add(keyWord);
+            }
+            buildKeyWordsTooltip();
         }
     }
 
     //===============================================================
     //===============================================================
+    private void buildKeyWordsTooltip() {
+        if (keyWordList.size()>0) {
+            StringBuilder   sb = new StringBuilder();
+            for (String kewWord : keyWordList) {
+                sb.append(kewWord).append("\n");
+            }
+            String title = "Key Word";
+            if (keyWordList.size()>1)
+                title += "s";
+            addKeyWordsButton.setToolTipText(Utils.buildToolTip(title, sb.toString()));
+        }
+        else
+            addKeyWordsButton.setToolTipText(Utils.buildToolTip("No key words"));
+    }
+    //===============================================================
+    //===============================================================
     public JPanel getCenterPanel() {
         return centerPanel;
     }
-
     //===============================================================
     //===============================================================
     private void setReferenceVisible(boolean b) {
@@ -218,6 +240,7 @@ public class DeviceIdDialog extends JDialog {
         siteButton = new javax.swing.JRadioButton();
         topPanel = new javax.swing.JPanel();
         javax.swing.JLabel titleLabel = new javax.swing.JLabel();
+        addKeyWordsButton = new javax.swing.JButton();
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
@@ -267,13 +290,12 @@ public class DeviceIdDialog extends JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         centerPanel.add(referenceLabel, gridBagConstraints);
 
         contactTxt.setColumns(20);
-        contactTxt.setFont(new java.awt.Font("Dialog", 1, 12));
-        contactTxt.setToolTipText(
-                Utils.buildToolTip("Programmer or contact email address"));
+        contactTxt.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        contactTxt.setToolTipText("Programmer or contact email address");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -282,9 +304,8 @@ public class DeviceIdDialog extends JDialog {
         centerPanel.add(contactTxt, gridBagConstraints);
 
         manufacturerTxt.setColumns(20);
-        manufacturerTxt.setFont(new java.awt.Font("Dialog", 1, 12));
-        manufacturerTxt.setToolTipText(Utils.buildToolTip(
-                "manufacturer name"));
+        manufacturerTxt.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        manufacturerTxt.setToolTipText("manufacturer name");
         manufacturerTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 manufacturerTxtKeyReleased(evt);
@@ -298,15 +319,15 @@ public class DeviceIdDialog extends JDialog {
         centerPanel.add(manufacturerTxt, gridBagConstraints);
 
         referenceTxt.setColumns(20);
-        referenceTxt.setFont(new java.awt.Font("Dialog", 1, 12));
+        referenceTxt.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
         centerPanel.add(referenceTxt, gridBagConstraints);
 
-        platformComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"All Platforms", "Unix Like", "Windows"}));
+        platformComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All Platforms", "Unix Like", "Windows" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -315,7 +336,7 @@ public class DeviceIdDialog extends JDialog {
         centerPanel.add(platformComboBox, gridBagConstraints);
 
         busComboBox.setEditable(true);
-        busComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"", "Not Applicable", "Compact PCI", "Data Socket", "Ethernet", "FireWire", "GPIB", "Modbus", "PCI", "PCI Express", "Serial Line", "Socket", "TCP/UDP", "USB", "VME"}));
+        busComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Not Applicable", "Compact PCI", "Data Socket", "Ethernet", "FireWire", "GPIB", "Modbus", "PCI", "PCI Express", "Serial Line", "Socket", "TCP/UDP", "USB", "VME" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -324,7 +345,7 @@ public class DeviceIdDialog extends JDialog {
         centerPanel.add(busComboBox, gridBagConstraints);
 
         familyComboBox.setEditable(true);
-        familyComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Miscellaneous", "AbstractClasses", "Acquisition", "Application", "BeamDiag", "Calculation", "Communication", "Controllers", "InputOutput", "Instrumentation", "Interlock", "Motion", "PowerSupply", "Process", "RadioProtection", "Sequencer", "Simulators", "Training", "Vacuum"}));
+        familyComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Miscellaneous", "AbstractClasses", "Acquisition", "Application", "BeamDiag", "Calculation", "Communication", "Controllers", "InputOutput", "Instrumentation", "Interlock", "Motion", "PowerSupply", "Process", "RadioProtection", "Sequencer", "Simulators", "Training", "Vacuum" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -353,7 +374,7 @@ public class DeviceIdDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 35, 0);
         centerPanel.add(siteButton, gridBagConstraints);
 
-        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18));
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         titleLabel.setText("Device Class Identification");
         topPanel.add(titleLabel);
 
@@ -364,6 +385,20 @@ public class DeviceIdDialog extends JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         centerPanel.add(topPanel, gridBagConstraints);
+
+        addKeyWordsButton.setText("Add Key Words For Search Engine");
+        addKeyWordsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addKeyWordsButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
+        centerPanel.add(addKeyWordsButton, gridBagConstraints);
 
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
 
@@ -441,12 +476,21 @@ public class DeviceIdDialog extends JDialog {
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void siteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siteButtonActionPerformed
-
         manageSiteFamilies();
     }//GEN-LAST:event_siteButtonActionPerformed
 
     //===============================================================
-    //===============================================================	//===============================================================
+    //===============================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void addKeyWordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addKeyWordsButtonActionPerformed
+        KeyWordsDialog  dialog = new KeyWordsDialog(this, keyWordList);
+        if (dialog.showDialog()==JOptionPane.OK_OPTION) {
+            keyWordList = dialog.getKeyWords();
+            buildKeyWordsTooltip();
+        }
+    }//GEN-LAST:event_addKeyWordsButtonActionPerformed
+
+    //===============================================================
     //===============================================================
     private void manageSiteFamilies() {
         if (PogoProperty.siteName != null &&
@@ -545,12 +589,16 @@ public class DeviceIdDialog extends JDialog {
         id.setBus(bus);
         id.setManufacturer(manufacturerTxt.getText().trim());
         id.setReference(referenceTxt.getText().trim());
+        EList<String> keyWords = id.getKeyWords();
+        for (String keyWord : keyWordList)
+            keyWords.add(keyWord);
         return id;
     }
 
 
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addKeyWordsButton;
     private javax.swing.JComboBox busComboBox;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JTextField contactTxt;

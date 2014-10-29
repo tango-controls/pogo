@@ -112,7 +112,7 @@ public class PogoGUI extends JFrame {
      * Creates new form PogoGUI and display DeviceClass object
      *
      * @param deviceClass   DeviceClass object to be edited by Pogo
-     * @param forceModified Force the edito modified value to this boolean value.
+     * @param forceModified Force the edit/modified value to this boolean value.
      * @throws PogoException in case of failure
      */
     //=======================================================
@@ -121,7 +121,7 @@ public class PogoGUI extends JFrame {
 
         //	Build users_tree to display info
         class_panels.addPanels(deviceClass);
-        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
+        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
         reBuildTabbedPane = false;
         setTitle(applicationTitle(deviceClass));
 
@@ -149,7 +149,7 @@ public class PogoGUI extends JFrame {
         class_panels.add(cp);
         tabbedPane.add(cp);
 
-        setIconImage(Utils.getInstance().logo_icon.getImage());
+        setIconImage(Utils.getInstance().logoIcon.getImage());
         pack();
         setScreenPosition(this);
         setVisible(true);
@@ -292,26 +292,25 @@ public class PogoGUI extends JFrame {
     //=======================================================
     private void initOwnComponents() {
         Utils utils = Utils.getInstance();
-        addTopPanelButton(utils.reload_icon, "Reload Class", false);
-        addTopPanelButton(utils.new_icon, "New Class", false);
-        addTopPanelButton(utils.open_icon, "Open Class", false);
-        addTopPanelButton(utils.save_icon, "Generate Class", false);
+        addTopPanelButton(utils.reloadIcon, "Reload Class", false);
+        addTopPanelButton(utils.newIcon, "New Class", false);
+        addTopPanelButton(utils.openIcon, "Open Class", false);
+        addTopPanelButton(utils.saveIcon, "Generate Class", false);
 
         JLabel lbl = new JLabel("      Palette:");
         lbl.setFont(new Font("Dialog", Font.BOLD, 12));
         topPanel.add(lbl);
 
-        addTopPanelButton(utils.classprop_icon, "Add Class Property", true);
-        addTopPanelButton(utils.devprop_icon, "Add Device Property", true);
-        addTopPanelButton(utils.cmd_icon, "Add Command", true);
-        addTopPanelButton(utils.scalar_icon, "Add ScalarAttribute", true);
-        addTopPanelButton(utils.spectrum_icon, "Add Spectrum Attribute", true);
-        addTopPanelButton(utils.image_icon, "Add ImageAttribute", true);
-        if (Utils.tango9) {
-            addTopPanelButton(utils.forwarded_icon, "Add Forwarded Attribute", true);
-            addTopPanelButton(utils.pipe_icon, "Add Pipe", true);
-        }
-        addTopPanelButton(utils.state_icon, "Add State", true);
+        addTopPanelButton(utils.classPropertyIcon, "Add Class Property", true);
+        addTopPanelButton(utils.devicePropertyIcon, "Add Device Property", true);
+        addTopPanelButton(utils.cmdIcon, "Add Command", true);
+        addTopPanelButton(utils.scalarIcon, "Add ScalarAttribute", true);
+        addTopPanelButton(utils.spectrumIcon, "Add Spectrum Attribute", true);
+        addTopPanelButton(utils.imageIcon, "Add ImageAttribute", true);
+        addTopPanelButton(utils.forwardedIcon, "Add Forwarded Attribute", true);
+        addTopPanelButton(utils.pipeIcon, "Add Pipe", true);
+        addTopPanelButton(utils.stateIcon, "Add State", true);
+
         //  Add a label to display language (and menu to change it)
         lbl = new JLabel("           ");
         topPanel.add(lbl);
@@ -346,7 +345,12 @@ public class PogoGUI extends JFrame {
         if (language.toLowerCase().equals("java"))
             languageLabel.setIcon(Utils.getInstance().javaLogo);
         else
+        if (language.toLowerCase().equals("python"))
             languageLabel.setIcon(Utils.getInstance().pythonLogo);
+        else
+        if (language.toLowerCase().equals("pythonhl"))
+            languageLabel.setIcon(Utils.getInstance().pythonHLLogo);
+        pack();
     }
     //=======================================================
     //=======================================================
@@ -366,8 +370,6 @@ public class PogoGUI extends JFrame {
         topButtons.add(btn);
     }
     //=======================================================
-    //=======================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -679,7 +681,7 @@ public class PogoGUI extends JFrame {
         tabbedPane.removeAll();
 
         class_panels.addPanels(devclass);
-        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
+        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
         //class_panels.checkWarnings();
         reBuildTabbedPane = false;
     }
@@ -849,7 +851,7 @@ public class PogoGUI extends JFrame {
 
             //	Build users_tree to display info
             class_panels.addPanels(devclass);
-            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
+            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
             class_panels.checkWarnings();
             reBuildTabbedPane = false;
         }
@@ -1365,7 +1367,7 @@ public class PogoGUI extends JFrame {
             cp.setTree(devclass, this.size() > 0);
             add(cp);
             tabbedPane.add(cp);
-            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logo_icon);
+            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
         }
 
         //=======================================================
@@ -1452,9 +1454,10 @@ public class PogoGUI extends JFrame {
         private final int OFFSET = 2;    //	Label And separator
 
         private String[] menuLabels = {
-                PogoConst.strLang[0],
-                PogoConst.strLang[1],
-                PogoConst.strLang[2],
+                PogoConst.strLang[PogoConst.Java],
+                PogoConst.strLang[PogoConst.Cpp],
+                PogoConst.strLang[PogoConst.Python],
+                PogoConst.strLang[PogoConst.PythonHL],
         };
 
         //===========================================================
@@ -1478,6 +1481,8 @@ public class PogoGUI extends JFrame {
                     add(btn);
                 }
             }
+            String  s = System.getenv("PythonHL");
+            getComponent(OFFSET+PogoConst.PythonHL).setVisible(s!=null && s.equals("true"));
         }
         //===========================================================
         public void showMenu(MouseEvent evt) {

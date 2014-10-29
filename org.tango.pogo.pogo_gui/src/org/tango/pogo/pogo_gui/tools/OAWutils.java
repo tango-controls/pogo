@@ -614,7 +614,6 @@ public class OAWutils {
 
 
     //========================================================================
-
     /**
      * clone a class identification object
      *
@@ -633,11 +632,14 @@ public class OAWutils {
         new_id.setPlatform(id.getPlatform());
         new_id.setReference(id.getReference());
         new_id.setSiteSpecific(id.getSiteSpecific());
+        EList<String>   newKeyWords = new_id.getKeyWords();
+        EList<String>   keyWords    = id.getKeyWords();
+        for (String keyWord : keyWords)
+            newKeyWords.add(keyWord);
 
         return new_id;
     }
     //========================================================================
-
     /**
      * clone an Argument object
      *
@@ -672,9 +674,7 @@ public class OAWutils {
         cmd.setName(name);
         cmd.setExecMethod(Utils.buildCppExecuteMethodName(name));
         cmd.setDescription(src.getDescription());
-        //  ToDo
-        if (Utils.tango9)
-           cmd.setIsDynamic(src.getIsDynamic());
+        cmd.setIsDynamic(src.getIsDynamic());
 
         //	Argin/argout management
         Argument argin = factory.createArgument();

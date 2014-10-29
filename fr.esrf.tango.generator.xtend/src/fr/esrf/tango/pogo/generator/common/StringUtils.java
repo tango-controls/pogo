@@ -50,12 +50,6 @@ import fr.esrf.tango.pogo.pogoDsl.State;
 public class StringUtils {
 
 	//===========================================================
-	//===========================================================
-	public static boolean useTango9() {
-		String	str = System.getProperty("TANGO_9");
-		return (str!=null && str.equals("true"));
-	}
-	//===========================================================
 	/*
 	 * Define the DeviceImpl used to generate
 	 */
@@ -220,6 +214,25 @@ public class StringUtils {
 			sb.append("PyTango.DevState.").append(list.get(i));
 			if (i<list.size()-1)
 				sb.append(",\n    ");
+		}
+		sb.append("]");
+		return sb.toString();
+	}
+	//===========================================================
+	/**
+	 * build a "if" content from the specified list.
+	 * 		used by PythonUtils
+	 * @param list
+	 * @return the "if" content from the specified list
+	 */
+	//===========================================================
+	public String ifContentFromListPythonHL(EList<String> list) {
+		StringBuffer	sb = new StringBuffer();
+		sb.append("self.get_state() not in [");
+		for (int i=0 ; i<list.size(); i++) {
+			sb.append("DevState.").append(list.get(i));
+			if (i<list.size()-1)
+				sb.append(",");
 		}
 		sb.append("]");
 		return sb.toString();

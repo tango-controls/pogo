@@ -77,9 +77,16 @@ import fr.esrf.tango.pogo.pogoDsl.ULongType;
 import fr.esrf.tango.pogo.pogoDsl.UShortArrayType;
 import fr.esrf.tango.pogo.pogoDsl.UShortType;
 import fr.esrf.tango.pogo.pogoDsl.VoidType;
+
+/**
+ * Python Type Definitions
+ */
+
 public class PythonTypeDefinitions {
 	/**
-	 * Property Type utilities
+	 * Python Property Type utility
+	 * @param propType Type of the property
+	 * @return string representing the PyTango Type
 	 */
 	public static String pythonPropType (PropType propType) {
 		
@@ -98,9 +105,34 @@ public class PythonTypeDefinitions {
 		if (propType instanceof StringVectorType)  return "PyTango.DevVarStringArray";
 		return "";
 	}
+	
+	/**
+	 * PythonHL Property Type utility
+	 * @param propType Type of the property
+	 * @return string representing the PyTango HL Type
+	 */
+	public static String pythonPropTypeHL (PropType propType) {
+		
+		if (propType instanceof BooleanType)	   return "'bool'";
+		if (propType instanceof ShortType) 		   return "'int16'";
+		if (propType instanceof IntType)           return "'int'";
+		if (propType instanceof UShortType)        return "'uint16'";
+		if (propType instanceof UIntType)      	   return "'uint'";
+		if (propType instanceof FloatType)         return "'float'";
+		if (propType instanceof DoubleType)        return "'double'";
+		if (propType instanceof StringType)        return "'str'";
+		if (propType instanceof ShortVectorType)   return "('int16',)";
+		if (propType instanceof IntVectorType)     return "('int',)";
+		if (propType instanceof FloatVectorType)   return "('float',)";
+		if (propType instanceof DoubleVectorType)  return "('double',)";
+		if (propType instanceof StringVectorType)  return "('str',)";
+		return "";
+	}
 
 	/**
-	 * Type utilities
+	 * Python Type utility
+	 * @param type Type
+	 * @return string representing the PyTango HL Type
 	 */
 	public static String pythonType (Type type) {
 		if (type instanceof VoidType)				return "PyTango.DevVoid";
@@ -134,9 +166,83 @@ public class PythonTypeDefinitions {
 		if (type instanceof EncodedType)			return "PyTango.DevEncoded";
 		return "";
 	}
+	/**
+	 * PythonHL Type utility
+	 * @param type Type of the property
+	 * @return string representing the PyTango Type
+	 */
+	public static String pythonTypeHL (Type type) {
+		if (type instanceof VoidType)				return "'None'";
+		if (type instanceof BooleanType)			return "'bool'";
+		if (type instanceof ShortType)				return "'int16'";
+		if (type instanceof IntType)				return "'int'";
+		if (type instanceof FloatType)				return "'float'";
+		if (type instanceof DoubleType)				return "'double'";
+		if (type instanceof UShortType)				return "'uint16'";
+		if (type instanceof UIntType)				return "'uint'";
+		if (type instanceof StringType)				return "'str'";
+		if (type instanceof CharArrayType)			return "('char',)";
+		if (type instanceof ShortArrayType)			return "('int16',)";
+		if (type instanceof IntArrayType)			return "('int',)";
+		if (type instanceof FloatArrayType)			return "('float',)";
+		if (type instanceof DoubleArrayType)		return "('double',)";
+		if (type instanceof UShortArrayType)		return "('uint16',)";
+		if (type instanceof UIntArrayType)			return "('uint',)";
+		if (type instanceof StringArrayType)		return "('str',)";
+		if (type instanceof LongStringArrayType)	return "'DevVarLongStringArray'";
+		if (type instanceof DoubleStringArrayType)	return "'DevVarDoubleStringArray'";
+		if (type instanceof StateType)				return "'DevState'";
+		if (type instanceof ConstStringType)		return "'str'";
+		if (type instanceof BooleanArrayType)		return "('bool',)";
+		if (type instanceof UCharType)				return "'char'";
+		if (type instanceof LongType)				return "'int64'";
+		if (type instanceof ULongType)				return "'uint64'";
+		if (type instanceof LongArrayType)			return "('int64',)";
+		if (type instanceof ULongArrayType)			return "('uint64')";
+		if (type instanceof DevIntType)				return "'DevInt'";
+		if (type instanceof EncodedType)			return "'bytearray'";
+		return "";
+	}
 
 	/**
-	 * Type enum
+	 * PythonHL Attribute Type utility
+	 * @param attr Attribute
+	 * @return string representing the PyTango HL Type
+	 */
+	public static String pythonTypeAttrHL (Attribute attr) {
+		String l_str = "";
+		if (attr.getDataType() instanceof VoidType)				l_str = "'None'";
+		if (attr.getDataType() instanceof BooleanType)			l_str = "'bool'";
+		if (attr.getDataType() instanceof ShortType)			l_str = "'int16'";
+		if (attr.getDataType() instanceof IntType)				l_str = "'int'";
+		if (attr.getDataType() instanceof FloatType)			l_str = "'float'";
+		if (attr.getDataType() instanceof DoubleType)			l_str = "'double'";
+		if (attr.getDataType() instanceof UShortType)			l_str = "'uint16'";
+		if (attr.getDataType() instanceof UIntType)				l_str = "'uint'";
+		if (attr.getDataType() instanceof StringType)			l_str = "'str'";
+		if (attr.getDataType() instanceof StateType)			l_str = "'DevState'";
+		if (attr.getDataType() instanceof ConstStringType)		l_str = "'str'";
+		if (attr.getDataType() instanceof UCharType)			l_str = "'char'";
+		if (attr.getDataType() instanceof LongType)				l_str = "'int64'";
+		if (attr.getDataType() instanceof ULongType)			l_str = "'uint64'";
+		if (attr.getDataType() instanceof DevIntType)			l_str = "'DevInt'";
+		if (attr.getDataType() instanceof EncodedType)			l_str = "'bytearray'";
+		
+		if (attr.getAttType().equals("Spectrum"))
+		{
+			l_str = "(" + l_str + ",)";
+		}
+		if (attr.getAttType().equals("Image"))
+		{
+			l_str = "((" + l_str + ",),)";
+		}
+		return l_str;
+	}
+	
+	/**
+	 * Python Type Enum utility
+	 * @param type Type 
+	 * @return string representing the PyTango Enum Type
 	 */
 	public static String pythonTypeEnum (Type type) {
 		if (type instanceof VoidType)				return "Tango::DEV_VOID";
@@ -172,7 +278,44 @@ public class PythonTypeDefinitions {
 	}
 	
 	/**
-	 * Type utilities
+	 * PythonHL Default Value utility
+	 * @param attr Attribute
+	 * @return string representing the default value for the attribute
+	 */
+	public static String defaultValueHL (Attribute attr) {
+		String def_val = "";
+		if (attr.getDataType() instanceof VoidType)				def_val =  "";
+		if (attr.getDataType() instanceof BooleanType)			def_val =  "False";
+		if (attr.getDataType() instanceof ShortType)			def_val =  "0";
+		if (attr.getDataType() instanceof IntType)				def_val =  "0";
+		if (attr.getDataType() instanceof FloatType)			def_val =  "0.0";
+		if (attr.getDataType() instanceof DoubleType)			def_val =  "0.0";
+		if (attr.getDataType() instanceof UShortType)			def_val =  "0";
+		if (attr.getDataType() instanceof UIntType)				def_val =  "0";
+		if (attr.getDataType() instanceof StringType)			def_val =  "''";
+		if (attr.getDataType() instanceof StateType)			def_val =  "PyTango.DevState.UNKNOWN";
+		if (attr.getDataType() instanceof ConstStringType)		def_val =  "''";
+		if (attr.getDataType() instanceof UCharType)			def_val =  "''";
+		if (attr.getDataType() instanceof LongType)				def_val =  "0";
+		if (attr.getDataType() instanceof ULongType)			def_val =  "0";
+		if (attr.getDataType() instanceof DevIntType)			def_val =  "0";
+		if (attr.getDataType() instanceof EncodedType)			def_val =  "''";
+		
+		if (attr.getAttType().equals("Spectrum"))
+		{
+			def_val = "[" + def_val + "]";
+		}
+		if (attr.getAttType().equals("Image"))
+		{
+			def_val = "[[" + def_val + "]]";
+		}
+		return def_val;
+	}
+
+	/**
+	 * Python Default Value utility
+	 * @param type Type
+	 * @return string representing the default value for the attribute
 	 */
 	public static String defaultValue (Type type) {
 		if (type instanceof VoidType)				return "";
@@ -197,7 +340,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof StateType)				return "PyTango.DevState.UNKNOWN";
 		if (type instanceof ConstStringType)		return "''";
 		if (type instanceof BooleanArrayType)		return "[False]";
-		if (type instanceof UCharType)				return "";
+		if (type instanceof UCharType)				return "''";
 		if (type instanceof LongType)				return "0";
 		if (type instanceof ULongType)				return "0";
 		if (type instanceof LongArrayType)			return "[0]";
@@ -206,10 +349,11 @@ public class PythonTypeDefinitions {
 		if (type instanceof EncodedType)			return "''";
 		return "''";
 	}
-
 	
 	/**
-	 * Type utilities
+	 * Python Default Value Dim utility
+	 * @param attr Attribute
+	 * @return string representing the default value for the attribute with the dimension
 	 */
 	public static String defaultValueDim (Attribute attr) {
 		if (attr.getAttType().equals("Spectrum"))
@@ -228,13 +372,16 @@ public class PythonTypeDefinitions {
 	}
 	
 	/**
-	 * attribute configuration utilities
+	 * Python Attribute utility
+	 * @param propertyName the name of the attribute property
+	 * @param strValue value to be inserted
+	 * @return resulting string
 	 */
 	public String setAttrProperty(String propertyName, String strValue)
 	{
 		if (propertyName.equals("Display level"))
 		{
-			if (strValue.equals("EXPERT") || strValue.equals("PyTango.DispLevel.EXPERT"))
+			if (strValue != null && (strValue.equals("EXPERT") || strValue.equals("PyTango.DispLevel.EXPERT")))
 			{
 				return "    \'" + propertyName + "\': PyTango.DispLevel.EXPERT,";
 			}
@@ -245,7 +392,7 @@ public class PythonTypeDefinitions {
 		{
 			if (propertyName.equals("Polling period"))
 			{
-				if (!strValue.equals("0"))
+				if (strValue != null && !strValue.equals("0"))
 				{
 					return "    \'" + propertyName + "\': \"" + strValue + "\",";
 				}
@@ -254,17 +401,52 @@ public class PythonTypeDefinitions {
 			}
 			else
 			{
-				if (strValue.length() > 0)
+				if (strValue != null && strValue.length() > 0)
 					return "    \'" + propertyName + "\': \"" + strValue + "\",";
 				else
 					return "";
 			}
 		}
 	}
-	
+
+	/**
+	 * PythonHL Attribute utility
+	 * @param propertyName the name of the attribute property
+	 * @param strValue value to be inserted
+	 * @param isString indicates if the value is a string
+	 * @return resulting string
+	 */
+	public String setAttrPropertyHL(String propertyName, String strValue, Boolean isString)
+	{
+		if (propertyName.equals("display_level"))
+		{
+			if (strValue != null && ( strValue.equals("EXPERT") || strValue.equals("PyTango.DispLevel.EXPERT")))
+			{
+				return "display_level=DispLevel.EXPERT,";
+			}
+			else
+				return "";
+		}
+		else
+		{
+            if (strValue != null && strValue.length() > 0)
+            	if(isString)
+                    return propertyName + "=\"" + strValue + "\",";
+            	else
+                    return propertyName + "=" + strValue + ",";
+            else
+                return "";
+		}
+	}
+
+	/**
+	 * Python String utility
+	 * @param strValue value to be quoted
+	 * @return resulting string
+	 */
 	public String getArgDescription(String strValue)
 	{
-		if (strValue.length() > 0)
+		if (strValue != null && strValue.length() > 0)
 		{
 			return "" + strValue + "";
 		}
@@ -272,8 +454,11 @@ public class PythonTypeDefinitions {
 			return "none";
 	}
 
-	
-	
+	/**
+	 * Python utility
+	 * @param my_type type to test
+	 * @return true if the type is void
+	 */
 	public boolean isVoidType(Type my_type){
 		if (my_type instanceof VoidType)
 	    {
@@ -282,8 +467,12 @@ public class PythonTypeDefinitions {
     	else
     		return false;
 	}
-	
 
+	/**
+	 * Python Pogo Device Class inherited class utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritedPythonClassName(PogoDeviceClass cls) {
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -297,7 +486,31 @@ public class PythonTypeDefinitions {
 				return className;
 		}
 	}
-	
+
+	/**
+	 * PythonHL Pogo Device Class inherited class utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
+	public String inheritedPythonClassNameHL(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "Device";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "Device";
+			else
+				return className;
+		}
+	}
+
+	/**
+	 * Python Pogo Device Class inherited constructor utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritedConstructor(PogoDeviceClass cls) {
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -311,7 +524,12 @@ public class PythonTypeDefinitions {
 				return "super(" + cls.getName() + ",self).__init__(cl,name)";
 		}
 	}
-	
+
+	/**
+	 * Python Pogo Device Class inherited additional import utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritedAdditionalImport(PogoDeviceClass cls) {
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -325,12 +543,22 @@ public class PythonTypeDefinitions {
 				return "from " + className + " import " + className + ", " + className + "Class\n";
 		}
 	}
-	
+
+	/**
+	 * Python Pogo Device Class inherited class utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	private boolean isDefaultDeviceImpl(String className) {
 		
 		return (className.startsWith("Device_") && className.endsWith("Impl"));
 	}
-	
+
+	/**
+	 * Python Pogo Device Class inherited attributes utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritanceAttrList(PogoDeviceClass cls){
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -344,7 +572,12 @@ public class PythonTypeDefinitions {
 				return "attr_list.update(" + className + "Class.attr_list)";
 		}
 	}
-	
+
+	/**
+	 * Python Pogo Device Class inherited commands utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritanceCmdList(PogoDeviceClass cls){
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -358,7 +591,12 @@ public class PythonTypeDefinitions {
 				return "cmd_list.update(" + className + "Class.cmd_list)";
 		}
 	}
-	
+
+	/**
+	 * Python Pogo Device Class inherited class property utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritanceClassPropertyList(PogoDeviceClass cls){
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -372,7 +610,12 @@ public class PythonTypeDefinitions {
 				return "class_property_list.update(" + className + "Class.class_property_list)";
 		}
 	}
-	
+
+	/**
+	 * Python Pogo Device Class inherited device property utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritanceDevicePropertyList(PogoDeviceClass cls){
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -386,8 +629,12 @@ public class PythonTypeDefinitions {
 				return "device_property_list.update(" + className + "Class.device_property_list)";
 		}
 	}
-	
 
+	/**
+	 * Python Pogo Device Class inherited device class utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
 	public String inheritedPythonDeviceClassName(PogoDeviceClass cls) {
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
@@ -401,7 +648,12 @@ public class PythonTypeDefinitions {
 				return className + "Class";
 		}
 	}
-	
+
+	/**
+	 * Python Attribute set utility
+	 * @param attr Attribute
+	 * @return resulting string
+	 */
 	public String setAttrVal(Attribute attr){
 		return "attr.set_value(self.attr_" + attr.getName() + "_read)";
 	}

@@ -151,15 +151,17 @@ class DeviceClassSource {
 		void «cls.name»Class::pipe_factory()
 		{
 			«cls.protectedAreaClass("pipe_factory_before", "Add your own code", true)»
-			Tango::UserDefaultPipeProp udpp;
-			«FOR Pipe pipe : cls.pipes»
-				«pipe.name»Class	*p«pipe.name» = new «pipe.name»Class("«pipe.name»",Tango::«pipe.displayLevel»);
-				udpp.set_description("«pipe.description.oneLineString»");
-				udpp.set_label("«pipe.label»");
-				p«pipe.name»->set_default_properties(udpp);
-				pipe_list.push_back(p«pipe.name»);
+			«IF cls.pipes.size>0»
+				Tango::UserDefaultPipeProp udpp;
+				«FOR Pipe pipe : cls.pipes»
+					«pipe.name»Class	*p«pipe.name» = new «pipe.name»Class("«pipe.name»",Tango::«pipe.displayLevel»);
+					udpp.set_description("«pipe.description.oneLineString»");
+					udpp.set_label("«pipe.label»");
+					p«pipe.name»->set_default_properties(udpp);
+					pipe_list.push_back(p«pipe.name»);
 
-			«ENDFOR»
+				«ENDFOR»
+			«ENDIF»
 			«cls.protectedAreaClass("pipe_factory_after", "Add your own code", true)»
 		}
 	'''
@@ -322,7 +324,7 @@ class DeviceClassSource {
 			 * method : 		«cls.name»Class::create_static_attribute_list
 			 * description : 	Create the a list of static attributes
 			 *
-			 * @param	att_list	the ceated attribute list 
+			 * @param	att_list	the ceated attribute list
 			 */
 			//--------------------------------------------------------
 			void «cls.name»Class::create_static_attribute_list(vector<Tango::Attr *> &att_list)
@@ -354,10 +356,10 @@ class DeviceClassSource {
 				Tango::Util *tg = Tango::Util::instance();
 			
 				for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
-				{	
+				{
 					Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((string)(*devlist_ptr)[i]).c_str());
 					«cls.name» *dev = static_cast<«cls.name» *> (dev_impl);
-					
+			
 					vector<Tango::Attribute *> &dev_att_list = dev->get_device_attr()->get_attribute_list();
 					vector<Tango::Attribute *>::iterator ite_att;
 					for (ite_att=dev_att_list.begin() ; ite_att != dev_att_list.end() ; ++ite_att)
@@ -459,8 +461,8 @@ class DeviceClassSource {
 				catch (bad_alloc &)
 				{
 					throw;
-				}		
-			}		
+				}
+			}
 			return _instance;
 		}
 		

@@ -55,79 +55,79 @@ public class Utils {
     private static Utils instance = null;
 
     private static ImageIcon tango_icon = null;
-    public ImageIcon logo_icon;
-    public ImageIcon root_icon;
-    public ImageIcon class_icon;
-    public ImageIcon collec_icon;
-    public ImageIcon classprop_icon;
-    public ImageIcon cmd_icon;
-    public ImageIcon cmd_exp_icon;
-    public ImageIcon scalar_icon;
-    public ImageIcon scalar_exp_icon;
-    public ImageIcon spectrum_icon;
-    public ImageIcon spectrum_exp_icon;
-    public ImageIcon image_icon;
-    public ImageIcon forwarded_icon;
-    public ImageIcon pipe_icon;
-    public ImageIcon image_exp_icon;
-    public ImageIcon devprop_icon;
-    public ImageIcon state_icon;
-    public ImageIcon inherit_icon;
-    public ImageIcon remove_icon;
+    public ImageIcon logoIcon;
+    public ImageIcon rootIcon;
+    public ImageIcon classIcon;
+    public ImageIcon collectionIcon;
+    public ImageIcon classPropertyIcon;
+    public ImageIcon cmdIcon;
+    public ImageIcon cmdExpertIcon;
+    public ImageIcon scalarIcon;
+    public ImageIcon scalarExpertIcon;
+    public ImageIcon spectrumIcon;
+    public ImageIcon spectrumExpertIcon;
+    public ImageIcon imageIcon;
+    public ImageIcon imageExpertIcon;
+    public ImageIcon forwardedIcon;
+    public ImageIcon pipeIcon;
+    public ImageIcon devicePropertyIcon;
+    public ImageIcon stateIcon;
+    public ImageIcon inheritanceIcon;
+    public ImageIcon removeIcon;
 
-    public ImageIcon abstract_icon;
-    public ImageIcon inherited_icon;
-    public ImageIcon overloaded_icon;
-    public ImageIcon unknown_icon;
+    public ImageIcon abstractIcon;
+    public ImageIcon inheritedIcon;
+    public ImageIcon overloadedIcon;
+    public ImageIcon unknownIcon;
 
-    public ImageIcon reload_icon;
-    public ImageIcon new_icon;
-    public ImageIcon open_icon;
-    public ImageIcon save_icon;
+    public ImageIcon reloadIcon;
+    public ImageIcon newIcon;
+    public ImageIcon openIcon;
+    public ImageIcon saveIcon;
 
     public ImageIcon cppLogo;
     public ImageIcon javaLogo;
     public ImageIcon pythonLogo;
+    public ImageIcon pythonHLLogo;
     public ImageIcon errorIcon;
-
-    public static boolean tango9 = Utils.isTrue(System.getenv("TANGO_9"));
 
     //===============================================================
     //===============================================================
     private Utils() {
-        root_icon = getIcon("TangoSplash.jpg", 0.2);
-        class_icon = getIcon("TangoClass.gif", 0.12);
-        logo_icon = class_icon;
-        collec_icon = getIcon("tools.gif");
-        classprop_icon = getIcon("class.gif");
-        cmd_icon = getIcon("command.gif");
-        cmd_exp_icon = getIcon("command_expert.gif");
-        scalar_icon = getIcon("scalar.gif");
-        scalar_exp_icon = getIcon("scalar_expert.gif");
-        spectrum_icon = getIcon("spectrum.gif");
-        spectrum_exp_icon = getIcon("spectrum_expert.gif");
-        image_icon = getIcon("image.gif", 0.25);
-        image_exp_icon = getIcon("image_expert.gif", 0.25);
-        forwarded_icon = getIcon("forward.gif", 0.20);
-        pipe_icon = getIcon("pipe.gif", 0.16);
-        devprop_icon = getIcon("device.gif");
-        state_icon = getIcon("state.gif");
-        inherit_icon = getIcon("inherite.gif", 0.5);
-        remove_icon = getIcon("remove.gif");
+        rootIcon = getIcon("TangoSplash.jpg", 0.2);
+        classIcon = getIcon("TangoClass.gif", 0.12);
+        logoIcon = classIcon;
+        collectionIcon = getIcon("tools.gif");
+        classPropertyIcon = getIcon("class.gif");
+        cmdIcon = getIcon("command.gif");
+        cmdExpertIcon = getIcon("command_expert.gif");
+        scalarIcon = getIcon("scalar.gif");
+        scalarExpertIcon = getIcon("scalar_expert.gif");
+        spectrumIcon = getIcon("spectrum.gif");
+        spectrumExpertIcon = getIcon("spectrum_expert.gif");
+        imageIcon = getIcon("image.gif", 0.25);
+        imageExpertIcon = getIcon("image_expert.gif", 0.25);
+        forwardedIcon = getIcon("forward.gif", 0.20);
+        pipeIcon = getIcon("pipe.gif", 0.16);
+        devicePropertyIcon = getIcon("device.gif");
+        stateIcon = getIcon("state.gif");
+        inheritanceIcon = getIcon("inherite.gif", 0.5);
+        removeIcon = getIcon("remove.gif");
 
-        abstract_icon = getIcon("abstract.gif");
-        inherited_icon = getIcon("inherited.gif");
-        overloaded_icon = getIcon("concrete.gif");
-        unknown_icon = getIcon("greyball.gif");
+        abstractIcon = getIcon("abstract.gif");
+        inheritedIcon = getIcon("inherited.gif");
+        overloadedIcon = getIcon("concrete.gif");
+        unknownIcon = getIcon("greyball.gif");
 
-        reload_icon = getIcon("reload_icon.gif", 0.8);
-        new_icon = getIcon("new_icon.gif", 1.0);
-        open_icon = getIcon("open_icon.gif", 1.0);
-        save_icon = getIcon("save_icon.gif", 1.0);
+        reloadIcon = getIcon("reload_icon.gif", 0.8);
+        newIcon = getIcon("new_icon.gif", 1.0);
+        openIcon = getIcon("open_icon.gif", 1.0);
+        saveIcon = getIcon("save_icon.gif", 1.0);
 
         cppLogo    = getIcon("CppLogo.gif",    0.66);
         javaLogo   = getIcon("JavaLogo.gif",   0.12);
         pythonLogo = getIcon("PythonLogo.gif", 0.33);
+        pythonHLLogo = getIcon("PythonHLLogo.gif", 0.33);
 
         errorIcon = getIcon("error.gif");
 

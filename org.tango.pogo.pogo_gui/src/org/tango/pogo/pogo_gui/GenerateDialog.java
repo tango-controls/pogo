@@ -621,6 +621,18 @@ public class GenerateDialog extends JDialog {
                 ideaProjectBtn.setVisible(false);
                 pomBtn.setVisible(false);
                 break;
+            case PogoConst.PythonHL:
+                makefileBtn.setVisible(false);
+                windowsLabel.setVisible(false);
+                linuxLabel.setVisible(false);
+                vc8Btn.setVisible(false);
+                vc9Btn.setVisible(false);
+                vc10Btn.setVisible(false);
+                javaProjectLabel.setVisible(false);
+                eclipseProjectBtn.setVisible(false);
+                ideaProjectBtn.setVisible(false);
+                pomBtn.setVisible(false);
+                break;
         }
 
 

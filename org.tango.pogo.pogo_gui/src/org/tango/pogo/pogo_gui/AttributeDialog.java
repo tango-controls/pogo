@@ -120,8 +120,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         dataTypeCB.setSelectedItem(defaultDataType);
         for (String s : AttrTypeArray)
             attrTypeCB.addItem(s);
-        if (!Utils.tango9)
-            dataTypeCB.removeItem("DevEnum");
 
         for (String s : AttrRWtypeArray)
             rwTypeCB.addItem(s);

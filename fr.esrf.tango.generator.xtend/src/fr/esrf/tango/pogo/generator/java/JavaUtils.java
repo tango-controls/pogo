@@ -40,7 +40,10 @@ import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 
 import fr.esrf.tango.pogo.generator.common.StringUtils;
+import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
+import fr.esrf.tango.pogo.pogoDsl.Inheritance;
+import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.Command;
@@ -82,7 +85,8 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	/**
 	 * Returns the full qualified name the for device class 
-	 * @param className =the class to get file name
+	 * @param cls  the class object
+	 * @param className the class to get file name
 	 * @return the full qualified name the for device class 
 	 */
 	//===========================================================
@@ -540,4 +544,97 @@ public class JavaUtils extends StringUtils {
 	}
 	//===========================================================
 	//===========================================================
+
+
+
+
+	//===========================================================
+	/**
+	 *	Return true if class has no abstract command 
+	 *	and no abstract attribute
+	 */
+	//===========================================================
+	public boolean isConcreteClass(PogoDeviceClass cls) {
+		return CppStringUtils.isFalse(cls.getDescription().getHasAbstractAttribute()) &&
+				CppStringUtils.isFalse(cls.getDescription().getHasAbstractCommand()) ;
+	}
+
+	//===========================================================
+	//===========================================================
+	private boolean isDefaultDeviceImpl(String className) {
+		
+		return (className.startsWith("Device_") && className.endsWith("Impl"));
+	}
+
+	//===========================================================
+	/**
+	 *	Return true if not the Tango DeviceImpl
+	 */
+	//===========================================================
+	public boolean isInheritanceClass(Inheritance inheritance) {
+		if (CppStringUtils.isSet(inheritance.getClassname())) {
+			return (isDefaultDeviceImpl(inheritance.getClassname())==false);
+		}
+		else
+			return false;
+	}
+
+	//===========================================================
+	/**
+	 *	Return true at least the first one is not the Tango DeviceImpl
+	 */
+	//===========================================================
+	public boolean hasInheritanceClass(PogoDeviceClass cls) {
+
+		int	inherSize = cls.getDescription().getInheritances().size();
+		return inherSize>0 &&
+				isInheritanceClass(cls.getDescription().getInheritances().get(inherSize-1));
+	}
+	//===========================================================
+	/**
+	 *	Return the inheritance class
+	 */
+	//===========================================================
+	public String getInheritance(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return " extends " + className;
+		}
+	}
+	//===========================================================
+	public boolean isConcreteHere(Property property) {
+		return (property.getStatus()!=null &&
+				property.getStatus().getConcreteHere()!=null &&
+				property.getStatus().getConcreteHere().equals("true"));
+	}
+	//===========================================================
+	public boolean isConcreteHere(Attribute attribute) {
+		return (attribute.getStatus()!=null &&
+				attribute.getStatus().getConcreteHere()!=null &&
+				attribute.getStatus().getConcreteHere().equals("true"));
+	}
+	//===========================================================
+	public boolean isConcreteHere(Command command) {
+		return (command.getStatus()!=null &&
+				command.getStatus().getConcreteHere()!=null &&
+				command.getStatus().getConcreteHere().equals("true"));
+	}
+	//===========================================================
+	public String inheritancePackage(PogoDeviceClass cls) {
+		if (hasInheritanceClass(cls)) {
+			EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			return "\n\n"+"import org.tango." + className.toLowerCase() + ".*;";
+		}
+		else
+			return "";
+	}
 }
