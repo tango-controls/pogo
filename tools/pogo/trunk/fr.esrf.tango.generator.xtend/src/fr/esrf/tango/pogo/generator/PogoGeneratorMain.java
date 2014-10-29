@@ -57,6 +57,7 @@ public class PogoGeneratorMain {
 	private static final String TYPE_CPP = "cpp";
 	private static final String TYPE_JAVA = "java";
 	private static final String TYPE_PYTHON = "python";
+	private static final String TYPE_PYTHON_HL = "pythonHL";
 	private static final String OPT_LANGUAGE = "language";
 	
 	public static void main(String[] args) {
@@ -82,7 +83,7 @@ public class PogoGeneratorMain {
 		Option optFileTypes = OptionBuilder
 				.withArgName(OPT_LANGUAGE)
 				.withDescription(
-						"Specify target languages (cpp, java, python)")
+						"Specify target languages (cpp, java, python, pythonHL)")
 				.hasArg().create(OPT_LANGUAGE);
 
 		options.addOption(optSrcDir);
@@ -116,6 +117,9 @@ public class PogoGeneratorMain {
 			}
 			if (languages.contains(TYPE_PYTHON)) {
 				launchArgs.add("-pgeneratePython=true");
+			}
+			if (languages.contains(TYPE_PYTHON_HL)) {
+				launchArgs.add("-pgeneratePythonHL=true");
 			}
 		}
 		try {

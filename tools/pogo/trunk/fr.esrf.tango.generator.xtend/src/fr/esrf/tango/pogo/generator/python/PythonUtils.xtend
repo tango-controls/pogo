@@ -52,6 +52,42 @@ class PythonUtils {
     def commentMultiLinesPython(PogoDeviceClass cls){
         cls.description.description.replaceAll("\n","\n#                ");
     }
+      
+    def formatComaToPoint(String str){
+    	if (str != null)
+    	{
+	    	if (str.contains(","))
+	    	{
+	    		return str.replaceAll(",",".");
+	    	}
+	    	else
+	    	{
+	    		return str;
+	    	}
+    	}
+    	else
+    	{
+    		return str;
+    	}
+    }   
+      
+    def stringListToStringArray(String str){
+    	if (str != null)
+    	{
+	    	if (str.contains(","))
+	    	{
+	    		return "\"" + str.replaceAll(",","\",\"") + "\"";
+	    	}
+	    	else
+	    	{
+	    		return str;
+	    	}
+    	}
+    	else
+    	{
+    		return str;
+    	}
+    }
     
     def commentMultiLinesPythonStr(String str){
         str.replaceAll("\n","\n#                ");
@@ -86,23 +122,47 @@ class PythonUtils {
     def hasAttrPropertySet(Attribute attr){
         return (
         	(attr.memorized!=null && !attr.memorized.empty) ||
-            !attr.properties.label.empty       ||
-            !attr.properties.unit.empty        ||
-            !attr.properties.standardUnit.empty||
-            !attr.properties.displayUnit.empty ||
-            !attr.properties.format.empty      || 
-            !attr.properties.maxValue.empty    ||
-            !attr.properties.minValue.empty    ||
-            !attr.properties.maxAlarm.empty    || 
-            !attr.properties.minAlarm.empty    ||
-            !attr.properties.maxWarning.empty  ||
-            !attr.properties.minWarning.empty  ||
-            !attr.properties.deltaTime.empty   ||
-            !attr.properties.deltaValue.empty  ||
-            !attr.properties.description.empty ||
-            attr.displayLevel.equals("EXPERT") ||
-            !attr.polledPeriod.equals("0")     ||
-            attr.eventCriteria!=null           ||
+            (attr.properties.label != null && !attr.properties.label.empty)         		||
+            (attr.properties.unit != null && !attr.properties.unit.empty)       		||
+            (attr.properties.standardUnit != null && !attr.properties.standardUnit.empty)		||
+            (attr.properties.displayUnit != null && !attr.properties.displayUnit.empty) 		||
+            (attr.properties.format != null && !attr.properties.format.empty )     		|| 
+            (attr.properties.maxValue != null && !attr.properties.maxValue.empty )   		||
+            (attr.properties.minValue != null && !attr.properties.minValue.empty )    		||
+            (attr.properties.maxAlarm != null && !attr.properties.maxAlarm.empty )   		|| 
+            (attr.properties.minAlarm != null && !attr.properties.minAlarm.empty )   		||
+            (attr.properties.maxWarning != null && !attr.properties.maxWarning.empty ) 		||
+            (attr.properties.minWarning != null && !attr.properties.minWarning.empty ) 		||
+            (attr.properties.deltaTime != null && !attr.properties.deltaTime.empty  ) 		||
+            (attr.properties.deltaValue != null && !attr.properties.deltaValue.empty ) 		||
+            (attr.properties.description != null && !attr.properties.description.empty ) 		||
+            !attr.polledPeriod.equals("0")     		||
+            attr.eventCriteria!=null           		||
+            attr.eventCriteria!=null);
+    }
+    
+    def hasAttrPropertySetHL(Attribute attr){
+        return (
+        	(attr.memorized!=null && !attr.memorized.empty) ||
+            (attr.properties.label != null && !attr.properties.label.empty)         		||
+            (attr.properties.unit != null && !attr.properties.unit.empty)       		||
+            (attr.properties.standardUnit != null && !attr.properties.standardUnit.empty)		||
+            (attr.properties.displayUnit != null && !attr.properties.displayUnit.empty) 		||
+            (attr.properties.format != null && !attr.properties.format.empty )     		|| 
+            (attr.properties.maxValue != null && !attr.properties.maxValue.empty )   		||
+            (attr.properties.minValue != null && !attr.properties.minValue.empty )    		||
+            (attr.properties.maxAlarm != null && !attr.properties.maxAlarm.empty )   		|| 
+            (attr.properties.minAlarm != null && !attr.properties.minAlarm.empty )   		||
+            (attr.properties.maxWarning != null && !attr.properties.maxWarning.empty ) 		||
+            (attr.properties.minWarning != null && !attr.properties.minWarning.empty ) 		||
+            (attr.properties.deltaTime != null && !attr.properties.deltaTime.empty  ) 		||
+            (attr.properties.deltaValue != null && !attr.properties.deltaValue.empty ) 		||
+            (attr.properties.description != null && !attr.properties.description.empty ) 		||
+            attr.displayLevel.equals("EXPERT") 		||
+            !attr.polledPeriod.equals("0")     		||
+            attr.eventCriteria!=null           		||
+            attr.getAttType().equals("Spectrum")	||
+            attr.getAttType().equals("Image")		||
             attr.eventCriteria!=null);
     }
     
@@ -113,11 +173,19 @@ class PythonUtils {
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
 		def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
 		    """ «cmd.description»
-		    
-		    :param «IF !cmd.argin.type.voidType»argin«ENDIF»: «cmd.argin.description.commentCmdParamMultiLines»
-		    :type: «cmd.argin.type.pythonType»
+		    «IF !cmd.argin.type.voidType»
+		    :param argin: «cmd.argin.description.commentCmdParamMultiLines»
+		    :type argin: «cmd.argin.type.pythonType»
+		    «ENDIF»
+		    «IF !cmd.argout.type.voidType»
+		    «IF cmd.argout.description.empty»
+		    :rtype: «cmd.argout.type.pythonType»
+		    «ELSE»
 		    :return: «cmd.argout.description.commentCmdParamMultiLines»
-		    :rtype: «cmd.argout.type.pythonType» """
+		    :rtype: «cmd.argout.type.pythonType»
+		    «ENDIF»
+		    «ENDIF»
+		    """
 		    self.debug_stream("In «cmd.methodName»()")
 		    «IF !cmd.argout.type.voidType»argout = «cmd.argout.type.defaultValue»«ENDIF»
 		    «protectedArea(cls, cmd.name)»
@@ -125,6 +193,15 @@ class PythonUtils {
 		    
         '''
         
+    def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''
+        «IF isTrue(cmd.status.concreteHere)»
+        # «cmd.name»
+        @command(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType»,«ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)
+        def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
+            self.debug_stream("in «cmd.name»")
+            «IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ENDIF»«ENDIF»
+'''
+    
     def commandMethodStateMachine(PogoDeviceClass cls, Command cmd) '''
 		def is_«cmd.name»_allowed(self):
 		    self.debug_stream("In is_«cmd.name»_allowed()")
@@ -134,19 +211,34 @@ class PythonUtils {
 		    
     '''
     
+    def commandMethodStateMachineHL(PogoDeviceClass cls, Command cmd) '''
+		def is_«cmd.name»_allowed(self):
+		    «cmd.excludedStates.ifContentFromListPythonHL»
+		    
+'''
+    
     def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		def write_«attribute.name»(self, attr):
 		    self.debug_stream("In write_«attribute.name»()")
-		    data=attr.get_write_value()
+		    data = attr.get_write_value()
 		    «protectedArea(cls, attribute.name + "_write")»
 		    
     '''
+    def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
+		def write_«attribute.name»(self, value):
+		    self._«attribute.name» = value
+'''
         
     def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		def read_«attribute.name»(self, attr):
 		    self.debug_stream("In read_«attribute.name»()")
 		    «protectedArea(cls, attribute.name + "_read", attribute.setAttrVal, false)»
 		    
+    '''
+        
+    def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
+        def read_«attribute.name»(self):
+            return self._«attribute.name»
     '''
     
     def attributeMethodStateMachine(PogoDeviceClass cls, Attribute attribute) '''
@@ -160,12 +252,29 @@ class PythonUtils {
 		    return state_ok
 		    
     '''
-
+    
+    def attributeMethodStateMachineHL(PogoDeviceClass cls, Attribute attribute) '''
+		def is_«attribute.name»_allowed(self, attr):
+		    «IF attribute.rwType.equals("READ")»return «attribute.readExcludedStates.ifContentFromListPythonHL»«ENDIF»
+		    «IF attribute.rwType.equals("WRITE")»return «attribute.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»
+		    «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»
+		    if attr==attr.READ_REQ:
+		        return «IF !attribute.readExcludedStates.empty»«attribute.readExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»
+		    else:
+		        return «IF !attribute.writeExcludedStates.empty»«attribute.writeExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»«ENDIF»
+    '''
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
-            [«prop.type.pythonPropType»«IF !prop.description.empty»,
-            "«prop.description.oneLineString»"«ENDIF»«IF !prop.defaultPropValue.empty»,
-            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
+            [«prop.type.pythonPropType», 
+            «IF !prop.description.empty»"«prop.description.oneLineString»"«ELSE» ''«ENDIF»«IF !prop.defaultPropValue.empty»,
+            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»[«prop.defaultPropValue.get(0).stringListToStringArray»]«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
             [] «ENDIF»],
+    '''
+    
+    def pythonPropertyClassHL(Property prop) '''
+        «prop.name» = class_property(dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»)
+    '''
+    def pythonPropertyDeviceHL(Property prop) '''
+        «prop.name» = device_property(dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»)
     '''
     
     def pythonCommandClass(Command cmd) '''        '«cmd.name»':
@@ -185,6 +294,18 @@ class PythonUtils {
         else
         if (attr.spectrum) {
             return ", " + attr.maxX;
+        }
+        else
+            return "";
+    }
+    
+    def String pythonAttributeSizeHL(Attribute attr) {
+        if (attr.image) {
+            return "max_dim_x=" + attr.maxX + ", max_dim_y=" + attr.maxY + ",";
+        }
+        else
+        if (attr.spectrum) {
+            return "max_dim_x=" + attr.maxX + ",";
         }
         else
             return "";
@@ -224,6 +345,44 @@ class PythonUtils {
             «attr.isMemorized»
             } ],
             «ELSE»],«ENDIF»
+    '''
+    
+    
+    def pythonAttributeClassHL(Attribute attr) '''
+        «attr.name» = attribute(dtype=«attr.pythonTypeAttrHL»,
+            «IF !attr.rwType.toUpperCase.equals("READ")»access=AttrWriteType.«attr.rwType.toUpperCase»,«ENDIF»
+            «IF attr.hasAttrPropertySetHL»
+            «pythonAttributeSizeHL(attr)»
+            «setAttrPropertyHL("display_level", attr.displayLevel, false)»
+            «setAttrPropertyHL("label", attr.properties.label, true)»
+            «setAttrPropertyHL("unit", attr.properties.unit, true)»
+            «setAttrPropertyHL("standard_unit", attr.properties.standardUnit, true)»
+            «setAttrPropertyHL("display_unit", attr.properties.displayUnit, true)»
+            «setAttrPropertyHL("format", attr.properties.format.formatComaToPoint, true)»
+            «setAttrPropertyHL("max_value", attr.properties.maxValue, false)»
+            «setAttrPropertyHL("min_value", attr.properties.minValue, false)»
+            «setAttrPropertyHL("max_alarm", attr.properties.maxAlarm, false)»
+            «setAttrPropertyHL("min_alarm", attr.properties.minAlarm, false)»
+            «setAttrPropertyHL("max_warning", attr.properties.maxWarning, false)»
+            «setAttrPropertyHL("min_warning", attr.properties.minWarning, false)»
+            «setAttrPropertyHL("delta_time", attr.properties.deltaTime, false)»
+            «setAttrPropertyHL("delta_value", attr.properties.deltaValue, false)»
+            «IF attr.memorized != null && attr.memorized == true»
+            «setAttrPropertyHL("memorized", attr.memorized, false)»
+            «setAttrPropertyHL("hw_memorized", attr.memorizedAtInit, false)»
+            «ENDIF»
+            «IF attr.eventCriteria!=null»
+            «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
+            «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
+            «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
+            «ENDIF»
+            «IF attr.evArchiveCriteria!=null»
+            «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
+            «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
+            «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
+            «ENDIF»
+            «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»
+        «ELSE»«ENDIF»)
     '''
     
     //======================================================

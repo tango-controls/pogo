@@ -662,7 +662,7 @@ public class MultiClassesTree extends JTree {
             if (row == 0) {
                 //	ROOT
                 setFont(fonts[TITLE]);
-                setIcon(Utils.getInstance().root_icon);
+                setIcon(Utils.getInstance().rootIcon);
             } else {
                 setFont(fonts[CLASS]);
                 setIcon(class_icon);

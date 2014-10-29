@@ -85,7 +85,7 @@ class InheritancePanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = y;
         JLabel lbl = new JLabel("");
-        lbl.setIcon(Utils.getInstance().inherit_icon);
+        lbl.setIcon(Utils.getInstance().inheritanceIcon);
         add(lbl, gbc);
     }
 
@@ -208,7 +208,7 @@ class InheritancePanel extends JPanel {
             setName(classname);
             setFont(new java.awt.Font("monospaced", 1, 10));
             setBackground(classBtnBG);
-            insertIcon(Utils.getInstance().class_icon);
+            insertIcon(Utils.getInstance().classIcon);
             setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
 

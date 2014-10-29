@@ -102,10 +102,12 @@ class JavaDevice  implements IGenerator {
 		 */
 		
 		@Device
-		public class «cls.name» {
+		public class «cls.name»«cls.getInheritance» {
 		
-		    private static final Logger logger = LoggerFactory.getLogger(«cls.name».class);
-		    private static final XLogger xlogger = XLoggerFactory.getXLogger(«cls.name».class);
+			«IF cls.hasInheritanceClass==false»
+			    protected static final Logger logger = LoggerFactory.getLogger(«cls.name».class);
+			    protected static final XLogger xlogger = XLoggerFactory.getXLogger(«cls.name».class);
+			«ENDIF»
 			//========================================================
 			//	Programmer's data members
 			//========================================================
@@ -208,7 +210,8 @@ class JavaDevice  implements IGenerator {
 				"\n" +
 				"//	Import Tango IDL types\n" +
 				"import fr.esrf.Tango.*;\n" +
-				"import fr.esrf.TangoDs.Except;",
+				"import fr.esrf.TangoDs.Except;"+
+				cls.inheritancePackage,
 				false)»
 	'''
 
@@ -218,21 +221,23 @@ class JavaDevice  implements IGenerator {
 	//======================================================
 	def addClassProperties(PogoDeviceClass cls) '''
 		«FOR Property property : cls.classProperties»
-			/**
-			 * Class Property «property.name»
-			 * «property.description.comments("* ")»
-			 */
-			@ClassProperty(name="«property.name»", description="«property.description.oneLineString»" «property.defaultValue»)
-			private «property.strJavaType» «property.name.dataMemberName»;
-			/**
-			 * set property «property.name»
-			 * @param  «property.name.dataMemberName»  see description above.
-			 */
-			public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
-				this.«property.name.dataMemberName» = «property.name.dataMemberName»;
-				«cls.protectedArea("set" + property.name, "Check property value here", true)»
-			}
-			
+			«IF property.isConcreteHere»
+				/**
+				 * Class Property «property.name»
+				 * «property.description.comments("* ")»
+				 */
+				@ClassProperty(name="«property.name»", description="«property.description.oneLineString»" «property.defaultValue»)
+				private «property.strJavaType» «property.name.dataMemberName»;
+				/**
+				 * set property «property.name»
+				 * @param  «property.name.dataMemberName»  see description above.
+				 */
+				public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
+					this.«property.name.dataMemberName» = «property.name.dataMemberName»;
+					«cls.protectedArea("set" + property.name, "Check property value here", true)»
+				}
+
+			«ENDIF»
 		«ENDFOR»
 	'''
 
@@ -241,21 +246,23 @@ class JavaDevice  implements IGenerator {
 	//======================================================
 	def addDeviceProperties(PogoDeviceClass cls) '''
 		«FOR Property property : cls.deviceProperties»
-			/**
-			 * Device Property «property.name»
-			 * «property.description.comments("* ")»
-			 */
-			@DeviceProperty(name="«property.name»", description="«property.description.oneLineString»" «property.defaultValue»)
-			private «property.strJavaType» «property.name.dataMemberName»;
-			/**
-			 * set property «property.name»
-			 * @param  «property.name.dataMemberName»  see description above.
-			 */
-			public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
-				this.«property.name.dataMemberName» = «property.name.dataMemberName»;
-				«cls.protectedArea("set" + property.name, "Check property value here", true)»
-			}
-			
+			«IF property.isConcreteHere»
+				/**
+				 * Device Property «property.name»
+				 * «property.description.comments("* ")»
+				 */
+				@DeviceProperty(name="«property.name»", description="«property.description.oneLineString»" «property.defaultValue»)
+				private «property.strJavaType» «property.name.dataMemberName»;
+				/**
+				 * set property «property.name»
+				 * @param  «property.name.dataMemberName»  see description above.
+				 */
+				public void set«property.name»(«property.strJavaType» «property.name.dataMemberName») {
+					this.«property.name.dataMemberName» = «property.name.dataMemberName»;
+					«cls.protectedArea("set" + property.name, "Check property value here", true)»
+				}
+
+			«ENDIF»
 		«ENDFOR»
 	'''
 
@@ -269,9 +276,10 @@ class JavaDevice  implements IGenerator {
 		 * @throws DevFailed if something fails during the device initialization.
 		 */
 		@Init(lazyLoading = false)
-		public final void initDevice() throws DevFailed {
+		public void initDevice() throws DevFailed {
 			xlogger.entry();
 			logger.debug("init device " + deviceManager.getName());
+			«IF cls.hasInheritanceClass»super.initDevice();«ENDIF»
 			«cls.protectedArea("initDevice", "Put your device initialization code here", true)»
 			xlogger.exit();
 		}
@@ -286,8 +294,9 @@ class JavaDevice  implements IGenerator {
 		 * @throws DevFailed if something fails during the device object delation.
 		 */
 		@Delete
-		public final void deleteDevice() throws DevFailed {
+		public void deleteDevice() throws DevFailed {
 			xlogger.entry();
+			«IF cls.hasInheritanceClass»super.deleteDevice();«ENDIF»
 			«cls.protectedArea("deleteDevice", "Put your device clearing code here", true)»
 			xlogger.exit();
 		}
@@ -296,17 +305,23 @@ class JavaDevice  implements IGenerator {
 	// define code for always_executed_hook method like
 	//======================================================
 	def aroundInvokeMethod(PogoDeviceClass cls) '''
-		/**
-		 * Method called before and after command and attribute calls.
-		 * @param ctx the invocation context
-		 * @throws DevFailed if something fails during this method execution.
-		 */
-		@AroundInvoke
-		public final void aroundInvoke(final InvocationContext ctx) throws DevFailed {
-			xlogger.entry(ctx);
-			«cls.protectedArea("aroundInvoke", "Put aroundInvoke code here", true)»
-			xlogger.exit();
-		}
+		«IF cls.hasInheritanceClass==false»
+			/**
+			 * Method called before and after command and attribute calls.
+			 * @param ctx the invocation context
+			 * @throws DevFailed if something fails during this method execution.
+			 */
+			@AroundInvoke
+			public void aroundInvoke(final InvocationContext ctx) throws DevFailed {
+				xlogger.entry();
+				«IF cls.hasInheritanceClass»
+					«cls.protectedArea("aroundInvoke", "super.aroundInvoke(ctx);", false)»
+				«ELSE»
+					«cls.protectedArea("aroundInvoke", "Put aroundInvoke code here", true)»
+				xlogger.exit();
+				«ENDIF»
+			}
+		«ENDIF»
 	'''
 	//======================================================
 	// define code for setDynamicManager method like
@@ -317,13 +332,14 @@ class JavaDevice  implements IGenerator {
 		 * dynamic command and attribute management. Will be injected by the framework.
 		 */
 		@DynamicManagement
-		private DynamicManager dynamicManager;
+		protected DynamicManager dynamicManager;
 		/**
 		 * @param dynamicManager the DynamicManager instance 
 		 * @throws DevFailed if something fails during this method execution.
 		 */
 		public void setDynamicManager(final DynamicManager dynamicManager) throws DevFailed {
 			this.dynamicManager = dynamicManager;
+			«IF cls.hasInheritanceClass»super.setDynamicManager(dynamicManager);«ENDIF»
 			«cls.protectedArea("setDynamicManager", "Put your code here", true)»
 		}
 
@@ -334,6 +350,7 @@ class JavaDevice  implements IGenerator {
 		DeviceManager deviceManager;
 		public void setDeviceManager(DeviceManager deviceManager){
 			this.deviceManager= deviceManager ;
+			«IF cls.hasInheritanceClass»super.setDeviceManager(deviceManager);«ENDIF»
 		}
 	'''
 

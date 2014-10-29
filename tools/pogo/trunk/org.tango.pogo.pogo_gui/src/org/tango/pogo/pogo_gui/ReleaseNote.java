@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Mon Sep 15 12:52:08 CEST 2014)</Center><Br>\n" + 
+		"	(Generated Wed Oct 29 11:13:57 CET 2014)</Center><Br>\n" + 
+		"<li><b>Pogo-9.0.1 - 29/10/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; PythonHL code generation added (not tested).<Br>\n" + 
+		"<li><b>Pogo-9.0.0 - 01/10/2014:</b><Br>\n" + 
+		"&nbsp; &nbsp; Tango-- features added for C++ and java.<Br>\n" + 
 		"<li><b>Pogo-8.4.8 - 29/08/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix bugs on adding state and property type display.<Br>\n" + 
 		"<li><b>Pogo-8.4.7 - 18/06/2014:</b><Br>\n" + 

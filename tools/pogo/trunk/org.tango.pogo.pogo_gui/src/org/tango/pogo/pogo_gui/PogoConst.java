@@ -49,7 +49,7 @@ public interface PogoConst {
      * Revision number and date
      */
     public static String revNumber =
-            "8.4.8  -  Mon Sep 15 12:52:07 CEST 2014";
+            "9.0.1a  -  Wed Oct 29 11:13:56 CET 2014";
 
     public static final int TANGO_PAGES = 0;
     public static final int POGO_PAGES = 1;
@@ -82,11 +82,12 @@ public interface PogoConst {
     public static final int EXPERT = 1;
 
     //	Languages
-    public static final String[] strLang = {"Java", "Cpp", "Python"};
-    public static final String[] fileExtension = {"java", "cpp", "py"};
+    public static final String[] strLang = {"Java", "Cpp", "Python", "PythonHL"};
+    public static final String[] fileExtension = {"java", "cpp", "py", "py"};
     public static final int Java = 0;
     public static final int Cpp = 1;
     public static final int Python = 2;
+    public static final int PythonHL = 3;
 
 
     //	Attributes

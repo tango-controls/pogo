@@ -53,8 +53,10 @@ class JavaCommand {
 	def executeCommandMethods(PogoDeviceClass cls) '''
 		«FOR Command command : cls.commands»
 			«IF command.name.equals("State")==false && command.name.equals("Status")==false»
-				«cls.executeCommandMethod(command)»
+				«IF command.concreteHere»
+					«cls.executeCommandMethod(command)»
 
+				«ENDIF»
 			«ENDIF»
 		«ENDFOR»
 	'''

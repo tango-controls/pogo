@@ -550,19 +550,19 @@ public class InheritanceUtils {
     //===============================================================
     public ImageIcon getIcon(InheritanceStatus status) {
         if (status == null)
-            return utils.unknown_icon;
+            return utils.unknownIcon;
 
         if (Utils.isTrue(status.getConcreteHere()))
-            return utils.overloaded_icon;
+            return utils.overloadedIcon;
         else if (Utils.isTrue(status.getInherited())) {
             if (Utils.isTrue(status.getConcrete()))
-                return utils.inherited_icon;
+                return utils.inheritedIcon;
             else
-                return utils.abstract_icon;
+                return utils.abstractIcon;
         } else if (Utils.isTrue(status.getAbstract()))
-            return utils.abstract_icon;
+            return utils.abstractIcon;
         else
-            return utils.unknown_icon;
+            return utils.unknownIcon;
     }
 
     //===============================================================

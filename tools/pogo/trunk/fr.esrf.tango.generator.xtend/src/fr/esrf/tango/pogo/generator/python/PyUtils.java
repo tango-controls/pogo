@@ -40,6 +40,11 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 
 import fr.esrf.tango.pogo.generator.common.StringUtils;
 
+//===========================================================
+/**
+ * PyUtils helper class
+ */
+//===========================================================
 public class PyUtils {
 	
 	//===========================================================
@@ -93,6 +98,13 @@ public class PyUtils {
 			return "";
 		}
 	}
+	//===========================================================
+	/**
+	 * Returns an example of a dynamic attribute
+	 * @param cls PogoDeviceClass
+	 * @param attribute Attribute
+	 * @return  a string representing how to add a dynamic attribute
+	 */
 	//===========================================================
 	String addDynamicAttributeExample(PogoDeviceClass cls, Attribute attribute) {
 		StringBuilder	sb = new StringBuilder("self.add_attribute(");

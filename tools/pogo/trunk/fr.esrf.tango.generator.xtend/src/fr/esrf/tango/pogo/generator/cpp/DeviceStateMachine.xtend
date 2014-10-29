@@ -235,8 +235,8 @@ class DeviceStateMachine {
 							}
 							return true;
 						}
+						else
 					«ENDIF»
-					else
 				«ENDIF»
 				«IF pipe.readExcludedStates.empty»
 					//	Not any excluded states for «pipe.name» pipe in read access.

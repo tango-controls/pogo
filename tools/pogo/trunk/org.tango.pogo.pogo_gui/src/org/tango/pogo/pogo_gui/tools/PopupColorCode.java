@@ -65,11 +65,11 @@ public class PopupColorCode extends JDialog {
 
     //===============================================================
     private final InherStatus[] inherSatus = {
-            new InherStatus(Utils.getInstance().abstract_icon,
+            new InherStatus(Utils.getInstance().abstractIcon,
                     "Abstract item inherited from parent class"),
-            new InherStatus(Utils.getInstance().inherited_icon,
+            new InherStatus(Utils.getInstance().inheritedIcon,
                     "Concrete item inherited from parent class"),
-            new InherStatus(Utils.getInstance().overloaded_icon,
+            new InherStatus(Utils.getInstance().overloadedIcon,
                     "Concrete item defined in this class"),
     };
 
