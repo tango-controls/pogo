@@ -301,7 +301,7 @@ public class PropertyDialog extends JDialog {
         centerPanel.add(scrollPane, gridBagConstraints);
 
         arginLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        arginLbl.setText("Propery Type :");
+        arginLbl.setText("Property Type :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
