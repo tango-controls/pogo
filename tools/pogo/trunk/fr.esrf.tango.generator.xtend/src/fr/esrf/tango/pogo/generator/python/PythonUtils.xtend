@@ -170,6 +170,10 @@ class PythonUtils {
         return (cmd.displayLevel.equals("EXPERT") || !cmd.polledPeriod.equals("0"));
     }
     
+    def hasCmdArginOrArgoutSet(Command cmd){
+        return (!cmd.argin.type.voidType || !cmd.argout.type.voidType );
+    }
+    
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
 		def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
 		    """ «cmd.description»
@@ -195,11 +199,10 @@ class PythonUtils {
         
     def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''
         «IF isTrue(cmd.status.concreteHere)»
-        # «cmd.name»
-        @command(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType»,«ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)
+        @DebugIt()
+        @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType»,«ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
         def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-            self.debug_stream("in «cmd.name»")
-            «IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ENDIF»«ENDIF»
+            «IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ELSE»pass«ENDIF»«ENDIF»
 '''
     
     def commandMethodStateMachine(PogoDeviceClass cls, Command cmd) '''
@@ -271,10 +274,14 @@ class PythonUtils {
     '''
     
     def pythonPropertyClassHL(Property prop) '''
-        «prop.name» = class_property(dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»)
+        «prop.name» = class_property(
+            dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
+        )
     '''
     def pythonPropertyDeviceHL(Property prop) '''
-        «prop.name» = device_property(dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»)
+        «prop.name» = device_property(
+            dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
+        )
     '''
     
     def pythonCommandClass(Command cmd) '''        '«cmd.name»':
@@ -349,7 +356,8 @@ class PythonUtils {
     
     
     def pythonAttributeClassHL(Attribute attr) '''
-        «attr.name» = attribute(dtype=«attr.pythonTypeAttrHL»,
+        «attr.name» = attribute(
+            dtype=«attr.pythonTypeAttrHL»,
             «IF !attr.rwType.toUpperCase.equals("READ")»access=AttrWriteType.«attr.rwType.toUpperCase»,«ENDIF»
             «IF attr.hasAttrPropertySetHL»
             «pythonAttributeSizeHL(attr)»
