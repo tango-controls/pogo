@@ -178,7 +178,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Propery Type :"/>
+            <Property name="text" type="java.lang.String" value="Property Type :"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
