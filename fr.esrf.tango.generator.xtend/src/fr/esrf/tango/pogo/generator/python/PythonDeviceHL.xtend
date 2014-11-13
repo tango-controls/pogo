@@ -63,6 +63,7 @@ class PythonDeviceHL implements IGenerator {
     //====================================================
     def generate_pythonFile(PogoDeviceClass cls)'''
         «cls.pythonDevice»
+        
         «cls.pythonMainMethodHL»
     '''
 
@@ -72,6 +73,7 @@ class PythonDeviceHL implements IGenerator {
     def pythonDevice(PogoDeviceClass cls)'''
         «cls.pythonHeader»
         
+        # «cls.description.title»
         class «cls.name» («cls.inheritedPythonClassNameHL»):
             __metaclass__ = DeviceMeta
         
@@ -90,13 +92,18 @@ class PythonDeviceHL implements IGenerator {
     //    File header
     //====================================================
     def pythonHeader(PogoDeviceClass cls) '''
+"""«cls.description.description»"""
+
+# Imports
 import PyTango
 import sys
-from PyTango import AttrQuality, AttrWriteType, DispLevel
+
+# PyTango imports
 from PyTango.server import run
 from PyTango.server import Device, DeviceMeta
 from PyTango.server import attribute, command
 from PyTango.server import class_property, device_property
+from PyTango import AttrQuality, AttrWriteType, DispLevel
 '''
 
     //====================================================
@@ -106,13 +113,15 @@ from PyTango.server import class_property, device_property
 #====================================================
 #    General methods
 #====================================================
+
     def init_device(self):
         self.get_device_properties()
-        
+    
     def always_executed_hook(self):
-        self.debug_stream("In always_executed_hook method()")
+        pass
+    
     def delete_device(self):
-        self.debug_stream("In delete_device()")
+        pass
 '''
 
     //====================================================
@@ -122,6 +131,7 @@ from PyTango.server import class_property, device_property
     #====================================================
     #    Attributes declaration
     #====================================================
+    
         «FOR attr : cls.attributes»
         «attr.pythonAttributeClassHL»
         
@@ -134,6 +144,7 @@ from PyTango.server import class_property, device_property
 #====================================================
 #    Attributes methods
 #====================================================
+
     «FOR attr: cls.attributes»
     «IF attr.isRead»
     «readAttributeMethodHL(cls, attr)»
@@ -144,6 +155,7 @@ from PyTango.server import class_property, device_property
     «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»
     «attributeMethodStateMachineHL(cls, attr)»
     «ENDIF»
+    
     «ENDFOR»
     «cls.pythonDynamicAttributes»
     '''
@@ -205,6 +217,7 @@ from PyTango.server import class_property, device_property
 #====================================================
 #    Commands
 #====================================================
+
     «FOR cmd: cls.commands»
     «commandExecutionHL(cls, cmd)»
     «IF !cmd.excludedStates.empty»
@@ -220,6 +233,7 @@ from PyTango.server import class_property, device_property
 #====================================================
 #    Properties
 #====================================================
+
     «FOR prop : cls.classProperties»
     «prop.pythonPropertyClassHL»
     «ENDFOR»
@@ -234,7 +248,7 @@ from PyTango.server import class_property, device_property
     //    Main method
     //====================================================
     def pythonMainMethodHL(PogoDeviceClass cls)'''
-        
+        # Run server
         if __name__ == '__main__':
             run((«cls.name»,))
     '''
