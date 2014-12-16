@@ -931,8 +931,8 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         eventsPanel.add(evTitleLbl, gridBagConstraints);
 
-        defaultEventsLbl.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        defaultEventsLbl.setText("Default Events:");
+        defaultEventsLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        defaultEventsLbl.setText("Default events:");
         defaultEventsLbl.setToolTipText("Events managed by TANGO library");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1086,8 +1086,8 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         eventsPanel.add(dummyLbl, gridBagConstraints);
 
-        pushEventsLbl.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        pushEventsLbl.setText("Pushed Events:");
+        pushEventsLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        pushEventsLbl.setText("Pushed events by user code:");
         pushEventsLbl.setToolTipText("Events pushed by user code.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;

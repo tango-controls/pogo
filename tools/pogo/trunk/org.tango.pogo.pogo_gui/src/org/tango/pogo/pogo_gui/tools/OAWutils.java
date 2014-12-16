@@ -102,7 +102,17 @@ public class OAWutils {
             throw new PogoException("This is not a Pogo Multi Classes file !");
         PogoMultiClasses pmc = (PogoMultiClasses) pogoObj;
         reverseClassOrder(pmc);
+        setProjectPath(pmc, xmiFile);
         return pmc;
+    }
+    //========================================================================
+    //========================================================================
+    private void setProjectPath(PogoMultiClasses pmc, String fileName) {
+        //  xmi file ?
+        if (fileName.endsWith(".xmi")) {
+            String path = Utils.getPath(fileName);
+            pmc.setSourcePath(path);
+        }
     }
     //========================================================================
     //========================================================================
