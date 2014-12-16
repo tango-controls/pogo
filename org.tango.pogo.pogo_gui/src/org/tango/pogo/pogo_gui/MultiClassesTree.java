@@ -183,9 +183,9 @@ public class MultiClassesTree extends JTree {
 
     //===============================================================
     //===============================================================
-    private DeviceClass loadDeviceClass(OneClassSimpleDef _class) throws PogoException {
-        String xmiFileName = _class.getSourcePath() + "/" + _class.getClassname();
-        if (Utils.isTrue(_class.getPogo6()))
+    private DeviceClass loadDeviceClass(OneClassSimpleDef simpleClass) throws PogoException {
+        String xmiFileName = simpleClass.getSourcePath() + "/" + simpleClass.getClassname();
+        if (Utils.isTrue(simpleClass.getPogo6()))
             xmiFileName += ".h";
         else
             xmiFileName += ".xmi";
@@ -196,14 +196,14 @@ public class MultiClassesTree extends JTree {
             try {
                 if (!xmiFile.exists()) throw new PogoException("No such file: " + xmiFile.getAbsolutePath());
                 deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
-                if (!deviceClass.getPogoDeviceClass().getName().equals(_class.getClassname()))
-                    throw new PogoException(_class.getClassname() + " file expected !");
+                if (!deviceClass.getPogoDeviceClass().getName().equals(simpleClass.getClassname()))
+                    throw new PogoException(simpleClass.getClassname() + " file expected !");
             } catch (PogoException e) {
                 e.popup(this);
 
                 //  Display chooser to select a new path
-                int retval = chooser.showOpenDialog(this);
-                if (retval == JFileChooser.APPROVE_OPTION) {
+                chooser.setDialogTitle("Class: " + simpleClass.getClassname() + " ?");
+                if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                     xmiFile = chooser.getSelectedFile();
                 } else
                     throw new PogoException("Canceled");

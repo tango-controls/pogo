@@ -844,9 +844,9 @@
             <Component class="javax.swing.JLabel" name="defaultEventsLbl">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="14" style="1"/>
+                  <Font name="Dialog" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Default Events:"/>
+                <Property name="text" type="java.lang.String" value="Default events:"/>
                 <Property name="toolTipText" type="java.lang.String" value="Events managed by TANGO library"/>
               </Properties>
               <AuxValues>
@@ -1098,9 +1098,9 @@
             <Component class="javax.swing.JLabel" name="pushEventsLbl">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="14" style="1"/>
+                  <Font name="Dialog" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pushed Events:"/>
+                <Property name="text" type="java.lang.String" value="Pushed events by user code:"/>
                 <Property name="toolTipText" type="java.lang.String" value="Events pushed by user code."/>
               </Properties>
               <AuxValues>
