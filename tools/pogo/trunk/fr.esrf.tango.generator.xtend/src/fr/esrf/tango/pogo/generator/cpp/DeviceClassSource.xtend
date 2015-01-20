@@ -377,14 +377,14 @@ class DeviceClassSource {
 						}
 					}
 				}
-				«cls.protectedAreaClass("erase_dynamic_attributes")»		
+				«cls.protectedAreaClass("erase_dynamic_attributes")»
 			}
 
 			«cls.simpleMethodHeaderClass("get_attr_by_name", "returns Tango::Attr * object found by name")»
 			Tango::Attr *«cls.name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname)
 			{
 				vector<Tango::Attr *>::iterator it;
-				for (it=att_list.begin() ; it<att_list.end() ; it++)
+				for (it=att_list.begin() ; it<att_list.end() ; ++it)
 					if ((*it)->get_name()==attname)
 						return (*it);
 				//	Attr does not exist
@@ -429,12 +429,12 @@ class DeviceClassSource {
 		//--------------------------------------------------------
 		/**
 		 * method : 		«cls.name»Class::~«cls.name»Class()
-		 * description : 	destructor for the «cls.name»Class
+		 * description : 	destroyer for the «cls.name»Class
 		 */
 		//--------------------------------------------------------
 		«cls.name»Class::~«cls.name»Class()
 		{
-			«cls.protectedAreaClass("destructor")»
+			«cls.protectedAreaClass("destroyer")»
 
 			_instance = NULL;
 		}
