@@ -156,7 +156,7 @@ class DeviceInclude  {
 	// Constructor declarations
 	//======================================================
 	def declareConstructors(PogoDeviceClass cls) '''
-		//	Constructors and destructors
+		//	Constructors and destroyers
 		public:
 			/**
 			 * Constructs a newly device object.
@@ -181,7 +181,7 @@ class DeviceInclude  {
 			 */
 			«cls.name»(Tango::DeviceClass *cl,const char *s,const char *d);
 			/**
-			 * The device object destructor.
+			 * The device object destroyer.
 			 */
 			~«cls.name»() {delete_device();};
 
