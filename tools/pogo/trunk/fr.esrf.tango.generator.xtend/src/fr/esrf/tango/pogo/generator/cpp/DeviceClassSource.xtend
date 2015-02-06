@@ -429,12 +429,12 @@ class DeviceClassSource {
 		//--------------------------------------------------------
 		/**
 		 * method : 		«cls.name»Class::~«cls.name»Class()
-		 * description : 	destroyer for the «cls.name»Class
+		 * description : 	destructor for the «cls.name»Class
 		 */
 		//--------------------------------------------------------
 		«cls.name»Class::~«cls.name»Class()
 		{
-			«cls.protectedAreaClass("destroyer")»
+			«cls.protectedAreaClass("destructor")»
 
 			_instance = NULL;
 		}
