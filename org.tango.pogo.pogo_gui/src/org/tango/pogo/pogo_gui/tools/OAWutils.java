@@ -360,11 +360,6 @@ public class OAWutils {
                 new ParserTool().convertForXTendCompatibility(pogoClass,  true);
             }
         }
-        //  Convert destructor (does not exist in english) to destroyer in protected area
-        ParserTool.modifyProtectedAreaID(pogoClass.getDescription().getSourcePath(),
-                pogoClass.getName() + "Class.cpp",
-                pogoClass.getName() + "Class::destructor", pogoClass.getName() + "Class::destroyer");
-
         //  If doc is generated, check if old pogo Description.html file exists
         if (pogoClass.getDescription().getFilestogenerate().contains("html")) {
             String filename = pogoClass.getDescription().getSourcePath() + "/" +
