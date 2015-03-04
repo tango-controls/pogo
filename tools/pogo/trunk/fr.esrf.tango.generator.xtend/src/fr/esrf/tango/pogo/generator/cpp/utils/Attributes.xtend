@@ -369,11 +369,13 @@ class Attributes {
 	def manageEnumLabels(Attribute attribute) '''
 		«IF attribute.dataType.cppType.toString().contains("Enum")»
 			«IF attribute.enumLabels!=null && attribute.enumLabels.size>0»
-				vector<string> labels;
-				«FOR String label : attribute.enumLabels»
-					labels.push_back("«label»");
-				«ENDFOR»
-				«attribute.name.toLowerCase»_prop.set_enum_labels(labels);
+				{
+					vector<string> labels;
+					«FOR String label : attribute.enumLabels»
+						labels.push_back("«label»");
+					«ENDFOR»
+					«attribute.name.toLowerCase»_prop.set_enum_labels(labels);
+				}
 			«ENDIF»
 		«ENDIF»
 	'''
