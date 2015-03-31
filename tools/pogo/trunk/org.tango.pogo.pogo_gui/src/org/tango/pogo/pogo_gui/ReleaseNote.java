@@ -17,7 +17,13 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Dec 16 11:26:27 CET 2014)</Center><Br>\n" + 
+		"	(Generated Mon Mar 30 15:14:28 CEST 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.0.4 - 19/03/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; PythonHL bug fixes.<Br>\n" + 
+		"&nbsp; &nbsp; PythonHL test added.<Br>\n" + 
+		"<li><b>Pogo-9.0.3 - 20/01/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; PythonHL bug fixes.<Br>\n" + 
+		"&nbsp; &nbsp; PythonHL Project directory added.<Br>\n" + 
 		"<li><b>Pogo-9.0.2 - 16/12/2014:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix a problem in path management for multiple classes tool.<Br>\n" + 
 		"<li><b>Pogo-9.0.1 - 29/10/2014:</b><Br>\n" + 

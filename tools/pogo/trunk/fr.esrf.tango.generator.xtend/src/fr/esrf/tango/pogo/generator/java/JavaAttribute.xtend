@@ -53,15 +53,10 @@ class JavaAttribute {
 	def attributeMethods(PogoDeviceClass cls) '''
 		«FOR Attribute attribute : cls.attributes»
 			«IF attribute.concreteHere»
-				«IF attribute.dataType.toString.contains("Enum")»
-					//	Attribute is enum.
-					«cls.generateEnumAttributeClassFile(attribute)»
-				«ELSE»
-					«cls.declareAttributeMember(attribute)»
-					«cls.getMethod(attribute)»
-					«IF attribute.rwType.contains("WRITE")»
-						«cls.setMethod(attribute)»
-					«ENDIF»
+				«cls.declareAttributeMember(attribute)»
+				«cls.getMethod(attribute)»
+				«IF attribute.rwType.contains("WRITE")»
+					«cls.setMethod(attribute)»
 				«ENDIF»
 
 			«ENDIF»
@@ -78,6 +73,9 @@ class JavaAttribute {
 		 * description:
 		 *     «attribute.properties.description.comments("*     ")»
 		 */
+		«IF attribute.dataType.toString.contains("Enum")»
+			«attribute.buildEnum»
+		«ENDIF»
 		«attribute.declareParameters»
 		«attribute.declareProperties»
 		«attribute.stateMachine»
@@ -94,15 +92,24 @@ class JavaAttribute {
 		 * @return attribute value
 		 * @throws DevFailed if read attribute failed.
 		 */
-		public org.tango.server.attribute.AttributeValue «attribute.attributeMethodName(true)»() throws DevFailed {
-			xlogger.entry();
-			org.tango.server.attribute.AttributeValue
-				attributeValue = new org.tango.server.attribute.AttributeValue();
-			«cls.protectedArea("get"+attribute.name, "Put read attribute code here", true)»
-			attributeValue.setValue(«attribute.name.dataMemberName»);
-			xlogger.exit();
-			return attributeValue;
-		}
+		«IF attribute.dataType.toString.contains("Enum")»
+			public «attribute.strFullJavaType» «attribute.attributeMethodName(true)»() throws DevFailed {
+				xlogger.entry();
+				«cls.protectedArea("get"+attribute.name, "Put read attribute code here", true)»
+				xlogger.exit();
+				return «attribute.name.dataMemberName»;
+			}
+		«ELSE»
+			public org.tango.server.attribute.AttributeValue «attribute.attributeMethodName(true)»() throws DevFailed {
+				xlogger.entry();
+				org.tango.server.attribute.AttributeValue
+					attributeValue = new org.tango.server.attribute.AttributeValue();
+				«cls.protectedArea("get"+attribute.name, "Put read attribute code here", true)»
+				attributeValue.setValue(«attribute.name.dataMemberName»);
+				xlogger.exit();
+				return attributeValue;
+			}
+		«ENDIF»
 	'''
 	//======================================================
 	// define code to Set attribute
@@ -111,19 +118,24 @@ class JavaAttribute {
 		/**
 		 * Write attribute «attribute.name»
 		 * @param  «attribute.name.dataMemberName» value to write
-		 * @throws DevFailed if read attribute failed.
+		 * @throws DevFailed if write attribute failed.
 		 */
 		public void «attribute.attributeMethodName(false)»(«attribute.strFullJavaType» «attribute.name.dataMemberName») throws DevFailed {
 			xlogger.entry();
-			«cls.protectedArea("set" + attribute.name, "Put write attribute code here", true)»
+			«cls.protectedArea("set" + attribute.name,
+				"this." + attribute.name.dataMemberName + " = " + attribute.name.dataMemberName + ";", false)»
 			xlogger.exit();
 		}
 	'''
 
 	//======================================================
-	// define code for Enum attribute class file
+	// define code for forwarded attributes
 	//======================================================
-	def generateEnumAttributeClassFile(PogoDeviceClass cls, Attribute attribute) '''
-		
+	def addForwardedAttributes(PogoDeviceClass cls) '''
+		/**
+		 *	Add forwarded attributes
+		 */
+		private void addForwardedAttributes() {
+		}
 	'''
 }

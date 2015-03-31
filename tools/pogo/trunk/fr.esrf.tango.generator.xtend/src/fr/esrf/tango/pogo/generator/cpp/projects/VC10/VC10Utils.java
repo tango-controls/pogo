@@ -105,7 +105,7 @@ public class VC10Utils {
 		StringBuffer	sb = new StringBuffer();
 		
 		sb.append(buildIncludeFileLine(cls.getName()+".h"));
-		sb.append(buildIncludeFileLine(cls.getName()+"Clas.h"));
+		sb.append(buildIncludeFileLine(cls.getName()+"Class.h"));
 		return sb.toString();
 	}
 	//===========================================================

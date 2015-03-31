@@ -53,6 +53,7 @@ class JavaDevice  implements IGenerator {
 
 	@Inject extension JavaUtils
 	@Inject extension JavaAttribute
+	@Inject extension JavaPipe
 	@Inject extension JavaDynamicAttribute
 	@Inject extension JavaDynamicCommand
 	@Inject extension JavaCommand
@@ -125,6 +126,9 @@ class JavaDevice  implements IGenerator {
 			//	Miscellaneous methods
 			//========================================================
 			«cls.initDeviceMethod»
+			«IF cls.forwardedAttributes.size>0»
+				«cls.addForwardedAttributes»
+			«ENDIF»
 
 			«cls.deleteDeviceMethod»
 
@@ -139,6 +143,13 @@ class JavaDevice  implements IGenerator {
 				//========================================================
 				«cls.attributeMethods»
 			«ENDIF»
+		
+			«IF cls.pipes.size>0»
+				//========================================================
+				//	Pipe data members and related methods
+				//========================================================
+				«cls.pipeMethods»
+			«ENDIF»		
 
 			«IF cls.commands.size>0»
 				//========================================================
@@ -201,6 +212,9 @@ class JavaDevice  implements IGenerator {
 				"import org.tango.server.annotation.StateMachine;\n" +
 				"import org.tango.server.annotation.Status;\n" +
 				"import org.tango.server.annotation.DeviceManagement;\n" +
+				"import org.tango.server.annotation.Pipe;\n" +
+				"import org.tango.server.attribute.ForwardedAttribute;" +
+				"import org.tango.server.pipe.PipeValue;\n"+ 
 				"import org.tango.server.dynamic.DynamicManager;\n" +
 				"import org.tango.server.device.DeviceManager;\n" +
 				"import org.tango.server.dynamic.DynamicManager;\n" +
@@ -210,7 +224,9 @@ class JavaDevice  implements IGenerator {
 				"\n" +
 				"//	Import Tango IDL types\n" +
 				"import fr.esrf.Tango.*;\n" +
-				"import fr.esrf.TangoDs.Except;"+
+				"import fr.esrf.TangoDs.Except;\n"+
+				"import fr.esrf.TangoApi.PipeBlob;\n" +
+				"import fr.esrf.TangoApi.PipeDataElement;"+
 				cls.inheritancePackage,
 				false)»
 	'''
@@ -281,6 +297,7 @@ class JavaDevice  implements IGenerator {
 			logger.debug("init device " + deviceManager.getName());
 			«IF cls.hasInheritanceClass»super.initDevice();«ENDIF»
 			«cls.protectedArea("initDevice", "Put your device initialization code here", true)»
+			addForwardedAttributes();
 			xlogger.exit();
 		}
 	'''

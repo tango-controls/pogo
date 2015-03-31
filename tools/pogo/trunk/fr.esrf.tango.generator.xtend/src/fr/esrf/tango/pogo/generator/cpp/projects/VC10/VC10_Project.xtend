@@ -62,8 +62,10 @@ class VC10_Project {
 		EndProject
 		Global
 			GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		        Debug|Win32 = Debug|Win32
 				Debug|x64 = Debug|x64
 				Release|x64 = Release|x64
+				Release|Win32 = Release|Win32
 			EndGlobalSection
 			GlobalSection(ProjectConfigurationPlatforms) = postSolution
 				{A52909BB-E783-4522-BF2D-D9786023881D}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -184,9 +186,9 @@ class VC10_Project {
 		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\lib\win64\vc10\</OutDir>
 		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\win32\vc10\</IntDir>
 		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64\vc10\</IntDir>
-		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x32'">«cls.name»d</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">«cls.name»d</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">«cls.name»d</TargetName>
-		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x32'">«cls.name»</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">«cls.name»</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">«cls.name»</TargetName>
 		  </PropertyGroup>
 		  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -362,24 +364,26 @@ class VC10_Project {
 		  <PropertyGroup Label="UserMacros" />
 		  <PropertyGroup>
 		    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\win32\vc10\</OutDir>
-		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bin\win64\vc10\</OutDir>
-		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\obj\win32\vc10\</IntDir>
-		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\obj\win64\vc10\</IntDir>
+		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\win32\vc10\debug\</OutDir>
+		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bin\win64\vc10\debug\</OutDir>
+		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\obj\win32\vc10\debug\</IntDir>
+		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\obj\win64\vc10\debug\</IntDir>
 		    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreImportLibrary>
 		    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</IgnoreImportLibrary>
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
 		    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
 		    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\win32\vc10\</OutDir>
-		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bin\win64\vc10\</OutDir>
-		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\win32\vc10\</IntDir>
-		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64\vc10\</IntDir>
+		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\win32\vc10\release\</OutDir>
+		    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bin\win64\vc10\release\</OutDir>
+		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\win32\vc10\release\</IntDir>
+		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64\vc10\release\</IntDir>
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">«cls.name»</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">«cls.name»</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">«cls.name»</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">«cls.name»</TargetName>
 		  </PropertyGroup>
 		  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
 		    <ClCompile>
@@ -622,9 +626,9 @@ class VC10_Project {
 		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\obj\win64_obj\release\</IntDir>
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</LinkIncremental>
-		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x32'">«cls.name»d</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">«cls.name»d</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">«cls.name»d</TargetName>
-		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x32'">«cls.name»</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">«cls.name»</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">«cls.name»</TargetName>
 		  </PropertyGroup>
 		  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -865,9 +869,9 @@ class VC10_Project {
 		    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\obj\win64_dll\debug\</IntDir>
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
 		    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x32'">«cls.name»</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">«cls.name»</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">«cls.name»</TargetName>
-		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x32'">«cls.name»</TargetName>
+		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">«cls.name»</TargetName>
 		    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">«cls.name»</TargetName>
 		  </PropertyGroup>
 		  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
