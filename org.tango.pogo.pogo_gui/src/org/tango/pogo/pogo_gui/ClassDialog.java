@@ -95,9 +95,10 @@ public class ClassDialog extends JDialog {
         langBtn[PogoConst.Java] = javaBtn;
         langBtn[PogoConst.Python] = pythonBtn;
         langBtn[PogoConst.PythonHL] = pythonHLBtn;
+        /*
         String  s = System.getenv("PythonHL");
         pythonHLBtn.setVisible(s!=null && s.equals("true"));
-
+        */
         if (deviceClass == null)   //  Creating a new class
             this.deviceClass = new DeviceClass("", null);
         else {

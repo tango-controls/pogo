@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 9.0.2
+RELEASE    = 9.0.4c
 
 
 TANGO_HOME	=	/segfs/tango
@@ -104,7 +104,7 @@ install:
 
 #	mv $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar  $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE)-tmp.jar
 
-FTP_TARGET	=	webserv02:/ftp/pub/cs/tango/Pogo
+FTP_TARGET	=	ftpserv:/ftp/anonymous/pub/cs/tango/Pogo
 install_ftp:
 	@echo "scp $(JAR_FILE)-$(RELEASE).jar $(FTP_TARGET)"
 	@cd $(TARGET_JAR_DIR); scp $(JAR_FILE)-$(RELEASE).jar  $(FTP_TARGET)

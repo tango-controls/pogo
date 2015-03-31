@@ -9,6 +9,14 @@
 #-======================================================================
 
 
+Pogo-9.0.4 - 19/03/2015:
+	PythonHL bug fixes.
+	PythonHL test added.
+
+Pogo-9.0.3 - 20/01/2015:
+	PythonHL bug fixes.
+	PythonHL Project directory added.
+
 Pogo-9.0.2 - 16/12/2014:
 	Fix a problem in path management for multiple classes tool.
 

@@ -70,7 +70,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 		// comments in Java and C++ are the same, so we just add the file extensions for C++ to the Java parser
 		support.addParser(RegionParserFactory.createJavaParser(new PogoPR(),false), ".java", ".cpp", ".h", ".html");
 		support.addParser(RegionParserFactory.createXmlParser(), ".xml", ".xsd");
-		support.addParser(createPythonParser(), "py");		
+		support.addParser(createPythonParser(), ".py");		
 		BidiJavaIoFileSystemAccess fsa = new BidiJavaIoFileSystemAccess(support);
 		if (System.getProperty("targetDir")!=null)
 			fsa.setFilter(new pogoPathFilter());
@@ -134,7 +134,8 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 				fillGeneratedFilesListForPython(targetDir, className);
 			else
 			if (language.toLowerCase().equals("pythonhl"))
-				fillGeneratedFilesListForPythonHL(targetDir+'/'+className, className);
+				fillGeneratedFilesListForPythonHL(targetDir, className);
+			
 
 			//	Add html file for all languages
 			generatedFiles.add(targetDir+"/doc_html/ClassDescription.html");
@@ -201,7 +202,14 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 		}
 		//===================================================================================
 		private void fillGeneratedFilesListForPythonHL(String targetDir, String className) {
-			generatedFiles.add(targetDir+"/"+className + ".py");
+			String	pr_py  = System.getProperty("pythonProj");
+			if (pr_py.equals("true")) {
+				generatedFiles.add(targetDir+"/test/test_device.py");
+				generatedFiles.add(targetDir+"/"+className + "/" + className + ".py");
+			}
+			else {			
+				generatedFiles.add(targetDir+"/"+className + ".py");
+			}
 		}
 		//===================================================================================
 	}

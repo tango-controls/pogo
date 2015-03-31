@@ -46,6 +46,7 @@ import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 class PythonUtils {
     @Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
     @Inject extension ProtectedArea
+    @Inject extension ProtectedAreaHL
     @Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions    
 	@Inject	extension fr.esrf.tango.pogo.generator.python.PyUtils
         
@@ -198,11 +199,12 @@ class PythonUtils {
         '''
         
     def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''
-        «IF isTrue(cmd.status.concreteHere)»
-        @DebugIt()
-        @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType»,«ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
-        def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-            «IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ELSE»pass«ENDIF»«ENDIF»
+        «IF isTrue(cmd.status.concreteHere)»    @DebugIt()
+            @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType», «ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
+            def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»    «IF !cmd.argout.type.voidType»    return «cmd.argout.type.defaultValue»«ELSE»    pass«ENDIF»«ENDIF»
+        
+		«ENDIF»
 '''
     
     def commandMethodStateMachine(PogoDeviceClass cls, Command cmd) '''
@@ -229,7 +231,8 @@ class PythonUtils {
     '''
     def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
 		def write_«attribute.name»(self, value):
-		    self._«attribute.name» = value
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, attribute.name + "_write", "pass", false)»«ELSE»pass«ENDIF»
+
 '''
         
     def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
@@ -241,7 +244,8 @@ class PythonUtils {
         
     def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
         def read_«attribute.name»(self):
-            return self._«attribute.name»
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, attribute.name + "_read", "return " + attribute.defaultValueHL, false)»«ELSE»return «attribute.defaultValueDim»«ENDIF»
+
     '''
     
     def attributeMethodStateMachine(PogoDeviceClass cls, Attribute attribute) '''
@@ -258,13 +262,13 @@ class PythonUtils {
     
     def attributeMethodStateMachineHL(PogoDeviceClass cls, Attribute attribute) '''
 		def is_«attribute.name»_allowed(self, attr):
-		    «IF attribute.rwType.equals("READ")»return «attribute.readExcludedStates.ifContentFromListPythonHL»«ENDIF»
-		    «IF attribute.rwType.equals("WRITE")»return «attribute.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»
+		    «IF attribute.rwType.equals("READ")»    return «attribute.readExcludedStates.ifContentFromListPythonHL»«ENDIF»
+		    «IF attribute.rwType.equals("WRITE")»    return «attribute.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»
 		    «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»
-		    if attr==attr.READ_REQ:
-		        return «IF !attribute.readExcludedStates.empty»«attribute.readExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»
-		    else:
-		        return «IF !attribute.writeExcludedStates.empty»«attribute.writeExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»«ENDIF»
+		        if attr==attr.READ_REQ:
+		            return «IF !attribute.readExcludedStates.empty»«attribute.readExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»
+		        else:
+		            return «IF !attribute.writeExcludedStates.empty»«attribute.writeExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»«ENDIF»
     '''
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
             [«prop.type.pythonPropType», 
@@ -275,13 +279,13 @@ class PythonUtils {
     
     def pythonPropertyClassHL(Property prop) '''
         «prop.name» = class_property(
-            dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
-        )
+                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
+            )
     '''
     def pythonPropertyDeviceHL(Property prop) '''
         «prop.name» = device_property(
-            dtype = «prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
-        )
+                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
+            )
     '''
     
     def pythonCommandClass(Command cmd) '''        '«cmd.name»':
@@ -356,41 +360,41 @@ class PythonUtils {
     
     
     def pythonAttributeClassHL(Attribute attr) '''
-        «attr.name» = attribute(
-            dtype=«attr.pythonTypeAttrHL»,
-            «IF !attr.rwType.toUpperCase.equals("READ")»access=AttrWriteType.«attr.rwType.toUpperCase»,«ENDIF»
-            «IF attr.hasAttrPropertySetHL»
-            «pythonAttributeSizeHL(attr)»
-            «setAttrPropertyHL("display_level", attr.displayLevel, false)»
-            «setAttrPropertyHL("label", attr.properties.label, true)»
-            «setAttrPropertyHL("unit", attr.properties.unit, true)»
-            «setAttrPropertyHL("standard_unit", attr.properties.standardUnit, true)»
-            «setAttrPropertyHL("display_unit", attr.properties.displayUnit, true)»
-            «setAttrPropertyHL("format", attr.properties.format.formatComaToPoint, true)»
-            «setAttrPropertyHL("max_value", attr.properties.maxValue, false)»
-            «setAttrPropertyHL("min_value", attr.properties.minValue, false)»
-            «setAttrPropertyHL("max_alarm", attr.properties.maxAlarm, false)»
-            «setAttrPropertyHL("min_alarm", attr.properties.minAlarm, false)»
-            «setAttrPropertyHL("max_warning", attr.properties.maxWarning, false)»
-            «setAttrPropertyHL("min_warning", attr.properties.minWarning, false)»
-            «setAttrPropertyHL("delta_time", attr.properties.deltaTime, false)»
-            «setAttrPropertyHL("delta_value", attr.properties.deltaValue, false)»
-            «IF attr.memorized != null && attr.memorized == true»
-            «setAttrPropertyHL("memorized", attr.memorized, false)»
-            «setAttrPropertyHL("hw_memorized", attr.memorizedAtInit, false)»
-            «ENDIF»
-            «IF attr.eventCriteria!=null»
-            «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
-            «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
-            «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
-            «ENDIF»
-            «IF attr.evArchiveCriteria!=null»
-            «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
-            «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
-            «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
-            «ENDIF»
-            «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»
-        «ELSE»«ENDIF»)
+«attr.name» = attribute(
+        dtype=«attr.pythonTypeAttrHL»,
+        «IF !attr.rwType.toUpperCase.equals("READ")»access=AttrWriteType.«attr.rwType.toUpperCase»,«ENDIF»
+        «IF attr.hasAttrPropertySetHL»
+        «pythonAttributeSizeHL(attr)»
+        «setAttrPropertyHL("display_level", attr.displayLevel, false)»
+        «setAttrPropertyHL("label", attr.properties.label, true)»
+        «setAttrPropertyHL("unit", attr.properties.unit, true)»
+        «setAttrPropertyHL("standard_unit", attr.properties.standardUnit, true)»
+        «setAttrPropertyHL("display_unit", attr.properties.displayUnit, true)»
+        «setAttrPropertyHL("format", attr.properties.format.formatComaToPoint, true)»
+        «setAttrPropertyHL("max_value", attr.properties.maxValue, false)»
+        «setAttrPropertyHL("min_value", attr.properties.minValue, false)»
+        «setAttrPropertyHL("max_alarm", attr.properties.maxAlarm, false)»
+        «setAttrPropertyHL("min_alarm", attr.properties.minAlarm, false)»
+        «setAttrPropertyHL("max_warning", attr.properties.maxWarning, false)»
+        «setAttrPropertyHL("min_warning", attr.properties.minWarning, false)»
+        «setAttrPropertyHL("delta_time", attr.properties.deltaTime, false)»
+        «setAttrPropertyHL("delta_value", attr.properties.deltaValue, false)»
+        «IF attr.memorized != null && attr.memorized == true»
+        «setAttrPropertyHL("memorized", attr.memorized, false)»
+        «setAttrPropertyHL("hw_memorized", attr.memorizedAtInit, false)»
+        «ENDIF»
+        «IF attr.eventCriteria!=null»
+    «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
+    «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
+    «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
+        «ENDIF»
+        «IF attr.evArchiveCriteria!=null»
+    «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
+    «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
+    «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
+        «ENDIF»
+        «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»«ELSE»«ENDIF»
+    )
     '''
     
     //======================================================

@@ -1353,9 +1353,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             return null;
         }
         if (pg_class.getForwardedAttributes().size()>0 &&
-                (pogoRoot.language.equals(PogoConst.strLang[PogoConst.Java]) ||
-                pogoRoot.language.equals(PogoConst.strLang[PogoConst.Python])) ) {
-            Utils.popupError(this, "Forwarded attributes are not supported in java and Python !");
+                pogoRoot.language.equals(PogoConst.strLang[PogoConst.Python]))  {
+            Utils.popupError(this, "Forwarded attributes are not supported in Python !");
             return null;
         }
 
@@ -2346,7 +2345,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             //	Reset all items
             for (int i = 0; i < menuLabels.length; i++)
                 getComponent(OFFSET + i).setVisible(false);
-                                                        // ToDo replace by true when tango 9
+            // ToDo replace by true when tango 9
             getComponent(OFFSET + ADD_ITEM).setVisible(!collection.name.contains("Forwarded"));
                     //true);
             //  ToDo
@@ -2360,7 +2359,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         //======================================================
         /**
-         * Show menu on item (Property, Command, Atribute..)
+         * Show menu on item (Property, Command, Attribute..)
          *
          * @param evt    the mouse event
          * @param obj    The object itself

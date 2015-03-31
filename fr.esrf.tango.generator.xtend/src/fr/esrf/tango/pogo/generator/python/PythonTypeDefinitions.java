@@ -311,6 +311,41 @@ public class PythonTypeDefinitions {
 		}
 		return def_val;
 	}
+	
+	/**
+	 * PythonHL Default Value for test utility
+	 * @param attr Attribute
+	 * @return string representing the default value for the attribute
+	 */
+	public static String defaultValueHLTest (Attribute attr) {
+		String def_val = "";
+		if (attr.getDataType() instanceof VoidType)				def_val =  "";
+		if (attr.getDataType() instanceof BooleanType)			def_val =  "[\"False\", \"True\"]";
+		if (attr.getDataType() instanceof ShortType)			def_val =  "[-1, 0, 5]";
+		if (attr.getDataType() instanceof IntType)				def_val =  "[-1, 0, 5]";
+		if (attr.getDataType() instanceof FloatType)			def_val =  "[-1.12, 0.0, 56.35]";
+		if (attr.getDataType() instanceof DoubleType)			def_val =  "[-1.12, 0.0, 56.35]";
+		if (attr.getDataType() instanceof UShortType)			def_val =  "[0, 12]";
+		if (attr.getDataType() instanceof UIntType)				def_val =  "[0, 12]";
+		if (attr.getDataType() instanceof StringType)			def_val =  "['', 'This is a test string', 'test_string']";
+		if (attr.getDataType() instanceof StateType)			def_val =  "[PyTango.DevState.UNKNOWN, PyTango.DevState.ON, PyTango.DevState.FAULT]";
+		if (attr.getDataType() instanceof ConstStringType)		def_val =  "['', 'This is a test string', 'test_string']";
+		if (attr.getDataType() instanceof UCharType)			def_val =  "['', 'a', '#', 'P']";
+		if (attr.getDataType() instanceof LongType)				def_val =  "[-1, 0, 5]";
+		if (attr.getDataType() instanceof ULongType)			def_val =  "[0, 12]";
+		if (attr.getDataType() instanceof DevIntType)			def_val =  "[-1, 0, 5]";
+		if (attr.getDataType() instanceof EncodedType)			def_val =  "['', '#12BF']";
+		
+		if (attr.getAttType().equals("Spectrum"))
+		{
+			def_val = "[" + def_val + "]";
+		}
+		if (attr.getAttType().equals("Image"))
+		{
+			def_val = "[[" + def_val + "]]";
+		}
+		return def_val;
+	}
 
 	/**
 	 * Python Default Value utility
@@ -326,7 +361,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof DoubleType)				return "0.0";
 		if (type instanceof UShortType)				return "0";
 		if (type instanceof UIntType)				return "0";
-		if (type instanceof StringType)				return "''";
+		if (type instanceof StringType)				return "\"\"";
 		if (type instanceof CharArrayType)			return "['']";
 		if (type instanceof ShortArrayType)			return "[0]";
 		if (type instanceof IntArrayType)			return "[0]";
@@ -334,11 +369,11 @@ public class PythonTypeDefinitions {
 		if (type instanceof DoubleArrayType)		return "[0.0]";
 		if (type instanceof UShortArrayType)		return "[0]";
 		if (type instanceof UIntArrayType)			return "[0]";
-		if (type instanceof StringArrayType)		return "['']";
-		if (type instanceof LongStringArrayType)	return "[0],['']";
-		if (type instanceof DoubleStringArrayType)	return "[0.0],['']";
+		if (type instanceof StringArrayType)		return "[\"\"]";
+		if (type instanceof LongStringArrayType)	return "[0], [\"\"]";
+		if (type instanceof DoubleStringArrayType)	return "[0.0], [\"\"]";
 		if (type instanceof StateType)				return "PyTango.DevState.UNKNOWN";
-		if (type instanceof ConstStringType)		return "''";
+		if (type instanceof ConstStringType)		return "\"\"";
 		if (type instanceof BooleanArrayType)		return "[False]";
 		if (type instanceof UCharType)				return "''";
 		if (type instanceof LongType)				return "0";
@@ -346,7 +381,46 @@ public class PythonTypeDefinitions {
 		if (type instanceof LongArrayType)			return "[0]";
 		if (type instanceof ULongArrayType)			return "[0]";
 		if (type instanceof DevIntType)				return "0";
-		if (type instanceof EncodedType)			return "''";
+		if (type instanceof EncodedType)			return "\"\", \"\"";
+		return "''";
+	}
+	
+
+	/**
+	 * Python Default Value utility
+	 * @param type Type
+	 * @return string representing the default value for the attribute
+	 */
+	public static String defaultValueReturn (Type type) {
+		if (type instanceof VoidType)				return "pass";
+		if (type instanceof BooleanType)			return "return False";
+		if (type instanceof ShortType)				return "return 0";
+		if (type instanceof IntType)				return "return 0";
+		if (type instanceof FloatType)				return "return 0.0";
+		if (type instanceof DoubleType)				return "return 0.0";
+		if (type instanceof UShortType)				return "return 0";
+		if (type instanceof UIntType)				return "return 0";
+		if (type instanceof StringType)				return "return \"\"";
+		if (type instanceof CharArrayType)			return "return ['']";
+		if (type instanceof ShortArrayType)			return "return [0]";
+		if (type instanceof IntArrayType)			return "return [0]";
+		if (type instanceof FloatArrayType)			return "return [0.0]";
+		if (type instanceof DoubleArrayType)		return "return [0.0]";
+		if (type instanceof UShortArrayType)		return "return [0]";
+		if (type instanceof UIntArrayType)			return "return [0]";
+		if (type instanceof StringArrayType)		return "return [\"\"]";
+		if (type instanceof LongStringArrayType)	return "return [0], [\"\"]";
+		if (type instanceof DoubleStringArrayType)	return "return [0.0], [\"\"]";
+		if (type instanceof StateType)				return "return PyTango.DevState.UNKNOWN";
+		if (type instanceof ConstStringType)		return "return \"\"";
+		if (type instanceof BooleanArrayType)		return "return [False]";
+		if (type instanceof UCharType)				return "return ''";
+		if (type instanceof LongType)				return "return 0";
+		if (type instanceof ULongType)				return "return 0";
+		if (type instanceof LongArrayType)			return "return [0]";
+		if (type instanceof ULongArrayType)			return "return [0]";
+		if (type instanceof DevIntType)				return "return 0";
+		if (type instanceof EncodedType)			return "return \"\", \"\"";
 		return "''";
 	}
 	

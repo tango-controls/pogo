@@ -123,17 +123,20 @@ public class JavaUtils extends StringUtils {
 	}
 	//===========================================================
 	public String strJavaType(Attribute attribute) {
-		return JavaTypeDefinitions.javaType(attribute.getDataType());
+		if (attribute.getDataType().toString().contains("Enum"))
+			return attribute.getName()+"Enum";
+		else
+			return JavaTypeDefinitions.javaType(attribute.getDataType());
 	}
 	//===========================================================
 	public String strFullJavaType(Attribute attribute) {
 		if (isScalar(attribute))
-			return JavaTypeDefinitions.javaType(attribute.getDataType());
+			return strJavaType(attribute);
 		else
 		if (isSpectrum(attribute))
-			return JavaTypeDefinitions.javaType(attribute.getDataType()) + "[]";
+			return strJavaType(attribute) + "[]";
 		else
-			return JavaTypeDefinitions.javaType(attribute.getDataType()) + "[][]";
+			return strJavaType(attribute) + "[][]";
 	}
 	//===========================================================
 	public String strJavaType(Property property) {
@@ -151,19 +154,33 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String allocation(Attribute attribute) {
 		if (attribute.getAttType().equals("Spectrum"))
-			return " = new " +
-				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
+			return " = new " + strJavaType(attribute) + "[" +
 						attribute.getMaxX() + "]";
 		else
 		if (attribute.getAttType().equals("Image"))
-			return " = new " +
-				JavaTypeDefinitions.javaType(attribute.getDataType()) + "[" +
+			return " = new " + strJavaType(attribute) + "[" +
 						attribute.getMaxX() + "][" + attribute.getMaxY() + "]";
 		else
 		if (attribute.getDataType().toString().contains("String"))
 			return " = \"\"";
 		else
 			return "";
+	}
+	//===========================================================
+	public String buildEnum(Attribute attribute) {
+		String s = "";
+		if (attribute.getDataType().toString().contains("Enum")) {
+			if (attribute.getEnumLabels()!=null && attribute.getEnumLabels().size()>0) {
+				s += "public enum " + attribute.getName() + "Enum { \n";
+				for (String label : attribute.getEnumLabels()) {
+					String item = label.toUpperCase();
+					item = item.replaceAll(" ", "_");
+					s += "\t" + item + ",\n";
+				}
+				s += "};";
+			}
+		}
+		return s;
 	}
 	
 	//===========================================================

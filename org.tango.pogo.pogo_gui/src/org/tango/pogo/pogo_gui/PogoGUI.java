@@ -1252,7 +1252,7 @@ public class PogoGUI extends JFrame {
             Utils.getInstance().stopSplashRefresher();
 
             if (startup)
-                System.err.println(e);
+                System.err.println(e.toString());
             else if (!e.toString().equals("CANCEL")) {
                 PogoException.popup(this, e);
                 if (class_panels.getPanelNameAt(0) == null && runningApplis.size() > 1)

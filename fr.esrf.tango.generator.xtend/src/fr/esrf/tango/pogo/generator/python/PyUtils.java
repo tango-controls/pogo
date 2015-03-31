@@ -126,4 +126,34 @@ public class PyUtils {
 		sb.append(")");
 		return sb.toString();
 	}
+
+	//===========================================================
+	/**
+	 * Returns the method execution code for specified command (special case for test) 
+	 * @param command the specified command
+	 * @return  the method execution name for specified command
+	 */
+	//===========================================================
+	String methodTest(Command cmd, String defVal) {
+		if (cmd.getName().equals("State")) {
+			return "self.device.State()";
+		}
+		else
+		{
+			if (cmd.getName().equals("Status")) {
+				return "self.device.Status()";
+			}
+			else
+			{
+				if (cmd.getArgin().getType().equals("VoidTypeImpl")==false)
+				{
+					return "self.device." + cmd.getName() + "("+ defVal +")";
+				}
+				else
+				{
+					return "self.device." + cmd.getName() + "()";
+				}
+			}
+		}
+	}
 }
