@@ -66,8 +66,14 @@ class Commands {
 		else
 			//	method signature
 			if (cmd.isDynamic=="true") {
-				cmd.argout.type.argoutDeclarationForSignature + cls.name +
-					"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +",Tango::Command &command)"
+				if (cmd.argin.type.cppType.equals("void")) {
+					cmd.argout.type.argoutDeclarationForSignature + cls.name +
+						"::" + cmd.execMethod + "(" + "Tango::Command &command)"
+				}
+				else {
+					cmd.argout.type.argoutDeclarationForSignature + cls.name +
+						"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +", Tango::Command &command)"
+				}
 			} else {
 				cmd.argout.type.argoutDeclarationForSignature + cls.name +
 					"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +")"
