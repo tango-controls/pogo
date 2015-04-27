@@ -330,19 +330,19 @@ class DeviceSource {
 					«cls.commandExecutionMethod(command)»
 				«ENDIF»
 			«ENDFOR»
-			«cls.simpleMethodHeader("add_dynamic_commands", "Create the dynamic commands if any\nfor specified device.")»
-			void «cls.name»::add_dynamic_commands()
-			{
-				«IF cls.dynamicCommands.size>0»
-					//	Example to add dynamic command:
-					//	Copy inside the folowing protected area to instanciate at startup.
-					«FOR Command command : cls.dynamicCommands»
-						//	add_«command.name»_dynamic_command("My«command.name»Command", true);
-					«ENDFOR»
-					
-				«ENDIF»
-				«cls.protectedArea("add_dynamic_commands", "Add your own code to create and add dynamic commands if any", true)»
-			}
 		«ENDIF»
+		«cls.simpleMethodHeader("add_dynamic_commands", "Create the dynamic commands if any\nfor specified device.")»
+		void «cls.name»::add_dynamic_commands()
+		{
+			«IF cls.dynamicCommands.size>0»
+				//	Example to add dynamic command:
+				//	Copy inside the folowing protected area to instanciate at startup.
+				«FOR Command command : cls.dynamicCommands»
+					//	add_«command.name»_dynamic_command("My«command.name»Command", true);
+				«ENDFOR»
+				
+			«ENDIF»
+			«cls.protectedArea("add_dynamic_commands", "Add your own code to create and add dynamic commands if any", true)»
+		}
 	'''
 }
