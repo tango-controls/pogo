@@ -5221,6 +5221,7 @@ rule__ClassIdentification__Group__8
     }
 :
 	rule__ClassIdentification__Group__8__Impl
+	rule__ClassIdentification__Group__9
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -5241,6 +5242,69 @@ rule__ClassIdentification__Group__8__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ClassIdentification__Group__9
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClassIdentification__Group__9__Impl
+	rule__ClassIdentification__Group__10
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassIdentification__Group__9__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassIdentificationAccess().getKeyWordsKeyword_9()); }
+
+	'keyWords:' 
+
+{ after(grammarAccess.getClassIdentificationAccess().getKeyWordsKeyword_9()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ClassIdentification__Group__10
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClassIdentification__Group__10__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassIdentification__Group__10__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassIdentificationAccess().getKeyWordsAssignment_10()); }
+(rule__ClassIdentification__KeyWordsAssignment_10)*
+{ after(grammarAccess.getClassIdentificationAccess().getKeyWordsAssignment_10()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
 
 
 
@@ -11401,6 +11465,21 @@ rule__ClassIdentification__ReferenceAssignment_8
 (
 { before(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_8_0()); }
 	RULE_STRING{ after(grammarAccess.getClassIdentificationAccess().getReferenceSTRINGTerminalRuleCall_8_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassIdentification__KeyWordsAssignment_10
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassIdentificationAccess().getKeyWordsSTRINGTerminalRuleCall_10_0()); }
+	RULE_STRING{ after(grammarAccess.getClassIdentificationAccess().getKeyWordsSTRINGTerminalRuleCall_10_0()); }
 )
 
 ;

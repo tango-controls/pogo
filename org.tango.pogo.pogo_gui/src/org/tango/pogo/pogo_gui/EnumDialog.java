@@ -45,6 +45,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 //===============================================================
@@ -56,6 +57,7 @@ import java.util.ArrayList;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class EnumDialog extends JDialog {
 
     private ArrayList<JTextField>   textFields = new ArrayList<JTextField>();
@@ -137,9 +139,10 @@ public class EnumDialog extends JDialog {
         titleLabel = new javax.swing.JLabel();
         centerPanel = new javax.swing.JPanel();
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
-        javax.swing.JButton resetBtn = new javax.swing.JButton();
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JButton helpButton = new javax.swing.JButton();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -157,16 +160,16 @@ public class EnumDialog extends JDialog {
         centerPanel.setLayout(new java.awt.GridBagLayout());
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
 
-        resetBtn.setText("Reset");
-        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+        helpButton.setText("Help");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetBtnActionPerformed(evt);
+                helpButtonActionPerformed(evt);
             }
         });
-        bottomPanel.add(resetBtn);
+        bottomPanel.add(helpButton);
 
-        jLabel1.setText("              ");
-        bottomPanel.add(jLabel1);
+        jLabel2.setText("              ");
+        bottomPanel.add(jLabel2);
 
         okBtn.setText("OK");
         okBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +178,9 @@ public class EnumDialog extends JDialog {
             }
         });
         bottomPanel.add(okBtn);
+
+        jLabel1.setText("              ");
+        bottomPanel.add(jLabel1);
 
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +195,39 @@ public class EnumDialog extends JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //===============================================================
+    //===============================================================
+    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<' };
+    private boolean isAuthorized(char c) {
+        for (char c1 : authorizedChars) {
+            if (c1==c)
+                return true;
+        }
+        return false;
+    }
+    //===============================================================
+    //===============================================================
+    public void checkNameSyntax(String label) throws PogoException {
+        if (label==null || label.isEmpty())
+            throw new PogoException("Enumeration (" + label + ") not valid !");
+
+        //	check if one word
+        StringTokenizer stk = new StringTokenizer(label);
+        ArrayList<String> words = new ArrayList<String>();
+        while (stk.hasMoreTokens())
+            words.add(stk.nextToken());
+        label = "";
+        for (String word : words)
+            label += word;
+
+        //	Check for special char
+        for (int i = 0; i < label.length(); i++) {
+            char c = label.charAt(i);
+            if ((c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z'))
+                if (!isAuthorized(c))
+                    throw new PogoException("Syntax error in enumeration: Do not use '" + c + "' char.");
+        }
+    }
 	//===============================================================
 	//===============================================================
     @SuppressWarnings("UnusedParameters")
@@ -196,7 +235,7 @@ public class EnumDialog extends JDialog {
         String[]    labels = getEnumLabels();
         for (String label : labels) {
             try {
-                Utils.checkNameSyntax(label, "enumeration", false);
+                checkNameSyntax(label);
             } catch (PogoException e) {
                 e.popup(this);
                 return;
@@ -226,13 +265,28 @@ public class EnumDialog extends JDialog {
     //===============================================================
     //===============================================================
     @SuppressWarnings("UnusedParameters")
-    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         // TODO add your handling code here:
+        displayHelp();
+    }//GEN-LAST:event_helpButtonActionPerformed
+
+	//===============================================================
+	//===============================================================
+    private void displayHelp() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Authorized char to define an enum:\n");
+        sb.append("  - letters\n").append("  - digits\n");
+        for (char c : authorizedChars)
+            sb.append("  - '").append(c).append("'\n");
+        JOptionPane.showMessageDialog(this, sb.toString());
+    }
+	//===============================================================
+	//===============================================================
+    private void resetFields() {
         for (JTextField textField : textFields) {
             textField.setText("");
         }
-    }//GEN-LAST:event_resetBtnActionPerformed
-
+    }
 	//===============================================================
 	//===============================================================
     public String[] getEnumLabels() {
@@ -330,11 +384,15 @@ public class EnumDialog extends JDialog {
     //==============================================================================
     static private final int INSERT_ROW = 0;
     static private final int REMOVE_ROW = 1;
+    static private final int RESET      = 2;
+    static private final int HELP       = 3;
     static private final int OFFSET     = 2;
 
     static private String[] menuLabels = {
             "Insert row",
             "Remove row",
+            "Reset all rows",
+            "Help on syntax",
     };
 
     private class EnumPopupMenu extends JPopupMenu {
@@ -387,6 +445,12 @@ public class EnumDialog extends JDialog {
                     break;
                 case REMOVE_ROW:
                     removeRow(textField);
+                    break;
+                case RESET:
+                    resetFields();
+                    break;
+                case HELP:
+                    displayHelp();
                     break;
             }
         }

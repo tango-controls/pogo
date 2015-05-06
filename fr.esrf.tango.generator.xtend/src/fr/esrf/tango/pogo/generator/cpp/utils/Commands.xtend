@@ -57,9 +57,15 @@ class Commands {
 		if (declare)
 			//	Method prototype
 			if (cmd.isDynamic=="true") {
-				"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
+				if (cmd.argin.type.cppType.equals("void")) {
+					"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +
+						 "Tango::Command &command)" + cmd.checkAbstractForProto  + ";"
+				 }
+				 else { // not void
+					"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
 						 ",Tango::Command &command)" + cmd.checkAbstractForProto  + ";"
-			} else {
+				 }
+			} else { //	Not dynamic cmd
 				"virtual " + cmd.argout.type.argoutDeclarationForSignature +  cmd.execMethod + "(" +cmd.argin.type.arginDeclaration +
 						 ")" + cmd.checkAbstractForProto  + ";"
 			}
@@ -70,11 +76,11 @@ class Commands {
 					cmd.argout.type.argoutDeclarationForSignature + cls.name +
 						"::" + cmd.execMethod + "(" + "Tango::Command &command)"
 				}
-				else {
+				else { //	not void
 					cmd.argout.type.argoutDeclarationForSignature + cls.name +
 						"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +", Tango::Command &command)"
 				}
-			} else {
+			} else { // not dynamic cmd
 				cmd.argout.type.argoutDeclarationForSignature + cls.name +
 					"::" + cmd.execMethod + "(" + cmd.argin.type.arginDeclaration +")"
 			}
@@ -258,7 +264,7 @@ class Commands {
 	def returnArgout(PogoDeviceClass cls, Command cmd) '''
 		«IF cmd.argout.type.cppType.equals("void")»
 			«IF cmd.isDynamic=="true"»
-				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam», *this));
+				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(*this));
 			«ELSE»
 				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
 			«ENDIF»

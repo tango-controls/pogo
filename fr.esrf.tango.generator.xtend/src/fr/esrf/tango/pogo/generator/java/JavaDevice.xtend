@@ -297,7 +297,9 @@ class JavaDevice  implements IGenerator {
 			logger.debug("init device " + deviceManager.getName());
 			«IF cls.hasInheritanceClass»super.initDevice();«ENDIF»
 			«cls.protectedArea("initDevice", "Put your device initialization code here", true)»
-			addForwardedAttributes();
+			«IF cls.forwardedAttributes.size>0»
+				addForwardedAttributes();
+			«ENDIF»
 			xlogger.exit();
 		}
 	'''
