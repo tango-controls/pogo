@@ -41,6 +41,7 @@ import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import java.util.jar.Attributes
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 
 class JavaAttribute {
 
@@ -135,7 +136,13 @@ class JavaAttribute {
 		/**
 		 *	Add forwarded attributes
 		 */
-		private void addForwardedAttributes() {
+		private void addForwardedAttributes() throws DevFailed {
+			xlogger.entry();
+			//	Set attribute __root_att properties
+			«FOR ForwardedAttribute attribute : cls.forwardedAttributes»
+				dynamicManager.addAttribute(new ForwardedAttribute(null, "«attribute.name»", "«attribute.label»"));
+			«ENDFOR»
+			xlogger.exit();
 		}
 	'''
 }

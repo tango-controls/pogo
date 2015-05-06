@@ -9,6 +9,14 @@
 #-======================================================================
 
 
+Pogo-9.0.6 - 06/05/2015:
+	Java forwarded attributes are available.
+	Improve enum management.
+	Fix a bug with void argin on dynamic command
+
+Pogo-9.0.5 - 27/04/2015:
+	Problem on void dynamic command fixed.
+
 Pogo-9.0.4 - 19/03/2015:
 	PythonHL bug fixes.
 	PythonHL test added.

@@ -168,6 +168,7 @@ public class PogoDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassIdentificationAccess().getBusAssignment_6(), "rule__ClassIdentification__BusAssignment_6");
 					put(grammarAccess.getClassIdentificationAccess().getManufacturerAssignment_7(), "rule__ClassIdentification__ManufacturerAssignment_7");
 					put(grammarAccess.getClassIdentificationAccess().getReferenceAssignment_8(), "rule__ClassIdentification__ReferenceAssignment_8");
+					put(grammarAccess.getClassIdentificationAccess().getKeyWordsAssignment_10(), "rule__ClassIdentification__KeyWordsAssignment_10");
 					put(grammarAccess.getCommentsAccess().getCommandsTableAssignment(), "rule__Comments__CommandsTableAssignment");
 					put(grammarAccess.getPreferencesAccess().getDocHomeAssignment_0(), "rule__Preferences__DocHomeAssignment_0");
 					put(grammarAccess.getPreferencesAccess().getMakefileHomeAssignment_1(), "rule__Preferences__MakefileHomeAssignment_1");

@@ -429,15 +429,42 @@ public class StringUtils {
     	return new File(fileName).exists();
     }
     //===============================================================
+    /**
+     * Replace special characters 
+     * @param label
+     * @return
+     */
     //===============================================================
     public static String label2enum(String label) {
     	String	enumStr = label.toUpperCase();
-    	
+    	enumStr = myReplaceAll(enumStr, "*", "mult");
+    	enumStr = myReplaceAll(enumStr, "/", "div");
+    	enumStr = myReplaceAll(enumStr, "+", "plus");
+    	enumStr = myReplaceAll(enumStr, "-", "minus");
+    	enumStr = myReplaceAll(enumStr, ".", "point");
+    	enumStr = myReplaceAll(enumStr, "=", "equal");
+    	enumStr = myReplaceAll(enumStr, "%", "percent");
+    	enumStr = myReplaceAll(enumStr, ">", "sup");
+    	enumStr = myReplaceAll(enumStr, "<", "inf");
     	return "_"+enumStr.replaceAll(" ", "_");
     }
     //===============================================================
     //===============================================================
-    
+    private static String myReplaceAll(String inCode, String oldStr, String newStr) {
+		StringBuilder sb = new StringBuilder();
+		
+		int start = 0;
+		int end;
+		while ((end=inCode.indexOf(oldStr, start))>0) {
+			sb.append(inCode.substring(start, end)).append(newStr);
+			start = end + oldStr.length();
+		}
+		sb.append(inCode.substring(start));
+		return sb.toString();
+    }
+    //===============================================================
+    //===============================================================
+
     
 	//======================================================
 	//	GPL license

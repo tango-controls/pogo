@@ -118,8 +118,12 @@ class Attributes {
 	//	Allocate attribute data member
 	//======================================================
 	def allocateAttributeDataMember(Attribute attribute) {
-		attribute.readAttrubuteDataMember + " = new " + 
-				attribute.dataType.cppType + attribute.readAttrubuteSizeForAllocation + ";"
+		if (attribute.dataType.cppType.contains("Enum"))
+			attribute.readAttrubuteDataMember + " = new " + 
+					attribute.name + "Enum" + attribute.readAttrubuteSizeForAllocation + ";"
+		else
+			attribute.readAttrubuteDataMember + " = new " + 
+					attribute.dataType.cppType + attribute.readAttrubuteSizeForAllocation + ";"
 	}
 	//======================================================
 	//	Allocate attribute data members
@@ -172,7 +176,11 @@ class Attributes {
 			DEBUG_STREAM << "«cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr) entering... " << endl;
 			«IF attribute.isScalar»
 				//	Retrieve write value
-				«attribute.strType»	w_val;
+				«IF attribute.dataType.cppType.contains("Enum")»
+					«attribute.name»Enum	w_val;
+				«ELSE»
+					«attribute.strType»	w_val;
+				«ENDIF»
 			«ELSE»
 				//	Retrieve number of write values
 				int	w_length = attr.get_write_value_length();

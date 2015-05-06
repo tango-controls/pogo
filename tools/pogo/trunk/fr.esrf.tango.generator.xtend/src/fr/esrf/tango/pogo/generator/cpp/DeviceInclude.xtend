@@ -145,7 +145,11 @@ class DeviceInclude  {
 			public:
 				«FOR Attribute attr : cls.attributes»
 					«IF isTrue(attr.status.concreteHere) && attr.isRead»
-							«attr.dataType.cppType»	*attr_«attr.name»_read;
+							«IF attr.dataType.cppType.contains("Enum")»
+								«attr.name»Enum	*attr_«attr.name»_read;
+							«ELSE»
+								«attr.dataType.cppType»	*attr_«attr.name»_read;
+							«ENDIF»
 					«ENDIF»
 				«ENDFOR»
 		«ENDIF»

@@ -54,6 +54,7 @@ import java.util.Collections;
  * A Dialog Class to get the Attribute parameters.
  */
 //===============================================================
+@SuppressWarnings("MagicConstant")
 public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.PogoConst {
     private int retVal = JOptionPane.OK_OPTION;
     private PogoGUI pogo_gui;
@@ -306,36 +307,36 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             setNotEditable(attrTypeCB);
             setNotEditable(dataTypeCB);
             setNotEditable(rwTypeCB);
-
-            levelBtn.setEnabled(b);
-            changeEvtCode.setEnabled(b);
-            changeEvtChecked.setEnabled(b);
-            archiveEvtCode.setEnabled(b);
-            archiveEvtChecked.setEnabled(b);
-            evPeriodTxt.setEnabled(b);
-            evRelChangeTxt.setEnabled(b);
-            evAbsChangeTxt.setEnabled(b);
-            evArchPeriodTxt.setEnabled(b);
-            evArchRelChangeTxt.setEnabled(b);
-            evArchAbsChangeTxt.setEnabled(b);
-            dataReadyEvtCode.setEnabled(b);
-            memorizedBtn.setEnabled(b);
-
-            attrPropDeltaTime.setEditable(b);
-            attrPropDeltaValue.setEditable(b);
-            attrPropDescription.setEditable(b);
-            attrPropDispUnit.setEditable(b);
-            attrPropFormat.setEditable(b);
-            attrPropLabel.setEditable(b);
-            attrPropMaxAlarm.setEditable(b);
-            attrPropMaxValue.setEditable(b);
-            attrPropMaxWarning.setEditable(b);
-            attrPropMinAlarm.setEditable(b);
-            attrPropMinValue.setEditable(b);
-            attrPropMinWarning.setEditable(b);
-            attrPropStdUnit.setEditable(b);
-            attrPropUnit.setEditable(b);
         }
+
+        levelBtn.setEnabled(b);
+        changeEvtCode.setEnabled(b);
+        changeEvtChecked.setEnabled(b);
+        archiveEvtCode.setEnabled(b);
+        archiveEvtChecked.setEnabled(b);
+        evPeriodTxt.setEnabled(b);
+        evRelChangeTxt.setEnabled(b);
+        evAbsChangeTxt.setEnabled(b);
+        evArchPeriodTxt.setEnabled(b);
+        evArchRelChangeTxt.setEnabled(b);
+        evArchAbsChangeTxt.setEnabled(b);
+        dataReadyEvtCode.setEnabled(b);
+        memorizedBtn.setEnabled(b);
+
+        attrPropDeltaTime.setEditable(b);
+        attrPropDeltaValue.setEditable(b);
+        attrPropDescription.setEditable(b);
+        attrPropDispUnit.setEditable(b);
+        attrPropFormat.setEditable(b);
+        attrPropLabel.setEditable(b);
+        attrPropMaxAlarm.setEditable(b);
+        attrPropMaxValue.setEditable(b);
+        attrPropMaxWarning.setEditable(b);
+        attrPropMinAlarm.setEditable(b);
+        attrPropMinValue.setEditable(b);
+        attrPropMinWarning.setEditable(b);
+        attrPropStdUnit.setEditable(b);
+        attrPropUnit.setEditable(b);
     }
 
     //===================================================================
@@ -1556,7 +1557,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
                     setPeriodEnabled(true);
                 }
             } catch (NumberFormatException e) {
-                System.err.println(e);
+                System.err.println(e.getMessage());
             }
         }
 
