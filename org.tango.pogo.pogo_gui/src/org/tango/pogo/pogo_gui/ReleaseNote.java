@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed May 06 16:06:55 CEST 2015)</Center><Br>\n" + 
+		"	(Generated Wed May 27 08:48:16 CEST 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.0 - 12/05/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pogo is now compiled using java 1.7<Br>\n" + 
+		"&nbsp; &nbsp; Double cotes supported in class description and title,<Br>\n" + 
 		"<li><b>Pogo-9.0.6 - 06/05/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Java forwarded attributes are available.<Br>\n" + 
 		"&nbsp; &nbsp; Improve enum management.<Br>\n" + 

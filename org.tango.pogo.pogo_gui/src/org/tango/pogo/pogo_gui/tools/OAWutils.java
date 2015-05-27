@@ -462,7 +462,7 @@ public class OAWutils {
      * @return the pogo.Type for specified tango type
      */
     //========================================================================
-    public static Type tango2pogoType(String tangoType) {
+    public static fr.esrf.tango.pogo.pogoDsl.Type tango2pogoType(String tangoType) {
         //	Old cpp case
         if (tangoType.startsWith("Tango::"))
             tangoType = tangoType.substring("Tango::".length());

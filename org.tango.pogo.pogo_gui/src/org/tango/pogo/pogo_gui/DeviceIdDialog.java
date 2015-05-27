@@ -42,9 +42,9 @@ import org.tango.pogo.pogo_gui.tools.*;
 import org.eclipse.emf.common.util.EList;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
 import java.awt.*;
+import java.util.List;
 
 
 //===============================================================
@@ -58,6 +58,7 @@ import java.awt.*;
  */
 //===============================================================
 
+@SuppressWarnings("MagicConstant")
 public class DeviceIdDialog extends JDialog {
     private int retVal = JOptionPane.OK_OPTION;
     private ClassIdentification id = null;
@@ -73,11 +74,10 @@ public class DeviceIdDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private java.util.Vector<String> toVector(ArrayList<String> strings) {
-        java.util.Vector<String>    vs = new java.util.Vector<String>();
-        for (String str : strings)
-            vs.add(str);
-        return vs;
+    private void updateComboBox(JComboBox<String> comboBox, List<String> list) {
+        comboBox.removeAllItems();
+        for (String item : list)
+            comboBox.addItem(item);
     }
     //===============================================================
     /**
@@ -90,12 +90,9 @@ public class DeviceIdDialog extends JDialog {
         super(parent, true);
         initComponents();
 
-        familyComboBox.setModel(new DefaultComboBoxModel(
-                toVector(PogoProperty.classFamilies)));
-        platformComboBox.setModel(new DefaultComboBoxModel(
-                toVector(PogoProperty.platformNames)));
-        busComboBox.setModel(new DefaultComboBoxModel(
-                toVector(PogoProperty.busNames)));
+        updateComboBox(familyComboBox, PogoProperty.classFamilies);
+        updateComboBox(platformComboBox, PogoProperty.platformNames);
+        updateComboBox(busComboBox, PogoProperty.busNames);
         if (PogoProperty.siteName != null &&
                 PogoProperty.siteName.length() > 0 &&
                 PogoProperty.siteClassFamilies != null &&
@@ -149,7 +146,7 @@ public class DeviceIdDialog extends JDialog {
                     id.getSiteSpecific() != null &&
                     id.getSiteSpecific().equals(PogoProperty.siteName)) {
                 siteButton.setSelected(true);
-                familyComboBox.setModel(new DefaultComboBoxModel(toVector(PogoProperty.siteClassFamilies)));
+                updateComboBox(familyComboBox, PogoProperty.siteClassFamilies);
             }
 
             //  For compatibility with beta release.
@@ -233,9 +230,9 @@ public class DeviceIdDialog extends JDialog {
         contactTxt = new javax.swing.JTextField();
         manufacturerTxt = new javax.swing.JTextField();
         referenceTxt = new javax.swing.JTextField();
-        platformComboBox = new javax.swing.JComboBox();
-        busComboBox = new javax.swing.JComboBox();
-        familyComboBox = new javax.swing.JComboBox();
+        platformComboBox = new javax.swing.JComboBox<String>();
+        busComboBox = new javax.swing.JComboBox<String>();
+        familyComboBox = new javax.swing.JComboBox<String>();
         javax.swing.JLabel familyLabel = new javax.swing.JLabel();
         siteButton = new javax.swing.JRadioButton();
         topPanel = new javax.swing.JPanel();
@@ -327,7 +324,6 @@ public class DeviceIdDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
         centerPanel.add(referenceTxt, gridBagConstraints);
 
-        platformComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All Platforms", "Unix Like", "Windows" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -336,7 +332,6 @@ public class DeviceIdDialog extends JDialog {
         centerPanel.add(platformComboBox, gridBagConstraints);
 
         busComboBox.setEditable(true);
-        busComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Not Applicable", "Compact PCI", "Data Socket", "Ethernet", "FireWire", "GPIB", "Modbus", "PCI", "PCI Express", "Serial Line", "Socket", "TCP/UDP", "USB", "VME" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -345,7 +340,6 @@ public class DeviceIdDialog extends JDialog {
         centerPanel.add(busComboBox, gridBagConstraints);
 
         familyComboBox.setEditable(true);
-        familyComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Miscellaneous", "AbstractClasses", "Acquisition", "Application", "BeamDiag", "Calculation", "Communication", "Controllers", "InputOutput", "Instrumentation", "Interlock", "Motion", "PowerSupply", "Process", "RadioProtection", "Sequencer", "Simulators", "Training", "Vacuum" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -507,11 +501,9 @@ public class DeviceIdDialog extends JDialog {
         //  Get selection, update the list, and re-do the selection
         String family = (String) familyComboBox.getSelectedItem();
         if (siteButton.getSelectedObjects() == null)
-            familyComboBox.setModel(new DefaultComboBoxModel(
-                    toVector(PogoProperty.classFamilies)));
+            updateComboBox(familyComboBox, PogoProperty.classFamilies);
         else
-            familyComboBox.setModel(new DefaultComboBoxModel(
-                    toVector(PogoProperty.siteClassFamilies)));
+            updateComboBox(familyComboBox, PogoProperty.siteClassFamilies);
 
         familyComboBox.setSelectedItem(family);
     }
@@ -599,12 +591,12 @@ public class DeviceIdDialog extends JDialog {
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addKeyWordsButton;
-    private javax.swing.JComboBox busComboBox;
+    private javax.swing.JComboBox<String> busComboBox;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JTextField contactTxt;
-    private javax.swing.JComboBox familyComboBox;
+    private javax.swing.JComboBox<String> familyComboBox;
     private javax.swing.JTextField manufacturerTxt;
-    private javax.swing.JComboBox platformComboBox;
+    private javax.swing.JComboBox<String> platformComboBox;
     private javax.swing.JTextField referenceTxt;
     private javax.swing.JRadioButton siteButton;
     private javax.swing.JPanel topPanel;

@@ -131,7 +131,7 @@ public class AdditionalFilesDialog extends JDialog {
         javax.swing.JPanel topPanel = new javax.swing.JPanel();
         javax.swing.JLabel titleLabel = new javax.swing.JLabel();
         listScrollPane = new javax.swing.JScrollPane();
-        additionalList = new javax.swing.JList();
+        additionalList = new javax.swing.JList<String>();
         javax.swing.JPanel rightPanel = new javax.swing.JPanel();
         javax.swing.JButton addBtn = new javax.swing.JButton();
         removeBtn = new javax.swing.JButton();
@@ -303,7 +303,7 @@ public class AdditionalFilesDialog extends JDialog {
 
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList additionalList;
+    private javax.swing.JList<String> additionalList;
     private javax.swing.JScrollPane listScrollPane;
     private javax.swing.JButton removeBtn;
     // End of variables declaration//GEN-END:variables

@@ -138,7 +138,7 @@ class JavaAttribute {
 		 */
 		private void addForwardedAttributes() throws DevFailed {
 			xlogger.entry();
-			//	Set attribute __root_att properties
+			//	Don't forget to set attribute __root_att properties
 			«FOR ForwardedAttribute attribute : cls.forwardedAttributes»
 				dynamicManager.addAttribute(new ForwardedAttribute(null, "«attribute.name»", "«attribute.label»"));
 			«ENDFOR»

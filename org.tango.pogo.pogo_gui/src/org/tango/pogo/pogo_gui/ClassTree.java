@@ -416,6 +416,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         if (selection instanceof PogoAttribute)
             return ((PogoAttribute) selection).value;
+        if (selection instanceof PogoForwarded)
+            return ((PogoForwarded) selection).value;
         if (selection instanceof PogoPipe)
             return ((PogoPipe) selection).value;
         if (selection instanceof PogoState)
@@ -613,7 +615,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         repaint();
     }
     //===============================================================
-
     /**
      * Move the selected object
      *
@@ -654,7 +655,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             }
         }
         setSelectionNode(node);
-        //modified = true;
+        modified = true;
     }
     //===============================================================
 
@@ -1896,11 +1897,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         //===========================================================
         private String toInfoString() {
-            StringBuilder sb = new StringBuilder(((is_dev) ? "Device" : "Class"));
-            sb.append(" property:  ").append(value.getName());
-
-            return Utils.buildToolTip(sb.toString(),
-                    Utils.strReplace(value.getDescription(), "\\n", "\n"));
+            String str = ((is_dev) ? "Device" : "Class") + " property:  " + value.getName();
+            return Utils.buildToolTip(str, Utils.strReplace(value.getDescription(), "\\n", "\n"));
         }
         //===========================================================
         private void manageDisplay(TangoRenderer renderer) {
@@ -2069,11 +2067,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         //===========================================================
         private String toInfoString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Pipe:  ").append(value.getName());
+            String str = "Pipe:  " + value.getName();
 
-            return Utils.buildToolTip(sb.toString(),
-                    Utils.strReplace(value.getDescription(), "\\n", "\n"));
+            return Utils.buildToolTip(str, Utils.strReplace(value.getDescription(), "\\n", "\n"));
         }
         //===========================================================
         private void manageDisplay(TangoRenderer renderer) {

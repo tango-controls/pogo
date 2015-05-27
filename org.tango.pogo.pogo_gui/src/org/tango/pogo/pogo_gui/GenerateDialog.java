@@ -52,6 +52,7 @@ import java.util.ArrayList;
  * Dialog object to manage generation preferences.
  */
 
+@SuppressWarnings("MagicConstant")
 public class GenerateDialog extends JDialog {
     private int mode = PogoConst.SINGLE_CLASS;
     private static int returnStatus;
@@ -234,7 +235,7 @@ public class GenerateDialog extends JDialog {
         buttonsPanel.add(codeBtn, gridBagConstraints);
 
         prPythonHLButton.setSelected(true);
-        prPythonHLButton.setLabel("Protected Regions");
+        prPythonHLButton.setText("Protected Regions");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;

@@ -60,6 +60,7 @@ import java.util.StringTokenizer;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class PropertyDialog extends JDialog {
     private static final String[] propertyTypeNames = {
             "DevBoolean",
@@ -146,11 +147,11 @@ public class PropertyDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private void setNotEditable(JComboBox jcb) {
-        String name = (String) jcb.getSelectedItem();
+    private void setNotEditable(JComboBox<String> comboBox) {
+        String name = (String) comboBox.getSelectedItem();
         if (name != null) {
-            jcb.removeAllItems();
-            jcb.addItem(name);
+            comboBox.removeAllItems();
+            comboBox.addItem(name);
         }
     }
 
@@ -217,7 +218,7 @@ public class PropertyDialog extends JDialog {
         descTxt = new javax.swing.JTextArea();
         javax.swing.JLabel arginLbl = new javax.swing.JLabel();
         javax.swing.JLabel valueLbl = new javax.swing.JLabel();
-        typeComboBox = new javax.swing.JComboBox();
+        typeComboBox = new javax.swing.JComboBox<String>();
         descBtn = new javax.swing.JButton();
         valueBtn = new javax.swing.JButton();
         mandatoryBtn = new javax.swing.JRadioButton();
@@ -539,7 +540,7 @@ public class PropertyDialog extends JDialog {
     private javax.swing.JRadioButton mandatoryBtn;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JLabel titleLbl;
-    private javax.swing.JComboBox typeComboBox;
+    private javax.swing.JComboBox<String> typeComboBox;
     private javax.swing.JButton valueBtn;
     private javax.swing.JTextArea valueTxt;
     // End of variables declaration//GEN-END:variables

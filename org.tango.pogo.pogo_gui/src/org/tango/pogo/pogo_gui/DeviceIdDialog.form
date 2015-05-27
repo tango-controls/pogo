@@ -149,13 +149,12 @@
         <Component class="javax.swing.JComboBox" name="platformComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="All Platforms"/>
-                <StringItem index="1" value="Unix Like"/>
-                <StringItem index="2" value="Windows"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="2" gridY="4" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="0" insetsRight="10" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -165,26 +164,10 @@
         <Component class="javax.swing.JComboBox" name="busComboBox">
           <Properties>
             <Property name="editable" type="boolean" value="true"/>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="15">
-                <StringItem index="0" value=""/>
-                <StringItem index="1" value="Not Applicable"/>
-                <StringItem index="2" value="Compact PCI"/>
-                <StringItem index="3" value="Data Socket"/>
-                <StringItem index="4" value="Ethernet"/>
-                <StringItem index="5" value="FireWire"/>
-                <StringItem index="6" value="GPIB"/>
-                <StringItem index="7" value="Modbus"/>
-                <StringItem index="8" value="PCI"/>
-                <StringItem index="9" value="PCI Express"/>
-                <StringItem index="10" value="Serial Line"/>
-                <StringItem index="11" value="Socket"/>
-                <StringItem index="12" value="TCP/UDP"/>
-                <StringItem index="13" value="USB"/>
-                <StringItem index="14" value="VME"/>
-              </StringArray>
-            </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="2" gridY="5" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="0" insetsRight="10" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -195,29 +178,12 @@
           <Properties>
             <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="19">
-                <StringItem index="0" value="Miscellaneous"/>
-                <StringItem index="1" value="AbstractClasses"/>
-                <StringItem index="2" value="Acquisition"/>
-                <StringItem index="3" value="Application"/>
-                <StringItem index="4" value="BeamDiag"/>
-                <StringItem index="5" value="Calculation"/>
-                <StringItem index="6" value="Communication"/>
-                <StringItem index="7" value="Controllers"/>
-                <StringItem index="8" value="InputOutput"/>
-                <StringItem index="9" value="Instrumentation"/>
-                <StringItem index="10" value="Interlock"/>
-                <StringItem index="11" value="Motion"/>
-                <StringItem index="12" value="PowerSupply"/>
-                <StringItem index="13" value="Process"/>
-                <StringItem index="14" value="RadioProtection"/>
-                <StringItem index="15" value="Sequencer"/>
-                <StringItem index="16" value="Simulators"/>
-                <StringItem index="17" value="Training"/>
-                <StringItem index="18" value="Vacuum"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="2" gridY="2" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="0" insetsRight="10" anchor="10" weightX="0.0" weightY="0.0"/>

@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 9.0.6
+RELEASE    = 9.1.0a
 
 
 TANGO_HOME	=	/segfs/tango
@@ -30,8 +30,8 @@ SVN_TAG_REV    = Release-$(RELEASE)
 #------------------------------------------------------------------
 
 BIN_DIR   =  ../../../../../bin
-JAVAFLAGS =  -d $(BIN_DIR)
-JAVAC     =  javac -g $(JAVAFLAGS)
+JAVAFLAGS = -Xlint:deprecation   -Xlint:unchecked   -d $(BIN_DIR)
+JAVAC     =  javac $(JAVAFLAGS)
 
 #-------------------------------------------------------------------
 
@@ -42,7 +42,8 @@ DOC_HEADER = "<h1>POGO Classes</h1>"
 
 #-----------------------------------------------------------------
 
-all:	 GUI exe
+all:	 GUI
+# exe
 
 full:	atk constants	utils	GUI
 

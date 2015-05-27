@@ -42,6 +42,7 @@ import java.awt.*;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.ArrayList;
+import java.util.List;
 
 
 //===============================================================
@@ -101,7 +102,7 @@ public class PogoConfiguration extends JDialog {
         javax.swing.JButton addBtn = new javax.swing.JButton();
         javax.swing.JButton removeBtn = new javax.swing.JButton();
         javax.swing.JScrollPane familyScrollPane = new javax.swing.JScrollPane();
-        familyList = new javax.swing.JList();
+        familyList = new javax.swing.JList<String>();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -272,8 +273,13 @@ public class PogoConfiguration extends JDialog {
     @SuppressWarnings({"UnusedDeclaration"})
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
 
-        Object[] selections = familyList.getSelectedValues();
-        if (selections.length > 0) {
+        List<String> selections = familyList.getSelectedValuesList();
+        if (selections.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Nothing selected to be removed !", "Error Window",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
             for (Object selection : selections) {
                 String name = (String) selection;
                 for (String family : families) {
@@ -284,10 +290,7 @@ public class PogoConfiguration extends JDialog {
                 }
             }
             setFamilyList();
-        } else
-            JOptionPane.showMessageDialog(this,
-                    "Nothing selected to be removed !", "Error Window",
-                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_removeBtnActionPerformed
 
     //===============================================================
@@ -384,7 +387,7 @@ public class PogoConfiguration extends JDialog {
 
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList familyList;
+    private javax.swing.JList<String> familyList;
     private javax.swing.JTextField siteLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables

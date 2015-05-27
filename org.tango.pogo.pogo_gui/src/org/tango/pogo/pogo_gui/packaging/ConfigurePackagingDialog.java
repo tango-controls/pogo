@@ -43,6 +43,7 @@ import org.tango.pogo.pogo_gui.tools.PogoException;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 
 
@@ -55,6 +56,7 @@ import java.util.Collections;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class ConfigurePackagingDialog extends JDialog {
 
     private PogoDeviceClass deviceClass = null;
@@ -94,7 +96,7 @@ public class ConfigurePackagingDialog extends JDialog {
     private void initOwnComponent(String author, String path) {
 		initComponents();
         Collections.addAll(headers, defaultHeaders);
-        headerList.setListData(headers.toArray());
+        headerList.setListData(toArray(headers));
 
         authorText.setText(author);
         boolean b = !PackUtils.authorFileExists(path);
@@ -103,6 +105,14 @@ public class ConfigurePackagingDialog extends JDialog {
 		pack();
  		ATKGraphicsUtils.centerDialog(this);
 	}
+    //===============================================================
+    //===============================================================
+    private String[] toArray(List<String> list) {
+        String[] array = new String[list.size()];
+        for (int i=0 ; i<list.size() ; i++)
+            array[i] = list.get(i);
+        return array;
+    }
     //===============================================================
     //===============================================================
 
@@ -123,9 +133,9 @@ public class ConfigurePackagingDialog extends JDialog {
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-        headerList = new javax.swing.JList();
+        headerList = new javax.swing.JList<String>();
         javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
-        functionList = new javax.swing.JList();
+        functionList = new javax.swing.JList<String>();
         javax.swing.JPanel btnPanel1 = new javax.swing.JPanel();
         javax.swing.JButton addHeaderButton = new javax.swing.JButton();
         removeHeaderButton = new javax.swing.JButton();
@@ -394,12 +404,11 @@ public class ConfigurePackagingDialog extends JDialog {
     //===============================================================
     @SuppressWarnings("UnusedParameters")
     private void addHeaderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHeaderButtonActionPerformed
-        // TODO add your handling code here:
         String header = (String) JOptionPane.showInputDialog(this,
                 "Header name ?", "Input Dialog", JOptionPane.INFORMATION_MESSAGE, null, null, null);
         if (header!=null && header.length()>0) {
             headers.add(header);
-            headerList.setListData(headers.toArray());
+            headerList.setListData(toArray(headers));
         }
     }//GEN-LAST:event_addHeaderButtonActionPerformed
 
@@ -407,9 +416,9 @@ public class ConfigurePackagingDialog extends JDialog {
     //===============================================================
     @SuppressWarnings("UnusedParameters")
     private void removeHeaderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeHeaderButtonActionPerformed
-        String  header = (String) headerList.getSelectedValue();
+        String  header =  headerList.getSelectedValue();
         headers.remove(header);
-        headerList.setListData(headers.toArray());
+        headerList.setListData(toArray(headers));
     }//GEN-LAST:event_removeHeaderButtonActionPerformed
 
     //===============================================================
@@ -420,7 +429,7 @@ public class ConfigurePackagingDialog extends JDialog {
                 "Function name ?", "Input Dialog", JOptionPane.INFORMATION_MESSAGE, null, null, null);
         if (function!=null && function.length()>0) {
             functions.add(function);
-            functionList.setListData(functions.toArray());
+            functionList.setListData(toArray(functions));
         }
     }//GEN-LAST:event_addFunctionButtonActionPerformed
 
@@ -428,9 +437,9 @@ public class ConfigurePackagingDialog extends JDialog {
     //===============================================================
     @SuppressWarnings("UnusedParameters")
     private void removeFunctionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFunctionButtonActionPerformed
-        String  function = (String) functionList.getSelectedValue();
+        String  function = functionList.getSelectedValue();
         functions.remove(function);
-        functionList.setListData(functions.toArray());
+        functionList.setListData(toArray(functions));
     }//GEN-LAST:event_removeFunctionButtonActionPerformed
 
     //===============================================================
@@ -466,8 +475,8 @@ public class ConfigurePackagingDialog extends JDialog {
 	//===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField authorText;
-    private javax.swing.JList functionList;
-    private javax.swing.JList headerList;
+    private javax.swing.JList<String> functionList;
+    private javax.swing.JList<String> headerList;
     private javax.swing.JButton removeFunctionButton;
     private javax.swing.JButton removeHeaderButton;
     private javax.swing.JTextField versionText;

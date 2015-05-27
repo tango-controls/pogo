@@ -56,7 +56,7 @@ import java.util.ArrayList;
 //===============================================================
 public class StateDialog extends JDialog {
     private JTextArea descText;
-    private JComboBox typeComboBox;
+    private JComboBox<String> typeComboBox;
     private PogoGUI pogo_gui;
     private InheritanceStatus orig_status;
     private int retVal = JOptionPane.OK_OPTION;
@@ -104,11 +104,11 @@ public class StateDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private void setNotEditable(JComboBox jcb) {
-        String name = (String) jcb.getSelectedItem();
+    private void setNotEditable(JComboBox<String> comboBox) {
+        String name = (String) comboBox.getSelectedItem();
         if (name != null) {
-            jcb.removeAllItems();
-            jcb.addItem(name);
+            comboBox.removeAllItems();
+            comboBox.addItem(name);
         }
     }
 
@@ -125,6 +125,7 @@ public class StateDialog extends JDialog {
      * initialize the form.
      */
     //===============================================================
+    @SuppressWarnings("MagicConstant")
     private void initComponents() {
         setBackground(new java.awt.Color(198, 178, 168));
         setTitle("Edit State Window");
@@ -210,7 +211,7 @@ public class StateDialog extends JDialog {
         gbc.weighty = 1.0;
         centerPanel.add(scrollPane, gbc);
 
-        typeComboBox = new javax.swing.JComboBox();
+        typeComboBox = new JComboBox<String>();
         gbc = new java.awt.GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 1;
