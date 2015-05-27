@@ -52,11 +52,11 @@ import javax.swing.*;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class ServerDialog extends JDialog {
     private TangoServer server;
     private int retVal = JOptionPane.OK_OPTION;
     //===============================================================
-
     /**
      * Creates new form ServerDialog
      *
@@ -68,6 +68,10 @@ public class ServerDialog extends JDialog {
         super(parent, true);
         this.server = server;
         initComponents();
+        licenseComboBox.addItem("GPL");
+        licenseComboBox.addItem("LGPL");
+        licenseComboBox.addItem("none");
+
 
         titleLabel.setText("Tango Server definition");
         if (server != null) {
@@ -105,7 +109,7 @@ public class ServerDialog extends JDialog {
         javax.swing.JLabel descritpionLabel = new javax.swing.JLabel();
         javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         descriptionText = new javax.swing.JTextArea();
-        licenseComboBox = new javax.swing.JComboBox();
+        licenseComboBox = new javax.swing.JComboBox<String>();
         javax.swing.JLabel licenseLbl = new javax.swing.JLabel();
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
@@ -163,7 +167,6 @@ public class ServerDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         centerPanel.add(scrollPane, gridBagConstraints);
 
-        licenseComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "GPL", "LGPL", "none" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -267,7 +270,7 @@ public class ServerDialog extends JDialog {
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea descriptionText;
-    private javax.swing.JComboBox licenseComboBox;
+    private javax.swing.JComboBox<String> licenseComboBox;
     private javax.swing.JTextField nameText;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables

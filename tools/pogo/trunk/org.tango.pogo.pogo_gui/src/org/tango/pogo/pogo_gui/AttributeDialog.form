@@ -125,6 +125,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="attrTypeCBActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="1" gridY="4" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -187,6 +190,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataTypeCBActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="1" gridY="5" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -264,6 +270,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rwTypeCBActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="1" gridY="10" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -861,9 +870,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="periodicLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Periodic Event:"/>
               </Properties>
               <AuxValues>
@@ -878,9 +884,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="changeLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Change Event:"/>
               </Properties>
               <AuxValues>
@@ -895,9 +898,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="archiveLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Archive Event:"/>
               </Properties>
               <AuxValues>
@@ -912,9 +912,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="periodLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Period:"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -930,9 +927,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="absChangeLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Absolute:"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -948,9 +942,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="relativeChangeLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Relative:"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -966,9 +957,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="periodArchiveLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Period:"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -984,9 +972,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="relativeArchiveLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Relative:"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -1002,9 +987,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="absArchiveLbl">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Absolute:"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
@@ -1115,9 +1097,6 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="changeEvtCode">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Change Event"/>
               </Properties>
               <Events>
@@ -1131,9 +1110,6 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="changeEvtChecked">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Criteria managed by library"/>
               </Properties>
               <Constraints>
@@ -1144,9 +1120,6 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="archiveEvtCode">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Archive Event"/>
               </Properties>
               <Events>
@@ -1160,9 +1133,6 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="archiveEvtChecked">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Criteria managed by library"/>
               </Properties>
               <Constraints>
@@ -1173,9 +1143,6 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="dataReadyEvtCode">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Data Ready Event"/>
               </Properties>
               <Constraints>

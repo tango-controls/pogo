@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.1.0 - 12/05/2015:
+	Pogo is now compiled using java 1.7
+	Double cotes supported in class description and title,
+
 Pogo-9.0.6 - 06/05/2015:
 	Java forwarded attributes are available.
 	Improve enum management.

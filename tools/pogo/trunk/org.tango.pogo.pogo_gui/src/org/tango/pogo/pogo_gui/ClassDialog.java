@@ -54,6 +54,7 @@ import java.util.StringTokenizer;
  * A Dialog Class to get the Class definitions.
  */
 //===============================================================
+@SuppressWarnings("MagicConstant")
 public class ClassDialog extends JDialog {
 
     private static int returnStatus;
@@ -95,10 +96,11 @@ public class ClassDialog extends JDialog {
         langBtn[PogoConst.Java] = javaBtn;
         langBtn[PogoConst.Python] = pythonBtn;
         langBtn[PogoConst.PythonHL] = pythonHLBtn;
-        /*
-        String  s = System.getenv("PythonHL");
-        pythonHLBtn.setVisible(s!=null && s.equals("true"));
-        */
+
+        licenseComboBox.addItem("GPL");
+        licenseComboBox.addItem("LGPL");
+        licenseComboBox.addItem("none");
+
         if (deviceClass == null)   //  Creating a new class
             this.deviceClass = new DeviceClass("", null);
         else {
@@ -201,7 +203,7 @@ public class ClassDialog extends JDialog {
         pythonBtn = new javax.swing.JRadioButton();
         pythonHLBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel licenseLbl = new javax.swing.JLabel();
-        licenseComboBox = new javax.swing.JComboBox();
+        licenseComboBox = new javax.swing.JComboBox<String>();
         inheritanceScrollPane = new javax.swing.JScrollPane();
 
         setTitle("Class Definition Window");
@@ -373,7 +375,6 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 10, 0);
         centerPanel.add(licenseLbl, gridBagConstraints);
 
-        licenseComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "GPL", "LGPL", "none" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -627,8 +628,10 @@ public class ClassDialog extends JDialog {
     DeviceClass getInputs() {
         PogoDeviceClass pogo_class = deviceClass.getPogoDeviceClass();
         pogo_class.setName(nameText.getText());
-        pogo_class.getDescription().setTitle(projectText.getText());
-        pogo_class.getDescription().setDescription(descText.getText());
+        String title = Utils.strReplaceSpecialCharToCode(projectText.getText());
+        pogo_class.getDescription().setTitle(title);
+        String desc = Utils.strReplaceSpecialCharToCode(descText.getText());
+        pogo_class.getDescription().setDescription(desc);
         pogo_class.getDescription().setIdentification(IDdialog.getInputs());
         pogo_class.getDescription().setLicense(licenseComboBox.getSelectedItem().toString());
         if (pythonHLBtn.getSelectedObjects() != null)
@@ -696,7 +699,7 @@ public class ClassDialog extends JDialog {
     private javax.swing.JSplitPane horizontalPanel;
     private javax.swing.JScrollPane inheritanceScrollPane;
     private javax.swing.JRadioButton javaBtn;
-    private javax.swing.JComboBox licenseComboBox;
+    private javax.swing.JComboBox<String> licenseComboBox;
     private javax.swing.JTextField nameText;
     private javax.swing.JTextField projectText;
     private javax.swing.JRadioButton pythonBtn;

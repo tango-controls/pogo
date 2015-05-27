@@ -38,6 +38,7 @@ package org.tango.pogo.pogo_gui;
 
 import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PogoException;
@@ -45,7 +46,8 @@ import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
-import java.awt.*;
+
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -289,7 +291,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
     //===============================================================
     //===============================================================
-    private void setNotEditable(JComboBox jcb) {
+    private void setNotEditable(JComboBox<String> jcb) {
         String name = (String) jcb.getSelectedItem();
         if (name != null) {
             jcb.removeAllItems();
@@ -378,16 +380,16 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         definitionPanel = new javax.swing.JPanel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
-        attrTypeCB = new javax.swing.JComboBox();
+        attrTypeCB = new javax.swing.JComboBox<String>();
         javax.swing.JLabel attTypeLbl = new javax.swing.JLabel();
         nameText = new javax.swing.JTextField();
         javax.swing.JLabel dataTypeLbl = new javax.swing.JLabel();
-        dataTypeCB = new javax.swing.JComboBox();
+        dataTypeCB = new javax.swing.JComboBox<String>();
         xDataLBL = new javax.swing.JLabel();
         yDataLBL = new javax.swing.JLabel();
         xDataTF = new javax.swing.JTextField();
         yDataTF = new javax.swing.JTextField();
-        rwTypeCB = new javax.swing.JComboBox();
+        rwTypeCB = new javax.swing.JComboBox<String>();
         assAttrLBL = new javax.swing.JLabel();
         assAttrTF = new javax.swing.JTextField();
         javax.swing.JLabel rwTypeLBL = new javax.swing.JLabel();
@@ -943,7 +945,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         eventsPanel.add(defaultEventsLbl, gridBagConstraints);
 
-        periodicLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         periodicLbl.setText("Periodic Event:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -952,7 +953,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
         eventsPanel.add(periodicLbl, gridBagConstraints);
 
-        changeLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         changeLbl.setText("Change Event:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -961,7 +961,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
         eventsPanel.add(changeLbl, gridBagConstraints);
 
-        archiveLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         archiveLbl.setText("Archive Event:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -970,7 +969,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
         eventsPanel.add(archiveLbl, gridBagConstraints);
 
-        periodLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         periodLbl.setText("Period:");
         periodLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -980,7 +978,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
         eventsPanel.add(periodLbl, gridBagConstraints);
 
-        absChangeLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         absChangeLbl.setText("Absolute:");
         absChangeLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -990,7 +987,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
         eventsPanel.add(absChangeLbl, gridBagConstraints);
 
-        relativeChangeLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         relativeChangeLbl.setText("Relative:");
         relativeChangeLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1000,7 +996,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
         eventsPanel.add(relativeChangeLbl, gridBagConstraints);
 
-        periodArchiveLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         periodArchiveLbl.setText("Period:");
         periodArchiveLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1010,7 +1005,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
         eventsPanel.add(periodArchiveLbl, gridBagConstraints);
 
-        relativeArchiveLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         relativeArchiveLbl.setText("Relative:");
         relativeArchiveLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1020,7 +1014,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
         eventsPanel.add(relativeArchiveLbl, gridBagConstraints);
 
-        absArchiveLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         absArchiveLbl.setText("Absolute:");
         absArchiveLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1098,7 +1091,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         eventsPanel.add(pushEventsLbl, gridBagConstraints);
 
-        changeEvtCode.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         changeEvtCode.setText("Change Event");
         changeEvtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1112,7 +1104,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         eventsPanel.add(changeEvtCode, gridBagConstraints);
 
-        changeEvtChecked.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         changeEvtChecked.setText("Criteria managed by library");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1121,7 +1112,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 10);
         eventsPanel.add(changeEvtChecked, gridBagConstraints);
 
-        archiveEvtCode.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         archiveEvtCode.setText("Archive Event");
         archiveEvtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1135,7 +1125,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         eventsPanel.add(archiveEvtCode, gridBagConstraints);
 
-        archiveEvtChecked.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         archiveEvtChecked.setText("Criteria managed by library");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1144,7 +1133,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 10);
         eventsPanel.add(archiveEvtChecked, gridBagConstraints);
 
-        dataReadyEvtCode.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         dataReadyEvtCode.setText("Data Ready Event");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1514,7 +1502,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             dataType = "DevState"; //    Sorry.
 
         for (int i = 0; i < dataTypeCB.getItemCount(); i++) {
-            String type = (String) dataTypeCB.getItemAt(i);
+            String type = dataTypeCB.getItemAt(i);
             if (type.equals(dataType))
                 dataTypeCB.setSelectedIndex(i);
         }
@@ -1636,7 +1624,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         }
 
         String tangoDataType = (String) dataTypeCB.getSelectedItem();
-        Type pogoDataType = OAWutils.tango2pogoType(tangoDataType);
+        fr.esrf.tango.pogo.pogoDsl.Type pogoDataType = OAWutils.tango2pogoType(tangoDataType);
         attr.setDataType(pogoDataType);
         //  Manage Enum labels if attribute data type is DevEnum
         if (tangoDataType.toLowerCase().contains("enum")) {
@@ -1905,11 +1893,11 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private javax.swing.JTextField attrPropMinWarning;
     private javax.swing.JTextField attrPropStdUnit;
     private javax.swing.JTextField attrPropUnit;
-    private javax.swing.JComboBox attrTypeCB;
+    private javax.swing.JComboBox<String> attrTypeCB;
     private javax.swing.JRadioButton changeEvtChecked;
     private javax.swing.JRadioButton changeEvtCode;
     private javax.swing.JRadioButton dataReadyEvtCode;
-    private javax.swing.JComboBox dataTypeCB;
+    private javax.swing.JComboBox<String> dataTypeCB;
     private javax.swing.JPanel definitionPanel;
     private javax.swing.JLabel dynamicLbl;
     private javax.swing.JButton enumDefinitionBtn;
@@ -1922,7 +1910,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private javax.swing.JLabel evTitleLbl;
     private javax.swing.JTextField nameText;
     private javax.swing.JRadioButton overloadBtn;
-    private javax.swing.JComboBox rwTypeCB;
+    private javax.swing.JComboBox<String> rwTypeCB;
     private javax.swing.JLabel xDataLBL;
     private javax.swing.JTextField xDataTF;
     private javax.swing.JLabel yDataLBL;

@@ -39,7 +39,7 @@ import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.Argument;
 import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
-import fr.esrf.tango.pogo.pogoDsl.Type;
+
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
@@ -59,6 +59,7 @@ import java.util.ArrayList;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class CommandDialog extends JDialog {
     private int retVal = JOptionPane.OK_OPTION;
     private static String[] commandNames = {
@@ -158,11 +159,11 @@ public class CommandDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private void setNotEditable(JComboBox jcb) {
-        String name = (String) jcb.getSelectedItem();
+    private void setNotEditable(JComboBox<String> comboBox) {
+        String name = (String) comboBox.getSelectedItem();
         if (name != null) {
-            jcb.removeAllItems();
-            jcb.addItem(name);
+            comboBox.removeAllItems();
+            comboBox.addItem(name);
         }
     }
 
@@ -176,13 +177,13 @@ public class CommandDialog extends JDialog {
             setNotEditable(arginComboBox);
             setNotEditable(argoutComboBox);
 
-            levelBtn.setEnabled(b);
-            arginDescBtn.setEnabled(b);
-            arginDescText.setEditable(b);
-            argoutDescBtn.setEnabled(b);
+            levelBtn.setEnabled(false);
+            arginDescBtn.setEnabled(false);
+            arginDescText.setEditable(false);
+            argoutDescBtn.setEnabled(false);
             argoutDescText.setEditable(false);
 
-            descText.setEditable(b);
+            descText.setEditable(false);
         }
     }
 
@@ -280,7 +281,6 @@ public class CommandDialog extends JDialog {
         dynamicLbl.setVisible(isDynamic);
     }
     //===============================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -295,13 +295,13 @@ public class CommandDialog extends JDialog {
         javax.swing.JPanel centerPanel = new javax.swing.JPanel();
         dynamicLbl = new javax.swing.JLabel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
-        nameComboBox = new javax.swing.JComboBox();
+        nameComboBox = new javax.swing.JComboBox<String>();
         abstractBtn = new javax.swing.JRadioButton();
         overloadBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel arginLbl = new javax.swing.JLabel();
         javax.swing.JLabel argoutLbl = new javax.swing.JLabel();
-        arginComboBox = new javax.swing.JComboBox();
-        argoutComboBox = new javax.swing.JComboBox();
+        arginComboBox = new javax.swing.JComboBox<String>();
+        argoutComboBox = new javax.swing.JComboBox<String>();
         arginDescBtn = new javax.swing.JButton();
         argoutDescBtn = new javax.swing.JButton();
         javax.swing.JPanel polledPanel = new javax.swing.JPanel();
@@ -599,6 +599,7 @@ public class CommandDialog extends JDialog {
             if (polledBtn.getSelectedObjects() != null) {
                 //noinspection NestedTryStatement
                 try {
+                    //noinspection ResultOfMethodCallIgnored
                     Integer.parseInt(polledTxt.getText());
                 } catch (NumberFormatException e) {
                     throw new PogoException("Bad polling period.");
@@ -728,9 +729,9 @@ public class CommandDialog extends JDialog {
         //	Argin/argout management
         Argument argin = OAWutils.factory.createArgument();
         Argument argout = OAWutils.factory.createArgument();
-        Type arginType = OAWutils.tango2pogoType(
+        fr.esrf.tango.pogo.pogoDsl.Type arginType = OAWutils.tango2pogoType(
                 arginComboBox.getSelectedItem().toString());
-        Type argoutType = OAWutils.tango2pogoType(
+        fr.esrf.tango.pogo.pogoDsl.Type argoutType = OAWutils.tango2pogoType(
                 argoutComboBox.getSelectedItem().toString());
         argin.setType(arginType);
         argout.setType(argoutType);
@@ -826,16 +827,16 @@ public class CommandDialog extends JDialog {
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton abstractBtn;
-    private javax.swing.JComboBox arginComboBox;
+    private javax.swing.JComboBox<String> arginComboBox;
     private javax.swing.JButton arginDescBtn;
     private javax.swing.JTextArea arginDescText;
-    private javax.swing.JComboBox argoutComboBox;
+    private javax.swing.JComboBox<String> argoutComboBox;
     private javax.swing.JButton argoutDescBtn;
     private javax.swing.JTextArea argoutDescText;
     private javax.swing.JTextArea descText;
     private javax.swing.JLabel dynamicLbl;
     private javax.swing.JRadioButton levelBtn;
-    private javax.swing.JComboBox nameComboBox;
+    private javax.swing.JComboBox<String> nameComboBox;
     private javax.swing.JRadioButton overloadBtn;
     private javax.swing.JRadioButton polledBtn;
     private javax.swing.JLabel polledLbl;

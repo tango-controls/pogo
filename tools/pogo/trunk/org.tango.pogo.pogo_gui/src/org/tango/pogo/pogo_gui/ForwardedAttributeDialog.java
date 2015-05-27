@@ -53,6 +53,7 @@ import javax.swing.*;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class ForwardedAttributeDialog extends JDialog {
 
 	private JFrame	parent;
