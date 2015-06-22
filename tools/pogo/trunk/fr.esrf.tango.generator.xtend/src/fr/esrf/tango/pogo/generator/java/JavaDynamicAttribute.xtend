@@ -87,7 +87,9 @@ class JavaDynamicAttribute {
 			"Java source for the dynamic attribute " + attribute.name +".\n" +
 			"this attribute belongs to the " + cls.name + " class.",
 			cls.description.title,
-			cls.description.license)»
+			cls.description.license,
+			cls.description.copyright
+		)»
 
 		«cls.closeProtectedArea(attribute.name+".java")»
 
