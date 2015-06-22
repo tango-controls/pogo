@@ -501,6 +501,8 @@ public class StringUtils {
     //===============================================================
     //===============================================================
 	public static String getCopyrightCommented(String copyright) {
+		if (copyright==null || copyright.isEmpty())
+			return "";
 		StringBuilder sb = new StringBuilder();
 		int start = 0 ;
 		int end   = 0 ;
