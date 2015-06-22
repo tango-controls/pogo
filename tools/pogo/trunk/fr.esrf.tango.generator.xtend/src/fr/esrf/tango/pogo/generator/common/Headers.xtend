@@ -50,10 +50,7 @@ class Headers {
 	def rcsId(String filename) {
 		if (filename.endsWith("Class.cpp")) {
 			"static const char *RcsId      = " + "Id:".cvsEscapedForVar + ";\n"       +
-			"static const char *TagName    = " + "Name:".cvsEscapedForVar + ";\n"     +
-			"static const char *CvsPath    = " + "Source:".cvsEscapedForVar + ";\n"   +
-			"static const char *SvnPath    = " + "HeadURL:".cvsEscapedForVar + ";\n"  +
-			"static const char *HttpServer = \"http://www.esrf.eu/computing/cs/tango/tango_doc/ds_doc/\";\n";
+			"static const char *TagName    = " + "Name:".cvsEscapedForVar + ";\n"
 		}
 		else
 		if (filename.endsWith(".cpp"))
@@ -66,7 +63,7 @@ class Headers {
 	//======================================================
 	// generic file header
 	//======================================================
-	def fileHeader(String fileName, String description, String title, String license) {
+	def fileHeader(String fileName, String description, String title, String license, String copyright) {
 		rcsId(fileName) +
 		"//=============================================================================\n" +
 		"//\n" +
@@ -77,6 +74,7 @@ class Headers {
 		"// project :     " + title + "\n" +
 		"//\n" + licenseText(license, "// ") +
 		"// "  + "Author:".cvsEscaped + "\n" +
+		getCopyrightCommented(copyright) +
 		"//\n" + 
 		"// "  + "Revision:".cvsEscaped + "\n" +
 		"// "  + "Date:".cvsEscaped + "\n" +

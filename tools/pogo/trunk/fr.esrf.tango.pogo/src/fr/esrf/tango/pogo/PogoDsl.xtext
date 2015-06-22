@@ -55,6 +55,7 @@ PogoMultiClasses:
 		description = STRING
 		title       = STRING
 		license     = STRING
+		copyright   = STRING
 		"classes:"
 	    	(classes+=OneClassSimpleDef)
 	
@@ -152,6 +153,7 @@ ClassDescription:
 	identification = ClassIdentification
 	comments       = Comments
 	license        = STRING
+	copyright      = STRING
 	hasMandatoryProperty  = Boolean
 	hasConcreteProperty   = Boolean
 	hasAbstractCommand    = Boolean

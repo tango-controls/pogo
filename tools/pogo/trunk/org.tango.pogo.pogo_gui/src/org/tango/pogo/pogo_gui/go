@@ -1,5 +1,6 @@
 JAR_FILE=$HOME/pogo/jar/org.tango.pogo.jar
 SITE_PROP=$TANGO_HOME/cppserver/env
+SITE_PROP=/users/verdier/env
 BIN_DIR=../../../../../src:../../../../../bin
 
 

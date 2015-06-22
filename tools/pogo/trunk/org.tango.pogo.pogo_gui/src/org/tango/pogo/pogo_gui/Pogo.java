@@ -67,7 +67,7 @@ public class Pogo {
     //===============================================================
     //===============================================================
     public Pogo() throws PogoException {
-        PogoProperty.init().displayProperties();    //	Load them
+        PogoProperty.init();    //	Load them
     }
 
     //===============================================================

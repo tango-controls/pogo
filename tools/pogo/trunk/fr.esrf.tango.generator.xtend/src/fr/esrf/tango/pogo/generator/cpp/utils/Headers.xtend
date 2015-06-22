@@ -59,7 +59,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		fileHeader(deviceIncludeFileName(cls),
 			"Include file for the " + cls.name + " class",
 			 cls.description.title,
-			cls.description.license
+			cls.description.license,
+			cls.description.copyright
 		)
 	}
 
@@ -78,7 +79,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"It contains all properties and methods which the \n" +
 			cls.name + " requires only once e.g. the commands.",
 			 cls.description.title,
-			cls.description.license
+			cls.description.license,
+			cls.description.copyright
 		)
 	}
 
@@ -97,7 +99,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"network. All commands which can be executed on the\n" +
 			cls.name + " are implemented in this file.",
 			cls.description.title,
-			cls.description.license
+			cls.description.license,
+			cls.description.copyright
 		)
 	}
 	
@@ -116,8 +119,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"and all properties and methods required\n" +
 			"by the " + cls.name + " once per process.",
 			cls.description.title,
-			cls.description.license
-			
+			cls.description.license,
+			cls.description.copyright
 		)
 	}
 	
@@ -131,8 +134,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		fileHeader(stateMachineFileName(cls),
 			"State machine file for the " + cls.name + " class",
 			cls.description.title,
-			cls.description.license
-			 
+			cls.description.license,
+			cls.description.copyright
 		)
 	}
 
@@ -146,7 +149,8 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 		fileHeader(dynamicAttrUtilsFileName(cls),
 			"Dynamic attributes utilities file for the " + cls.name + " class",
 			cls.description.title,
-			cls.description.license
+			cls.description.license,
+			cls.description.copyright
 		)
 	}
 	//======================================================
@@ -159,19 +163,22 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"all class singleton for a device server. It is called\n" +
 			"at device server startup.",
 			cls.description.title,
-			cls.description.license
+			cls.description.license,
+			cls.description.copyright
 		 )
 	}
 	//======================================================
 	// header for MultiClassFactory.cpp
 	//======================================================
-	def ClassFactoryFileHeader(PogoMultiClasses cls) {
+	def ClassFactoryFileHeader(PogoMultiClasses multi) {
 		fileHeader("MultiClassessFactory.cpp",
 			"C++ source for the class_factory method of the DServer\n" +
 			"device class. This method is responsible for the creation of\n" +
 			"all class singleton for a device server. It is called\n" +
 			"at device server startup.", "",
-			cls.license)
+			multi.license,
+			multi.copyright
+		)
 	}
 	
 	//======================================================
@@ -183,8 +190,10 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"The main rule is to initialise (and create) the Tango\n" +
 			"system and to create the DServerClass singleton.\n" +
 			"The main should be the same for every Tango device server.",
-			 cls.description.title,
-			cls.description.license)
+			cls.description.title,
+			cls.description.license,
+			cls.description.copyright
+		)
 	}
 
 	//======================================================
@@ -196,8 +205,10 @@ class Headers extends fr.esrf.tango.pogo.generator.common.Headers{
 			"The main rule is to initialise (and create) the Tango\n" +
 			"system and to create the DServerClass singleton.\n" +
 			"The main should be the same for every Tango device server.",
-			 multi.title,
-			multi.license)
+			multi.title,
+			multi.license,
+			multi.copyright
+		)
 	}
 
 	//======================================================

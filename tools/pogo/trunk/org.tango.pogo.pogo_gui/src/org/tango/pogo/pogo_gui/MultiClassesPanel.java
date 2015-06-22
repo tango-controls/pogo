@@ -81,7 +81,7 @@ public class MultiClassesPanel extends JFrame {
     public MultiClassesPanel(JFrame parent, String fileName) throws PogoException {
         this.parent = parent;
         initComponents();
-        PogoProperty.init().displayProperties();    //	Load them
+        PogoProperty.init();    //	Load them
 
         customizeMenus();
         initOwnComponents();

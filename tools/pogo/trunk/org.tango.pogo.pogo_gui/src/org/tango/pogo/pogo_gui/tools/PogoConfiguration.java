@@ -90,11 +90,6 @@ public class PogoConfiguration extends JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.JPanel topPanel = new javax.swing.JPanel();
-        titleLabel = new javax.swing.JLabel();
-        siteLabel = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
-        javax.swing.JButton helpBtn = new javax.swing.JButton();
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
@@ -103,33 +98,21 @@ public class PogoConfiguration extends JDialog {
         javax.swing.JButton removeBtn = new javax.swing.JButton();
         javax.swing.JScrollPane familyScrollPane = new javax.swing.JScrollPane();
         familyList = new javax.swing.JList<String>();
+        javax.swing.JPanel topTopPanel = new javax.swing.JPanel();
+        javax.swing.JLabel copyrightLabel = new javax.swing.JLabel();
+        javax.swing.JScrollPane copyrightScrollPane = new javax.swing.JScrollPane();
+        copyrightText = new javax.swing.JTextArea();
+        javax.swing.JPanel topPanel = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        siteLabel = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JButton helpBtn = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
         });
-
-        titleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        titleLabel.setText("Specific Class Family Names for  ");
-        topPanel.add(titleLabel);
-
-        siteLabel.setColumns(10);
-        siteLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        topPanel.add(siteLabel);
-
-        jLabel1.setText("        ");
-        topPanel.add(jLabel1);
-
-        helpBtn.setText("?");
-        helpBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpBtnActionPerformed(evt);
-            }
-        });
-        topPanel.add(helpBtn);
-
-        getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
 
         okBtn.setText("OK");
         okBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +167,43 @@ public class PogoConfiguration extends JDialog {
 
         getContentPane().add(familyScrollPane, java.awt.BorderLayout.CENTER);
 
+        topTopPanel.setLayout(new java.awt.BorderLayout());
+
+        copyrightLabel.setText("Copyright:");
+        topTopPanel.add(copyrightLabel, java.awt.BorderLayout.NORTH);
+
+        copyrightScrollPane.setPreferredSize(new java.awt.Dimension(400, 100));
+
+        copyrightText.setColumns(40);
+        copyrightText.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        copyrightText.setRows(5);
+        copyrightScrollPane.setViewportView(copyrightText);
+
+        topTopPanel.add(copyrightScrollPane, java.awt.BorderLayout.CENTER);
+
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        titleLabel.setText("Specific Class Family Names for  ");
+        topPanel.add(titleLabel);
+
+        siteLabel.setColumns(10);
+        siteLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        topPanel.add(siteLabel);
+
+        jLabel1.setText("        ");
+        topPanel.add(jLabel1);
+
+        helpBtn.setText("?");
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        topPanel.add(helpBtn);
+
+        topTopPanel.add(topPanel, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(topTopPanel, java.awt.BorderLayout.NORTH);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,7 +214,8 @@ public class PogoConfiguration extends JDialog {
 
         //  Write families in file
         try {
-            PogoProperty.siteName = siteLabel.getText();
+            PogoProperty.siteName  = siteLabel.getText();
+            PogoProperty.copyright = copyrightText.getText();
             if (PogoProperty.getInstance().updateSitePropertyFile(this)) {
                 retVal = JOptionPane.OK_OPTION;
                 doClose();
@@ -324,9 +345,9 @@ public class PogoConfiguration extends JDialog {
     //===============================================================
     //===============================================================
 
-    private void manageFamilyList() throws PogoException {
+    private void displayProperties() throws PogoException {
         siteLabel.setText(PogoProperty.siteName);
-
+        copyrightText.setText(PogoProperty.copyright);
         families = PogoProperty.siteClassFamilies;
         setFamilyList();
 
@@ -335,46 +356,9 @@ public class PogoConfiguration extends JDialog {
 
     //===============================================================
     //===============================================================
-    /*
-    private void manageSiteName()
-    {
-        if (PogoProperty.siteName==null || PogoProperty.siteName.length()==0) {
-            String  siteName = (String) JOptionPane.showInputDialog(this,
-                            "Site Name ",
-                            "Input Dialog",
-                            JOptionPane.INFORMATION_MESSAGE,
-                            null, null, null);
-            if (siteName!=null)
-                PogoProperty.siteName = siteName;
-        }
-    }
-	//===============================================================
-	//===============================================================
-	private boolean needsSiteProperties()
-	{
-		return JOptionPane.showConfirmDialog(this,
-                    "Do you need a site configuration\n" +
-                    "for specific class families in your own repository ?",
-                    "Config Window",
-                    JOptionPane.ERROR_MESSAGE)==JOptionPane.OK_OPTION;
-	}
-	*/
-    //===============================================================
-    //===============================================================
     public int showDialog() {
         try {
-            /*
-            if (needsSiteProperties()) {
-                manageSiteName();
-                if (PogoProperty.siteName!=null && PogoProperty.siteName.length()>0) {
-                    manageFamilyList();
-                    setVisible(true);
-                }
-                else
-                    doClose();
-            }
-            */
-            manageFamilyList();
+            displayProperties();
             setVisible(true);
         } catch (Exception e) {
             PogoException.popup(new JFrame(), e);
@@ -387,6 +371,7 @@ public class PogoConfiguration extends JDialog {
 
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea copyrightText;
     private javax.swing.JList<String> familyList;
     private javax.swing.JTextField siteLabel;
     private javax.swing.JLabel titleLabel;

@@ -1296,6 +1296,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         pg_class.getDescription().setTitle(pogoRoot.title);
         pg_class.getDescription().setSourcePath(pogoRoot.path);
         pg_class.getDescription().setLicense(pogoRoot.license);
+		pg_class.getDescription().setCopyright(pogoRoot.copyright);
         pg_class.getDescription().setIdentification(
                 OAWutils.cloneClassIdentification(pogoRoot.id));
         pg_class.getDescription().setLanguage(pogoRoot.language);
@@ -1817,6 +1818,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         private String language;
         private String path;
         private String license;
+        private String copyright;
         private boolean isAbstract;
         private ArrayList<Inheritance> inheritances = new ArrayList<Inheritance>();
         private ClassIdentification id;
@@ -1828,6 +1830,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             this.language = pogo_class.getDescription().getLanguage();
             this.path = pogo_class.getDescription().getSourcePath();
             this.license = pogo_class.getDescription().getLicense();
+			this.copyright = pogo_class.getDescription().getCopyright();
             this.isAbstract = DeviceClass.checkIfAbstractClass(pogo_class, false);
             this.id = pogo_class.getDescription().getIdentification();
             for (Inheritance inher : pogo_class.getDescription().getInheritances()) {

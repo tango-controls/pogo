@@ -49,6 +49,7 @@ import java.awt.*;
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class PogoProperty {
@@ -62,6 +63,7 @@ public class PogoProperty {
     public static ArrayList<String> classFamilies = new ArrayList<String>();
     public static ArrayList<String> platformNames = new ArrayList<String>();
     public static ArrayList<String> busNames = new ArrayList<String>();
+    private static final String copyrightProp = "copyright";
     private static final String docHomeProp = "doc_home";
     private static final String makefileHomeProp = "makefile_home";
     private static final String installHomeProp = "install_home";
@@ -74,6 +76,7 @@ public class PogoProperty {
     private static final String siteClassFamiliesProp = "site.class_families";
 
     public static String siteName = null;
+    public static String copyright = "";
     public static String docHome = "./doc_html";
     public static String makefileHome = "$(TANGO_HOME)";
     public static String installHome = "$(TANGO_HOME)";
@@ -120,6 +123,7 @@ public class PogoProperty {
         loadDefaultProperties();
         loadSiteProperties();
         loadPogoRcProperties();
+        displayProperties();
     }
 
     //===============================================================
@@ -183,17 +187,47 @@ public class PogoProperty {
     private void loadSiteProperties() {
         try {
             //	fill data members with site properties if any
-            ArrayList<String> vs = loadProperties(sitePropFilename);
-            siteName = getStringProperty(siteNameProp, vs);
-            docHome = checkOverwritingPropertyString(docHomeProp, docHome, vs);
-            makefileHome = checkOverwritingPropertyString(makefileHomeProp, makefileHome, vs);
-            siteClassFamilies = getStringListProperty(siteClassFamiliesProp, vs);
+            ArrayList<String> codeList = loadSiteProperties(sitePropFilename);
+            siteName = getStringProperty(siteNameProp, codeList);
+            copyright = checkOverwritingLinesProperty(copyrightProp, codeList);
+            docHome = checkOverwritingPropertyString(docHomeProp, docHome, codeList);
+            makefileHome = checkOverwritingPropertyString(makefileHomeProp, makefileHome, codeList);
+            siteClassFamilies = getStringListProperty(siteClassFamiliesProp, codeList);
         } catch (Exception e) {
             //	Display only a warning, but start normaly
             System.err.println("\nWARNING:	No site specific properties file found !\n");
         }
     }
 
+    //===============================================================
+    //===============================================================
+    private String checkOverwritingLinesProperty(String propertyName, List<String> codeLines) {
+        ArrayList<String> lines = new ArrayList<String>();
+        boolean in = false;
+        String header = packname + "." + propertyName + ":";
+        for (String codeLine : codeLines) {
+            //  Get start and stop in code
+            if (codeLine.startsWith(header))
+                in = true;
+            else
+            if (codeLine.startsWith(packname))
+                in = false;
+
+            //  Get expected lines
+            if (in) {
+                //  First line is property name but could be followed by string
+                if (codeLine.startsWith(header))
+                    lines.add(codeLine.substring(header.length()).trim());
+                else
+                    lines.add(codeLine);
+            }
+        }
+        //  if not empty, returns as String
+        StringBuilder sb = new StringBuilder();
+        for (String line : lines)
+            sb.append(line).append("\n");
+        return sb.toString().trim();
+    }
     //===============================================================
     //===============================================================
     private void loadPogoRcProperties() {
@@ -244,34 +278,46 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
+    private ArrayList<String> loadSiteProperties(String filename) throws PogoException, IOException {
+        //	Get file URL and load it
+        java.net.URL url = getClass().getResource(filename);
+        System.out.println("Reading properties from " + url.getFile());
+        InputStream is = url.openStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        ArrayList<String> lines = new ArrayList<String>();
+        String str;
+        while ((str = br.readLine()) != null) {
+            if (!str.startsWith("#")) {
+                if (str.length() > 0) {
+                    lines.add(str);
+                    //System.out.println(str);
+                }
+            }
+        }
+        br.close();
+        return lines;
+    }
+    //===============================================================
+    //===============================================================
     private ArrayList<String> loadProperties(String filename) throws PogoException, IOException {
         //	Get file URL and load it
-        java.net.URL url =
-                getClass().getResource(filename);
+        java.net.URL url = getClass().getResource(filename);
         System.out.println("Reading properties from " + url.getFile());
-        if (url == null) {
-            throw new PogoException("URL for property file (" + filename + ") is null !");
-        }
-
         InputStream is = url.openStream();
-        BufferedReader br =
-                new BufferedReader(new InputStreamReader(is));
-
-        ArrayList<String> vs = new ArrayList<String>();
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        ArrayList<String> lines = new ArrayList<String>();
         String str;
         while ((str = br.readLine()) != null) {
             str = str.trim();
             if (!str.startsWith("#")) {
                 if (str.length() > 0) {
-                    vs.add(str);
-                    //System.out.println("vs:"+str);
+                    lines.add(str);
+                    //System.out.println("lines:"+str);
                 }
             }
         }
         br.close();
-
-        return vs;
-
+        return lines;
     }
 
     //===============================================================
@@ -342,6 +388,7 @@ public class PogoProperty {
         displayProperty(makefileHomeProp, makefileHome);
         displayProperty(installHomeProp, installHome);
         displayProperty(siteNameProp, siteName);
+        displayProperty(copyrightProp, copyright);
 
         if (debug != null && debug.equals("true")) {
             displayProperty(siteClassFamiliesProp, siteClassFamilies);
@@ -365,14 +412,14 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    public static void addProject(String projname, int type) {
+    public static void addProject(String projectName, int type) {
         if (type == PogoConst.SINGLE_CLASS) {
             //	Check if already exists -> remove
             for (int i = 0; i < projectHistory.size(); i++)
-                if (projectHistory.get(i).equals(projname))
+                if (projectHistory.get(i).equals(projectName))
                     projectHistory.remove(i);
             //	Add the new one in first index
-            projectHistory.add(0, projname);
+            projectHistory.add(0, projectName);
 
             //	Check if size is not too big
             while (projectHistory.size() > ownHistoSize)
@@ -380,10 +427,10 @@ public class PogoProperty {
         } else {
             //	Check if already exists -> remove
             for (int i = 0; i < multiClassProjectHistory.size(); i++)
-                if (multiClassProjectHistory.get(i).equals(projname))
+                if (multiClassProjectHistory.get(i).equals(projectName))
                     multiClassProjectHistory.remove(i);
             //	Add the new one in first index
-            multiClassProjectHistory.add(0, projname);
+            multiClassProjectHistory.add(0, projectName);
 
             //	Check if size is not too big
             while (multiClassProjectHistory.size() > ownHistoSize)
@@ -394,10 +441,8 @@ public class PogoProperty {
     }
 
     //===============================================================
-    private static String buildPropertyLine(String propname) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(packname).append('.').append(propname).append(":\t");
-        return sb.toString();
+    private static String buildPropertyLine(String propertyName) {
+        return packname + '.' + propertyName + ":\t";
     }
 
     //===============================================================
@@ -431,7 +476,6 @@ public class PogoProperty {
             //	Display only a warning, but start normally
             System.err.println("\nWARNING:	" + e);
         }
-
 
         try {
             //  If different -> save.
@@ -486,7 +530,7 @@ public class PogoProperty {
         boolean writeIt = false;
         //  Insert Site name
         int start = code.indexOf(siteNameProp);
-        if (start > 0) {
+        if (start>0) {
             start = code.indexOf(':', start) + 1;
             int end = code.indexOf('\n', start);
             code = code.substring(0, start) + "  " +
@@ -494,9 +538,35 @@ public class PogoProperty {
             writeIt = true;
         }
 
+        //  Insert Site copyright
+        if (copyright!=null && !copyright.isEmpty()) {
+            start = code.indexOf(copyrightProp);
+            if (start>0) {
+                int end = code.indexOf("#", start);
+                if (end<0)
+                    end = code.indexOf(packname, start);
+                if (end>0)
+                    code = code.substring(0, start) +
+                            copyrightProp + ":\n" +
+                            copyright + "\n\n" + code.substring(end);
+                else
+                    code = code.substring(0, start) +
+                            copyrightProp + ":\n" + copyright + "\n";
+            }
+            else {
+                code += "#\n" +
+                        "#\tCopyright for generated Tango classes\n" +
+                        "#\n" +
+                        "org.tango.pogo.copyright:\n" +
+                        copyright+ "\n";
+            }
+            writeIt = true;
+        }
+
+
         //  Insert Site families
         start = code.indexOf(siteClassFamiliesProp);
-        if (start > 0) {
+        if (start>0) {
             //  Build string to be inserted for families
             StringBuilder indent = new StringBuilder();
             for (int i = 0; i < siteClassFamiliesProp.length() + packname.length() + 3; i++)
@@ -538,7 +608,7 @@ public class PogoProperty {
         try {
             PogoProperty.init().displayProperties();
         } catch (Exception e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
             e.printStackTrace();
         }
     }

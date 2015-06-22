@@ -670,6 +670,7 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 	 *         identification=ClassIdentification 
 	 *         comments=Comments 
 	 *         license=STRING 
+	 *         copyright=STRING 
 	 *         hasMandatoryProperty=Boolean 
 	 *         hasConcreteProperty=Boolean 
 	 *         hasAbstractCommand=Boolean 
@@ -1110,6 +1111,7 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 	 *         description=STRING 
 	 *         title=STRING 
 	 *         license=STRING 
+	 *         copyright=STRING 
 	 *         classes+=OneClassSimpleDef 
 	 *         filestogenerate=STRING 
 	 *         preferences=Preferences
