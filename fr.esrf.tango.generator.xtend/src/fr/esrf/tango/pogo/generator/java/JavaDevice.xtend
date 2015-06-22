@@ -184,7 +184,9 @@ class JavaDevice  implements IGenerator {
 			"network. All commands which can be executed on the\n" +
 			cls.name + " are implemented in this file.",
 			cls.description.title,
-			cls.description.license)»
+			cls.description.license,
+			cls.description.copyright
+		)»
 
 		«cls.closeProtectedArea(".java")»
 

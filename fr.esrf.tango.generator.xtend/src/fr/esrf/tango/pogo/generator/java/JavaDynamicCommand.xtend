@@ -86,7 +86,9 @@ class JavaDynamicCommand {
 			"Java source for the dynamic command " + command.name +".\n" +
 			"this command belongs to the " + cls.name + " class.",
 			cls.description.title,
-			cls.description.license)»
+			cls.description.license,
+			cls.description.copyright
+		)»
 
 		«cls.closeProtectedArea(command.name+".java")»
 
