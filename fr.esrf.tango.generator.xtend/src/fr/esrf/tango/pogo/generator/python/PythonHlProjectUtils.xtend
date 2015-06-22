@@ -892,7 +892,8 @@ global-exclude *.pyo
 # -*- coding: utf-8 -*-
 
 # Imports
-import sys, os
+import sys
+import os
 # To find device doc extension
 sys.path.insert(0, os.path.abspath('..'))
 # To find «cls.name» module

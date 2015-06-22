@@ -312,8 +312,8 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
-     from PyTango.server import run
-     return run((PyHL,), args=args, **kwargs)
+    from PyTango.server import run
+    return run((PyHL,), args=args, **kwargs)
 
 if __name__ == '__main__':
     main()
