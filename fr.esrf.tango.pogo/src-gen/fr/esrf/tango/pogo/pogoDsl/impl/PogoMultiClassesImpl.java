@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getLicense <em>License</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getCopyright <em>Copyright</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.PogoMultiClassesImpl#getPreferences <em>Preferences</em>}</li>
@@ -165,6 +166,26 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String license = LICENSE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getCopyright() <em>Copyright</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCopyright()
+   * @generated
+   * @ordered
+   */
+  protected static final String COPYRIGHT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCopyright() <em>Copyright</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCopyright()
+   * @generated
+   * @ordered
+   */
+  protected String copyright = COPYRIGHT_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
@@ -370,6 +391,29 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getCopyright()
+  {
+    return copyright;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCopyright(String newCopyright)
+  {
+    String oldCopyright = copyright;
+    copyright = newCopyright;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.POGO_MULTI_CLASSES__COPYRIGHT, oldCopyright, copyright));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<OneClassSimpleDef> getClasses()
   {
     if (classes == null)
@@ -490,6 +534,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
         return getTitle();
       case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
         return getLicense();
+      case PogoDslPackage.POGO_MULTI_CLASSES__COPYRIGHT:
+        return getCopyright();
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         return getClasses();
       case PogoDslPackage.POGO_MULTI_CLASSES__FILESTOGENERATE:
@@ -528,6 +574,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
         return;
       case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
         setLicense((String)newValue);
+        return;
+      case PogoDslPackage.POGO_MULTI_CLASSES__COPYRIGHT:
+        setCopyright((String)newValue);
         return;
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         getClasses().clear();
@@ -571,6 +620,9 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
         setLicense(LICENSE_EDEFAULT);
         return;
+      case PogoDslPackage.POGO_MULTI_CLASSES__COPYRIGHT:
+        setCopyright(COPYRIGHT_EDEFAULT);
+        return;
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         getClasses().clear();
         return;
@@ -606,6 +658,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
         return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
       case PogoDslPackage.POGO_MULTI_CLASSES__LICENSE:
         return LICENSE_EDEFAULT == null ? license != null : !LICENSE_EDEFAULT.equals(license);
+      case PogoDslPackage.POGO_MULTI_CLASSES__COPYRIGHT:
+        return COPYRIGHT_EDEFAULT == null ? copyright != null : !COPYRIGHT_EDEFAULT.equals(copyright);
       case PogoDslPackage.POGO_MULTI_CLASSES__CLASSES:
         return classes != null && !classes.isEmpty();
       case PogoDslPackage.POGO_MULTI_CLASSES__FILESTOGENERATE:
@@ -639,6 +693,8 @@ public class PogoMultiClassesImpl extends MinimalEObjectImpl.Container implement
     result.append(title);
     result.append(", license: ");
     result.append(license);
+    result.append(", copyright: ");
+    result.append(copyright);
     result.append(", filestogenerate: ");
     result.append(filestogenerate);
     result.append(')');

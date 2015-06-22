@@ -52,20 +52,38 @@ class PythonDeviceHL implements IGenerator {
         println("doGenerate for pythonHL")
         for(cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))){         
 			//	PythonHl Project Directory
-			if (cls.description.filestogenerate.toLowerCase.contains("pyhl project")) {
+			if (cls.description.filestogenerate.toLowerCase.contains("python package")) {
 				printTrace("Generating PythonHl project directory")
 				fsa.generateFile("setup.py",  cls.generatePythonHlProjectSetup)
-				fsa.generateFile("README",  cls.generatePythonHlProjectReadme)
+				fsa.generateFile("README.rst",  cls.generatePythonHlProjectReadme)
 				fsa.generateFile("MANIFEST.in",  cls.generatePythonHlProjectManifest)
-				fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicense)
 				fsa.generateFile("scripts/" + cls.name,  cls.generatePythonHlProjectScript)
-				fsa.generateFile("test/test_device.py",  cls.generatePythonHlTest)
+				fsa.generateFile("test/"+ cls.name + "_test.py",  cls.generatePythonHlTest)
+				fsa.generateFile("test/__init__.py",  cls.generatePythonHlTestInit)
 				fsa.generateFile(cls.name+"/__init__.py",  cls.generatePythonHlProjectInit)
-				fsa.generateFile(cls.name+"/Release.py",  cls.generatePythonHlProjectRelease)
+				fsa.generateFile(cls.name+"/release.py",  cls.generatePythonHlProjectRelease)
+				fsa.generateFile(cls.name+"/__main__.py",  cls.generatePythonHlProjectMain)
+				if (cls.description.license == 'GPL') {
+					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseGPL)
+				}
+				else if (cls.description.license == 'LGPL') {
+					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseLGPL)
+					}
+				else if (cls.description.license == 'APACHE') {
+					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseAPACHE)
+					}
+				else if (cls.description.license == 'MIT') {
+					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseMIT)
+				}
+				if (cls.description.filestogenerate.toLowerCase.contains('sphinx')){
+					fsa.generateFile("docs/source/index.rst",cls.generatePythonHlSphinxIndex)
+					fsa.generateFile("docs/source/conf.py",cls.generatePythonHlSphinxConf)
+					fsa.generateFile("setup.cfg",cls.generatePythonHlSetupCfg)
+				}
 			}
 			 if (cls.description.filestogenerate.toLowerCase.contains("code files") &&
             	cls.description.language.toLowerCase.equals("pythonhl") )    {
-            	if (cls.description.filestogenerate.toLowerCase.contains("pyhl project")) {	
+            	if (cls.description.filestogenerate.toLowerCase.contains("python package")) {	
 	                println("doGenerate for pythonHL " + cls.name)
 	                fsa.generateFile(cls.name+"/"+cls.name + '.py', cls.generate_pythonFile)
                 }
@@ -93,14 +111,11 @@ class PythonDeviceHL implements IGenerator {
     def pythonDevice(PogoDeviceClass cls)'''
 # -*- coding: utf-8 -*-
 #
-# This file is part of the PyTango HL API project
+# This file is part of the «cls.name» project
 #
-# Copyright (c) : 2014
-# Beamline Control Unit, European Synchrotron Radiation Facility
-# BP 220, Grenoble 38043
-# FRANCE
+# «cls.description.copyright.commentMultiLinesPythonStr»
 #
-# Distributed under the terms of the GNU General Public Licence.
+# Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
 
 «cls.pythonHeader»
@@ -162,7 +177,7 @@ from PyTango.server import run
 from PyTango.server import Device, DeviceMeta
 from PyTango.server import attribute, command
 from PyTango.server import class_property, device_property
-from PyTango import AttrQuality, AttrWriteType, DispLevel
+from PyTango import AttrQuality, AttrWriteType, DispLevel, DevState
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
 '''
@@ -176,11 +191,12 @@ from PyTango import AttrQuality, AttrWriteType, DispLevel
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("init_device")»«ENDIF»
 
     def always_executed_hook(self):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("always_executed_hook", "pass", false)»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("always_executed_hook", "pass", false)»«ELSE»pass«ENDIF»
 
     def delete_device(self):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("delete_device", "pass", false)»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("delete_device", "pass", false)»«ELSE»pass«ENDIF»
 «ENDIF»
+
 '''
 
     //====================================================
@@ -257,7 +273,7 @@ def dyn_attr(self, dev_list):
     //====================================================
     def pythonCommands(PogoDeviceClass cls)  '''
 «FOR cmd: cls.commands»«commandExecutionHL(cls, cmd)»
-«IF !cmd.excludedStates.empty»«commandMethodStateMachineHL(cls, cmd)»«ENDIF»«ENDFOR»«IF !cls.inheritanceCmdList.empty»
+«IF !cmd.excludedStates.empty»    «commandMethodStateMachineHL(cls, cmd)»«ENDIF»«ENDFOR»«IF !cls.inheritanceCmdList.empty»
 «cls.inheritanceCmdList»«ENDIF»
     '''
     //====================================================
@@ -295,9 +311,9 @@ def dyn_attr(self, dev_list):
 # ----------
 
 
-def main():
-    from PyTango.server import run
-    run((«cls.name»,))
+def main(args=None, **kwargs):
+     from PyTango.server import run
+     return run((PyHL,), args=args, **kwargs)
 
 if __name__ == '__main__':
     main()

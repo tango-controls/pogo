@@ -104,8 +104,9 @@ public class ClassDialog extends JDialog {
         licenseComboBox.addItem("MIT");
         licenseComboBox.addItem("none");
 
-        if (deviceClass == null)   //  Creating a new class
+        if (deviceClass == null) {  //  Creating a new class
             this.deviceClass = new DeviceClass("", null);
+        }
         else {
             //	Edit the specified class
             this.deviceClass = deviceClass;
@@ -123,11 +124,12 @@ public class ClassDialog extends JDialog {
         descText.setText(pogo_class.getDescription().getDescription());
         descText.setToolTipText(Utils.buildToolTip("Class Description",
                 "Description for device server documentation."));
+
         if (deviceClass==null)  //  New class --> then default from property
-            copyrightText.setText(PogoProperty.copyright);
+            copyText.setText(PogoProperty.copyright);
         else
-            copyrightText.setText(pogo_class.getDescription().getCopyright());
-        copyrightText.setToolTipText(Utils.buildToolTip("Copyright",
+            copyText.setText(pogo_class.getDescription().getCopyright());
+        copyText.setToolTipText(Utils.buildToolTip("Copyright",
                 "Copyright for the current class."));
         projectText.setText(pogo_class.getDescription().getTitle());
         projectText.setToolTipText(Utils.buildToolTip(
@@ -205,6 +207,9 @@ public class ClassDialog extends JDialog {
         javax.swing.JLabel descLbl = new javax.swing.JLabel();
         javax.swing.JScrollPane descScrollPane = new javax.swing.JScrollPane();
         descText = new javax.swing.JTextArea();
+        copyText = new javax.swing.JTextArea();
+        javax.swing.JLabel copyLbl = new javax.swing.JLabel();
+        javax.swing.JScrollPane copyScrollPane = new javax.swing.JScrollPane();
         javax.swing.JLabel languageLbl = new javax.swing.JLabel();
         javax.swing.JPanel languagePanel = new javax.swing.JPanel();
         cppBtn = new javax.swing.JRadioButton();
@@ -213,9 +218,6 @@ public class ClassDialog extends JDialog {
         pythonHLBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel licenseLbl = new javax.swing.JLabel();
         licenseComboBox = new javax.swing.JComboBox<String>();
-        javax.swing.JLabel copyrightLbl = new javax.swing.JLabel();
-        javax.swing.JScrollPane copyrightScrollPane = new javax.swing.JScrollPane();
-        copyrightText = new javax.swing.JTextArea();
         inheritanceScrollPane = new javax.swing.JScrollPane();
 
         setTitle("Class Definition Window");
@@ -302,12 +304,12 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         centerPanel.add(projectText, gridBagConstraints);
 
-        descLbl.setText("Class Description:  ");
+        descLbl.setText("Class Description :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 3, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 0);
         centerPanel.add(descLbl, gridBagConstraints);
 
         descScrollPane.setPreferredSize(new java.awt.Dimension(500, 250));
@@ -326,7 +328,32 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
         centerPanel.add(descScrollPane, gridBagConstraints);
+        
+        copyScrollPane.setPreferredSize(new java.awt.Dimension(300, 200));
 
+        copyText.setColumns(80);
+        copyText.setMinimumSize(new java.awt.Dimension(0, 100));
+        copyText.setPreferredSize(new java.awt.Dimension(300, 200));
+        copyScrollPane.setViewportView(copyText);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
+        centerPanel.add(copyScrollPane, gridBagConstraints);
+        
+        copyLbl.setText("Copyright :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 0);
+        centerPanel.add(copyLbl, gridBagConstraints);
+        
         languageLbl.setText("Language :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -393,28 +420,6 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         centerPanel.add(licenseComboBox, gridBagConstraints);
-
-        copyrightLbl.setText("Class Copyright:  ");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 3, 0, 0);
-        centerPanel.add(copyrightLbl, gridBagConstraints);
-
-        copyrightScrollPane.setPreferredSize(new java.awt.Dimension(400, 100));
-
-        copyrightText.setColumns(40);
-        copyrightText.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        copyrightText.setRows(5);
-        copyrightScrollPane.setViewportView(copyrightText);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        centerPanel.add(copyrightScrollPane, gridBagConstraints);
 
         horizontalPanel.setRightComponent(centerPanel);
 
@@ -666,7 +671,7 @@ public class ClassDialog extends JDialog {
         pogo_class.getDescription().setTitle(title);
         String desc = Utils.strReplaceSpecialCharToCode(descText.getText());
         pogo_class.getDescription().setDescription(desc);
-        String copyright = Utils.strReplaceSpecialCharToCode(copyrightText.getText());
+        String copyright = Utils.strReplaceSpecialCharToCode(copyText.getText());
         pogo_class.getDescription().setCopyright(copyright);
         pogo_class.getDescription().setIdentification(IDdialog.getInputs());
         pogo_class.getDescription().setLicense(licenseComboBox.getSelectedItem().toString());
@@ -730,9 +735,9 @@ public class ClassDialog extends JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addInheritanceBtn;
-    private javax.swing.JTextArea copyrightText;
     private javax.swing.JRadioButton cppBtn;
     private javax.swing.JTextArea descText;
+    private javax.swing.JTextArea copyText;
     private javax.swing.JSplitPane horizontalPanel;
     private javax.swing.JScrollPane inheritanceScrollPane;
     private javax.swing.JRadioButton javaBtn;

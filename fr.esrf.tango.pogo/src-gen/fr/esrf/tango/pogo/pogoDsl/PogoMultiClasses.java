@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getTitle <em>Title</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getLicense <em>License</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getCopyright <em>Copyright</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getClasses <em>Classes</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getFilestogenerate <em>Filestogenerate</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getPreferences <em>Preferences</em>}</li>
@@ -187,6 +188,32 @@ public interface PogoMultiClasses extends EObject
    * @generated
    */
   void setLicense(String value);
+
+  /**
+   * Returns the value of the '<em><b>Copyright</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Copyright</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Copyright</em>' attribute.
+   * @see #setCopyright(String)
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoDslPackage#getPogoMultiClasses_Copyright()
+   * @model
+   * @generated
+   */
+  String getCopyright();
+
+  /**
+   * Sets the value of the '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getCopyright <em>Copyright</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Copyright</em>' attribute.
+   * @see #getCopyright()
+   * @generated
+   */
+  void setCopyright(String value);
 
   /**
    * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

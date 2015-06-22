@@ -714,9 +714,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPogoMultiClasses_Copyright()
+  {
+    return (EAttribute)pogoMultiClassesEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPogoMultiClasses_Classes()
   {
-    return (EReference)pogoMultiClassesEClass.getEStructuralFeatures().get(6);
+    return (EReference)pogoMultiClassesEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -726,7 +736,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    */
   public EAttribute getPogoMultiClasses_Filestogenerate()
   {
-    return (EAttribute)pogoMultiClassesEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)pogoMultiClassesEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -736,7 +746,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    */
   public EReference getPogoMultiClasses_Preferences()
   {
-    return (EReference)pogoMultiClassesEClass.getEStructuralFeatures().get(8);
+    return (EReference)pogoMultiClassesEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -1114,7 +1124,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassDescription_HasMandatoryProperty()
+  public EAttribute getClassDescription_Copyright()
   {
     return (EAttribute)classDescriptionEClass.getEStructuralFeatures().get(9);
   }
@@ -1124,7 +1134,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassDescription_HasConcreteProperty()
+  public EAttribute getClassDescription_HasMandatoryProperty()
   {
     return (EAttribute)classDescriptionEClass.getEStructuralFeatures().get(10);
   }
@@ -1134,7 +1144,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassDescription_HasAbstractCommand()
+  public EAttribute getClassDescription_HasConcreteProperty()
   {
     return (EAttribute)classDescriptionEClass.getEStructuralFeatures().get(11);
   }
@@ -1144,7 +1154,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassDescription_HasAbstractAttribute()
+  public EAttribute getClassDescription_HasAbstractCommand()
   {
     return (EAttribute)classDescriptionEClass.getEStructuralFeatures().get(12);
   }
@@ -1154,9 +1164,19 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassDescription_DescriptionHtmlExists()
+  public EAttribute getClassDescription_HasAbstractAttribute()
   {
     return (EAttribute)classDescriptionEClass.getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getClassDescription_DescriptionHtmlExists()
+  {
+    return (EAttribute)classDescriptionEClass.getEStructuralFeatures().get(14);
   }
 
   /**
@@ -2764,6 +2784,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEAttribute(pogoMultiClassesEClass, POGO_MULTI_CLASSES__DESCRIPTION);
     createEAttribute(pogoMultiClassesEClass, POGO_MULTI_CLASSES__TITLE);
     createEAttribute(pogoMultiClassesEClass, POGO_MULTI_CLASSES__LICENSE);
+    createEAttribute(pogoMultiClassesEClass, POGO_MULTI_CLASSES__COPYRIGHT);
     createEReference(pogoMultiClassesEClass, POGO_MULTI_CLASSES__CLASSES);
     createEAttribute(pogoMultiClassesEClass, POGO_MULTI_CLASSES__FILESTOGENERATE);
     createEReference(pogoMultiClassesEClass, POGO_MULTI_CLASSES__PREFERENCES);
@@ -2807,6 +2828,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     createEReference(classDescriptionEClass, CLASS_DESCRIPTION__IDENTIFICATION);
     createEReference(classDescriptionEClass, CLASS_DESCRIPTION__COMMENTS);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__LICENSE);
+    createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__COPYRIGHT);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY);
     createEAttribute(classDescriptionEClass, CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND);
@@ -3117,6 +3139,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEAttribute(getPogoMultiClasses_Description(), ecorePackage.getEString(), "description", null, 0, 1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPogoMultiClasses_Title(), ecorePackage.getEString(), "title", null, 0, 1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPogoMultiClasses_License(), ecorePackage.getEString(), "license", null, 0, 1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPogoMultiClasses_Copyright(), ecorePackage.getEString(), "copyright", null, 0, 1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoMultiClasses_Classes(), this.getOneClassSimpleDef(), null, "classes", null, 0, -1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPogoMultiClasses_Filestogenerate(), ecorePackage.getEString(), "filestogenerate", null, 0, 1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPogoMultiClasses_Preferences(), this.getPreferences(), null, "preferences", null, 0, 1, PogoMultiClasses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3160,6 +3183,7 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEReference(getClassDescription_Identification(), this.getClassIdentification(), null, "identification", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassDescription_Comments(), this.getComments(), null, "comments", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_License(), ecorePackage.getEString(), "license", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getClassDescription_Copyright(), ecorePackage.getEString(), "copyright", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_HasMandatoryProperty(), ecorePackage.getEString(), "hasMandatoryProperty", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_HasConcreteProperty(), ecorePackage.getEString(), "hasConcreteProperty", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDescription_HasAbstractCommand(), ecorePackage.getEString(), "hasAbstractCommand", null, 0, 1, ClassDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

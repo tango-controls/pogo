@@ -91,7 +91,7 @@ class PythonUtils {
     }
     
     def commentMultiLinesPythonStr(String str){
-        str.replaceAll("\n","\n#                ");
+        str.replaceAll("\n","\n# ");
     }
     def commentCmdParamMultiLines(String str){
     	if (str.contains("\n"))
@@ -199,8 +199,8 @@ class PythonUtils {
         '''
         
     def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''
-        «IF isTrue(cmd.status.concreteHere)»    @DebugIt()
-            @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType», «ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
+        «IF isTrue(cmd.status.concreteHere)»    @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType», «ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
+            @DebugIt()
             def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»    «IF !cmd.argout.type.voidType»    return «cmd.argout.type.defaultValue»«ELSE»    pass«ENDIF»«ENDIF»
         
@@ -218,7 +218,7 @@ class PythonUtils {
     
     def commandMethodStateMachineHL(PogoDeviceClass cls, Command cmd) '''
 		def is_«cmd.name»_allowed(self):
-		    «cmd.excludedStates.ifContentFromListPythonHL»
+		        return «cmd.excludedStates.ifContentFromListPythonHL»
 		    
 '''
     
@@ -264,11 +264,11 @@ class PythonUtils {
 		def is_«attribute.name»_allowed(self, attr):
 		    «IF attribute.rwType.equals("READ")»    return «attribute.readExcludedStates.ifContentFromListPythonHL»«ENDIF»
 		    «IF attribute.rwType.equals("WRITE")»    return «attribute.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»
-		    «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»
-		        if attr==attr.READ_REQ:
+		        «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»if attr==attr.READ_REQ:
 		            return «IF !attribute.readExcludedStates.empty»«attribute.readExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»
 		        else:
 		            return «IF !attribute.writeExcludedStates.empty»«attribute.writeExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»«ENDIF»
+
     '''
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
             [«prop.type.pythonPropType», 

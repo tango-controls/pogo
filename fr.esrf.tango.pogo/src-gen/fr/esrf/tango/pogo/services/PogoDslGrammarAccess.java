@@ -95,29 +95,31 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTitleSTRINGTerminalRuleCall_6_0 = (RuleCall)cTitleAssignment_6.eContents().get(0);
 		private final Assignment cLicenseAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cLicenseSTRINGTerminalRuleCall_7_0 = (RuleCall)cLicenseAssignment_7.eContents().get(0);
-		private final Keyword cClassesKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cClassesAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cClassesOneClassSimpleDefParserRuleCall_9_0 = (RuleCall)cClassesAssignment_9.eContents().get(0);
-		private final Assignment cFilestogenerateAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cFilestogenerateSTRINGTerminalRuleCall_10_0 = (RuleCall)cFilestogenerateAssignment_10.eContents().get(0);
-		private final Assignment cPreferencesAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cPreferencesPreferencesParserRuleCall_11_0 = (RuleCall)cPreferencesAssignment_11.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cCopyrightAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cCopyrightSTRINGTerminalRuleCall_8_0 = (RuleCall)cCopyrightAssignment_8.eContents().get(0);
+		private final Keyword cClassesKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cClassesAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cClassesOneClassSimpleDefParserRuleCall_10_0 = (RuleCall)cClassesAssignment_10.eContents().get(0);
+		private final Assignment cFilestogenerateAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cFilestogenerateSTRINGTerminalRuleCall_11_0 = (RuleCall)cFilestogenerateAssignment_11.eContents().get(0);
+		private final Assignment cPreferencesAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cPreferencesPreferencesParserRuleCall_12_0 = (RuleCall)cPreferencesAssignment_12.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
 		////==============================================
 		////	Multi Classes definition
 		////==============================================
 		//PogoMultiClasses:
 		//	pogoRevision= //	To check Pogo revision when xmi has been created
-		//	ID "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING license=STRING "classes:"
-		//	classes+=OneClassSimpleDef filestogenerate= //	File(s) to generate (code, makefile,....)
+		//	ID "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING license=STRING copyright=STRING
+		//	"classes:" classes+=OneClassSimpleDef filestogenerate= //	File(s) to generate (code, makefile,....)
 		//	STRING preferences= //	Preferences (for programer, for site or at run time)
 		//	Preferences "}";
 		public ParserRule getRule() { return rule; }
 
 		//pogoRevision= //	To check Pogo revision when xmi has been created
-		//ID "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING license=STRING "classes:"
-		//classes+=OneClassSimpleDef filestogenerate= //	File(s) to generate (code, makefile,....)
+		//ID "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING license=STRING copyright=STRING
+		//"classes:" classes+=OneClassSimpleDef filestogenerate= //	File(s) to generate (code, makefile,....)
 		//STRING preferences= //	Preferences (for programer, for site or at run time)
 		//Preferences "}"
 		public Group getGroup() { return cGroup; }
@@ -166,33 +168,39 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getLicenseSTRINGTerminalRuleCall_7_0() { return cLicenseSTRINGTerminalRuleCall_7_0; }
 
+		//copyright=STRING
+		public Assignment getCopyrightAssignment_8() { return cCopyrightAssignment_8; }
+
+		//STRING
+		public RuleCall getCopyrightSTRINGTerminalRuleCall_8_0() { return cCopyrightSTRINGTerminalRuleCall_8_0; }
+
 		//"classes:"
-		public Keyword getClassesKeyword_8() { return cClassesKeyword_8; }
+		public Keyword getClassesKeyword_9() { return cClassesKeyword_9; }
 
 		//classes+=OneClassSimpleDef
-		public Assignment getClassesAssignment_9() { return cClassesAssignment_9; }
+		public Assignment getClassesAssignment_10() { return cClassesAssignment_10; }
 
 		//OneClassSimpleDef
-		public RuleCall getClassesOneClassSimpleDefParserRuleCall_9_0() { return cClassesOneClassSimpleDefParserRuleCall_9_0; }
+		public RuleCall getClassesOneClassSimpleDefParserRuleCall_10_0() { return cClassesOneClassSimpleDefParserRuleCall_10_0; }
 
 		//filestogenerate= //	File(s) to generate (code, makefile,....)
 		//STRING
-		public Assignment getFilestogenerateAssignment_10() { return cFilestogenerateAssignment_10; }
+		public Assignment getFilestogenerateAssignment_11() { return cFilestogenerateAssignment_11; }
 
 		////	File(s) to generate (code, makefile,....)
 		//STRING
-		public RuleCall getFilestogenerateSTRINGTerminalRuleCall_10_0() { return cFilestogenerateSTRINGTerminalRuleCall_10_0; }
+		public RuleCall getFilestogenerateSTRINGTerminalRuleCall_11_0() { return cFilestogenerateSTRINGTerminalRuleCall_11_0; }
 
 		//preferences= //	Preferences (for programer, for site or at run time)
 		//Preferences
-		public Assignment getPreferencesAssignment_11() { return cPreferencesAssignment_11; }
+		public Assignment getPreferencesAssignment_12() { return cPreferencesAssignment_12; }
 
 		////	Preferences (for programer, for site or at run time)
 		//Preferences
-		public RuleCall getPreferencesPreferencesParserRuleCall_11_0() { return cPreferencesPreferencesParserRuleCall_11_0; }
+		public RuleCall getPreferencesPreferencesParserRuleCall_12_0() { return cPreferencesPreferencesParserRuleCall_12_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 	}
 
 	public class OneClassSimpleDefElements extends AbstractParserRuleElementFinder {
@@ -703,16 +711,18 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCommentsCommentsParserRuleCall_8_0 = (RuleCall)cCommentsAssignment_8.eContents().get(0);
 		private final Assignment cLicenseAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cLicenseSTRINGTerminalRuleCall_9_0 = (RuleCall)cLicenseAssignment_9.eContents().get(0);
-		private final Assignment cHasMandatoryPropertyAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cHasMandatoryPropertyBooleanParserRuleCall_10_0 = (RuleCall)cHasMandatoryPropertyAssignment_10.eContents().get(0);
-		private final Assignment cHasConcretePropertyAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cHasConcretePropertyBooleanParserRuleCall_11_0 = (RuleCall)cHasConcretePropertyAssignment_11.eContents().get(0);
-		private final Assignment cHasAbstractCommandAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cHasAbstractCommandBooleanParserRuleCall_12_0 = (RuleCall)cHasAbstractCommandAssignment_12.eContents().get(0);
-		private final Assignment cHasAbstractAttributeAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cHasAbstractAttributeBooleanParserRuleCall_13_0 = (RuleCall)cHasAbstractAttributeAssignment_13.eContents().get(0);
-		private final Assignment cDescriptionHtmlExistsAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cDescriptionHtmlExistsBooleanParserRuleCall_14_0 = (RuleCall)cDescriptionHtmlExistsAssignment_14.eContents().get(0);
+		private final Assignment cCopyrightAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cCopyrightSTRINGTerminalRuleCall_10_0 = (RuleCall)cCopyrightAssignment_10.eContents().get(0);
+		private final Assignment cHasMandatoryPropertyAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cHasMandatoryPropertyBooleanParserRuleCall_11_0 = (RuleCall)cHasMandatoryPropertyAssignment_11.eContents().get(0);
+		private final Assignment cHasConcretePropertyAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cHasConcretePropertyBooleanParserRuleCall_12_0 = (RuleCall)cHasConcretePropertyAssignment_12.eContents().get(0);
+		private final Assignment cHasAbstractCommandAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cHasAbstractCommandBooleanParserRuleCall_13_0 = (RuleCall)cHasAbstractCommandAssignment_13.eContents().get(0);
+		private final Assignment cHasAbstractAttributeAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cHasAbstractAttributeBooleanParserRuleCall_14_0 = (RuleCall)cHasAbstractAttributeAssignment_14.eContents().get(0);
+		private final Assignment cDescriptionHtmlExistsAssignment_15 = (Assignment)cGroup.eContents().get(15);
+		private final RuleCall cDescriptionHtmlExistsBooleanParserRuleCall_15_0 = (RuleCall)cDescriptionHtmlExistsAssignment_15.eContents().get(0);
 		
 		////
 		////	Class information
@@ -724,8 +734,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	STRING "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 		//	language= //	Language to generate
 		//	Language filestogenerate= //	File(s) to generate (code, makefile,....)
-		//	STRING identification=ClassIdentification comments=Comments license=STRING hasMandatoryProperty=Boolean
-		//	hasConcreteProperty=Boolean hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
+		//	STRING identification=ClassIdentification comments=Comments license=STRING copyright=STRING
+		//	hasMandatoryProperty=Boolean hasConcreteProperty=Boolean hasAbstractCommand=Boolean hasAbstractAttribute=Boolean
+		//	descriptionHtmlExists= //	File from pogo-6
 		//	Boolean;
 		public ParserRule getRule() { return rule; }
 
@@ -735,7 +746,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 		//language= //	Language to generate
 		//Language filestogenerate= //	File(s) to generate (code, makefile,....)
-		//STRING identification=ClassIdentification comments=Comments license=STRING hasMandatoryProperty=Boolean
+		//STRING identification=ClassIdentification comments=Comments license=STRING copyright=STRING hasMandatoryProperty=Boolean
 		//hasConcreteProperty=Boolean hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
 		//Boolean
 		public Group getGroup() { return cGroup; }
@@ -807,37 +818,43 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getLicenseSTRINGTerminalRuleCall_9_0() { return cLicenseSTRINGTerminalRuleCall_9_0; }
 
+		//copyright=STRING
+		public Assignment getCopyrightAssignment_10() { return cCopyrightAssignment_10; }
+
+		//STRING
+		public RuleCall getCopyrightSTRINGTerminalRuleCall_10_0() { return cCopyrightSTRINGTerminalRuleCall_10_0; }
+
 		//hasMandatoryProperty=Boolean
-		public Assignment getHasMandatoryPropertyAssignment_10() { return cHasMandatoryPropertyAssignment_10; }
+		public Assignment getHasMandatoryPropertyAssignment_11() { return cHasMandatoryPropertyAssignment_11; }
 
 		//Boolean
-		public RuleCall getHasMandatoryPropertyBooleanParserRuleCall_10_0() { return cHasMandatoryPropertyBooleanParserRuleCall_10_0; }
+		public RuleCall getHasMandatoryPropertyBooleanParserRuleCall_11_0() { return cHasMandatoryPropertyBooleanParserRuleCall_11_0; }
 
 		//hasConcreteProperty=Boolean
-		public Assignment getHasConcretePropertyAssignment_11() { return cHasConcretePropertyAssignment_11; }
+		public Assignment getHasConcretePropertyAssignment_12() { return cHasConcretePropertyAssignment_12; }
 
 		//Boolean
-		public RuleCall getHasConcretePropertyBooleanParserRuleCall_11_0() { return cHasConcretePropertyBooleanParserRuleCall_11_0; }
+		public RuleCall getHasConcretePropertyBooleanParserRuleCall_12_0() { return cHasConcretePropertyBooleanParserRuleCall_12_0; }
 
 		//hasAbstractCommand=Boolean
-		public Assignment getHasAbstractCommandAssignment_12() { return cHasAbstractCommandAssignment_12; }
+		public Assignment getHasAbstractCommandAssignment_13() { return cHasAbstractCommandAssignment_13; }
 
 		//Boolean
-		public RuleCall getHasAbstractCommandBooleanParserRuleCall_12_0() { return cHasAbstractCommandBooleanParserRuleCall_12_0; }
+		public RuleCall getHasAbstractCommandBooleanParserRuleCall_13_0() { return cHasAbstractCommandBooleanParserRuleCall_13_0; }
 
 		//hasAbstractAttribute=Boolean
-		public Assignment getHasAbstractAttributeAssignment_13() { return cHasAbstractAttributeAssignment_13; }
+		public Assignment getHasAbstractAttributeAssignment_14() { return cHasAbstractAttributeAssignment_14; }
 
 		//Boolean
-		public RuleCall getHasAbstractAttributeBooleanParserRuleCall_13_0() { return cHasAbstractAttributeBooleanParserRuleCall_13_0; }
+		public RuleCall getHasAbstractAttributeBooleanParserRuleCall_14_0() { return cHasAbstractAttributeBooleanParserRuleCall_14_0; }
 
 		//descriptionHtmlExists= //	File from pogo-6
 		//Boolean
-		public Assignment getDescriptionHtmlExistsAssignment_14() { return cDescriptionHtmlExistsAssignment_14; }
+		public Assignment getDescriptionHtmlExistsAssignment_15() { return cDescriptionHtmlExistsAssignment_15; }
 
 		////	File from pogo-6
 		//Boolean
-		public RuleCall getDescriptionHtmlExistsBooleanParserRuleCall_14_0() { return cDescriptionHtmlExistsBooleanParserRuleCall_14_0; }
+		public RuleCall getDescriptionHtmlExistsBooleanParserRuleCall_15_0() { return cDescriptionHtmlExistsBooleanParserRuleCall_15_0; }
 	}
 
 	public class InheritanceElements extends AbstractParserRuleElementFinder {
@@ -1042,7 +1059,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cHtmlVersionBooleanParserRuleCall_3_0 = (RuleCall)cHtmlVersionAssignment_3.eContents().get(0);
 		
 		////
-		////	Preferences (for programer or for site)
+		////	Preferences (for programmer or for site)
 		////
 		////	Used by web automat to manage tag version
 		//Preferences:
@@ -3083,8 +3100,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	////==============================================
 	//PogoMultiClasses:
 	//	pogoRevision= //	To check Pogo revision when xmi has been created
-	//	ID "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING license=STRING "classes:"
-	//	classes+=OneClassSimpleDef filestogenerate= //	File(s) to generate (code, makefile,....)
+	//	ID "multiclasses" name=ID "{" sourcePath=STRING description=STRING title=STRING license=STRING copyright=STRING
+	//	"classes:" classes+=OneClassSimpleDef filestogenerate= //	File(s) to generate (code, makefile,....)
 	//	STRING preferences= //	Preferences (for programer, for site or at run time)
 	//	Preferences "}";
 	public PogoMultiClassesElements getPogoMultiClassesAccess() {
@@ -3202,8 +3219,9 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	STRING "inheritances:" inheritances+=Inheritance //	inheritance class definitions
 	//	language= //	Language to generate
 	//	Language filestogenerate= //	File(s) to generate (code, makefile,....)
-	//	STRING identification=ClassIdentification comments=Comments license=STRING hasMandatoryProperty=Boolean
-	//	hasConcreteProperty=Boolean hasAbstractCommand=Boolean hasAbstractAttribute=Boolean descriptionHtmlExists= //	File from pogo-6
+	//	STRING identification=ClassIdentification comments=Comments license=STRING copyright=STRING
+	//	hasMandatoryProperty=Boolean hasConcreteProperty=Boolean hasAbstractCommand=Boolean hasAbstractAttribute=Boolean
+	//	descriptionHtmlExists= //	File from pogo-6
 	//	Boolean;
 	public ClassDescriptionElements getClassDescriptionAccess() {
 		return (pClassDescription != null) ? pClassDescription : (pClassDescription = new ClassDescriptionElements());
@@ -3264,7 +3282,7 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////
-	////	Preferences (for programer or for site)
+	////	Preferences (for programmer or for site)
 	////
 	////	Used by web automat to manage tag version
 	//Preferences:

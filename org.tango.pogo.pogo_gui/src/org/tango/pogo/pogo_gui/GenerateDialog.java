@@ -82,9 +82,10 @@ public class GenerateDialog extends JDialog {
         rBtn.add(vc9Btn);
         rBtn.add(vc10Btn);
         rBtn.add(pyHlProjectBtn);
-        rBtn.add(prPythonHLButton);
+        rBtn.add(prPythonHLBtn);
         rBtn.add(eclipseProjectBtn);
         rBtn.add(pomBtn);
+        rBtn.add(sphinxBtn);
         rBtn.add(htmlBtn);
 
         //  Check debug
@@ -119,7 +120,7 @@ public class GenerateDialog extends JDialog {
         javax.swing.JPanel buttonsPanel = new javax.swing.JPanel();
         xmiBtn = new javax.swing.JRadioButton();
         codeBtn = new javax.swing.JRadioButton();
-        prPythonHLButton = new javax.swing.JRadioButton();
+        prPythonHLBtn = new javax.swing.JRadioButton();
         makefileBtn = new javax.swing.JRadioButton();
         vc8Btn = new javax.swing.JRadioButton();
         javax.swing.JLabel generateLabel = new javax.swing.JLabel();
@@ -138,6 +139,7 @@ public class GenerateDialog extends JDialog {
         eclipseProjectBtn = new javax.swing.JRadioButton();
         vc9Btn = new javax.swing.JRadioButton();
         pyHlProjectBtn = new javax.swing.JRadioButton();
+        sphinxBtn = new javax.swing.JRadioButton();
 
         setTitle("Generation Preference  Window");
         setBackground(new java.awt.Color(198, 178, 168));
@@ -234,15 +236,15 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(codeBtn, gridBagConstraints);
 
-        prPythonHLButton.setSelected(true);
-        prPythonHLButton.setText("Protected Regions");
+        prPythonHLBtn.setSelected(true);
+        prPythonHLBtn.setText("Protected Regions");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        buttonsPanel.add(prPythonHLButton, gridBagConstraints);
+        buttonsPanel.add(prPythonHLBtn, gridBagConstraints);
 
         makefileBtn.setText("Makefile");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -386,7 +388,7 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(vc9Btn, gridBagConstraints);
 
-        pyHlProjectBtn.setText("PyHL Project Dir.");
+        pyHlProjectBtn.setText("Python Package");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -394,6 +396,15 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(pyHlProjectBtn, gridBagConstraints);
+
+        sphinxBtn.setText("Sphinx");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(sphinxBtn, gridBagConstraints);
 
         getContentPane().add(buttonsPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -594,8 +605,9 @@ public class GenerateDialog extends JDialog {
             javaProjectLabel.setVisible(false);
             eclipseProjectBtn.setVisible(false);
             pyHlProjectBtn.setVisible(false);
-            prPythonHLButton.setVisible(false);
+            prPythonHLBtn.setVisible(false);
             pomBtn.setVisible(false);
+            sphinxBtn.setVisible(false);
         }
         int lang = Utils.getLanguage(devclass.getPogoDeviceClass().getDescription().getLanguage());
         switch (lang) {
@@ -609,8 +621,9 @@ public class GenerateDialog extends JDialog {
                 javaProjectLabel.setVisible(true);
                 eclipseProjectBtn.setVisible(true);
                 pyHlProjectBtn.setVisible(false);
-                prPythonHLButton.setVisible(false);
+                prPythonHLBtn.setVisible(false);
                 pomBtn.setVisible(false);
+                sphinxBtn.setVisible(false);
                 break;
             case PogoConst.Java:
                 makefileBtn.setVisible(true);
@@ -622,8 +635,9 @@ public class GenerateDialog extends JDialog {
                 javaProjectLabel.setVisible(true);
                 eclipseProjectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(false);
-                prPythonHLButton.setVisible(false);
+                prPythonHLBtn.setVisible(false);
                 //pomBtn.setVisible(true);
+                sphinxBtn.setVisible(false);
                 break;
             case PogoConst.Python:
                 makefileBtn.setVisible(false);
@@ -635,8 +649,9 @@ public class GenerateDialog extends JDialog {
                 javaProjectLabel.setVisible(false);
                 eclipseProjectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(false);
-                prPythonHLButton.setVisible(false);
+                prPythonHLBtn.setVisible(false);
                 pomBtn.setVisible(false);
+                sphinxBtn.setVisible(false);
                 break;
             case PogoConst.PythonHL:
                 makefileBtn.setVisible(false);
@@ -648,8 +663,9 @@ public class GenerateDialog extends JDialog {
                 javaProjectLabel.setVisible(false);
                 eclipseProjectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(true);
-                prPythonHLButton.setVisible(true);
+                prPythonHLBtn.setVisible(true);
                 pomBtn.setVisible(false);
+                sphinxBtn.setVisible(true);
                 break;
         }
 
@@ -689,7 +705,8 @@ public class GenerateDialog extends JDialog {
         javaProjectLabel.setVisible(false);
         eclipseProjectBtn.setVisible(false);
         pyHlProjectBtn.setVisible(false);
-        prPythonHLButton.setVisible(false);
+        prPythonHLBtn.setVisible(false);
+        sphinxBtn.setVisible(false);
         pomBtn.setVisible(false);
 
         pack();
@@ -830,8 +847,9 @@ public class GenerateDialog extends JDialog {
     private javax.swing.JRadioButton makefileBtn;
     private javax.swing.JTextField outPathText;
     private javax.swing.JRadioButton pomBtn;
-    private javax.swing.JRadioButton prPythonHLButton;
+    private javax.swing.JRadioButton prPythonHLBtn;
     private javax.swing.JRadioButton pyHlProjectBtn;
+    private javax.swing.JRadioButton sphinxBtn;
     private javax.swing.JRadioButton vc10Btn;
     private javax.swing.JRadioButton vc8Btn;
     private javax.swing.JRadioButton vc9Btn;

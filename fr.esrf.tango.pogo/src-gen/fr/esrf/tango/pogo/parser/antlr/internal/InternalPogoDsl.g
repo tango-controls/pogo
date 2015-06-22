@@ -311,23 +311,41 @@ rulePogoMultiClasses returns [EObject current=null]
 	    }
 
 )
-)	otherlv_8='classes:' 
+)(
+(
+		lv_copyright_8_0=RULE_STRING
+		{
+			newLeafNode(lv_copyright_8_0, grammarAccess.getPogoMultiClassesAccess().getCopyrightSTRINGTerminalRuleCall_8_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPogoMultiClassesRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"copyright",
+        		lv_copyright_8_0, 
+        		"STRING");
+	    }
+
+)
+)	otherlv_9='classes:' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_8());
+    	newLeafNode(otherlv_9, grammarAccess.getPogoMultiClassesAccess().getClassesKeyword_9());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_9_0()); 
+	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getClassesOneClassSimpleDefParserRuleCall_10_0()); 
 	    }
-		lv_classes_9_0=ruleOneClassSimpleDef		{
+		lv_classes_10_0=ruleOneClassSimpleDef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoMultiClassesRule());
 	        }
        		add(
        			$current, 
        			"classes",
-        		lv_classes_9_0, 
+        		lv_classes_10_0, 
         		"OneClassSimpleDef");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -335,9 +353,9 @@ rulePogoMultiClasses returns [EObject current=null]
 )
 )(
 (
-		lv_filestogenerate_10_0=RULE_STRING
+		lv_filestogenerate_11_0=RULE_STRING
 		{
-			newLeafNode(lv_filestogenerate_10_0, grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_10_0()); 
+			newLeafNode(lv_filestogenerate_11_0, grammarAccess.getPogoMultiClassesAccess().getFilestogenerateSTRINGTerminalRuleCall_11_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -346,7 +364,7 @@ rulePogoMultiClasses returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"filestogenerate",
-        		lv_filestogenerate_10_0, 
+        		lv_filestogenerate_11_0, 
         		"STRING");
 	    }
 
@@ -354,24 +372,24 @@ rulePogoMultiClasses returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_11_0()); 
+	        newCompositeNode(grammarAccess.getPogoMultiClassesAccess().getPreferencesPreferencesParserRuleCall_12_0()); 
 	    }
-		lv_preferences_11_0=rulePreferences		{
+		lv_preferences_12_0=rulePreferences		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPogoMultiClassesRule());
 	        }
        		set(
        			$current, 
        			"preferences",
-        		lv_preferences_11_0, 
+        		lv_preferences_12_0, 
         		"Preferences");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_12='}' 
+)	otherlv_13='}' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_12());
+    	newLeafNode(otherlv_13, grammarAccess.getPogoMultiClassesAccess().getRightCurlyBracketKeyword_13());
     }
 )
 ;
@@ -1320,17 +1338,35 @@ ruleClassDescription returns [EObject current=null]
 )
 )(
 (
-		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyBooleanParserRuleCall_10_0()); 
+		lv_copyright_10_0=RULE_STRING
+		{
+			newLeafNode(lv_copyright_10_0, grammarAccess.getClassDescriptionAccess().getCopyrightSTRINGTerminalRuleCall_10_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassDescriptionRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"copyright",
+        		lv_copyright_10_0, 
+        		"STRING");
 	    }
-		lv_hasMandatoryProperty_10_0=ruleBoolean		{
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasMandatoryPropertyBooleanParserRuleCall_11_0()); 
+	    }
+		lv_hasMandatoryProperty_11_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"hasMandatoryProperty",
-        		lv_hasMandatoryProperty_10_0, 
+        		lv_hasMandatoryProperty_11_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1339,16 +1375,16 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyBooleanParserRuleCall_11_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasConcretePropertyBooleanParserRuleCall_12_0()); 
 	    }
-		lv_hasConcreteProperty_11_0=ruleBoolean		{
+		lv_hasConcreteProperty_12_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"hasConcreteProperty",
-        		lv_hasConcreteProperty_11_0, 
+        		lv_hasConcreteProperty_12_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1357,16 +1393,16 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_12_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractCommandBooleanParserRuleCall_13_0()); 
 	    }
-		lv_hasAbstractCommand_12_0=ruleBoolean		{
+		lv_hasAbstractCommand_13_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"hasAbstractCommand",
-        		lv_hasAbstractCommand_12_0, 
+        		lv_hasAbstractCommand_13_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1375,16 +1411,16 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_13_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getHasAbstractAttributeBooleanParserRuleCall_14_0()); 
 	    }
-		lv_hasAbstractAttribute_13_0=ruleBoolean		{
+		lv_hasAbstractAttribute_14_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"hasAbstractAttribute",
-        		lv_hasAbstractAttribute_13_0, 
+        		lv_hasAbstractAttribute_14_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1393,16 +1429,16 @@ ruleClassDescription returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_14_0()); 
+	        newCompositeNode(grammarAccess.getClassDescriptionAccess().getDescriptionHtmlExistsBooleanParserRuleCall_15_0()); 
 	    }
-		lv_descriptionHtmlExists_14_0=ruleBoolean		{
+		lv_descriptionHtmlExists_15_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassDescriptionRule());
 	        }
        		set(
        			$current, 
        			"descriptionHtmlExists",
-        		lv_descriptionHtmlExists_14_0, 
+        		lv_descriptionHtmlExists_15_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }

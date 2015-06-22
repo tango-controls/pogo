@@ -22,6 +22,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/license"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/copyright"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoMultiClasses/classes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//PogoMultiClasses/filestogenerate"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//PogoMultiClasses/preferences"/>
@@ -65,6 +66,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/identification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PogoDsl.ecore#//ClassDescription/comments"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/license"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/copyright"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasMandatoryProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasConcreteProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PogoDsl.ecore#//ClassDescription/hasAbstractCommand"/>

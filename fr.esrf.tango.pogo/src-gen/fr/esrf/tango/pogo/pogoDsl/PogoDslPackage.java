@@ -195,13 +195,22 @@ public interface PogoDslPackage extends EPackage
   int POGO_MULTI_CLASSES__LICENSE = 5;
 
   /**
+   * The feature id for the '<em><b>Copyright</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POGO_MULTI_CLASSES__COPYRIGHT = 6;
+
+  /**
    * The feature id for the '<em><b>Classes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POGO_MULTI_CLASSES__CLASSES = 6;
+  int POGO_MULTI_CLASSES__CLASSES = 7;
 
   /**
    * The feature id for the '<em><b>Filestogenerate</b></em>' attribute.
@@ -210,7 +219,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_MULTI_CLASSES__FILESTOGENERATE = 7;
+  int POGO_MULTI_CLASSES__FILESTOGENERATE = 8;
 
   /**
    * The feature id for the '<em><b>Preferences</b></em>' containment reference.
@@ -219,7 +228,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_MULTI_CLASSES__PREFERENCES = 8;
+  int POGO_MULTI_CLASSES__PREFERENCES = 9;
 
   /**
    * The number of structural features of the '<em>Pogo Multi Classes</em>' class.
@@ -228,7 +237,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POGO_MULTI_CLASSES_FEATURE_COUNT = 9;
+  int POGO_MULTI_CLASSES_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.OneClassSimpleDefImpl <em>One Class Simple Def</em>}' class.
@@ -585,13 +594,22 @@ public interface PogoDslPackage extends EPackage
   int CLASS_DESCRIPTION__LICENSE = 8;
 
   /**
+   * The feature id for the '<em><b>Copyright</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_DESCRIPTION__COPYRIGHT = 9;
+
+  /**
    * The feature id for the '<em><b>Has Mandatory Property</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY = 9;
+  int CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY = 10;
 
   /**
    * The feature id for the '<em><b>Has Concrete Property</b></em>' attribute.
@@ -600,7 +618,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY = 10;
+  int CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY = 11;
 
   /**
    * The feature id for the '<em><b>Has Abstract Command</b></em>' attribute.
@@ -609,7 +627,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 11;
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_COMMAND = 12;
 
   /**
    * The feature id for the '<em><b>Has Abstract Attribute</b></em>' attribute.
@@ -618,7 +636,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 12;
+  int CLASS_DESCRIPTION__HAS_ABSTRACT_ATTRIBUTE = 13;
 
   /**
    * The feature id for the '<em><b>Description Html Exists</b></em>' attribute.
@@ -627,7 +645,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 13;
+  int CLASS_DESCRIPTION__DESCRIPTION_HTML_EXISTS = 14;
 
   /**
    * The number of structural features of the '<em>Class Description</em>' class.
@@ -636,7 +654,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DESCRIPTION_FEATURE_COUNT = 14;
+  int CLASS_DESCRIPTION_FEATURE_COUNT = 15;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -2744,6 +2762,17 @@ public interface PogoDslPackage extends EPackage
   EAttribute getPogoMultiClasses_License();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getCopyright <em>Copyright</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Copyright</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getCopyright()
+   * @see #getPogoMultiClasses()
+   * @generated
+   */
+  EAttribute getPogoMultiClasses_Copyright();
+
+  /**
    * Returns the meta object for the containment reference list '{@link fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses#getClasses <em>Classes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3179,6 +3208,17 @@ public interface PogoDslPackage extends EPackage
    * @generated
    */
   EAttribute getClassDescription_License();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getCopyright <em>Copyright</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Copyright</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ClassDescription#getCopyright()
+   * @see #getClassDescription()
+   * @generated
+   */
+  EAttribute getClassDescription_Copyright();
 
   /**
    * Returns the meta object for the attribute '{@link fr.esrf.tango.pogo.pogoDsl.ClassDescription#getHasMandatoryProperty <em>Has Mandatory Property</em>}'.
@@ -5029,6 +5069,14 @@ public interface PogoDslPackage extends EPackage
     EAttribute POGO_MULTI_CLASSES__LICENSE = eINSTANCE.getPogoMultiClasses_License();
 
     /**
+     * The meta object literal for the '<em><b>Copyright</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POGO_MULTI_CLASSES__COPYRIGHT = eINSTANCE.getPogoMultiClasses_Copyright();
+
+    /**
      * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5353,6 +5401,14 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EAttribute CLASS_DESCRIPTION__LICENSE = eINSTANCE.getClassDescription_License();
+
+    /**
+     * The meta object literal for the '<em><b>Copyright</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_DESCRIPTION__COPYRIGHT = eINSTANCE.getClassDescription_Copyright();
 
     /**
      * The meta object literal for the '<em><b>Has Mandatory Property</b></em>' attribute feature.

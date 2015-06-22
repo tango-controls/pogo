@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getIdentification <em>Identification</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getLicense <em>License</em>}</li>
+ *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getCopyright <em>Copyright</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasMandatoryProperty <em>Has Mandatory Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasConcreteProperty <em>Has Concrete Property</em>}</li>
  *   <li>{@link fr.esrf.tango.pogo.pogoDsl.impl.ClassDescriptionImpl#getHasAbstractCommand <em>Has Abstract Command</em>}</li>
@@ -201,6 +202,26 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String license = LICENSE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getCopyright() <em>Copyright</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCopyright()
+   * @generated
+   * @ordered
+   */
+  protected static final String COPYRIGHT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCopyright() <em>Copyright</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCopyright()
+   * @generated
+   * @ordered
+   */
+  protected String copyright = COPYRIGHT_EDEFAULT;
 
   /**
    * The default value of the '{@link #getHasMandatoryProperty() <em>Has Mandatory Property</em>}' attribute.
@@ -576,6 +597,29 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getCopyright()
+  {
+    return copyright;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCopyright(String newCopyright)
+  {
+    String oldCopyright = copyright;
+    copyright = newCopyright;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PogoDslPackage.CLASS_DESCRIPTION__COPYRIGHT, oldCopyright, copyright));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getHasMandatoryProperty()
   {
     return hasMandatoryProperty;
@@ -734,6 +778,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return getComments();
       case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
         return getLicense();
+      case PogoDslPackage.CLASS_DESCRIPTION__COPYRIGHT:
+        return getCopyright();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         return getHasMandatoryProperty();
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY:
@@ -786,6 +832,9 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return;
       case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
         setLicense((String)newValue);
+        return;
+      case PogoDslPackage.CLASS_DESCRIPTION__COPYRIGHT:
+        setCopyright((String)newValue);
         return;
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         setHasMandatoryProperty((String)newValue);
@@ -843,6 +892,9 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
       case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
         setLicense(LICENSE_EDEFAULT);
         return;
+      case PogoDslPackage.CLASS_DESCRIPTION__COPYRIGHT:
+        setCopyright(COPYRIGHT_EDEFAULT);
+        return;
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         setHasMandatoryProperty(HAS_MANDATORY_PROPERTY_EDEFAULT);
         return;
@@ -890,6 +942,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
         return comments != null;
       case PogoDslPackage.CLASS_DESCRIPTION__LICENSE:
         return LICENSE_EDEFAULT == null ? license != null : !LICENSE_EDEFAULT.equals(license);
+      case PogoDslPackage.CLASS_DESCRIPTION__COPYRIGHT:
+        return COPYRIGHT_EDEFAULT == null ? copyright != null : !COPYRIGHT_EDEFAULT.equals(copyright);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_MANDATORY_PROPERTY:
         return HAS_MANDATORY_PROPERTY_EDEFAULT == null ? hasMandatoryProperty != null : !HAS_MANDATORY_PROPERTY_EDEFAULT.equals(hasMandatoryProperty);
       case PogoDslPackage.CLASS_DESCRIPTION__HAS_CONCRETE_PROPERTY:
@@ -927,6 +981,8 @@ public class ClassDescriptionImpl extends MinimalEObjectImpl.Container implement
     result.append(filestogenerate);
     result.append(", license: ");
     result.append(license);
+    result.append(", copyright: ");
+    result.append(copyright);
     result.append(", hasMandatoryProperty: ");
     result.append(hasMandatoryProperty);
     result.append(", hasConcreteProperty: ");

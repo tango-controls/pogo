@@ -473,29 +473,48 @@ public class StringUtils {
 		if (licence!=null && licence.equals("none"))
 			return "";
 		
-		String str = "";	//	default IS GPL
-		if (licence!=null && licence.equals("LGPL"))
-			str = "Lesser ";
+		if (licence!=null && licence.equals("APACHE"))
+			return commentTag + comments(ILicences.apacheLicenece, commentTag) + "\n";
+		
+		if (licence!=null && licence.equals("MIT"))
+			return commentTag + comments(ILicences.mitLicenece, commentTag) + "\n";
 
-		return  commentTag + comments(
-				"This file is part of Tango device class.\n" +
-				"\n"+
-				"Tango is free software: you can redistribute it and/or modify\n" +
-				"it under the terms of the GNU " + str + "General Public License as published by\n" +
-				"the Free Software Foundation, either version 3 of the License, or\n" +
-				"(at your option) any later version.\n" +
-				"\n" +
-				"Tango is distributed in the hope that it will be useful,\n" +
-				"but WITHOUT ANY WARRANTY; without even the implied warranty of\n" +
-				"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" +
-				"GNU " + str + "General Public License for more details.\n" +
-				"\n" +
-				"You should have received a copy of the GNU " + str + "General Public License\n" +
-				"along with Tango.  If not, see <http://www.gnu.org/licenses/>.\n",
-					commentTag)+"\n";
+		//	default IS GPL
+		if (licence!=null && licence.equals("LGPL")) {
+			// convert gpl to lgpl
+			String gpl = ILicences.gplLicenece;
+			String str = "General Public License";
+			StringBuilder sb = new StringBuilder();
+			int start = 0;
+			int end   = 0;
+			while ((end=gpl.indexOf(str, start+str.length()))>0) {
+				sb.append(gpl.substring(start, end) + "Lesser ");
+				start = end;
+			}
+			sb.append(gpl.substring(start));
+			return commentTag + comments(sb.toString(), commentTag)+"\n";
+		}
+		else
+			//	GPL
+			return commentTag + comments(ILicences.gplLicenece, commentTag)+"\n";
 	}
-   //===============================================================
-   //===============================================================
+    //===============================================================
+    //===============================================================
+	public static String getCopyrightCommented(String copyright) {
+		StringBuilder sb = new StringBuilder();
+		int start = 0 ;
+		int end   = 0 ;
+		while ((end=copyright.indexOf('\n', start))>0) {
+			end++;
+			String line = "// " + copyright.substring(start, end);
+			sb.append(line);
+			start = end;
+		}
+		sb.append("// " + copyright.substring(start)+"\n");
+		return sb.toString();
+	}
+    //===============================================================
+    //===============================================================
 	public static String getIncludePath() {
 		String tangoInclude = System.getenv("TANGO_INCLUDE");
 		if (tangoInclude==null)
