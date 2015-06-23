@@ -313,6 +313,7 @@ public class ClassDialog extends JDialog {
         descScrollPane.setPreferredSize(new java.awt.Dimension(500, 250));
 
         descText.setColumns(80);
+        descText.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         descText.setMinimumSize(new java.awt.Dimension(0, 100));
         descText.setPreferredSize(new java.awt.Dimension(880, 400));
         descScrollPane.setViewportView(descText);
