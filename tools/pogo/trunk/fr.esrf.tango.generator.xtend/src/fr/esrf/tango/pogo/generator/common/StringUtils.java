@@ -512,7 +512,7 @@ public class StringUtils {
 			sb.append(line);
 			start = end;
 		}
-		sb.append("// " + copyright.substring(start)+"\n");
+		sb.append("// ").append(copyright.substring(start)).append("\n");
 		return sb.toString();
 	}
     //===============================================================
