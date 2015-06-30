@@ -243,6 +243,8 @@
     <genClasses ecoreClass="PogoDsl.ecore#//EnumType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//ShortVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//IntVectorType"/>
+    <genClasses ecoreClass="PogoDsl.ecore#//LongVectorType"/>
+    <genClasses ecoreClass="PogoDsl.ecore#//ULongVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//FloatVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//DoubleVectorType"/>
     <genClasses ecoreClass="PogoDsl.ecore#//StringVectorType"/>

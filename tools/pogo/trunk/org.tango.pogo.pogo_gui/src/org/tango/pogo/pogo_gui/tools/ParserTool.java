@@ -39,6 +39,7 @@ package org.tango.pogo.pogo_gui.tools;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.StringTokenizer;
@@ -152,51 +153,6 @@ public class ParserTool {
 
         //  And Re Write file
         writeFile(path + '/' + fileName, newCode);
-    }
-    //===============================================================
-    /**
-     * Convert html file to java String
-     *
-     * @param filename HTML specified file name
-     * @throws PogoException in case of failure during write file.
-     */
-    //===============================================================
-    public static void convertHTML(String filename) throws PogoException {
-        try {
-            String code = readFile(filename);
-            StringBuffer sb = new StringBuffer();
-            int start = 0;
-            int end;
-
-            //	Add '\\' before each '\"'
-            while ((end = code.indexOf("\"", start + 1)) > 0) {
-                sb.append(code.substring(start, end)).append("\\");
-                start = end;
-            }
-            sb.append(code.substring(start));
-            code = sb.toString();
-
-            //	Replace each '\n' by "\\n\" + \n\""
-            sb = new StringBuffer("\"");
-            start = 0;
-            while ((end = code.indexOf("\n", start)) > 0) {
-                sb.append(code.substring(start, end)).append("\\n\" + \n\"");
-                start = end + 1;
-            }
-            sb.append(code.substring(start)).append("\\n\"");
-            code = sb.toString();
-            System.out.println(code);
-        } catch (Exception e) {
-            throw new PogoException(e.toString());
-        }
-    }
-
-    //===============================================================
-    //===============================================================
-    public static void displaySyntax() {
-        System.out.println("ParserTool <option> <filename>");
-        System.out.println("    option: -html  convert html file to java String");
-        System.exit(0);
     }
 
 
@@ -340,7 +296,7 @@ public class ParserTool {
                 sb.append(line).append('\n');
             }
             writeFile(fileName, sb.toString().trim());
-            System.out.println("Replaced \""+srcKey + "\"  by  \"" + newKey + "\" \t in "+fileName);
+            System.out.println("Replaced \"" + srcKey + "\"  by  \"" + newKey + "\" \t in " + fileName);
         }
     }
     //===============================================================
@@ -360,7 +316,7 @@ public class ParserTool {
             //  check if Protected area
             if (line.contains(" PROTECTED REGION ")) {
                 //System.out.println(line);
-                
+
                 for (String attributeName : attributeNames) {
                     String  srcKey = "read_"+attributeName+"StateAllowed_READ";
                     String  newKey = attributeName+"StateAllowed";
@@ -444,12 +400,47 @@ public class ParserTool {
             }
         }
         catch(PogoException e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
-     //===============================================================
+    //===============================================================
+    /**
+     * Windows project files MUST start with non printable chars.
+     *    byte[]	sequence = { (byte)0xef, (byte)0xbb, (byte)0xbf };
+     * Since Eclipse 4, it does not work any more :-)
+     * It will be added after file generation by UI code...
+     *
+     * @param pogoClass the Tango device class project
+     */
+    //===============================================================
+    static void manageWindowsProjects(PogoDeviceClass pogoClass) {
+        byte[] sequence = {  (byte)0xef, (byte)0xbb, (byte)0xbf };
+        try {
+            String path = pogoClass.getDescription().getSourcePath() + "/vc12_proj";
+            File dir = new File(path);
+            String[] fileNames = dir.list();
+            for (String fileName : fileNames) {
+                if (fileName.contains(".vcxproj")) {
+                    String absoluteFileName = path + "/" + fileName;
+                    //  Add special chars at file beginning
+                    String code = readFile(absoluteFileName);
+                    //  Verify if it is a generated windows project
+                    if (code.startsWith("<?xml ")) {
+                        code = new String(sequence) + code;
+                        writeFile(absoluteFileName, code);
+                    }
+                }
+            }
+        }
+        catch (PogoException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    //===============================================================
     //===============================================================
     public static void main(String[] args) {
+        /*
         try {
             if (args.length >=2) {
                 if (args[0].equals("-html"))
@@ -464,6 +455,7 @@ public class ParserTool {
         } catch (Exception e) {
             System.err.println(e);
         }
+        */
     }
     //===============================================================
     //===============================================================
@@ -473,17 +465,6 @@ public class ParserTool {
 
 
 
-
-    //===============================================================
-    //===============================================================
-    public void startBack2Height(String fileName) {
-        try {
-            new Back2Height(fileName);
-        }
-        catch (PogoException e) {
-            System.err.println(e);
-        }
-    }
     //===============================================================
     //  Back from Pogo 8.1.xx to Pogo-0.xx
     //===============================================================

@@ -4,7 +4,7 @@
 package fr.esrf.tango.pogo;
 
 /**
- * Use this class to register components to be used within the IDE.
+ * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class PogoDslRuntimeModule extends fr.esrf.tango.pogo.AbstractPogoDslRuntimeModule {
 

@@ -55,6 +55,7 @@ import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
 import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
+import fr.esrf.tango.pogo.pogoDsl.LongVectorType;
 import fr.esrf.tango.pogo.pogoDsl.PropType;
 import fr.esrf.tango.pogo.pogoDsl.ShortArrayType;
 import fr.esrf.tango.pogo.pogoDsl.ShortType;
@@ -83,14 +84,17 @@ public class CppTypeDefinitions {
 		
 		if (propType instanceof BooleanType)	   return "Tango::DevBoolean";
 		if (propType instanceof ShortType) 		   return "Tango::DevShort";
-		if (propType instanceof IntType)           return "Tango::DevLong";
 		if (propType instanceof UShortType)        return "Tango::DevUShort";
+		if (propType instanceof IntType)           return "Tango::DevLong";
 		if (propType instanceof UIntType)      	   return "Tango::DevULong";
+		if (propType instanceof LongType)          return "Tango::DevLong64";
+		if (propType instanceof ULongType)         return "Tango::DevULong64";
 		if (propType instanceof FloatType)         return "Tango::DevFloat";
 		if (propType instanceof DoubleType)        return "Tango::DevDouble";
 		if (propType instanceof StringType)        return "string";
 		if (propType instanceof ShortVectorType)   return "vector<Tango::DevShort>";
 		if (propType instanceof IntVectorType)     return "vector<Tango::DevLong>";
+		if (propType instanceof LongVectorType)    return "vector<Tango::DevLong64>";
 		if (propType instanceof FloatVectorType)   return "vector<Tango::DevFloat>";
 		if (propType instanceof DoubleVectorType)  return "vector<Tango::DevDouble>";
 		if (propType instanceof StringVectorType)  return "vector<string>";

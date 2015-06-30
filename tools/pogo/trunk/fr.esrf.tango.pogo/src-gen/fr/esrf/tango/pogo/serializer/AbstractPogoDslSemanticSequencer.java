@@ -290,9 +290,11 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 				else break;
 			case PogoDslPackage.INT_VECTOR_TYPE:
 				if(context == grammarAccess.getIntVectorTypeRule() ||
+				   context == grammarAccess.getLongVectorTypeRule() ||
 				   context == grammarAccess.getPropTypeRule() ||
+				   context == grammarAccess.getULongVectorTypeRule() ||
 				   context == grammarAccess.getVectorTypeRule()) {
-					sequence_IntVectorType(context, (IntVectorType) semanticObject); 
+					sequence_IntVectorType_LongVectorType_ULongVectorType(context, (IntVectorType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -312,6 +314,8 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 				else break;
 			case PogoDslPackage.LONG_TYPE:
 				if(context == grammarAccess.getLongTypeRule() ||
+				   context == grammarAccess.getPropTypeRule() ||
+				   context == grammarAccess.getSimpleTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_LongType(context, (LongType) semanticObject); 
 					return; 
@@ -457,7 +461,9 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 				}
 				else break;
 			case PogoDslPackage.ULONG_TYPE:
-				if(context == grammarAccess.getTypeRule() ||
+				if(context == grammarAccess.getPropTypeRule() ||
+				   context == grammarAccess.getSimpleTypeRule() ||
+				   context == grammarAccess.getTypeRule() ||
 				   context == grammarAccess.getULongTypeRule()) {
 					sequence_ULongType(context, (ULongType) semanticObject); 
 					return; 
@@ -986,7 +992,7 @@ public abstract class AbstractPogoDslSemanticSequencer extends AbstractDelegatin
 	 * Constraint:
 	 *     {IntVectorType}
 	 */
-	protected void sequence_IntVectorType(EObject context, IntVectorType semanticObject) {
+	protected void sequence_IntVectorType_LongVectorType_ULongVectorType(EObject context, IntVectorType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

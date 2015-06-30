@@ -13,6 +13,6 @@ package fr.esrf.tango.pogo.pogoDsl;
  * @model
  * @generated
  */
-public interface ULongType extends Type
+public interface ULongType extends SimpleType, Type
 {
 } // ULongType

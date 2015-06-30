@@ -65,15 +65,19 @@ public class PropertyDialog extends JDialog {
     private static final String[] propertyTypeNames = {
             "DevBoolean",
             "DevShort",
+            "DevUShort",
             "DevLong",
+            "DevULong",
+            "DevLong64",
+            "DevULong64",
             "DevFloat",
             "DevDouble",
             "String",
-            "DevUShort",
-            "DevULong",
 
             "Array of DevShort",
             "Array of DevLong",
+            "Array of DevLong64",
+//            "Array of DevULong64",
             "Array of DevFloat",
             "Array of DevDouble",
             "Array of String",
@@ -81,17 +85,23 @@ public class PropertyDialog extends JDialog {
 
     private static final int booleanProp = 0;
     private static final int shortProp = 1;
-    private static final int intProp = 2;
-    private static final int floatProp = 3;
-    private static final int doubleProp = 4;
-    private static final int stringProp = 5;
-    private static final int ushortProp = 6;
-    private static final int uintProp = 7;
-    private static final int shortVector = 8;
-    private static final int intVector = 9;
-    private static final int floatVector = 10;
-    private static final int doubleVector = 11;
-    private static final int stringVector = 12;
+    private static final int ushortProp = 2;
+    private static final int intProp = 3;
+    private static final int uintProp = 4;
+    private static final int long64Prop = 5;
+    private static final int ulong64Prop = 6;
+    private static final int floatProp = 7;
+    private static final int doubleProp = 8;
+    private static final int stringProp = 9;
+
+
+    private static final int shortVector = 10;
+    private static final int intVector = 11;
+    private static final int longVector = 12;
+///    private static final int ulongVector = 13;
+    private static final int floatVector = 13;
+    private static final int doubleVector = 14;
+    private static final int stringVector = 15;
     private static final String defaultDataType = propertyTypeNames[stringProp];
 
 
@@ -586,6 +596,10 @@ public class PropertyDialog extends JDialog {
             return factory.createUShortType();
         if (tangoType.equals(propertyTypeNames[uintProp]))
             return factory.createUIntType();
+        if (tangoType.equals(propertyTypeNames[long64Prop]))
+            return factory.createLongType();
+        if (tangoType.equals(propertyTypeNames[ulong64Prop]))
+            return factory.createULongType();
         if (tangoType.equals(propertyTypeNames[stringProp]) ||
                 tangoType.equals("DevString") ||
                 tangoType.equals("string"))    //	Old pogo java file
@@ -598,6 +612,8 @@ public class PropertyDialog extends JDialog {
         if (tangoType.equals(propertyTypeNames[intVector]) ||
                 tangoType.equals("vector<long>") ||    //	Old pogo file
                 tangoType.equals("DevVarLongArray"))    //	Old pogo java file
+            return factory.createIntVectorType();
+        if (tangoType.equals(propertyTypeNames[longVector]))
             return factory.createIntVectorType();
         if (tangoType.equals(propertyTypeNames[floatVector]) ||
                 tangoType.equals("vector<float>") ||    //	Old pogo file
@@ -645,6 +661,8 @@ public class PropertyDialog extends JDialog {
                     return propertyTypeNames[shortVector];
                 if (tangoType.contains("IntVector"))
                     return propertyTypeNames[intVector];
+                if (tangoType.contains("LongVector"))
+                    return propertyTypeNames[longVector];
                 if (tangoType.contains("FloatVector"))
                     return propertyTypeNames[floatVector];
                 if (tangoType.contains("DoubleVector"))
@@ -657,18 +675,22 @@ public class PropertyDialog extends JDialog {
                 return propertyTypeNames[booleanProp];
             if (tangoType.startsWith("Short"))
                 return propertyTypeNames[shortProp];
+            if (tangoType.startsWith("UShort"))
+                return propertyTypeNames[ushortProp];
             if (tangoType.startsWith("Int"))
                 return propertyTypeNames[intProp];
+            if (tangoType.startsWith("UInt"))
+                return propertyTypeNames[uintProp];
+            if (tangoType.startsWith("Long"))
+                return propertyTypeNames[long64Prop];
+            if (tangoType.startsWith("ULong"))
+                return propertyTypeNames[ulong64Prop];
             if (tangoType.startsWith("Float"))
                 return propertyTypeNames[floatProp];
             if (tangoType.startsWith("Double"))
                 return propertyTypeNames[doubleProp];
             if (tangoType.startsWith("String"))
                 return propertyTypeNames[stringProp];
-            if (tangoType.startsWith("UShort"))
-                return propertyTypeNames[ushortProp];
-            if (tangoType.startsWith("UInt"))
-                return propertyTypeNames[uintProp];
         } else
             System.err.println(strPogoType + " not found !  (" + header + ")");
         return "Not a Pogo Type";

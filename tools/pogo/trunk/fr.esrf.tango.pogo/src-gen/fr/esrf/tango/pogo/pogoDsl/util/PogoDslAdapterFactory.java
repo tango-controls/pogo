@@ -370,6 +370,16 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
         return createIntVectorTypeAdapter();
       }
       @Override
+      public Adapter caseLongVectorType(LongVectorType object)
+      {
+        return createLongVectorTypeAdapter();
+      }
+      @Override
+      public Adapter caseULongVectorType(ULongVectorType object)
+      {
+        return createULongVectorTypeAdapter();
+      }
+      @Override
       public Adapter caseFloatVectorType(FloatVectorType object)
       {
         return createFloatVectorTypeAdapter();
@@ -1287,6 +1297,36 @@ public class PogoDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createIntVectorTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.LongVectorType <em>Long Vector Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.LongVectorType
+   * @generated
+   */
+  public Adapter createLongVectorTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.esrf.tango.pogo.pogoDsl.ULongVectorType <em>ULong Vector Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.esrf.tango.pogo.pogoDsl.ULongVectorType
+   * @generated
+   */
+  public Adapter createULongVectorTypeAdapter()
   {
     return null;
   }

@@ -173,17 +173,11 @@ public class OAWutils {
             return sys.getClasses().get(0);         //  A single device classes project
     }
     //========================================================================
-    /**
-     * Generate xmi file for PogoDeviceClass object and code associeted.
-     *
-     * @param pogoClass The model
-     * @throws PogoException in case of I/O error
-     */
     //========================================================================
-    public void generate(PogoDeviceClass pogoClass) throws PogoException {
+    private String generateXmiFile(PogoDeviceClass pogoClass) throws PogoException{
         //	to prevent null pointer
         if (pogoClass.getDescription().getIdentification()==null)
-        	pogoClass.getDescription().setIdentification(factory.createClassIdentification());
+            pogoClass.getDescription().setIdentification(factory.createClassIdentification());
 
         PogoSystem sys = buildPogoSystem(pogoClass);
 
@@ -192,8 +186,8 @@ public class OAWutils {
 
         //	Generate XMI file.
         String xmiFileName = pogoClass.getDescription().getSourcePath() + "/" +
-                    pogoClass.getName() + ".xmi";
-        
+                pogoClass.getName() + ".xmi";
+
         //  Special case for Windows (due to  disk:/.../..)
         if (!Utils.osIsUnix())
             xmiFileName = "//" + xmiFileName;
@@ -209,6 +203,19 @@ public class OAWutils {
         } catch (IOException e) {
             throw new PogoException(e.toString());
         }
+        return xmiFileName;
+    }
+    //========================================================================
+    /**
+     * Generate xmi file for PogoDeviceClass object and associated code.
+     *
+     * @param pogoClass The model
+     * @throws PogoException in case of I/O error
+     */
+    //========================================================================
+    public void generate(PogoDeviceClass pogoClass) throws PogoException {
+        //  Generate XMI file to save model
+        String xmiFileName = generateXmiFile(pogoClass);
 
         //	Start the code generation
         HashMap<String, String> params = new HashMap<String, String>();
@@ -223,7 +230,7 @@ public class OAWutils {
         System.setProperty("targetLanguage", // do not parse code file if not generated !
                 (generateCodeFiles(pogoClass.getDescription()))? pogoClass.getDescription().getLanguage() : "");
         System.setProperty("pythonProj",
-                pogoClass.getDescription().getFilestogenerate().contains("PyHL Project")?"true":"false");
+                pogoClass.getDescription().getFilestogenerate().contains("PyHL Project") ? "true" : "false");
 
         Utils.manageHtmlDirectory(pogoClass, true);
         try {
@@ -236,6 +243,10 @@ public class OAWutils {
             throw e;
         }
         Utils.manageHtmlDirectory(pogoClass, false);
+        //  If generate Windows project, need to add header with binary char.
+        //  It was done by XTend generation, but since Eclipse 4 it does not work any more !
+        if (pogoClass.getDescription().getFilestogenerate().contains("VC"))
+            ParserTool.manageWindowsProjects(pogoClass);
     }
     //========================================================================
     //========================================================================

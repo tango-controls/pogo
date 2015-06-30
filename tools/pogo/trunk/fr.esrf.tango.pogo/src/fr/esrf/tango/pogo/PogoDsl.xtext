@@ -226,14 +226,21 @@ PropType:
 	SimpleType | VectorType;
 	
 SimpleType:
-	BooleanType | ShortType  | UShortType  |
-	IntType     | UIntType   | FloatType   |
-	DoubleType  | StringType;
+	BooleanType |
+	ShortType   | UShortType |
+	IntType     | UIntType   |
+	LongType    | ULongType  |
+	FloatType   | DoubleType |
+	StringType;
 
 VectorType:	
 	ShortVectorType |
-	IntVectorType   | FloatVectorType  |
-	DoubleVectorType| StringVectorType;
+	IntVectorType   |
+	LongVectorType  |
+	ULongVectorType |
+	FloatVectorType |
+	DoubleVectorType|
+	StringVectorType;
 
 
 InheritanceStatus:
@@ -427,6 +434,8 @@ EnumType:				{EnumType} "DevEnum";
 
 ShortVectorType:		{ShortVectorType} 	"vector<short>";
 IntVectorType:			{IntVectorType} 	"vector<int>";
+LongVectorType:			{IntVectorType} 	"vector<long>";
+ULongVectorType:		{IntVectorType} 	"vector<ulong>";
 FloatVectorType:		{FloatVectorType} 	"vector<float>";
 DoubleVectorType:		{DoubleVectorType} 	"vector<double>";
 StringVectorType:		{StringVectorType} 	"vector<string>";

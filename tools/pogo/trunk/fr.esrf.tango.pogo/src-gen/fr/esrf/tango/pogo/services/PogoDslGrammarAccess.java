@@ -1231,15 +1231,18 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUShortTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cIntTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cUIntTypeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cFloatTypeParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cDoubleTypeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cStringTypeParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cLongTypeParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cULongTypeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cFloatTypeParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cDoubleTypeParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cStringTypeParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//SimpleType:
-		//	BooleanType | ShortType | UShortType | IntType | UIntType | FloatType | DoubleType | StringType;
+		//	BooleanType | ShortType | UShortType | IntType | UIntType | LongType | ULongType | FloatType | DoubleType |
+		//	StringType;
 		public ParserRule getRule() { return rule; }
 
-		//BooleanType | ShortType | UShortType | IntType | UIntType | FloatType | DoubleType | StringType
+		//BooleanType | ShortType | UShortType | IntType | UIntType | LongType | ULongType | FloatType | DoubleType | StringType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//BooleanType
@@ -1257,14 +1260,20 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//UIntType
 		public RuleCall getUIntTypeParserRuleCall_4() { return cUIntTypeParserRuleCall_4; }
 
+		//LongType
+		public RuleCall getLongTypeParserRuleCall_5() { return cLongTypeParserRuleCall_5; }
+
+		//ULongType
+		public RuleCall getULongTypeParserRuleCall_6() { return cULongTypeParserRuleCall_6; }
+
 		//FloatType
-		public RuleCall getFloatTypeParserRuleCall_5() { return cFloatTypeParserRuleCall_5; }
+		public RuleCall getFloatTypeParserRuleCall_7() { return cFloatTypeParserRuleCall_7; }
 
 		//DoubleType
-		public RuleCall getDoubleTypeParserRuleCall_6() { return cDoubleTypeParserRuleCall_6; }
+		public RuleCall getDoubleTypeParserRuleCall_8() { return cDoubleTypeParserRuleCall_8; }
 
 		//StringType
-		public RuleCall getStringTypeParserRuleCall_7() { return cStringTypeParserRuleCall_7; }
+		public RuleCall getStringTypeParserRuleCall_9() { return cStringTypeParserRuleCall_9; }
 	}
 
 	public class VectorTypeElements extends AbstractParserRuleElementFinder {
@@ -1272,15 +1281,19 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cShortVectorTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntVectorTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cFloatVectorTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cDoubleVectorTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cStringVectorTypeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cLongVectorTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cULongVectorTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cFloatVectorTypeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDoubleVectorTypeParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cStringVectorTypeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//VectorType:
-		//	ShortVectorType | IntVectorType | FloatVectorType | DoubleVectorType | StringVectorType;
+		//	ShortVectorType | IntVectorType | LongVectorType | ULongVectorType | FloatVectorType | DoubleVectorType |
+		//	StringVectorType;
 		public ParserRule getRule() { return rule; }
 
-		//ShortVectorType | IntVectorType | FloatVectorType | DoubleVectorType | StringVectorType
+		//ShortVectorType | IntVectorType | LongVectorType | ULongVectorType | FloatVectorType | DoubleVectorType |
+		//StringVectorType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ShortVectorType
@@ -1289,14 +1302,20 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		//IntVectorType
 		public RuleCall getIntVectorTypeParserRuleCall_1() { return cIntVectorTypeParserRuleCall_1; }
 
+		//LongVectorType
+		public RuleCall getLongVectorTypeParserRuleCall_2() { return cLongVectorTypeParserRuleCall_2; }
+
+		//ULongVectorType
+		public RuleCall getULongVectorTypeParserRuleCall_3() { return cULongVectorTypeParserRuleCall_3; }
+
 		//FloatVectorType
-		public RuleCall getFloatVectorTypeParserRuleCall_2() { return cFloatVectorTypeParserRuleCall_2; }
+		public RuleCall getFloatVectorTypeParserRuleCall_4() { return cFloatVectorTypeParserRuleCall_4; }
 
 		//DoubleVectorType
-		public RuleCall getDoubleVectorTypeParserRuleCall_3() { return cDoubleVectorTypeParserRuleCall_3; }
+		public RuleCall getDoubleVectorTypeParserRuleCall_5() { return cDoubleVectorTypeParserRuleCall_5; }
 
 		//StringVectorType
-		public RuleCall getStringVectorTypeParserRuleCall_4() { return cStringVectorTypeParserRuleCall_4; }
+		public RuleCall getStringVectorTypeParserRuleCall_6() { return cStringVectorTypeParserRuleCall_6; }
 	}
 
 	public class InheritanceStatusElements extends AbstractParserRuleElementFinder {
@@ -2907,6 +2926,46 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getVectorIntKeyword_1() { return cVectorIntKeyword_1; }
 	}
 
+	public class LongVectorTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LongVectorType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIntVectorTypeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cVectorLongKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//LongVectorType:
+		//	{IntVectorType} "vector<long>";
+		public ParserRule getRule() { return rule; }
+
+		//{IntVectorType} "vector<long>"
+		public Group getGroup() { return cGroup; }
+
+		//{IntVectorType}
+		public Action getIntVectorTypeAction_0() { return cIntVectorTypeAction_0; }
+
+		//"vector<long>"
+		public Keyword getVectorLongKeyword_1() { return cVectorLongKeyword_1; }
+	}
+
+	public class ULongVectorTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ULongVectorType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIntVectorTypeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cVectorUlongKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//ULongVectorType:
+		//	{IntVectorType} "vector<ulong>";
+		public ParserRule getRule() { return rule; }
+
+		//{IntVectorType} "vector<ulong>"
+		public Group getGroup() { return cGroup; }
+
+		//{IntVectorType}
+		public Action getIntVectorTypeAction_0() { return cIntVectorTypeAction_0; }
+
+		//"vector<ulong>"
+		public Keyword getVectorUlongKeyword_1() { return cVectorUlongKeyword_1; }
+	}
+
 	public class FloatVectorTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FloatVectorType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -3033,6 +3092,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	private EnumTypeElements pEnumType;
 	private ShortVectorTypeElements pShortVectorType;
 	private IntVectorTypeElements pIntVectorType;
+	private LongVectorTypeElements pLongVectorType;
+	private ULongVectorTypeElements pULongVectorType;
 	private FloatVectorTypeElements pFloatVectorType;
 	private DoubleVectorTypeElements pDoubleVectorType;
 	private StringVectorTypeElements pStringVectorType;
@@ -3334,7 +3395,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SimpleType:
-	//	BooleanType | ShortType | UShortType | IntType | UIntType | FloatType | DoubleType | StringType;
+	//	BooleanType | ShortType | UShortType | IntType | UIntType | LongType | ULongType | FloatType | DoubleType |
+	//	StringType;
 	public SimpleTypeElements getSimpleTypeAccess() {
 		return (pSimpleType != null) ? pSimpleType : (pSimpleType = new SimpleTypeElements());
 	}
@@ -3344,7 +3406,8 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//VectorType:
-	//	ShortVectorType | IntVectorType | FloatVectorType | DoubleVectorType | StringVectorType;
+	//	ShortVectorType | IntVectorType | LongVectorType | ULongVectorType | FloatVectorType | DoubleVectorType |
+	//	StringVectorType;
 	public VectorTypeElements getVectorTypeAccess() {
 		return (pVectorType != null) ? pVectorType : (pVectorType = new VectorTypeElements());
 	}
@@ -3843,6 +3906,26 @@ public class PogoDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getIntVectorTypeRule() {
 		return getIntVectorTypeAccess().getRule();
+	}
+
+	//LongVectorType:
+	//	{IntVectorType} "vector<long>";
+	public LongVectorTypeElements getLongVectorTypeAccess() {
+		return (pLongVectorType != null) ? pLongVectorType : (pLongVectorType = new LongVectorTypeElements());
+	}
+	
+	public ParserRule getLongVectorTypeRule() {
+		return getLongVectorTypeAccess().getRule();
+	}
+
+	//ULongVectorType:
+	//	{IntVectorType} "vector<ulong>";
+	public ULongVectorTypeElements getULongVectorTypeAccess() {
+		return (pULongVectorType != null) ? pULongVectorType : (pULongVectorType = new ULongVectorTypeElements());
+	}
+	
+	public ParserRule getULongVectorTypeRule() {
+		return getULongVectorTypeAccess().getRule();
 	}
 
 	//FloatVectorType:

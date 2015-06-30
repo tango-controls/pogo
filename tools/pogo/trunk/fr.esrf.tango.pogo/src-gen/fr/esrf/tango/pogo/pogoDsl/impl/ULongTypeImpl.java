@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ULongTypeImpl extends TypeImpl implements ULongType
+public class ULongTypeImpl extends SimpleTypeImpl implements ULongType
 {
   /**
    * <!-- begin-user-doc -->

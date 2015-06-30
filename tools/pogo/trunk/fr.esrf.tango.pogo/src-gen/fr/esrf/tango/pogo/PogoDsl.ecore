@@ -276,15 +276,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="ConstStringType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanArrayType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="UCharType" eSuperTypes="#//Type"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LongType" eSuperTypes="#//Type"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ULongType" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongType" eSuperTypes="#//SimpleType #//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ULongType" eSuperTypes="#//SimpleType #//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="LongArrayType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="ULongArrayType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="DevIntType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="EncodedType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="EnumType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShortVectorType" eSuperTypes="#//VectorType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IntVectorType" eSuperTypes="#//VectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntVectorType" eSuperTypes="#//VectorType #//LongVectorType #//ULongVectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongVectorType" eSuperTypes="#//VectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ULongVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="FloatVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="DoubleVectorType" eSuperTypes="#//VectorType"/>
   <eClassifiers xsi:type="ecore:EClass" name="StringVectorType" eSuperTypes="#//VectorType"/>

@@ -13,6 +13,6 @@ package fr.esrf.tango.pogo.pogoDsl;
  * @model
  * @generated
  */
-public interface IntVectorType extends VectorType
+public interface IntVectorType extends VectorType, LongVectorType, ULongVectorType
 {
 } // IntVectorType

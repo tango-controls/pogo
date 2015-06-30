@@ -17,7 +17,11 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed May 27 08:48:16 CEST 2015)</Center><Br>\n" + 
+		"	(Generated Tue Jun 30 08:05:52 CEST 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.2 - 30/06/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Visual C++ 12 project are available for Tango-9<Br>\n" + 
+		"&nbsp; &nbsp; Improve Python HL templates.<Br>\n" + 
+		"&nbsp; &nbsp; Add several missing types for properties.<Br>\n" + 
 		"<li><b>Pogo-9.1.0 - 12/05/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Pogo is now compiled using java 1.7<Br>\n" + 
 		"&nbsp; &nbsp; Double cotes supported in class description and title,<Br>\n" + 

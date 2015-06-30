@@ -41,12 +41,11 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.generator.cpp.projects.LinuxMakefile
-import fr.esrf.tango.pogo.generator.cpp.projects.VC9.VC9_Project
+import fr.esrf.tango.pogo.generator.cpp.projects.VC12.VC12_Project
 import fr.esrf.tango.pogo.generator.cpp.projects.VC10.VC10_Project
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import fr.esrf.tango.pogo.generator.common.EclipseProjects
-
 
 class CppGenerator implements IGenerator {
 
@@ -61,8 +60,8 @@ class CppGenerator implements IGenerator {
 	@Inject	extension Main
 	
 	@Inject	extension LinuxMakefile
-	@Inject	extension VC9_Project
 	@Inject	extension VC10_Project
+	@Inject	extension VC12_Project
 	@Inject extension EclipseProjects
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
@@ -117,6 +116,7 @@ class CppGenerator implements IGenerator {
 				}
 				
 				//	Widows projects
+				/*
 				if (cls.description.filestogenerate.contains("VC9")) {
 					printTrace("Generating VC9 project in vc9_proj")
 					fsa.generateFile("vc9_proj/"+cls.name+".sln",     cls.generateVC9_Project)
@@ -125,6 +125,7 @@ class CppGenerator implements IGenerator {
 					fsa.generateFile("vc9_proj/Class_dll.vcproj",     cls.generateVC9_ClassDll)
 					fsa.generateFile("vc9_proj/Server_shared.vcproj", cls.generateVC9_ServerShared)
 				}
+				*/
 				if (cls.description.filestogenerate.contains("VC10")) {
 					printTrace("Generating VC10 project in vc10_proj")
 					fsa.generateFile("vc10_proj/"+cls.name+".sln",      cls.generateVC10_Project)
@@ -135,6 +136,17 @@ class CppGenerator implements IGenerator {
 
 					fsa.generateFile("vc10_proj/Class_lib.vcxproj.filters", cls.generateVC10_Filters)
 					fsa.generateFile("vc10_proj/Class_dll.vcxproj.filters", cls.generateVC10_Filters)
+				}
+				if (cls.description.filestogenerate.contains("VC12")) {
+					printTrace("Generating VC12 project in vc12_proj")
+					fsa.generateFile("vc12_proj/"+cls.name+".sln",      cls.generateVC12_Project)
+					fsa.generateFile("vc12_proj/Class_lib.vcxproj",     cls.generateVC12_ClassLib)
+					fsa.generateFile("vc12_proj/Server_static.vcxproj", cls.generateVC12_ServerStatic)
+					fsa.generateFile("vc12_proj/Class_dll.vcxproj",     cls.generateVC12_ClassDll)
+					fsa.generateFile("vc12_proj/Server_shared.vcxproj", cls.generateVC12_ServerShared)
+
+					fsa.generateFile("vc12_proj/Class_lib.vcxproj.filters", cls.generateVC12_Filters)
+					fsa.generateFile("vc12_proj/Class_dll.vcxproj.filters", cls.generateVC12_Filters)
 				}
 			}
 		}
