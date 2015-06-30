@@ -467,7 +467,9 @@ public class PogoDslSwitch<T> extends Switch<T>
       {
         LongType longType = (LongType)theEObject;
         T result = caseLongType(longType);
+        if (result == null) result = caseSimpleType(longType);
         if (result == null) result = caseType(longType);
+        if (result == null) result = casePropType(longType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -475,7 +477,9 @@ public class PogoDslSwitch<T> extends Switch<T>
       {
         ULongType uLongType = (ULongType)theEObject;
         T result = caseULongType(uLongType);
+        if (result == null) result = caseSimpleType(uLongType);
         if (result == null) result = caseType(uLongType);
+        if (result == null) result = casePropType(uLongType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -532,8 +536,28 @@ public class PogoDslSwitch<T> extends Switch<T>
       {
         IntVectorType intVectorType = (IntVectorType)theEObject;
         T result = caseIntVectorType(intVectorType);
+        if (result == null) result = caseLongVectorType(intVectorType);
+        if (result == null) result = caseULongVectorType(intVectorType);
         if (result == null) result = caseVectorType(intVectorType);
         if (result == null) result = casePropType(intVectorType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PogoDslPackage.LONG_VECTOR_TYPE:
+      {
+        LongVectorType longVectorType = (LongVectorType)theEObject;
+        T result = caseLongVectorType(longVectorType);
+        if (result == null) result = caseVectorType(longVectorType);
+        if (result == null) result = casePropType(longVectorType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PogoDslPackage.ULONG_VECTOR_TYPE:
+      {
+        ULongVectorType uLongVectorType = (ULongVectorType)theEObject;
+        T result = caseULongVectorType(uLongVectorType);
+        if (result == null) result = caseVectorType(uLongVectorType);
+        if (result == null) result = casePropType(uLongVectorType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1508,6 +1532,38 @@ public class PogoDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseIntVectorType(IntVectorType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Long Vector Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Long Vector Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLongVectorType(LongVectorType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>ULong Vector Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>ULong Vector Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseULongVectorType(ULongVectorType object)
   {
     return null;
   }

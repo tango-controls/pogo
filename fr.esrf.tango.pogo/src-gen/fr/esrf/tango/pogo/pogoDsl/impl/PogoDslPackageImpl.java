@@ -36,6 +36,7 @@ import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
 import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
+import fr.esrf.tango.pogo.pogoDsl.LongVectorType;
 import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.OverlodedPollPeriodObject;
 import fr.esrf.tango.pogo.pogoDsl.Pipe;
@@ -62,6 +63,7 @@ import fr.esrf.tango.pogo.pogoDsl.UIntArrayType;
 import fr.esrf.tango.pogo.pogoDsl.UIntType;
 import fr.esrf.tango.pogo.pogoDsl.ULongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.ULongType;
+import fr.esrf.tango.pogo.pogoDsl.ULongVectorType;
 import fr.esrf.tango.pogo.pogoDsl.UShortArrayType;
 import fr.esrf.tango.pogo.pogoDsl.UShortType;
 import fr.esrf.tango.pogo.pogoDsl.VectorType;
@@ -494,6 +496,20 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * @generated
    */
   private EClass intVectorTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass longVectorTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uLongVectorTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2714,6 +2730,26 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getLongVectorType()
+  {
+    return longVectorTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getULongVectorType()
+  {
+    return uLongVectorTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getFloatVectorType()
   {
     return floatVectorTypeEClass;
@@ -3041,6 +3077,10 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
 
     intVectorTypeEClass = createEClass(INT_VECTOR_TYPE);
 
+    longVectorTypeEClass = createEClass(LONG_VECTOR_TYPE);
+
+    uLongVectorTypeEClass = createEClass(ULONG_VECTOR_TYPE);
+
     floatVectorTypeEClass = createEClass(FLOAT_VECTOR_TYPE);
 
     doubleVectorTypeEClass = createEClass(DOUBLE_VECTOR_TYPE);
@@ -3110,7 +3150,9 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     constStringTypeEClass.getESuperTypes().add(this.getType());
     booleanArrayTypeEClass.getESuperTypes().add(this.getType());
     uCharTypeEClass.getESuperTypes().add(this.getType());
+    longTypeEClass.getESuperTypes().add(this.getSimpleType());
     longTypeEClass.getESuperTypes().add(this.getType());
+    uLongTypeEClass.getESuperTypes().add(this.getSimpleType());
     uLongTypeEClass.getESuperTypes().add(this.getType());
     longArrayTypeEClass.getESuperTypes().add(this.getType());
     uLongArrayTypeEClass.getESuperTypes().add(this.getType());
@@ -3119,6 +3161,10 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     enumTypeEClass.getESuperTypes().add(this.getType());
     shortVectorTypeEClass.getESuperTypes().add(this.getVectorType());
     intVectorTypeEClass.getESuperTypes().add(this.getVectorType());
+    intVectorTypeEClass.getESuperTypes().add(this.getLongVectorType());
+    intVectorTypeEClass.getESuperTypes().add(this.getULongVectorType());
+    longVectorTypeEClass.getESuperTypes().add(this.getVectorType());
+    uLongVectorTypeEClass.getESuperTypes().add(this.getVectorType());
     floatVectorTypeEClass.getESuperTypes().add(this.getVectorType());
     doubleVectorTypeEClass.getESuperTypes().add(this.getVectorType());
     stringVectorTypeEClass.getESuperTypes().add(this.getVectorType());
@@ -3395,6 +3441,10 @@ public class PogoDslPackageImpl extends EPackageImpl implements PogoDslPackage
     initEClass(shortVectorTypeEClass, ShortVectorType.class, "ShortVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(intVectorTypeEClass, IntVectorType.class, "IntVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(longVectorTypeEClass, LongVectorType.class, "LongVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(uLongVectorTypeEClass, ULongVectorType.class, "ULongVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(floatVectorTypeEClass, FloatVectorType.class, "FloatVectorType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

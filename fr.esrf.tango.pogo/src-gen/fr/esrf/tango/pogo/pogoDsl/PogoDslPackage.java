@@ -2409,7 +2409,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LONG_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+  int LONG_TYPE_FEATURE_COUNT = SIMPLE_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ULongTypeImpl <em>ULong Type</em>}' class.
@@ -2428,7 +2428,7 @@ public interface PogoDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ULONG_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+  int ULONG_TYPE_FEATURE_COUNT = SIMPLE_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.LongArrayTypeImpl <em>Long Array Type</em>}' class.
@@ -2564,6 +2564,44 @@ public interface PogoDslPackage extends EPackage
   int INT_VECTOR_TYPE_FEATURE_COUNT = VECTOR_TYPE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.LongVectorTypeImpl <em>Long Vector Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.LongVectorTypeImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongVectorType()
+   * @generated
+   */
+  int LONG_VECTOR_TYPE = 59;
+
+  /**
+   * The number of structural features of the '<em>Long Vector Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_VECTOR_TYPE_FEATURE_COUNT = VECTOR_TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ULongVectorTypeImpl <em>ULong Vector Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.ULongVectorTypeImpl
+   * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongVectorType()
+   * @generated
+   */
+  int ULONG_VECTOR_TYPE = 60;
+
+  /**
+   * The number of structural features of the '<em>ULong Vector Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ULONG_VECTOR_TYPE_FEATURE_COUNT = VECTOR_TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FloatVectorTypeImpl <em>Float Vector Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2571,7 +2609,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getFloatVectorType()
    * @generated
    */
-  int FLOAT_VECTOR_TYPE = 59;
+  int FLOAT_VECTOR_TYPE = 61;
 
   /**
    * The number of structural features of the '<em>Float Vector Type</em>' class.
@@ -2590,7 +2628,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getDoubleVectorType()
    * @generated
    */
-  int DOUBLE_VECTOR_TYPE = 60;
+  int DOUBLE_VECTOR_TYPE = 62;
 
   /**
    * The number of structural features of the '<em>Double Vector Type</em>' class.
@@ -2609,7 +2647,7 @@ public interface PogoDslPackage extends EPackage
    * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getStringVectorType()
    * @generated
    */
-  int STRING_VECTOR_TYPE = 61;
+  int STRING_VECTOR_TYPE = 63;
 
   /**
    * The number of structural features of the '<em>String Vector Type</em>' class.
@@ -4906,6 +4944,26 @@ public interface PogoDslPackage extends EPackage
   EClass getIntVectorType();
 
   /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.LongVectorType <em>Long Vector Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Long Vector Type</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.LongVectorType
+   * @generated
+   */
+  EClass getLongVectorType();
+
+  /**
+   * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.ULongVectorType <em>ULong Vector Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>ULong Vector Type</em>'.
+   * @see fr.esrf.tango.pogo.pogoDsl.ULongVectorType
+   * @generated
+   */
+  EClass getULongVectorType();
+
+  /**
    * Returns the meta object for class '{@link fr.esrf.tango.pogo.pogoDsl.FloatVectorType <em>Float Vector Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6779,6 +6837,26 @@ public interface PogoDslPackage extends EPackage
      * @generated
      */
     EClass INT_VECTOR_TYPE = eINSTANCE.getIntVectorType();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.LongVectorTypeImpl <em>Long Vector Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.LongVectorTypeImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getLongVectorType()
+     * @generated
+     */
+    EClass LONG_VECTOR_TYPE = eINSTANCE.getLongVectorType();
+
+    /**
+     * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.ULongVectorTypeImpl <em>ULong Vector Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.ULongVectorTypeImpl
+     * @see fr.esrf.tango.pogo.pogoDsl.impl.PogoDslPackageImpl#getULongVectorType()
+     * @generated
+     */
+    EClass ULONG_VECTOR_TYPE = eINSTANCE.getULongVectorType();
 
     /**
      * The meta object literal for the '{@link fr.esrf.tango.pogo.pogoDsl.impl.FloatVectorTypeImpl <em>Float Vector Type</em>}' class.

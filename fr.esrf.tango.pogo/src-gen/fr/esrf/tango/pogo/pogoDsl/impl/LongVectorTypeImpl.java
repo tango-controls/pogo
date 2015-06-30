@@ -2,28 +2,28 @@
  */
 package fr.esrf.tango.pogo.pogoDsl.impl;
 
-import fr.esrf.tango.pogo.pogoDsl.LongType;
+import fr.esrf.tango.pogo.pogoDsl.LongVectorType;
 import fr.esrf.tango.pogo.pogoDsl.PogoDslPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Long Type</b></em>'.
+ * An implementation of the model object '<em><b>Long Vector Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class LongTypeImpl extends SimpleTypeImpl implements LongType
+public class LongVectorTypeImpl extends VectorTypeImpl implements LongVectorType
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LongTypeImpl()
+  protected LongVectorTypeImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class LongTypeImpl extends SimpleTypeImpl implements LongType
   @Override
   protected EClass eStaticClass()
   {
-    return PogoDslPackage.Literals.LONG_TYPE;
+    return PogoDslPackage.Literals.LONG_VECTOR_TYPE;
   }
 
-} //LongTypeImpl
+} //LongVectorTypeImpl

@@ -554,6 +554,24 @@ public interface PogoDslFactory extends EFactory
   IntVectorType createIntVectorType();
 
   /**
+   * Returns a new object of class '<em>Long Vector Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Long Vector Type</em>'.
+   * @generated
+   */
+  LongVectorType createLongVectorType();
+
+  /**
+   * Returns a new object of class '<em>ULong Vector Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>ULong Vector Type</em>'.
+   * @generated
+   */
+  ULongVectorType createULongVectorType();
+
+  /**
    * Returns a new object of class '<em>Float Vector Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

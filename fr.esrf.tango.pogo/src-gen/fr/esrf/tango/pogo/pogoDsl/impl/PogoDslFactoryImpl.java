@@ -123,6 +123,8 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
       case PogoDslPackage.ENUM_TYPE: return createEnumType();
       case PogoDslPackage.SHORT_VECTOR_TYPE: return createShortVectorType();
       case PogoDslPackage.INT_VECTOR_TYPE: return createIntVectorType();
+      case PogoDslPackage.LONG_VECTOR_TYPE: return createLongVectorType();
+      case PogoDslPackage.ULONG_VECTOR_TYPE: return createULongVectorType();
       case PogoDslPackage.FLOAT_VECTOR_TYPE: return createFloatVectorType();
       case PogoDslPackage.DOUBLE_VECTOR_TYPE: return createDoubleVectorType();
       case PogoDslPackage.STRING_VECTOR_TYPE: return createStringVectorType();
@@ -778,6 +780,28 @@ public class PogoDslFactoryImpl extends EFactoryImpl implements PogoDslFactory
   {
     IntVectorTypeImpl intVectorType = new IntVectorTypeImpl();
     return intVectorType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LongVectorType createLongVectorType()
+  {
+    LongVectorTypeImpl longVectorType = new LongVectorTypeImpl();
+    return longVectorType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ULongVectorType createULongVectorType()
+  {
+    ULongVectorTypeImpl uLongVectorType = new ULongVectorTypeImpl();
+    return uLongVectorType;
   }
 
   /**

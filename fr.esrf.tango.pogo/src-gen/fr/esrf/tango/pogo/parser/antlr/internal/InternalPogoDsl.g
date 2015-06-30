@@ -2159,31 +2159,51 @@ ruleSimpleType returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getSimpleTypeAccess().getFloatTypeParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getSimpleTypeAccess().getLongTypeParserRuleCall_5()); 
     }
-    this_FloatType_5=ruleFloatType
+    this_LongType_5=ruleLongType
     { 
-        $current = $this_FloatType_5.current; 
+        $current = $this_LongType_5.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSimpleTypeAccess().getDoubleTypeParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getSimpleTypeAccess().getULongTypeParserRuleCall_6()); 
     }
-    this_DoubleType_6=ruleDoubleType
+    this_ULongType_6=ruleULongType
     { 
-        $current = $this_DoubleType_6.current; 
+        $current = $this_ULongType_6.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSimpleTypeAccess().getStringTypeParserRuleCall_7()); 
+        newCompositeNode(grammarAccess.getSimpleTypeAccess().getFloatTypeParserRuleCall_7()); 
     }
-    this_StringType_7=ruleStringType
+    this_FloatType_7=ruleFloatType
     { 
-        $current = $this_StringType_7.current; 
+        $current = $this_FloatType_7.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getSimpleTypeAccess().getDoubleTypeParserRuleCall_8()); 
+    }
+    this_DoubleType_8=ruleDoubleType
+    { 
+        $current = $this_DoubleType_8.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getSimpleTypeAccess().getStringTypeParserRuleCall_9()); 
+    }
+    this_StringType_9=ruleStringType
+    { 
+        $current = $this_StringType_9.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -2229,31 +2249,51 @@ ruleVectorType returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getVectorTypeAccess().getFloatVectorTypeParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getVectorTypeAccess().getLongVectorTypeParserRuleCall_2()); 
     }
-    this_FloatVectorType_2=ruleFloatVectorType
+    this_LongVectorType_2=ruleLongVectorType
     { 
-        $current = $this_FloatVectorType_2.current; 
+        $current = $this_LongVectorType_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getVectorTypeAccess().getDoubleVectorTypeParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getVectorTypeAccess().getULongVectorTypeParserRuleCall_3()); 
     }
-    this_DoubleVectorType_3=ruleDoubleVectorType
+    this_ULongVectorType_3=ruleULongVectorType
     { 
-        $current = $this_DoubleVectorType_3.current; 
+        $current = $this_ULongVectorType_3.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getVectorTypeAccess().getStringVectorTypeParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getVectorTypeAccess().getFloatVectorTypeParserRuleCall_4()); 
     }
-    this_StringVectorType_4=ruleStringVectorType
+    this_FloatVectorType_4=ruleFloatVectorType
     { 
-        $current = $this_StringVectorType_4.current; 
+        $current = $this_FloatVectorType_4.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getVectorTypeAccess().getDoubleVectorTypeParserRuleCall_5()); 
+    }
+    this_DoubleVectorType_5=ruleDoubleVectorType
+    { 
+        $current = $this_DoubleVectorType_5.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getVectorTypeAccess().getStringVectorTypeParserRuleCall_6()); 
+    }
+    this_StringVectorType_6=ruleStringVectorType
+    { 
+        $current = $this_StringVectorType_6.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -5188,6 +5228,68 @@ ruleIntVectorType returns [EObject current=null]
 )	otherlv_1='vector<int>' 
     {
     	newLeafNode(otherlv_1, grammarAccess.getIntVectorTypeAccess().getVectorIntKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleLongVectorType
+entryRuleLongVectorType returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLongVectorTypeRule()); }
+	 iv_ruleLongVectorType=ruleLongVectorType 
+	 { $current=$iv_ruleLongVectorType.current; } 
+	 EOF 
+;
+
+// Rule LongVectorType
+ruleLongVectorType returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getLongVectorTypeAccess().getIntVectorTypeAction_0(),
+            $current);
+    }
+)	otherlv_1='vector<long>' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getLongVectorTypeAccess().getVectorLongKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleULongVectorType
+entryRuleULongVectorType returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getULongVectorTypeRule()); }
+	 iv_ruleULongVectorType=ruleULongVectorType 
+	 { $current=$iv_ruleULongVectorType.current; } 
+	 EOF 
+;
+
+// Rule ULongVectorType
+ruleULongVectorType returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getULongVectorTypeAccess().getIntVectorTypeAction_0(),
+            $current);
+    }
+)	otherlv_1='vector<ulong>' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getULongVectorTypeAccess().getVectorUlongKeyword_1());
     }
 )
 ;

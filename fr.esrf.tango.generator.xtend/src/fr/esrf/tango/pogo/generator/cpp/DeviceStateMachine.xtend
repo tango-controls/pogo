@@ -251,8 +251,8 @@ class DeviceStateMachine {
 						«cls.protectedArea(pipe.name+"StateAllowed_READ")»
 							return false;
 						}
-						return true;
 					}
+					return true;
 				«ENDIF»
 			}
 		«ENDFOR»

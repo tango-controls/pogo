@@ -78,9 +78,8 @@ public class GenerateDialog extends JDialog {
         rBtn.add(xmiBtn);
         rBtn.add(codeBtn);
         rBtn.add(makefileBtn);
-        rBtn.add(vc8Btn);
-        rBtn.add(vc9Btn);
         rBtn.add(vc10Btn);
+        rBtn.add(vc12Btn);
         rBtn.add(pyHlProjectBtn);
         rBtn.add(prPythonHLBtn);
         rBtn.add(eclipseProjectBtn);
@@ -122,7 +121,6 @@ public class GenerateDialog extends JDialog {
         codeBtn = new javax.swing.JRadioButton();
         prPythonHLBtn = new javax.swing.JRadioButton();
         makefileBtn = new javax.swing.JRadioButton();
-        vc8Btn = new javax.swing.JRadioButton();
         javax.swing.JLabel generateLabel = new javax.swing.JLabel();
         htmlBtn = new javax.swing.JRadioButton();
         warningPanel = new javax.swing.JPanel();
@@ -130,6 +128,7 @@ public class GenerateDialog extends JDialog {
         javax.swing.JLabel dummyLbl = new javax.swing.JLabel();
         javax.swing.JButton detailsBtn = new javax.swing.JButton();
         vc10Btn = new javax.swing.JRadioButton();
+        vc12Btn = new javax.swing.JRadioButton();
         windowsLabel = new javax.swing.JLabel();
         linuxLabel = new javax.swing.JLabel();
         docLabel = new javax.swing.JLabel();
@@ -137,7 +136,6 @@ public class GenerateDialog extends JDialog {
         javaProjectLabel = new javax.swing.JLabel();
         pomBtn = new javax.swing.JRadioButton();
         eclipseProjectBtn = new javax.swing.JRadioButton();
-        vc9Btn = new javax.swing.JRadioButton();
         pyHlProjectBtn = new javax.swing.JRadioButton();
         sphinxBtn = new javax.swing.JRadioButton();
 
@@ -255,15 +253,6 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(makefileBtn, gridBagConstraints);
 
-        vc8Btn.setText("VC8 Project");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        buttonsPanel.add(vc8Btn, gridBagConstraints);
-
         generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         generateLabel.setText("Files to be generated :");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -309,12 +298,21 @@ public class GenerateDialog extends JDialog {
 
         vc10Btn.setText("VC10 Project");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(vc10Btn, gridBagConstraints);
+
+        vc12Btn.setText("VC12 Project");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(vc12Btn, gridBagConstraints);
 
         windowsLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         windowsLabel.setText("Windows:");
@@ -372,25 +370,16 @@ public class GenerateDialog extends JDialog {
 
         eclipseProjectBtn.setText("Eclipse Project");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(eclipseProjectBtn, gridBagConstraints);
 
-        vc9Btn.setText("VC9 Project");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        buttonsPanel.add(vc9Btn, gridBagConstraints);
-
         pyHlProjectBtn.setText("Python Package");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
@@ -448,7 +437,7 @@ public class GenerateDialog extends JDialog {
             if (file.isDirectory()) {
                 //  Special check for Makefile
                 if (makefileBtn.getSelectedObjects() != null ||
-                        vc9Btn.getSelectedObjects() != null ||
+                        vc12Btn.getSelectedObjects() != null ||
                         vc10Btn.getSelectedObjects() != null) {
                     
                     int ret = manageMakefile();
@@ -599,9 +588,8 @@ public class GenerateDialog extends JDialog {
 
         if (devclass.checkIfAbstractClass()) {
             makefileBtn.setEnabled(false);
-            vc8Btn.setEnabled(false);
-            vc9Btn.setEnabled(false);
             vc10Btn.setEnabled(false);
+            vc12Btn.setEnabled(false);
             javaProjectLabel.setVisible(false);
             eclipseProjectBtn.setVisible(false);
             pyHlProjectBtn.setVisible(false);
@@ -615,9 +603,8 @@ public class GenerateDialog extends JDialog {
                 makefileBtn.setVisible(true);
                 windowsLabel.setVisible(true);
                 linuxLabel.setVisible(true);
-                vc8Btn.setVisible(true);
-                vc9Btn.setVisible(true);
-                vc10Btn.setVisible(true);
+                vc10Btn.setVisible(false);  //  Not managed anymore
+                vc12Btn.setVisible(true);
                 javaProjectLabel.setVisible(true);
                 eclipseProjectBtn.setVisible(true);
                 pyHlProjectBtn.setVisible(false);
@@ -629,9 +616,8 @@ public class GenerateDialog extends JDialog {
                 makefileBtn.setVisible(true);
                 windowsLabel.setVisible(false);
                 linuxLabel.setVisible(true);
-                vc8Btn.setVisible(false);
-                vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
+                vc12Btn.setVisible(false);
                 javaProjectLabel.setVisible(true);
                 eclipseProjectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(false);
@@ -643,9 +629,8 @@ public class GenerateDialog extends JDialog {
                 makefileBtn.setVisible(false);
                 windowsLabel.setVisible(false);
                 linuxLabel.setVisible(false);
-                vc8Btn.setVisible(false);
-                vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
+                vc12Btn.setVisible(false);
                 javaProjectLabel.setVisible(false);
                 eclipseProjectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(false);
@@ -657,9 +642,8 @@ public class GenerateDialog extends JDialog {
                 makefileBtn.setVisible(false);
                 windowsLabel.setVisible(false);
                 linuxLabel.setVisible(false);
-                vc8Btn.setVisible(false);
-                vc9Btn.setVisible(false);
                 vc10Btn.setVisible(false);
+                vc12Btn.setVisible(false);
                 javaProjectLabel.setVisible(false);
                 eclipseProjectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(true);
@@ -694,9 +678,8 @@ public class GenerateDialog extends JDialog {
 
         windowsLabel.setVisible(false);
         linuxLabel.setVisible(false);
-        vc8Btn.setVisible(false);
-        vc9Btn.setVisible(false);
         vc10Btn.setVisible(false);
+        vc12Btn.setVisible(false);
         docLabel.setVisible(false);
         htmlBtn.setVisible(false);
         makefileBtn.setVisible(true);
@@ -786,26 +769,26 @@ public class GenerateDialog extends JDialog {
 
         //  Check if Makefile or Win project must be overwritten
         boolean overwriteMakefile = false;
-        boolean overwriteVC9 = false;
+        boolean overwriteVC12 = false;
         boolean overwriteVC10 = false;
         boolean generate = false;
         if (makefileBtn.getSelectedObjects() != null) {
             overwriteMakefile = mustBeOverWritten(makefile);
         } else
             generate = true;
-        if (mode == PogoConst.SINGLE_CLASS && vc9Btn.getSelectedObjects() != null) {
-            overwriteVC9 = mustBeOverWritten("vc9_proj");
-        } else
-            generate = true;
         if (mode == PogoConst.SINGLE_CLASS && vc10Btn.getSelectedObjects() != null) {
             overwriteVC10 = mustBeOverWritten("vc10_proj");
+        } else
+            generate = true;
+        if (mode == PogoConst.SINGLE_CLASS && vc12Btn.getSelectedObjects() != null) {
+            overwriteVC12 = mustBeOverWritten("vc12_proj");
         } else
             generate = true;
 
         // Ask for additional files
         String path = outPathText.getText();
         if (mode == PogoConst.SINGLE_CLASS &&
-                (generate || overwriteMakefile || overwriteVC9 || overwriteVC10)) {
+                (generate || overwriteMakefile || overwriteVC12 || overwriteVC10)) {
             String lang = deviceClass.getPogoDeviceClass().getDescription().getLanguage();
             EList<AdditionalFile> files = deviceClass.getPogoDeviceClass().getAdditionalFiles();
             AdditionalFilesDialog dlg =
@@ -815,19 +798,19 @@ public class GenerateDialog extends JDialog {
         }
 
         if (overwriteMakefile) {
-            //  Rename Makefile to be overwritten by XPand
+            //  Rename Makefile to be overwritten by XTend
             File file = new File(path + "/" + makefile);
             if (!file.renameTo(new File(file.toString() + ".bck")))
                 System.err.println("Cannot rename " + file);
         }
-        if (overwriteVC9) {
-            //  Rename vc9_proj to be overwritten by XPand
-            File file = new File(path + "/vc9_proj");
+        if (overwriteVC12) {
+            //  Rename vc12_proj to be overwritten by XTend
+            File file = new File(path + "/vc12_proj");
             if (!file.renameTo(new File(file.toString() + ".bck")))
                 System.err.println("Cannot rename " + file);
         }
         if (overwriteVC10) {
-            //  Rename vc10_proj to be overwritten by XPand
+            //  Rename vc10_proj to be overwritten by XTend
             File file = new File(path + "/vc10_proj");
             if (!file.renameTo(new File(file.toString() + ".bck")))
                 System.err.println("Cannot rename " + file);
@@ -851,8 +834,7 @@ public class GenerateDialog extends JDialog {
     private javax.swing.JRadioButton pyHlProjectBtn;
     private javax.swing.JRadioButton sphinxBtn;
     private javax.swing.JRadioButton vc10Btn;
-    private javax.swing.JRadioButton vc8Btn;
-    private javax.swing.JRadioButton vc9Btn;
+    private javax.swing.JRadioButton vc12Btn;
     private javax.swing.JLabel warningLabel;
     private javax.swing.JPanel warningPanel;
     private javax.swing.JLabel windowsLabel;

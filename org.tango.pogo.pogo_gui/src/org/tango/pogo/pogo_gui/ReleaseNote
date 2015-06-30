@@ -9,6 +9,11 @@
 #-======================================================================
 
 
+Pogo-9.1.2 - 30/06/2015:
+	Visual C++ 12 project are available for Tango-9
+	Improve Python HL templates.
+	Add several missing types for properties.
+
 Pogo-9.1.0 - 12/05/2015:
 	Pogo is now compiled using java 1.7
 	Double cotes supported in class description and title,

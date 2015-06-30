@@ -114,7 +114,7 @@ public class Pogo {
             for (String filename : sourcefiles) {
                 //	Read source files
                 deviceClass = new DeviceClass(filename);
-                PogoDeviceClass pogoclass = deviceClass.getPogoDeviceClass();
+                PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
 
                 //	Check is from old Pogo model (not generated with OAW)
                 if (deviceClass.isOldPogoModel()) {
@@ -122,7 +122,7 @@ public class Pogo {
                 } else {
                     //	Set the file list to be generated and generate
                     deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate("Code files");
-                    OAWutils.getInstance().generate(pogoclass);
+                    OAWutils.getInstance().generate(pogoClass);
                 }
             }
         } catch (PogoException e) {
