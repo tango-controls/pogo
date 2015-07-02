@@ -126,7 +126,7 @@ public class Pogo {
                 }
             }
         } catch (PogoException e) {
-           System.err.println(e);
+           System.err.println(e.getMessage());
             pogoException = e;
         } catch (Exception e) {
             e.printStackTrace();
@@ -160,7 +160,7 @@ public class Pogo {
                 }
             }
         } catch (PogoException e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
             pogoException = e;
         } catch (Exception e) {
             e.printStackTrace();
@@ -276,7 +276,7 @@ public class Pogo {
                     pogo.startPogoGUI();
             }
         } catch (PogoException e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
             System.exit(-1);
         } catch (Exception e) {
             e.printStackTrace();

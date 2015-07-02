@@ -52,6 +52,7 @@ import java.util.ArrayList;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class StateMachineDialog extends JDialog implements PogoConst {
     private PogoDeviceClass pogoClass;
     private int retVal = JOptionPane.OK_OPTION;
@@ -114,9 +115,35 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         createOwnComponents();
         titleLabel.setText(pogo_class.getName() + " State Machine");
         pack();
+        checkSize();
         ATKGraphicsUtils.centerDialog(this);
     }
 
+    //===============================================================
+    //===============================================================
+    private void checkSize() {
+        boolean resize = false;
+        int width  = panelScrollPane.getWidth();
+        int height = panelScrollPane.getHeight();
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = toolkit.getScreenSize();
+
+        if (width>0.7*screenSize.getWidth()) {
+            resize = true;
+            width = (int)(0.7*screenSize.getWidth());
+        }
+        if (height>0.7*screenSize.getHeight()) {
+            resize = true;
+            height = (int)(0.7*screenSize.getHeight());
+        }
+        if (resize) {
+            //  Increase a bit for bars, only if needed only in one direction
+            height += 20;
+            width  += 20;
+            panelScrollPane.setPreferredSize(new Dimension(width, height));
+            pack();
+        }
+    }
     //===============================================================
     //===============================================================
     private void addColumnHeader(int y, String str1, String str2, EList<State> states) {
@@ -327,7 +354,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+        panelScrollPane = new javax.swing.JScrollPane();
         mainPanel = new javax.swing.JPanel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -354,16 +381,16 @@ public class StateMachineDialog extends JDialog implements PogoConst {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
-        titleLabel.setFont(new java.awt.Font("Dialog", Font.BOLD, 18));
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         titleLabel.setText("State Machine");
         jPanel2.add(titleLabel);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
-        jScrollPane1.setViewportView(mainPanel);
+        panelScrollPane.setViewportView(mainPanel);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelScrollPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -482,6 +509,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JScrollPane panelScrollPane;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
     //===============================================================
