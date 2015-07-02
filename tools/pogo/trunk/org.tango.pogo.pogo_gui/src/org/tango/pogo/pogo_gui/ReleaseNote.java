@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Jun 30 08:05:52 CEST 2015)</Center><Br>\n" + 
+		"	(Generated Thu Jul 02 16:27:51 CEST 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.2a - 02/07/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve State machine dialog size management.<Br>\n" + 
+		"&nbsp; &nbsp; Add protected region at end of state machine file.<Br>\n" + 
 		"<li><b>Pogo-9.1.2 - 30/06/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Visual C++ 12 project are available for Tango-9<Br>\n" + 
 		"&nbsp; &nbsp; Improve Python HL templates.<Br>\n" + 

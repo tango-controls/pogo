@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.1.2a - 02/07/2015:
+	Improve State machine dialog size management.
+	Add protected region at end of state machine file.
+
 Pogo-9.1.2 - 30/06/2015:
 	Visual C++ 12 project are available for Tango-9
 	Improve Python HL templates.
