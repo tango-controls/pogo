@@ -85,6 +85,9 @@ class DeviceStateMachine {
 		//=================================================
 		«cls.commandsStateMachine»
 
+
+		«cls.protectedArea(cls.name+"StateAllowed"+".AdditionalMethods", "Additional Methods", true)»
+
 		}	//	End of namespace
 	'''
 
