@@ -62,7 +62,6 @@ public class MultiClassesTree extends JTree {
     private JFrame parent;
     private EditClasses editedClasses = new EditClasses();
     private boolean modified = false;
-    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private LoadedClasses loadedClasses = new LoadedClasses();
     private static JFileChooser chooser = null;
     private static final Color background = Color.white;
@@ -153,7 +152,6 @@ public class MultiClassesTree extends JTree {
         });
     }
     //======================================================
-
     /**
      * Manage event on clicked mouse on JTree object.
      *
@@ -172,6 +170,7 @@ public class MultiClassesTree extends JTree {
         int mask = evt.getModifiers();
 
         //  Check button clicked
+        //noinspection StatementWithEmptyBody
         if (evt.getClickCount() == 2 && (mask & MouseEvent.BUTTON1_MASK) != 0) {
         } else if ((mask & MouseEvent.BUTTON3_MASK) != 0) {
             if (node == root)
@@ -372,6 +371,35 @@ public class MultiClassesTree extends JTree {
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             treeModel.removeNodeFromParent(node);
             setModified(true);
+        }
+    }
+    //===============================================================
+    //===============================================================
+    public void moveNode(boolean up) {
+        DefaultMutableTreeNode node = getSelectedNode();
+        DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
+        int pos = 0;
+        for (int i = 0; i < parentNode.getChildCount(); i++)
+            if (parentNode.getChildAt(i).equals(node))
+                pos = i;
+
+        //	get position min and max (special case for commands state and status)
+        int pos_min = 0;
+        int pos_max = parentNode.getChildCount() - 1;
+        if (up) {
+            //	MOve Up
+            if (pos > pos_min) {
+                treeModel.removeNodeFromParent(node);
+                treeModel.insertNodeInto(node, parentNode, pos - 1);
+                setModified(true);
+            }
+        } else {
+            //	Move Down
+            if (pos < pos_max) {
+                treeModel.removeNodeFromParent(node);
+                treeModel.insertNodeInto(node, parentNode, pos + 1);
+                setModified(true);
+            }
         }
     }
 
@@ -683,6 +711,8 @@ public class MultiClassesTree extends JTree {
     static private final int COPY_CLASS = 3;
     static private final int PASTE_CLASS = 4;
     static private final int REMOVE_CLASS = 5;
+    static private final int MOVE_UP   = 6;
+    static private final int MOVE_DOWN = 7;
     static private final int OFFSET = 2;    //	Label And separator
 
     static private String[] menuLabels = {
@@ -692,6 +722,8 @@ public class MultiClassesTree extends JTree {
             "Copy  class",
             "Paste class",
             "Remove class",
+            "Move up",
+            "Move down",
     };
 
     private class MultiClassesTreePopupMenu extends JPopupMenu {
@@ -710,7 +742,7 @@ public class MultiClassesTree extends JTree {
         //=======================================================
         private void buildBtnPopupMenu() {
             title = new JLabel();
-            title.setFont(new java.awt.Font("Dialog", 1, 16));
+            title.setFont(new java.awt.Font("Dialog", Font.BOLD, 16));
             add(title);
             add(new JPopupMenu.Separator());
 
@@ -771,13 +803,9 @@ public class MultiClassesTree extends JTree {
 
             //	Reset all items
             for (int i = 0; i < menuLabels.length; i++)
-                getComponent(OFFSET + i).setVisible(false);
+                getComponent(OFFSET + i).setVisible(true);
 
-            getComponent(OFFSET + EDIT_CLASS).setVisible(true);
-            getComponent(OFFSET + ADD_CLASS).setVisible(true);
-            getComponent(OFFSET + COPY_CLASS).setVisible(true);
             getComponent(OFFSET + PASTE_CLASS).setVisible(pasteAvailable());
-            getComponent(OFFSET + REMOVE_CLASS).setVisible(true);
             show(tree, evt.getX(), evt.getY());
         }
 
@@ -809,6 +837,12 @@ public class MultiClassesTree extends JTree {
                     break;
                 case REMOVE_CLASS:
                     removeClass();
+                    break;
+                case MOVE_UP:
+                    moveNode(true);
+                    break;
+                case MOVE_DOWN:
+                    moveNode(false);
                     break;
             }
         }

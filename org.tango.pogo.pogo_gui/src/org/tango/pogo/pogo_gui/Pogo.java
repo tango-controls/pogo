@@ -193,7 +193,9 @@ public class Pogo {
     //===============================================================
     private void startPogoMulti() {
         try {
-            if (!Utils.osIsUnix())
+            String s = System.getenv("TEST_MODE");
+            boolean test = s!=null && s.equals("true");
+            if (!Utils.osIsUnix() && !test)
                 throw new PogoException("Multi classes project is available only on Linux");
             if (sourcefiles.size() == 0)
                 new MultiClassesPanel(new JFrame(), null).setVisible(true);
