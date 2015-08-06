@@ -1936,12 +1936,14 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
       */
     //===============================================================
     private static int[] columnSize = {
-            140, 70, 130, 60, 80, 40, 40, 400
+            140, 70, 130, 40, 40, 40, 80, 40, 40, 400
     };
     private static String[] columnTitle = {
             "Name",
             "Type",
             "DataType",
+            "Writable",
+            "Memorized",
             "Size",
             "Level",
             "Inherited",
@@ -1972,6 +1974,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             line.add(attribute.getName());
             line.add(attribute.getAttType());
             line.add(OAWutils.pogo2tangoType(attribute.getDataType().toString()));
+            String s = attribute.getRwType();
+            boolean b = (s!=null && s.toLowerCase().contains("write"));
+            line.add(Boolean.toString(b));
+            line.add(Boolean.toString(Utils.isTrue(attribute.getMemorized())));
+
+            //  Attribute size
             if (attribute.getAttType().equals("Scalar"))
                 line.add("1");
             else if (attribute.getAttType().equals("Spectrum"))
@@ -1979,6 +1987,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             else if (attribute.getAttType().equals("Image"))
                 line.add(attribute.getMaxX() + " x " + attribute.getMaxY());
 
+            //  Level
             String level = attribute.getDisplayLevel();
             if (level == null || level.length() == 0)
                 level = "OPERATOR";
