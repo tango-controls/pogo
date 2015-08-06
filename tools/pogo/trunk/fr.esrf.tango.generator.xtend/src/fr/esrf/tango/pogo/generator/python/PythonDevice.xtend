@@ -192,6 +192,7 @@ class PythonDevice implements IGenerator {
         «FOR attr: cls.attributes»
             «IF attr.read»    self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
         «ENDFOR»
+            «cls.setEventCriteria»
             «cls.protectedArea("init_device")»
     '''
 

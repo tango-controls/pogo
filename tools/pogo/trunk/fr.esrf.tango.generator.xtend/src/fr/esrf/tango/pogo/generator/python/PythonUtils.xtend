@@ -344,14 +344,14 @@ class PythonUtils {
             «setAttrProperty("Polling period", attr.polledPeriod)»
             «setAttrProperty("Display level", attr.displayLevel)»
             «IF attr.eventCriteria!=null»
-                «setAttrProperty("period", attr.eventCriteria.period)»
-                «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
-                «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
+            «setAttrProperty("period", attr.eventCriteria.period)»
+            «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
+            «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
             «ENDIF»
             «IF attr.evArchiveCriteria!=null»
-                «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
-                «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
-                «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
+            «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
+            «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
+            «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
              «ENDIF»
             «attr.isMemorized»
             } ],
@@ -383,37 +383,42 @@ class PythonUtils {
         «setAttrPropertyHL("memorized", attr.memorized, false)»
         «setAttrPropertyHL("hw_memorized", attr.memorizedAtInit, false)»
         «ENDIF»
+        «IF attr.polledPeriod.integerValue>0»
+        «setAttrPropertyHL("polled_period", attr.polledPeriod, false)»
+        «ENDIF»
         «IF attr.eventCriteria!=null»
-    «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
-    «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
-    «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
+        «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
+        «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
+        «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
         «ENDIF»
         «IF attr.evArchiveCriteria!=null»
-    «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
-    «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
-    «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
+        «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
+        «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
+        «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
         «ENDIF»
         «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»«ELSE»«ENDIF»
     )
     '''
     
     //======================================================
-    def setEventCriteria(Attribute attribute) '''
+    def setEventCriteria(PogoDeviceClass cls) '''
+     «FOR attribute: cls.attributes»
         «IF attribute.dataReadyEvent!=null»
             «IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
-                «attribute.name».set_data_ready_event(«attribute.dataReadyEvent.fire»);
+                self.set_data_ready_event("«attribute.name»", True);
             «ENDIF»
         «ENDIF»
         «IF attribute.changeEvent!=null»
             «IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
-                 «attribute.name».set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
+                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»);
             «ENDIF»
         «ENDIF»
         «IF attribute.archiveEvent!=null»
             «IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
-                 «attribute.name».set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
+                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»);
             «ENDIF»
         «ENDIF»
+     «ENDFOR»
     '''
     //======================================================
     /**

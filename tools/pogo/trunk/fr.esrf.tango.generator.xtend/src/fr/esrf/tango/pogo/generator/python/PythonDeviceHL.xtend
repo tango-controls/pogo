@@ -188,6 +188,7 @@ from PyTango import AttrQuality, AttrWriteType, DispLevel, DevState
     def pythonConstructors(PogoDeviceClass cls)  '''
 «IF true»    def init_device(self):
         Device.init_device(self)
+        «cls.setEventCriteria»
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("init_device")»«ENDIF»
 
     def always_executed_hook(self):
