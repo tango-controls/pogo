@@ -377,25 +377,8 @@ class PythonUtils {
         «setAttrPropertyHL("min_alarm", attr.properties.minAlarm, false)»
         «setAttrPropertyHL("max_warning", attr.properties.maxWarning, false)»
         «setAttrPropertyHL("min_warning", attr.properties.minWarning, false)»
-        «setAttrPropertyHL("delta_time", attr.properties.deltaTime, false)»
-        «setAttrPropertyHL("delta_value", attr.properties.deltaValue, false)»
-        «IF attr.memorized != null && attr.memorized == true»
-        «setAttrPropertyHL("memorized", attr.memorized, false)»
-        «setAttrPropertyHL("hw_memorized", attr.memorizedAtInit, false)»
-        «ENDIF»
-        «IF attr.polledPeriod.integerValue>0»
-        «setAttrPropertyHL("polled_period", attr.polledPeriod, false)»
-        «ENDIF»
-        «IF attr.eventCriteria!=null»
-        «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
-        «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
-        «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
-        «ENDIF»
-        «IF attr.evArchiveCriteria!=null»
-        «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
-        «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
-        «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
-        «ENDIF»
+        «setAttrPropertyHL("delta_t", attr.properties.deltaTime, false)»
+        «setAttrPropertyHL("delta_val", attr.properties.deltaValue, false)»
         «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»«ELSE»«ENDIF»
     )
     '''
