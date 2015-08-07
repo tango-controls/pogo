@@ -405,17 +405,17 @@ class PythonUtils {
      «FOR attribute: cls.attributes»
         «IF attribute.dataReadyEvent!=null»
             «IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
-                self.set_data_ready_event("«attribute.name»", True);
+                self.«attribute.name».set_data_ready_event(True)
             «ENDIF»
         «ENDIF»
         «IF attribute.changeEvent!=null»
             «IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
-                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»);
+                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
             «ENDIF»
         «ENDIF»
         «IF attribute.archiveEvent!=null»
             «IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
-                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»);
+                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
             «ENDIF»
         «ENDIF»
      «ENDFOR»
