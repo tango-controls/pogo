@@ -152,7 +152,7 @@ class DynamicAttributeUtils {
 		    	«cls.protectedArea("remove_" + attribute.name + "_dynamic_attribute")»
 				«IF attribute.attType.equals("Scalar")==false»
 					if (free_it)
-						delete ite->second;
+						delete[] ite->second;
 				«ENDIF»
 				«attribute.name»_data.erase(ite);
 			}
