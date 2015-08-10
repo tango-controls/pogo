@@ -421,7 +421,7 @@ class Attributes {
 		«ENDIF»
 	'''
 	//======================================================
-	//	Allocate memory for dynamic atrrbute 
+	//	Allocate memory for dynamic attribute 
 	//======================================================
 	def allocateDynamicAttrubutePointer(Attribute attribute) '''
 		«IF attribute.isSpectrum»
