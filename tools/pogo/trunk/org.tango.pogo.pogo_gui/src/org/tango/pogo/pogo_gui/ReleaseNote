@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.1.4 - 14/08/2015:
+	Remove DevVarBooleanArray for command (not supported)
+
 Pogo-9.1.3 - 04/08/2015:
 	Add move class on multi classes tree
 	Improve attribute summary
