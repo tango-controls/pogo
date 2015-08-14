@@ -361,6 +361,10 @@ public interface TangoConst {
  */
 	public static final int	Tango_CONST_DEV_STRING	=	20;
 /**
+ * Constant for the TANGO  boolean
+ */
+	public static final int	Tango_DEVVAR_BOOLEANARRAY	=	21;
+/**
  * Constant for the TANGO unsigned char type
  */
 	public static final int	Tango_DEV_UCHAR	=			22;

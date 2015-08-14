@@ -196,7 +196,8 @@ public class CommandDialog extends JDialog {
 
         for (int i = 0; i < TangoConst.Tango_CmdArgTypeName.length ; i++) {
             if (i != TangoConst.Tango_DEV_UCHAR &&
-                i != TangoConst.Tango_DEV_INT) {
+                i != TangoConst.Tango_DEV_INT &&
+                i != TangoConst.Tango_DEVVAR_BOOLEANARRAY) {
                 String typeName = TangoConst.Tango_CmdArgTypeName[i];
                 arginComboBox.addItem(typeName);
                 argoutComboBox.addItem(typeName);
