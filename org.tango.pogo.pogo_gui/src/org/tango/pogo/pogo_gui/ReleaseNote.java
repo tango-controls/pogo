@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Aug 14 14:52:29 CEST 2015)</Center><Br>\n" + 
+		"	(Generated Tue Aug 25 16:26:23 CEST 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.5 - 25/08/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Attribute name can start with '_'<Br>\n" + 
 		"<li><b>Pogo-9.1.4 - 14/08/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Remove DevVarBooleanArray for command (not supported)<Br>\n" + 
 		"<li><b>Pogo-9.1.3 - 04/08/2015:</b><Br>\n" + 
