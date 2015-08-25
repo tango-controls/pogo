@@ -390,6 +390,13 @@ public class Utils {
     //===============================================================
     //===============================================================
     public static String checkNameSyntax(String name, String type, boolean isStateStatus) throws PogoException {
+        return checkNameSyntax(name,type, isStateStatus, false);
+    }
+    //===============================================================
+    //===============================================================
+    public static String checkNameSyntax(String name,
+                                         String type, boolean isStateStatus, boolean isAttribute) throws
+            PogoException {
         if (name == null ||
                 name.length() == 0)
             throw new PogoException(type+" (" + name + ") not valid !");
@@ -412,9 +419,10 @@ public class Utils {
 
         char firstChar = name.toUpperCase().charAt(0);
         //	First char must be a letter
-        if (firstChar < 'A' || firstChar > 'Z')
-            throw new PogoException(name + ":\nSyntax error in " + type + ": The first char must be a letter");
-
+        if (firstChar < 'A' || firstChar > 'Z') {
+            if (!(firstChar == '_' && isAttribute)) //  '-' only for attribute
+               throw new PogoException(name + ":\nSyntax error in " + type + ": The first char must be a letter");
+        }
         //	Check for NOT state or Status
         if (!isStateStatus)
             if (name.equals("State") || name.equals("Status"))

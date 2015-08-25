@@ -1184,7 +1184,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         try {
             boolean overload = overloadBtn.getSelectedObjects() != null;
-            name = Utils.checkNameSyntax(name, "name", false);
+            name = Utils.checkNameSyntax(name, "name", false, true);
             if (pogo_gui.itemAlreadyExists(name, PogoConst.SCALAR_ATTRIBUTES))
                 throw new PogoException("Attribute \"" + name + "\" Already Exists !");
         } catch (PogoException e) {
