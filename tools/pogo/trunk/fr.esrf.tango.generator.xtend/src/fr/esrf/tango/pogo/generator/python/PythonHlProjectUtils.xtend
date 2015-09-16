@@ -94,10 +94,10 @@ Terminal or console by calling it :
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
 
-"""Release information for Starter Kit"""
+"""Release information for Python Package"""
 
-name = """«cls.name»"""
-version = "1.0"
+name = """tangods-«cls.name.toLowerCase()»"""
+version = "1.0.0"
 version_info = version.split(".")
 description = """«cls.description.description»"""
 author = "«cls.description.identification.author»"
@@ -1004,16 +1004,16 @@ pack = ['«cls.name»']
 
 setup(name=name,
       version=version,
-      description=description,
+      description='«cls.description.title»',
       packages=pack,
       scripts=['scripts/«cls.name»'],
       include_package_data=True,
       test_suite="test",
-      author=author,
-      author_email=author_email,
-      license=license,
-      long_description=long_description,
-      url=url,
+      author='«cls.description.identification.author»',
+      author_email='«cls.description.identification.author» at «cls.description.identification.emailDomain»',
+      license=«cls.description.license»,
+      long_description='«cls.description.description»',
+      url='www.tango-controls.org',
       platforms="«cls.description.identification.platform»"
       )
 '''
@@ -1259,9 +1259,10 @@ from «cls.name» import «cls.name»
 # Device test case
 class «cls.name»DeviceTestCase(DeviceTestCase):
     """Test case for packet generation."""
+    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "test_additionnal_import")»«ENDIF»
     device = «cls.name»
-    properties = {«FOR property : cls.deviceProperties»'«property.name»': '«property.defaultPropValue.get(0)»',«ENDFOR»
-                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«property.defaultPropValue.get(0)»'«ENDFOR»«ENDIF»}
+    properties = {«IF !cls.deviceProperties.empty»«FOR property : cls.deviceProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',«ENDFOR»«ENDIF»
+                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»'«ENDFOR»«ENDIF»}
     empty = None  # Should be []
 
     @classmethod
@@ -1269,7 +1270,7 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
         """Mock external libraries."""
         # Example : Mock numpy
         # cls.numpy = «cls.name».numpy = MagicMock()
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"mocking")»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_mocking")»«ENDIF»
 
     def test_properties(self):
         # test the properties
