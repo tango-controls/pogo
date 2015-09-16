@@ -202,9 +202,9 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 		}
 		//===================================================================================
 		private void fillGeneratedFilesListForPythonHL(String targetDir, String className) {
-			String	pr_py  = System.getProperty("pythonProj");
+			String	pr_py  = System.getProperty("python package");
 			if (pr_py.equals("true")) {
-				generatedFiles.add(targetDir+"/test/test_device.py");
+				generatedFiles.add(targetDir+"/test/" + className + "_test.py");
 				generatedFiles.add(targetDir+"/"+className + "/" + className + ".py");
 			}
 			else {			

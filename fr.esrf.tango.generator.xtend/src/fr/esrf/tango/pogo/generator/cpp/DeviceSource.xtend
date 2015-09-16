@@ -298,7 +298,7 @@ class DeviceSource {
 		{
 			«IF cls.dynamicAttributes.size>0»
 				//	Example to add dynamic attribute:
-				//	Copy inside the folowing protected area to instanciate at startup.
+				//	Copy inside the following protected area to create instance(s) at startup.
 				«FOR Attribute attribute : cls.dynamicAttributes»
 					//	add_«attribute.name»_dynamic_attribute("My«attribute.name»Attribute");
 				«ENDFOR»
