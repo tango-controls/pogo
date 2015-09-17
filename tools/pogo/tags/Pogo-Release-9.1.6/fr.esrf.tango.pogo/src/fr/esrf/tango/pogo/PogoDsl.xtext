@@ -1,0 +1,442 @@
+//+======================================================================
+//
+// Project:   Tango
+//
+// Description:  source code for Tango code generator.
+//
+// $Author: verdier $
+//
+// Copyright (C) :  2004,2005,2006,2007,2008,2009,2009,2010,2011,2012,2013
+//					European Synchrotron Radiation Facility
+//                  BP 220, Grenoble 38043
+//                  FRANCE
+//
+// This file is part of Tango.
+//
+// Tango is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// Tango is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with Tango.  If not, see <http://www.gnu.org/licenses/>.
+//
+// $Revision: $
+// $Date:  $
+//
+// $HeadURL: $
+//
+//-======================================================================
+
+grammar fr.esrf.tango.pogo.PogoDsl with org.eclipse.xtext.common.Terminals
+
+generate pogoDsl "http://www.esrf.fr/tango/pogo/PogoDsl"
+
+PogoSystem:
+	(imports+=Import)*
+	(classes+=PogoDeviceClass)*
+	(multiClasses+=PogoMultiClasses)*;
+
+Import:
+	"import" importURI=STRING;
+//==============================================
+//	Multi Classes definition
+//==============================================
+PogoMultiClasses:
+	pogoRevision = ID						//	To check Pogo revision when xmi has been created
+	"multiclasses" name=ID
+	"{"
+		sourcePath  = STRING
+		description = STRING
+		title       = STRING
+		license     = STRING
+		copyright   = STRING
+		"classes:"
+	    	(classes+=OneClassSimpleDef)
+	
+		filestogenerate = STRING			//	File(s) to generate (code, makefile,....)
+		preferences     = Preferences		//	Preferences (for programer, for site or at run time)
+	"}"
+;
+
+//
+//	One class simple definition
+//
+OneClassSimpleDef:
+	classname  = STRING
+	sourcePath = STRING
+	hasDynamic = Boolean
+	pogo6      = Boolean
+	"inheritances:"
+	   	(inheritances+=Inheritance)			//	inheritance class definitions
+	"parentClasses:"
+		(parentClasses+=STRING)				//	Used only by graphical display
+	"additionalFiles:"
+		(additionalFiles+=AdditionalFile)*	//	Programmer's additional files to be added in Makefile (utils, threads,...)
+;
+
+//==============================================
+//	Class definition
+//==============================================
+PogoDeviceClass:
+	"deviceclass" name=ID (isAbstract?="abstract")? ("extends" baseClass=[PogoDeviceClass])?
+	"{"
+		pogoRevision = ID						//	To check Pogo revision when xmi has been created
+		
+		institute = ID							//	For future specific features 
+
+		"description:"							//	Class information
+			(description=ClassDescription)
+
+		"classProperties:"						//	Class property list
+			(classProperties+=Property)*
+
+		"deviceProperties:"						//	Device Property list
+			(deviceProperties+=Property)*
+
+		"commands:"								//	Device static command list
+			(commands+=Command)*
+
+		"dynamicCommands:"						//	Device dynamic command list
+			(dynamicCommands+=Command)*
+
+		"attributes:"							//	Device static attribute list
+			(attributes+=Attribute)*
+
+		"dynamicAttributes:"					//	Device dynamic attribute list
+			(dynamicAttributes+=Attribute)*
+
+		"forwardedAttributes:"					//	Device forwarded attribute list
+			(forwardedAttributes+=ForwardedAttribute)*
+
+		"pipes:"								//	Device pipe list
+			(pipes+=Pipe)*
+
+		"states:"								//	Device state list
+			(states+=State)*
+		
+		preferences = Preferences				//	Preferences (for programmer, for site or at run time)
+
+		"additionalFiles:"						//	Programmer's additional files to be added in Makefile (utilities, threads,...)
+			(additionalFiles+=AdditionalFile)*
+
+		"overlodedPollPeriodObject:"			//	Object list (Command or Attribute) where polling period has been overloaded
+			(overlodedPollPeriodObject += OverlodedPollPeriodObject)*
+	"}";
+
+//
+//	Miscellaneous definitions
+//
+Language:		"Cpp"      | "Java"     | "Python";
+DisplayLevel:	"OPERATOR" | "EXPERT";
+AttrType:		"Scalar"   | "Spectrum" | "Image";
+RW_Type:		"READ"     | "WRITE"    | "READ_WRITE" | "READ_WITH_WRITE";
+Boolean:		"true"     | "false";
+
+
+//
+//	Class information
+//
+ClassDescription:
+	description    = STRING	//	Class description
+	title          = STRING	//	Short description
+	sourcePath     = STRING	//	Files location
+	"inheritances:"
+	    (inheritances+=Inheritance)	//	inheritance class definitions
+	language       = Language		//	Language to generate
+	filestogenerate= STRING			//	File(s) to generate (code, makefile,....)
+	identification = ClassIdentification
+	comments       = Comments
+	license        = STRING
+	copyright      = STRING
+	hasMandatoryProperty  = Boolean
+	hasConcreteProperty   = Boolean
+	hasAbstractCommand    = Boolean
+	hasAbstractAttribute  = Boolean
+	descriptionHtmlExists = Boolean	//	File from pogo-6
+;
+	
+//
+//	Inheritance Definition
+//
+Inheritance:
+	classname  = STRING
+	sourcePath = STRING;
+
+
+//
+//	Class identification
+//
+ClassIdentification:
+	contact      = STRING	//	email address of the person in charge
+	author       = STRING	//	get from contact
+	emailDomain  = STRING	//	get from contact
+
+	classFamily  = STRING	//	class family to be sorted in html doc
+	siteSpecific = STRING	//	If specific for an institute, name of this institute
+	platform     = STRING	//	OS where it can run
+	bus          = STRING	//	Hardware bus to control.
+	manufacturer = STRING	//	manufacturer if any
+	reference    = STRING	//	product reference if any 
+	"keyWords:"				//	List of key words
+	  (keyWords+=STRING)*	
+;
+//
+//	Comments Definition (code generated by java Pogo and not by xtext/xpand)
+//
+Comments:
+	commandsTable   = STRING;	//	!!!	Not used since xtend implementation !!!
+
+//
+//	Preferences (for programmer or for site)
+//
+Preferences:
+	docHome       =  STRING
+	makefileHome  =  STRING
+	installHome   =  STRING
+	htmlVersion   =  Boolean;	//	Used by web automat to manage tag version
+
+//
+//	State Definition
+//
+State:
+	name        = ID
+	description = STRING
+	status      = InheritanceStatus;
+
+//
+//	Property Definition
+//
+Property:
+	name        = ID
+	type        = PropType
+	status      = InheritanceStatus
+	mandatory   = Boolean
+	description = STRING
+	"defaultPropValue:"
+		(DefaultPropValue+=STRING)*;
+
+//	types could be one of the types
+PropType:
+	SimpleType | VectorType;
+	
+SimpleType:
+	BooleanType |
+	ShortType   | UShortType |
+	IntType     | UIntType   |
+	LongType    | ULongType  |
+	FloatType   | DoubleType |
+	StringType;
+
+VectorType:	
+	ShortVectorType |
+	IntVectorType   |
+	LongVectorType  |
+	ULongVectorType |
+	FloatVectorType |
+	DoubleVectorType|
+	StringVectorType;
+
+
+InheritanceStatus:
+	abstract     = Boolean	//	is abstract or inherited from abstract
+	inherited    = Boolean	//	is inherited
+	concrete     = Boolean	//	is concrete or overloaded
+	concreteHere = Boolean	//	is concrete or overloaded in this class
+	hasChanged   = STRING;	//	What has changed (dataType, attType, RWtype)
+
+
+//
+//	Command Definition
+//
+Command:
+		name         = ID
+		argin        = Argument
+		argout       = Argument 
+		description  = STRING
+		status       = InheritanceStatus
+		execMethod   = STRING 
+		displayLevel = DisplayLevel
+		polledPeriod = STRING
+		isDynamic    = Boolean
+		"excludedStates:"
+			(excludedStates+=STRING)*
+;
+
+
+Argument:
+	type=Type description=STRING; 
+
+//
+//	Attribute Definition
+//
+Attribute:
+	name              = ID
+	attType           = AttrType
+	dataType          = Type
+	rwType            = RW_Type
+	displayLevel      = DisplayLevel
+	polledPeriod      = STRING
+	maxX              = STRING
+	maxY              = STRING
+	associatedAttr    = STRING
+	memorized         = Boolean
+	memorizedAtInit   = Boolean
+	changeEvent       = FireEvents
+	archiveEvent      = FireEvents
+	dataReadyEvent    = FireEvents
+	status            = InheritanceStatus
+	properties        = AttrProperties
+	allocReadMember   = Boolean
+	isDynamic         = Boolean
+	eventCriteria     = EventCriteria
+	evArchiveCriteria = EventCriteria
+	
+	"enumLabels:"
+		(enumLabels+=STRING)*
+	"readExcludedStates:"
+		(readExcludedStates+=STRING)*
+	"writeExcludedStates:"
+		(writeExcludedStates+=STRING)*
+;
+
+ForwardedAttribute:
+	name   = ID
+	label  = STRING
+	status            = InheritanceStatus
+;
+
+
+FireEvents:
+	fire             = Boolean
+	libCheckCriteria = Boolean;
+
+EventCriteria:
+	relChange = STRING
+	absChange = STRING
+	period    = STRING;
+
+//
+//	Attribute Properties Definition
+//
+AttrProperties:
+	description   = STRING
+	label         = STRING
+	unit          = STRING
+	standardUnit  = STRING
+	displayUnit   = STRING
+	format        = STRING
+	maxValue      = STRING
+	minValue      = STRING
+	maxAlarm      = STRING
+	minAlarm      = STRING
+	maxWarning    = STRING
+	minWarning    = STRING
+	deltaTime     = STRING
+	deltaValue    = STRING;
+
+//
+//	Additional files (not Tango classes)
+//
+AdditionalFile:
+	name   = STRING
+	path   = STRING;
+
+//
+//	Object (Command or Attribute) where polling period has been overloaded
+//
+OverlodedPollPeriodObject:
+	name       = STRING
+	type       = STRING	//	command or attribute
+	pollPeriod = STRING
+;
+
+
+//
+//	Pipe definition
+//
+Pipe:
+	name          = STRING
+	description   = STRING
+	label         = STRING
+	rwType        = RW_PipeType
+	displayLevel  = DisplayLevel
+	"readExcludedStates:"
+		(readExcludedStates+=STRING)*
+	"writeExcludedStates:"
+		(writeExcludedStates+=STRING)*
+;
+
+RW_PipeType: "READ"  |  "READ_WRITE";
+
+
+//
+//	types could be one of the types
+//
+Type:
+	VoidType   | BooleanType |
+	ShortType  | UShortType  |
+	IntType    | UIntType    |
+	FloatType  | DoubleType  |
+	StringType |
+	
+	CharArrayType  | ShortArrayType | UShortArrayType |
+	IntArrayType   | UIntArrayType  | FloatArrayType  |
+	DoubleArrayType| StringArrayType| LongStringArrayType |
+	DoubleStringArrayType |
+	
+	StateType      | ConstStringType| BooleanArrayType |
+	LongType       | ULongType      | UCharType        |
+	LongArrayType  | ULongArrayType |
+	DevIntType     | EncodedType    | EnumType
+;
+	
+//
+//	Tango type defined by IDL.
+//
+VoidType:				{VoidType} "void";
+BooleanType:			{BooleanType} "boolean";
+ShortType:				{ShortType} "short";
+UShortType:				{UShortType} "ushort";
+IntType:				{IntType} "int";
+UIntType:				{UIntType} "uint";
+FloatType:				{FloatType} "float";
+DoubleType:				{DoubleType} "double";
+StringType:				{StringType} "string";
+
+CharArrayType:			{CharArrayType} "DevVarCharArray";
+ShortArrayType:			{ShortArrayType} "DevVarShortArray";
+UShortArrayType:		{UShortArrayType} "DevVarUShortArray";
+IntArrayType:			{IntArrayType} "DevVarLongArray";
+UIntArrayType:			{UIntArrayType} "DevVarULongArray";
+FloatArrayType:			{FloatArrayType} "DevVarFloatArray";
+DoubleArrayType:		{DoubleArrayType} "DevVarDoubleArray";
+StringArrayType:		{StringArrayType} "DevVarStringArray";
+LongStringArrayType:	{LongStringArrayType} "DevVarLongStringArray";
+DoubleStringArrayType:	{DoubleStringArrayType} "DevVarDoubleStringArray";
+StateType:				{StateType} "DevState";
+ConstStringType:		{ConstStringType} "ConstDevString";
+BooleanArrayType:		{BooleanArrayType} "DevVarBooleanArray";
+UCharType:				{UCharType} "DevUChar";
+
+LongType:				{LongType} "DevLong64";
+ULongType:				{ULongType} "DevULong64";
+LongArrayType:			{LongArrayType} "DevVarLong64Array";
+ULongArrayType:			{ULongArrayType} "DevVarULong64Array";
+DevIntType:				{DevIntType} "DevInt";
+EncodedType:			{EncodedType} "DevEncoded";
+EnumType:				{EnumType} "DevEnum";
+
+ShortVectorType:		{ShortVectorType} 	"vector<short>";
+IntVectorType:			{IntVectorType} 	"vector<int>";
+LongVectorType:			{IntVectorType} 	"vector<long>";
+ULongVectorType:		{IntVectorType} 	"vector<ulong>";
+FloatVectorType:		{FloatVectorType} 	"vector<float>";
+DoubleVectorType:		{DoubleVectorType} 	"vector<double>";
+StringVectorType:		{StringVectorType} 	"vector<string>";
+
