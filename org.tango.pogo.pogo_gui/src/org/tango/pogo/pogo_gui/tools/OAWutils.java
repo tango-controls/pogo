@@ -229,8 +229,8 @@ public class OAWutils {
         System.setProperty("className", pogoClass.getName());
         System.setProperty("targetLanguage", // do not parse code file if not generated !
                 (generateCodeFiles(pogoClass.getDescription()))? pogoClass.getDescription().getLanguage() : "");
-        System.setProperty("pythonProj",
-                pogoClass.getDescription().getFilestogenerate().contains("PyHL Project") ? "true" : "false");
+        System.setProperty("python package",
+                pogoClass.getDescription().getFilestogenerate().contains("Python Package") ? "true" : "false");
 
         Utils.manageHtmlDirectory(pogoClass, true);
         try {

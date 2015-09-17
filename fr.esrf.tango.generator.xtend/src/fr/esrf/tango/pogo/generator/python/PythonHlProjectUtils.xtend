@@ -44,6 +44,7 @@ import com.google.inject.Inject
 
 class PythonHlProjectUtils {
 	
+    @Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
     @Inject extension ProtectedAreaHL
     @Inject	extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions
     @Inject extension fr.esrf.tango.pogo.generator.python.PyUtils
@@ -1004,15 +1005,15 @@ pack = ['«cls.name»']
 
 setup(name=name,
       version=version,
-      description='«cls.description.title»',
+      description='«cls.description.description.oneLineString»',
       packages=pack,
       scripts=['scripts/«cls.name»'],
       include_package_data=True,
       test_suite="test",
       author='«cls.description.identification.author»',
       author_email='«cls.description.identification.author» at «cls.description.identification.emailDomain»',
-      license=«cls.description.license»,
-      long_description='«cls.description.description»',
+      license='«cls.description.license»',
+      long_description=long_description,
       url='www.tango-controls.org',
       platforms="«cls.description.identification.platform»"
       )
@@ -1262,7 +1263,7 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "test_additionnal_import")»«ENDIF»
     device = «cls.name»
     properties = {«IF !cls.deviceProperties.empty»«FOR property : cls.deviceProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',«ENDFOR»«ENDIF»
-                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»'«ENDFOR»«ENDIF»}
+                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',«ENDFOR»«ENDIF»}
     empty = None  # Should be []
 
     @classmethod

@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Aug 25 16:26:23 CEST 2015)</Center><Br>\n" + 
+		"	(Generated Thu Sep 17 09:24:39 CEST 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.6 - 17/09/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve Python HL templates once more.<Br>\n" + 
 		"<li><b>Pogo-9.1.5 - 25/08/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Attribute name can start with '_'<Br>\n" + 
 		"<li><b>Pogo-9.1.4 - 14/08/2015:</b><Br>\n" + 

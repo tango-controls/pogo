@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.1.6 - 17/09/2015:
+	Improve Python HL templates once more.
+
 Pogo-9.1.5 - 25/08/2015:
 	Attribute name can start with '_'
 
