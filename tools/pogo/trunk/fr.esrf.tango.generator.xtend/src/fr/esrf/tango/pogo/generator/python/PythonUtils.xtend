@@ -89,7 +89,32 @@ class PythonUtils {
     		return str;
     	}
     }
-    
+     
+    def stringToPyth(String str){
+    	if (str != null)
+    	{
+	    	if (str == "true")
+	    	{
+	    		return "True";
+	    	}
+	    	else
+	    	{
+		    	if (str == "false")
+		    	{
+		    		return "False";
+		    	}
+		    	else
+		    	{
+	    			return str;
+		    	}
+	    	}
+    	}
+    	else
+    	{
+    		return str;
+    	}
+    }
+
     def commentMultiLinesPythonStr(String str){
         str.replaceAll("\n","\n# ");
     }
@@ -202,7 +227,7 @@ class PythonUtils {
         «IF isTrue(cmd.status.concreteHere)»    @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType», «ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
             @DebugIt()
             def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»    «IF !cmd.argout.type.voidType»    return «cmd.argout.type.defaultValue»«ELSE»    pass«ENDIF»«ENDIF»
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ELSE»pass«ENDIF»«ENDIF»
         
 		«ENDIF»
 '''
@@ -218,8 +243,8 @@ class PythonUtils {
     
     def commandMethodStateMachineHL(PogoDeviceClass cls, Command cmd) '''
 		def is_«cmd.name»_allowed(self):
-		        return «cmd.excludedStates.ifContentFromListPythonHL»
-		    
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"is_" + cmd.name + "_allowed", "return " + cmd.excludedStates.ifContentFromListPythonHL, false)»«ELSE»return «cmd.excludedStates.ifContentFromListPythonHL»«ENDIF»
+		
 '''
     
     def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
@@ -259,15 +284,39 @@ class PythonUtils {
 		    return state_ok
 		    
     '''
-    
+    def readWriteStateMachine(PogoDeviceClass cls, Attribute attribute)
+    {
+    	if (!attribute.readExcludedStates.empty)
+    	{
+    		if (!attribute.writeExcludedStates.empty)
+    		{
+    			return "if attr==attr.READ_REQ:\n    return " + attribute.readExcludedStates.ifContentFromListPythonHL + "\nelse:\n    return " + attribute.writeExcludedStates.ifContentFromListPythonHL;
+    		}
+    		else
+    		{
+    			return "if attr==attr.READ_REQ:\n    return " + attribute.readExcludedStates.ifContentFromListPythonHL + "\nelse:\n    return True";
+    		}
+    		
+    	}
+    	else
+    	{
+    		
+    		if (!attribute.writeExcludedStates.empty)
+    		{
+    			return "if attr==attr.READ_REQ:\n    return True\nelse:\n    return " + attribute.writeExcludedStates.ifContentFromListPythonHL;
+    		}
+    		else
+    		{
+    			return "if attr==attr.READ_REQ:\n    return True\nelse:\n    return True";
+    		}
+    	}
+    }
+
     def attributeMethodStateMachineHL(PogoDeviceClass cls, Attribute attribute) '''
 		def is_«attribute.name»_allowed(self, attr):
-		    «IF attribute.rwType.equals("READ")»    return «attribute.readExcludedStates.ifContentFromListPythonHL»«ENDIF»
-		    «IF attribute.rwType.equals("WRITE")»    return «attribute.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»
-		        «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»if attr==attr.READ_REQ:
-		            return «IF !attribute.readExcludedStates.empty»«attribute.readExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»
-		        else:
-		            return «IF !attribute.writeExcludedStates.empty»«attribute.writeExcludedStates.ifContentFromListPythonHL»«ELSE»true«ENDIF»«ENDIF»
+        «IF attribute.rwType.equals("READ")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + attribute.name + "_allowed","return " + attribute.readExcludedStates.ifContentFromListPythonHL, false)»«ELSE»return «attribute.readExcludedStates.ifContentFromListPythonHL»«ENDIF»«ENDIF»
+        «IF attribute.rwType.equals("WRITE")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + attribute.name + "_allowed","return " + attribute.writeExcludedStates.ifContentFromListPythonHL, false)»«ELSE»return «attribute.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»«ENDIF»
+        «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + attribute.name + "_allowed",cls.readWriteStateMachine(attribute), false)»«ELSE»«cls.readWriteStateMachine(attribute)»«ENDIF»«ENDIF»
 
     '''
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
@@ -279,12 +328,12 @@ class PythonUtils {
     
     def pythonPropertyClassHL(Property prop) '''
         «prop.name» = class_property(
-                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
+                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
             )
     '''
     def pythonPropertyDeviceHL(Property prop) '''
         «prop.name» = device_property(
-                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0)»«ENDIF»«ENDIF»
+                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
             )
     '''
     

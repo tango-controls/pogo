@@ -49,7 +49,7 @@ public interface PogoConst {
      * Revision number and date
      */
     public static String revNumber =
-            "9.1.5  -  Tue Aug 25 16:26:23 CEST 2015";
+            "9.1.6  -  Thu Sep 17 09:24:38 CEST 2015";
 
     public static final int TANGO_PAGES = 0;
     public static final int POGO_PAGES = 1;

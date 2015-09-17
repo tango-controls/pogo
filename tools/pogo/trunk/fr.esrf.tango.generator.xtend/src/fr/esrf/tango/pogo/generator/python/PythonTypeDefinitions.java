@@ -295,7 +295,7 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof StringType)			def_val =  "''";
 		if (attr.getDataType() instanceof StateType)			def_val =  "PyTango.DevState.UNKNOWN";
 		if (attr.getDataType() instanceof ConstStringType)		def_val =  "''";
-		if (attr.getDataType() instanceof UCharType)			def_val =  "''";
+		if (attr.getDataType() instanceof UCharType)			def_val =  "0";
 		if (attr.getDataType() instanceof LongType)				def_val =  "0";
 		if (attr.getDataType() instanceof ULongType)			def_val =  "0";
 		if (attr.getDataType() instanceof DevIntType)			def_val =  "0";
@@ -362,7 +362,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof UShortType)				return "0";
 		if (type instanceof UIntType)				return "0";
 		if (type instanceof StringType)				return "\"\"";
-		if (type instanceof CharArrayType)			return "['']";
+		if (type instanceof CharArrayType)			return "[0]";
 		if (type instanceof ShortArrayType)			return "[0]";
 		if (type instanceof IntArrayType)			return "[0]";
 		if (type instanceof FloatArrayType)			return "[0.0]";
@@ -370,12 +370,12 @@ public class PythonTypeDefinitions {
 		if (type instanceof UShortArrayType)		return "[0]";
 		if (type instanceof UIntArrayType)			return "[0]";
 		if (type instanceof StringArrayType)		return "[\"\"]";
-		if (type instanceof LongStringArrayType)	return "[0], [\"\"]";
-		if (type instanceof DoubleStringArrayType)	return "[0.0], [\"\"]";
+		if (type instanceof LongStringArrayType)	return "[[0], [\"\"]]";
+		if (type instanceof DoubleStringArrayType)	return "[[0.0], [\"\"]]";
 		if (type instanceof StateType)				return "PyTango.DevState.UNKNOWN";
 		if (type instanceof ConstStringType)		return "\"\"";
 		if (type instanceof BooleanArrayType)		return "[False]";
-		if (type instanceof UCharType)				return "''";
+		if (type instanceof UCharType)				return "0";
 		if (type instanceof LongType)				return "0";
 		if (type instanceof ULongType)				return "0";
 		if (type instanceof LongArrayType)			return "[0]";
@@ -401,7 +401,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof UShortType)				return "return 0";
 		if (type instanceof UIntType)				return "return 0";
 		if (type instanceof StringType)				return "return \"\"";
-		if (type instanceof CharArrayType)			return "return ['']";
+		if (type instanceof CharArrayType)			return "return [0]";
 		if (type instanceof ShortArrayType)			return "return [0]";
 		if (type instanceof IntArrayType)			return "return [0]";
 		if (type instanceof FloatArrayType)			return "return [0.0]";
@@ -409,12 +409,12 @@ public class PythonTypeDefinitions {
 		if (type instanceof UShortArrayType)		return "return [0]";
 		if (type instanceof UIntArrayType)			return "return [0]";
 		if (type instanceof StringArrayType)		return "return [\"\"]";
-		if (type instanceof LongStringArrayType)	return "return [0], [\"\"]";
-		if (type instanceof DoubleStringArrayType)	return "return [0.0], [\"\"]";
+		if (type instanceof LongStringArrayType)	return "return [[0], [\"\"]]";
+		if (type instanceof DoubleStringArrayType)	return "return [[0.0], [\"\"]]";
 		if (type instanceof StateType)				return "return PyTango.DevState.UNKNOWN";
 		if (type instanceof ConstStringType)		return "return \"\"";
 		if (type instanceof BooleanArrayType)		return "return [False]";
-		if (type instanceof UCharType)				return "return ''";
+		if (type instanceof UCharType)				return "return 0";
 		if (type instanceof LongType)				return "return 0";
 		if (type instanceof ULongType)				return "return 0";
 		if (type instanceof LongArrayType)			return "return [0]";
