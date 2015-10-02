@@ -49,6 +49,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Utils {
@@ -262,8 +263,7 @@ public class Utils {
         if (commandName.equals("Status"))
             return "dev_status";
 
-        //	Else replace upper case by '_' char and lowcase
-        //---------------------------------------------------
+        //	Else replace upper case by '_' char and lowercase
         String str = "";
         for (int i = 0; i < commandName.length(); i++) {
             if (commandName.charAt(i) >= 'A' && commandName.charAt(i) <= 'Z') { //	if upper case
@@ -273,7 +273,6 @@ public class Utils {
                         str += '_';
                 }
                 //	Set it to lower case
-                //---------------------------
                 str += (char) (commandName.charAt(i) + ('a' - 'A'));
             } else
                 str += commandName.charAt(i);
@@ -614,13 +613,12 @@ public class Utils {
     //===============================================================
     public static void executeShellCmdAndReturn(String cmd)
             throws IOException {
-        Process proc = Runtime.getRuntime().exec(cmd);
+        Process process = Runtime.getRuntime().exec(cmd);
 
-        // get command's output stream and
+        // get command output stream and
         // put a buffered reader input stream on it.
-        //-------------------------------------------
-        InputStream istr = proc.getInputStream();
-        new BufferedReader(new InputStreamReader(istr));
+        InputStream inputStream = process.getInputStream();
+        new BufferedReader(new InputStreamReader(inputStream));
 
         // do not read output lines from command
         // Do not check its exit value
@@ -698,6 +696,104 @@ public class Utils {
             }
         }
          ****************/
+    }
+    //===============================================================
+    //===============================================================
+    private static String getAbsolutePath(String path) {
+        //  Check original path
+        File file = new File(path);
+        if (file.isFile()) {
+            //  If file, get only pah
+            return file.getParent();
+        }
+        else
+            return file.getAbsolutePath();
+    }
+    //===============================================================
+    /**
+     * Compute relative path between a path and a reference
+     * @param path          specified path
+     * @param referencePath reference path
+     * @return the relative path
+     */
+    //===============================================================
+    public static String getRelativePath(String path, String referencePath) {
+        String separator = System.getProperty("file.separator");
+        path = getAbsolutePath(path);
+        referencePath = getAbsolutePath(referencePath);
+
+        StringTokenizer stk = new StringTokenizer(path, separator);
+        List<String>    pathList = new ArrayList<String>();
+        while (stk.hasMoreTokens()) pathList.add(stk.nextToken());
+        stk = new StringTokenizer(referencePath, separator);
+        List<String>    refList = new ArrayList<String>();
+        while (stk.hasMoreTokens()) refList.add(stk.nextToken());
+
+        //  Special case for Windows
+        //  If file come from different disk (e.g. c: end d:)
+        if (refList.get(0).endsWith(":") && pathList.get(0).endsWith(":")) {
+            if (refList.get(0).equalsIgnoreCase(pathList.get(0))==false) {
+                //  Cannot compute a relative path
+                //      --> return absolute
+                return path;
+            }
+        }
+
+        //  Check common part from start
+        int idx;
+        if (refList.get(0).equalsIgnoreCase(pathList.get(0)))
+            idx = 1;
+        else
+            idx = 0;
+        while (idx<refList.size() && idx<pathList.size() &&
+               refList.get(idx).equals(pathList.get(idx)))
+            idx++;
+        //  Add up part
+        StringBuilder sb = new StringBuilder();
+        for (int i=idx ; i<refList.size() ; i++)
+            sb.append("..").append(separator);
+        //  Add down part
+        for (int i=idx ; i<pathList.size() ; i++)
+            sb.append(pathList.get(i)).append(separator);
+
+        //  Remove last separator
+        String relative = sb.toString();
+        if (relative.endsWith(separator))
+            relative = relative.substring(0, relative.length()-1);
+
+        //  if no .. part add relative to ./
+        if (relative.startsWith("..")==false)
+            relative = "./"+relative;
+
+        //  Convert to Linux format
+        relative = strReplace(relative, "\\", "/");
+        return relative;
+    }
+    //===============================================================
+    /**
+     * Compute an absolute path with a reference path and a relative path
+     * @param relativePath  relative path
+     * @param referencePath reference path
+     * @return the absolute path
+     */
+    //===============================================================
+    public static String getAbsolutePath(String relativePath, String referencePath) {
+        String separator = System.getProperty("file.separator");
+        referencePath = getAbsolutePath(referencePath);
+
+        //  Then build absolute path
+        return new File(referencePath+separator+relativePath).getAbsolutePath();
+    }
+    //===============================================================
+    //===============================================================
+    public static void main(String[] args) {
+        String relative  = "../../CounterTimer/trunk/src";
+        String reference = "Y:/tango/tmp/pascal/rel_path/SimCounterTimer/trunk/SimCounterTimer.xmi";
+        //String path    = "y:/tango/tmp/pascal/rel_path/SimCounterTimer/trunk/abstract";
+        String path      = "y:/tango/tmp/pascal/rel_path/CounterTimer/trunk/src";
+
+        System.out.println("Absolute: " + getAbsolutePath(relative, reference));
+        System.out.println("Relative: " + getRelativePath(path, reference));
     }
     //===============================================================
     //===============================================================
@@ -830,9 +926,7 @@ public class Utils {
         //====================================================
     }
 
-
     //======================================================
-
     /**
      * MyCompare class to sort collection
      */

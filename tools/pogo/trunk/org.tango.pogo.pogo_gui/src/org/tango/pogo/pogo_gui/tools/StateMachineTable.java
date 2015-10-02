@@ -467,7 +467,6 @@ public class StateMachineTable extends JTable {
         private JLabel title;
         private JTable table;
         private boolean forState; //    Else for attribute
-
         //======================================================
         private TablePopupMenu(JTable table) {
             this.table = table;
@@ -490,8 +489,6 @@ public class StateMachineTable extends JTable {
                 }
             }
         }
-
-        //======================================================
         //======================================================
         private void showMenu(MouseEvent event, boolean forState) {
             this.forState = forState;
@@ -503,7 +500,6 @@ public class StateMachineTable extends JTable {
                 show(table, event.getX(), event.getY());
             }
         }
-
         //======================================================
         private void menuActionPerformed(ActionEvent evt) {
             //	Check component source

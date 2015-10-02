@@ -17,8 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Oct 02 09:25:45 CEST 2015)</Center><Br>\n" + 
+		"	(Generated Fri Oct 02 16:34:12 CEST 2015)</Center><Br>\n" + 
 		"<li><b>Pogo-9.1.7 - 02/10/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Manage relative path for inheritance and multiple classes project.<Br>\n" + 
 		"&nbsp; &nbsp; Improve State machine window.<Br>\n" + 
 		"<li><b>Pogo-9.1.6 - 17/09/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve Python HL templates once more.<Br>\n" + 

@@ -10,6 +10,7 @@
 
 
 Pogo-9.1.7 - 02/10/2015:
+	Manage relative path for inheritance and multiple classes project.
 	Improve State machine window.
 
 Pogo-9.1.6 - 17/09/2015:

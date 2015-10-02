@@ -784,22 +784,21 @@ public class PogoGUI extends JFrame {
     //=======================================================
     private boolean generateSourceFiles(ClassTree tree) {
         //	First time check output path
-        GenerateDialog dialog = new GenerateDialog(this);
+        GenerateDialog generateDialog = new GenerateDialog(this);
         DeviceClass deviceClass = tree.getDeviceClass();
 
         if (deviceClass == null)    //	No class defined in tree or cannot get it (ID is null)
             return true;
-        if (dialog.showDialog(deviceClass) == JOptionPane.OK_OPTION) {
+        if (generateDialog.showDialog(deviceClass) == JOptionPane.OK_OPTION) {
             //	Then generate code and save
             Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
             setCursor(cursor);
             try {
-                deviceClass = dialog.getDevClass();
+                deviceClass = generateDialog.getDevClass();
                 Utils.getInstance().startSplashRefresher(
                         "Generate class: " + deviceClass.getPogoDeviceClass().getName());
 
-                deviceClass.generate(tree.getDeletedObjects(),
-                        tree.getRenamedObjects());
+                deviceClass.generate(tree.getDeletedObjects(), tree.getRenamedObjects());
 
                 Utils.getInstance().stopSplashRefresher();
 

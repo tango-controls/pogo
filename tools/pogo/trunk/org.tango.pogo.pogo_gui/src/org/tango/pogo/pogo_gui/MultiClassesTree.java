@@ -68,13 +68,13 @@ public class MultiClassesTree extends JTree {
 
     //===============================================================
     //===============================================================
-    public MultiClassesTree(JFrame parent, PogoMultiClasses pmc) throws PogoException {
+    public MultiClassesTree(JFrame parent, PogoMultiClasses multiClasses) throws PogoException {
         super();
         this.parent = parent;
 
-        initComponenta();
-        buildTree(new TangoServer(pmc));
-        createClassNodes(root, pmc.getClasses());
+        initComponents();
+        buildTree(new TangoServer(multiClasses));
+        createClassNodes(root, multiClasses.getClasses());
         expandChildren(root);
         setSelectionPath(null);
     }
@@ -85,13 +85,13 @@ public class MultiClassesTree extends JTree {
         super();
         this.parent = parent;
 
-        initComponenta();
+        initComponents();
         buildTree(server);
     }
 
     //===============================================================
     //===============================================================
-    private void initComponenta() {
+    private void initComponents() {
         String homeDir = System.getenv("SOURCE_PATH");
         if (homeDir == null) {
             homeDir = System.getProperty("SOURCE_PATH");
@@ -179,7 +179,6 @@ public class MultiClassesTree extends JTree {
                 menu.showMenu(evt, (DeviceClass) o);
         }
     }
-
     //===============================================================
     //===============================================================
     private DeviceClass loadDeviceClass(OneClassSimpleDef simpleClass) throws PogoException {
@@ -193,7 +192,16 @@ public class MultiClassesTree extends JTree {
         File xmiFile = new File(xmiFileName);
         while (deviceClass == null) {
             try {
-                if (!xmiFile.exists()) throw new PogoException("No such file: " + xmiFile.getAbsolutePath());
+                if (xmiFile.exists()==false) {
+                    //  Check with relative path converted as absolute one
+                    //  Get multi classes file as reference
+                    TangoServer server = (TangoServer) root.getUserObject();
+                    String serverPath = server.sourcePath;
+                    String absolute = Utils.getAbsolutePath(xmiFileName, serverPath);
+                    xmiFile = new File(absolute);
+                    if (xmiFile.exists()==false)
+                        throw new PogoException("No such file: " + xmiFileName);
+                }
                 deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
                 if (!deviceClass.getPogoDeviceClass().getName().equals(simpleClass.getClassname()))
                     throw new PogoException(simpleClass.getClassname() + " file expected !");
