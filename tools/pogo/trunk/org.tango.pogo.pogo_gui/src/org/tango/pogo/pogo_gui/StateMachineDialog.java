@@ -38,10 +38,10 @@ package org.tango.pogo.pogo_gui;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.eclipse.emf.common.util.EList;
+import org.tango.pogo.pogo_gui.tools.StateMachineTable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 //===============================================================
 /**
@@ -55,51 +55,12 @@ import java.util.ArrayList;
 @SuppressWarnings("MagicConstant")
 public class StateMachineDialog extends JDialog implements PogoConst {
     private PogoDeviceClass pogoClass;
+    private StateMachineTable commandTable;
+    private StateMachineTable attributeTable;
+    private StateMachineTable pipeTable;
     private int retVal = JOptionPane.OK_OPTION;
-    private Buttons buttons = new Buttons();
-    private static final int COMMAND = 0;
-    private static final int READ_ATTRIBUTE = 1;
-    private static final int WRITE_ATTRIBUTE = 2;
-    private static final int READ_PIPE       = 3;
-    private static final int WRITE_PIPE      = 4;
 
-    //===============================================================
-    //===============================================================
-    private class Buttons extends ArrayList<BtnLine> {
-        private BtnLine getLine(String name, int type) {
-            for (BtnLine line : this)
-                if (line.name.equals(name) && line.type == type)
-                    return line;
-            return null;
-        }
-    }
-
-    //===============================================================
-    //===============================================================
-    private class BtnLine extends ArrayList<AllowedBtn> {
-        String name;
-        int type;
-
-        private BtnLine(String name, int type) {
-            this.name = name;
-            this.type = type;
-        }
-    }
-
-    //===============================================================
-    //===============================================================
-    private class AllowedBtn extends JRadioButton {
-        String name;
-
-        private AllowedBtn(String txt, String name) {
-            setText(txt);
-            this.name = name;
-        }
-    }
-    //===============================================================
-    //===============================================================
-
-
+    private static final int MAX_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
     //===============================================================
     /**
      * Creates new form StateMachineDialog
@@ -115,230 +76,73 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         createOwnComponents();
         titleLabel.setText(pogo_class.getName() + " State Machine");
         pack();
-        checkSize();
         ATKGraphicsUtils.centerDialog(this);
     }
-
     //===============================================================
-    //===============================================================
-    private void checkSize() {
-        boolean resize = false;
-        int width  = panelScrollPane.getWidth();
-        int height = panelScrollPane.getHeight();
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
-
-        if (width>0.7*screenSize.getWidth()) {
-            resize = true;
-            width = (int)(0.7*screenSize.getWidth());
-        }
-        if (height>0.7*screenSize.getHeight()) {
-            resize = true;
-            height = (int)(0.7*screenSize.getHeight());
-        }
-        if (resize) {
-            //  Increase a bit for bars, only if needed only in one direction
-            height += 20;
-            width  += 20;
-            panelScrollPane.setPreferredSize(new Dimension(width, height));
-            pack();
-        }
-    }
-    //===============================================================
-    //===============================================================
-    private void addColumnHeader(int y, String str1, String str2, EList<State> states) {
-        Font font = new Font("Dialog", Font.BOLD, 16);
-        int x = 0;
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.WEST;
-
-        JLabel
-                lbl = new JLabel(str1);
-        lbl.setFont(font);
-        gbc.insets = new Insets(15, 20, 0, 20);
-        gbc.gridx = x;
-        gbc.gridy = y++;
-        mainPanel.add(lbl, gbc);
-
-        lbl = new JLabel(str2);
-        lbl.setFont(font);
-        gbc.insets = new Insets(0, 20, 0, 20);
-        gbc.gridx = x++;
-        gbc.gridy = y;
-        mainPanel.add(lbl, gbc);
-
-        if (states != null)
-            for (State state : states) {
-                lbl = new JLabel(state.getName());
-                lbl.setFont(font);
-                gbc.insets = new Insets(0, 20, 0, 20);
-                gbc.gridx = x++;
-                gbc.gridy = y;
-                mainPanel.add(lbl, gbc);
-            }
-    }
-
-    //===============================================================
-    //===============================================================
-    private void addLineHeader(int y, String str) {
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.WEST;
-
-        JLabel lbl = new JLabel(str);
-        lbl.setFont(new Font("Dialog", 0, 12));
-        gbc.insets = new Insets(0, 20, 0, 0);
-        gbc.gridx = 0;
-        gbc.gridy = y;
-        mainPanel.add(lbl, gbc);
-    }
-
-    //===============================================================
-    //===============================================================
-    private AllowedBtn addAllowedButton(int x, int y,
-                                        State state,
-                                        EList<String> excludedStates) {
-        GridBagConstraints gbc = new GridBagConstraints();
-        AllowedBtn btn = new AllowedBtn("", state.getName());
-        gbc.gridx = x;
-        gbc.gridy = y;
-        gbc.insets = new Insets(0, 5, 0, 5);
-        btn.setSelected(true);
-        btn.setFont(new Font("Dialog", 0, 10));
-        mainPanel.add(btn, gbc);
-
-        //	Check if is excluded for state
-        for (String excluded : excludedStates)
-            if (state.getName().equals(excluded))
-                btn.setSelected(false);
-        return btn;
-    }
-    //===============================================================
-
     /**
      * Creates own components
      */
     //===============================================================
     private void createOwnComponents() {
-        EList<State> states = pogoClass.getStates();
-        int y = 0;
-
-        //-------------------------
-        //	Commands
-        //-------------------------
+        Dimension[] d =new Dimension[3];
         EList<Command> commands = pogoClass.getCommands();
         if (commands.size()>2) {
-            addColumnHeader(y, "Select Allowed", "Commands", states);
-            y += 2;
-            for (Command command : commands) {
-                if (!command.getName().equals("State") &&
-                        !command.getName().equals("Status")) {
-                    addCommandLine(y++, command, states);
+            commandTable = new StateMachineTable(pogoClass, StateMachineTable.COMMAND);
+            commandScrollPane.add(commandTable);
+            commandScrollPane.setViewportView(commandTable);
+            d[StateMachineTable.COMMAND] = commandTable.getDimension(this);
+            commandScrollPane.setPreferredSize(d[StateMachineTable.COMMAND]);
+        }
+        else
+            comandLabel.setVisible(false);
+
+        EList<Attribute> attributes = pogoClass.getAttributes();
+        if (!attributes.isEmpty()) {
+            attributeTable = new StateMachineTable(pogoClass, StateMachineTable.ATTRIBUTE);
+            attributeScrollPane.add(attributeTable);
+            attributeScrollPane.setViewportView(attributeTable);
+            d[StateMachineTable.ATTRIBUTE] = attributeTable.getDimension(this);
+            attributeScrollPane.setPreferredSize(d[StateMachineTable.ATTRIBUTE]);
+        }
+        else
+            attributeLabel.setVisible(false);
+
+        EList<Pipe> pipes = pogoClass.getPipes();
+        if (!pipes.isEmpty()) {
+            pipeTable = new StateMachineTable(pogoClass, StateMachineTable.PIPE);
+            pipeScrollPane.add(pipeTable);
+            pipeScrollPane.setViewportView(pipeTable);
+            d[StateMachineTable.PIPE] = pipeTable.getDimension(this);
+            pipeScrollPane.setPreferredSize(d[StateMachineTable.PIPE]);
+        }
+        else
+            pipeLabel.setVisible(false);
+
+        checkSize(d, new JScrollPane[]{
+                commandScrollPane, attributeScrollPane, pipeScrollPane});
+    }
+    //===============================================================
+    //===============================================================
+    private void checkSize(Dimension[] d, JScrollPane[] scrollPanes) {
+        //  Check total height
+        pack();
+        int height = getHeight();
+        if (height>MAX_HEIGHT) {
+            double ratio = (double) MAX_HEIGHT/height*0.8;  //  0.8 for fixed height components
+            for (int i=StateMachineTable.COMMAND ; i<=StateMachineTable.PIPE ; i++) {
+                //  if table exists
+                if (d[i]!=null && scrollPanes[i]!=null) {
+                    //  Max height ?
+                    if (d[i].height>(int)(ratio*StateMachineTable.MAX_HEIGHT)) {
+                        //  Reduce height
+                        d[i].height = (int)(ratio*StateMachineTable.MAX_HEIGHT);
+                        scrollPanes[i].setPreferredSize(d[i]);
+                    }
                 }
             }
         }
-
-        //-------------------------
-        //	Attributes
-        //-------------------------
-        EList<Attribute> attributes = pogoClass.getAttributes();
-        if (!attributes.isEmpty()) {
-            addColumnHeader(y, "Select Allowed", "Attributes", states);
-            y += 2;
-            for (Attribute attribute : attributes) {
-                addAttributeLine(y++, attribute, READ_ATTRIBUTE, states);
-                if (!attribute.getRwType().equals(AttrRWtypeArray[READ]))
-                    addAttributeLine(y++, attribute, WRITE_ATTRIBUTE, states);
-            }
-        }
-
-       //-------------------------
-        //	Pipes
-        //-------------------------
-        EList<Pipe> pipes = pogoClass.getPipes();
-        if (!pipes.isEmpty()) {
-            addColumnHeader(y, "Select Allowed", "Pipes", states);
-            y += 2;
-            for (Pipe pipe : pipes) {
-                addPipeLine(y++, pipe, READ_PIPE, states);
-                if (!pipe.getRwType().equals(AttrRWtypeArray[READ]))
-                    addPipeLine(y++, pipe, WRITE_PIPE, states);
-            }
-        }
-        //  Dummy to have insets at bottom
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(20, 0, 0, 0);
-        gbc.gridx = 0;
-        gbc.gridy = y;
-        mainPanel.add(new JLabel("  "), gbc);
-    }
-
-    //===============================================================
-    //===============================================================
-    private void addCommandLine(int y, Command cmd, EList<State> states) {
-        //	Create label with command name
-        addLineHeader(y, "  " + cmd.getName());
-
-        BtnLine line = new BtnLine(cmd.getName(), COMMAND);
-        EList<String> excludedStates = cmd.getExcludedStates();
-        //	Create radio button and store instance in vector
-        int x = 1;
-        for (State state : states)
-            line.add(addAllowedButton(x++, y, state, excludedStates));
-
-        //	store radio button instances in a vector
-        buttons.add(line);
-    }
-
-    //===============================================================
-    //===============================================================
-    private void addAttributeLine(int y, Attribute att, int attType, EList<State> states) {
-        String rwStr;
-        EList<String> excludedStates;
-        if (attType == READ_ATTRIBUTE) {
-            rwStr = " (Read)";
-            excludedStates = att.getReadExcludedStates();
-        } else {
-            rwStr = " (Write)";
-            excludedStates = att.getWriteExcludedStates();
-        }
-        //	Create label with attribute name
-        addLineHeader(y, "  " + att.getName() + rwStr);
-        BtnLine line = new BtnLine(att.getName(), attType);
-
-        //	Create radio button and store instance in vector
-        int x = 1;
-        for (State state : states)
-            line.add(addAllowedButton(x++, y, state, excludedStates));
-
-        //	store radio button instances in a vector
-        buttons.add(line);
     }
     //===============================================================
-    //===============================================================
-    private void addPipeLine(int y, Pipe pipe, int attType, EList<State> states) {
-        String rwStr;
-        EList<String> excludedStates;
-        if (attType == READ_PIPE) {
-            rwStr = " (Read)";
-            excludedStates = pipe.getReadExcludedStates();
-        } else {
-            rwStr = " (Write)";
-            excludedStates = pipe.getWriteExcludedStates();
-        }
-        //	Create label with pipe name
-        addLineHeader(y, "  " + pipe.getName() + rwStr);
-        BtnLine line = new BtnLine(pipe.getName(), attType);
-
-        //	Create radio button and store instance in vector
-        int x = 1;
-        for (State state : states)
-            line.add(addAllowedButton(x++, y, state, excludedStates));
-
-        //	store radio button instances in a vector
-        buttons.add(line);
-    }
-    //===============================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -348,14 +152,20 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        panelScrollPane = new javax.swing.JScrollPane();
-        mainPanel = new javax.swing.JPanel();
+        javax.swing.JPanel mainPanel = new javax.swing.JPanel();
+        comandLabel = new javax.swing.JLabel();
+        commandScrollPane = new javax.swing.JScrollPane();
+        attributeLabel = new javax.swing.JLabel();
+        attributeScrollPane = new javax.swing.JScrollPane();
+        pipeLabel = new javax.swing.JLabel();
+        pipeScrollPane = new javax.swing.JScrollPane();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -388,9 +198,53 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
-        panelScrollPane.setViewportView(mainPanel);
 
-        getContentPane().add(panelScrollPane, java.awt.BorderLayout.CENTER);
+        comandLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        comandLabel.setText("Select Allowed Commands");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        mainPanel.add(comandLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 10, 10);
+        mainPanel.add(commandScrollPane, gridBagConstraints);
+
+        attributeLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        attributeLabel.setText("Select Allowed Attributes");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        mainPanel.add(attributeLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 10, 10);
+        mainPanel.add(attributeScrollPane, gridBagConstraints);
+
+        pipeLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        pipeLabel.setText("Select Allowed Pipes");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        mainPanel.add(pipeLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 10, 10);
+        mainPanel.add(pipeScrollPane, gridBagConstraints);
+
+        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -441,66 +295,9 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     //===============================================================
     public PogoDeviceClass getPogoClass() {
-        //  Manage commands
-        EList<Command> commands = pogoClass.getCommands();
-        for (Command command : commands) {
-            BtnLine line = buttons.getLine(command.getName(), COMMAND);
-            if (line != null) {
-                EList<String> excluded = command.getExcludedStates();
-                excluded.clear();
-                for (AllowedBtn btn : line)
-                    if (btn.getSelectedObjects() == null)
-                        excluded.add(btn.name);
-            }
-        }
-
-        //  Manage attributes
-        EList<Attribute> attributes = pogoClass.getAttributes();
-        for (Attribute attribute : attributes) {
-            BtnLine line = buttons.getLine(attribute.getName(), READ_ATTRIBUTE);
-            if (line != null) {
-                EList<String> read_excluded = attribute.getReadExcludedStates();
-                read_excluded.clear();
-                for (AllowedBtn btn : line)
-                    if (btn.getSelectedObjects() == null)
-                        read_excluded.add(btn.name);
-            }
-            //  Write part
-            if (!attribute.getRwType().equals(AttrRWtypeArray[READ])) {
-                line = buttons.getLine(attribute.getName(), WRITE_ATTRIBUTE);
-                if (line != null) {
-                    EList<String> write_excluded = attribute.getWriteExcludedStates();
-                    write_excluded.clear();
-                    for (AllowedBtn btn : line)
-                        if (btn.getSelectedObjects() == null)
-                            write_excluded.add(btn.name);
-                }
-            }
-        }
-
-        //  Manage pipes
-        EList<Pipe> pipes = pogoClass.getPipes();
-        for (Pipe pipe : pipes) {
-            BtnLine line = buttons.getLine(pipe.getName(), READ_PIPE);
-            if (line != null) {
-                EList<String> read_excluded = pipe.getReadExcludedStates();
-                read_excluded.clear();
-                for (AllowedBtn btn : line)
-                    if (btn.getSelectedObjects() == null)
-                        read_excluded.add(btn.name);
-            }
-            //  Write part
-            if (pipe.getRwType().contains("WRITE")) {
-                line = buttons.getLine(pipe.getName(), WRITE_PIPE);
-                if (line != null) {
-                    EList<String> write_excluded = pipe.getWriteExcludedStates();
-                    write_excluded.clear();
-                    for (AllowedBtn btn : line)
-                        if (btn.getSelectedObjects() == null)
-                            write_excluded.add(btn.name);
-                }
-            }
-        }
+        if (commandTable!=null)     commandTable.updateExcluded();
+        if (attributeTable!=null)   attributeTable.updateExcluded();
+        if (pipeTable!=null)        pipeTable.updateExcluded();
         return pogoClass;
     }
 
@@ -508,8 +305,12 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JScrollPane panelScrollPane;
+    private javax.swing.JLabel attributeLabel;
+    private javax.swing.JScrollPane attributeScrollPane;
+    private javax.swing.JLabel comandLabel;
+    private javax.swing.JScrollPane commandScrollPane;
+    private javax.swing.JLabel pipeLabel;
+    private javax.swing.JScrollPane pipeScrollPane;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
     //===============================================================
