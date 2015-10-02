@@ -36,14 +36,17 @@
 
 package org.tango.pogo.pogo_gui;
 
+import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.packaging.ConfigurePackagingDialog;
 import org.tango.pogo.pogo_gui.packaging.Packaging;
 import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -115,7 +118,7 @@ public class MultiClassesPanel extends JFrame {
             }
         }
         catch(PogoException e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
     //=======================================================
@@ -167,23 +170,23 @@ public class MultiClassesPanel extends JFrame {
     private void customizeMenus() {
         fileMenu.setMnemonic('F');
         newItem.setMnemonic('N');
-        newItem.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK));
+        newItem.setAccelerator(KeyStroke.getKeyStroke('N', MouseEvent.CTRL_MASK));
         openItem.setMnemonic('O');
-        openItem.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK));
+        openItem.setAccelerator(KeyStroke.getKeyStroke('O', MouseEvent.CTRL_MASK));
         generateItem.setMnemonic('G');
-        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', Event.CTRL_MASK));
+        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', MouseEvent.CTRL_MASK));
         exitItem.setMnemonic('E');
-        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', Event.CTRL_MASK));
+        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', MouseEvent.CTRL_MASK));
 
         editMenu.setMnemonic('E');
         addItem.setMnemonic('A');
-        addItem.setAccelerator(KeyStroke.getKeyStroke('A', Event.CTRL_MASK));
+        addItem.setAccelerator(KeyStroke.getKeyStroke('A', MouseEvent.CTRL_MASK));
         removeItem.setMnemonic('R');
         removeItem.setAccelerator(KeyStroke.getKeyStroke(Event.DELETE, 0));
 
         helpMenu.setMnemonic('H');
         helpItem.setMnemonic('H');
-        helpItem.setAccelerator(KeyStroke.getKeyStroke('H', Event.CTRL_MASK));
+        helpItem.setAccelerator(KeyStroke.getKeyStroke('H', MouseEvent.CTRL_MASK));
 
         manageRecentMenu(null);
     }
@@ -423,17 +426,18 @@ public class MultiClassesPanel extends JFrame {
     //===============================================================
     //===============================================================
     public PogoMultiClasses loadXmiFile(String xmiFileName) throws PogoException {
-        PogoMultiClasses pmc = OAWutils.getInstance().loadMultiClassesModel(xmiFileName);
-        buildTree(pmc);
+        PogoMultiClasses multiClasses = OAWutils.getInstance().loadMultiClassesModel(xmiFileName);
+        multiClasses.setSourcePath(Utils.getPath(xmiFileName));
+        buildTree(multiClasses);
         manageRecentMenu(xmiFileName);
-        return pmc;
+        return multiClasses;
     }
 
     //=======================================================
     //=======================================================
-    private void buildTree(PogoMultiClasses pmc) {
+    private void buildTree(PogoMultiClasses multiClasses) {
         try {
-            tree = new MultiClassesTree(this, pmc);
+            tree = new MultiClassesTree(this, multiClasses);
             scrollPane.setViewportView(tree);
         } catch (PogoException e) {
             /* Has been canceled */
@@ -472,7 +476,14 @@ public class MultiClassesPanel extends JFrame {
             if (dialog.showDialog(multiClasses) == JOptionPane.OK_OPTION) {
                 //	Then generate code and save
                 setCursor(new Cursor(Cursor.WAIT_CURSOR));
-                multiClasses.setSourcePath(dialog.getPath());
+                String serverPath = dialog.getPath();
+                multiClasses.setSourcePath(serverPath);
+                //  Set relative path for each class.
+                EList<OneClassSimpleDef> classes = multiClasses.getClasses();
+                for (OneClassSimpleDef oneClass : classes) {
+                    String classPath = Utils.getRelativePath(oneClass.getSourcePath(), serverPath);
+                    oneClass.setSourcePath(classPath);
+                }
                 multiClasses.setFilestogenerate(dialog.getGenerated());
                 OAWutils.getInstance().generate(multiClasses);
                 tree.setModified(false);

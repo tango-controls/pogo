@@ -52,12 +52,12 @@ public class TangoServer {
     }
 
     //===========================================================
-    public TangoServer(PogoMultiClasses pmc) {
-        this.name = pmc.getName();
-        this.sourcePath = pmc.getSourcePath();
-        this.description = pmc.getDescription();
-        this.title = pmc.getTitle();
-        this.license = pmc.getLicense();
+    public TangoServer(PogoMultiClasses multiClasses) {
+        this.name = multiClasses.getName();
+        this.sourcePath = multiClasses.getSourcePath();
+        this.description = multiClasses.getDescription();
+        this.title = multiClasses.getTitle();
+        this.license = multiClasses.getLicense();
     }
 
     //===========================================================

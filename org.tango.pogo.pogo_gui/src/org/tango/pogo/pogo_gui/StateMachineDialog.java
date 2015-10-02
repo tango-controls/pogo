@@ -94,7 +94,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
             commandScrollPane.setPreferredSize(d[StateMachineTable.COMMAND]);
         }
         else
-            comandLabel.setVisible(false);
+            commandLabel.setVisible(false);
 
         EList<Attribute> attributes = pogoClass.getAttributes();
         if (!attributes.isEmpty()) {
@@ -160,7 +160,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         javax.swing.JPanel mainPanel = new javax.swing.JPanel();
-        comandLabel = new javax.swing.JLabel();
+        commandLabel = new javax.swing.JLabel();
         commandScrollPane = new javax.swing.JScrollPane();
         attributeLabel = new javax.swing.JLabel();
         attributeScrollPane = new javax.swing.JScrollPane();
@@ -199,13 +199,13 @@ public class StateMachineDialog extends JDialog implements PogoConst {
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
 
-        comandLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        comandLabel.setText("Select Allowed Commands");
+        commandLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        commandLabel.setText("Select Allowed Commands");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        mainPanel.add(comandLabel, gridBagConstraints);
+        mainPanel.add(commandLabel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -300,14 +300,13 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         if (pipeTable!=null)        pipeTable.updateExcluded();
         return pogoClass;
     }
-
     //===============================================================
     //===============================================================
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel attributeLabel;
     private javax.swing.JScrollPane attributeScrollPane;
-    private javax.swing.JLabel comandLabel;
+    private javax.swing.JLabel commandLabel;
     private javax.swing.JScrollPane commandScrollPane;
     private javax.swing.JLabel pipeLabel;
     private javax.swing.JScrollPane pipeScrollPane;
