@@ -388,6 +388,7 @@ class JavaDevice  implements IGenerator {
 		 * @param args program arguments (instance_name [-v[trace level]]  [-nodb [-dlist <device name list>] [-file=fileName]])
 		 */
 		public static void main(final String[] args) {
+			«cls.protectedArea("main")»
 			ServerManager.getInstance().start(args, «cls.name».class);
 			System.out.println("------- Started -------------");
 		}
