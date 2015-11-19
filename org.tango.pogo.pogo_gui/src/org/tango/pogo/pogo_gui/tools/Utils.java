@@ -45,10 +45,7 @@ import org.eclipse.emf.common.util.EList;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 
@@ -830,11 +827,71 @@ public class Utils {
     //===============================================================
 
 
+
+
+    //======================================================
+    //======================================================
+    private static HashMap<String, Color> foregroundMap = null;
+    public static Color getForeground4State(String stateName) {
+        if (foregroundMap==null) {
+            foregroundMap = new HashMap<String, Color>();
+            foregroundMap.put("ON", Color.black);
+            foregroundMap.put("OFF", Color.black);
+            foregroundMap.put("CLOSE", Color.black);
+            foregroundMap.put("OPEN", Color.black);
+            foregroundMap.put("INSERT", Color.black);
+            foregroundMap.put("EXTRACT", Color.black);
+            foregroundMap.put("MOVING", Color.white);
+            foregroundMap.put("STANDBY", Color.black);
+            foregroundMap.put("FAULT", Color.white);
+            foregroundMap.put("INIT", Color.black);
+            foregroundMap.put("RUNNING", Color.white);
+            foregroundMap.put("ALARM", Color.black);
+            foregroundMap.put("DISABLE", Color.black);
+            foregroundMap.put("UNKNOWN", Color.white);
+        }
+        Color color = foregroundMap.get(stateName);
+        if (color==null)
+            color = foregroundMap.get("UNKNOWN");
+        return color;
+    }
+    //======================================================
+    //======================================================
+    private static HashMap<String, Color> stateMap = null;
+    public static Color getColor4State(String stateName) {
+        if (stateMap==null) {
+            stateMap = new HashMap<String, Color>();
+            stateMap.put("ON", new java.awt.Color(0, 255, 0));          // Green
+            stateMap.put("OFF", new java.awt.Color(255, 255, 255));     // White
+            stateMap.put("CLOSE", new java.awt.Color(255, 255, 255));   // White
+            stateMap.put("OPEN", new java.awt.Color(0, 255, 0));        // Green
+            stateMap.put("INSERT", new java.awt.Color(255, 255, 255));  // White
+            stateMap.put("EXTRACT", new java.awt.Color(0, 255, 0));     // Green
+            stateMap.put("MOVING", new java.awt.Color(128, 160, 255));  // Light Blue
+            stateMap.put("STANDBY", new java.awt.Color(255, 255, 0));   // Yellow
+            stateMap.put("FAULT", new java.awt.Color(255, 0, 0));       // Red
+            stateMap.put("INIT", new java.awt.Color(204, 204, 122));    // Beige
+            stateMap.put("RUNNING", new java.awt.Color(0, 125, 0));     // Dark Green
+            stateMap.put("ALARM", new java.awt.Color(255, 140, 0));     // Orange
+            stateMap.put("DISABLE", new java.awt.Color(255, 0, 255));   // Magenta
+            stateMap.put("UNKNOWN", new java.awt.Color(125, 125, 125)); // Grey
+        }
+        Color color = stateMap.get(stateName);
+        if (color==null)
+            color = stateMap.get("UNKNOWN");
+        return color;
+    }
+    //======================================================
+    //======================================================
+
+
+
+
+
     private static Splash splash = null;
     private static boolean splashOn;
     private SplashRefresher splash_refresher;
     private static boolean useDisplay = true;
-
     //=======================================================
     //=======================================================
     private void createSplash() {
@@ -925,6 +982,9 @@ public class Utils {
         }
         //====================================================
     }
+
+
+
 
     //======================================================
     /**
