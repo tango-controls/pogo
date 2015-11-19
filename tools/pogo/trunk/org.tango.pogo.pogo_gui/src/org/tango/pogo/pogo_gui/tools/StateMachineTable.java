@@ -162,8 +162,11 @@ public class StateMachineTable extends JTable {
             width += w;
             tableColumn = (TableColumn) columnEnum.nextElement();
             tableColumn.setPreferredWidth(w);
+            //tableColumn.setHeaderRenderer(new LabelHeaderRenderer());
         }
         width += 20; // Scroll bar
+
+        getTableHeader().setDefaultRenderer(new LabelHeaderRenderer());
 
         //  Add listener on column headers
         getTableHeader().addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,7 +269,6 @@ public class StateMachineTable extends JTable {
 
 
     //===============================================================
-
     /**
      * Define a row item (command, read attribute, ....
      */
@@ -277,14 +279,12 @@ public class StateMachineTable extends JTable {
         private boolean display = false;
         private Boolean[] allowed;
         private EList<String> excluded;
-
         //===========================================================
         private RowItem(String name, EList<String> excluded) {
             this.name = name;
             this.excluded = excluded;
             manageAllowed(excluded);
         }
-
         //===========================================================
         private RowItem(String name, EList<String> excluded, boolean write) {
             this.name = name;
@@ -293,7 +293,6 @@ public class StateMachineTable extends JTable {
             this.excluded = excluded;
             manageAllowed(excluded);
         }
-
         //===========================================================
         private void manageAllowed(EList<String> excluded) {
             allowed = new Boolean[stateList.size()];
@@ -302,7 +301,6 @@ public class StateMachineTable extends JTable {
                 allowed[i++] = isAllowed(state.getName(), excluded);
             }
         }
-
         //===========================================================
         private boolean isAllowed(String stateName, EList<String> excluded) {
             boolean found = false;
@@ -312,25 +310,21 @@ public class StateMachineTable extends JTable {
             }
             return !found;
         }
-
         //===========================================================
         private void setAllowed(boolean b) {
             //  Do it for all
             for (int i = 0 ; i<allowed.length ; i++)
                 allowed[i] = b;
         }
-
         //===========================================================
         private void setAllowed(int index, boolean b) {
             //  Do it for one specified
             allowed[index] = b;
         }
-
         //===========================================================
         private void toggleAllowed(int index) {
             allowed[index] = !allowed[index];
         }
-
         //===========================================================
         private void updateExcluded() {
             excluded.clear();
@@ -342,7 +336,6 @@ public class StateMachineTable extends JTable {
                 i++;
             }
         }
-
         //===========================================================
         public String toString() {
             if (display)
@@ -357,7 +350,6 @@ public class StateMachineTable extends JTable {
 
 
     //=========================================================================
-
     /**
      * The Table model
      */
@@ -380,7 +372,6 @@ public class StateMachineTable extends JTable {
             else
                 return columnNames.get(columnIndex);
         }
-
         //==========================================================
         public Object getValueAt(int row, int column) {
             if (column==0)
@@ -391,7 +382,6 @@ public class StateMachineTable extends JTable {
             return rowItem.allowed[column];
         }
         //==========================================================
-
         /**
          * @param column the specified co;umn number
          * @return the cell class at first row for specified column.
@@ -412,7 +402,6 @@ public class StateMachineTable extends JTable {
 
 
     //=========================================================================
-
     /**
      * Renderer to set cell color
      */
@@ -422,9 +411,45 @@ public class StateMachineTable extends JTable {
         //==========================================================
         public LabelCellRenderer() {
             setFont(new Font("Dialog", Font.BOLD, 12));
-            setOpaque(true); //MUST do this for background to show up.
+            setOpaque(true);
         }
+        //==========================================================
+        public Component getTableCellRendererComponent(
+                JTable table, Object value,
+                boolean isSelected, boolean hasFocus,
+                int row, int column) {
+            /*
+            switch (column) {
+                case 0:
+                    setText(itemList.get(row).toString());
+                    setBackground(headerBackground);
+                    break;
+                default:
+                    setBackground(Color.green);
+                    break;
+            }
+            */
+            setText(itemList.get(row).toString());
+            setBackground(headerBackground);
+            return this;
+        }
+        //==========================================================
+    }
+    //=========================================================================
+    //=========================================================================
+    //=========================================================================
+    /**
+     * Renderer to set cell color
+     */
+    //=========================================================================
+    public class LabelHeaderRenderer extends JButton implements TableCellRenderer {
 
+        //==========================================================
+        public LabelHeaderRenderer() {
+            setFont(new Font("Dialog", Font.BOLD, 12));
+            setOpaque(true);
+            setBorder(new javax.swing.border.MatteBorder(null));
+        }
         //==========================================================
         public Component getTableCellRendererComponent(
                 JTable table, Object value,
@@ -432,12 +457,15 @@ public class StateMachineTable extends JTable {
                 int row, int column) {
             switch (column) {
                 case 0:
-                    setText(itemList.get(row).toString());
+                    setText("");
                     setBackground(headerBackground);
                     break;
+
                 default:
-                    setBackground(Color.white);
-                    break;
+                    String stateName = columnNames.get(column);
+                    setText(stateName);
+                    setBackground(Utils.getColor4State(columnNames.get(column)));
+                    setForeground(Utils.getForeground4State(columnNames.get(column)));
             }
             return this;
         }
@@ -445,6 +473,10 @@ public class StateMachineTable extends JTable {
     }
     //=========================================================================
     //=========================================================================
+
+
+
+
 
 
     //======================================================

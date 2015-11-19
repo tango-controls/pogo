@@ -45,6 +45,7 @@ import org.tango.pogo.pogo_gui.tools.PopupTable;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -68,11 +69,14 @@ public class StateDialog extends JDialog {
      * @param state  the state to be edited
      */
     //===============================================================
+    @SuppressWarnings("unchecked")
     public StateDialog(PogoGUI parent, State state) {
         super(parent, true);
         pogo_gui = parent;
         initComponents();
-        //  init combo boxe
+        //  init combo box
+        ComboBoxRenderer renderer = new ComboBoxRenderer();
+        typeComboBox.setRenderer(renderer);
         for (String stateName : TangoConst.Tango_DevStateName)
             typeComboBox.addItem(stateName);
         setState(state);
@@ -82,6 +86,29 @@ public class StateDialog extends JDialog {
         ATKGraphicsUtils.centerDialog(this);
     }
 
+    //===============================================================
+    //===============================================================
+    private class ComboBoxRenderer extends JLabel implements ListCellRenderer {
+        public ComboBoxRenderer() {
+            setOpaque(true);
+        }
+        @Override
+        public Component getListCellRendererComponent(JList list, Object value,
+                                                      int index, boolean isSelected,
+                                                      boolean cellHasFocus) {
+            String name = value.toString();
+
+            //  Set color for each object
+            setBackground(Utils.getColor4State(name));
+            setForeground(Utils.getForeground4State(name));
+            setText(name);
+
+            //  Set color for selection
+            list.setSelectionBackground(Utils.getColor4State(name));
+            list.setSelectionForeground(Utils.getForeground4State(name));
+            return this;
+        }
+    }
     //===============================================================
     //===============================================================
     private void manageInheritanceStatus(State state) {
@@ -219,8 +246,6 @@ public class StateDialog extends JDialog {
 
         getContentPane().add(centerPanel, "Center");
     }
-
-
     //======================================================
     //======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -319,8 +344,8 @@ public class StateDialog extends JDialog {
 
     //===============================================================
     /*
-      *	Manage the popup summary methods
-      */
+     *	Manage the popup summary methods
+     */
     //===============================================================
     private static int[] columnSize = {
             140, 40, 400

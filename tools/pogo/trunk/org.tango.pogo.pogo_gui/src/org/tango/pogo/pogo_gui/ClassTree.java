@@ -911,6 +911,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     states.add(state);
                 getSelectedNode().setUserObject(new PogoState(state));
                 setModified(true);
+                setSelectionPath(null);
             } else
                 return JOptionPane.CANCEL_OPTION;
         }
@@ -1179,6 +1180,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 new_node = new DefaultMutableTreeNode(new PogoState(state));
                 treeModel.insertNodeInto(new_node, collectionNode, collectionNode.getChildCount());
                 setModified(true);
+                setSelectionPath(null);
             }
         }
         else if (collectionNode.toString().contains("Forwarded")) {
@@ -2197,7 +2199,11 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     ((PogoPipe) userObject).manageDisplay(this);
                 }
                 else if (userObject instanceof PogoState) {
-                    ((PogoState) userObject).manageDisplay(this);
+                    // ToDo
+                    PogoState state = (PogoState) userObject;
+                    state.manageDisplay(this);
+                    setBackgroundNonSelectionColor(Utils.getColor4State(state.toString()));
+                    setForeground(Utils.getForeground4State(state.toString()));
                 }
                 else if (userObject instanceof PogoCollection) {
                     setFont(collecFont);
