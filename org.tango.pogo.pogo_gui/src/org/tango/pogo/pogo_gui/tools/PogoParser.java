@@ -138,13 +138,9 @@ public class PogoParser {
 
         int[] indexes = indexesOfProtectedZone(this_protected);
         if (indexes != null) {
-            StringBuilder sb =
-                    new StringBuilder(fileCode.substring(0, indexes[1]).trim()); // end of area
-            sb.append('\n');
-            sb.append(code);
-            sb.append('\n');
-            sb.append(fileCode.substring(indexes[1]));
-            fileCode = sb.toString();
+            fileCode =  fileCode.substring(0, indexes[1]).trim() + '\n' +
+                        code + '\n' +
+                        fileCode.substring(indexes[1]);
         } else
             System.err.println(this_protected + " not found");
     }
@@ -161,12 +157,9 @@ public class PogoParser {
 
         int[] indexes = indexesOfProtectedZone(thisProtected.toString());
         if (indexes != null) {
-            StringBuilder sb =
-                    new StringBuilder(fileCode.substring(0, indexes[0]).trim()); // end of area
-            sb.append('\n');
-            sb.append(code);
-            sb.append(fileCode.substring(indexes[1]));
-            fileCode = sb.toString();
+            fileCode =  fileCode.substring(0, indexes[0]).trim() + '\n' +
+                        code +
+                        fileCode.substring(indexes[1]);
         } else
             System.err.println(thisProtected + " not found");
     }
@@ -189,13 +182,9 @@ public class PogoParser {
             //	Get position to insert
             int pos = indexes[1];
             if (pos > 0) {
-                StringBuilder sb =
-                        new StringBuilder(fileCode.substring(0, pos));
-                sb.append('\n');
-                sb.append(code);
-                sb.append('\n');
-                sb.append(fileCode.substring(indexes[1]));
-                fileCode = sb.toString();
+                fileCode =  fileCode.substring(0, pos) + '\n' +
+                            code + '\n' +
+                            fileCode.substring(indexes[1]);
             }
         } else
             System.err.println(this_protected + " not found");
@@ -213,10 +202,7 @@ public class PogoParser {
         //	Get protected area edges
         int[] indexes = indexesOfProtectedZone(this_protected);
         if (indexes != null) {
-            StringBuilder sb =
-                    new StringBuilder(fileCode.substring(0, indexes[0]));
-            sb.append(fileCode.substring(indexes[1]));
-            fileCode = sb.toString();
+            fileCode = fileCode.substring(0, indexes[0]) + fileCode.substring(indexes[1]);
         } else
             System.err.println(this_protected + " not found");
     }
@@ -236,10 +222,7 @@ public class PogoParser {
             //	Get position to start remove
             int pos = fileCode.indexOf(start_rem, indexes[0]);
             if (pos > 0) {
-                StringBuilder sb =
-                        new StringBuilder(fileCode.substring(0, pos));
-                sb.append(fileCode.substring(indexes[1]));
-                fileCode = sb.toString();
+                fileCode = fileCode.substring(0, pos) + fileCode.substring(indexes[1]);
             }
         } else
             System.err.println(this_protected + " not found");
@@ -252,11 +235,7 @@ public class PogoParser {
         int start = fileCode.indexOf("#include");
         int end = fileCode.indexOf(end_protected, start);
         end = fileCode.lastIndexOf('\n', end);
-        StringBuilder sb =
-                new StringBuilder(fileCode.substring(0, start));
-        sb.append(code);
-        sb.append(fileCode.substring(end));
-        fileCode = sb.toString();
+        fileCode = fileCode.substring(0, start) + code + fileCode.substring(end);
     }
 
     //===============================================================
@@ -327,6 +306,7 @@ public class PogoParser {
         int[] indexes = indexesOfProtectedZone(this_protected);
         if (indexes == null)
             return "";
+        /*
         String code = fileCode.substring(indexes[0], indexes[1]);
         //	Remove empty lines
         StringBuilder sb = new StringBuilder();
@@ -339,6 +319,8 @@ public class PogoParser {
                 sb.append("\n");
         }
         return sb.toString();
+        */
+        return fileCode.substring(indexes[0], indexes[1]);
     }
     //===============================================================
     //===============================================================

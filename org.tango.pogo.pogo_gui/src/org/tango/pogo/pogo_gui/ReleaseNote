@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.1.8 - 20/11/2015:
+	Fix a bug protected area when rename attribute.
+	Fix a problem in relative path for multi classes project.
+
 Pogo-9.1.8 - 19/11/2015:
 	Add a potected region in main method for java code.
 	Add colors on State objects.
