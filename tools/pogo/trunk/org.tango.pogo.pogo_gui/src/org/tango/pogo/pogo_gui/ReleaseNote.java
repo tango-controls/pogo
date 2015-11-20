@@ -17,7 +17,10 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Nov 19 09:05:19 CET 2015)</Center><Br>\n" + 
+		"	(Generated Fri Nov 20 15:42:34 CET 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.8 - 20/11/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a bug protected area when rename attribute.<Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem in relative path for multi classes project.<Br>\n" + 
 		"<li><b>Pogo-9.1.8 - 19/11/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Add a potected region in main method for java code.<Br>\n" + 
 		"&nbsp; &nbsp; Add colors on State objects.<Br>\n" + 

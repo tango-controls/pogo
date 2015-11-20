@@ -764,6 +764,8 @@ public class Utils {
 
         //  Convert to Linux format
         relative = strReplace(relative, "\\", "/");
+        if (relative.startsWith("./."))
+            relative = ".";
         return relative;
     }
     //===============================================================
