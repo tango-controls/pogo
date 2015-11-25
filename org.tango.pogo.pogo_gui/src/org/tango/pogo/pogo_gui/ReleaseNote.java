@@ -17,9 +17,12 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Fri Nov 20 15:42:34 CET 2015)</Center><Br>\n" + 
-		"<li><b>Pogo-9.1.8 - 20/11/2015:</b><Br>\n" + 
-		"&nbsp; &nbsp; Fix a bug protected area when rename attribute.<Br>\n" + 
+		"	(Generated Wed Nov 25 10:13:47 CET 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.10 - 25/11/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix bug in DevLong64 java property type<Br>\n" + 
+		"&nbsp; &nbsp; Improve Python templates (path handling bug fix, protected region for run method)<Br>\n" + 
+		"<li><b>Pogo-9.1.9 - 20/11/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a bug protected area when rename attribute on c++.<Br>\n" + 
 		"&nbsp; &nbsp; Fix a problem in relative path for multi classes project.<Br>\n" + 
 		"<li><b>Pogo-9.1.8 - 19/11/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Add a potected region in main method for java code.<Br>\n" + 
