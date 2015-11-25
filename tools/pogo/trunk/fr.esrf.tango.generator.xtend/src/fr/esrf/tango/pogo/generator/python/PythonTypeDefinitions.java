@@ -39,6 +39,7 @@ package fr.esrf.tango.pogo.generator.python;
 import org.eclipse.emf.common.util.EList;
 
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
+import fr.esrf.tango.pogo.pogoDsl.Command;
 import fr.esrf.tango.pogo.pogoDsl.BooleanArrayType;
 import fr.esrf.tango.pogo.pogoDsl.BooleanType;
 import fr.esrf.tango.pogo.pogoDsl.CharArrayType;
@@ -540,6 +541,29 @@ public class PythonTypeDefinitions {
     	}
     	else
     		return false;
+	}
+	
+	/**
+	 * Python utility
+	 * @param my_type type to test
+	 * @return true if the type is void
+	 */
+	public boolean hasCommandArg(Command cmd){
+		if (cmd.getArgin().getType() instanceof VoidType)
+	    {
+			if (cmd.getArgout().getType() instanceof VoidType)
+		    {
+	    		return false;
+	    	}
+			else
+			{
+				return true;
+			}
+    	}
+		else
+		{
+			return true;
+		}
 	}
 
 	/**

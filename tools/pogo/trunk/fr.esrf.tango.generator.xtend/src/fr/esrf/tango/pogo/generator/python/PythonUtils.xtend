@@ -224,12 +224,16 @@ class PythonUtils {
         '''
         
     def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''
-        «IF isTrue(cmd.status.concreteHere)»    @command«IF cmd.hasCmdArginOrArgoutSet»(«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL»«IF !cmd.argin.description.empty», doc_in="«cmd.argin.description.oneLineString»"«ENDIF»«ENDIF»«IF !cmd.argin.type.voidType && !cmd.argout.type.voidType», «ENDIF»«IF !cmd.argout.type.voidType»dtype_out=«cmd.argout.type.pythonTypeHL»«IF !cmd.argout.description.empty», doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»)«ENDIF»
-            @DebugIt()
-            def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ELSE»pass«ENDIF»«ENDIF»
-        
-		«ENDIF»
+«IF isTrue(cmd.status.concreteHere)»    @command«IF cmd.hasCommandArg»(«ENDIF»«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL», 
+«IF !cmd.argin.description.empty»    doc_in="«cmd.argin.description.oneLineString»", «ENDIF»«ENDIF»
+«IF !cmd.argout.type.voidType»    dtype_out=«cmd.argout.type.pythonTypeHL», 
+«IF !cmd.argout.description.empty»    doc_out="«cmd.argout.description.oneLineString»"«ENDIF»«ENDIF»
+«IF cmd.hasCommandArg»    )«ENDIF»
+    @DebugIt()
+    def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ELSE»pass«ENDIF»«ENDIF»
+
+«ENDIF»
 '''
     
     def commandMethodStateMachine(PogoDeviceClass cls, Command cmd) '''
@@ -442,12 +446,12 @@ class PythonUtils {
         «ENDIF»
         «IF attribute.changeEvent!=null»
             «IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
-                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
+                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»False«ELSE»True«ENDIF»)
             «ENDIF»
         «ENDIF»
         «IF attribute.archiveEvent!=null»
             «IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
-                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
+                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»False«ELSE»True«ENDIF»)
             «ENDIF»
         «ENDIF»
      «ENDFOR»

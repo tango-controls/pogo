@@ -71,7 +71,7 @@ Run python setup.py install
 If you want to build sphinx documentation,
 run python setup.py build_sphinx
 
-IUf you want to pass the tests, 
+If you want to pass the tests, 
 run python setup.py test
 
 ## Usage
@@ -895,10 +895,10 @@ global-exclude *.pyo
 # Imports
 import sys
 import os
-# To find device doc extension
-sys.path.insert(0, os.path.abspath('..'))
-# To find «cls.name» module
-sys.path.insert(0, os.path.abspath('../..'))
+# Path handling
+conf_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(conf_dir, os.path.pardir))
+sys.path.insert(0, os.path.join(conf_dir, os.path.pardir, os.path.pardir))
 
 # Configuration
 extensions = ['sphinx.ext.autodoc', 'devicedoc']
@@ -906,7 +906,7 @@ master_doc = 'index'
 
 # Data
 project = u'«cls.name»'
-copyright = u'2015, Tango Controls'
+copyright = u"""«cls.description.copyright.commentMultiLinesPythonStr»"""
 	'''
     //======================================================
 	// Define PythonHl project sphinx index.rst
@@ -997,10 +997,13 @@ setup_dir = os.path.dirname(os.path.abspath(__file__))
 # make sure we use latest info from local code
 sys.path.insert(0, setup_dir)
 
-with open('README.rst') as file:
+readme_filename = os.path.join(setup_dir, 'README.rst')
+with open(readme_filename) as file:
     long_description = file.read()
 
-exec(open('«cls.name»/release.py').read())
+release_filename = os.path.join(setup_dir, '«cls.name»', 'release.py')
+exec(open(release_filename).read())
+
 pack = ['«cls.name»']
 
 setup(name=name,

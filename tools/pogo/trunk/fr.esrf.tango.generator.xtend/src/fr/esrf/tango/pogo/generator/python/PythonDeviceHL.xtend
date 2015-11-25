@@ -313,8 +313,9 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
-    from PyTango.server import run
-    return run((«cls.name»,), args=args, **kwargs)
+    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "from PyTango.server import run
+return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»from PyTango.server import run
+return run((«cls.name»,), args=args, **kwargs)«ENDIF»
 
 if __name__ == '__main__':
     main()

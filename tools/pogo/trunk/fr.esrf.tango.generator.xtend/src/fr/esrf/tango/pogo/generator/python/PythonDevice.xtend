@@ -44,6 +44,7 @@ import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinition
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 
 class PythonDevice implements IGenerator {
+    @Inject    extension fr.esrf.tango.pogo.generator.common.StringUtils
     @Inject    extension ProtectedArea
     @Inject    extension PythonUtils
     @Inject    extension PythonTypeDefinitions
@@ -160,7 +161,7 @@ class PythonDevice implements IGenerator {
         
         # Device States Description
         «IF !cls.states.empty»«FOR state : cls.states»
-        # «state.name» : «state.description»
+        # «state.name» : «state.description.oneLineString»
         «ENDFOR»
         «ELSE»
         # No states for this device
