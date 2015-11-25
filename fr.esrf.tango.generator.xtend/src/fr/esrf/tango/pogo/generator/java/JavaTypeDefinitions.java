@@ -55,6 +55,7 @@ import fr.esrf.tango.pogo.pogoDsl.IntVectorType;
 import fr.esrf.tango.pogo.pogoDsl.LongArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.LongType;
+import fr.esrf.tango.pogo.pogoDsl.LongVectorType;
 import fr.esrf.tango.pogo.pogoDsl.PropType;
 import fr.esrf.tango.pogo.pogoDsl.ShortArrayType;
 import fr.esrf.tango.pogo.pogoDsl.ShortType;
@@ -83,6 +84,7 @@ public class JavaTypeDefinitions {
 		if (propType instanceof BooleanType)	   return "boolean";
 		if (propType instanceof ShortType) 		   return "short";
 		if (propType instanceof IntType)           return "int";
+		if (propType instanceof LongType)          return "long";
 		if (propType instanceof UShortType)        return "short";
 		if (propType instanceof UIntType)      	   return "int";
 		if (propType instanceof FloatType)         return "float";
@@ -90,6 +92,7 @@ public class JavaTypeDefinitions {
 		if (propType instanceof StringType)        return "String";
 		if (propType instanceof ShortVectorType)   return "short[]";
 		if (propType instanceof IntVectorType)     return "int[]";
+		if (propType instanceof LongVectorType)    return "long[]";
 		if (propType instanceof FloatVectorType)   return "float[]";
 		if (propType instanceof DoubleVectorType)  return "double[]";
 		if (propType instanceof StringVectorType)  return "String[]";
