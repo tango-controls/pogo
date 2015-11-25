@@ -9,8 +9,12 @@
 #-======================================================================
 
 
-Pogo-9.1.8 - 20/11/2015:
-	Fix a bug protected area when rename attribute.
+Pogo-9.1.10 - 25/11/2015:
+	Fix bug in DevLong64 java property type
+	Improve Python templates (path handling bug fix, protected region for run method)
+
+Pogo-9.1.9 - 20/11/2015:
+	Fix a bug protected area when rename attribute on c++.
 	Fix a problem in relative path for multi classes project.
 
 Pogo-9.1.8 - 19/11/2015:

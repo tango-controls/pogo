@@ -507,7 +507,7 @@ public class MultiClassesPanel extends JFrame {
     @SuppressWarnings({"UnusedDeclaration"})
     private void newItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemActionPerformed
 
-        //  First time, check if modied
+        //  First time, check if modified
         if (tree != null && tree.getModified()) {
             if (checkModifications() == JOptionPane.CANCEL_OPTION)
                 return;

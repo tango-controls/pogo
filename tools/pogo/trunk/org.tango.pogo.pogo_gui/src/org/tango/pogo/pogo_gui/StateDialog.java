@@ -96,16 +96,23 @@ public class StateDialog extends JDialog {
         public Component getListCellRendererComponent(JList list, Object value,
                                                       int index, boolean isSelected,
                                                       boolean cellHasFocus) {
-            String name = value.toString();
+            String stateName = value.toString();
+            setText(stateName);
 
             //  Set color for each object
-            setBackground(Utils.getColor4State(name));
-            setForeground(Utils.getForeground4State(name));
-            setText(name);
+            if (isSelected) {
+                setBackground(Utils.getColor4State(stateName).darker());
+                setForeground(Utils.getForeground4State(stateName));
+            }
+            else {
+                setBackground(Utils.getColor4State(stateName));
+                setForeground(Utils.getForeground4State(stateName));
+            }
+
 
             //  Set color for selection
-            list.setSelectionBackground(Utils.getColor4State(name));
-            list.setSelectionForeground(Utils.getForeground4State(name));
+            list.setSelectionBackground(Utils.getColor4State(stateName));
+            list.setSelectionForeground(Utils.getForeground4State(stateName));
             return this;
         }
     }
