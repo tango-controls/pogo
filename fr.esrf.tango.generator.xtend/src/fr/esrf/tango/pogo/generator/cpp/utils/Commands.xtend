@@ -264,14 +264,22 @@ class Commands {
 	def returnArgout(PogoDeviceClass cls, Command cmd) '''
 		«IF cmd.argout.type.cppType.equals("void")»
 			«IF cmd.isDynamic=="true"»
-				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(*this));
+				«IF cmd.argin.type.cppType.equals("void")»
+					((static_cast<«cls.name» *>(device))->«cmd.execMethod»(*this));
+				«ELSE»
+					((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam», *this));
+				«ENDIF»
 			«ELSE»
 				((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
 			«ENDIF»
 			return new CORBA::Any();
 		«ELSE»
 			«IF cmd.isDynamic=="true"»
-				return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam», *this));
+				«IF cmd.argin.type.cppType.equals("void")»
+					return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(*this));
+				«ELSE»
+					return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam», *this));
+				«ENDIF»
 			«ELSE»
 				return insert((static_cast<«cls.name» *>(device))->«cmd.execMethod»(«cmd.arginParam»));
 			«ENDIF»
