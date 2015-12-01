@@ -1,0 +1,36 @@
+import pogoDsl;
+
+/*
+ * This extension file is intended to be used for defining
+ * general extensions for the domain model.
+ * It inherits generated extensions from GenExtensions.
+ * You can overwrite or specialize them here
+ */
+ 
+Collection[Command] allCommands( PogoDeviceClass this ):
+	baseClass != null 
+		? commands.union(baseClass.allCommands())
+		: commands;
+
+//siblings( Property this ):
+//	owner().classProperties.contains(this) ? owner().classProperties : owner().deviceProperties;
+
+Collection[Property] siblings( Property this ):
+	JAVA fr.esrf.tango.pogo.validation.ValidHelper.getSiblings( fr.esrf.tango.pogo.pogoDsl.Property );
+
+
+owner( Property this ):
+	(PogoDeviceClass)eContainer;
+	
+loc( emf::EObject this ):	
+	info() + ( eContainer != null ? " owned by "+eContainer.info() : "" );
+		
+info( emf::EObject this ):
+	dynamicName()+" ["+this.metaType.name+"]";
+	
+dynamicName( emf::EObject this ):
+	this.metaType.getProperty("name") != null ?
+		( let n = this.metaType.getProperty("name").get(this):
+			n != null ? n : "<unnamed>" 
+		)
+		: "<unnamed>";
