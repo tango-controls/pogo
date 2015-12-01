@@ -542,7 +542,8 @@ public class MultiClassesTree extends JTree {
             //  Check if dynamic attributes
             // ToDo
             if (Utils.getPogoGuiRevision() >= 8.1) {
-                if (pogoClass.getDynamicAttributes().size() > 0) {
+                if (pogoClass.getDynamicAttributes().size()>0 ||
+					pogoClass.getDynamicCommands().size()>0) {
                     simple.setHasDynamic("true");
                 }
             }

@@ -50,7 +50,7 @@ public interface PogoConst {
      */
     @SuppressWarnings("UnnecessaryInterfaceModifier")
     public static String revNumber =
-            "9.1.10  -  Wed Nov 25 10:13:46 CET 2015";
+            "9.1.11  -  Tue Dec 01 10:24:01 CET 2015";
 
     int TANGO_PAGES = 0;
     int POGO_PAGES = 1;

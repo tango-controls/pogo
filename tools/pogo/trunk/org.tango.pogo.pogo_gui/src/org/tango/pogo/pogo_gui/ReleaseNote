@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.1.11 - 01/12/2015:
+	Bugs in dynamic commands fixed.
+
 Pogo-9.1.10 - 25/11/2015:
 	Fix bug in DevLong64 java property type
 	Improve Python templates (path handling bug fix, protected region for run method)

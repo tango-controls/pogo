@@ -457,7 +457,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//=============================================================================
  	String dynamicAttrObjects(PogoDeviceClass cls) {
  		String code = "";
- 		if (cls.getDynamicAttributes().size()>0) {
+ 		if (cls.getDynamicAttributes().size()>0 || cls.getDynamicCommands().size()>0) {
  			code = "$(OBJDIR)/$(PACKAGE_NAME)DynAttrUtils.o \\\n";
  		}
  		return code;

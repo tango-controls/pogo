@@ -96,7 +96,7 @@ class CppGenerator implements IGenerator {
 					fsa.generateFile("main.cpp",                     cls.generateMainFile)
 
 					//	Dynamic attributes if any
-					if (cls.dynamicAttributes.size>0) {
+					if (cls.dynamicAttributes.size>0 || cls.dynamicCommands.size()>0) {
 						printTrace("Generating " + cls.dynamicAttrUtilsFileName)
 						fsa.generateFile(cls.dynamicAttrUtilsFileName,cls.generateDynamicAttrUtilsFile)
 					}

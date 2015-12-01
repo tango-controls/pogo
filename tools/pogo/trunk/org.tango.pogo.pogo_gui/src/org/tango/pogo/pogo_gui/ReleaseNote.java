@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Nov 25 10:13:47 CET 2015)</Center><Br>\n" + 
+		"	(Generated Tue Dec 01 10:24:04 CET 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.11 - 01/12/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Bugs in dynamic commands fixed.<Br>\n" + 
 		"<li><b>Pogo-9.1.10 - 25/11/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix bug in DevLong64 java property type<Br>\n" + 
 		"&nbsp; &nbsp; Improve Python templates (path handling bug fix, protected region for run method)<Br>\n" + 
