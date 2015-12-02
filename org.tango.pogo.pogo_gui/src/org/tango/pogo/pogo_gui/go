@@ -23,6 +23,7 @@ export SOURCE_PATH=/segfs/tango/tools/pogo/test/java
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1
 export SOURCE_PATH=/segfs/tango/cppserver/IO/wago
 export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/
+export SOURCE_PATH=/segfs/tango/cppserver/machine/powersupply/rips/RipsPlcControl
 
 SUPER_HOME=/segfs/tango/templates/AbstractClasses
 

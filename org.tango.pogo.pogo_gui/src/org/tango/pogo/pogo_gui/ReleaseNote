@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.1.12 - 02/12/2015:
+	Fix a problem in relative path for multi classes project.
+
 Pogo-9.1.11 - 01/12/2015:
 	Bugs in dynamic commands fixed.
 

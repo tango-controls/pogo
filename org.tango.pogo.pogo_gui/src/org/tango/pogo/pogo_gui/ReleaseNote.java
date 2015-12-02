@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Tue Dec 01 10:24:04 CET 2015)</Center><Br>\n" + 
+		"	(Generated Wed Dec 02 07:56:19 CET 2015)</Center><Br>\n" + 
+		"<li><b>Pogo-9.1.12 - 02/12/2015:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem in relative path for multi classes project.<Br>\n" + 
 		"<li><b>Pogo-9.1.11 - 01/12/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Bugs in dynamic commands fixed.<Br>\n" + 
 		"<li><b>Pogo-9.1.10 - 25/11/2015:</b><Br>\n" + 
