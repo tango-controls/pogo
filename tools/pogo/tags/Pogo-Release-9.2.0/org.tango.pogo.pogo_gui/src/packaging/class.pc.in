@@ -1,0 +1,6 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+
+Name: TEMPLATE_CLASS
+Description: TEMPLATE_CLASS TANGO server
+Version: @VERSION@
