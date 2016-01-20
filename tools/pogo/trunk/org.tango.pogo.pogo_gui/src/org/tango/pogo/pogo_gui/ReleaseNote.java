@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Dec 02 07:56:19 CET 2015)</Center><Br>\n" + 
+		"	(Generated Wed Jan 20 10:21:45 CET 2016)</Center><Br>\n" + 
+		"<li><b>Pogo-9.2.0 - 20/01/2016:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve check name for forwarded attributes.<Br>\n" + 
 		"<li><b>Pogo-9.1.12 - 02/12/2015:</b><Br>\n" + 
 		"&nbsp; &nbsp; Fix a problem in relative path for multi classes project.<Br>\n" + 
 		"<li><b>Pogo-9.1.11 - 01/12/2015:</b><Br>\n" + 

@@ -391,20 +391,17 @@ public class Utils {
     //===============================================================
     //===============================================================
     public static String checkNameSyntax(String name,
-                                         String type, boolean isStateStatus, boolean isAttribute) throws
-            PogoException {
-        if (name == null ||
-                name.length() == 0)
+                                         String type, boolean isStateStatus,
+                                         boolean isAttribute) throws PogoException {
+        if (name == null || name.length() == 0)
             throw new PogoException(type+" (" + name + ") not valid !");
 
         //	check if one word
         StringTokenizer stk = new StringTokenizer(name);
-        ArrayList<String> vs = new ArrayList<String>();
+        String s = "";
         while (stk.hasMoreTokens())
-            vs.add(stk.nextToken());
-        name = "";
-        for (String s : vs)
-            name += s;
+            s += stk.nextToken();
+        name = s;
 
         //	Check for special char
         for (int i = 0; i < name.length(); i++) {
