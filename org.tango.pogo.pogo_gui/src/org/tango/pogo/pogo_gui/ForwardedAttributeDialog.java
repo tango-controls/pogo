@@ -40,6 +40,7 @@ import fr.esrf.tango.pogo.pogoDsl.InheritanceStatus;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PogoException;
+import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 
@@ -191,7 +192,13 @@ public class ForwardedAttributeDialog extends JDialog {
             PogoException.popup(this, "Attribute name is mandatory !");
             return;
         }
-
+        try {
+            name = Utils.checkNameSyntax(name, "name", false, true);
+        } catch (PogoException e) {
+            e.popup(this);
+            return;
+        }
+        nameText.setText(name);
 		returnValue = JOptionPane.OK_OPTION;
 		doClose();
 	}//GEN-LAST:event_okBtnActionPerformed
