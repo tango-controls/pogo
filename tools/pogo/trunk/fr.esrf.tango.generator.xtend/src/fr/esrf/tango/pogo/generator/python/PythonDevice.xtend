@@ -206,6 +206,7 @@ class PythonDevice implements IGenerator {
         # -------------------------------------------------------------------------
         
             «FOR attr: cls.attributes»
+            «IF isTrue(attr.status.concreteHere)»
             «IF attr.isRead»
         «readAttributeMethod(cls, attr)»
             «ENDIF»
@@ -214,6 +215,7 @@ class PythonDevice implements IGenerator {
             «ENDIF»
             «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»
         «attributeMethodStateMachine(cls, attr)»
+            «ENDIF»
             «ENDIF»
         «ENDFOR»
 
@@ -227,6 +229,7 @@ class PythonDevice implements IGenerator {
     //====================================================
     def pythonDynamicAttributes(PogoDeviceClass cls)  '''
             «FOR attr: cls.dynamicAttributes»
+            «IF isTrue(attr.status.concreteHere)»
             «IF attr.isRead»
         «readAttributeMethod(cls, attr)»
             «ENDIF»
@@ -235,6 +238,7 @@ class PythonDevice implements IGenerator {
             «ENDIF»
             «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»
         «attributeMethodStateMachine(cls, attr)»
+            «ENDIF»
             «ENDIF»
         «ENDFOR»
         
@@ -289,15 +293,11 @@ class PythonDevice implements IGenerator {
         # -------------------------------------------------------------------------
         
             «FOR cmd: cls.commands»
-            «IF cmd.name.equals("State")==false && cmd.name.equals("Status")==false»
+            «IF isTrue(cmd.status.concreteHere)»
         «commandExecution(cls, cmd)»
                 «IF !cmd.excludedStates.empty»
         «commandMethodStateMachine(cls, cmd)»
                 «ENDIF»
-            «ELSE»
-				«IF isTrue(cmd.status.concreteHere)»
-        «commandExecution(cls, cmd)»
-            	«ENDIF»
             «ENDIF»
         «ENDFOR»
         '''
@@ -308,7 +308,9 @@ class PythonDevice implements IGenerator {
             #    Class Properties
             class_property_list = {
                 «FOR prop : cls.classProperties»
+                «IF isTrue(prop.status.concreteHere)»
         	«prop.pythonPropertyClass»
+        		«ENDIF»
                 «ENDFOR»
                 }
             «cls.inheritanceClassPropertyList»
@@ -317,7 +319,9 @@ class PythonDevice implements IGenerator {
             #    Device Properties
             device_property_list = {
                 «FOR prop : cls.deviceProperties»
+                «IF isTrue(prop.status.concreteHere)»
             «prop.pythonPropertyClass»
+            	«ENDIF»
                 «ENDFOR»
                 }
             «cls.inheritanceDevicePropertyList»
@@ -331,7 +335,9 @@ class PythonDevice implements IGenerator {
             cmd_list = {
                 «FOR cmd : cls.commands»
                     «IF cmd.name.equals("State")==false && cmd.name.equals("Status")==false»
+                    «IF isTrue(cmd.status.concreteHere)»
             «cmd.pythonCommandClass»
+            		«ENDIF»
                     «ENDIF»
                 «ENDFOR»
                 }
@@ -345,7 +351,9 @@ class PythonDevice implements IGenerator {
             #    Attribute definitions
             attr_list = {
                 «FOR attr : cls.attributes»
+                «IF isTrue(attr.status.concreteHere)»
             «attr.pythonAttributeClass»
+            	«ENDIF»
                 «ENDFOR»
                 }
             «cls.inheritanceAttrList»

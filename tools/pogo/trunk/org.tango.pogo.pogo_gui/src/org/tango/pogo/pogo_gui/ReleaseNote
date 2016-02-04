@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.2.1 - 04/02/2016:
+	Improve Python and PythonHL templates for inheritance
+
 Pogo-9.2.0 - 20/01/2016:
 	Improve check name for forwarded attributes.
 

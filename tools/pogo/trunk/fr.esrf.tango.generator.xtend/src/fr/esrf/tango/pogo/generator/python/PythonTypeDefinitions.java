@@ -300,7 +300,7 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof LongType)				def_val =  "0";
 		if (attr.getDataType() instanceof ULongType)			def_val =  "0";
 		if (attr.getDataType() instanceof DevIntType)			def_val =  "0";
-		if (attr.getDataType() instanceof EncodedType)			def_val =  "''";
+		if (attr.getDataType() instanceof EncodedType)			def_val =  "['', '']";
 		
 		if (attr.getAttType().equals("Spectrum"))
 		{
@@ -386,6 +386,44 @@ public class PythonTypeDefinitions {
 		return "''";
 	}
 	
+	/**
+	 * Python Default Value utility
+	 * @param type Type
+	 * @return string representing the default value for the attribute
+	 */
+	public static String defaultValueTestHL (Type type) {
+		if (type instanceof VoidType)				return "";
+		if (type instanceof BooleanType)			return "False";
+		if (type instanceof ShortType)				return "0";
+		if (type instanceof IntType)				return "0";
+		if (type instanceof FloatType)				return "0.0";
+		if (type instanceof DoubleType)				return "0.0";
+		if (type instanceof UShortType)				return "0";
+		if (type instanceof UIntType)				return "0";
+		if (type instanceof StringType)				return "\"\"";
+		if (type instanceof CharArrayType)			return "[0]";
+		if (type instanceof ShortArrayType)			return "[0]";
+		if (type instanceof IntArrayType)			return "[0]";
+		if (type instanceof FloatArrayType)			return "[0.0]";
+		if (type instanceof DoubleArrayType)		return "[0.0]";
+		if (type instanceof UShortArrayType)		return "[0]";
+		if (type instanceof UIntArrayType)			return "[0]";
+		if (type instanceof StringArrayType)		return "[\"\"]";
+		if (type instanceof LongStringArrayType)	return "[[0], [\"\"]]";
+		if (type instanceof DoubleStringArrayType)	return "[[0.0], [\"\"]]";
+		if (type instanceof StateType)				return "DevState.UNKNOWN";
+		if (type instanceof ConstStringType)		return "\"\"";
+		if (type instanceof BooleanArrayType)		return "[False]";
+		if (type instanceof UCharType)				return "0";
+		if (type instanceof LongType)				return "0";
+		if (type instanceof ULongType)				return "0";
+		if (type instanceof LongArrayType)			return "[0]";
+		if (type instanceof ULongArrayType)			return "[0]";
+		if (type instanceof DevIntType)				return "0";
+		if (type instanceof EncodedType)			return "\"\", \"\"";
+		return "''";
+	}
+	
 
 	/**
 	 * Python Default Value utility
@@ -425,6 +463,43 @@ public class PythonTypeDefinitions {
 		return "''";
 	}
 	
+	/**
+	 * Python Default Value utility
+	 * @param type Type
+	 * @return string representing the default value for the attribute
+	 */
+	public static String defaultValueReturnHL (Type type) {
+		if (type instanceof VoidType)				return "pass";
+		if (type instanceof BooleanType)			return "return False";
+		if (type instanceof ShortType)				return "return 0";
+		if (type instanceof IntType)				return "return 0";
+		if (type instanceof FloatType)				return "return 0.0";
+		if (type instanceof DoubleType)				return "return 0.0";
+		if (type instanceof UShortType)				return "return 0";
+		if (type instanceof UIntType)				return "return 0";
+		if (type instanceof StringType)				return "return \"\"";
+		if (type instanceof CharArrayType)			return "return [0]";
+		if (type instanceof ShortArrayType)			return "return [0]";
+		if (type instanceof IntArrayType)			return "return [0]";
+		if (type instanceof FloatArrayType)			return "return [0.0]";
+		if (type instanceof DoubleArrayType)		return "return [0.0]";
+		if (type instanceof UShortArrayType)		return "return [0]";
+		if (type instanceof UIntArrayType)			return "return [0]";
+		if (type instanceof StringArrayType)		return "return [\"\"]";
+		if (type instanceof LongStringArrayType)	return "return [[0], [\"\"]]";
+		if (type instanceof DoubleStringArrayType)	return "return [[0.0], [\"\"]]";
+		if (type instanceof StateType)				return "return DevState.UNKNOWN";
+		if (type instanceof ConstStringType)		return "return \"\"";
+		if (type instanceof BooleanArrayType)		return "return [False]";
+		if (type instanceof UCharType)				return "return 0";
+		if (type instanceof LongType)				return "return 0";
+		if (type instanceof ULongType)				return "return 0";
+		if (type instanceof LongArrayType)			return "return [0]";
+		if (type instanceof ULongArrayType)			return "return [0]";
+		if (type instanceof DevIntType)				return "return 0";
+		if (type instanceof EncodedType)			return "return \"\", \"\"";
+		return "''";
+	}
 	/**
 	 * Python Default Value Dim utility
 	 * @param attr Attribute
@@ -622,6 +697,24 @@ public class PythonTypeDefinitions {
 				return "super(" + cls.getName() + ",self).__init__(cl,name)";
 		}
 	}
+	/**
+	 * Python Pogo Device Class inherited constructor utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
+	public String constructorHL(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "    def init_device(self):\n        Device.init_device(self)";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "    def init_device(self):\n        Device.init_device(self)";
+			else
+				return "    def init_device(self):\n        " + className + ".init_device(self)";
+		}
+	}
 
 	/**
 	 * Python Pogo Device Class inherited additional import utility
@@ -639,6 +732,25 @@ public class PythonTypeDefinitions {
 				return "";
 			else
 				return "from " + className + " import " + className + ", " + className + "Class\n";
+		}
+	}
+	
+	/**
+	 * Python Pogo Device Class inherited additional import utility
+	 * @param cls PogoDeviceClass
+	 * @return resulting string
+	 */
+	public String inheritedAdditionalImportHL(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		if (inheritances==null || inheritances.size()==0)
+			return "";
+		else {
+			int	last = inheritances.size()-1;
+			String	className = inheritances.get(last).getClassname();
+			if (isDefaultDeviceImpl(className))
+				return "";
+			else
+				return "from " + className + " import " + className + "\n";
 		}
 	}
 

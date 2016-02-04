@@ -17,7 +17,9 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Wed Jan 20 10:21:45 CET 2016)</Center><Br>\n" + 
+		"	(Generated Thu Feb 04 10:47:34 CET 2016)</Center><Br>\n" + 
+		"<li><b>Pogo-9.2.1 - 04/02/2016:</b><Br>\n" + 
+		"&nbsp; &nbsp; Improve Python and PythonHL templates for inheritance<Br>\n" + 
 		"<li><b>Pogo-9.2.0 - 20/01/2016:</b><Br>\n" + 
 		"&nbsp; &nbsp; Improve check name for forwarded attributes.<Br>\n" + 
 		"<li><b>Pogo-9.1.12 - 02/12/2015:</b><Br>\n" + 
