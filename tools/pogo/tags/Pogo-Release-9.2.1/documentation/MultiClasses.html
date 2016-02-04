@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+<Title> Pogo 8 - The Tango class generator </Title>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#7F00FF" ALINK="#FF0000">
+
+
+    <center><h2><u>Multiple C++ Classes Manager</u></h2></Center>
+    <Br>
+    <Br>
+    <Br>
+    <Br>
+    <ul>
+        Since <b>Pogo-7.2.0</b> on <b>Linux, Pogo</b>
+			allows you to create multiple C++ classes server project.
+        <br>
+		Use the <b>tools</b> menu (or <b>pogo -multi</b> shell command) to launch the multiple classes GUI<br>
+        Then create a new server project.<br>
+        The server name could have the same name of one class in project. But it is not mandatory.
+        <br>
+        <br>
+        <img src="img/MultiClassesCreation.gif" alt="Multi Classes Creation">
+        <br>
+        <br>
+        <br>
+        <br>
+        Then you can add several classes by selecting <b>xmi</b> files.
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td><img src="img/MultiClassesAdding.gif" alt="MultiClassesAdding"></td>
+                <td> </td>
+                <td><img src="img/MultiClassesTree.gif" alt="MultiClassesTree"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        Now, you can generate code.<br>
+        You can generate it where a class is defined or in an independent one.<br>
+        The 4 generated files are:
+        <ul>
+            <table>
+                <tr>
+                    <td><li> <b>VacGaugeServer.multi.xmi :</b></li></td>
+                    <td>Multiple classes project file.</td>
+                </tr>
+                <tr>
+                    <td><li> <b>MultiClassesFactory.cpp :</b></li></td>
+                    <td>Equivalent to the ClassFactory.cpp containing all specified class dependencies</td>
+                </tr>
+                <tr>
+                    <td><li> <b>main.cpp :</b></li></td>
+                    <td>The same main.cpp as a single class project</td>
+                </tr>
+                <tr>
+                    <td><li> <b>Makefile.multi :</b></li></td>
+                    <td>A Makefile containing all specified class dependencies</td>
+                </tr>
+            </table>
+        </ul>
+        <br>
+
+    </ul>
+</body>
+</html>

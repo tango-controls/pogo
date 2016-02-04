@@ -1,0 +1,42 @@
+JAR_FILE=$HOME/pogo/jar/org.tango.pogo.jar
+SITE_PROP=$TANGO_HOME/cppserver/env
+SITE_PROP=/users/verdier/env
+BIN_DIR=../../../../../src:../../../../../bin
+
+
+CLASSPATH=$SITE_PROP:$JAR_FILE
+CLASSPATH=$SITE_PROP:$BIN_DIR:$JAR_FILE
+
+echo "CLASSPATH=$CLASSPATH"
+
+
+export DEBUG=true
+#export DEBUG_MAKE=true
+#export TEST_MODE=true
+
+
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/PowerSupply
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1//make_test/toto/old
+export SOURCE_PATH=/segfs/tango/cppserver/machine
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/test_oaw
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/java
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1
+export SOURCE_PATH=/segfs/tango/cppserver/IO/wago
+export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/
+export SOURCE_PATH=/segfs/tango/cppserver/machine/powersupply/rips/RipsPlcControl
+
+SUPER_HOME=/segfs/tango/templates/AbstractClasses
+
+JSERVER_JAR_FILE=y:/tango/release/java/lib/JTangoServer.jar
+export JSERVER_JAR_FILE
+
+export Packaging=true
+export TANGO_9=true
+export MANAGE_WRITE_METHOD=false
+
+java  -DSUPER_HOME=$SUPER_HOME \
+            org.tango.pogo.pogo_gui.Pogo  $*
+
+
+# -src $SRC_FILE 
+# -multi
