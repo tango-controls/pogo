@@ -602,7 +602,6 @@ public class HtmlUtils extends StringUtils {
 	//===========================================================
 	//===========================================================
 	String htmlFullDocummentTitleAndContents(PogoDeviceClass cls) {
-
 		StringBuffer sb = new StringBuffer(htmlPageTitle(cls.getName() +
 				" Tango " + cls.getDescription().getLanguage() + " Class"));
 		sb.append("	<br><br>\n");
@@ -747,6 +746,7 @@ public class HtmlUtils extends StringUtils {
 	 */
 	//===========================================================
 	static String checkSpecialChars(String desc) {
+		if (desc==null)	return "";
 		if (desc.isEmpty())	return desc;
 		int pos = 0;
 		while ((pos=desc.indexOf('&', pos))>=0) {
