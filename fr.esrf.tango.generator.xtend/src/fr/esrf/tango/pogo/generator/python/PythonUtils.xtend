@@ -77,11 +77,11 @@ class PythonUtils {
     	{
 	    	if (str.contains(","))
 	    	{
-	    		return "\"" + str.replaceAll(",","\",\"") + "\"";
+	    		return "[\"" + str.replaceAll(",","\",\"") + "\"]";
 	    	}
 	    	else
 	    	{
-	    		return str;
+	    		return "[" + str + "]";
 	    	}
     	}
     	else
@@ -116,7 +116,22 @@ class PythonUtils {
     }
 
     def commentMultiLinesPythonStr(String str){
-        str.replaceAll("\n","\n# ");
+    	if (str != null)
+    	{
+    		if (!str.empty)
+    		{
+				str.replaceAll("\n","\n# ");
+				return " " + str;
+    		}
+    		else
+    		{
+    			return "";
+    		}
+    	}
+    	else
+    	{
+    		return "";
+    	}
     }
     def commentCmdParamMultiLines(String str){
     	if (str.contains("\n"))
@@ -231,7 +246,7 @@ class PythonUtils {
 «IF cmd.hasCommandArg»    )«ENDIF»
     @DebugIt()
     def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturn, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValue»«ELSE»pass«ENDIF»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturnHL, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValueTestHL»«ELSE»pass«ENDIF»«ENDIF»
 
 «ENDIF»
 '''

@@ -90,7 +90,7 @@ Terminal or console by calling it :
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -115,7 +115,7 @@ copyright = """«cls.description.copyright.commentMultiLinesPythonStr»"""
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -141,7 +141,7 @@ __author__ = release.author
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -936,7 +936,7 @@ all_files  = 1
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -983,7 +983,7 @@ if __name__ == "__main__":
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -1030,7 +1030,7 @@ setup(name=name,
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -1213,7 +1213,7 @@ if __name__ == "__main__":
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -1230,7 +1230,7 @@ main()
 #
 # This file is part of the «cls.name» project
 #
-# «cls.description.copyright.commentMultiLinesPythonStr»
+#«IF cls.description.copyright.isSet»«cls.description.copyright.commentMultiLinesPythonStr»«ENDIF»
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
@@ -1265,8 +1265,8 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
     """Test case for packet generation."""
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "test_additionnal_import")»«ENDIF»
     device = «cls.name»
-    properties = {«IF !cls.deviceProperties.empty»«FOR property : cls.deviceProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',«ENDFOR»«ENDIF»
-                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',«ENDFOR»«ENDIF»}
+    properties = {«IF !cls.deviceProperties.empty»«FOR property : cls.deviceProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»', «ENDFOR»«ENDIF»
+                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»', «ENDFOR»«ENDIF»}
     empty = None  # Should be []
 
     @classmethod
@@ -1284,7 +1284,7 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
     «FOR command: cls.commands»
     def test_«command.name»(self):
         """Test for «command.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_" + command.name, command.methodTest(command.argout.type.defaultValue), false)»«ELSE»«command.methodTest(command.argout.type.defaultValue)»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_" + command.name, command.methodTest(command.argin.type.defaultValueTestHL), false)»«ELSE»«command.methodTest(command.argin.type.defaultValueTestHL)»«ENDIF»
 
     «ENDFOR»
     «FOR attr : cls.attributes»
