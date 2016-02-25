@@ -57,7 +57,6 @@ class PythonDeviceHL implements IGenerator {
 				fsa.generateFile("setup.py",  cls.generatePythonHlProjectSetup)
 				fsa.generateFile("README.rst",  cls.generatePythonHlProjectReadme)
 				fsa.generateFile("MANIFEST.in",  cls.generatePythonHlProjectManifest)
-				fsa.generateFile("scripts/" + cls.name,  cls.generatePythonHlProjectScript)
 				fsa.generateFile("test/"+ cls.name + "_test.py",  cls.generatePythonHlTest)
 				fsa.generateFile("test/__init__.py",  cls.generatePythonHlTestInit)
 				fsa.generateFile(cls.name+"/__init__.py",  cls.generatePythonHlProjectInit)
