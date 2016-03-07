@@ -244,6 +244,9 @@ class DeviceStateMachine {
 				«IF pipe.readExcludedStates.empty»
 					//	Not any excluded states for «pipe.name» pipe in read access.
 					«cls.protectedArea(pipe.name+"StateAllowed_READ")»
+					«IF pipe.writeExcludedStates.empty»
+						return true;
+					«ENDIF»
 				«ELSE»
 					//	Check access type.
 					if ( type==Tango::READ_REQ )
