@@ -68,7 +68,7 @@ class JavaPipe {
 		 * description:
 		 *     «pipe.description.comments("*     ")»
 		 */
-		@Pipe(description="«pipe.description»", displayLevel=DispLevel._«pipe.displayLevel», label="«pipe.label»")
+		@Pipe(displayLevel=DispLevel._«pipe.displayLevel», label="«pipe.label»")
 		private PipeValue «pipe.name.dataMemberName»;
 	'''
 
@@ -95,7 +95,7 @@ class JavaPipe {
 	def setMethod(PogoDeviceClass cls, Pipe pipe) '''
 		/**
 		 * Write Pipe «pipe.name»
-		 * @param  «pipe.name.dataMemberName» value to write
+		 * @param  pipeValue value to write
 		 * @throws DevFailed if write pipe failed.
 		 */
 		public void set«pipe.name»(PipeValue pipeValue) throws DevFailed {
