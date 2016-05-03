@@ -312,7 +312,7 @@ class JavaDevice  implements IGenerator {
 		/**
 		 * all resources may be closed here. Collections may be also cleared.
 		 * 
-		 * @throws DevFailed if something fails during the device object delation.
+		 * @throws DevFailed if something fails during the device object deletion.
 		 */
 		@Delete
 		public void deleteDevice() throws DevFailed {
