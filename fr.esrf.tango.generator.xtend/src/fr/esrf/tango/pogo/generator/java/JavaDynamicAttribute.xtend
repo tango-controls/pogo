@@ -147,10 +147,8 @@ class JavaDynamicAttribute {
 			«ENDIF»
 			«setDynamicAttributeConfig("Memorized", attribute.memorized)»
 			«setDynamicAttributeConfig("MemorizedAtInit", attribute.memorizedAtInit)»
-			«IF attribute.properties!=null»
 
-				«attribute.buildSetProperties»
-			«ENDIF»
+			«attribute.buildSetProperties»
 			return config;
 		}
 	'''
@@ -160,20 +158,32 @@ class JavaDynamicAttribute {
 	def buildSetProperties(Attribute attribute) '''
 		//	Set attribute properties
 		AttributePropertiesImpl	properties = new AttributePropertiesImpl();
-		«setDynamicAttributePropertyConfig("Description",  attribute.properties.description)»
-		«setDynamicAttributePropertyConfig("Label",        attribute.properties.label)»
-		«setDynamicAttributePropertyConfig("Unit",         attribute.properties.unit)»
-		«setDynamicAttributePropertyConfig("StandardUnit", attribute.properties.standardUnit)»
-		«setDynamicAttributePropertyConfig("DisplayUnit",  attribute.properties.displayUnit)»
-		«setDynamicAttributePropertyConfig("Format",       attribute.properties.format)»
-		«setDynamicAttributePropertyConfig("MaxValue",     attribute.properties.maxValue)»
-		«setDynamicAttributePropertyConfig("MinValue",     attribute.properties.minValue)»
-		«setDynamicAttributePropertyConfig("MaxAlarm",     attribute.properties.maxAlarm)»
-		«setDynamicAttributePropertyConfig("MinAlarm",     attribute.properties.minAlarm)»
-		«setDynamicAttributePropertyConfig("MaxWarning",   attribute.properties.maxWarning)»
-		«setDynamicAttributePropertyConfig("MinWarning",   attribute.properties.minWarning)»
-		«setDynamicAttributePropertyConfig("DeltaT",       attribute.properties.deltaTime)»
-		«setDynamicAttributePropertyConfig("DeltaVal",     attribute.properties.deltaValue)»
+		«IF attribute.properties!=null»
+			«setDynamicAttributePropertyConfig("Description",  attribute.properties.description)»
+			«setDynamicAttributePropertyConfig("Label",        attribute.properties.label)»
+			«setDynamicAttributePropertyConfig("Unit",         attribute.properties.unit)»
+			«setDynamicAttributePropertyConfig("StandardUnit", attribute.properties.standardUnit)»
+			«setDynamicAttributePropertyConfig("DisplayUnit",  attribute.properties.displayUnit)»
+			«setDynamicAttributePropertyConfig("Format",       attribute.properties.format)»
+			«setDynamicAttributePropertyConfig("MaxValue",     attribute.properties.maxValue)»
+			«setDynamicAttributePropertyConfig("MinValue",     attribute.properties.minValue)»
+			«setDynamicAttributePropertyConfig("MaxAlarm",     attribute.properties.maxAlarm)»
+			«setDynamicAttributePropertyConfig("MinAlarm",     attribute.properties.minAlarm)»
+			«setDynamicAttributePropertyConfig("MaxWarning",   attribute.properties.maxWarning)»
+			«setDynamicAttributePropertyConfig("MinWarning",   attribute.properties.minWarning)»
+			«setDynamicAttributePropertyConfig("DeltaT",       attribute.properties.deltaTime)»
+			«setDynamicAttributePropertyConfig("DeltaVal",     attribute.properties.deltaValue)»
+		«ENDIF»
+		«IF attribute.eventCriteria!=null»
+			«setDynamicAttributePropertyConfig("EventAbsChange", attribute.eventCriteria.absChange)»
+			«setDynamicAttributePropertyConfig("EventRelChange", attribute.eventCriteria.relChange)»
+			«setDynamicAttributePropertyConfig("EventPeriod",    attribute.eventCriteria.period)»
+		«ENDIF»
+		«IF attribute.evArchiveCriteria!=null»
+			«setDynamicAttributePropertyConfig("ArchivingEventAbsChange", attribute.evArchiveCriteria.absChange)»
+			«setDynamicAttributePropertyConfig("ArchivingEventRelChange", attribute.evArchiveCriteria.relChange)»
+			«setDynamicAttributePropertyConfig("ArchivingEventPeriod",    attribute.evArchiveCriteria.period)»
+		«ENDIF»
 		«setDynamicAttributeConfig("AttributeProperties", "properties")»
 	'''
 
