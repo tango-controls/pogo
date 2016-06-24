@@ -17,7 +17,15 @@ public interface ReleaseNote
 		"<BODY TEXT=\"#000000\" BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#7F00FF\" ALINK=\"#FF0000\">\n" + 
 		"<P><!-------TITLE------></P>\n" + 
 		"<Center>	<h2>Pogo Release Note</h2>\n" + 
-		"	(Generated Thu Feb 25 16:10:03 CET 2016)</Center><Br>\n" + 
+		"	(Generated Fri May 20 09:28:12 CEST 2016)</Center><Br>\n" + 
+		"<li><b>Pogo-9.2.6 - 20/05/2016:</b><Br>\n" + 
+		"&nbsp; &nbsp; Fix a problem with event for java dynamic attributes<Br>\n" + 
+		"<li><b>Pogo-9.2.5 - 08/04/2016:</b><Br>\n" + 
+		"&nbsp; &nbsp; Add a clone class/device property option menu.<Br>\n" + 
+		"&nbsp; &nbsp; Add an editor for class description.<Br>\n" + 
+		"<li><b>Pogo-9.2.4 - 07/03/2016:</b><Br>\n" + 
+		"&nbsp; &nbsp; Pb in pipe is_allowed method fixed.<Br>\n" + 
+		"&nbsp; &nbsp; Pb in pipe argument name fixed.<Br>\n" + 
 		"<li><b>Pogo-9.2.3 - 25/02/2016:</b><Br>\n" + 
 		"&nbsp; &nbsp; Use of entry_points in setup.py for better compatibility.<Br>\n" + 
 		"<li><b>Pogo-9.2.2 - 04/02/2016:</b><Br>\n" + 

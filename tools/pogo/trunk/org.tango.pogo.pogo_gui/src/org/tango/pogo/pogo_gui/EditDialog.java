@@ -39,15 +39,15 @@ import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 /**
  * @author verdier
  */
-public class EditDialog extends javax.swing.JDialog {
+public class EditDialog extends JDialog {
     private int returnStatus = JOptionPane.CANCEL_OPTION;
     //===================================================================
-
     /**
      * Creates new form EditDialog
      *
@@ -56,17 +56,34 @@ public class EditDialog extends javax.swing.JDialog {
      */
     //===================================================================
     public EditDialog(JDialog parent, String text) {
+        this(parent, text, null);
+    }
+    //===================================================================
+    /**
+     * Creates new form EditDialog
+     *
+     * @param parent parent instance
+     * @param text   text to edit.
+     * @param dimension set scrolled text to specified dimension if not null
+     */
+    //===================================================================
+    public EditDialog(JDialog parent, String text, Dimension dimension) {
         super(parent, true);
         initComponents();
-
         text = Utils.strReplace(text, "\\n", "\n");
         editText.setText(text.trim());
+
+        if(dimension!=null) {
+            //  Do it on scrolled pane
+            Component scrollPane = editText.getParent().getParent();
+            scrollPane.setPreferredSize(dimension);
+        }
+
         pack();
         ATKGraphicsUtils.centerDialog(this);
     }
 
     //===================================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -150,6 +167,12 @@ public class EditDialog extends javax.swing.JDialog {
         return editText.getText();
     }
 
+    //===================================================================
+    //===================================================================
+    public void setPreferredSize(Dimension dimension) {
+        //  Do it on scrolled pane
+        editText.getParent().setPreferredSize(dimension);
+    }
     //===================================================================
     //===================================================================
     public int showDialog() {

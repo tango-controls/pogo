@@ -216,6 +216,7 @@ public class ClassDialog extends JDialog {
         javax.swing.JLabel copyrightLbl = new javax.swing.JLabel();
         javax.swing.JScrollPane copyrightScrollPane = new javax.swing.JScrollPane();
         copyrightText = new javax.swing.JTextArea();
+        javax.swing.JButton editButton = new javax.swing.JButton();
         inheritanceScrollPane = new javax.swing.JScrollPane();
 
         setTitle("Class Definition Window");
@@ -416,6 +417,20 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         centerPanel.add(copyrightScrollPane, gridBagConstraints);
+
+        editButton.setText("...");
+        editButton.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        centerPanel.add(editButton, gridBagConstraints);
 
         horizontalPanel.setRightComponent(centerPanel);
 
@@ -637,6 +652,18 @@ public class ClassDialog extends JDialog {
             doClose(JOptionPane.CANCEL_OPTION);
         }
     }//GEN-LAST:event_nameTextKeyPressed
+
+    //===================================================================
+    //===================================================================
+    @SuppressWarnings({"UnusedDeclaration"})
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO  Edit in dialog.
+        EditDialog editDialog = new EditDialog(this, descText.getText(), new Dimension(640, 480));
+        if (editDialog.showDialog() == JOptionPane.OK_OPTION) {
+            //	Put new text in text area
+            descText.setText(editDialog.getText());
+        }
+    }//GEN-LAST:event_editButtonActionPerformed
 
     //===================================================================
     //===================================================================

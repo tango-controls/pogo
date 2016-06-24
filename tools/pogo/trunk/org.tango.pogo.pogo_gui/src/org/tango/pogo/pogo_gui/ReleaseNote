@@ -9,6 +9,23 @@
 #-======================================================================
 
 
+Pogo-9.2.6 - 20/05/2016:
+	Fix a problem with event for java dynamic attributes
+
+Pogo-9.2.5 - 08/04/2016:
+	Add a clone class/device property option menu.
+	Add an editor for class description.
+
+Pogo-9.2.4 - 07/03/2016:
+	Pb in pipe is_allowed method fixed.
+	Pb in pipe argument name fixed.
+
+Pogo-9.2.3 - 25/02/2016:
+	Use of entry_points in setup.py for better compatibility.
+
+Pogo-9.2.2 - 04/02/2016:
+	Fix a bug in HTML generation with a command description empty
+
 Pogo-9.2.1 - 04/02/2016:
 	Improve Python and PythonHL templates for inheritance
 
