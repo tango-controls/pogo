@@ -824,7 +824,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         return false;
     }
     //===============================================================
-
     /**
      * Clone selected object, and then edit it.
      */
@@ -882,10 +881,45 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             else
                 removeSelectedItem(false, false);
         }
-
     }
     //===============================================================
+    /**
+     * Clone selected class/device property
+     */
+    //===============================================================
+    private void clonePropertyAs() {
+        //  ToDo
+        DefaultMutableTreeNode newNode = null;
+        DefaultMutableTreeNode collecNode =
+                (DefaultMutableTreeNode) getSelectedNode().getParent();
 
+
+        Object obj = getSelectedObject();
+        if (obj instanceof PogoProperty) {
+            Property srcProp = ((PogoProperty) obj).value;
+            Property newProp = PropertyDialog.cloneProperty(srcProp);
+            boolean is_dev = ((PogoProperty) obj).is_dev;
+
+            if (is_dev)
+                pogo_class.getDeviceProperties().add(newProp);
+            else
+                pogo_class.getClassProperties().add(newProp);
+            newNode = new DefaultMutableTreeNode(new PogoProperty(newProp, is_dev));
+
+            DefaultMutableTreeNode targetCollection;
+            if (is_dev) {
+                targetCollection = ((DefaultMutableTreeNode) root.getChildAt(CLASS_PROPERTIES));
+            }
+            else {
+                targetCollection = ((DefaultMutableTreeNode) root.getChildAt(DEV_PROPERTIES));
+            }
+
+            treeModel.insertNodeInto(newNode, targetCollection, targetCollection.getChildCount());
+            setSelectionNode(newNode);
+            setModified(true);
+        }
+    }
+    //===============================================================
     /**
      * Edit selected object
      *
@@ -2237,8 +2271,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     static private final int EDIT_ITEM     = 7;
     static private final int COPY_ITEM     = 8;
     static private final int CLONE_ITEM    = 9;
-    static private final int REMOVE_ITEM   = 10;
-    static private final int EDIT_SRC_CODE = 11;
+    static private final int CLONE_PROPERTY_AS = 10;
+    static private final int REMOVE_ITEM   = 11;
+    static private final int EDIT_SRC_CODE = 12;
     static private final int OFFSET = 2;    //	Label And separator
 
     static private String[] menuLabels = {
@@ -2256,6 +2291,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             "Edit Item",
             "Copy",
             "Clone  Item",
+            "Clone  as Item",
             "Remove Item",
             "Edit Source Code"
     };
@@ -2287,6 +2323,31 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
 
         //======================================================
+        private void manageCloneAs(Object item) {
+            if (item instanceof PogoProperty) {
+                PogoProperty pogoProperty = (PogoProperty) item;
+                //  Get source and target
+                String targetText;
+                DefaultMutableTreeNode targetNode;
+                if (pogoProperty.is_dev) {
+                    targetNode = ((DefaultMutableTreeNode) root.getChildAt(CLASS_PROPERTIES));
+                    targetText = "Clone as class property";
+                }
+                else {
+                    targetNode = ((DefaultMutableTreeNode) root.getChildAt(DEV_PROPERTIES));
+                    targetText = "Clone as device property";
+                }
+                //  Check if item already exists in target collection
+                for (int i = 0 ; i<targetNode.getChildCount() ; i++) {
+                    if (targetNode.getChildAt(i).toString().equalsIgnoreCase(item.toString()))
+                        return; //  Exists. Do nothing
+                }
+
+                ((JMenuItem) getComponent(OFFSET + CLONE_PROPERTY_AS)).setText(targetText);
+                getComponent(OFFSET + CLONE_PROPERTY_AS).setVisible(true);
+            }
+            //  Else (not a property) do nothing
+        }
         //======================================================
         private void manageItemMenu(String itemName) {
             for (int i = OFFSET; i < this.getComponentCount(); i++) {
@@ -2350,10 +2411,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             //	Reset all items
             for (int i = 0; i < menuLabels.length; i++)
                 getComponent(OFFSET + i).setVisible(false);
-            // ToDo replace by true when tango 9
+
             getComponent(OFFSET + ADD_ITEM).setVisible(!collection.name.contains("Forwarded"));
-                    //true);
-            //  ToDo
             getComponent(OFFSET + ADD_DYN_ITEM).setVisible(!collection.name.contains("Forwarded") &&
                     (collection.name.contains("Attribute") || collection.name.contains("Command")));
             getComponent(OFFSET + ADD_FW_ATTR).setVisible(collection.name.contains("Forwarded"));
@@ -2407,7 +2466,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 edit_code = Utils.isTrue(((PogoState) obj).value.getStatus().getConcreteHere());
 
             getComponent(OFFSET + EDIT_SRC_CODE).setEnabled(edit_code);
-
+            manageCloneAs(obj);
             show(tree, evt.getX(), evt.getY());
         }
 
@@ -2454,6 +2513,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     break;
                 case CLONE_ITEM:
                     cloneItem();
+                    break;
+                case CLONE_PROPERTY_AS:
+                    clonePropertyAs();
                     break;
                 case REMOVE_ITEM:
                     removeSelectedItem();
