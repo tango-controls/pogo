@@ -104,8 +104,9 @@ public class ClassDialog extends JDialog {
         licenseComboBox.addItem("MIT");
         licenseComboBox.addItem("none");
 
-        if (deviceClass == null)   //  Creating a new class
+        if (deviceClass == null) {  //  Creating a new class
             this.deviceClass = new DeviceClass("", null);
+        }
         else {
             //	Edit the specified class
             this.deviceClass = deviceClass;
@@ -259,7 +260,7 @@ public class ClassDialog extends JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 5);
         centerPanel.add(addInheritanceBtn, gridBagConstraints);
 
         nameLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -608,8 +609,7 @@ public class ClassDialog extends JDialog {
         }
 
         //	Start the file chooser
-        int retval = chooser.showOpenDialog(this);
-        if (retval == JFileChooser.APPROVE_OPTION) {
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             if (file != null) {
                 if (!file.isDirectory()) {
@@ -630,7 +630,7 @@ public class ClassDialog extends JDialog {
                         inheritancePanel = new InheritancePanel(deviceClass);
                         inheritanceScrollPane.setViewportView(inheritancePanel);
                         addInheritanceBtn.setVisible(false);
-                        
+
                         //  Set the language as inherited one
                         setLanguage(dc.getPogoDeviceClass().getDescription().getLanguage());
 
@@ -665,6 +665,9 @@ public class ClassDialog extends JDialog {
         }
     }//GEN-LAST:event_editButtonActionPerformed
 
+    //===================================================================
+    //===================================================================
+    @SuppressWarnings({"UnusedDeclaration"})
     //===================================================================
     //===================================================================
     public int showDialog() {

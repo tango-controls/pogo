@@ -80,6 +80,7 @@ public class Utils {
 
     public ImageIcon reloadIcon;
     public ImageIcon newIcon;
+    public ImageIcon newFromTemplateIcon;
     public ImageIcon openIcon;
     public ImageIcon saveIcon;
 
@@ -119,6 +120,7 @@ public class Utils {
 
         reloadIcon = getIcon("reload_icon.gif", 0.8);
         newIcon = getIcon("new_icon.gif", 1.0);
+        newFromTemplateIcon = getIcon("new_templ_icon.gif", 1.0);
         openIcon = getIcon("open_icon.gif", 1.0);
         saveIcon = getIcon("save_icon.gif", 1.0);
 
@@ -185,7 +187,6 @@ public class Utils {
 
             width = (int) (ratio * width);
             height = (int) (ratio * height);
-
             icon = new ImageIcon(
                     icon.getImage().getScaledInstance(
                             width, height, Image.SCALE_SMOOTH));
