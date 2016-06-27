@@ -63,10 +63,10 @@ public class PogoGUI extends JFrame {
      */
     public static boolean useDisplay = false;
     /**
-     * A vector to know how many JFrame has been instancied.
+     * A vector to know how many JFrame has been created.
      * And to checked at exit button clicked, to know if at least one is still visible.
      */
-    static private ArrayList<JFrame> runningApplis = new ArrayList<JFrame>();
+    static private ArrayList<JFrame> runningApplications = new ArrayList<>();
     /**
      * File Chooser Object used in file menu.
      */
@@ -82,11 +82,12 @@ public class PogoGUI extends JFrame {
     /**
      * little buttons with icon on top of JTree.
      */
-    private ArrayList<JButton> topButtons = new ArrayList<JButton>();
+    private ArrayList<JButton> topButtons = new ArrayList<>();
     private static final int TOP_RELOAD = 0;
-    private static final int TOP_NEW = 1;
-    private static final int TOP_OPEN = 2;
-    private static final int TOP_GENE = 3;
+    private static final int TOP_NEW_CLASS = 1;
+    private static final int TOP_NEW_TEMPL = 2;
+    private static final int TOP_OPEN = 3;
+    private static final int TOP_GENE = 4;
 
     private ClassPanels class_panels;
     private JLabel      languageLabel;
@@ -153,7 +154,7 @@ public class PogoGUI extends JFrame {
         pack();
         setScreenPosition(this);
         setVisible(true);
-        runningApplis.add(this);
+        runningApplications.add(this);
     }
 
     //===========================================================
@@ -194,8 +195,8 @@ public class PogoGUI extends JFrame {
         Point p = new Point();
 
         //  If not the first one set position from previous.
-        for (int i = runningApplis.size() - 1; i >= 0; i--) {
-            JFrame parent = runningApplis.get(i);
+        for (int i = runningApplications.size() - 1; i >= 0; i--) {
+            JFrame parent = runningApplications.get(i);
             if (parent.isVisible()) {
                 p = parent.getLocation();
                 p.x += 20;
@@ -207,10 +208,10 @@ public class PogoGUI extends JFrame {
 
         // Else set to the default center
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension scrsize = toolkit.getScreenSize();
-        Dimension appsize = frame.getSize();
-        p.x = (scrsize.width - appsize.width) / 2;
-        p.y = (scrsize.height - appsize.height) / 2;
+        Dimension scrSize = toolkit.getScreenSize();
+        Dimension appSize = frame.getSize();
+        p.x = (scrSize.width - appSize.width) / 2;
+        p.y = (scrSize.height - appSize.height) / 2;
         frame.setLocation(p);
     }
 
@@ -293,7 +294,8 @@ public class PogoGUI extends JFrame {
     private void initOwnComponents() {
         Utils utils = Utils.getInstance();
         addTopPanelButton(utils.reloadIcon, "Reload Class", false);
-        addTopPanelButton(utils.newIcon, "New Class", false);
+        addTopPanelButton(utils.newIcon, "New Tango Class", false);
+        addTopPanelButton(utils.newFromTemplateIcon, "New Class from Template", false);
         addTopPanelButton(utils.openIcon, "Open Class", false);
         addTopPanelButton(utils.saveIcon, "Generate Class", false);
 
@@ -339,16 +341,16 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     public void setLanguageLogo(String language) {
-        if (language.toLowerCase().equals("cpp"))
+        if (language.equalsIgnoreCase("Cpp"))
             languageLabel.setIcon(Utils.getInstance().cppLogo);
         else
-        if (language.toLowerCase().equals("java"))
+        if (language.equalsIgnoreCase("Java"))
             languageLabel.setIcon(Utils.getInstance().javaLogo);
         else
-        if (language.toLowerCase().equals("python"))
+        if (language.equalsIgnoreCase("Python"))
             languageLabel.setIcon(Utils.getInstance().pythonLogo);
         else
-        if (language.toLowerCase().equals("pythonhl"))
+        if (language.equalsIgnoreCase("PythonHL"))
             languageLabel.setIcon(Utils.getInstance().pythonHLLogo);
         pack();
     }
@@ -386,6 +388,7 @@ public class PogoGUI extends JFrame {
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem newFromTemplateItem = new javax.swing.JMenuItem();
         openItem = new javax.swing.JMenuItem();
         recentMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem dummyItem = new javax.swing.JMenuItem();
@@ -446,6 +449,15 @@ public class PogoGUI extends JFrame {
             }
         });
         fileMenu.add(newItem);
+
+        newFromTemplateItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        newFromTemplateItem.setText("New from template");
+        newFromTemplateItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newFromTemplateItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(newFromTemplateItem);
 
         openItem.setText("Open");
         openItem.addActionListener(new java.awt.event.ActionListener() {
@@ -744,7 +756,7 @@ public class PogoGUI extends JFrame {
 
             this.setVisible(false);
             // Check to know if at least one is still visible.
-            for (JFrame frame : runningApplis)
+            for (JFrame frame : runningApplications)
                 if (frame.isVisible())
                     return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
@@ -811,6 +823,7 @@ public class PogoGUI extends JFrame {
                 Utils.getInstance().stopSplashRefresher();
                 cursor = new Cursor(Cursor.DEFAULT_CURSOR);
                 setCursor(cursor);
+                e.printStackTrace();
                 PogoException.popup(this, e);
                 return false;
             }
@@ -829,31 +842,32 @@ public class PogoGUI extends JFrame {
     @SuppressWarnings({"UnusedDeclaration"})
     private void newItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemActionPerformed
 
+        //  ToDo add template management
+        //  Start class dialog
         ClassDialog dialog = new ClassDialog(this);
-        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
+        if (dialog.showDialog() != JOptionPane.OK_OPTION)
+            return;
 
-            DeviceClass devclass = dialog.getInputs();
-            if (class_panels.getSelectedTree() != null) {
-                try {
-                    new PogoGUI(devclass, true);
-                    return;
-                } catch (Exception e) {
-                    Utils.getInstance().stopSplashRefresher();
-                    PogoException.popup(this, e);
-                }
-
+        DeviceClass deviceClass = dialog.getInputs();
+        if (class_panels.getSelectedTree() != null) {
+            try {
+                new PogoGUI(deviceClass, true);
+                return;
+            } catch (Exception e) {
+                Utils.getInstance().stopSplashRefresher();
+                PogoException.popup(this, e);
             }
-
-            //  Display it in this panel
-            reBuildTabbedPane = true;
-            tabbedPane.removeAll();
-
-            //	Build users_tree to display info
-            class_panels.addPanels(devclass);
-            tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
-            class_panels.checkWarnings();
-            reBuildTabbedPane = false;
         }
+
+        //  Display it in this panel
+        reBuildTabbedPane = true;
+        tabbedPane.removeAll();
+
+        //	Build users_tree to display info
+        class_panels.addPanels(deviceClass);
+        tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
+        class_panels.checkWarnings();
+        reBuildTabbedPane = false;
     }//GEN-LAST:event_newItemActionPerformed
 
     //=======================================================
@@ -916,8 +930,11 @@ public class PogoGUI extends JFrame {
                     case TOP_RELOAD:
                         reloadProject();
                         break;
-                    case TOP_NEW:
+                    case TOP_NEW_CLASS:
                         newItemActionPerformed(evt);
+                        break;
+                    case TOP_NEW_TEMPL:
+                        newFromTemplateItemActionPerformed(evt);
                         break;
                     case TOP_OPEN:
                         openItemActionPerformed(evt);
@@ -1201,6 +1218,25 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     //=======================================================
+    @SuppressWarnings("UnusedParameters")
+    private void newFromTemplateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFromTemplateItemActionPerformed
+        // TODO add your handling code here:
+        try {
+            TemplateChooser templateChooser = new TemplateChooser(this);
+            if (templateChooser.showDialog() != JOptionPane.OK_OPTION)
+                return;
+            DeviceClass deviceClass = templateChooser.getDeviceClass();
+            if (deviceClass != null) {
+                new PogoGUI(deviceClass, true);
+            }
+        }
+        catch (PogoException e) {
+            e.popup(this);
+        }
+    }//GEN-LAST:event_newFromTemplateItemActionPerformed
+
+    //=======================================================
+    //=======================================================
     private void loadDeviceClassFromFile(String filename) {
         loadDeviceClassFromFile(filename, true);
     }
@@ -1254,7 +1290,7 @@ public class PogoGUI extends JFrame {
                 System.err.println(e.toString());
             else if (!e.toString().equals("CANCEL")) {
                 PogoException.popup(this, e);
-                if (class_panels.getPanelNameAt(0) == null && runningApplis.size() > 1)
+                if (class_panels.getPanelNameAt(0) == null && runningApplications.size() > 1)
                     setVisible(false);
             }
         }

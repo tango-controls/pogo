@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 9.2.6
+RELEASE    = 9.2.7
 
 
 TANGO_HOME	=	/segfs/tango
@@ -55,6 +55,9 @@ constants:
 
 utils:
 	$(JAVAC) tools/*.java
+
+xmi-templates:
+	cp templates/* $(BIN_DIR)/org/tango/pogo/pogo_gui/templates
 
 exe:
 	@./go

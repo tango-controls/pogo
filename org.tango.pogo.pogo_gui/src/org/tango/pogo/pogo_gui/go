@@ -15,15 +15,8 @@ export DEBUG=true
 #export TEST_MODE=true
 
 
-export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/PowerSupply
-export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1//make_test/toto/old
-export SOURCE_PATH=/segfs/tango/cppserver/machine
-export SOURCE_PATH=/segfs/tango/tools/pogo/test/java/test_oaw
-export SOURCE_PATH=/segfs/tango/tools/pogo/test/java
-export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/test_oaw-1
-export SOURCE_PATH=/segfs/tango/cppserver/IO/wago
-export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/
-export SOURCE_PATH=/segfs/tango/cppserver/machine/powersupply/rips/RipsPlcControl
+#export SOURCE_PATH=/segfs/tango/tools/pogo/test/cpp/
+#export SOURCE_PATH=/segfs/tango/cppserver/machine/powersupply/rips/RipsPlcControl
 
 SUPER_HOME=/segfs/tango/templates/AbstractClasses
 
@@ -34,8 +27,11 @@ export Packaging=true
 export TANGO_9=true
 export MANAGE_WRITE_METHOD=false
 
+export TEMPLATES_HOME=/users/verdier/templates
+
 java  -DSUPER_HOME=$SUPER_HOME \
             org.tango.pogo.pogo_gui.Pogo  $*
+#            org.tango.pogo.pogo_gui.TemplateChooser  $*
 
 
 # -src $SRC_FILE 
