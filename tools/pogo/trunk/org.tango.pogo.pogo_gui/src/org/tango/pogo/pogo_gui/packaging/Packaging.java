@@ -46,8 +46,8 @@ import java.util.List;
 
 
 public class Packaging {
-    private ArrayList<PackClass> classes = new ArrayList<PackClass>();
-    private ArrayList<String> addedClasses = new ArrayList<String>();
+    private List<PackClass> packClassList = new ArrayList<>();
+    private List<String> addedClasses = new ArrayList<>();
     private String packageName;
     private String packageAuthor;
     private String packagePath;
@@ -93,7 +93,7 @@ public class Packaging {
         initialize(className, path, author);
         PackClass   _class = new PackClass(className, path);
         _class.addAdditionalFiles(deviceClass.getAdditionalFiles());
-        classes.add(_class);
+        packClassList.add(_class);
         manageInheritances(deviceClass.getDescription().getInheritances());
     }
     //===============================================================
@@ -112,7 +112,7 @@ public class Packaging {
         for (OneClassSimpleDef _class : simpleDefList) {
             PackClass   packClass =new PackClass(_class.getClassname(), _class.getSourcePath());
             packClass.addAdditionalFiles(_class.getAdditionalFiles());
-            classes.add(packClass);
+            packClassList.add(packClass);
             manageInheritances(_class.getInheritances());
         }
         multipleClasses = true;
@@ -123,7 +123,7 @@ public class Packaging {
         for (Inheritance inheritance : inheritances) {
             String name = inheritance.getClassname();
             if (!(name.startsWith("Device") && name.endsWith("Impl")))
-                classes.add(new PackClass(name, inheritance.getSourcePath()));
+                packClassList.add(new PackClass(name, inheritance.getSourcePath()));
         }
     }
     //===============================================================
@@ -165,22 +165,22 @@ public class Packaging {
         StringBuilder   sb = new StringBuilder();
 
         //  For each class
-        for (PackClass _class : classes) {
+        for (PackClass packClass : packClassList) {
             //  Check if already done
-            if (addedClasses.indexOf(_class.name)<0) {
+            if (addedClasses.indexOf(packClass.name)<0) {
                 //  Add headers
-                for (String file : _class.headers)
+                for (String file : packClass.headers)
                     sb.append(file).append(nextLine);
 
                 //  Get source files (without main and ClassFactory)
-                ArrayList<String> files = _class.sources;
+                List<String> files = packClass.sources;
                 for (String file : files) {
                     sb.append(file).append(nextLine);
                 }
-                addedClasses.add(_class.name);
+                addedClasses.add(packClass.name);
             }
             else
-                PackUtils.println(_class.name + " has already been added!");
+                PackUtils.println(packClass.name + " has already been added!");
         }
         String  factory = ((multipleClasses)? "MultiClassesFactory.cpp" :"ClassFactory.cpp");
         sb.append(factory).append(nextLine);
@@ -204,7 +204,7 @@ public class Packaging {
     }
     //===============================================================
     //===============================================================
-    private void updateConfig(String fileName, ArrayList<String> headers, ArrayList<String> functions) throws PogoException {
+    private void updateConfig(String fileName, List<String> headers, List<String> functions) throws PogoException {
         String  code = ParserTool.readFile(fileName);
         code = code.replaceAll("TEMPLATE_CHECK_HEADERS", PackUtils.buildConfigureList(headers));
         code = code.replaceAll("TEMPLATE_CHECK_FUNCS", PackUtils.buildConfigureList(functions));
@@ -223,7 +223,7 @@ public class Packaging {
     private void createSourceLinks(final String path,
                                   final String fileName,
                                   final String srcPath) throws PogoException {
-        ArrayList<String>   list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add(fileName);
         createSourceLinks(path, list, srcPath);
     }
@@ -237,7 +237,7 @@ public class Packaging {
      */
     //===============================================================
     private void createSourceLinks(final String path,
-                                  final ArrayList<String> fileNames,
+                                  final List<String> fileNames,
                                   final String srcPath) throws PogoException {
 
         //  ToDo When 1.7 will be used --> use java.nio.file.Files.createLink()
@@ -280,7 +280,7 @@ public class Packaging {
      * @throws PogoException if code generation failed.
      */
     //===============================================================
-    public void generate(ArrayList<String> headers, ArrayList<String> functions) throws PogoException {
+    public void generate(List<String> headers, List<String> functions) throws PogoException {
         PackUtils.buildDirectories(directories, packagePath);
         copyTemplates();
 
@@ -293,7 +293,7 @@ public class Packaging {
         }
 
         if (multipleClasses) {
-            for (PackClass _class : classes) {
+            for (PackClass _class : packClassList) {
                 createSourceLinks(packagePath + "/src", _class.headers, _class.path);
                 createSourceLinks(packagePath + "/src", _class.getSources(), _class.path);
 
@@ -304,7 +304,7 @@ public class Packaging {
         }
         else  {
             int cnt = 0;
-            for (PackClass _class : classes) {
+            for (PackClass _class : packClassList) {
                 String  srcPath = (cnt++==0)? "../.." : _class.path;
                 createSourceLinks(packagePath + "/src", _class.headers, srcPath);
                 createSourceLinks(packagePath + "/src", _class.getSources(), srcPath);
@@ -379,15 +379,14 @@ public class Packaging {
 
         private String name;
         private String path;
-        private ArrayList<String>   headers;
-        private ArrayList<String>   sources;
+        private List<String>   headers;
+        private List<String>   sources = new ArrayList<>();
         //===========================================================
         private PackClass(String name, String path) throws PogoException {
             this.name = name;
             this.path = path;
 
             headers = PackUtils.getFileList(path, ".h");
-            sources = new ArrayList<String>();
             sources.add(name+".cpp");
             sources.add(name+"Class.cpp");
             sources.add(name+"StateMachine.cpp");
@@ -423,13 +422,13 @@ public class Packaging {
                     }
                 }
                 catch (PogoException e) {
-                    System.err.println(e);
+                    System.err.println(e.toString());
                 }
             }
         }
         //===========================================================
-        private ArrayList<String> getSources() {
-            ArrayList<String>   list = new ArrayList<String>();
+        private List<String> getSources() {
+            List<String>   list = new ArrayList<>();
             for (String file : sources)
                 if (!file.equals("main.cpp") && !file.equals("ClassFactory.cpp"))
                     list.add(file);

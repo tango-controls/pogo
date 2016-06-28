@@ -61,8 +61,8 @@ public class ConfigurePackagingDialog extends JDialog {
 
     private PogoDeviceClass deviceClass = null;
     private PogoMultiClasses    multiClasses = null;
-    private ArrayList<String>   headers = new ArrayList<String>();
-    private ArrayList<String>   functions = new ArrayList<String>();
+    private List<String>   headers = new ArrayList<>();
+    private List<String>   functions = new ArrayList<>();
 
     private static final String[]   defaultHeaders = {
             "string.h", "sys/time.h", "sys/timeb.h", "unistd.h",

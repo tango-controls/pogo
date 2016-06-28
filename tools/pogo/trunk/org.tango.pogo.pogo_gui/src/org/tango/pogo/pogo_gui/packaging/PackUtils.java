@@ -41,6 +41,7 @@ import org.tango.pogo.pogo_gui.tools.PogoException;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class PackUtils {
@@ -97,8 +98,8 @@ public class PackUtils {
      * @throws PogoException if path cannot be read
      */
     //===============================================================
-    public static ArrayList<String> getFileList(String path, String extension) throws PogoException {
-        ArrayList<String>   fileList = new ArrayList<String>();
+    public static List<String> getFileList(String path, String extension) throws PogoException {
+        List<String>   fileList = new ArrayList<>();
         try {
             File inDir = new File(path);
             String[] fileNames = inDir.list();
@@ -222,7 +223,7 @@ public class PackUtils {
     }
     //===============================================================
     //===============================================================
-    public static String buildConfigureList(ArrayList<String> list) {
+    public static String buildConfigureList(List<String> list) {
         String  str = " ";
         for (String item : list) {
             str += item + " ";
