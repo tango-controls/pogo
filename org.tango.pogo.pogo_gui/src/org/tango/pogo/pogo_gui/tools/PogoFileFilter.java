@@ -39,6 +39,7 @@ package org.tango.pogo.pogo_gui.tools;
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /*
@@ -77,7 +78,7 @@ import java.util.ArrayList;
  */
 public class PogoFileFilter extends FileFilter {
 
-    private ArrayList<String> filters = new ArrayList<String>();
+    private List<String> filters = new ArrayList<>();
     private String description = null;
     private String fullDescription = null;
     private boolean useExtensionsInDescription = true;

@@ -60,9 +60,9 @@ public class PogoProperty {
     private static final String sitePropFilename = "/Pogo.site_properties";
 
     private static PogoProperty instance = null;
-    public static ArrayList<String> classFamilies = new ArrayList<String>();
-    public static ArrayList<String> platformNames = new ArrayList<String>();
-    public static ArrayList<String> busNames = new ArrayList<String>();
+    public static List<String> classFamilies = new ArrayList<>();
+    public static List<String> platformNames = new ArrayList<>();
+    public static List<String> busNames = new ArrayList<>();
     private static final String copyrightProp = "copyright";
     private static final String docHomeProp = "doc_home";
     private static final String makefileHomeProp = "makefile_home";
@@ -80,7 +80,7 @@ public class PogoProperty {
     public static String docHome = "./doc_html";
     public static String makefileHome = "$(TANGO_HOME)";
     public static String installHome = "$(TANGO_HOME)";
-    public static ArrayList<String> siteClassFamilies = new ArrayList<String>();
+    public static List<String> siteClassFamilies = new ArrayList<>();
 
     //---------------------- $HOME/.pogorc definitions -----------------------------------
 
@@ -94,8 +94,8 @@ public class PogoProperty {
     public static String inheritHome = null;
     public static String contactAddress = "";
     public static boolean loadPrevious = true;
-    public static ArrayList<String> projectHistory = new ArrayList<String>();
-    public static ArrayList<String> multiClassProjectHistory = new ArrayList<String>();
+    public static List<String> projectHistory = new ArrayList<>();
+    public static List<String> multiClassProjectHistory = new ArrayList<>();
 
     public static final Object  monitor = new Object();
     //===============================================================
@@ -164,7 +164,7 @@ public class PogoProperty {
     private void loadDefaultProperties() throws PogoException {
         try {
             //	fill data members with default  properties if any
-            ArrayList<String> vs = loadProperties(defPropFilename);
+            List<String> vs = loadProperties(defPropFilename);
             classFamilies = getStringListProperty(classFamiliesProp, vs);
             platformNames = getStringListProperty(platformNamesProp, vs);
             busNames = getStringListProperty(busNamesProp, vs);
@@ -187,7 +187,7 @@ public class PogoProperty {
     private void loadSiteProperties() {
         try {
             //	fill data members with site properties if any
-            ArrayList<String> codeList = loadSiteProperties(sitePropFilename);
+            List<String> codeList = loadSiteProperties(sitePropFilename);
             siteName = getStringProperty(siteNameProp, codeList);
             copyright = checkOverwritingLinesProperty(copyrightProp, codeList);
             docHome = checkOverwritingPropertyString(docHomeProp, docHome, codeList);
@@ -202,7 +202,7 @@ public class PogoProperty {
     //===============================================================
     //===============================================================
     private String checkOverwritingLinesProperty(String propertyName, List<String> codeLines) {
-        ArrayList<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         boolean in = false;
         String header = packname + "." + propertyName + ":";
         for (String codeLine : codeLines) {
@@ -236,14 +236,14 @@ public class PogoProperty {
             String rc_file = getPogoRCname();
             if (rc_file != null) {
                 System.out.println(rc_file);
-                ArrayList<String> vs = loadPropertiesRC(rc_file);
-                projectHistory = getStringListProperty(ownProjectHistory, vs);
+                List<String> propertyList = loadPropertiesRC(rc_file);
+                projectHistory = getStringListProperty(ownProjectHistory, propertyList);
                 multiClassProjectHistory =
-                        getStringListProperty(multiProjectHistory, vs);
-                inheritHome = getStringProperty(ownInheritanceHome, vs);
-                contactAddress = getStringProperty(ownContactAddress, vs);
+                        getStringListProperty(multiProjectHistory, propertyList);
+                inheritHome = getStringProperty(ownInheritanceHome, propertyList);
+                contactAddress = getStringProperty(ownContactAddress, propertyList);
 
-                String tmp = getStringProperty(ownLoadPrevious, vs);
+                String tmp = getStringProperty(ownLoadPrevious, propertyList);
                 loadPrevious = Utils.isTrue(tmp);
 
                 //	remove first one if is empty
@@ -259,7 +259,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private String checkOverwritingPropertyString(String propertyName, String propertyValue, ArrayList<String> propertyList) {
+    private String checkOverwritingPropertyString(String propertyName, String propertyValue, List<String> propertyList) {
         String tmp = getStringProperty(propertyName, propertyList);
         if (tmp != null) propertyValue = tmp;
         return propertyValue;
@@ -278,13 +278,13 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private ArrayList<String> loadSiteProperties(String filename) throws PogoException, IOException {
+    private List<String> loadSiteProperties(String filename) throws PogoException, IOException {
         //	Get file URL and load it
         java.net.URL url = getClass().getResource(filename);
         System.out.println("Reading properties from " + url.getFile());
         InputStream is = url.openStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        ArrayList<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         String str;
         while ((str = br.readLine()) != null) {
             if (!str.startsWith("#")) {
@@ -299,13 +299,13 @@ public class PogoProperty {
     }
     //===============================================================
     //===============================================================
-    private ArrayList<String> loadProperties(String filename) throws PogoException, IOException {
+    private List<String> loadProperties(String filename) throws PogoException, IOException {
         //	Get file URL and load it
         java.net.URL url = getClass().getResource(filename);
         System.out.println("Reading properties from " + url.getFile());
         InputStream is = url.openStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        ArrayList<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         String str;
         while ((str = br.readLine()) != null) {
             str = str.trim();
@@ -322,8 +322,8 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private ArrayList<String> loadPropertiesRC(String filename) throws PogoException, IOException {
-        ArrayList<String> vs = new ArrayList<String>();
+    private List<String> loadPropertiesRC(String filename) throws PogoException, IOException {
+        List<String> vs = new ArrayList<>();
         String code = ParserTool.readFile(filename);
         StringTokenizer stk = new StringTokenizer(code, "\n");
         while (stk.hasMoreTokens())
@@ -333,13 +333,13 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private ArrayList<String> getStringListProperty(String propname, ArrayList<String> vs) {
-        ArrayList<String> result = new ArrayList<String>();
+    private List<String> getStringListProperty(String propertyName, List<String> vs) {
+        List<String> result = new ArrayList<>();
         boolean found = false;
         for (String line : vs) {
             if (!line.trim().startsWith("#")) {   //  Not a comment {
                 if (!found) {
-                    if (line.startsWith(packname + "." + propname)) {
+                    if (line.startsWith(packname + "." + propertyName)) {
                         int pos = line.indexOf(':');
                         if (pos > 0) {
                             found = true;
@@ -360,7 +360,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private String getStringProperty(String propertyName, ArrayList<String> propertyList) {
+    private String getStringProperty(String propertyName, List<String> propertyList) {
         for (String s : propertyList)
             if (s.startsWith(packname + "." + propertyName)) {
                 int pos = s.indexOf(':');
@@ -403,7 +403,7 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private void displayProperty(String name, ArrayList<String> values) {
+    private void displayProperty(String name, List<String> values) {
         System.out.print(name + ":");
         for (String s : values)
             System.out.println("	" + s);

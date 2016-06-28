@@ -41,7 +41,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -58,6 +57,7 @@ import java.util.List;
 @SuppressWarnings("MagicConstant")
 public class PogoConfiguration extends JDialog {
     private Component   parent;
+    private List<String> families;
     private int retVal = JOptionPane.CANCEL_OPTION;
     //===============================================================
     /**
@@ -87,6 +87,7 @@ public class PogoConfiguration extends JDialog {
      */
     //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    @SuppressWarnings("Convert2Diamond")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -281,13 +282,9 @@ public class PogoConfiguration extends JDialog {
     }//GEN-LAST:event_addBtnActionPerformed
 
     //===============================================================
-    private ArrayList<String> families;
     //===============================================================
     private void setFamilyList() {
-        java.util.Vector<String>    vs = new java.util.Vector<String>();
-        for (String family : families)
-            vs.add(family);
-        familyList.setListData(vs);
+        familyList.setListData(families.toArray(new String[families.size()]));
     }
     //===============================================================
     //===============================================================

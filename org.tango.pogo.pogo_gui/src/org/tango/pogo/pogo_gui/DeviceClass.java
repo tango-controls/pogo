@@ -44,6 +44,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -56,13 +57,13 @@ import java.util.ArrayList;
 public class DeviceClass {
     private OldPogoModel old_pogo_class = null;
     private PogoDeviceClass pogoClass = null;
-    private ArrayList<DeviceClass> ancestors = new ArrayList<DeviceClass>();
+    private List<DeviceClass> ancestors = new ArrayList<>();
     private static final String defaultInheritanceStart = "Device_";
     private static final String defaultInheritanceEnd = "Impl";
     private static final String defaultInheritance =
             defaultInheritanceStart + defaultInheritanceEnd;
     //  Used only by MultiClasses
-    private ArrayList<String> parentClasses = new ArrayList<String>();
+    private List<String> parentClasses = new ArrayList<>();
     //===============================================================
 
     /**
@@ -176,30 +177,30 @@ public class DeviceClass {
      * @return the abstract attribute names if any.
      */
     //===============================================================
-    public ArrayList<String> getAbstractAttributeNames() {
-        ArrayList<String> attnames = new ArrayList<String>();
+    public List<String> getAbstractAttributeNames() {
+        List<String> attributeNames = new ArrayList<>();
         EList<Attribute> attributes = pogoClass.getAttributes();
         for (Attribute att : attributes)
             if (!Utils.isTrue(att.getStatus().getConcrete()) &&
                     !Utils.isTrue(att.getStatus().getConcreteHere())) {
-                attnames.add(att.getName());
+                attributeNames.add(att.getName());
             }
-        return attnames;
+        return attributeNames;
     }
     //===============================================================
     /**
      * @return the abstract command names if any.
      */
     //===============================================================
-    public ArrayList<String> getAbstractCommandNames() {
-        ArrayList<String> cmdnames = new ArrayList<String>();
+    public List<String> getAbstractCommandNames() {
+        List<String> commandNames = new ArrayList<>();
         EList<Command> commands = pogoClass.getCommands();
         for (Command cmd : commands)
             if (!Utils.isTrue(cmd.getStatus().getConcrete()) &&
                     !Utils.isTrue(cmd.getStatus().getConcreteHere())) {
-                cmdnames.add(cmd.getName());
+                commandNames.add(cmd.getName());
             }
-        return cmdnames;
+        return commandNames;
     }
     //===============================================================
 
@@ -407,12 +408,12 @@ public class DeviceClass {
 
     //===============================================================
     //===============================================================
-    public ArrayList<DeviceClass> getAncestors() {
+    public List<DeviceClass> getAncestors() {
         return ancestors;
     }
     //===============================================================
     //===============================================================
-    public void setAncestors(ArrayList<DeviceClass> ancestors) {
+    public void setAncestors(List<DeviceClass> ancestors) {
         this.ancestors = ancestors;
     }
 
@@ -441,16 +442,16 @@ public class DeviceClass {
         String  separator = java.lang.System.getProperty("file.separator");
         String path = pogoClass.getDescription().getSourcePath() + separator;
 
-        if (lang.equals("cpp"))
-            return  path + pogoClass.getName() + ".cpp";
-        else
-        if (lang.equals("python"))
-            return  path + pogoClass.getName() + ".py";
-        else {
-            path += "org" + separator + "tango" + separator +
-                    pogoClass.getName().toLowerCase() + separator;
-        //if (lang.equals("java"))
-            return  path + pogoClass.getName() + ".java";
+        switch (lang) {
+            case "cpp":
+                return path + pogoClass.getName() + ".cpp";
+            case "python":
+                return path + pogoClass.getName() + ".py";
+            default:
+                path += "org" + separator + "tango" + separator +
+                        pogoClass.getName().toLowerCase() + separator;
+                //if (lang.equals("java"))
+                return path + pogoClass.getName() + ".java";
         }
     }
 
@@ -619,7 +620,7 @@ public class DeviceClass {
 
     //===============================================================
     //===============================================================
-    public ArrayList<String> getParentClasses() {
+    public List<String> getParentClasses() {
         return parentClasses;
     }
 

@@ -62,7 +62,7 @@ import java.util.List;
 public class DeviceIdDialog extends JDialog {
     private int retVal = JOptionPane.OK_OPTION;
     private ClassIdentification id = null;
-    private ArrayList<String> keyWordList = new ArrayList<String>();
+    private List<String> keyWordList = new ArrayList<>();
     private static final String HelpMessage =
             "During TANGO meeting in Kobe (Japan)\n" +
                     "It has been decided to create a\n" +
@@ -218,6 +218,7 @@ public class DeviceIdDialog extends JDialog {
      */
     //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    @SuppressWarnings("Convert2Diamond")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -418,7 +419,7 @@ public class DeviceIdDialog extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     //===============================================================
-    //===============================================================	//===============================================================
+    //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void manufacturerTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manufacturerTxtKeyReleased
 

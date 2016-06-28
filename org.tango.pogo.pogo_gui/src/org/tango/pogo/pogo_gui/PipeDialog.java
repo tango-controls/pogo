@@ -44,6 +44,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 //===============================================================
 /**
@@ -54,6 +55,7 @@ import java.util.ArrayList;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class PipeDialog extends JDialog {
 
 	private JFrame	parent;
@@ -347,12 +349,11 @@ public class PipeDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    public static void popupSummary(JFrame parent, ArrayList<Pipe> pipeList) {
-        ArrayList<ArrayList<String>> summary = buildSummary(pipeList);
+    public static void popupSummary(JFrame parent, List<Pipe> pipeList) {
+        List<List<String>> summary = buildSummary(pipeList);
         String title = Integer.toString(pipeList.size()) + "  Pipes";
 
-        PopupTable popupTable =
-                new PopupTable(parent, title, columnTitle, summary);
+        PopupTable popupTable = new PopupTable(parent, title, columnTitle, summary);
         int nb = pipeList.size();
         if (nb > 35) nb = 35;
         popupTable.setPreferredSize(columnSize, nb);
@@ -361,10 +362,10 @@ public class PipeDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private static ArrayList<ArrayList<String>> buildSummary(ArrayList<Pipe> pipeList) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+    private static List<List<String>> buildSummary(List<Pipe> pipeList) {
+        List<List<String>> result = new ArrayList<>();
         for (Pipe pipe : pipeList) {
-            ArrayList<String> line = new ArrayList<String>();
+            List<String> line = new ArrayList<>();
             line.add(pipe.getName());
             line.add(pipe.getLabel());
             line.add(""+pipe.getRwType().contains("WRITE"));

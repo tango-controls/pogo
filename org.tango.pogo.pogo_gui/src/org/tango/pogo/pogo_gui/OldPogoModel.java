@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is able to comnvert old pogo project
@@ -197,7 +198,7 @@ public class OldPogoModel {
         //	Get code for all include files and definitions
         code = getIncludeFiles(".h");
         code += getDefinitions();
-        if (code != null && code.length() > 0)
+        if (code.length() > 0)
             new_parser.insertIncludeFiles(code);
 
         //	Get code for data members
@@ -403,15 +404,15 @@ public class OldPogoModel {
     //===============================================================
     public void manageCppAdditionalFiles(PogoDeviceClass new_model) throws Exception {
         //	Manage list of generated files
-        ArrayList<String> generated = new ArrayList<String>();
+        List<String> generated = new ArrayList<>();
         for (String filename : cppFilenames)
             generated.add(Utils.strReplace(filename, "ClassName", old_model.class_name));
 
         //	Get list of all files and keep only additional ones
         String new_path = new_model.getDescription().getSourcePath();
         String old_path = old_model.projectFiles.getPath();
-        ArrayList<String> files = Utils.getInstance().getFileList(old_path);
-        ArrayList<String> addFiles = new ArrayList<String>();
+        List<String> files = Utils.getInstance().getFileList(old_path);
+        List<String> addFiles = new ArrayList<>();
         for (String filename : files) {
             boolean found = false;
             for (String cppFile : generated)
@@ -461,7 +462,7 @@ public class OldPogoModel {
                     PogoParser new_parser = new PogoParser(new_path + "/Makefile");
                     new_parser.addObjFiles(objFiles.toString());
                 } catch (Exception e) {
-                    System.err.println(e);
+                    System.err.println(e.toString());
                 }
             }
         }
@@ -486,7 +487,7 @@ public class OldPogoModel {
         //	Create an old_src directory and move files in it
         File old_dir = new File(old_path + "/old_src");
         old_dir.mkdir();
-        ArrayList<String> files = Utils.getInstance().getFileList(old_path);
+        List<String> files = Utils.getInstance().getFileList(old_path);
         for (String filename : files) {
             new File(old_path + "/" + filename).renameTo(
                     new File(old_path + "/old_src/" + filename));
@@ -727,16 +728,22 @@ public class OldPogoModel {
     //===============================================================
     private String getIncludeFiles(String ext) throws Exception {
         String filename;
-        if (ext.equals(".h"))
-            filename = old_model.projectFiles.getServer_h();
-        else if (ext.equals(".cpp"))
-            filename = old_model.projectFiles.getServer();
-        else if (ext.equals("Class.h"))
-            filename = old_model.projectFiles.getServerClass_h();
-        else if (ext.equals("Class.cpp"))
-            filename = old_model.projectFiles.getServerClass();
-        else
-            return "";
+        switch (ext) {
+            case ".h":
+                filename = old_model.projectFiles.getServer_h();
+                break;
+            case ".cpp":
+                filename = old_model.projectFiles.getServer();
+                break;
+            case "Class.h":
+                filename = old_model.projectFiles.getServerClass_h();
+                break;
+            case "Class.cpp":
+                filename = old_model.projectFiles.getServerClass();
+                break;
+            default:
+                return "";
+        }
 
         OldModelParser parser =
                 new OldModelParser(filename, old_model);

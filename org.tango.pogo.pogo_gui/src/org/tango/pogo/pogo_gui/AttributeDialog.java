@@ -50,6 +50,7 @@ import javax.swing.*;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 //===============================================================
 /**
@@ -371,6 +372,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
      */
     //===================================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    @SuppressWarnings("Convert2Diamond")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -1953,13 +1955,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
     //===============================================================
     //===============================================================
-    public static void popupSummary(JFrame parent, ArrayList<Attribute> va) {
-        ArrayList<ArrayList<String>> summary = buildSummary(va);
-        String title = Integer.toString(va.size()) + "  Attributes";
+    public static void popupSummary(JFrame parent, List<Attribute> attributeList) {
+        List<List<String>> summary = buildSummary(attributeList);
+        String title = Integer.toString(attributeList.size()) + "  Attributes";
 
-        PopupTable ppt =
-                new PopupTable(parent, title, columnTitle, summary);
-        int nb = va.size();
+        PopupTable ppt = new PopupTable(parent, title, columnTitle, summary);
+        int nb = attributeList.size();
         if (nb > 35) nb = 35;
         ppt.setPreferredSize(columnSize, nb);
         ppt.setVisible(true);
@@ -1967,10 +1968,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
     //===============================================================
     //===============================================================
-    private static ArrayList<ArrayList<String>> buildSummary(ArrayList<Attribute> va) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        for (Attribute attribute : va) {
-            ArrayList<String> line = new ArrayList<String>();
+    private static List<List<String>> buildSummary(List<Attribute> attributeList) {
+        List<List<String>> result = new ArrayList<>();
+        for (Attribute attribute : attributeList) {
+            List<String> line = new ArrayList<>();
             line.add(attribute.getName());
             line.add(attribute.getAttType());
             line.add(OAWutils.pogo2tangoType(attribute.getDataType().toString()));

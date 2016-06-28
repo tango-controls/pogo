@@ -45,6 +45,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 
@@ -60,7 +61,7 @@ import java.util.StringTokenizer;
 @SuppressWarnings("MagicConstant")
 public class EnumDialog extends JDialog {
 
-    private ArrayList<JTextField>   textFields = new ArrayList<JTextField>();
+    private List<JTextField>   textFields = new ArrayList<>();
 	private int returnValue = JOptionPane.OK_OPTION;
     private EnumPopupMenu   menu = new EnumPopupMenu();
 
@@ -213,7 +214,7 @@ public class EnumDialog extends JDialog {
 
         //	check if one word
         StringTokenizer stk = new StringTokenizer(label);
-        ArrayList<String> words = new ArrayList<String>();
+        List<String> words = new ArrayList<>();
         while (stk.hasMoreTokens())
             words.add(stk.nextToken());
         label = "";
@@ -290,7 +291,7 @@ public class EnumDialog extends JDialog {
 	//===============================================================
 	//===============================================================
     public String[] getEnumLabels() {
-        ArrayList<String>   list = new ArrayList<String>();
+        List<String>   list = new ArrayList<>();
         for (JTextField textField : textFields) {
             String  text = textField.getText().trim();
             if (!text.isEmpty())

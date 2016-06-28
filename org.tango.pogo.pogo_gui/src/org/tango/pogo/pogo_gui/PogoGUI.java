@@ -48,9 +48,9 @@ import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 //=======================================================
-
 /**
  * JFrame Class to manage Tango code generator GUI.
  *
@@ -66,7 +66,7 @@ public class PogoGUI extends JFrame {
      * A vector to know how many JFrame has been created.
      * And to checked at exit button clicked, to know if at least one is still visible.
      */
-    static private ArrayList<JFrame> runningApplications = new ArrayList<>();
+    static private List<JFrame> runningApplications = new ArrayList<>();
     /**
      * File Chooser Object used in file menu.
      */
@@ -82,7 +82,7 @@ public class PogoGUI extends JFrame {
     /**
      * little buttons with icon on top of JTree.
      */
-    private ArrayList<JButton> topButtons = new ArrayList<>();
+    private List<JButton> topButtons = new ArrayList<>();
     private static final int TOP_RELOAD = 0;
     private static final int TOP_NEW_CLASS = 1;
     private static final int TOP_NEW_TEMPL = 2;
@@ -1415,7 +1415,7 @@ public class PogoGUI extends JFrame {
             addPanel(devclass);
 
             //  manage inheritance elements
-            ArrayList<DeviceClass> ancestors = devclass.getAncestors();
+            List<DeviceClass> ancestors = devclass.getAncestors();
             for (int i=ancestors.size()-1 ; i>=0 ; i--) {
                 addPanel(ancestors.get(i));
             }

@@ -45,14 +45,15 @@ package org.tango.pogo.pogo_gui.tools;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @SuppressWarnings({"ALL"})
 public class OldModelParser {
     private String fileCode;
     private pogo.gene.PogoClass pogo_class;
-    private ArrayList<String> methods = new ArrayList<String>();
-    private ArrayList<String> signatures = new ArrayList<String>();
+    private List<String> methods = new ArrayList<>();
+    private List<String> signatures = new ArrayList<>();
 
     private static final String[] cpp_constructors = {
             "(Tango::DeviceClass *cl,string &s)",
@@ -170,7 +171,7 @@ public class OldModelParser {
      * @return a vector of method signatures
      */
     //===============================================================
-    public ArrayList<String> getMethodSignatures() {
+    public List<String> getMethodSignatures() {
         return signatures;
     }
     //===============================================================

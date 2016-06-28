@@ -50,6 +50,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @SuppressWarnings({"UnusedDeclaration"})    //  Public methods
@@ -62,7 +63,7 @@ public class Pogo {
 
     private DeviceClass deviceClass = null;
     private PogoException pogoException = null;
-    private ArrayList<String> sourcefiles = new ArrayList<String>();
+    private List<String> sourceFiles = new ArrayList<>();
 
     //===============================================================
     //===============================================================
@@ -74,7 +75,7 @@ public class Pogo {
     //===============================================================
     public Pogo(String filename) throws PogoException {
         this();
-        sourcefiles.add(filename);
+        sourceFiles.add(filename);
     }
     //===============================================================
     /**
@@ -111,7 +112,7 @@ public class Pogo {
     //===============================================================
     public void generateSourceFiles() {
         try {
-            for (String filename : sourcefiles) {
+            for (String filename : sourceFiles) {
                 //	Read source files
                 deviceClass = new DeviceClass(filename);
                 PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
@@ -140,7 +141,7 @@ public class Pogo {
     //===============================================================
     public void generateDocumentation() {
         try {
-            for (String filename : sourcefiles) {
+            for (String filename : sourceFiles) {
                 System.out.println("===============================================================");
                 System.out.println("\tBuild doc from " + filename);
                 System.out.println("===============================================================");
@@ -172,10 +173,10 @@ public class Pogo {
     //===============================================================
     private void startPogoGUI() {
         try {
-            if (sourcefiles.size() == 0)
+            if (sourceFiles.size() == 0)
                 new PogoGUI(null);
             else
-                new PogoGUI(sourcefiles.get(0));
+                new PogoGUI(sourceFiles.get(0));
         } catch (Exception e) {
             Utils.getInstance().stopSplashRefresher();
             PogoException.popup(new JFrame(), e);
@@ -197,10 +198,10 @@ public class Pogo {
             boolean test = s!=null && s.equals("true");
             if (!Utils.osIsUnix() && !test)
                 throw new PogoException("Multi classes project is available only on Linux");
-            if (sourcefiles.size() == 0)
+            if (sourceFiles.size() == 0)
                 new MultiClassesPanel(new JFrame(), null).setVisible(true);
             else
-                new MultiClassesPanel(new JFrame(), sourcefiles.get(0)).setVisible(true);
+                new MultiClassesPanel(new JFrame(), sourceFiles.get(0)).setVisible(true);
         } catch (Exception e) {
             Utils.getInstance().stopSplashRefresher();
             PogoException.popup(new JFrame(), e);
@@ -229,7 +230,7 @@ public class Pogo {
             }
 
             if (!found)
-                sourcefiles.add(arg);
+                sourceFiles.add(arg);
         }
         return action;
     }
