@@ -40,6 +40,7 @@ import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 //===============================================================
@@ -51,6 +52,7 @@ import java.util.StringTokenizer;
 //===============================================================
 
 
+@SuppressWarnings("MagicConstant")
 public class KeyWordsDialog extends JDialog {
 
 	private int		returnValue = JOptionPane.OK_OPTION;
@@ -60,7 +62,7 @@ public class KeyWordsDialog extends JDialog {
 	 *	Creates new form KeyWordsDialog
 	 */
 	//===============================================================
-	public KeyWordsDialog(JDialog parent, ArrayList<String> keyWords) {
+	public KeyWordsDialog(JDialog parent, List<String> keyWords) {
 		super(parent, true);
 		initComponents();
         if (keyWords!=null) {
@@ -172,8 +174,8 @@ public class KeyWordsDialog extends JDialog {
 	}
     //===============================================================
     //===============================================================
-    public ArrayList<String> getKeyWords() {
-        ArrayList<String>   list = new ArrayList<String>();
+    public List<String> getKeyWords() {
+        List<String>   list = new ArrayList<>();
         String  lines = keyWordsTextArea.getText();
         StringTokenizer stk = new StringTokenizer(lines, "\n");
         while (stk.hasMoreElements())

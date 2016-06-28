@@ -47,6 +47,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Dialog object to manage generation preferences.
@@ -57,7 +58,7 @@ public class GenerateDialog extends JDialog {
     private int mode = PogoConst.SINGLE_CLASS;
     private static int returnStatus;
     private DeviceClass deviceClass;
-    private ArrayList<JRadioButton> rBtn;
+    private List<JRadioButton> radioButtons = new ArrayList<>();
 
     //===================================================================
     /**
@@ -74,18 +75,17 @@ public class GenerateDialog extends JDialog {
         //eclipseProjectBtn.setVisible(false);
         pomBtn.setVisible(false);
 
-        rBtn = new ArrayList<JRadioButton>();
-        rBtn.add(xmiBtn);
-        rBtn.add(codeBtn);
-        rBtn.add(makefileBtn);
-        rBtn.add(vc10Btn);
-        rBtn.add(vc12Btn);
-        rBtn.add(pyHlProjectBtn);
-        rBtn.add(prPythonHLBtn);
-        rBtn.add(eclipseProjectBtn);
-        rBtn.add(pomBtn);
-        rBtn.add(sphinxBtn);
-        rBtn.add(htmlBtn);
+        radioButtons.add(xmiBtn);
+        radioButtons.add(codeBtn);
+        radioButtons.add(makefileBtn);
+        radioButtons.add(vc10Btn);
+        radioButtons.add(vc12Btn);
+        radioButtons.add(pyHlProjectBtn);
+        radioButtons.add(prPythonHLBtn);
+        radioButtons.add(eclipseProjectBtn);
+        radioButtons.add(pomBtn);
+        radioButtons.add(sphinxBtn);
+        radioButtons.add(htmlBtn);
 
         //  Check debug
         String dbg = System.getenv("DEBUG_MAKE");
@@ -526,7 +526,7 @@ public class GenerateDialog extends JDialog {
 
     //=============================================================
     //=============================================================
-    private String buidDetailsString(ArrayList<String> items, String name) {
+    private String buidDetailsString(List<String> items, String name) {
         StringBuilder sb = new StringBuilder();
 
         if (items.size() > 0) {
@@ -545,8 +545,8 @@ public class GenerateDialog extends JDialog {
     @SuppressWarnings({"UnusedDeclaration"})
     private void detailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsBtnActionPerformed
 
-        ArrayList<String> commands = deviceClass.getAbstractCommandNames();
-        ArrayList<String> attributes = deviceClass.getAbstractAttributeNames();
+        List<String> commands = deviceClass.getAbstractCommandNames();
+        List<String> attributes = deviceClass.getAbstractAttributeNames();
 
         String
                 message = buidDetailsString(commands, "command");
@@ -715,7 +715,7 @@ public class GenerateDialog extends JDialog {
     //======================================================
     public String getGenerated() {
         String generated = "";
-        for (JRadioButton btn : rBtn) {
+        for (JRadioButton btn : radioButtons) {
             //System.out.println(btn.getText() + " :  " + btn.getSelectedObjects());
             if (btn.getSelectedObjects() != null)
                 generated += btn.getText() + ",";

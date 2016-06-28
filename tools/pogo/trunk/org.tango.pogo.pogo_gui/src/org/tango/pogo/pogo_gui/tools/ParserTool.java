@@ -42,8 +42,9 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 
 public class ParserTool {
@@ -177,7 +178,7 @@ public class ParserTool {
         key = " " + key + "=\"";
         String code = readFile(fileName);
         StringTokenizer stk = new StringTokenizer(code, "\n");
-        ArrayList<String> v = new ArrayList<String>();
+        List<String> v = new ArrayList<>();
         while (stk.hasMoreTokens()) {
             //  For each line
             String line = stk.nextToken();
@@ -226,7 +227,7 @@ public class ParserTool {
         	srcKey = " " + srcKey + "=";
         String code = readFile(fileName);
         StringTokenizer stk = new StringTokenizer(code, "\n");
-        ArrayList<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         while (stk.hasMoreTokens()) {
             //  For each line
             String line = stk.nextToken();
@@ -265,7 +266,7 @@ public class ParserTool {
         //  Rea=d file and split lines (do not use StringTokenizer to do not loose empty lines
         boolean modified = false;
         String code = readFile(fileName);
-        ArrayList<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         int startLine = 0;
         int endLine;
         while ((endLine=code.indexOf('\n', startLine))>0) {
@@ -302,11 +303,11 @@ public class ParserTool {
     //===============================================================
     //===============================================================
     public static void convertProtectedAreaKeyForStateMachine(
-            ArrayList<String> attributeNames, String fileName, boolean toXtend) throws PogoException {
+            List<String> attributeNames, String fileName, boolean toXtend) throws PogoException {
         //  Rea=d file and split lines (do not use StringTokenizer to do not loose empty lines
         boolean modified = false;
         String code = readFile(fileName);
-        ArrayList<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         int startLine = 0;
         int endLine;
         while ((endLine=code.indexOf('\n', startLine))>0) {
@@ -387,7 +388,7 @@ public class ParserTool {
                 //  In DevStateMachine.cpp
                 {
                     String  fileName = fileHeader + "StateMachine.cpp";
-                    ArrayList<String>   attributeNames = new ArrayList<String>();
+                    List<String>   attributeNames = new ArrayList<>();
                     for (Attribute attribute : cls.getAttributes()) {
                         attributeNames.add(attribute.getName());
                     }
@@ -481,6 +482,7 @@ public class ParserTool {
             convert();
         }
          //===============================================================
+        @SuppressWarnings("unused")
         private Back2Height(String xmiFileName) throws PogoException {
 
             this.xmiFileName = xmiFileName;
@@ -520,7 +522,7 @@ public class ParserTool {
 
             //  Update DevStateMachine.cpp
             fileName = path + '/' + className + "StateMachine.cpp";
-            ArrayList<String>   attributeNames = new ArrayList<String>();
+            List<String> attributeNames = new ArrayList<>();
             for (Attribute attribute : cls.getAttributes()) {
                 attributeNames.add(attribute.getName());
             }
@@ -540,7 +542,7 @@ public class ParserTool {
             System.out.println("cleaning protected regions in " + fileName);
             boolean modified = false;
             String  code = readFile(fileName);
-            ArrayList<String> lines = new ArrayList<String>();
+            List<String> lines = new ArrayList<>();
             int startLine = 0;
             int endLine;
             int cnt = 0;

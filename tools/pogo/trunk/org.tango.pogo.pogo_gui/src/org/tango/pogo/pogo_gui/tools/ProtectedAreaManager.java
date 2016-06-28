@@ -43,9 +43,10 @@ package org.tango.pogo.pogo_gui.tools;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProtectedAreaManager {
-    private ArrayList<ProtectedArea> protectedAreas = new ArrayList<ProtectedArea>();
+    private List<ProtectedArea> protectedAreas = new ArrayList<>();
 
     //===============================================================
     //===============================================================

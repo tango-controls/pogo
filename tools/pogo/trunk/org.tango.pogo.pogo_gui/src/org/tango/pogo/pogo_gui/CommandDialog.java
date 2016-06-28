@@ -49,6 +49,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 //===============================================================
 /**
@@ -290,6 +291,7 @@ public class CommandDialog extends JDialog {
      */
     //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    @SuppressWarnings("Convert2Diamond")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -863,28 +865,25 @@ public class CommandDialog extends JDialog {
             "Abstract",
             "Description",
     };
-
     //===============================================================
     //===============================================================
-    public static void popupSummary(JFrame parent, ArrayList<Command> vc) {
-        ArrayList<ArrayList<String>> summary = buildSummary(vc);
-        String title = Integer.toString(vc.size()) + "  Commands";
+    public static void popupSummary(JFrame parent, List<Command> commandList) {
+        List<List<String>> summary = buildSummary(commandList);
+        String title = Integer.toString(commandList.size()) + "  Commands";
 
-        PopupTable ppt = new PopupTable(
-                parent, title, columnTitle, summary);
+        PopupTable ppt = new PopupTable(parent, title, columnTitle, summary);
 
-        int nb = vc.size();
+        int nb = commandList.size();
         if (nb > 35) nb = 35;
         ppt.setPreferredSize(columnSize, nb);
         ppt.setVisible(true);
     }
-
     //===============================================================
     //===============================================================
-    public static ArrayList<ArrayList<String>> buildSummary(ArrayList<Command> vc) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        for (Command command : vc) {
-            ArrayList<String> line = new ArrayList<String>();
+    public static List<List<String>> buildSummary(List<Command> commandList) {
+        List<List<String>> result = new ArrayList<>();
+        for (Command command : commandList) {
+            List<String> line = new ArrayList<>();
             line.add(command.getName());
             line.add(OAWutils.pogo2tangoType(command.getArgin().getType().toString()));
             line.add(OAWutils.pogo2tangoType(command.getArgout().getType().toString()));

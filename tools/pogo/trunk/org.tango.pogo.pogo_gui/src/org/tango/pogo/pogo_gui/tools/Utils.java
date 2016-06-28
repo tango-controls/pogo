@@ -521,8 +521,8 @@ public class Utils {
      * @return a vector of file names fond.
      */
     //===============================================================
-    public ArrayList<String> getFileList(String dirName) {
-        ArrayList<String> v = new ArrayList<String>();
+    public List<String> getFileList(String dirName) {
+        List<String> v = new ArrayList<>();
         File dir = new File(dirName);
         String[] fileNames = dir.list();
 
@@ -718,10 +718,10 @@ public class Utils {
         referencePath = getAbsolutePath(referencePath);
 
         StringTokenizer stk = new StringTokenizer(path, separator);
-        List<String>    pathList = new ArrayList<String>();
+        List<String>    pathList = new ArrayList<>();
         while (stk.hasMoreTokens()) pathList.add(stk.nextToken());
         stk = new StringTokenizer(referencePath, separator);
-        List<String>    refList = new ArrayList<String>();
+        List<String>    refList = new ArrayList<>();
         while (stk.hasMoreTokens()) refList.add(stk.nextToken());
 
         //  Special case for Windows
@@ -835,7 +835,7 @@ public class Utils {
     private static HashMap<String, Color> foregroundMap = null;
     public static Color getForeground4State(String stateName) {
         if (foregroundMap==null) {
-            foregroundMap = new HashMap<String, Color>();
+            foregroundMap = new HashMap<>();
             foregroundMap.put("ON", Color.black);
             foregroundMap.put("OFF", Color.black);
             foregroundMap.put("CLOSE", Color.black);
@@ -861,7 +861,7 @@ public class Utils {
     private static HashMap<String, Color> stateMap = null;
     public static Color getColor4State(String stateName) {
         if (stateMap==null) {
-            stateMap = new HashMap<String, Color>();
+            stateMap = new HashMap<>();
             stateMap.put("ON", new java.awt.Color(0, 255, 0));          // Green
             stateMap.put("OFF", new java.awt.Color(255, 255, 255));     // White
             stateMap.put("CLOSE", new java.awt.Color(255, 255, 255));   // White

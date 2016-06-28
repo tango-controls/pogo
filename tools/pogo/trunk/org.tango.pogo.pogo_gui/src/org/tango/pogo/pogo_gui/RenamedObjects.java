@@ -49,6 +49,7 @@ import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoParser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class RenamedObjects {
@@ -78,7 +79,7 @@ public class RenamedObjects {
         }
     }
 
-    private ArrayList<OneRenamed>   renamedList = new ArrayList<OneRenamed>();
+    private List<OneRenamed>   renamedList = new ArrayList<>();
     //===============================================================
     //===============================================================
     public RenamedObjects() {

@@ -264,7 +264,8 @@ public class TemplateChooser extends JDialog {
 		JOptionPane.showMessageDialog(this, "To add your own templates:\n" +
 				"  - Add xmi files in a specific directory\n" +
 				"  - Export TEMPLATES_HOME environment variable with path of this directory.\n" +
-				"  - Restart Pogo.\n");
+				"  - Restart Pogo.\n\n" +
+				"Your templates could override the default ones");
     }//GEN-LAST:event_helpBtnActionPerformed
 
 	//===============================================================

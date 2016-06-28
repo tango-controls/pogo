@@ -51,6 +51,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -276,7 +277,7 @@ public class MultiClassesTree extends JTree {
     //===============================================================
     //===============================================================
     private void expandNode(DefaultMutableTreeNode node) {
-        ArrayList<DefaultMutableTreeNode> v = new ArrayList<DefaultMutableTreeNode>();
+        List<DefaultMutableTreeNode> v = new ArrayList<>();
         v.add(node);
         while (node != root) {
             node = (DefaultMutableTreeNode) node.getParent();
@@ -437,8 +438,8 @@ public class MultiClassesTree extends JTree {
 
     //===============================================================
     //===============================================================
-    private ArrayList<DeviceClass> getClasses(DefaultMutableTreeNode node) {
-        ArrayList<DeviceClass> classes = new ArrayList<DeviceClass>();
+    private List<DeviceClass> getClasses(DefaultMutableTreeNode node) {
+        List<DeviceClass> classes = new ArrayList<>();
         for (int i = 0; i < node.getChildCount(); i++) {
             DefaultMutableTreeNode childNode =
                     (DefaultMutableTreeNode) node.getChildAt(i);
@@ -448,7 +449,7 @@ public class MultiClassesTree extends JTree {
                 _class.addParentClass(node.getUserObject().toString());
             }
 
-            ArrayList<DeviceClass> children = getClasses(childNode);
+            List<DeviceClass> children = getClasses(childNode);
             for (DeviceClass child : children)
                 classes.add(child);
         }
@@ -483,8 +484,8 @@ public class MultiClassesTree extends JTree {
         TangoServer server = (TangoServer) root.getUserObject();
 
         //  Get all classes from JTree objects
-        ArrayList<DeviceClass> classes = getClasses(root);
-        ArrayList<DeviceClass> pogoClasses = new ArrayList<DeviceClass>();
+        List<DeviceClass> classes = getClasses(root);
+        List<DeviceClass> pogoClasses = new ArrayList<>();
 
         //  Check to have class only once.
         //  Start by the end to be sure the leaves are at the end.
@@ -517,7 +518,7 @@ public class MultiClassesTree extends JTree {
 
     //========================================================================
     //========================================================================
-    private PogoMultiClasses buildPogoMultiClassesObject(String name, ArrayList<DeviceClass> classes) {
+    private PogoMultiClasses buildPogoMultiClassesObject(String name, List<DeviceClass> classes) {
         //  Build Multi classes object
         PogoMultiClasses multiClasses = OAWutils.factory.createPogoMultiClasses();
         multiClasses.setName(name);
@@ -582,13 +583,12 @@ public class MultiClassesTree extends JTree {
 
 
     //===============================================================
-
     /**
      * A cache of DeviceClasses.
      */
     //===============================================================
     private static class LoadedClasses {
-        private final Map<String, DeviceClass> deviceClasses = new HashMap<String, DeviceClass>();
+        private final Map<String, DeviceClass> deviceClasses = new HashMap<>();
 
         DeviceClass getAny() {
             return deviceClasses.values().iterator().next();

@@ -63,8 +63,8 @@ public class StateMachineTable extends JTable {
     private EList<Attribute> attributes = null;
     private EList<Pipe> pipes = null;
     private EList<State> stateList;
-    private List<String> columnNames = new ArrayList<String>();
-    private List<RowItem> itemList = new ArrayList<RowItem>();
+    private List<String> columnNames = new ArrayList<>();
+    private List<RowItem> itemList = new ArrayList<>();
     private TablePopupMenu popupMenu;
     private int width = 0;
     private static Color headerBackground;

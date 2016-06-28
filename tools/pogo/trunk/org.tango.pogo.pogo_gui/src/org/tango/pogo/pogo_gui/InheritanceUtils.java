@@ -66,8 +66,8 @@ public class InheritanceUtils {
 
     //===============================================================
     //===============================================================
-    public String manageInheritanceItems(DeviceClass devclass) {
-        return cloneAncestor(null, devclass);
+    public String manageInheritanceItems(DeviceClass deviceClass) {
+        return cloneAncestor(null, deviceClass);
     }
 
     //===============================================================
@@ -107,25 +107,25 @@ public class InheritanceUtils {
                     " properties from " + ancestor.getPogoDeviceClass().getName() +
                     " to  " + devClass.getPogoDeviceClass().getName());
 
-        EList<Property> class_prop;
-        EList<Property> ancestor_prop;
+        EList<Property> classProperties;
+        EList<Property> ancestorProperties;
         if (is_dev) {
-            class_prop = devClass.getPogoDeviceClass().getDeviceProperties();
-            ancestor_prop = ancestor.getPogoDeviceClass().getDeviceProperties();
+            classProperties = devClass.getPogoDeviceClass().getDeviceProperties();
+            ancestorProperties = ancestor.getPogoDeviceClass().getDeviceProperties();
         } else {
-            class_prop = devClass.getPogoDeviceClass().getClassProperties();
-            ancestor_prop = ancestor.getPogoDeviceClass().getClassProperties();
+            classProperties = devClass.getPogoDeviceClass().getClassProperties();
+            ancestorProperties = ancestor.getPogoDeviceClass().getClassProperties();
         }
-        for (Property inher_prop : ancestor_prop) {
+        for (Property inheritedProperty : ancestorProperties) {
             Property new_prop = OAWutils.factory.createProperty();
-            new_prop.setName(inher_prop.getName());
-            new_prop.setDescription(inher_prop.getDescription());
-            new_prop.setType(PropertyDialog.createType(inher_prop.getType()));
-            EList<String> ancestor_values = inher_prop.getDefaultPropValue();
+            new_prop.setName(inheritedProperty.getName());
+            new_prop.setDescription(inheritedProperty.getDescription());
+            new_prop.setType(PropertyDialog.createType(inheritedProperty.getType()));
+            EList<String> ancestor_values = inheritedProperty.getDefaultPropValue();
             EList<String> new_values = new_prop.getDefaultPropValue();
             for (String s : ancestor_values)
                 new_values.add(s);
-            if (Utils.isTrue(inher_prop.getMandatory()))
+            if (Utils.isTrue(inheritedProperty.getMandatory()))
                 new_prop.setMandatory("true");
 
             //	manage inheritance status
@@ -138,7 +138,7 @@ public class InheritanceUtils {
             //  Check if property already exists
             //System.out.println("   " + new_prop.getName());
             Property prop_exists = null;
-            for (Property prop : class_prop) {
+            for (Property prop : classProperties) {
                 if (prop.getName().equals(new_prop.getName())) {
                     prop_exists = prop;
 
@@ -146,11 +146,11 @@ public class InheritanceUtils {
                 }
             }
             if (prop_exists != null) {
-                int idx = class_prop.indexOf(prop_exists);
-                class_prop.remove(prop_exists);
-                class_prop.add(idx, new_prop);
+                int idx = classProperties.indexOf(prop_exists);
+                classProperties.remove(prop_exists);
+                classProperties.add(idx, new_prop);
             } else
-                class_prop.add(new_prop);
+                classProperties.add(new_prop);
         }
     }
 
@@ -470,6 +470,7 @@ public class InheritanceUtils {
      * @param created  created item (mixed with inheritance and existing one)
      */
     //===============================================================
+    @SuppressWarnings("ConstantConditions")
     private void manageNonInheritedPart(Attribute existing, Attribute created) {
         if (Utils.isSet(existing.getPolledPeriod()))
             created.setPolledPeriod(existing.getPolledPeriod());

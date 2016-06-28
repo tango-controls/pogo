@@ -53,6 +53,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -445,7 +446,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     //===============================================================
     private void expandNode(DefaultMutableTreeNode node) {
-        ArrayList<TreeNode> v = new ArrayList<>();
+        List<TreeNode> v = new ArrayList<>();
         v.add(node);
         while (node != root) {
             node = (DefaultMutableTreeNode) node.getParent();
@@ -665,7 +666,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     private void sortItems() {
         //	Get all children nodes in a vector
-        ArrayList<DefaultMutableTreeNode> nodeList = new ArrayList<>();
+        List<DefaultMutableTreeNode> nodeList = new ArrayList<>();
         DefaultMutableTreeNode parent_node = getSelectedNode();
         for (int i = 0; i < parent_node.getChildCount(); i++)
             nodeList.add((DefaultMutableTreeNode) parent_node.getChildAt(i));
@@ -1414,7 +1415,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     private void checkForPollingPeriodOverloaded(PogoDeviceClass pogoDeviceClass) {
 
-        ArrayList<DeviceClass>  ancestors  = deviceClass.getAncestors();
+        List<DeviceClass>  ancestors  = deviceClass.getAncestors();
         if (ancestors.isEmpty())
             return; //  No ancestor -> Nothing overloaded.
 
@@ -1568,7 +1569,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     //===============================================================
     boolean itemAlreadyExists(String name, int type) {
-        ArrayList<Integer> collections = new ArrayList<>();
+        List<Integer> collections = new ArrayList<>();
         if (type == COMMANDS)
             collections.add(COMMANDS);
         else
@@ -1627,9 +1628,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     public void editStateMachine() {
         //  Check if a state machine can be defined.
-        ArrayList<State>     vs = getAllStates();
-        ArrayList<Attribute> va = getAllAttributes();
-        ArrayList<Command>   vc = getAllCommands();
+        List<State>     vs = getAllStates();
+        List<Attribute> va = getAllAttributes();
+        List<Command>   vc = getAllCommands();
         if (vs.isEmpty()) {
             PogoException.popup(this, "There is no states defined !");
             return;
@@ -1658,19 +1659,19 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     JOptionPane.INFORMATION_MESSAGE);
         } else if (obj.toString().indexOf("Properties") > 0) {
             boolean is_dev = obj.toString().startsWith("Device");
-            ArrayList<Property> propertyList = getAllProperties(is_dev);
+            List<Property> propertyList = getAllProperties(is_dev);
             PropertyDialog.popupSummary(parent, propertyList, is_dev);
         } else if (obj.toString().equals("Commands")) {
-            ArrayList<Command> commandList = getAllCommands();
+            List<Command> commandList = getAllCommands();
             CommandDialog.popupSummary(parent, commandList);
         } else if (obj.toString().indexOf("Attributes") > 0) {
-            ArrayList<Attribute> attributeList = getAllAttributes();
+            List<Attribute> attributeList = getAllAttributes();
             AttributeDialog.popupSummary(parent, attributeList);
         } else if (obj.toString().equals("Pipes")) {
-            ArrayList<Pipe> pipeList = getAllPipes();
+            List<Pipe> pipeList = getAllPipes();
             PipeDialog.popupSummary(parent, pipeList);
         } else if (obj.toString().equals("States")) {
-            ArrayList<State> stateList = getAllStates();
+            List<State> stateList = getAllStates();
             StateDialog.popupSummary(parent, stateList);
         }
     }
@@ -1726,8 +1727,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * @return a list with all properties
      */
     //===============================================================
-    private ArrayList<Property> getAllProperties(boolean is_dev) {
-        ArrayList<Property> vp = new ArrayList<>();
+    private List<Property> getAllProperties(boolean is_dev) {
+        List<Property> vp = new ArrayList<>();
         DefaultMutableTreeNode collectionNode;
 
         if (is_dev)
@@ -1747,8 +1748,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * @return a list with all Commands
      */
     //===============================================================
-    private ArrayList<Command> getAllCommands() {
-        ArrayList<Command> vc = new ArrayList<>();
+    private List<Command> getAllCommands() {
+        List<Command> vc = new ArrayList<>();
         DefaultMutableTreeNode collectionNode =
                 (DefaultMutableTreeNode) root.getChildAt(COMMANDS);
         for (int i = 0; i < collectionNode.getChildCount(); i++) {
@@ -1764,8 +1765,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * @return a list with all attributes
      */
     //===============================================================
-    private ArrayList<Attribute> getAllAttributes() {
-        ArrayList<Attribute> va = new ArrayList<>();
+    private List<Attribute> getAllAttributes() {
+        List<Attribute> va = new ArrayList<>();
         DefaultMutableTreeNode collectionNode;
 
         collectionNode = (DefaultMutableTreeNode) root.getChildAt(SCALAR_ATTRIBUTES);
@@ -1797,8 +1798,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * @return a list with all Pipes
      */
     //===============================================================
-    private ArrayList<Pipe> getAllPipes() {
-        ArrayList<Pipe> pipeList = new ArrayList<>();
+    private List<Pipe> getAllPipes() {
+        List<Pipe> pipeList = new ArrayList<>();
         DefaultMutableTreeNode collectionNode =
                 (DefaultMutableTreeNode) root.getChildAt(PIPES);
         for (int i=0 ; i<collectionNode.getChildCount() ; i++) {
@@ -1814,8 +1815,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * @return a list with all States
      */
     //===============================================================
-    private ArrayList<State> getAllStates() {
-        ArrayList<State> stateList = new ArrayList<>();
+    private List<State> getAllStates() {
+        List<State> stateList = new ArrayList<>();
         DefaultMutableTreeNode collectionNode =
                 (DefaultMutableTreeNode) root.getChildAt(STATES);
         for (int i=0 ; i<collectionNode.getChildCount() ; i++) {
@@ -1855,7 +1856,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         private String license;
         private String copyright;
         private boolean isAbstract;
-        private ArrayList<Inheritance> inheritances = new ArrayList<>();
+        private List<Inheritance> inheritances = new ArrayList<>();
         private ClassIdentification id;
         //===========================================================
         private PogoRoot(PogoDeviceClass pogo_class) {

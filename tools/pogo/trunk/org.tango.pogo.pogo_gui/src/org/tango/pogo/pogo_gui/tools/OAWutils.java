@@ -54,6 +54,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Collections;
+import java.util.List;
 
 
 public class OAWutils {
@@ -218,7 +219,7 @@ public class OAWutils {
         String xmiFileName = generateXmiFile(pogoClass);
 
         //	Start the code generation
-        HashMap<String, String> params = new HashMap<String, String>();
+        HashMap<String, String> params = new HashMap<>();
         params.put("targetDir", pogoClass.getDescription().getSourcePath());
         params.put("targetLanguage", pogoClass.getDescription().getLanguage());
         params.put("modelPath", xmiFileName);
@@ -291,7 +292,7 @@ public class OAWutils {
         }
 
         //	Start the code generation
-        HashMap<String, String> params = new HashMap<String, String>();
+        HashMap<String, String> params = new HashMap<>();
         params.put("targetDir", multiClasses.getSourcePath());
         params.put("targetLanguage", "MultiCpp");
         params.put("modelPath", xmiFileName);
@@ -563,7 +564,7 @@ public class OAWutils {
             int pos = tangoType.indexOf(footer);
             if (pos > 0)
                 tangoType = tangoType.substring(0, pos);
-            if (tangoType.indexOf("Array") > 0) {
+            if (tangoType.contains("Array")) {
                 //System.out.println(tangoType);
                 if (tangoType.contains("LongString"))    //  Int is Long
                     return "DevVarLongStringArray";
@@ -582,18 +583,24 @@ public class OAWutils {
             } else {
                 if (tangoType.startsWith("Const"))
                     return TangoConst.Tango_CmdArgTypeName[TangoConst.Tango_CONST_DEV_STRING];
-                if (tangoType.equals("State"))
-                    return tangoType;
-                else if (tangoType.equals("Long"))    //  Int is a DevLong
-                    return "DevLong64";
-                else if (tangoType.equals("ULong"))    //  UInt is a DevULong
-                    return "DevULong64";
-                else if (tangoType.equals("Int"))    //  Int is a DevLong
-                    return "DevLong";
-                else if (tangoType.equals("UInt"))    //  UInt is a DevULong
-                    return "DevULong";
-                else
-                    return "Dev" + tangoType;
+                switch (tangoType) {
+                    case "State":
+                        return tangoType;
+                    case "Long":
+                        //  Int is a DevLong
+                        return "DevLong64";
+                    case "ULong":
+                        //  UInt is a DevULong
+                        return "DevULong64";
+                    case "Int":
+                        //  Int is a DevLong
+                        return "DevLong";
+                    case "UInt":
+                        //  UInt is a DevULong
+                        return "DevULong";
+                    default:
+                        return "Dev" + tangoType;
+                }
             }
         }
         return "Not a Pogo Type";
@@ -621,7 +628,7 @@ public class OAWutils {
     //===============================================================
     private void reverseClassOrder(PogoMultiClasses pmc) {
         EList<OneClassSimpleDef> classes = pmc.getClasses();
-        ArrayList<OneClassSimpleDef> v = new ArrayList<OneClassSimpleDef>();
+        List<OneClassSimpleDef> v = new ArrayList<>();
         //  copy list to vector in reverse order
         for (OneClassSimpleDef _class : classes)
             v.add(0, _class);

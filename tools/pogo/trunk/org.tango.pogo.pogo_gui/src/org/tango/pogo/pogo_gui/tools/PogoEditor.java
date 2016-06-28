@@ -51,6 +51,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class PogoEditor {
@@ -85,7 +86,7 @@ public class PogoEditor {
                     //  Try to find nedit client executable
                     String path = System.getenv("PATH");
                     StringTokenizer stk = new StringTokenizer(path, ":");
-                    ArrayList<String> lines = new ArrayList<String>();
+                    List<String> lines = new ArrayList<>();
                     while (stk.hasMoreTokens())
                         lines.add(stk.nextToken());
 
@@ -119,7 +120,7 @@ public class PogoEditor {
      * @return the executable file (with path) to edit found if any (null otherwise)
      */
     //===============================================================
-    private String getEditorExeFile(String exeFile, ArrayList<String> lines) {
+    private String getEditorExeFile(String exeFile, List<String> lines) {
         for (String line : lines) {
             String filename = line + "/" + exeFile;
             if (new File(filename).exists())

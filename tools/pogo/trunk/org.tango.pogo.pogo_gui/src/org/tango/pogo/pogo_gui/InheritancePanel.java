@@ -45,6 +45,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 //===============================================================
@@ -55,7 +56,7 @@ import java.util.ArrayList;
 //===============================================================
 
 class InheritancePanel extends JPanel {
-    private ArrayList<JTextPane> textPanes = new ArrayList<JTextPane>();
+    private List<JTextPane> textPanes = new ArrayList<>();
     private PogoGUI gui = null;
     private long t0 = 0;
 
@@ -115,19 +116,19 @@ class InheritancePanel extends JPanel {
     //===============================================================
     //===============================================================
     private void addAncestorPanes(DeviceClass dc) {
-        ArrayList<DeviceClass> ancestors = dc.getAncestors();
+        List<DeviceClass> ancestors = dc.getAncestors();
         int y = 0;
         addClassPane(null, y += 2, true);
         //for (int i=ancestors.size()-1 ; i>=0 ; i--)
         for (DeviceClass ancestor : ancestors)
             addClassPane(ancestor, y += 2, true);
-        addClassPane(dc, y += 2, false);
+        y += 2;
+        addClassPane(dc, y, false);
 
         //	Set last one looks like selected.
         textPanes.get(textPanes.size() - 1).setBackground(selectedClassBtnBG);
     }
     //===============================================================
-
     /**
      * Set GUI panel selection as clicked JTextPane
      *
@@ -167,7 +168,6 @@ class InheritancePanel extends JPanel {
                     pane.setBackground(classBtnBG);
     }
     //===============================================================
-
     /**
      * set JTextPane selected as the GUI panel one
      *
@@ -186,9 +186,8 @@ class InheritancePanel extends JPanel {
 
 
     //===============================================================
-
     /**
-     * A little class inherited from JTextPane to represente
+     * A little class inherited from JTextPane to represent
      * a DeviceClass Object as aButton.
      */
     //===============================================================
@@ -206,7 +205,7 @@ class InheritancePanel extends JPanel {
                 classname = devClass.getPogoDeviceClass().getName();
             setEditable(false);
             setName(classname);
-            setFont(new java.awt.Font("monospaced", 1, 10));
+            setFont(new Font("monospaced", Font.BOLD, 10));
             setBackground(classBtnBG);
             insertIcon(Utils.getInstance().classIcon);
             setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -230,7 +229,6 @@ class InheritancePanel extends JPanel {
             showMsg("\n + State\n + Status\n + ---", false);
         }
         //============================================================
-
         /**
          * Insert the message in the TextPane with its attributes
          *

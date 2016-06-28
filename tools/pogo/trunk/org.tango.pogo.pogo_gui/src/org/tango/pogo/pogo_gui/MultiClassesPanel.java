@@ -49,6 +49,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 //=======================================================
 /**
@@ -64,7 +65,7 @@ public class MultiClassesPanel extends JFrame {
     private MultiClassesTree tree;
     private JScrollPane scrollPane;
 
-    private ArrayList<JButton> topButtons = new ArrayList<JButton>();
+    private List<JButton> topButtons = new ArrayList<>();
     private static final int TOP_RELOAD = 0;
     private static final int TOP_NEW = 1;
     private static final int TOP_OPEN = 2;

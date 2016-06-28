@@ -49,6 +49,7 @@ import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoParser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DeletedObjects  {
@@ -74,7 +75,7 @@ public class DeletedObjects  {
                 return old_.toString();
         }
     }
-    private ArrayList<OneDeleted>  deletedList = new ArrayList<OneDeleted>();
+    private List<OneDeleted>  deletedList = new ArrayList<>();
     //===============================================================
     //===============================================================
     public DeletedObjects() {

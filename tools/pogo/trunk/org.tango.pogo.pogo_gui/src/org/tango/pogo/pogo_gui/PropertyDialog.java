@@ -48,6 +48,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 //===============================================================
@@ -212,6 +213,7 @@ public class PropertyDialog extends JDialog {
      */
     //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    @SuppressWarnings("Convert2Diamond")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -715,15 +717,15 @@ public class PropertyDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    public static void popupSummary(JFrame parent, ArrayList<Property> vp, boolean is_dev) {
-        ArrayList<ArrayList<String>> summary = buildSummary(vp);
-        String title = Integer.toString(vp.size()) +
+    public static void popupSummary(JFrame parent, List<Property> propertyList, boolean is_dev) {
+        List<List<String>> summary = buildSummary(propertyList);
+        String title = Integer.toString(propertyList.size()) +
                 ((is_dev) ? "  Device" : "  Class") + " Properties";
 
         PopupTable ppt =
                 new PopupTable(parent, title, columnTitle, summary);
 
-        int nb = vp.size();
+        int nb = propertyList.size();
         if (nb > 35) nb = 35;
         ppt.setPreferredSize(columnSize, nb);
         ppt.setVisible(true);
@@ -731,10 +733,10 @@ public class PropertyDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    public static ArrayList<ArrayList<String>> buildSummary(ArrayList<Property> vp) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        for (Property prop : vp) {
-            ArrayList<String> line = new ArrayList<String>();
+    public static List<List<String>> buildSummary(List<Property> propertyList) {
+        List<List<String>> result = new ArrayList<>();
+        for (Property prop : propertyList) {
+            List<String> line = new ArrayList<>();
             line.add(prop.getName());
             line.add(pogo2tangoType(prop.getType()));
 

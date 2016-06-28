@@ -47,6 +47,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 //===============================================================
@@ -245,7 +246,7 @@ public class StateDialog extends JDialog {
         gbc.weighty = 1.0;
         centerPanel.add(scrollPane, gbc);
 
-        typeComboBox = new JComboBox<String>();
+        typeComboBox = new JComboBox<>();
         gbc = new java.awt.GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 1;
@@ -362,25 +363,22 @@ public class StateDialog extends JDialog {
             "Inherited",
             "Description"
     };
-
     //===============================================================
     //===============================================================
-    public static void popupSummary(JFrame parent, ArrayList<State> vs) {
-        ArrayList<ArrayList<String>> summary = buildSummary(vs);
-        String title = Integer.toString(vs.size()) + "  States";
+    public static void popupSummary(JFrame parent, List<State> stateList) {
+        List<List<String>> summary = buildSummary(stateList);
+        String title = Integer.toString(stateList.size()) + "  States";
 
-        PopupTable ppt =
-                new PopupTable(parent, title, columnTitle, summary);
-        ppt.setPreferredSize(columnSize, vs.size());
+        PopupTable ppt = new PopupTable(parent, title, columnTitle, summary);
+        ppt.setPreferredSize(columnSize, stateList.size());
         ppt.setVisible(true);
     }
-
     //===============================================================
     //===============================================================
-    private static ArrayList<ArrayList<String>> buildSummary(ArrayList<State> vs) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        for (State state : vs) {
-            ArrayList<String> line = new ArrayList<String>();
+    private static List<List<String>> buildSummary(List<State> stateList) {
+        List<List<String>> result = new ArrayList<>();
+        for (State state : stateList) {
+            List<String> line = new ArrayList<>();
             line.add(state.getName());
             InheritanceStatus status = state.getStatus();
             line.add(Utils.strBoolean(status.getInherited()));

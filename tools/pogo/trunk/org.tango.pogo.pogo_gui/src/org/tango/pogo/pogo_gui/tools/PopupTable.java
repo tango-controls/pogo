@@ -42,6 +42,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Enumeration;
 
 
@@ -63,7 +64,7 @@ public class PopupTable extends JDialog {
     /**
      * An array of String array for data to be displayed
      */
-    private ArrayList<ArrayList<String>> data;
+    private List<List<String>> data;
 
 
     private JLabel titleLabel;
@@ -79,7 +80,7 @@ public class PopupTable extends JDialog {
      */
     //===============================================================
     @SuppressWarnings("UnusedDeclaration")
-    public PopupTable(JDialog parent, String title, String[] col, ArrayList<ArrayList<String>> v) {
+    public PopupTable(JDialog parent, String title, String[] col, List<List<String>> v) {
         super(parent, false);
         buildObject(title, col, v);
     }
@@ -93,14 +94,14 @@ public class PopupTable extends JDialog {
      * @param    v        vector of String vectors.
      */
     //===============================================================
-    public PopupTable(JFrame parent, String title, String[] col, ArrayList<ArrayList<String>> v) {
+    public PopupTable(JFrame parent, String title, String[] col, List<List<String>> v) {
         super(parent, false);
         buildObject(title, col, v);
     }
 
     //===============================================================
     //===============================================================
-    private void buildObject(String title, String[] col, ArrayList<ArrayList<String>> v) {
+    private void buildObject(String title, String[] col, List<List<String>> v) {
         col_names = col;
         initComponents();
         data = v;
