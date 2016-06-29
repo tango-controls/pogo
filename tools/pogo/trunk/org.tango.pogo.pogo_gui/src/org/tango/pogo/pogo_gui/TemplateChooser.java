@@ -41,7 +41,6 @@ import org.tango.pogo.pogo_gui.tools.PogoException;
 
 import javax.swing.*;
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -63,7 +62,6 @@ public class TemplateChooser extends JDialog {
 	private JFrame	parent;
 	private DeviceClass deviceClass = null;
 	private int returnValue = JOptionPane.OK_OPTION;
-	private static final String urlPath = "/org/tango/pogo/pogo_gui/templates";
 	private static final String extension = ".xmi";
 	//===============================================================
 	/**
@@ -87,33 +85,30 @@ public class TemplateChooser extends JDialog {
 
 	//===============================================================
 	//===============================================================
+	private static String getPath() {
+		return System.getenv("TEMPLATES_PATH");
+	}
+	//===============================================================
+	//===============================================================
+	public static boolean templatesAvailable() {
+		String path = getPath();
+		if (path==null)
+			return false;
+
+		File file = new File(path);
+		String[] files = file.list();
+		return files!=null && files.length>0;
+	}
+	//===============================================================
+	//===============================================================
 	private List<TemplateClass> getTemplates() throws PogoException {
 		//	Get custom templates if defined
 		List<TemplateClass> list = new ArrayList<>();
-		String customPath = System.getenv("TEMPLATES_HOME");
-		if (customPath!=null) {
-			List<TemplateClass> customList = getTemplateClasses(customPath);
+		String path = getPath();
+		if (path!=null) {
+			List<TemplateClass> customList = getTemplateClasses(path);
 			for (TemplateClass templateClass : customList)
 				list.add(templateClass);
-		}
-
-		//	Get default templates
-		URL url = getClass().getResource(urlPath);
-		if (url == null) {
-			throw new PogoException(urlPath + " not found");
-		}
-		String defaultPath = url.getFile();
-		List<TemplateClass> defaultList = getTemplateClasses(defaultPath);
-		//	Check if custom one override default
-		for (TemplateClass defaultClass : defaultList) {
-			boolean found = false;
-			for (TemplateClass customClass : list) {
-				if (customClass.name.equalsIgnoreCase(defaultClass.name)) {
-					found = true;
-				}
-			}
-			if (!found)
-				list.add(defaultClass);
 		}
 		Collections.sort(list, new TemplateCompare());
 
@@ -122,10 +117,10 @@ public class TemplateChooser extends JDialog {
 	//===============================================================
 	//===============================================================
 	private List<TemplateClass> getTemplateClasses(String path) {
+		List<TemplateClass> list = new ArrayList<>();
 		//	Get file list
 		File file = new File(path);
 		String[] files = file.list();
-		List<TemplateClass> list = new ArrayList<>();
 		if (files!=null) {
 			//	And build template list from xmi files
 			for (String fileName : files) {
@@ -263,7 +258,7 @@ public class TemplateChooser extends JDialog {
         // TODO add your handling code here:
 		JOptionPane.showMessageDialog(this, "To add your own templates:\n" +
 				"  - Add xmi files in a specific directory\n" +
-				"  - Export TEMPLATES_HOME environment variable with path of this directory.\n" +
+				"  - Export TEMPLATES_PATH environment variable with path of this directory.\n" +
 				"  - Restart Pogo.\n\n" +
 				"Your templates could override the default ones");
     }//GEN-LAST:event_helpBtnActionPerformed

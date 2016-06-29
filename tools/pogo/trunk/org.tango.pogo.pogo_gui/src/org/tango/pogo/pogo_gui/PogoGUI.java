@@ -336,6 +336,11 @@ public class PogoGUI extends JFrame {
         chooser.setFileFilter(pogoFilter);
         //pogoFilter.setExtensionListInDescription(false);
         //pogo6Filter.setExtensionListInDescription(false);
+
+        if (!TemplateChooser.templatesAvailable()) {
+            newFromTemplateItem.setVisible(false);
+            topButtons.get(TOP_NEW_TEMPL).setVisible(false);
+        }
     }
 
     //=======================================================
@@ -388,7 +393,7 @@ public class PogoGUI extends JFrame {
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newItem = new javax.swing.JMenuItem();
-        javax.swing.JMenuItem newFromTemplateItem = new javax.swing.JMenuItem();
+        newFromTemplateItem = new javax.swing.JMenuItem();
         openItem = new javax.swing.JMenuItem();
         recentMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem dummyItem = new javax.swing.JMenuItem();
@@ -1348,6 +1353,7 @@ public class PogoGUI extends JFrame {
     private javax.swing.JMenuItem moveDownItem;
     private javax.swing.JMenuItem moveUpItem;
     private javax.swing.JMenuItem multiItem;
+    private javax.swing.JMenuItem newFromTemplateItem;
     private javax.swing.JMenuItem newItem;
     private javax.swing.JMenuItem openItem;
     private javax.swing.JMenuItem packageItem;
