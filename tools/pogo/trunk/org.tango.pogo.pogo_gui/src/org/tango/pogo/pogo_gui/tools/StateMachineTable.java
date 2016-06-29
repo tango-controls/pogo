@@ -60,7 +60,9 @@ import java.util.List;
 //===============================================================
 public class StateMachineTable extends JTable {
     private EList<Command> commands = null;
+    private EList<Command> dynCommands = null;
     private EList<Attribute> attributes = null;
+    private EList<Attribute> dynAttributes = null;
     private EList<Pipe> pipes = null;
     private EList<State> stateList;
     private List<String> columnNames = new ArrayList<>();
@@ -102,22 +104,15 @@ public class StateMachineTable extends JTable {
         switch (type) {
             case COMMAND:
                 commands = pogoClass.getCommands();
-                for (Command command : commands) {
-                    String name = command.getName();
-                    if (!name.equals("State") && !name.equals("Status")) {
-                        itemList.add(new RowItem(name, command.getExcludedStates()));
-                    }
-                }
+                dynCommands = pogoClass.getDynamicCommands();
+                manageCommands(commands);
+                manageCommands(dynCommands);
                 break;
             case ATTRIBUTE:
-                attributes = pogoClass.getAttributes();
-                for (Attribute attribute : attributes) {
-                    itemList.add(new RowItem(attribute.getName(), attribute.getReadExcludedStates(), READ));
-                    boolean writable = !attribute.getRwType().equals(PogoConst.AttrRWtypeArray[PogoConst.READ]);
-                    if (writable) {
-                        itemList.add(new RowItem(attribute.getName(), attribute.getWriteExcludedStates(), WRITE));
-                    }
-                }
+                attributes    = pogoClass.getAttributes();
+                dynAttributes = pogoClass.getDynamicAttributes();
+                manageAttribute(attributes);
+                manageAttribute(dynAttributes);
                 break;
             case PIPE:
                 pipes = pogoClass.getPipes();
@@ -132,6 +127,27 @@ public class StateMachineTable extends JTable {
         buildTable();
     }
 
+    //===============================================================
+    //===============================================================
+    private void manageCommands(EList<Command> commands) {
+        for (Command command : commands) {
+            String name = command.getName();
+            if (!name.equals("State") && !name.equals("Status")) {
+                itemList.add(new RowItem(name, command.getExcludedStates()));
+            }
+        }
+    }
+    //===============================================================
+    //===============================================================
+    private void manageAttribute(EList<Attribute> attributes) {
+        for (Attribute attribute : attributes) {
+            itemList.add(new RowItem(attribute.getName(), attribute.getReadExcludedStates(), READ));
+            boolean writable = !attribute.getRwType().equals(PogoConst.AttrRWtypeArray[PogoConst.READ]);
+            if (writable) {
+                itemList.add(new RowItem(attribute.getName(), attribute.getWriteExcludedStates(), WRITE));
+            }
+        }
+    }
     //===============================================================
     //===============================================================
     public Dimension getDimension(JDialog parent) {
@@ -253,8 +269,18 @@ public class StateMachineTable extends JTable {
                 updateExcluded(command.getName());
             }
         }
+        if (dynCommands!=null) {
+            for (Command command : dynCommands) {
+                updateExcluded(command.getName());
+            }
+        }
         if (attributes!=null) {
             for (Attribute attribute : attributes) {
+                updateExcluded(attribute.getName());
+            }
+        }
+        if (dynAttributes!=null) {
+            for (Attribute attribute : dynAttributes) {
                 updateExcluded(attribute.getName());
             }
         }

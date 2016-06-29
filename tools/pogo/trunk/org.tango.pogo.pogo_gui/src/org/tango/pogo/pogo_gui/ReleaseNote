@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.2.8 - 28/06/2016:
+	Manage state machine for dynamic attributes and commands
+
 Pogo-9.2.7 - 27/06/2016:
 	Template management added.
 

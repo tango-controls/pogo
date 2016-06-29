@@ -84,41 +84,46 @@ public class StateMachineDialog extends JDialog implements PogoConst {
      */
     //===============================================================
     private void createOwnComponents() {
-        Dimension[] d =new Dimension[3];
+        Dimension[] dimensions =new Dimension[3];
+        //  Manage commands and dynamic commands
         EList<Command> commands = pogoClass.getCommands();
-        if (commands.size()>2) {
+        EList<Command> dynCommands = pogoClass.getDynamicCommands();
+        if (commands.size()>2 || !dynCommands.isEmpty()) {
             commandTable = new StateMachineTable(pogoClass, StateMachineTable.COMMAND);
             commandScrollPane.add(commandTable);
             commandScrollPane.setViewportView(commandTable);
-            d[StateMachineTable.COMMAND] = commandTable.getDimension(this);
-            commandScrollPane.setPreferredSize(d[StateMachineTable.COMMAND]);
+            dimensions[StateMachineTable.COMMAND] = commandTable.getDimension(this);
+            commandScrollPane.setPreferredSize(dimensions[StateMachineTable.COMMAND]);
         }
         else
             commandLabel.setVisible(false);
 
+        //  Manage attributes and dynamic attributes
         EList<Attribute> attributes = pogoClass.getAttributes();
-        if (!attributes.isEmpty()) {
+        EList<Attribute> dynAttributes = pogoClass.getDynamicAttributes();
+        if (!attributes.isEmpty() || !dynAttributes.isEmpty()) {
             attributeTable = new StateMachineTable(pogoClass, StateMachineTable.ATTRIBUTE);
             attributeScrollPane.add(attributeTable);
             attributeScrollPane.setViewportView(attributeTable);
-            d[StateMachineTable.ATTRIBUTE] = attributeTable.getDimension(this);
-            attributeScrollPane.setPreferredSize(d[StateMachineTable.ATTRIBUTE]);
+            dimensions[StateMachineTable.ATTRIBUTE] = attributeTable.getDimension(this);
+            attributeScrollPane.setPreferredSize(dimensions[StateMachineTable.ATTRIBUTE]);
         }
         else
             attributeLabel.setVisible(false);
 
+        //  Manage pipes
         EList<Pipe> pipes = pogoClass.getPipes();
         if (!pipes.isEmpty()) {
             pipeTable = new StateMachineTable(pogoClass, StateMachineTable.PIPE);
             pipeScrollPane.add(pipeTable);
             pipeScrollPane.setViewportView(pipeTable);
-            d[StateMachineTable.PIPE] = pipeTable.getDimension(this);
-            pipeScrollPane.setPreferredSize(d[StateMachineTable.PIPE]);
+            dimensions[StateMachineTable.PIPE] = pipeTable.getDimension(this);
+            pipeScrollPane.setPreferredSize(dimensions[StateMachineTable.PIPE]);
         }
         else
             pipeLabel.setVisible(false);
 
-        checkSize(d, new JScrollPane[]{
+        checkSize(dimensions, new JScrollPane[]{
                 commandScrollPane, attributeScrollPane, pipeScrollPane});
     }
     //===============================================================
