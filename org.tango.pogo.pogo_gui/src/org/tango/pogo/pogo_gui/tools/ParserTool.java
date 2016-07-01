@@ -74,6 +74,19 @@ public class ParserTool {
         return str;
     }
     //===============================================================
+    //===============================================================
+    public static List<String> readFileLines(String filename, boolean withComments) throws PogoException {
+        String code = readFile(filename);
+        List<String> lines = new ArrayList<>();
+        StringTokenizer stk = new StringTokenizer(code, "\n");
+        while(stk.hasMoreTokens()) {
+            String line = stk.nextToken().trim();
+            if (!line.startsWith("#") || withComments)
+                lines.add(line);
+        }
+        return lines;
+    }
+    //===============================================================
     /**
      * Take off Cr eventually added by Windows editor.
      *
