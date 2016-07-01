@@ -49,7 +49,7 @@ import java.util.List;
 public class UpdateRelease {
     private String release = null;
     private String fileName = null;
-    private String notesPath= null;
+    private String notesPath= ".";
     private String packName = null;
     private String title = null;
     //===============================================================
@@ -87,6 +87,7 @@ public class UpdateRelease {
 
         String fileName = notesPath+'/'+notesFile+".java";
         ParserTool.writeFile(fileName, outCode);
+        System.out.println(fileName + "  has been generated.");
     }
     //===============================================================
     //===============================================================
@@ -187,8 +188,12 @@ public class UpdateRelease {
                         displaySyntax();
                     break;
                 case "-title":
-                    if ((i+1)<args.length)
-                        title = args[i+1];
+                    if ((i+1)<args.length) {
+                        title = "";
+                        while (++i < args.length && args[i].charAt(0)!='-')
+                            title += args[i]+" ";
+                        i -=2;
+                    }
                     else
                         displaySyntax();
                     break;
@@ -197,8 +202,6 @@ public class UpdateRelease {
             }
         }
         if ((release==null && fileName!=null) || (release!=null && fileName==null))
-            displaySyntax();
-        if ((notesPath==null && packName!=null) || (notesPath!=null && packName==null))
             displaySyntax();
     }
     //===============================================================
