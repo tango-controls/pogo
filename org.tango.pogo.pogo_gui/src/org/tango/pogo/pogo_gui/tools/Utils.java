@@ -621,13 +621,18 @@ public class Utils {
 
     //===============================================================
     //===============================================================
-    public static String getXmiFile() {
+    public static String getXmiFile(boolean getMultiClasses) {
         File f = new File(".");
         String[] fileList = f.list();
         for (String fileName : fileList) {
-            if (fileName.endsWith(".xmi")) {
-                if (new File(fileName).isFile())
+            if (new File(fileName).isFile()) {
+                if (!getMultiClasses && fileName.endsWith(".xmi") && !fileName.contains(".multi.")) {
                     return fileName;
+                }
+                else
+                if (getMultiClasses && fileName.endsWith(".multi.xmi")) {
+                    return fileName;
+                }
             }
         }
         return null;
