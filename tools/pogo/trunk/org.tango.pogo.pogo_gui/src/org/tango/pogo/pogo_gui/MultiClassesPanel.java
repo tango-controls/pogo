@@ -89,8 +89,6 @@ public class MultiClassesPanel extends JFrame {
 
         customizeMenus();
         initOwnComponents();
-        //if (fileName != null)
-        //    loadXmiFile(fileName);
         checkLoadAtStartup(fileName);
 
         //  Set the PogoGUI instance to do not close this when PogoGUI is closed !!!
@@ -108,7 +106,7 @@ public class MultiClassesPanel extends JFrame {
             if (filename != null && filename.length() > 0)
                 loadXmiFile(filename);
             else {
-                String xmiFile = Utils.getXmiFile();
+                String xmiFile = Utils.getXmiFile(PogoConst.MultiClasses);
                 if (xmiFile != null) {
                     openItemActionPerformed(null);
                 } else
@@ -408,8 +406,8 @@ public class MultiClassesPanel extends JFrame {
         if (chooser == null) {
             chooser = new JFileChooser(new File("").getAbsolutePath());
         }
-        int retval = chooser.showOpenDialog(this);
-        if (retval == JFileChooser.APPROVE_OPTION) {
+        int returnValue = chooser.showOpenDialog(this);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             if (file != null) {
                 if (!file.isDirectory()) {

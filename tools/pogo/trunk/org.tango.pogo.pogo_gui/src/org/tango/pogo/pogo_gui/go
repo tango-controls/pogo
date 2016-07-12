@@ -5,7 +5,7 @@ BIN_DIR=../../../../../src:../../../../../bin
 
 
 CLASSPATH=$SITE_PROP:$JAR_FILE
-CLASSPATH=$SITE_PROP:$BIN_DIR:$JAR_FILE
+#CLASSPATH=$SITE_PROP:$BIN_DIR:$JAR_FILE
 
 echo "CLASSPATH=$CLASSPATH"
 
@@ -28,6 +28,11 @@ export TANGO_9=true
 export MANAGE_WRITE_METHOD=false
 
 export TEMPLATES_HOME=/users/verdier/templates
+
+
+cd /segfs/tango/cppserver/machine/powersupply/rips/RipsManager/multi_classes
+cd /segfs/tango/cppserver/machine/powersupply/rips/RipsManager/src
+
 
 java  -DSUPER_HOME=$SUPER_HOME \
             org.tango.pogo.pogo_gui.Pogo  $*

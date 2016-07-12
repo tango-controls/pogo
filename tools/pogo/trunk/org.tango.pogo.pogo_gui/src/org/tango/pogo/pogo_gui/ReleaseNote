@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.2.9 - 12/07/2016:
+	Fix problem on resize nodes.
+	Check MonoClass/MutiClasses to open chooser.
+
 Pogo-9.2.8 - 28/06/2016:
 	Manage state machine for dynamic attributes and commands
 

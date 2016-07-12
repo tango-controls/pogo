@@ -50,7 +50,7 @@ public interface PogoConst {
      */
     @SuppressWarnings("UnnecessaryInterfaceModifier")
     public static String revNumber =
-            "9.2.8  -  Wed Jun 29 13:12:58 CEST 2016";
+            "9.2.9  -  12-07-2016  16:44:04";
 
     int TANGO_PAGES = 0;
     int POGO_PAGES = 1;
@@ -136,5 +136,6 @@ public interface PogoConst {
     Font leafFont_concrete = new Font("Dialog", Font.PLAIN, 12);
     Font leafFont_abstract = new Font("Dialog", Font.ITALIC, 12);
 
-
+    boolean MonoClass = false;
+    boolean MultiClasses = true;
 }

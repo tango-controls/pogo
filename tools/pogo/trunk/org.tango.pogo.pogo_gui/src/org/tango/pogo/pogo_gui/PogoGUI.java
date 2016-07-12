@@ -143,6 +143,7 @@ public class PogoGUI extends JFrame {
         PogoProperty.init();
         initOwnComponents();
         customizeMenus();
+        setTitle(applicationTitle(null));
 
         //  Create a dummy panel for display
         class_panels = new ClassPanels(this);
@@ -173,7 +174,7 @@ public class PogoGUI extends JFrame {
         if (filename != null && filename.length() > 0)
             loadDeviceClassFromFile(filename);
         else {
-            String xmiFile = Utils.getXmiFile();
+            String xmiFile = Utils.getXmiFile(PogoConst.MonoClass);
             if (xmiFile != null) {
                 openItemActionPerformed(null);
             } else if (PogoProperty.loadPrevious)
