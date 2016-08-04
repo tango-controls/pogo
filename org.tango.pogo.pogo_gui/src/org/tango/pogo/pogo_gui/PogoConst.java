@@ -50,7 +50,7 @@ public interface PogoConst {
      */
     @SuppressWarnings("UnnecessaryInterfaceModifier")
     public static String revNumber =
-            "9.2.9  -  12-07-2016  16:44:04";
+            "9.3.0  -  04-08-2016  15:37:12";
 
     int TANGO_PAGES = 0;
     int POGO_PAGES = 1;
@@ -59,8 +59,8 @@ public interface PogoConst {
     String[] tangoHTTP = {
             "http://www.tango-controls.org/",
             "http://www.esrf.eu/computing/cs/tango/tango_doc/tools_doc/pogo_doc/",
-            "http://www.tango-controls.org/Documents/tango-kernel",
-            "http://www.tango-controls.org/device-servers",
+            "http://www.tango-controls.org/resources/documentation/kernel/",
+            "http://www.tango-controls.org/resources/device-classes/",
     };
 
     //	Miscellaneous

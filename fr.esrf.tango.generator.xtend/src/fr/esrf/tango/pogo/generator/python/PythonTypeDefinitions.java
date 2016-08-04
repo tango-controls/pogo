@@ -50,6 +50,7 @@ import fr.esrf.tango.pogo.pogoDsl.DoubleStringArrayType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleType;
 import fr.esrf.tango.pogo.pogoDsl.DoubleVectorType;
 import fr.esrf.tango.pogo.pogoDsl.EncodedType;
+import fr.esrf.tango.pogo.pogoDsl.EnumType;
 import fr.esrf.tango.pogo.pogoDsl.FloatArrayType;
 import fr.esrf.tango.pogo.pogoDsl.FloatType;
 import fr.esrf.tango.pogo.pogoDsl.FloatVectorType;
@@ -202,6 +203,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof ULongArrayType)			return "('uint64')";
 		if (type instanceof DevIntType)				return "'DevInt'";
 		if (type instanceof EncodedType)			return "'bytearray'";
+		if (type instanceof EnumType)				return "'DevEnum'";
 		return "";
 	}
 
@@ -228,6 +230,7 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof ULongType)			l_str = "'uint64'";
 		if (attr.getDataType() instanceof DevIntType)			l_str = "'DevInt'";
 		if (attr.getDataType() instanceof EncodedType)			l_str = "'bytearray'";
+		if (attr.getDataType() instanceof EnumType)				l_str = "'DevEnum'";
 		
 		if (attr.getAttType().equals("Spectrum"))
 		{
@@ -301,6 +304,7 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof ULongType)			def_val =  "0";
 		if (attr.getDataType() instanceof DevIntType)			def_val =  "0";
 		if (attr.getDataType() instanceof EncodedType)			def_val =  "['', '']";
+		if (attr.getDataType() instanceof EnumType)				def_val =  "0";
 		
 		if (attr.getAttType().equals("Spectrum"))
 		{
@@ -498,6 +502,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof ULongArrayType)			return "return [0]";
 		if (type instanceof DevIntType)				return "return 0";
 		if (type instanceof EncodedType)			return "return \"\", \"\"";
+		if (type instanceof EnumType)				return "return 0";
 		return "''";
 	}
 	/**
@@ -567,6 +572,39 @@ public class PythonTypeDefinitions {
 	 * @return resulting string
 	 */
 	public String setAttrPropertyHL(String propertyName, String strValue, Boolean isString)
+	{
+		if (propertyName.equals("display_level"))
+		{
+			if (strValue != null && ( strValue.equals("EXPERT") || strValue.equals("PyTango.DispLevel.EXPERT")))
+			{
+				return "display_level=DispLevel.EXPERT,";
+			}
+			else
+				return "";
+		}
+		else
+		{
+            if (strValue != null && strValue.length() > 0)
+            	if(isString)
+                    return propertyName + "=\"" + strValue + "\",";
+            	else
+            		    if (strValue.contains( "true"))
+            		        return propertyName + "=" + "True" + ",";
+            		    else
+                            return propertyName + "=" + strValue + ",";
+            else
+                return "";
+		}
+	}
+	
+	/**
+	 * PythonHL Attribute utility
+	 * @param propertyName the name of the attribute property
+	 * @param strValue value to be inserted
+	 * @param isString indicates if the value is a string
+	 * @return resulting string
+	 */
+	public String setPipePropertyHL(String propertyName, String strValue, Boolean isString)
 	{
 		if (propertyName.equals("display_level"))
 		{

@@ -622,7 +622,7 @@ public class PogoGUI extends JFrame {
         helpMenu.add(tangoItem);
 
         pogoItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        pogoItem.setText("Pogo Pages");
+        pogoItem.setText("Pogo online documentation");
         pogoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pogoItemActionPerformed(evt);
@@ -630,7 +630,7 @@ public class PogoGUI extends JFrame {
         });
         helpMenu.add(pogoItem);
 
-        kernelItem.setText("Kernel Pages");
+        kernelItem.setText("Kernel online documentation");
         kernelItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kernelItemActionPerformed(evt);
@@ -638,7 +638,7 @@ public class PogoGUI extends JFrame {
         });
         helpMenu.add(kernelItem);
 
-        classItem.setText("Device Class Pages");
+        classItem.setText("Device Class user's guides");
         classItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classItemActionPerformed(evt);

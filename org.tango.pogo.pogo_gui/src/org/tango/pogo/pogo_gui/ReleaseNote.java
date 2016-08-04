@@ -15,8 +15,10 @@ public interface ReleaseNote {
 		"</head>\n" + 
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
-		"<center>	<h2>Pogo Release Note </h2>\n" + 
-		"	(Generated 12-07-2016  16:44:04)</center><br>\n" + 
+		"<center>	<h2>Pogo Release Notes </h2>\n" + 
+		"	(Generated 04-08-2016  15:37:12)</center><br>\n" + 
+		"<li><b>Pogo-9.3.0 - 04/08/2016:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix bug in property default values in Python code.<br>" + 
 		"<li><b>Pogo-9.2.9 - 12/07/2016:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix problem on resize nodes.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Check MonoClass/MutiClasses to open chooser.<br>" + 

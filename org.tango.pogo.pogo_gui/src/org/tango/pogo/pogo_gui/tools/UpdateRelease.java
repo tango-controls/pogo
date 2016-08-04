@@ -94,7 +94,8 @@ public class UpdateRelease {
     private String getHtmlNotes(String notesFile) throws PogoException {
         List<String> inCode = ParserTool.readFileLines(notesFile, false);
         StringBuilder sb = new StringBuilder();
-        for (String line :inCode) {
+        for (String line : inCode) {
+            line = checkLine(line);
             if (line.endsWith(":")) {
                 sb.append("\t\t\"<li><b>").append(line).append("</b><br>\" + \n");
             }
@@ -103,6 +104,19 @@ public class UpdateRelease {
             }
         }
         return sb.toString();
+    }
+    //===============================================================
+    //===============================================================
+    private String checkLine(String line) {
+        String str = "";
+        int start = 0;
+        int end;
+        while ((end=line.indexOf( "\"", start))>0) {
+            str += line.substring(start, end) + "&rdquo;";
+            start = end+1;
+        }
+        str += line.substring(start);
+        return str;
     }
     //===============================================================
     //===============================================================

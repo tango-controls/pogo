@@ -242,7 +242,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pogo Pages"/>
+                <Property name="text" type="java.lang.String" value="Pogo online documentation"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pogoItemActionPerformed"/>
@@ -254,7 +254,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="kernelItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kernel Pages"/>
+                <Property name="text" type="java.lang.String" value="Kernel online documentation"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kernelItemActionPerformed"/>
@@ -266,7 +266,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="classItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Device Class Pages"/>
+                <Property name="text" type="java.lang.String" value="Device Class user&apos;s guides"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classItemActionPerformed"/>

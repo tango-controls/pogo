@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.3.0 - 04/08/2016:
+	Fix bug in property default values in Python code.
+
 Pogo-9.2.9 - 12/07/2016:
 	Fix problem on resize nodes.
 	Check MonoClass/MutiClasses to open chooser.
