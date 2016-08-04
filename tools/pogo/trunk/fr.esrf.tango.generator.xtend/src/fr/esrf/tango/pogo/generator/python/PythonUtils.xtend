@@ -39,6 +39,7 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import fr.esrf.tango.pogo.pogoDsl.Property
+import fr.esrf.tango.pogo.pogoDsl.Pipe
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
@@ -77,7 +78,7 @@ class PythonUtils {
     	{
 	    	if (str.contains(","))
 	    	{
-	    		return "[\"" + str.replaceAll(",","\",\"") + "\"]";
+	    		return "[\"" + str.substring(1, str.length()-1).replaceAll(", ",",").replaceAll(",","\", \"") + "\"]";
 	    	}
 	    	else
 	    	{
@@ -204,7 +205,8 @@ class PythonUtils {
             attr.eventCriteria!=null           		||
             attr.getAttType().equals("Spectrum")	||
             attr.getAttType().equals("Image")		||
-            attr.eventCriteria!=null);
+            attr.eventCriteria!=null)				||
+            (attr.enumLabels != null && attr.enumLabels.size > 0);
     }
     
     def hasCmdPropertySet(Command cmd){
@@ -213,6 +215,15 @@ class PythonUtils {
     
     def hasCmdArginOrArgoutSet(Command cmd){
         return (!cmd.argin.type.voidType || !cmd.argout.type.voidType );
+    }
+    
+    def hasPipePropertySetHL(Pipe pip){
+        return (
+            (pip.label != null && !pip.label.empty) 		||
+            (pip.description != null && !pip.description.empty ) 		||
+            pip.displayLevel.equals("EXPERT") 		||
+            (pip.rwType.contains("WRITE"))
+            )
     }
     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
@@ -291,7 +302,18 @@ class PythonUtils {
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, attribute.name + "_read", "return " + attribute.defaultValueHL, false)»«ELSE»return «attribute.defaultValueDim»«ENDIF»
 
     '''
+      
+    def readPipeMethodHL(PogoDeviceClass cls, Pipe pip) '''
+        def read_«pip.name»(self):
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, pip.name + "_read", "return dict(x=0,y=0)", false)»«ELSE»return dict(x=0,y=0)»«ENDIF»
+
+    '''
     
+    def writePipeMethodHL(PogoDeviceClass cls, Pipe pip) '''
+        def write_«pip.name»(self, value):
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, pip.name + "_write","print dict(value)", false)»«ELSE»print dict(value)»«ENDIF»
+
+    '''
     def attributeMethodStateMachine(PogoDeviceClass cls, Attribute attribute) '''
 		def is_«attribute.name»_allowed(self, attr):
 		    self.debug_stream("In is_«attribute.name»_allowed()")
@@ -330,6 +352,34 @@ class PythonUtils {
     		}
     	}
     }
+    
+    def readWriteStateMachinePipe(PogoDeviceClass cls, Pipe pip)
+    {
+    	if (!pip.readExcludedStates.empty)
+    	{
+    		if (!pip.writeExcludedStates.empty)
+    		{
+    			return "if attr==attr.READ_REQ:\n    return " + pip.readExcludedStates.ifContentFromListPythonHL + "\nelse:\n    return " + pip.writeExcludedStates.ifContentFromListPythonHL;
+    		}
+    		else
+    		{
+    			return "if attr==attr.READ_REQ:\n    return " + pip.readExcludedStates.ifContentFromListPythonHL + "\nelse:\n    return True";
+    		}
+    		
+    	}
+    	else
+    	{
+    		
+    		if (!pip.writeExcludedStates.empty)
+    		{
+    			return "if attr==attr.READ_REQ:\n    return True\nelse:\n    return " + pip.writeExcludedStates.ifContentFromListPythonHL;
+    		}
+    		else
+    		{
+    			return "if attr==attr.READ_REQ:\n    return True\nelse:\n    return True";
+    		}
+    	}
+    }
 
     def attributeMethodStateMachineHL(PogoDeviceClass cls, Attribute attribute) '''
 		def is_«attribute.name»_allowed(self, attr):
@@ -338,21 +388,28 @@ class PythonUtils {
         «IF attribute.rwType.equals("READ_WRITE") || attribute.rwType.equals("READ_WITH_WRITE")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + attribute.name + "_allowed",cls.readWriteStateMachine(attribute), false)»«ELSE»«cls.readWriteStateMachine(attribute)»«ENDIF»«ENDIF»
 
     '''
+    def pipeMethodStateMachineHL(PogoDeviceClass cls, Pipe pip) '''
+		def is_«pip.name»_allowed(self, attr):
+        «IF pip.rwType.equals("READ")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + pip.name + "_allowed","return " + pip.readExcludedStates.ifContentFromListPythonHL, false)»«ELSE»return «pip.readExcludedStates.ifContentFromListPythonHL»«ENDIF»«ENDIF»
+        «IF pip.rwType.equals("WRITE")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + pip.name + "_allowed","return " + pip.writeExcludedStates.ifContentFromListPythonHL, false)»«ELSE»return «pip.writeExcludedStates.ifContentFromListPythonHL»«ENDIF»«ENDIF»
+        «IF pip.rwType.equals("READ_WRITE") || pip.rwType.equals("READ_WITH_WRITE")»«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "is_" + pip.name + "_allowed",cls.readWriteStateMachinePipe(pip), false)»«ELSE»«cls.readWriteStateMachinePipe(pip)»«ENDIF»«ENDIF»
+
+    '''
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
             [«prop.type.pythonPropType», 
             «IF !prop.description.empty»"«prop.description.oneLineString»"«ELSE» ''«ENDIF»«IF !prop.defaultPropValue.empty»,
-            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»[«prop.defaultPropValue.get(0).stringListToStringArray»]«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
+            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
             [] «ENDIF»],
     '''
     
     def pythonPropertyClassHL(Property prop) '''
         «prop.name» = class_property(
-                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
+                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
             )
     '''
     def pythonPropertyDeviceHL(Property prop) '''
         «prop.name» = device_property(
-                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.get(0).stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
+                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
             )
     '''
     
@@ -445,9 +502,21 @@ class PythonUtils {
         «setAttrPropertyHL("min_alarm", attr.properties.minAlarm, false)»
         «setAttrPropertyHL("max_warning", attr.properties.maxWarning, false)»
         «setAttrPropertyHL("min_warning", attr.properties.minWarning, false)»
+        «setAttrPropertyHL("memorized", attr.memorized, false)»
+        «setAttrPropertyHL("hw_memorized", attr.memorizedAtInit, false)»
         «setAttrPropertyHL("delta_t", attr.properties.deltaTime, false)»
         «setAttrPropertyHL("delta_val", attr.properties.deltaValue, false)»
-        «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»«ELSE»«ENDIF»
+        «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»
+        «IF attr.enumLabels!=null»«IF attr.enumLabels.size >0»«setAttrPropertyHL("enum_labels", attr.pythonPipeEnum,  false)»«ENDIF»«ENDIF»«ENDIF»
+    )
+    '''
+    def pythonPipeClassHL(Pipe pip) '''
+«pip.name» = pipe(
+«IF pip.hasPipePropertySetHL»        «setPipePropertyHL("label", pip.label, true)»
+        «setPipePropertyHL("display_level", pip.displayLevel, false)»
+        «setPipePropertyHL("doc", pip.description.oneLineString, true)»
+        «IF pip.rwType.contains("WRITE")»access=PipeWriteType.PIPE_READ_WRITE«ENDIF»
+«ENDIF»
     )
     '''
     

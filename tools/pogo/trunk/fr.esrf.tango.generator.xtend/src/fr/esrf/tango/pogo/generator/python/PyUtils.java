@@ -156,4 +156,28 @@ public class PyUtils {
 			}
 		}
 	}
+
+	//===========================================================
+	/**
+	 * Returns the enum labels on one line 
+	 * @param command the specified command
+	 * @return  the method execution name for specified command
+	 */
+	//===========================================================
+    String pythonPipeEnum(Attribute attr){
+    	if (attr.getEnumLabels() != null)
+    	{
+			StringBuilder	sb = new StringBuilder("[");
+			for (String label : attr.getEnumLabels())
+			{
+				sb.append("\"").append(label).append("\", ");
+			}
+			sb.append("]");
+			return sb.toString();
+    	}
+    	else
+    	{
+    		return "";
+    	}
+    }
 }

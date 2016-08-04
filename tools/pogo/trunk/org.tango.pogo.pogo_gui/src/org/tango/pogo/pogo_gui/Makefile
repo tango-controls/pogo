@@ -11,7 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 9.2.9
+RELEASE    = 9.3.0
 
 
 TANGO_HOME	=	/segfs/tango
@@ -71,15 +71,15 @@ clean:
 	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/tools/*.form
 	rm -f  $(BIN_DIR)/org/tango/pogo/pogo_gui/packacging/*.form
 
-MAIN_CLASS   =  $(PACKAGE)GUI
 UPDATE_CLASS =  org.tango.pogo.pogo_gui.tools.UpdateRelease
 version:
 	make clean
 	echo "Updating date and revision number..."
-	java  $(UPDATE_CLASS) -file PogoConst.java \
-			-release $(RELEASE) \
-			-title   "Pogo Release Note" \
-			-package org.tango.pogo.pogo_gui
+	java  $(UPDATE_CLASS) \
+		-file PogoConst.java \
+		-release $(RELEASE) \
+		-title   "Pogo Release Notes" \
+		-package org.tango.pogo.pogo_gui
 	@make GUI
 
 jar:

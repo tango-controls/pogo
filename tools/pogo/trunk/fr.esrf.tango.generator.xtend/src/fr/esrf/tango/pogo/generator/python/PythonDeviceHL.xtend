@@ -141,6 +141,11 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
     # ----------
 
 «cls.pythonAttributeDefinitions»
+    # -----
+    # Pipes
+    # -----
+
+«cls.pythonDevicePipes»
     # ---------------
     # General methods
     # ---------------
@@ -151,6 +156,11 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
     # ------------------
 
 «cls.pythonAttributes»
+    # -------------
+    # Pipes methods
+    # -------------
+
+«cls.pythonPipes»
     # --------
     # Commands
     # --------
@@ -174,9 +184,10 @@ import PyTango
 from PyTango import DebugIt
 from PyTango.server import run
 from PyTango.server import Device, DeviceMeta
-from PyTango.server import attribute, command
+from PyTango.server import attribute, command, pipe
 from PyTango.server import class_property, device_property
-from PyTango import AttrQuality, AttrWriteType, DispLevel, DevState
+from PyTango import AttrQuality,DispLevel, DevState
+from PyTango import AttrWriteType, PipeWriteType
 «cls.inheritedAdditionalImportHL»
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
@@ -268,6 +279,16 @@ def dyn_attr(self, dev_list):
             dev.debug_stream("Details: " + traceback.format_exc())
     '''
 
+    //====================================================
+    //    Pipes
+    //====================================================
+    def pythonPipes(PogoDeviceClass cls)  '''
+«FOR pip: cls.pipes»
+«IF true»    «readPipeMethodHL(cls, pip)»«ENDIF»
+«IF pip.rwType.contains("WRITE")»    «writePipeMethodHL(cls, pip)»«ENDIF»
+«IF !pip.readExcludedStates.empty || !pip.writeExcludedStates.empty»    «pipeMethodStateMachineHL(cls, pip)»«ENDIF»
+«ENDFOR»
+    '''
     //    Commands
     //====================================================
     def pythonCommands(PogoDeviceClass cls)  '''
@@ -292,6 +313,16 @@ def dyn_attr(self, dev_list):
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyDeviceHL»
 «ENDIF»
+«ENDFOR»
+«ENDIF»
+    '''
+
+    //====================================================
+    //    Pipes
+    //====================================================
+    def pythonDevicePipes(PogoDeviceClass cls)'''
+«IF !cls.pipes.empty»
+«FOR pip : cls.pipes»    «pip.pythonPipeClassHL»
 «ENDFOR»
 «ENDIF»
     '''
