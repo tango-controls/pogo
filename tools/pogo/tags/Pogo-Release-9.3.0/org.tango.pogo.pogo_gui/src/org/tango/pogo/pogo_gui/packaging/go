@@ -1,0 +1,4 @@
+CLASSPATH=/segfs/tango/tools/pogo/properties.test:../../../../../../bin:/users/verdier/pogo/jar/org.tango.pogo.jar
+
+java  -DPACKAGING_HOME=/segfs/tango/tools/pogo/test/cpp/packaging  \
+		org.tango.pogo.pogo_gui.packaging.Packaging

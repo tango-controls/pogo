@@ -1,0 +1,188 @@
+                TANGO classes source code release - README
+                ------------------------------------------
+		
+		
+                TEMPLATE_CLASS TANGO Class  -  TEMPLATE_AUTHOR
+			
+
+
+TABLE OF CONTENTS
+-----------------
+
+ 1 - Introduction
+ 2 - What's inside
+ 3 - Prerequisites
+ 4 - Configuration
+ 5 - Compilation
+ 6 - Running
+ 7 - Documentation
+ 8 - Remarks
+ 9 - Questions
+10 - URL
+
+
+1 - INTRODUCTION
+----------------
+This is the README for the TANGO classes source code release.
+ 
+TANGO is a toolkit for building object oriented control systems 
+based on CORBA. TANGO is a collaboration effort of synchrotron radiation sources.
+
+The TANGO classes source code release allows to add Tango classes one by
+one to your Tango system. After installation and compilation, the class
+can be used as standalone Tango device server or can be added to any
+new device server by editing the ClassFactory.cpp file and linking with
+the created archive or shared library for the installed class.
+
+The package is intended for Unix platforms. The source code contained 
+in this package might run on Windows but the Makefile don't. Check for a 
+special Windows release for the class.
+
+
+2 - WHAT'S INSIDE
+-----------------
+This source code release contains all necessary source files for a Tango 
+class to build an executable device server and an archive and shared library
+for the class.
+Documentation is provided as an html file with pointers to the centralized 
+classes documentation.
+
+
+3 - PREREQUISITES
+-----------------
+
+Before compiling and installing a Tango class you need to install :
+
+(1) omniORB 
+	 
+(2) Tango available from http://www.tango-controls.org/download 
+
+(3) zmq
+
+Also check the tools you are using
+
+(4) If you are using gcc. You can download gcc from http://gcc/gnu.org
+
+
+4 - CONFIGURATION
+-----------------
+
+Once you have installed the packages in prerequisites you can think
+about configuring and compiling Tango classes.
+To configure your Tango class package you need to tell it where to find 
+the omniORB, zmq and Tango include files and libraries.
+
+							 
+To indicate the installation directory use the --prefix option.
+Without specification the default prefix will be set to AUTHORTANGO_ROOT/classes
+to install the class with your Tango installation.
+
+Set PKG_CONFIG_PATH variable to Tango lib path to use TANGO pkgconfig
+
+You can type "configure --help" to get a print of all the options
+supported by the configure script.
+
+
+5 - COMPILATION
+---------------
+
+Once the configure script ran successfully you can compile and install the
+executable, include files and libraries. Do this by typing :
+
+make all
+
+make install
+
+The result should be the installation of the Tango class include files
+under prefix/include, a class executable under prefix/bin, the class
+libraries under prefix/lib and the documentation under prefix/doc.
+
+By default the executable will be linked with the static class libraries!
+To change this default behvior an to link with the shared class libraries
+you can use the configure option --enable-shared-classes.
+
+
+6 - RUNNING
+-----------
+To run the compiled Tango device server and to configure its properties
+you should use the Tango configuration wizard available with Jive and
+Astor.
+
+(1) Jive:
+    Start Jive and go to the Tools menu and start the "Server Wizard".
+	 Just follow the instructions or have a look to
+	 
+	 http://www.esrf.eu/computing/cs/tango/tango_doc/tools_doc/astor_doc/movies/wizard.html
+	 
+	 before using the wizard.
+	 In this case you will be asked to start your Tango server manually.
+	 Your server will start-up empty (without any device defined!) and
+	 will restart with the new configuration when the configuration 
+	 with the wizard is finished.
+	 
+(2) Astor:
+	 When using the Tango Starter server and Astor to administer your Tango 
+	 system you can use the configuration wizard from Astor.
+	 See the Astor documentation from 
+	 
+	 http://www.tango-controls.org/tools
+	 
+	 and the chapter "Start a New Server".
+	 
+
+7 - UPDATING from CVS
+---------------------
+The package contains in the source directory all necessary CVS 
+directories, using an anonymous CVS access, to verify and update 
+the class source code from the CVS.
+
+Go to the source directory and run cvs status
+to check for any source code modifications for this Tango class.
+
+
+8 - DOCUMENTATION
+-----------------
+All necessary references are available from the html documentation file
+delivered with this package (doc/TangoClassesDocumentation.html).
+
+Don't forget to check the Tango manual installed the the
+Tango package ( AUTHORTANGO_ROOT/doc/tango_x.x.pdf).
+
+
+9 - REMARKS
+-----------
+In the case of dependencies of this class to abstract classes or other
+Tango classes, the configure script will exit with an error.
+You need to download the necessary classes first. After installation of 
+the missing classes you can indicate the installation path in two ways:
+
+(1) By defining the envirnment variables TANGO_CLASSES_ROOT to
+    the base directory of Tango classes installation.
+				export TANGO_CLASSES_ROOT=/users/xxx/packages/tango_classes
+				
+(2) Or by using the configure option --with-tango-classes-prefix.
+	 			configure --with-tango-classes-prefix=/users/xxx/packages/tango_classes
+
+To indicate the installation directory use the --prefix option.
+Without specification the default prefix will be set to AUTHORTANGO_CLASSES_ROOT
+to install the class with the other Tango classes.
+
+When installing classes to AUTHORTANGO_ROOT/classes the specification of 
+TANGO_CLASSES_ROOT or --with-tango-classes-prefix is not necessary!
+
+
+10 - QUESTIONS
+-------------
+
+In the case of problems of further questions, send a mail to the Tango
+mailing list (tango@esrf.fr). See the html documentation delivered with 
+this package to find how to subscibe to the mailing list.
+
+
+11 - URL
+--------
+See the html documentation delivered with this package to find
+all necessary references.
+
+Or visit directly the TANGO website http://www.tango-controls.org for online 
+documentation, news and to download add-on packages.
