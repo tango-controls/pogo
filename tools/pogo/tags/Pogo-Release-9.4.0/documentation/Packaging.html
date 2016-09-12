@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+<Title> Pogo 8 - The Tango class generator </Title>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#7F00FF" ALINK="#FF0000">
+
+
+    <center><h2><u>Tango Server Packaging</u></h2></Center>
+    <Br>
+    <Br>
+    <Br>
+    <Br>
+    <ul>
+        Since <b>Pogo-8.3.0</b> on <b>Linux, Pogo</b>
+			allows you to create packaging files to be used with autotools<br>
+        <br>
+		Set the environment variable  <b>PKG_CONFIG_PATH</b><br>
+		<ul>
+			<li> e.g. for tango.pc file : export PKG_CONFIG_PATH=$TANGO_LIBS/pkgconfig
+		</ul>
+		You can find many examples on the web on pkg_config_path management.<br>
+        <br>
+        <br>
+        In Pogo or Multi classes GUI, use <i>File</i> menu and <i>Export Package</i> item.<br>
+        A panel will be launched to define to configure packaging.
+        <br>
+        <br>
+        <img src="img/PogoPackaging.gif" alt="Packaging">
+        <br>
+        <br>
+        <br>
+        <br>
+        After clicking on OK button, a new directory <b>packaging</b> will be created.<br>
+        You can use <b>autotools</b> commands (autogen, configure make, make install, make distcheck)
+        to build a reliable packaging for your server.<br>
+        <br>
+        <img src="img/configure1.gif" alt="configure">
+        <br>
+        <br>
+        <img src="img/configure2.gif" alt="configure">
+    </ul>
+</body>
+</html>
