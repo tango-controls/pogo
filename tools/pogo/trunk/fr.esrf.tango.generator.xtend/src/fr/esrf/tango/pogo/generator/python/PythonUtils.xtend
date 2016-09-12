@@ -530,12 +530,12 @@ class PythonUtils {
         «ENDIF»
         «IF attribute.changeEvent!=null»
             «IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
-                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»False«ELSE»True«ENDIF»)
+                 self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
             «ENDIF»
         «ENDIF»
         «IF attribute.archiveEvent!=null»
             «IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
-                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»False«ELSE»True«ENDIF»)
+                 self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
             «ENDIF»
         «ENDIF»
      «ENDFOR»
