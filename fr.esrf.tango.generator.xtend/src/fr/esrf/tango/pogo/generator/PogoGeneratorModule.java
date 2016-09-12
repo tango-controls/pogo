@@ -190,6 +190,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			generatedFiles.add(targetDir+"/ClassFactory.cpp");
 			generatedFiles.add(targetDir+"/main.cpp");
 			generatedFiles.add(targetDir+"/Makefile");
+			generatedFiles.add(targetDir+"/CMakeLists.txt");
 		}
 		//===================================================================================
 		private void fillGeneratedFilesListForJava(String targetDir, String className) {

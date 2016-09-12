@@ -378,10 +378,16 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 
 	//======================================================
 	//======================================================
-	String makeEnv(PogoMultiClasses multi) {
+	String makeEnv(PogoMultiClasses multi, boolean cmake) {
 		String	dbg = System.getProperty("DEBUG_MAKE");
-		String code = "MAKE_ENV = ";
-		
+		String code = 
+				"# MAKE_ENV is the path to find common environment to buil project\n" +
+				"#\n";
+		if (cmake)
+			code += "set(MAKE_ENV ";
+		else
+			code += "MAKE_ENV = ";
+
 		if (dbg!=null)
 			code += dbg;
 		else
@@ -389,17 +395,21 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 			code += multi.getPreferences().getMakefileHome();
 		else
 			code += "$(TANGO_HOME)";
+		if (cmake)
+			code += ")";
 		return code;
 	}
 	//======================================================
 	//======================================================
-	String makeEnv(PogoDeviceClass cls) {
+	String makeEnv(PogoDeviceClass cls, boolean cmake) {
 		String	dbg = System.getProperty("DEBUG_MAKE");
 		String code = 
-				"#=============================================================================\n" +
 				"# MAKE_ENV is the path to find common environment to buil project\n" +
-				"#\n" +
-				"MAKE_ENV = ";
+				"#\n";
+		if (cmake)
+			code += "set(MAKE_ENV ";
+		else
+			code += "MAKE_ENV = ";
 
 		if (dbg!=null)
 			code += dbg;
@@ -408,6 +418,8 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 			code += cls.getPreferences().getMakefileHome();
 		else
 			code += "$(TANGO_HOME)";
+		if (cmake)
+			code += ")";
 		return code;
 	}
 	//======================================================
@@ -526,4 +538,172 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		}
 		return sb.toString();
 	}
+
+
+
+	//===========================================================
+	//===========================================================
+	public String upperClassName(PogoDeviceClass cls) {
+		return cls.getName().toUpperCase();
+	}
+	//===========================================================
+	//	Build list of source files for cmake
+	//===========================================================
+	public String cmakeSourcefileList(PogoDeviceClass cls) {
+		String code = "set(" + upperClassName(cls) + "_SRC ${" + upperClassName(cls) +  "}.cpp" +
+					  " ${" + upperClassName(cls)  + "}Class.cpp" +
+					  " ${" + upperClassName(cls)  + "}StateMachine.cpp";
+		if (cls.getDynamicAttributes().size()>0 || cls.getDynamicCommands().size()>0)
+			code += " ${" + upperClassName(cls) + "}DynAttrUtils.cpp";
+		code += cmakeAdditionnalFiles(cls);
+		return code + ")";
+	}
+	//===========================================================
+	//	Build list of source files for cmake
+	//===========================================================
+	public String cmakeSourcefileList(String path, String upperClassName, boolean hasDynamic) {
+		String code = "set(" + upperClassName + "_SRC " +
+					        path + "${" + upperClassName +  "}.cpp" +
+					  " " + path + "${" + upperClassName  + "}Class.cpp" +
+					  " " + path + "${" + upperClassName  + "}StateMachine.cpp";
+		if (hasDynamic)
+			code += " ${" + upperClassName + "}DynAttrUtils.cpp";
+		return code + ")";
+	}
+	//===========================================================
+	//===========================================================
+	public String cmakeAdditionnalFiles(PogoDeviceClass cls) {
+		EList<AdditionalFile> additionalFiles = cls.getAdditionalFiles();
+		String str = "";
+		for (AdditionalFile additionalFile : additionalFiles) {
+			str += " " + additionalFile.getName()+".cpp";
+		}
+		return str;
+	}
+	//===========================================================
+	//===========================================================
+	public String cmakeClassParameters(PogoDeviceClass cls) {
+		return 
+			"#\n" +
+			"# Files for "+cls.getName() + " TANGO class\n" +
+			"#\n" +
+			"set(" + upperClassName(cls) + " " + cls.getName() + ")\n" +
+			"set(" + upperClassName(cls) + "_INCLUDE ${CMAKE_SOURCE_DIR})\n" +
+			cmakeSourcefileList(cls);
+	}
+	//===========================================================
+	//===========================================================
+	public String cmakeInheritanceClassParameters(PogoDeviceClass cls) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		StringBuilder sb = new StringBuilder();
+		for (Inheritance inheritance : inheritances) {
+			if (inheritanceUtils.isInheritanceClass(inheritance)) {
+				String path = inheritance.getSourcePath();
+				String upperClassName = inheritance.getClassname().toUpperCase();
+				String str = "#\n" + "# Files for " + inheritance.getClassname() + " TANGO class\n" + "#\n";
+				str += "set(" + upperClassName + "_PATH " + path + ")\n";
+				str += "set(" + upperClassName + " " + inheritance.getClassname() + ")\n";
+				str += "set(" + upperClassName + "_INCLUDE " + path + ")\n";
+				
+				str += cmakeSourcefileList("${"+upperClassName+"_PATH}/", upperClassName, false) + "\n";
+				
+				sb.append(str);
+			}
+		}
+		return sb.toString();
+	}
+	//===========================================================
+	//===========================================================
+	public String cmakeInheritanceFileList(PogoDeviceClass cls, String fileType) {
+		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
+		StringBuilder sb = new StringBuilder();
+		for (Inheritance inheritance : inheritances) {
+			if (inheritanceUtils.isInheritanceClass(inheritance)) {
+				sb.append("${").append(inheritance.getClassname().toUpperCase()).append(fileType).append("} ");
+			}
+		}
+		return sb.toString();
+	}
+	//===========================================================
+	//===========================================================
+
+	
+	
+	
+	
+	
+	//======================================================
+	/**
+	 * Define the definition for all classes in project
+	 * @param cls specified PogoDeviceClass object
+	 * @return code to define all classes in project
+	 */
+	//======================================================
+	String cMakeAddClassesDefinitions(PogoMultiClasses multi) {
+		inheritedObjectFiles = new ArrayList<String>();
+		String code = 
+				"#\n" +
+				"# Tango Class list used by project\n" +
+				"#\n";
+		for (OneClassSimpleDef simple : multi.getClasses()) {
+			code += "\n#\n" +
+					"# Files for "+simple.getClassname() + " TANGO class\n" +
+					"#\n";
+			code += "set(" + upperClassName(simple) + "  " + simple.getClassname() + ")\n";
+			code += "set(" + upperClassName(simple) + "_PATH  " + simple.getSourcePath() + ")\n";
+			code += "set(" + upperClassName(simple) + "_INCLUDE  " + simple.getSourcePath() + ")\n";
+
+			code += cmakeSourcefileList(simple);
+			
+			//	Add inheritance class if any
+			for (Inheritance inheritance : simple.getInheritances()) {
+				if (inheritanceUtils.isInheritanceClass(inheritance)) {
+					code += "#------------ Inheritance from " + simple.getClassname() + " class ------------\n";
+					code += addClassDefinition(inheritance.getClassname(), inheritance.getSourcePath());
+				}
+			}
+		}
+		return  code;
+	}
+	//===========================================================
+	//===========================================================
+	public String upperClassName(OneClassSimpleDef simple) {
+		return simple.getClassname().toUpperCase();
+	}
+	//===========================================================
+	//	Build list of source files for cmake
+	//===========================================================
+	public String cmakeSourcefileList(OneClassSimpleDef simple) {
+		String path = "${" + upperClassName(simple) + "_PATH}/";
+		String code = "set(" + upperClassName(simple) + "_SRC  " +
+					  path + "${" + upperClassName(simple) +  "}.cpp " +
+					  path + "${" + upperClassName(simple)  + "}Class.cpp " +
+					  path + "${" + upperClassName(simple)  + "}StateMachine.cpp ";
+		if (isTrue(simple.getHasDynamic()))
+			code += path + "${" + upperClassName(simple) + "}DynAttrUtils.cpp " ;
+		code += cmakeAdditionnalFiles(simple);
+		return code.trim() + ")";
+	}
+	//===========================================================
+	//===========================================================
+	public String cmakeAdditionnalFiles(OneClassSimpleDef simple) {
+		String path = "${" + upperClassName(simple) + "_PATH}/";
+		EList<AdditionalFile> additionalFiles = simple.getAdditionalFiles();
+		String str = "";
+		for (AdditionalFile additionalFile : additionalFiles) {
+			str += path + additionalFile.getName()+".cpp ";
+		}
+		return str;
+	}
+	//===========================================================
+	//===========================================================
+	public String cmakeFileList(PogoMultiClasses multi, String fileType) {
+		StringBuilder sb = new StringBuilder();
+		for (OneClassSimpleDef simple : multi.getClasses()) {
+			sb.append("${").append(simple.getClassname().toUpperCase()).append(fileType).append("} ");
+		}
+		return sb.toString();
+	}
+	//===========================================================
+	//===========================================================
 }
