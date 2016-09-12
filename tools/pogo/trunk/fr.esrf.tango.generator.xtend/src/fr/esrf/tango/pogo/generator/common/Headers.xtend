@@ -93,12 +93,16 @@ class Headers {
 	//======================================================
 	//	Makefile header
 	//======================================================
-	def makefileHeader(String project) '''
+	def makefileHeader(String project, boolean cmake) '''
 		#=============================================================================
 		#
 		# file :        Makefile
 		#
-		# description : Makefile to generate a TANGO device server.
+		«IF cmake»
+			# description : File to generate a TANGO device server using cmake.
+		«ELSE»
+			# description : Makefile to generate a TANGO device server.
+		«ENDIF»
 		#
 		# project :     «project»
 		#

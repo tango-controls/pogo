@@ -41,6 +41,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
 import fr.esrf.tango.pogo.generator.cpp.projects.LinuxMakefile
+import fr.esrf.tango.pogo.generator.cpp.projects.LinuxCMakeLists
 import fr.esrf.tango.pogo.generator.cpp.projects.VC12.VC12_Project
 import fr.esrf.tango.pogo.generator.cpp.projects.VC10.VC10_Project
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses
@@ -59,6 +60,7 @@ class CppGenerator implements IGenerator {
 	@Inject	extension ClassFactory
 	@Inject	extension Main
 	
+	@Inject	extension LinuxCMakeLists
 	@Inject	extension LinuxMakefile
 	@Inject	extension VC10_Project
 	@Inject	extension VC12_Project
@@ -101,11 +103,18 @@ class CppGenerator implements IGenerator {
 						fsa.generateFile(cls.dynamicAttrUtilsFileName,cls.generateDynamicAttrUtilsFile)
 					}
 				}
+				printTrace("------> " + cls.description.filestogenerate)
 				
 				//	Linux Makefile
 				if (cls.description.filestogenerate.contains("Makefile")) {
 					printTrace("Generating Makefile")
 					fsa.generateFile("Makefile",  cls.generateLinuxMakefile)
+				}
+				
+				//	Linux CMakeLists.txt
+				if (cls.description.filestogenerate.contains("CMakeLists")) {
+					printTrace("Generating CMakeLists")
+					fsa.generateFile("CMakeLists.txt",  cls.generateLinuxCMakeLists)
 				}
 				
 				//	Eclipse Project
@@ -165,10 +174,14 @@ class CppGenerator implements IGenerator {
 					fsa.generateFile("main.cpp",                  multi.generateMainFile)
 				}
 			}
-			
+
 			if (multi.filestogenerate.contains("Makefile")) {
 				printTrace("Generating Makefile.multi")
 				fsa.generateFile("Makefile.multi",            multi.generateLinuxMakefileMultiClasses)
+			}
+			if (multi.filestogenerate.contains("CMakeLists")) {
+				printTrace("Generating CMakeLists.txt.multi")
+				fsa.generateFile("CMakeLists.txt",            multi.generateLinuxCMakeListsMultiClasses)
 			}
 		}
 	}

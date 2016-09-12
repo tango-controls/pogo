@@ -66,7 +66,7 @@ class LinuxMakefile   implements IGenerator{
 	// Define Linux Makefile code to be generated
 	//======================================================
 	def generateLinuxMakefile (PogoDeviceClass cls) '''
-		«cls.name.makefileHeader()»
+		«cls.name.makefileHeader(false)»
 
 		#=============================================================================
 		# PACKAGE_NAME is the name of the library/device/exe you want to build
