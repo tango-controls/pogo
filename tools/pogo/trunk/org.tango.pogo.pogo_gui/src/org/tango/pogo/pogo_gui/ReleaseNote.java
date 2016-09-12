@@ -16,7 +16,10 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 04-08-2016  15:37:12)</center><br>\n" + 
+		"	(Generated 12-09-2016  13:32:46)</center><br>\n" + 
+		"<li><b>Pogo-9.4.0 - 12/09/2016:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; CMakeLists.txt file could be generated for cmake usage (linux/cpp)..<br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix a bug in Python for set_change/archive_event. The 2nd parameter was inverted.<br>" + 
 		"<li><b>Pogo-9.3.0 - 04/08/2016:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix bug in property default values in Python code.<br>" + 
 		"<li><b>Pogo-9.2.9 - 12/07/2016:</b><br>" + 

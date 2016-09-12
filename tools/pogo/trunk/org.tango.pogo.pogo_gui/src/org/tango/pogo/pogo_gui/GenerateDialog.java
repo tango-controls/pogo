@@ -78,6 +78,7 @@ public class GenerateDialog extends JDialog {
         radioButtons.add(xmiBtn);
         radioButtons.add(codeBtn);
         radioButtons.add(makefileBtn);
+        radioButtons.add(cMakeListsBtn);
         radioButtons.add(vc10Btn);
         radioButtons.add(vc12Btn);
         radioButtons.add(pyHlProjectBtn);
@@ -121,6 +122,7 @@ public class GenerateDialog extends JDialog {
         codeBtn = new javax.swing.JRadioButton();
         prPythonHLBtn = new javax.swing.JRadioButton();
         makefileBtn = new javax.swing.JRadioButton();
+        cMakeListsBtn = new javax.swing.JRadioButton();
         javax.swing.JLabel generateLabel = new javax.swing.JLabel();
         htmlBtn = new javax.swing.JRadioButton();
         warningPanel = new javax.swing.JPanel();
@@ -252,6 +254,15 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(makefileBtn, gridBagConstraints);
+
+        cMakeListsBtn.setText("CMakeLists");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        buttonsPanel.add(cMakeListsBtn, gridBagConstraints);
 
         generateLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         generateLabel.setText("Files to be generated :");
@@ -436,13 +447,12 @@ public class GenerateDialog extends JDialog {
         if (file.exists()) {
             if (file.isDirectory()) {
                 //  Special check for Makefile
-                if (makefileBtn.getSelectedObjects() != null ||
-                        vc12Btn.getSelectedObjects() != null ||
-                        vc10Btn.getSelectedObjects() != null) {
+                if (makefileBtn.isSelected() || cMakeListsBtn.isSelected() ||
+                        vc12Btn.isSelected() || vc10Btn.isSelected()) {
                     
                     int ret = manageMakefile();
                     if (ret==JOptionPane.OK_OPTION)
-                        if (vc10Btn.getSelectedObjects()!=null)
+                        if (vc10Btn.isSelected())
                             ret = manageWindowsPathCase();
                     doClose(ret); //  Close dialog if OK
                 } else
@@ -716,8 +726,7 @@ public class GenerateDialog extends JDialog {
     public String getGenerated() {
         String generated = "";
         for (JRadioButton btn : radioButtons) {
-            //System.out.println(btn.getText() + " :  " + btn.getSelectedObjects());
-            if (btn.getSelectedObjects() != null)
+            if (btn.isSelected())
                 generated += btn.getText() + ",";
         }
         if (generated.length() == 0)
@@ -764,23 +773,28 @@ public class GenerateDialog extends JDialog {
     //======================================================
     private int manageMakefile() {
         String makefile = "Makefile";
+        String cMakeLists = "CMakeLists.txt";
         if (mode == PogoConst.MULTI_CLASS)
             makefile += ".multi";
 
         //  Check if Makefile or Win project must be overwritten
         boolean overwriteMakefile = false;
+        boolean overwriteCMakeLists = false;
         boolean overwriteVC12 = false;
         boolean overwriteVC10 = false;
         boolean generate = false;
-        if (makefileBtn.getSelectedObjects() != null) {
+        if (makefileBtn.isSelected()) {
             overwriteMakefile = mustBeOverWritten(makefile);
         } else
+        if (cMakeListsBtn.isSelected()) {
+            overwriteCMakeLists = mustBeOverWritten(cMakeLists);
+        } else
             generate = true;
-        if (mode == PogoConst.SINGLE_CLASS && vc10Btn.getSelectedObjects() != null) {
+        if (mode == PogoConst.SINGLE_CLASS && vc10Btn.isSelected()) {
             overwriteVC10 = mustBeOverWritten("vc10_proj");
         } else
             generate = true;
-        if (mode == PogoConst.SINGLE_CLASS && vc12Btn.getSelectedObjects() != null) {
+        if (mode == PogoConst.SINGLE_CLASS && vc12Btn.isSelected()) {
             overwriteVC12 = mustBeOverWritten("vc12_proj");
         } else
             generate = true;
@@ -788,7 +802,8 @@ public class GenerateDialog extends JDialog {
         // Ask for additional files
         String path = outPathText.getText();
         if (mode == PogoConst.SINGLE_CLASS &&
-                (generate || overwriteMakefile || overwriteVC12 || overwriteVC10)) {
+                (generate || overwriteMakefile || overwriteCMakeLists ||
+                        overwriteVC12 || overwriteVC10)) {
             String lang = deviceClass.getPogoDeviceClass().getDescription().getLanguage();
             EList<AdditionalFile> files = deviceClass.getPogoDeviceClass().getAdditionalFiles();
             AdditionalFilesDialog dlg =
@@ -800,6 +815,12 @@ public class GenerateDialog extends JDialog {
         if (overwriteMakefile) {
             //  Rename Makefile to be overwritten by XTend
             File file = new File(path + "/" + makefile);
+            if (!file.renameTo(new File(file.toString() + ".bck")))
+                System.err.println("Cannot rename " + file);
+        }
+        if (overwriteCMakeLists) {
+            //  Rename CMakeLists to be overwritten by XTend
+            File file = new File(path + "/" + cMakeLists);
             if (!file.renameTo(new File(file.toString() + ".bck")))
                 System.err.println("Cannot rename " + file);
         }
@@ -821,6 +842,7 @@ public class GenerateDialog extends JDialog {
     //======================================================
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton cMakeListsBtn;
     private javax.swing.JRadioButton codeBtn;
     private javax.swing.JLabel docLabel;
     private javax.swing.JRadioButton eclipseProjectBtn;
