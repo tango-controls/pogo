@@ -49,7 +49,6 @@ class PythonDeviceHL implements IGenerator {
     @Inject    extension ProtectedAreaHL
 
     override void doGenerate(Resource resource, IFileSystemAccess fsa){
-        println("doGenerate for pythonHL")
         for(cls : resource.allContents.toIterable.filter(typeof(PogoDeviceClass))){         
 			//	PythonHl Project Directory
 			if (cls.description.filestogenerate.toLowerCase.contains("python package")) {
