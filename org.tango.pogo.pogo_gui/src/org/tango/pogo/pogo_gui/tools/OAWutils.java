@@ -130,7 +130,7 @@ public class OAWutils {
      * @throws PogoException in case of I/O error or bad xmi file.
      */
     //========================================================================
-    public PogoDeviceClass loadDeviceClassModel(String xmiFile, boolean checkVersion) throws PogoException {
+    PogoDeviceClass loadDeviceClassModel(String xmiFile, boolean checkVersion) throws PogoException {
         //  Before everything, update xmi file for compatibility.
         if (checkVersion) {
         	ParserTool.renameXmiKey("<inheritance ", "<inheritances ", xmiFile);
@@ -307,7 +307,7 @@ public class OAWutils {
     }
     //========================================================================
     //========================================================================
-	public void runWorkflow(HashMap<String, String> params) throws PogoException {
+    private void runWorkflow(HashMap<String, String> params) throws PogoException {
         try {
             java.net.URL	url = getClass().getResource(backend);
             URI uri = URI.createURI(url.toString());
@@ -675,7 +675,7 @@ public class OAWutils {
      * @return a clone of specified  Argument object.
      */
     //========================================================================
-    public static Type cloneType(Type src) {
+    private static Type cloneType(Type src) {
         String strType = pogo2tangoType(src.toString());
         return tango2pogoType(strType);
     }
@@ -688,7 +688,7 @@ public class OAWutils {
      * @return a clone of specified  Argument object.
      */
     //========================================================================
-    public static PropType cloneType(PropType src) {
+    private static PropType cloneType(PropType src) {
         String strType = PropertyDialog.pogo2tangoType(src);
         return PropertyDialog.tango2pogoType(strType);
 
