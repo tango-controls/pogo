@@ -140,6 +140,7 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
     # ----------
 
 «cls.pythonAttributeDefinitions»
+«cls.pythonForwardedAttributeDefinitions»
     # -----
     # Pipes
     # -----
@@ -277,7 +278,13 @@ def dyn_attr(self, dev_list):
             dev.warn_stream("Failed to initialize dynamic attributes")
             dev.debug_stream("Details: " + traceback.format_exc())
     '''
-
+    //====================================================
+    //    Forwarded Attribute definitions
+    //====================================================
+    def pythonForwardedAttributeDefinitions(PogoDeviceClass cls)'''
+«IF !cls.forwardedAttributes.empty»
+«FOR attr : cls.forwardedAttributes»    «attr.pythonForwardedAttributeClassHL»«ENDFOR»«ENDIF»
+    '''
     //====================================================
     //    Pipes
     //====================================================
