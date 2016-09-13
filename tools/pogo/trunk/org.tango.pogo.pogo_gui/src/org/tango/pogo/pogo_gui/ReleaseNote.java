@@ -16,7 +16,10 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 12-09-2016  13:32:46)</center><br>\n" + 
+		"	(Generated 13-09-2016  11:03:12)</center><br>\n" + 
+		"<li><b>Pogo-9.4.1 - 13/09/2016:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Improve Python templates.<br>" + 
+		"&nbsp; &nbsp; &nbsp; Generate CMakeLists.txt only if cmake_tango.opt found.<br>" + 
 		"<li><b>Pogo-9.4.0 - 12/09/2016:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; CMakeLists.txt file could be generated for cmake usage (linux/cpp)..<br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a bug in Python for set_change/archive_event. The 2nd parameter was inverted.<br>" + 
