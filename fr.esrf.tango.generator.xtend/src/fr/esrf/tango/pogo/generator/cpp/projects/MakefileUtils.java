@@ -388,7 +388,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		else
 			code += "MAKE_ENV = ";
 
-		if (dbg!=null)
+		if (dbg!=null) //	To force it under development
 			code += dbg;
 		else
 		if (isSet(multi.getPreferences().getMakefileHome()))
@@ -411,7 +411,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		else
 			code += "MAKE_ENV = ";
 
-		if (dbg!=null)
+		if (dbg!=null) //	To force it under development
 			code += dbg;
 		else
 		if (isSet(cls.getPreferences().getMakefileHome()))
@@ -635,11 +635,11 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//======================================================
 	/**
 	 * Define the definition for all classes in project
-	 * @param cls specified PogoDeviceClass object
+	 * @param multi specified PogoMultiClasses object
 	 * @return code to define all classes in project
 	 */
 	//======================================================
-	String cMakeAddClassesDefinitions(PogoMultiClasses multi) {
+	String cmakeAddClassesDefinitions(PogoMultiClasses multi) {
 		inheritedObjectFiles = new ArrayList<String>();
 		String code = 
 				"#\n" +
@@ -649,19 +649,25 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 			code += "\n#\n" +
 					"# Files for "+simple.getClassname() + " TANGO class\n" +
 					"#\n";
-			code += "set(" + upperClassName(simple) + "  " + simple.getClassname() + ")\n";
-			code += "set(" + upperClassName(simple) + "_PATH  " + simple.getSourcePath() + ")\n";
-			code += "set(" + upperClassName(simple) + "_INCLUDE  " + simple.getSourcePath() + ")\n";
-
-			code += cmakeSourcefileList(simple);
-			
 			//	Add inheritance class if any
 			for (Inheritance inheritance : simple.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += "#------------ Inheritance from " + simple.getClassname() + " class ------------\n";
-					code += addClassDefinition(inheritance.getClassname(), inheritance.getSourcePath());
+					code += "#------------ Inheritance from " + inheritance.getClassname() + " class ------------\n";
+					code += cmakeAddClassDefinition(inheritance.getClassname(), inheritance.getSourcePath());
 				}
 			}
+			
+			code += "set(" + upperClassName(simple) + "  " + simple.getClassname() + ")\n";
+			code += "set(" + upperClassName(simple) + "_PATH  " + simple.getSourcePath() + ")\n";
+			code += "set(" + upperClassName(simple) + "_INCLUDE  ";
+			for (Inheritance inheritance : simple.getInheritances()) {
+				if (inheritanceUtils.isInheritanceClass(inheritance)) {
+					code += "${" + inheritance.getClassname().toUpperCase() + "_INCLUDE} ";
+				}
+			}
+			code += simple.getSourcePath() + ")\n";
+			
+			code += cmakeSourcefileList(simple);
 		}
 		return  code;
 	}
@@ -671,18 +677,28 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		return simple.getClassname().toUpperCase();
 	}
 	//===========================================================
+	//===========================================================
+	public String cmakeFileList(PogoMultiClasses multi, String fileType) {
+		StringBuilder sb = new StringBuilder();
+		for (OneClassSimpleDef simple : multi.getClasses()) {
+			sb.append("${").append(simple.getClassname().toUpperCase()).append(fileType).append("} ");
+		}
+		return sb.toString();
+	}
+	//===========================================================
 	//	Build list of source files for cmake
 	//===========================================================
 	public String cmakeSourcefileList(OneClassSimpleDef simple) {
 		String path = "${" + upperClassName(simple) + "_PATH}/";
 		String code = "set(" + upperClassName(simple) + "_SRC  " +
+					  cmakeInheritanceFileList(simple) +
 					  path + "${" + upperClassName(simple) +  "}.cpp " +
-					  path + "${" + upperClassName(simple)  + "}Class.cpp " +
-					  path + "${" + upperClassName(simple)  + "}StateMachine.cpp ";
+					  path + "${" + upperClassName(simple) + "}Class.cpp " +
+					  path + "${" + upperClassName(simple) + "}StateMachine.cpp ";
 		if (isTrue(simple.getHasDynamic()))
 			code += path + "${" + upperClassName(simple) + "}DynAttrUtils.cpp " ;
 		code += cmakeAdditionnalFiles(simple);
-		return code.trim() + ")";
+		return code.trim()+")";
 	}
 	//===========================================================
 	//===========================================================
@@ -695,15 +711,36 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		}
 		return str;
 	}
-	//===========================================================
-	//===========================================================
-	public String cmakeFileList(PogoMultiClasses multi, String fileType) {
-		StringBuilder sb = new StringBuilder();
-		for (OneClassSimpleDef simple : multi.getClasses()) {
-			sb.append("${").append(simple.getClassname().toUpperCase()).append(fileType).append("} ");
-		}
-		return sb.toString();
+	//=============================================================================
+ 	/**
+ 	 *  Define the definition for inherited classes
+ 	 * @param clasname specified class name
+ 	 * @param sourcePath specified class source path
+ 	 * @return code 
+ 	 */
+ 	//=============================================================================
+	public String cmakeAddClassDefinition(String classname, String sourcePath) {
+		String path = "${" + classname.toUpperCase() + "_PATH}/";
+		return 
+			"set("  + classname.toUpperCase() + "_CLASS " + classname + ")\n" +
+			"set("  + classname.toUpperCase() + "_PATH "  + sourcePath + ")\n" +
+			"set("  + classname.toUpperCase() + "_INCLUDE " + sourcePath + ")\n"+
+			"set("  + classname.toUpperCase() + "_SRC " +
+			path +  classname + ".cpp " +
+			path +  classname + "Class.cpp " +
+			path +  classname + "StateMachine.cpp)\n";
 	}
-	//===========================================================
-	//===========================================================
+	//======================================================
+	//======================================================
+	public String cmakeInheritanceFileList(OneClassSimpleDef simple) {
+		String code = "";
+		for (Inheritance inheritance : simple.getInheritances()) {
+			if (inheritanceUtils.isInheritanceClass(inheritance)) {
+				code += "${" + inheritance.getClassname().toUpperCase() + "_SRC} ";
+			}
+		}
+		return code;
+	}
+	//======================================================
+	//======================================================
 }

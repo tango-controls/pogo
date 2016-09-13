@@ -180,7 +180,7 @@ class CppGenerator implements IGenerator {
 				fsa.generateFile("Makefile.multi",            multi.generateLinuxMakefileMultiClasses)
 			}
 			if (multi.filestogenerate.contains("CMakeLists")) {
-				printTrace("Generating CMakeLists.txt.multi")
+				printTrace("Generating CMakeLists.txt")
 				fsa.generateFile("CMakeLists.txt",            multi.generateLinuxCMakeListsMultiClasses)
 			}
 		}

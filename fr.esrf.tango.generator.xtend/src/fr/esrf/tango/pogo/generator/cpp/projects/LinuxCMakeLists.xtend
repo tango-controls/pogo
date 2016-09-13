@@ -54,6 +54,7 @@ class LinuxCMakeLists {
 	// Define Linux Makefile code to be generated
 	//======================================================
 	def generateLinuxCMakeListsMultiClasses (PogoMultiClasses multi) '''
+		«multi.name.makefileHeader(true)»
 		cmake_minimum_required (VERSION 2.8)
 		set(CMAKE_SKIP_RPATH true)
 
@@ -74,7 +75,7 @@ class LinuxCMakeLists {
 		#
 		include(${MAKE_ENV}/cmake_tango.opt)
 
-		«multi.cMakeAddClassesDefinitions»
+		«multi.cmakeAddClassesDefinitions»
 
 		#
 		# User additional include, link folders/libraries and source files
@@ -87,7 +88,7 @@ class LinuxCMakeLists {
 		#
 		# Set gloabal info and include directories
 		#
-		set(ALL_CLASS_INCLUDE «multi.cmakeFileList("_INCLUDE")» ${USER_INCL_DIR})
+		set(ALL_CLASS_INCLUDE «multi.cmakeFileList("_INCLUDE")»)
 		set(SERVER_SRC «multi.cmakeFileList("_SRC")» ${USER_SRC_FILES} MultiClassesFactory.cpp main.cpp)
 		include_directories(${ALL_CLASS_INCLUDE}  ${USER_INCL_DIR} ${TANGO_INCLUDES})
 

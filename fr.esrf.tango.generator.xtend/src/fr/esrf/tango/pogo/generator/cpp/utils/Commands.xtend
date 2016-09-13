@@ -158,11 +158,11 @@ class Commands {
 			«IF command.name.equals("State")»
 				set_state(argout);    // Give the state to Tango.
 				if (argout!=Tango::ALARM)
-					DeviceImpl::dev_state();
+					Tango::DeviceImpl::dev_state();
 				return get_state();  // Return it after Tango management.
 			«ELSEIF command.name.equals("Status")»
 				set_status(status);               // Give the status to Tango.
-				return DeviceImpl::dev_status();  // Return it.
+				return Tango::DeviceImpl::dev_status();  // Return it.
 			«ELSE»
 				«IF command.argout.type.cppType.equals("void")==false»
 					return argout;
