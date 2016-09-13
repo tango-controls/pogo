@@ -340,7 +340,8 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof ULongType)			def_val =  "[0, 12]";
 		if (attr.getDataType() instanceof DevIntType)			def_val =  "[-1, 0, 5]";
 		if (attr.getDataType() instanceof EncodedType)			def_val =  "['', '#12BF']";
-		
+		if (attr.getDataType() instanceof EnumType)				def_val =  "0";
+        
 		if (attr.getAttType().equals("Spectrum"))
 		{
 			def_val = "[" + def_val + "]";
@@ -425,6 +426,7 @@ public class PythonTypeDefinitions {
 		if (type instanceof ULongArrayType)			return "[0]";
 		if (type instanceof DevIntType)				return "0";
 		if (type instanceof EncodedType)			return "\"\", \"\"";
+		if (type instanceof EnumType)				return "0";
 		return "''";
 	}
 	
@@ -584,6 +586,13 @@ public class PythonTypeDefinitions {
 		}
 		else
 		{
+			if (propertyName.equals("polling_period"))
+			{
+				if (strValue.equals("0"))
+				{
+					return "";	
+				}
+			}
             if (strValue != null && strValue.length() > 0)
             	if(isString)
                     return propertyName + "=\"" + strValue + "\",";
@@ -598,8 +607,8 @@ public class PythonTypeDefinitions {
 	}
 	
 	/**
-	 * PythonHL Attribute utility
-	 * @param propertyName the name of the attribute property
+	 * PythonHL Pipe utility
+	 * @param propertyName the name of the pipe property
 	 * @param strValue value to be inserted
 	 * @param isString indicates if the value is a string
 	 * @return resulting string
@@ -666,7 +675,21 @@ public class PythonTypeDefinitions {
 	    {
 			if (cmd.getArgout().getType() instanceof VoidType)
 		    {
-	    		return false;
+				if (cmd.getDisplayLevel() == "EXPERT") 
+				{
+					return true;
+				}
+				else
+				{
+					if(cmd.getPolledPeriod() != "0")
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
 	    	}
 			else
 			{
