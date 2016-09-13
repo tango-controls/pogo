@@ -42,6 +42,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
+import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
@@ -59,7 +60,7 @@ public class GenerateDialog extends JDialog {
     private static int returnStatus;
     private DeviceClass deviceClass;
     private List<JRadioButton> radioButtons = new ArrayList<>();
-
+    private boolean cmakeAvailable = false;
     //===================================================================
     /**
      * Initializes the Form
@@ -87,6 +88,25 @@ public class GenerateDialog extends JDialog {
         radioButtons.add(pomBtn);
         radioButtons.add(sphinxBtn);
         radioButtons.add(htmlBtn);
+
+        //  Check if cmake available (cmake_tango.opt file cane be found)
+        String path = PogoProperty.makefileHome;
+        String fileName = "/cmake_tango.opt";
+        String env = System.getProperty("DEBUG_MAKE");
+        if (env!=null) {
+            path = env;
+        }
+        else {
+            String str = "$(TANGO_HOME)";
+            if (fileName.startsWith(str)) {
+                String th = System.getenv("TANGO_HOME");
+                if (th == null)
+                    th = System.getProperty("TANGO_HOME");
+                if (th != null)
+                    path = th;
+            }
+        }
+        cmakeAvailable = new File(path+'/'+fileName).exists();
 
         //  Check debug
         String dbg = System.getenv("DEBUG_MAKE");
@@ -598,6 +618,7 @@ public class GenerateDialog extends JDialog {
 
         if (devclass.checkIfAbstractClass()) {
             makefileBtn.setEnabled(false);
+            cMakeListsBtn.setEnabled(false);
             vc10Btn.setEnabled(false);
             vc12Btn.setEnabled(false);
             javaProjectLabel.setVisible(false);
@@ -611,6 +632,7 @@ public class GenerateDialog extends JDialog {
         switch (lang) {
             case PogoConst.Cpp:
                 makefileBtn.setVisible(true);
+                cMakeListsBtn.setVisible(cmakeAvailable);
                 windowsLabel.setVisible(true);
                 linuxLabel.setVisible(true);
                 vc10Btn.setVisible(false);  //  Not managed anymore
@@ -624,6 +646,7 @@ public class GenerateDialog extends JDialog {
                 break;
             case PogoConst.Java:
                 makefileBtn.setVisible(true);
+                cMakeListsBtn.setVisible(false);
                 windowsLabel.setVisible(false);
                 linuxLabel.setVisible(true);
                 vc10Btn.setVisible(false);
@@ -637,6 +660,7 @@ public class GenerateDialog extends JDialog {
                 break;
             case PogoConst.Python:
                 makefileBtn.setVisible(false);
+                cMakeListsBtn.setVisible(false);
                 windowsLabel.setVisible(false);
                 linuxLabel.setVisible(false);
                 vc10Btn.setVisible(false);
@@ -650,6 +674,7 @@ public class GenerateDialog extends JDialog {
                 break;
             case PogoConst.PythonHL:
                 makefileBtn.setVisible(false);
+                cMakeListsBtn.setVisible(false);
                 windowsLabel.setVisible(false);
                 linuxLabel.setVisible(false);
                 vc10Btn.setVisible(false);
@@ -693,6 +718,7 @@ public class GenerateDialog extends JDialog {
         docLabel.setVisible(false);
         htmlBtn.setVisible(false);
         makefileBtn.setVisible(true);
+        cMakeListsBtn.setVisible(cmakeAvailable);
         warningPanel.setVisible(false);
 
         javaProjectLabel.setVisible(false);

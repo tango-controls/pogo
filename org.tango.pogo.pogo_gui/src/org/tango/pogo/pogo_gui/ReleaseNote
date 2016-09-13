@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.4.1 - 13/09/2016:
+	Improve Python templates.
+	Generate CMakeLists.txt only if cmake_tango.opt found.
+
 Pogo-9.4.0 - 12/09/2016:
 	CMakeLists.txt file could be generated for cmake usage (linux/cpp)..
 	Fix a bug in Python for set_change/archive_event. The 2nd parameter was inverted.
