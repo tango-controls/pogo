@@ -272,6 +272,8 @@ public class PogoProperty {
         if (env == null)
             env = System.getenv("TANGO_ROOT");
         if (env == null)
+            env = System.getProperty("user.home");
+        if (env == null)
             return null;
         return env + "/.pogorc";
     }
