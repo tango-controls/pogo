@@ -444,25 +444,21 @@ public class StateMachineTable extends JTable {
                 JTable table, Object value,
                 boolean isSelected, boolean hasFocus,
                 int row, int column) {
-            /*
-            switch (column) {
-                case 0:
-                    setText(itemList.get(row).toString());
-                    setBackground(headerBackground);
-                    break;
-                default:
-                    setBackground(Color.green);
-                    break;
-            }
-            */
+
             setText(itemList.get(row).toString());
-            setBackground(headerBackground);
+            if (isSelected)
+                setBackground(getSelectionBackground());
+            else
+                setBackground(headerBackground);
             return this;
         }
         //==========================================================
     }
     //=========================================================================
     //=========================================================================
+
+
+
     //=========================================================================
     /**
      * Renderer to set cell color
