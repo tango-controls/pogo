@@ -125,5 +125,5 @@ install_doc:
 
 tag:
 	@echo "Tagging  $(PACKAGE)  for $(TAG_REV)"
-	git tag -a $(PACKAGE)-$(SVN_TAG_REV)
+	git tag -a $(PACKAGE)-$(TAG_REV)
 
