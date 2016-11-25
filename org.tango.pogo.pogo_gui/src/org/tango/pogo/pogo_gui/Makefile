@@ -20,8 +20,7 @@ POGO_DOC	=	$(HOME)/workspace/documentation
 DOC_HOME    =	$(TANGO_HOME)/doc/www/tango/tango_doc/tools_doc/pogo_doc/
 JAR_DIR		=	$(TANGO_JAR_HOME)/appli
 
-SVN_POGO_PATH = $(SVN_TCS)/tools/pogo
-SVN_TAG_REV    = Release-$(RELEASE)
+TAG_REV    = Release-$(RELEASE)
 
 # -----------------------------------------------------------------
 #
@@ -43,9 +42,8 @@ DOC_HEADER = "<h1>POGO Classes</h1>"
 #-----------------------------------------------------------------
 
 all:	 GUI
-# exe
 
-full:	atk constants	utils	GUI
+full:	constants	utils	GUI
 
 GUI:
 	$(JAVAC) *.java
@@ -58,9 +56,6 @@ utils:
 
 xmi-templates:
 	cp templates/* $(BIN_DIR)/org/tango/pogo/pogo_gui/templates
-
-exe:
-	@./go
 
 clean:
 	rm  -Rf $(BIN_DIR)/com
@@ -109,8 +104,6 @@ install:
 	ls -l $(JAR_FILE)*.jar
 	cp ReleaseNote $(TARGET_JAR_DIR)/ReleaseNote.txt
 
-#	mv $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE).jar  $(TARGET_JAR_DIR)/$(JAR_FILE)-$(RELEASE)-tmp.jar
-
 FTP_TARGET	=	ftpserv:/ftp/anonymous/pub/cs/tango/Pogo
 install_ftp:
 	@echo "scp $(JAR_FILE)-$(RELEASE).jar $(FTP_TARGET)"
@@ -130,15 +123,7 @@ install_doc:
 	cp $(POGO_DOC)/img/*         $(DOC_HOME)/img
 	scp  -r $(DOC_HOME)/*       $(TARGET_DOC_HOME)
 
-#	rcp  $(DOC_HOME)/img/*   $(TARGET_DOC_HOME)/img
-
-clean_headers:
-	clean_headers *.java
-	clean_headers tools/*.java
-
-
 tag:
-	@echo "Tagging  $(PACKAGE)  for $(SVN_TAG_REV)"
-	EDITOR=nedit; svn copy  $(SVN_POGO_PATH)/trunk \
-	          $(SVN_POGO_PATH)/tags/$(PACKAGE)-$(SVN_TAG_REV)
+	@echo "Tagging  $(PACKAGE)  for $(TAG_REV)"
+	git tag -a $(PACKAGE)-$(SVN_TAG_REV)
 
