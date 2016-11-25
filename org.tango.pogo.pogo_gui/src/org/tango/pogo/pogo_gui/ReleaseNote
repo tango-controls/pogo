@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.4.2 - 25/11/2016:
+	On pythin templates, fix Copyright on multi lines bug, some pep8 warnings, state and status when overloaded, .....
+
 Pogo-9.4.1 - 13/09/2016:
 	Improve Python templates.
 	Generate CMakeLists.txt only if cmake_tango.opt found.

@@ -450,7 +450,7 @@ public class StringUtils {
     }
     //===============================================================
     //===============================================================
-    private static String myReplaceAll(String inCode, String oldStr, String newStr) {
+    public static String myReplaceAll(String inCode, String oldStr, String newStr) {
 		StringBuilder sb = new StringBuilder();
 		
 		int start = 0;

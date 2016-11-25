@@ -125,46 +125,57 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
     """
     __metaclass__ = DeviceMeta
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("class_variable")»«ENDIF»
-    # ----------------
+
+«IF !cls.classProperties.empty»    # ----------------
     # Class Properties
     # ----------------
 
+«ENDIF»
 «cls.pythonClassProperties»
-    # -----------------
+«IF !cls.deviceProperties.empty»    # -----------------
     # Device Properties
     # -----------------
 
+«ENDIF»
 «cls.pythonDeviceProperties»
-    # ----------
+«IF !cls.attributes.empty»    # ----------
     # Attributes
     # ----------
 
+«ENDIF»
 «cls.pythonAttributeDefinitions»
 «cls.pythonForwardedAttributeDefinitions»
-    # -----
+«IF !cls.pipes.empty»    # -----
     # Pipes
     # -----
 
+«ENDIF»
 «cls.pythonDevicePipes»
     # ---------------
     # General methods
     # ---------------
 
 «cls.pythonConstructors»
-    # ------------------
+«IF !cls.attributes.empty»    # ------------------
     # Attributes methods
     # ------------------
 
+«ENDIF»
 «cls.pythonAttributes»
-    # -------------
+«cls.pythonDynamicAttributesMethod»
+
+«cls.pythonDynamicAttributes»
+«IF !cls.pipes.empty»    # -------------
     # Pipes methods
     # -------------
 
+«ENDIF»
 «cls.pythonPipes»
-    # --------
+    «IF !cls.commands.empty»# --------
     # Commands
     # --------
 
+«ENDIF»
 «cls.pythonCommands»
     '''
 
@@ -177,20 +188,20 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 «cls.description.description»
 """
 
-__all__ = ["«cls.name»", "main"]
-
 # PyTango imports
 import PyTango
 from PyTango import DebugIt
 from PyTango.server import run
 from PyTango.server import Device, DeviceMeta
-from PyTango.server import attribute, command, pipe
-from PyTango.server import class_property, device_property
-from PyTango import AttrQuality,DispLevel, DevState
+«IF !cls.attributes.empty || !cls.commands.empty || !cls.pipes.empty»from PyTango.server import «IF !cls.attributes.empty»attribute«ENDIF»«IF !cls.commands.empty»«IF !cls.attributes.empty», «ENDIF»command«ENDIF»«IF !cls.pipes.empty»«IF !cls.attributes.empty || !cls.commands.empty», «ENDIF»pipe«ENDIF»«ENDIF»
+«IF !cls.classProperties.empty || !cls.deviceProperties.empty»from PyTango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
+from PyTango import AttrQuality, DispLevel, DevState
 from PyTango import AttrWriteType, PipeWriteType
 «cls.inheritedAdditionalImportHL»
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
+
+__all__ = ["«cls.name»", "main"]
 '''
 
     //====================================================
@@ -214,7 +225,9 @@ from PyTango import AttrWriteType, PipeWriteType
     //    Attribute definitions
     //====================================================
     def pythonAttributeDefinitions(PogoDeviceClass cls)'''
-«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»«ENDIF»«IF !cls.attributes.empty»«ENDIF»«ENDFOR»
+«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»«ENDIF»«IF !cls.attributes.empty»«ENDIF»
+
+«ENDFOR»
     '''
     //====================================================
     //    Attributes
@@ -225,39 +238,36 @@ from PyTango import AttrWriteType, PipeWriteType
 «IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
-«cls.pythonDynamicAttributes»
     '''
     //====================================================
     //    Dynamic Attributes
     //====================================================
     def pythonDynamicAttributes(PogoDeviceClass cls)  '''
-    «FOR attr: cls.dynamicAttributes»«IF isTrue(attr.status.concreteHere)»
-    «IF attr.isRead»
-«readAttributeMethodHL(cls, attr)»
-    «ENDIF»
-    «IF attr.isWrite»
-«writeAttributeMethodHL(cls, attr)»
-    «ENDIF»
-    «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»
-«attributeMethodStateMachineHL(cls, attr)»
-    «ENDIF»
+«FOR attr: cls.dynamicAttributes»«IF isTrue(attr.status.concreteHere)»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
-«IF !cls.dynamicAttributes.empty»
-def initialize_dynamic_attributes(self):
-    self.debug_stream("In initialize_dynamic_attributes()")
-    
-    #   Example to add dynamic attributes
-    #   Copy inside the folowing protected area to instanciate at startup.
-    
-    «FOR attr : cls.dynamicAttributes»
-        """   For Attribute «attr.name»
+    '''
+
+    //====================================================
+    //    Dynamic Attributes
+    //====================================================
+    def pythonDynamicAttributesMethod(PogoDeviceClass cls)  '''
+«IF !cls.dynamicAttributes.empty»    def initialize_dynamic_attributes(self):
+        self.debug_stream("In initialize_dynamic_attributes()")
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("initialize_dynamic_attributes")»«ENDIF»
+
+        """   Example to add dynamic attributes
+           Copy inside the folowing protected area to instanciate at startup."""
+        «FOR attr : cls.dynamicAttributes»
+        """    For Attribute «attr.name»
         «attr.dynamicAttributeCreationExample»
         «attr.dynamicAttributeSetMemorizedExample»
         «cls.dynamicAttributeDefaultValueExample(attr)»"""
-    «ENDFOR»
+        «ENDFOR»
 «ENDIF»
-    '''
-
+'''
     //====================================================
     //    Dynamic Attributes for class
     //====================================================
@@ -308,6 +318,7 @@ def dyn_attr(self, dev_list):
 «IF !cls.classProperties.empty»
 «FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyClassHL»
 «ENDIF»
+
 «ENDFOR»
 «ENDIF»
     '''
@@ -319,6 +330,7 @@ def dyn_attr(self, dev_list):
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyDeviceHL»
 «ENDIF»
+
 «ENDFOR»
 «ENDIF»
     '''
@@ -330,6 +342,7 @@ def dyn_attr(self, dev_list):
 «IF !cls.pipes.empty»
 «FOR pip : cls.pipes»    «pip.pythonPipeClassHL»
 «ENDFOR»
+
 «ENDIF»
     '''
     
@@ -343,8 +356,7 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
-    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "from PyTango.server import run
-return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»from PyTango.server import run
+    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
 
 if __name__ == '__main__':

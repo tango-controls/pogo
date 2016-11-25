@@ -37,6 +37,7 @@ package fr.esrf.tango.pogo.generator.python
 
 import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Attribute
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 import fr.esrf.tango.pogo.pogoDsl.Property
@@ -122,8 +123,7 @@ class PythonUtils {
     	{
     		if (!str.empty)
     		{
-				str.replaceAll("\n","\n# ");
-				return " " + str;
+				return " " + myReplaceAll(str,"\n","\n# ");
     		}
     		else
     		{
@@ -138,7 +138,7 @@ class PythonUtils {
     def commentCmdParamMultiLines(String str){
     	if (str.contains("\n"))
     	{
-    		return "\n    " + str.replaceAll("\n","\n    ");
+    		return "\n    " + myReplaceAll(str, "\n","\n    ");
     	}
     	else
     	{
@@ -251,13 +251,14 @@ class PythonUtils {
         '''
         
     def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''
-«IF isTrue(cmd.status.concreteHere)»    @command«IF cmd.hasCommandArg»(«ENDIF»«IF !cmd.argin.type.voidType»dtype_in=«cmd.argin.type.pythonTypeHL», 
+«IF isTrue(cmd.status.concreteHere)»«IF cmd.name != "State"»«IF cmd.name != "Status"»    @command«IF cmd.hasCommandArg»(«ENDIF»
+«IF !cmd.argin.type.voidType»    dtype_in=«cmd.argin.type.pythonTypeHL», 
 «IF !cmd.argin.description.empty»    doc_in="«cmd.argin.description.oneLineString»", «ENDIF»«ENDIF»
 «IF !cmd.argout.type.voidType»    dtype_out=«cmd.argout.type.pythonTypeHL», 
 «IF !cmd.argout.description.empty»    doc_out="«cmd.argout.description.oneLineString»", «ENDIF»«ENDIF»
     «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
     «setAttrPropertyHL("polling_period", cmd.polledPeriod, false)»
-«IF cmd.hasCommandArg»    )«ENDIF»
+«IF cmd.hasCommandArg»    )«ENDIF»«ENDIF»«ENDIF»
     @DebugIt()
     def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturnHL, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValueTestHL»«ELSE»pass«ENDIF»«ENDIF»
@@ -402,6 +403,7 @@ class PythonUtils {
             [«prop.type.pythonPropType», 
             «IF !prop.description.empty»"«prop.description.oneLineString»"«ELSE» ''«ENDIF»«IF !prop.defaultPropValue.empty»,
             «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
+            «IF prop.mandatory.isTrue»mandatory=True,«ENDIF»
             [] «ENDIF»],
             «IF prop.mandatory.isTrue»mandatory=True,«ENDIF»
     '''

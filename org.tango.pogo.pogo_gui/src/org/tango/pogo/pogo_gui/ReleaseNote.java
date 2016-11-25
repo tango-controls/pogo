@@ -16,7 +16,9 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 13-09-2016  11:03:12)</center><br>\n" + 
+		"	(Generated 25-11-2016  12:47:47)</center><br>\n" + 
+		"<li><b>Pogo-9.4.2 - 25/11/2016:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; On pythin templates, fix Copyright on multi lines bug, some pep8 warnings, state and status when overloaded, .....<br>" + 
 		"<li><b>Pogo-9.4.1 - 13/09/2016:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Improve Python templates.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Generate CMakeLists.txt only if cmake_tango.opt found.<br>" + 
