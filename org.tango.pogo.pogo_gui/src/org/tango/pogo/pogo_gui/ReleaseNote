@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.4.3 - 02/12/2016:
+	Remove RcsId in C++ files.
+
 Pogo-9.4.2 - 25/11/2016:
 	On python templates, fix Copyright on multi lines bug, some pep8 warnings, state and status when overloaded, .....
 
