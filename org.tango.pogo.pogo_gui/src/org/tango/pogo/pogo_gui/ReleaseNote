@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.4.4 - 06/12/2016:
+	Manage mandatory properties in java templates.
+
 Pogo-9.4.3 - 02/12/2016:
 	Remove RcsId in C++ files.
 

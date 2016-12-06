@@ -43,7 +43,6 @@ import fr.esrf.tango.pogo.generator.common.StringUtils;
 import fr.esrf.tango.pogo.generator.cpp.utils.CppStringUtils;
 import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
-import fr.esrf.tango.pogo.pogoDsl.OneClassSimpleDef;
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.Property;
 import fr.esrf.tango.pogo.pogoDsl.Command;
@@ -195,7 +194,7 @@ public class JavaUtils extends StringUtils {
 		if (defaultValues==null || defaultValues.isEmpty())
 			return "";
 		else {
-			String	str = ",\n        defaultValue= { ";
+			String	str = ",\n        defaultValue={ ";
 			for (int i=0 ; i<defaultValues.size() ; i++) {
 				str += "\"" + defaultValues.get(i) + "\"";
 				if (i<defaultValues.size()-1)
@@ -205,7 +204,20 @@ public class JavaUtils extends StringUtils {
 			return str;
 		}
 	}
-
+	//===========================================================
+	/**
+	 * Returns the code to manage the property if mandatory
+	 * @param property the specified property
+	 * @return the code to manage the property if mandatory
+	 */
+	//===========================================================
+	public String isMandatory(Property property) {
+		if (isTrue(property.getMandatory())) {
+			return ", isMandatory=true";
+		}
+		else
+			return "";
+	}
 	//===========================================================
 	/**
 	 * Returns the command parameters with expected format
@@ -595,7 +607,6 @@ public class JavaUtils extends StringUtils {
 		else
 			return false;
 	}
-
 	//===========================================================
 	/**
 	 *	Return true at least the first one is not the Tango DeviceImpl
@@ -654,4 +665,5 @@ public class JavaUtils extends StringUtils {
 		else
 			return "";
 	}
+	//===========================================================
 }

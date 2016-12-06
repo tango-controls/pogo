@@ -16,7 +16,9 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 02-12-2016  11:26:51)</center><br>\n" + 
+		"	(Generated 06-12-2016  14:42:16)</center><br>\n" + 
+		"<li><b>Pogo-9.4.4 - 06/12/2016:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Manage mandatory properties in java templates.<br>" + 
 		"<li><b>Pogo-9.4.3 - 02/12/2016:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Remove RcsId in C++ files.<br>" + 
 		"<li><b>Pogo-9.4.2 - 25/11/2016:</b><br>" + 
