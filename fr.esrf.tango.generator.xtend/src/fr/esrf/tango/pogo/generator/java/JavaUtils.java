@@ -50,6 +50,14 @@ import fr.esrf.tango.pogo.pogoDsl.Command;
 public class JavaUtils extends StringUtils {
 
 	//===========================================================
+	//===========================================================
+	public static String getUser() {
+		String str = System.getProperty("user.name");
+		if (str!=null)
+			return str;
+		return "";
+	}
+	//===========================================================
 	/**
 	 * Returns the device class package name
 	 * @param cls	the class object

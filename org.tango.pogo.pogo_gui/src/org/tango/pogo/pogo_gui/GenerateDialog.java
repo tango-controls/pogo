@@ -72,10 +72,6 @@ public class GenerateDialog extends JDialog {
         super(parent, true);
         initComponents();
 
-        //  Templates not yet ready
-        //eclipseProjectBtn.setVisible(false);
-        pomBtn.setVisible(false);
-
         radioButtons.add(xmiBtn);
         radioButtons.add(codeBtn);
         radioButtons.add(makefileBtn);
@@ -84,8 +80,7 @@ public class GenerateDialog extends JDialog {
         radioButtons.add(vc12Btn);
         radioButtons.add(pyHlProjectBtn);
         radioButtons.add(prPythonHLBtn);
-        radioButtons.add(eclipseProjectBtn);
-        radioButtons.add(pomBtn);
+        radioButtons.add(projectBtn);
         radioButtons.add(sphinxBtn);
         radioButtons.add(htmlBtn);
 
@@ -156,8 +151,7 @@ public class GenerateDialog extends JDialog {
         docLabel = new javax.swing.JLabel();
         javax.swing.JLabel classLabel = new javax.swing.JLabel();
         javaProjectLabel = new javax.swing.JLabel();
-        pomBtn = new javax.swing.JRadioButton();
-        eclipseProjectBtn = new javax.swing.JRadioButton();
+        projectBtn = new javax.swing.JRadioButton();
         pyHlProjectBtn = new javax.swing.JRadioButton();
         sphinxBtn = new javax.swing.JRadioButton();
 
@@ -390,23 +384,14 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 0, 0);
         buttonsPanel.add(javaProjectLabel, gridBagConstraints);
 
-        pomBtn.setText("pom.xml");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        buttonsPanel.add(pomBtn, gridBagConstraints);
-
-        eclipseProjectBtn.setText("Eclipse Project");
+        projectBtn.setText("Eclipse/Pom");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        buttonsPanel.add(eclipseProjectBtn, gridBagConstraints);
+        buttonsPanel.add(projectBtn, gridBagConstraints);
 
         pyHlProjectBtn.setText("Python Package");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -475,8 +460,16 @@ public class GenerateDialog extends JDialog {
                         if (vc10Btn.isSelected())
                             ret = manageWindowsPathCase();
                     doClose(ret); //  Close dialog if OK
-                } else
-                    doClose(JOptionPane.OK_OPTION);
+                }
+                //  Special case for pom.xml (maven structure expected)
+                int lang = Utils.getLanguage(deviceClass.getPogoDeviceClass().getDescription().getLanguage());
+                if (lang==PogoConst.Java && projectBtn.isSelected()) {
+                    if (checkMavenPathCase(file.getAbsolutePath()))
+                        doClose(JOptionPane.OK_OPTION);
+                    else
+                        return;
+                }
+                doClose(JOptionPane.OK_OPTION);
             } else
                 JOptionPane.showMessageDialog(this,
                         path + " is not a directory !",
@@ -510,6 +503,26 @@ public class GenerateDialog extends JDialog {
 
     //=============================================================
     /**
+     * for maven source file must be generated in path
+     * ending by src/main/java.
+     * pom.xml will be generated in source dir +  ../../..
+     * @return true if path ok
+     */
+    //=============================================================
+    private boolean checkMavenPathCase(String path) {
+        if (path.endsWith("src/main/java"))
+            return true;
+        if (path.endsWith("src\\main\\java")) // Win case
+            return true;
+        JOptionPane.showMessageDialog(this,
+                "pom.xml file needs maven structure\n"+
+                "The source files must be generated in path like --/--/src/main/java/\n" +
+                "pom.xml will be generated on top of /src/ directory.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+   //=============================================================
+    /**
      * If windows project generated under Linux,
      * Inheritance path must be a valid Windows path
      * @return OK or CANCEL
@@ -517,7 +530,7 @@ public class GenerateDialog extends JDialog {
     //=============================================================
     private int manageWindowsPathCase() {
        if (Utils.osIsUnix()) {
-           EList<Inheritance>   inheritances =
+           EList<Inheritance> inheritances =
                    deviceClass.getPogoDeviceClass().getDescription().getInheritances();
            for (Inheritance inheritance : inheritances) {
                if (!DeviceClass.isDefaultInheritance(inheritance)) {
@@ -622,10 +635,9 @@ public class GenerateDialog extends JDialog {
             vc10Btn.setEnabled(false);
             vc12Btn.setEnabled(false);
             javaProjectLabel.setVisible(false);
-            eclipseProjectBtn.setVisible(false);
+            projectBtn.setVisible(false);
             pyHlProjectBtn.setVisible(false);
             prPythonHLBtn.setVisible(false);
-            pomBtn.setVisible(false);
             sphinxBtn.setVisible(false);
         }
         int lang = Utils.getLanguage(devclass.getPogoDeviceClass().getDescription().getLanguage());
@@ -638,10 +650,10 @@ public class GenerateDialog extends JDialog {
                 vc10Btn.setVisible(false);  //  Not managed anymore
                 vc12Btn.setVisible(true);
                 javaProjectLabel.setVisible(true);
-                eclipseProjectBtn.setVisible(true);
+                projectBtn.setText("Eclipse Project");
+                projectBtn.setVisible(true);
                 pyHlProjectBtn.setVisible(false);
                 prPythonHLBtn.setVisible(false);
-                pomBtn.setVisible(false);
                 sphinxBtn.setVisible(false);
                 break;
             case PogoConst.Java:
@@ -652,10 +664,10 @@ public class GenerateDialog extends JDialog {
                 vc10Btn.setVisible(false);
                 vc12Btn.setVisible(false);
                 javaProjectLabel.setVisible(true);
-                eclipseProjectBtn.setVisible(false);
+                projectBtn.setText("pom.xml");
+                projectBtn.setVisible(true);
                 pyHlProjectBtn.setVisible(false);
                 prPythonHLBtn.setVisible(false);
-                //pomBtn.setVisible(true);
                 sphinxBtn.setVisible(false);
                 break;
             case PogoConst.Python:
@@ -666,10 +678,9 @@ public class GenerateDialog extends JDialog {
                 vc10Btn.setVisible(false);
                 vc12Btn.setVisible(false);
                 javaProjectLabel.setVisible(false);
-                eclipseProjectBtn.setVisible(false);
+                projectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(false);
                 prPythonHLBtn.setVisible(false);
-                pomBtn.setVisible(false);
                 sphinxBtn.setVisible(false);
                 break;
             case PogoConst.PythonHL:
@@ -680,10 +691,9 @@ public class GenerateDialog extends JDialog {
                 vc10Btn.setVisible(false);
                 vc12Btn.setVisible(false);
                 javaProjectLabel.setVisible(false);
-                eclipseProjectBtn.setVisible(false);
+                projectBtn.setVisible(false);
                 pyHlProjectBtn.setVisible(true);
                 prPythonHLBtn.setVisible(true);
-                pomBtn.setVisible(false);
                 sphinxBtn.setVisible(true);
                 break;
         }
@@ -722,11 +732,10 @@ public class GenerateDialog extends JDialog {
         warningPanel.setVisible(false);
 
         javaProjectLabel.setVisible(false);
-        eclipseProjectBtn.setVisible(false);
+        projectBtn.setVisible(false);
         pyHlProjectBtn.setVisible(false);
         prPythonHLBtn.setVisible(false);
         sphinxBtn.setVisible(false);
-        pomBtn.setVisible(false);
 
         pack();
         setVisible(true);
@@ -871,14 +880,13 @@ public class GenerateDialog extends JDialog {
     private javax.swing.JRadioButton cMakeListsBtn;
     private javax.swing.JRadioButton codeBtn;
     private javax.swing.JLabel docLabel;
-    private javax.swing.JRadioButton eclipseProjectBtn;
     private javax.swing.JRadioButton htmlBtn;
     private javax.swing.JLabel javaProjectLabel;
     private javax.swing.JLabel linuxLabel;
     private javax.swing.JRadioButton makefileBtn;
     private javax.swing.JTextField outPathText;
-    private javax.swing.JRadioButton pomBtn;
     private javax.swing.JRadioButton prPythonHLBtn;
+    private javax.swing.JRadioButton projectBtn;
     private javax.swing.JRadioButton pyHlProjectBtn;
     private javax.swing.JRadioButton sphinxBtn;
     private javax.swing.JRadioButton vc10Btn;

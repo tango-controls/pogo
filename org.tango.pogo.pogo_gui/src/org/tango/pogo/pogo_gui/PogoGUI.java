@@ -1373,7 +1373,7 @@ public class PogoGUI extends JFrame {
      * This class is a vector of panels displaying JTrees
      */
     //=======================================================
-    private class ClassPanels extends ArrayList<ClassPanel> {
+    class ClassPanels extends ArrayList<ClassPanel> {
         private PogoGUI gui;
         private String warnings = "";
         private static final long serialVersionUID = -3468411367658544269L;

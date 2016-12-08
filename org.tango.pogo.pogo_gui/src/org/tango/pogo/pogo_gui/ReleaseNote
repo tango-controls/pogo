@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.4.5 - 08/12/2016:
+	A pom.xml file could be generated for java server.
+	Path must be in respect with maven structure (--/--/src/main/java)
+
 Pogo-9.4.4 - 06/12/2016:
 	Manage mandatory properties in java templates.
 
