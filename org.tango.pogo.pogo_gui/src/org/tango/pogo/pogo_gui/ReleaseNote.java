@@ -16,7 +16,7 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 08-12-2016  13:18:25)</center><br>\n" + 
+		"	(Generated 09-12-2016  16:19:59)</center><br>\n" + 
 		"<li><b>Pogo-9.4.5 - 08/12/2016:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; A pom.xml file could be generated for java server.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Path must be in respect with maven structure (--/--/src/main/java)<br>" + 

@@ -61,7 +61,7 @@ class IdeaProject  implements IGenerator {
 		<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		    <modelVersion>4.0.0</modelVersion>
 		
-		    <groupId>org.tango.rest</groupId>
+		    <groupId>org.tango.server</groupId>
 		    <artifactId>«cls.name»</artifactId>
 		    <version>1.0</version>
 		    <packaging>jar</packaging>
@@ -114,7 +114,7 @@ class IdeaProject  implements IGenerator {
 		            </plugin>
 		            <plugin>
 		                <artifactId>maven-release-plugin</artifactId>
-		                <version>1.1</version>
+		                <version>2.5.3</version>
 		                <configuration>
 		                    <useReleaseProfile>false</useReleaseProfile>
 		                    <releaseProfiles>release</releaseProfiles>
