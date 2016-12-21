@@ -6,11 +6,11 @@
 
     <parent>
         <groupId>org.tango.tools.pogo</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>Pogo</artifactId>
         <version>9.4.6-SNAPSHOT</version>
     </parent>
     <groupId>org.tango.tools.pogo.gui</groupId>
-    <artifactId>pogo</artifactId>
+    <artifactId>pogo_gui</artifactId>
 
 
     <dependencies>

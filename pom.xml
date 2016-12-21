@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.tango.tools.pogo</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>Pogo</artifactId>
     <version>9.4.6-SNAPSHOT</version>
 
     <packaging>pom</packaging>
@@ -18,10 +18,10 @@
     </properties>
 
     <modules>
-        <module>fr.esrf.tango.generator.xtend</module>
         <module>fr.esrf.tango.pogo</module>
         <module>fr.esrf.tango.pogo.ui</module>
-        <module>fr.esrf.tango.pogo.pogo_gui</module>
+        <module>fr.esrf.tango.generator.xtend</module>
+        <module>org.tango.pogo.pogo_gui</module>
     </modules>
 
     <developers>
