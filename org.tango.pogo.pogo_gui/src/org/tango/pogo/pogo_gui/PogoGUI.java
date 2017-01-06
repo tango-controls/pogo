@@ -995,18 +995,14 @@ public class PogoGUI extends JFrame {
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void colorItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorItemActionPerformed
-
         new PopupColorCode(this).setVisible(true);
-
     }//GEN-LAST:event_colorItemActionPerformed
 
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
-
         JOptionPane.showMessageDialog(this,
-
                 "             Pogo  (Tango Code Generator)\n" +
                         "This programme is able to generate, update and modify\n" +
                         "                 Tango device classes.\n\n" +

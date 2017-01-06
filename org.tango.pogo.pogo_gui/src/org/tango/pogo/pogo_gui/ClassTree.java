@@ -39,10 +39,7 @@ package org.tango.pogo.pogo_gui;
 import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.*;
 import org.eclipse.emf.common.util.EList;
-import org.tango.pogo.pogo_gui.tools.OAWutils;
-import org.tango.pogo.pogo_gui.tools.PogoEditor;
-import org.tango.pogo.pogo_gui.tools.PogoException;
-import org.tango.pogo.pogo_gui.tools.Utils;
+import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import javax.swing.event.TreeExpansionEvent;
@@ -1695,10 +1692,13 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     private void summarize() {
         Object obj = getSelectedObject();
         if (obj instanceof PogoRoot) {
+            new PopupHtml(parent).show(summarizeClass((PogoRoot) obj), 500, 600);
+            /*
             JOptionPane.showMessageDialog(parent,
                     summarizeClass((PogoRoot) obj),
                     "information Window",
                     JOptionPane.INFORMATION_MESSAGE);
+                    */
         } else if (obj.toString().indexOf("Properties") > 0) {
             boolean is_dev = obj.toString().startsWith("Device");
             List<Property> propertyList = getAllProperties(is_dev);
@@ -1736,32 +1736,64 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         int nb_spectra = node.getChildCount();
         node = (DefaultMutableTreeNode) root.getChildAt(IMAGE_ATTRIBUTES);
         int nb_images = node.getChildCount();
+        node = (DefaultMutableTreeNode) root.getChildAt(FORWARDED_ATTRIBUTES);
+        int nb_forwarded = node.getChildCount();
+        node = (DefaultMutableTreeNode) root.getChildAt(PIPES);
+        int nb_pipes = node.getChildCount();
         node = (DefaultMutableTreeNode) root.getChildAt(STATES);
         int nb_states = node.getChildCount();
 
         //  And build message to be returned
         StringBuilder sb = new StringBuilder(_class.toInfoString());
-        sb.append("\n\n");
+        sb.append("\n<br>\n");
+        //  Properties and commands
         if (nb_class_prop > 0)
-            sb.append(nb_class_prop).append("  Class properties\n");
+            sb.append("<li>").append(nb_class_prop).append(getCollectionName("Class property", nb_class_prop));
         if (nb_dev_prop > 0)
-            sb.append(nb_dev_prop).append("  Device properties\n");
+            sb.append("<li>").append(nb_dev_prop).append(getCollectionName("Device property", nb_dev_prop));
         if (nb_cmd > 0)
-            sb.append(nb_cmd).append("  Commands\n");
+            sb.append("<li>").append(nb_cmd).append(getCollectionName("Command", nb_cmd));
 
-        int nb_att = nb_scalars + nb_spectra + nb_images;
+        //  Attributes
+        int nb_att = nb_scalars + nb_spectra + nb_images + nb_forwarded;
         if (nb_att > 0) {
-            sb.append(nb_att).append("  Attributes:\n");
+            sb.append("<li>").append(nb_att).append(getCollectionName("Attribute", nb_att));
+            sb.append("<ul>\n");
             if (nb_scalars > 0)
-                sb.append("    ").append(nb_scalars).append("  Scalars\n");
+                sb.append("<li>").append(nb_scalars).append(getCollectionName("Scalar", nb_scalars));
             if (nb_spectra > 0)
-                sb.append("    ").append(nb_spectra).append("  Spectra\n");
+                sb.append("<li>").append(nb_spectra).append(getCollectionName("Spectrum", nb_spectra));
             if (nb_images > 0)
-                sb.append("    ").append(nb_images).append("  Images\n");
+                sb.append("<li>").append(nb_images).append(getCollectionName("Image", nb_images));
+            //  Forwarded attributes
+            if (nb_forwarded > 0)
+                sb.append("<li>").append(nb_forwarded).append(getCollectionName("Forwarded", nb_forwarded));
+            sb.append("</ul>\n");
         }
+
+        //  Pipes and States
+        if (nb_pipes > 0)
+            sb.append("<li>").append(nb_pipes).append(getCollectionName("Pipe", nb_pipes));
         if (nb_states > 0)
-            sb.append(nb_states).append("  States\n");
+            sb.append("<li>").append(nb_states).append(getCollectionName("State", nb_states));
         return sb.toString();
+    }
+    //===============================================================
+    //===============================================================
+    private String getCollectionName(String name, int nb) {
+        String collectionName = name;
+        if (nb>1) {
+            //  Manage plural
+            if (name.endsWith("y"))
+                collectionName = name.substring(0, name.length() - 1) + "ies";
+            else
+            if (name.endsWith("um"))
+                collectionName = name.substring(0, name.length() - 2) + "a";
+            else
+            if (!name.equalsIgnoreCase("forwarded"))
+                collectionName = name + "s";
+        }
+        return " " + collectionName + "\n";
     }
     //===============================================================
     /**
@@ -1933,9 +1965,8 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 sb.append("\nRead at:   ").append(inheritances.get(0).getSourcePath());
             else
                 sb.append("  the default Tango device object.\n");
-            sb.append("\n\nDescription:\n");
+            sb.append("\nDescription:\n");
             sb.append(Utils.strReplace(description, "\\n", "\n")).append("\n");
-
 
             return Utils.buildToolTip(title, sb.toString());
         }

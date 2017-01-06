@@ -153,7 +153,7 @@ public class UpdateRelease {
         if (start<0) {
             start = code.indexOf("releaseString =");
             if (start<0)
-                throw new PogoException("String releaseString Not Found");
+                throw new PogoException("String releaseString Not Found in " + fileName);
         }
         start = code.indexOf('\"', start);
         start++;
