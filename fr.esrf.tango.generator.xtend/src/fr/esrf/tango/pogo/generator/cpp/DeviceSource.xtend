@@ -223,10 +223,9 @@ class DeviceSource {
 			«IF cls.deviceProperties.hasMandatoryProperty»
 				if (mandatoryNotDefined)
 				{
-					string	status(get_status());
 					Tango::Except::throw_exception(
 								(const char *)"PROPERTY_NOT_SET",
-								status.c_str(),
+								get_status().c_str(),
 								(const char *)"«cls.name»::always_executed_hook()");
 				}
 			«ENDIF»
