@@ -11,8 +11,7 @@
 #-======================================================================
 
 
-RELEASE    = 9.4.5
-
+RELEASE    = 9.4.5a
 
 TANGO_HOME	=	/segfs/tango
 PACK_HOME	=	$(TANGO_HOME)/tools

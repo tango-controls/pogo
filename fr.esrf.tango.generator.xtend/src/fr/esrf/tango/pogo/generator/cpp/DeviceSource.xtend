@@ -206,9 +206,7 @@ class DeviceSource {
 							tms << "\' is mandatory but not defined in database";
 						else
 							tms << "\' is mandatory but cannot be defined without database";
-						string	status(get_status());
-						status += tms.str();
-						set_status(status);
+						append_status(tms.str());
 						mandatoryNotDefined = true;
 						«cls.protectedArea("check_mandatory_property",
 							"cerr << tms.str() << \" for \" << device_name << endl;", false)»
