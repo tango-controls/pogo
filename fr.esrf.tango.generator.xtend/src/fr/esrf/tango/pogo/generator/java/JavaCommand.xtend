@@ -92,7 +92,7 @@ class JavaCommand {
 		/**
 		 * The state of the device
 		*/
-		@State
+		@State «cls.commands.get(0).pollingCommandCode»
 		private DevState state = DevState.UNKNOWN;
 		/**
 		 * Execute command "State".
@@ -115,7 +115,7 @@ class JavaCommand {
 		/**
 		 * The status of the device
 		 */
-		@Status
+		@Status «cls.commands.get(0).pollingCommandCode»
 		private String status = "Server is starting. The device state is unknown";
 		/**
 		 * Execute command "Status".

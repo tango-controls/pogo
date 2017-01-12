@@ -674,4 +674,12 @@ public class JavaUtils extends StringUtils {
 			return "";
 	}
 	//===========================================================
+	public String pollingCommandCode(Command command) {
+		String polledPeriodStr = command.getPolledPeriod();
+		if (polledPeriodStr!=null && polledPeriodStr.equals("0")==false) 
+			return "(isPolled=true, pollingPeriod=" + polledPeriodStr + ")";
+		else
+			return "";
+	}
+	//===========================================================
 }
