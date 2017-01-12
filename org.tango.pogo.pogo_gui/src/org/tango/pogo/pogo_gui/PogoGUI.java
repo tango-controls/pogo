@@ -151,7 +151,8 @@ public class PogoGUI extends JFrame {
         class_panels.add(cp);
         tabbedPane.add(cp);
 
-        setIconImage(Utils.getInstance().logoIcon.getImage());
+        setIconImage(Utils.getInstance().getIcon("pogo.png").getImage());
+        //setIconImage(Utils.getInstance().logoIcon.getImage());
         pack();
         setScreenPosition(this);
         setVisible(true);

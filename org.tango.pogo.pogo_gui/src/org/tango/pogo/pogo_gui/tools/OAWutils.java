@@ -37,6 +37,7 @@ package org.tango.pogo.pogo_gui.tools;
 
 import fr.esrf.TangoDs.TangoConst;
 import fr.esrf.tango.pogo.pogoDsl.*;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -47,7 +48,10 @@ import org.eclipse.emf.mwe2.language.Mwe2StandaloneSetup;
 import org.eclipse.emf.mwe2.launch.runtime.Mwe2Runner;
 
 import com.google.inject.Injector;
+
 import org.tango.pogo.pogo_gui.PropertyDialog;
+
+import pogo.gene.PogoClass;
 
 import java.io.File;
 import java.io.IOException;
@@ -243,11 +247,12 @@ public class OAWutils {
             Utils.manageHtmlDirectory(pogoClass, false);
             throw e;
         }
-        Utils.manageHtmlDirectory(pogoClass, false);
         //  If generate Windows project, need to add header with binary char.
         //  It was done by XTend generation, but since Eclipse 4 it does not work any more !
         if (pogoClass.getDescription().getFilestogenerate().contains("VC"))
             ParserTool.manageWindowsProjects(pogoClass);
+
+        doPostProcessing(pogoClass);
     }
     //========================================================================
     //========================================================================
@@ -302,7 +307,6 @@ public class OAWutils {
         System.setProperty("targetDir", multiClasses.getSourcePath());
         System.setProperty("targetLanguage", "MultiCpp");
 
-
         runWorkflow(params);
     }
     //========================================================================
@@ -324,6 +328,52 @@ public class OAWutils {
             throw new PogoException(e.toString());
         }
 	}
+    //========================================================================
+    /**
+     * Do a ppost-processing for additional info (e.g.: doc to pdf, ...)
+     *
+     * @param pogoClass Specified PogoDeviceClass object
+     * @throws PogoException in case of changing protected area ID failed.
+     */
+    //========================================================================
+    private void doPostProcessing(PogoDeviceClass pogoClass) throws PogoException {
+
+    	if (pogoClass.getDescription().getFilestogenerate().toLowerCase().contains("html")) {
+
+            //  Move doc dir expected
+            Utils.manageHtmlDirectory(pogoClass, false);
+
+            //  Only if unix like, try to generate a PDF file from FullDocument.html file
+            if (Utils.osIsUnix()) {
+                String descriptionFile = pogoClass.getDescription().getSourcePath() + "/" +
+                        pogoClass.getPreferences().getDocHome() + "/FullDocument.html";
+                String pdfFile = pogoClass.getDescription().getSourcePath() + "/" +
+                        pogoClass.getPreferences().getDocHome() + "/" +
+                        pogoClass.getName() + ".pdf";
+                try {
+                    Utils.executeShellCommand("wkhtmltopdf " + descriptionFile + "  " + pdfFile);
+                    if (new File(pdfFile).exists()) {
+                        System.out.println(pdfFile + " has been generated");
+                        //  OK it exists -> add a link
+                        String bannerFile = pogoClass.getDescription().getSourcePath() + "/" +
+                        		pogoClass.getPreferences().getDocHome() + "/TitleBanner.html";
+                        String code = ParserTool.readFile(bannerFile);
+                        int idx = code.indexOf("</table>");
+                        code = code.substring(0, idx) +
+                                "<td ALIGN=\"center\"> <a href=\"" +
+                        		pogoClass.getName() + ".pdf\" target=\"document\">PDF</a></td>\n\t\t" +
+                                code.substring(idx);
+                        ParserTool.writeFile(bannerFile, code);
+                        //System.out.println(bannerFile + " has been updated\n");
+                    }
+                    else
+                        System.err.println("Generation of " + pdfFile + " has failed !");
+                }catch (PogoException e) {
+                    //System.err.println(e.toString());
+                }
+    	    }
+        }
+    }
     //========================================================================
     /**
      * Do a pre-processing for additional info (e.g.: comments, tables,....

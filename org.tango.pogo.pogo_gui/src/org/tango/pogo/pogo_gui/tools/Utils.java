@@ -618,6 +618,54 @@ public class Utils {
         // do not read output lines from command
         // Do not check its exit value
     }
+    //===============================================================
+    /**
+     *	Execute a shell command and throw exception if command failed.
+     *
+     *	@param cmd	shell command to be executed.
+     */
+    //===============================================================
+    public static String executeShellCommand(String cmd) throws PogoException {
+        try {
+            Process process = Runtime.getRuntime().exec(cmd);
+
+            // get command's output stream and
+            // put a buffered reader input stream on it.
+            InputStream inputStream = process.getInputStream();
+            BufferedReader br =
+                    new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder sb = new StringBuilder();
+
+            // read output lines from command
+            String str;
+            while ((str = br.readLine()) != null) {
+                sb.append(str).append("\n");
+            }
+
+            // wait for end of command
+            process.waitFor();
+
+            // check its exit value
+            int retVal;
+            if ((retVal = process.exitValue()) != 0) {
+                //	An error occur try to read it
+                InputStream errorStream = process.getErrorStream();
+                br = new BufferedReader(new InputStreamReader(errorStream));
+                while ((str = br.readLine()) != null) {
+                    sb.append(str).append("\n");
+                }
+                throw new PogoException("the shell command\n" + cmd +
+                        "\nreturns : " + retVal + " !\n\n" + sb);
+            }
+            System.out.println(sb);
+            return sb.toString();
+        }
+        catch (Exception e) {
+            if (e instanceof PogoException)
+                throw (PogoException) e;
+            throw new PogoException(e.toString());
+        }
+    }
 
     //===============================================================
     //===============================================================
