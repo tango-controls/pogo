@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.4.6 - 12/01/2017:
+	Add a pdf file in doc_html on linux (if wkhtmltopdf found in path)
+	Fix a bug in key word management.
+
 Pogo-9.4.5 - 08/12/2016:
 	A pom.xml file could be generated for java server.
 	Path must be in respect with maven structure (--/--/src/main/java)

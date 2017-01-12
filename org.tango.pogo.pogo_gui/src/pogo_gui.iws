@@ -105,7 +105,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.46269593">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PogoGUI.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PogoGUI.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="475">
@@ -115,32 +115,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DeviceIdDialog.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="DeviceIdDialog.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1496">
-                  <caret line="131" column="38" lean-forward="false" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
-                  <folding>
-                    <element signature="e#0#26036#0" expanded="false" />
-                    <element signature="imports" expanded="false" />
-                    <element signature="e#4220#4221#0" expanded="false" />
-                    <element signature="e#4279#4280#0" expanded="false" />
-                    <element signature="e#7577#7578#0" expanded="false" />
-                    <element signature="e#7611#7612#0" expanded="false" />
-                    <element signature="e#8428#8517#0" expanded="false" />
-                    <element signature="e#10006#10007#0" expanded="false" />
-                    <element signature="e#10054#10055#0" expanded="false" />
-                    <element signature="e#12938#12939#0" expanded="false" />
-                    <element signature="e#13001#13002#0" expanded="false" />
-                    <element signature="e#15528#15529#0" expanded="false" />
-                    <element signature="e#15590#15591#0" expanded="false" />
-                    <element signature="e#16721#16722#0" expanded="false" />
-                    <element signature="e#16790#16791#0" expanded="false" />
-                    <element signature="e#17443#17444#0" expanded="false" />
-                    <element signature="e#17500#17501#0" expanded="false" />
-                    <element signature="e#17730#17731#0" expanded="false" />
-                    <element signature="e#17791#17792#0" expanded="false" />
-                  </folding>
+                <state relative-caret-position="765">
+                  <caret line="594" column="25" lean-forward="false" selection-start-line="594" selection-start-column="25" selection-end-line="594" selection-end-column="25" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -332,9 +312,11 @@
           <file leaf-file-name="ClassDialog.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassDialog.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="958">
-                  <caret line="132" column="71" lean-forward="false" selection-start-line="132" selection-start-column="71" selection-end-line="132" selection-end-column="71" />
-                  <folding />
+                <state relative-caret-position="1750">
+                  <caret line="199" column="4" lean-forward="false" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
+                  <folding>
+                    <element signature="method#initComponents#0;class#ClassDialog#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -351,6 +333,8 @@
       <find>PopupH</find>
       <find>&quot;&lt;li&quot;</find>
       <find>GUI Release :</find>
+      <find>key</find>
+      <find>ke</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;&lt;li&gt;&quot;</replace>
@@ -373,7 +357,6 @@
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ForwardedAttributeDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/StateDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/ServerDialog.java" />
-        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/packaging/ConfigurePackagingDialog.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoConfiguration.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/PogoProperty.java" />
@@ -391,6 +374,7 @@
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/Utils.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/tools/OAWutils.java" />
         <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java" />
+        <option value="$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java" />
       </list>
     </option>
   </component>
@@ -463,6 +447,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pogo_gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pogo_gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pogo_gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -819,7 +821,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985783" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30170777" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30170777" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -888,13 +890,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/AttributeDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="1391" column="34" lean-forward="false" selection-start-line="1391" selection-start-column="34" selection-end-line="1391" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/MultiClassesTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1194,34 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="131" column="38" lean-forward="false" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#26036#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4220#4221#0" expanded="false" />
-            <element signature="e#4279#4280#0" expanded="false" />
-            <element signature="e#7577#7578#0" expanded="false" />
-            <element signature="e#7611#7612#0" expanded="false" />
-            <element signature="e#8428#8517#0" expanded="false" />
-            <element signature="e#10006#10007#0" expanded="false" />
-            <element signature="e#10054#10055#0" expanded="false" />
-            <element signature="e#12938#12939#0" expanded="false" />
-            <element signature="e#13001#13002#0" expanded="false" />
-            <element signature="e#15528#15529#0" expanded="false" />
-            <element signature="e#15590#15591#0" expanded="false" />
-            <element signature="e#16721#16722#0" expanded="false" />
-            <element signature="e#16790#16791#0" expanded="false" />
-            <element signature="e#17443#17444#0" expanded="false" />
-            <element signature="e#17500#17501#0" expanded="false" />
-            <element signature="e#17730#17731#0" expanded="false" />
-            <element signature="e#17791#17792#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1499,6 +1466,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1750">
+          <caret line="199" column="4" lean-forward="false" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
+          <folding>
+            <element signature="method#initComponents#0;class#ClassDialog#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/PogoGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -1507,10 +1484,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/ClassDialog.java">
+    <entry file="jar://$PROJECT_DIR$/../jar/org.tango.pogo.jar!/fr/esrf/tango/pogo/pogoDsl/ClassIdentification.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="958">
-          <caret line="132" column="71" lean-forward="false" selection-start-line="132" selection-start-column="71" selection-end-line="132" selection-end-column="71" />
+        <state relative-caret-position="731">
+          <caret line="47" column="18" lean-forward="false" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/tango/pogo/pogo_gui/DeviceIdDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="594" column="25" lean-forward="false" selection-start-line="594" selection-start-column="25" selection-end-line="594" selection-end-column="25" />
           <folding />
         </state>
       </provider>

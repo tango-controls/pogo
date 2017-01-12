@@ -170,12 +170,21 @@ public class DeviceIdDialog extends JDialog {
             EList<String> keyWords = id.getKeyWords();
             if (keyWords!=null) {
                 for (String keyWord : keyWords)
-                    keyWordList.add(keyWord);
+                    if (!alreadyInList(keyWord, keyWordList))
+                        keyWordList.add(keyWord);
             }
             buildKeyWordsTooltip();
         }
     }
 
+    //===============================================================
+    //===============================================================
+    private boolean alreadyInList(String str, List<String> list) {
+        for (String item : list)
+            if (item.equalsIgnoreCase(str))
+                return true;
+        return false;
+    }
     //===============================================================
     //===============================================================
     private void buildKeyWordsTooltip() {
@@ -583,11 +592,11 @@ public class DeviceIdDialog extends JDialog {
         id.setManufacturer(manufacturerTxt.getText().trim());
         id.setReference(referenceTxt.getText().trim());
         EList<String> keyWords = id.getKeyWords();
+        keyWords.clear();
         for (String keyWord : keyWordList)
             keyWords.add(keyWord);
         return id;
     }
-
 
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
