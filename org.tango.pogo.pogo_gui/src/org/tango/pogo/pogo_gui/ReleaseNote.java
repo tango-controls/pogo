@@ -16,9 +16,10 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 12-01-2017  15:37:19)</center><br>\n" + 
-		"<li><b>Pogo-9.4.6 - 12/01/2017:</b><br>" + 
+		"	(Generated 13-01-2017  08:27:46)</center><br>\n" + 
+		"<li><b>Pogo-9.4.6 - 13/01/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Add a pdf file in doc_html on linux (if wkhtmltopdf found in path)<br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix a bug in html proetcted regions.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a bug in key word management.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Add polling for State/Status in java.<br>" + 
 		"<li><b>Pogo-9.4.5 - 08/12/2016:</b><br>" + 

@@ -695,12 +695,12 @@ public class HtmlUtils extends StringUtils {
 		try {
 			//	Get protected region from Description.html 
 			String	fileName = cls.getDescription().getSourcePath() + "/doc_html/ClassDescription.html";
-			String	prText = getProtectedRegionContent(fileName, "./doc_html/index.html");
+			String	prText = getProtectedRegionContent(fileName, "index.html");
 			if (prText!=null) {
 				//System.out.println(prText);
 				//	And insert it in FullDocument.html file
 				fileName = cls.getDescription().getSourcePath() + "/doc_html/FullDocument.html";
-				insertInProtectedRegion(fileName, "./doc_html/FullDocument.html", prText + " Added !!");
+				insertInProtectedRegion(fileName, "FullDocument.html", prText);
 			}
 		}
 		catch (Exception e) {
