@@ -18,10 +18,10 @@
     </properties>
 
     <modules>
-        <module>fr.esrf.tango.pogo</module>
-        <module>fr.esrf.tango.pogo.ui</module>
-        <module>fr.esrf.tango.generator.xtend</module>
-        <module>org.tango.pogo.pogo_gui</module>
+        <module>../fr.esrf.tango.pogo</module>
+        <module>../fr.esrf.tango.pogo.ui</module>
+        <module>../fr.esrf.tango.generator.xtend</module>
+        <module>../org.tango.pogo.pogo_gui</module>
     </modules>
 
     <developers>
@@ -67,8 +67,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>2.5.1</version>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
@@ -86,10 +86,6 @@
                     <configuration>
                         <filesets>
                             <fileset>
-                                <directory>${basedir}/xtend-gen</directory>
-                                <includes>
-                                    <include>**/*</include>
-                                </includes>
                                 <directory>${basedir}/xtend-gen</directory>
                                 <includes>
                                     <include>**/*</include>
@@ -181,4 +177,3 @@
         </pluginRepository>
     </pluginRepositories>
 </project>
-

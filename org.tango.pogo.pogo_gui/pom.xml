@@ -8,6 +8,7 @@
         <groupId>org.tango.tools.pogo</groupId>
         <artifactId>Pogo</artifactId>
         <version>9.4.6-SNAPSHOT</version>
+        <relativePath>../fr.esrf.tango.pogo.parent/pom.xml</relativePath>
     </parent>
     <groupId>org.tango.tools.pogo.gui</groupId>
     <artifactId>pogo_gui</artifactId>

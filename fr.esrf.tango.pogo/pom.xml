@@ -8,6 +8,7 @@
         <groupId>org.tango.tools.pogo</groupId>
         <artifactId>Pogo</artifactId>
         <version>9.4.6-SNAPSHOT</version>
+        <relativePath>../fr.esrf.tango.pogo.parent/pom.xml</relativePath>
     </parent>
     <groupId>fr.esrf.tango.pogo</groupId>
     <artifactId>fr.esrf.tango.pogo</artifactId>
@@ -66,9 +67,9 @@
                 <configuration>
                     <mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
                     <arguments>
-                        <argument>${project.basedir}/src/fr/esrf/tango/pogo/GeneratePogoDsl.mwe2</argument>
+                        <argument>file://${project.basedir}/src/fr/esrf/tango/pogo/GeneratePogoDsl.mwe2</argument>
                         <argument>-p</argument>
-                        <argument>rootPath=${project.basedir}/..</argument>
+                        <argument>rootPath=${project.artifactId}</argument>
                     </arguments>
                     <classpathScope>compile</classpathScope>
                     <additionalClasspathElements>
@@ -118,6 +119,7 @@
                         <configuration>
                             <sources>
                                 <source>src-gen</source>
+                                <source>xtend-gen</source>
                             </sources>
                             <resources>
                                 <resource>
