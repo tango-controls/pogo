@@ -37,15 +37,19 @@ package org.tango.pogo.pogo_gui;
 
 
 import fr.esrf.tango.pogo.pogoDsl.AdditionalFile;
+import fr.esrf.tango.pogo.pogoDsl.ClassDescription;
 import fr.esrf.tango.pogo.pogoDsl.Inheritance;
+import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+
 import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
 import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -461,13 +465,21 @@ public class GenerateDialog extends JDialog {
                             ret = manageWindowsPathCase();
                     doClose(ret); //  Close dialog if OK
                 }
-                //  Special case for pom.xml (maven structure expected)
-                int lang = Utils.getLanguage(deviceClass.getPogoDeviceClass().getDescription().getLanguage());
-                if (lang==PogoConst.Java && projectBtn.isSelected()) {
-                    if (checkMavenPathCase(file.getAbsolutePath()))
-                        doClose(JOptionPane.OK_OPTION);
-                    else
-                        return;
+                //  Special case for pom.xml (maven structure path expected)
+                if (deviceClass!=null) {
+	                PogoDeviceClass pogoDeviceClass = deviceClass.getPogoDeviceClass();
+	                if (pogoDeviceClass!=null) {
+	                	ClassDescription classDescription = pogoDeviceClass.getDescription();
+	                	if (classDescription!=null) {
+			                int lang = Utils.getLanguage(classDescription.getLanguage());
+			                if (lang==PogoConst.Java && projectBtn.isSelected()) {
+			                    if (checkMavenPathCase(file.getAbsolutePath()))
+			                        doClose(JOptionPane.OK_OPTION);
+			                    else
+			                        return;
+			                }
+	                	}
+	                }
                 }
                 doClose(JOptionPane.OK_OPTION);
             } else

@@ -48,10 +48,7 @@ import org.eclipse.emf.mwe2.language.Mwe2StandaloneSetup;
 import org.eclipse.emf.mwe2.launch.runtime.Mwe2Runner;
 
 import com.google.inject.Injector;
-
 import org.tango.pogo.pogo_gui.PropertyDialog;
-
-import pogo.gene.PogoClass;
 
 import java.io.File;
 import java.io.IOException;
@@ -351,6 +348,7 @@ public class OAWutils {
                         pogoClass.getPreferences().getDocHome() + "/" +
                         pogoClass.getName() + ".pdf";
                 try {
+                    //  Execute wkhtmltopdf to generate a PDF file and a add a link on it
                     Utils.executeShellCommand("wkhtmltopdf " + descriptionFile + "  " + pdfFile);
                     if (new File(pdfFile).exists()) {
                         System.out.println(pdfFile + " has been generated");
