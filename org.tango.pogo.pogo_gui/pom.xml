@@ -20,6 +20,21 @@
             <artifactId>fr.esrf.tango.pogo</artifactId>
         </dependency>
         <dependency>
+            <groupId>fr.esrf.tango.generator.xtend</groupId>
+            <artifactId>fr.esrf.tango.generator.xtend</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.ui</groupId>
+            <artifactId>workbench</artifactId>
+            <version>3.3.0-I20070608-1100</version>
+        </dependency>
+        <dependency>
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>pogo6</artifactId>
             <version>6.2.5a</version>
@@ -46,10 +61,5 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>pogo6</id>
-            <url>file://${project.basedir}/../pogo6</url>
-        </repository>
-    </repositories>
+    
 </project>

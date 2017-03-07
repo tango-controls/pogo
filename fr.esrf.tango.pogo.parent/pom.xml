@@ -52,6 +52,11 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <groupId>fr.esrf.tango.generator.xtend</groupId>
+                <artifactId>fr.esrf.tango.generator.xtend</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.eclipse.xtend</groupId>
                 <artifactId>org.eclipse.xtend.lib</artifactId>
                 <version>${xtextVersion}</version>
@@ -153,7 +158,9 @@
         </repository>
         <repository>
             <id>codehaus-snapshots</id>
-            <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+            <name>disable dead 'Codehaus Snapshots' repository, see
+                https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478
+            </name>
             <url>http://nexus.codehaus.org/snapshots/</url>
             <releases>
                 <enabled>false</enabled>
@@ -162,11 +169,17 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>pogo6</id>
+            <url>file://${project.basedir}/../lib</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>codehaus-snapshots</id>
-            <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+            <name>disable dead 'Codehaus Snapshots' repository, see
+                https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478
+            </name>
             <url>http://nexus.codehaus.org/snapshots/</url>
             <releases>
                 <enabled>false</enabled>
