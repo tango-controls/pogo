@@ -18,6 +18,7 @@
     </properties>
 
     <modules>
+        <module>../pogo6</module>
         <module>../fr.esrf.tango.pogo</module>
         <!--<module>../fr.esrf.tango.pogo.ui</module>-->
         <module>../fr.esrf.tango.generator.xtend</module>
@@ -49,6 +50,11 @@
             <dependency>
                 <groupId>fr.esrf.tango.pogo</groupId>
                 <artifactId>fr.esrf.tango.pogo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.esrf.tango.pogo</groupId>
+                <artifactId>pogo6</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

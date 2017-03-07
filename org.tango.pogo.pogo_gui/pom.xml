@@ -19,6 +19,10 @@
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>fr.esrf.tango.pogo</artifactId>
         </dependency>
+        <dependency>
+            <groupId>fr.esrf.tango.pogo</groupId>
+            <artifactId>pogo6</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
