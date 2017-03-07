@@ -1,7 +1,0 @@
-<xml>
-
-  <![CDATA[ <!-- PROTECTED REGION ID(no.id) ENABLED START --> ]]>
-  
-  <!-- PROTECTED REGION END -->
-  
-</xml>
