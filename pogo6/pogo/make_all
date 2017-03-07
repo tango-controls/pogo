@@ -1,0 +1,23 @@
+CD="cd appli"
+JAVAC="make gene Pogo"
+echo $CD
+echo $JAVAC
+$CD
+$JAVAC
+
+CD="cd ../make_util"
+JAVAC="make "
+echo $CD
+echo $JAVAC
+$CD
+$JAVAC
+
+CD="cd ../servers2www"
+JAVAC="make"
+echo $CD
+echo $JAVAC
+$CD
+$JAVAC
+
+echo ""
+echo "Pogo classes built."

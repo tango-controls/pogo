@@ -1,0 +1,177 @@
+#+======================================================================
+# $Source: /cvsroot/tango-cs/tango/tools/pogo/appli/ReleaseNote,v $
+#
+# Project:      Pogo
+#
+# Description:  Pogo revisions
+#
+# $Author$
+#
+# $Revision$
+#
+# copyleft :    European Synchrotron Radiation Facility
+#               BP 220, Grenoble 38043
+#               FRANCE
+#
+#-======================================================================
+
+
+
+Pogo-6.2.5 - 30/08/11:
+	Pb with templates from SVN fixed.
+
+Pogo-6.2.4 - 02/09/10:
+	External vector management added (for Pogo-7 compatibility).
+
+Pogo-6.2.3 - 29/06/10:
+	Get author name from DeviceID.txt if exists.
+
+Pogo-6.2.2 - 19/02/10:
+	Bug in reload abstract class fixed.
+
+Pogo-6.2.0 - 02/11/09:
+	Device class ID management added.
+
+Pogo-6.1.0 - 07/10/09:
+	Tango-7 compatibility for Python classes
+
+Pogo-6.0.0 - 07/04/09:
+	Tango-7 compatibility for C++ classes.
+
+Pogo-5.2.8 - 05/05/08:
+	Pb in class property fixed.
+	Pb on State and Status overriding methods fixed.
+
+Pogo-5.2.7 - 20/03/08:
+	Another pb in properties order fixed.
+
+Pogo-5.2.6 - 14/03/08:
+	Pb between CONST_DEV_STRING and DEV_STRING in command factory fixed.
+
+Pogo-5.2.5 - 13/03/08:
+	Pb in properties order fixed.
+	Default property values added to html pages.
+	Bug in property description (use cotes in python) fixed.
+
+Pogo-5.2.4 - 22/02/08:
+	Bug on last line fixed
+
+Pogo-5.2.3 - 17/12/07:
+	Litle bugs fixed.
+
+Pogo-5.2.2 - 19/11/07:
+	Bug in changing class name fixed.
+	Some spelling mistakes fixed.
+
+Pogo-5.2.0 - 07/09/07:
+	Generate VC8 project files added.
+	Own methods in ServerClass class in python code added.
+
+Pogo-5.1.2 - 07/08/07:
+	Generate Makefile and Windows Project menu added.
+
+Pogo-5.1.1 - 30/07/07:
+	Bug on popup menu fixed.
+
+Pogo-5.1.0 - 13/06/07:
+	64 bits data types (Tango 6) added.
+	UShort added for java servers.
+	Erase main method in python bug fixed.
+
+Pogo-5.0.9 - 21/05/07:
+	Problem with2 attributes with names very closed fixed.
+
+Pogo-5.0.8 - 09/05/07:
+	File to be load can be passed as argument.
+
+Pogo-5.0.7 - 27/04/07:
+	Bug in changing DeviceImpl revision fixed.
+	Attribute collection checked in creation.
+
+Pogo-5.0.6 - 19/04/07:
+	Abstract Class path displayed
+	New instance of Pogo when open or new.
+
+Pogo-5.0.5 - 18/04/07:	
+	Attributes are now displayed separatly
+	(Scalar, Spectrum and image attributes)
+
+Pogo-5.0.4 - 29/03/07:
+	Bug in DsClass.h generation fixed.
+
+Pogo-5.0.3 - 09/03/07:
+	Bug in python attribute properties (with coma) fixed.
+
+Pogo-5.0.2 - 12/01/07:
+	Bug in attribute_factory fixed.
+
+Pogo-5.0.1 - 08/01/07:
+	Bug in python init_device method fixed.
+    Bug in abstract class generation fixed.
+
+Pogo-5.0.0 - 18/12/06:
+			Pyton code generation added.
+			User code part added for C++.
+			Bugs fixed in java code generation.
+			Inheritance diagram added.
+
+Pogo-4.6.0:	Allow boolean attribute for java servers.
+            Bug in command factory for abstract class generation fixed.
+			Bug in changing class name fixed.
+			Put class inheritance as class property.
+			Edit Abstract class if any added.
+			Generate inheritance diagram in index.html
+
+Pogo-4.5.10:	Bug command comments fixed.
+
+Pogo-4.5.9:	Bug project file when using abstract classes under win32 fixed.
+
+Pogo-4.5.8:	Change buttons text on attribute dialog.
+
+Pogo-4.5.7:	NullPointerException fixed in PogoString class.
+
+Pogo-4.5.6:	One line Added to get round a file database usage bug.
+
+Pogo-4.5.5:	Tango-5.5 compatiblity.
+            extern C method added to be used as shared library.
+			VCC 6 project file generated if running on Win32.
+			.obj, .so, executable files generated in separated directories.
+
+Pogo-4.5.1: Add a missing class to jar file.
+
+Pogo-4.5.0: Add the pdf doc generation (under linux only).
+            Revision and cvsroot get from CVS files if exist.
+
+Pogo-4.4.10: Bug in get_class_property() call position fixed.
+             Bug in State description fixed.
+
+Pogo-4.4.9: If ...StateMachine not found, display a warning message
+            and generate a default one at next code genaration.
+
+Pogo-4.4.8: Bug fixed in command execute method.
+
+Pogo-4.4.7: Bug fixed in read property description (due to '*' char).
+            Change in tag syntax.
+
+Pogo-4.4.6: Display Release note in help menu added.
+
+Pogo-4.4.5: make_util package added (for tag module).
+
+Pogo-4.4.4: Bug in renaming command has been fixed.
+
+Pogo-4.4.3: Memorized attribute written or not at starteup added.
+
+Pogo-4.4.2: Bug on AttributeDialog fixed.
+            Splash screen is not displayed any more at startup.
+
+Pogo-4.4.1: Bug on array property fixed.
+
+Pogo-4.4.0: Property Wizard functionalities added.
+
+Pogo-4.3.2:	Bug on display message about Device_2 to Device_3 fixed.
+
+Pogo-4.3.1:	Check main.cpp file and add tg->server_cleanup() call if not already done.
+
+Pogo-4.3.0:	CVS tags to Database management added.
+            State machine inherited from abstract class (if any) added.
+

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+#---------------------------------------------------------
+#	Add Doc path to $PATH (depends on OS used)
+#---------------------------------------------------------
+TANGO_HOME=/segfs/tango
+
+#---------------------------------------------------------
+#	Set the template path
+#---------------------------------------------------------
+TEMPLATES=/segfs/tango/tools/pogo/templates
+export TEMPLATES
+
+#---------------------------------------------------------
+#	Set the Home Source Path
+#---------------------------------------------------------
+SRC_PATH=/segfs/tango/tools/pogo/test/cpp
+export SRC_PATH
+
+
+#---------------------------------------------------------
+#	Set the Class Path for Tango and pogo usage
+#---------------------------------------------------------
+POGOCLASS=/segfs/tango/tools/bin
+TANGOCLASS=/segfs/tango/release/java/lib/TangORB.jar
+CLASSPATH=$POGOCLASS:$TANGOCLASS
+export CLASSPATH
+
+echo "CLASSPATH=$CLASSPATH"
+
+
+#---------------------------------------------------------
+#	Start the Pogo process
+#---------------------------------------------------------
+echo ""
+echo "Starting Pogo Appli...."
+echo ""
+
+java	-DTEMPL_HOME=$TEMPLATES		\
+		-DHOME_GENE=$SRC_PATH		\
+		-DEDITOR=$POGO_EDITOR		\
+		-DPOGO_FILE=$IN_FILE		\
+		-DPOGO_TEST=true			\
+		-DSUPER_HOME=/segfs/tango/tools/pogo/test/cpp/AbstractClasses	\
+		pogo.appli.PogoAppli $PARAM $*
+
