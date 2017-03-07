@@ -22,6 +22,7 @@
         <dependency>
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>pogo6</artifactId>
+            <version>6.2.5a</version>
         </dependency>
     </dependencies>
 
@@ -44,4 +45,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>pogo6</id>
+            <url>file://${project.basedir}/../pogo6</url>
+        </repository>
+    </repositories>
 </project>
