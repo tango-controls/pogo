@@ -1,3 +1,5 @@
+#ignore files and directories if present
+
  .idea/
  .metadata/
  fr.esrf.tango.generator.xtend/bin/
