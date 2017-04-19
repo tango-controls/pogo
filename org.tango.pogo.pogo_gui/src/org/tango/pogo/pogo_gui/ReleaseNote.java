@@ -16,7 +16,9 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 13-01-2017  08:58:13)</center><br>\n" + 
+		"	(Generated 19-04-2017  13:36:12)</center><br>\n" + 
+		"<li><b>Pogo-9.4.6a - 19/04/2017:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Cosmetic changes<br>" + 
 		"<li><b>Pogo-9.4.6 - 13/01/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Add a pdf file in doc_html on linux (if wkhtmltopdf found in path)<br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a bug in html protected regions.<br>" + 

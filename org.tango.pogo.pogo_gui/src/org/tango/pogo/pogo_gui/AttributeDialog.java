@@ -372,7 +372,6 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
      */
     //===================================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    @SuppressWarnings("Convert2Diamond")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -382,16 +381,16 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         definitionPanel = new javax.swing.JPanel();
         javax.swing.JLabel nameLbl = new javax.swing.JLabel();
-        attrTypeCB = new javax.swing.JComboBox<String>();
+        attrTypeCB = new javax.swing.JComboBox<>();
         javax.swing.JLabel attTypeLbl = new javax.swing.JLabel();
         nameText = new javax.swing.JTextField();
         javax.swing.JLabel dataTypeLbl = new javax.swing.JLabel();
-        dataTypeCB = new javax.swing.JComboBox<String>();
+        dataTypeCB = new javax.swing.JComboBox<>();
         xDataLBL = new javax.swing.JLabel();
         yDataLBL = new javax.swing.JLabel();
         xDataTF = new javax.swing.JTextField();
         yDataTF = new javax.swing.JTextField();
-        rwTypeCB = new javax.swing.JComboBox<String>();
+        rwTypeCB = new javax.swing.JComboBox<>();
         assAttrLBL = new javax.swing.JLabel();
         assAttrTF = new javax.swing.JTextField();
         javax.swing.JLabel rwTypeLBL = new javax.swing.JLabel();
@@ -432,6 +431,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         javax.swing.JLabel jLabel23 = new javax.swing.JLabel();
         attrPropMaxWarning = new javax.swing.JTextField();
         attrPropMinWarning = new javax.swing.JTextField();
+        attrPropTitleLabel = new javax.swing.JLabel();
         javax.swing.JPanel eventsPanel = new javax.swing.JPanel();
         evTitleLbl = new javax.swing.JLabel();
         javax.swing.JLabel defaultEventsLbl = new javax.swing.JLabel();
@@ -469,8 +469,9 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
                 closeDialog(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
-        bottomPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        bottomPanel.setLayout(new java.awt.FlowLayout(2));
 
         okBtn.setText("OK");
         okBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -722,129 +723,148 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         propertyPanel.setLayout(new java.awt.GridBagLayout());
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Default Attribute Properties");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(jLabel6, gridBagConstraints);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setText("Label");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel7, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropLabel, gridBagConstraints);
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setText("Unit");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel8, gridBagConstraints);
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel9.setText("Standard Unit");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel9, gridBagConstraints);
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel10.setText("Display Unit");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel10, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        propertyPanel.add(attrPropUnit, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        propertyPanel.add(attrPropStdUnit, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        propertyPanel.add(attrPropUnit, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        propertyPanel.add(attrPropStdUnit, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropDispUnit, gridBagConstraints);
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel11.setText("Display Format       ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel11, gridBagConstraints);
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel12.setText("Max. Value");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel12, gridBagConstraints);
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setText("Min. Value");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel13, gridBagConstraints);
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel14.setText("Max. Alarm");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel14, gridBagConstraints);
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel15.setText("Min. Alarm");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel15, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        propertyPanel.add(attrPropFormat, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        propertyPanel.add(attrPropMaxValue, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        propertyPanel.add(attrPropFormat, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        propertyPanel.add(attrPropMinValue, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        propertyPanel.add(attrPropMaxValue, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        propertyPanel.add(attrPropMaxAlarm, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        propertyPanel.add(attrPropMinValue, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
+        propertyPanel.add(attrPropMaxAlarm, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropMinAlarm, gridBagConstraints);
 
         jLabel16.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -853,6 +873,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel16, gridBagConstraints);
 
         jScrollPane.setPreferredSize(new java.awt.Dimension(350, 100));
@@ -868,59 +889,75 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         propertyPanel.add(jScrollPane, gridBagConstraints);
 
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel20.setText("Delta time");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel20, gridBagConstraints);
 
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel21.setText("Delta value   ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel21, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropDeltaTime, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropDeltaValue, gridBagConstraints);
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel22.setText("Max Warning");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel22, gridBagConstraints);
 
         jLabel23.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel23.setText("Min Warning");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         propertyPanel.add(jLabel23, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropMaxWarning, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         propertyPanel.add(attrPropMinWarning, gridBagConstraints);
+
+        attrPropTitleLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        attrPropTitleLabel.setText("Attribute");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        propertyPanel.add(attrPropTitleLabel, gridBagConstraints);
 
         tabbedPane.addTab("Properties", null, propertyPanel, "Attribute Properties");
 
@@ -1362,31 +1399,36 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         //  Check if event panel
         JTabbedPane tabbedPane = (JTabbedPane) evt.getSource();
         int panelIndex = tabbedPane.getSelectedIndex();
-        if (panelIndex==2) {
-            String attributeName = nameText.getText();
-            evTitleLbl.setText("Attribute "+attributeName);
+        String attributeName = nameText.getText();
+        switch (panelIndex) {
+            case 1:
+                attrPropTitleLabel.setText("Attribute "+attributeName);
+                break;
+            case 2:
+                evTitleLbl.setText("Attribute "+attributeName);
 
-            //  Check inheritance. If inherited, already set !
-            boolean inherited;
-            inherited = !(attribute == null || attribute.getStatus() == null) &&
-                    Utils.isTrue(attribute.getStatus().getInherited());
-            if (!inherited) {
-                //  Check if event parameters is judicious
-                String  dataType = (String) dataTypeCB.getSelectedItem();
-                boolean judicious = (!dataType.contains("String") &&
-                       !dataType.contains("Boolean")&&
-                       !dataType.contains("State"));
+                //  Check inheritance. If inherited, already set !
+                boolean inherited;
+                inherited = !(attribute == null || attribute.getStatus() == null) &&
+                        Utils.isTrue(attribute.getStatus().getInherited());
+                if (!inherited) {
+                    //  Check if event parameters is judicious
+                    String  dataType = (String) dataTypeCB.getSelectedItem();
+                    boolean judicious = (!dataType.contains("String") &&
+                           !dataType.contains("Boolean")&&
+                           !dataType.contains("State"));
 
-                evRelChangeTxt.setEnabled(judicious );
-                evAbsChangeTxt.setEnabled(judicious );
-                evArchRelChangeTxt.setEnabled(judicious );
-                evArchAbsChangeTxt.setEnabled(judicious );
-                if (!judicious) {
-                    evRelChangeTxt.setText("");
-                    evAbsChangeTxt.setText("");
-                    evArchRelChangeTxt.setText("");
-                    evArchAbsChangeTxt.setText("");
-                }
+                    evRelChangeTxt.setEnabled(judicious);
+                    evAbsChangeTxt.setEnabled(judicious);
+                    evArchRelChangeTxt.setEnabled(judicious);
+                    evArchAbsChangeTxt.setEnabled(judicious);
+                    if (!judicious) {
+                        evRelChangeTxt.setText("");
+                        evAbsChangeTxt.setText("");
+                        evArchRelChangeTxt.setText("");
+                        evArchAbsChangeTxt.setText("");
+                    }
+                    break;
             }
         }
     }//GEN-LAST:event_tabbedPaneStateChanged
@@ -1894,6 +1936,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
     private javax.swing.JTextField attrPropMinValue;
     private javax.swing.JTextField attrPropMinWarning;
     private javax.swing.JTextField attrPropStdUnit;
+    private javax.swing.JLabel attrPropTitleLabel;
     private javax.swing.JTextField attrPropUnit;
     private javax.swing.JComboBox<String> attrTypeCB;
     private javax.swing.JRadioButton changeEvtChecked;

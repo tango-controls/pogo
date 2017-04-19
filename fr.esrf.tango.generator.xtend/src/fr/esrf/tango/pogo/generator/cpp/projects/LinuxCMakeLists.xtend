@@ -86,7 +86,7 @@ class LinuxCMakeLists {
 		set(USER_SRC_FILES )
 
 		#
-		# Set gloabal info and include directories
+		# Set global info and include directories
 		#
 		set(ALL_CLASS_INCLUDE «multi.cmakeFileList("_INCLUDE")»)
 		set(SERVER_SRC «multi.cmakeFileList("_SRC")» ${USER_SRC_FILES} MultiClassesFactory.cpp main.cpp)
@@ -138,7 +138,7 @@ class LinuxCMakeLists {
 		set(USER_SRC_FILES )
 
 		#
-		# Set gloabal info and include directories
+		# Set global info and include directories
 		#
 		set(ALL_CLASS_INCLUDE  ${«cls.upperClassName»_INCLUDE} «cls.cmakeInheritanceFileList("_INCLUDE")» ${USER_INCL_DIR})
 		set(SERVER_SRC ${«cls.upperClassName»_SRC} «cls.cmakeInheritanceFileList("_SRC")» ${USER_SRC_FILES} ClassFactory.cpp main.cpp)

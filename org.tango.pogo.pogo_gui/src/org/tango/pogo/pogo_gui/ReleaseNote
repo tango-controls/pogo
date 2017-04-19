@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.4.6a - 19/04/2017:
+	Cosmetic changes
+
 Pogo-9.4.6 - 13/01/2017:
 	Add a pdf file in doc_html on linux (if wkhtmltopdf found in path)
 	Fix a bug in html protected regions.
