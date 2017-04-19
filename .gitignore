@@ -1,0 +1,11 @@
+ .idea/
+ .metadata/
+ fr.esrf.tango.generator.xtend/bin/
+ fr.esrf.tango.generator.xtend/xtend-gen/
+ fr.esrf.tango.pogo.ui/bin/
+ fr.esrf.tango.pogo/bin/
+ fr.esrf.tango.pogo/xtend-gen/fr/esrf/tango/pogo/.Extensions.java._trace
+ net.danieldietrich.protectedregions.core/target/
+ net.danieldietrich.protectedregions.xtext/target/
+ org.tango.pogo.pogo_gui/bin/
+		
