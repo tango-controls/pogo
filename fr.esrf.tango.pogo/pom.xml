@@ -141,6 +141,9 @@
                         <descriptor>jar-with-ecore-model.xml</descriptor>
                     </descriptors>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <archive>
+                        <manifestFile>${project.basedir}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>

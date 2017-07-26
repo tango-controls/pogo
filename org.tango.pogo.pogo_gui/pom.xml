@@ -33,6 +33,7 @@
             <groupId>org.eclipse.ui</groupId>
             <artifactId>workbench</artifactId>
             <version>3.3.0-I20070608-1100</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>fr.esrf.tango.pogo</groupId>
@@ -56,7 +57,15 @@
         </resources>
         <plugins>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>org.tango.pogo.pogo_gui.Pogo</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
