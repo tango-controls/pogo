@@ -20,8 +20,6 @@
     <orderEntry type="module" module-name="fr.esrf.tango.pogo" />
     <orderEntry type="library" name="Maven: org.eclipse.xtext:org.eclipse.xtext:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.xtext:org.eclipse.xtext.util:2.9.2" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.xtend:org.eclipse.xtend.lib:2.9.2" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.xtend:org.eclipse.xtend.lib.macro:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:14.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:3.0" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
@@ -58,7 +56,16 @@
     <orderEntry type="library" name="Maven: org.eclipse.xtext:xtext-antlr-generator:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.xtext:antlr-generator:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.xtext:org.eclipse.xtext.xtext.generator:2.9.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: fr.esrf.tango.generator.xtend:fr.esrf.tango.generator.xtend:unknown" level="project" />
+    <orderEntry type="module" module-name="fr.esrf.tango.generator.xtend" scope="RUNTIME" />
+    <orderEntry type="library" name="Maven: org.eclipse.xtend:org.eclipse.xtend.lib:2.9.2" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.xtend:org.eclipse.xtend.lib.macro:2.9.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.danieldietrich.protectedregions:core:pre-1.0.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.danieldietrich.protectedregions:xtext:pre-1.0.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.code.guice:guice:1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: ch.qos.logback:logback-classic:1.1.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.osgi:org.osgi.core:4.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.ui:workbench:3.3.0-I20070608-1100" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.core:runtime:3.10.0-v20140318-2214" level="project" />
