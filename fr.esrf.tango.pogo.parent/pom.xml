@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.esrf.tango.pogo</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>fr.esrf.tango.pogo.parent</artifactId>
     <version>9.4.6-SNAPSHOT</version>
 
     <packaging>pom</packaging>
