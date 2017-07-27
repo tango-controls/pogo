@@ -144,6 +144,36 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.9.1</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                                <goal>add-resource</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src-gen</source>
+                                    <source>xtend-gen</source>
+                                </sources>
+                                <resources>
+                                    <resource>
+                                        <directory>src-gen</directory>
+                                        <excludes>
+                                            <exclude>**/*.java</exclude>
+                                            <exclude>**/*.g</exclude>
+                                        </excludes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <configuration>
                         <archive>
