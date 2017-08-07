@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5level %d [%thread - %X{deviceName}] %logger{36}.%M:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.jacorb" level="OFF" />
+    <logger name="org.tango" level="ERROR" />
+    <logger name="org.quartz" level="OFF" />
+    <logger name="net.sf.ehcache" level="OFF"/>
+    <logger name="ch.qos.logback" level="OFF"/>
+    <logger name="org.eclipse.emf" level="OFF"/>
+
+
+    <root level="ERROR">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
