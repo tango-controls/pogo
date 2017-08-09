@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>fr.esrf.tango.pogo</groupId>
-        <artifactId>parent</artifactId>
-        <version>9.4.6-SNAPSHOT</version>
+        <artifactId>fr.esrf.tango.pogo.parent</artifactId>
+        <version>9.4.7-SNAPSHOT</version>
         <relativePath>../fr.esrf.tango.pogo.parent/pom.xml</relativePath>
     </parent>
     <groupId>org.tango.tools.pogo.gui</groupId>
     <artifactId>Pogo</artifactId>
 
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <url>https://github.com/tango-controls/pogo</url>
+    </scm>
 
     <dependencies>
         <dependency>
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>fr.esrf.tango.pogo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>fr.esrf.tango.generator.xtend</groupId>
+            <artifactId>fr.esrf.tango.generator.xtend</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.ui</groupId>
+            <artifactId>workbench</artifactId>
+            <version>3.3.0-I20070608-1100</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.esrf.tango.pogo</groupId>
+            <artifactId>pogo6</artifactId>
+            <version>6.2.5a</version>
         </dependency>
     </dependencies>
 
@@ -36,8 +59,49 @@
         </resources>
         <plugins>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>org.tango.pogo.pogo_gui.Pogo</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>fat.jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <mainClass>org.tango.pogo.pogo_gui.Pogo</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+
+    
 </project>

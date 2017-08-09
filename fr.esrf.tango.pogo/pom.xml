@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>fr.esrf.tango.pogo</groupId>
-        <artifactId>parent</artifactId>
-        <version>9.4.6-SNAPSHOT</version>
+        <artifactId>fr.esrf.tango.pogo.parent</artifactId>
+        <version>9.4.7-SNAPSHOT</version>
         <relativePath>../fr.esrf.tango.pogo.parent/pom.xml</relativePath>
     </parent>
     <artifactId>fr.esrf.tango.pogo</artifactId>
 
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <url>https://github.com/tango-controls/pogo</url>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -106,32 +108,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                            <goal>add-resource</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src-gen</source>
-                                <source>xtend-gen</source>
-                            </sources>
-                            <resources>
-                                <resource>
-                                    <directory>src-gen</directory>
-                                    <excludes>
-                                        <exclude>**/*.java</exclude>
-                                        <exclude>**/*.g</exclude>
-                                    </excludes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -141,6 +117,9 @@
                         <descriptor>jar-with-ecore-model.xml</descriptor>
                     </descriptors>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <archive>
+                        <manifestFile>${project.basedir}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>

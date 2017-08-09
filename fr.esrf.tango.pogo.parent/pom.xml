@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.esrf.tango.pogo</groupId>
-    <artifactId>parent</artifactId>
-    <version>9.4.6-SNAPSHOT</version>
+    <artifactId>fr.esrf.tango.pogo.parent</artifactId>
+    <version>9.4.7-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -44,11 +42,29 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <developerConnection>scm:git:git@github.com:tango-controls/pogo.git</developerConnection>
+        <url>https://github.com/tango-controls/pogo</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-tango-controls</id>
+            <url>https://api.bintray.com/maven/tango-controls/maven/pogo/;publish=1</url>
+        </repository>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>fr.esrf.tango.pogo</groupId>
                 <artifactId>fr.esrf.tango.pogo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.esrf.tango.generator.xtend</groupId>
+                <artifactId>fr.esrf.tango.generator.xtend</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -60,6 +76,26 @@
     </dependencyManagement>
 
     <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <pomFileName>fr.esrf.tango.pogo.parent/pom.xml</pomFileName>
+                    <localCheckout>true</localCheckout>
+                    <generateReleasePoms>true</generateReleasePoms>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>Pogo-Release-@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -131,11 +167,49 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.9.1</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                                <goal>add-resource</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src-gen</source>
+                                    <source>xtend-gen</source>
+                                </sources>
+                                <resources>
+                                    <resource>
+                                        <directory>src-gen</directory>
+                                        <excludes>
+                                            <exclude>**/*.java</exclude>
+                                            <exclude>**/*.g</exclude>
+                                        </excludes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifestFile>${project.basedir}/META-INF/MANIFEST.MF</manifestFile>
+                        </archive>
                     </configuration>
                 </plugin>
             </plugins>
@@ -153,7 +227,9 @@
         </repository>
         <repository>
             <id>codehaus-snapshots</id>
-            <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+            <name>disable dead 'Codehaus Snapshots' repository, see
+                https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478
+            </name>
             <url>http://nexus.codehaus.org/snapshots/</url>
             <releases>
                 <enabled>false</enabled>
@@ -162,11 +238,17 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>pogo6</id>
+            <url>file://${project.basedir}/../lib</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>codehaus-snapshots</id>
-            <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+            <name>disable dead 'Codehaus Snapshots' repository, see
+                https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478
+            </name>
             <url>http://nexus.codehaus.org/snapshots/</url>
             <releases>
                 <enabled>false</enabled>

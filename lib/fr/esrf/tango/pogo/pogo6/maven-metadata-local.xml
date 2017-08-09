@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>fr.esrf.tango.pogo</groupId>
+  <artifactId>pogo6</artifactId>
+  <versioning>
+    <release>6.2.5a</release>
+    <versions>
+      <version>6.2.5a</version>
+    </versions>
+    <lastUpdated>20170307133856</lastUpdated>
+  </versioning>
+</metadata>

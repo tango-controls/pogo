@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>fr.esrf.tango.pogo</groupId>
-        <artifactId>parent</artifactId>
-        <version>9.4.6-SNAPSHOT</version>
+        <artifactId>fr.esrf.tango.pogo.parent</artifactId>
+        <version>9.4.7-SNAPSHOT</version>
         <relativePath>../fr.esrf.tango.pogo.parent/pom.xml</relativePath>
     </parent>
     <groupId>fr.esrf.tango.generator.xtend</groupId>
     <artifactId>fr.esrf.tango.generator.xtend</artifactId>
+
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <url>https://github.com/tango-controls/pogo</url>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -22,6 +25,37 @@
             <groupId>org.eclipse.xtend</groupId>
             <artifactId>org.eclipse.xtend.lib</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.danieldietrich.protectedregions</groupId>
+            <artifactId>core</artifactId>
+            <version>pre-1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.danieldietrich.protectedregions</groupId>
+            <artifactId>xtext</artifactId>
+            <version>pre-1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -31,41 +65,13 @@
                 <directory>src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
-                    <exclude>**/*.xtend</exclude>
+                    <!--<exclude>**/*.xtend</exclude>
                     <exclude>**/*.xtext</exclude>
-                    <exclude>**/*.mwe2</exclude>
+                    <exclude>**/*.mwe2</exclude>-->
                 </excludes>
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <executions>
-                    <execution>
-                        <id>mwe2Launcher</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
-                    <arguments>
-                        <argument>/${project.basedir}/src/fr/esrf/tango/pogo/generator/PogoDslGeneratorMWE.mwe2</argument>
-                        <argument>-p</argument>
-                        <argument>rootPath=/${project.basedir}/..</argument>
-                    </arguments>
-                    <classpathScope>compile</classpathScope>
-                    <additionalClasspathElements>
-                        <additionalClasspathElement>${project.basedir}/src</additionalClasspathElement>
-                    </additionalClasspathElements>
-                    <includePluginDependencies>true</includePluginDependencies>
-                    <cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -79,6 +85,10 @@
                 <artifactId>xtend-maven-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.5.5</version>
                 <configuration>
@@ -86,6 +96,9 @@
                         <descriptor>jar-with-ecore-model.xml</descriptor>
                     </descriptors>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <archive>
+                        <manifestFile>${project.basedir}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>
