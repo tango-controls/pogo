@@ -48,8 +48,15 @@
         <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
         <developerConnection>scm:git:git@github.com:tango-controls/pogo.git</developerConnection>
         <url>https://github.com/tango-controls/pogo</url>
-      <tag>fr.esrf.tango.pogo.parent-9.4.6</tag>
-  </scm>
+        <tag>fr.esrf.tango.pogo.parent-9.4.6</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-tango-controls</id>
+            <url>https://api.bintray.com/maven/tango-controls/maven/pogo/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
