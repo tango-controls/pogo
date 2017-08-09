@@ -13,6 +13,11 @@
     <groupId>org.tango.tools.pogo.gui</groupId>
     <artifactId>Pogo</artifactId>
 
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <developerConnection>scm:git:git@github.com:tango-controls/pogo.git</developerConnection>
+        <url>https://github.com/tango-controls/pogo</url>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -56,6 +61,12 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>

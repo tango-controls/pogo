@@ -44,6 +44,13 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <developerConnection>scm:git:git@github.com:tango-controls/pogo.git</developerConnection>
+        <url>https://github.com/tango-controls/pogo</url>
+      <tag>fr.esrf.tango.pogo.parent-9.4.6</tag>
+  </scm>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -65,6 +72,24 @@
     </dependencyManagement>
 
     <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <pomFileName>fr.esrf.tango.pogo.parent/pom.xml</pomFileName>
+                    <localCheckout>true</localCheckout>
+                    <generateReleasePoms>true</generateReleasePoms>
+                </configuration>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -136,7 +161,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>

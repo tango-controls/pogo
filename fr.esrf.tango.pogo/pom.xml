@@ -12,6 +12,11 @@
     </parent>
     <artifactId>fr.esrf.tango.pogo</artifactId>
 
+    <scm>
+        <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
+        <developerConnection>scm:git:git@github.com:tango-controls/pogo.git</developerConnection>
+        <url>https://github.com/tango-controls/pogo</url>
+    </scm>
 
     <dependencies>
         <dependency>
