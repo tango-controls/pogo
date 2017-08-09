@@ -92,7 +92,7 @@
                     <localCheckout>true</localCheckout>
                     <generateReleasePoms>true</generateReleasePoms>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <tagNameFormat>Pogo-@{project.version}</tagNameFormat>
+                    <tagNameFormat>Pogo-Release-@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
         </plugins>
