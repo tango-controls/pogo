@@ -294,11 +294,11 @@ public class GenerateDialog extends JDialog {
         
         winCMakeListsBtn = new JRadioButton();
         winCMakeListsBtn.setText("WindowsCMakeLists");
-        GridBagConstraints gbc_winCMakeListsBtn = new GridBagConstraints();
-        gbc_winCMakeListsBtn.insets = new Insets(0, 0, 5, 0);
-        gbc_winCMakeListsBtn.gridx = 3;
-        gbc_winCMakeListsBtn.gridy = 3;
-        buttonsPanel.add(winCMakeListsBtn, gbc_winCMakeListsBtn);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        buttonsPanel.add(winCMakeListsBtn, gridBagConstraints);
 
         htmlBtn.setText("html Pages");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -914,6 +914,7 @@ public class GenerateDialog extends JDialog {
     //======================================================
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton winCMakeListsBtn;
     private javax.swing.JRadioButton cMakeListsBtn;
     private javax.swing.JRadioButton codeBtn;
     private javax.swing.JLabel docLabel;

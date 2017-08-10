@@ -3,7 +3,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/mntdirect/_segfs/tango/release/java/appli/Pogo.jar"/>
+	<classpathentry kind="lib" path="F:/Program Files (x86)/tango/share/tango/java/org.tango.pogo-9.0.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/fr.esrf.tango.pogo"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/fr.esrf.tango.generator.xtend"/>
 	<classpathentry kind="output" path="bin"/>
