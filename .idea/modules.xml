@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/org.tango.pogo.pogo_gui/Pogo.iml" filepath="$PROJECT_DIR$/org.tango.pogo.pogo_gui/Pogo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docs/docs.iml" filepath="$PROJECT_DIR$/docs/docs.iml" />
       <module fileurl="file://$PROJECT_DIR$/fr.esrf.tango.generator.xtend/fr.esrf.tango.generator.xtend.iml" filepath="$PROJECT_DIR$/fr.esrf.tango.generator.xtend/fr.esrf.tango.generator.xtend.iml" />
       <module fileurl="file://$PROJECT_DIR$/fr.esrf.tango.pogo/fr.esrf.tango.pogo.iml" filepath="$PROJECT_DIR$/fr.esrf.tango.pogo/fr.esrf.tango.pogo.iml" />
       <module fileurl="file://$PROJECT_DIR$/fr.esrf.tango.pogo.parent/parent.iml" filepath="$PROJECT_DIR$/fr.esrf.tango.pogo.parent/parent.iml" />
