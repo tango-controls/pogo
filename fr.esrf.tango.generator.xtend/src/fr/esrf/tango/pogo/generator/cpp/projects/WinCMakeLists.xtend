@@ -103,7 +103,11 @@ class WinCMakeLists {
 		set(SERVER_NAME «cls.name»)
 		add_executable(«cls.name» ${SERVER_SRC})
 		target_link_libraries(«cls.name» PUBLIC ${TANGO_LIBS} ${WIN_LIBS} ${ZMQ_LIB})
-
+		# Cpack target
+		install(TARGETS «cls.name»
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION bin
+			ARCHIVE DESTINATION bin)
 	'''
 //		«cls.makefileIncludes»
 
