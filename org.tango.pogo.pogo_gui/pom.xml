@@ -51,6 +51,7 @@
                 <directory>src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
+                    <exclude>**/*.form</exclude>
                     <exclude>**/*.xtend</exclude>
                     <exclude>**/*.xtext</exclude>
                     <exclude>**/*.mwe2</exclude>

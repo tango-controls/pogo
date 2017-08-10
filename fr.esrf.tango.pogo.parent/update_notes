@@ -1,0 +1,19 @@
+#!/bin/sh
+#-----------------------------------------------------------------------
+# Update version in application and generate ReleaseNote.java
+#-----------------------------------------------------------------------
+APPLI_VERS=9.5.1
+MAIN_CLASS=PogoConst
+PACKAGE=org.tango.pogo.pogo_gui
+
+POGO=../org.tango.pogo.pogo_gui/target/classes
+UPDATE_CLASS=org.tango.pogo.pogo_gui.tools.UpdateRelease
+SRC_HOME=../org.tango.pogo.pogo_gui/src/org/tango/pogo/pogo_gui
+
+echo "Updating date and revision number..."
+java  -cp $POGO    $UPDATE_CLASS \
+		-file      $SRC_HOME/$MAIN_CLASS.java \
+		-release   $APPLI_VERS \
+		-title     "Pogo Release Notes" \
+		-package   $PACKAGE \
+		-note_path $SRC_HOME

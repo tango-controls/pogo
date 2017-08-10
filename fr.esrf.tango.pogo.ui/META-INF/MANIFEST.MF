@@ -22,4 +22,5 @@ Import-Package: org.apache.commons.logging,
  org.apache.log4j;version="1.2.15"
 Export-Package: fr.esrf.tango.pogo.ui.contentassist.antlr,
  fr.esrf.tango.pogo.ui.contentassist,
- fr.esrf.tango.pogo.ui.quickfix
+ fr.esrf.tango.pogo.ui.quickfix,
+ fr.esrf.tango.pogo.ui.contentassist.antlr.internal

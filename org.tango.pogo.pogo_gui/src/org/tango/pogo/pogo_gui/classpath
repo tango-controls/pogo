@@ -1,7 +1,0 @@
-JAR_FILE=$HOME/pogo/jar/org.tango.pogo.jar
-SITE_PROP=$TANGO_HOME/tools/pogo/properties.test
-BIN_DIR=../../../../../bin
-
-export CLASSPATH=$SITE_PROP:$BIN_DIR:$JAR_FILE
-
-echo "CLASSPATH=$CLASSPATH"

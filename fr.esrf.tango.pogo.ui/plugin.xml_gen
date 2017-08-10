@@ -361,5 +361,11 @@
             extensions="pogo">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="pogo"
+            type="text">
+    </fileTypes>
+  </extension>
 
 </plugin>
