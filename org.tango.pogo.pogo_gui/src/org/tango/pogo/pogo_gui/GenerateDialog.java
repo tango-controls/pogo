@@ -87,6 +87,7 @@ public class GenerateDialog extends JDialog {
         radioButtons.add(projectBtn);
         radioButtons.add(sphinxBtn);
         radioButtons.add(htmlBtn);
+        radioButtons.add(winCMakeListsBtn);
 
         //  Check if cmake available (cmake_tango.opt file cane be found)
         String path = PogoProperty.makefileHome;
@@ -290,6 +291,14 @@ public class GenerateDialog extends JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         buttonsPanel.add(generateLabel, gridBagConstraints);
+        
+        winCMakeListsBtn = new JRadioButton();
+        winCMakeListsBtn.setText("WindowsCMakeLists");
+        GridBagConstraints gbc_winCMakeListsBtn = new GridBagConstraints();
+        gbc_winCMakeListsBtn.insets = new Insets(0, 0, 5, 0);
+        gbc_winCMakeListsBtn.gridx = 3;
+        gbc_winCMakeListsBtn.gridy = 3;
+        buttonsPanel.add(winCMakeListsBtn, gbc_winCMakeListsBtn);
 
         htmlBtn.setText("html Pages");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -651,6 +660,7 @@ public class GenerateDialog extends JDialog {
             pyHlProjectBtn.setVisible(false);
             prPythonHLBtn.setVisible(false);
             sphinxBtn.setVisible(false);
+            winCMakeListsBtn.setVisible(false);
         }
         int lang = Utils.getLanguage(devclass.getPogoDeviceClass().getDescription().getLanguage());
         switch (lang) {
@@ -667,6 +677,7 @@ public class GenerateDialog extends JDialog {
                 pyHlProjectBtn.setVisible(false);
                 prPythonHLBtn.setVisible(false);
                 sphinxBtn.setVisible(false);
+                winCMakeListsBtn.setVisible(true);
                 break;
             case PogoConst.Java:
                 makefileBtn.setVisible(true);
@@ -681,6 +692,7 @@ public class GenerateDialog extends JDialog {
                 pyHlProjectBtn.setVisible(false);
                 prPythonHLBtn.setVisible(false);
                 sphinxBtn.setVisible(false);
+                winCMakeListsBtn.setVisible(false);
                 break;
             case PogoConst.Python:
                 makefileBtn.setVisible(false);
@@ -694,6 +706,7 @@ public class GenerateDialog extends JDialog {
                 pyHlProjectBtn.setVisible(false);
                 prPythonHLBtn.setVisible(false);
                 sphinxBtn.setVisible(false);
+                winCMakeListsBtn.setVisible(false);
                 break;
             case PogoConst.PythonHL:
                 makefileBtn.setVisible(false);
@@ -707,6 +720,7 @@ public class GenerateDialog extends JDialog {
                 pyHlProjectBtn.setVisible(true);
                 prPythonHLBtn.setVisible(true);
                 sphinxBtn.setVisible(true);
+                winCMakeListsBtn.setVisible(false);
                 break;
         }
 
@@ -737,6 +751,7 @@ public class GenerateDialog extends JDialog {
         linuxLabel.setVisible(false);
         vc10Btn.setVisible(false);
         vc12Btn.setVisible(false);
+        winCMakeListsBtn.setVisible(false);
         docLabel.setVisible(false);
         htmlBtn.setVisible(false);
         makefileBtn.setVisible(true);
@@ -829,12 +844,16 @@ public class GenerateDialog extends JDialog {
         boolean overwriteCMakeLists = false;
         boolean overwriteVC12 = false;
         boolean overwriteVC10 = false;
+        boolean overwriteWinCMakeLists = false;
         boolean generate = false;
         if (makefileBtn.isSelected()) {
             overwriteMakefile = mustBeOverWritten(makefile);
         } else
         if (cMakeListsBtn.isSelected()) {
             overwriteCMakeLists = mustBeOverWritten(cMakeLists);
+        } else 
+        if (winCMakeListsBtn.isSelected()) {
+        	overwriteWinCMakeLists = mustBeOverWritten(cMakeLists);
         } else
             generate = true;
         if (mode == PogoConst.SINGLE_CLASS && vc10Btn.isSelected()) {
@@ -866,6 +885,12 @@ public class GenerateDialog extends JDialog {
                 System.err.println("Cannot rename " + file);
         }
         if (overwriteCMakeLists) {
+            //  Rename CMakeLists to be overwritten by XTend
+            File file = new File(path + "/" + cMakeLists);
+            if (!file.renameTo(new File(file.toString() + ".bck")))
+                System.err.println("Cannot rename " + file);
+        }
+        if (overwriteWinCMakeLists) {
             //  Rename CMakeLists to be overwritten by XTend
             File file = new File(path + "/" + cMakeLists);
             if (!file.renameTo(new File(file.toString() + ".bck")))
