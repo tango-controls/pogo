@@ -58,7 +58,9 @@ ReleasePogo() {
     cd release/org.tango.pogo.pogo_gui/target
     ls -l
     echo ""
-    echo "*** You can install Pogo jar file ***"
+    echo "*** You can install Pogo jar file from"
+    pwd
+    echo "And remove release dir"
 }
 
 
