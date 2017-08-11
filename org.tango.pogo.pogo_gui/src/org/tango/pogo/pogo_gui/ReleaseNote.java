@@ -16,7 +16,7 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 11-08-2017  15:42:06)</center><br>\n" + 
+		"	(Generated 11-08-2017  15:44:02)</center><br>\n" + 
 		"<li><b>Pogo-9.5.2 - 12/08/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; CMakeList added for widows (thanks to Sebastien)<br>" + 
 		"<li><b>Pogo-9.5.1 - 10/08/2017:</b><br>" + 
