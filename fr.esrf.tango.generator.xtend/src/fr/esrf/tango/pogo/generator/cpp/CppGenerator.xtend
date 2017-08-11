@@ -161,8 +161,8 @@ class CppGenerator implements IGenerator {
 				}
 				if (cls.description.filestogenerate.contains("WindowsCMakeLists")) {
 					printTrace("Generating CMakeLists.txt")
-					fsa.generateFile("CMakeLists.txt",            cls.generateWinCMakeLists)
-					fsa.generateFile("CmakeTangoWin.cmake",            generateCMakeWinConf)
+					fsa.generateFile("CMakeLists.txt",       cls.generateWinCMakeLists)
+					fsa.generateFile("CmakeTangoWin.cmake",  generateCMakeWinConf)
 				}
 			}
 		}
@@ -173,22 +173,22 @@ class CppGenerator implements IGenerator {
 			//	Multi class
 			if (multi.filestogenerate.contains("Code files")) {
 				printTrace("Generating MultiClassesFactory.cpp")
-				fsa.generateFile("MultiClassesFactory.cpp",   multi.generateMultiClassesFactoryFile)
+				fsa.generateFile("MultiClassesFactory.cpp",  multi.generateMultiClassesFactoryFile)
 				
 				// Do override the main for simple class if exists
 				if (fileExists(multi.sourcePath + "/main.cpp")==false) {
 					printTrace("Generating main.cpp")
-					fsa.generateFile("main.cpp",                  multi.generateMainFile)
+					fsa.generateFile("main.cpp",   multi.generateMainFile)
 				}
 			}
 
 			if (multi.filestogenerate.contains("Makefile")) {
 				printTrace("Generating Makefile.multi")
-				fsa.generateFile("Makefile.multi",            multi.generateLinuxMakefileMultiClasses)
+				fsa.generateFile("Makefile.multi", multi.generateLinuxMakefileMultiClasses)
 			}
 			if (multi.filestogenerate.contains("CMakeLists")) {
 				printTrace("Generating CMakeLists.txt")
-				fsa.generateFile("CMakeLists.txt",            multi.generateLinuxCMakeListsMultiClasses)
+				fsa.generateFile("CMakeLists.txt", multi.generateLinuxCMakeListsMultiClasses)
 			}
 		}
 	}

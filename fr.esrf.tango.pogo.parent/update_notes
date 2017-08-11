@@ -1,19 +1,90 @@
 #!/bin/sh
-#-----------------------------------------------------------------------
-# Update version in application and generate ReleaseNote.java
-#-----------------------------------------------------------------------
-APPLI_VERS=9.5.1
-MAIN_CLASS=PogoConst
+#
+
+VERSION=9.5.1
 PACKAGE=org.tango.pogo.pogo_gui
 
-POGO=../org.tango.pogo.pogo_gui/target/classes
-UPDATE_CLASS=org.tango.pogo.pogo_gui.tools.UpdateRelease
-SRC_HOME=../org.tango.pogo.pogo_gui/src/org/tango/pogo/pogo_gui
+#=========================================================
+#
+#             Internal functions
+#
+#=========================================================
 
-echo "Updating date and revision number..."
-java  -cp $POGO    $UPDATE_CLASS \
-		-file      $SRC_HOME/$MAIN_CLASS.java \
-		-release   $APPLI_VERS \
-		-title     "Pogo Release Notes" \
-		-package   $PACKAGE \
-		-note_path $SRC_HOME
+#---------------------------------------------------------
+#	Update ReleaseNote.java and revision number in target class
+#---------------------------------------------------------
+UpdateNotes() {
+
+    echo "Updating ReleaseNote.java and revision number in target class....."
+    sleep 2
+
+    POGO=../org.tango.pogo.pogo_gui/target/classes
+    UPDATE_CLASS=org.tango.pogo.pogo_gui.tools.UpdateRelease
+    TARGET_CLASS=PogoConst
+    SRC_HOME=../org.tango.pogo.pogo_gui/src/org/tango/pogo/pogo_gui
+    
+    java  -cp $POGO    $UPDATE_CLASS \
+		    -file      $SRC_HOME/$TARGET_CLASS.java \
+		    -release   $VERSION \
+		    -title     "Pogo Release Notes" \
+		    -package   $PACKAGE \
+		    -note_path $SRC_HOME
+}
+
+
+
+#---------------------------------------------------------
+#	Release Pogo using maven
+#---------------------------------------------------------
+ReleasePogo() {
+
+    echo "Release Pogo using maven....."
+    sleep 2
+    
+    # Tag directory
+    cd ..
+    git tag Pogo-Release-$VERSION
+    
+    # Clone in releasze dir and deploy after set version number without SNAPSHOT
+    git clone . release
+    cd release/fr.esrf.tango.pogo.parent && mvn release:update-versions
+    mvn deploy
+    
+    # Manage version number with SNAPSHOT in pom files
+    cd ../../fr.esrf.tango.pogo.parent && mvn release:update-versions
+    cd .. && git add */pom.xml && git commit -m "increment version" && git push && git push --tags
+    
+    #ready to install
+    cd release/org.tango.pogo.pogo_gui/target
+    ls -l
+    echo ""
+    echo "*** You can install Pogo jar file ***"
+}
+
+
+
+#=====================================
+#
+#            Main part
+#
+#=====================================
+case "$1" in
+
+#	----------------------------------------------
+	notes)
+		UpdateNotes
+	;;
+
+#	----------------------------------------------
+	release)
+		ReleasePogo
+	;;
+
+    *)
+#	----------------------------------------------
+#	Default case  --> Display syntax
+#	----------------------------------------------
+    echo "Usage: $0 { notes|release }"
+    exit 0
+esac
+
