@@ -16,11 +16,13 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 10-08-2017  10:00:28)</center><br>\n" + 
+		"	(Generated 11-08-2017  15:42:06)</center><br>\n" + 
+		"<li><b>Pogo-9.5.2 - 12/08/2017:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; CMakeList added for widows (thanks to Sebastien)<br>" + 
 		"<li><b>Pogo-9.5.1 - 10/08/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Add release notes and remove unused files.<br>" + 
 		"<li><b>Pogo-9.5.0 - 09/08/2017:</b><br>" + 
-		"&nbsp; &nbsp; &nbsp; Mavenized project<br>" + 
+		"&nbsp; &nbsp; &nbsp; Mavenized project (thanks to Igor)<br>" + 
 		"<li><b>Pogo-9.4.6a - 19/04/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Cosmetic changes<br>" + 
 		"<li><b>Pogo-9.4.6 - 13/01/2017:</b><br>" + 

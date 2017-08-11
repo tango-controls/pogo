@@ -9,11 +9,14 @@
 #-======================================================================
 
 
+Pogo-9.5.2 - 12/08/2017:
+    CMakeList added for widows (thanks to Sebastien)
+
 Pogo-9.5.1 - 10/08/2017:
     Add release notes and remove unused files.
 
 Pogo-9.5.0 - 09/08/2017:
-    Mavenized project
+    Mavenized project (thanks to Igor)
 
 Pogo-9.4.6a - 19/04/2017:
 	Cosmetic changes
