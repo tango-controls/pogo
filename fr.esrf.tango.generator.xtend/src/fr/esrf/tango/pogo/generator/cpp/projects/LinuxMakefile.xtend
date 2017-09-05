@@ -166,8 +166,7 @@ class LinuxMakefile {
 		#=============================================================================
 		# OUTPUT_DIR  is the directory which contains the build result.
 		# if not set, the standard location is :
-		#	- ./shlib if OUTPUT_TYPE is SHARED_LIB
-		#	- ./lib   if OUTPUT_TYPE is STATIC_LIB
+		#	- ./lib   if OUTPUT_TYPE is SHARED_LIB or STATIC_LIB
 		#	- ./bin for others
 		#
 		#OUTPUT_DIR =
