@@ -1447,6 +1447,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         //  Check if polling period has been modified for
         //  overloaded object if any
         checkForPollingPeriodOverloaded(devClass.getPogoDeviceClass());
+        devClass.setUsingPyHlPackage(pogoRoot.usingPyHlPackage);
         return devClass;
     }
 
@@ -1926,6 +1927,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         private String description;
         private String title;
         private String language;
+        private boolean usingPyHlPackage = false;
         private String path;
         private String license;
         private String copyright;
@@ -1943,15 +1945,13 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 			this.copyright = pogo_class.getDescription().getCopyright();
             this.isAbstract = DeviceClass.checkIfAbstractClass(pogo_class, false);
             this.id = pogo_class.getDescription().getIdentification();
-            for (Inheritance inher : pogo_class.getDescription().getInheritances()) {
-                inheritances.add(inher);
-                //System.out.println(inher.getClassname());
-            }
+            if (language.equals(strLang[PythonHL]))
+                usingPyHlPackage = pogo_class.getDescription().getFilestogenerate().toLowerCase().contains("package");
+            inheritances.addAll(pogo_class.getDescription().getInheritances());
         }
         //===========================================================
         //===========================================================
         private String toInfoString() {
-
             String title = language + " Class :  " + name;
             if (isAbstract)
                 title += "  (class is abstract !)";

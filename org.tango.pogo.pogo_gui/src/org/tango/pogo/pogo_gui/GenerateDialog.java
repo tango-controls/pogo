@@ -89,7 +89,7 @@ public class GenerateDialog extends JDialog {
         radioButtons.add(htmlBtn);
         radioButtons.add(winCMakeListsBtn);
 
-        //  Check if cmake available (cmake_tango.opt file cane be found)
+        //  Check if cmake available (cmake_tango.opt file can be found)
         String path = PogoProperty.makefileHome;
         String fileName = "/cmake_tango.opt";
         String env = System.getProperty("DEBUG_MAKE");
@@ -98,7 +98,7 @@ public class GenerateDialog extends JDialog {
         }
         else {
             String str = "$(TANGO_HOME)";
-            if (fileName.startsWith(str)) {
+            if (path.startsWith(str)) {
                 String th = System.getenv("TANGO_HOME");
                 if (th == null)
                     th = System.getProperty("TANGO_HOME");
@@ -590,7 +590,7 @@ public class GenerateDialog extends JDialog {
 
     //=============================================================
     //=============================================================
-    private String buidDetailsString(List<String> items, String name) {
+    private String buildDetailsString(List<String> items, String name) {
         StringBuilder sb = new StringBuilder();
 
         if (items.size() > 0) {
@@ -613,9 +613,9 @@ public class GenerateDialog extends JDialog {
         List<String> attributes = deviceClass.getAbstractAttributeNames();
 
         String
-                message = buidDetailsString(commands, "command");
+                message = buildDetailsString(commands, "command");
         message += "\n";
-        message += buidDetailsString(attributes, "attribute");
+        message += buildDetailsString(attributes, "attribute");
 
         JOptionPane.showMessageDialog(this,
                 message,
@@ -640,17 +640,17 @@ public class GenerateDialog extends JDialog {
 
     //======================================================
     //======================================================
-    public int showDialog(DeviceClass devclass) {
+    public int showDialog(DeviceClass deviceClass) {
         mode = PogoConst.SINGLE_CLASS;
-        this.deviceClass = devclass;
-        String path = devclass.getPogoDeviceClass().getDescription().getSourcePath();
+        this.deviceClass = deviceClass;
+        String path = deviceClass.getPogoDeviceClass().getDescription().getSourcePath();
         if (path == null || !new File(path).exists())
             path = PogoGUI.homeDir;
         outPathText.setText(path);
         outPathText.setRequestFocusEnabled(true);
         outPathText.requestFocus();
 
-        if (devclass.checkIfAbstractClass()) {
+        if (deviceClass.checkIfAbstractClass()) {
             makefileBtn.setEnabled(false);
             cMakeListsBtn.setEnabled(false);
             vc10Btn.setEnabled(false);
@@ -662,7 +662,7 @@ public class GenerateDialog extends JDialog {
             sphinxBtn.setVisible(false);
             winCMakeListsBtn.setVisible(false);
         }
-        int lang = Utils.getLanguage(devclass.getPogoDeviceClass().getDescription().getLanguage());
+        int lang = Utils.getLanguage(deviceClass.getPogoDeviceClass().getDescription().getLanguage());
         switch (lang) {
             case PogoConst.Cpp:
                 makefileBtn.setVisible(true);
@@ -721,13 +721,14 @@ public class GenerateDialog extends JDialog {
                 prPythonHLBtn.setVisible(true);
                 sphinxBtn.setVisible(true);
                 winCMakeListsBtn.setVisible(false);
+                pyHlProjectBtn.setSelected(deviceClass.isUsingPyHlPackage());
                 break;
         }
 
 
-        boolean isAbstract = devclass.checkIfAbstractClass();
+        boolean isAbstract = deviceClass.checkIfAbstractClass();
         if (isAbstract)
-            warningLabel.setText(devclass.getPogoDeviceClass().getName() + warningLabel.getText());
+            warningLabel.setText(deviceClass.getPogoDeviceClass().getName() + warningLabel.getText());
         else
             warningPanel.setVisible(false);
 

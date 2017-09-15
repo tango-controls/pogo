@@ -58,14 +58,16 @@ public class DeviceClass {
     private OldPogoModel old_pogo_class = null;
     private PogoDeviceClass pogoClass = null;
     private List<DeviceClass> ancestors = new ArrayList<>();
+    private boolean usingPyHlPackage = false;
+
     private static final String defaultInheritanceStart = "Device_";
     private static final String defaultInheritanceEnd = "Impl";
     private static final String defaultInheritance =
             defaultInheritanceStart + defaultInheritanceEnd;
+
     //  Used only by MultiClasses
     private List<String> parentClasses = new ArrayList<>();
     //===============================================================
-
     /**
      * Create an empty object
      */
@@ -77,7 +79,6 @@ public class DeviceClass {
         pogoClass.getDescription().getInheritances().add(getDefaultInheritance());
     }
     //===============================================================
-
     /**
      * Create an new object
      *
@@ -101,7 +102,6 @@ public class DeviceClass {
         }
     }
     //===============================================================
-
     /**
      * Create the object from the specified file.
      *
@@ -113,7 +113,6 @@ public class DeviceClass {
         this(filename, true);
     }
     //===============================================================
-
     /**
      * Create the object from the specified file.
      *
@@ -162,7 +161,6 @@ public class DeviceClass {
                 inher.getClassname().endsWith(defaultInheritanceEnd));
 
     }
-
     //===============================================================
     //===============================================================
     public static Inheritance getDefaultInheritance() {
@@ -203,7 +201,6 @@ public class DeviceClass {
         return commandNames;
     }
     //===============================================================
-
     /**
      * Check if there is at least an abstract command or attribute.
      * It fill the field (hasAbstractCommand & hasAbstractAttribute) if requested.
@@ -215,7 +212,6 @@ public class DeviceClass {
         return checkIfAbstractClass(pogoClass, false);
     }
     //===============================================================
-
     /**
      * Check if there is at least an abstract command or attribute.
      * It fill the field (hasAbstractCommand & hasAbstractAttribute) if requested.
@@ -590,7 +586,6 @@ public class DeviceClass {
         }
     }
     //===============================================================
-
     /**
      * recover code from old Pogo model to
      * insert in new model.
@@ -612,6 +607,16 @@ public class DeviceClass {
     //===============================================================
 
 
+    //===============================================================
+    //===============================================================
+    public boolean isUsingPyHlPackage() {
+        return usingPyHlPackage;
+    }
+    //===============================================================
+    //===============================================================
+    public void setUsingPyHlPackage(boolean usingPyHlPackage) {
+        this.usingPyHlPackage = usingPyHlPackage;
+    }
     //===============================================================
     //===============================================================
     public void resetParentClasses() {
