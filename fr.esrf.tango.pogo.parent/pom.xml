@@ -51,7 +51,7 @@
     <distributionManagement>
         <repository>
             <id>bintray-tango-controls</id>
-            <url>https://api.bintray.com/maven/tango-controls/maven/pogo/;publish=1</url>
+            <url>https://api.bintray.com/maven/tango-controls/maven/Pogo/;publish=1</url>
         </repository>
     </distributionManagement>
 
