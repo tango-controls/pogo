@@ -16,8 +16,8 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 15-09-2017  13:55:22)</center><br>\n" + 
-		"<li><b>Pogo-9.5.3 - 15/09/2017:</b><br>" + 
+		"	(Generated 15-09-2017  14:05:04)</center><br>\n" + 
+		"<li><b>Pogo-9.5.4 - 15/09/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; PyHL package is now memorized for next reload/generate action.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix bug in Pogo command line.<br>" + 
 		"<li><b>Pogo-9.5.2 - 12/08/2017:</b><br>" + 
