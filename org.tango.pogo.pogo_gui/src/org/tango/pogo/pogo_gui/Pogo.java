@@ -35,13 +35,6 @@
 
 package org.tango.pogo.pogo_gui;
 
-
-/**
- *	This class is able to manage shell command line before Pogo statup.
- *
- * @author verdier
- */
-
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass;
 import org.tango.pogo.pogo_gui.tools.OAWutils;
 import org.tango.pogo.pogo_gui.tools.PogoException;
@@ -49,17 +42,27 @@ import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.tango.pogo.pogo_gui.PogoConst.Python;
+import static org.tango.pogo.pogo_gui.PogoConst.strLang;
+
+/*
+ *	This class is able to manage shell command line before Pogo statup.
+ *
+ * @author verdier
+ */
 
 @SuppressWarnings({"UnusedDeclaration"})    //  Public methods
 public class Pogo {
     private static final int GENE_SRC = 0;
-    private static final int GENE_DOC = 1;
-    private static final int MULTI = 2;
-    private static final int HELP = 3;
-    private static final String[] known_actions = {"-src", "-doc", "-multi", "-?"};
+    private static final int GENE_HTML = 1;
+    private static final int GENE_SPHINX = 2;
+    private static final int MULTI = 3;
+    private static final int HELP = 4;
+    private static final String[] known_actions = {"-src", "-html", "-sphinx", "-multi", "-?"};
 
     private DeviceClass deviceClass = null;
     private PogoException pogoException = null;
@@ -106,6 +109,20 @@ public class Pogo {
         return pogoException;
     }
     //===============================================================
+    //===============================================================
+    private String getPythonGeneratedFile(PogoDeviceClass pogoClass) {
+        String filesToGenerate ="";
+        String generatedFile = deviceClass.getPogoDeviceClass().getDescription().getFilestogenerate();
+        if (generatedFile.contains("Python Package"))
+            filesToGenerate += ", Python Package";
+        if (generatedFile.contains("Protected Regions"))
+            filesToGenerate += ", Protected Regions";
+        if (filesToGenerate.isEmpty())
+            return "";
+        else
+            return filesToGenerate;
+    }
+    //===============================================================
     /**
      * Generate source files for specified inputs.
      */
@@ -114,15 +131,25 @@ public class Pogo {
         try {
             for (String filename : sourceFiles) {
                 //	Read source files
+                File file = new File(filename);
+                filename = file.getAbsolutePath();
                 deviceClass = new DeviceClass(filename);
                 PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
+
 
                 //	Check is from old Pogo model (not generated with OAW)
                 if (deviceClass.isOldPogoModel()) {
                     deviceClass.generateFromOldModel(filename, true);
                 } else {
                     //	Set the file list to be generated and generate
-                    deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate("Code files");
+                    //"XMI   file,Code files,Python Package,Protected Regions"
+                    String filesToGenerate = "XMI   file,Code files";
+                    //  If python HL, add python HL specific options
+                    String language = pogoClass.getDescription().getLanguage();
+                    if (language.startsWith(strLang[Python])) {
+                        filesToGenerate += getPythonGeneratedFile(pogoClass);
+                    }
+                    deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
                     OAWutils.getInstance().generate(pogoClass);
                 }
             }
@@ -136,29 +163,78 @@ public class Pogo {
     }
     //===============================================================
     /**
-     * Generate doc files for specified inputs.
+     * Generate HTML files for specified inputs.
      */
     //===============================================================
-    public void generateDocumentation() {
+    public void generateHtmlDocumentation() {
         try {
             for (String filename : sourceFiles) {
+                File file = new File(filename);
+                filename = file.getAbsolutePath();
+
                 System.out.println("===============================================================");
-                System.out.println("\tBuild doc from " + filename);
+                System.out.println("\tBuild HTML from " + filename);
                 System.out.println("===============================================================");
 
                 //	Read source files
                 deviceClass = new DeviceClass(filename);
-                PogoDeviceClass pogoclass = deviceClass.getPogoDeviceClass();
+                PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
 
-                //	Set the file list to be generated and generate
-                deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate("html");
-                OAWutils.getInstance().generate(pogoclass);
+                String filesToGenerate = "XMI   file, html";
+                //  If python HL, add python HL specific options
+                String language = deviceClass.getPogoDeviceClass().getDescription().getLanguage();
+                if (language.startsWith(strLang[Python])) {
+                    filesToGenerate += getPythonGeneratedFile(pogoClass);
+                }
+
+                    //	Set the file list to be generated and generate
+                deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
+                OAWutils.getInstance().generate(pogoClass);
 
                 //	Check if it is from old Pogo model (not generated with OAW)
                 if (deviceClass.isOldPogoModel()) {
                     //  Try to get old description and add it.
                     deviceClass.generateDocFromOldModel(filename, null);   //  same place
                 }
+            }
+        } catch (PogoException e) {
+            System.err.println(e.getMessage());
+            pogoException = e;
+        } catch (Exception e) {
+            e.printStackTrace();
+            pogoException = new PogoException(e.toString());
+        }
+    }
+    //===============================================================
+    /**
+     * Generate Sphinx files for specified inputs.
+     */
+    //===============================================================
+    public void generateSphinxDocumentation() {
+        try {
+            for (String filename : sourceFiles) {
+                //	Read source files
+                File file = new File(filename);
+                filename = file.getAbsolutePath();
+                deviceClass = new DeviceClass(filename);
+                PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
+
+                //  If python HL, generate sphinx files
+                String language = deviceClass.getPogoDeviceClass().getDescription().getLanguage();
+                if (language.startsWith(strLang[Python])) {
+
+                    System.out.println("===============================================================");
+                    System.out.println("\tBuild Sphinx from " + filename);
+                    System.out.println("===============================================================");
+
+                    //  If python HL, add python HL specific options
+                    String filesToGenerate = "XMI   file,Sphinx";
+                    filesToGenerate += getPythonGeneratedFile(pogoClass);
+                    deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
+                    OAWutils.getInstance().generate(pogoClass);
+                }
+                else
+                    throw new PogoException("Sphinx documentation requires a Python or PythonHL source code");
             }
         } catch (PogoException e) {
             System.err.println(e.getMessage());
@@ -244,9 +320,10 @@ public class Pogo {
         System.out.println("Without option, pogo start the Graphic User Interface");
         System.out.println();
         System.out.println("Actions:");
-        System.out.println("	-src:	will re-generate the device server source files.");
-        System.out.println("	-multi:	will start Pogo for multi class server.");
-        System.out.println("	-doc:	will generate the device server documentation.");
+        System.out.println("	-src:	 will re-generate the device server source files.");
+        System.out.println("	-multi:	 will start Pogo for multi class server.");
+        System.out.println("	-html:	 will generate the device server html documentation.");
+        System.out.println("	-sphinx: will generate the device server Sphinx documentation.");
         System.out.println();
     }
 
@@ -263,8 +340,12 @@ public class Pogo {
                     pogo.generateSourceFiles();
                     System.exit(0);
                     break;
-                case GENE_DOC:
-                    pogo.generateDocumentation();
+                case GENE_HTML:
+                    pogo.generateHtmlDocumentation();
+                    System.exit(0);
+                    break;
+                case GENE_SPHINX:
+                    pogo.generateSphinxDocumentation();
                     System.exit(0);
                     break;
                 case MULTI:
