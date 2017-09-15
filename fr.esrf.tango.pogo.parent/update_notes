@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-VERSION=9.5.5
+VERSION=9.6.0
 PACKAGE=org.tango.pogo.pogo_gui
 
 #=========================================================
