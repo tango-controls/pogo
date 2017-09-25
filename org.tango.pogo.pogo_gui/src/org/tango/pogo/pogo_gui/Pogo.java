@@ -50,7 +50,7 @@ import static org.tango.pogo.pogo_gui.PogoConst.Python;
 import static org.tango.pogo.pogo_gui.PogoConst.strLang;
 
 /*
- *	This class is able to manage shell command line before Pogo statup.
+ *	This class is able to manage shell command line before Pogo startup.
  *
  * @author verdier
  */

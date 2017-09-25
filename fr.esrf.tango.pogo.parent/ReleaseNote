@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.6.1 - 25/09/2017:
+    Fix a NPE in PyHL new class creation.
+
 Pogo-9.6.0 - 15/09/2017:
     PyHL package is now memorized for next reload/generate action.
     Fix bug in Pogo command line.

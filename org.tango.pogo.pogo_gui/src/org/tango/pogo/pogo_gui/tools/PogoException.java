@@ -103,7 +103,7 @@ public class  PogoException extends Exception {
     //===============================================================
     //===============================================================
     public static void popup(Component component, Exception exception) {
-        popup(component, exception.getMessage());
+        popup(component, exception.toString());
     }
     //===============================================================
     //===============================================================

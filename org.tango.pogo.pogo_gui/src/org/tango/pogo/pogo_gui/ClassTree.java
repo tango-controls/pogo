@@ -1945,7 +1945,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 			this.copyright = pogo_class.getDescription().getCopyright();
             this.isAbstract = DeviceClass.checkIfAbstractClass(pogo_class, false);
             this.id = pogo_class.getDescription().getIdentification();
-            if (language.equals(strLang[PythonHL]))
+            if (language.equals(strLang[PythonHL]) && pogo_class.getDescription().getFilestogenerate()!=null)
                 usingPyHlPackage = pogo_class.getDescription().getFilestogenerate().toLowerCase().contains("package");
             inheritances.addAll(pogo_class.getDescription().getInheritances());
         }
