@@ -16,7 +16,9 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 25-09-2017  13:42:29)</center><br>\n" + 
+		"	(Generated 06-10-2017  16:06:50)</center><br>\n" + 
+		"<li><b>Pogo-9.6.2 - 06/10/2017:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Allow to generate ENUM attribute as spectrum and image in C++.<br>" + 
 		"<li><b>Pogo-9.6.1 - 25/09/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a NPE in PyHL new class creation.<br>" + 
 		"<li><b>Pogo-9.6.0 - 15/09/2017:</b><br>" + 

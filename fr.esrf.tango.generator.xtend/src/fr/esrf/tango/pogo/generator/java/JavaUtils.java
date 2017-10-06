@@ -175,21 +175,24 @@ public class JavaUtils extends StringUtils {
 	}
 	//===========================================================
 	public String buildEnum(Attribute attribute) {
-		String s = "";
+		StringBuilder sb = new StringBuilder();
 		if (attribute.getDataType().toString().contains("Enum")) {
 			if (attribute.getEnumLabels()!=null && attribute.getEnumLabels().size()>0) {
-				s += "public enum " + attribute.getName() + "Enum { \n";
+				sb.append("public enum ").append(attribute.getName()).append("Enum { \n");
 				for (String label : attribute.getEnumLabels()) {
 					String item = label.toUpperCase();
 					item = item.replaceAll(" ", "_");
-					s += "\t" + item + ",\n";
+					item = myReplaceAll(item, "+", "plus");
+					item = myReplaceAll(item, "-", "minus");
+					item = myReplaceAll(item, "*", "mult");
+					item = myReplaceAll(item, "/", "div");
+					sb.append("\t_").append(item).append(",\n");
 				}
-				s += "};";
+				sb.append("};");
 			}
 		}
-		return s;
+		return sb.toString();
 	}
-	
 	//===========================================================
 	/**
 	 * Returns the default property values with expected format

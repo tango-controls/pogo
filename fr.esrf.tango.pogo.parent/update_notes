@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-VERSION=9.6.1
+VERSION=9.6.2
 PACKAGE=org.tango.pogo.pogo_gui
 
 #=========================================================
@@ -45,7 +45,7 @@ ReleasePogo() {
     cd ..
     git tag Pogo-Release-$VERSION
     
-    # Clone in releasze dir and deploy after set version number without SNAPSHOT
+    # Clone in release dir and deploy after set version number without SNAPSHOT
     git clone . release
     cd release/fr.esrf.tango.pogo.parent && mvn release:update-versions
     mvn deploy

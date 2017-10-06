@@ -189,10 +189,18 @@ class Attributes {
 				«IF attribute.strType.contains("String")»
 					const Tango::ConstDevString	*w_val;
 				«ELSE»
-					const «attribute.strType»	*w_val;
+					«IF attribute.dataType.cppType.contains("Enum")»
+						const short *w_val;
+					«ELSE»
+						const «attribute.strType»	*w_val;
+					«ENDIF»
 				«ENDIF»
 			«ENDIF»
 			attr.get_write_value(w_val);
+			«IF attribute.isScalar==false && attribute.dataType.cppType.contains("Enum")»
+				«attribute.name»Enum enum_val[w_length];
+				for (int i=0 ; i<w_length ; i++)  enum_val[i]=(«attribute.name»Enum) w_val[i];
+			«ENDIF»
 			«cls.protectedArea(attribute.writeAttrubuteMethod, "", false)»
 		}
 	'''

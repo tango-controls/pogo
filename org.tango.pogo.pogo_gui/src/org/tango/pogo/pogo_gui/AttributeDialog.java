@@ -1863,6 +1863,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         String dataType = dataTypeCB.getSelectedItem().toString();
         if (dataType.equals("DevEncoded"))
             attrTypeCB.setSelectedIndex(SCALAR);//    Attribute only scalar
+        /*
         else
         if (dataType.equals("DevEnum")) {
             attrTypeCB.setSelectedIndex(SCALAR);//    Attribute only scalar
@@ -1874,7 +1875,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             }
             updateEnumLabelToolTip();
         }
+        */
         enumDefinitionBtn.setVisible(dataType.equals("DevEnum"));
+        if (attribute.getEnumLabels()!=null) {
+            enumLabels = list2stringArray(attribute.getEnumLabels());
+            updateEnumLabelToolTip();
+        }
 
         switch (attrTypeCB.getSelectedIndex()) {
             case SCALAR:

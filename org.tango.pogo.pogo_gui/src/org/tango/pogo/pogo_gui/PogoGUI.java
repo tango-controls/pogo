@@ -35,7 +35,9 @@
 
 package org.tango.pogo.pogo_gui;
 
+import fr.esrf.tango.pogo.pogoDsl.Attribute;
 import fr.esrf.tango.pogo.pogoDsl.ClassIdentification;
+import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.packaging.ConfigurePackagingDialog;
 import org.tango.pogo.pogo_gui.packaging.Packaging;
 import org.tango.pogo.pogo_gui.tools.*;
@@ -801,10 +803,34 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     //=======================================================
+    private void checkPogoClassCompatibilityLanguage(DeviceClass deviceClass) throws PogoException {
+        EList<Attribute> attributeEList = deviceClass.getPogoDeviceClass().getAttributes();
+        if (deviceClass.getPogoDeviceClass().
+                getDescription().getLanguage().equalsIgnoreCase(PogoConst.strLang[PogoConst.Cpp]))
+            return;
+        for (Attribute attribute : attributeEList) {
+            //  If spectrum or image and Enum throw exception
+            if (!attribute.getAttType().equalsIgnoreCase(PogoConst.AttrTypeArray[PogoConst.SCALAR])) {
+                if (attribute.getDataType().toString().contains("Enum")) {
+                    throw new PogoException("Enum are supported as SPECTRUM only for C++");
+                }
+            }
+        }
+    }
+    //=======================================================
+    //=======================================================
+    @SuppressWarnings("UnusedReturnValue")
     private boolean generateSourceFiles(ClassTree tree) {
         //	First time check output path
         GenerateDialog generateDialog = new GenerateDialog(this);
         DeviceClass deviceClass = tree.getDeviceClass();
+
+        try {
+            checkPogoClassCompatibilityLanguage(deviceClass);
+        } catch (PogoException e) {
+            e.popup(this);
+            return false;
+        }
 
         if (deviceClass == null)    //	No class defined in tree or cannot get it (ID is null)
             return true;
@@ -1382,33 +1408,23 @@ public class PogoGUI extends JFrame {
 
         //=======================================================
         //=======================================================
+        @SuppressWarnings("SameParameterValue")
         private String getPanelNameAt(int idx) {
             ClassPanel panel = (ClassPanel) tabbedPane.getComponent(idx);
             return panel.getName();
         }
-
-        //=======================================================
-        /*
-        private ClassTree getTreeAt(int idx)
-        {
-            return get(idx).getTree();
-        }
-        */
         //=======================================================
         private ClassTree getSelectedTree() {
             return get(tabbedPane.getSelectedIndex()).getTree();
         }
-
         //=======================================================
         private void addPanel(DeviceClass devclass) {
-
             ClassPanel cp = new ClassPanel(gui);
             cp.setTree(devclass, this.size() > 0);
             add(cp);
             tabbedPane.add(cp);
             tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
         }
-
         //=======================================================
         private void addPanels(DeviceClass devclass) {
             //  Reset if needed
