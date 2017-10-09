@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.6.3 - 09/10/2017:
+    Fix a NPE in AttributeDialog.java
+
 Pogo-9.6.2 - 06/10/2017:
     Allow to generate ENUM attribute as spectrum and image in C++.
 

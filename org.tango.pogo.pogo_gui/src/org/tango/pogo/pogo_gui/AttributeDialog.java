@@ -1877,7 +1877,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
         }
         */
         enumDefinitionBtn.setVisible(dataType.equals("DevEnum"));
-        if (attribute.getEnumLabels()!=null) {
+        if (attribute!=null && attribute.getEnumLabels()!=null) {
             enumLabels = list2stringArray(attribute.getEnumLabels());
             updateEnumLabelToolTip();
         }
