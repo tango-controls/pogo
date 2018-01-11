@@ -380,7 +380,7 @@ class DeviceClassSource {
 				«cls.protectedAreaClass("erase_dynamic_attributes")»
 			}
 
-			«cls.simpleMethodHeaderClass("get_attr_by_name", "returns Tango::Attr * object found by name")»
+			«cls.simpleMethodHeaderClass("get_attr_object_by_name", "returns Tango::Attr * object found by name")»
 			Tango::Attr *«cls.name»Class::get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname)
 			{
 				vector<Tango::Attr *>::iterator it;
