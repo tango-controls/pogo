@@ -46,7 +46,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
@@ -144,7 +143,7 @@ public class PogoGUI extends JFrame {
         initComponents();
         PogoProperty.init();
         initOwnComponents();
-        customizeMenus();
+        manageRecentMenu(null);
         setTitle(applicationTitle(null));
 
         //  Create a dummy panel for display
@@ -221,61 +220,18 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     //=======================================================
-
-    //=======================================================
-    //=======================================================
-    private void customizeMenus()  {
-        fileMenu.setMnemonic('F');
-        newItem.setMnemonic('N');
-        newItem.setAccelerator(KeyStroke.getKeyStroke('N', InputEvent.CTRL_MASK));
-        openItem.setMnemonic('O');
-        openItem.setAccelerator(KeyStroke.getKeyStroke('O', InputEvent.CTRL_MASK));
-        generateItem.setMnemonic('G');
-        generateItem.setAccelerator(KeyStroke.getKeyStroke('G', InputEvent.CTRL_MASK));
-        exitItem.setMnemonic('E');
-        exitItem.setAccelerator(KeyStroke.getKeyStroke('Q', InputEvent.CTRL_MASK));
-
-        editMenu.setMnemonic('E');
-        stateMachineItem.setMnemonic('M');
-        stateMachineItem.setAccelerator(KeyStroke.getKeyStroke('M', InputEvent.CTRL_MASK));
-        deleteItem.setMnemonic('D');
-        deleteItem.setAccelerator(KeyStroke.getKeyStroke(Event.DELETE, 0));
-
-        moveUpItem.setMnemonic('U');
-        moveUpItem.setAccelerator(KeyStroke.getKeyStroke('U', InputEvent.CTRL_MASK));
-        moveDownItem.setMnemonic('D');
-        moveDownItem.setAccelerator(KeyStroke.getKeyStroke('D', InputEvent.CTRL_MASK));
-
-        preferencesItem.setMnemonic('P');
-        preferencesItem.setAccelerator(KeyStroke.getKeyStroke('P', InputEvent.CTRL_MASK));
-
-        toolsMenu.setMnemonic('T');
-        if (!Utils.osIsUnix())
-            toolsMenu.setVisible(false);
-        multiItem.setMnemonic('M');
-        multiItem.setAccelerator(KeyStroke.getKeyStroke('M', InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK));
-
-        helpMenu.setMnemonic('H');
-        colorItem.setMnemonic('C');
-        aboutItem.setMnemonic('A');
-
-        manageRecentMenu(null);
-    }
-
-    //=======================================================
-    //=======================================================
-    private void manageRecentMenu(String new_proj) {
+    private void manageRecentMenu(String newProject) {
         try {
             //	Check if there is something to manage.
-            if (new_proj == null && PogoProperty.projectHistory.size() == 0)    //	No project histo
+            if (newProject == null && PogoProperty.projectHistory.size() == 0)    //	No project history
                 return;
 
             //	Check if main class or inherited one.
             if (tabbedPane.getSelectedIndex() > 0)
                 return;
 
-            if (new_proj != null)
-                PogoProperty.addProject(new_proj, PogoConst.SINGLE_CLASS);
+            if (newProject != null)
+                PogoProperty.addProject(newProject, PogoConst.SINGLE_CLASS);
 
             //	If project history available add it in recent menu
             recentMenu.removeAll();
@@ -296,6 +252,8 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     private void initOwnComponents() {
+        topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
         Utils utils = Utils.getInstance();
         addTopPanelButton(utils.reloadIcon, "Reload Class", false);
         addTopPanelButton(utils.newIcon, "New Tango Class", false);
@@ -366,10 +324,10 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     private void addTopPanelButton(ImageIcon icon, String tip, final boolean isPalette) {
-        JButton btn = new JButton(icon);
-        btn.setToolTipText(Utils.buildToolTip(tip));
-        btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn.addActionListener(new java.awt.event.ActionListener() {
+        JButton button = new JButton(icon);
+        button.setToolTipText(Utils.buildToolTip(tip));
+        button.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (isPalette)
                     paletteActionPerformed(evt);
@@ -377,8 +335,8 @@ public class PogoGUI extends JFrame {
                     topButtonActionPerformed(evt);
             }
         });
-        topPanel.add(btn);
-        topButtons.add(btn);
+        topPanel.add(button);
+        topButtons.add(button);
     }
     //=======================================================
     /**
@@ -392,50 +350,46 @@ public class PogoGUI extends JFrame {
     private void initComponents() {
 
         inherPanel = new javax.swing.JPanel();
-        topPanel = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
+        topPanel = new javax.swing.JPanel();
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        newItem = new javax.swing.JMenuItem();
+        javax.swing.JMenu fileMenu = new javax.swing.JMenu();
+        javax.swing.JMenuItem newItem = new javax.swing.JMenuItem();
         newFromTemplateItem = new javax.swing.JMenuItem();
-        openItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem openItem = new javax.swing.JMenuItem();
         recentMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem dummyItem = new javax.swing.JMenuItem();
-        generateItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem generateItem = new javax.swing.JMenuItem();
         packageItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem reLoadItem = new javax.swing.JMenuItem();
-        exitItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem exitItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        stateMachineItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem stateMachineItem = new javax.swing.JMenuItem();
         javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
         deleteItem = new javax.swing.JMenuItem();
         moveUpItem = new javax.swing.JMenuItem();
         moveDownItem = new javax.swing.JMenuItem();
-        preferencesItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem preferencesItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem sitePreferencesItem = new javax.swing.JMenuItem();
-        toolsMenu = new javax.swing.JMenu();
-        multiItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        colorItem = new javax.swing.JMenuItem();
+        javax.swing.JMenu toolsMenu = new javax.swing.JMenu();
+        javax.swing.JMenuItem multiItem = new javax.swing.JMenuItem();
+        javax.swing.JMenu helpMenu = new javax.swing.JMenu();
+        javax.swing.JMenuItem colorItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem releaseItem = new javax.swing.JMenuItem();
-        aboutItem = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem aboutItem = new javax.swing.JMenuItem();
         javax.swing.JSeparator jSeparator2 = new javax.swing.JSeparator();
         javax.swing.JMenuItem tangoItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem pogoItem = new javax.swing.JMenuItem();
-        javax.swing.JMenuItem kernelItem = new javax.swing.JMenuItem();
-        javax.swing.JMenuItem classItem = new javax.swing.JMenuItem();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 exitForm(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         inherPanel.setLayout(new java.awt.GridBagLayout());
         getContentPane().add(inherPanel, java.awt.BorderLayout.EAST);
-
-        topPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-        getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
 
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -443,7 +397,9 @@ public class PogoGUI extends JFrame {
             }
         });
         getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
+        getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
 
+        fileMenu.setMnemonic('F');
         fileMenu.setText("File");
         fileMenu.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -451,6 +407,8 @@ public class PogoGUI extends JFrame {
             }
         });
 
+        newItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        newItem.setMnemonic('N');
         newItem.setText("New");
         newItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,6 +426,8 @@ public class PogoGUI extends JFrame {
         });
         fileMenu.add(newFromTemplateItem);
 
+        openItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        openItem.setMnemonic('O');
         openItem.setText("Open");
         openItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -483,6 +443,8 @@ public class PogoGUI extends JFrame {
 
         fileMenu.add(recentMenu);
 
+        generateItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        generateItem.setMnemonic('G');
         generateItem.setText("Generate");
         generateItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -509,6 +471,8 @@ public class PogoGUI extends JFrame {
         });
         fileMenu.add(reLoadItem);
 
+        exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        exitItem.setMnemonic('E');
         exitItem.setText("Exit");
         exitItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -519,6 +483,7 @@ public class PogoGUI extends JFrame {
 
         jMenuBar1.add(fileMenu);
 
+        editMenu.setMnemonic('E');
         editMenu.setText("Edit");
         editMenu.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -526,6 +491,8 @@ public class PogoGUI extends JFrame {
             }
         });
 
+        stateMachineItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        stateMachineItem.setMnemonic('M');
         stateMachineItem.setText("State Machine");
         stateMachineItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -535,6 +502,8 @@ public class PogoGUI extends JFrame {
         editMenu.add(stateMachineItem);
         editMenu.add(jSeparator1);
 
+        deleteItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
+        deleteItem.setMnemonic('D');
         deleteItem.setText("Delete Selection");
         deleteItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -543,6 +512,8 @@ public class PogoGUI extends JFrame {
         });
         editMenu.add(deleteItem);
 
+        moveUpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        moveUpItem.setMnemonic('U');
         moveUpItem.setText("Move Up");
         moveUpItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -551,6 +522,8 @@ public class PogoGUI extends JFrame {
         });
         editMenu.add(moveUpItem);
 
+        moveDownItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        moveDownItem.setMnemonic('D');
         moveDownItem.setText("Move Down");
         moveDownItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -559,6 +532,8 @@ public class PogoGUI extends JFrame {
         });
         editMenu.add(moveDownItem);
 
+        preferencesItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        preferencesItem.setMnemonic('P');
         preferencesItem.setText("Preferences");
         preferencesItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -567,6 +542,7 @@ public class PogoGUI extends JFrame {
         });
         editMenu.add(preferencesItem);
 
+        sitePreferencesItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         sitePreferencesItem.setText("Site Preferences");
         sitePreferencesItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,8 +553,11 @@ public class PogoGUI extends JFrame {
 
         jMenuBar1.add(editMenu);
 
+        toolsMenu.setMnemonic('T');
         toolsMenu.setText("Tools");
 
+        multiItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        multiItem.setMnemonic('M');
         multiItem.setText("Multi Cpp Classes Manager");
         multiItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -589,8 +568,10 @@ public class PogoGUI extends JFrame {
 
         jMenuBar1.add(toolsMenu);
 
+        helpMenu.setMnemonic('H');
         helpMenu.setText("Help");
 
+        colorItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         colorItem.setText("On Color");
         colorItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -599,6 +580,7 @@ public class PogoGUI extends JFrame {
         });
         helpMenu.add(colorItem);
 
+        releaseItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         releaseItem.setText("Release Notes");
         releaseItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -607,7 +589,8 @@ public class PogoGUI extends JFrame {
         });
         helpMenu.add(releaseItem);
 
-        aboutItem.setText("about");
+        aboutItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        aboutItem.setText("About");
         aboutItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutItemActionPerformed(evt);
@@ -624,7 +607,6 @@ public class PogoGUI extends JFrame {
         });
         helpMenu.add(tangoItem);
 
-        pogoItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         pogoItem.setText("Pogo online documentation");
         pogoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -632,22 +614,6 @@ public class PogoGUI extends JFrame {
             }
         });
         helpMenu.add(pogoItem);
-
-        kernelItem.setText("Kernel online documentation");
-        kernelItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kernelItemActionPerformed(evt);
-            }
-        });
-        helpMenu.add(kernelItem);
-
-        classItem.setText("Device Class user's guides");
-        classItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classItemActionPerformed(evt);
-            }
-        });
-        helpMenu.add(classItem);
 
         jMenuBar1.add(helpMenu);
 
@@ -659,8 +625,8 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     private void recentItemActionPerformed(java.awt.event.ActionEvent evt) {
-        String proj_name = ((JMenuItem) evt.getSource()).getText();
-        loadDeviceClassFromFile(proj_name);
+        String projectName = ((JMenuItem) evt.getSource()).getText();
+        loadDeviceClassFromFile(projectName);
     }
 
     //=======================================================
@@ -832,8 +798,6 @@ public class PogoGUI extends JFrame {
             return false;
         }
 
-        if (deviceClass == null)    //	No class defined in tree or cannot get it (ID is null)
-            return true;
         if (generateDialog.showDialog(deviceClass) == JOptionPane.OK_OPTION) {
             //	Then generate code and save
             Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
@@ -1168,20 +1132,6 @@ public class PogoGUI extends JFrame {
     //===============================================================
     //===============================================================
     @SuppressWarnings({"UnusedDeclaration"})
-    private void kernelItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kernelItemActionPerformed
-        Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.KERNEL_PAGES]);
-    }//GEN-LAST:event_kernelItemActionPerformed
-
-    //===============================================================
-    //===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
-    private void classItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classItemActionPerformed
-        Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.CLASS_PAGES]);
-    }//GEN-LAST:event_classItemActionPerformed
-
-    //===============================================================
-    //===============================================================
-    @SuppressWarnings({"UnusedDeclaration"})
     private void pogoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pogoItemActionPerformed
         Utils.showInHtmBrowser(PogoConst.tangoHTTP[PogoConst.POGO_PAGES]);
     }//GEN-LAST:event_pogoItemActionPerformed
@@ -1365,27 +1315,15 @@ public class PogoGUI extends JFrame {
 
     //=======================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutItem;
-    private javax.swing.JMenuItem colorItem;
     private javax.swing.JMenuItem deleteItem;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenuItem generateItem;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel inherPanel;
     private javax.swing.JMenuItem moveDownItem;
     private javax.swing.JMenuItem moveUpItem;
-    private javax.swing.JMenuItem multiItem;
     private javax.swing.JMenuItem newFromTemplateItem;
-    private javax.swing.JMenuItem newItem;
-    private javax.swing.JMenuItem openItem;
     private javax.swing.JMenuItem packageItem;
-    private javax.swing.JMenuItem preferencesItem;
     private javax.swing.JMenu recentMenu;
-    private javax.swing.JMenuItem stateMachineItem;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JMenu toolsMenu;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
     //=======================================================
