@@ -35,13 +35,6 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-
-/**
- *	This class is able to read pogo properties file to load them.
- *
- * @author verdier
- */
-
 import org.tango.pogo.pogo_gui.PogoConst;
 
 import javax.swing.*;
@@ -51,6 +44,11 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *	This class is able to read pogo properties file to load them.
+ *
+ * @author verdier
+ */
 
 public class PogoProperty {
 
@@ -134,30 +132,31 @@ public class PogoProperty {
      */
     //===============================================================
 	private void checkEnvironment() {
-        String classpath = System.getProperty("java.class.path");
+        StringBuilder classpath = new StringBuilder(System.getProperty("java.class.path"));
         //System.out.println("java.class.path=" + classpath);
 
         //  I tried to do it for Win, but does not work
         if (Utils.osIsUnix()) {
             //  Get each path
-            StringTokenizer stk = new StringTokenizer(classpath, ":");
-            classpath = "";
+            StringTokenizer stk = new StringTokenizer(classpath.toString(), ":");
+            classpath = new StringBuilder();
             while (stk.hasMoreTokens()) {
                 String  s = stk.nextToken();
                 //  Check if exists
                 File f = new File(s);
                 if (f.exists())
-                    classpath += s + ":";
+                    classpath.append(s).append(":");
                 else
                     System.err.println(s + " found in classpath,  does not exist !!!");
             }
-            if (classpath.endsWith(":")) {
+            //  if ends with ':'
+            if (classpath.toString().endsWith(":")) {
                 //  Remove it
-                classpath = classpath.substring(0, classpath.length()-1);
+                classpath = new StringBuilder(classpath.substring(0, classpath.length() - 1));
             }
         }
         //System.out.println("java.class.path=" + classpath);
-        System.setProperty("java.class.path", classpath);
+        System.setProperty("java.class.path", classpath.toString());
 	}
     //===============================================================
     //===============================================================
@@ -175,10 +174,7 @@ public class PogoProperty {
             busNames.add(0, "");
 
         } catch (Exception e) {
-            if (e instanceof PogoException)
-                throw (PogoException) e;
-            else
-                throw new PogoException(e.toString());
+            throw new PogoException(e.toString());
         }
     }
 
@@ -194,8 +190,8 @@ public class PogoProperty {
             makefileHome = checkOverwritingPropertyString(makefileHomeProp, makefileHome, codeList);
             siteClassFamilies = getStringListProperty(siteClassFamiliesProp, codeList);
         } catch (Exception e) {
-            //	Display only a warning, but start normaly
-            System.err.println("\nWARNING:	No site specific properties file found !\n");
+            //	Display only a warning, but start normally
+            System.err.println(e.toString());
         }
     }
 
@@ -280,36 +276,51 @@ public class PogoProperty {
 
     //===============================================================
     //===============================================================
-    private List<String> loadSiteProperties(String filename) throws PogoException, IOException {
-        //	Get file URL and load it
+    private List<String> loadSiteProperties(String filename) throws IOException, PogoException {
+         //	Get file URL and load it
         java.net.URL url = getClass().getResource(filename);
-        System.out.println("Reading properties from " + url.getFile());
-        InputStream is = url.openStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        List<String> lines = new ArrayList<>();
-        String str;
-        while ((str = br.readLine()) != null) {
-            if (!str.startsWith("#")) {
-                if (str.length() > 0) {
-                    lines.add(str);
-                    //System.out.println(str);
+        if (url!=null) {
+            System.out.println("Reading site properties from " + url.getFile());
+            InputStream is = url.openStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            List<String> lines = new ArrayList<>();
+            String str;
+            while ((str = br.readLine()) != null) {
+                if (!str.startsWith("#")) {
+                    if (str.length()>0) {
+                        lines.add(str);
+                        //System.out.println(str);
+                    }
+                }
+            }
+            br.close();
+            return lines;
+        }
+        else {
+            //  Check for site property path if passed by environment
+            String propertyPath = System.getenv("SITE_PROPERTY_PATH");
+            if (propertyPath!=null) {
+                File file = new File(propertyPath+"/Pogo.site_properties");
+                System.out.println("Reading site properties from " + file);
+                if (file.exists()) {
+                    return ParserTool.readFileLines(propertyPath+filename, false);
                 }
             }
         }
-        br.close();
-        return lines;
+        throw new PogoException("WARNING:	No site specific properties file found !");
     }
     //===============================================================
     //===============================================================
-    private List<String> loadProperties(String filename) throws PogoException, IOException {
+    private List<String> loadProperties(String filename) throws IOException {
+
         //	Get file URL and load it
         java.net.URL url = getClass().getResource(filename);
         System.out.println("Reading properties from " + url.getFile());
-        InputStream is = url.openStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        InputStream inputStream = url.openStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         List<String> lines = new ArrayList<>();
         String str;
-        while ((str = br.readLine()) != null) {
+        while ((str = reader.readLine()) != null) {
             str = str.trim();
             if (!str.startsWith("#")) {
                 if (str.length() > 0) {
@@ -318,13 +329,13 @@ public class PogoProperty {
                 }
             }
         }
-        br.close();
+        reader.close();
         return lines;
     }
 
     //===============================================================
     //===============================================================
-    private List<String> loadPropertiesRC(String filename) throws PogoException, IOException {
+    private List<String> loadPropertiesRC(String filename) throws PogoException {
         List<String> vs = new ArrayList<>();
         String code = ParserTool.readFile(filename);
         StringTokenizer stk = new StringTokenizer(code, "\n");

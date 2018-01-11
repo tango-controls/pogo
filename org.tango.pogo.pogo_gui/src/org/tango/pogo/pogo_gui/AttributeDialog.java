@@ -1282,15 +1282,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         //	Check polled period if set
         if (polledBtn.getSelectedObjects() != null) {
-            String strval = periodText.getText();
+            String strValue = periodText.getText();
             try {
-                poll_period = Integer.parseInt(strval);
+                poll_period = Integer.parseInt(strValue);
                 //	Control if value not too small
-                if (poll_period < 20 &&
-                        poll_period != 0) {    //	if 0 means externally filling mode (by code)
-
-                    message = "The polling period minimum value is  " +
-                            20 + " ms";
+                if (poll_period < 20 && poll_period != 0) {    //	if 0 means externally filling mode (by code)
+                    message = "The polling period minimum value is  " + 20 + " ms";
                 }
             } catch (NumberFormatException e) {
                 message = e.toString() + "\n\nBad Value in Polling period field !";
@@ -1791,14 +1788,12 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         //  Excluded states
         if (attribute!=null) {
-            EList<String> srcReadRxcluded = attribute.getReadExcludedStates();
+            EList<String> srcReadExcluded = attribute.getReadExcludedStates();
             EList<String> newReadExcluded = attr.getReadExcludedStates();
-            for (String s : srcReadRxcluded)
-                newReadExcluded.add(s);
-            EList<String> srcWriteRxcluded = attribute.getWriteExcludedStates();
+            newReadExcluded.addAll(srcReadExcluded);
+            EList<String> srcWriteExcluded = attribute.getWriteExcludedStates();
             EList<String> newWriteExcluded = attr.getWriteExcludedStates();
-            for (String s : srcWriteRxcluded)
-                newWriteExcluded.add(s);
+            newWriteExcluded.addAll(srcWriteExcluded);
         }
         return attr;
     }
@@ -2030,12 +2025,17 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             line.add(Boolean.toString(Utils.isTrue(attribute.getMemorized())));
 
             //  Attribute size
-            if (attribute.getAttType().equals("Scalar"))
-                line.add("1");
-            else if (attribute.getAttType().equals("Spectrum"))
-                line.add(attribute.getMaxX());
-            else if (attribute.getAttType().equals("Image"))
-                line.add(attribute.getMaxX() + " x " + attribute.getMaxY());
+            switch (attribute.getAttType()) {
+                case "Scalar":
+                    line.add("1");
+                    break;
+                case "Spectrum":
+                    line.add(attribute.getMaxX());
+                    break;
+                case "Image":
+                    line.add(attribute.getMaxX() + " x " + attribute.getMaxY());
+                    break;
+            }
 
             //  Level
             String level = attribute.getDisplayLevel();
