@@ -505,22 +505,17 @@ public class MultiClassesPanel extends JFrame {
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void newItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemActionPerformed
-
         //  First time, check if modified
         if (tree != null && tree.getModified()) {
             if (checkModifications() == JOptionPane.CANCEL_OPTION)
                 return;
         }
 
-        try {
-            ServerDialog dialog = new ServerDialog(this, new TangoServer());
-            if (dialog.showDialog() == JOptionPane.OK_OPTION) {
-                tree = new MultiClassesTree(this, dialog.getTangoServer());
-                tree.setModified(true);
-                scrollPane.setViewportView(tree);
-            }
-        } catch (PogoException e) {
-            e.popup(this);
+        ServerDialog dialog = new ServerDialog(this, new TangoServer());
+        if (dialog.showDialog() == JOptionPane.OK_OPTION) {
+            tree = new MultiClassesTree(this, dialog.getTangoServer());
+            tree.setModified(true);
+            scrollPane.setViewportView(tree);
         }
     }//GEN-LAST:event_newItemActionPerformed
 

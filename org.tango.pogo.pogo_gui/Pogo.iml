@@ -75,6 +75,5 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.core:expressions:3.3.0-v20070606-0010" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jface:databinding:1.1.0-I20070606-0010" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.core:databinding:1.0.0-I20070606-0010" level="project" />
-    <orderEntry type="library" name="Maven: fr.esrf.tango.pogo:pogo6:6.2.5a" level="project" />
   </component>
 </module>

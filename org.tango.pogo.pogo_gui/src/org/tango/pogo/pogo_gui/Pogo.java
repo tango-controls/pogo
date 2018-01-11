@@ -137,21 +137,16 @@ public class Pogo {
                 PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
 
 
-                //	Check is from old Pogo model (not generated with OAW)
-                if (deviceClass.isOldPogoModel()) {
-                    deviceClass.generateFromOldModel(filename, true);
-                } else {
-                    //	Set the file list to be generated and generate
-                    //"XMI   file,Code files,Python Package,Protected Regions"
-                    String filesToGenerate = "XMI   file,Code files";
-                    //  If python HL, add python HL specific options
-                    String language = pogoClass.getDescription().getLanguage();
-                    if (language.startsWith(strLang[Python])) {
-                        filesToGenerate += getPythonGeneratedFile(pogoClass);
-                    }
-                    deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
-                    OAWutils.getInstance().generate(pogoClass);
+                //	Set the file list to be generated and generate
+                //"XMI   file,Code files,Python Package,Protected Regions"
+                String filesToGenerate = "XMI   file,Code files";
+                //  If python HL, add python HL specific options
+                String language = pogoClass.getDescription().getLanguage();
+                if (language.startsWith(strLang[Python])) {
+                    filesToGenerate += getPythonGeneratedFile(pogoClass);
                 }
+                deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
+                OAWutils.getInstance().generate(pogoClass);
             }
         } catch (PogoException e) {
            System.err.println(e.getMessage());
@@ -190,12 +185,6 @@ public class Pogo {
                     //	Set the file list to be generated and generate
                 deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
                 OAWutils.getInstance().generate(pogoClass);
-
-                //	Check if it is from old Pogo model (not generated with OAW)
-                if (deviceClass.isOldPogoModel()) {
-                    //  Try to get old description and add it.
-                    deviceClass.generateDocFromOldModel(filename, null);   //  same place
-                }
             }
         } catch (PogoException e) {
             System.err.println(e.getMessage());

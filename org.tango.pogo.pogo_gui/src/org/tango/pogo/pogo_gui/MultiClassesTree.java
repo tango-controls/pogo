@@ -82,7 +82,7 @@ public class MultiClassesTree extends JTree {
 
     //===============================================================
     //===============================================================
-    public MultiClassesTree(JFrame parent, TangoServer server) throws PogoException {
+    public MultiClassesTree(JFrame parent, TangoServer server) {
         super();
         this.parent = parent;
 
@@ -100,7 +100,6 @@ public class MultiClassesTree extends JTree {
                 homeDir = new File("").getAbsolutePath();
         }
         chooser = new JFileChooser(new File(homeDir).getAbsolutePath());
-        chooser.setFileFilter(PogoGUI.pogo6Filter);
         chooser.setFileFilter(PogoGUI.pogoFilter);
         menu = new MultiClassesTreePopupMenu(this);
         setBackground(background);
@@ -108,7 +107,7 @@ public class MultiClassesTree extends JTree {
 
     //===============================================================
     //===============================================================
-    private void buildTree(TangoServer server) throws PogoException {
+    private void buildTree(TangoServer server)  {
         //  Create the nodes.
         root = new DefaultMutableTreeNode(server);
 
@@ -193,14 +192,14 @@ public class MultiClassesTree extends JTree {
         File xmiFile = new File(xmiFileName);
         while (deviceClass == null) {
             try {
-                if (xmiFile.exists()==false) {
+                if (!xmiFile.exists()) {
                     //  Check with relative path converted as absolute one
                     //  Get multi classes file as reference
                     TangoServer server = (TangoServer) root.getUserObject();
                     String serverPath = server.sourcePath;
                     String absolute = Utils.getAbsolutePath(xmiFileName, serverPath);
                     xmiFile = new File(absolute);
-                    if (xmiFile.exists()==false)
+                    if (!xmiFile.exists())
                         throw new PogoException("No such file: " + xmiFileName);
                 }
                 deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
@@ -450,8 +449,7 @@ public class MultiClassesTree extends JTree {
             }
 
             List<DeviceClass> children = getClasses(childNode);
-            for (DeviceClass child : children)
-                classes.add(child);
+            classes.addAll(children);
         }
         return classes;
     }
@@ -548,9 +546,6 @@ public class MultiClassesTree extends JTree {
                     simple.setHasDynamic("true");
                 }
             }
-
-            if (devClass.isOldPogoModel())
-                simple.setPogo6("true");
             definitions.add(simple);
 
             //  Copy inheritances

@@ -37,11 +37,11 @@
             <version>3.3.0-I20070608-1100</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!-- dependency>
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>pogo6</artifactId>
             <version>6.2.5a</version>
-        </dependency>
+        </dependency -->
     </dependencies>
 
     <build>
