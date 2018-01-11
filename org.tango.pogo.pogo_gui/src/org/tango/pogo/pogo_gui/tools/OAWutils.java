@@ -330,10 +330,9 @@ public class OAWutils {
      * Do a ppost-processing for additional info (e.g.: doc to pdf, ...)
      *
      * @param pogoClass Specified PogoDeviceClass object
-     * @throws PogoException in case of changing protected area ID failed.
      */
     //========================================================================
-    private void doPostProcessing(PogoDeviceClass pogoClass) throws PogoException {
+    private void doPostProcessing(PogoDeviceClass pogoClass) {
 
     	if (pogoClass.getDescription().getFilestogenerate().toLowerCase().contains("html")) {
 
@@ -665,7 +664,6 @@ public class OAWutils {
         return sys;
     }
     //===============================================================
-
     /**
      * The classes must be returned between display and code generation,
      * because it is displayed low level class at bottom and in class factory,
@@ -676,14 +674,13 @@ public class OAWutils {
     //===============================================================
     private void reverseClassOrder(PogoMultiClasses pmc) {
         EList<OneClassSimpleDef> classes = pmc.getClasses();
-        List<OneClassSimpleDef> v = new ArrayList<>();
+        List<OneClassSimpleDef> classSimpleDefList = new ArrayList<>();
         //  copy list to vector in reverse order
         for (OneClassSimpleDef _class : classes)
-            v.add(0, _class);
+            classSimpleDefList.add(0, _class);
         classes.clear();
         //  Copy vector to list
-        for (OneClassSimpleDef _class : v)
-            classes.add(_class);
+        classes.addAll(classSimpleDefList);
     }
     //========================================================================
     //========================================================================
@@ -698,22 +695,21 @@ public class OAWutils {
      */
     //========================================================================
     public static ClassIdentification cloneClassIdentification(ClassIdentification id) {
-        ClassIdentification new_id = factory.createClassIdentification();
-        new_id.setBus(id.getBus());
-        new_id.setClassFamily(id.getClassFamily());
-        new_id.setContact(id.getContact());
-        new_id.setAuthor(id.getAuthor());
-        new_id.setEmailDomain(id.getEmailDomain());
-        new_id.setManufacturer(id.getManufacturer());
-        new_id.setPlatform(id.getPlatform());
-        new_id.setReference(id.getReference());
-        new_id.setSiteSpecific(id.getSiteSpecific());
-        EList<String>   newKeyWords = new_id.getKeyWords();
+        ClassIdentification newIdentification = factory.createClassIdentification();
+        newIdentification.setBus(id.getBus());
+        newIdentification.setClassFamily(id.getClassFamily());
+        newIdentification.setContact(id.getContact());
+        newIdentification.setAuthor(id.getAuthor());
+        newIdentification.setEmailDomain(id.getEmailDomain());
+        newIdentification.setManufacturer(id.getManufacturer());
+        newIdentification.setPlatform(id.getPlatform());
+        newIdentification.setReference(id.getReference());
+        newIdentification.setSiteSpecific(id.getSiteSpecific());
+        EList<String>   newKeyWords = newIdentification.getKeyWords();
         EList<String>   keyWords    = id.getKeyWords();
-        for (String keyWord : keyWords)
-            newKeyWords.add(keyWord);
+        newKeyWords.addAll(keyWords);
 
-        return new_id;
+        return newIdentification;
     }
     //========================================================================
     /**
@@ -779,8 +775,7 @@ public class OAWutils {
 
         EList<String> srcExcluded = src.getExcludedStates();
         EList<String> newExcluded = cmd.getExcludedStates();
-        for (String s : srcExcluded)
-            newExcluded.add(s);
+        newExcluded.addAll(srcExcluded);
 
         cmd.setPolledPeriod(src.getPolledPeriod());
         return cmd;
@@ -802,9 +797,7 @@ public class OAWutils {
 
         EList<String> srcEnumLabels = src.getEnumLabels();
         EList<String> newEnumLabels = attr.getEnumLabels();
-        for (String s : srcEnumLabels) {
-            newEnumLabels.add(s);
-        }
+        newEnumLabels.addAll(srcEnumLabels);
 
         attr.setMaxX(src.getMaxX());
         attr.setMaxY(src.getMaxY());
@@ -851,13 +844,11 @@ public class OAWutils {
 
         EList<String> src_excluded = src.getReadExcludedStates();
         EList<String> new_excluded = attr.getReadExcludedStates();
-        for (String s : src_excluded)
-            new_excluded.add(s);
+        new_excluded.addAll(src_excluded);
 
         src_excluded = src.getWriteExcludedStates();
         new_excluded = attr.getWriteExcludedStates();
-        for (String s : src_excluded)
-            new_excluded.add(s);
+        new_excluded.addAll(src_excluded);
 
         attr.setStatus(status);
         attr.setAllocReadMember(src.getAllocReadMember());
@@ -923,8 +914,7 @@ public class OAWutils {
         //	Default value
         EList<String> list = property.getDefaultPropValue();
         EList<String> src_list = src.getDefaultPropValue();
-        for (String s : src_list)
-            list.add(s);
+        list.addAll(src_list);
 
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
@@ -986,13 +976,11 @@ public class OAWutils {
 
         EList<String> srcExcluded = src.getReadExcludedStates();
         EList<String> newExcluded = pipe.getReadExcludedStates();
-        for (String s : srcExcluded)
-            newExcluded.add(s);
+        newExcluded.addAll(srcExcluded);
 
         srcExcluded = src.getWriteExcludedStates();
         newExcluded = pipe.getWriteExcludedStates();
-        for (String s : srcExcluded)
-            newExcluded.add(s);
+        newExcluded.addAll(srcExcluded);
 
         /*  Not manage until now
         //	Inheritance status

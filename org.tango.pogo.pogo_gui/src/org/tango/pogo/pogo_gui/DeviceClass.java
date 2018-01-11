@@ -42,7 +42,6 @@ import org.tango.pogo.pogo_gui.tools.*;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +74,7 @@ public class DeviceClass {
     public DeviceClass() {
         pogoClass = OAWutils.factory.createPogoDeviceClass();
         pogoClass.setDescription(OAWutils.factory.createClassDescription());
-        //  Add default inheitance
+        //  Add default inheritance
         pogoClass.getDescription().getInheritances().add(getDefaultInheritance());
     }
     //===============================================================
@@ -454,7 +453,7 @@ public class DeviceClass {
     //===============================================================
     //===============================================================
     public void generateWithNewName(String newClassName, boolean modified, DeletedObjects deleted, RenamedObjects renamed)
-            throws SecurityException,  IOException, PogoException {
+            throws SecurityException,  PogoException {
         String srcClassName = getPogoDeviceClass().getName();
         //  if modified, generated before 
         if (modified) {
@@ -493,8 +492,8 @@ public class DeviceClass {
 
     //===============================================================
     //===============================================================
-    public void generate(DeletedObjects deleted, RenamedObjects renamed)
-            throws SecurityException, IOException, PogoException {
+    public void generate(DeletedObjects deleted,
+                         RenamedObjects renamed) throws SecurityException, PogoException {
         String className = pogoClass.getName();
         String  lang = pogoClass.getDescription().getLanguage().toLowerCase();
 
