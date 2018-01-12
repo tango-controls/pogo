@@ -61,6 +61,7 @@ import java.util.List;
 public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.PogoConst {
     private int retVal = JOptionPane.OK_OPTION;
     private PogoGUI pogo_gui;
+    private String className;
     private InheritanceStatus orig_status = null;
     private boolean isDynamic = false;
     private int poll_period = 0;
@@ -81,8 +82,8 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
      * @param isDynamic the created attribute will be a dynamic one
      */
     //===================================================================
-    public AttributeDialog(PogoGUI parent, int attType, boolean isDynamic) {
-        this(parent, null);
+    public AttributeDialog(PogoGUI parent, String className, int attType, boolean isDynamic) {
+        this(parent, className, null);
         this.isDynamic = isDynamic;
         attrTypeCB.setSelectedIndex(attType);
         updateWindow();
@@ -96,9 +97,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
      * @param attribute specified attribute object
      */
     //===================================================================
-    public AttributeDialog(PogoGUI parent, Attribute attribute) {
+    public AttributeDialog(PogoGUI parent, String className, Attribute attribute) {
         super(parent, true);
         this.pogo_gui = parent;
+        this.className = className;
         this.attribute = attribute;
         if (attribute != null) {
             orig_status = attribute.getStatus();
@@ -1220,8 +1222,10 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
 
         //	Control if Name has been filled.correctly
         String name = nameText.getText();
-
         try {
+            if (name.equalsIgnoreCase(className))
+                throw new PogoException(name + " already used as class name !");
+
             boolean overload = overloadBtn.getSelectedObjects() != null;
             name = Utils.checkNameSyntax(name, "name", false, true);
             if (pogo_gui.itemAlreadyExists(name, PogoConst.SCALAR_ATTRIBUTES))

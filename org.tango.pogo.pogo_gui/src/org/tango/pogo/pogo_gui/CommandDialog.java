@@ -84,6 +84,7 @@ public class CommandDialog extends JDialog {
     private InheritanceStatus orig_status = null;
     private boolean isStateStatus = false;
     private Command command;
+    private String className;
     private boolean isDynamic = false;
     ///===================================================================
     /**
@@ -93,8 +94,8 @@ public class CommandDialog extends JDialog {
      * @param isDynamic the created command will be a dynamic one
      */
     //===================================================================
-    public CommandDialog(PogoGUI parent, boolean isDynamic) {
-        this(parent, null);
+    public CommandDialog(PogoGUI parent, String className, boolean isDynamic) {
+        this(parent, className, null);
         this.isDynamic = isDynamic;
         dynamicLbl.setVisible(isDynamic);
         pack();
@@ -107,9 +108,10 @@ public class CommandDialog extends JDialog {
      * @param cmd    the specified command object
      */
     //===============================================================
-    public CommandDialog(PogoGUI parent, Command cmd) {
+    public CommandDialog(PogoGUI parent, String className, Command cmd) {
         super(parent, true);
         this.command = cmd;
+        this.className = className;
         pogo_gui = parent;
         if (command!=null)
             isDynamic = Utils.isTrue(command.getIsDynamic());
@@ -598,6 +600,8 @@ public class CommandDialog extends JDialog {
             boolean overload = overloadBtn.getSelectedObjects() != null;
             name = Utils.checkNameSyntax(name, "name", isStateStatus);
 
+            if (name.equalsIgnoreCase(className))
+                throw new PogoException(name + " already used as class name !");
 
             if (pogo_gui.itemAlreadyExists(name, PogoConst.COMMANDS))
                 throw new PogoException("Command \"" + name + "\" Already Exists !");
@@ -656,13 +660,13 @@ public class CommandDialog extends JDialog {
             return;
 
         //	Edit in dialog.
-        EditDialog dlg = new EditDialog(this, text);
-        if (dlg.showDialog() == JOptionPane.OK_OPTION) {
+        EditDialog editDialog = new EditDialog(this, text);
+        if (editDialog.showDialog() == JOptionPane.OK_OPTION) {
             //	Put new text in field
             if (btn == arginDescBtn)
-                arginDescText.setText(dlg.getText());
+                arginDescText.setText(editDialog.getText());
             else if (btn == argoutDescBtn)
-                argoutDescText.setText(dlg.getText());
+                argoutDescText.setText(editDialog.getText());
         }
     }//GEN-LAST:event_descBtnActionPerformed
 

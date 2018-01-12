@@ -58,12 +58,16 @@ import static org.tango.pogo.pogo_gui.PogoConst.strLang;
 @SuppressWarnings({"UnusedDeclaration"})    //  Public methods
 public class Pogo {
     private static final int GENE_SRC = 0;
-    private static final int GENE_HTML = 1;
-    private static final int GENE_SPHINX = 2;
-    private static final int MULTI = 3;
-    private static final int HELP = 4;
-    private static final String[] known_actions = {"-src", "-html", "-sphinx", "-multi", "-?"};
-
+    private static final int GENE_MAKEFILE = 1;
+    private static final int GENE_CMAKE_LIST = 2;
+    private static final int GENE_HTML = 3;
+    private static final int GENE_SPHINX = 4;
+    private static final int MULTI = 5;
+    private static final int HELP = 6;
+    private static final int HELP_ = 7;
+    private static final String[] knownActions = {
+            "-src", "-makefile", "-cmake", "-html", "-sphinx", "-multi", "-?", "--help",
+    };
     private DeviceClass deviceClass = null;
     private PogoException pogoException = null;
     private List<String> sourceFiles = new ArrayList<>();
@@ -127,7 +131,7 @@ public class Pogo {
      * Generate source files for specified inputs.
      */
     //===============================================================
-    public void generateSourceFiles() {
+    public void generateSourceFiles(int type) {
         try {
             for (String filename : sourceFiles) {
                 //	Read source files
@@ -136,17 +140,27 @@ public class Pogo {
                 deviceClass = new DeviceClass(filename);
                 PogoDeviceClass pogoClass = deviceClass.getPogoDeviceClass();
 
-
                 //	Set the file list to be generated and generate
                 //"XMI   file,Code files,Python Package,Protected Regions"
-                String filesToGenerate = "XMI   file,Code files";
-                //  If python HL, add python HL specific options
-                String language = pogoClass.getDescription().getLanguage();
-                if (language.startsWith(strLang[Python])) {
-                    filesToGenerate += getPythonGeneratedFile(pogoClass);
+                String filesToGenerate = "XMI   file";
+                switch (type) {
+                    case GENE_SRC:
+                        filesToGenerate += ",Code files";
+                        //  If python HL, add python HL specific options
+                        String language = pogoClass.getDescription().getLanguage();
+                        if (language.startsWith(strLang[Python])) {
+                            filesToGenerate += getPythonGeneratedFile(pogoClass);
+                        }
+                        break;
+                    case GENE_MAKEFILE:
+                        filesToGenerate += ",Makefile";
+                        break;
+                    case GENE_CMAKE_LIST:
+                        filesToGenerate += ",CMakeLists";
+                        break;
                 }
-                deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
-                OAWutils.getInstance().generate(pogoClass);
+            deviceClass.getPogoDeviceClass().getDescription().setFilestogenerate(filesToGenerate);
+            OAWutils.getInstance().generate(pogoClass);
             }
         } catch (PogoException e) {
            System.err.println(e.getMessage());
@@ -288,18 +302,20 @@ public class Pogo {
         //	Check all arguments
         for (String arg : args) {
             boolean found = false;
-            for (int j = 0; !found && j < known_actions.length; j++) {
-                if ((found = arg.equals(known_actions[j]))) {
-                    action = j;
+            int i = 0;
+            for (String knownAction : knownActions) {
+                if (knownAction.equals(arg)) {
+                    action = i;
+                    found = true;
                 }
+                i++;
             }
 
-            if (!found)
+            if (!found) // is supposed to be a xmi file
                 sourceFiles.add(arg);
         }
         return action;
     }
-
     //===============================================================
     //===============================================================
     private static void displaySyntax() {
@@ -309,24 +325,32 @@ public class Pogo {
         System.out.println("Without option, pogo start the Graphic User Interface");
         System.out.println();
         System.out.println("Actions:");
-        System.out.println("	-src:	 will re-generate the device server source files.");
-        System.out.println("	-multi:	 will start Pogo for multi class server.");
-        System.out.println("	-html:	 will generate the device server html documentation.");
-        System.out.println("	-sphinx: will generate the device server Sphinx documentation.");
+        System.out.println("	-src:       re-generate the device server source files.");
+        System.out.println("	-makefile:  generate the Makefile for project.");
+        System.out.println("	-cmake:     generate the CMakeLists.txt for project.");
+        System.out.println("	-multi:     start Pogo for multi class server.");
+        System.out.println("	-html:      generate the device server html documentation.");
+        System.out.println("	-sphinx:    generate the device server Sphinx documentation.");
         System.out.println();
     }
-
     //===============================================================
     //===============================================================
     public static void main(String args[]) {
         try {
-
             Pogo pogo = new Pogo();
 
             //	Check command line
             switch (pogo.manageArgs(args)) {
                 case GENE_SRC:
-                    pogo.generateSourceFiles();
+                    pogo.generateSourceFiles(GENE_SRC);
+                    System.exit(0);
+                    break;
+                case GENE_MAKEFILE:
+                    pogo.generateSourceFiles(GENE_MAKEFILE);
+                    System.exit(0);
+                    break;
+                case GENE_CMAKE_LIST:
+                    pogo.generateSourceFiles(GENE_CMAKE_LIST);
                     System.exit(0);
                     break;
                 case GENE_HTML:
@@ -341,6 +365,7 @@ public class Pogo {
                     pogo.startPogoMulti();
                     break;
                 case HELP:
+                case HELP_:
                     Pogo.displaySyntax();
                     System.exit(0);
                     break;

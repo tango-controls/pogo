@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.6. - /01/2018:
+    Generate Makefile or CMakeList.txt from commande line.
+
 Pogo-9.6.4 - 12/01/2018:
     Change default (1000) and minimum (5) values for polling
     Remove references to Pogo-6 (too old) 
