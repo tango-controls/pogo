@@ -16,7 +16,10 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 09-10-2017  13:02:52)</center><br>\n" + 
+		"	(Generated 12-01-2018  09:51:44)</center><br>\n" + 
+		"<li><b>Pogo-9.6.4 - 12/01/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Change default (1000) and minimum (5) values for polling<br>" + 
+		"&nbsp; &nbsp; &nbsp; Remove references to Pogo-6 (too old)<br>" + 
 		"<li><b>Pogo-9.6.3 - 09/10/2017:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a NPE in AttributeDialog.java<br>" + 
 		"<li><b>Pogo-9.6.2 - 06/10/2017:</b><br>" + 

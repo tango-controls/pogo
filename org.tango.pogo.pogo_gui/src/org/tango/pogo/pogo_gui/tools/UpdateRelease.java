@@ -57,10 +57,28 @@ public class UpdateRelease {
     public UpdateRelease(String[] args) throws PogoException {
         checkArguments(args);
         if (release!=null && fileName!=null) {
+            checkRelease();
             patchReleaseNumber();
         }
         if (notesPath!=null && packName!=null) {
             generateReleaseNotes();
+        }
+    }
+    //===============================================================
+    //===============================================================
+    private void checkRelease() throws PogoException {
+        if (release.endsWith("pom.xml")) {
+            String code = ParserTool.readFile(release);
+            int start = code.indexOf("<version>");
+            if (start>0) {
+                start += "<version>".length();
+                int end = code.indexOf("-SNAPSHOT", start);
+                // SNAPSHOT not found, get full release name
+                if (end<0) end = code.indexOf("</version>", start);
+                if (end>0) {
+                    release = code.substring(start, end);
+                }
+            }
         }
     }
     //===============================================================
@@ -108,15 +126,15 @@ public class UpdateRelease {
     //===============================================================
     //===============================================================
     private String checkLine(String line) {
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         int start = 0;
         int end;
         while ((end=line.indexOf( "\"", start))>0) {
-            str += line.substring(start, end) + "&rdquo;";
+            sb.append(line.substring(start, end)).append("&rdquo;");
             start = end+1;
         }
-        str += line.substring(start);
-        return str;
+        sb.append(line.substring(start));
+        return sb.toString();
     }
     //===============================================================
     //===============================================================
@@ -203,10 +221,11 @@ public class UpdateRelease {
                     break;
                 case "-title":
                     if ((i+1)<args.length) {
-                        title = "";
+                        StringBuilder sb = new StringBuilder();
                         while (++i < args.length && args[i].charAt(0)!='-')
-                            title += args[i]+" ";
+                            sb.append(args[i]).append(" ");
                         i -=2;
+                        title = sb.toString();
                     }
                     else
                         displaySyntax();
@@ -222,11 +241,14 @@ public class UpdateRelease {
     //===============================================================
     public static void displaySyntax() {
         System.out.println("UpdateRelease:");
-        System.out.println("  -release <version>:      release to be patched");
+        System.out.println("  -release <version>:      version number to be patched");
         System.out.println("  -file <file name>:       file to patch release and date");
         System.out.println("  -note_path <path>:       where ReleaseNotes.java must be generated");
         System.out.println("  -package <package name>: package for ReleaseNotes.java class");
         System.out.println("  -title <title>:          title added in ReleaseNotes.java");
+        System.out.println();
+        System.out.println("-release <version> could be:");
+        System.out.println("  -release <pom file>:     version will be parsed in pom.xml specified file");
         System.out.println();
         System.exit(0);
     }

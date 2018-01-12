@@ -48,14 +48,11 @@ public interface PogoConst {
     /**
      * Revision number and date
      */
-    @SuppressWarnings("UnnecessaryInterfaceModifier")
-    public static String revNumber =
-            "9.6.3  -  09-10-2017  13:02:52";
+    String revNumber = "9.6.4  -  12-01-2018  09:51:44";
 
     int TANGO_PAGES = 0;
     int POGO_PAGES = 1;
     int KERNEL_PAGES = 2;
-    int CLASS_PAGES = 3;
     String[] tangoHTTP = {
             "http://www.tango-controls.org/",
             "http://www.esrf.eu/computing/cs/tango/tango_doc/tools_doc/pogo_doc/",
@@ -77,7 +74,6 @@ public interface PogoConst {
     int PIPES = 7;
     int STATES = 8;
 
-    String CONVERSION_DIR = "/new_src";
     String[] strLevel = {"OPERATOR", "EXPERT"};
     int OPERATOR = 0;
     int EXPERT = 1;

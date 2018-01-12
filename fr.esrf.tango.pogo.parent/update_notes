@@ -1,7 +1,6 @@
 #!/bin/sh
 #
 
-VERSION=9.6.3
 PACKAGE=org.tango.pogo.pogo_gui
 
 #=========================================================
@@ -23,14 +22,16 @@ UpdateNotes() {
     TARGET_CLASS=PogoConst
     SRC_HOME=../org.tango.pogo.pogo_gui/src/org/tango/pogo/pogo_gui
     
+     
     java  -cp $POGO    $UPDATE_CLASS \
 		    -file      $SRC_HOME/$TARGET_CLASS.java \
-		    -release   $VERSION \
+		    -release   ./pom.xml \
 		    -title     "Pogo Release Notes" \
 		    -package   $PACKAGE \
 		    -note_path $SRC_HOME
 }
 
+#		    -release   $VERSION \
 
 
 #---------------------------------------------------------
