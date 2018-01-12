@@ -433,15 +433,17 @@ public class ParserTool {
             String path = pogoClass.getDescription().getSourcePath() + "/vc12_proj";
             File dir = new File(path);
             String[] fileNames = dir.list();
-            for (String fileName : fileNames) {
-                if (fileName.contains(".vcxproj")) {
-                    String absoluteFileName = path + "/" + fileName;
-                    //  Add special chars at file beginning
-                    String code = readFile(absoluteFileName);
-                    //  Verify if it is a generated windows project
-                    if (code.startsWith("<?xml ")) {
-                        code = new String(sequence) + code;
-                        writeFile(absoluteFileName, code);
+            if (fileNames!=null) {
+                for (String fileName : fileNames) {
+                    if (fileName.contains(".vcxproj")) {
+                        String absoluteFileName = path + "/" + fileName;
+                        //  Add special chars at file beginning
+                        String code = readFile(absoluteFileName);
+                        //  Verify if it is a generated windows project
+                        if (code.startsWith("<?xml ")) {
+                            code = new String(sequence) + code;
+                            writeFile(absoluteFileName, code);
+                        }
                     }
                 }
             }

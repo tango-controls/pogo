@@ -128,6 +128,8 @@ public interface PogoConst {
     int SPECTRUM = 1;
     int IMAGE = 2;
 
+    int POLL_MIN_PERIOD = 5;
+    int POLL_DEFAULT_PERIOD = 1000;
 
     //  GUI
     Font rootFont_abstract = new Font("Dialog", Font.BOLD | Font.ITALIC, 20);

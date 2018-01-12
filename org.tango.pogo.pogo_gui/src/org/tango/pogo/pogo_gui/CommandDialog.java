@@ -51,6 +51,9 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.tango.pogo.pogo_gui.PogoConst.POLL_DEFAULT_PERIOD;
+import static org.tango.pogo.pogo_gui.PogoConst.POLL_MIN_PERIOD;
+
 //===============================================================
 /**
  * JDialog Class to display info
@@ -206,7 +209,7 @@ public class CommandDialog extends JDialog {
         }
 
         polledTxt.setEnabled(false);
-        polledTxt.setText("3000");
+        polledTxt.setText(Integer.toString(POLL_DEFAULT_PERIOD));
 
         if (cmd != null) {
             for (String name : commandNames)
@@ -602,14 +605,19 @@ public class CommandDialog extends JDialog {
             if (polledBtn.getSelectedObjects() != null) {
                 //noinspection NestedTryStatement
                 try {
-                    //noinspection ResultOfMethodCallIgnored
-                    Integer.parseInt(polledTxt.getText());
+                    int period = Integer.parseInt(polledTxt.getText());
+                    if (period<POLL_MIN_PERIOD)
+                        throw new PogoException(
+                                "The polling period minimum value is  " + POLL_MIN_PERIOD + " ms");
                 } catch (NumberFormatException e) {
                     throw new PogoException("Bad polling period.");
                 }
             }
-        } catch (PogoException e) {
-            e.popup(this);
+        } catch (NumberFormatException | PogoException e) {
+            if (e instanceof PogoException)
+                ((PogoException)e).popup(this);
+            else
+                new PogoException(e.toString()).popup(this);
             return;
         }
         retVal = JOptionPane.OK_OPTION;
@@ -788,8 +796,7 @@ public class CommandDialog extends JDialog {
         if (command!=null) {
             EList<String> srcExcluded = command.getExcludedStates();
             EList<String> newExcluded = cmd.getExcludedStates();
-            for (String s : srcExcluded)
-                newExcluded.add(s);
+            newExcluded.addAll(srcExcluded);
         }
         return cmd;
     }

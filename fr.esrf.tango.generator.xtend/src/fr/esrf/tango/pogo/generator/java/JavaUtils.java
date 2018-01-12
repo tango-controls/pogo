@@ -150,6 +150,7 @@ public class JavaUtils extends StringUtils {
 		return JavaTypeDefinitions.javaPropType(property.getType());
 	}
 	//===========================================================
+	@SuppressWarnings("unused")
 	public String strArginType(Command command) {
 		return JavaTypeDefinitions.javaType(command.getArgin().getType());
 	}
@@ -205,14 +206,14 @@ public class JavaUtils extends StringUtils {
 		if (defaultValues==null || defaultValues.isEmpty())
 			return "";
 		else {
-			String	str = ",\n        defaultValue={ ";
+			StringBuilder sb = new StringBuilder(",\n        defaultValue={ ");
 			for (int i=0 ; i<defaultValues.size() ; i++) {
-				str += "\"" + defaultValues.get(i) + "\"";
+				sb.append("\"").append(defaultValues.get(i)).append("\"");
 				if (i<defaultValues.size()-1)
-					str += ", ";
+					sb.append(", ");
 			}
-			str += " }";
-			return str;
+			sb.append(" }");
+			return sb.toString();
 		}
 	}
 	//===========================================================
@@ -238,7 +239,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String declareParameters(Command command) {
 		//	Put in a list parameters value only if has been set
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 		list.add("name=\"" + command.getName() + "\"");
 		list.add("inTypeDesc=\""  + oneLineString(command.getArgin().getDescription())  + "\"");
 		list.add("outTypeDesc=\"" + oneLineString(command.getArgout().getDescription()) + "\"");
@@ -248,7 +249,7 @@ public class JavaUtils extends StringUtils {
 				list.add("displayLevel=DispLevel._"+command.getDisplayLevel());
 		}
 		if (isSet(command.getPolledPeriod())) {
-			if (command.getPolledPeriod().equals("0")==false) {
+			if (!command.getPolledPeriod().equals("0")) {
 				list.add("isPolled=true");
 				list.add("pollingPeriod=" + command.getPolledPeriod());
 			}
@@ -260,7 +261,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String stateMachine(Command command) {
 
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 		for (String state : command.getExcludedStates())
 			list.add("DeviceState."+state);
 
@@ -279,7 +280,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String declareParameters(Attribute attribute) {
 		//	Put in a list parameters value only if has been set
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 
 		list.add("name=\"" + attribute.getName() + "\"");
 		
@@ -294,7 +295,7 @@ public class JavaUtils extends StringUtils {
 				list.add("displayLevel=DispLevel._"+attribute.getDisplayLevel());
 		}
 		if (isSet(attribute.getPolledPeriod())) {
-			if (attribute.getPolledPeriod().equals("0")==false) {
+			if (!attribute.getPolledPeriod().equals("0")) {
 				list.add("isPolled=true");
 				list.add("pollingPeriod=" + attribute.getPolledPeriod());
 			}
@@ -342,7 +343,7 @@ public class JavaUtils extends StringUtils {
 	public String declareProperties(Attribute attribute) {
 		
 		//	Put in a list property value only if has been set
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 		if (isSet(attribute.getProperties().getDescription()))
 			list.add("description=\"" + oneLineString(attribute.getProperties().getDescription()) + "\"");
 		if (isSet(attribute.getProperties().getLabel()))
@@ -400,7 +401,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String stateMachine(Attribute attribute) {
 
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 		for (String state : attribute.getReadExcludedStates())
 			list.add("DeviceState."+state);
 
@@ -414,7 +415,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String stateMachineForDynamic(Attribute attribute) {
 
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 		for (String state : attribute.getReadExcludedStates())
 			list.add("DeviceState."+state);
 
@@ -428,7 +429,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String stateMachineForDynamic(Command command) {
 
-		ArrayList<String>	list = new ArrayList<String>();
+		ArrayList<String>	list = new ArrayList<>();
 		for (String state : command.getExcludedStates())
 			list.add("DeviceState."+state);
 
@@ -449,7 +450,7 @@ public class JavaUtils extends StringUtils {
 
 		//	append all set properties with comma separator (not at end !)
 		//	And a break line when too long
-		StringBuffer	sb = new StringBuffer(header);
+		StringBuilder sb = new StringBuilder(header);
 		int	length = header.length();
 		for (int i=0 ; i<list.size() ; i++) {
 			sb.append(list.get(i));
@@ -481,11 +482,11 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String headerParameters(Command command) {
 		String	params = "";
-		if (JavaTypeDefinitions.javaType(command.getArgin().getType()).equals("void")==false) {
+		if (!JavaTypeDefinitions.javaType(command.getArgin().getType()).equals("void")) {
 			params += "* @param " + parameter(command, "In") + " " + StringUtils.comments(
 					command.getArgin().getDescription(), "*" + parameterInBlanks(command)) + "\n";
 		}
-		if (JavaTypeDefinitions.javaType(command.getArgout().getType()).equals("void")==false) {
+		if (!JavaTypeDefinitions.javaType(command.getArgout().getType()).equals("void")) {
 			params += "* @return " + StringUtils.comments(
 					command.getArgout().getDescription(), "*         ") + "\n";
 		}
@@ -555,19 +556,6 @@ public class JavaUtils extends StringUtils {
 	}
 	//===========================================================
 	//===========================================================
-	public static String getJserverJarFile() {
-		String jarFile   = System.getenv("JSERVER_JAR_FILE");
-		if (jarFile!=null)
-			return jarFile;
-
-		String tangoRoot = System.getenv("TANGO_ROOT");
-		if (tangoRoot==null)
-			return "%TANGO_ROOT%/share/tango/java/JTangoServer.jar";
-		return tangoRoot + "/share/tango/java/JTangoServer.jar";
-	}
-	
-	//===========================================================
-	//===========================================================
 	public static String attributeMethodName(Attribute attribute, Boolean read) {
 		String attName = attribute.getName().substring(0, 1).toUpperCase() + 
 				attribute.getName().substring(1);
@@ -594,6 +582,7 @@ public class JavaUtils extends StringUtils {
 	 *	and no abstract attribute
 	 */
 	//===========================================================
+	@SuppressWarnings("unused")
 	public boolean isConcreteClass(PogoDeviceClass cls) {
 		return CppStringUtils.isFalse(cls.getDescription().getHasAbstractAttribute()) &&
 				CppStringUtils.isFalse(cls.getDescription().getHasAbstractCommand()) ;
@@ -612,8 +601,9 @@ public class JavaUtils extends StringUtils {
 	 */
 	//===========================================================
 	public boolean isInheritanceClass(Inheritance inheritance) {
+		//noinspection SimplifiableIfStatement
 		if (CppStringUtils.isSet(inheritance.getClassname())) {
-			return (isDefaultDeviceImpl(inheritance.getClassname())==false);
+			return (!isDefaultDeviceImpl(inheritance.getClassname()));
 		}
 		else
 			return false;
@@ -679,7 +669,7 @@ public class JavaUtils extends StringUtils {
 	//===========================================================
 	public String pollingCommandCode(Command command) {
 		String polledPeriodStr = command.getPolledPeriod();
-		if (polledPeriodStr!=null && polledPeriodStr.equals("0")==false) 
+		if (polledPeriodStr!=null && !polledPeriodStr.equals("0"))
 			return "(isPolled=true, pollingPeriod=" + polledPeriodStr + ")";
 		else
 			return "";

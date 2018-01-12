@@ -236,7 +236,7 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             //	Default value if never set
             String txt;
             if (poll_period == 0)
-                txt = "3000";
+                txt = Integer.toString(POLL_DEFAULT_PERIOD);
             else
                 txt = "" + poll_period;
             periodText.setText(txt);
@@ -1286,8 +1286,8 @@ public class AttributeDialog extends JDialog implements org.tango.pogo.pogo_gui.
             try {
                 poll_period = Integer.parseInt(strValue);
                 //	Control if value not too small
-                if (poll_period < 20 && poll_period != 0) {    //	if 0 means externally filling mode (by code)
-                    message = "The polling period minimum value is  " + 20 + " ms";
+                if (poll_period < POLL_MIN_PERIOD && poll_period != 0) {    //	if 0 means externally filling mode (by code)
+                    message = "The polling period minimum value is  " + POLL_MIN_PERIOD + " ms";
                 }
             } catch (NumberFormatException e) {
                 message = e.toString() + "\n\nBad Value in Polling period field !";

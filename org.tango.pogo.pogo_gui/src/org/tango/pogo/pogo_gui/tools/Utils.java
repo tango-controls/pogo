@@ -262,20 +262,20 @@ public class Utils {
             return "dev_status";
 
         //	Else replace upper case by '_' char and lowercase
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < commandName.length(); i++) {
             if (commandName.charAt(i) >= 'A' && commandName.charAt(i) <= 'Z') { //	if upper case
                 if (i > 0) {
                     //	Check if previous char is not an upper case too
                     if (commandName.charAt(i - 1) < 'A' || commandName.charAt(i - 1) > 'Z')
-                        str += '_';
+                        sb.append('_');
                 }
                 //	Set it to lower case
-                str += (char) (commandName.charAt(i) + ('a' - 'A'));
+                sb.append((char) (commandName.charAt(i) + ('a' - 'A')));
             } else
-                str += commandName.charAt(i);
+                sb.append(commandName.charAt(i));
         }
-        return str;
+        return sb.toString();
     }
 
     //===============================================================
@@ -394,15 +394,15 @@ public class Utils {
     public static String checkNameSyntax(String name,
                                          String type, boolean isStateStatus,
                                          boolean isAttribute) throws PogoException {
-        if (name == null || name.length() == 0)
+        if (name == null || name.isEmpty())
             throw new PogoException(type+" (" + name + ") not valid !");
 
         //	check if one word
         StringTokenizer stk = new StringTokenizer(name);
-        String s = "";
+        StringBuilder sb = new StringBuilder();
         while (stk.hasMoreTokens())
-            s += stk.nextToken();
-        name = s;
+            sb.append(stk.nextToken());
+        name = sb.toString();
 
         //	Check for special char
         for (int i = 0; i < name.length(); i++) {
@@ -515,12 +515,13 @@ public class Utils {
     }
     //===============================================================
     /**
-     * Returns a vector of file names found in specified directory
+     * Returns a List of file names found in specified directory
      *
      * @param dirName specified directory name
      * @return a vector of file names fond.
      */
     //===============================================================
+    @SuppressWarnings("unused")
     public List<String> getFileList(String dirName) {
         List<String> v = new ArrayList<>();
         File dir = new File(dirName);
@@ -625,6 +626,7 @@ public class Utils {
      *	@param cmd	shell command to be executed.
      */
     //===============================================================
+    @SuppressWarnings("UnusedReturnValue")
     public static String executeShellCommand(String cmd) throws PogoException {
         try {
             Process process = Runtime.getRuntime().exec(cmd);
@@ -672,14 +674,14 @@ public class Utils {
     public static String getXmiFile(boolean getMultiClasses) {
         File f = new File(".");
         String[] fileList = f.list();
-        for (String fileName : fileList) {
-            if (new File(fileName).isFile()) {
-                if (!getMultiClasses && fileName.endsWith(".xmi") && !fileName.contains(".multi.")) {
-                    return fileName;
-                }
-                else
-                if (getMultiClasses && fileName.endsWith(".multi.xmi")) {
-                    return fileName;
+        if (fileList!=null) {
+            for (String fileName : fileList) {
+                if (new File(fileName).isFile()) {
+                    if (!getMultiClasses && fileName.endsWith(".xmi") && !fileName.contains(".multi.")) {
+                        return fileName;
+                    } else if (getMultiClasses && fileName.endsWith(".multi.xmi")) {
+                        return fileName;
+                    }
                 }
             }
         }
@@ -712,38 +714,6 @@ public class Utils {
                 }
             }
         }
-
-        /*** Description file has been set to ClassDescription ***
-        if (beforeProcessing) {
-            //  Check html file to do not have ' char
-            //  Problem during protected region parsing
-            File description = new File(pogoClass.getDescription().getSourcePath() +
-                    "/" + defaultLocation+"/Description.html");
-            if (description.exists()) {
-                try {
-                    String          htmlChar = "&lsquo;";
-                    StringBuilder   sb = new StringBuilder();
-                    String  code = ParserTool.readFile(description.toString());
-                    int start;
-                    int end = 0;
-                    boolean modified = false;
-                    while ((start=code.indexOf('\'', end))>0) {
-                        sb.append(code.substring(end, start)).append(htmlChar);
-                        end = start+1;
-                        modified = true;
-                    }
-                    sb.append(code.substring(end));
-                    
-                    if (modified) {
-                        ParserTool.writeFile(description.toString(), sb.toString());
-                    }
-                }
-                catch(PogoException e) {
-                    System.err.println(e);
-                }
-            }
-        }
-         ****************/
     }
     //===============================================================
     //===============================================================
@@ -780,7 +750,7 @@ public class Utils {
         //  Special case for Windows
         //  If file come from different disk (e.g. c: end d:)
         if (refList.get(0).endsWith(":") && pathList.get(0).endsWith(":")) {
-            if (refList.get(0).equalsIgnoreCase(pathList.get(0))==false) {
+            if (!refList.get(0).equalsIgnoreCase(pathList.get(0))) {
                 //  Cannot compute a relative path
                 //      --> return absolute
                 return path;
@@ -810,7 +780,7 @@ public class Utils {
             relative = relative.substring(0, relative.length()-1);
 
         //  if no .. part add relative to ./
-        if (relative.startsWith("..")==false)
+        if (!relative.startsWith(".."))
             relative = "./"+relative;
 
         //  Convert to Linux format
@@ -1011,7 +981,6 @@ public class Utils {
                 splash.setMessage(message);
             }
         }
-
         //===================================================
         public void run() {
             int idx = 1;
@@ -1027,7 +996,6 @@ public class Utils {
             splash.progress(100);
             splash.setVisible(false);
         }
-
         //===================================================
         private synchronized void doSleep(long millis) {
             try {

@@ -103,7 +103,7 @@ public class StringUtils {
 	 */
 	//===========================================================
 	public static int getIntegerValue(String str) {
-		if  (isSet(str)==false)
+		if  (!isSet(str))
 			return -1;
 		else
 			try {
@@ -127,7 +127,7 @@ public class StringUtils {
 	 */
 	//===========================================================
 	public String list2String(EList<String> list) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (int i=0 ; i<list.size(); i++) {
 			sb.append(list.get(i));
 			if (i<list.size()-1)
@@ -145,7 +145,7 @@ public class StringUtils {
 
 		if (text==null)
 			return "";
-		StringBuffer	sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		int	start = 0;
 		int end;
 		while ((end=text.indexOf('\n', start))>0){
@@ -161,7 +161,7 @@ public class StringUtils {
 	 */
 	//===========================================================
 	public String string2Vector(String text, String vectorName) {
-		StringBuffer	sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		int	start = 0;
 		int end;
 		while ((end=text.indexOf('\n', start))>0){
@@ -185,12 +185,12 @@ public class StringUtils {
 	/**
 	 * build a "if" content from the specified list.
 	 * 		used by StateMachine
-	 * @param list
+	 * @param list specified list
 	 * @return the "if" content from the specified list
 	 */
 	//===========================================================
 	public String ifContentFromList(EList<String> list) {
-		StringBuffer	sb = new StringBuffer();
+		StringBuilder	sb = new StringBuilder();
 		for (int i=0 ; i<list.size(); i++) {
 			sb.append("get_state()==Tango::").append(list.get(i));
 			if (i<list.size()-1)
@@ -203,12 +203,12 @@ public class StringUtils {
 	/**
 	 * build a "if" content from the specified list.
 	 * 		used by PythonUtils
-	 * @param list
+	 * @param list specified list
 	 * @return the "if" content from the specified list
 	 */
 	//===========================================================
 	public String ifContentFromListPython(EList<String> list) {
-		StringBuffer	sb = new StringBuffer();
+		StringBuilder	sb = new StringBuilder();
 		sb.append("self.get_state() in [");
 		for (int i=0 ; i<list.size(); i++) {
 			sb.append("PyTango.DevState.").append(list.get(i));
@@ -222,12 +222,12 @@ public class StringUtils {
 	/**
 	 * build a "if" content from the specified list.
 	 * 		used by PythonUtils
-	 * @param list
+	 * @param list specified list
 	 * @return the "if" content from the specified list
 	 */
 	//===========================================================
 	public String ifContentFromListPythonHL(EList<String> list) {
-		StringBuffer	sb = new StringBuffer();
+		StringBuilder	sb = new StringBuilder();
 		sb.append("self.get_state() not in [");
 		for (int i=0 ; i<list.size(); i++) {
 			sb.append("DevState.").append(list.get(i));
@@ -292,10 +292,11 @@ public class StringUtils {
 	 * build the states table
 	 */
 	//===========================================================
+	@SuppressWarnings("unused")
 	public static String statesTable(EList<State> states) {
 
 		//	Build a list of state columns to build the table
-		ArrayList<String[]>	list = new ArrayList<String[]>();
+		ArrayList<String[]>	list = new ArrayList<>();
 		list.add(new String[] { "================================================================" });
 		list.add(new String[] { "States", "Description" });
 		list.add(new String[] { "================================================================" });
@@ -307,7 +308,7 @@ public class StringUtils {
 	//===========================================================
 	//===========================================================
 	private static String buildTable(ArrayList<String[]> list) {
-		StringBuffer	sb = new StringBuffer();
+		StringBuilder	sb = new StringBuilder();
 		//	Get the longest first element
 		int	length = 0;
 		for (String[] array : list) {
@@ -330,7 +331,7 @@ public class StringUtils {
 	//===========================================================
 	//===========================================================
 	private static String buildTab(String str, int nbChar) {
-		StringBuffer	sb = new StringBuffer(str);
+		StringBuilder sb = new StringBuilder(str);
 		for (int i=str.length() ; i<nbChar ; i++) {
 			sb.append(' ');
 		}
@@ -381,7 +382,7 @@ public class StringUtils {
      *
      * @param filename file to be read.
      * @return the file content read.
-     * @throws fr.esrf.Tango.DevFailed in case of failure during read file.
+     * @throws Exception in case of failure during read file.
      */
     //===============================================================
     public static String readFile(String filename) throws Exception {
@@ -431,8 +432,8 @@ public class StringUtils {
     //===============================================================
     /**
      * Replace special characters 
-     * @param label
-     * @return
+     * @param label enum label
+     * @return the enum with expected characters
      */
     //===============================================================
     public static String label2enum(String label) {
@@ -486,9 +487,9 @@ public class StringUtils {
 			String str = "General Public License";
 			StringBuilder sb = new StringBuilder();
 			int start = 0;
-			int end   = 0;
+			int end;
 			while ((end=gpl.indexOf(str, start+str.length()))>0) {
-				sb.append(gpl.substring(start, end) + "Lesser ");
+				sb.append(gpl.substring(start, end)).append("Lesser ");
 				start = end;
 			}
 			sb.append(gpl.substring(start));
@@ -504,8 +505,8 @@ public class StringUtils {
 		if (copyright==null || copyright.isEmpty())
 			return "";
 		StringBuilder sb = new StringBuilder();
-		int start = 0 ;
-		int end   = 0 ;
+		int start = 0;
+		int end;
 		while ((end=copyright.indexOf('\n', start))>0) {
 			end++;
 			String line = "// " + copyright.substring(start, end);
