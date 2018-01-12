@@ -31,11 +31,13 @@ UpdateNotes() {
 		    -note_path $SRC_HOME
 }
 
-#		    -release   $VERSION \
-
 
 #---------------------------------------------------------
 #	Release Pogo using maven
+#
+#   Two prompts:
+#      - First  without -SNAPSHOT
+#      - Second with    -SNAPSHOT
 #---------------------------------------------------------
 ReleasePogo() {
 
