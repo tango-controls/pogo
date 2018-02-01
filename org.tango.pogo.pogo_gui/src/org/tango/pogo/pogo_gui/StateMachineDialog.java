@@ -41,16 +41,12 @@ import org.eclipse.emf.common.util.EList;
 import org.tango.pogo.pogo_gui.tools.StateMachineTable;
 
 import javax.swing.*;
-import java.awt.*;
 
-//===============================================================
 /**
  * Class Description: Basic Dialog Class to display info
  *
  * @author root
  */
-//===============================================================
-
 
 @SuppressWarnings("MagicConstant")
 public class StateMachineDialog extends JDialog implements PogoConst {
@@ -59,8 +55,6 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     private StateMachineTable attributeTable;
     private StateMachineTable pipeTable;
     private int retVal = JOptionPane.OK_OPTION;
-
-    private static final int MAX_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
     //===============================================================
     /**
      * Creates new form StateMachineDialog
@@ -84,69 +78,50 @@ public class StateMachineDialog extends JDialog implements PogoConst {
      */
     //===============================================================
     private void createOwnComponents() {
-        Dimension[] dimensions =new Dimension[3];
+        int paneIndex = 0;
+        JScrollPane commandScrollPane = null;
+        JScrollPane attributeScrollPane = null;
+        JScrollPane pipeScrollPane = null;
+
         //  Manage commands and dynamic commands
         EList<Command> commands = pogoClass.getCommands();
         EList<Command> dynCommands = pogoClass.getDynamicCommands();
         if (commands.size()>2 || !dynCommands.isEmpty()) {
             commandTable = new StateMachineTable(pogoClass, StateMachineTable.COMMAND);
-            commandScrollPane.add(commandTable);
-            commandScrollPane.setViewportView(commandTable);
-            dimensions[StateMachineTable.COMMAND] = commandTable.getDimension(this);
-            commandScrollPane.setPreferredSize(dimensions[StateMachineTable.COMMAND]);
+            commandScrollPane = new JScrollPane(commandTable);
+            tabbedPane.add(commandScrollPane);
+            tabbedPane.setTitleAt(paneIndex++, "Allowed Commands");
         }
-        else
-            commandLabel.setVisible(false);
 
         //  Manage attributes and dynamic attributes
         EList<Attribute> attributes = pogoClass.getAttributes();
         EList<Attribute> dynAttributes = pogoClass.getDynamicAttributes();
         if (!attributes.isEmpty() || !dynAttributes.isEmpty()) {
             attributeTable = new StateMachineTable(pogoClass, StateMachineTable.ATTRIBUTE);
-            attributeScrollPane.add(attributeTable);
-            attributeScrollPane.setViewportView(attributeTable);
-            dimensions[StateMachineTable.ATTRIBUTE] = attributeTable.getDimension(this);
-            attributeScrollPane.setPreferredSize(dimensions[StateMachineTable.ATTRIBUTE]);
+            attributeScrollPane = new JScrollPane(attributeTable);
+            tabbedPane.add(attributeScrollPane);
+            tabbedPane.setTitleAt(paneIndex++, "Allowed Attributes");
         }
-        else
-            attributeLabel.setVisible(false);
 
         //  Manage pipes
         EList<Pipe> pipes = pogoClass.getPipes();
         if (!pipes.isEmpty()) {
             pipeTable = new StateMachineTable(pogoClass, StateMachineTable.PIPE);
-            pipeScrollPane.add(pipeTable);
-            pipeScrollPane.setViewportView(pipeTable);
-            dimensions[StateMachineTable.PIPE] = pipeTable.getDimension(this);
-            pipeScrollPane.setPreferredSize(dimensions[StateMachineTable.PIPE]);
+            pipeScrollPane = new JScrollPane(pipeTable);
+            tabbedPane.add(pipeScrollPane);
+            tabbedPane.setTitleAt(paneIndex, "Allowed Pipes");
         }
-        else
-            pipeLabel.setVisible(false);
-
-        checkSize(dimensions, new JScrollPane[]{
-                commandScrollPane, attributeScrollPane, pipeScrollPane});
-    }
-    //===============================================================
-    //===============================================================
-    private void checkSize(Dimension[] d, JScrollPane[] scrollPanes) {
-        //  Check total height
         pack();
-        int height = getHeight();
-        if (height>MAX_HEIGHT) {
-            double ratio = (double) MAX_HEIGHT/height*0.8;  //  0.8 for fixed height components
-            for (int i=StateMachineTable.COMMAND ; i<=StateMachineTable.PIPE ; i++) {
-                //  if table exists
-                if (d[i]!=null && scrollPanes[i]!=null) {
-                    //  Max height ?
-                    if (d[i].height>(int)(ratio*StateMachineTable.MAX_HEIGHT)) {
-                        //  Reduce height
-                        d[i].height = (int)(ratio*StateMachineTable.MAX_HEIGHT);
-                        scrollPanes[i].setPreferredSize(d[i]);
-                    }
-                }
-            }
-        }
+        if (commandScrollPane!=null)
+            commandScrollPane.setPreferredSize(commandTable.getDimension());
+        if (attributeScrollPane!=null)
+            attributeScrollPane.setPreferredSize(attributeTable.getDimension());
+        if (pipeScrollPane!=null)
+            pipeScrollPane.setPreferredSize(pipeTable.getDimension());
     }
+    //===============================================================
+    //===============================================================
+
     //===============================================================
     /**
      * This method is called from within the constructor to
@@ -157,26 +132,19 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
         javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
         javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        javax.swing.JPanel mainPanel = new javax.swing.JPanel();
-        commandLabel = new javax.swing.JLabel();
-        commandScrollPane = new javax.swing.JScrollPane();
-        attributeLabel = new javax.swing.JLabel();
-        attributeScrollPane = new javax.swing.JScrollPane();
-        pipeLabel = new javax.swing.JLabel();
-        pipeScrollPane = new javax.swing.JScrollPane();
+        tabbedPane = new javax.swing.JTabbedPane();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         okBtn.setText("OK");
         okBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -201,55 +169,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
         jPanel2.add(titleLabel);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
-
-        mainPanel.setLayout(new java.awt.GridBagLayout());
-
-        commandLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        commandLabel.setText("Select Allowed Commands");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        mainPanel.add(commandLabel, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 10, 10, 10);
-        mainPanel.add(commandScrollPane, gridBagConstraints);
-
-        attributeLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        attributeLabel.setText("Select Allowed Attributes");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        mainPanel.add(attributeLabel, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 10, 10, 10);
-        mainPanel.add(attributeScrollPane, gridBagConstraints);
-
-        pipeLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        pipeLabel.setText("Select Allowed Pipes");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        mainPanel.add(pipeLabel, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 10, 10, 10);
-        mainPanel.add(pipeScrollPane, gridBagConstraints);
-
-        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -309,12 +229,7 @@ public class StateMachineDialog extends JDialog implements PogoConst {
     //===============================================================
     //===============================================================
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel attributeLabel;
-    private javax.swing.JScrollPane attributeScrollPane;
-    private javax.swing.JLabel commandLabel;
-    private javax.swing.JScrollPane commandScrollPane;
-    private javax.swing.JLabel pipeLabel;
-    private javax.swing.JScrollPane pipeScrollPane;
+    private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
     //===============================================================

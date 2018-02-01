@@ -71,7 +71,6 @@ public class Pogo {
     private DeviceClass deviceClass = null;
     private PogoException pogoException = null;
     private List<String> sourceFiles = new ArrayList<>();
-
     //===============================================================
     //===============================================================
     public Pogo() throws PogoException {

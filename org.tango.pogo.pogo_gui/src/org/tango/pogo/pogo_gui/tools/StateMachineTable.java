@@ -83,6 +83,7 @@ public class StateMachineTable extends JTable {
     public static final int MAX_HEIGHT = 500;
     private static final Boolean READ = false;
     private static final Boolean WRITE = true;
+    private static final Color writeBackground = new Color(0xf0c0c0);
     //===============================================================
     /**
      * Creates new JTable to define state machine
@@ -150,8 +151,7 @@ public class StateMachineTable extends JTable {
     }
     //===============================================================
     //===============================================================
-    public Dimension getDimension(JDialog parent) {
-        parent.pack();
+    public Dimension getDimension() {
         int height = getHeight() + 30; // + header
         if (height>MAX_HEIGHT) height = MAX_HEIGHT;
         return new Dimension(width, height);
@@ -192,7 +192,6 @@ public class StateMachineTable extends JTable {
         });
         headerBackground = getTableHeader().getBackground();
     }
-
     //===============================================================
     //===============================================================
     private void tableActionPerformed(java.awt.event.MouseEvent event) {
@@ -215,7 +214,6 @@ public class StateMachineTable extends JTable {
             popupMenu.showMenu(event, false); //   For Attr
         }
     }
-
     //===============================================================
     //===============================================================
     private int selectedColumn;
@@ -237,7 +235,6 @@ public class StateMachineTable extends JTable {
             }
         }
     }
-
     //===============================================================
     //===============================================================
     private void setAllFor(boolean b, boolean forState) {
@@ -250,7 +247,6 @@ public class StateMachineTable extends JTable {
         }
         repaint();
     }
-
     //===============================================================
     //===============================================================
     private void updateExcluded(String name) {
@@ -260,7 +256,6 @@ public class StateMachineTable extends JTable {
             }
         }
     }
-
     //===============================================================
     //===============================================================
     public void updateExcluded() {
@@ -356,7 +351,7 @@ public class StateMachineTable extends JTable {
             excluded.clear();
             int i = 0;
             for (boolean b : allowed) {
-                if (b==false) {
+                if (!b) {
                     excluded.add(stateList.get(i).getName());
                 }
                 i++;
@@ -444,12 +439,15 @@ public class StateMachineTable extends JTable {
                 JTable table, Object value,
                 boolean isSelected, boolean hasFocus,
                 int row, int column) {
-
             setText(itemList.get(row).toString());
             if (isSelected)
                 setBackground(getSelectionBackground());
-            else
-                setBackground(headerBackground);
+            else {
+                if (itemList.get(row).write)
+                    setBackground(writeBackground);
+                else
+                    setBackground(headerBackground);
+            }
             return this;
         }
         //==========================================================
