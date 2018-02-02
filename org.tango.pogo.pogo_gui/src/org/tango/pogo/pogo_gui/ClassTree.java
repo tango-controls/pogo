@@ -792,11 +792,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
     }
     //===============================================================
-
     /**
      * Check if copiedItem is able to be pasted
      *
-     * @return return true if opiedItem is able to be pasted
+     * @return return true if copied item is able to be pasted
      */
     //===============================================================
     private boolean canPaste() {
@@ -805,18 +804,18 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
         DefaultMutableTreeNode selectedNode = getSelectedNode();
         if (copiedItem instanceof PogoProperty) {
-            if (selectedNode == root.getChildAt(DEV_PROPERTIES)) return true;
-            if (selectedNode == root.getChildAt(CLASS_PROPERTIES)) return true;
+            return selectedNode == root.getChildAt(DEV_PROPERTIES) ||
+                    selectedNode == root.getChildAt(CLASS_PROPERTIES);
         } else if (copiedItem instanceof PogoCommand) {
-            if (selectedNode == root.getChildAt(COMMANDS)) return true;
+            return selectedNode == root.getChildAt(COMMANDS);
         } else if (copiedItem instanceof PogoAttribute) {
-            if (selectedNode == root.getChildAt(SCALAR_ATTRIBUTES)) return true;
-            if (selectedNode == root.getChildAt(SPECTRUM_ATTRIBUTES)) return true;
-            if (selectedNode == root.getChildAt(IMAGE_ATTRIBUTES)) return true;
+            return selectedNode == root.getChildAt(SCALAR_ATTRIBUTES) ||
+                    selectedNode == root.getChildAt(SPECTRUM_ATTRIBUTES) ||
+                    selectedNode == root.getChildAt(IMAGE_ATTRIBUTES);
         }else if (copiedItem instanceof PogoPipe) {
-            if (selectedNode == root.getChildAt(PIPES)) return true;
+            return selectedNode == root.getChildAt(PIPES);
         } else if (copiedItem instanceof PogoState) {
-            if (selectedNode == root.getChildAt(STATES)) return true;
+            return selectedNode == root.getChildAt(STATES);
         }
         return false;
     }
@@ -2010,7 +2009,13 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         //===========================================================
         private String toInfoString() {
             String str = ((is_dev) ? "Device" : "Class") + " property:  " + value.getName();
-            return Utils.buildToolTip(str, Utils.strReplace(value.getDescription(), "\\n", "\n"));
+            String desc = Utils.strReplace(value.getDescription(), "\\n", "\n");
+            desc += "<ul>";
+            desc += "  <li> " + OAWutils.pogo2tangoType(value.getType().toString());
+            if (value.getMandatory()!=null && value.getMandatory().equals("true"))
+                desc += "   <li> Mandatory";
+            desc += "</ul>";
+            return Utils.buildToolTip(str, desc);
         }
         //===========================================================
         private void manageDisplay(TangoRenderer renderer) {
@@ -2051,6 +2056,10 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         //===========================================================
         private String toInfoString() {
+            String toolTip = "Attribute:  ";
+            if (Utils.isTrue(value.getIsDynamic()))
+                toolTip = "Dynamic " + toolTip;
+
             String desc;
             if (value.getProperties() == null ||
                     value.getProperties().getDescription() == null ||
@@ -2059,10 +2068,17 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             else
                 desc = Utils.strReplace(value.getProperties().getDescription(), "\\n", "\n");
 
-            String s = "Attribute:  ";
-            if (Utils.isTrue(value.getIsDynamic()))
-                s = "Dynamic " + s;
-            return Utils.buildToolTip(s + value.getName(), desc);
+            desc += "<ul>";
+            desc += "  <li> " + value.getAttType() + ": " +
+                    OAWutils.pogo2tangoType(value.getDataType().toString());
+            desc += "  <li> " + value.getRwType();
+            if (value.getPolledPeriod()!=null && !value.getPolledPeriod().equals("0"))
+                desc += "   <li> Polling period = " + value.getPolledPeriod();
+            desc += "   <li> " + (value.getDisplayLevel()!=null? value.getDisplayLevel() : "OPERATOR");
+            if (value.getMemorized()!=null)
+                desc += "  <li> memorized";
+            desc += "</ul>";
+            return Utils.buildToolTip(toolTip + value.getName(), desc);
         }
         //===========================================================
         private void manageDisplay(TangoRenderer renderer) {
@@ -2097,15 +2113,27 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
         }
         //===========================================================
         private String toInfoString() {
+            String toolTip = "Command:  ";
+            if (Utils.isTrue(value.getIsDynamic()))
+                toolTip = "Dynamic " + toolTip;
+
             String desc = value.getDescription();
             if (desc != null && desc.length() > 0)
                 desc = Utils.strReplace(desc, "\\n", "\n");
             else
                 desc = "No Description.";
-            String s = "Command:  ";
-            if (Utils.isTrue(value.getIsDynamic()))
-                s = "Dynamic " + s;
-            return Utils.buildToolTip(s + value.getName(), desc);
+            desc += "<ul>";
+            desc += "  <li> Input Argument: " +
+                    OAWutils.pogo2tangoType(value.getArgin().getType().toString()) +
+                    "\n" + value.getArgin().getDescription();
+            desc += "  <li> Input Argument: " +
+                    OAWutils.pogo2tangoType(value.getArgout().getType().toString()) +
+                    "\n" + value.getArgout().getDescription();
+            if (value.getPolledPeriod()!=null && !value.getPolledPeriod().equals("0"))
+                desc += "   <li> Polling period = " + value.getPolledPeriod();
+            desc += "   <li> " +  (value.getDisplayLevel()!=null? value.getDisplayLevel() : "OPERATOR");
+            desc += "</ul>";
+            return Utils.buildToolTip(toolTip + value.getName(), desc);
         }
         //===========================================================
         private void manageDisplay(TangoRenderer renderer) {
@@ -2247,11 +2275,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     private class TangoRenderer extends DefaultTreeCellRenderer {
         //===============================================================
         //===============================================================
-        public TangoRenderer() {
-        }
-
-        //===============================================================
-        //===============================================================
         public Component getTreeCellRendererComponent(
                 JTree tree,
                 Object obj,
@@ -2276,13 +2299,13 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             Object userObject = node.getUserObject();
             if (row == 0) {
                 //	ROOT
-                PogoRoot pr = (PogoRoot) userObject;
-                if (pr.isAbstract)
+                PogoRoot pogoRoot = (PogoRoot) userObject;
+                if (pogoRoot.isAbstract)
                     setFont(rootFont_abstract);
                 else
                     setFont(rootFont_concrete);
                 setIcon(utils.rootIcon);
-                setToolTipText(pr.toInfoString());
+                setToolTipText(pogoRoot.toInfoString());
             } else {
                 if (userObject instanceof PogoProperty) {
                     ((PogoProperty) userObject).manageDisplay(this);
