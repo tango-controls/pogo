@@ -289,7 +289,6 @@ public class DeviceClass {
         else
             return null;    //	Cancelled
     }
-
     //===============================================================
     //===============================================================
     private boolean loadInheritanceClasses() throws PogoException {
@@ -300,10 +299,11 @@ public class DeviceClass {
             for (Inheritance inheritance : inheritances) {
                 if (!isDefaultInheritance(inheritance)) {
                     String className = inheritance.getClassname();
-                    String filename =
-                            inheritance.getSourcePath() +
-                                    java.lang.System.getProperty("file.separator") +
-                                    className + ".xmi";
+                    String filename = inheritance.getSourcePath() +
+                            java.lang.System.getProperty("file.separator") + className + ".xmi";
+                    //  Get absolute path for file
+                    File file = new File(filename);
+                    filename = file.getCanonicalFile().toString();
                     if ((filename = checkInheritanceFile(filename, className)) == null)
                         return false;
 
@@ -331,7 +331,6 @@ public class DeviceClass {
         }
         return true;
     }
-
     //==============================================================
     //==============================================================
     public void removeInheritance() {
@@ -342,16 +341,16 @@ public class DeviceClass {
         inheritance.setSourcePath("");
         inheritances.add(inheritance);
 
-        EList<Property> classprops = pogoClass.getClassProperties();
-        EList<Property> devprops = pogoClass.getDeviceProperties();
+        EList<Property> classProperties = pogoClass.getClassProperties();
+        EList<Property> deviceProperties = pogoClass.getDeviceProperties();
         EList<Command> commands = pogoClass.getCommands();
         EList<Attribute> attributes = pogoClass.getAttributes();
         EList<State> states = pogoClass.getStates();
 
-        for (Property property : classprops) {
+        for (Property property : classProperties) {
             property.getStatus().setInherited("false");
         }
-        for (Property property : devprops) {
+        for (Property property : deviceProperties) {
             property.getStatus().setInherited("false");
         }
         for (Command command : commands) {

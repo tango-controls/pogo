@@ -9,7 +9,8 @@
 #-======================================================================
 
 
-Pogo-9.6. - /01/2018:
+Pogo-9.6.5 - 23/02/2018:
+    Fix a bug on heritance path.
     Generate Makefile or CMakeList.txt from commande line.
 
 Pogo-9.6.4 - 12/01/2018:

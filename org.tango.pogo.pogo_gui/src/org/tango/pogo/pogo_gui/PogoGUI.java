@@ -1130,12 +1130,11 @@ public class PogoGUI extends JFrame {
     //=======================================================
     //=======================================================
     private void loadDeviceClassFromFile(String filename, boolean checkForNewFrame) {
-
         Cursor cursor = new Cursor(Cursor.WAIT_CURSOR);
         try {
             //  Get absolute path for file
-            File f = new File(filename);
-            filename = f.getCanonicalFile().toString();
+            File file = new File(filename);
+            filename = file.getCanonicalFile().toString();
             manageRecentMenu(filename);
         } catch (IOException e) { /* */ }
 
