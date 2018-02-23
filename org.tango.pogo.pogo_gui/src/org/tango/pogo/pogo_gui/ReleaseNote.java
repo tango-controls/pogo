@@ -16,7 +16,10 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 12-01-2018  09:52:53)</center><br>\n" + 
+		"	(Generated 23-02-2018  14:55:31)</center><br>\n" + 
+		"<li><b>Pogo-9.6.5 - 23/02/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix a bug on heritance path.<br>" + 
+		"&nbsp; &nbsp; &nbsp; Generate Makefile or CMakeList.txt from commande line.<br>" + 
 		"<li><b>Pogo-9.6.4 - 12/01/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Change default (1000) and minimum (5) values for polling<br>" + 
 		"&nbsp; &nbsp; &nbsp; Remove references to Pogo-6 (too old)<br>" + 
