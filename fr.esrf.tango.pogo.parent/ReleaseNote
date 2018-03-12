@@ -9,6 +9,9 @@
 #-======================================================================
 
 
+Pogo-9.6.6 - 12/03/2018:
+    Fix aproblem in Enum labels for java classes.
+
 Pogo-9.6.5 - 23/02/2018:
     Fix a bug on heritance path.
     Generate Makefile or CMakeList.txt from commande line.

@@ -16,7 +16,9 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 23-02-2018  14:55:31)</center><br>\n" + 
+		"	(Generated 12-03-2018  14:13:36)</center><br>\n" + 
+		"<li><b>Pogo-9.6.6 - 12/03/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix aproblem in Enum labels for java classes.<br>" + 
 		"<li><b>Pogo-9.6.5 - 23/02/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a bug on heritance path.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Generate Makefile or CMakeList.txt from commande line.<br>" + 

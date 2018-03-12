@@ -180,6 +180,8 @@ public class JavaUtils extends StringUtils {
 		if (attribute.getDataType().toString().contains("Enum")) {
 			if (attribute.getEnumLabels()!=null && attribute.getEnumLabels().size()>0) {
 				sb.append("public enum ").append(attribute.getName()).append("Enum { \n");
+				int i=0;
+				//	For each attribute, write enum with its label
 				for (String label : attribute.getEnumLabels()) {
 					String item = label.toUpperCase();
 					item = item.replaceAll(" ", "_");
@@ -187,11 +189,22 @@ public class JavaUtils extends StringUtils {
 					item = myReplaceAll(item, "-", "minus");
 					item = myReplaceAll(item, "*", "mult");
 					item = myReplaceAll(item, "/", "div");
-					sb.append("\t_").append(item).append(",\n");
+					sb.append("\t_").append(item).append("(\"").append(label).append("\")");
+					if (++i<attribute.getEnumLabels().size())
+						sb.append(",\n");
+					else
+						sb.append(";\n\n");
 				}
+				//	The build enum methods
+				sb.append("\tprivate final String label;\n");
+				sb.append("\tprivate ").append(attribute.getName()).
+						append("Enum(final String label) { this.label = label; }\n");
+				sb.append("\t@Override\n");
+				sb.append("\tpublic String toString() { return label;}\n");
 				sb.append("};");
 			}
 		}
+		System.out.println(sb);
 		return sb.toString();
 	}
 	//===========================================================
