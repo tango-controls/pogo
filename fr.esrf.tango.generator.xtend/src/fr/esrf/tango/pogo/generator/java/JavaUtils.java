@@ -204,7 +204,6 @@ public class JavaUtils extends StringUtils {
 				sb.append("};");
 			}
 		}
-		System.out.println(sb);
 		return sb.toString();
 	}
 	//===========================================================

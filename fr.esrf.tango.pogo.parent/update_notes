@@ -36,7 +36,7 @@ UpdateNotes() {
 #	Release Pogo using maven
 #
 #   Two prompts:
-#      - First  without -SNAPSHOT
+#      - First  without -SNAPSHOT  (R -1)  !!! 9.6.7 exists
 #      - Second with    -SNAPSHOT
 #---------------------------------------------------------
 ReleasePogo() {
