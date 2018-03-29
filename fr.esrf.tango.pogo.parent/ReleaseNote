@@ -9,6 +9,10 @@
 #-======================================================================
 
 
+Pogo-9.6.8 - 29/03/2018:
+    Fix aproblem in CMakelist.txt file.
+    Add new feature to get enum labels from file.
+
 Pogo-9.6.6 - 12/03/2018:
     Fix aproblem in Enum labels for java classes.
 
