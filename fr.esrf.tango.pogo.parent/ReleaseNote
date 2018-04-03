@@ -9,7 +9,7 @@
 #-======================================================================
 
 
-Pogo-9.6.8 - 29/03/2018:
+Pogo-9.6.9 - 03/04/2018:
     Fix aproblem in CMakelist.txt file.
     Add new feature to get enum labels from file.
 

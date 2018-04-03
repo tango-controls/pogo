@@ -16,8 +16,8 @@ public interface ReleaseNote {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center>	<h2>Pogo Release Notes </h2>\n" + 
-		"	(Generated 29-03-2018  16:20:56)</center><br>\n" + 
-		"<li><b>Pogo-9.6.8 - 29/03/2018:</b><br>" + 
+		"	(Generated 03-04-2018  09:29:43)</center><br>\n" + 
+		"<li><b>Pogo-9.6.9 - 03/04/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix aproblem in CMakelist.txt file.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Add new feature to get enum labels from file.<br>" + 
 		"<li><b>Pogo-9.6.6 - 12/03/2018:</b><br>" + 
