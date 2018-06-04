@@ -1,6 +1,6 @@
 # Changelog
 
-#### Pogo-9.6.10 - 04/06/2018:
+#### Pogo-9.6.11 - 04/06/2018:
     Fix a problem on dynamic attributes when no database.
 
 #### Pogo-9.6.9 - 03/04/2018:

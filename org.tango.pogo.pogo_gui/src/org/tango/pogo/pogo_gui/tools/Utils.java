@@ -158,7 +158,6 @@ public class Utils {
         //  Check if already done
         if (pogoGuiRevision<0) {
             String revisionStr = getImplementationVersion();
-            revisionStr = "9.6.10-SNAPSHOT";
             if (revisionStr==null)
                 pogoGuiRevision = 9.6;
             else {
