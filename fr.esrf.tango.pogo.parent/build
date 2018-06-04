@@ -1,13 +1,34 @@
 #!/bin/sh
 #
 
-PACKAGE=org.tango.pogo.pogo_gui
-
 #=========================================================
 #
 #             Internal functions
 #
 #=========================================================
+
+
+
+#---------------------------------------------------------
+#	Update ReleaseNote.java and revision number in target class
+#---------------------------------------------------------
+UpdateNotes() {
+
+    echo "Updating ReleaseNote.java and revision number in target class....."
+    sleep 2
+
+    POGO=../org.tango.pogo.pogo_gui/target/classes
+    UPDATE_CLASS=org.tango.pogo.pogo_gui.tools.UpdateRelease
+    TARGET_CLASS=PogoConst
+    SRC_HOME=../org.tango.pogo.pogo_gui/src/org/tango/pogo/pogo_gui
+    
+     
+    java  -cp $POGO    $UPDATE_CLASS \
+		    -file      $SRC_HOME/$TARGET_CLASS.java \
+		    -release   ./pom.xml
+            
+}
+
 
 
 #---------------------------------------------------------
@@ -18,6 +39,8 @@ PACKAGE=org.tango.pogo.pogo_gui
 #      - Second with    -SNAPSHOT
 #---------------------------------------------------------
 ReleasePogo() {
+    
+    UpdateNotes()
 
     echo "Release Pogo using maven....."
     sleep 2
@@ -52,6 +75,12 @@ ReleasePogo() {
 #
 #=====================================
 case "$1" in
+
+ #	----------------------------------------------
+   notes)
+        UpdateNotes
+	;;
+    
 
 #	----------------------------------------------
 	release)

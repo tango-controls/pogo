@@ -146,11 +146,7 @@ public class Utils {
     //===============================================================
     //===============================================================
     public String getImplementationVersion() {
-        String release = getClass().getPackage().getImplementationVersion();
-        if (release!=null)
-            return release;
-        else
-            return " is not released";
+        return PogoConst.revNumber;
     }
     //===============================================================
     //===============================================================
