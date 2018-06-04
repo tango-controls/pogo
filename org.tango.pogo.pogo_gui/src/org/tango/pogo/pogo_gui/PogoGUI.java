@@ -161,8 +161,7 @@ public class PogoGUI extends JFrame {
     //===========================================================
     //===========================================================
     private String applicationTitle(DeviceClass deviceClass) {
-        String  release = PogoConst.revNumber;
-        release = release.substring(0, release.indexOf('-'));
+        String  release = Utils.getInstance().getImplementationVersion();
         if (deviceClass!=null)
            return "TANGO Code Generator - " + release + " - " + deviceClass.toString();
         else
@@ -991,7 +990,7 @@ public class PogoGUI extends JFrame {
                 "             Pogo  (Tango Code Generator)\n" +
                         "This programme is able to generate, update and modify\n" +
                         "                 Tango device classes.\n\n" +
-                        PogoConst.revNumber +
+                        Utils.getInstance().getImplementationVersion() +
                         "\n\n" +
                         "http://www.tango-controls.org/     -    tango@esrf.fr",
                 "Help Window", JOptionPane.INFORMATION_MESSAGE);
@@ -1019,7 +1018,7 @@ public class PogoGUI extends JFrame {
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void releaseItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseItemActionPerformed
-        new PopupHtml(this).show(ReleaseNote.str, 550, 400);
+        new PopupHtml(this).show(ReleaseNotes.htmlString, 550, 400);
     }//GEN-LAST:event_releaseItemActionPerformed
     //=======================================================
     //=======================================================

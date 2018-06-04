@@ -123,7 +123,7 @@ public class MultiClassesPanel extends JFrame {
     //=======================================================
     //=======================================================
     private void initOwnComponents() {
-        setTitle("Multi TANGO Classes Code Generator - " + PogoConst.revNumber);
+        setTitle("Multi TANGO Classes Code Generator - " + Utils.getInstance().getImplementationVersion());
 
         //	Build users_tree to display info
         scrollPane = new JScrollPane();

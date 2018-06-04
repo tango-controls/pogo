@@ -45,11 +45,6 @@ import java.awt.Font;
  * @version $Revision: 1.6 $
  */
 public interface PogoConst {
-    /**
-     * Revision number and date
-     */
-    String revNumber = "9.6.9  -  03-04-2018  09:29:43";
-
     int TANGO_PAGES = 0;
     int POGO_PAGES = 1;
     int KERNEL_PAGES = 2;

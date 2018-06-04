@@ -184,7 +184,7 @@ public class OAWutils {
         PogoSystem sys = buildPogoSystem(pogoClass);
 
         //  Force Pogo release before save
-        pogoClass.setPogoRevision(Double.toString(Utils.getPogoGuiRevision()));
+        pogoClass.setPogoRevision(Double.toString(Utils.getInstance().getPogoGuiRevision()));
 
         //	Generate XMI file.
         String xmiFileName = pogoClass.getDescription().getSourcePath() + "/" +
@@ -272,7 +272,7 @@ public class OAWutils {
         sys.getMultiClasses().add(multiClasses);
 
         //  Force Pogo release before save
-        multiClasses.setPogoRevision(Double.toString(Utils.getPogoGuiRevision()));
+        multiClasses.setPogoRevision(Double.toString(Utils.getInstance().getPogoGuiRevision()));
 
        //	Generate XMI file if requested.
         String xmiFileName = multiClasses.getSourcePath() + "/" +

@@ -141,7 +141,7 @@ class DynamicAttributeUtils {
 		//--------------------------------------------------------
 		«cls.removeDynamicAttributeSignature(attribute, false)»
 		{
-			remove_attribute(attname, true);
+			remove_attribute(attname, true, Tango::Util::instance()->_UseDb);
 			«IF attribute.isScalar»
 			    map<string,«attribute.strType»>::iterator ite;
 			«ELSE»

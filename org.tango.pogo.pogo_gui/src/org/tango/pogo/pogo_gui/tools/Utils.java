@@ -51,6 +51,7 @@ import java.util.List;
 
 public class Utils {
     private static Utils instance = null;
+    private static double pogoGuiRevision = -1.0;
 
     private static ImageIcon tango_icon = null;
     public ImageIcon logoIcon;
@@ -142,28 +143,39 @@ public class Utils {
             instance = new Utils();
         return instance;
     }
-
     //===============================================================
     //===============================================================
-    private static double   pogoGuiRevision = -1.0;
-    public static double getPogoGuiRevision() {
-        
+    public String getImplementationVersion() {
+        String release = getClass().getPackage().getImplementationVersion();
+        if (release!=null)
+            return release;
+        else
+            return " is not released";
+    }
+    //===============================================================
+    //===============================================================
+    public double getPogoGuiRevision() {
         //  Check if already done
         if (pogoGuiRevision<0) {
-           StringTokenizer stk = new StringTokenizer(PogoConst.revNumber);
-           String  s = stk.nextToken();    //  Rel number
-            int end = s.indexOf('.');
-            if (end>0) {
-                //  Check if second '.'
-                end = s.indexOf('.', end+1);
+            String revisionStr = getImplementationVersion();
+            revisionStr = "9.6.10-SNAPSHOT";
+            if (revisionStr==null)
+                pogoGuiRevision = 9.6;
+            else {
+                StringTokenizer stk = new StringTokenizer(revisionStr);
+                String s = stk.nextToken();    //  Rel number
+                int end = s.indexOf('.');
                 if (end>0) {
-                    s = s.substring(0, end);
-               }
-                try {
-                    pogoGuiRevision = Double.parseDouble(s);
-                }
-                catch (NumberFormatException e) {
-                    System.err.println("When trying to get PogoGuiRevision :\n" + e);
+                    //  Check if second '.'
+                    end = s.indexOf('.', end + 1);
+                    if (end>0) {
+                        s = s.substring(0, end);
+                    }
+                    try {
+                        pogoGuiRevision = Double.parseDouble(s);
+                    } catch (NumberFormatException e) {
+                        System.err.println("When trying to get PogoGuiRevision :\n" + e);
+                    }
                 }
             }
             System.out.println("********* Pogo GUI Release : " +
@@ -931,7 +943,7 @@ public class Utils {
             splash.setMessage("POGO: Tango code generator");
             splash.setMaxProgress(100);
             splash.setTitle("POGO");
-            splash.setCopyright(PogoConst.revNumber);
+            splash.setCopyright(Utils.getInstance().getImplementationVersion());
         } catch (Exception e) {
             useDisplay = false;
             System.err.println("Cannot create Splah: " + e);
