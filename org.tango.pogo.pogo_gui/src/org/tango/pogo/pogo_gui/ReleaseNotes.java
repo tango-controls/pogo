@@ -16,8 +16,10 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 04-06-2018  13:34</center>\n" + 
-		"<li><b>Pogo-9.6.10 - 04/06/2018:</b><br>" + 
+		"generated: 11-06-2018  16:08</center>\n" + 
+		"<li><b>Pogo-9.6.12 - 11/06/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Add protected regions in dynamic attribute and command classes<br>" + 
+		"<li><b>Pogo-9.6.11 - 04/06/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a problem on dynamic attributes when no database.<br>" + 
 		"<li><b>Pogo-9.6.9 - 03/04/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix aproblem in CMakelist.txt file.<br>" + 

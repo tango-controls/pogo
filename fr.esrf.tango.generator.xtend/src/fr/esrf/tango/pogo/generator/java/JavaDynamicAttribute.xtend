@@ -91,23 +91,18 @@ class JavaDynamicAttribute {
 			cls.description.copyright
 		)»
 
-		«cls.closeProtectedArea(attribute.name+".java")»
-
 		package «cls.javaDevicePackage»;
 
-		import org.tango.DeviceState;
 		import org.tango.server.StateMachineBehavior;
 		import org.tango.server.attribute.IAttributeBehavior;
 		import org.tango.server.attribute.AttributeValue;
 		import org.tango.server.attribute.AttributeConfiguration;
 		import org.tango.server.attribute.AttributePropertiesImpl;
 
-		//	Import Tango IDL types
 		import fr.esrf.Tango.*;
 
+		«cls.closeProtectedArea(attribute.name+".java")»
 
-		«cls.protectedArea(attribute.name+"." + "addImports")»
-		
 	'''
 
 	//======================================================
@@ -120,6 +115,7 @@ class JavaDynamicAttribute {
 		 */
 		public «attribute.name»(String attributeName) {
 			this.attributeName = attributeName;
+			«cls.protectedArea(attribute.name+"." + attribute.name)»
 		}
 	'''
 

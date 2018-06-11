@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.12 - 11/06/2018:
+    Add protected regions in dynamic attribute and command classes
+
 #### Pogo-9.6.11 - 04/06/2018:
     Fix a problem on dynamic attributes when no database.
 
