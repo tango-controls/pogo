@@ -114,6 +114,7 @@ class JavaDynamicCommand {
 		 */
 		public «command.name»(String commandName) {
 			this.commandName = commandName;
+			«cls.protectedArea(command.name+"." + command.name)»
 		}
 	'''
 
