@@ -16,7 +16,10 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 11-06-2018  16:08</center>\n" + 
+		"generated: 19-06-2018  16:28</center>\n" + 
+		"<li><b>Pogo-9.6.13 - 19/06/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix bug in relative path for multiple classes.<br>" + 
+		"&nbsp; &nbsp; &nbsp; It is now possible to load a server even a class has not be found.<br>" + 
 		"<li><b>Pogo-9.6.12 - 11/06/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Add protected regions in dynamic attribute and command classes<br>" + 
 		"<li><b>Pogo-9.6.11 - 04/06/2018:</b><br>" + 
