@@ -41,9 +41,11 @@ UpdateNotes() {
 ReleasePogo() {
     
     UpdateNotes()
-
-    echo "Release Pogo using maven....."
     sleep 2
+    git commit -am "Update ReleaseNotes.java"
+    git push
+    
+    echo "Release Pogo using maven....."
     
     # Tag directory
     cd ..
