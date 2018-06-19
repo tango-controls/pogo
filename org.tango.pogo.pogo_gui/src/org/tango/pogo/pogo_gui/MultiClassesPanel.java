@@ -471,28 +471,30 @@ public class MultiClassesPanel extends JFrame {
             return JOptionPane.CANCEL_OPTION;
         try {
             PogoMultiClasses multiClasses = tree.getServer();
-            GenerateDialog dialog = new GenerateDialog(this);
-            if (dialog.showDialog(multiClasses) == JOptionPane.OK_OPTION) {
-                //	Then generate code and save
-                setCursor(new Cursor(Cursor.WAIT_CURSOR));
-                String serverPath = dialog.getPath();
-                multiClasses.setSourcePath(serverPath);
-                //  Set relative path for each class.
-                EList<OneClassSimpleDef> classes = multiClasses.getClasses();
-                for (OneClassSimpleDef oneClass : classes) {
-                    String classPath = Utils.getRelativePath(oneClass.getSourcePath(), serverPath);
-                    oneClass.setSourcePath(classPath);
-                }
-                multiClasses.setFilestogenerate(dialog.getGenerated());
-                OAWutils.getInstance().generate(multiClasses);
-                tree.setModified(false);
-                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            if (multiClasses!=null) {
+                GenerateDialog dialog = new GenerateDialog(this);
+                if (dialog.showDialog(multiClasses) == JOptionPane.OK_OPTION) {
+                    //	Then generate code and save
+                    setCursor(new Cursor(Cursor.WAIT_CURSOR));
+                    String serverPath = dialog.getPath();
+                    multiClasses.setSourcePath(serverPath);
+                    //  Set relative path for each class.
+                    EList<OneClassSimpleDef> classes = multiClasses.getClasses();
+                    for (OneClassSimpleDef oneClass : classes) {
+                        String classPath = Utils.getRelativePath(oneClass.getSourcePath(), serverPath);
+                        oneClass.setSourcePath(classPath);
+                    }
+                    multiClasses.setFilestogenerate(dialog.getGenerated());
+                    OAWutils.getInstance().generate(multiClasses);
+                    tree.setModified(false);
+                    setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
-                //  Manage recent menu
-                String projectFile = multiClasses.getSourcePath() +
-                        "/" + multiClasses.getName() + ".multi.xmi";
-                manageRecentMenu(projectFile);
-                return JOptionPane.OK_OPTION;
+                    //  Manage recent menu
+                    String projectFile = multiClasses.getSourcePath() +
+                            "/" + multiClasses.getName() + ".multi.xmi";
+                    manageRecentMenu(projectFile);
+                    return JOptionPane.OK_OPTION;
+                }
             }
         } catch (PogoException e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));

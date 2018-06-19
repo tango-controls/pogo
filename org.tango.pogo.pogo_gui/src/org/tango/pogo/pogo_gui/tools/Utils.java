@@ -57,6 +57,7 @@ public class Utils {
     public ImageIcon logoIcon;
     public ImageIcon rootIcon;
     public ImageIcon classIcon;
+    public ImageIcon warnClassIcon;
     public ImageIcon collectionIcon;
     public ImageIcon classPropertyIcon;
     public ImageIcon cmdIcon;
@@ -96,6 +97,7 @@ public class Utils {
     private Utils() {
         rootIcon = getIcon("TangoSplash.jpg", 0.2);
         classIcon = getIcon("TangoClass.gif", 0.12);
+        warnClassIcon = getIcon("TangoClassWarning.gif", 0.12);
         logoIcon = classIcon;
         collectionIcon = getIcon("tools.gif");
         classPropertyIcon = getIcon("class.gif");
@@ -492,8 +494,7 @@ public class Utils {
      */
     //===============================================================
     public static boolean isEquals(String str1, String str2) {
-        return str1 != null &&
-                str2 != null && str1.equals(str2);
+        return str1 != null && str1.equals(str2);
     }
 
     //===============================================================
@@ -724,15 +725,19 @@ public class Utils {
     }
     //===============================================================
     //===============================================================
-    private static String getAbsolutePath(String path) {
+    private static String getCanonicalPath(String path) throws PogoException {
+        try {
         //  Check original path
         File file = new File(path);
         if (file.isFile()) {
             //  If file, get only pah
-            return file.getParent();
+            return new File(file.getParent()).getCanonicalPath();
+        } else
+            return file.getCanonicalPath();
         }
-        else
-            return file.getAbsolutePath();
+        catch (IOException e) {
+            throw new PogoException(e.toString());
+        }
     }
     //===============================================================
     /**
@@ -742,16 +747,18 @@ public class Utils {
      * @return the relative path
      */
     //===============================================================
-    public static String getRelativePath(String path, String referencePath) {
+    public static String getRelativePath(String path, String referencePath) throws PogoException {
         String separator = System.getProperty("file.separator");
-        path = getAbsolutePath(path);
-        referencePath = getAbsolutePath(referencePath);
+        path = getCanonicalPath(path);
+        referencePath = getCanonicalPath(referencePath);
+
+        System.out.println("Check relative between \n" + referencePath + "\n" + path + "\n");
 
         StringTokenizer stk = new StringTokenizer(path, separator);
-        List<String>    pathList = new ArrayList<>();
+        List<String> pathList = new ArrayList<>();
         while (stk.hasMoreTokens()) pathList.add(stk.nextToken());
         stk = new StringTokenizer(referencePath, separator);
-        List<String>    refList = new ArrayList<>();
+        List<String> refList = new ArrayList<>();
         while (stk.hasMoreTokens()) refList.add(stk.nextToken());
 
         //  Special case for Windows
@@ -771,24 +778,24 @@ public class Utils {
         else
             idx = 0;
         while (idx<refList.size() && idx<pathList.size() &&
-               refList.get(idx).equals(pathList.get(idx)))
+                refList.get(idx).equals(pathList.get(idx)))
             idx++;
         //  Add up part
         StringBuilder sb = new StringBuilder();
-        for (int i=idx ; i<refList.size() ; i++)
+        for (int i = idx ; i<refList.size() ; i++)
             sb.append("..").append(separator);
         //  Add down part
-        for (int i=idx ; i<pathList.size() ; i++)
+        for (int i = idx ; i<pathList.size() ; i++)
             sb.append(pathList.get(i)).append(separator);
 
         //  Remove last separator
         String relative = sb.toString();
         if (relative.endsWith(separator))
-            relative = relative.substring(0, relative.length()-1);
+            relative = relative.substring(0, relative.length() - 1);
 
         //  if no .. part add relative to ./
         if (!relative.startsWith(".."))
-            relative = "./"+relative;
+            relative = "./" + relative;
 
         //  Convert to Linux format
         relative = strReplace(relative, "\\", "/");
@@ -805,9 +812,9 @@ public class Utils {
      * @return the absolute path
      */
     //===============================================================
-    public static String getAbsolutePath(String relativePath, String referencePath) {
+    public static String getCanonicalPath(String relativePath, String referencePath) throws PogoException {
         String separator = System.getProperty("file.separator");
-        referencePath = getAbsolutePath(referencePath);
+        referencePath = getCanonicalPath(referencePath);
 
         //  Then build absolute path
         return new File(referencePath+separator+relativePath).getAbsolutePath();
@@ -815,13 +822,21 @@ public class Utils {
     //===============================================================
     //===============================================================
     public static void main(String[] args) {
-        String relative  = "../../CounterTimer/trunk/src";
-        String reference = "Y:/tango/tmp/pascal/rel_path/SimCounterTimer/trunk/SimCounterTimer.xmi";
-        //String path    = "y:/tango/tmp/pascal/rel_path/SimCounterTimer/trunk/abstract";
-        String path      = "y:/tango/tmp/pascal/rel_path/CounterTimer/trunk/src";
 
-        System.out.println("Absolute: " + getAbsolutePath(relative, reference));
-        System.out.println("Relative: " + getRelativePath(path, reference));
+        if (args.length==0) {
+            System.err.println("Path to compute relative ?");
+        }
+        else {
+            try {
+                String reference = new File("").getAbsolutePath();
+                String path = args[0];
+
+                //System.out.println("Absolute: " + getAbsolutePath(relative, reference));
+                System.out.println("Relative: " + getRelativePath(path, reference));
+            }catch (PogoException e) {
+                System.err.println(e.toString());
+            }
+        }
     }
     //===============================================================
     //===============================================================

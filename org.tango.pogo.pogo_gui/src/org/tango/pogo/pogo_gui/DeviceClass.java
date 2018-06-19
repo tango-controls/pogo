@@ -250,7 +250,7 @@ public class DeviceClass {
 
         //  Check with relative path
         String xmiFile = pogoClass.getDescription().getSourcePath();
-        String relativeFile = Utils.getAbsolutePath(filename, xmiFile);
+        String relativeFile = Utils.getCanonicalPath(filename, xmiFile);
         System.out.println("Relative: " + relativeFile);
         if (new File(relativeFile).exists())
             return relativeFile;
@@ -299,19 +299,19 @@ public class DeviceClass {
             for (Inheritance inheritance : inheritances) {
                 if (!isDefaultInheritance(inheritance)) {
                     String className = inheritance.getClassname();
-                    String filename = inheritance.getSourcePath() +
+                    String inheritanceFileName = inheritance.getSourcePath() +
                             java.lang.System.getProperty("file.separator") + className + ".xmi";
                     //  Get absolute path for file
-                    File file = new File(filename);
-                    filename = file.getCanonicalFile().toString();
-                    if ((filename = checkInheritanceFile(filename, className)) == null)
+                    if (!new File(inheritanceFileName).exists())
+                        inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName, pogoClass.getDescription().getSourcePath());
+                    if ((inheritanceFileName = checkInheritanceFile(inheritanceFileName, className)) == null)
                         return false;
 
                     //	OK. Lo add it
                     Utils.getInstance().startSplashRefresher(
-                            "Loading  " + Utils.getRelativeFilename(filename));
-                    ancestors.add(new DeviceClass(filename, false));
-                    inheritance.setSourcePath(Utils.getPath(filename));
+                            "Loading  " + Utils.getRelativeFilename(inheritanceFileName));
+                    ancestors.add(new DeviceClass(inheritanceFileName, false));
+                    inheritance.setSourcePath(Utils.getPath(inheritanceFileName));
                     Utils.getInstance().stopSplashRefresher();
                 }
             }

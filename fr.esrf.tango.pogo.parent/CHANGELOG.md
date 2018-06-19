@@ -1,5 +1,9 @@
 # Changelog
 
+#### Pogo-9.6.13 - 19/06/2018:
+    Fix bug in relative path for multiple classes.
+    It is now possible to load a server even a class has not be found.
+
 #### Pogo-9.6.12 - 11/06/2018:
     Add protected regions in dynamic attribute and command classes
 
