@@ -321,6 +321,7 @@ public class PogoFileFilter extends FileFilter {
     //===============================================================
     public static final String[] cpp_target = {
             "Inherited from class ",
+            ": public Tango::TANGO_BASE_CLASS",
             ": public Tango::Device_4Impl",
             ": public Tango::Device_3Impl",
             ": public Tango::Device_2Impl",
@@ -345,28 +346,28 @@ public class PogoFileFilter extends FileFilter {
     public static boolean isDeviceImplClass(String filename) {
         try {
             //	Read file content.
-            String readcode = ParserTool.readFile(filename);
+            String readCode = ParserTool.readFile(filename);
             //System.out.println(filename);
 
             //	Check if new POGO generated code (oAW)
-            if (readcode.startsWith("/*----- PROTECTED REGION ID")) {
+            if (readCode.startsWith("/*----- PROTECTED REGION ID")) {
                 return false;
             }
             //	Check if cpp device impl
             for (String aCpp_target : cpp_target) {
-                if (readcode.indexOf(aCpp_target) > 0) {
+                if (readCode.indexOf(aCpp_target) > 0) {
                     return true;
                 }
             }
             //	Check if java device impl
             for (String aJava_target : java_target) {
-                if (readcode.indexOf(aJava_target) > 0) {
+                if (readCode.indexOf(aJava_target) > 0) {
                     return true;
                 }
             }
             //	Check if python device impl
             for (String aPy_target : py_target) {
-                if (readcode.indexOf(aPy_target) > 0) {
+                if (readCode.indexOf(aPy_target) > 0) {
                     return true;
                 }
             }

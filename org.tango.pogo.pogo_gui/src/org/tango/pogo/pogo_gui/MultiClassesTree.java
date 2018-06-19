@@ -468,6 +468,8 @@ public class MultiClassesTree extends JTree {
             new PogoException(sb.toString()).popup(this);
             return null;
         }
+
+        //  OK. All classes loaded. Can build server object
         loadedClasses.resetParentClasses();
         TangoServer server = (TangoServer) root.getUserObject();
 
@@ -477,7 +479,7 @@ public class MultiClassesTree extends JTree {
 
         //  Check to have class only once.
         //  Start by the end to be sure the leaves are at the end.
-        for (int i = classes.size() - 1; i >= 0; i--) {
+        for (int i=classes.size()-1 ; i >= 0 ; i--) {
             DeviceClass _class = classes.get(i);
             //  Check if already in final vector
             boolean exists = false;
@@ -536,7 +538,7 @@ public class MultiClassesTree extends JTree {
                 }
             }
             definitions.add(simple);
-
+System.out.println(pogoClass.getName());
             //  Copy inheritances
             EList<Inheritance> multiInheritances = simple.getInheritances();
             EList<Inheritance> monoInheritances = pogoClass.getDescription().getInheritances();
@@ -544,7 +546,8 @@ public class MultiClassesTree extends JTree {
                 Inheritance multiInheritance = OAWutils.factory.createInheritance();
                 multiInheritance.setClassname(monoInheritance.getClassname());
                 multiInheritance.setSourcePath(monoInheritance.getSourcePath());
-                multiInheritances.add(multiInheritance);
+                multiInheritances.add(OAWutils.cloneInheritance(monoInheritance));
+System.out.println("     " + monoInheritance.getClassname());
             }
             //  Copy additional files
             EList<AdditionalFile> multiAdditional = simple.getAdditionalFiles();

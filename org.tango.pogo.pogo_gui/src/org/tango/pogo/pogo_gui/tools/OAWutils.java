@@ -1006,4 +1006,12 @@ public class OAWutils {
     }
     //========================================================================
     //========================================================================
+    public static Inheritance cloneInheritance(Inheritance inheritance) {
+        Inheritance newInheritance = factory.createInheritance();
+        newInheritance.setClassname(inheritance.getClassname());
+        newInheritance.setSourcePath(inheritance.getSourcePath());
+        return newInheritance;
+    }
+    //========================================================================
+    //========================================================================
 }

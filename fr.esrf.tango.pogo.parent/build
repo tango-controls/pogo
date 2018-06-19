@@ -7,7 +7,7 @@
 #
 #=========================================================
 
-
+TAG_NAME=Pogo-Release-9.6.13
 
 #---------------------------------------------------------
 #	Update ReleaseNote.java and revision number in target class
@@ -49,7 +49,7 @@ ReleasePogo() {
     
     # Tag directory
     cd ..
-    git tag Pogo-Release-$VERSION
+    git tag $TAG_NAME
     
     # Clone in release dir and deploy after set version number without SNAPSHOT
     git clone . release
