@@ -120,7 +120,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 
 			generatedFiles.clear();
 			switch (language.toLowerCase()) {
-				case "Multicpp":
+				case "multicpp":
 					fillGeneratedFilesListForMultiClassesCpp(targetDir);
 					break;
 				case "cpp":

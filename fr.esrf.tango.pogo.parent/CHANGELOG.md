@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.15 - 09/07/2018:
+    Fix a problem LowerCase/UpperCase.
+
 #### Pogo-9.6.14 - 09/07/2018:
     Fix a bug in relative path for inheritance (PR code)
 
