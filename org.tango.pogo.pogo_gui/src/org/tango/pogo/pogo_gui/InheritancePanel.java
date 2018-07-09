@@ -63,7 +63,6 @@ class InheritancePanel extends JPanel {
     private static final Color classBtnBG = new java.awt.Color(255, 230, 200);
     private static final Color selectedClassBtnBG = new java.awt.Color(255, 150, 100);
     private static final String deviceImpl = "Tango DeviceImpl";
-
     //===============================================================
     //===============================================================
     public InheritancePanel(DeviceClass devclass) {

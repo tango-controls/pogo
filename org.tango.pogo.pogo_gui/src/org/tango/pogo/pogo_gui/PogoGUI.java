@@ -94,6 +94,7 @@ public class PogoGUI extends JFrame {
     private boolean hasInheritance = false;
 
     public static MultiClassesPanel multiClassesPanel = null;
+    public static MultipleClassesFrame multiClassesFrame = null;
     //=======================================================
     /**
      * Creates new form PogoGUI
@@ -728,7 +729,8 @@ public class PogoGUI extends JFrame {
                 if (frame.isVisible())
                     return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
-            if (multiClassesPanel != null && multiClassesPanel.isVisible())
+            if ((multiClassesPanel != null && multiClassesPanel.isVisible()) ||
+                (multiClassesFrame!= null && multiClassesFrame.isVisible()))
                 return JOptionPane.OK_OPTION;
 
             //  No visible found.
@@ -1253,24 +1255,24 @@ public class PogoGUI extends JFrame {
             return get(tabbedPane.getSelectedIndex()).getTree();
         }
         //=======================================================
-        private void addPanel(DeviceClass devclass) {
+        private void addPanel(DeviceClass deviceClass) {
             ClassPanel cp = new ClassPanel(gui);
-            cp.setTree(devclass, this.size() > 0);
+            cp.setTree(deviceClass, this.size() > 0);
             add(cp);
             tabbedPane.add(cp);
             tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
         }
         //=======================================================
-        private void addPanels(DeviceClass devclass) {
+        private void addPanels(DeviceClass deviceClass) {
             //  Reset if needed
             this.removeAll(this);
             tabbedPane.removeAll();
-            warnings = org.tango.pogo.pogo_gui.InheritanceUtils.getInstance().manageInheritanceItems(devclass);
+            warnings = org.tango.pogo.pogo_gui.InheritanceUtils.getInstance().manageInheritanceItems(deviceClass);
 
-            addPanel(devclass);
+            addPanel(deviceClass);
 
             //  manage inheritance elements
-            List<DeviceClass> ancestors = devclass.getAncestors();
+            List<DeviceClass> ancestors = deviceClass.getAncestors();
             for (int i=ancestors.size()-1 ; i>=0 ; i--) {
                 addPanel(ancestors.get(i));
             }
@@ -1278,7 +1280,7 @@ public class PogoGUI extends JFrame {
 
             //  Build inheritance panel
             getContentPane().remove(inherPanel);
-            inherPanel = new InheritancePanel(devclass, gui);
+            inherPanel = new InheritancePanel(deviceClass, gui);
             getContentPane().add(inherPanel, java.awt.BorderLayout.EAST);
             pack();
         }

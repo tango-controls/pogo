@@ -113,7 +113,7 @@ public class Utils {
         pipeIcon = getIcon("pipe.gif", 0.16);
         devicePropertyIcon = getIcon("device.gif");
         stateIcon = getIcon("state.gif");
-        inheritanceIcon = getIcon("inherite.gif", 0.5);
+        inheritanceIcon = getIcon("inherit.gif", 0.5);
         removeIcon = getIcon("remove.gif");
 
         abstractIcon = getIcon("abstract.gif");

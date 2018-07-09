@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.14 - 09/07/2018:
+    Fix a bug in relative path for inheritance (PR code)
+
 #### Pogo-9.6.13 - 19/06/2018:
     Fix bug in relative path for multiple classes.
     It is now possible to load a server even a class has not be found.

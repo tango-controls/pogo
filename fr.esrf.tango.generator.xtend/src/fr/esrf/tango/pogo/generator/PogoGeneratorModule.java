@@ -38,6 +38,7 @@ package fr.esrf.tango.pogo.generator;
 import java.net.URI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.danieldietrich.protectedregions.core.IRegionParser;
 import net.danieldietrich.protectedregions.core.RegionParserBuilder;
@@ -61,7 +62,6 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 	public Class<? extends IGenerator> bindIGenerator () {
 		return PogoDslGenerator.class;
 	}
-
 	//===================================================================================
 	//===================================================================================
 	@Provides
@@ -76,7 +76,6 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			fsa.setFilter(new pogoPathFilter());
 	  return fsa;
 	}
-	
 	//===================================================================================
 	//===================================================================================
 	private IRegionParser createPythonParser () {
@@ -84,12 +83,11 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 				.ignoreCData('\'', '\\').setInverse(false).useOracle(new PogoPR()).build();
 		return parser;
 	}
-	
 	//===================================================================================
 	//===================================================================================
 	private class pogoPathFilter implements IPathFilter {
 		
-		private ArrayList<String>	generatedFiles = new ArrayList<String>();
+		private List<String> generatedFiles = new ArrayList<>();
 		private boolean isWindows;
 		//===================================================================================
 		pogoPathFilter() {
@@ -104,7 +102,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			
 			if (isWindows) {
 				//	Replace '\' by '/' if any in targetDir
-				StringBuffer	sb = new StringBuffer();
+				StringBuilder sb = new StringBuilder();
 				int	start = 0;
 				int end;
 				while ((end=targetDir.indexOf('\\', start))>=0){
@@ -121,21 +119,23 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			fr.esrf.tango.pogo.generator.common.StringUtils.printTrace(targetDir + "/" + className + " : " + language);
 
 			generatedFiles.clear();
-			if (language.toLowerCase().equals("Multicpp"))
-				fillGeneratedFilesListForMultiClasesCpp(targetDir, className);
-			else
-			if (language.toLowerCase().equals("cpp"))
-				fillGeneratedFilesListForCpp(targetDir, className);
-			else
-			if (language.toLowerCase().equals("java"))
-				fillGeneratedFilesListForJava(targetDir, className);
-			else
-			if (language.toLowerCase().equals("python"))
-				fillGeneratedFilesListForPython(targetDir, className);
-			else
-			if (language.toLowerCase().equals("pythonhl"))
-				fillGeneratedFilesListForPythonHL(targetDir, className);
-			
+			switch (language.toLowerCase()) {
+				case "Multicpp":
+					fillGeneratedFilesListForMultiClassesCpp(targetDir);
+					break;
+				case "cpp":
+					fillGeneratedFilesListForCpp(targetDir, className);
+					break;
+				case "java":
+					fillGeneratedFilesListForJava(targetDir, className);
+					break;
+				case "python":
+					fillGeneratedFilesListForPython(targetDir, className);
+					break;
+				case "pythonhl":
+					fillGeneratedFilesListForPythonHL(targetDir, className);
+					break;
+			}
 
 			//	Add html file for all languages
 			generatedFiles.add(targetDir+"/doc_html/ClassDescription.html");
@@ -175,7 +175,7 @@ public class PogoGeneratorModule extends AbstractGenericModule {
 			return false;
 		}
 		//===================================================================================
-		private void fillGeneratedFilesListForMultiClasesCpp(String targetDir, String className) {
+		private void fillGeneratedFilesListForMultiClassesCpp(String targetDir) {
 			generatedFiles.add(targetDir+"/MultiClassFactory.cpp");
 			generatedFiles.add(targetDir+"/Makefile.multi");
 		}

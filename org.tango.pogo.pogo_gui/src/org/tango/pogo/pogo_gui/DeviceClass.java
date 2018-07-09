@@ -300,10 +300,16 @@ public class DeviceClass {
                 if (!isDefaultInheritance(inheritance)) {
                     String className = inheritance.getClassname();
                     String inheritanceFileName = inheritance.getSourcePath() +
-                            java.lang.System.getProperty("file.separator") + className + ".xmi";
+                            System.getProperty("file.separator") + className + ".xmi";
                     //  Get absolute path for file
-                    if (!new File(inheritanceFileName).exists())
-                        inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName, pogoClass.getDescription().getSourcePath());
+                    if (!new File(inheritanceFileName).exists()) {
+                        // ToDo WARNING
+                        if (System.getenv("WIN_DEV")!=null && System.getenv("WIN_DEV").equals("true"))
+                            inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName,
+                                    "y:\\tango\\tmp\\pascal\\whist\\sw\\tango\\server\\WhistOutput");
+                        else
+                            inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName, pogoClass.getDescription().getSourcePath());
+                    }
                     if ((inheritanceFileName = checkInheritanceFile(inheritanceFileName, className)) == null)
                         return false;
 

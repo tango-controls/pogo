@@ -217,7 +217,6 @@ public class MultiClassesPanel extends JFrame {
         }
     }
     //=======================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -371,7 +370,6 @@ public class MultiClassesPanel extends JFrame {
                         break;
                 }
     }
-
     //=======================================================
     //=======================================================
     private void reloadProject() {
@@ -387,7 +385,6 @@ public class MultiClassesPanel extends JFrame {
             }
         }
     }
-
     //=======================================================
     //=======================================================
     private void recentItemActionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,7 +395,6 @@ public class MultiClassesPanel extends JFrame {
             e.popup(this);
         }
     }
-
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -421,7 +417,6 @@ public class MultiClassesPanel extends JFrame {
             }
         }
     }//GEN-LAST:event_openItemActionPerformed
-
     //===============================================================
     //===============================================================
     public PogoMultiClasses loadXmiFile(String xmiFileName) throws PogoException {
@@ -431,7 +426,6 @@ public class MultiClassesPanel extends JFrame {
         manageRecentMenu(xmiFileName);
         return multiClasses;
     }
-
     //=======================================================
     //=======================================================
     private void buildTree(PogoMultiClasses multiClasses) {
@@ -442,7 +436,6 @@ public class MultiClassesPanel extends JFrame {
             /* Has been canceled */
         }
     }
-
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -462,8 +455,7 @@ public class MultiClassesPanel extends JFrame {
     @SuppressWarnings({"UnusedDeclaration"})
     private void generateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateItemActionPerformed
         generateFiles();
-    }
-
+    }//GEN-LAST:event_generateItemActionPerformed
     //=======================================================
     //=======================================================
     private int generateFiles() {
@@ -501,8 +493,7 @@ public class MultiClassesPanel extends JFrame {
             e.popup(this);
         }
         return JOptionPane.CANCEL_OPTION;
-    }//GEN-LAST:event_generateItemActionPerformed
-
+    }
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})

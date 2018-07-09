@@ -538,7 +538,7 @@ public class MultiClassesTree extends JTree {
                 }
             }
             definitions.add(simple);
-System.out.println(pogoClass.getName());
+
             //  Copy inheritances
             EList<Inheritance> multiInheritances = simple.getInheritances();
             EList<Inheritance> monoInheritances = pogoClass.getDescription().getInheritances();
@@ -547,7 +547,6 @@ System.out.println(pogoClass.getName());
                 multiInheritance.setClassname(monoInheritance.getClassname());
                 multiInheritance.setSourcePath(monoInheritance.getSourcePath());
                 multiInheritances.add(OAWutils.cloneInheritance(monoInheritance));
-System.out.println("     " + monoInheritance.getClassname());
             }
             //  Copy additional files
             EList<AdditionalFile> multiAdditional = simple.getAdditionalFiles();
@@ -578,22 +577,18 @@ System.out.println("     " + monoInheritance.getClassname());
     //===============================================================
     private static class LoadedClasses {
         private final Map<String, DeviceClass> deviceClasses = new HashMap<>();
-
         DeviceClass getAny() {
             return deviceClasses.values().iterator().next();
         }
-
         boolean isEmpty() {
             return deviceClasses.size() == 0;
         }
-
         //===========================================================
         DeviceClass getDeviceClass(String xmiFileName) throws PogoException {
             DeviceClass result = deviceClasses.get(xmiFileName);
             if (result == null) deviceClasses.put(xmiFileName, result = new DeviceClass(xmiFileName));
             return result;
         }
-
         //===========================================================
         void resetParentClasses() {
             for (DeviceClass dc : deviceClasses.values()) {
