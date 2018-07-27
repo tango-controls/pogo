@@ -381,7 +381,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	String makeEnv(PogoMultiClasses multi, boolean cmake) {
 		String	dbg = System.getProperty("DEBUG_MAKE");
 		String code = 
-				"# MAKE_ENV is the path to find common environment to buil project\n" +
+				"# MAKE_ENV is the path to find common environment to build project\n" +
 				"#\n";
 		if (cmake)
 			code += "set(MAKE_ENV ";
@@ -404,7 +404,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	String makeEnv(PogoDeviceClass cls, boolean cmake) {
 		String	dbg = System.getProperty("DEBUG_MAKE");
 		String code = 
-				"# MAKE_ENV is the path to find common environment to buil project\n" +
+				"# MAKE_ENV is the path to find common environment to build project\n" +
 				"#\n";
 		if (cmake)
 			code += "set(MAKE_ENV ";
