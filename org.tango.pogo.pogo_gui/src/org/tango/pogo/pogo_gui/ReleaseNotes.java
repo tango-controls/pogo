@@ -16,7 +16,9 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 09-07-2018  13:22</center>\n" + 
+		"generated: 03-10-2018  09:13</center>\n" + 
+		"<li><b>Pogo-9.6.16 - 03/10/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; When generate html doc, if NO_PDF=true, does not generate (Soleil request)<br>" + 
 		"<li><b>Pogo-9.6.15 - 09/07/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a problem LowerCase/UpperCase.<br>" + 
 		"<li><b>Pogo-9.6.14 - 09/07/2018:</b><br>" + 

@@ -48,7 +48,7 @@ public interface PogoConst {
     /**
      * Revision number and date
      */
-    String revNumber = "9.6.15  -  09-07-2018  13:22:33";
+    String revNumber = "9.6.16  -  03-10-2018  09:13:19";
 
     int TANGO_PAGES = 0;
     int POGO_PAGES = 1;
