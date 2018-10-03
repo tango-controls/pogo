@@ -341,33 +341,39 @@ public class OAWutils {
 
             //  Only if unix like, try to generate a PDF file from FullDocument.html file
             if (Utils.osIsUnix()) {
-                String descriptionFile = pogoClass.getDescription().getSourcePath() + "/" +
-                        pogoClass.getPreferences().getDocHome() + "/FullDocument.html";
-                String pdfFile = pogoClass.getDescription().getSourcePath() + "/" +
-                        pogoClass.getPreferences().getDocHome() + "/" +
-                        pogoClass.getName() + ".pdf";
-                try {
-                    //  Execute wkhtmltopdf to generate a PDF file and a add a link on it
-                    Utils.executeShellCommand("wkhtmltopdf " + descriptionFile + "  " + pdfFile);
-                    if (new File(pdfFile).exists()) {
-                        System.out.println(pdfFile + " has been generated");
-                        //  OK it exists -> add a link
-                        String bannerFile = pogoClass.getDescription().getSourcePath() + "/" +
-                        		pogoClass.getPreferences().getDocHome() + "/TitleBanner.html";
-                        String code = ParserTool.readFile(bannerFile);
-                        int idx = code.indexOf("</table>");
-                        code = code.substring(0, idx) +
-                                "<td ALIGN=\"center\"> <a href=\"" +
-                        		pogoClass.getName() + ".pdf\" target=\"document\">PDF</a></td>\n\t\t" +
-                                code.substring(idx);
-                        ParserTool.writeFile(bannerFile, code);
-                        //System.out.println(bannerFile + " has been updated\n");
+                //  If NO_PDF=true, does not generate (Soleil request)
+                String env = System.getenv("NO_PDF");
+                boolean generatePdf = env==null || !env.equals("true");
+                if (generatePdf) {
+                    String descriptionFile = pogoClass.getDescription().getSourcePath() + "/" +
+                            pogoClass.getPreferences().getDocHome() + "/FullDocument.html";
+                    String pdfFile = pogoClass.getDescription().getSourcePath() + "/" +
+                            pogoClass.getPreferences().getDocHome() + "/" +
+                            pogoClass.getName() + ".pdf";
+                    try {
+                        //  Execute wkhtmltopdf to generate a PDF file and a add a link on it
+                        Utils.executeShellCommand("wkhtmltopdf " + descriptionFile + "  " + pdfFile);
+                        if (new File(pdfFile).exists()) {
+                            System.out.println(pdfFile + " has been generated");
+                            //  OK it exists -> add a link
+                            String bannerFile = pogoClass.getDescription().getSourcePath() + "/" +
+                                    pogoClass.getPreferences().getDocHome() + "/TitleBanner.html";
+                            String code = ParserTool.readFile(bannerFile);
+                            int idx = code.indexOf("</table>");
+                            code = code.substring(0, idx) +
+                                    "<td ALIGN=\"center\"> <a href=\"" +
+                                    pogoClass.getName() + ".pdf\" target=\"document\">PDF</a></td>\n\t\t" +
+                                    code.substring(idx);
+                            ParserTool.writeFile(bannerFile, code);
+                            //System.out.println(bannerFile + " has been updated\n");
+                        } else
+                            System.err.println("Generation of " + pdfFile + " has failed !");
+                    } catch (PogoException e) {
+                        //System.err.println(e.toString());
                     }
-                    else
-                        System.err.println("Generation of " + pdfFile + " has failed !");
-                }catch (PogoException e) {
-                    //System.err.println(e.toString());
                 }
+                else
+                    System.out.println("Does not generate PDF file.");
     	    }
         }
     }

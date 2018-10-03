@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.16 - 03/10/2018:
+    When generate html doc, if NO_PDF=true, does not generate (Soleil request)
+
 #### Pogo-9.6.15 - 09/07/2018:
     Fix a problem LowerCase/UpperCase.
 
