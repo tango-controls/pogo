@@ -94,7 +94,7 @@ public class PogoGUI extends JFrame {
     private boolean hasInheritance = false;
 
     public static MultiClassesPanel multiClassesPanel = null;
-    public static MultipleClassesFrame multiClassesFrame = null;
+    //public static MultipleClassesFrame multiClassesFrame = null;
     //=======================================================
     /**
      * Creates new form PogoGUI
@@ -729,8 +729,8 @@ public class PogoGUI extends JFrame {
                 if (frame.isVisible())
                     return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
-            if ((multiClassesPanel != null && multiClassesPanel.isVisible()) ||
-                (multiClassesFrame!= null && multiClassesFrame.isVisible()))
+            if ((multiClassesPanel != null && multiClassesPanel.isVisible()))
+                   // ||(multiClassesFrame!= null && multiClassesFrame.isVisible()))
                 return JOptionPane.OK_OPTION;
 
             //  No visible found.
