@@ -40,7 +40,6 @@ import static extension fr.esrf.tango.pogo.generator.java.JavaUtils.*
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import fr.esrf.tango.pogo.pogoDsl.Attribute
-import java.util.jar.Attributes
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 
 class JavaAttribute {

@@ -167,7 +167,7 @@ public class JavaUtils extends StringUtils {
 		else
 		if (attribute.getAttType().equals("Image"))
 			return " = new " + strJavaType(attribute) + "[" +
-						attribute.getMaxX() + "][" + attribute.getMaxY() + "]";
+						attribute.getMaxY() + "][" + attribute.getMaxX() + "]";
 		else
 		if (attribute.getDataType().toString().contains("String"))
 			return " = \"\"";

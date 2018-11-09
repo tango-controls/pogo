@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.17 - 09/11/2018:
+    Fix a bug in dimX/dimY on java image attributes.
+
 #### Pogo-9.6.16 - 03/10/2018:
     When generate html doc, if NO_PDF=true, does not generate (Soleil request)
 
