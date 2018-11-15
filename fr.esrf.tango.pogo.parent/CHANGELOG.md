@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.18 - 15/11/2018:
+    Fix a bug in copy/paste object.
+
 #### Pogo-9.6.17 - 09/11/2018:
     Fix a bug in dimX/dimY on java image attributes.
 
