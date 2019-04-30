@@ -172,14 +172,21 @@ public class PogoGUI extends JFrame {
     //===========================================================
     private void checkLoadAtStartup(String filename) {
         if (filename != null && filename.length() > 0)
-            loadDeviceClassFromFile(filename);
+            if (filename.endsWith(".xmi"))
+                loadDeviceClassFromFile(filename);
+            else {
+                new PogoException(filename + " is not a xmi file").popup(this);
+            }
         else {
             String xmiFile = Utils.getXmiFile(PogoConst.MonoClass);
             if (xmiFile != null) {
                 openItemActionPerformed(null);
             } else if (PogoProperty.loadPrevious)
-                if (PogoProperty.projectHistory.size() > 0)
-                    loadDeviceClassFromFile(PogoProperty.projectHistory.get(0));
+                if (PogoProperty.projectHistory.size() > 0) {
+                    String previousFile = PogoProperty.projectHistory.get(0);
+                    if (previousFile.endsWith(".xmi"))
+                        loadDeviceClassFromFile(previousFile);
+                }
         }
         startup = false;
     }
@@ -633,8 +640,13 @@ public class PogoGUI extends JFrame {
             File file = chooser.getSelectedFile();
             if (file != null) {
                 if (!file.isDirectory()) {
-                    homeDir = file.getParentFile().toString();
-                    loadDeviceClassFromFile(file.getAbsolutePath());
+                    if (file.toString().endsWith(".xmi")) {
+                        homeDir = file.getParentFile().toString();
+                        loadDeviceClassFromFile(file.getAbsolutePath());
+                    }
+                    else {
+                        new PogoException(file.toString() + " is not a xmi file").popup(this);
+                    }
                 }
             }
         }

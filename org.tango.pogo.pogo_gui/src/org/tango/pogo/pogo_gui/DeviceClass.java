@@ -124,20 +124,26 @@ public class DeviceClass {
             //	Load the model
             pogoClass = OAWutils.getInstance().loadDeviceClassModel(filename);
 
-            EList<Inheritance> inheritances = pogoClass.getDescription().getInheritances();
-            if (inheritances.size() == 0)
-                inheritances.add(getDefaultInheritance());
+            if (pogoClass!=null) {
+                EList<Inheritance> inheritances = pogoClass.getDescription().getInheritances();
+                if (inheritances.size() == 0)
+                    inheritances.add(getDefaultInheritance());
 
-            //	And set the path (could have changed)
-            String path = Utils.getPath(filename);
-            pogoClass.getDescription().setSourcePath(path);
+                //	And set the path (could have changed)
+                String path = Utils.getPath(filename);
+                pogoClass.getDescription().setSourcePath(path);
 
-            //	Load inheritance classes if any
-            Utils.getInstance().stopSplashRefresher();
-            if (loadInheritance)
-                if (!loadInheritanceClasses())
-                    throw new PogoException("CANCEL");
+                //	Load inheritance classes if any
+                Utils.getInstance().stopSplashRefresher();
+                if (loadInheritance)
+                    if (!loadInheritanceClasses())
+                        throw new PogoException("CANCEL");
+            }
+            else
+                throw  new PogoException("Cannot load TANGO class from " + filename);
         }
+        else
+            throw new PogoException(filename + " is not a xmi file");
         //  Check if abstract class or not
         checkIfAbstractClass(pogoClass, true);
     }
@@ -304,11 +310,7 @@ public class DeviceClass {
                     //  Get absolute path for file
                     if (!new File(inheritanceFileName).exists()) {
                         // ToDo WARNING
-                        if (System.getenv("WIN_DEV")!=null && System.getenv("WIN_DEV").equals("true"))
-                            inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName,
-                                    "y:\\tango\\tmp\\pascal\\whist\\sw\\tango\\server\\WhistOutput");
-                        else
-                            inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName, pogoClass.getDescription().getSourcePath());
+                        inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName, pogoClass.getDescription().getSourcePath());
                     }
                     if ((inheritanceFileName = checkInheritanceFile(inheritanceFileName, className)) == null)
                         return false;
