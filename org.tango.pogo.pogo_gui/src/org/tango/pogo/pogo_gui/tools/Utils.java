@@ -233,9 +233,10 @@ public class Utils {
     //===============================================================
     //===============================================================
     public static String getPath(String filename) {
-        String separator = System.getProperty("file.separator");
-        int pos = filename.lastIndexOf(separator);
         String path = "./";
+        int pos = filename.lastIndexOf("/");
+        if (pos < 0)
+            pos = filename.lastIndexOf("\\");
         if (pos > 0)
             path = filename.substring(0, pos);
         return path;

@@ -322,6 +322,7 @@ public class PogoFileFilter extends FileFilter {
     public static final String[] cpp_target = {
             "Inherited from class ",
             ": public Tango::TANGO_BASE_CLASS",
+            ": public Tango::Device_5Impl",
             ": public Tango::Device_4Impl",
             ": public Tango::Device_3Impl",
             ": public Tango::Device_2Impl",
@@ -331,6 +332,7 @@ public class PogoFileFilter extends FileFilter {
             " extends DeviceImpl",    // implements TangoConst"
     };
     public static final String[] py_target = {
+            "(PyTango.Device_5Impl):",
             "(PyTango.Device_4Impl):",
             "(PyTango.Device_3Impl):"
     };

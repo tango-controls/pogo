@@ -54,7 +54,7 @@ import java.util.List;
 
 
 public class DeviceClass {
-    private PogoDeviceClass pogoClass = null;
+    private PogoDeviceClass pogoClass;
     private List<DeviceClass> ancestors = new ArrayList<>();
     private boolean usingPyHlPackage = false;
 
@@ -150,6 +150,7 @@ public class DeviceClass {
 
     //===============================================================
     //===============================================================
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isDefaultInheritance(Inheritance inheritance) {
         if (inheritance.getClassname() == null)
             return true;

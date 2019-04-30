@@ -45,7 +45,6 @@ import org.tango.pogo.pogo_gui.tools.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
@@ -94,7 +93,6 @@ public class PogoGUI extends JFrame {
     private boolean hasInheritance = false;
 
     public static MultiClassesPanel multiClassesPanel = null;
-    //public static MultipleClassesFrame multiClassesFrame = null;
     //=======================================================
     /**
      * Creates new form PogoGUI
@@ -242,11 +240,7 @@ public class PogoGUI extends JFrame {
             recentMenu.removeAll();
             for (String project : PogoProperty.projectHistory) {
                 JMenuItem item = new JMenuItem(project);
-                item.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        recentItemActionPerformed(evt);
-                    }
-                });
+                item.addActionListener(this::recentItemActionPerformed);
                 recentMenu.add(item);
             }
         } catch (Exception e) {
@@ -328,13 +322,11 @@ public class PogoGUI extends JFrame {
         JButton button = new JButton(icon);
         button.setToolTipText(Utils.buildToolTip(tip));
         button.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isPalette)
-                    paletteActionPerformed(evt);
-                else
-                    topButtonActionPerformed(evt);
-            }
+        button.addActionListener(evt -> {
+            if (isPalette)
+                paletteActionPerformed(evt);
+            else
+                topButtonActionPerformed(evt);
         });
         topPanel.add(button);
         topButtons.add(button);
@@ -742,7 +734,6 @@ public class PogoGUI extends JFrame {
                     return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
             if ((multiClassesPanel != null && multiClassesPanel.isVisible()))
-                   // ||(multiClassesFrame!= null && multiClassesFrame.isVisible()))
                 return JOptionPane.OK_OPTION;
 
             //  No visible found.
@@ -1377,11 +1368,7 @@ public class PogoGUI extends JFrame {
                     add(new Separator());
                 else {
                     JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            menuActionPerformed(evt);
-                        }
-                    });
+                    btn.addActionListener(this::menuActionPerformed);
                     add(btn);
                 }
             }
