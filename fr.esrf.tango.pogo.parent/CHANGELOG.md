@@ -1,6 +1,6 @@
 # Changelog
 
-#### Pogo-9.6.19 - XX/05/2018:
+#### Pogo-9.6.19 - 10/05/2018:
     Henance exception management if a non xmi file is loaded
 
 #### Pogo-9.6.18 - 15/11/2018:

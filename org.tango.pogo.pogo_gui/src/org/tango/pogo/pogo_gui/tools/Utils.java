@@ -532,21 +532,21 @@ public class Utils {
     //===============================================================
     @SuppressWarnings("unused")
     public List<String> getFileList(String dirName) {
-        List<String> v = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         File dir = new File(dirName);
         String[] fileNames = dir.list();
 
         if (fileNames == null)
-            return v;
+            return list;
 
         for (String name : fileNames) {
             String filename = dirName + "/" + name;
             File f = new File(filename);
             if (!f.isDirectory())
-                v.add(name);
+                list.add(name);
         }
-        Collections.sort(v, new StringCompare());
-        return v;
+        list.sort(new StringCompare());
+        return list;
     }
     //===============================================================
     /**

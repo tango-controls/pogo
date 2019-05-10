@@ -16,7 +16,9 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 15-11-2018  14:35</center>\n" + 
+		"generated: 10-05-2019  13:15</center>\n" + 
+		"<li><b>Pogo-9.6.19 - 10/05/2018:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Henance exception management if a non xmi file is loaded<br>" + 
 		"<li><b>Pogo-9.6.18 - 15/11/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a bug in copy/paste object.<br>" + 
 		"<li><b>Pogo-9.6.17 - 09/11/2018:</b><br>" + 
