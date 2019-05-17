@@ -271,7 +271,7 @@ class VC9_Project {
 					<Tool Name="VCLinkerTool"
 						IgnoreImportLibrary="false"
 						UseLibraryDependencyInputs="false"
-						AdditionalDependencies="$(SolutionName)d.lib omniORB4d.lib omniDynamic4d.lib COS4d.lib omnithreadd.lib tangod.lib zmqd.lib log4tangod.lib comctl32.lib ws2_32.lib mswsock.lib advapi32.lib"
+						AdditionalDependencies="$(SolutionName)d.lib omniORB4d.lib omniDynamic4d.lib COS4d.lib omnithreadd.lib tangod.lib zmqd.lib comctl32.lib ws2_32.lib mswsock.lib advapi32.lib"
 						ShowProgress="0"
 						OutputFile="$(OutDir)\$(SolutionName).exe"
 						LinkIncremental="0"
@@ -325,7 +325,7 @@ class VC9_Project {
 					<Tool Name="VCResourceCompilerTool" />
 					<Tool Name="VCPreLinkEventTool" />
 					<Tool Name="VCLinkerTool"
-						AdditionalDependencies="$(SolutionName).lib omniORB4.lib omniDynamic4.lib COS4.lib omnithread.lib tango.lib zmq.lib log4tango.lib comctl32.lib ws2_32.lib mswsock.lib advapi32.lib"
+						AdditionalDependencies="$(SolutionName).lib omniORB4.lib omniDynamic4.lib COS4.lib omnithread.lib tango.lib zmq.lib comctl32.lib ws2_32.lib mswsock.lib advapi32.lib"
 						OutputFile="$(OutDir)\$(SolutionName).exe"
 						LinkIncremental="0"
 						AdditionalLibraryDirectories="&quot;..\lib\win32\release&quot;;&quot;$(TANGO_ROOT)\win32\lib\vc9&quot;;&quot;$(TANGO_ROOT)\classes\win32\lib\vc9&quot;"
@@ -416,7 +416,7 @@ class VC9_Project {
 						CommandLine=""
 						ExcludedFromBuild="false" />
 					<Tool Name="VCLinkerTool"
-						AdditionalDependencies="omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib log4tangod.lib comctl32.lib ws2_32.lib"
+						AdditionalDependencies="omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib comctl32.lib ws2_32.lib"
 						ShowProgress="0"
 						OutputFile="$(OutDir)/$(SolutionName)d.dll"
 						Version="1.0"
@@ -470,7 +470,7 @@ class VC9_Project {
 					<Tool Name="VCResourceCompilerTool" />
 					<Tool Name="VCPreLinkEventTool" />
 					<Tool Name="VCLinkerTool"
-						AdditionalDependencies="omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omnithread_rt.lib tango.lib log4tango.lib comctl32.lib ws2_32.lib"
+						AdditionalDependencies="omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omnithread_rt.lib tango.lib comctl32.lib ws2_32.lib"
 						ShowProgress="0"
 						OutputFile="$(OutDir)/$(SolutionName).dll"
 						LinkIncremental="2"
@@ -570,7 +570,7 @@ class VC9_Project {
 						Culture="1036" />
 					<Tool Name="VCPreLinkEventTool" />
 					<Tool Name="VCLinkerTool"
-						AdditionalDependencies="$(SolutionName).lib omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omniThread_rt.lib tango.lib zmq.lib log4tango.lib comctl32.lib ws2_32.lib"
+						AdditionalDependencies="$(SolutionName).lib omniORB4_rt.lib omniDynamic4_rt.lib COS4_rt.lib omniThread_rt.lib tango.lib zmq.lib comctl32.lib ws2_32.lib"
 						ShowProgress="0"
 						OutputFile="$(OutDir)\$(SolutionName).exe"
 						LinkIncremental="1"
@@ -633,7 +633,7 @@ class VC9_Project {
 					<Tool Name="VCPreLinkEventTool" />
 					<Tool
 						Name="VCLinkerTool"
-						AdditionalDependencies="$(SolutionName)d.lib omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib zmqd.lib log4tangod.lib comctl32.lib ws2_32.lib"
+						AdditionalDependencies="$(SolutionName)d.lib omniORB4_rtd.lib omniDynamic4_rtd.lib COS4_rtd.lib omnithread_rtd.lib tangod.lib zmqd.lib comctl32.lib ws2_32.lib"
 						ShowProgress="0"
 						OutputFile="$(OutDir)\$(SolutionName).exe"
 						LinkIncremental="2"
