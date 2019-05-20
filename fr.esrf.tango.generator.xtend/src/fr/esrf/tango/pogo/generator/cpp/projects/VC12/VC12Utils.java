@@ -143,7 +143,6 @@ public class VC12Utils {
 				tangoLibraryName("COS4",         mode, shared) +
 				tangoLibraryName("omnithread",   mode, shared) +
 				tangoLibraryName("tango",        mode, false) +
-				tangoLibraryName("log4tango",    mode, false) +
 				tangoLibraryName("zmq",          mode, false);
 	}
 
