@@ -1,5 +1,8 @@
 # Changelog
 
+#### Pogo-9.6.19 - 21/05/2018:
+    Improve additional files management in CMakelist.txt 
+
 #### Pogo-9.6.19 - 10/05/2018:
     Henance exception management if a non xmi file is loaded
 
