@@ -16,8 +16,8 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 21-05-2019  09:45</center>\n" + 
-		"<li><b>Pogo-9.6.19 - 21/05/2018:</b><br>" + 
+		"generated: 21-05-2019  09:48</center>\n" + 
+		"<li><b>Pogo-9.6.20 - 21/05/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Improve additional files management in CMakelist.txt<br>" + 
 		"<li><b>Pogo-9.6.19 - 10/05/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Henance exception management if a non xmi file is loaded<br>" + 
