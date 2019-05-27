@@ -16,12 +16,12 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 27-05-2019  09:43</center>\n" + 
-		"<li><b>Pogo-9.6.21 - 27/05/2018:</b><br>" + 
+		"generated: 27-05-2019  09:48</center>\n" + 
+		"<li><b>Pogo-9.6.22 - 27/05/2019:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Remove extra \";\" warning (#60)<br>" + 
-		"<li><b>Pogo-9.6.20 - 21/05/2018:</b><br>" + 
+		"<li><b>Pogo-9.6.20 - 21/05/2019:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Improve additional files management in CMakelist.txt<br>" + 
-		"<li><b>Pogo-9.6.19 - 10/05/2018:</b><br>" + 
+		"<li><b>Pogo-9.6.19 - 10/05/2019:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Henance exception management if a non xmi file is loaded<br>" + 
 		"<li><b>Pogo-9.6.18 - 15/11/2018:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a bug in copy/paste object.<br>" + 
