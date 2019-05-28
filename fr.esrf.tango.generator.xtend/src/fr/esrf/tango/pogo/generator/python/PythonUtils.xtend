@@ -39,7 +39,6 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
-import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 import fr.esrf.tango.pogo.pogoDsl.Property
 import fr.esrf.tango.pogo.pogoDsl.Pipe
 import com.google.inject.Inject

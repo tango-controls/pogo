@@ -38,8 +38,6 @@ package fr.esrf.tango.pogo.generator.python
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.python.PyUtils.*
-import static extension fr.esrf.tango.pogo.generator.python.PythonUtils.*
 import com.google.inject.Inject
 
 class PythonHlProjectUtils {
