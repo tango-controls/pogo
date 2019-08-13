@@ -39,6 +39,7 @@ import fr.esrf.tango.pogo.pogoDsl.Command
 import fr.esrf.tango.pogo.pogoDsl.Attribute
 import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
+import fr.esrf.tango.pogo.pogoDsl.ForwardedAttribute
 import fr.esrf.tango.pogo.pogoDsl.Property
 import fr.esrf.tango.pogo.pogoDsl.Pipe
 import com.google.inject.Inject
@@ -260,7 +261,19 @@ class PythonUtils {
 «IF cmd.hasCommandArg»    )«ENDIF»«ENDIF»«ENDIF»
     @DebugIt()
     def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturnHL, false)»«ELSE»«IF !cmd.argout.type.voidType»return «cmd.argout.type.defaultValueTestHL»«ELSE»pass«ENDIF»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+            «IF !cmd.argout.type.voidType»
+                «protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturnHL, false)»
+            «ELSE»
+                pass
+            «ENDIF»
+        «ELSE»
+            «IF !cmd.argout.type.voidType»
+                return «cmd.argout.type.defaultValueTestHL»
+            «ELSE»
+                pass
+            «ENDIF»
+        «ENDIF»
 
 «ENDIF»
 '''
