@@ -231,7 +231,7 @@ public class EnumDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<' };
+    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<','_' };
     private boolean isAuthorized(char c) {
         for (char c1 : authorizedChars) {
             if (c1==c)
