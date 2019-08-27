@@ -47,7 +47,6 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -647,7 +646,7 @@ public class MultiClassesTree extends JTree {
 
     //===============================================================
     //===============================================================
-    private class NotFoundClass {
+    private static class NotFoundClass {
         private String name;
         private String path;
         private NotFoundClass(OneClassSimpleDef _class) {
@@ -674,7 +673,7 @@ public class MultiClassesTree extends JTree {
      * Renderer Class
      */
     //===============================================================
-    private class TangoRenderer extends DefaultTreeCellRenderer {
+    private static class TangoRenderer extends DefaultTreeCellRenderer {
         //===============================================================
         //===============================================================
         public Component getTreeCellRendererComponent(
@@ -773,17 +772,9 @@ public class MultiClassesTree extends JTree {
             add(new JPopupMenu.Separator());
 
             for (String menuLabel : menuLabels) {
-                if (menuLabel == null)
-                    add(new Separator());
-                else {
-                    JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            hostActionPerformed(evt);
-                        }
-                    });
-                    add(btn);
-                }
+                JMenuItem btn = new JMenuItem(menuLabel);
+                btn.addActionListener(this::hostActionPerformed);
+                add(btn);
             }
         }
         //======================================================

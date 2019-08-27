@@ -43,7 +43,6 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
@@ -231,7 +230,7 @@ public class EnumDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<','_' };
+    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<', '_' };
     private boolean isAuthorized(char c) {
         for (char c1 : authorizedChars) {
             if (c1==c)
@@ -310,7 +309,7 @@ public class EnumDialog extends JDialog {
                     List<String> lines = ParserTool.readFileLines(file.toString(), false);
                     for (String line : lines)
                         checkNameSyntax(line);
-                    buildEnumPanel(lines.toArray(new String[lines.size()]));
+                    buildEnumPanel(lines.toArray(new String[0]));
 
                 }catch (PogoException e) {
                     e.popup(this);
@@ -459,17 +458,9 @@ public class EnumDialog extends JDialog {
             add(title);
             add(new JPopupMenu.Separator());
             for (String menuLabel : menuLabels) {
-                if (menuLabel == null)
-                    add(new Separator());
-                else {
-                    JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            menuActionPerformed(evt);
-                        }
-                    });
-                    add(btn);
-                }
+                JMenuItem btn = new JMenuItem(menuLabel);
+                btn.addActionListener(this::menuActionPerformed);
+                add(btn);
             }
         }
         //======================================================

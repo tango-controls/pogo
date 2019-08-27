@@ -1320,7 +1320,7 @@ public class PogoGUI extends JFrame {
 
     //===============================================================
     //===============================================================
-    private class SetVisibleLater extends Thread {
+    private static class SetVisibleLater extends Thread {
         private Component component;
 
         private SetVisibleLater(Component component) {

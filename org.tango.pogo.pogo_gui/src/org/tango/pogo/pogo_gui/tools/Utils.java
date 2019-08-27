@@ -996,7 +996,7 @@ public class Utils {
 
     //=======================================================
     //=======================================================
-    private class SplashRefresher extends Thread {
+    private static class SplashRefresher extends Thread {
         //===================================================
         private synchronized void setSplashOn(boolean b, String message) {
             if (useDisplay) {
@@ -1020,6 +1020,7 @@ public class Utils {
             splash.setVisible(false);
         }
         //===================================================
+        @SuppressWarnings("SameParameterValue")
         private synchronized void doSleep(long millis) {
             try {
                 wait(millis);
@@ -1036,7 +1037,7 @@ public class Utils {
      * MyCompare class to sort collection
      */
     //======================================================
-    class StringCompare implements Comparator<String> {
+    static class StringCompare implements Comparator<String> {
         public int compare(String s1, String s2) {
             return s1.compareTo(s2);
         }

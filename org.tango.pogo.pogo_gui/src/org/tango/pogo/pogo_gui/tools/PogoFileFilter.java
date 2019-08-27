@@ -220,7 +220,6 @@ public class PogoFileFilter extends FileFilter {
      *                  Note that the "." before the extension is not needed and will be ignored.
      */
     public void addExtension(String extension) {
-        //noinspection unchecked
         filters.add(extension.toLowerCase());
         fullDescription = null;
     }
@@ -235,15 +234,15 @@ public class PogoFileFilter extends FileFilter {
     public String getDescription() {
         if (fullDescription == null) {
             if (description == null || isExtensionListInDescription()) {
-                fullDescription = description == null ? "" : description + "  (";
+                StringBuilder sb = new StringBuilder(description == null ? "" : description + "  (");
                 // build the description from the extension list
-                //Enumeration extensions = filters.keys();
                 for (int i = 0; i < filters.size(); i++) {
-                    fullDescription += "*." + filters.get(i);
+                    sb.append("*.").append(filters.get(i));
                     if (i < filters.size() - 1)
-                        fullDescription += ", ";
+                        sb.append(", ");
                 }
-                fullDescription += ")";
+                sb.append(")");
+                fullDescription = sb.toString();
             } else
                 fullDescription = description;
         }
