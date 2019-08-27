@@ -189,14 +189,14 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 """
 
 # PyTango imports
-import PyTango
-from PyTango import DebugIt
-from PyTango.server import run
-from PyTango.server import Device, DeviceMeta
-«IF !cls.attributes.empty || !cls.commands.empty || !cls.pipes.empty»from PyTango.server import «IF !cls.attributes.empty»attribute«ENDIF»«IF !cls.commands.empty»«IF !cls.attributes.empty», «ENDIF»command«ENDIF»«IF !cls.pipes.empty»«IF !cls.attributes.empty || !cls.commands.empty», «ENDIF»pipe«ENDIF»«ENDIF»
-«IF !cls.classProperties.empty || !cls.deviceProperties.empty»from PyTango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
-from PyTango import AttrQuality, DispLevel, DevState
-from PyTango import AttrWriteType, PipeWriteType
+import tango
+from tango import DebugIt
+from tango.server import run
+from tango.server import Device, DeviceMeta
+«IF !cls.attributes.empty || !cls.commands.empty || !cls.pipes.empty»from tango.server import «IF !cls.attributes.empty»attribute«ENDIF»«IF !cls.commands.empty»«IF !cls.attributes.empty», «ENDIF»command«ENDIF»«IF !cls.pipes.empty»«IF !cls.attributes.empty || !cls.commands.empty», «ENDIF»pipe«ENDIF»«ENDIF»
+«IF !cls.classProperties.empty || !cls.deviceProperties.empty»from tango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
+from tango import AttrQuality, DispLevel, DevState
+from tango import AttrWriteType, PipeWriteType
 «cls.inheritedAdditionalImportHL»
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
