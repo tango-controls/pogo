@@ -155,11 +155,7 @@ public class MultiClassesPanel extends JFrame {
         JButton btn = new JButton(icon);
         btn.setToolTipText(Utils.buildToolTip(tip));
         btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                topButtonActionPerformed(evt);
-            }
-        });
+        btn.addActionListener(this::topButtonActionPerformed);
         topPanel.add(btn);
         topButtons.add(btn);
     }
@@ -205,11 +201,7 @@ public class MultiClassesPanel extends JFrame {
             recentMenu.removeAll();
             for (String project : PogoProperty.multiClassProjectHistory) {
                 JMenuItem item = new JMenuItem(project);
-                item.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        recentItemActionPerformed(evt);
-                    }
-                });
+                item.addActionListener(this::recentItemActionPerformed);
                 recentMenu.add(item);
             }
         } catch (Exception e) {
@@ -623,7 +615,7 @@ public class MultiClassesPanel extends JFrame {
      * @param args the command line arguments
      */
     //=======================================================
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try {
             if (args.length == 0)
                 new MultiClassesPanel(new JFrame(), null).setVisible(true);

@@ -3,7 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="xtend-gen"/>
 	<classpathentry kind="src" path="model"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="libs/slf4j.jar"/>
+	<classpathentry kind="lib" path="/pogo/lib/net/danieldietrich/protectedregions/core/1.0.1/core-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/pogo/lib/net/danieldietrich/protectedregions/xtext/1.0.1/xtext-1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

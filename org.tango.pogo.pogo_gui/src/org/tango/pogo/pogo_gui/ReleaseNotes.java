@@ -16,7 +16,10 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 27-05-2019  16:20</center>\n" + 
+		"generated: 27-08-2019  09:37</center>\n" + 
+		"<li><b>Pogo-9.6.24 - 27/08/2019:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Added \'_\' character in autorizedChars list in EnumDialog.java code.<br>" + 
+		"&nbsp; &nbsp; &nbsp; Changed imports from PyTango to tango.<br>" + 
 		"<li><b>Pogo-9.6.21 - 27/05/2019:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Remove extra \";\" warning (#60)<br>" + 
 		"<li><b>Pogo-9.6.20 - 21/05/2019:</b><br>" + 

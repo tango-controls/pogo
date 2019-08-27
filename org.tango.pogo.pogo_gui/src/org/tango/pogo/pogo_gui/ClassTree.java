@@ -47,11 +47,9 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 import java.util.Comparator;
 
 
@@ -669,7 +667,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             nodeList.add((DefaultMutableTreeNode) parent_node.getChildAt(i));
 
         //	Sort them
-        Collections.sort(nodeList, new NodeComparator());
+        nodeList.sort(new NodeComparator());
 
         //	remove all nodes from parent
         while (parent_node.getChildCount() > 0)
@@ -1978,7 +1976,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
 
     //===============================================================
     //===============================================================
-    private class PogoCollection {
+    private static class PogoCollection {
         String name;
         ImageIcon icon;
         //===========================================================
@@ -2404,17 +2402,9 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             add(new JPopupMenu.Separator());
 
             for (String menuLabel : menuLabels) {
-                if (menuLabel == null)
-                    add(new Separator());
-                else {
-                    JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            menuActionPerformed(evt);
-                        }
-                    });
-                    add(btn);
-                }
+                JMenuItem btn = new JMenuItem(menuLabel);
+                btn.addActionListener(this::menuActionPerformed);
+                add(btn);
             }
         }
 
@@ -2480,7 +2470,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             for (int i = 0; i < menuLabels.length; i++)
                 getComponent(OFFSET + i).setVisible(false);
 
-            //noinspection PointlessArithmeticExpression
             getComponent(OFFSET + EDIT_CLASS).setVisible(true);
             getComponent(OFFSET + SUMMARIZE).setVisible(true);
             show(tree, evt.getX(), evt.getY());
@@ -2627,7 +2616,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
      * MyCompare class to sort collection
      */
     //======================================================
-    class NodeComparator implements Comparator<DefaultMutableTreeNode> {
+    static class NodeComparator implements Comparator<DefaultMutableTreeNode> {
         public int compare(DefaultMutableTreeNode node1, DefaultMutableTreeNode node2) {
             if (node1.toString().equals("State") ||
                     node1.toString().equals("Status"))

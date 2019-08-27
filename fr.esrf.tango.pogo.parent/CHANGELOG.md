@@ -1,5 +1,9 @@
 # Changelog
 
+#### Pogo-9.6.24 - 27/08/2019:
+    Added '_' character in autorizedChars list in EnumDialog.java code.
+    Changed imports from PyTango to tango.
+
 #### Pogo-9.6.21 - 27/05/2019:
     Remove extra ";" warning (#60)
 

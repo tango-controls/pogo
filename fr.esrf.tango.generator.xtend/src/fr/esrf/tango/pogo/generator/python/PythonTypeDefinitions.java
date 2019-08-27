@@ -308,11 +308,11 @@ public class PythonTypeDefinitions {
 		
 		if (attr.getAttType().equals("Spectrum"))
 		{
-			def_val = "[" + def_val + "]";
+			def_val = "(" + def_val + ",)";
 		}
 		if (attr.getAttType().equals("Image"))
 		{
-			def_val = "[[" + def_val + "]]";
+			def_val = "((" + def_val + ",),)";
 		}
 		return def_val;
 	}
