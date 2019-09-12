@@ -557,7 +557,8 @@ class PythonUtils {
     
     
     def pythonForwardedAttributeClassHL(ForwardedAttribute attr) '''
-«attr.name» = attribute(«setAttrPropertyHL("label", attr.label, true)»
+«attr.name» = attribute(«setAttrPropertyHL("name", attr.name, true)»
+        «setAttrPropertyHL("label", attr.label, true)»
         forwarded=True
     )
     '''
