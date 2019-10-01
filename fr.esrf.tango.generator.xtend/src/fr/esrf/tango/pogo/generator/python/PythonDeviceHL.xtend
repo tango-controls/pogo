@@ -208,15 +208,38 @@ __all__ = ["«cls.name»", "main"]
     //    Constructors
     //====================================================
     def pythonConstructors(PogoDeviceClass cls)  '''
-«IF true»«cls.constructorHL»
+«IF true»    def init_device(self):
+        """ 
+        Initializes the attributes and properties of the «cls.name»
+        """
+«cls.constructorHL»
         «cls.setEventCriteria»
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("init_device")»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «cls.openProtectedAreaHL("init_device")»
+        «cls.closeProtectedAreaHL("init_device")»
+        «ENDIF»
 
     def always_executed_hook(self):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("always_executed_hook", "pass", false)»«ELSE»pass«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «cls.openProtectedAreaHL("always_executed_hook")»
+        """
+        Internal construct of TANGO.
+        """
+        «cls.closeProtectedAreaHL("always_executed_hook")»
+        «ELSE»
+        pass
+        «ENDIF»
 
     def delete_device(self):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("delete_device", "pass", false)»«ELSE»pass«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «cls.openProtectedAreaHL("delete_device")»
+        """
+        Internal construct of TANGO.
+        """
+        «cls.closeProtectedAreaHL("delete_device")»
+        «ELSE»
+        pass
+        «ENDIF»
 «ENDIF»
 
 '''
