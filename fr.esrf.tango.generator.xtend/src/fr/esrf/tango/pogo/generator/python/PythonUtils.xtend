@@ -259,33 +259,42 @@ class PythonUtils {
 		«ENDIF»
 		«ENDIF»
 		«IF !cmd.argout.type.voidType»    dtype_out=«cmd.argout.type.pythonTypeHL», 
-		«IF !cmd.argout.description.empty»    doc_out="«cmd.argout.description.oneLineString»", 
-		«ENDIF»
-		«ENDIF»
-		«IF !cmd.description.empty»    description="«cmd.description.oneLineString»",
 		«ENDIF»
     «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
     «setAttrPropertyHL("polling_period", cmd.polledPeriod, false)»
 		«IF cmd.hasCommandArg»    )
 		«ENDIF»
+		«ENDIF»
 	«ENDIF»
-«ENDIF»
     @DebugIt()
     def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
-            «IF !cmd.argout.type.voidType»
-                «protectedAreaHL(cls, cmd.name, cmd.argout.type.defaultValueReturnHL, false)»
-            «ELSE»
-                pass
-            «ENDIF»
-        «ELSE»
-            «IF !cmd.argout.type.voidType»
-                return «cmd.argout.type.defaultValueTestHL»
-            «ELSE»
-                pass
-            «ENDIF»
+        «openProtectedAreaHL(cls,cmd.name)»
+        """
+        «cmd.description.commentCmdParamMultiLines»
+        «IF !cmd.argin.type.voidType»
+        
+        :param argin: «cmd.argin.type.pythonTypeHL»
+        «cmd.argin.description.commentCmdParamMultiLines»
         «ENDIF»
-
+        «IF !cmd.argout.type.voidType»
+        
+        :return:«cmd.argout.type.pythonTypeHL»
+        «cmd.argout.description.commentCmdParamMultiLines»
+        «ELSE»
+        
+        :return:None
+        «ENDIF»
+        """
+        «cmd.argout.type.defaultValueReturnHL»
+        «closeProtectedAreaHL(cls,cmd.name)»
+        «ELSE»
+        «IF !cmd.argout.type.voidType»
+        return «cmd.argout.type.defaultValueTestHL»
+        «ELSE»
+        pass
+        «ENDIF»
+        «ENDIF»
 «ENDIF»
 '''
     
