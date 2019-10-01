@@ -175,34 +175,34 @@ public class PythonTypeDefinitions {
 	 */
 	public static String pythonTypeHL (Type type) {
 		if (type instanceof VoidType)				return "'None'";
-		if (type instanceof BooleanType)			return "'bool'";
-		if (type instanceof ShortType)				return "'int16'";
-		if (type instanceof IntType)				return "'int32'";
-		if (type instanceof FloatType)				return "'float'";
-		if (type instanceof DoubleType)				return "'double'";
-		if (type instanceof UShortType)				return "'uint16'";
-		if (type instanceof UIntType)				return "'uint32'";
-		if (type instanceof StringType)				return "'str'";
-		if (type instanceof CharArrayType)			return "('char',)";
-		if (type instanceof ShortArrayType)			return "('int16',)";
-		if (type instanceof IntArrayType)			return "('int32',)";
-		if (type instanceof FloatArrayType)			return "('float',)";
-		if (type instanceof DoubleArrayType)			return "('double',)";
-		if (type instanceof UShortArrayType)			return "('uint16',)";
-		if (type instanceof UIntArrayType)			return "('uint32',)";
-		if (type instanceof StringArrayType)			return "('str',)";
+		if (type instanceof BooleanType)			return "'DevBoolean'";
+		if (type instanceof ShortType)				return "'DevShort'";
+		if (type instanceof IntType)				return "'DevLong'";
+		if (type instanceof FloatType)				return "'DevFloat'";
+		if (type instanceof DoubleType)				return "'DevDouble'";
+		if (type instanceof UShortType)				return "'DevUShort'";
+		if (type instanceof UIntType)				return "'DevULong'";
+		if (type instanceof StringType)				return "'DevString'";
+		if (type instanceof CharArrayType)			return "'DevVarCharArray'";
+		if (type instanceof ShortArrayType)			return "'DevVarShortArray'";
+		if (type instanceof IntArrayType)			return "'DevVarLongArray'";
+		if (type instanceof FloatArrayType)			return "'DevVarFloatArray'";
+		if (type instanceof DoubleArrayType)			return "'DevVarDoubleArray'";
+		if (type instanceof UShortArrayType)			return "'DevVarUShortArray'";
+		if (type instanceof UIntArrayType)			return "'DevVarULongArray'";
+		if (type instanceof StringArrayType)			return "'DevVarStringArray'";
 		if (type instanceof LongStringArrayType)		return "'DevVarLongStringArray'";
 		if (type instanceof DoubleStringArrayType)		return "'DevVarDoubleStringArray'";
 		if (type instanceof StateType)				return "'DevState'";
-		if (type instanceof ConstStringType)			return "'str'";
-		if (type instanceof BooleanArrayType)			return "('bool',)";
-		if (type instanceof UCharType)				return "'char'";
-		if (type instanceof LongType)				return "'int64'";
-		if (type instanceof ULongType)				return "'uint64'";
-		if (type instanceof LongArrayType)			return "('int64',)";
-		if (type instanceof ULongArrayType)			return "('uint64')";
+		if (type instanceof ConstStringType)			return "'ConstDevString'";
+		if (type instanceof BooleanArrayType)			return "'DevVarBooleanArray'";
+		if (type instanceof UCharType)				return "'DevUChar'";
+		if (type instanceof LongType)				return "'DevLong64'";
+		if (type instanceof ULongType)				return "'DevULong64'";
+		if (type instanceof LongArrayType)			return "'DevVarLong64Array'";
+		if (type instanceof ULongArrayType)			return "'DevVarULong64Array'";
 		if (type instanceof DevIntType)				return "'DevInt'";
-		if (type instanceof EncodedType)			return "'bytearray'";
+		if (type instanceof EncodedType)			return "'DevEncoded'";
 		if (type instanceof EnumType)				return "'DevEnum'";
 		return "";
 	}
@@ -766,14 +766,14 @@ public class PythonTypeDefinitions {
 	public String constructorHL(PogoDeviceClass cls) {
 		EList<Inheritance> inheritances = cls.getDescription().getInheritances();
 		if (inheritances==null || inheritances.size()==0)
-			return "    def init_device(self):\n        Device.init_device(self)";
+			return "        Device.init_device(self)";
 		else {
 			int	last = inheritances.size()-1;
 			String	className = inheritances.get(last).getClassname();
 			if (isDefaultDeviceImpl(className))
-				return "    def init_device(self):\n        Device.init_device(self)";
+				return "        Device.init_device(self)";
 			else
-				return "    def init_device(self):\n        " + className + ".init_device(self)";
+				return "        " + className + ".init_device(self)";
 		}
 	}
 
