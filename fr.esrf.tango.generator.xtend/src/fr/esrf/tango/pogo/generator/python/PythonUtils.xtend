@@ -531,6 +531,7 @@ class PythonUtils {
         «setAttrPropertyHL("standard_unit", attr.properties.standardUnit, true)»
         «setAttrPropertyHL("display_unit", attr.properties.displayUnit, true)»
         «setAttrPropertyHL("format", attr.properties.format.formatComaToPoint, true)»
+        «setAttrPropertyHL("polling_period", attr.polledPeriod, false)»
         «setAttrPropertyHL("max_value", attr.properties.maxValue, false)»
         «setAttrPropertyHL("min_value", attr.properties.minValue, false)»
         «setAttrPropertyHL("max_alarm", attr.properties.maxAlarm, false)»
