@@ -532,6 +532,16 @@ class PythonUtils {
         «setAttrPropertyHL("display_unit", attr.properties.displayUnit, true)»
         «setAttrPropertyHL("format", attr.properties.format.formatComaToPoint, true)»
         «setAttrPropertyHL("polling_period", attr.polledPeriod, false)»
+        «IF attr.eventCriteria!=null»
+        «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
+        «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
+        «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
+        «ENDIF»
+        «IF attr.evArchiveCriteria!=null»
+        «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
+        «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
+        «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
+        «ENDIF»
         «setAttrPropertyHL("max_value", attr.properties.maxValue, false)»
         «setAttrPropertyHL("min_value", attr.properties.minValue, false)»
         «setAttrPropertyHL("max_alarm", attr.properties.maxAlarm, false)»
