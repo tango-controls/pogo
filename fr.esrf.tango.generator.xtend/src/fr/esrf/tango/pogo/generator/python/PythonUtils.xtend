@@ -254,14 +254,16 @@ class PythonUtils {
 «IF isTrue(cmd.status.concreteHere)»
 	«IF cmd.name != "State"»
 		«IF cmd.name != "Status"»    @command«IF cmd.hasCommandArg»(«ENDIF»
-		«IF !cmd.argin.type.voidType»    dtype_in=«cmd.argin.type.pythonTypeHL», 
-		«IF !cmd.argin.description.empty»    doc_in="«cmd.argin.description.oneLineString»", 
+		«IF !cmd.argin.type.voidType»        dtype_in=«cmd.argin.type.pythonTypeHL»,
+		«IF !cmd.argin.description.empty»        doc_in="«cmd.argin.description.oneLineString»",
 		«ENDIF»
 		«ENDIF»
-		«IF !cmd.argout.type.voidType»    dtype_out=«cmd.argout.type.pythonTypeHL», 
+		«IF !cmd.argout.type.voidType»        dtype_out=«cmd.argout.type.pythonTypeHL»,
+		«IF !cmd.argout.description.empty»        doc_out="«cmd.argout.description.oneLineString»",
 		«ENDIF»
-    «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
-    «setAttrPropertyHL("polling_period", cmd.polledPeriod, false)»
+		«ENDIF»
+        «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
+        «setAttrPropertyHL("polling_period", cmd.polledPeriod, false)»
 		«IF cmd.hasCommandArg»    )
 		«ENDIF»
 		«ENDIF»
@@ -273,16 +275,16 @@ class PythonUtils {
         """
         «cmd.description.commentCmdParamMultiLines»
         «IF !cmd.argin.type.voidType»
-        
+
         :param argin: «cmd.argin.type.pythonTypeHL»
         «cmd.argin.description.commentCmdParamMultiLines»
         «ENDIF»
         «IF !cmd.argout.type.voidType»
-        
+
         :return:«cmd.argout.type.pythonTypeHL»
         «cmd.argout.description.commentCmdParamMultiLines»
         «ELSE»
-        
+
         :return:None
         «ENDIF»
         """
@@ -296,6 +298,7 @@ class PythonUtils {
         «ENDIF»
         «ENDIF»
 «ENDIF»
+
 '''
     
     def commandMethodStateMachine(PogoDeviceClass cls, Command cmd) '''
