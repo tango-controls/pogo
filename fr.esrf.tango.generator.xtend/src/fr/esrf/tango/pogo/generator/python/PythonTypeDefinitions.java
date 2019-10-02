@@ -115,19 +115,19 @@ public class PythonTypeDefinitions {
 	 */
 	public static String pythonPropTypeHL (PropType propType) {
 		
-		if (propType instanceof BooleanType)	   return "'bool'";
-		if (propType instanceof ShortType)  	   return "'int16'";
-		if (propType instanceof IntType)           return "'int32'";
-		if (propType instanceof UShortType)        return "'uint16'";
-		if (propType instanceof UIntType)      	   return "'uint32'";
-		if (propType instanceof FloatType)         return "'float'";
-		if (propType instanceof DoubleType)        return "'double'";
-		if (propType instanceof StringType)        return "'str'";
-		if (propType instanceof ShortVectorType)   return "('int16',)";
-		if (propType instanceof IntVectorType)     return "('int',)";
-		if (propType instanceof FloatVectorType)   return "('float',)";
-		if (propType instanceof DoubleVectorType)  return "('double',)";
-		if (propType instanceof StringVectorType)  return "('str',)";
+		if (propType instanceof BooleanType)	   return "'DevBoolean'";
+		if (propType instanceof ShortType)  	   return "'DevShort'";
+		if (propType instanceof IntType)           return "'DevLong'";
+		if (propType instanceof UShortType)        return "'DevUShort'";
+		if (propType instanceof UIntType)      	   return "'DevULong'";
+		if (propType instanceof FloatType)         return "'DevFloat'";
+		if (propType instanceof DoubleType)        return "'DevDouble'";
+		if (propType instanceof StringType)        return "'DevString'";
+		if (propType instanceof ShortVectorType)   return "'vector<DevShort>'";
+		if (propType instanceof IntVectorType)     return "'vector<DevLong>'";
+		if (propType instanceof FloatVectorType)   return "'vector<DevFloat>'";
+		if (propType instanceof DoubleVectorType)  return "'vector<DevDouble>'";
+		if (propType instanceof StringVectorType)  return "'vector<DevString>'";
 		return "";
 	}
 
@@ -215,21 +215,21 @@ public class PythonTypeDefinitions {
 	public static String pythonTypeAttrHL (Attribute attr) {
 		String l_str = "";
 		if (attr.getDataType() instanceof VoidType)			l_str = "'None'";
-		if (attr.getDataType() instanceof BooleanType)			l_str = "'bool'";
-		if (attr.getDataType() instanceof ShortType)			l_str = "'int16'";
-		if (attr.getDataType() instanceof IntType)			l_str = "'int32'";
-		if (attr.getDataType() instanceof FloatType)			l_str = "'float'";
-		if (attr.getDataType() instanceof DoubleType)			l_str = "'double'";
-		if (attr.getDataType() instanceof UShortType)			l_str = "'uint16'";
-		if (attr.getDataType() instanceof UIntType)			l_str = "'uint32'";
-		if (attr.getDataType() instanceof StringType)			l_str = "'str'";
+		if (attr.getDataType() instanceof BooleanType)			l_str = "'DevBoolean'";
+		if (attr.getDataType() instanceof ShortType)			l_str = "'DevShort'";
+		if (attr.getDataType() instanceof IntType)			l_str = "'DevLong'";
+		if (attr.getDataType() instanceof FloatType)			l_str = "'DevFloat'";
+		if (attr.getDataType() instanceof DoubleType)			l_str = "'DevDouble'";
+		if (attr.getDataType() instanceof UShortType)			l_str = "'DevUShort'";
+		if (attr.getDataType() instanceof UIntType)			l_str = "'DevULong'";
+		if (attr.getDataType() instanceof StringType)			l_str = "'DevString'";
 		if (attr.getDataType() instanceof StateType)			l_str = "'DevState'";
-		if (attr.getDataType() instanceof ConstStringType)		l_str = "'str'";
-		if (attr.getDataType() instanceof UCharType)			l_str = "'char'";
-		if (attr.getDataType() instanceof LongType)			l_str = "'int64'";
-		if (attr.getDataType() instanceof ULongType)			l_str = "'uint64'";
+		if (attr.getDataType() instanceof ConstStringType)		l_str = "'ConstDevString'";
+		if (attr.getDataType() instanceof UCharType)			l_str = "'DevUChar'";
+		if (attr.getDataType() instanceof LongType)			l_str = "'DevLong64'";
+		if (attr.getDataType() instanceof ULongType)			l_str = "'DevULong64'";
 		if (attr.getDataType() instanceof DevIntType)			l_str = "'DevInt'";
-		if (attr.getDataType() instanceof EncodedType)			l_str = "'bytearray'";
+		if (attr.getDataType() instanceof EncodedType)			l_str = "'DevEncoded'";
 		if (attr.getDataType() instanceof EnumType)			l_str = "'DevEnum'";
 		
 		if (attr.getAttType().equals("Spectrum"))
