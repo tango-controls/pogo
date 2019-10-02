@@ -262,8 +262,6 @@ class PythonUtils {
 		«IF !cmd.argout.description.empty»    doc_out="«cmd.argout.description.oneLineString»", 
 		«ENDIF»
 		«ENDIF»
-		«IF !cmd.description.empty»    description="«cmd.description.oneLineString»",
-		«ENDIF»
     «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
     «setAttrPropertyHL("polling_period", cmd.polledPeriod, false)»
 		«IF cmd.hasCommandArg»    )
