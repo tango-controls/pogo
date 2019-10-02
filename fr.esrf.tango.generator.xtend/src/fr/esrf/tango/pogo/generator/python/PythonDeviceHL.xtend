@@ -228,7 +228,6 @@ __all__ = ["«cls.name»", "main"]
 
     def delete_device(self):
         """ Hook to delete resources allocated in init_device.
-        
         This method allows for any memory or other resources allocated in the
         init_device method to be released.  This method is called by the device
         destructor and by the device Init command."""
