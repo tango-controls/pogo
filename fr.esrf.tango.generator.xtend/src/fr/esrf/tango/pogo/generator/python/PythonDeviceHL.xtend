@@ -209,7 +209,7 @@ __all__ = ["«cls.name»", "main"]
     //====================================================
     def pythonConstructors(PogoDeviceClass cls)  '''
 «IF true»    def init_device(self):
-        """ Initializes the attributes and properties of the «cls.name»."""
+        """Initialises the attributes and properties of the «cls.name»."""
 «cls.constructorHL»
         «cls.setEventCriteria»
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
@@ -218,7 +218,7 @@ __all__ = ["«cls.name»", "main"]
         «ENDIF»
 
     def always_executed_hook(self):
-        """ Method always executed before any TANGO command is executed."""
+        """Method always executed before any TANGO command is executed."""
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «cls.openProtectedAreaHL("always_executed_hook")»
         «cls.closeProtectedAreaHL("always_executed_hook")»
@@ -227,7 +227,8 @@ __all__ = ["«cls.name»", "main"]
         «ENDIF»
 
     def delete_device(self):
-        """ Hook to delete resources allocated in init_device.
+        """Hook to delete resources allocated in init_device.
+
         This method allows for any memory or other resources allocated in the
         init_device method to be released.  This method is called by the device
         destructor and by the device Init command."""
