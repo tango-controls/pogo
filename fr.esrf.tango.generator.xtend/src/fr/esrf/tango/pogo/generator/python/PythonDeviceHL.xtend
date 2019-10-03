@@ -209,7 +209,7 @@ __all__ = ["«cls.name»", "main"]
     //====================================================
     def pythonConstructors(PogoDeviceClass cls)  '''
 «IF true»    def init_device(self):
-        """ Initializes the attributes and properties of the «cls.name»."""
+        """Initialises the attributes and properties of the «cls.name»."""
 «cls.constructorHL»
         «cls.setEventCriteria»
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
