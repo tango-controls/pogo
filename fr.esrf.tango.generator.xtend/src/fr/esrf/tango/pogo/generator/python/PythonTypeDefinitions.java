@@ -123,11 +123,11 @@ public class PythonTypeDefinitions {
 		if (propType instanceof FloatType)         return "'DevFloat'";
 		if (propType instanceof DoubleType)        return "'DevDouble'";
 		if (propType instanceof StringType)        return "'DevString'";
-		if (propType instanceof ShortVectorType)   return "'vector<DevShort>'";
-		if (propType instanceof IntVectorType)     return "'vector<DevLong>'";
-		if (propType instanceof FloatVectorType)   return "'vector<DevFloat>'";
-		if (propType instanceof DoubleVectorType)  return "'vector<DevDouble>'";
-		if (propType instanceof StringVectorType)  return "'vector<DevString>'";
+		if (propType instanceof ShortVectorType)   return "'DevVarShortArray'";
+		if (propType instanceof IntVectorType)     return "'DevVarLongArray'";
+		if (propType instanceof FloatVectorType)   return "'DevVarFloatArray'";
+		if (propType instanceof DoubleVectorType)  return "'DevVarDoubleArray'";
+		if (propType instanceof StringVectorType)  return "'DevVarStringArray'";
 		return "";
 	}
 
