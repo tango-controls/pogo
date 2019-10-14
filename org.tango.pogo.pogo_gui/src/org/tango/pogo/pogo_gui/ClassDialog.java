@@ -102,6 +102,7 @@ public class ClassDialog extends JDialog {
         licenseComboBox.addItem("LGPL");
         licenseComboBox.addItem("APACHE");
         licenseComboBox.addItem("MIT");
+        licenseComboBox.addItem("BSD3");
         licenseComboBox.addItem("none");
 
         if (deviceClass == null) {  //  Creating a new class
