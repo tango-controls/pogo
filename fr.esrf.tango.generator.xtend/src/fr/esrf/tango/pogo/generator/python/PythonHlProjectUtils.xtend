@@ -664,6 +664,7 @@ THE SOFTWARE.
 	//======================================================
 	def generatePythonHlProjectLicenseBSD(PogoDeviceClass cls) '''
 The BSD 3-Clause License
+
 Copyright (c) «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»<YEAR> <COPYRIGHT HOLDER>«ENDIF»
 All rights reserved.
 
