@@ -663,9 +663,8 @@ THE SOFTWARE.
 	// Define PythonHl project license code to be generated
 	//======================================================
 	def generatePythonHlProjectLicenseBSD(PogoDeviceClass cls) '''
-The BSD3 License
-
-Copyright (c) «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»2019 «ENDIF»
+The BSD 3-Clause License
+Copyright (c) «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»<YEAR> <COPYRIGHT HOLDER>«ENDIF»
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
