@@ -638,7 +638,7 @@ If the Library as you received it specifies that a proxy can decide whether futu
 	def generatePythonHlProjectLicenseMIT(PogoDeviceClass cls) '''
 	The MIT License
 
-Copyright (c) 2006-2010 Stephen M. McKamey
+Copyright (c) «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»<YEAR> <COPYRIGHT HOLDER>«ENDIF»
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -887,7 +887,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»[yyyy] [name of copyright owner]«ENDIF»
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
