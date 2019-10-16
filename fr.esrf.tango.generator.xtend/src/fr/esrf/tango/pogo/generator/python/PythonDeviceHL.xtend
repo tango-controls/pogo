@@ -73,6 +73,9 @@ class PythonDeviceHL implements IGenerator {
 				else if (cls.description.license == 'MIT') {
 					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseMIT)
 				}
+				else if (cls.description.license == 'BSD3') {
+					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseBSD)
+				}
 				if (cls.description.filestogenerate.toLowerCase.contains('sphinx')){
 					fsa.generateFile("docs/source/index.rst",cls.generatePythonHlSphinxIndex)
 					fsa.generateFile("docs/source/conf.py",cls.generatePythonHlSphinxConf)
@@ -239,7 +242,6 @@ __all__ = ["«cls.name»", "main"]
         pass
         «ENDIF»
 «ENDIF»
-
 '''
 
     //====================================================

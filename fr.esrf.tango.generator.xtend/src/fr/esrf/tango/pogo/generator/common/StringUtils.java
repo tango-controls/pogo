@@ -480,6 +480,9 @@ public class StringUtils {
 		if (licence!=null && licence.equals("MIT"))
 			return commentTag + comments(ILicences.mitLicenece, commentTag) + "\n";
 
+		if (licence!=null && licence.equals("BSD3"))
+			return commentTag + comments(ILicences.bsdLicenece, commentTag) + "\n";
+		
 		//	default IS GPL
 		if (licence!=null && licence.equals("LGPL")) {
 			// convert gpl to lgpl
