@@ -234,7 +234,8 @@ __all__ = ["«cls.name»", "main"]
 
         This method allows for any memory or other resources allocated in the
         init_device method to be released.  This method is called by the device
-        destructor and by the device Init command."""
+        destructor and by the device Init command.
+        """
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «cls.openProtectedAreaHL("delete_device")»
         «cls.closeProtectedAreaHL("delete_device")»
