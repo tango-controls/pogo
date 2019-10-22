@@ -2530,10 +2530,14 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             for (int i = 0; i < menuLabels.length; i++)
                 getComponent(OFFSET + i).setVisible(false);
 
+            //  Forbids Copy/Clone and Remove for State and status
+            boolean stateStatus = (collectionName.equalsIgnoreCase("Commands") &&
+                    (obj.toString().equalsIgnoreCase("State") || obj.toString().equalsIgnoreCase("Status")) );
+
             getComponent(OFFSET + EDIT_ITEM).setVisible(true);
-            getComponent(OFFSET + COPY_ITEM).setVisible(true);
-            getComponent(OFFSET + CLONE_ITEM).setVisible(true);
-            getComponent(OFFSET + REMOVE_ITEM).setVisible(true);
+            getComponent(OFFSET + COPY_ITEM).setVisible(!stateStatus);
+            getComponent(OFFSET + CLONE_ITEM).setVisible(!stateStatus);
+            getComponent(OFFSET + REMOVE_ITEM).setVisible(!stateStatus);
             ((JMenuItem) getComponent(OFFSET + EDIT_ITEM)).setText("Edit " + obj.toString());
             getComponent(OFFSET + EDIT_SRC_CODE).setVisible(true);
             boolean edit_code = false;
@@ -2554,7 +2558,6 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
             manageCloneAs(obj);
             show(tree, evt.getX(), evt.getY());
         }
-
         //======================================================
         private void menuActionPerformed(ActionEvent evt) {
             //	Check component source

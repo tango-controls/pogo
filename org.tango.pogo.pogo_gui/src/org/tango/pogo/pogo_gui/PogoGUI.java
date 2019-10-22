@@ -1287,7 +1287,6 @@ public class PogoGUI extends JFrame {
             getContentPane().add(inherPanel, java.awt.BorderLayout.EAST);
             pack();
         }
-
         //=======================================================
         private void checkWarnings() {
             if (warnings.length() > 0) {
@@ -1297,7 +1296,6 @@ public class PogoGUI extends JFrame {
                         "Warning Window", JOptionPane.WARNING_MESSAGE);
             }
         }
-
         //=======================================================
         private void updateInheritancePanelForSelection() {
             if (!reBuildTabbedPane) {
@@ -1307,12 +1305,6 @@ public class PogoGUI extends JFrame {
             }
         }
         //=======================================================
-        /*
-        private void updateInheritancePanels(ClassTree tree)
-        {
-            
-        }
-        */
     }
     //===============================================================
     //===============================================================
