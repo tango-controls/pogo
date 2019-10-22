@@ -2535,9 +2535,13 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                     (obj.toString().equalsIgnoreCase("State") || obj.toString().equalsIgnoreCase("Status")) );
 
             getComponent(OFFSET + EDIT_ITEM).setVisible(true);
-            getComponent(OFFSET + COPY_ITEM).setVisible(!stateStatus);
-            getComponent(OFFSET + CLONE_ITEM).setVisible(!stateStatus);
-            getComponent(OFFSET + REMOVE_ITEM).setVisible(!stateStatus);
+            getComponent(OFFSET + COPY_ITEM).setVisible(true);
+            getComponent(OFFSET + CLONE_ITEM).setVisible(true);
+            getComponent(OFFSET + REMOVE_ITEM).setVisible(true);
+
+            getComponent(OFFSET + COPY_ITEM).setEnabled(!stateStatus);
+            getComponent(OFFSET + CLONE_ITEM).setEnabled(!stateStatus);
+            getComponent(OFFSET + REMOVE_ITEM).setEnabled(!stateStatus);
             ((JMenuItem) getComponent(OFFSET + EDIT_ITEM)).setText("Edit " + obj.toString());
             getComponent(OFFSET + EDIT_SRC_CODE).setVisible(true);
             boolean edit_code = false;
