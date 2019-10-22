@@ -125,6 +125,19 @@ class PythonDeviceHL implements IGenerator {
 class «cls.name»(«cls.inheritedPythonClassNameHL»):
     """
     «cls.description.description»
+    «IF !cls.classProperties.empty || !cls.deviceProperties.empty»
+
+    **Properties:**
+
+    «IF !cls.classProperties.empty»
+    - Class Property
+    «cls.pythonClassPropertiesDocs»
+    «ENDIF»
+    «IF !cls.deviceProperties.empty»
+    - Device Property
+    «cls.pythonDevicePropertiesDocs»
+    «ENDIF»
+    «ENDIF»
     """
     __metaclass__ = DeviceMeta
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("class_variable")»«ENDIF»
@@ -347,12 +360,30 @@ def dyn_attr(self, dev_list):
 «ENDIF»
     '''
     
+    def pythonClassPropertiesDocs(PogoDeviceClass cls)'''
+«IF !cls.classProperties.empty»
+«FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»«prop.pythonPropertyClassDocsHL»
+«ENDIF»
+
+«ENDFOR»
+«ENDIF»
+    '''
+    
     //====================================================
     //    Properties
     //====================================================
     def pythonDeviceProperties(PogoDeviceClass cls)'''
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyDeviceHL»
+«ENDIF»
+
+«ENDFOR»
+«ENDIF»
+    '''
+    
+    def pythonDevicePropertiesDocs(PogoDeviceClass cls)'''
+«IF !cls.deviceProperties.empty»
+«FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»«prop.pythonPropertyDeviceDocsHL»
 «ENDIF»
 
 «ENDFOR»
