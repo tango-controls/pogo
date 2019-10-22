@@ -1,6 +1,6 @@
 # Changelog
 
-#### Pogo-9.6.24 - 27/08/2019:
+#### Pogo-9.6.24 - 22/10/2019:
     Forbids Copy/Clone and Remove for State and status
     Added '_' character in autorizedChars list in EnumDialog.java code.
     Changed imports from PyTango to tango.
