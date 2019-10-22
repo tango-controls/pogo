@@ -16,8 +16,9 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 27-08-2019  09:37</center>\n" + 
-		"<li><b>Pogo-9.6.24 - 27/08/2019:</b><br>" + 
+		"generated: 22-10-2019  08:53</center>\n" + 
+		"<li><b>Pogo-9.6.24 - 22/10/2019:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Forbids Copy/Clone and Remove for State and status<br>" + 
 		"&nbsp; &nbsp; &nbsp; Added \'_\' character in autorizedChars list in EnumDialog.java code.<br>" + 
 		"&nbsp; &nbsp; &nbsp; Changed imports from PyTango to tango.<br>" + 
 		"<li><b>Pogo-9.6.21 - 27/05/2019:</b><br>" + 
