@@ -1,5 +1,9 @@
 # Changelog
 
+#### Pogo-9.6.25 - 24/10/2019:
+    Fix a problem when conning property Class/Device
+    Pull request #72 from SKA
+
 #### Pogo-9.6.24 - 22/10/2019:
     Forbids Copy/Clone and Remove for State and status
     Added '_' character in autorizedChars list in EnumDialog.java code.
