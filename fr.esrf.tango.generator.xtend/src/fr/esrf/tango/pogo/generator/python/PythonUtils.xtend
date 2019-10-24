@@ -324,10 +324,17 @@ class PythonUtils {
 		    
     '''
     def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
-		def write_«attribute.name»(self, value):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, attribute.name + "_write", "pass", false)»«ELSE»pass«ENDIF»
+        def write_«attribute.name»(self, value):
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+                «openProtectedAreaHL(cls, attribute.name + "_write")»
+                """Set the «attribute.name» attribute."""
+                pass
+                «closeProtectedAreaHL(cls, attribute.name + "_write")»
+                «ELSE»
+                pass
+                «ENDIF»
 
-'''
+    '''
         
     def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		def read_«attribute.name»(self, attr):
@@ -338,7 +345,14 @@ class PythonUtils {
         
     def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
         def read_«attribute.name»(self):
-                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, attribute.name + "_read", "return " + attribute.defaultValueHL, false)»«ELSE»return «attribute.defaultValueDim»«ENDIF»
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+                «openProtectedAreaHL(cls, attribute.name + "_read")»
+                """Return the «attribute.name» attribute."""
+                return «attribute.defaultValueHL»
+                «closeProtectedAreaHL(cls, attribute.name + "_read")»
+                «ELSE»
+                return «attribute.defaultValueDim»
+                «ENDIF»
 
     '''
       
@@ -451,12 +465,29 @@ class PythonUtils {
             )
 «ENDIF»
     '''
+    
+     def pythonPropertyClassDocsHL(Property prop) '''
+«IF isTrue(prop.status.concreteHere)»
+            «prop.name»
+        «IF !prop.description.empty»        - «prop.description.oneLineString»«ENDIF»
+                - Type:«prop.type.pythonPropTypeHL»
+«ENDIF»
+    '''
+    
     def pythonPropertyDeviceHL(Property prop) '''
 «IF isTrue(prop.status.concreteHere)»
         «prop.name» = device_property(
                 dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
         «IF prop.mandatory.isTrue»        mandatory=True«ENDIF»
             )
+«ENDIF»
+    '''
+    
+         def pythonPropertyDeviceDocsHL(Property prop) '''
+«IF isTrue(prop.status.concreteHere)»
+            «prop.name»
+        «IF !prop.description.empty»        - «prop.description.oneLineString»«ENDIF»
+                - Type:«prop.type.pythonPropTypeHL»
 «ENDIF»
     '''
     
