@@ -7,7 +7,7 @@
 #
 #=========================================================
 
-TAG_NAME=Pogo-Release-9.6.24
+TAG_NAME=Pogo-Release-9.6.25
 
 #---------------------------------------------------------
 #	Update ReleaseNote.java and revision number in target class
@@ -59,8 +59,7 @@ ReleasePogo() {
     
     #ready to install
     cd release/org.tango.pogo.pogo_gui/target
-    ls -l
-    echo ""
+    ls    echo ""
     echo "*** You can install Pogo jar file from"
     pwd
     echo "And remove release dir"

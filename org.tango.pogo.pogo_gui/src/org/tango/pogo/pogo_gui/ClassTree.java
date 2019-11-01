@@ -883,7 +883,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
     //===============================================================
     private void clonePropertyAs() {
         //  ToDo
-        DefaultMutableTreeNode newNode;
+
         Object obj = getSelectedObject();
         if (obj instanceof PogoProperty) {
             Property srcProp = ((PogoProperty) obj).value;
@@ -894,7 +894,7 @@ public class ClassTree extends JTree implements TangoConst, PogoConst {
                 pogoDeviceClass.getDeviceProperties().add(newProp);
             else
                 pogoDeviceClass.getClassProperties().add(newProp);
-            newNode = new DefaultMutableTreeNode(new PogoProperty(newProp, is_dev));
+            DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new PogoProperty(newProp, !is_dev));
 
             DefaultMutableTreeNode targetCollection;
             if (is_dev) {

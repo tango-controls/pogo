@@ -16,7 +16,10 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 22-10-2019  08:53</center>\n" + 
+		"generated: 24-10-2019  09:34</center>\n" + 
+		"<li><b>Pogo-9.6.25 - 24/10/2019:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix a problem when conning property Class/Device<br>" + 
+		"&nbsp; &nbsp; &nbsp; Pull request #72 from SKA<br>" + 
 		"<li><b>Pogo-9.6.24 - 22/10/2019:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Forbids Copy/Clone and Remove for State and status<br>" + 
 		"&nbsp; &nbsp; &nbsp; Added \'_\' character in autorizedChars list in EnumDialog.java code.<br>" + 
