@@ -408,7 +408,11 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
+<<<<<<< HEAD
     """Main function of the «cls.name» module."""
+=======
+    """Main method of the class. «IF !cls.description.description.empty»«cls.description.description»«ENDIF»"""
+>>>>>>> Aligned indentation for forwarded attributes.Added code to generate argument descrition in multiple line.
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
 
