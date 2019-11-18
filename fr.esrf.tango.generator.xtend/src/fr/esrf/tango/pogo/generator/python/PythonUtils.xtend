@@ -135,6 +135,24 @@ class PythonUtils {
     		return "";
     	}
     }
+    def commentMultiLinesDescriptionStr(String str){
+    	if (str != null)
+    	{
+    		if (!str.empty)
+    		{
+				return "" + myReplaceAll(str,"\n","\"\n        \"");
+    		}
+    		else
+    		{
+    			return "" ;
+    		}
+    	}
+    	else
+    	{
+    		return "" ;
+    	}
+    }
+        
     def commentCmdParamMultiLines(String str){
     	if (str.contains("\n"))
     	{
@@ -255,11 +273,11 @@ class PythonUtils {
 	«IF cmd.name != "State"»
 		«IF cmd.name != "Status"»    @command«IF cmd.hasCommandArg»(«ENDIF»
 		«IF !cmd.argin.type.voidType»        dtype_in=«cmd.argin.type.pythonTypeHL»,
-		«IF !cmd.argin.description.empty»        doc_in="«cmd.argin.description.oneLineString»",
+		«IF !cmd.argin.description.empty»        doc_in="«cmd.argin.description.commentMultiLinesDescriptionStr»",
 		«ENDIF»
 		«ENDIF»
 		«IF !cmd.argout.type.voidType»        dtype_out=«cmd.argout.type.pythonTypeHL»,
-		«IF !cmd.argout.description.empty»        doc_out="«cmd.argout.description.oneLineString»",
+		«IF !cmd.argout.description.empty»        doc_out="«cmd.argout.description.commentMultiLinesDescriptionStr»",
 		«ENDIF»
 		«ENDIF»
         «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
@@ -611,7 +629,8 @@ class PythonUtils {
     
     
     def pythonForwardedAttributeClassHL(ForwardedAttribute attr) '''
-«attr.name» = attribute(«setAttrPropertyHL("name", attr.name, true)»
+«attr.name» = attribute(
+        «setAttrPropertyHL("name", attr.name, true)»
         «setAttrPropertyHL("label", attr.label, true)»
         forwarded=True
     )
