@@ -409,7 +409,7 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
-    """Main funtion of the «cls.name» module."""
+    """Main function of the «cls.name» module."""
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
 
