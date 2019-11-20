@@ -179,7 +179,6 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 «ENDIF»
 «cls.pythonAttributes»
 «cls.pythonDynamicAttributesMethod»
-
 «cls.pythonDynamicAttributes»
 «IF !cls.pipes.empty»    # -------------
     # Pipes methods
@@ -412,6 +411,7 @@ def main(args=None, **kwargs):
     """Main function of the «cls.name» module."""
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
+
 
 if __name__ == '__main__':
     main()
