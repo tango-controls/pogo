@@ -135,10 +135,46 @@ class PythonUtils {
     		return "";
     	}
     }
+    def commentMultiLinesInputDescriptionStr(String str){
+    	if (str != null)
+    	{
+    		if (!str.empty)
+    		{
+				return "" + myReplaceAll(str,"\n","\"\n               \"");
+    		}
+    		else
+    		{
+    			return "" ;
+    		}
+    	}
+    	else
+    	{
+    		return "" ;
+    	}
+    }
+    
+    def commentMultiLinesOutputDescriptionStr(String str){
+    	if (str != null)
+    	{
+    		if (!str.empty)
+    		{
+				return "" + myReplaceAll(str,"\n","\"\n                \"");
+    		}
+    		else
+    		{
+    			return "" ;
+    		}
+    	}
+    	else
+    	{
+    		return "" ;
+    	}
+    }
+        
     def commentCmdParamMultiLines(String str){
     	if (str.contains("\n"))
     	{
-    		return "\n    " + myReplaceAll(str, "\n","\n    ");
+    		return "    " + myReplaceAll(str, "\n","\n    ");
     	}
     	else
     	{
@@ -255,11 +291,11 @@ class PythonUtils {
 	«IF cmd.name != "State"»
 		«IF cmd.name != "Status"»    @command«IF cmd.hasCommandArg»(«ENDIF»
 		«IF !cmd.argin.type.voidType»        dtype_in=«cmd.argin.type.pythonTypeHL»,
-		«IF !cmd.argin.description.empty»        doc_in="«cmd.argin.description.oneLineString»",
+		«IF !cmd.argin.description.empty»        doc_in="«cmd.argin.description.commentMultiLinesInputDescriptionStr»",
 		«ENDIF»
 		«ENDIF»
 		«IF !cmd.argout.type.voidType»        dtype_out=«cmd.argout.type.pythonTypeHL»,
-		«IF !cmd.argout.description.empty»        doc_out="«cmd.argout.description.oneLineString»",
+		«IF !cmd.argout.description.empty»        doc_out="«cmd.argout.description.commentMultiLinesOutputDescriptionStr»",
 		«ENDIF»
 		«ENDIF»
         «setAttrPropertyHL("display_level", cmd.displayLevel, false)»
@@ -358,7 +394,7 @@ class PythonUtils {
       
     def readPipeMethodHL(PogoDeviceClass cls, Pipe pip) '''
         def read_«pip.name»(self):
-                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, pip.name + "_read", "return dict(x=0,y=0)", false)»«ELSE»return dict(x=0,y=0)»«ENDIF»
+                «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, pip.name + "_read", "return dict(x=0, y=0)", false)»«ELSE»return dict(x=0, y=0)»«ENDIF»
 
     '''
     
@@ -611,7 +647,8 @@ class PythonUtils {
     
     
     def pythonForwardedAttributeClassHL(ForwardedAttribute attr) '''
-«attr.name» = attribute(«setAttrPropertyHL("name", attr.name, true)»
+«attr.name» = attribute(
+        «setAttrPropertyHL("name", attr.name, true)»
         «setAttrPropertyHL("label", attr.label, true)»
         forwarded=True
     )

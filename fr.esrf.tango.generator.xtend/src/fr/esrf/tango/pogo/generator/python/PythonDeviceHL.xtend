@@ -179,7 +179,6 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 «ENDIF»
 «cls.pythonAttributes»
 «cls.pythonDynamicAttributesMethod»
-
 «cls.pythonDynamicAttributes»
 «IF !cls.pipes.empty»    # -------------
     # Pipes methods
@@ -364,7 +363,6 @@ def dyn_attr(self, dev_list):
 «IF !cls.classProperties.empty»
 «FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»«prop.pythonPropertyClassDocsHL»
 «ENDIF»
-
 «ENDFOR»
 «ENDIF»
     '''
@@ -385,7 +383,6 @@ def dyn_attr(self, dev_list):
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»«prop.pythonPropertyDeviceDocsHL»
 «ENDIF»
-
 «ENDFOR»
 «ENDIF»
     '''
@@ -411,8 +408,10 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
+    """Main function of the «cls.name» module."""
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
+
 
 if __name__ == '__main__':
     main()
