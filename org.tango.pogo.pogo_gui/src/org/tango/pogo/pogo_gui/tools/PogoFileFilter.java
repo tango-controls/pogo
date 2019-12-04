@@ -331,6 +331,7 @@ public class PogoFileFilter extends FileFilter {
             " extends DeviceImpl",    // implements TangoConst"
     };
     public static final String[] py_target = {
+            "(PyTango.LatestDeviceImpl):",
             "(PyTango.Device_5Impl):",
             "(PyTango.Device_4Impl):",
             "(PyTango.Device_3Impl):"
