@@ -16,7 +16,9 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 24-10-2019  09:34</center>\n" + 
+		"generated: 06-12-2019  08:41</center>\n" + 
+		"<li><b>Pogo-9.6.26 - 06/11/2019:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Update base classe inheritance from PyTango.Device4Impl to PyTango.LatestDeviceImpl ( Pull request #71)<br>" + 
 		"<li><b>Pogo-9.6.25 - 24/10/2019:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Fix a problem when conning property Class/Device<br>" + 
 		"&nbsp; &nbsp; &nbsp; Pull request #72 from SKA<br>" + 

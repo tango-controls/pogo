@@ -54,7 +54,7 @@ public class PyUtils {
 	 */
 	//===========================================================
 	static String deviceImpl() {
-		return "PyTango.Device_4Impl";
+		return "PyTango.LatestDeviceImpl";
 	}
 	//===========================================================
 	/**

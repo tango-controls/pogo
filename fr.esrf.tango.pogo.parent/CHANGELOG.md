@@ -1,5 +1,9 @@
 # Changelog
 
+
+#### Pogo-9.6.26 - 06/11/2019:
+    Update base classe inheritance from PyTango.Device4Impl to PyTango.LatestDeviceImpl ( Pull request #71)
+
 #### Pogo-9.6.25 - 24/10/2019:
     Fix a problem when conning property Class/Device
     Pull request #72 from SKA
