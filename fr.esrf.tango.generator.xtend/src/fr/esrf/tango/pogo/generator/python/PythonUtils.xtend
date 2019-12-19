@@ -53,6 +53,7 @@ class PythonUtils {
     @Inject extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions    
 	@Inject	extension fr.esrf.tango.pogo.generator.python.PyUtils
         
+   
     def commentMultiLinesPython(PogoDeviceClass cls){
         cls.description.description.replaceAll("\n","\n#                ");
     }
@@ -261,6 +262,16 @@ class PythonUtils {
             pip.displayLevel.equals("EXPERT") 		||
             (pip.rwType.contains("WRITE"))
             )
+    }
+    
+    def enumLabelsWithNumber(Attribute attr){
+    	var enumVal =0
+    	var String labelList = ""
+    	for(label: attr.enumLabels){
+    		labelList = labelList + label + " = " + enumVal.toString +"\n"
+    		enumVal = enumVal +1
+   		}
+    	return labelList
     }
     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
@@ -632,7 +643,8 @@ class PythonUtils {
         «setAttrPropertyHL("delta_t", attr.properties.deltaTime, false)»
         «setAttrPropertyHL("delta_val", attr.properties.deltaValue, false)»
         «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»
-        «IF attr.enumLabels!=null»«IF attr.enumLabels.size >0»«setAttrPropertyHL("enum_labels", attr.pythonPipeEnum,  false)»«ENDIF»«ENDIF»«ENDIF»
+«««        «IF attr.enumLabels!=null»«IF attr.enumLabels.size >0»«setAttrPropertyHL("enum_labels", attr.pythonPipeEnum,  false)»«ENDIF»«ENDIF»
+		«ENDIF»
     )
     '''
     def pythonPipeClassHL(Pipe pip) '''
