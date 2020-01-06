@@ -387,7 +387,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		if (cmake)
 			code += "set(MAKE_ENV ";
 		else
-			code += "MAKE_ENV = ";
+			code += "MAKE_ENV ?= ";
 
 		if (dbg!=null) //	To force it under development
 			code += dbg;
@@ -410,7 +410,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		if (cmake)
 			code += "set(MAKE_ENV ";
 		else
-			code += "MAKE_ENV = ";
+			code += "MAKE_ENV ?= ";
 
 		if (dbg!=null) //	To force it under development
 			code += dbg;
