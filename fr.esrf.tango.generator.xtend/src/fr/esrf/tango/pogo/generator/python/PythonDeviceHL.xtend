@@ -214,7 +214,12 @@ from tango.server import Device, DeviceMeta
 «IF !cls.classProperties.empty || !cls.deviceProperties.empty»from tango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
 from tango import AttrQuality, DispLevel, DevState
 from tango import AttrWriteType, PipeWriteType
+«IF cls.enumAttrCheck»
 from enum import IntEnum
+«IF cls.enumLabelCheck»
+import enum
+«ENDIF»
+«ENDIF»
 «cls.inheritedAdditionalImportHL»
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
@@ -224,20 +229,33 @@ __all__ = ["«cls.name»", "main"]
 
 def enumClasses(PogoDeviceClass cls) '''
 «IF cls.attributes!==null»
-«FOR attr:cls.attributes»
-«IF attr.dataType.pythonTypeHL.equalsIgnoreCase("'DevEnum'")»
-
-
-class «attr.name.toFirstUpper»(IntEnum):
-    """«attr.name.toFirstUpper» enum."""
-    «IF attr.enumLabels!==null»
-    «IF attr.enumLabels.size>0»
-    «attr.enumLabelsWithNumber»
-    «ENDIF»
-    «ENDIF»
+	«FOR attr:cls.attributes»
+	«IF attr.dataType.pythonTypeHL.equalsIgnoreCase("'DevEnum'")»
+		«IF attr.checkEnumLabels == "valid"»
+		
+		
+		class «attr.name.toFirstUpper»(IntEnum):
+		    """Python enumerated type for «attr.name.toFirstUpper» attribute."""
+		    «IF attr.enumLabels!==null»
+		    «IF attr.enumLabels.size>0»
+		    «attr.enumLabelsWithNumber»
+    		«ENDIF»
+    		«ENDIF»
+		«ENDIF»
+		«IF attr.checkEnumLabels == "invalid"»
+		
+		
+		«attr.name.toFirstUpper» = enum.IntEnum(
+		    value='«attr.name.toFirstUpper»',
+		    names=[
+		        «attr.enumLabelWithInvalidChars»
+		    ]
+		)
+		«ENDIF»
+	«ENDIF»
+	«ENDFOR»
 «ENDIF»
-«ENDFOR»
-«ENDIF»
+
 '''
     //====================================================
     //    Constructors
