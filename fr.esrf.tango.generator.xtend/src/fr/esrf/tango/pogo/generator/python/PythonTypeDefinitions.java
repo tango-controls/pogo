@@ -230,8 +230,7 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof ULongType)			l_str = "'DevULong64'";
 		if (attr.getDataType() instanceof DevIntType)			l_str = "'DevInt'";
 		if (attr.getDataType() instanceof EncodedType)			l_str = "'DevEncoded'";
-		//if (attr.getDataType() instanceof EnumType)			l_str = "'DevEnum'";
-		if (attr.getDataType() instanceof EnumType)
+		if (attr.getDataType() instanceof EnumType)			
 		{
 			l_str = toFirstUpper(attr.getName());
 		}

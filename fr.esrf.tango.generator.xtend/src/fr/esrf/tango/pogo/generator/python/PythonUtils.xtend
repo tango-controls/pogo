@@ -265,13 +265,54 @@ class PythonUtils {
     }
     
     def enumLabelsWithNumber(Attribute attr){
-    	var enumVal =0
+    	var enumVal = 0
     	var String labelList = ""
     	for(label: attr.enumLabels){
     		labelList = labelList + label + " = " + enumVal.toString +"\n"
     		enumVal = enumVal +1
    		}
     	return labelList
+    }
+    
+    def enumLabelWithInvalidChars (Attribute attr){
+    	var enumVal = 0
+    	var String labelList = ""
+    	for(label: attr.enumLabels){
+    		labelList = labelList + "(\""+ label + "\", " + enumVal.toString +"),\n"
+    		enumVal = enumVal +1
+   		}
+	    return labelList
+    }
+    
+    def String checkEnumLabels (Attribute attr){
+    	var flag = "valid"
+    	for(label: attr.enumLabels){
+    	 	if(label.contains("-")||label.contains("!")||label.contains("#")||label.contains("@")||label.contains("%")||label.contains("$")){
+    	 	flag = "invalid"
+    		}
+    	}
+    	return flag
+    }
+    
+    def enumAttrCheck (PogoDeviceClass cls){
+    	var enumAttr = false
+    	for(attr:cls.attributes){
+    		if(attr.dataType.pythonTypeHL.equalsIgnoreCase("'DevEnum'")){
+    			enumAttr = true
+    		}
+    	}
+    	return enumAttr    	
+    }
+    
+    def enumLabelCheck(PogoDeviceClass cls){
+    	var enumLabelInvalid = false
+    	for(attr:cls.attributes){
+ 			if(attr.checkEnumLabels == "invalid")
+    		{
+    			enumLabelInvalid = true
+    		}
+    	}
+    	return enumLabelInvalid
     }
     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
@@ -643,7 +684,6 @@ class PythonUtils {
         «setAttrPropertyHL("delta_t", attr.properties.deltaTime, false)»
         «setAttrPropertyHL("delta_val", attr.properties.deltaValue, false)»
         «setAttrPropertyHL("doc", attr.properties.description.oneLineString, true)»
-«««        «IF attr.enumLabels!=null»«IF attr.enumLabels.size >0»«setAttrPropertyHL("enum_labels", attr.pythonPipeEnum,  false)»«ENDIF»«ENDIF»
 		«ENDIF»
     )
     '''
