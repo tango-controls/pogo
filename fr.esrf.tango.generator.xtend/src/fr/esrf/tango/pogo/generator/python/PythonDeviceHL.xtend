@@ -255,7 +255,6 @@ def enumClasses(PogoDeviceClass cls) '''
 	«ENDIF»
 	«ENDFOR»
 «ENDIF»
-
 '''
     //====================================================
     //    Constructors
