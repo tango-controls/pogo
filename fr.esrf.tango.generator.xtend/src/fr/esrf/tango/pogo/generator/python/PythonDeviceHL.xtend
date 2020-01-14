@@ -215,10 +215,7 @@ from tango.server import Device, DeviceMeta
 from tango import AttrQuality, DispLevel, DevState
 from tango import AttrWriteType, PipeWriteType
 «IF cls.enumAttrCheck»
-from enum import IntEnum
-«IF cls.enumLabelCheck»
 import enum
-«ENDIF»
 «ENDIF»
 «cls.inheritedAdditionalImportHL»
 # Additional import
@@ -234,7 +231,7 @@ def enumClasses(PogoDeviceClass cls) '''
 		«IF attr.checkEnumLabels == "valid"»
 		
 		
-		class «attr.name.toFirstUpper»(IntEnum):
+		class «attr.name.toFirstUpper»(enum.IntEnum):
 		    """Python enumerated type for «attr.name.toFirstUpper» attribute."""
 		    «IF attr.enumLabels!==null»
 		    «IF attr.enumLabels.size>0»
@@ -246,11 +243,12 @@ def enumClasses(PogoDeviceClass cls) '''
 		
 		
 		«attr.name.toFirstUpper» = enum.IntEnum(
-		    value='«attr.name.toFirstUpper»',
+		    value="«attr.name.toFirstUpper»",
 		    names=[
 		        «attr.enumLabelWithInvalidChars»
 		    ]
 		)
+		"""Python enumerated type for «attr.name.toFirstUpper» attribute."""
 		«ENDIF»
 	«ENDIF»
 	«ENDFOR»

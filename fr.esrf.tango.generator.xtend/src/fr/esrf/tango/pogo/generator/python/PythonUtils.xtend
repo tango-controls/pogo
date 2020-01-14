@@ -287,7 +287,7 @@ class PythonUtils {
     def String checkEnumLabels (Attribute attr){
     	var flag = "valid"
     	for(label: attr.enumLabels){
-    	 	if(label.contains("-")||label.contains("!")||label.contains("#")||label.contains("@")||label.contains("%")||label.contains("$")){
+    	 	if(label.contains("-")||label.contains("!")||label.contains("#")||label.contains("@")||label.contains("%")||label.contains("$")||label.charAt(0).toString.matches("[0-9]")){
     	 	flag = "invalid"
     		}
     	}
@@ -303,18 +303,7 @@ class PythonUtils {
     	}
     	return enumAttr    	
     }
-    
-    def enumLabelCheck(PogoDeviceClass cls){
-    	var enumLabelInvalid = false
-    	for(attr:cls.attributes){
- 			if(attr.checkEnumLabels == "invalid")
-    		{
-    			enumLabelInvalid = true
-    		}
-    	}
-    	return enumLabelInvalid
-    }
-    
+     
     def commandExecution(PogoDeviceClass cls, Command cmd) '''
 		def «cmd.methodName»(self«IF !cmd.argin.type.voidType», argin«ENDIF»):
 		    """ «cmd.description»
