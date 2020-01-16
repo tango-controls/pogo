@@ -41,6 +41,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
 
 class PythonDeviceHL implements IGenerator {
     @Inject    extension PythonUtils
@@ -120,6 +121,7 @@ class PythonDeviceHL implements IGenerator {
 # See LICENSE.txt for more info.
 
 «cls.pythonHeader»
+«cls.enumClasses»
 
 
 class «cls.name»(«cls.inheritedPythonClassNameHL»):
@@ -212,6 +214,9 @@ from tango.server import Device, DeviceMeta
 «IF !cls.classProperties.empty || !cls.deviceProperties.empty»from tango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
 from tango import AttrQuality, DispLevel, DevState
 from tango import AttrWriteType, PipeWriteType
+«IF cls.enumAttrCheck»
+import enum
+«ENDIF»
 «cls.inheritedAdditionalImportHL»
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
@@ -219,6 +224,36 @@ from tango import AttrWriteType, PipeWriteType
 __all__ = ["«cls.name»", "main"]
 '''
 
+def enumClasses(PogoDeviceClass cls) '''
+«IF cls.attributes!==null»
+	«FOR attr:cls.attributes»
+	«IF attr.dataType.pythonTypeHL.equalsIgnoreCase("'DevEnum'")»
+		«IF attr.checkEnumLabels == "valid"»
+		
+		
+		class «attr.name.toFirstUpper»(enum.IntEnum):
+		    """Python enumerated type for «attr.name.toFirstUpper» attribute."""
+		    «IF attr.enumLabels!==null»
+		    «IF attr.enumLabels.size>0»
+		    «attr.enumLabelsWithNumber»
+    		«ENDIF»
+    		«ENDIF»
+		«ENDIF»
+		«IF attr.checkEnumLabels == "invalid"»
+		
+		
+		«attr.name.toFirstUpper» = enum.IntEnum(
+		    value="«attr.name.toFirstUpper»",
+		    names=[
+		        «attr.enumLabelWithInvalidChars»
+		    ]
+		)
+		"""Python enumerated type for «attr.name.toFirstUpper» attribute."""
+		«ENDIF»
+	«ENDIF»
+	«ENDFOR»
+«ENDIF»
+'''
     //====================================================
     //    Constructors
     //====================================================
