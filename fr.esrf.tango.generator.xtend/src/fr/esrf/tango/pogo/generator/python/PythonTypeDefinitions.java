@@ -230,7 +230,10 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof ULongType)			l_str = "'DevULong64'";
 		if (attr.getDataType() instanceof DevIntType)			l_str = "'DevInt'";
 		if (attr.getDataType() instanceof EncodedType)			l_str = "'DevEncoded'";
-		if (attr.getDataType() instanceof EnumType)			l_str = "'DevEnum'";
+		if (attr.getDataType() instanceof EnumType)			
+		{
+			l_str = toFirstUpper(attr.getName());
+		}
 		
 		if (attr.getAttType().equals("Spectrum"))
 		{
@@ -241,6 +244,16 @@ public class PythonTypeDefinitions {
 			l_str = "((" + l_str + ",),)";
 		}
 		return l_str;
+	}
+	
+	public static String toFirstUpper(String s) {
+		if (s == null || s.length() == 0)
+			return s;
+		if (Character.isUpperCase(s.charAt(0)))
+			return s;
+		if (s.length() == 1)
+			return s.toUpperCase();
+		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
 	
 	/**
