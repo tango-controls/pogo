@@ -83,6 +83,10 @@ class PythonUtils {
 	    	{
 	    		return "[\"" + str.substring(1, str.length()-1).replaceAll(", ",",").replaceAll(",","\", \"") + "\"]";
 	    	}
+	    	else if (str.contains(" "))
+	    	{
+	    		return "[\"" + str.substring(1, str.length()-1).replaceAll(" "," ")+"\"]";
+	    	}
 	    	else
 	    	{
 	    		return "[" + str + "]";
@@ -537,7 +541,17 @@ class PythonUtils {
     def pythonPropertyClassHL(Property prop) '''
 «IF isTrue(prop.status.concreteHere)»
         «prop.name» = class_property(
-                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
+                dtype=«prop.type.pythonPropTypeHL»,
+                «IF !prop.defaultPropValue.empty»
+                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue»"
+                «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
+                «prop.defaultPropValue.toString.stringListToStringArray»
+                «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
+                «prop.defaultPropValue.toString»
+                «ELSE»
+                «prop.defaultPropValue.get(0).stringToPyth»
+                «ENDIF»
+                «ENDIF»
         «IF prop.mandatory.isTrue»        mandatory=True«ENDIF»
             )
 «ENDIF»
@@ -554,7 +568,17 @@ class PythonUtils {
     def pythonPropertyDeviceHL(Property prop) '''
 «IF isTrue(prop.status.concreteHere)»
         «prop.name» = device_property(
-                dtype=«prop.type.pythonPropTypeHL»,«IF !prop.defaultPropValue.empty» default_value=«IF prop.type.pythonPropType.equals("PyTango.DevString")»"«prop.defaultPropValue.get(0)»"«ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue.get(0).stringToPyth»«ENDIF»«ENDIF»
+                dtype=«prop.type.pythonPropTypeHL»,
+                «IF !prop.defaultPropValue.empty» 
+                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue»"
+                «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
+                «prop.defaultPropValue.toString.stringListToStringArray»
+                «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
+                «prop.defaultPropValue.toString»
+                «ELSE»
+                «prop.defaultPropValue.get(0).stringToPyth»
+                «ENDIF»
+                «ENDIF»
         «IF prop.mandatory.isTrue»        mandatory=True«ENDIF»
             )
 «ENDIF»
