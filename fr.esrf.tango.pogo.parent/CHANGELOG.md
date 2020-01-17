@@ -1,6 +1,9 @@
 # Changelog
 
 
+#### Pogo-9.6.27 - 16/01/2020:
+    Pull request #81 integration
+
 #### Pogo-9.6.26 - 06/11/2019:
     Update base classe inheritance from PyTango.Device4Impl to PyTango.LatestDeviceImpl ( Pull request #71)
 
