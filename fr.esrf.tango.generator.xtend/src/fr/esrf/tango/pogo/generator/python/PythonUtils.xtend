@@ -543,15 +543,15 @@ class PythonUtils {
         «prop.name» = class_property(
                 dtype=«prop.type.pythonPropTypeHL»,
                 «IF !prop.defaultPropValue.empty»
-                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue»"
-                «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
-                «prop.defaultPropValue.toString.stringListToStringArray»
-                «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
-                «prop.defaultPropValue.toString»
-                «ELSE»
-                «prop.defaultPropValue.get(0).stringToPyth»
-                «ENDIF»
-                «ENDIF»
+                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue.get(0)»"
+        «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
+        «prop.defaultPropValue.toString.stringListToStringArray»
+        «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
+        «prop.defaultPropValue.toString»
+        «ELSE»
+        «prop.defaultPropValue.get(0).stringToPyth»
+        «ENDIF»
+        «ENDIF»
         «IF prop.mandatory.isTrue»        mandatory=True«ENDIF»
             )
 «ENDIF»
@@ -570,15 +570,15 @@ class PythonUtils {
         «prop.name» = device_property(
                 dtype=«prop.type.pythonPropTypeHL»,
                 «IF !prop.defaultPropValue.empty» 
-                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue»"
-                «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
-                «prop.defaultPropValue.toString.stringListToStringArray»
-                «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
-                «prop.defaultPropValue.toString»
-                «ELSE»
-                «prop.defaultPropValue.get(0).stringToPyth»
-                «ENDIF»
-                «ENDIF»
+                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue.get(0)»"
+        «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
+        «prop.defaultPropValue.toString.stringListToStringArray»
+        «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
+        «prop.defaultPropValue.toString»
+        «ELSE»
+        «prop.defaultPropValue.get(0).stringToPyth»
+        «ENDIF»
+        «ENDIF»
         «IF prop.mandatory.isTrue»        mandatory=True«ENDIF»
             )
 «ENDIF»
