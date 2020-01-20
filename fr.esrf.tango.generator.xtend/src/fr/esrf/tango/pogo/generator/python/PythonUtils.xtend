@@ -85,7 +85,7 @@ class PythonUtils {
 	    	}
 	    	else if (str.contains(" "))
 	    	{
-	    		return "[\"" + str.substring(1, str.length()-1).replaceAll(" "," ")+"\"]";
+	    		return "[\"" + str.substring(1, str.length()-1)+"\"]";
 	    	}
 	    	else
 	    	{
