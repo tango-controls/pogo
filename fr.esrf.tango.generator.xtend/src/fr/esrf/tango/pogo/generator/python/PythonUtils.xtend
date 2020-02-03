@@ -658,8 +658,8 @@ class PythonUtils {
 	    			count+=1
 	    		}
     		}
-    	} 
-		return attrVariableName.toLowerCase
+    	}
+    	return attrVariableName.toLowerCase
 	}
 
     
