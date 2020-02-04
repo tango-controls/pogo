@@ -317,7 +317,10 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof ULongType)			def_val =  "0";
 		if (attr.getDataType() instanceof DevIntType)			def_val =  "0";
 		if (attr.getDataType() instanceof EncodedType)			def_val =  "['', '']";
-		if (attr.getDataType() instanceof EnumType)			def_val =  "0";
+		if (attr.getDataType() instanceof EnumType)
+		{
+			def_val = toFirstUpper(attr.getName())+ "."+ attr.getEnumLabels().get(0);
+		}
 		
 		if (attr.getAttType().equals("Spectrum"))
 		{

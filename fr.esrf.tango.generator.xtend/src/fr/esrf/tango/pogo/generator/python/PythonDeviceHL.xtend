@@ -264,6 +264,11 @@ def enumClasses(PogoDeviceClass cls) '''
         «cls.setEventCriteria»
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «cls.openProtectedAreaHL("init_device")»
+        «IF !cls.attributes.empty»
+        «FOR attr:cls.attributes»
+        self._«attr.pythonAttributeVariableNameHL» = «attr.defaultValueHL»
+        «ENDFOR»
+        «ENDIF»
         «cls.closeProtectedAreaHL("init_device")»
         «ENDIF»
 

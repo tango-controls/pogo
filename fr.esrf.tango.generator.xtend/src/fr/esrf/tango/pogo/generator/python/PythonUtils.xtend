@@ -45,6 +45,7 @@ import fr.esrf.tango.pogo.pogoDsl.Pipe
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import org.eclipse.emf.common.util.BasicEList
 
 class PythonUtils {
     @Inject extension fr.esrf.tango.pogo.generator.common.StringUtils
@@ -429,7 +430,7 @@ class PythonUtils {
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
                 «openProtectedAreaHL(cls, attribute.name + "_read")»
                 """Return the «attribute.name» attribute."""
-                return «attribute.defaultValueHL»
+                return self._«attribute.pythonAttributeVariableNameHL»
                 «closeProtectedAreaHL(cls, attribute.name + "_read")»
                 «ELSE»
                 return «attribute.defaultValueDim»
@@ -625,6 +626,42 @@ class PythonUtils {
         else
             return "";
     }
+    
+    def String pythonAttributeVariableNameHL(Attribute attr) {
+    	var attrVariableName = attr.name
+    	var indexList = new BasicEList<Integer>
+    	var ch =0 
+    	var stringSize = (attr.name.length -1)
+    	for (ch =0; ch < attrVariableName.length; ch++){
+    		if(Character.isUpperCase(attrVariableName.charAt(ch))){
+    			indexList.add(ch);
+    		}
+    	}
+    	var checkNxtIndex = 0
+    	var position = 0
+    	var count = 0
+    	for (index:indexList){
+    		if(checkNxtIndex !== stringSize)
+    		{   			
+	    		if(index==checkNxtIndex){
+	    			checkNxtIndex = (index +1)
+	    			if(Character.isLowerCase(attr.name.charAt((checkNxtIndex)))){
+	    				position = (index + count)
+	    				attrVariableName = attrVariableName.substring(0, position)+ '_' + attrVariableName.substring(position)
+	    				count+=1
+	    			}
+	    		}
+	    		else{
+	    			position = (index + count)
+	    			attrVariableName = attrVariableName.substring(0, position)+ '_' + attrVariableName.substring(position)
+	    			checkNxtIndex = (index +1)
+	    			count+=1
+	    		}
+    		}
+    	}
+    	return attrVariableName.toLowerCase
+	}
+
     
     def pythonAttributeClass(Attribute attr) '''        '«attr.name»':
             [[«attr.dataType.pythonType»,
