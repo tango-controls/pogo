@@ -16,7 +16,9 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 16-01-2020  16:34</center>\n" + 
+		"generated: 06-02-2020  13:15</center>\n" + 
+		"<li><b>Pogo-9.6.28 - 06/02/2020:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Pull requests #87 and #91 integration<br>" + 
 		"<li><b>Pogo-9.6.27 - 16/01/2020:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Pull request #81 integration<br>" + 
 		"<li><b>Pogo-9.6.26 - 06/11/2019:</b><br>" + 
