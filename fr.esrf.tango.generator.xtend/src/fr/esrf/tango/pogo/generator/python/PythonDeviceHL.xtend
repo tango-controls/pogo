@@ -141,7 +141,6 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
     «ENDIF»
     «ENDIF»
     """
-    __metaclass__ = DeviceMeta
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("class_variable")»«ENDIF»
 
 «IF !cls.classProperties.empty»    # ----------------
@@ -209,7 +208,7 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 import tango
 from tango import DebugIt
 from tango.server import run
-from tango.server import Device, DeviceMeta
+from tango.server import Device
 «IF !cls.attributes.empty || !cls.commands.empty || !cls.pipes.empty»from tango.server import «IF !cls.attributes.empty»attribute«ENDIF»«IF !cls.commands.empty»«IF !cls.attributes.empty», «ENDIF»command«ENDIF»«IF !cls.pipes.empty»«IF !cls.attributes.empty || !cls.commands.empty», «ENDIF»pipe«ENDIF»«ENDIF»
 «IF !cls.classProperties.empty || !cls.deviceProperties.empty»from tango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
 from tango import AttrQuality, DispLevel, DevState
