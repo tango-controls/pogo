@@ -1351,6 +1351,7 @@ class Test«cls.name»(object):
     «ENDFOR»
 
     «FOR attr : cls.attributes»
+    «IF isTrue(attr.status.concreteHere)»
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «protectedAreaHL(cls, "test_" + attr.name + "_decorators")»
     «ENDIF»
@@ -1362,6 +1363,7 @@ class Test«cls.name»(object):
             assert tango_context.device.«attr.name» == «attr.defaultValueHL»
         «ENDIF»
 
+    «ENDIF»
     «ENDFOR»
 
 '''

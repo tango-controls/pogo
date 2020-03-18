@@ -319,7 +319,13 @@ public class PythonTypeDefinitions {
 		if (attr.getDataType() instanceof EncodedType)			def_val =  "['', '']";
 		if (attr.getDataType() instanceof EnumType)
 		{
-			def_val = toFirstUpper(attr.getName())+ "."+ attr.getEnumLabels().get(0);
+			if(attr.getEnumLabels().get(0).contains("-") || attr.getEnumLabels().get(0).contains("%") || attr.getEnumLabels().get(0).contains("*")
+					|| attr.getEnumLabels().get(0).contains("+") || attr.getEnumLabels().get(0).contains("=")) {
+				def_val = toFirstUpper(attr.getName())+ "[\""+ attr.getEnumLabels().get(0)+"\"]";
+			}
+			else {
+				def_val = toFirstUpper(attr.getName())+ "."+ attr.getEnumLabels().get(0);
+			}
 		}
 		
 		if (attr.getAttType().equals("Spectrum"))
