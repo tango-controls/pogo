@@ -314,9 +314,10 @@ def enumClasses(PogoDeviceClass cls) '''
     //    Attribute definitions
     //====================================================
     def pythonAttributeDefinitions(PogoDeviceClass cls)'''
-«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»«ENDIF»«IF !cls.attributes.empty»«ENDIF»
+«IF !cls.attributes.empty»«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»
 
-«ENDFOR»
+«ENDIF»
+«ENDFOR»«ENDIF»
     '''
     //====================================================
     //    Attributes
@@ -406,8 +407,8 @@ def dyn_attr(self, dev_list):
     def pythonClassProperties(PogoDeviceClass cls)'''
 «IF !cls.classProperties.empty»
 «FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyClassHL»
-«ENDIF»
 
+«ENDIF»
 «ENDFOR»
 «ENDIF»
     '''
@@ -426,8 +427,8 @@ def dyn_attr(self, dev_list):
     def pythonDeviceProperties(PogoDeviceClass cls)'''
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyDeviceHL»
-«ENDIF»
 
+«ENDIF»
 «ENDFOR»
 «ENDIF»
     '''
