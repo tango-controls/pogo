@@ -1,6 +1,9 @@
 # Changelog
 
 
+#### Pogo-9.6.29 - 24/03/2020:
+    Pull request #94 integration
+
 #### Pogo-9.6.28 - 06/02/2020:
     Pull requests #87 and #91 integration
 
