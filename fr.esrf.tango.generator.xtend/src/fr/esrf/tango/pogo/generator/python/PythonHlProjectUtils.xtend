@@ -1281,7 +1281,6 @@ from PyTango import DevState
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «protectedAreaHL(cls, "test_additional_imports")»
 «ENDIF»
-«cls.inheritedAdditionalImportHL»
 
 
 # Device test case
