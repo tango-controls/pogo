@@ -292,7 +292,7 @@ class PythonUtils {
     def String checkEnumLabels (Attribute attr){
     	var flag = "valid"
     	for(label: attr.enumLabels){
-    	 	if(label.contains("-")||label.contains("!")||label.contains("#")||label.contains("@")||label.contains("%")||label.contains("$")||label.charAt(0).toString.matches("[0-9]")){
+    	 	if(label.contains("-")||label.contains("+")||label.contains("=")||label.contains("%")||label.contains("*")||label.charAt(0).toString.matches("[0-9]")){
     	 	flag = "invalid"
     		}
     	}

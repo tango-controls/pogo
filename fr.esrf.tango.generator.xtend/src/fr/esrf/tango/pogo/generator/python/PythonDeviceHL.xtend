@@ -226,6 +226,7 @@ __all__ = ["«cls.name»", "main"]
 def enumClasses(PogoDeviceClass cls) '''
 «IF cls.attributes!==null»
 	«FOR attr:cls.attributes»
+	«IF isTrue(attr.status.concreteHere)»
 	«IF attr.dataType.pythonTypeHL.equalsIgnoreCase("'DevEnum'")»
 		«IF attr.checkEnumLabels == "valid"»
 		
@@ -249,6 +250,7 @@ def enumClasses(PogoDeviceClass cls) '''
 		)
 		"""Python enumerated type for «attr.name.toFirstUpper» attribute."""
 		«ENDIF»
+	«ENDIF»
 	«ENDIF»
 	«ENDFOR»
 «ENDIF»
@@ -275,7 +277,9 @@ def enumClasses(PogoDeviceClass cls) '''
         «ENDIF»
         «IF !cls.attributes.empty»
         «FOR attr:cls.attributes»
+        «IF isTrue(attr.status.concreteHere)»
         self._«attr.pythonAttributeVariableNameHL» = «attr.defaultValueHL»
+        «ENDIF»
         «ENDFOR»
         «ENDIF»
         «cls.closeProtectedAreaHL("init_device")»
@@ -310,9 +314,10 @@ def enumClasses(PogoDeviceClass cls) '''
     //    Attribute definitions
     //====================================================
     def pythonAttributeDefinitions(PogoDeviceClass cls)'''
-«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»«ENDIF»«IF !cls.attributes.empty»«ENDIF»
+«IF !cls.attributes.empty»«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»
 
-«ENDFOR»
+«ENDIF»
+«ENDFOR»«ENDIF»
     '''
     //====================================================
     //    Attributes
@@ -402,8 +407,8 @@ def dyn_attr(self, dev_list):
     def pythonClassProperties(PogoDeviceClass cls)'''
 «IF !cls.classProperties.empty»
 «FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyClassHL»
-«ENDIF»
 
+«ENDIF»
 «ENDFOR»
 «ENDIF»
     '''
@@ -422,8 +427,8 @@ def dyn_attr(self, dev_list):
     def pythonDeviceProperties(PogoDeviceClass cls)'''
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyDeviceHL»
-«ENDIF»
 
+«ENDIF»
 «ENDFOR»
 «ENDIF»
     '''
