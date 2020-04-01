@@ -7,7 +7,7 @@
 #
 #=========================================================
 
-TAG_NAME=Pogo-Release-9.6.30
+TAG_NAME=Pogo-Release-9.6.31
 
 #---------------------------------------------------------
 #	Update ReleaseNote.java and revision number in target class
