@@ -37,6 +37,11 @@
             <version>3.3.0-I20070608-1100</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.corba</groupId>
+            <artifactId>glassfish-corba-omgapi</artifactId>
+            <version>4.2.1</version>
+        </dependency>
         <!-- dependency>  Not used any more
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>pogo6</artifactId>
