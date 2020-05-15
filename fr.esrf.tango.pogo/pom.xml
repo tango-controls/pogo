@@ -10,10 +10,6 @@
     </parent>
     <artifactId>fr.esrf.tango.pogo</artifactId>
 
-    <properties>
-        <JAVA_1_8_HOME>/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64</JAVA_1_8_HOME>
-    </properties>
-
     <scm>
         <connection>scm:git:git@github.com:tango-controls/pogo.git</connection>
         <url>https://github.com/tango-controls/pogo</url>
@@ -32,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.xtext</groupId>
-            <artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+            <artifactId>org.eclipse.xtext.generator</artifactId>
             <version>${xtextVersion}</version>
         </dependency>
         <dependency>
