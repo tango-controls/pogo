@@ -28,13 +28,13 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.xtext</groupId>
-            <artifactId>org.eclipse.xtext.xtext</artifactId>
+            <artifactId>org.eclipse.xtext.generator</artifactId>
             <version>${xtextVersion}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.xtext</groupId>
-            <artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-            <version>${xtextVersion}</version>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+            <version>2.11.2</version>
         </dependency>
     </dependencies>
 
@@ -45,9 +45,9 @@
                 <directory>src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
-                    <exclude>**/*.xtend</exclude>
-                    <exclude>**/*.xtext</exclude>
-                    <exclude>**/*.mwe2</exclude>
+                    <!--exclude>**/*.xtend</exclude-->
+                    <!--exclude>**/*.xtext</exclude-->
+                    <!--exclude>**/*.mwe2</exclude-->
                 </excludes>
             </resource>
         </resources>
@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>1.6.0</version>
                 <executions>
                     <execution>
                         <id>mwe2Launcher</id>
@@ -73,12 +73,39 @@
                         <argument>rootPath=/${project.basedir}/..</argument>
                     </arguments>
                     <classpathScope>compile</classpathScope>
+                    <includePluginDependencies>true</includePluginDependencies>
                     <additionalClasspathElements>
                         <additionalClasspathElement>${project.basedir}/src</additionalClasspathElement>
                     </additionalClasspathElements>
-                    <includePluginDependencies>true</includePluginDependencies>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.eclipse.emf</groupId>
+                        <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+                        <version>2.11.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>org.eclipse.xtext.common.types</artifactId>
+                        <version>${xtextVersion}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>org.eclipse.xtext.generator</artifactId>
+                        <version>${xtextVersion}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>org.eclipse.xtext.xbase</artifactId>
+                        <version>${xtextVersion}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>xtext-antlr-generator</artifactId>
+                        <version>[2.1.1, 3)</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.xtend</groupId>

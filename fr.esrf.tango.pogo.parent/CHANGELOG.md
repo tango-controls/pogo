@@ -1,7 +1,11 @@
 # Changelog
 
 
+#### Pogo-9.7.0 - 16/06/2020:
+    Needs to be compiled and executed with JAVA 11 or higher (JAVA 8 compatibility lost)
+
 #### Pogo-9.6.31 - 01/04/2020:
+    Last release compiled and executed with JAVA 8
     Pull request #94 integration
 
 #### Pogo-9.6.28 - 06/02/2020:
