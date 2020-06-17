@@ -302,7 +302,7 @@ class Attributes {
 		
 	def attributeFactory(Attribute attribute, PogoDeviceClass cls) '''
 		//	Attribute : «attribute.name»
-		«IF cls!=null»
+		«IF cls!==null»
 			«attribute.allocateDynamicAttrubutePointer»
 			«attribute.name»Attrib	*«attribute.name.toLowerCase» = new «attribute.name»Attrib(attname);
 		«ELSE»
@@ -323,18 +323,18 @@ class Attributes {
 		«attribute.setProperty("min_warning", attribute.properties.minWarning)»
 		«attribute.setProperty("delta_t", attribute.properties.deltaTime)»
 		«attribute.setProperty("delta_val", attribute.properties.deltaValue)»
-		«IF attribute.eventCriteria!=null»
+		«IF attribute.eventCriteria!==null»
 			«attribute.setEventProprty("event_period", attribute.eventCriteria.period)»
 			«attribute.setEventProprty("event_rel_change", attribute.eventCriteria.relChange)»
 			«attribute.setEventProprty("event_abs_change", attribute.eventCriteria.absChange)»
 		«ENDIF»
-		«IF attribute.evArchiveCriteria!=null»
+		«IF attribute.evArchiveCriteria!==null»
 			«attribute.setEventProprty("archive_event_period", attribute.evArchiveCriteria.period)»
 			«attribute.setEventProprty("archive_event_rel_change", attribute.evArchiveCriteria.relChange)»
 			«attribute.setEventProprty("archive_event_abs_change", attribute.evArchiveCriteria.absChange)»
 		«ENDIF»
 
-		«IF cls!=null»
+		«IF cls!==null»
 			«cls.protectedArea("att_" + attribute.name + "_dynamic_attribute", "", false)»
 		«ENDIF»
 		«attribute.manageEnumLabels»
@@ -347,7 +347,7 @@ class Attributes {
 		«attribute.setExtendedProprty("disp_level", attribute.displayLevel, "Tango::OPERATOR")»
 		«attribute.setAttributeMemorized("Not Memorized")»
 		«attribute.setEventCriteria»
-		«IF cls==null»
+		«IF cls===null»
 			att_list.push_back(«attribute.name.toLowerCase»);
 		«ELSE»
 			«attribute.declareIfNeeded»
@@ -384,7 +384,7 @@ class Attributes {
 	//======================================================
 	def manageEnumLabels(Attribute attribute) '''
 		«IF attribute.dataType.cppType.toString().contains("Enum")»
-			«IF attribute.enumLabels!=null && attribute.enumLabels.size>0»
+			«IF attribute.enumLabels!==null && attribute.enumLabels.size>0»
 				{
 					vector<string> labels;
 					«FOR String label : attribute.enumLabels»
@@ -397,17 +397,17 @@ class Attributes {
 	'''
 	//======================================================
 	def setEventCriteria(Attribute attribute) '''
-		«IF attribute.dataReadyEvent!=null»
+		«IF attribute.dataReadyEvent!==null»
 			«IF attribute.dataReadyEvent.fire.isTrue»
 				«attribute.name.toLowerCase»->set_data_ready_event(«attribute.dataReadyEvent.fire»);
 			«ENDIF»
 		«ENDIF»
-		«IF attribute.changeEvent!=null»
+		«IF attribute.changeEvent!==null»
 			«IF attribute.changeEvent.fire.isTrue»
 				«attribute.name.toLowerCase»->set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
 			«ENDIF»
 		«ENDIF»
-		«IF attribute.archiveEvent!=null»
+		«IF attribute.archiveEvent!==null»
 			«IF attribute.archiveEvent.fire.isTrue»
 				«attribute.name.toLowerCase»->set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
 			«ENDIF»

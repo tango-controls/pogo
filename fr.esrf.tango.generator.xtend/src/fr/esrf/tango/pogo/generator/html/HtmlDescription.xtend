@@ -79,7 +79,7 @@ class HtmlDescription  implements IGenerator {
 					<td> «htmlTitle(cls.name + " Class Inheritance :")» </td>
 				</tr>
 				<td><ul>
-					«IF cls.description.identification==null»
+					«IF cls.description.identification===null»
 						Class has no identification card !
 					«ELSE»
 						<table border="0">
