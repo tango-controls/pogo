@@ -16,7 +16,9 @@ public interface ReleaseNotes {
 		"<body text=\"#000000\" bgColor=\"#FFFFFF\" link=\"#0000FF\" vLink=\"#7F00FF\" aLink=\"#FF0000\">\n" + 
 		"<p><!-------TITLE------></p>\n" + 
 		"<center><h2> Release Notes </h2>\n" + 
-		"generated: 17-06-2020  09:27</center>\n" + 
+		"generated: 17-06-2020  09:41</center>\n" + 
+		"<li><b>Pogo-9.7.2 - 17/06/2020:</b><br>" + 
+		"&nbsp; &nbsp; &nbsp; Fix problem on displayed release number<br>" + 
 		"<li><b>Pogo-9.7.0 - 16/06/2020:</b><br>" + 
 		"&nbsp; &nbsp; &nbsp; Needs to be compiled and executed with JAVA 11 or higher (JAVA 8 compatibility lost)<br>" + 
 		"<li><b>Pogo-9.6.31 - 01/04/2020:</b><br>" + 

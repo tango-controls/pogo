@@ -1,7 +1,7 @@
 # Changelog
 
 
-#### Pogo-9.7.1 - 17/06/2020:
+#### Pogo-9.7.2 - 17/06/2020:
     Fix problem on displayed release number
 
 #### Pogo-9.7.0 - 16/06/2020:

@@ -159,6 +159,8 @@ public class Utils {
             if (revisionStr==null)
                 pogoGuiRevision = 9.7;
             else {
+                if (revisionStr.startsWith("Pogo-"))
+                    revisionStr = revisionStr.substring("Pogo-".length());
                 StringTokenizer stk = new StringTokenizer(revisionStr);
                 String s = stk.nextToken();    //  Rel number
                 int end = s.indexOf('.');
