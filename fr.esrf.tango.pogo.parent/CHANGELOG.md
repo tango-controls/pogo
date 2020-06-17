@@ -1,6 +1,9 @@
 # Changelog
 
 
+#### Pogo-9.7.1 - 17/06/2020:
+    Fix problem on displayed release number
+
 #### Pogo-9.7.0 - 16/06/2020:
     Needs to be compiled and executed with JAVA 11 or higher (JAVA 8 compatibility lost)
 

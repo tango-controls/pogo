@@ -141,8 +141,8 @@ public class Utils {
     //===============================================================
     //===============================================================
     public static Utils getInstance() {
-        if (instance == null)
-            instance = new Utils();
+        if (instance==null)
+            instance  = new Utils();
         return instance;
     }
     //===============================================================
@@ -157,7 +157,7 @@ public class Utils {
         if (pogoGuiRevision<0) {
             String revisionStr = getImplementationVersion();
             if (revisionStr==null)
-                pogoGuiRevision = 9.6;
+                pogoGuiRevision = 9.7;
             else {
                 StringTokenizer stk = new StringTokenizer(revisionStr);
                 String s = stk.nextToken();    //  Rel number

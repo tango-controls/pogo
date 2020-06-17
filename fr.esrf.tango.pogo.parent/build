@@ -7,7 +7,7 @@
 #
 #=========================================================
 
-TAG_NAME=Pogo-Release-9.7.0
+TAG_NAME=Pogo-9.7.1
 
 #---------------------------------------------------------
 #	Update ReleaseNote.java and revision number in target class
@@ -26,8 +26,8 @@ UpdateNotes() {
      
     java  -cp $POGO    $UPDATE_CLASS \
 		    -file      $SRC_HOME/$TARGET_CLASS.java \
-		    -release   ./pom.xml
-            
+		    -release   $TAG_NAME
+
     upd_rev  $SRC_HOME
 }
 
