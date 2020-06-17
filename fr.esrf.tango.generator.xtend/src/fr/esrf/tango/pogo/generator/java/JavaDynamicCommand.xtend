@@ -137,7 +137,7 @@ class JavaDynamicCommand {
 			config.setOutTangoType(«command.argout.type.javaTypeConstants»);
 			config.setOutTypeDesc("«command.argout.description.oneLineString»");
 			config.setDispLevel(DispLevel.«command.displayLevel»);
-			«IF command.polledPeriod!=null && command.polledPeriod!="0"»
+			«IF command.polledPeriod!==null && command.polledPeriod!="0"»
 				config.setPolled(true);
 				config.setPollingPeriod(«command.polledPeriod»);
 			«ENDIF»
