@@ -60,7 +60,7 @@ class PythonUtils {
     }
       
     def formatComaToPoint(String str){
-    	if (str != null)
+    	if (str !== null)
     	{
 	    	if (str.contains(","))
 	    	{
@@ -78,7 +78,7 @@ class PythonUtils {
     }   
       
     def stringListToStringArray(String str){
-    	if (str != null)
+    	if (str !== null)
     	{
 	    	if (str.contains(","))
 	    	{
@@ -100,7 +100,7 @@ class PythonUtils {
     }
      
     def stringToPyth(String str){
-    	if (str != null)
+    	if (str !== null)
     	{
 	    	if (str == "true")
 	    	{
@@ -125,7 +125,7 @@ class PythonUtils {
     }
 
     def commentMultiLinesPythonStr(String str){
-    	if (str != null)
+    	if (str !== null)
     	{
     		if (!str.empty)
     		{
@@ -142,7 +142,7 @@ class PythonUtils {
     	}
     }
     def commentMultiLinesInputDescriptionStr(String str){
-    	if (str != null)
+    	if (str !== null)
     	{
     		if (!str.empty)
     		{
@@ -160,7 +160,7 @@ class PythonUtils {
     }
     
     def commentMultiLinesOutputDescriptionStr(String str){
-    	if (str != null)
+    	if (str !== null)
     	{
     		if (!str.empty)
     		{
@@ -190,7 +190,7 @@ class PythonUtils {
     
     def isMemorized(Attribute attr) {
         if (attr.write)    {
-            if (attr.memorized!=null) {
+            if (attr.memorized!==null) {
                 if (attr.memorized == "true") {
                     if(attr.memorizedAtInit == "true") {
                         return "    \'Memorized\':\"true\""; 
@@ -206,50 +206,50 @@ class PythonUtils {
     
     def hasAttrPropertySet(Attribute attr){
         return (
-        	(attr.memorized!=null && !attr.memorized.empty) ||
-            (attr.properties.label != null && !attr.properties.label.empty)         		||
-            (attr.properties.unit != null && !attr.properties.unit.empty)       		||
-            (attr.properties.standardUnit != null && !attr.properties.standardUnit.empty)		||
-            (attr.properties.displayUnit != null && !attr.properties.displayUnit.empty) 		||
-            (attr.properties.format != null && !attr.properties.format.empty )     		|| 
-            (attr.properties.maxValue != null && !attr.properties.maxValue.empty )   		||
-            (attr.properties.minValue != null && !attr.properties.minValue.empty )    		||
-            (attr.properties.maxAlarm != null && !attr.properties.maxAlarm.empty )   		|| 
-            (attr.properties.minAlarm != null && !attr.properties.minAlarm.empty )   		||
-            (attr.properties.maxWarning != null && !attr.properties.maxWarning.empty ) 		||
-            (attr.properties.minWarning != null && !attr.properties.minWarning.empty ) 		||
-            (attr.properties.deltaTime != null && !attr.properties.deltaTime.empty  ) 		||
-            (attr.properties.deltaValue != null && !attr.properties.deltaValue.empty ) 		||
-            (attr.properties.description != null && !attr.properties.description.empty ) 		||
+        	(attr.memorized!==null && !attr.memorized.empty) ||
+            (attr.properties.label !== null && !attr.properties.label.empty)         		||
+            (attr.properties.unit !== null && !attr.properties.unit.empty)       		||
+            (attr.properties.standardUnit !== null && !attr.properties.standardUnit.empty)		||
+            (attr.properties.displayUnit !== null && !attr.properties.displayUnit.empty) 		||
+            (attr.properties.format !== null && !attr.properties.format.empty )     		||
+            (attr.properties.maxValue !== null && !attr.properties.maxValue.empty )   		||
+            (attr.properties.minValue !== null && !attr.properties.minValue.empty )    		||
+            (attr.properties.maxAlarm !== null && !attr.properties.maxAlarm.empty )   		||
+            (attr.properties.minAlarm !== null && !attr.properties.minAlarm.empty )   		||
+            (attr.properties.maxWarning !== null && !attr.properties.maxWarning.empty ) 		||
+            (attr.properties.minWarning !== null && !attr.properties.minWarning.empty ) 		||
+            (attr.properties.deltaTime !== null && !attr.properties.deltaTime.empty  ) 		||
+            (attr.properties.deltaValue !== null && !attr.properties.deltaValue.empty ) 		||
+            (attr.properties.description !== null && !attr.properties.description.empty ) 		||
             !attr.polledPeriod.equals("0")     		||
-            attr.eventCriteria!=null           		||
-            attr.eventCriteria!=null);
+            attr.eventCriteria!==null           		||
+            attr.eventCriteria!==null);
     }
     
     def hasAttrPropertySetHL(Attribute attr){
         return (
-        	(attr.memorized!=null && !attr.memorized.empty) ||
-            (attr.properties.label != null && !attr.properties.label.empty)         		||
-            (attr.properties.unit != null && !attr.properties.unit.empty)       		||
-            (attr.properties.standardUnit != null && !attr.properties.standardUnit.empty)		||
-            (attr.properties.displayUnit != null && !attr.properties.displayUnit.empty) 		||
-            (attr.properties.format != null && !attr.properties.format.empty )     		|| 
-            (attr.properties.maxValue != null && !attr.properties.maxValue.empty )   		||
-            (attr.properties.minValue != null && !attr.properties.minValue.empty )    		||
-            (attr.properties.maxAlarm != null && !attr.properties.maxAlarm.empty )   		|| 
-            (attr.properties.minAlarm != null && !attr.properties.minAlarm.empty )   		||
-            (attr.properties.maxWarning != null && !attr.properties.maxWarning.empty ) 		||
-            (attr.properties.minWarning != null && !attr.properties.minWarning.empty ) 		||
-            (attr.properties.deltaTime != null && !attr.properties.deltaTime.empty  ) 		||
-            (attr.properties.deltaValue != null && !attr.properties.deltaValue.empty ) 		||
-            (attr.properties.description != null && !attr.properties.description.empty ) 		||
+        	(attr.memorized!==null && !attr.memorized.empty) ||
+            (attr.properties.label !== null && !attr.properties.label.empty)         		||
+            (attr.properties.unit !== null && !attr.properties.unit.empty)       		||
+            (attr.properties.standardUnit !== null && !attr.properties.standardUnit.empty)		||
+            (attr.properties.displayUnit !== null && !attr.properties.displayUnit.empty) 		||
+            (attr.properties.format !== null && !attr.properties.format.empty )     		||
+            (attr.properties.maxValue !== null && !attr.properties.maxValue.empty )   		||
+            (attr.properties.minValue !== null && !attr.properties.minValue.empty )    		||
+            (attr.properties.maxAlarm !== null && !attr.properties.maxAlarm.empty )   		||
+            (attr.properties.minAlarm !== null && !attr.properties.minAlarm.empty )   		||
+            (attr.properties.maxWarning !== null && !attr.properties.maxWarning.empty ) 		||
+            (attr.properties.minWarning !== null && !attr.properties.minWarning.empty ) 		||
+            (attr.properties.deltaTime !== null && !attr.properties.deltaTime.empty  ) 		||
+            (attr.properties.deltaValue !== null && !attr.properties.deltaValue.empty ) 		||
+            (attr.properties.description !== null && !attr.properties.description.empty ) 		||
             attr.displayLevel.equals("EXPERT") 		||
             !attr.polledPeriod.equals("0")     		||
-            attr.eventCriteria!=null           		||
+            attr.eventCriteria!==null           		||
             attr.getAttType().equals("Spectrum")	||
             attr.getAttType().equals("Image")		||
-            attr.eventCriteria!=null)				||
-            (attr.enumLabels != null && attr.enumLabels.size > 0);
+            attr.eventCriteria!==null)				||
+            (attr.enumLabels !== null && attr.enumLabels.size > 0);
     }
     
     def hasCmdPropertySet(Command cmd){
@@ -262,8 +262,8 @@ class PythonUtils {
     
     def hasPipePropertySetHL(Pipe pip){
         return (
-            (pip.label != null && !pip.label.empty) 		||
-            (pip.description != null && !pip.description.empty ) 		||
+            (pip.label !== null && !pip.label.empty) 		||
+            (pip.description !== null && !pip.description.empty ) 		||
             pip.displayLevel.equals("EXPERT") 		||
             (pip.rwType.contains("WRITE"))
             )
@@ -684,12 +684,12 @@ class PythonUtils {
             «setAttrProperty("description", attr.properties.description.oneLineString)»
             «setAttrProperty("Polling period", attr.polledPeriod)»
             «setAttrProperty("Display level", attr.displayLevel)»
-            «IF attr.eventCriteria!=null»
+            «IF attr.eventCriteria!==null»
             «setAttrProperty("period", attr.eventCriteria.period)»
             «setAttrProperty("rel_change", attr.eventCriteria.relChange)»
             «setAttrProperty("abs_change", attr.eventCriteria.absChange)»
             «ENDIF»
-            «IF attr.evArchiveCriteria!=null»
+            «IF attr.evArchiveCriteria!==null»
             «setAttrProperty("archive_period", attr.evArchiveCriteria.period)»
             «setAttrProperty("archive_rel_change", attr.evArchiveCriteria.relChange)»
             «setAttrProperty("archive_abs_change", attr.evArchiveCriteria.absChange)»
@@ -713,12 +713,12 @@ class PythonUtils {
         «setAttrPropertyHL("display_unit", attr.properties.displayUnit, true)»
         «setAttrPropertyHL("format", attr.properties.format.formatComaToPoint, true)»
         «setAttrPropertyHL("polling_period", attr.polledPeriod, false)»
-        «IF attr.eventCriteria!=null»
+        «IF attr.eventCriteria!==null»
         «setAttrPropertyHL("period", attr.eventCriteria.period, false)»
         «setAttrPropertyHL("rel_change", attr.eventCriteria.relChange, false)»
         «setAttrPropertyHL("abs_change", attr.eventCriteria.absChange, false)»
         «ENDIF»
-        «IF attr.evArchiveCriteria!=null»
+        «IF attr.evArchiveCriteria!==null»
         «setAttrPropertyHL("archive_period", attr.evArchiveCriteria.period, false)»
         «setAttrPropertyHL("archive_rel_change", attr.evArchiveCriteria.relChange, false)»
         «setAttrPropertyHL("archive_abs_change", attr.evArchiveCriteria.absChange, false)»
@@ -758,18 +758,18 @@ class PythonUtils {
     //======================================================
     def setEventCriteria(PogoDeviceClass cls) '''
      «FOR attribute: cls.attributes»
-        «IF attribute.dataReadyEvent!=null»
-            «IF attribute.dataReadyEvent.fire!=null && attribute.dataReadyEvent.fire.equals("true")»
+        «IF attribute.dataReadyEvent!==null»
+            «IF attribute.dataReadyEvent.fire!==null && attribute.dataReadyEvent.fire.equals("true")»
                 self.«attribute.name».set_data_ready_event(True)
             «ENDIF»
         «ENDIF»
-        «IF attribute.changeEvent!=null»
-            «IF attribute.changeEvent.fire!=null && attribute.changeEvent.fire.equals("true")»
+        «IF attribute.changeEvent!==null»
+            «IF attribute.changeEvent.fire!==null && attribute.changeEvent.fire.equals("true")»
                  self.set_change_event("«attribute.name»", True, «IF attribute.changeEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
             «ENDIF»
         «ENDIF»
-        «IF attribute.archiveEvent!=null»
-            «IF attribute.archiveEvent.fire!=null && attribute.archiveEvent.fire.equals("true")»
+        «IF attribute.archiveEvent!==null»
+            «IF attribute.archiveEvent.fire!==null && attribute.archiveEvent.fire.equals("true")»
                  self.set_archive_event("«attribute.name»", True, «IF attribute.archiveEvent.libCheckCriteria.equals("true")»True«ELSE»False«ENDIF»)
             «ENDIF»
         «ENDIF»
@@ -804,7 +804,7 @@ class PythonUtils {
     //======================================================
     def dynamicAttributeSetMemorizedExample(Attribute attribute) '''
         «IF attribute.write»
-            «IF attribute.memorized!=null»
+            «IF attribute.memorized!==null»
                 «IF attribute.memorized == "true"»
                     my«attribute.name».set_memorized()
                     «IF attribute.memorizedAtInit == "true"»
