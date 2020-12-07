@@ -209,7 +209,7 @@ class DeviceSource {
 						append_status(tms.str());
 						mandatoryNotDefined = true;
 						«cls.protectedArea("check_mandatory_property",
-							"cerr << tms.str() << \" for \" << device_name << std::endl;", false)»
+							"std::cerr << tms.str() << \" for \" << device_name << std::endl;", false)»
 					}
 				}
 
