@@ -96,20 +96,20 @@ class Main {
 		
 				// Run the endless loop
 				//----------------------------------------
-				cout << "Ready to accept request" << std::endl;
+				std::cout << "Ready to accept request" << std::endl;
 				tg->server_run();
 			}
 			catch (std::bad_alloc &)
 			{
-				cout << "Can't allocate memory to store device object !!!" << std::endl;
-				cout << "Exiting" << std::endl;
+				std::cout << "Can't allocate memory to store device object !!!" << std::endl;
+				std::cout << "Exiting" << std::endl;
 			}
 			catch (CORBA::Exception &e)
 			{
 				Tango::Except::print_exception(e);
 				
-				cout << "Received a CORBA_Exception" << std::endl;
-				cout << "Exiting" << std::endl;
+				std::cout << "Received a CORBA_Exception" << std::endl;
+				std::cout << "Exiting" << std::endl;
 			}
 			Tango::Util::instance()->server_cleanup();
 			return(0);
