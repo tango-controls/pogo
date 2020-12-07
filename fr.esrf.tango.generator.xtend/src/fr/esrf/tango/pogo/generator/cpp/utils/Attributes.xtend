@@ -145,7 +145,7 @@ class Attributes {
 	def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		void «cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr)
 		{
-			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << std::endl;
 			«cls.protectedArea(attribute.readAttrubuteMethod,
 				"//	Set the attribute value\n" +
 				"attr.set_value("+attribute.readAttrubuteDataMember+
@@ -159,7 +159,7 @@ class Attributes {
 	def readDynamicAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		void «cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr)
 		{
-			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << std::endl;
 			«attribute.strType»	*att_value = get_«attribute.name»_data_ptr(attr.get_name());
 			«cls.protectedArea(attribute.readAttrubuteMethod,
 				"//	Set the attribute value\n" +
@@ -173,7 +173,7 @@ class Attributes {
 	def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		void «cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr)
 		{
-			DEBUG_STREAM << "«cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr) entering... " << std::endl;
 			«IF attribute.isScalar»
 				//	Retrieve write value
 				«IF attribute.dataType.cppType.contains("Enum")»

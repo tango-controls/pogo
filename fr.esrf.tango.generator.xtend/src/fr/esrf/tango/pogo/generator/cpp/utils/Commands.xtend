@@ -141,9 +141,9 @@ class Commands {
 		{
 			«command.argoutDeclaration»
 			«IF command.isDynamic=="true"»
-				DEBUG_STREAM << "«cls.name»::" << command.get_name() << "  - " << device_name << endl;
+				DEBUG_STREAM << "«cls.name»::" << command.get_name() << "  - " << device_name << std::endl;
 			«ELSE»
-				DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << endl;
+				DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << std::endl;
 			«ENDIF»
 			«cls.openProtectedArea(command.execMethod)»
 			
@@ -242,7 +242,7 @@ class Commands {
 		//--------------------------------------------------------
 		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, «command.classExecuteMethodArgin»
 		{
-			cout2 << "«command.name»Class::execute(): arrived" << endl;
+			cout2 << "«command.name»Class::execute(): arrived" << std::endl;
 			«command.extractArgin»
 			«cls.returnArgout(command)»
 		}
