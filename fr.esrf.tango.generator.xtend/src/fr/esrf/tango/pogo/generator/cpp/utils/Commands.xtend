@@ -150,7 +150,7 @@ class Commands {
 			«IF command.name.equals("State")»
 				Tango::DevState	argout = Tango::UNKNOWN; // replace by your own algorithm
 			«ELSEIF command.name.equals("Status")»
-				string	status = "Device is OK";
+				std::string	status = "Device is OK";
 			«ENDIF»
 			//	Add your own code
 			

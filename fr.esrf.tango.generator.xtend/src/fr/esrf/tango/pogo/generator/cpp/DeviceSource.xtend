@@ -111,7 +111,7 @@ class DeviceSource {
 		
 		«cls.simpleMethodHeader(cls.name,
 			 "Constructors for a Tango device\nimplementing the class" + cls.name)»
-		«cls.name»::«cls.name»(Tango::DeviceClass *cl, string &s)
+		«cls.name»::«cls.name»(Tango::DeviceClass *cl, std::string &s)
 		 : «cls.inheritedClassName»(cl, s.c_str())
 		{
 			«cls.protectedArea("constructor_1", "init_device();", false)»

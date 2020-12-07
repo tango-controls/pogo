@@ -228,7 +228,7 @@ class Attributes {
 				{return (static_cast<«cls.name» *>(dev))->is_«attribute.name»_allowed(ty);}
 			«IF attribute.dataType.cppType.toString().contains("Enum")»
 				virtual bool same_type(const type_info &in_type) {return typeid(«attribute.name»Enum) == in_type;}
-				virtual string get_enum_type() {return string("«attribute.name»Enum");}
+				virtual std::string get_enum_type() {return std::string("«attribute.name»Enum");}
 			«ENDIF»
 		};
 		
@@ -242,7 +242,7 @@ class Attributes {
 		class «attribute.name»Attrib: public Tango::FwdAttr
 		{
 		public:
-			«attribute.name»Attrib(const string &_n):FwdAttr(_n) {};
+			«attribute.name»Attrib(const std::string &_n):FwdAttr(_n) {};
 			~«attribute.name»Attrib() {};
 		};
 		
@@ -267,13 +267,13 @@ class Attributes {
 	def Constructor(Attribute attribute, boolean dynamic) '''
 		«IF dynamic»
 			«IF attribute.isScalar»
-				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+				«attribute.name»Attrib(const std::string &att_name):«attribute.inheritance»(att_name.c_str(), 
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
 			«ELSEIF attribute.isSpectrum»
-				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+				«attribute.name»Attrib(const std::string &att_name):«attribute.inheritance»(att_name.c_str(), 
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
 			«ELSE»
-				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+				«attribute.name»Attrib(const std::string &att_name):«attribute.inheritance»(att_name.c_str(), 
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX», «attribute.maxY») {};
 			«ENDIF»
 		«ELSE»
@@ -386,7 +386,7 @@ class Attributes {
 		«IF attribute.dataType.cppType.toString().contains("Enum")»
 			«IF attribute.enumLabels!==null && attribute.enumLabels.size>0»
 				{
-					vector<string> labels;
+					vector<std::string> labels;
 					«FOR String label : attribute.enumLabels»
 						labels.push_back("«label»");
 					«ENDFOR»

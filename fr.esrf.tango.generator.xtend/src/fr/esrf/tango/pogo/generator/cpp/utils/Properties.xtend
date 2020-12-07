@@ -151,7 +151,7 @@ class Properties {
 	def propertyRelatedMethod(PogoDeviceClass cls) '''
 		«cls.simpleMethodHeaderClass("get_class_property",
 			"Get the class property for specified name.")»
-		Tango::DbDatum «cls.name»Class::get_class_property(string &prop_name)
+		Tango::DbDatum «cls.name»Class::get_class_property(std::string &prop_name)
 		{
 			for (unsigned int i=0 ; i<cl_prop.size() ; i++)
 				if (cl_prop[i].name == prop_name)
@@ -162,7 +162,7 @@ class Properties {
 		
 		«cls.simpleMethodHeaderClass("get_default_device_property",
 			"Return the default value for device property.")»
-		Tango::DbDatum «cls.name»Class::get_default_device_property(string &prop_name)
+		Tango::DbDatum «cls.name»Class::get_default_device_property(std::string &prop_name)
 		{
 			for (unsigned int i=0 ; i<dev_def_prop.size() ; i++)
 				if (dev_def_prop[i].name == prop_name)
@@ -173,7 +173,7 @@ class Properties {
 		
 		«cls.simpleMethodHeaderClass("get_default_class_property",
 			"Return the default value for class property.")»
-		Tango::DbDatum «cls.name»Class::get_default_class_property(string &prop_name)
+		Tango::DbDatum «cls.name»Class::get_default_class_property(std::string &prop_name)
 		{
 			for (unsigned int i=0 ; i<cl_def_prop.size() ; i++)
 				if (cl_def_prop[i].name == prop_name)
@@ -226,26 +226,26 @@ class Properties {
 				return;
 		
 			Tango::DbData	data;
-			string	classname = get_name();
-			string	header;
-			string::size_type	start, end;
+			std::string	classname = get_name();
+			std::string	header;
+			std::string::size_type	start, end;
 
 			//	Put title
 			Tango::DbDatum	title("ProjectTitle");
-			string	str_title("«cls.description.title»");
+			std::string	str_title("«cls.description.title»");
 			title << str_title;
 			data.push_back(title);
 		
 			//	Put Description
 			Tango::DbDatum	description("Description");
-			std::vector<string>	str_desc;
+			std::vector<std::string>	str_desc;
 			«cls.description.description.string2Vector("str_desc")»
 			description << str_desc;
 			data.push_back(description);
 		
 			//  Put inheritance
 			Tango::DbDatum	inher_datum("InheritedFrom");
-			std::vector<string> inheritance;
+			std::vector<std::string> inheritance;
 			inheritance.push_back("«DeviceImpl»");
 			inher_datum << inheritance;
 			data.push_back(inher_datum);
@@ -267,10 +267,10 @@ class Properties {
 		)»
 		void «cls.name»Class::set_default_property()
 		{
-			string	prop_name;
-			string	prop_desc;
-			string	prop_def;
-			std::vector<string>	vect_data;
+			std::string	prop_name;
+			std::string	prop_desc;
+			std::string	prop_def;
+			std::vector<std::string>	vect_data;
 
 			//	Set Default Class Properties
 			«FOR Property property : cls.classProperties»

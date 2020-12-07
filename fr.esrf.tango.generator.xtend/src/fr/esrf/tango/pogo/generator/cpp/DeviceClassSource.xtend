@@ -331,7 +331,7 @@ class DeviceClassSource {
 			{
 				for (unsigned long i=0 ; i<att_list.size() ; i++)
 				{
-					string att_name(att_list[i]->get_name());
+					std::string att_name(att_list[i]->get_name());
 					transform(att_name.begin(), att_name.end(), att_name.begin(), ::tolower);
 					defaultAttList.push_back(att_name);
 				}
@@ -357,17 +357,17 @@ class DeviceClassSource {
 			
 				for (unsigned long i=0 ; i<devlist_ptr->length() ; i++)
 				{
-					Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((string)(*devlist_ptr)[i]).c_str());
+					Tango::DeviceImpl *dev_impl = tg->get_device_by_name(((std::string)(*devlist_ptr)[i]).c_str());
 					«cls.name» *dev = static_cast<«cls.name» *> (dev_impl);
 			
 					std::vector<Tango::Attribute *> &dev_att_list = dev->get_device_attr()->get_attribute_list();
 					std::vector<Tango::Attribute *>::iterator ite_att;
 					for (ite_att=dev_att_list.begin() ; ite_att != dev_att_list.end() ; ++ite_att)
 					{
-						string att_name((*ite_att)->get_name_lower());
+						std::string att_name((*ite_att)->get_name_lower());
 						if ((att_name == "state") || (att_name == "status"))
 							continue;
-						std::vector<string>::iterator ite_str = find(defaultAttList.begin(), defaultAttList.end(), att_name);
+						std::vector<std::string>::iterator ite_str = find(defaultAttList.begin(), defaultAttList.end(), att_name);
 						if (ite_str == defaultAttList.end())
 						{
 							cout2 << att_name << " is a UNWANTED dynamic attribute for device " << (*devlist_ptr)[i] << std::endl;
@@ -381,7 +381,7 @@ class DeviceClassSource {
 			}
 
 			«cls.simpleMethodHeaderClass("get_attr_object_by_name", "returns Tango::Attr * object found by name")»
-			Tango::Attr *«cls.name»Class::get_attr_object_by_name(std::vector<Tango::Attr *> &att_list, string attname)
+			Tango::Attr *«cls.name»Class::get_attr_object_by_name(std::vector<Tango::Attr *> &att_list, std::string attname)
 			{
 				std::vector<Tango::Attr *>::iterator it;
 				for (it=att_list.begin() ; it<att_list.end() ; ++it)
@@ -406,13 +406,13 @@ class DeviceClassSource {
 		
 		//--------------------------------------------------------
 		/**
-		 * method : 		«cls.name»Class::«cls.name»Class(string &s)
+		 * method : 		«cls.name»Class::«cls.name»Class(std::string &s)
 		 * description : 	constructor for the «cls.name»Class
 		 *
 		 * @param s	The class name
 		 */
 		//--------------------------------------------------------
-		«cls.name»Class::«cls.name»Class(string &s):«cls.inheritedClassNameForDeviceClass»(s)
+		«cls.name»Class::«cls.name»Class(std::string &s):«cls.inheritedClassNameForDeviceClass»(s)
 		{
 			cout2 << "Entering «cls.name»Class constructor" << std::endl;
 			set_default_property();
@@ -455,7 +455,7 @@ class DeviceClassSource {
 			{
 				try
 				{
-					string s(name);
+					std::string s(name);
 					_instance = new «cls.name»Class(s);
 				}
 				catch (std::bad_alloc &)

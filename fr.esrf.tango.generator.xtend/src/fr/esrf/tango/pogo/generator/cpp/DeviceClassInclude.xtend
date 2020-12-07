@@ -224,9 +224,9 @@ class DeviceClassInclude {
 			static «cls.name»Class *init(const char *);
 			static «cls.name»Class *instance();
 			~«cls.name»Class();
-			Tango::DbDatum	get_class_property(string &);
-			Tango::DbDatum	get_default_device_property(string &);
-			Tango::DbDatum	get_default_class_property(string &);
+			Tango::DbDatum	get_class_property(std::string &);
+			Tango::DbDatum	get_default_device_property(std::string &);
+			Tango::DbDatum	get_default_class_property(std::string &);
 		
 	'''
 	
@@ -235,7 +235,7 @@ class DeviceClassInclude {
 	//======================================================
 	def protectedMethodPrototypes(PogoDeviceClass cls) '''
 		protected:
-			«cls.name»Class(string &);
+			«cls.name»Class(std::string &);
 			static «cls.name»Class *_instance;
 			void command_factory();
 			void attribute_factory(std::vector<Tango::Attr *> &);
@@ -243,8 +243,8 @@ class DeviceClassInclude {
 			void write_class_property();
 			void set_default_property();
 			void get_class_property();
-			string get_cvstag();
-			string get_cvsroot();
+			std::string get_cvstag();
+			std::string get_cvsroot();
 		
 	'''
 	
@@ -257,8 +257,8 @@ class DeviceClassInclude {
 			«IF cls.concreteClass»
 				void create_static_attribute_list(std::vector<Tango::Attr *> &);
 				void erase_dynamic_attributes(const Tango::DevVarStringArray *,std::vector<Tango::Attr *> &);
-				std::vector<string>	defaultAttList;
-				Tango::Attr *get_attr_object_by_name(std::vector<Tango::Attr *> &att_list, string attname);
+				std::vector<std::string>	defaultAttList;
+				Tango::Attr *get_attr_object_by_name(std::vector<Tango::Attr *> &att_list, std::string attname);
 			«ENDIF»
 	'''
 }

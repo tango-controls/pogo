@@ -168,7 +168,7 @@ class DeviceInclude  {
 			 *	@param cl	Class.
 			 *	@param s 	Device Name
 			 */
-			«cls.name»(Tango::DeviceClass *cl,string &s);
+			«cls.name»(Tango::DeviceClass *cl,std::string &s);
 			/**
 			 * Constructs a newly device object.
 			 *
@@ -272,11 +272,11 @@ class DeviceInclude  {
 				virtual bool is_«attr.name»_allowed(Tango::AttReqType type);
 				«cls.addDynamicAttributeSignature(attr, true)»
 				«cls.removeDynamicAttributeSignature(attr, true)»
-				«attr.dataType.cppType» *get_«attr.name»_data_ptr(string &name);
+				«attr.dataType.cppType» *get_«attr.name»_data_ptr(std::string &name);
 				«IF attr.isScalar»
-					map<string,«attr.dataType.cppType»>	   «attr.name»_data;
+					map<std::string,«attr.dataType.cppType»>	   «attr.name»_data;
 				«ELSE»
-					map<string,«attr.dataType.cppType» *>	   «attr.name»_data;
+					map<std::string,«attr.dataType.cppType» *>	   «attr.name»_data;
 				«ENDIF»
 			«ENDFOR»
 		«ENDIF»

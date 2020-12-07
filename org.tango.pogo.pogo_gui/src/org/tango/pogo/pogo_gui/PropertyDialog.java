@@ -629,6 +629,7 @@ public class PropertyDialog extends JDialog {
             return factory.createDoubleVectorType();
         if (tangoType.equals(propertyTypeNames[stringVector]) ||
                 tangoType.toLowerCase().equals("vector<string>") ||
+                tangoType.toLowerCase().equals("vector<std::string>") ||
                 tangoType.equals("DevStringVector") ||    //	Old pogo file
                 tangoType.equals("DevVarStringArray"))    //	Old pogo java file
             return factory.createStringVectorType();

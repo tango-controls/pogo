@@ -75,7 +75,7 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 		String	signature = "void ";
 		if (prototype==false)
 			signature += cls.getName() + "::";
-		signature += "add_" + attribute.getName() + "_dynamic_attribute(string attname";
+		signature += "add_" + attribute.getName() + "_dynamic_attribute(std::string attname";
 		if (isScalar(attribute) == false) {
 			signature += ", " + strType(attribute) + " *ptr";
 			if (prototype)
@@ -91,7 +91,7 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 		String	signature = "void ";
 		if (prototype==false)
 			signature += cls.getName() + "::";
-		signature += "remove_" + attribute.getName() + "_dynamic_attribute(string attname";
+		signature += "remove_" + attribute.getName() + "_dynamic_attribute(std::string attname";
 		if (isScalar(attribute) == false) {
 			signature += ", bool free_it";
 			if (prototype)
@@ -121,7 +121,7 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 		String	signature = "void ";
 		if (prototype==false)
 			signature += cls.getName() + "::";
-		signature += "add_" + command.getName() + "_dynamic_command(string cmdname, bool device)";
+		signature += "add_" + command.getName() + "_dynamic_command(std::string cmdname, bool device)";
 		if (prototype)
 			signature += ";";
 		return signature;
@@ -131,7 +131,7 @@ public class CppStringUtils extends fr.esrf.tango.pogo.generator.common.StringUt
 		String	signature = "void ";
 		if (prototype==false)
 			signature += cls.getName() + "::";
-		signature += "remove_" + command.getName() + "_dynamic_command(string cmdname)";
+		signature += "remove_" + command.getName() + "_dynamic_command(std::string cmdname)";
 		if (prototype)
 			signature += ";";
 		return signature;

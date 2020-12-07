@@ -407,7 +407,7 @@ IntType:				{IntType} "int";
 UIntType:				{UIntType} "uint";
 FloatType:				{FloatType} "float";
 DoubleType:				{DoubleType} "double";
-StringType:				{StringType} "string";
+StringType:				{StringType} "std::string";
 
 CharArrayType:			{CharArrayType} "DevVarCharArray";
 ShortArrayType:			{ShortArrayType} "DevVarShortArray";
@@ -438,5 +438,5 @@ LongVectorType:			{IntVectorType} 	"std::vector<long>";
 ULongVectorType:		{IntVectorType} 	"std::vector<ulong>";
 FloatVectorType:		{FloatVectorType} 	"std::vector<float>";
 DoubleVectorType:		{DoubleVectorType} 	"std::vector<double>";
-StringVectorType:		{StringVectorType} 	"std::vector<string>";
+StringVectorType:		{StringVectorType} 	"std::vector<std::string>";
 

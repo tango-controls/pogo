@@ -90,7 +90,7 @@ class Pipes {
 		class «pipe.name»Class: public Tango::«IF pipe.rwType.contains("WRITE")»W«ENDIF»Pipe
 		{
 		public:
-			«pipe.name»Class(const string &name, Tango::DispLevel level)
+			«pipe.name»Class(const std::string &name, Tango::DispLevel level)
 				:«IF pipe.rwType.contains("WRITE")»W«ENDIF»Pipe(name, level) {};
 		
 			~«pipe.name»Class() {};
