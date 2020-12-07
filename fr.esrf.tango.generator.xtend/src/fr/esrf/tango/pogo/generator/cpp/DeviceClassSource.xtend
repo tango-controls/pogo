@@ -458,7 +458,7 @@ class DeviceClassSource {
 					string s(name);
 					_instance = new «cls.name»Class(s);
 				}
-				catch (bad_alloc &)
+				catch (std::bad_alloc &)
 				{
 					throw;
 				}

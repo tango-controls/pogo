@@ -99,7 +99,7 @@ class Main {
 				cout << "Ready to accept request" << std::endl;
 				tg->server_run();
 			}
-			catch (bad_alloc &)
+			catch (std::bad_alloc &)
 			{
 				cout << "Can't allocate memory to store device object !!!" << std::endl;
 				cout << "Exiting" << std::endl;
