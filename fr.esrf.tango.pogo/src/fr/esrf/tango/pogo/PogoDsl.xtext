@@ -432,11 +432,11 @@ DevIntType:				{DevIntType} "DevInt";
 EncodedType:			{EncodedType} "DevEncoded";
 EnumType:				{EnumType} "DevEnum";
 
-ShortVectorType:		{ShortVectorType} 	"vector<short>";
-IntVectorType:			{IntVectorType} 	"vector<int>";
-LongVectorType:			{IntVectorType} 	"vector<long>";
-ULongVectorType:		{IntVectorType} 	"vector<ulong>";
-FloatVectorType:		{FloatVectorType} 	"vector<float>";
-DoubleVectorType:		{DoubleVectorType} 	"vector<double>";
-StringVectorType:		{StringVectorType} 	"vector<string>";
+ShortVectorType:		{ShortVectorType} 	"std::vector<short>";
+IntVectorType:			{IntVectorType} 	"std::vector<int>";
+LongVectorType:			{IntVectorType} 	"std::vector<long>";
+ULongVectorType:		{IntVectorType} 	"std::vector<ulong>";
+FloatVectorType:		{FloatVectorType} 	"std::vector<float>";
+DoubleVectorType:		{DoubleVectorType} 	"std::vector<double>";
+StringVectorType:		{StringVectorType} 	"std::vector<string>";
 

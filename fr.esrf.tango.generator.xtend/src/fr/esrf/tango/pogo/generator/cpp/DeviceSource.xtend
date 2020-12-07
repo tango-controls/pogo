@@ -253,16 +253,16 @@ class DeviceSource {
 	//======================================================
 	def attributeMethods(PogoDeviceClass cls) '''
 		«cls.simpleMethodHeader("read_attr_hardware", "Hardware acquisition for attributes")»
-		void «cls.name»::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
+		void «cls.name»::read_attr_hardware(TANGO_UNUSED(std::vector<long> &attr_list))
 		{
-			DEBUG_STREAM << "«cls.name»::read_attr_hardware(vector<long> &attr_list) entering... " << std::endl;
+			DEBUG_STREAM << "«cls.name»::read_attr_hardware(std::vector<long> &attr_list) entering... " << std::endl;
 			«cls.protectedArea("read_attr_hardware", "Add your own code", true)»
 		}
 		«IF cls.hasWritableAttribute»
 		«cls.simpleMethodHeader("write_attr_hardware", "Hardware writing for attributes")»
-		void «cls.name»::write_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
+		void «cls.name»::write_attr_hardware(TANGO_UNUSED(std::vector<long> &attr_list))
 		{
-			DEBUG_STREAM << "«cls.name»::write_attr_hardware(vector<long> &attr_list) entering... " << std::endl;
+			DEBUG_STREAM << "«cls.name»::write_attr_hardware(std::vector<long> &attr_list) entering... " << std::endl;
 			«cls.protectedArea("write_attr_hardware", "Add your own code", true)»
 		}
 		«ENDIF»

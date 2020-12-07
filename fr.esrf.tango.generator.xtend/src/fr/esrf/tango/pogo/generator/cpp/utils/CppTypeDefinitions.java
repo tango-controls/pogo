@@ -92,12 +92,12 @@ public class CppTypeDefinitions {
 		if (propType instanceof FloatType)         return "Tango::DevFloat";
 		if (propType instanceof DoubleType)        return "Tango::DevDouble";
 		if (propType instanceof StringType)        return "string";
-		if (propType instanceof ShortVectorType)   return "vector<Tango::DevShort>";
-		if (propType instanceof IntVectorType)     return "vector<Tango::DevLong>";
-		if (propType instanceof LongVectorType)    return "vector<Tango::DevLong64>";
-		if (propType instanceof FloatVectorType)   return "vector<Tango::DevFloat>";
-		if (propType instanceof DoubleVectorType)  return "vector<Tango::DevDouble>";
-		if (propType instanceof StringVectorType)  return "vector<string>";
+		if (propType instanceof ShortVectorType)   return "std::vector<Tango::DevShort>";
+		if (propType instanceof IntVectorType)     return "std::vector<Tango::DevLong>";
+		if (propType instanceof LongVectorType)    return "std::vector<Tango::DevLong64>";
+		if (propType instanceof FloatVectorType)   return "std::vector<Tango::DevFloat>";
+		if (propType instanceof DoubleVectorType)  return "std::vector<Tango::DevDouble>";
+		if (propType instanceof StringVectorType)  return "std::vector<string>";
 		return "";
 	}
 

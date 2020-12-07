@@ -238,14 +238,14 @@ class Properties {
 		
 			//	Put Description
 			Tango::DbDatum	description("Description");
-			vector<string>	str_desc;
+			std::vector<string>	str_desc;
 			«cls.description.description.string2Vector("str_desc")»
 			description << str_desc;
 			data.push_back(description);
 		
 			//  Put inheritance
 			Tango::DbDatum	inher_datum("InheritedFrom");
-			vector<string> inheritance;
+			std::vector<string> inheritance;
 			inheritance.push_back("«DeviceImpl»");
 			inher_datum << inheritance;
 			data.push_back(inher_datum);
@@ -270,7 +270,7 @@ class Properties {
 			string	prop_name;
 			string	prop_desc;
 			string	prop_def;
-			vector<string>	vect_data;
+			std::vector<string>	vect_data;
 
 			//	Set Default Class Properties
 			«FOR Property property : cls.classProperties»

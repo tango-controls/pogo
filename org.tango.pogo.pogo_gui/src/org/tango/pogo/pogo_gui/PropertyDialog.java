@@ -578,6 +578,8 @@ public class PropertyDialog extends JDialog {
         //	Old cpp case
         if (tangoType.startsWith("Tango::"))
             tangoType = tangoType.substring("Tango::".length());
+        if (tangoType.startsWith("std::"))
+            tangoType = tangoType.substring("std::".length());
         if (tangoType.equals("void"))
             tangoType = "DevVoid";
 
