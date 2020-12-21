@@ -54,7 +54,7 @@ class Pipes {
 		«pipe.pipeMethodHeader("Read")»
 		void «cls.name»::read_«pipe.name»(Tango::Pipe &pipe)
 		{
-			DEBUG_STREAM << "«cls.name»::read_«pipe.name»(Tango::Pipe &pipe) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::read_«pipe.name»(Tango::Pipe &pipe) entering... " << std::endl;
 			«cls.protectedArea("read_" + pipe.name, "\n//	Add your own code here", false)»
 		}
 	'''
@@ -66,7 +66,7 @@ class Pipes {
 		«pipe.pipeMethodHeader("Write")»
 		void «cls.name»::write_«pipe.name»(Tango::WPipe &pipe)
 		{
-			DEBUG_STREAM << "«cls.name»::write_«pipe.name»(Tango::WPipe &pipe) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::write_«pipe.name»(Tango::WPipe &pipe) entering... " << std::endl;
 			«cls.protectedArea("write_" + pipe.name, "\n//	Add your own code here", false)»
 		}
 	'''
@@ -90,7 +90,7 @@ class Pipes {
 		class «pipe.name»Class: public Tango::«IF pipe.rwType.contains("WRITE")»W«ENDIF»Pipe
 		{
 		public:
-			«pipe.name»Class(const string &name, Tango::DispLevel level)
+			«pipe.name»Class(const std::string &name, Tango::DispLevel level)
 				:«IF pipe.rwType.contains("WRITE")»W«ENDIF»Pipe(name, level) {};
 		
 			~«pipe.name»Class() {};

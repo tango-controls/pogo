@@ -578,6 +578,8 @@ public class PropertyDialog extends JDialog {
         //	Old cpp case
         if (tangoType.startsWith("Tango::"))
             tangoType = tangoType.substring("Tango::".length());
+        if (tangoType.startsWith("std::"))
+            tangoType = tangoType.substring("std::".length());
         if (tangoType.equals("void"))
             tangoType = "DevVoid";
 
@@ -627,6 +629,7 @@ public class PropertyDialog extends JDialog {
             return factory.createDoubleVectorType();
         if (tangoType.equals(propertyTypeNames[stringVector]) ||
                 tangoType.toLowerCase().equals("vector<string>") ||
+                tangoType.toLowerCase().equals("vector<std::string>") ||
                 tangoType.equals("DevStringVector") ||    //	Old pogo file
                 tangoType.equals("DevVarStringArray"))    //	Old pogo java file
             return factory.createStringVectorType();

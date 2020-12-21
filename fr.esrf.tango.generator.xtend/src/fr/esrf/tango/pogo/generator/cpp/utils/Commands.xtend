@@ -141,16 +141,16 @@ class Commands {
 		{
 			«command.argoutDeclaration»
 			«IF command.isDynamic=="true"»
-				DEBUG_STREAM << "«cls.name»::" << command.get_name() << "  - " << device_name << endl;
+				DEBUG_STREAM << "«cls.name»::" << command.get_name() << "  - " << device_name << std::endl;
 			«ELSE»
-				DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << endl;
+				DEBUG_STREAM << "«cls.name»::«command.name»()  - " << device_name << std::endl;
 			«ENDIF»
 			«cls.openProtectedArea(command.execMethod)»
 			
 			«IF command.name.equals("State")»
 				Tango::DevState	argout = Tango::UNKNOWN; // replace by your own algorithm
 			«ELSEIF command.name.equals("Status")»
-				string	status = "Device is OK";
+				std::string	status = "Device is OK";
 			«ENDIF»
 			//	Add your own code
 			
@@ -242,7 +242,7 @@ class Commands {
 		//--------------------------------------------------------
 		CORBA::Any *«command.name»Class::execute(Tango::DeviceImpl *device, «command.classExecuteMethodArgin»
 		{
-			cout2 << "«command.name»Class::execute(): arrived" << endl;
+			cout2 << "«command.name»Class::execute(): arrived" << std::endl;
 			«command.extractArgin»
 			«cls.returnArgout(command)»
 		}

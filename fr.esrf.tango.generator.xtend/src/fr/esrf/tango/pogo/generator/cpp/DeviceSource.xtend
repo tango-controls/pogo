@@ -111,7 +111,7 @@ class DeviceSource {
 		
 		«cls.simpleMethodHeader(cls.name,
 			 "Constructors for a Tango device\nimplementing the class" + cls.name)»
-		«cls.name»::«cls.name»(Tango::DeviceClass *cl, string &s)
+		«cls.name»::«cls.name»(Tango::DeviceClass *cl, std::string &s)
 		 : «cls.inheritedClassName»(cl, s.c_str())
 		{
 			«cls.protectedArea("constructor_1", "init_device();", false)»
@@ -133,7 +133,7 @@ class DeviceSource {
 			 "will be called at device destruction or at init command")»
 		void «cls.name»::delete_device()
 		{
-			DEBUG_STREAM << "«cls.name»::delete_device() " << device_name << endl;
+			DEBUG_STREAM << "«cls.name»::delete_device() " << device_name << std::endl;
 			«cls.protectedArea("delete_device", "Delete device allocated objects", true)»
 			«cls.attributes.deleteAttributeDataMembers»
 			«IF cls.hasInheritanceClass»
@@ -157,7 +157,7 @@ class DeviceSource {
 		«cls.simpleMethodHeader("init_device", "will be called at device initialization.")»
 		void «cls.name»::init_device()
 		{
-			DEBUG_STREAM << "«cls.name»::init_device() create device " << device_name << endl;
+			DEBUG_STREAM << "«cls.name»::init_device() create device " << device_name << std::endl;
 			«cls.protectedArea("init_device_before", "Initialization before get_device_property() call", true)»
 			
 			«IF cls.hasInheritanceClass»
@@ -201,7 +201,7 @@ class DeviceSource {
 					if (class_prop.is_empty() && dev_prop.is_empty())
 					{
 						TangoSys_OMemStream	tms;
-						tms << endl <<"Property \'" << dev_prop.name;
+						tms << std::endl <<"Property \'" << dev_prop.name;
 						if (Tango::Util::instance()->_UseDb==true)
 							tms << "\' is mandatory but not defined in database";
 						else
@@ -209,7 +209,7 @@ class DeviceSource {
 						append_status(tms.str());
 						mandatoryNotDefined = true;
 						«cls.protectedArea("check_mandatory_property",
-							"cerr << tms.str() << \" for \" << device_name << endl;", false)»
+							"std::cerr << tms.str() << \" for \" << device_name << std::endl;", false)»
 					}
 				}
 
@@ -219,7 +219,7 @@ class DeviceSource {
 		«cls.simpleMethodHeader("always_executed_hook", "method always executed before any command is executed")»
 		void «cls.name»::always_executed_hook()
 		{
-			DEBUG_STREAM << "«cls.name»::always_executed_hook()  " << device_name << endl;
+			DEBUG_STREAM << "«cls.name»::always_executed_hook()  " << device_name << std::endl;
 			«IF cls.deviceProperties.hasMandatoryProperty»
 				if (mandatoryNotDefined)
 				{
@@ -253,16 +253,16 @@ class DeviceSource {
 	//======================================================
 	def attributeMethods(PogoDeviceClass cls) '''
 		«cls.simpleMethodHeader("read_attr_hardware", "Hardware acquisition for attributes")»
-		void «cls.name»::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
+		void «cls.name»::read_attr_hardware(TANGO_UNUSED(std::vector<long> &attr_list))
 		{
-			DEBUG_STREAM << "«cls.name»::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::read_attr_hardware(std::vector<long> &attr_list) entering... " << std::endl;
 			«cls.protectedArea("read_attr_hardware", "Add your own code", true)»
 		}
 		«IF cls.hasWritableAttribute»
 		«cls.simpleMethodHeader("write_attr_hardware", "Hardware writing for attributes")»
-		void «cls.name»::write_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
+		void «cls.name»::write_attr_hardware(TANGO_UNUSED(std::vector<long> &attr_list))
 		{
-			DEBUG_STREAM << "«cls.name»::write_attr_hardware(vector<long> &attr_list) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::write_attr_hardware(std::vector<long> &attr_list) entering... " << std::endl;
 			«cls.protectedArea("write_attr_hardware", "Add your own code", true)»
 		}
 		«ENDIF»
