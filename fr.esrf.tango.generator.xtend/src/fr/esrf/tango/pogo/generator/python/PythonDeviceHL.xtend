@@ -307,6 +307,7 @@ def enumClasses(PogoDeviceClass cls) '''
         «ELSE»
         pass
         «ENDIF»
+
 «ENDIF»
 '''
 
