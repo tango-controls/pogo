@@ -405,12 +405,17 @@ class PythonUtils {
 		    «protectedArea(cls, attribute.name + "_write")»
 		    
     '''
-    def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
-        def write_«attribute.name»(self, value):
+    def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute, boolean isDynamic) '''
+        def write_«attribute.name»(self, «IF isDynamic»w_attr«ELSE»value«ENDIF»):
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
                 «openProtectedAreaHL(cls, attribute.name + "_write")»
                 """Set the «attribute.name» attribute."""
+                «IF isDynamic==false»
                 pass
+                «ELSE»
+                name = w_attr.get_name()
+                self.attr_«attribute.name»_read = w_attr.get_write_value()
+                «ENDIF»
                 «closeProtectedAreaHL(cls, attribute.name + "_write")»
                 «ELSE»
                 pass
@@ -424,13 +429,18 @@ class PythonUtils {
 		    «protectedArea(cls, attribute.name + "_read", attribute.setAttrVal, false)»
 		    
     '''
-        
-    def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
-        def read_«attribute.name»(self):
+    def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute, boolean isDynamic) '''
+        def read_«attribute.name»(self«IF isDynamic», attr«ENDIF»):
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
                 «openProtectedAreaHL(cls, attribute.name + "_read")»
+                «IF isDynamic==false»
                 """Return the «attribute.name» attribute."""
                 return self._«attribute.pythonAttributeVariableNameHL»
+                «ELSE»
+                """Return the «attribute.name»_read attribute."""
+                attr.set_value(self.attr_«attribute.name»_read)
+                return attr
+                «ENDIF»
                 «closeProtectedAreaHL(cls, attribute.name + "_read")»
                 «ELSE»
                 return «attribute.defaultValueDim»

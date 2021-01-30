@@ -324,8 +324,8 @@ def enumClasses(PogoDeviceClass cls) '''
     //====================================================
     def pythonAttributes(PogoDeviceClass cls)  '''
 «FOR attr: cls.attributes»«IF isTrue(attr.status.concreteHere)»
-«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
-«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr, false)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr, false)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
     '''
@@ -334,8 +334,8 @@ def enumClasses(PogoDeviceClass cls) '''
     //====================================================
     def pythonDynamicAttributes(PogoDeviceClass cls)  '''
 «FOR attr: cls.dynamicAttributes»«IF isTrue(attr.status.concreteHere)»
-«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
-«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr, true)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr, true)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
     '''
