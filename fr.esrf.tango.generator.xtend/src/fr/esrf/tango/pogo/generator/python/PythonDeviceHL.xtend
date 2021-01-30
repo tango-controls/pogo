@@ -349,12 +349,13 @@ def enumClasses(PogoDeviceClass cls) '''
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("initialize_dynamic_attributes")»«ENDIF»
 
         """   Example to add dynamic attributes
-           Copy inside the folowing protected area to instanciate at startup."""
+           Copy inside the following code to protected area to instantiate at startup."""
         «FOR attr : cls.dynamicAttributes»
         """    For Attribute «attr.name»
         «attr.dynamicAttributeCreationExample»
         «attr.dynamicAttributeSetMemorizedExample»
         «cls.dynamicAttributeDefaultValueExample(attr)»"""
+
         «ENDFOR»
 «ENDIF»
 '''
