@@ -413,8 +413,13 @@ class PythonUtils {
                 «IF isDynamic==false»
                 pass
                 «ELSE»
+                """Example implementation:
                 name = w_attr.get_name()
-                self.attr_«attribute.name»_read = w_attr.get_write_value()
+                Hint: self.attr_«attribute.name» should be define on the top level
+                (initialize_dynamic_attributes, init_device method or constructor)
+                self.attr_«attribute.name» = w_attr.get_write_value()
+                """
+                pass
                 «ENDIF»
                 «closeProtectedAreaHL(cls, attribute.name + "_write")»
                 «ELSE»
@@ -438,7 +443,13 @@ class PythonUtils {
                 return self._«attribute.pythonAttributeVariableNameHL»
                 «ELSE»
                 """Return the «attribute.name»_read attribute."""
-                attr.set_value(self.attr_«attribute.name»_read)
+                """Example implementation:
+                Hint: self.attr_«attribute.name» should be define on the top level
+                (initialize_dynamic_attributes, init_device method or constructor)
+                attr.set_value(self.attr_«attribute.name»)
+                return attr
+                """
+                attr.set_value(«attribute.defaultValueDim»)
                 return attr
                 «ENDIF»
                 «closeProtectedAreaHL(cls, attribute.name + "_read")»
