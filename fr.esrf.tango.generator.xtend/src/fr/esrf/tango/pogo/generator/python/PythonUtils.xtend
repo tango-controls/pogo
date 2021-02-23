@@ -405,12 +405,22 @@ class PythonUtils {
 		    «protectedArea(cls, attribute.name + "_write")»
 		    
     '''
-    def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
-        def write_«attribute.name»(self, value):
+    def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute, boolean isDynamic) '''
+        def write_«attribute.name»(self, «IF isDynamic»w_attr«ELSE»value«ENDIF»):
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
                 «openProtectedAreaHL(cls, attribute.name + "_write")»
                 """Set the «attribute.name» attribute."""
+                «IF isDynamic==false»
                 pass
+                «ELSE»
+                """Example implementation:
+                name = w_attr.get_name()
+                Hint: self.attr_«attribute.name» should be define on the top level
+                (initialize_dynamic_attributes, init_device method or constructor)
+                self.attr_«attribute.name» = w_attr.get_write_value()
+                """
+                pass
+                «ENDIF»
                 «closeProtectedAreaHL(cls, attribute.name + "_write")»
                 «ELSE»
                 pass
@@ -424,13 +434,24 @@ class PythonUtils {
 		    «protectedArea(cls, attribute.name + "_read", attribute.setAttrVal, false)»
 		    
     '''
-        
-    def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute) '''
-        def read_«attribute.name»(self):
+    def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute, boolean isDynamic) '''
+        def read_«attribute.name»(self«IF isDynamic», attr«ENDIF»):
                 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
                 «openProtectedAreaHL(cls, attribute.name + "_read")»
+                «IF isDynamic==false»
                 """Return the «attribute.name» attribute."""
                 return self._«attribute.pythonAttributeVariableNameHL»
+                «ELSE»
+                """Return the «attribute.name»_read attribute."""
+                """Example implementation:
+                Hint: self.attr_«attribute.name» should be define on the top level
+                (initialize_dynamic_attributes, init_device method or constructor)
+                attr.set_value(self.attr_«attribute.name»)
+                return attr
+                """
+                attr.set_value(«attribute.defaultValueDim»)
+                return attr
+                «ENDIF»
                 «closeProtectedAreaHL(cls, attribute.name + "_read")»
                 «ELSE»
                 return «attribute.defaultValueDim»
@@ -788,7 +809,7 @@ class PythonUtils {
             my«attr.name» = PyTango.SpectrumAttr('My«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX»)
         «ENDIF»
         «IF attr.image»
-            my«attr.name» = PyTango.ImageAttr('«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX», «attr.maxY»)
+            my«attr.name» = PyTango.ImageAttr('My«attr.name»', «attr.dataType.pythonType», PyTango.«attr.rwType.toUpperCase», «attr.maxX», «attr.maxY»)
         «ENDIF»
     '''
     //======================================================

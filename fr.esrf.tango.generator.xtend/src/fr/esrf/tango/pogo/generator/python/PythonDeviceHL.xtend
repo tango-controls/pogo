@@ -307,6 +307,7 @@ def enumClasses(PogoDeviceClass cls) '''
         «ELSE»
         pass
         «ENDIF»
+
 «ENDIF»
 '''
 
@@ -324,8 +325,8 @@ def enumClasses(PogoDeviceClass cls) '''
     //====================================================
     def pythonAttributes(PogoDeviceClass cls)  '''
 «FOR attr: cls.attributes»«IF isTrue(attr.status.concreteHere)»
-«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
-«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr, false)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr, false)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
     '''
@@ -334,8 +335,8 @@ def enumClasses(PogoDeviceClass cls) '''
     //====================================================
     def pythonDynamicAttributes(PogoDeviceClass cls)  '''
 «FOR attr: cls.dynamicAttributes»«IF isTrue(attr.status.concreteHere)»
-«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
-«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr, true)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr, true)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
     '''
@@ -349,12 +350,13 @@ def enumClasses(PogoDeviceClass cls) '''
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("initialize_dynamic_attributes")»«ENDIF»
 
         """   Example to add dynamic attributes
-           Copy inside the folowing protected area to instanciate at startup."""
+           Copy inside the following code to protected area to instantiate at startup."""
         «FOR attr : cls.dynamicAttributes»
         """    For Attribute «attr.name»
         «attr.dynamicAttributeCreationExample»
         «attr.dynamicAttributeSetMemorizedExample»
         «cls.dynamicAttributeDefaultValueExample(attr)»"""
+
         «ENDFOR»
 «ENDIF»
 '''
