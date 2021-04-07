@@ -38,8 +38,6 @@ package fr.esrf.tango.pogo.generator.python
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
 import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
-import static extension fr.esrf.tango.pogo.generator.python.PyUtils.*
-import static extension fr.esrf.tango.pogo.generator.python.PythonUtils.*
 import com.google.inject.Inject
 
 class PythonHlProjectUtils {
@@ -216,13 +214,10 @@ patents.  We wish to avoid the danger that redistributors of a free
 program will individually obtain patent licenses, in effect making the
 program proprietary.  To prevent this, we have made it clear that any
 patent must be licensed for everyone's free use or not licensed at all.
-
   The precise terms and conditions for copying, distribution and
 modification follow.
-
                     GNU GENERAL PUBLIC LICENSE
    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
   0. This License applies to any program or other work which contains
 a notice placed by the copyright holder saying it may be distributed
 under the terms of this General Public License.  The "Program", below,
@@ -232,14 +227,12 @@ that is to say, a work containing the Program or a portion of it,
 either verbatim or with modifications and/or translated into another
 language.  (Hereinafter, translation is included without limitation in
 the term "modification".)  Each licensee is addressed as "you".
-
 Activities other than copying, distribution and modification are not
 covered by this License; they are outside its scope.  The act of
 running the Program is not restricted, and the output from the Program
 is covered only if its contents constitute a work based on the
 Program (independent of having been made by running the Program).
 Whether that is true depends on what the Program does.
-
   1. You may copy and distribute verbatim copies of the Program's
 source code as you receive it, in any medium, provided that you
 conspicuously and appropriately publish on each copy an appropriate
@@ -645,7 +638,7 @@ If the Library as you received it specifies that a proxy can decide whether futu
 	def generatePythonHlProjectLicenseMIT(PogoDeviceClass cls) '''
 	The MIT License
 
-Copyright (c) 2006-2010 Stephen M. McKamey
+Copyright (c) «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»<YEAR> <COPYRIGHT HOLDER>«ENDIF»
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -665,6 +658,42 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 	'''
+
+	//======================================================
+	// Define PythonHl project license code to be generated
+	//======================================================
+	def generatePythonHlProjectLicenseBSD(PogoDeviceClass cls) '''
+The BSD 3-Clause License
+
+Copyright (c) «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»<YEAR> <COPYRIGHT HOLDER>«ENDIF»
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	'''
+
 
 	//======================================================
 	// Define PythonHl project license code to be generated
@@ -858,7 +887,7 @@ THE SOFTWARE.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright «IF cls.description.copyright.isSet»«cls.description.copyright.oneLineString»«ELSE»[yyyy] [name of copyright owner]«ENDIF»
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1225,7 +1254,7 @@ main()
 	// Define PythonHl pyunit test script code to be generated
 	//======================================================
 	def generatePythonHlTest(PogoDeviceClass cls) '''
-#!/usr/bin/env python
+#########################################################################################
 # -*- coding: utf-8 -*-
 #
 # This file is part of the «cls.name» project
@@ -1234,6 +1263,7 @@ main()
 #
 # Distributed under the terms of the «cls.description.license» license.
 # See LICENSE.txt for more info.
+#########################################################################################
 """Contain the tests for the «cls.description.title»."""
 
 # Path
@@ -1243,60 +1273,96 @@ path = os.path.join(os.path.dirname(__file__), os.pardir)
 sys.path.insert(0, os.path.abspath(path))
 
 # Imports
-from time import sleep
+import pytest
 from mock import MagicMock
-from PyTango import DevFailed, DevState
-from devicetest import DeviceTestCase, main
-from «cls.name» import «cls.name»
 
-# Note:
-#
-# Since the device uses an inner thread, it is necessary to
-# wait during the tests in order the let the device update itself.
-# Hence, the sleep calls have to be secured enough not to produce
-# any inconsistent behavior. However, the unittests need to run fast.
-# Here, we use a factor 3 between the read period and the sleep calls.
-#
-# Look at devicetest examples for more advanced testing
+from PyTango import DevState
+
+«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «protectedAreaHL(cls, "test_additional_imports")»
+«ENDIF»
 
 
 # Device test case
-class «cls.name»DeviceTestCase(DeviceTestCase):
+@pytest.mark.usefixtures("tango_context", "initialize_device")
+«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «protectedAreaHL(cls, "test_" + cls.name + "_decorators")»
+«ENDIF»
+class Test«cls.name»(object):
     """Test case for packet generation."""
-    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls, "test_additionnal_import")»«ENDIF»
-    device = «cls.name»
-    properties = {«IF !cls.deviceProperties.empty»«FOR property : cls.deviceProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»', «ENDFOR»«ENDIF»
-                  «IF !cls.classProperties.empty»«FOR property : cls.classProperties»'«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»', «ENDFOR»«ENDIF»}
-    empty = None  # Should be []
+
+    properties = {
+        «IF !cls.deviceProperties.empty»
+            «FOR property : cls.deviceProperties»
+                '«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',
+            «ENDFOR»
+        «ENDIF»
+        «IF !cls.classProperties.empty»
+            «FOR property : cls.classProperties»
+                '«property.name»': '«IF !property.defaultPropValue.empty»«property.defaultPropValue.get(0)»«ENDIF»',
+            «ENDFOR»
+        «ENDIF»
+        }
 
     @classmethod
     def mocking(cls):
         """Mock external libraries."""
         # Example : Mock numpy
         # cls.numpy = «cls.name».numpy = MagicMock()
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_mocking")»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+            «protectedAreaHL(cls,"test_mocking")»
+        «ENDIF»
 
-    def test_properties(self):
-        # test the properties
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_properties")»«ENDIF»
+    def test_properties(self, tango_context):
+        # Test the properties
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+            «protectedAreaHL(cls,"test_properties")»
+        «ENDIF»
         pass
 
     «FOR command: cls.commands»
-    def test_«command.name»(self):
+    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «protectedAreaHL(cls, "test_" + command.name + "_decorators")»
+    «ENDIF»
+    def test_«command.name»(self, tango_context):
         """Test for «command.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_" + command.name, command.methodTest(command.argin.type.defaultValueTestHL), false)»«ELSE»«command.methodTest(command.argin.type.defaultValueTestHL)»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+            «IF !command.argout.type.voidType»
+                «IF command.name=="Status"»
+                    «protectedAreaHL(cls, "test_" + command.name, "assert " + command.methodTest(command.argin.type.defaultValueTestHL) + " == \"The device is in UNKNOWN state.\"", false)»
+                «ELSE»
+                    «protectedAreaHL(cls, "test_" + command.name, "assert " + command.methodTest(command.argin.type.defaultValueTestHL) + " == " + command.argout.type.defaultValueTestHL, false)»
+                «ENDIF»
+            «ELSE»
+                «protectedAreaHL(cls, "test_" + command.name, "assert " + command.methodTest(command.argin.type.defaultValueTestHL) + " == None", false)»
+            «ENDIF»
+        «ELSE»
+            «IF !command.argout.type.voidType»
+                «IF command.name=="Status"»
+                    assert «command.methodTest(command.argin.type.defaultValueTestHL)» == "The device is in UNKNOWN state."
+                «ELSE»
+                    assert «command.methodTest(command.argin.type.defaultValueTestHL)» == «command.argout.type.defaultValueTestHL»
+                «ENDIF»
+            «ELSE»
+                assert «command.methodTest(command.argin.type.defaultValueTestHL)» == None
+            «ENDIF»
+        «ENDIF»
 
     «ENDFOR»
+
     «FOR attr : cls.attributes»
-    def test_«attr.name»(self):
+    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «protectedAreaHL(cls, "test_" + attr.name + "_decorators")»
+    «ENDIF»
+    def test_«attr.name»(self, tango_context):
         """Test for «attr.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_" + attr.name, "self.device." + attr.name, false)»«ELSE»self.device.«attr.name»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+            «protectedAreaHL(cls, "test_" + attr.name, "assert tango_context.device." + attr.name + " == " + attr.defaultValueHL, false)»
+        «ELSE»
+            assert tango_context.device.«attr.name» == «attr.defaultValueHL»
+        «ENDIF»
 
     «ENDFOR»
 
-# Main execution
-if __name__ == "__main__":
-    main()
-'''	
-	}
-        
+'''
+}

@@ -35,13 +35,6 @@
 
 package org.tango.pogo.pogo_gui.tools;
 
-
-/**
- *	This class is able to check if shellEditor is available and start it.
- *
- * @author verdier
- */
-
 import fr.esrf.tango.pogo.pogoDsl.*;
 import org.tango.pogo.pogo_gui.PogoConst;
 
@@ -53,6 +46,11 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *	This class is able to check if shellEditor is available and start it.
+ *
+ * @author verdier
+ */
 
 public class PogoEditor {
     private static PogoEditor instance = null;

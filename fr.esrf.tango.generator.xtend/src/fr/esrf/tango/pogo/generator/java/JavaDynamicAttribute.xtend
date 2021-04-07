@@ -91,23 +91,18 @@ class JavaDynamicAttribute {
 			cls.description.copyright
 		)»
 
-		«cls.closeProtectedArea(attribute.name+".java")»
-
 		package «cls.javaDevicePackage»;
 
-		import org.tango.DeviceState;
 		import org.tango.server.StateMachineBehavior;
 		import org.tango.server.attribute.IAttributeBehavior;
 		import org.tango.server.attribute.AttributeValue;
 		import org.tango.server.attribute.AttributeConfiguration;
 		import org.tango.server.attribute.AttributePropertiesImpl;
 
-		//	Import Tango IDL types
 		import fr.esrf.Tango.*;
 
+		«cls.closeProtectedArea(attribute.name+".java")»
 
-		«cls.protectedArea(attribute.name+"." + "addImports")»
-		
 	'''
 
 	//======================================================
@@ -120,6 +115,7 @@ class JavaDynamicAttribute {
 		 */
 		public «attribute.name»(String attributeName) {
 			this.attributeName = attributeName;
+			«cls.protectedArea(attribute.name+"." + attribute.name)»
 		}
 	'''
 
@@ -141,7 +137,7 @@ class JavaDynamicAttribute {
 			«setDynamicAttributeConfig("Format", attribute.attType.toUpperCase, "AttrDataFormat.")»
 			«setDynamicAttributeConfig("Writable", attribute.rwType, "AttrWriteType.")»
 			«setDynamicAttributeConfig("DispLevel", attribute.displayLevel, "DispLevel.")»
-			«IF attribute.polledPeriod!=null && attribute.polledPeriod!="0"»
+			«IF attribute.polledPeriod!==null && attribute.polledPeriod!="0"»
 				«setDynamicAttributeConfig("Polled", "true")»
 				«setDynamicAttributeConfig("PollingPeriod", attribute.polledPeriod)»
 			«ENDIF»
@@ -158,7 +154,7 @@ class JavaDynamicAttribute {
 	def buildSetProperties(Attribute attribute) '''
 		//	Set attribute properties
 		AttributePropertiesImpl	properties = new AttributePropertiesImpl();
-		«IF attribute.properties!=null»
+		«IF attribute.properties!==null»
 			«setDynamicAttributePropertyConfig("Description",  attribute.properties.description)»
 			«setDynamicAttributePropertyConfig("Label",        attribute.properties.label)»
 			«setDynamicAttributePropertyConfig("Unit",         attribute.properties.unit)»
@@ -174,12 +170,12 @@ class JavaDynamicAttribute {
 			«setDynamicAttributePropertyConfig("DeltaT",       attribute.properties.deltaTime)»
 			«setDynamicAttributePropertyConfig("DeltaVal",     attribute.properties.deltaValue)»
 		«ENDIF»
-		«IF attribute.eventCriteria!=null»
+		«IF attribute.eventCriteria!==null»
 			«setDynamicAttributePropertyConfig("EventAbsChange", attribute.eventCriteria.absChange)»
 			«setDynamicAttributePropertyConfig("EventRelChange", attribute.eventCriteria.relChange)»
 			«setDynamicAttributePropertyConfig("EventPeriod",    attribute.eventCriteria.period)»
 		«ENDIF»
-		«IF attribute.evArchiveCriteria!=null»
+		«IF attribute.evArchiveCriteria!==null»
 			«setDynamicAttributePropertyConfig("ArchivingEventAbsChange", attribute.evArchiveCriteria.absChange)»
 			«setDynamicAttributePropertyConfig("ArchivingEventRelChange", attribute.evArchiveCriteria.relChange)»
 			«setDynamicAttributePropertyConfig("ArchivingEventPeriod",    attribute.evArchiveCriteria.period)»

@@ -4,20 +4,17 @@
 
     <groupId>fr.esrf.tango.pogo</groupId>
     <artifactId>fr.esrf.tango.pogo.parent</artifactId>
-    <version>9.6.7-SNAPSHOT</version>
+    <version>9.7.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
     <properties>
-        <xtextVersion>2.9.2</xtextVersion>
+        <xtextVersion>2.21.0</xtextVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
     <modules>
         <module>../fr.esrf.tango.pogo</module>
-        <!--<module>../fr.esrf.tango.pogo.ui</module>-->
         <module>../fr.esrf.tango.generator.xtend</module>
         <module>../org.tango.pogo.pogo_gui</module>
     </modules>
@@ -79,6 +76,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -101,16 +99,16 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.5.1</version>
+                    <version>3.8.1</version>
                     <configuration>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
+                        <release>11</release>
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
                     <configuration>
                         <encoding>UTF-8</encoding>
                     </configuration>
@@ -118,7 +116,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>3.1.0</version>
                     <configuration>
                         <filesets>
                             <fileset>
@@ -146,6 +144,24 @@
                         <outputDirectory>${basedir}/xtend-gen</outputDirectory>
                         <testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
                     </configuration>
+			        <!-- workaround https://github.com/eclipse/xtext/issues/1231 
+			        <dependencies>
+				        <dependency>
+					        <groupId>org.eclipse.jdt</groupId>
+					        <artifactId>org.eclipse.jdt.core</artifactId>
+					        <version>3.10.0</version>
+				        </dependency>
+				        <dependency>
+					        <groupId>org.eclipse.jdt</groupId>
+					        <artifactId>org.eclipse.jdt.launching</artifactId>
+					        <version>3.10.0</version>
+				        </dependency>
+				        <dependency>
+					        <groupId>org.eclipse.jdt</groupId>
+					        <artifactId>org.eclipse.jdt.debug</artifactId>
+					        <version>3.10.1</version>
+				        </dependency>
+			        </dependencies> -->
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>

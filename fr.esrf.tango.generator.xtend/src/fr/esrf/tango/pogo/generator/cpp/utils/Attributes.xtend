@@ -145,7 +145,7 @@ class Attributes {
 	def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		void «cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr)
 		{
-			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << std::endl;
 			«cls.protectedArea(attribute.readAttrubuteMethod,
 				"//	Set the attribute value\n" +
 				"attr.set_value("+attribute.readAttrubuteDataMember+
@@ -159,7 +159,7 @@ class Attributes {
 	def readDynamicAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		void «cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr)
 		{
-			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::«attribute.readAttrubuteMethod»(Tango::Attribute &attr) entering... " << std::endl;
 			«attribute.strType»	*att_value = get_«attribute.name»_data_ptr(attr.get_name());
 			«cls.protectedArea(attribute.readAttrubuteMethod,
 				"//	Set the attribute value\n" +
@@ -173,7 +173,7 @@ class Attributes {
 	def writeAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		void «cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr)
 		{
-			DEBUG_STREAM << "«cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr) entering... " << endl;
+			DEBUG_STREAM << "«cls.name»::«attribute.writeAttrubuteMethod»(Tango::WAttribute &attr) entering... " << std::endl;
 			«IF attribute.isScalar»
 				//	Retrieve write value
 				«IF attribute.dataType.cppType.contains("Enum")»
@@ -228,7 +228,7 @@ class Attributes {
 				{return (static_cast<«cls.name» *>(dev))->is_«attribute.name»_allowed(ty);}
 			«IF attribute.dataType.cppType.toString().contains("Enum")»
 				virtual bool same_type(const type_info &in_type) {return typeid(«attribute.name»Enum) == in_type;}
-				virtual string get_enum_type() {return string("«attribute.name»Enum");}
+				virtual std::string get_enum_type() {return std::string("«attribute.name»Enum");}
 			«ENDIF»
 		};
 		
@@ -242,7 +242,7 @@ class Attributes {
 		class «attribute.name»Attrib: public Tango::FwdAttr
 		{
 		public:
-			«attribute.name»Attrib(const string &_n):FwdAttr(_n) {};
+			«attribute.name»Attrib(const std::string &_n):FwdAttr(_n) {};
 			~«attribute.name»Attrib() {};
 		};
 		
@@ -267,13 +267,13 @@ class Attributes {
 	def Constructor(Attribute attribute, boolean dynamic) '''
 		«IF dynamic»
 			«IF attribute.isScalar»
-				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+				«attribute.name»Attrib(const std::string &att_name):«attribute.inheritance»(att_name.c_str(), 
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType») {};
 			«ELSEIF attribute.isSpectrum»
-				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+				«attribute.name»Attrib(const std::string &att_name):«attribute.inheritance»(att_name.c_str(), 
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX») {};
 			«ELSE»
-				«attribute.name»Attrib(const string &att_name):«attribute.inheritance»(att_name.c_str(), 
+				«attribute.name»Attrib(const std::string &att_name):«attribute.inheritance»(att_name.c_str(), 
 						«attribute.dataType.cppTypeEnum», Tango::«attribute.rwType», «attribute.maxX», «attribute.maxY») {};
 			«ENDIF»
 		«ELSE»
@@ -302,7 +302,7 @@ class Attributes {
 		
 	def attributeFactory(Attribute attribute, PogoDeviceClass cls) '''
 		//	Attribute : «attribute.name»
-		«IF cls!=null»
+		«IF cls!==null»
 			«attribute.allocateDynamicAttrubutePointer»
 			«attribute.name»Attrib	*«attribute.name.toLowerCase» = new «attribute.name»Attrib(attname);
 		«ELSE»
@@ -323,18 +323,18 @@ class Attributes {
 		«attribute.setProperty("min_warning", attribute.properties.minWarning)»
 		«attribute.setProperty("delta_t", attribute.properties.deltaTime)»
 		«attribute.setProperty("delta_val", attribute.properties.deltaValue)»
-		«IF attribute.eventCriteria!=null»
+		«IF attribute.eventCriteria!==null»
 			«attribute.setEventProprty("event_period", attribute.eventCriteria.period)»
 			«attribute.setEventProprty("event_rel_change", attribute.eventCriteria.relChange)»
 			«attribute.setEventProprty("event_abs_change", attribute.eventCriteria.absChange)»
 		«ENDIF»
-		«IF attribute.evArchiveCriteria!=null»
+		«IF attribute.evArchiveCriteria!==null»
 			«attribute.setEventProprty("archive_event_period", attribute.evArchiveCriteria.period)»
 			«attribute.setEventProprty("archive_event_rel_change", attribute.evArchiveCriteria.relChange)»
 			«attribute.setEventProprty("archive_event_abs_change", attribute.evArchiveCriteria.absChange)»
 		«ENDIF»
 
-		«IF cls!=null»
+		«IF cls!==null»
 			«cls.protectedArea("att_" + attribute.name + "_dynamic_attribute", "", false)»
 		«ENDIF»
 		«attribute.manageEnumLabels»
@@ -347,7 +347,7 @@ class Attributes {
 		«attribute.setExtendedProprty("disp_level", attribute.displayLevel, "Tango::OPERATOR")»
 		«attribute.setAttributeMemorized("Not Memorized")»
 		«attribute.setEventCriteria»
-		«IF cls==null»
+		«IF cls===null»
 			att_list.push_back(«attribute.name.toLowerCase»);
 		«ELSE»
 			«attribute.declareIfNeeded»
@@ -384,9 +384,9 @@ class Attributes {
 	//======================================================
 	def manageEnumLabels(Attribute attribute) '''
 		«IF attribute.dataType.cppType.toString().contains("Enum")»
-			«IF attribute.enumLabels!=null && attribute.enumLabels.size>0»
+			«IF attribute.enumLabels!==null && attribute.enumLabels.size>0»
 				{
-					vector<string> labels;
+					vector<std::string> labels;
 					«FOR String label : attribute.enumLabels»
 						labels.push_back("«label»");
 					«ENDFOR»
@@ -397,17 +397,17 @@ class Attributes {
 	'''
 	//======================================================
 	def setEventCriteria(Attribute attribute) '''
-		«IF attribute.dataReadyEvent!=null»
+		«IF attribute.dataReadyEvent!==null»
 			«IF attribute.dataReadyEvent.fire.isTrue»
 				«attribute.name.toLowerCase»->set_data_ready_event(«attribute.dataReadyEvent.fire»);
 			«ENDIF»
 		«ENDIF»
-		«IF attribute.changeEvent!=null»
+		«IF attribute.changeEvent!==null»
 			«IF attribute.changeEvent.fire.isTrue»
 				«attribute.name.toLowerCase»->set_change_event(«attribute.changeEvent.fire», «attribute.changeEvent.libCheckCriteria»);
 			«ENDIF»
 		«ENDIF»
-		«IF attribute.archiveEvent!=null»
+		«IF attribute.archiveEvent!==null»
 			«IF attribute.archiveEvent.fire.isTrue»
 				«attribute.name.toLowerCase»->set_archive_event(«attribute.archiveEvent.fire», «attribute.archiveEvent.libCheckCriteria»);
 			«ENDIF»

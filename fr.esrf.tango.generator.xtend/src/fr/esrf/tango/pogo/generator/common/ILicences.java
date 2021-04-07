@@ -45,7 +45,8 @@ interface ILicences {
     static final int LGPL   = 1;
     static final int APACHE = 2;
     static final int MIT    = 3;
-    static final int NONE   = 4;
+    static final int BSD3   = 4;
+    static final int NONE   = 5;
 /*
 	static String licenseText(String licence, String commentTag) {
 		if (licence!=null && licence.equals("none"))
@@ -64,6 +65,12 @@ interface ILicences {
 					"\n"+
 					"Tango is free software: you can redistribute it and/or modify\n" +
 					"it under the terms of the MIT licence.\n";
+    
+    static final String	bsdLicenece =
+					"This file is part of Tango device class.\n" +
+					"\n"+
+					"Tango is free software: you can redistribute it and/or modify\n" +
+					"it under the terms of the BSD-3 Clause licence.\n";
 
     static final String	gplLicenece =
 					"This file is part of Tango device class.\n" +

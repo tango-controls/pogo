@@ -5,7 +5,7 @@
     <parent>
         <groupId>fr.esrf.tango.pogo</groupId>
         <artifactId>fr.esrf.tango.pogo.parent</artifactId>
-        <version>9.6.7-SNAPSHOT</version>
+        <version>9.7.3-SNAPSHOT</version>
         <relativePath>../fr.esrf.tango.pogo.parent/pom.xml</relativePath>
     </parent>
     <groupId>org.tango.tools.pogo.gui</groupId>
@@ -37,7 +37,12 @@
             <version>3.3.0-I20070608-1100</version>
             <scope>provided</scope>
         </dependency>
-        <!-- dependency>
+        <dependency>
+            <groupId>org.glassfish.corba</groupId>
+            <artifactId>glassfish-corba-omgapi</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <!-- dependency>  Not used any more
             <groupId>fr.esrf.tango.pogo</groupId>
             <artifactId>pogo6</artifactId>
             <version>6.2.5a</version>
@@ -67,6 +72,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
                     <archive>
                         <manifest>

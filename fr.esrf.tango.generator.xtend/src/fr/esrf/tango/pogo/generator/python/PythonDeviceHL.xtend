@@ -41,6 +41,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import fr.esrf.tango.pogo.pogoDsl.PogoDeviceClass
 import com.google.inject.Inject
 import static extension fr.esrf.tango.pogo.generator.common.StringUtils.*
+import static extension fr.esrf.tango.pogo.generator.python.PythonTypeDefinitions.*
 
 class PythonDeviceHL implements IGenerator {
     @Inject    extension PythonUtils
@@ -72,6 +73,9 @@ class PythonDeviceHL implements IGenerator {
 					}
 				else if (cls.description.license == 'MIT') {
 					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseMIT)
+				}
+				else if (cls.description.license == 'BSD3') {
+					fsa.generateFile("LICENSE.txt",  cls.generatePythonHlProjectLicenseBSD)
 				}
 				if (cls.description.filestogenerate.toLowerCase.contains('sphinx')){
 					fsa.generateFile("docs/source/index.rst",cls.generatePythonHlSphinxIndex)
@@ -117,13 +121,26 @@ class PythonDeviceHL implements IGenerator {
 # See LICENSE.txt for more info.
 
 «cls.pythonHeader»
+«cls.enumClasses»
 
 
 class «cls.name»(«cls.inheritedPythonClassNameHL»):
     """
     «cls.description.description»
+    «IF !cls.classProperties.empty || !cls.deviceProperties.empty»
+
+    **Properties:**
+
+    «IF !cls.classProperties.empty»
+    - Class Property
+    «cls.pythonClassPropertiesDocs»
+    «ENDIF»
+    «IF !cls.deviceProperties.empty»
+    - Device Property
+    «cls.pythonDevicePropertiesDocs»
+    «ENDIF»
+    «ENDIF»
     """
-    __metaclass__ = DeviceMeta
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("class_variable")»«ENDIF»
 
 «IF !cls.classProperties.empty»    # ----------------
@@ -163,7 +180,6 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 «ENDIF»
 «cls.pythonAttributes»
 «cls.pythonDynamicAttributesMethod»
-
 «cls.pythonDynamicAttributes»
 «IF !cls.pipes.empty»    # -------------
     # Pipes methods
@@ -189,14 +205,17 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 """
 
 # PyTango imports
-import PyTango
-from PyTango import DebugIt
-from PyTango.server import run
-from PyTango.server import Device, DeviceMeta
-«IF !cls.attributes.empty || !cls.commands.empty || !cls.pipes.empty»from PyTango.server import «IF !cls.attributes.empty»attribute«ENDIF»«IF !cls.commands.empty»«IF !cls.attributes.empty», «ENDIF»command«ENDIF»«IF !cls.pipes.empty»«IF !cls.attributes.empty || !cls.commands.empty», «ENDIF»pipe«ENDIF»«ENDIF»
-«IF !cls.classProperties.empty || !cls.deviceProperties.empty»from PyTango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
-from PyTango import AttrQuality, DispLevel, DevState
-from PyTango import AttrWriteType, PipeWriteType
+import tango
+from tango import DebugIt
+from tango.server import run
+from tango.server import Device
+«IF !cls.attributes.empty || !cls.commands.empty || !cls.pipes.empty»from tango.server import «IF !cls.attributes.empty»attribute«ENDIF»«IF !cls.commands.empty»«IF !cls.attributes.empty», «ENDIF»command«ENDIF»«IF !cls.pipes.empty»«IF !cls.attributes.empty || !cls.commands.empty», «ENDIF»pipe«ENDIF»«ENDIF»
+«IF !cls.classProperties.empty || !cls.deviceProperties.empty»from tango.server import «IF !cls.classProperties.empty»class_property, «ENDIF»«IF !cls.deviceProperties.empty»device_property«ENDIF»«ENDIF»
+from tango import AttrQuality, DispLevel, DevState
+from tango import AttrWriteType, PipeWriteType
+«IF cls.enumAttrCheck»
+import enum
+«ENDIF»
 «cls.inheritedAdditionalImportHL»
 # Additional import
 «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
@@ -204,38 +223,110 @@ from PyTango import AttrWriteType, PipeWriteType
 __all__ = ["«cls.name»", "main"]
 '''
 
+def enumClasses(PogoDeviceClass cls) '''
+«IF cls.attributes!==null»
+	«FOR attr:cls.attributes»
+	«IF isTrue(attr.status.concreteHere)»
+	«IF attr.dataType.pythonTypeHL.equalsIgnoreCase("'DevEnum'")»
+		«IF attr.checkEnumLabels == "valid"»
+		
+		
+		class «attr.name.toFirstUpper»(enum.IntEnum):
+		    """Python enumerated type for «attr.name.toFirstUpper» attribute."""
+		    «IF attr.enumLabels!==null»
+		    «IF attr.enumLabels.size>0»
+		    «attr.enumLabelsWithNumber»
+    		«ENDIF»
+    		«ENDIF»
+		«ENDIF»
+		«IF attr.checkEnumLabels == "invalid"»
+		
+		
+		«attr.name.toFirstUpper» = enum.IntEnum(
+		    value="«attr.name.toFirstUpper»",
+		    names=[
+		        «attr.enumLabelWithInvalidChars»
+		    ]
+		)
+		"""Python enumerated type for «attr.name.toFirstUpper» attribute."""
+		«ENDIF»
+	«ENDIF»
+	«ENDIF»
+	«ENDFOR»
+«ENDIF»
+'''
     //====================================================
     //    Constructors
     //====================================================
     def pythonConstructors(PogoDeviceClass cls)  '''
-«IF true»«cls.constructorHL»
+«IF true»    def init_device(self):
+        """Initialises the attributes and properties of the «cls.name»."""
+«cls.constructorHL»
         «cls.setEventCriteria»
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("init_device")»«ENDIF»
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «cls.openProtectedAreaHL("init_device")»
+        «IF !cls.commands.empty»
+        «FOR cmd:cls.commands»
+        «IF cmd.name == "State" && cmd.polledPeriod.integerValue !== 0»
+        self.poll_command('State', «cmd.polledPeriod»)
+        «ENDIF»
+        «IF cmd.name == 'Status' && cmd.polledPeriod.integerValue !== 0»
+        self.poll_command('Status', «cmd.polledPeriod»)
+        «ENDIF»
+        «ENDFOR»
+        «ENDIF»
+        «IF !cls.attributes.empty»
+        «FOR attr:cls.attributes»
+        «IF isTrue(attr.status.concreteHere)»
+        self._«attr.pythonAttributeVariableNameHL» = «attr.defaultValueHL»
+        «ENDIF»
+        «ENDFOR»
+        «ENDIF»
+        «cls.closeProtectedAreaHL("init_device")»
+        «ENDIF»
 
     def always_executed_hook(self):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("always_executed_hook", "pass", false)»«ELSE»pass«ENDIF»
+        """Method always executed before any TANGO command is executed."""
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «cls.openProtectedAreaHL("always_executed_hook")»
+        «cls.closeProtectedAreaHL("always_executed_hook")»
+        «ELSE»
+        pass
+        «ENDIF»
 
     def delete_device(self):
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("delete_device", "pass", false)»«ELSE»pass«ENDIF»
-«ENDIF»
+        """Hook to delete resources allocated in init_device.
 
+        This method allows for any memory or other resources allocated in the
+        init_device method to be released.  This method is called by the device
+        destructor and by the device Init command.
+        """
+        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
+        «cls.openProtectedAreaHL("delete_device")»
+        «cls.closeProtectedAreaHL("delete_device")»
+        «ELSE»
+        pass
+        «ENDIF»
+
+«ENDIF»
 '''
 
     //====================================================
     //    Attribute definitions
     //====================================================
     def pythonAttributeDefinitions(PogoDeviceClass cls)'''
-«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»«ENDIF»«IF !cls.attributes.empty»«ENDIF»
+«IF !cls.attributes.empty»«FOR attr : cls.attributes»«IF isTrue(attr.status.concreteHere)»    «attr.pythonAttributeClassHL»
 
-«ENDFOR»
+«ENDIF»
+«ENDFOR»«ENDIF»
     '''
     //====================================================
     //    Attributes
     //====================================================
     def pythonAttributes(PogoDeviceClass cls)  '''
 «FOR attr: cls.attributes»«IF isTrue(attr.status.concreteHere)»
-«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
-«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr, false)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr, false)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
     '''
@@ -244,8 +335,8 @@ __all__ = ["«cls.name»", "main"]
     //====================================================
     def pythonDynamicAttributes(PogoDeviceClass cls)  '''
 «FOR attr: cls.dynamicAttributes»«IF isTrue(attr.status.concreteHere)»
-«IF attr.isRead»    «readAttributeMethodHL(cls, attr)»«ENDIF»
-«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr)»«ENDIF»
+«IF attr.isRead»    «readAttributeMethodHL(cls, attr, true)»«ENDIF»
+«IF attr.isWrite»    «writeAttributeMethodHL(cls, attr, true)»«ENDIF»
 «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»    «attributeMethodStateMachineHL(cls, attr)»«ENDIF»
 «ENDIF»«ENDFOR»
     '''
@@ -259,12 +350,13 @@ __all__ = ["«cls.name»", "main"]
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("initialize_dynamic_attributes")»«ENDIF»
 
         """   Example to add dynamic attributes
-           Copy inside the folowing protected area to instanciate at startup."""
+           Copy inside the following code to protected area to instantiate at startup."""
         «FOR attr : cls.dynamicAttributes»
         """    For Attribute «attr.name»
         «attr.dynamicAttributeCreationExample»
         «attr.dynamicAttributeSetMemorizedExample»
         «cls.dynamicAttributeDefaultValueExample(attr)»"""
+
         «ENDFOR»
 «ENDIF»
 '''
@@ -317,8 +409,16 @@ def dyn_attr(self, dev_list):
     def pythonClassProperties(PogoDeviceClass cls)'''
 «IF !cls.classProperties.empty»
 «FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyClassHL»
-«ENDIF»
 
+«ENDIF»
+«ENDFOR»
+«ENDIF»
+    '''
+    
+    def pythonClassPropertiesDocs(PogoDeviceClass cls)'''
+«IF !cls.classProperties.empty»
+«FOR prop : cls.classProperties»«IF isTrue(prop.status.concreteHere)»«prop.pythonPropertyClassDocsHL»
+«ENDIF»
 «ENDFOR»
 «ENDIF»
     '''
@@ -329,8 +429,16 @@ def dyn_attr(self, dev_list):
     def pythonDeviceProperties(PogoDeviceClass cls)'''
 «IF !cls.deviceProperties.empty»
 «FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»    «prop.pythonPropertyDeviceHL»
-«ENDIF»
 
+«ENDIF»
+«ENDFOR»
+«ENDIF»
+    '''
+    
+    def pythonDevicePropertiesDocs(PogoDeviceClass cls)'''
+«IF !cls.deviceProperties.empty»
+«FOR prop : cls.deviceProperties»«IF isTrue(prop.status.concreteHere)»«prop.pythonPropertyDeviceDocsHL»
+«ENDIF»
 «ENDFOR»
 «ENDIF»
     '''
@@ -356,8 +464,10 @@ def dyn_attr(self, dev_list):
 
 
 def main(args=None, **kwargs):
+    """Main function of the «cls.name» module."""
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
+
 
 if __name__ == '__main__':
     main()

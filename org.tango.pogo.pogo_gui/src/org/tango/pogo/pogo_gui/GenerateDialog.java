@@ -44,6 +44,7 @@ import fr.esrf.tango.pogo.pogoDsl.PogoMultiClasses;
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
 
 import org.eclipse.emf.common.util.EList;
+import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.PogoFileFilter;
 import org.tango.pogo.pogo_gui.tools.PogoProperty;
 import org.tango.pogo.pogo_gui.tools.Utils;
@@ -51,6 +52,7 @@ import org.tango.pogo.pogo_gui.tools.Utils;
 import javax.swing.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +66,7 @@ public class GenerateDialog extends JDialog {
     private static int returnStatus;
     private DeviceClass deviceClass;
     private List<JRadioButton> radioButtons = new ArrayList<>();
-    private boolean cmakeAvailable = false;
+    private boolean cmakeAvailable;
     //===================================================================
     /**
      * Initializes the Form
@@ -441,9 +443,8 @@ public class GenerateDialog extends JDialog {
         JFileChooser chooser = new JFileChooser(outPathText.getText());
         chooser.addChoosableFileFilter(new PogoFileFilter("", "Directory"));
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int retval = chooser.showDialog(this, "Target Dir.");
-
-        if (retval == JFileChooser.APPROVE_OPTION) {
+        int returnValue = chooser.showDialog(this, "Target Dir.");
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             if (file != null)
                 if (file.isDirectory()) {
@@ -646,6 +647,13 @@ public class GenerateDialog extends JDialog {
         String path = deviceClass.getPogoDeviceClass().getDescription().getSourcePath();
         if (path == null || !new File(path).exists())
             path = PogoGUI.homeDir;
+        else
+            try {
+                path = new File(path).getCanonicalPath();
+            } catch (IOException e) {
+                new PogoException(e.toString()).popup(this);
+                return JOptionPane.CANCEL_OPTION;
+            }
         outPathText.setText(path);
         outPathText.setRequestFocusEnabled(true);
         outPathText.requestFocus();
@@ -787,13 +795,13 @@ public class GenerateDialog extends JDialog {
     //======================================================
     //======================================================
     public String getGenerated() {
-        String generated = "";
+        StringBuilder generated = new StringBuilder();
         for (JRadioButton btn : radioButtons) {
             if (btn.isSelected())
-                generated += btn.getText() + ",";
+                generated.append(btn.getText()).append(",");
         }
         if (generated.length() == 0)
-            return generated;
+            return generated.toString();
         else {    //	Remove last comma
             //System.out.println(generated.substring(0, generated.length()-1));
             return generated.substring(0, generated.length() - 1);
@@ -821,13 +829,11 @@ public class GenerateDialog extends JDialog {
         File file = new File(fullName);
 
         if (file.exists()) {
-            if (JOptionPane.showConfirmDialog(this,
+            return JOptionPane.showConfirmDialog(this,
                     fileName + " already exists !\n" +
                             "Overwrite it ?",
                     "Confirmation Window",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-                return true;
-            }
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION;
         }
         return false;
     }

@@ -90,20 +90,17 @@ class JavaDynamicCommand {
 			cls.description.copyright
 		)»
 
-		«cls.closeProtectedArea(command.name+".java")»
-
 		package «cls.javaDevicePackage»;
 
 		import org.tango.DeviceState;
 		import fr.esrf.TangoDs.TangoConst;
 		import org.tango.server.StateMachineBehavior;
 
-		//	Import Tango IDL types
 		import fr.esrf.Tango.*;
 		import org.tango.server.command.CommandConfiguration;
 		import org.tango.server.command.ICommandBehavior;
 
-		«cls.protectedArea(command.name+"." + "addImports")»
+		«cls.closeProtectedArea(command.name+".java")»
 
 	'''
 
@@ -117,6 +114,7 @@ class JavaDynamicCommand {
 		 */
 		public «command.name»(String commandName) {
 			this.commandName = commandName;
+			«cls.protectedArea(command.name+"." + command.name)»
 		}
 	'''
 
@@ -139,7 +137,7 @@ class JavaDynamicCommand {
 			config.setOutTangoType(«command.argout.type.javaTypeConstants»);
 			config.setOutTypeDesc("«command.argout.description.oneLineString»");
 			config.setDispLevel(DispLevel.«command.displayLevel»);
-			«IF command.polledPeriod!=null && command.polledPeriod!="0"»
+			«IF command.polledPeriod!==null && command.polledPeriod!="0"»
 				config.setPolled(true);
 				config.setPollingPeriod(«command.polledPeriod»);
 			«ENDIF»

@@ -35,7 +35,10 @@
 
 package fr.esrf.tango.pogo.generator.cpp.projects;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -67,7 +70,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//======================================================
 	/**
 	 * include for specified class
-	 * @param clsspecified PogoDeviceClass object
+	 * @param cls specified PogoDeviceClass object
 	 * @return include for specified class
 	 */
 	//======================================================
@@ -84,12 +87,12 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	 */
 	//======================================================
 	String makefileIncludes(PogoMultiClasses multi) {
-		String code = makefileIncludesHeader();
+		StringBuilder code = new StringBuilder(makefileIncludesHeader());
 		for (OneClassSimpleDef cls : multi.getClasses()) {
-			code += addClassIncludeHome(cls.getClassname());
-			code += addInheritanceIncludeHome(cls.getInheritances());
+			code.append(addClassIncludeHome(cls.getClassname()));
+			code.append(addInheritanceIncludeHome(cls.getInheritances()));
 		}
-		return code;
+		return code.toString();
 	}
 	//======================================================
 	//======================================================
@@ -133,28 +136,28 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//======================================================
 	/**
 	 * Define the definition for all classes in project
-	 * @param cls specified PogoDeviceClass object
+	 * @param multi specified PogoDeviceClass object
 	 * @return code to define all classes in project
 	 */
 	//======================================================
 	String addClassesDefinitions(PogoMultiClasses multi) {
-		inheritedObjectFiles = new ArrayList<String>();
-		String code = 
-				"#=============================================================================\n" +
-				"# Tango Class list used by project\n" +
-				"#\n";
+		inheritedObjectFiles = new ArrayList<>();
+		StringBuilder code =
+				new StringBuilder("#=============================================================================\n" +
+						"# Tango Class list used by project\n" +
+						"#\n");
 		for (OneClassSimpleDef cls : multi.getClasses()) {
-			code += addClassDefinition(cls.getClassname(), cls.getSourcePath());
+			code.append(addClassDefinition(cls.getClassname(), cls.getSourcePath()));
 			
 			//	Add inheritance class if any
 			for (Inheritance inheritance : cls.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += "#------------ Inheritance from " + cls.getClassname() + " class ------------\n";
-					code += addClassDefinition(inheritance.getClassname(), inheritance.getSourcePath());
+					code.append("#------------ Inheritance from ").append(cls.getClassname()).append(" class ------------\n");
+					code.append(addClassDefinition(inheritance.getClassname(), inheritance.getSourcePath()));
 				}
 			}
 		}
-		return  code;
+		return code.toString();
 	}
 	//======================================================
 	/**
@@ -164,32 +167,32 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	 */
 	//======================================================
 	String addInheritanceDefinitions(PogoDeviceClass cls){
-		String code = "";
+		StringBuilder code = new StringBuilder();
 		if (inheritanceUtils.hasInheritanceClass(cls)) {
-			code =  "#=============================================================================\n" +
+			code = new StringBuilder("#=============================================================================\n" +
 					"# Following are names, pathes and files of the inherited classes used by project\n" +
-					"#\n";
+					"#\n");
 			for (Inheritance inheritance : cls.getDescription().getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += "#------------ Inheritance from " + cls.getName() + " class ------------\n";
-					code += addClassDefinition(inheritance.getClassname(), inheritance.getSourcePath());
+					code.append("#------------ Inheritance from ").append(cls.getName()).append(" class ------------\n");
+					code.append(addClassDefinition(inheritance.getClassname(), inheritance.getSourcePath()));
 				}
 			}
 		}
-		return  code;
+		return code.toString();
 	}
 	//=============================================================================
  	/**
  	 *  Define the definition for inherited classes
- 	 * @param clasname specified class name
+ 	 * @param className specified class name
  	 * @param sourcePath specified class source path
  	 * @return code 
  	 */
  	//=============================================================================
-	String addClassDefinition(String classname, String sourcePath) {
+	String addClassDefinition(String className, String sourcePath) {
 		return 
-			classname.toUpperCase() + "_CLASS = " + classname + "\n" +
-			classHomeDir(classname) + "  = " + sourcePath + "\n\n";
+			className.toUpperCase() + "_CLASS = " + className + "\n" +
+			classHomeDir(className) + "  = " + sourcePath + "\n\n";
 	}
 	//======================================================
 	//======================================================
@@ -199,60 +202,58 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//======================================================
 	//======================================================
 	String addObjectFiles(PogoMultiClasses multi) {
-		String code =
-			"#=============================================================================\n" +
-			"# SVC_OBJS is the list of all objects needed to make the output\n" +
-			"#\n" +
-			"SVC_OBJS =  ";
+		StringBuilder code =
+				new StringBuilder("#=============================================================================\n" +
+						"# SVC_OBJS is the list of all objects needed to make the output\n" +
+						"#\n" +
+						"SVC_OBJS =  ");
 	
 		int	i=0;
 		for (OneClassSimpleDef cls : multi.getClasses()) {
 			if (i++>0)
-				code += "            ";
-			code += "$(SVC_"  + cls.getClassname().toUpperCase() + "_OBJS) \\\n";
+				code.append("            ");
+			code.append("$(SVC_").append(cls.getClassname().toUpperCase()).append("_OBJS) \\\n");
 		}
-		code += "            $(OBJDIR)/MultiClassesFactory.o \\\n" +
-				"            $(OBJDIR)/main.o";
+		code.append("            $(OBJDIR)/MultiClassesFactory.o \\\n" + "            $(OBJDIR)/main.o");
 
-		code += "\n\n";
+		code.append("\n\n");
 		for (OneClassSimpleDef cls : multi.getClasses()) {
-			code += addObjectFileList(cls);
+			code.append(addObjectFileList(cls));
 		}
 		
-		return code;
+		return code.toString();
 	}
 	//======================================================
 	//======================================================
 	private String addObjectFileList(OneClassSimpleDef cls) {
-		String code = "#------------  Object files for " + cls.getClassname() + " class  ------------\n";
-		code += "SVC_"  + cls.getClassname().toUpperCase() + "_OBJS = \\\n";
-		code += addObjectFileList(cls.getClassname());
+		StringBuilder code = new StringBuilder("#------------  Object files for " + cls.getClassname() + " class  ------------\n");
+		code.append("SVC_").append(cls.getClassname().toUpperCase()).append("_OBJS = \\\n");
+		code.append(addObjectFileList(cls.getClassname()));
 
 		//	Add dynamic attribute tools file if needed.
 		if (isTrue(cls.getHasDynamic())) {
-			code += " \\\n";
-			code += "		$(OBJDIR)/" + cls.getClassname() + "DynAttrUtils.o"; 
+			code.append(" \\\n");
+			code.append("		$(OBJDIR)/").append(cls.getClassname()).append("DynAttrUtils.o");
 		}
 
 		//	Additional files
 		for (AdditionalFile file : cls.getAdditionalFiles()) {
-			code += " \\\n";
-			code += "		$(OBJDIR)/" + file.getName() + ".o"; 
+			code.append(" \\\n");
+			code.append("		$(OBJDIR)/").append(file.getName()).append(".o");
 		}
 		
 		//	Inheritance files
 		for (Inheritance inheritance : cls.getInheritances()) {
 			if (inheritanceUtils.isInheritanceClass(inheritance)) {
-				code += " \\\n"+
-						addObjectFileList(inheritance.getClassname());
+				code.append(" \\\n").append(addObjectFileList(inheritance.getClassname()));
 			}
 		}
-		code += "\n\n";
-		return code;
+		code.append("\n\n");
+		return code.toString();
 	}
 	//======================================================
 	//======================================================
-	private static ArrayList<String>	inheritedObjectFiles;
+	private static List<String> inheritedObjectFiles;
 	private String addObjectFileList(String classname) {
 		String	classObjectFile = classname +".o";
 		String code = "";
@@ -269,7 +270,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	}
 	//======================================================
 	//======================================================
-	private boolean alreadyDeclared(String str, ArrayList<String> list) {
+	private boolean alreadyDeclared(String str, List<String> list) {
 		for (String s : list)
 			if (s.equals(str))
 				return true;
@@ -277,62 +278,62 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	}
 	//======================================================
 	//======================================================
-	String dependancies(PogoMultiClasses multi) {
-		String code = "";
+	String dependencies(PogoMultiClasses multi) {
+		StringBuilder code = new StringBuilder();
 		for (OneClassSimpleDef cls : multi.getClasses()) {
-			code += "#------------  Object files dependancies for " + cls.getClassname() + " class  ------------\n";
-			code += dependanciesIncludes(cls.getClassname(), cls.getInheritances());
-			code += dependanciesObject(cls.getClassname(), "");
-			code += dependanciesObject(cls.getClassname(), "Class");
-			code += dependanciesObject(cls.getClassname(), "StateMachine");
+			code.append("#------------  Object files dependencies for ").append(cls.getClassname()).append(" class  ------------\n");
+			code.append(dependenciesIncludes(cls.getClassname(), cls.getInheritances()));
+			code.append(dependanciesObject(cls.getClassname(), ""));
+			code.append(dependanciesObject(cls.getClassname(), "Class"));
+			code.append(dependanciesObject(cls.getClassname(), "StateMachine"));
 
 			//	Add dynamic attribute tools file if needed.
 			if (isTrue(cls.getHasDynamic())) {
-				code += dependanciesObject(cls.getClassname(), "DynAttrUtils");
+				code.append(dependanciesObject(cls.getClassname(), "DynAttrUtils"));
 			}
 
 			//	Additional files
 			for (AdditionalFile file : cls.getAdditionalFiles()) {
-				code += dependanciesObjectAddFile(cls.getClassname(), file.getName(), false);
+				code.append(dependanciesObjectAddFile(cls.getClassname(), file.getName(), false));
 			}
 
 			//	Inheritance files
 			for (Inheritance inheritance : cls.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					if (alreadyDeclared(inheritance.getClassname(), inheritedDependanciesFiles)==false) {
-						code += dependanciesObject(inheritance.getClassname(), "");
-						code += dependanciesObject(inheritance.getClassname(), "Class");
-						code += dependanciesObject(inheritance.getClassname(), "StateMachine");
-						inheritedDependanciesFiles.add(inheritance.getClassname());
+					if (!alreadyDeclared(inheritance.getClassname(), inheritedDependenciesFiles)) {
+						code.append(dependanciesObject(inheritance.getClassname(), ""));
+						code.append(dependanciesObject(inheritance.getClassname(), "Class"));
+						code.append(dependanciesObject(inheritance.getClassname(), "StateMachine"));
+						inheritedDependenciesFiles.add(inheritance.getClassname());
 					}
 				}
 			}
-			code += "\n";
+			code.append("\n");
 		}
-		return code;
+		return code.toString();
 	}
 	//======================================================
 	//======================================================
-	private static ArrayList<String>	inheritedDependanciesFiles = new ArrayList<String>();
-	String dependanciesIncludes(String classname, EList<Inheritance> inheritances) {
-		String code = "";
+	private static ArrayList<String> inheritedDependenciesFiles = new ArrayList<>();
+	String dependenciesIncludes(String classname, EList<Inheritance> inheritances) {
+		StringBuilder code = new StringBuilder();
 		if (inheritances!=null) {
-			code += classIncludeDir(classname) + " = \\\n";
+			code.append(classIncludeDir(classname)).append(" = \\\n");
 			for (Inheritance inheritance : inheritances) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += dependanciesIncludes(inheritance.getClassname(), null);
-					code += " \\\n";
+					code.append(dependenciesIncludes(inheritance.getClassname(), null));
+					code.append(" \\\n");
 				}
 			}
 		}
 
-		code += "		$(" + classHomeDir(classname) + ")/" + classname + ".h \\\n"; 
-		code += "		$(" + classHomeDir(classname) + ")/" + classname + "Class.h";
+		code.append("		$(").append(classHomeDir(classname)).append(")/").append(classname).append(".h \\\n");
+		code.append("		$(").append(classHomeDir(classname)).append(")/").append(classname).append("Class.h");
 		
 		if (inheritances!=null) {
-			code += "\n\n";
+			code.append("\n\n");
 		}
-		return code;
+		return code.toString();
 	}
 	//======================================================
 	/**
@@ -386,7 +387,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		if (cmake)
 			code += "set(MAKE_ENV ";
 		else
-			code += "MAKE_ENV = ";
+			code += "MAKE_ENV ?= ";
 
 		if (dbg!=null) //	To force it under development
 			code += dbg;
@@ -409,7 +410,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		if (cmake)
 			code += "set(MAKE_ENV ";
 		else
-			code += "MAKE_ENV = ";
+			code += "MAKE_ENV ?= ";
 
 		if (dbg!=null) //	To force it under development
 			code += dbg;
@@ -430,39 +431,38 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	
 	//======================================================
 	//======================================================
-	String inheritanceDependancies(PogoDeviceClass cls) {
-		String code = 
-			"#=============================================================================\n" +
-			"# Following are dependancies of the inherited classes used by project\n" +
-			"#\n";
+	String inheritanceDependencies(PogoDeviceClass cls) {
+		StringBuilder code =
+				new StringBuilder("#=============================================================================\n" +
+						"# Following are dependencies of the inherited classes used by project\n" +
+						"#\n");
 		for (Inheritance inher : cls.getDescription().getInheritances()) {
 			if (inheritanceUtils.isInheritanceClass(inher)) {
-				code += "\n" +
-						"#------------  Object files dependancies for " +inher.getClassname()+" class  ------------\n";
-				code += classIncludeDir(inher.getClassname()) + " = \\\n";
-				code += "		$(" + classHomeDir(inher.getClassname()) + ")/" + inher.getClassname() + ".h \\\n"; 
-				code += "		$(" + classHomeDir(inher.getClassname()) + ")/" + inher.getClassname() + "Class.h\n";
-				code += dependanciesObject(inher.getClassname(), "");
-				code += dependanciesObject(inher.getClassname(), "Class");
-				code += dependanciesObject(inher.getClassname(), "StateMachine");
+				code.append("\n" + "#------------  Object files dependencies for ").append(inher.getClassname()).append(" class  ------------\n");
+				code.append(classIncludeDir(inher.getClassname())).append(" = \\\n");
+				code.append("		$(").append(classHomeDir(inher.getClassname())).append(")/").append(inher.getClassname()).append(".h \\\n");
+				code.append("		$(").append(classHomeDir(inher.getClassname())).append(")/").append(inher.getClassname()).append("Class.h\n");
+				code.append(dependanciesObject(inher.getClassname(), ""));
+				code.append(dependanciesObject(inher.getClassname(), "Class"));
+				code.append(dependanciesObject(inher.getClassname(), "StateMachine"));
 
 				/*	ToDo additional for inheritance ?
 				for (AdditionalFile file : cls.getAdditionalFiles()) {
-					code += dependanciesObjectAddFile(cls.getName(), file.getName());
+					code += dependenciesObjectAddFile(cls.getName(), file.getName());
 				}
 				*/
 			}
 		}
 
-		code += "\nSVC_INHERITANCE_INCL = ";
+		code.append("\nSVC_INHERITANCE_INCL = ");
 		for (Inheritance inheritance : cls.getDescription().getInheritances()) {
 			if (inheritanceUtils.isInheritanceClass(inheritance)) {
-				code+= " $(" + classIncludeDir(inheritance.getClassname()) + ")";
+				code.append(" $(").append(classIncludeDir(inheritance.getClassname())).append(")");
 			}
 		}
-		code += "\n";
+		code.append("\n");
 
-		return code;
+		return code.toString();
 	}
 	//=============================================================================
 	// Add dynamic attribute util if any
@@ -506,22 +506,23 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
  	}
 	//===========================================================
  	public String additionalDependencies(PogoDeviceClass cls) {
- 		String code = "";
+ 		StringBuilder code = new StringBuilder();
  		for (AdditionalFile file : cls.getAdditionalFiles()) {
-			code += dependanciesObjectAddFile(cls.getName(), file.getName(), true);
+			code.append(dependanciesObjectAddFile(cls.getName(), file.getName(), true));
 		}
- 		return code;
+ 		return code.toString();
  	}
 	//===========================================================
 	public String buildAdditionalFileListForMakefile(EList<AdditionalFile> list, String startTag, String endTag) {
-		ArrayList<String>	files = new ArrayList<String>();
+		List<String> files = new ArrayList<>();
 		for (AdditionalFile file : list)
 			files.add(file.getName());
 		return buildFileListForMakefile(files, startTag, endTag);
 	}
 	//===========================================================
+	@SuppressWarnings("unused")
 	public String buildInheritanceFileListForMakefile(EList<Inheritance> list, String startTag, String endTag) {
-		ArrayList<String>	files = new ArrayList<String>();
+		List<String> files = new ArrayList<>();
 		for (Inheritance inheritance : list)
 			files.add(inheritance.getClassname());
 		return buildFileListForMakefile(files, startTag, endTag);
@@ -529,8 +530,8 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//===========================================================
 	//	Build a string with specified strings for Makefile
 	//===========================================================
-	private String buildFileListForMakefile(ArrayList<String> list, String startTag, String endTag) {
-		StringBuffer	sb = new StringBuffer();
+	private String buildFileListForMakefile(List<String> list, String startTag, String endTag) {
+		StringBuilder sb = new StringBuilder();
 		for (int i=0 ; i<list.size();i++) {
 			sb.append(startTag).append(list.get(i)).append(endTag);
 			if (i<list.size()-1)
@@ -547,38 +548,51 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 		return cls.getName().toUpperCase();
 	}
 	//===========================================================
+	//===========================================================
+	private String getTab(String header) {
+		StringBuilder sb = new StringBuilder("\n");
+		for (int i=0 ; i<header.length() ; i++)
+			sb.append(" ");
+		return sb.toString();
+	}
+	//===========================================================
 	//	Build list of source files for cmake
 	//===========================================================
-	public String cmakeSourcefileList(PogoDeviceClass cls) {
-		String code = "set(" + upperClassName(cls) + "_SRC ${" + upperClassName(cls) +  "}.cpp" +
-					  " ${" + upperClassName(cls)  + "}Class.cpp" +
-					  " ${" + upperClassName(cls)  + "}StateMachine.cpp";
+	public String cmakeSourceFileList(PogoDeviceClass cls) {
+		String header = "set(" + upperClassName(cls) + "_SRC  ";
+		String tab  = getTab(header);
+		String code = header + "${" + upperClassName(cls) +  "}.cpp" +
+					  tab    + "${" + upperClassName(cls)  + "}Class.cpp" +
+					  tab    + "${" + upperClassName(cls)  + "}StateMachine.cpp";
 		if (cls.getDynamicAttributes().size()>0 || cls.getDynamicCommands().size()>0)
-			code += " ${" + upperClassName(cls) + "}DynAttrUtils.cpp";
-		code += cmakeAdditionnalFiles(cls);
+			code += tab + "${" + upperClassName(cls) + "}DynAttrUtils.cpp";
+		code += cmakeAdditionalFiles(cls, tab);
 		return code + ")";
 	}
 	//===========================================================
 	//	Build list of source files for cmake
 	//===========================================================
-	public String cmakeSourcefileList(String path, String upperClassName, boolean hasDynamic) {
-		String code = "set(" + upperClassName + "_SRC " +
-					        path + "${" + upperClassName +  "}.cpp" +
-					  " " + path + "${" + upperClassName  + "}Class.cpp" +
-					  " " + path + "${" + upperClassName  + "}StateMachine.cpp";
+	public String cmakeSourceFileList(String path, String upperClassName, boolean hasDynamic) {
+		String header = "set(" + upperClassName + "_SRC  ";
+		String tab  = getTab(header);
+		String code = header + path + "${" + upperClassName +  "}.cpp" +
+					  tab    + path + "${" + upperClassName  + "}Class.cpp" +
+					  tab    + path + "${" + upperClassName  + "}StateMachine.cpp";
 		if (hasDynamic)
-			code += " ${" + upperClassName + "}DynAttrUtils.cpp";
+			code += tab + "${" + upperClassName + "}DynAttrUtils.cpp";
 		return code + ")";
 	}
 	//===========================================================
 	//===========================================================
-	public String cmakeAdditionnalFiles(PogoDeviceClass cls) {
+	public String cmakeAdditionalFiles(PogoDeviceClass cls, String tab) {
 		EList<AdditionalFile> additionalFiles = cls.getAdditionalFiles();
-		String str = "";
+		StringBuilder sb = new StringBuilder();
 		for (AdditionalFile additionalFile : additionalFiles) {
-			str += " " + additionalFile.getName()+".cpp";
+			// Get relative path between project and additional file
+			String relativeFile = getRelativePath(cls, additionalFile);
+			sb.append(tab).append(relativeFile);
 		}
-		return str;
+		return sb.toString();
 	}
 	//===========================================================
 	//===========================================================
@@ -589,7 +603,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 			"#\n" +
 			"set(" + upperClassName(cls) + " " + cls.getName() + ")\n" +
 			"set(" + upperClassName(cls) + "_INCLUDE ${CMAKE_SOURCE_DIR})\n" +
-			cmakeSourcefileList(cls);
+			cmakeSourceFileList(cls);
 	}
 	//===========================================================
 	//===========================================================
@@ -605,7 +619,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 				str += "set(" + upperClassName + " " + inheritance.getClassname() + ")\n";
 				str += "set(" + upperClassName + "_INCLUDE " + path + ")\n";
 				
-				str += cmakeSourcefileList("${"+upperClassName+"_PATH}/", upperClassName, false) + "\n";
+				str += cmakeSourceFileList("${"+upperClassName+"_PATH}/", upperClassName, false) + "\n";
 				
 				sb.append(str);
 			}
@@ -629,7 +643,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 
 	
 	
-	
+	/*=========    For multiple classes project   ==========*/
 	
 	
 	//======================================================
@@ -640,36 +654,34 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	 */
 	//======================================================
 	String cmakeAddClassesDefinitions(PogoMultiClasses multi) {
-		inheritedObjectFiles = new ArrayList<String>();
-		String code = 
-				"#\n" +
-				"# Tango Class list used by project\n" +
-				"#\n";
+		inheritedObjectFiles = new ArrayList<>();
+		StringBuilder code =
+				new StringBuilder("#\n" +
+						"# Tango Class list used by project\n" +
+						"#\n");
 		for (OneClassSimpleDef simple : multi.getClasses()) {
-			code += "\n#\n" +
-					"# Files for "+simple.getClassname() + " TANGO class\n" +
-					"#\n";
+			code.append("\n#\n" + "# Files for ").append(simple.getClassname()).append(" TANGO class\n").append("#\n");
 			//	Add inheritance class if any
 			for (Inheritance inheritance : simple.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += "#------------ Inheritance from " + inheritance.getClassname() + " class ------------\n";
-					code += cmakeAddClassDefinition(inheritance.getClassname(), inheritance.getSourcePath());
+					code.append("#------------ Inheritance from ").append(inheritance.getClassname()).append(" class ------------\n");
+					code.append(cmakeAddClassDefinition(inheritance.getClassname(), inheritance.getSourcePath()));
 				}
 			}
 			
-			code += "set(" + upperClassName(simple) + "  " + simple.getClassname() + ")\n";
-			code += "set(" + upperClassName(simple) + "_PATH  " + simple.getSourcePath() + ")\n";
-			code += "set(" + upperClassName(simple) + "_INCLUDE  ";
+			code.append("set(").append(upperClassName(simple)).append("  ").append(simple.getClassname()).append(")\n");
+			code.append("set(").append(upperClassName(simple)).append("_PATH  ").append(simple.getSourcePath()).append(")\n");
+			code.append("set(").append(upperClassName(simple)).append("_INCLUDE  ");
 			for (Inheritance inheritance : simple.getInheritances()) {
 				if (inheritanceUtils.isInheritanceClass(inheritance)) {
-					code += "${" + inheritance.getClassname().toUpperCase() + "_INCLUDE} ";
+					code.append("${").append(inheritance.getClassname().toUpperCase()).append("_INCLUDE} ");
 				}
 			}
-			code += simple.getSourcePath() + ")\n";
+			code.append(simple.getSourcePath()).append(")\n");
 			
-			code += cmakeSourcefileList(simple);
+			code.append(cmakeSourceFileList(simple));
 		}
-		return  code;
+		return code.toString();
 	}
 	//===========================================================
 	//===========================================================
@@ -688,7 +700,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//===========================================================
 	//	Build list of source files for cmake
 	//===========================================================
-	public String cmakeSourcefileList(OneClassSimpleDef simple) {
+	public String cmakeSourceFileList(OneClassSimpleDef simple) {
 		String path = "${" + upperClassName(simple) + "_PATH}/";
 		String code = "set(" + upperClassName(simple) + "_SRC  " +
 					  cmakeInheritanceFileList(simple) +
@@ -697,50 +709,163 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 					  path + "${" + upperClassName(simple) + "}StateMachine.cpp ";
 		if (isTrue(simple.getHasDynamic()))
 			code += path + "${" + upperClassName(simple) + "}DynAttrUtils.cpp " ;
-		code += cmakeAdditionnalFiles(simple);
+		code += cmakeAdditionalFiles(simple);
 		return code.trim()+")";
 	}
 	//===========================================================
 	//===========================================================
-	public String cmakeAdditionnalFiles(OneClassSimpleDef simple) {
+	public String cmakeAdditionalFiles(OneClassSimpleDef simple) {
 		String path = "${" + upperClassName(simple) + "_PATH}/";
 		EList<AdditionalFile> additionalFiles = simple.getAdditionalFiles();
-		String str = "";
+		StringBuilder str = new StringBuilder();
 		for (AdditionalFile additionalFile : additionalFiles) {
-			str += path + additionalFile.getName()+".cpp ";
+			str.append(path).append(additionalFile.getName()).append(".cpp ");
 		}
-		return str;
+		return str.toString();
 	}
 	//=============================================================================
  	/**
  	 *  Define the definition for inherited classes
- 	 * @param clasname specified class name
+ 	 * @param className specified class name
  	 * @param sourcePath specified class source path
  	 * @return code 
  	 */
  	//=============================================================================
-	public String cmakeAddClassDefinition(String classname, String sourcePath) {
-		String path = "${" + classname.toUpperCase() + "_PATH}/";
+	public String cmakeAddClassDefinition(String className, String sourcePath) {
+		String path = "${" + className.toUpperCase() + "_PATH}/";
 		return 
-			"set("  + classname.toUpperCase() + "_CLASS " + classname + ")\n" +
-			"set("  + classname.toUpperCase() + "_PATH "  + sourcePath + ")\n" +
-			"set("  + classname.toUpperCase() + "_INCLUDE " + sourcePath + ")\n"+
-			"set("  + classname.toUpperCase() + "_SRC " +
-			path +  classname + ".cpp " +
-			path +  classname + "Class.cpp " +
-			path +  classname + "StateMachine.cpp)\n";
+			"set("  + className.toUpperCase() + "_CLASS " + className + ")\n" +
+			"set("  + className.toUpperCase() + "_PATH "  + sourcePath + ")\n" +
+			"set("  + className.toUpperCase() + "_INCLUDE " + sourcePath + ")\n"+
+			"set("  + className.toUpperCase() + "_SRC " +
+			path +  className + ".cpp " +
+			path +  className + "Class.cpp " +
+			path +  className + "StateMachine.cpp)\n";
 	}
 	//======================================================
 	//======================================================
 	public String cmakeInheritanceFileList(OneClassSimpleDef simple) {
-		String code = "";
+		StringBuilder code = new StringBuilder();
 		for (Inheritance inheritance : simple.getInheritances()) {
 			if (inheritanceUtils.isInheritanceClass(inheritance)) {
-				code += "${" + inheritance.getClassname().toUpperCase() + "_SRC} ";
+				code.append("${").append(inheritance.getClassname().toUpperCase()).append("_SRC} ");
 			}
 		}
-		return code;
+		return code.toString();
 	}
 	//======================================================
 	//======================================================
+
+
+
+	//===============================================================
+	//===============================================================
+	public static String getRelativePath(PogoDeviceClass cls, AdditionalFile additionalFile) {
+		// Split path and file name with extension
+		String path = additionalFile.getPath();
+		int idx = path.lastIndexOf(additionalFile.getName());
+		String fileName = path.substring(idx);
+		path = path.substring(0, --idx);
+
+		String referencePath = cls.getDescription().getSourcePath();
+		try {
+			// Get relative path between project and additional file
+			path = getRelativePath(path, referencePath);
+			if (path.endsWith("/"))
+				return path + fileName;
+			else
+				return path + '/' + fileName;
+		}
+		catch (Exception e) {
+			// low probability
+			e.printStackTrace();
+			//	return absolute
+			return additionalFile.getPath();
+		}
+	}
+	//===============================================================
+	/**
+	 * Compute relative path between a path and a reference
+	 * @param path          specified path
+	 * @param referencePath reference path
+	 * @return the relative path
+	 */
+	//===============================================================
+	public static String getRelativePath(String path, String referencePath) throws Exception {
+		String separator = System.getProperty("file.separator");
+		path = getCanonicalPath(path);
+		referencePath = getCanonicalPath(referencePath);
+
+		//System.out.println("Check relative between \n" + referencePath + "\n" + path + "\n");
+
+		StringTokenizer stk = new StringTokenizer(path, separator);
+		List<String> pathList = new ArrayList<>();
+		while (stk.hasMoreTokens()) pathList.add(stk.nextToken());
+		stk = new StringTokenizer(referencePath, separator);
+		List<String> refList = new ArrayList<>();
+		while (stk.hasMoreTokens()) refList.add(stk.nextToken());
+
+		//  Special case for Windows
+		//  If file come from different disk (e.g. c: end d:)
+		if (refList.get(0).endsWith(":") && pathList.get(0).endsWith(":")) {
+			if (!refList.get(0).equalsIgnoreCase(pathList.get(0))) {
+				//  Cannot compute a relative path
+				//      --> return absolute
+				return path;
+			}
+		}
+
+		//  Check common part from start
+		int idx;
+		if (refList.get(0).equalsIgnoreCase(pathList.get(0)))
+			idx = 1;
+		else
+			idx = 0;
+		while (idx<refList.size() && idx<pathList.size() &&
+				refList.get(idx).equals(pathList.get(idx)))
+			idx++;
+		//  Add up part
+		StringBuilder sb = new StringBuilder();
+		for (int i = idx ; i<refList.size() ; i++)
+			sb.append("..").append(separator);
+		//  Add down part
+		for (int i = idx ; i<pathList.size() ; i++)
+			sb.append(pathList.get(i)).append(separator);
+
+		//  Remove last separator
+		String relative = sb.toString();
+		if (relative.endsWith(separator))
+			relative = relative.substring(0, relative.length() - 1);
+
+		//  if no .. part add relative to ./
+		if (!relative.startsWith(".."))
+			relative = "./" + relative;
+
+		//  Convert to Linux format
+		relative = strReplace(relative, "\\", "/");
+		while (relative.startsWith("././")) {
+			relative = relative.substring("./".length());
+		}
+		return relative;
+	}
+	//===============================================================
+	//===============================================================
+	private static String getCanonicalPath(String path) throws Exception {
+		//  Check original path
+		File file = new File(path);
+		if (file.isFile()) {
+			//  If file, get only pah
+			return new File(file.getParent()).getCanonicalPath();
+		} else
+			return file.getCanonicalPath();
+	}
+	//===================================================================
+	//===================================================================
+	public static String strReplace(String text, String old_str, String new_str) {
+		if (text == null) return "";
+		for (int pos = 0; (pos = text.indexOf(old_str, pos)) >= 0; pos += new_str.length())
+			text = text.substring(0, pos) + new_str +
+					text.substring(pos + old_str.length());
+		return text;
+	}
 }

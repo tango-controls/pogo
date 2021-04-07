@@ -36,27 +36,24 @@
 package org.tango.pogo.pogo_gui;
 
 import fr.esrf.tangoatk.widget.util.ATKGraphicsUtils;
+import org.tango.pogo.pogo_gui.tools.ParserTool;
 import org.tango.pogo.pogo_gui.tools.PogoException;
 import org.tango.pogo.pogo_gui.tools.Utils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-
-//===============================================================
 /**
  *	JDialog Class to define enum attribute
  *
  *	@author  Pascal Verdier
  */
-//===============================================================
-
 
 @SuppressWarnings("MagicConstant")
 public class EnumDialog extends JDialog {
@@ -65,26 +62,48 @@ public class EnumDialog extends JDialog {
 	private int returnValue = JOptionPane.OK_OPTION;
     private EnumPopupMenu   menu = new EnumPopupMenu();
 
-    private static final int nbLines = 20;
+    private static final int NB_LINES = 20;
 	//===============================================================
 	/**
 	 *	Creates new form EnumDialog
 	 */
 	//===============================================================
-	public EnumDialog(JDialog parent, String title,String[] enumLabels) {
+	public EnumDialog(JDialog parent, String title, String[] enumLabels) {
 		super(parent, true);
 		initComponents();
 
+        buildEnumPanel(enumLabels);
+		titleLabel.setText(title);
+		pack();
+ 		ATKGraphicsUtils.centerDialog(this);
+	}
+    //======================================================
+    //======================================================
+    private void buildEnumPanel(String[] enumLabels) {
+	    //  Remove previous one if any
+	    for (int i=0 ; i<centerPanel.getComponentCount() ; i++) {
+	        centerPanel.remove(i);
+        }
+        textFields.clear();
+
+	    //  Get nb lines to create
+        int nbLines;
+	    if (enumLabels!=null && enumLabels.length>NB_LINES)
+	        nbLines = enumLabels.length+1;
+	    else
+	        nbLines = NB_LINES;
+
+	    //  Then create lines (number/label)
         GridBagConstraints  gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         for (int i=0 ; i<nbLines ; i++) {
-            gbc.gridx = 0;
-            gbc.gridy = i;
             centerPanel.add(new JLabel("  " + i + "  "), gbc);
 
             JTextField  textField = new JTextField();
-            textField.setColumns(20);
-            gbc.gridx = 1;
+            textField.setColumns(40);
+            gbc.gridx++;
             centerPanel.add(textField, gbc);
             textFields.add(textField);
             //	Add Action listener
@@ -93,18 +112,18 @@ public class EnumDialog extends JDialog {
                     treeMouseClicked(evt);    //	for menu,...
                 }
             });
+            gbc.gridx--;
+            gbc.gridy++;
         }
 
+        //  Display labels if any
         if (enumLabels!=null) {
             for (int i=0 ; i<textFields.size() && i<enumLabels.length ; i++) {
                 textFields.get(i).setText(enumLabels[i].trim());
             }
         }
-
-		titleLabel.setText(title);
-		pack();
- 		ATKGraphicsUtils.centerDialog(this);
-	}
+        pack();
+    }
     //======================================================
     /**
      * Manage event on clicked mouse on clicked object.
@@ -140,11 +159,13 @@ public class EnumDialog extends JDialog {
         titleLabel = new javax.swing.JLabel();
         centerPanel = new javax.swing.JPanel();
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
-        javax.swing.JButton helpButton = new javax.swing.JButton();
+        javax.swing.JButton fromFileButton = new javax.swing.JButton();
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         javax.swing.JButton okBtn = new javax.swing.JButton();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         javax.swing.JButton cancelBtn = new javax.swing.JButton();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JButton helpButton = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -161,13 +182,13 @@ public class EnumDialog extends JDialog {
         centerPanel.setLayout(new java.awt.GridBagLayout());
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
 
-        helpButton.setText("Help");
-        helpButton.addActionListener(new java.awt.event.ActionListener() {
+        fromFileButton.setText("From File");
+        fromFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpButtonActionPerformed(evt);
+                fromFileButtonActionPerformed(evt);
             }
         });
-        bottomPanel.add(helpButton);
+        bottomPanel.add(fromFileButton);
 
         jLabel2.setText("              ");
         bottomPanel.add(jLabel2);
@@ -191,6 +212,17 @@ public class EnumDialog extends JDialog {
         });
         bottomPanel.add(cancelBtn);
 
+        jLabel3.setText("              ");
+        bottomPanel.add(jLabel3);
+
+        helpButton.setText("Help");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpButtonActionPerformed(evt);
+            }
+        });
+        bottomPanel.add(helpButton);
+
         getContentPane().add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
         pack();
@@ -198,7 +230,7 @@ public class EnumDialog extends JDialog {
 
     //===============================================================
     //===============================================================
-    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<' };
+    private static final char[] authorizedChars = { ' ', '*', '/', '+', '-', '.', '=', '%', '>', '<', '_' };
     private boolean isAuthorized(char c) {
         for (char c1 : authorizedChars) {
             if (c1==c)
@@ -217,9 +249,10 @@ public class EnumDialog extends JDialog {
         List<String> words = new ArrayList<>();
         while (stk.hasMoreTokens())
             words.add(stk.nextToken());
-        label = "";
+        StringBuilder sb = new StringBuilder();
         for (String word : words)
-            label += word;
+            sb.append(word);
+        label = sb.toString();
 
         //	Check for special char
         for (int i = 0; i < label.length(); i++) {
@@ -266,11 +299,30 @@ public class EnumDialog extends JDialog {
     //===============================================================
     //===============================================================
     @SuppressWarnings("UnusedParameters")
-    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+    private void fromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFileButtonActionPerformed
         // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser(".");
+        if (fileChooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if (file.isFile()) {
+                try {
+                    List<String> lines = ParserTool.readFileLines(file.toString(), false);
+                    for (String line : lines)
+                        checkNameSyntax(line);
+                    buildEnumPanel(lines.toArray(new String[0]));
+
+                }catch (PogoException e) {
+                    e.popup(this);
+                }
+            }
+        }
+    }//GEN-LAST:event_fromFileButtonActionPerformed
+    //===============================================================
+    //===============================================================
+    @SuppressWarnings("UnusedParameters")
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         displayHelp();
     }//GEN-LAST:event_helpButtonActionPerformed
-
 	//===============================================================
 	//===============================================================
     private void displayHelp() {
@@ -406,17 +458,9 @@ public class EnumDialog extends JDialog {
             add(title);
             add(new JPopupMenu.Separator());
             for (String menuLabel : menuLabels) {
-                if (menuLabel == null)
-                    add(new Separator());
-                else {
-                    JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            menuActionPerformed(evt);
-                        }
-                    });
-                    add(btn);
-                }
+                JMenuItem btn = new JMenuItem(menuLabel);
+                btn.addActionListener(this::menuActionPerformed);
+                add(btn);
             }
         }
         //======================================================

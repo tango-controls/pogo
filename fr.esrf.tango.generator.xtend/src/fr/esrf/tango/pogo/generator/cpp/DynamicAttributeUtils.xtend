@@ -141,11 +141,11 @@ class DynamicAttributeUtils {
 		//--------------------------------------------------------
 		«cls.removeDynamicAttributeSignature(attribute, false)»
 		{
-			remove_attribute(attname, true);
+			remove_attribute(attname, true, Tango::Util::instance()->_UseDb);
 			«IF attribute.isScalar»
-			    map<string,«attribute.strType»>::iterator ite;
+			    map<std::string,«attribute.strType»>::iterator ite;
 			«ELSE»
-			    map<string,«attribute.strType» *>::iterator ite;
+			    map<std::string,«attribute.strType» *>::iterator ite;
 			«ENDIF»
 		    if ((ite=«attribute.name»_data.find(attname))!=«attribute.name»_data.end())
 		    {
@@ -170,12 +170,12 @@ class DynamicAttributeUtils {
 		 *  parameter attname: the specified attribute name.
 		 */
 		//--------------------------------------------------------
-		«attribute.strType» *«cls.name»::get_«attribute.name»_data_ptr(string &name)
+		«attribute.strType» *«cls.name»::get_«attribute.name»_data_ptr(std::string &name)
 		{
 			«IF attribute.isScalar»
-			    map<string,«attribute.strType»>::iterator ite;
+			    map<std::string,«attribute.strType»>::iterator ite;
 			«ELSE»
-			    map<string,«attribute.strType» *>::iterator ite;
+			    map<std::string,«attribute.strType» *>::iterator ite;
 			«ENDIF»
 		    if ((ite=«attribute.name»_data.find(name))==«attribute.name»_data.end())
 		    {

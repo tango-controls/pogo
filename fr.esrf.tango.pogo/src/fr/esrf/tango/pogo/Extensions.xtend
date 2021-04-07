@@ -9,7 +9,7 @@ class Extensions {
 	extension IQualifiedNameProvider qfnProvider
 	
 	def loc (EObject obj) {
-		if (obj.eContainer != null)
+		if (obj.eContainer !== null)
 			obj.info + "owned by " + obj.eContainer.info
 		else
 			obj.info
@@ -17,7 +17,7 @@ class Extensions {
 	
 	def String info (EObject obj) {
 		val name = obj.fullyQualifiedName
-		val dynamicName = if (name != null) name.toString else "<unnamed>"
+		val dynamicName = if (name !== null) name.toString else "<unnamed>"
 		return dynamicName + " [" + obj.eClass.name + "]"
 	}
 }

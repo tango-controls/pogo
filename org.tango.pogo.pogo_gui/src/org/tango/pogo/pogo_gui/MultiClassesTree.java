@@ -47,7 +47,7 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
@@ -61,12 +61,12 @@ public class MultiClassesTree extends JTree {
     private DefaultTreeModel treeModel;
     private MultiClassesTreePopupMenu menu;
     private JFrame parent;
+    private List<NotFoundClass> notFoundClassList = new ArrayList<>();
     private EditClasses editedClasses = new EditClasses();
     private boolean modified = false;
     private LoadedClasses loadedClasses = new LoadedClasses();
     private static JFileChooser chooser = null;
     private static final Color background = Color.white;
-
     //===============================================================
     //===============================================================
     public MultiClassesTree(JFrame parent, PogoMultiClasses multiClasses) throws PogoException {
@@ -79,7 +79,6 @@ public class MultiClassesTree extends JTree {
         expandChildren(root);
         setSelectionPath(null);
     }
-
     //===============================================================
     //===============================================================
     public MultiClassesTree(JFrame parent, TangoServer server) {
@@ -89,7 +88,6 @@ public class MultiClassesTree extends JTree {
         initComponents();
         buildTree(server);
     }
-
     //===============================================================
     //===============================================================
     private void initComponents() {
@@ -104,7 +102,6 @@ public class MultiClassesTree extends JTree {
         menu = new MultiClassesTreePopupMenu(this);
         setBackground(background);
     }
-
     //===============================================================
     //===============================================================
     private void buildTree(TangoServer server)  {
@@ -137,16 +134,16 @@ public class MultiClassesTree extends JTree {
             }
         });
         //	Add Action listener
-        addMouseListener(new java.awt.event.MouseAdapter() {
+        addMouseListener(new MouseAdapter() {
             /*
-               public void mousePressed (java.awt.event.MouseEvent evt) {
+               public void mousePressed (MouseEvent evt) {
                    treeMousePressed (evt);		//	for Drag
                }
-               public void mouseReleased (java.awt.event.MouseEvent evt) {
+               public void mouseReleased (MouseEvent evt) {
                    treeMouseReleased (evt);	//	for Drop
                }
            */
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(MouseEvent evt) {
                 treeMouseClicked(evt);    //	for tree clicked, menu,...
             }
         });
@@ -155,70 +152,64 @@ public class MultiClassesTree extends JTree {
     /**
      * Manage event on clicked mouse on JTree object.
      *
-     * @param evt the mouse event
+     * @param event the mouse event
      */
     //======================================================
-    private void treeMouseClicked(java.awt.event.MouseEvent evt) {
+    private void treeMouseClicked(MouseEvent event) {
         //	Set selection at mouse position
-        TreePath selectedPath = getPathForLocation(evt.getX(), evt.getY());
+        TreePath selectedPath = getPathForLocation(event.getX(), event.getY());
         if (selectedPath == null)
             return;
 
         DefaultMutableTreeNode node =
                 (DefaultMutableTreeNode) selectedPath.getPathComponent(selectedPath.getPathCount() - 1);
-        Object o = node.getUserObject();
-        int mask = evt.getModifiers();
+        Object userObject = node.getUserObject();
 
         //  Check button clicked
-        //noinspection StatementWithEmptyBody
-        if (evt.getClickCount() == 2 && (mask & MouseEvent.BUTTON1_MASK) != 0) {
-        } else if ((mask & MouseEvent.BUTTON3_MASK) != 0) {
-            if (node == root)
-                menu.showMenu(evt, (TangoServer) o);
-            else if (o instanceof DeviceClass)
-                menu.showMenu(evt, (DeviceClass) o);
+        if (notFoundClassList.isEmpty()) {
+            if ((event.getModifiers() & MouseEvent.BUTTON3_MASK) != 0) {
+                if (node == root)
+                    menu.showMenu(event, (TangoServer) userObject);
+                else if (userObject instanceof DeviceClass)
+                    menu.showMenu(event, (DeviceClass) userObject);
+            }
         }
     }
     //===============================================================
     //===============================================================
     private DeviceClass loadDeviceClass(OneClassSimpleDef simpleClass) throws PogoException {
-        String xmiFileName = simpleClass.getSourcePath() + "/" + simpleClass.getClassname();
-        if (Utils.isTrue(simpleClass.getPogo6()))
-            xmiFileName += ".h";
-        else
-            xmiFileName += ".xmi";
+        String xmiFileName = simpleClass.getSourcePath() + "/" + simpleClass.getClassname() + ".xmi";
         DeviceClass deviceClass = null;
 
         File xmiFile = new File(xmiFileName);
-        while (deviceClass == null) {
             try {
-                if (!xmiFile.exists()) {
-                    //  Check with relative path converted as absolute one
-                    //  Get multi classes file as reference
-                    TangoServer server = (TangoServer) root.getUserObject();
-                    String serverPath = server.sourcePath;
-                    String absolute = Utils.getAbsolutePath(xmiFileName, serverPath);
-                    xmiFile = new File(absolute);
-                    if (!xmiFile.exists())
-                        throw new PogoException("No such file: " + xmiFileName);
-                }
-                deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
-                if (!deviceClass.getPogoDeviceClass().getName().equals(simpleClass.getClassname()))
-                    throw new PogoException(simpleClass.getClassname() + " file expected !");
-            } catch (PogoException e) {
-                e.popup(this);
+            if (!xmiFile.exists()) {
+                //  Check with relative path converted as absolute one
+                //  Get multi classes file as reference
+                TangoServer server = (TangoServer) root.getUserObject();
+                String serverPath = server.sourcePath;
+                String absolute = Utils.getCanonicalPath(xmiFileName, serverPath);
+                xmiFile = new File(absolute);
+                if (!xmiFile.exists())
+                    throw new PogoException("No such file: " + xmiFileName);
+            }
+            deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
+            if (!deviceClass.getPogoDeviceClass().getName().equals(simpleClass.getClassname()))
+                throw new PogoException(simpleClass.getClassname() + " file expected !");
+        } catch (PogoException e) {
+            e.popup(this);
 
-                //  Display chooser to select a new path
-                chooser.setDialogTitle("Class: " + simpleClass.getClassname() + " ?");
-                if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                    xmiFile = chooser.getSelectedFile();
-                } else
-                    throw new PogoException("Canceled");
+            //  Display chooser to select a new path
+            chooser.setDialogTitle("Class: " + simpleClass.getClassname() + " ?");
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                xmiFile = chooser.getSelectedFile();
+                if (xmiFile.exists())
+                    deviceClass = loadedClasses.getDeviceClass(xmiFile.getAbsolutePath());
+
             }
         }
         return deviceClass;
     }
-
     //===============================================================
     //===============================================================
     private void createClassNodes(DefaultMutableTreeNode parentNode, EList<OneClassSimpleDef> classes)
@@ -231,10 +222,17 @@ public class MultiClassesTree extends JTree {
             for (String parentClass : parentClasses) {
                 if (parentClass.equals(parentName)) {
                     DeviceClass deviceClass = loadDeviceClass(_class);
-                    DefaultMutableTreeNode node =
-                            new DefaultMutableTreeNode(deviceClass);
+                    DefaultMutableTreeNode node;
+                    if (deviceClass!=null) {
+                         node = new DefaultMutableTreeNode(deviceClass);
+                    }
+                    else {
+                        System.out.println(_class.getClassname() + " not found");
+                        NotFoundClass notFoundClass = new NotFoundClass(_class);
+                        node = new DefaultMutableTreeNode(notFoundClass);
+                        notFoundClassList.add(notFoundClass);
+                    }
                     parentNode.add(node);
-
                     createClassNodes(node, classes);
                 }
             }
@@ -255,7 +253,6 @@ public class MultiClassesTree extends JTree {
             return null;
         return node.getUserObject();
     }
-
     //===============================================================
     //===============================================================
     private void expandChildren(DefaultMutableTreeNode node) {
@@ -272,7 +269,6 @@ public class MultiClassesTree extends JTree {
                 expandChildren(child);
         }
     }
-
     //===============================================================
     //===============================================================
     private void expandNode(DefaultMutableTreeNode node) {
@@ -289,7 +285,6 @@ public class MultiClassesTree extends JTree {
         setSelectionPath(tp);
         scrollPathToVisible(tp);
     }
-
     //===============================================================
     //===============================================================
     private void editSelectedClass() {
@@ -302,13 +297,11 @@ public class MultiClassesTree extends JTree {
             }
         }
     }
-
     //===============================================================
     //===============================================================
     boolean allEditorsAreClosed() {
         return editedClasses.everythingClosed();
     }
-
     //===============================================================
     //===============================================================
     private void editServer() {
@@ -317,32 +310,27 @@ public class MultiClassesTree extends JTree {
         if (serverDialog.showDialog() == JOptionPane.OK_OPTION)
             setModified(true);
     }
-
     //===============================================================
     //===============================================================
     public boolean getModified() {
         return modified;
     }
-
     //===============================================================
     //===============================================================
     public void setModified(boolean b) {
         modified = b;
     }
-
     //===============================================================
     //===============================================================
     public boolean isANodeSelected() {
         return (getSelectedNode() != null);
     }
-
     //===============================================================
     //===============================================================
     public boolean isAClassSelected() {
         Object obj = getSelectedObject();
         return (obj instanceof DeviceClass);
     }
-
     //===============================================================
     //===============================================================
     public void addClass() {
@@ -368,7 +356,6 @@ public class MultiClassesTree extends JTree {
             e.popup(this);
         }
     }
-
     //===============================================================
     //===============================================================
     public void removeClass() {
@@ -410,13 +397,11 @@ public class MultiClassesTree extends JTree {
             }
         }
     }
-
     //===============================================================
     //===============================================================
     public boolean pasteAvailable() {
         return (isANodeSelected() && copiedClass != null);
     }
-
     //===============================================================
     //===============================================================
     public void copySelectedClass() {
@@ -424,7 +409,6 @@ public class MultiClassesTree extends JTree {
         if (obj instanceof DeviceClass)
             copiedClass = (DeviceClass) obj;
     }
-
     //===============================================================
     //===============================================================
     public void pasteClass() {
@@ -434,7 +418,6 @@ public class MultiClassesTree extends JTree {
         setModified(true);
         expandChildren(parentNode);
     }
-
     //===============================================================
     //===============================================================
     private List<DeviceClass> getClasses(DefaultMutableTreeNode node) {
@@ -453,7 +436,6 @@ public class MultiClassesTree extends JTree {
         }
         return classes;
     }
-
     //===============================================================
     //===============================================================
     public String getServerFileName() {
@@ -463,7 +445,6 @@ public class MultiClassesTree extends JTree {
         else
             return null;
     }
-
     //===============================================================
     //===============================================================
     public String getAuthor() {
@@ -474,10 +455,20 @@ public class MultiClassesTree extends JTree {
             return PackUtils.buildMailAddress(loadedClasses.getAny().getPogoDeviceClass().getDescription());
         }
     }
-
     //===============================================================
     //===============================================================
     public PogoMultiClasses getServer() {
+        //  Check if all classes have been loaded
+        if (!notFoundClassList.isEmpty()) {
+            StringBuilder sb = new StringBuilder("Class" + (notFoundClassList.size()>1 ? "es " : " "));
+            for (NotFoundClass _class : notFoundClassList)
+                sb.append(_class.name).append(',');
+            sb.append(" not correctly loaded\n\nReload fully before change and save");
+            new PogoException(sb.toString()).popup(this);
+            return null;
+        }
+
+        //  OK. All classes loaded. Can build server object
         loadedClasses.resetParentClasses();
         TangoServer server = (TangoServer) root.getUserObject();
 
@@ -487,7 +478,7 @@ public class MultiClassesTree extends JTree {
 
         //  Check to have class only once.
         //  Start by the end to be sure the leaves are at the end.
-        for (int i = classes.size() - 1; i >= 0; i--) {
+        for (int i=classes.size()-1 ; i >= 0 ; i--) {
             DeviceClass _class = classes.get(i);
             //  Check if already in final vector
             boolean exists = false;
@@ -497,7 +488,6 @@ public class MultiClassesTree extends JTree {
                     exists = true;
                 }
             }
-
             if (!exists) {
                 pogoClasses.add(0, _class);
             }
@@ -540,7 +530,7 @@ public class MultiClassesTree extends JTree {
             }
             //  Check if dynamic attributes
             // ToDo
-            if (Utils.getPogoGuiRevision() >= 8.1) {
+            if (Utils.getInstance().getPogoGuiRevision() >= 8.1) {
                 if (pogoClass.getDynamicAttributes().size()>0 ||
 					pogoClass.getDynamicCommands().size()>0) {
                     simple.setHasDynamic("true");
@@ -555,7 +545,7 @@ public class MultiClassesTree extends JTree {
                 Inheritance multiInheritance = OAWutils.factory.createInheritance();
                 multiInheritance.setClassname(monoInheritance.getClassname());
                 multiInheritance.setSourcePath(monoInheritance.getSourcePath());
-                multiInheritances.add(multiInheritance);
+                multiInheritances.add(OAWutils.cloneInheritance(monoInheritance));
             }
             //  Copy additional files
             EList<AdditionalFile> multiAdditional = simple.getAdditionalFiles();
@@ -567,7 +557,6 @@ public class MultiClassesTree extends JTree {
 
         return multiClasses;
     }
-
     //===============================================================
     //===============================================================
     public String getName() {
@@ -577,6 +566,9 @@ public class MultiClassesTree extends JTree {
     //===============================================================
 
 
+
+
+
     //===============================================================
     /**
      * A cache of DeviceClasses.
@@ -584,22 +576,18 @@ public class MultiClassesTree extends JTree {
     //===============================================================
     private static class LoadedClasses {
         private final Map<String, DeviceClass> deviceClasses = new HashMap<>();
-
         DeviceClass getAny() {
             return deviceClasses.values().iterator().next();
         }
-
         boolean isEmpty() {
             return deviceClasses.size() == 0;
         }
-
         //===========================================================
         DeviceClass getDeviceClass(String xmiFileName) throws PogoException {
             DeviceClass result = deviceClasses.get(xmiFileName);
             if (result == null) deviceClasses.put(xmiFileName, result = new DeviceClass(xmiFileName));
             return result;
         }
-
         //===========================================================
         void resetParentClasses() {
             for (DeviceClass dc : deviceClasses.values()) {
@@ -612,8 +600,9 @@ public class MultiClassesTree extends JTree {
     //===============================================================
 
 
-    //===============================================================
 
+
+    //===============================================================
     /**
      * A class to manage  PogoGUI instances.
      */
@@ -651,27 +640,40 @@ public class MultiClassesTree extends JTree {
     //===============================================================
 
 
+
+
+
+
+    //===============================================================
+    //===============================================================
+    private static class NotFoundClass {
+        private String name;
+        private String path;
+        private NotFoundClass(OneClassSimpleDef _class) {
+            name = _class.getClassname();
+            path = _class.getSourcePath();
+        }
+        public String toString() {
+            return name;
+        }
+    }
+    //===============================================================
     //===============================================================
 
+
+
+
+
+    private static final Font rootFont = new Font("Dialog", Font.BOLD, 18);
+    private static final Font classFont = new Font("Dialog", Font.BOLD, 14);
+    private static final ImageIcon classIcon = Utils.getInstance().getIcon("TangoClass.gif", 0.17);
+    private static final ImageIcon warnClassIcon = Utils.getInstance().getIcon("TangoClassWarning.gif", 0.17);
+    //===============================================================
     /**
      * Renderer Class
      */
     //===============================================================
-    private class TangoRenderer extends DefaultTreeCellRenderer {
-        private Font[] fonts;
-
-        private final int TITLE = 0;
-        private final int CLASS = 1;
-        private ImageIcon class_icon = Utils.getInstance().getIcon("TangoClass.gif", 0.17);
-
-        //===============================================================
-        //===============================================================
-        public TangoRenderer() {
-            fonts = new Font[CLASS + 1];
-            fonts[TITLE] = new Font("Dialog", Font.BOLD, 18);
-            fonts[CLASS] = new Font("Dialog", Font.BOLD, 14);
-        }
-
+    private static class TangoRenderer extends DefaultTreeCellRenderer {
         //===============================================================
         //===============================================================
         public Component getTreeCellRendererComponent(
@@ -691,13 +693,30 @@ public class MultiClassesTree extends JTree {
             setBackgroundNonSelectionColor(background);
             setForeground(Color.black);
             setBackgroundSelectionColor(Color.lightGray);
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) obj;
             if (row == 0) {
                 //	ROOT
-                setFont(fonts[TITLE]);
+                setFont(rootFont);
                 setIcon(Utils.getInstance().rootIcon);
+                TangoServer tangoServer = (TangoServer) node.getUserObject();
+                setToolTipText(Utils.buildToolTip(tangoServer.name, tangoServer.description));
             } else {
-                setFont(fonts[CLASS]);
-                setIcon(class_icon);
+                setFont(classFont);
+                if (node.getUserObject() instanceof DeviceClass) {
+                    DeviceClass deviceClass = (DeviceClass) node.getUserObject();
+                    setIcon(classIcon);
+                    setToolTipText(Utils.buildToolTip(deviceClass.getPogoDeviceClass().getName(),
+                            "loaded from:\n  " + deviceClass.getPogoDeviceClass().getDescription().getSourcePath()));
+                }
+                else
+                if (node.getUserObject() instanceof NotFoundClass) {
+                    NotFoundClass notFoundClass = (NotFoundClass) node.getUserObject();
+                    setIcon(warnClassIcon);
+                    setToolTipText(Utils.buildToolTip(notFoundClass.name,
+                            "Cannot load class from:\n  " + notFoundClass.path));
+                }
+                else
+                    setIcon(classIcon);
             }
             return this;
         }
@@ -717,6 +736,7 @@ public class MultiClassesTree extends JTree {
     static private final int REMOVE_CLASS = 5;
     static private final int MOVE_UP   = 6;
     static private final int MOVE_DOWN = 7;
+    static private final int LOAD_CLASS = 8;
     static private final int OFFSET = 2;    //	Label And separator
 
     static private String[] menuLabels = {
@@ -728,6 +748,7 @@ public class MultiClassesTree extends JTree {
             "Remove class",
             "Move up",
             "Move down",
+            "Load class",
     };
 
     private class MultiClassesTreePopupMenu extends JPopupMenu {
@@ -751,79 +772,67 @@ public class MultiClassesTree extends JTree {
             add(new JPopupMenu.Separator());
 
             for (String menuLabel : menuLabels) {
-                if (menuLabel == null)
-                    add(new Separator());
-                else {
-                    JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            hostActionPerformed(evt);
-                        }
-                    });
-                    add(btn);
-                }
+                JMenuItem btn = new JMenuItem(menuLabel);
+                btn.addActionListener(this::hostActionPerformed);
+                add(btn);
             }
         }
-
+        //======================================================
+        private boolean checkSelection(MouseEvent event) {
+            //	Set selection at mouse position
+            TreePath selectedPath = tree.getPathForLocation(event.getX(), event.getY());
+            if (selectedPath != null)
+                tree.setSelectionPath(selectedPath);
+            return selectedPath != null;
+        }
         //======================================================
         /*
-           *	Show menu on root
-           */
+         *	Show menu on root
+         */
         //======================================================
-        public void showMenu(MouseEvent evt, TangoServer pmc) {
-            //	Set selection at mouse position
-            TreePath selectedPath =
-                    tree.getPathForLocation(evt.getX(), evt.getY());
-            if (selectedPath == null)
-                return;
-            tree.setSelectionPath(selectedPath);
+        private void showMenu(MouseEvent event, TangoServer pmc) {
+            if (checkSelection(event)) {
+                title.setText(pmc.toString());
 
-            title.setText(pmc.toString());
+                //	Reset all items
+                for (int i = 0 ; i<menuLabels.length ; i++)
+                    getComponent(OFFSET + i).setVisible(false);
 
-            //	Reset all items
-            for (int i = 0; i < menuLabels.length; i++)
-                getComponent(OFFSET + i).setVisible(false);
-
-            getComponent(OFFSET/*+ROOT_OPTION*/).setVisible(true);
-            getComponent(OFFSET + ADD_CLASS).setVisible(true);
-            getComponent(OFFSET + PASTE_CLASS).setVisible(pasteAvailable());
-            show(tree, evt.getX(), evt.getY());
+                getComponent(OFFSET/*+ROOT_OPTION*/).setVisible(true);
+                getComponent(OFFSET + ADD_CLASS).setVisible(true);
+                getComponent(OFFSET + PASTE_CLASS).setVisible(pasteAvailable());
+                show(tree, event.getX(), event.getY());
+            }
         }
-
         //======================================================
         /*
-           *	Show menu on Collection
-           */
+         * Show menu on Class
+         */
         //======================================================
-        public void showMenu(MouseEvent evt, DeviceClass collec) {
-            //	Set selection at mouse position
-            TreePath selectedPath =
-                    tree.getPathForLocation(evt.getX(), evt.getY());
-            if (selectedPath == null)
-                return;
-            tree.setSelectionPath(selectedPath);
+        private void showMenu(MouseEvent event, DeviceClass deviceClass) {
+            if (checkSelection(event)) {
+                title.setText(deviceClass.toString());
 
-            title.setText(collec.toString());
+                //	Reset all items
+                for (int i = 0 ; i<menuLabels.length ; i++)
+                    getComponent(OFFSET + i).setVisible(true);
 
-            //	Reset all items
-            for (int i = 0; i < menuLabels.length; i++)
-                getComponent(OFFSET + i).setVisible(true);
-
-            getComponent(OFFSET + PASTE_CLASS).setVisible(pasteAvailable());
-            show(tree, evt.getX(), evt.getY());
+                getComponent(OFFSET + PASTE_CLASS).setVisible(pasteAvailable());
+                getComponent(OFFSET + LOAD_CLASS).setVisible(false);
+                show(tree, event.getX(), event.getY());
+            }
         }
-
         //======================================================
         //======================================================
         private void hostActionPerformed(ActionEvent evt) {
             //	Check component source
             Object obj = evt.getSource();
-            int cmdidx = 0;
+            int cmdIndex = 0;
             for (int i = 0; i < menuLabels.length; i++)
                 if (getComponent(OFFSET + i) == obj)
-                    cmdidx = i;
+                    cmdIndex = i;
 
-            switch (cmdidx) {
+            switch (cmdIndex) {
                 case EDIT_SERVER:
                     editServer();
                     break;

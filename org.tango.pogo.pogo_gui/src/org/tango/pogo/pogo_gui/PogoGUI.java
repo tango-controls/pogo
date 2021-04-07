@@ -45,7 +45,6 @@ import org.tango.pogo.pogo_gui.tools.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
@@ -161,8 +160,7 @@ public class PogoGUI extends JFrame {
     //===========================================================
     //===========================================================
     private String applicationTitle(DeviceClass deviceClass) {
-        String  release = PogoConst.revNumber;
-        release = release.substring(0, release.indexOf('-'));
+        String  release = Utils.getInstance().getImplementationVersion();
         if (deviceClass!=null)
            return "TANGO Code Generator - " + release + " - " + deviceClass.toString();
         else
@@ -172,14 +170,21 @@ public class PogoGUI extends JFrame {
     //===========================================================
     private void checkLoadAtStartup(String filename) {
         if (filename != null && filename.length() > 0)
-            loadDeviceClassFromFile(filename);
+            if (filename.endsWith(".xmi"))
+                loadDeviceClassFromFile(filename);
+            else {
+                new PogoException(filename + " is not a xmi file").popup(this);
+            }
         else {
             String xmiFile = Utils.getXmiFile(PogoConst.MonoClass);
             if (xmiFile != null) {
                 openItemActionPerformed(null);
             } else if (PogoProperty.loadPrevious)
-                if (PogoProperty.projectHistory.size() > 0)
-                    loadDeviceClassFromFile(PogoProperty.projectHistory.get(0));
+                if (PogoProperty.projectHistory.size() > 0) {
+                    String previousFile = PogoProperty.projectHistory.get(0);
+                    if (previousFile.endsWith(".xmi"))
+                        loadDeviceClassFromFile(previousFile);
+                }
         }
         startup = false;
     }
@@ -235,11 +240,7 @@ public class PogoGUI extends JFrame {
             recentMenu.removeAll();
             for (String project : PogoProperty.projectHistory) {
                 JMenuItem item = new JMenuItem(project);
-                item.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        recentItemActionPerformed(evt);
-                    }
-                });
+                item.addActionListener(this::recentItemActionPerformed);
                 recentMenu.add(item);
             }
         } catch (Exception e) {
@@ -321,13 +322,11 @@ public class PogoGUI extends JFrame {
         JButton button = new JButton(icon);
         button.setToolTipText(Utils.buildToolTip(tip));
         button.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isPalette)
-                    paletteActionPerformed(evt);
-                else
-                    topButtonActionPerformed(evt);
-            }
+        button.addActionListener(evt -> {
+            if (isPalette)
+                paletteActionPerformed(evt);
+            else
+                topButtonActionPerformed(evt);
         });
         topPanel.add(button);
         topButtons.add(button);
@@ -633,8 +632,13 @@ public class PogoGUI extends JFrame {
             File file = chooser.getSelectedFile();
             if (file != null) {
                 if (!file.isDirectory()) {
-                    homeDir = file.getParentFile().toString();
-                    loadDeviceClassFromFile(file.getAbsolutePath());
+                    if (file.toString().endsWith(".xmi")) {
+                        homeDir = file.getParentFile().toString();
+                        loadDeviceClassFromFile(file.getAbsolutePath());
+                    }
+                    else {
+                        new PogoException(file.toString() + " is not a xmi file").popup(this);
+                    }
                 }
             }
         }
@@ -729,7 +733,7 @@ public class PogoGUI extends JFrame {
                 if (frame.isVisible())
                     return JOptionPane.OK_OPTION;
             //  Check if MultiClassesPanel is visible
-            if (multiClassesPanel != null && multiClassesPanel.isVisible())
+            if ((multiClassesPanel != null && multiClassesPanel.isVisible()))
                 return JOptionPane.OK_OPTION;
 
             //  No visible found.
@@ -991,7 +995,7 @@ public class PogoGUI extends JFrame {
                 "             Pogo  (Tango Code Generator)\n" +
                         "This programme is able to generate, update and modify\n" +
                         "                 Tango device classes.\n\n" +
-                        PogoConst.revNumber +
+                        Utils.getInstance().getImplementationVersion() +
                         "\n\n" +
                         "http://www.tango-controls.org/     -    tango@esrf.fr",
                 "Help Window", JOptionPane.INFORMATION_MESSAGE);
@@ -1019,7 +1023,7 @@ public class PogoGUI extends JFrame {
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
     private void releaseItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseItemActionPerformed
-        new PopupHtml(this).show(ReleaseNote.str, 550, 400);
+        new PopupHtml(this).show(ReleaseNotes.htmlString, 550, 400);
     }//GEN-LAST:event_releaseItemActionPerformed
     //=======================================================
     //=======================================================
@@ -1254,24 +1258,24 @@ public class PogoGUI extends JFrame {
             return get(tabbedPane.getSelectedIndex()).getTree();
         }
         //=======================================================
-        private void addPanel(DeviceClass devclass) {
+        private void addPanel(DeviceClass deviceClass) {
             ClassPanel cp = new ClassPanel(gui);
-            cp.setTree(devclass, this.size() > 0);
+            cp.setTree(deviceClass, this.size() > 0);
             add(cp);
             tabbedPane.add(cp);
             tabbedPane.setIconAt(class_panels.size()-1, Utils.getInstance().logoIcon);
         }
         //=======================================================
-        private void addPanels(DeviceClass devclass) {
+        private void addPanels(DeviceClass deviceClass) {
             //  Reset if needed
             this.removeAll(this);
             tabbedPane.removeAll();
-            warnings = org.tango.pogo.pogo_gui.InheritanceUtils.getInstance().manageInheritanceItems(devclass);
+            warnings = org.tango.pogo.pogo_gui.InheritanceUtils.getInstance().manageInheritanceItems(deviceClass);
 
-            addPanel(devclass);
+            addPanel(deviceClass);
 
             //  manage inheritance elements
-            List<DeviceClass> ancestors = devclass.getAncestors();
+            List<DeviceClass> ancestors = deviceClass.getAncestors();
             for (int i=ancestors.size()-1 ; i>=0 ; i--) {
                 addPanel(ancestors.get(i));
             }
@@ -1279,11 +1283,10 @@ public class PogoGUI extends JFrame {
 
             //  Build inheritance panel
             getContentPane().remove(inherPanel);
-            inherPanel = new InheritancePanel(devclass, gui);
+            inherPanel = new InheritancePanel(deviceClass, gui);
             getContentPane().add(inherPanel, java.awt.BorderLayout.EAST);
             pack();
         }
-
         //=======================================================
         private void checkWarnings() {
             if (warnings.length() > 0) {
@@ -1293,7 +1296,6 @@ public class PogoGUI extends JFrame {
                         "Warning Window", JOptionPane.WARNING_MESSAGE);
             }
         }
-
         //=======================================================
         private void updateInheritancePanelForSelection() {
             if (!reBuildTabbedPane) {
@@ -1303,12 +1305,6 @@ public class PogoGUI extends JFrame {
             }
         }
         //=======================================================
-        /*
-        private void updateInheritancePanels(ClassTree tree)
-        {
-            
-        }
-        */
     }
     //===============================================================
     //===============================================================
@@ -1316,7 +1312,7 @@ public class PogoGUI extends JFrame {
 
     //===============================================================
     //===============================================================
-    private class SetVisibleLater extends Thread {
+    private static class SetVisibleLater extends Thread {
         private Component component;
 
         private SetVisibleLater(Component component) {
@@ -1364,11 +1360,7 @@ public class PogoGUI extends JFrame {
                     add(new Separator());
                 else {
                     JMenuItem btn = new JMenuItem(menuLabel);
-                    btn.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            menuActionPerformed(evt);
-                        }
-                    });
+                    btn.addActionListener(this::menuActionPerformed);
                     add(btn);
                 }
             }

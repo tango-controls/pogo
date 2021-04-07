@@ -56,7 +56,7 @@ class LinuxCMakeLists {
 	def generateLinuxCMakeListsMultiClasses (PogoMultiClasses multi) '''
 		«multi.name.makefileHeader(true)»
 		cmake_minimum_required (VERSION 2.8)
-		set(CMAKE_SKIP_RPATH true)
+		set(CMAKE_SKIP_RPATH TRUE)
 
 		«multi.makeEnv(true)»
 		#
@@ -106,7 +106,7 @@ class LinuxCMakeLists {
 		«cls.name.makefileHeader(true)»
 
 		cmake_minimum_required (VERSION 2.8)
-		set(CMAKE_SKIP_RPATH true)
+		set(CMAKE_SKIP_RPATH TRUE)
 
 		«cls.makeEnv(true)»
 		#

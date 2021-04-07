@@ -123,7 +123,7 @@ public class MultiClassesPanel extends JFrame {
     //=======================================================
     //=======================================================
     private void initOwnComponents() {
-        setTitle("Multi TANGO Classes Code Generator - " + PogoConst.revNumber);
+        setTitle("Multi TANGO Classes Code Generator - " + Utils.getInstance().getImplementationVersion());
 
         //	Build users_tree to display info
         scrollPane = new JScrollPane();
@@ -155,11 +155,7 @@ public class MultiClassesPanel extends JFrame {
         JButton btn = new JButton(icon);
         btn.setToolTipText(Utils.buildToolTip(tip));
         btn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                topButtonActionPerformed(evt);
-            }
-        });
+        btn.addActionListener(this::topButtonActionPerformed);
         topPanel.add(btn);
         topButtons.add(btn);
     }
@@ -205,11 +201,7 @@ public class MultiClassesPanel extends JFrame {
             recentMenu.removeAll();
             for (String project : PogoProperty.multiClassProjectHistory) {
                 JMenuItem item = new JMenuItem(project);
-                item.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        recentItemActionPerformed(evt);
-                    }
-                });
+                item.addActionListener(this::recentItemActionPerformed);
                 recentMenu.add(item);
             }
         } catch (Exception e) {
@@ -217,7 +209,6 @@ public class MultiClassesPanel extends JFrame {
         }
     }
     //=======================================================
-
     /**
      * This method is called from within the constructor to
      * initialize the form.
@@ -371,7 +362,6 @@ public class MultiClassesPanel extends JFrame {
                         break;
                 }
     }
-
     //=======================================================
     //=======================================================
     private void reloadProject() {
@@ -387,7 +377,6 @@ public class MultiClassesPanel extends JFrame {
             }
         }
     }
-
     //=======================================================
     //=======================================================
     private void recentItemActionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,7 +387,6 @@ public class MultiClassesPanel extends JFrame {
             e.popup(this);
         }
     }
-
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -421,7 +409,6 @@ public class MultiClassesPanel extends JFrame {
             }
         }
     }//GEN-LAST:event_openItemActionPerformed
-
     //===============================================================
     //===============================================================
     public PogoMultiClasses loadXmiFile(String xmiFileName) throws PogoException {
@@ -431,7 +418,6 @@ public class MultiClassesPanel extends JFrame {
         manageRecentMenu(xmiFileName);
         return multiClasses;
     }
-
     //=======================================================
     //=======================================================
     private void buildTree(PogoMultiClasses multiClasses) {
@@ -442,7 +428,6 @@ public class MultiClassesPanel extends JFrame {
             /* Has been canceled */
         }
     }
-
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -462,8 +447,7 @@ public class MultiClassesPanel extends JFrame {
     @SuppressWarnings({"UnusedDeclaration"})
     private void generateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateItemActionPerformed
         generateFiles();
-    }
-
+    }//GEN-LAST:event_generateItemActionPerformed
     //=======================================================
     //=======================================================
     private int generateFiles() {
@@ -471,36 +455,37 @@ public class MultiClassesPanel extends JFrame {
             return JOptionPane.CANCEL_OPTION;
         try {
             PogoMultiClasses multiClasses = tree.getServer();
-            GenerateDialog dialog = new GenerateDialog(this);
-            if (dialog.showDialog(multiClasses) == JOptionPane.OK_OPTION) {
-                //	Then generate code and save
-                setCursor(new Cursor(Cursor.WAIT_CURSOR));
-                String serverPath = dialog.getPath();
-                multiClasses.setSourcePath(serverPath);
-                //  Set relative path for each class.
-                EList<OneClassSimpleDef> classes = multiClasses.getClasses();
-                for (OneClassSimpleDef oneClass : classes) {
-                    String classPath = Utils.getRelativePath(oneClass.getSourcePath(), serverPath);
-                    oneClass.setSourcePath(classPath);
-                }
-                multiClasses.setFilestogenerate(dialog.getGenerated());
-                OAWutils.getInstance().generate(multiClasses);
-                tree.setModified(false);
-                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            if (multiClasses!=null) {
+                GenerateDialog dialog = new GenerateDialog(this);
+                if (dialog.showDialog(multiClasses) == JOptionPane.OK_OPTION) {
+                    //	Then generate code and save
+                    setCursor(new Cursor(Cursor.WAIT_CURSOR));
+                    String serverPath = dialog.getPath();
+                    multiClasses.setSourcePath(serverPath);
+                    //  Set relative path for each class.
+                    EList<OneClassSimpleDef> classes = multiClasses.getClasses();
+                    for (OneClassSimpleDef oneClass : classes) {
+                        String classPath = Utils.getRelativePath(oneClass.getSourcePath(), serverPath);
+                        oneClass.setSourcePath(classPath);
+                    }
+                    multiClasses.setFilestogenerate(dialog.getGenerated());
+                    OAWutils.getInstance().generate(multiClasses);
+                    tree.setModified(false);
+                    setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
-                //  Manage recent menu
-                String projectFile = multiClasses.getSourcePath() +
-                        "/" + multiClasses.getName() + ".multi.xmi";
-                manageRecentMenu(projectFile);
-                return JOptionPane.OK_OPTION;
+                    //  Manage recent menu
+                    String projectFile = multiClasses.getSourcePath() +
+                            "/" + multiClasses.getName() + ".multi.xmi";
+                    manageRecentMenu(projectFile);
+                    return JOptionPane.OK_OPTION;
+                }
             }
         } catch (PogoException e) {
             setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             e.popup(this);
         }
         return JOptionPane.CANCEL_OPTION;
-    }//GEN-LAST:event_generateItemActionPerformed
-
+    }
     //=======================================================
     //=======================================================
     @SuppressWarnings({"UnusedDeclaration"})
@@ -630,7 +615,7 @@ public class MultiClassesPanel extends JFrame {
      * @param args the command line arguments
      */
     //=======================================================
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try {
             if (args.length == 0)
                 new MultiClassesPanel(new JFrame(), null).setVisible(true);

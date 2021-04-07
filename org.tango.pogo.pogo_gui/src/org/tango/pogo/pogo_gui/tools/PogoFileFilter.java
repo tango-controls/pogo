@@ -220,7 +220,6 @@ public class PogoFileFilter extends FileFilter {
      *                  Note that the "." before the extension is not needed and will be ignored.
      */
     public void addExtension(String extension) {
-        //noinspection unchecked
         filters.add(extension.toLowerCase());
         fullDescription = null;
     }
@@ -235,15 +234,15 @@ public class PogoFileFilter extends FileFilter {
     public String getDescription() {
         if (fullDescription == null) {
             if (description == null || isExtensionListInDescription()) {
-                fullDescription = description == null ? "" : description + "  (";
+                StringBuilder sb = new StringBuilder(description == null ? "" : description + "  (");
                 // build the description from the extension list
-                //Enumeration extensions = filters.keys();
                 for (int i = 0; i < filters.size(); i++) {
-                    fullDescription += "*." + filters.get(i);
+                    sb.append("*.").append(filters.get(i));
                     if (i < filters.size() - 1)
-                        fullDescription += ", ";
+                        sb.append(", ");
                 }
-                fullDescription += ")";
+                sb.append(")");
+                fullDescription = sb.toString();
             } else
                 fullDescription = description;
         }
@@ -321,6 +320,8 @@ public class PogoFileFilter extends FileFilter {
     //===============================================================
     public static final String[] cpp_target = {
             "Inherited from class ",
+            ": public Tango::TANGO_BASE_CLASS",
+            ": public Tango::Device_5Impl",
             ": public Tango::Device_4Impl",
             ": public Tango::Device_3Impl",
             ": public Tango::Device_2Impl",
@@ -330,6 +331,8 @@ public class PogoFileFilter extends FileFilter {
             " extends DeviceImpl",    // implements TangoConst"
     };
     public static final String[] py_target = {
+            "(PyTango.LatestDeviceImpl):",
+            "(PyTango.Device_5Impl):",
             "(PyTango.Device_4Impl):",
             "(PyTango.Device_3Impl):"
     };
@@ -345,28 +348,28 @@ public class PogoFileFilter extends FileFilter {
     public static boolean isDeviceImplClass(String filename) {
         try {
             //	Read file content.
-            String readcode = ParserTool.readFile(filename);
+            String readCode = ParserTool.readFile(filename);
             //System.out.println(filename);
 
             //	Check if new POGO generated code (oAW)
-            if (readcode.startsWith("/*----- PROTECTED REGION ID")) {
+            if (readCode.startsWith("/*----- PROTECTED REGION ID")) {
                 return false;
             }
             //	Check if cpp device impl
             for (String aCpp_target : cpp_target) {
-                if (readcode.indexOf(aCpp_target) > 0) {
+                if (readCode.indexOf(aCpp_target) > 0) {
                     return true;
                 }
             }
             //	Check if java device impl
             for (String aJava_target : java_target) {
-                if (readcode.indexOf(aJava_target) > 0) {
+                if (readCode.indexOf(aJava_target) > 0) {
                     return true;
                 }
             }
             //	Check if python device impl
             for (String aPy_target : py_target) {
-                if (readcode.indexOf(aPy_target) > 0) {
+                if (readCode.indexOf(aPy_target) > 0) {
                     return true;
                 }
             }

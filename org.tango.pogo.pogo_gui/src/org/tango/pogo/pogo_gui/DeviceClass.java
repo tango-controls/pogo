@@ -1,36 +1,36 @@
-//+======================================================================
-//
-// Project:   Tango
-//
-// Description:	java source code to defined  an extended PogoDeviceClass class
-//
-// $Author: verdier $
-//
-// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011,2012,2013,2014
-//						European Synchrotron Radiation Facility
-//                      BP 220, Grenoble 38043
-//                      FRANCE
-//
-// This file is part of Tango.
-//
-// Tango is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// Tango is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with Tango.  If not, see <http://www.gnu.org/licenses/>.
-//
-// $Revision: $
-// $Date:  $
-//
-// $HeadURL: $
-//
+//+======================================================================	
+//	
+// Project:   Tango	
+//	
+// Description:	java source code to defined  an extended PogoDeviceClass class	
+//	
+// $Author: verdier $	
+//	
+// Copyright (C) :      2004,2005,2006,2007,2008,2009,2009,2010,2011,2012,2013,2014	
+//						European Synchrotron Radiation Facility	
+//                      BP 220, Grenoble 38043	
+//                      FRANCE	
+//	
+// This file is part of Tango.	
+//	
+// Tango is free software: you can redistribute it and/or modify	
+// it under the terms of the GNU General Public License as published by	
+// the Free Software Foundation, either version 3 of the License, or	
+// (at your option) any later version.	
+// 	
+// Tango is distributed in the hope that it will be useful,	
+// but WITHOUT ANY WARRANTY; without even the implied warranty of	
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the	
+// GNU General Public License for more details.	
+// 	
+// You should have received a copy of the GNU General Public License	
+// along with Tango.  If not, see <http://www.gnu.org/licenses/>.	
+//	
+// $Revision: $	
+// $Date:  $	
+//	
+// $HeadURL: $	
+//	
 //-======================================================================
 
 package org.tango.pogo.pogo_gui;
@@ -54,7 +54,7 @@ import java.util.List;
 
 
 public class DeviceClass {
-    private PogoDeviceClass pogoClass = null;
+    private PogoDeviceClass pogoClass;
     private List<DeviceClass> ancestors = new ArrayList<>();
     private boolean usingPyHlPackage = false;
 
@@ -124,26 +124,33 @@ public class DeviceClass {
             //	Load the model
             pogoClass = OAWutils.getInstance().loadDeviceClassModel(filename);
 
-            EList<Inheritance> inheritances = pogoClass.getDescription().getInheritances();
-            if (inheritances.size() == 0)
-                inheritances.add(getDefaultInheritance());
+            if (pogoClass!=null) {
+                EList<Inheritance> inheritances = pogoClass.getDescription().getInheritances();
+                if (inheritances.size() == 0)
+                    inheritances.add(getDefaultInheritance());
 
-            //	And set the path (could have changed)
-            String path = Utils.getPath(filename);
-            pogoClass.getDescription().setSourcePath(path);
+                //	And set the path (could have changed)
+                String path = Utils.getPath(filename);
+                pogoClass.getDescription().setSourcePath(path);
 
-            //	Load inheritance classes if any
-            Utils.getInstance().stopSplashRefresher();
-            if (loadInheritance)
-                if (!loadInheritanceClasses())
-                    throw new PogoException("CANCEL");
+                //	Load inheritance classes if any
+                Utils.getInstance().stopSplashRefresher();
+                if (loadInheritance)
+                    if (!loadInheritanceClasses())
+                        throw new PogoException("CANCEL");
+            }
+            else
+                throw  new PogoException("Cannot load TANGO class from " + filename);
         }
+        else
+            throw new PogoException(filename + " is not a xmi file");
         //  Check if abstract class or not
         checkIfAbstractClass(pogoClass, true);
     }
 
     //===============================================================
     //===============================================================
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isDefaultInheritance(Inheritance inheritance) {
         if (inheritance.getClassname() == null)
             return true;
@@ -250,7 +257,7 @@ public class DeviceClass {
 
         //  Check with relative path
         String xmiFile = pogoClass.getDescription().getSourcePath();
-        String relativeFile = Utils.getAbsolutePath(filename, xmiFile);
+        String relativeFile = Utils.getCanonicalPath(filename, xmiFile);
         System.out.println("Relative: " + relativeFile);
         if (new File(relativeFile).exists())
             return relativeFile;
@@ -299,19 +306,21 @@ public class DeviceClass {
             for (Inheritance inheritance : inheritances) {
                 if (!isDefaultInheritance(inheritance)) {
                     String className = inheritance.getClassname();
-                    String filename = inheritance.getSourcePath() +
-                            java.lang.System.getProperty("file.separator") + className + ".xmi";
+                    String inheritanceFileName = inheritance.getSourcePath() +
+                            System.getProperty("file.separator") + className + ".xmi";
                     //  Get absolute path for file
-                    File file = new File(filename);
-                    filename = file.getCanonicalFile().toString();
-                    if ((filename = checkInheritanceFile(filename, className)) == null)
+                    if (!new File(inheritanceFileName).exists()) {
+                        // ToDo WARNING
+                        inheritanceFileName = Utils.getCanonicalPath(inheritanceFileName, pogoClass.getDescription().getSourcePath());
+                    }
+                    if ((inheritanceFileName = checkInheritanceFile(inheritanceFileName, className)) == null)
                         return false;
 
                     //	OK. Lo add it
                     Utils.getInstance().startSplashRefresher(
-                            "Loading  " + Utils.getRelativeFilename(filename));
-                    ancestors.add(new DeviceClass(filename, false));
-                    inheritance.setSourcePath(Utils.getPath(filename));
+                            "Loading  " + Utils.getRelativeFilename(inheritanceFileName));
+                    ancestors.add(new DeviceClass(inheritanceFileName, false));
+                    inheritance.setSourcePath(Utils.getPath(inheritanceFileName));
                     Utils.getInstance().stopSplashRefresher();
                 }
             }
@@ -420,6 +429,7 @@ public class DeviceClass {
             case "cpp":
                 return path + pogoClass.getName() + ".cpp";
             case "python":
+            case "pythonhl":
                 return path + pogoClass.getName() + ".py";
             default:
                 path += "org" + separator + "tango" + separator +

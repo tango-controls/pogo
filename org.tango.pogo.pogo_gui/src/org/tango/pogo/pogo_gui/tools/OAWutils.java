@@ -184,7 +184,7 @@ public class OAWutils {
         PogoSystem sys = buildPogoSystem(pogoClass);
 
         //  Force Pogo release before save
-        pogoClass.setPogoRevision(Double.toString(Utils.getPogoGuiRevision()));
+        pogoClass.setPogoRevision(Double.toString(Utils.getInstance().getPogoGuiRevision()));
 
         //	Generate XMI file.
         String xmiFileName = pogoClass.getDescription().getSourcePath() + "/" +
@@ -272,7 +272,7 @@ public class OAWutils {
         sys.getMultiClasses().add(multiClasses);
 
         //  Force Pogo release before save
-        multiClasses.setPogoRevision(Double.toString(Utils.getPogoGuiRevision()));
+        multiClasses.setPogoRevision(Double.toString(Utils.getInstance().getPogoGuiRevision()));
 
        //	Generate XMI file if requested.
         String xmiFileName = multiClasses.getSourcePath() + "/" +
@@ -341,33 +341,39 @@ public class OAWutils {
 
             //  Only if unix like, try to generate a PDF file from FullDocument.html file
             if (Utils.osIsUnix()) {
-                String descriptionFile = pogoClass.getDescription().getSourcePath() + "/" +
-                        pogoClass.getPreferences().getDocHome() + "/FullDocument.html";
-                String pdfFile = pogoClass.getDescription().getSourcePath() + "/" +
-                        pogoClass.getPreferences().getDocHome() + "/" +
-                        pogoClass.getName() + ".pdf";
-                try {
-                    //  Execute wkhtmltopdf to generate a PDF file and a add a link on it
-                    Utils.executeShellCommand("wkhtmltopdf " + descriptionFile + "  " + pdfFile);
-                    if (new File(pdfFile).exists()) {
-                        System.out.println(pdfFile + " has been generated");
-                        //  OK it exists -> add a link
-                        String bannerFile = pogoClass.getDescription().getSourcePath() + "/" +
-                        		pogoClass.getPreferences().getDocHome() + "/TitleBanner.html";
-                        String code = ParserTool.readFile(bannerFile);
-                        int idx = code.indexOf("</table>");
-                        code = code.substring(0, idx) +
-                                "<td ALIGN=\"center\"> <a href=\"" +
-                        		pogoClass.getName() + ".pdf\" target=\"document\">PDF</a></td>\n\t\t" +
-                                code.substring(idx);
-                        ParserTool.writeFile(bannerFile, code);
-                        //System.out.println(bannerFile + " has been updated\n");
+                //  If NO_PDF=true, does not generate (Soleil request)
+                String env = System.getenv("NO_PDF");
+                boolean generatePdf = env==null || !env.equals("true");
+                if (generatePdf) {
+                    String descriptionFile = pogoClass.getDescription().getSourcePath() + "/" +
+                            pogoClass.getPreferences().getDocHome() + "/FullDocument.html";
+                    String pdfFile = pogoClass.getDescription().getSourcePath() + "/" +
+                            pogoClass.getPreferences().getDocHome() + "/" +
+                            pogoClass.getName() + ".pdf";
+                    try {
+                        //  Execute wkhtmltopdf to generate a PDF file and a add a link on it
+                        Utils.executeShellCommand("wkhtmltopdf " + descriptionFile + "  " + pdfFile);
+                        if (new File(pdfFile).exists()) {
+                            System.out.println(pdfFile + " has been generated");
+                            //  OK it exists -> add a link
+                            String bannerFile = pogoClass.getDescription().getSourcePath() + "/" +
+                                    pogoClass.getPreferences().getDocHome() + "/TitleBanner.html";
+                            String code = ParserTool.readFile(bannerFile);
+                            int idx = code.indexOf("</table>");
+                            code = code.substring(0, idx) +
+                                    "<td ALIGN=\"center\"> <a href=\"" +
+                                    pogoClass.getName() + ".pdf\" target=\"document\">PDF</a></td>\n\t\t" +
+                                    code.substring(idx);
+                            ParserTool.writeFile(bannerFile, code);
+                            //System.out.println(bannerFile + " has been updated\n");
+                        } else
+                            System.err.println("Generation of " + pdfFile + " has failed !");
+                    } catch (PogoException e) {
+                        //System.err.println(e.toString());
                     }
-                    else
-                        System.err.println("Generation of " + pdfFile + " has failed !");
-                }catch (PogoException e) {
-                    //System.err.println(e.toString());
                 }
+                else
+                    System.out.println("Does not generate PDF file.");
     	    }
         }
     }
@@ -767,6 +773,13 @@ public class OAWutils {
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
         InheritanceStatus srcStatus = src.getStatus();
+        if (srcStatus==null) {
+            srcStatus = factory.createInheritanceStatus();
+            srcStatus.setAbstract("false");
+            srcStatus.setInherited("false");
+            srcStatus.setConcrete("true");
+            srcStatus.setConcreteHere("true");
+        }
         status.setAbstract(srcStatus.getAbstract());
         status.setInherited(srcStatus.getInherited());
         status.setConcrete(srcStatus.getConcrete());
@@ -836,11 +849,18 @@ public class OAWutils {
 
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
-        InheritanceStatus src_st = src.getStatus();
-        status.setAbstract(src_st.getAbstract());
-        status.setInherited(src_st.getInherited());
-        status.setConcrete(src_st.getConcrete());
-        status.setConcreteHere(src_st.getConcreteHere());
+        InheritanceStatus srcStatus = src.getStatus();
+        if (srcStatus==null) {
+            srcStatus = factory.createInheritanceStatus();
+            srcStatus.setAbstract("false");
+            srcStatus.setInherited("false");
+            srcStatus.setConcrete("true");
+            srcStatus.setConcreteHere("true");
+        }
+        status.setAbstract(srcStatus.getAbstract());
+        status.setInherited(srcStatus.getInherited());
+        status.setConcrete(srcStatus.getConcrete());
+        status.setConcreteHere(srcStatus.getConcreteHere());
 
         EList<String> src_excluded = src.getReadExcludedStates();
         EList<String> new_excluded = attr.getReadExcludedStates();
@@ -918,11 +938,18 @@ public class OAWutils {
 
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
-        InheritanceStatus src_st = src.getStatus();
-        status.setAbstract(src_st.getAbstract());
-        status.setInherited(src_st.getInherited());
-        status.setConcrete(src_st.getConcrete());
-        status.setConcreteHere(src_st.getConcreteHere());
+        InheritanceStatus srcStatus = src.getStatus();
+        if (srcStatus==null) {
+            srcStatus = factory.createInheritanceStatus();
+            srcStatus.setAbstract("false");
+            srcStatus.setInherited("false");
+            srcStatus.setConcrete("true");
+            srcStatus.setConcreteHere("true");
+        }
+        status.setAbstract(srcStatus.getAbstract());
+        status.setInherited(srcStatus.getInherited());
+        status.setConcrete(srcStatus.getConcrete());
+        status.setConcreteHere(srcStatus.getConcreteHere());
         property.setStatus(status);
 
         if (Utils.isTrue(src.getMandatory()))
@@ -939,11 +966,18 @@ public class OAWutils {
 
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
-        InheritanceStatus src_st = src.getStatus();
-        status.setAbstract(src_st.getAbstract());
-        status.setInherited(src_st.getInherited());
-        status.setConcrete(src_st.getConcrete());
-        status.setConcreteHere(src_st.getConcreteHere());
+        InheritanceStatus srcStatus = src.getStatus();
+        if (srcStatus==null) {
+            srcStatus = factory.createInheritanceStatus();
+            srcStatus.setAbstract("false");
+            srcStatus.setInherited("false");
+            srcStatus.setConcrete("true");
+            srcStatus.setConcreteHere("true");
+        }
+        status.setAbstract(srcStatus.getAbstract());
+        status.setInherited(srcStatus.getInherited());
+        status.setConcrete(srcStatus.getConcrete());
+        status.setConcreteHere(srcStatus.getConcreteHere());
         state.setStatus(status);
         return state;
     }
@@ -956,11 +990,18 @@ public class OAWutils {
 
         //	Inheritance status
         InheritanceStatus status = factory.createInheritanceStatus();
-        InheritanceStatus src_st = src.getStatus();
-        status.setAbstract(src_st.getAbstract());
-        status.setInherited(src_st.getInherited());
-        status.setConcrete(src_st.getConcrete());
-        status.setConcreteHere(src_st.getConcreteHere());
+        InheritanceStatus srcStatus = src.getStatus();
+        if (srcStatus==null) {
+            srcStatus = factory.createInheritanceStatus();
+            srcStatus.setAbstract("false");
+            srcStatus.setInherited("false");
+            srcStatus.setConcrete("true");
+            srcStatus.setConcreteHere("true");
+        }
+        status.setAbstract(srcStatus.getAbstract());
+        status.setInherited(srcStatus.getInherited());
+        status.setConcrete(srcStatus.getConcrete());
+        status.setConcreteHere(srcStatus.getConcreteHere());
         attribute.setStatus(status);
         return attribute;
     }
@@ -1003,6 +1044,14 @@ public class OAWutils {
         file.setPath(src.getPath());
 
         return file;
+    }
+    //========================================================================
+    //========================================================================
+    public static Inheritance cloneInheritance(Inheritance inheritance) {
+        Inheritance newInheritance = factory.createInheritance();
+        newInheritance.setClassname(inheritance.getClassname());
+        newInheritance.setSourcePath(inheritance.getSourcePath());
+        return newInheritance;
     }
     //========================================================================
     //========================================================================

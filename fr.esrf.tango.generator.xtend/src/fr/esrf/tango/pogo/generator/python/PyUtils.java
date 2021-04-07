@@ -54,7 +54,7 @@ public class PyUtils {
 	 */
 	//===========================================================
 	static String deviceImpl() {
-		return "PyTango.Device_4Impl";
+		return "PyTango.LatestDeviceImpl";
 	}
 	//===========================================================
 	/**
@@ -134,24 +134,24 @@ public class PyUtils {
 	 * @return  the method execution name for specified command
 	 */
 	//===========================================================
-	String methodTest(Command cmd, String defVal) {
-		if (cmd.getName().equals("State")) {
-			return "self.device.State()";
+	String methodTest(Command command, String defVal) {
+		if (command.getName().equals("State")) {
+			return "tango_context.device.State()";
 		}
 		else
 		{
-			if (cmd.getName().equals("Status")) {
-				return "self.device.Status()";
+			if (command.getName().equals("Status")) {
+				return "tango_context.device.Status()";
 			}
 			else
 			{
-				if (cmd.getArgin().getType().equals("VoidTypeImpl")==false)
+				if (command.getArgin().getType().equals("VoidTypeImpl")==false)
 				{
-					return "self.device." + cmd.getName() + "("+ defVal +")";
+					return "tango_context.device." + command.getName() + "("+ defVal +")";
 				}
 				else
 				{
-					return "self.device." + cmd.getName() + "()";
+					return "tango_context.device." + command.getName() + "()";
 				}
 			}
 		}
@@ -160,15 +160,15 @@ public class PyUtils {
 	//===========================================================
 	/**
 	 * Returns the enum labels on one line 
-	 * @param command the specified command
+	 * @param attribute Attribute
 	 * @return  the method execution name for specified command
 	 */
 	//===========================================================
-    String pythonPipeEnum(Attribute attr){
-    	if (attr.getEnumLabels() != null)
+    String pythonPipeEnum(Attribute attribute) {
+        if (attribute.getEnumLabels() != null)
     	{
 			StringBuilder	sb = new StringBuilder("[");
-			for (String label : attr.getEnumLabels())
+			for (String label : attribute.getEnumLabels())
 			{
 				sb.append("\"").append(label).append("\", ");
 			}

@@ -76,7 +76,7 @@ class LinuxMakefile {
 		#=============================================================================
 		# Following are dependancies of the classes used by project
 		#
-		«multi.dependancies»
+		«multi.dependencies»
 		
 	'''
 
@@ -124,7 +124,7 @@ class LinuxMakefile {
 		
 
 		«IF cls.hasInheritanceClass»
-			«cls.inheritanceDependancies»
+			«cls.inheritanceDependencies»
  		«ENDIF»
 
  		«IF cls.additionalFiles.empty==false»
