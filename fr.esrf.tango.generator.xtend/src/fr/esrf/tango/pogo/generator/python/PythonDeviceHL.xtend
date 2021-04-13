@@ -264,7 +264,6 @@ def enumClasses(PogoDeviceClass cls) '''
 «cls.constructorHL»
         «cls.setEventCriteria»
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
-        «cls.openProtectedAreaHL("init_device")»
         «IF !cls.commands.empty»
         «FOR cmd:cls.commands»
         «IF cmd.name == "State" && cmd.polledPeriod.integerValue !== 0»
@@ -282,6 +281,7 @@ def enumClasses(PogoDeviceClass cls) '''
         «ENDIF»
         «ENDFOR»
         «ENDIF»
+        «cls.openProtectedAreaHL("init_device")»
         «cls.closeProtectedAreaHL("init_device")»
         «ENDIF»
 
