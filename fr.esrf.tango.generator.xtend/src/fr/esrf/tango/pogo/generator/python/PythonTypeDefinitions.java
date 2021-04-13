@@ -115,16 +115,20 @@ public class PythonTypeDefinitions {
 	 */
 	public static String pythonPropTypeHL (PropType propType) {
 		
-		if (propType instanceof BooleanType)	   return "'DevBoolean'";
-		if (propType instanceof ShortType)  	   return "'DevShort'";
-		if (propType instanceof IntType)           return "'DevLong'";
-		if (propType instanceof UShortType)        return "'DevUShort'";
-		if (propType instanceof UIntType)      	   return "'DevULong'";
-		if (propType instanceof FloatType)         return "'DevFloat'";
-		if (propType instanceof DoubleType)        return "'DevDouble'";
-		if (propType instanceof StringType)        return "'DevString'";
+		if (propType instanceof BooleanType)	   return "'bool'";
+		if (propType instanceof ShortType)  	   return "'int'";
+		if (propType instanceof IntType)           return "'int'";
+		if (propType instanceof LongType)     	   return "'int'";
+		if (propType instanceof UShortType)        return "'int'";
+		if (propType instanceof UIntType)      	   return "'int'";
+		if (propType instanceof ULongType)     	   return "'int'";
+		if (propType instanceof FloatType)         return "'float'";
+		if (propType instanceof DoubleType)        return "'float'";
+		if (propType instanceof StringType)        return "'str'";
 		if (propType instanceof ShortVectorType)   return "'DevVarShortArray'";
 		if (propType instanceof IntVectorType)     return "'DevVarLongArray'";
+		if (propType instanceof LongArrayType)     return "'DevVarLong64Array'";
+		if (propType instanceof ULongArrayType)    return "'DevVarULong64Array'";
 		if (propType instanceof FloatVectorType)   return "'DevVarFloatArray'";
 		if (propType instanceof DoubleVectorType)  return "'DevVarDoubleArray'";
 		if (propType instanceof StringVectorType)  return "'DevVarStringArray'";
