@@ -186,10 +186,6 @@ public class StringUtils {
 	 * Comment a String with more than one line
 	 */
 	//===========================================================
-	/**
-	 * Comment a String with more than one line
-	 */
-	//===========================================================
 	public static String comments(String s, String tag) {
 		return s.replaceAll("\n", "\n"+tag);
 	}
