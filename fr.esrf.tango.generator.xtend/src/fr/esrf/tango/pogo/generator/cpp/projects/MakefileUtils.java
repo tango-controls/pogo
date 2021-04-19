@@ -356,7 +356,7 @@ public class MakefileUtils extends fr.esrf.tango.pogo.generator.common.StringUti
 	//======================================================
 	private String dependanciesObjectAddFile(String classname, String path, String filename, boolean mainClass) {
 		String code = "$(OBJDIR)/" + filename + ".o:";
-		if (mainClass)	//	Do not manage path
+		if (mainClass)
 			code += "  " + path + " $(SVC_INCL)\n";
 		else
 			code += "  $(" +  classHomeDir(classname) + ")/"+filename+".cpp $("+classIncludeDir(classname)+")\n";
