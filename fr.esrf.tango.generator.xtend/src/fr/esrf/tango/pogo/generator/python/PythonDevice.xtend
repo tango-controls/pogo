@@ -321,7 +321,6 @@ class PythonDevice implements IGenerator {
                 }
             «cls.inheritanceClassPropertyList»
         
-        
             #    Device Properties
             device_property_list = {
                 «FOR prop : cls.deviceProperties»
@@ -382,7 +381,8 @@ class PythonDevice implements IGenerator {
             except PyTango.DevFailed as e:
                 print ('-------> Received a DevFailed exception:', e)
             except Exception as e:
-                print ('-------> An unforeseen exception occured....', e)
+                print ('-------> An unforeseen exception occurred....', e)
+        
         
         if __name__ == '__main__':
             main()
