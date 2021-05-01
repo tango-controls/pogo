@@ -412,7 +412,6 @@ class PythonUtils {
 		    self.debug_stream("In write_«attribute.name»()")
 		    data = attr.get_write_value()
 		    «protectedArea(cls, attribute.name + "_write")»
-		    
     '''
     def writeAttributeMethodHL(PogoDeviceClass cls, Attribute attribute, boolean isDynamic) '''
         def write_«attribute.name»(self, «IF isDynamic»w_attr«ELSE»value«ENDIF»):
@@ -434,14 +433,12 @@ class PythonUtils {
                 «ELSE»
                 pass
                 «ENDIF»
-
     '''
         
     def readAttributeMethod(PogoDeviceClass cls, Attribute attribute) '''
 		def read_«attribute.name»(self, attr):
 		    self.debug_stream("In read_«attribute.name»()")
 		    «protectedArea(cls, attribute.name + "_read", attribute.setAttrVal, false)»
-		    
     '''
     def readAttributeMethodHL(PogoDeviceClass cls, Attribute attribute, boolean isDynamic) '''
         def read_«attribute.name»(self«IF isDynamic», attr«ENDIF»):
@@ -465,7 +462,6 @@ class PythonUtils {
                 «ELSE»
                 return «attribute.defaultValueDim»
                 «ENDIF»
-
     '''
       
     def readPipeMethodHL(PogoDeviceClass cls, Pipe pip) '''
