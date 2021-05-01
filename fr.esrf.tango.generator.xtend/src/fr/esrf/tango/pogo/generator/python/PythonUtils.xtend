@@ -329,7 +329,16 @@ class PythonUtils {
 		    «IF !cmd.argout.type.voidType»argout = «cmd.argout.type.defaultValue»«ENDIF»
 		    «protectedArea(cls, cmd.name)»
 		    «cmd.returnMethodCode»
-		    
+
+        '''
+
+    def projectTittle(PogoDeviceClass cls) '''
+            «IF cls.description.title != ""»
+            #  Project :     «cls.description.title»
+            #
+            «ELSE»
+            #
+            «ENDIF»
         '''
         
     def commandExecutionHL(PogoDeviceClass cls, Command cmd) '''

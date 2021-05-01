@@ -133,9 +133,8 @@ class PythonDevice implements IGenerator {
         #
         #  File :        «cls.name + ".py"»
         #
-        #  Project :     «cls.description.title»
-        #
-        «cls.description.license.licenseText("# ")»
+        «projectTittle(cls)»
+        «cls.description.license.licenseText("#")»
         #
         #  $Author :      «cls.description.identification.author»$
         #
