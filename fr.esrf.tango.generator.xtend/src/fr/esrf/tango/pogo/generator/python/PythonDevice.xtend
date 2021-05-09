@@ -379,9 +379,9 @@ class PythonDevice implements IGenerator {
                 U.server_run()
         
             except PyTango.DevFailed as e:
-                print ('-------> Received a DevFailed exception:', e)
+                print('-------> Received a DevFailed exception:', e)
             except Exception as e:
-                print ('-------> An unforeseen exception occurred....', e)
+                print('-------> An unforeseen exception occurred....', e)
         
         
         if __name__ == '__main__':
