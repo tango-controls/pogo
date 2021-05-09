@@ -90,7 +90,7 @@ class IdeaProject  implements IGenerator {
 		        <dependency>
 		            <groupId>org.tango-controls</groupId>
 		            <artifactId>JTangoServer</artifactId>
-		            <version>RELEASE</version>
+		            <version>«getRelease()»</version>
 		        </dependency>
 		    </dependencies>
 		
