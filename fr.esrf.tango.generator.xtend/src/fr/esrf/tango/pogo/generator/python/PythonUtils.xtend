@@ -555,9 +555,8 @@ class PythonUtils {
             [«prop.type.pythonPropType», 
             «IF !prop.description.empty»"«prop.description.oneLineString»"«ELSE» ''«ENDIF»«IF !prop.defaultPropValue.empty»,
             «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0).escapeQuotes»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
-            «IF prop.mandatory.isTrue»mandatory=True,«ENDIF»
-            [] «ENDIF»],
-            «IF prop.mandatory.isTrue»mandatory=True,«ENDIF»
+             []«ENDIF»,
+            «IF prop.mandatory.isTrue» mandatory=True«ENDIF»]
     '''
     
     def pythonPropertyClassHL(Property prop) '''
