@@ -200,7 +200,7 @@ class Properties {
 		prop_def  = "«property.defaultPropValue.list2String»";
 		vect_data.clear();
 		«FOR String value : property.defaultPropValue»
-			vect_data.push_back("«value»");
+			vect_data.push_back("«value.escapeQuotes»");
 		«ENDFOR»
 		if (prop_def.length()>0)
 		{

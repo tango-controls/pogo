@@ -554,7 +554,7 @@ class PythonUtils {
     def pythonPropertyClass(Property prop) '''        '«prop.name»':
             [«prop.type.pythonPropType», 
             «IF !prop.description.empty»"«prop.description.oneLineString»"«ELSE» ''«ENDIF»«IF !prop.defaultPropValue.empty»,
-            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0)»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
+            «IF prop.type.pythonPropType.equals("PyTango.DevString")»["«prop.defaultPropValue.get(0).escapeQuotes»"] «ELSEIF prop.type.pythonPropType.equals("PyTango.DevVarStringArray")»«prop.defaultPropValue.toString.stringListToStringArray»«ELSE»«prop.defaultPropValue»«ENDIF»«ELSE»,
             «IF prop.mandatory.isTrue»mandatory=True,«ENDIF»
             [] «ENDIF»],
             «IF prop.mandatory.isTrue»mandatory=True,«ENDIF»
@@ -565,7 +565,7 @@ class PythonUtils {
         «prop.name» = class_property(
                 dtype=«prop.type.pythonPropTypeHL»,
                 «IF !prop.defaultPropValue.empty»
-                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue.get(0)»"
+                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue.get(0).escapeQuotes»"
         «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
         «prop.defaultPropValue.toString.stringListToStringArray»
         «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
@@ -592,7 +592,7 @@ class PythonUtils {
         «prop.name» = device_property(
                 dtype=«prop.type.pythonPropTypeHL»,
                 «IF !prop.defaultPropValue.empty» 
-                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue.get(0)»"
+                default_value=«IF prop.type.pythonPropTypeHL.equals("'DevString'")»"«prop.defaultPropValue.get(0).escapeQuotes»"
         «ELSEIF prop.type.pythonPropTypeHL.equals("'DevVarStringArray'")»
         «prop.defaultPropValue.toString.stringListToStringArray»
         «ELSEIF ( prop.type.pythonPropTypeHL.equals("'DevVarShortArray'") || prop.type.pythonPropTypeHL.equals("'DevVarLongArray'") || prop.type.pythonPropTypeHL.equals("'DevVarFloatArray'") || prop.type.pythonPropTypeHL.equals("'DevVarDoubleArray'") )»
