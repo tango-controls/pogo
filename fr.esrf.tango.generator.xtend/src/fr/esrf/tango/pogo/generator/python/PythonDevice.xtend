@@ -194,6 +194,13 @@ class PythonDevice implements IGenerator {
             «IF attr.read»    self.attr_«attr.name»_read = «attr.defaultValueDim»«ENDIF»
         «ENDFOR»
             «cls.setEventCriteria»
+            «IF !cls.commands.empty»
+            «FOR cmd:cls.commands»
+            «IF (cmd.name == "State" || cmd.name == "Status") && cmd.polledPeriod.integerValue !== 0»
+            self.poll_command(«cmd.name», «cmd.polledPeriod»)
+            «ENDIF»
+            «ENDFOR»
+            «ENDIF»
             «cls.protectedArea("init_device")»
     '''
 
