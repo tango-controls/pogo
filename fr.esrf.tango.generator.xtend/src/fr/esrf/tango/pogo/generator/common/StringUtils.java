@@ -129,7 +129,7 @@ public class StringUtils {
 	public String list2String(EList<String> list) {
 		StringBuilder sb = new StringBuilder();
 		for (int i=0 ; i<list.size(); i++) {
-			sb.append(list.get(i));
+			sb.append(escapeQuotes(list.get(i)));
 			if (i<list.size()-1)
 				sb.append("\\n"); 
 		}
@@ -172,6 +172,14 @@ public class StringUtils {
 		sb.append(vectorName).append(".push_back(\"");
 		sb.append(text.substring(start)).append("\");\n");		
 		return sb.toString();
+	}
+	//===========================================================
+	/*
+	 * Escape double quotes in a string 
+	 */
+	//===========================================================
+	public String escapeQuotes(String text) {
+            return text.replace("\"", "\\\"");
 	}
 	//===========================================================
 	/**

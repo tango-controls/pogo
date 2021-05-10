@@ -220,7 +220,7 @@ public class JavaUtils extends StringUtils {
 		else {
 			StringBuilder sb = new StringBuilder(",\n        defaultValue={ ");
 			for (int i=0 ; i<defaultValues.size() ; i++) {
-				sb.append("\"").append(defaultValues.get(i)).append("\"");
+				sb.append("\"").append(escapeQuotes(defaultValues.get(i))).append("\"");
 				if (i<defaultValues.size()-1)
 					sb.append(", ");
 			}
