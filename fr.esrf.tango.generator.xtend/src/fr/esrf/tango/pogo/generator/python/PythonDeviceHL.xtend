@@ -204,6 +204,8 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 «cls.description.description»
 """
 
+«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("system_imports")»«ENDIF»
+
 # PyTango imports
 import tango
 from tango import DebugIt
@@ -462,11 +464,15 @@ def dyn_attr(self, dev_list):
 # Run server
 # ----------
 
+«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("custom_code")»«ENDIF»
+
 
 def main(args=None, **kwargs):
     """Main function of the «cls.name» module."""
     «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
     return run((«cls.name»,), args=args, **kwargs)«ENDIF»
+
+«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("custom_functions")»«ENDIF»
 
 
 if __name__ == '__main__':
