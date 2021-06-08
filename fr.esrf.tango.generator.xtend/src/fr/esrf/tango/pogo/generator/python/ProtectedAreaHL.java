@@ -97,6 +97,12 @@ public class ProtectedAreaHL {
 	 * @return string representing the protected area
 	 */
 	public String protectedAreaHL(PogoDeviceClass cls, String method, String code, boolean comments) {
+		if(cls.getDescription().getFilestogenerate().toLowerCase().contains("protected regions"))
+		{
+			if(code.isEmpty())
+				return openProtectedAreaHL(cls, method)+ "\n" +
+					closeProtectedAreaHL(cls.getName(), method);
+			else
 		if (comments)
 			return	openProtectedAreaHL(cls, method)+ "\n" +
 					"# " + StringUtils.comments(code, "	# ") + "\n" +
@@ -106,6 +112,11 @@ public class ProtectedAreaHL {
 					code + "\n" +
 					closeProtectedAreaHL(cls, method);
 	}
+		else
+		{
+			return code;
+		}
+	}
 	/**
 	 * Insert a protected area
 	 * @param cls PogoDeviceClass
@@ -113,7 +124,6 @@ public class ProtectedAreaHL {
 	 * @return string representing the protected area
 	 */
 	public String protectedAreaHL(PogoDeviceClass cls, String method) {
-		return	openProtectedAreaHL(cls.getName(), method)+ "\n" +
-				closeProtectedAreaHL(cls.getName(), method);
+		return protectedAreaHL(cls, method, "", false);
 	}
 }

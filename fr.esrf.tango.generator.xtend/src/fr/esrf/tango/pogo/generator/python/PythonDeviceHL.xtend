@@ -141,7 +141,7 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
     «ENDIF»
     «ENDIF»
     """
-    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("class_variable")»«ENDIF»
+    «cls.protectedAreaHL("class_variable")»
 
 «IF !cls.classProperties.empty»    # ----------------
     # Class Properties
@@ -204,7 +204,7 @@ class «cls.name»(«cls.inheritedPythonClassNameHL»):
 «cls.description.description»
 """
 
-«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("system_imports")»«ENDIF»
+«cls.protectedAreaHL("system_imports")»
 
 # PyTango imports
 import tango
@@ -220,7 +220,7 @@ import enum
 «ENDIF»
 «cls.inheritedAdditionalImportHL»
 # Additional import
-«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("additionnal_import")»«ENDIF»
+«cls.protectedAreaHL("additionnal_import")»
 
 __all__ = ["«cls.name»", "main"]
 '''
@@ -346,7 +346,7 @@ def enumClasses(PogoDeviceClass cls) '''
     def pythonDynamicAttributesMethod(PogoDeviceClass cls)  '''
 «IF !cls.dynamicAttributes.empty»    def initialize_dynamic_attributes(self):
         self.debug_stream("In initialize_dynamic_attributes()")
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("initialize_dynamic_attributes")»«ENDIF»
+        «cls.protectedAreaHL("initialize_dynamic_attributes")»
 
         """   Example to add dynamic attributes
            Copy inside the following code to protected area to instantiate at startup."""
@@ -461,15 +461,14 @@ def dyn_attr(self, dev_list):
 # Run server
 # ----------
 
-«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("custom_code")»«ENDIF»
+«cls.protectedAreaHL("custom_code")»
 
 
 def main(args=None, **kwargs):
     """Main function of the «cls.name» module."""
-    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»«ELSE»
-    return run((«cls.name»,), args=args, **kwargs)«ENDIF»
+    «cls.protectedAreaHL("main", "return run((" + cls.name + ",), args=args, **kwargs)", false)»
 
-«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«cls.protectedAreaHL("custom_functions")»«ENDIF»
+«cls.protectedAreaHL("custom_functions")»
 
 
 if __name__ == '__main__':

@@ -1138,13 +1138,13 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
 
     «FOR attr : cls.attributes»
     «attr.name»_scenari = [
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,attr.name + "_scn")»«ENDIF»
+        «protectedAreaHL(cls,attr.name + "_scn")»
     ]
     «ENDFOR»
 
     «FOR cmd : cls.commands»
     «cmd.name»_scenari = [
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,cmd.name + "_scn")»«ENDIF»
+        «protectedAreaHL(cls,cmd.name + "_scn")»
     ]
     «ENDFOR»
 
@@ -1153,22 +1153,22 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
         """Mock external libraries."""
         # Example : Mock numpy
         # cls.numpy = «cls.name».numpy = MagicMock()
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"mocking")»«ENDIF»
+        «protectedAreaHL(cls,"mocking")»
 
     def test_properties(self):
         # test the properties
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"test_properties")»«ENDIF»
+        «protectedAreaHL(cls,"test_properties")»
         pass
 
     «FOR attr : cls.attributes»
     def given_«attr.name»(self, state=DevState.STANDBY, **kwargs):
         """'Given' statement for «attr.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"given_" + attr.name)»«ENDIF»
+        «protectedAreaHL(cls,"given_" + attr.name)»
         self.assertEqual(self.device.State(), state)
 
     def when_«attr.name»(self, read=True, write=False, value=None, **kwargs):
         """'When' statement for «attr.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"when_" + attr.name)»«ENDIF»
+        «protectedAreaHL(cls,"when_" + attr.name)»
         if write:
             self.device.«attr.name» = value
         if read:
@@ -1177,7 +1177,7 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
     def then_«attr.name»(self, result=None, expected=None, **kwargs):
         """'Then' statement for «attr.name»"""
         self.assertEqual(result, expected)
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"then_" + attr.name)»«ENDIF»
+        «protectedAreaHL(cls,"then_" + attr.name)»
 
     def test_«attr.name»(self):
         """Test for «attr.name»"""
@@ -1194,12 +1194,12 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
     «IF isTrue(command.status.concreteHere)»
     def given_«command.name»(self, state=DevState.STANDBY, **kwargs):
         """'Given' statement for «command.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"given_" + command.name)»«ENDIF»
+        «protectedAreaHL(cls,"given_" + command.name)»
         self.assertEqual(self.device.State(), state)
 
     def when_«command.name»(self, value=None, **kwargs):
         """'When' statement for «command.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"when_" + command.name)»«ENDIF»
+        «protectedAreaHL(cls,"when_" + command.name)»
 «IF !command.argin.type.voidType»
 «IF !command.argout.type.voidType»        return self.device.«command.name»(value)
 «ELSE»        self.device.«command.name»(value)«ENDIF»
@@ -1209,7 +1209,7 @@ class «cls.name»DeviceTestCase(DeviceTestCase):
     def then_«command.name»(self, result=None, expected=None, **kwargs):
         """'Then' statement for «command.name»"""
         self.assertEqual(result, expected)
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»«protectedAreaHL(cls,"then_" + command.name)»«ENDIF»
+        «protectedAreaHL(cls,"then_" + command.name)»
 
     def test_«command.name»(self):
         """Test for «command.name»"""
@@ -1278,16 +1278,12 @@ from mock import MagicMock
 
 from PyTango import DevState
 
-«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «protectedAreaHL(cls, "test_additional_imports")»
-«ENDIF»
 
 
 # Device test case
 @pytest.mark.usefixtures("tango_context", "initialize_device")
-«IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «protectedAreaHL(cls, "test_" + cls.name + "_decorators")»
-«ENDIF»
 class Test«cls.name»(object):
     """Test case for packet generation."""
 
@@ -1309,21 +1305,15 @@ class Test«cls.name»(object):
         """Mock external libraries."""
         # Example : Mock numpy
         # cls.numpy = «cls.name».numpy = MagicMock()
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
             «protectedAreaHL(cls,"test_mocking")»
-        «ENDIF»
 
     def test_properties(self, tango_context):
         # Test the properties
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
             «protectedAreaHL(cls,"test_properties")»
-        «ENDIF»
         pass
 
     «FOR command: cls.commands»
-    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «protectedAreaHL(cls, "test_" + command.name + "_decorators")»
-    «ENDIF»
     def test_«command.name»(self, tango_context):
         """Test for «command.name»"""
         «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
@@ -1351,16 +1341,10 @@ class Test«cls.name»(object):
     «ENDFOR»
 
     «FOR attr : cls.attributes»
-    «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
         «protectedAreaHL(cls, "test_" + attr.name + "_decorators")»
-    «ENDIF»
     def test_«attr.name»(self, tango_context):
         """Test for «attr.name»"""
-        «IF cls.description.filestogenerate.toLowerCase.contains("protected regions")»
             «protectedAreaHL(cls, "test_" + attr.name, "assert tango_context.device." + attr.name + " == " + attr.defaultValueHL, false)»
-        «ELSE»
-            assert tango_context.device.«attr.name» == «attr.defaultValueHL»
-        «ENDIF»
 
     «ENDFOR»
 
