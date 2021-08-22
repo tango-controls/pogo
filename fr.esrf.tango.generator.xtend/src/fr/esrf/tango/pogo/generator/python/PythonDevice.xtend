@@ -81,24 +81,16 @@ class PythonDevice implements IGenerator {
         
         class «cls.name» («cls.inheritedPythonClassName»):
             """«cls.description.description»"""
-
-            # -------- Add you global variables here --------------------------
-            «cls.protectedArea("global_variables")»
-        
-            «cls.pythonConstructors»
-
-            «cls.pythonDeleteDevice»
-
-            «cls.pythonInitDevice»
-        
-            def always_executed_hook(self):
-                self.debug_stream("In always_excuted_hook()")
-                «cls.protectedArea("always_executed_hook")»
+        «cls.pythonClassHeader»
+        «cls.pythonConstructors»
+        «cls.pythonDeleteDevice»
+        «cls.pythonInitDevice»
+        «cls.pythonAlwaysExecutedHook»
         «cls.pythonAttributes»
-        
-            «cls.pythonCommands»
-
-            «cls.protectedArea("programmer_methods")»
+        «cls.pythonDynamicAttributes»
+        «cls.pythonReadAttrHardware»
+        «cls.pythonCommands»
+        «cls.pythonClassFooter»
     '''
 
     //====================================================
@@ -170,25 +162,28 @@ class PythonDevice implements IGenerator {
     //    Constructors
     //====================================================
     def pythonConstructors(PogoDeviceClass cls)  '''
-            def __init__(self, cl, name):
-                «cls.inheritedConstructor»
-                self.debug_stream("In __init__()")
-                «cls.name».init_device(self)
-                «cls.protectedArea("__init__")»
+    
+        def __init__(self, cl, name):
+            «cls.inheritedConstructor»
+            self.debug_stream("In __init__()")
+            «cls.name».init_device(self)
+            «cls.protectedArea("__init__")»
     '''
 
     //====================================================
     //    Delete device method
     //====================================================
     def pythonDeleteDevice(PogoDeviceClass cls)  '''
-            def delete_device(self):
-                self.debug_stream("In delete_device()")
-                «cls.protectedArea("delete_device")»
+    
+        def delete_device(self):
+            self.debug_stream("In delete_device()")
+            «cls.protectedArea("delete_device")»
     '''
     //====================================================
     //    Constructors
     //====================================================
     def pythonInitDevice(PogoDeviceClass cls)  '''
+    
         def init_device(self):
             self.debug_stream("In init_device()")
             self.get_device_properties(self.get_device_class())
@@ -210,22 +205,18 @@ class PythonDevice implements IGenerator {
         «FOR attr: cls.attributes»
         «IF isTrue(attr.status.concreteHere)»
         «IF attr.isRead»
-        «readAttributeMethod(cls, attr)»
 
+        «readAttributeMethod(cls, attr)»
         «ENDIF»
         «IF attr.isWrite»
-        «writeAttributeMethod(cls, attr)»
 
+        «writeAttributeMethod(cls, attr)»
         «ENDIF»
         «IF !attr.readExcludedStates.empty || !attr.writeExcludedStates.empty»
         «attributeMethodStateMachine(cls, attr)»
         «ENDIF»
         «ENDIF»
         «ENDFOR»
-    «cls.pythonDynamicAttributes»
-        def read_attr_hardware(self, data):
-            self.debug_stream("In read_attr_hardware()")
-            «cls.protectedArea("read_attr_hardware")»
     '''
     //====================================================
     //    Dynamic Attributes
@@ -247,13 +238,12 @@ class PythonDevice implements IGenerator {
         «ENDIF»
         «ENDIF»
         «ENDFOR»
-
         «IF !cls.dynamicAttributes.empty»
         def initialize_dynamic_attributes(self):
             self.debug_stream("In initialize_dynamic_attributes()")
 
             #   Example to add dynamic attributes
-            #   Copy inside the folowing protected area to instanciate at startup.
+            #   Copy inside the following protected area to instantiate at startup.
 
             «FOR attr : cls.dynamicAttributes»
                 """   For Attribute «attr.name»
@@ -264,7 +254,43 @@ class PythonDevice implements IGenerator {
             «ENDFOR»
             «cls.protectedArea("initialize_dynamic_attributes")»
         «ENDIF»
-
+    '''
+    
+    //====================================================
+    //    Read Attr Hardware method for class
+    //====================================================
+    def pythonClassHeader(PogoDeviceClass cls)  '''
+    
+        # -------- Add you global variables here --------------------------
+        «cls.openProtectedArea("global_variables")»
+    '''
+    
+    //====================================================
+    //    Read Attr Hardware method for class
+    //====================================================
+    def pythonReadAttrHardware(PogoDeviceClass cls)  '''
+    
+        def read_attr_hardware(self, data):
+            self.debug_stream("In read_attr_hardware()")
+            «cls.protectedArea("read_attr_hardware")»
+    '''
+    
+    //====================================================
+    //    Always Executed Hook method for class
+    //====================================================
+    def pythonAlwaysExecutedHook(PogoDeviceClass cls)  '''
+    
+        def always_executed_hook(self):
+            self.debug_stream("In always_excuted_hook()")
+            «cls.protectedArea("always_executed_hook")»
+    '''
+    
+    //====================================================
+    //    Read Attr Hardware method for class
+    //====================================================
+    def pythonClassFooter(PogoDeviceClass cls)  '''
+    
+        «cls.protectedArea("programmer_methods")»
     '''
 
     //====================================================
@@ -292,17 +318,19 @@ class PythonDevice implements IGenerator {
         «ENDIF»
     '''
 
+    //====================================================
     //    Commands
     //====================================================
     def pythonCommands(PogoDeviceClass cls)  '''
-        # -------------------------------------------------------------------------
-        #    «cls.name» command methods
-        # -------------------------------------------------------------------------
-            «FOR cmd: cls.commands»
+        
+            # -------------------------------------------------------------------------
+            #    «cls.name» command methods
+            # -------------------------------------------------------------------------
+        «FOR cmd: cls.commands»
             «IF isTrue(cmd.status.concreteHere)»
-        «commandExecution(cls, cmd)»
+                    «commandExecution(cls, cmd)»
                 «IF !cmd.excludedStates.empty»
-        «commandMethodStateMachine(cls, cmd)»
+                    «commandMethodStateMachine(cls, cmd)»
                 «ENDIF»
             «ENDIF»
         «ENDFOR»

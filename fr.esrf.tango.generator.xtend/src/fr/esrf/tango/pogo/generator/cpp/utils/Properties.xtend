@@ -290,18 +290,16 @@ class Properties {
 
 
 	//==========================================================
-	// Define class property related delarations for DeviceClass.cpp
+	// Define class property related declarations for DeviceClass.cpp
 	//==========================================================
 	def classPropertyDeclarations(PogoDeviceClass cls)  '''
-		«IF cls.classProperties.size>0»
-		//	Class properties data members
-		public:
+			«IF cls.classProperties.size>0»
+			//	Class properties data members
 			«FOR Property property : cls.classProperties»
-				//	«property.name»:	«property.description.comments("//  ")»
-				«property.type.cppPropType»	«property.name.dataMemberName»;
+			//	«property.name»:	«property.description.comments("//  ")»
+			«property.type.cppPropType»	«property.name.dataMemberName»;
 			«ENDFOR»
-		«ENDIF»
-		public:
+			«ENDIF»
 			//	write class properties data members
 			Tango::DbData	cl_prop;
 			Tango::DbData	cl_def_prop;

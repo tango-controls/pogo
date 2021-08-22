@@ -55,7 +55,7 @@ class Pipes {
 		void «cls.name»::read_«pipe.name»(Tango::Pipe &pipe)
 		{
 			DEBUG_STREAM << "«cls.name»::read_«pipe.name»(Tango::Pipe &pipe) entering... " << std::endl;
-			«cls.protectedArea("read_" + pipe.name, "\n//	Add your own code here", false)»
+			«cls.protectedArea("read_" + pipe.name, "Add your own code here", true)»
 		}
 	'''
 	
@@ -67,7 +67,7 @@ class Pipes {
 		void «cls.name»::write_«pipe.name»(Tango::WPipe &pipe)
 		{
 			DEBUG_STREAM << "«cls.name»::write_«pipe.name»(Tango::WPipe &pipe) entering... " << std::endl;
-			«cls.protectedArea("write_" + pipe.name, "\n//	Add your own code here", false)»
+			«cls.protectedArea("write_" + pipe.name, "Add your own code here", true)»
 		}
 	'''
 	
